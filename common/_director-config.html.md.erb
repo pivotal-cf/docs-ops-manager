@@ -43,11 +43,11 @@ To configure the **Director Config** pane:
 1. Select **Enable Post Deploy Scripts** to run a post-deploy script after deployment. This script allows the job to execute additional commands against a deployment.
     <p class="note"><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), you must enable post-deploy scripts.</p>
 
-1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to recreate BOSH-deployed VMs on the next deploy. This process does not recreate the BOSH Director VM or destroy any persistent disk data.
+1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to recreate BOSH-deployed VMs on the next deploy. This process does not recreate the BOSH Director VM or destroy any persistent disk data. Please note that this checkbox will automatically be un-checked after a successful "Apply Changes".
 
-1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be recreated on the next deploy. This process does not destroy any persistent disk data.
+1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be recreated on the next deploy. This process does not destroy any persistent disk data. Please note that this checkbox will automatically be un-checked after a successful "Apply Changes".
 
-1. Select **Recreate All Persistent Disks** to force BOSH to migrate and recreate persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data.
+1. Select **Recreate All Persistent Disks** to force BOSH to migrate and recreate persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. Please note that this checkbox will automatically be un-checked after a successful "Apply Changes".
 
 1. Select **Enable bosh deploy retries** to instruct <%= vars.ops_manager %> to retry failed BOSH operations up to five times.
 
