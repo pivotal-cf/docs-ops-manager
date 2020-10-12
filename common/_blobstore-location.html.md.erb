@@ -23,11 +23,10 @@ Select a **Blobstore Location** to either configure the blobstore as an internal
       1. **URL Style:** Select either path-style or domain-style to specify the URL style for the S3-compatible blobstore. By default, the blobstore uses domain-style URLs.
           <p class="note warning"><strong>Warning:</strong> AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.pivotal.io/platform/2-9/release-notes/opsmanager-rn.html#domain-style">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.</p>
       <% if current_page.data.iaas == "AWS" %>
-      1. **Credentials Source**
-        1. **Static Credentials**
-          1. **Access Key** and **Secret Key:** Enter the keys you generated when creating your S3 bucket.
-        1. **IAM Profile**
-          1. Use the IAM profile associated with the BOSH Director
+      1. **Credentials Source:**
+      Input your credentials from the following sources.
+          - **Static Credentials:** In **Access Key** and **Secret Key**, enter the keys you generated when creating your S3 bucket.
+          - **IAM Profile:** Use the IAM profile associated with the BOSH Director.
       <% else %>
       1. **Access Key** and **Secret Key:** Enter the keys you generated when creating your S3 bucket.
       <% end %>
