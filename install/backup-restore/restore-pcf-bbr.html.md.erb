@@ -498,6 +498,12 @@ To return apps to a running state:
 
 If you have on-demand service instances provisioned by an on-demand service broker, you can restore them after successfully restoring <%= vars.app_runtime_abbr %>.
 
+<p class="note warning"><strong>Warning:</strong> If you have an on-demand MySQL service instance plan that replicates between foundations and the leader was lost, 
+   you have most likely followed the failover [procedure](https://docs-pcf-staging.cfapps.io/p-mysql/2-n/multi-site-trigger-failover.html#promote-failover). 
+   You need to purge the lost service instance to avoid accidentally restoring the former leader by following these [steps](https://docs-pcf-staging.cfapps.io/p-mysql/2-n/multi-site-trigger-failover.html#clean-up).
+   This must be done before running the **Upgrade All Service Instances** errand for the MySQL on-demand service.
+</p>
+
 To restore your on-demand service instances:
 
 1. Navigate to the Installation Dashboard.
