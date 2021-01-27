@@ -493,7 +493,14 @@ To return apps to a running state:
 
 ### <a id='odb'></a> Step 16: (Optional) Restore On-Demand Service Instances
 
-If you have on-demand service instances provisioned by an on-demand service broker, you can restore them after successfully restoring <%= vars.app_runtime_abbr %>.
+If you have on-demand service instances provisioned by an on-demand service broker, 
+you can restore them after successfully restoring <%= vars.app_runtime_abbr %>.
+
+<p class="note warning"><strong>Warning:</strong> If the leader is lost and you use an on-demand MySQL service 
+    instance plan that replicates between foundations, purge the lost service instance to avoid accidentally restoring the former 
+    leader. For more information, see <a href="https://docs.pivotal.io/p-mysql/multi-site-trigger-failover.html#clean-up">Delete the Former Leader</a>.
+    Delete the former leader before running the **Upgrade All Service Instances** errand for MySQL.
+</p>
 
 To restore your on-demand service instances:
 
