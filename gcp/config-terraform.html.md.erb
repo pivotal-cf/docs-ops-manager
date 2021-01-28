@@ -58,7 +58,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
     * **Default Deployment Tag**: Enter the value of `env_name` from your `terraform.tfvars` file.
     * Select **AuthJSON** and in the field below enter the contents of the JSON file for you service account key.
         <p class="note"><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account automatically created by GCP for the <%= vars.ops_manager %> VM.</p>
-       <%= image_tag("../common/images/gcp/google_config.png") %>
+       <%= image_tag("../common/images/gcp/google_config.png", :alt => "Screenshot of the Google Cloud Platform Config that shows the 'Project ID' and 'Defaults Deployment Tag' fields.") %>
 
 1. Click **Save**.
 
@@ -209,7 +209,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 ## <a id='resource-config'></a> Step 9: Resource Config Page
 
 1. Select **Resource Config**.
-    <%= image_tag("../common/images/gcp/om_resource_config.png") %>
+    <%= image_tag("../common/images/gcp/om_resource_config.png", :alt => "Screenshot of the Resource Config dialog with a sample BOSH Director job. There are 'Job', 'Instances', 'VM Type', and 'Persistent Disk Type' fields.") %>
 
 1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The Terraform templates do not provision a Network Address Translation (NAT) box for internet connectivity to your VMs, so instead VMs are provided with ephemeral public IP addresses to allow the jobs to reach the internet.
   <p class="note"><strong>Note:</strong> If you want to provision a Network Address Translation (NAT) box to provide internet connectivity to your VMs instead of providing them with public IP addresses, deselect the <strong>Internet Connected</strong> checkboxes. For more information about using NAT in GCP, see the <a href="https://cloud.google.com/compute/docs/networking">GCP documentation</a>.</p>
@@ -225,11 +225,11 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the [Network Config](#network) screen, and make sure you have deselected the **Enable ICMP Checks** box. Click **Review Pending Changes**, then **Apply Changes** again.
 
-    <%= image_tag("../common/images/cloudform/install-error.png") %>
+    <%= image_tag("../common/images/cloudform/install-error.png", :alt => "Screenshot of the PCF Ops Manager errors list. There are 'Ignore errors and start the install' and 'Stop and fix erros' buttons.") %>
 
 1. BOSH Director installs. This may take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
 
-    <%= image_tag("../common/images/cloudform/ops-manager-complete.png") %>
+    <%= image_tag("../common/images/cloudform/ops-manager-complete.png", :alt => "Screenshot of the Changes Applied pop up window with 'Close' and 'Return to Installation Dashboard' buttons.") %>
 
 
 ## <a id="next"></a> Next Steps
