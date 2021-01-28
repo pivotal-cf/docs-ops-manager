@@ -356,8 +356,6 @@ To export your installation:
 
 1. In the Installation Dashboard, click the account dropdown and select **Settings**.
 
-    <%= image_tag("../images/upgrade_to_1.9.png") %>
-
 1. On the **Settings** page, select **Export Installation Settings** from the left menu, then click **Export Installation Settings**.
 
 This exports the current <%= vars.platform_name %> installation with all of its assets.
@@ -368,9 +366,7 @@ When you export an installation, the export contains the base VM images, necessa
 
 * Some browsers do not provide feedback on the status of the export process and might appear to hang.
 
-<p class="note"><strong>Note:</strong> Some operating systems automatically unzip the exported installation. If this occurs, create a ZIP file of the unzipped export. Do not start compressing at the "installation" folder level. Instead, start compressing at the level containing the <code>rails_database_dump.postgres</code> file, as shown in the example image below:</p>
-
-<%= image_tag("../images/compress.png") %>
+<p class="note"><strong>Note:</strong> Some operating systems automatically unzip the exported installation. If this occurs, create a ZIP file of the unzipped export. Do not start compressing at the "installation" folder level. Instead, start compressing at the level containing the <code>rails_database_dump.postgres</code> file.
 
 
 ## <a id="next-steps"></a> Next Steps
