@@ -278,7 +278,9 @@ To rotate the Services TLS CA and its leaf certificates:
        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
     1. Click **Apply Changes**.
 
-1. For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on <code>VCAP_SERVICES</code> for TLS.
+1. Rebind and restage the following apps:
+	  * For Tanzu GemFire for VMs apps, rebind and restage the apps.
+	  * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
     <p class='note'><strong>Note:</strong> The bg-restage plugin enables zero-downtime blue-green restaging without access to the app source code. For more information, see <a href="https://github.com/orange-cloudfoundry/cf-plugin-bg-restage">bg-restage</a> on GitHub.</p>
 
@@ -301,7 +303,9 @@ To rotate the Services TLS CA and its leaf certificates:
     <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
     1. Click **Apply Changes**.
 
-1. For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on <code>VCAP_SERVICES</code> for TLS.
+1. Rebind and restage the following apps:
+	  * For Tanzu GemFire for VMs apps, rebind and restage the apps.
+	  * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
 1. Remove the transitional flag from the Services TLS CA. This removes the old, inactive version of the Services TLS CA on the next deployment. Run:
 
@@ -316,7 +320,9 @@ To rotate the Services TLS CA and its leaf certificates:
     <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
     1. Click **Apply Changes**.
 
-1. For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on <code>VCAP_SERVICES</code> for TLS.
+1. Rebind and restage the following apps:
+	  * For Tanzu GemFire for VMs apps, rebind and restage the apps.
+	  * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
 ### <a id='set-certificate-rotation'></a> Rotate Manually Set Certificates
 
