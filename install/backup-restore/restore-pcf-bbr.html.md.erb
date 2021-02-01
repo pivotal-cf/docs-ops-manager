@@ -119,7 +119,7 @@ If you re-create your IaaS resources, you must also add those resources to <%= v
         1. Run:
 
             ```
-            curl "https://OPS-MANAGER-FQDN/api/v1/installation_asset_collection \
+            curl -v "https://OPS-MANAGER-FQDN/api/v0/installation_asset_collection \
               -X POST \
               -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
               -F 'installation[file]=@installation.zip' \
