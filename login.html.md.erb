@@ -1,0 +1,50 @@
+---
+title: Logging Into Ops Manager with Auth
+owner: Ops Manager
+---
+
+This topic describes how to log into the <%= vars.ops_manager %> UI for the first time and configure authentication using a web browser. 
+
+## <a id="overview"></a> Overview
+
+When you have a new installation of <%= vars.ops_manager %>, you must choose the default authentication and login method. When you log in for the first time, you go to the fully qualified domain name (FQDN) in your browser. You configured the FQDN when you first deployed <%= vars.ops_manager %>.
+
+Your login method choices are:
+
+* **Internal Authentication:** With this method, <%= vars.ops_manager %> maintains and manages your user database.
+
+* **SAML Identity Provider:** With this method, an external identity server maintains your user database.
+
+* **LDAP Server:** With this method, an external identity server maintains your user database.
+
+## <a id='login-first-time'></a> Log In to <%= vars.ops_manager %> For the First Time
+
+To log in to <%= vars.ops_manager %> for the first time:
+
+1. In a web browser, navigate to Ops Manager using your FQDN. You set your FQDN when you configured the <%= vars.ops_manager %> deployment.
+
+1. When <%= vars.ops_manager %> starts for the first time, choose one of the following procedures below:
+    * [Internal Authentication](#internal)
+    * [SAML Identity Provider](#saml)
+    * [LDAP Server](#ldap)
+
+## <a id='internal'></a> Log In to <%= vars.ops_manager %> with Internal Authentication
+
+To set up internal authentication that <%= vars.ops_manager %> maintains:
+
+1.  When redirected to the **Internal Authentication** page, do the following:
+    * Enter a **Username**, **Password**, and **Password confirmation** to create an Admin user.
+    * Enter a **Decryption passphrase** and the **Decryption passphrase confirmation**. This passphrase encrypts the Ops Manager datastore, and is not recoverable.
+    * If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](./install/pcf-director-proxy-settings.html).
+    * Read the **End User License Agreement**, and select the checkbox to accept the terms.
+    * Click **Setup Authentication**.
+
+1. Log in to <%= vars.ops_manager %> with the Admin username and password you created in the previous step.
+
+## <a id='saml'></a> Log In to <%= vars.ops_manager %> with SAML Identity Provider
+
+<%= partial './common/using_saml_idp_ops_manager' %>
+
+### <a id='ldap'></a> Log In to <%= vars.ops_manager %> with LDAP
+
+<%= partial './common/using_ldap_server_ops_manager' %>
