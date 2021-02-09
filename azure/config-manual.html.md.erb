@@ -48,35 +48,45 @@ PUT -H "Authorization: bearer UAA-ACCESS-TOKEN"
 To verify that you have successfully set your custom VM types, use the `GET /api/v0/vm_types` Ops
 Manager API endpoint.
 
+#### <a id='azure-vm-types'></a> Azure Generation 2 VM Types
 
-## <a id='access-om'></a> Step 1: Access Ops Manager
+You can use Generation 2 Azure VM types as the default VM type.
+For more information, see the <a href="../release-notes.html#2-10-3">Ops Manager v2.10.3 Release Notes</a>.
 
-1. In a web browser, navigate to the fully qualified domain name (FQDN) of Ops Manager that you created in [Deploying Ops Manager on Azure Manually](deploy-manual.html).
+The following table shows the mapping between Generation 1 and Generation 2 Azure VM types:
 
-1. When Ops Manager starts for the first time, you must choose one of the following:
-    * [Internal Authentication](#internal): If you use Internal Authentication, Ops Manager maintains your user database.
-    * [SAML Identity Provider](#saml): If you use a SAML Identity Provider (IdP), an external identity server maintains your user database.
-    * [LDAP Server](#ldap): If you use a LDAP Server, an external identity server maintains your user database.
+| Generation 1 VM Type | Generation 2 VM Type |
+| --- | --- |
+| Standard_DS1_v2 |	Standard_B2s |
+| Standard_DS2_v2 |	Standard_D2s_v3 |
+| Standard_DS3_v2 |	Standard_D4s_v3 |
+| Standard_DS4_v2 |	Standard_D8s_v3 |
+| Standard_DS5_v2 |	Standard_D16s_v3 |
+| |	Standard_D32s_v3 |
+| |	Standard_D48s_v3 |
+| |	Standard_D64s_v3 |
+| Standard_DS11_v2 | Standard_E2s_v3 |
+| Standard_DS12_v2 | Standard_E4s_v3 |
+| Standard_DS13_v2 | Standard_E8s_v3 |
+| Standard_DS14_v2 | Standard_E16s_v3 |
+| |	Standard_E20s_v3 |
+| |	Standard_E32s_v3 |
+| |	Standard_E48s_v3 |
+| |	Standard_E64s_v3 |
+| Standard_F1s | Standard_B1ms |
+| Standard_F2s | Standard_F2s_v2 |
+| Standard_F4s | Standard_F4s_v2 |
+| Standard_F8s | Standard_F8s_v2 |
+| |	Standard_F16s_v2 |
+| |	Standard_F32s_v2 |
+| |	Standard_F48s_v2 |
+| |	Standard_F64s_v2 |
 
-### <a id='internal'></a> Internal Authentication
+## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
 
-1.  When redirected to the **Internal Authentication** page, do the following:
-    * Enter a **Username**, **Password**, and **Password confirmation** to create an Admin user.
-    * Enter a **Decryption passphrase** and the **Decryption passphrase confirmation**. This passphrase encrypts the Ops Manager datastore, and is not recoverable.
-    * If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/pcf-director-proxy-settings.html).
-    * Read the **End User License Agreement**, and select the checkbox to accept the terms.
-    * Click **Setup Authentication**.
+1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you created in [Deploying <%= vars.ops_manager %> on Azure Manually](deploy-manual.html).
 
-1. Log in to Ops Manager with the Admin username and password you created in the previous step.
-
-### <a id='saml'></a> SAML Identity Provider
-
-<%= partial '../common/using_saml_idp_ops_manager' %>
-
-### <a id='ldap'></a> LDAP Server
-
-<%= partial '../common/using_ldap_server_ops_manager' %>
-
+1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
 ## <a id='azure-config'></a> Step 2: Azure Config Page
 
