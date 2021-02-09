@@ -28,38 +28,11 @@ See [Installing Runtimes](https://docs.pivotal.io/platform/<%= vars.current_majo
 Before you begin this procedure, you must complete all steps in [Deploying <%= vars.ops_manager %> to vSphere](./deploy.html).
 
 
-## <a id="set-up"></a> Step 1: Set Up <%= vars.ops_manager %> Authentication
+## <a id="set-up"></a> Step 1: Log Into <%= vars.ops_manager %>
 
 1. In a web browser, navigate to the fully qualified domain of your <%= vars.ops_manager %>.
 
-1. When <%= vars.ops_manager %> starts for the first time, you must choose one of the following:
-    * [Internal Authentication](#internal): If you use Internal Authentication, <%= vars.ops_manager %> maintains your user database.
-    * [SAML Identity Provider](#saml): If you use a SAML Identity Provider (IdP), an external identity server maintains your user database.
-    * [LDAP Server](#ldap): If you use a LDAP Server, an external identity server maintains your user database.
-
-### <a id='internal'></a> Internal Authentication
-
-1.  When redirected to the **Internal Authentication** page, you must complete the following steps:
-    * Enter a **Username**, **Password**, and **Password confirmation** to create a user with administrative privileges.
-    * Enter a **Decryption passphrase** and the **Decryption passphrase confirmation**. This passphrase encrypts the <%= vars.ops_manager %> datastore, and is not recoverable.
-    * If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/pcf-director-proxy-settings.html).
-    * Read the **End User License Agreement**, and select the checkbox to accept the terms.
-    * Click **Setup Authentication**.
-
-1. Log in to <%= vars.ops_manager %> with the username and password you created in the previous step.
-
-1. Verify success.<br/><br/>
-
-    You should be able to log in, and you should see the BOSH Director tile is present and ready for configuration, indicated by the orange color.
-
-### <a id='saml'></a> SAML Identity Provider
-
-<%= partial '../common/using_saml_idp_ops_manager' %>
-
-### <a id='ldap'></a> LDAP Server
-
-<%= partial '../common/using_ldap_server_ops_manager' %>
-
+1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
 ## <a id='vcenter-config'></a> Step 2: Configure vCenter
 
