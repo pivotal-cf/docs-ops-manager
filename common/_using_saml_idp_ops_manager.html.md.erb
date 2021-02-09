@@ -1,4 +1,4 @@
-To configure Ops Manager to use a SAML identity provider for user authentication:
+To configure <%= vars.ops_manager %> to log in by default using a SAML identity provider for user authentication:
 
 1. Log in to your identity provider console and download the identity provider metadata XML. Optionally, if your identity provider supports metadata URL, you can copy the metadata URL instead of the XML.
 
@@ -29,5 +29,3 @@ To configure Ops Manager to use a SAML identity provider for user authentication
     * **Audience URI** (SP Entity ID): `https://BOSH-IP:8443`
     * **Name ID**: Email Address
     * SAML authentication requests are always signed
-
-1. Return to the **BOSH Director** tile, and continue with the configuration steps below.
