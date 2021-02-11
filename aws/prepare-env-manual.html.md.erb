@@ -90,111 +90,131 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 ## <a id='pcfaws-vpc'></a> Step 4: Create a VPC
 
-1. Navigate to the VPC Dashboard.
+1. Follow the tutorial in the [AWS documentation](https://docs.aws.amazon.com/batch/latest/userguide/create-public-private-vpc.html) to create a VPC. Reference the following tables when configuring the VPC wizard fields and subnets.   
 
-1. Click **Launch VPC Wizard**.
+	<table>
+	<tr>
+	  <th>VPC Wizard Field</th>
+	  <th>Instructions</th>
+	</tr>
+	<tr>
+	  <td><b>IPv4 CIDR block</b></td>
+	  <td>Enter <code>10.0.0.0/16</code></td>
+	</tr>
+	<tr>
+	  <td><b>IPv6 CIDR block</b></td>
+	  <td>Select <b>No IPv6 CIDR Block</b></td>
+	</tr>
+	<tr>
+	  <td><b>VPC name</b></td>
+	  <td><code>pcf-vpc</code></td>
+	</tr>
+	<tr>
+	  <td><b>Public subnet's IPv4 CIDR</b></td>
+	  <td>Enter <code>10.0.0.0/24</code></td>
+	</tr>
+	<tr>
+	  <td><br>Availability Zone</br></td>
+	  <td>Set both subnets to <code>REGION-#a</code>. For example, <code>us-west-2a</code></td>
+	</tr>
+	<tr>
+	  <td><b>Public subnet name</b></td>
+	  <td>Enter <code>pcf-public-subnet-az0</code></td>
+	</tr>
+	<tr>
+	  <td><b>Private subnet's IPv4 CIDR</b></td>
+	  <td>Enter <code>10.0.16.0/28</code></td>
+	</tr>
+	<tr>
+	  <td><b>Private subnet name</b></td>
+	  <td>Enter <code>pcf-management-subnet-az0</code></td>
+	</tr>
+	<tr>
+	  <td><b>Elastic IP Allocation ID</b></td>
+	  <td>Enter the ID of the Elastic IP address you created at the beginning of the AWS tutorial.</td>
+	<tr>
+	  <td><b>Enable DNS hostnames</b></td>
+	  <td>Click <b>Yes</b></td>
+	<tr>
+	  <td><b>Hardware tenancy</b></td>
+	  <td>Select <b>Default</b></td>
+	</tr>
+	</table>
+</br>
+	 Add the following subnets to the VPC that includes `(pcf-vpc)`:
 
-    <%= image_tag("../common/images/pcfaws/pcf_aws_vpc_wizard.png", :alt => "Screenshot of the VCP Dashboard. The dashboard has a 'Start VCP Dashboard' and 'Launch EC2 Instances'.") %>
-
-1. Select **VPC with Public and Private Subnets** and click **Select**.
-
-1.  <a id="vpc-details"></a>Specify the following details for your VPC:
-    * **IPv4 CIDR block**: Enter `10.0.0.0/16`.
-    * **IPv6 CIDR block**: Select **No IPv6 CIDR Block**.
-    * **VPC name**: `pcf-vpc`.
-    * **Public subnet's IPv4 CIDR**: Enter `10.0.0.0/24`.
-    * Set the **Availability Zone** fields for both subnets to `REGION-#a`. For example, **us-west-2a**.
-    * **Public subnet name**: Enter `pcf-public-subnet-az0`.
-    * **Private subnet's IPv4 CIDR**: Enter `10.0.16.0/28`.
-    * **Private subnet name**: Enter `pcf-management-subnet-az0`.
-    * Click **Use a NAT instance instead** and do the following:
-      * Under **Specify the details of your NAT instance**, set the **Instance type** to **t3.medium**
-      * Create a key pair titled `pcf-ops-manager-key`. For more information about creating the key pair, see [Amazon EC2 Key
-    Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the AWS documentation.
-      * Select your newly-created `pcf-ops-manager-key` for the **Key Pair name**.
-    * **Enable DNS hostnames**: Click **Yes**.
-    * **Hardware tenancy**: Select **Default**.
-    * Click **Create VPC**.
-
-1. After the VPC is successfully created, click **Subnets** in the left navigation.
-
-1. Click **Create Subnet**.
-
-1. Add the following subnets to the `pcf-vpc` VPC:
-     <p class="note"><strong>Note:</strong> You created the first two subnets in the previous step: <code>pcf-public-subnet-az0</code> and <code>pcf-management-subnet-az0</code>.</p>
-
-     <table>
-     <tr>
-       <th>Name</th>
-       <th>AZ</th>
-       <th>IPv4 CIDR block</th>
-     </tr>
-     <tr>
-       <td>`pcf-public-subnet-az1`</td>
-       <td>`REGION-#b` (for example, `us-west-2b`)</td>
-       <td>`10.0.1.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-public-subnet-az2`</td>
-       <td>`REGION-#c` (for example, `us-west-2c`)</td>
-       <td>`10.0.2.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-management-subnet-az1`</td>
-       <td>`REGION-#b` (for example, `us-west-2b`)</td>
-       <td>`10.0.16.16/28`</td>
-     </tr>
-     <tr>
-       <td>`pcf-management-subnet-az2`</td>
-       <td>`REGION-#c` (for example, `us-west-2c`)</td>
-       <td>`10.0.16.32/28`</td>
-     </tr>
-     <tr>
-       <td>`pcf-pas-subnet-az0`</td>
-       <td>`REGION-#a` (for example, `us-west-2a`)</td>
-       <td>`10.0.4.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-pas-subnet-az1`</td>
-       <td>`REGION-#b` (for example, `us-west-2b`)</td>
-       <td>`10.0.5.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-pas-subnet-az2`</td>
-       <td>`REGION-#c` (for example, `us-west-2c`)</td>
-       <td>`10.0.6.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-services-subnet-az0`</td>
-       <td>`REGION-#a` (for example, `us-west-2a`)</td>
-       <td>`10.0.8.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-services-subnet-az1`</td>
-       <td>`REGION-#b` (for example, `us-west-2b`)</td>
-       <td>`10.0.9.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-services-subnet-az2`</td>
-       <td>`REGION-#c` (for example, `us-west-2c`)</td>
-       <td>`10.0.10.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-rds-subnet-az0`</td>
-       <td>`REGION-#a` (for example, `us-west-2a`)</td>
-       <td>`10.0.12.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-rds-subnet-az1`</td>
-       <td>`REGION-#b` (for example, `us-west-2b`)</td>
-       <td>`10.0.13.0/24`</td>
-     </tr>
-     <tr>
-       <td>`pcf-rds-subnet-az2`</td>
-       <td>`REGION-#c` (for example, `us-west-2c`)</td>
-       <td>`10.0.14.0/24`</td>
-     </tr>
-     </table>
+	 <table>
+	 <tr>
+	   <th>Name</th>
+	   <th>AZ</th>
+	   <th>IPv4 CIDR block</th>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-public-subnet-az1</code></td>
+	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+	   <td><code>10.0.1.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-public-subnet-az2</code></td>
+	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+	   <td><code>10.0.2.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-management-subnet-az1<code></td>
+	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+	   <td><code>10.0.16.16/28</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-management-subnet-az2</code></td>
+	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+	   <td><code>10.0.16.32/28</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az0</code></td>
+	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+	   <td><code>10.0.4.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az1</code></td>
+	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+	   <td><code>10.0.5.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az2</code></td>
+	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+	   <td><code>10.0.6.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-services-subnet-az0</code></td>
+	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+	   <td><code>10.0.8.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-services-subnet-az1</code></td>
+	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+	   <td><code>10.0.9.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-services-subnet-az2</code></td>
+	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+	   <td><code>10.0.10.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-rds-subnet-az0</code></td>
+	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+	   <td><code>10.0.12.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-rds-subnet-az1</code></td>
+	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+	   <td><code>10.0.13.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-rds-subnet-az2</code></td>
+	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+	   <td><code>10.0.14.0/24</code></td>
+	 </tr>
+	 </table>
 
 
 ## <a id='pcfaws-om-secgrp'></a> Step 5: Configure a Security Group for Ops Manager
