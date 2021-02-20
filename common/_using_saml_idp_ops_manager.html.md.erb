@@ -2,8 +2,10 @@ To configure <%= vars.ops_manager %> to log in by default using a SAML identity 
 
 1. Log in to your identity provider console and download the identity provider metadata XML. Optionally, if your identity provider supports metadata URL, you can copy the metadata URL instead of the XML.
 
-1. Copy the identity provider metadata XML or URL to the <%= vars.ops_manager %> **SAML Identity Provider** login page.
-    <p class="note"><strong>Note:</strong> The same identity provider metadata URL or XML is applied for the BOSH Director. If you use a separate identity provider for BOSH, copy the metadata XML or URL from that identity provider and enter it into the BOSH identity provider Metadata text box in the <%= vars.ops_manager %> login page.</p>
+1. Do one of the following, depending on if you use a separate identity provider for BOSH:
+    - **For the same identity provider:** Copy the identity provider metadata XML or URL to the <%= vars.ops_manager %> **SAML Identity Provider** login page.
+    
+    - **For a separate identity provider:** Copy the metadata XML or URL from that identity provider and enter it into the BOSH identity provider metadata text field in the <%= vars.ops_manager %> login page.
 
 1. Enter values for the fields listed below. Failure to provide values in these fields results in a `500` error.
     * **SAML admin group**: Enter the name of the SAML group that contains all <%= vars.ops_manager %> administrators. This field is case-sensitive.
@@ -14,17 +16,16 @@ To configure <%= vars.ops_manager %> to log in by default using a SAML identity 
 1. Your <%= vars.ops_manager %> login page appears. Enter your username and password and click **Login**.
 
 1. Download your SAML service provider metadata (SAML Relying Party metadata) by navigating to the following URLs:
-    * **6a.** <%= vars.ops_manager %> SAML service provider metadata: `https://OPS-MAN-FQDN:443/uaa/saml/metadata`
-    * **6b.** BOSH Director SAML service provider metadata: `https://BOSH-IP-ADDRESS:8443/saml/metadata`
-    <p class="note"><strong>Note:</strong> To retrieve your <code>BOSH-IP-ADDRESS</code>, navigate to the <strong>Status</strong> tab in the <strong>BOSH Director</strong> tile. Record the <strong>BOSH Director</strong> IP address.</p>
+    * <%= vars.ops_manager %> SAML service provider metadata: `https://OPS-MAN-FQDN:443/uaa/saml/metadata`
+    * BOSH Director SAML service provider metadata: `https://BOSH-IP-ADDRESS:8443/saml/metadata`.<br>Where `BOSH-IP-ADDRESS` is in the **Status** pane of the BOSH Director tile.
 
-1. Configure your identity provider with your SAML service provider metadata. Import the <%= vars.ops_manager %> SAML provider metadata from Step 6a above to your identity provider. If your identity provider does not support importing, provide the values below.
+1. Import the <%= vars.ops_manager %> SAML provider metadata to your identity provider. If your identity provider does not support importing, provide the values below.
     * **Single sign on** URL: `https://OPS-MAN-FQDN:443/uaa/saml/SSO/alias/OPS-MAN-FQDN`
     * **Audience URI** (SP Entity ID): `https://OP-MAN-FQDN:443/uaa`
     * **Name ID**: Email Address
     * SAML authentication requests are always signed
 
-1. Import the BOSH Director SAML provider metadata from Step 6b to your identity provider. If the identity provider does not support an import, provide the values below.
+1. Import the BOSH Director SAML provider metadata to your identity provider. If the identity provider does not support an import, provide the values below.
     * **Single sign on** URL: `https://BOSH-IP:8443/saml/SSO/alias/BOSH-IP`
     * **Audience URI** (SP Entity ID): `https://BOSH-IP:8443`
     * **Name ID**: Email Address
