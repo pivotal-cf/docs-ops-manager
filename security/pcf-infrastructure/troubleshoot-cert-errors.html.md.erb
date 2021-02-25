@@ -248,7 +248,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Cause</th>
-    <td>The leaf certificates must only be signed by older versions of their appropriate CAs. At this point in the rotation, the older signing version for each CA should be transitional so that new leaf certificates are issued from the latest version.
+    <td>Before regenerating new leaf certificates, all the existing leaf certificates must only be signed by older versions of their appropriate CAs. Additionally, these older CA versions should be marked as "transitional," which indicates that they are inactive but still needs to be trusted by clients. This ensures that the new leaf certificates that are about to be regenerated will be signed by the newer CA version, and that the clients trust both the old and new CA versions.
 </td>
   </tr>
   <tr>
