@@ -14,7 +14,9 @@ Manager automation.
 
 When Ops Manager boots for the first time, you create an admin user. However, you do not create additional users through the Ops Manager web interface. If you want to create additional users who can log into Ops Manager, you must use the UAA API, either through `curl` or the UAA Command Line Client (UAAC).
 
-<p class="note"><strong>Note:</strong> Users that are created this way are not going to persist if UAA authentication settings change.</p>
+Users are not the only type of account you can create for Ops Manager. You can also create client accounts, which connect automation tools and scripts to Ops Manager. <%= vars.company_name %> recommends using clients to handle automated tasks.
+
+<p class="note"><strong>Note:</strong> Users that are created this way do not persist if UAA authentication settings change.</p>
 
 Users are not the only type of account you can create for Ops Manager. You can also create client accounts, which connect automation tools and scripts to Ops Manager. Pivotal recommends using clients to handle automated tasks.
 
