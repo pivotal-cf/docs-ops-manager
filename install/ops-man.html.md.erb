@@ -4,16 +4,41 @@ title: Using Ops Manager
 owner: Ops Manager
 ---
 
+This topic describes what Tanzu <%= vars.ops_manager %> is, how to use it, and how to navigate the <%= vars.ops_manager %> documentation.
+
+
+## <a id="overview"></a> Overview
+
 The Ops Manager UI is a web application that you use to deploy and manage an <%= vars.platform_name %> PaaS deployment.
 This is a guide to deploying and using Ops Manager.
 
-## <a id='ops-man-api'></a> Using Ops Manager Programmatically and from the Command Line
+
+A <%= vars.platform_name %> deployment includes both your chosen runtime and the <%= vars.ops_manager %> Installation Dashboard. The <%= vars.ops_manager %> Installation Dashboard is the dashboard for administering the runtimes and services within your <%= vars.platform_name %> deployment.
+
+The BOSH Director, deployed as part of the <%= vars.ops_manager %> installation, controls VM creation and deployment,
+as well as other software and service lifecycle events. <%= vars.ops_manager %> includes the BOSH Director tile used to configure BOSH Director.
+
+Example runtimes and services managed though <%= vars.ops_manager %> include, but are not limited to, <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>).
+
+## <a id='ops-man-api'></a> <%= vars.ops_manager %> API
 
 Use the Ops Manager API, `om` CLI, and Platform Automation Toolkit tasks to manage <%= vars.platform_name %> installations programmatically, from the command line, or from an automation pipeline.
 
 To learn how to use these Ops Manager tools, see [Using Ops Manager Programmatically and from the Command Line](ops-man-api-cli.html).
 
-## <a id='related'></a>Related Links
+
+## <a id='related'></a> <%= vars.ops_manager %> Documentation
+
+### <a id="iaas"></a> Administering <%= vars.ops_manager %> by IaaS 
+
+For instructions on administering Ops Manager, see the documentation corresponding to your IaaS: 
+
+* [AWS](./aws/index.html)
+* [Azure](./azure/index.html)
+* [GCP](./gcp/index.html)
+* [OpenStack](./openstack/index.html)
+* [vSphere](./vsphere/index.html)
+
 
 ### <a id="ui"></a> Using the Ops Manager UI and Installed Products
 
