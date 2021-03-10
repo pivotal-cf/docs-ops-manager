@@ -27,17 +27,15 @@ The typical <%= vars.platform_name %> planning and installation process is:
   - [BOSH](https://bosh.io) is an open-source tool that lets you run software systems in the cloud.
       - BOSH and its IaaS-specific Cloud Provider Interfaces (CPIs) are what enable <%= vars.platform_name %> to run on multiple IaaSes.
       - See [Deploying with BOSH](#bosh) for a description of how BOSH deploys cloud software.
-   - [Ops Manager](./ops-man.html) is a graphical dashboard that deploys with BOSH. Ops Manager works with the BOSH Director to manage, configure, and upgrade <%= vars.platform_name %> products such as <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), and <%= vars.platform_name %> services and partner products.
-      - Ops Manager represents <%= vars.platform_name %> products as _tiles_ with multiple configuration panes that let you input or select configuration values needed for the product.
-      - Ops Manager generates BOSH manifests containing the user-supplied configuration values, and sends them to the BOSH Director.
-      - After you install Ops Manager and BOSH, you use Ops Manager to deploy almost all <%= vars.platform_name %> products.
-  - Deploying Ops Manager deploys both BOSH and Ops Manager with a single procedure.
-      - On AWS, you can deploy Ops Manager manually, or automatically with a Terraform template.
-      - On Azure, you can deploy Ops Manager manually, or automatically with a Terraform template. On Azure Government Cloud and Azure Germany, you can only deploy Ops Manager manually.
+   - [<%= vars.ops_manager %>](../index.html) is a graphical dashboard that deploys with BOSH. <%= vars.ops_manager %> works with the BOSH Director to manage, configure, and upgrade products such as <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), and services and partner products.
+      - <%= vars.ops_manager %> represents products as _tiles_ with multiple configuration panes that let you input or select configuration values needed for the product.
+      - <%= vars.ops_manager %> generates BOSH manifests containing the user-supplied configuration values, and sends them to the BOSH Director.
+   - A single procedure deploys both BOSH and <%= vars.ops_manager %>.
 
-1. **Deploy BOSH Add-ons** (Optional)
-  - BOSH add-ons include the [IPsec](https://docs.pivotal.io/addon-ipsec/index.html), [ClamAV](https://docs.pivotal.io/addon-antivirus/index.html), and [File Integrity Monitoring](https://docs.pivotal.io/addon-fim/index.html), which enhance <%= vars.platform_name %> platform security and security logging.
-  - You deploy these add-ons via BOSH rather than installing them with Ops Manager tiles.
+1. (Optional) **Deploy IPsec BOSH Add-on**
+  - [IPsec](https://docs.pivotal.io/addon-ipsec/index.html) encrypts IP data to secure network traffic.
+  - If IPsec is required for security compliance, deploy it before you install runtimes.
+  - IPsec is deployed with BOSH rather than as an <%= vars.ops_manager %> tile.
 
 1. **Install Runtimes**
   - [<%= vars.app_runtime_full %>](https://docs.pivotal.io/application-service/2-8/operating/configure-pas.html) (<%= vars.app_runtime_abbr %>) lets developers develop and manage cloud-native apps and software services.
