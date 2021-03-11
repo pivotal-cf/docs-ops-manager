@@ -4,7 +4,7 @@ title: Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes what Tanzu <%= vars.ops_manager %> is, how to use it, and how to navigate the <%= vars.ops_manager %> documentation.
+This topic introduces Tanzu <%= vars.ops_manager %> (previously Pivotal <%= vars.ops_manager %> or PCF <%= vars.ops_manager %>) and describes how to get starting using <%= vars.ops_manager %>.
 
 
 ## <a id="overview"></a> Overview
@@ -15,6 +15,53 @@ The BOSH Director, deployed as part of the <%= vars.ops_manager %> installation,
 as well as other software and service lifecycle events. <%= vars.ops_manager %> includes the BOSH Director tile used to configure BOSH Director.
 
 Example runtimes and services managed though <%= vars.ops_manager %> include, but are not limited to, <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>).
+
+## <a id="responsibilities"></a> <%= vars.ops_manager %> Responsibilities
+
+<%= vars.ops_manager %> has two primary roles: the operator and the admin. The operator and the admin roles can be managed by the same person.
+
+### <a id="operator"></a> Operator Responsibilities
+
+The <%= vars.ops_manager %> operator is responsible for:
+
+* Configuring <%= vars.platform_name %> capabilities
+
+* Integrating <%= vars.platform_name %> with external systems
+
+* Updating <%= vars.platform_name %> and installed products
+
+* Monitoring <%= vars.platform_name %> health and performance
+
+* Adjusting <%= vars.platform_name %> resources and options to fix health or performance issues
+
+* Diagnosing and troubleshooting <%= vars.platform_name %> problems
+
+* Managing <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) users, resources, and infrastructure
+
+* Installing software services and otherwise enabling developers
+
+* Maintaining <%= vars.platform_name %>
+
+* Keeping <%= vars.platform_name %> secure
+
+For more information about managing <%= vars.ops_manager %> as an operator, see the [Operator Guide](./opsguide/index.html).
+
+### <a id="admin"></a> Admin Responsibilities
+
+The <%= vars.ops_manager %> admin is responsible for:
+
+* Creating and managing <%= vars.ops_manager %> user and client accounts
+* Assigning roles
+
+For more information about managing user and client accounts, see [Creating and Managing Ops Manager User and Client Accounts](./install/opsman-users.html).
+
+### <a id=""></a> Limited-Access Operator Responsibilities
+
+Admins can give limited-access view or write <%= vars.ops_manager %> responsibilites to operators or others within an organization.
+
+Those with view-only privileges can use <%= vars.ops_manager %> only to gather information. Operators with restricted control cannot trigger a deployment and must request review from an operator with that access.
+
+For more information, see [Configuring Role-Based Access Control (RBAC) in Ops Manager](./opsguide/config-rbac.html).
 
 ## <a id="ops-man-ui"></a> <%= vars.ops_manager %> UI
 
