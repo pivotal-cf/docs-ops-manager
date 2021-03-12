@@ -2,6 +2,59 @@
 breadcrumb: <%= vars.platform_name %> Documentation
 title: Ops Manager
 owner: Ops Manager
+tiles:
+- name: Release Notes and Upgrading
+  desc: For information on new features, security patches, and upgrading Ops Manager, see the following topics.
+  links:
+  - name: Ops Manager Release Notes
+    url: ./release-notes.html
+  - name: Upgrading Ops Manager
+    url: ./install/upgrading-pcf.html
+- name: Administering by IaaS
+  desc: For information about managing each IaaS on Ops Manager, see the following documentation sets.
+  links:
+  - name: AWS
+    url: ./aws/index.html
+  - name: Azure
+    url: ./azure/index.html
+  - name: GCP
+    url: ./gcp/index.html
+  - name: OpenStack
+    url: ./openstack/index.html
+  - name: vSphere
+    url: ./vsphere/index.html
+- name: Using the UI
+  desc: For information about how to fulfill common operator duties with the UI, see the following topics.
+  links:
+  - name: Using the Ops Manager Interface
+    url: ./pcf-interface.html
+  - name: Adding and Deleting Products
+    url: ./install/add-delete.html
+  - name: Importing and Managing Stemcells
+    url: ./opsguide/managing-stemcells.html
+  - name: Managing Errands in Ops Manager
+    url: ./install/managing_errands.html
+- name: Using the API
+  desc: For information about how to use the Ops Manager API or CLI and to configure deployments programmatically, see the following topics.
+  links:
+  - name: Using Ops Manager Programmatically and from the Command Line
+    url: ./install/ops-man-api-cli.html
+  - name: Using the Ops Manager API
+    url: install/ops-man-api.html
+- name: Backing Up and Troubleshooting
+  desc: For information about how to back up, restore, and troubleshoot Ops Manager deployments, see the following topics.
+  links:
+  - name: Backing Up and Restoring Deployments
+    url: ./install/backup-restore/index.html
+  - name: Troubleshooting Deployment Problems
+    url: ./install/troubleshooting.html
+- name: Monitoring and Logging
+  desc: For information about accessing logs and metrics for VMs and app containers, see the following topics.
+  links:
+  - name: Accessing Logs and Metrics
+    url: ./install/viewing-logs-and-metrics.html
+  - name: Monitoring VMs in Ops Manager
+    url: ./install/monitoring.html
 ---
 
 This topic introduces Tanzu <%= vars.ops_manager %> (previously Pivotal <%= vars.ops_manager %> or PCF <%= vars.ops_manager %>) and describes how to get starting using <%= vars.ops_manager %>.
@@ -67,79 +120,6 @@ See the [Using Ops Manager Programmatically and from the Command Line](./install
 
 ## <a id='related'></a> <%= vars.ops_manager %> Documentation
 
-### <a id="iaas"></a> Administering <%= vars.ops_manager %> by IaaS 
+The following sections describe how to navigate the <%= vars.ops_manager %> documentation and use <%= vars.ops_manager %> features.
 
-For information about administering the <%= vars.ops_manager %> UI is a web application that you use to deploy and manage an <%= vars.platform_name %> PaaS deployment, see the following documentation:
-
-* [AWS](./aws/index.html)
-* [Azure](./azure/index.html)
-* [GCP](./gcp/index.html)
-* [OpenStack](./openstack/index.html)
-* [vSphere](./vsphere/index.html)
-
-
-### <a id="ui"></a> Using the <%= vars.ops_manager %> UI and Installed Products
-
-For information about using <%= vars.ops_manager %> with the <%= vars.ops_manager %> UI, see the following documentation:
-
-* [Using the Ops Manager Interface](./pcf-interface.html)
-
-* [Adding and Deleting Products](./install/add-delete.html)
-
-* [Retrieving Credentials from Your Deployment](./install/credentials.html)
-
-* [Floating Stemcells](./install/understanding-stemcells.html)
-
-* [Configuring BOSH Director on vSphere](./vsphere/config.html)
-
-* [vSphere Service Account Requirements](./vsphere/vsphere-service-account.html)
-
-* [Creating UAA Clients for BOSH Director](./install/opsmanager-create-bosh-client.html)
-
-* [Configuring BOSH Director on OpenStack](./openstack/config.html)
-
-* [Using Your Own Load Balancer](https://docs.pivotal.io/application-service/<%= product_info['local_product_version'].to_s.sub('.','-') %>/operating/custom-load-balancer.html)
-
-* [Creating and Managing Ops Manager User Accounts](./install/opsman-users.html)
-
-* [Creating New TAS for VMs User Accounts](https://docs.pivotal.io/application-service/<%= product_info['local_product_version'].to_s.sub('.','-') %>/operating/creating-account.html)
-
-* [Logging In to Apps Manager](https://docs.pivotal.io/application-service/<%= product_info['local_product_version'].to_s.sub('.','-') %>/operating/console-login.html)
-
-* [Adding Existing SAML or LDAP Users to an <%= vars.platform_name %> Deployment](https://docs.pivotal.io/application-service/<%= product_info['local_product_version'].to_s.sub('.','-') %>/operating/external-user-management.html)
-
-* [Deleting an AWS Installation from the Console](./install/deleting-aws-install.html)
-
-* [Modifying Your Ops Manager Installation and Product Template Files](./install/modify-ops-man.html)
-
-* [Managing Errands in Ops Manager](./install/managing_errands.html)
-
-### <a id="api"></a> Using the Ops Manager API, CLI, and Platform Automation Toolkit
-
-* [Using Ops Manager Programmatically and from the Command Line](./install//ops-man-api-cli.html)
-
-* [Using the Ops Manager API](./install/ops-man-api.html)
-
-* [Platform Automation Toolkit](https://docs.pivotal.io/platform-automation)
-
-### <a id='backing-up'></a> Backing Up
-
-For information about backing up and restoring deployments with <%= vars.ops_manager %>, see the following documentation:
-
-* [Backing Up and Restoring Deployments](./install/backup-restore/index.html)
-
-### <a id='monitoring-logging-troubleshooting'></a> Monitoring, Logging, and Troubleshooting
-
-For information about monitoring, logging, and troubleshooting, see the following documentation:
-
-* [Monitoring Virtual Machines in <%= vars.platform_name %>](./install/monitoring.html)
-
-* [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/<%= product_info['local_product_version'].to_s.sub('.','-') %>/operating/diagnostics.html)
-
-* [Troubleshooting Deployment Problems](./install/troubleshooting.html)
-
-* [Troubleshooting Ops Manager for VMware vSphere](./install/troubleshooting-vsphere.html)
-
-* [Recovering MySQL from TAS for VMs Downtime](https://docs.pivotal.io/application-service/<%= product_info['local_product_version'].to_s.sub('.','-') %>/mysql/bootstrap-mysql.html)
-
-* [Advanced Troubleshooting with the BOSH CLI](./install/trouble-advanced.html)
+<%= partial "./common/tiles" %>
