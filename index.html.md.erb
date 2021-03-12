@@ -18,7 +18,7 @@ Example runtimes and services managed though <%= vars.ops_manager %> include, bu
 
 ## <a id="responsibilities"></a> <%= vars.ops_manager %> Responsibilities
 
-<%= vars.ops_manager %> has two primary roles: the operator and the admin. The operator and the admin roles can be managed by the same person.
+<%= vars.ops_manager %> has one primary role and responsibility as the operator. The operator is responsible for installing and maintaining runtime and service tiles.
 
 ### <a id="operator"></a> Operator Responsibilities
 
@@ -40,28 +40,18 @@ The <%= vars.ops_manager %> operator is responsible for:
 
 * Installing software services and otherwise enabling developers
 
-* Maintaining <%= vars.platform_name %>
-
-* Keeping <%= vars.platform_name %> secure
-
-For more information about managing <%= vars.ops_manager %> as an operator, see the [Operator Guide](./opsguide/index.html).
-
-### <a id="admin"></a> Admin Responsibilities
-
-The <%= vars.ops_manager %> admin is responsible for:
-
 * Creating and managing <%= vars.ops_manager %> user and client accounts
-* Assigning roles
 
-For more information about managing user and client accounts, see [Creating and Managing Ops Manager User and Client Accounts](./install/opsman-users.html).
 
 ### <a id=""></a> Limited-Access Operator Responsibilities
 
-Admins can give limited-access view or write <%= vars.ops_manager %> responsibilites to operators or others within an organization.
+Operators can give limited-access view or write <%= vars.ops_manager %> responsibilites to operators or others within an organization.
 
-Those with view-only privileges can use <%= vars.ops_manager %> only to gather information. Operators with restricted control cannot trigger a deployment and must request review from an operator with that access.
+- **View-Only:** Users with view-only privileges can use <%= vars.ops_manager %> only to gather information.
 
-For more information, see [Configuring Role-Based Access Control (RBAC) in Ops Manager](./opsguide/config-rbac.html).
+- **Restricted Control:** Operators with restricted control cannot trigger a deployment and must request review from an operator with that access.
+
+For more information about how to set privileges, see [Configuring Role-Based Access Control (RBAC) in Ops Manager](./opsguide/config-rbac.html).
 
 ## <a id="ops-man-ui"></a> <%= vars.ops_manager %> UI
 
