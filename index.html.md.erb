@@ -57,17 +57,24 @@ tiles:
     url: ./install/monitoring.html
 ---
 
-This topic introduces Tanzu <%= vars.ops_manager %> (previously Pivotal <%= vars.ops_manager %> or PCF <%= vars.ops_manager %>) and describes how to get started.
+This topic introduces <%= vars.ops_manager %> (previously Pivotal <%= vars.ops_manager %> or PCF <%= vars.ops_manager %>) and describes how to get started.
 
 
-## <a id="overview"></a> Overview
+## <a id="overview"></a> About <%= vars.ops_manager %>
 
-A <%= vars.platform_name %> deployment includes both your chosen runtime and the <%= vars.ops_manager %> Installation Dashboard. The <%= vars.ops_manager %> Installation Dashboard is the dashboard for administering the runtimes and services within your <%= vars.platform_name %> deployment.
+<%= vars.ops_manager %> is a software tool to help you expand and manage products you can install on your deployment. These products are represented as a _tile_ in the UI.
 
-The BOSH Director, deployed as part of the <%= vars.ops_manager %> installation, controls VM creation and deployment,
-as well as other software and service lifecycle events. <%= vars.ops_manager %> includes the BOSH Director tile used to configure BOSH Director.
+<%= vars.ops_manager %> deploys with the BOSH Director tile by default, which is a single point of control for VMs. The BOSH Director supports various IaaSes, including AWS, Azure, GCP, OpenStack, and vSphere.
 
-Example runtimes and services managed though <%= vars.ops_manager %> include, but are not limited to, <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>).
+With <%= vars.ops_manager %>, you can install two types of products:
+
+- **Runtime Tiles:** You can install Kubernetes- or VM-based runtimes, which dynamically runs apps and other processes to balance demand throughout app lifecycles. Example runtimes managed though <%= vars.ops_manager %> include, but are not limited to, <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>).
+
+- **Service Tiles:** You can install various services that help support your needs. Example services managed through <%= vars.ops_manager %> include, but are not limited to, MySQL, Redis, and Gemfire.
+
+For more information about the tiles you can install, see [<%= vars.product_network %>](https://network.pivotal.io/).
+
+
 
 ## <a id="responsibilities"></a> <%= vars.ops_manager %> Responsibilities
 
@@ -105,17 +112,6 @@ Operators can give limited-access view or write <%= vars.ops_manager %> responsi
 - **Restricted Control:** Operators with restricted control cannot trigger a deployment and must request review from an operator with that access.
 
 For more information about how to set privileges, see [Configuring Role-Based Access Control (RBAC) in Ops Manager](./opsguide/config-rbac.html).
-
-## <a id="ops-man-ui"></a> <%= vars.ops_manager %> UI
-
-The Ops Manager UI is a web application that you use to deploy and manage an <%= vars.platform_name %> PaaS deployment.
-This is a guide to deploying and using Ops Manager.
-
-## <a id='ops-man-api'></a> <%= vars.ops_manager %> API
-
-Use the Ops Manager API, `om` CLI, and Platform Automation Toolkit tasks to manage <%= vars.platform_name %> installations programmatically, from the command line, or from an automation pipeline.
-
-See the [Using Ops Manager Programmatically and from the Command Line](./install/ops-man-api-cli.html) topic to learn how to get started using these Ops Manager tools.
 
 
 ## <a id='related'></a> <%= vars.ops_manager %> Documentation
