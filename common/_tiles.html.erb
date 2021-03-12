@@ -1,0 +1,44 @@
+<style>
+#doc-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+  #doc-tiles .tile {
+      width: 48%;
+      padding: 1em;
+      border: 1px solid #eee;
+      box-shadow: 0 2px 2px 0 rgba(36,54,65,.1),0 0 2px 0 rgba(36,54,65,.1);
+      border-radius: 4px;
+      margin: .65em 0;
+      transition: ease box-shadow 400ms;
+  }
+  #doc-tiles .tile:hover {
+    box-shadow: 0 5px 5px 0 rgba(36,54,65,.3),0 0 2px 0 rgba(36,54,65,.3);
+  }
+    #doc-tiles .tile h3 {
+        margin-top: 0;
+    }
+    #doc-tiles .tile ul,
+    #doc-tiles .tile li {
+        margin-bottom: 0;
+    }
+</style>
+
+
+
+<div id="doc-tiles">
+
+  <% current_page.data.tiles.each do |tile| %>
+    <div class="tile">
+        <h3><%= tile.name %></h3>
+        <p><%= tile.desc %></p>
+        <ul>
+          <% tile.links.each do |link| %>
+            <li><a href="<%= link.url %>"><%= link.name %></a></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %> 
+</div>
