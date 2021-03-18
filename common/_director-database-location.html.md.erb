@@ -14,7 +14,7 @@ This partial is called from `_director-config.html.md.erb`.
 For **Database Location**, if you configured your `terraform.tfvars` file to create an external database for Ops Manager, select **External MySQL Database** and complete the fields below. Otherwise, select **Internal**.
 =======
 For **Database Location**, if you configured your `terraform.tfvars` file to create an external database for <%= vars.ops_manager %>, select **External MySQL Database** and complete the fields below. Otherwise, select **Internal**.
-<p class="note"><strong>Note:</strong> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub will not use these settings and will continue to use the Postgres database colocated with the BOSH Director.</p>
+<p class="note"><strong>Note:</strong> The external MySQL database only applies to the BOSH Director. UAA and CredHub does not use these settings and continues to use the Postgres database colocated with the BOSH Director.</p>
 <p class="note warning"><strong>Warning:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
 >>>>>>> b053e4c3... Merge pull request #160 from ystros/patch-9
     * **Host**: Enter the value of `sql_db_ip` from your Terraform output.
