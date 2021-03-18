@@ -66,9 +66,9 @@ This topic introduces <%= vars.ops_manager %> (previously Pivotal <%= vars.ops_m
 
 With <%= vars.ops_manager %>, you can install two types of tiles:
 
-- **Runtime Tiles:** You can install Kubernetes- or VM-based runtimes, which dynamically runs apps and other processes to balance demand throughout app lifecycles. Example runtimes managed though <%= vars.ops_manager %> include, but are not limited to, <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>).
+- **Runtime Tiles:** You can install VM- or Kubernetes-based runtimes, which dynamically runs apps and other processes to balance demand throughout app lifecycles. Example runtimes managed though <%= vars.ops_manager %> include <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>).
 
-- **Service Tiles:** You can install various services that help support your deployment. Example types of services managed through <%= vars.ops_manager %> include, but are not limited to, MySQL, Redis, and Gemfire.
+- **Service Tiles:** You can install various services that help support your deployment. Example types of services managed through <%= vars.ops_manager %> include MySQL, Redis, and Gemfire.
 
 For more information about the tiles you can install, see [<%= vars.product_network %>](https://network.pivotal.io/).
 
@@ -105,11 +105,7 @@ The <%= vars.ops_manager %> operator is responsible for:
 
 Operators can give limited-access view or write <%= vars.ops_manager %> responsibilites to others within an organization.
 
-- **View-Only:** Users with view-only privileges can use <%= vars.ops_manager %> only to gather information.
-
-- **Restricted Control:** Operators with restricted control cannot trigger a deployment and must request review from an operator with that access.
-
-For more information about how to set privileges, see [Configuring Role-Based Access Control (RBAC) in Ops Manager](./opsguide/config-rbac.html).
+For more information about privileges, see [Configuring Role-Based Access Control (RBAC) in Ops Manager](./opsguide/config-rbac.html).
 
 
 ## <a id='related'></a> <%= vars.ops_manager %> Documentation
