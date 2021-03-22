@@ -2,15 +2,15 @@
 title: Installation Overview
 owner: PCF Documentation
 tiles:
-- name: Part 1&colon; Plan Your Ops Manager Deployment
-  desc: Review the requirements for your IaaS. For more information about planning your deployment, see the following topics.
+- name: Part 1&colon; Prepare Your Ops Manager Deployment
+  desc: For more information about planning your deployment by IaaS, see the following topics.
   links:
-  - name: Installing Ops Manager on AWS
-    url: ./aws.html
-  - name: Installing Ops Manager on Azure
-    url: ./azure.html
-  - name: Installing Ops Manager on GCP
-    url: ./gcp.html
+  - name: Preparing to Deploy Ops Manager on AWS Manually
+    url: ../aws/prepare-env-manual.html
+  - name: Preparing to Deploy Ops Manager on Azure
+    url: ../azure/prepare-env-manual.html
+  - name: Preparing to Deploy Ops Manager on GCP
+    url: ./gcp/prepare-env-manual.html
   - name: Installing Ops Manager on OpenStack
     url: ./openstack.html
   - name: Installing Ops Manager on vSphere
@@ -42,7 +42,7 @@ tiles:
   - name: Configuring BOSH Director on vSphere
     url: ../vsphere/config.html
 - name: Part 4&colon; Install Runtimes
-  desc: Install your runtime tiles. For more information about runtimes, see the following documentation sets.
+  desc: For more information about runtimes, see the following documentation sets.
   links:
   - name: VMware Tanzu Application Service for VMs
     url: ../operating/configure-pas.html
@@ -54,12 +54,34 @@ tiles:
     url: https://docs.pivotal.io/application-service-windows/index.html
   - name: Small Footprint TAS for VMs
     url: https://docs.pivotal.io/application-service/2-11/operating/small-footprint.html
+- name: Part 5&colon; Install Services
+  desc: For more information about various services, see the documentation sets listed on the Tanzu Docs homepage.
+  links: 
+  - name: Runtimes and Add-Ons
+    url: https://docs.pivotal.io/#add-ons
 ---
 
 This topic provides an overview of how to install and configure <%= vars.ops_manager %> and app runtimes.
 
+## <a id="overview"></a> About <%= vars.ops_manager %> Installation
 
-## <a id='sequence'></a> Installation Sequence
+<%= vars.ops_manager %> installation is a process that involves choosing an IaaS, building the infrastructure, deploying <%= vars.ops_manager %> with a VM image, configuring <%= vars.ops_manager %> settings, and installing runtimes and services on <%= vars.ops_manager %>.
+
+The <%= vars.ops_manager %> installation process takes place in the following parts:
+
+- **Prepare Your <%= vars.ops_manager %> Deployment:** To prepare your deployment, you must create the required components within your IaaS, which can include load balancers, blobstores, databases, TCP routers, DNS records, and more.
+
+- **Deploy <%= vars.ops_manager %>:** To deploy <%= vars.ops_manager %>, you must download <%= vars.ops_manager %> from <%= vars.product_network %>, create a VM image, create a VM instance, and configure the VM instance to run <%= vars.ops_manager %>. 
+
+- **Configure <%= vars.ops_manager %>:** To configure <%= vars.ops_manager %>, you must log into the <%= vars.ops_manager %> interface and configure settings.
+
+- **Install Runtimes:** To install runtime tiles, download them from <%= vars.product_network %> and follow that runtime's procedure to configure and deploy the tile.
+
+- **Install Services:** To install service tiles, download them from <%= vars.product_network %> and follow that service tile's procedure to configure and deploy the tile.
+
+After you successfully install and configure <%= vars.ops_manager %>, you can learn about how to run and operate <%= vars.ops_manager %> as an operator. For more information, see [Operator Guide](../opsguide/index.html).
+
+## <a id='sequence'></a> Install <%= vars.ops_manager %>
 
 <%= vars.ops_manager %>, app runtimes, and associated products can run on multiple IaaSes.
 
