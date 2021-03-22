@@ -1,14 +1,73 @@
 ---
 title: Installation Overview
 owner: PCF Documentation
+tiles:
+- name: Part 1&colon; Prepare Your Ops Manager Deployment
+  desc: For more information about planning your deployment by IaaS, see the following topics.
+  links:
+  - name: Preparing to Deploy Ops Manager on AWS Manually
+    url: ../aws/prepare-env-manual.html
+  - name: Preparing to Deploy Ops Manager on Azure
+    url: ../azure/prepare-env-manual.html
+  - name: Preparing to Deploy Ops Manager on GCP
+    url: ./gcp/prepare-env-manual.html
+  - name: Installing Ops Manager on OpenStack
+    url: ./openstack.html
+  - name: Installing Ops Manager on vSphere
+    url: ./vsphere.html
+- name: Part 2&colon; Deploy Ops Manager
+  desc: For more information about deploying by IaaS with Ops Manager, see the following topics.
+  links:
+  - name: Deploying Ops Manager on AWS
+    url: ../aws/deploy-manual.html
+  - name: Deploying Ops Manager on Azure
+    url: ../azure/deploy-manual.html
+  - name: Deploying Ops Manager on GCP
+    url: ../openstack/setup.html
+  - name: Deploying Ops Manager on OpenStack
+    url: ../openstack/setup.html
+  - name: Deploying Ops Manager on vSphere
+    url: ../vsphere/deploy.html
+- name: Part 3&colon; Configure Ops Manager
+  desc: For more information about configuring the BOSH Director tile by IaaS, see the following topics.
+  links:
+  - name: Configuring BOSH Director on AWS
+    url: ../aws/config-manual.html
+  - name: Configuring BOSH Director on Azure
+    url: ../azure/config-manual.html
+  - name: Configuring BOSH Director on GCP
+    url: ../gcp/config-manual.html
+  - name: Configuring BOSH Director on OpenStack
+    url: ../openstack/config.html
+  - name: Configuring BOSH Director on vSphere
+    url: ../vsphere/config.html
+- name: Part 4&colon; Install Runtimes
+  desc: For more information about runtimes, see the following documentation sets.
+  links:
+  - name: VMware Tanzu Application Service for VMs
+    url: ../operating/configure-pas.html
+  - name: VMware Tanzu Kubernetes Grid Integrated Edition
+    url: https://docs.pivotal.io/tkgi/index.html
+  - name: Isolation Segment
+    url: https://docs.pivotal.io/application-service/operating/installing-pcf-is.html
+  - name: VMware Tanzu Application Service for VMs [Windows]
+    url: https://docs.pivotal.io/application-service-windows/index.html
+  - name: Small Footprint TAS for VMs
+    url: https://docs.pivotal.io/application-service/2-11/operating/small-footprint.html
+- name: Part 5&colon; Install Services
+  desc: For more information about various services, see the documentation sets listed on the Tanzu Docs homepage.
+  links: 
+  - name: Runtimes and Add-Ons
+    url: https://docs.pivotal.io/#add-ons
 ---
 
 This topic provides an overview of how to install and configure <%= vars.platform_name %>.
 
+## <a id="overview"></a> About <%= vars.ops_manager %> Installation
 
-## <a id='sequence'></a> <%= vars.platform_name %> Installation Sequence
+<%= vars.ops_manager %> installation is a process that involves choosing an IaaS, building the infrastructure, deploying <%= vars.ops_manager %> with a VM image, configuring <%= vars.ops_manager %> settings, and installing runtimes and services on <%= vars.ops_manager %>.
 
-<%= vars.platform_name %> is a suite of products that runs on multiple IaaSes. Planning and installing <%= vars.platform_name %> means building layers from the bottom up, starting with the details of your IaaS and ending with "Day 2" configurations that you perform on a installed and running <%= vars.platform_name %> deployment.
+The <%= vars.ops_manager %> installation process takes place in the following parts:
 
 - **Prepare Your <%= vars.ops_manager %> Deployment:** To prepare your deployment, you must create the required components within your IaaS, which can include load balancers, blobstores, databases, TCP routers, DNS records, and more.
 
