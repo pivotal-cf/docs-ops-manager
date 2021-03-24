@@ -1,5 +1,5 @@
 ---
-title: Configuring BOSH Director on GCP Manually
+title: Configuring BOSH Director on GCP
 owner: Ops Manager
 iaas: GCP
 install_type: manual
@@ -16,7 +16,7 @@ To configure BOSH Director, you must first access your <%= vars.ops_manager %> i
 
 To access <%= vars.ops_manager %>:
 
-1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you set up in [Deploying <%= vars.ops_manager %> on GCP Manually](./deploy-manual.html).
+1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you set up in [Deploying <%= vars.ops_manager %> on GCP](./deploy-manual.html).
   <p class="note"><strong>Note:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
@@ -30,8 +30,8 @@ To configure your GCP tile:
 1. Select **Google Config** and complete the following fields:
     * **Project ID**: Enter your GCP project ID in lowercase, such as: `your-gcp-project-id`.
     * **Default Deployment Tag**: Enter the prefix that you used when creating the GCP resources for this <%= vars.platform_name %> installation.
-    * Select **AuthJSON**. In the field below, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP Manually.
-        <p class="note"><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP Manually</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
+    * Select **AuthJSON**. In the field below, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
+        <p class="note"><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
        <%= image_tag("../common/images/gcp/google_config.png", :alt => "At the top of the image is the header 'Google Cloud Platform Config', underneath which is a horizonal line. Below the line are two text fields: one labeled 'Project ID' with a red asterisk to denote that it is a required field, and another labeled 'Default Deployment Tag'. Below this are two options: one selected radio button labeled 'The Ops Manager VM Service Account', and another button labeled 'AuthJSON'. Underneath 'AuthJSON' is a blank text area. At the bottom of the image is a blue, rectangular button labeled 'Save'.") %>
 1. Click **Save**.
 
@@ -60,7 +60,7 @@ To configure the **Create Availability Zones** pane:
 1. For **Google Availability Zone**:
     * Enter one of the zones that you associated to the back end service instance groups of the HTTP(S) load balancer. For example, if you are using the `us-central1` region and selected `us-central1-a` as one of the zones for your HTTP(S) load balancer instance groups, enter `us-central1-a`.
     * Click **Add**.
-    * Repeat the above step for all the AZs that you associated to instance groups in [Preparing to Deploy <%= vars.ops_manager %> on GCP Manually](./prepare-env-manual.html#create-http-and-instance-group).
+    * Repeat the above step for all the AZs that you associated to instance groups in [Preparing to Deploy <%= vars.ops_manager %> on GCP](./prepare-env-manual.html#create-http-and-instance-group).
     <%= image_tag("../common/images/gcp/availability_zones_multiple.png", :alt => "") %>
     * Click **Save**.
 
@@ -85,7 +85,7 @@ To configure the **Create Networks** pane:
       </tr>
       <tr>
         <th>Google Network Name</th>
-        <td>Enter the name of the infrastructure network that you created in <a href="prepare-env-manual.html#create_network">Create a GCP Network with Subnets</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP Manually</em>. <br>The format is: <code>pcf-virt-net/pcf-infrastructure-subnet-MY-REGION/MY-GCP-REGION</code></td>
+        <td>Enter the name of the infrastructure network that you created in <a href="prepare-env-manual.html#create_network">Create a GCP Network with Subnets</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. <br>The format is: <code>pcf-virt-net/pcf-infrastructure-subnet-MY-REGION/MY-GCP-REGION</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -212,7 +212,7 @@ To configure the **Resource Config** pane:
 1. Select **Resource Config**.
     <%= image_tag("../common/images/gcp/om_resource_config.png", :alt => "At the top of the image is the header 'Resource Config'. In the top right corner of the image is a blue, rectangular button labeled 'Save'. Below the header are four columns labeled, from left to right, 'Job', 'Instances', 'VM Type', and 'Persistent Disk Type'. Under 'Job' are rows labeled with the names of two VMs, 'BOSH Director' and 'Master Compilation Job'. The 'Master Compilation Job' row is expanded, which reveals a 'Load Balancers' field and an 'Internet Connected' checkbox. The 'Load Balancers' field is blank and the 'Internet Connected' checkbox is selected. Under 'Instances' are two dropdowns, with 'Automatic: 1' for BOSH Director and '1' for Master Compilation Job selected. Under 'VM Type' are two dropdowns, with 'Automatic: large.disk (cpu: 2...' selected for BOSH Director and 'small (cpu: 1, ram: 2 GB, disk...' selected for Master Compilation Job. Under 'Persistent Disk Type' is one dropdown with 'Automatic: 50 GB' selected for BOSH Director and the word 'None' for Master Compilation Job.") %>
 
-1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The checkbox gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy <%= vars.ops_manager %> on GCP Manually](./prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
+1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The checkbox gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy <%= vars.ops_manager %> on GCP](./prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
   <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 

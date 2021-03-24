@@ -1,10 +1,10 @@
 ---
-title: Configuring BOSH Director on Azure Manually
+title: Configuring BOSH Director on Azure
 owner: Ops Manager
 iaas: Azure
 ---
 
-This topic describes how to configure the BOSH Director tile within <%= vars.ops_manager %> on Azure after [Deploying <%= vars.ops_manager %> on Azure Manually](./deploy-manual.html).
+This topic describes how to configure the BOSH Director tile within <%= vars.ops_manager %> on Azure after [Deploying <%= vars.ops_manager %> on Azure](./deploy-manual.html).
 
 
 ## <a id="prerequisites"></a> Prerequisites
@@ -15,8 +15,8 @@ See the following sections to prepare for configuring BOSH Director on Azure.
 
 Before you perform the procedures in this topic, you must have completed the procedures in the following topics:
 
-* [Preparing to Deploy <%= vars.ops_manager %> on Azure Manually](prepare-env-manual.html)
-* [Deploying <%= vars.ops_manager %> on Azure Manually](deploy-manual.html)
+* [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html)
+* [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html)
 
 <p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
@@ -51,7 +51,7 @@ Manager API endpoint.
 
 ## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
 
-1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you created in [Deploying <%= vars.ops_manager %> on Azure Manually](deploy-manual.html).
+1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you created in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
@@ -63,10 +63,10 @@ Manager API endpoint.
 
     <%= image_tag("../common/images/azure/azure-config.png", :alt => "At the top of the image is the header 'BOSH Director for Azure', below which are three tabs in a horizontal row labeled 'Settings', 'Status', and 'Credentials'. The Settings tab is highlighted in light gray to show that it is selected, while the others are dark gray. Below the Settings tab is a list of panes on the left labeled, from top to bottom: 'Azure Config', 'Director Config', 'Create Networks', 'Assign AZs and Networks', 'Security', 'BOSH DNS Config', 'Syslog', and 'Resource Config'. Each pane has a green circle with a checkmark inside to the left of its label. Azure Config is highlighted in dark gray to show that it is selected. To the right of the image is the header 'Azure Config', below which are text fields labeled, from top to bottom: 'Subscription ID', 'Tenant ID', 'Application ID', 'Client Secret', 'Resource Group Name', and 'BOSH Storage Account Name'. All of these fields are marked with red asterisks to denote that they are mandatory fields. The 'Client Secret' field contains eight asterisks, while the word 'Change' in blue letters is underneath the text field. Below 'BOSH Storage Account Name' are the words 'Cloud Storage Type' with two options underneath: a selected radio button labeled 'Use Managed Disks', below which is a dropdown labeled 'Storage Account Type' with 'Premium_LRS' selected; and a radio button labeled 'Use Storage Accounts', below which is a grayed-out text field labeled 'Deployments Storage Account Name'. Below this are more text fields, labeled 'Default Security Group' and 'SSH Public Key', the latter of which has a red asterisk. Next is a text area labeled 'SSH Private Key' with a red asterisk. Below the text area are the words 'Availability Mode' with two options underneath: a radio button labeled 'Availability Sets' and a selected radio button labeled 'Availability Zones'. Below these are the words 'Azure Environment' with five options underneath: a selected radio button labeled 'Azure Commercial Cloud', and four more radio buttons labeled, from top to bottom, 'Azure US Gov Cloud', 'Azure Germany Cloud', 'Azure China Cloud', and 'Azure Stack'. Below 'Azure Stack' are several grayed-out text fields and one text area, labeled, from top to bottom: 'Tenant Management Resource Endpoint', 'Domain', 'Authentication', 'Azure Stack Endpoint Prefix', and 'Azure Stack CA Certificate'. All of these have red asterisks to denote they are mandatory fields when the 'Azure Stack' option is selected. Below the 'Azure Stack CA Certificate' text area is a blue, rectangular button labeled 'Save'.") %>
 
-1. Complete the following fields with information you obtained in [Preparing to Deploy <%= vars.ops_manager %> on Azure Manually](./prepare-env-manual.html).
+1. Complete the following fields with information you obtained in [Preparing to Deploy <%= vars.ops_manager %> on Azure](./prepare-env-manual.html).
 	* **Subscription ID**: Enter the ID of your Azure subscription.
 	* **Tenant ID**: Enter your `TENANT_ID`.
-	* **Application ID**: Enter the `APPLICATION_ID` that you created in the [Create an AAD Application](./prepare-env-manual.html#create-aad) step of _Preparing to Deploy <%= vars.ops_manager %> on Azure Manually_.
+	* **Application ID**: Enter the `APPLICATION_ID` that you created in the [Create an AAD Application](./prepare-env-manual.html#create-aad) step of _Preparing to Deploy <%= vars.ops_manager %> on Azure_.
 	* **Client Secret**: Enter your `CLIENT_SECRET`.
 
 1. Complete the following fields:
@@ -83,7 +83,7 @@ Manager API endpoint.
 1. (Optional) Enter your **Default Security Group**. For more information about Network Security Groups, see [Filter network traffic with network security groups](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg) in Microsoft Azure's documentation.
     <p class="note"><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
-1. For **SSH Public Key**, copy and paste the contents of your public key in the `opsman.pub` file. You created this file in [Deploying <%= vars.ops_manager %> on Azure Manually](deploy-manual.html).
+1. For **SSH Public Key**, copy and paste the contents of your public key in the `opsman.pub` file. You created this file in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
 
 1. For **SSH Private Key**, copy and paste the contents of your private key in the `opsman` file.
 
