@@ -7,7 +7,7 @@ This topic describes the objects you create in Amazon Web Services (AWS) in orde
 
 ## <a id='overview'></a>Overview
 
-Use this topic to determine the resource requirements of <%= vars.platform_name %> on AWS, or to verify that you created the correct resources after completing the procedures in [Preparing to Deploy Ops Manager on AWS Manually](prepare-env-manual.html) and [Deploying Ops Manager on AWS Manually](deploy-manual.html).
+Use this topic to determine the resource requirements of <%= vars.platform_name %> on AWS, or to verify that you created the correct resources after completing the procedures in [Preparing to Deploy Ops Manager on AWS](prepare-env-manual.html) and [Deploying Ops Manager on AWS](deploy-manual.html).
 
 ## <a id='s3-buckets-om-pas'></a> S3 Buckets for Ops Manager and PAS
 
@@ -21,13 +21,13 @@ You must create the following S3 buckets from the S3 Dashboard:
 
 These buckets must be empty when you install or reinstall <%= vars.platform_name %>.
 
-See [Step 2: Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 2: Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy Ops Manager on AWS_.
 
 ## <a id='iam-user-pcf'></a> IAM User for <%= vars.platform_name %>
 
 You must create an IAM user for <%= vars.platform_name %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.platform_name %> for AWS Policy Document](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/policy-doc.html).
 
-See [Step 3: Create an IAM User for <%= vars.platform_name %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 3: Create an IAM User for <%= vars.platform_name %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_.
 
 ## <a id='key-pair'></a> Key Pair
 
@@ -123,7 +123,7 @@ The following table lists the subnets in CIDR block `10.0.0.0/16`.
  </tr>
  </table>
 
-See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy Ops Manager on AWS_.
 
 ## <a id='nat-instance'></a> NAT Instance
 
@@ -134,9 +134,9 @@ You must create a NAT instance when creating a VPC. The NAT instance must have t
 * **Enable DNS hostnames**: Yes
 * **Hardware tenancy**: Default
 
-See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy Ops Manager on AWS_.
 
-You must also assign the NAT instance to the `pcf-nat-security-group`. See [Step 6: Secure the NAT Instance](deploy-manual.html#pcfaws-nat) in _Deploying Ops Manager on AWS Manually_.
+You must also assign the NAT instance to the `pcf-nat-security-group`. See [Step 6: Secure the NAT Instance](deploy-manual.html#pcfaws-nat) in _Deploying Ops Manager on AWS_.
 
 ## <a id='security-groups'></a> Security Groups
 
@@ -185,7 +185,7 @@ The Ops Manager Security Group must be named `pcf-ops-manager-security-group` an
 </tr>
 </table>
 
-See [Step 5: Configure a Security Group for Ops Manager](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 5: Configure a Security Group for Ops Manager](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 ### <%= vars.platform_name %> VMs
 
@@ -207,7 +207,7 @@ The <%= vars.platform_name %> VMs Security Group must be named `pcf-vms-security
 </tr>
 </table>
 
-See [Step 6: Configure a Security Group for <%= vars.platform_name %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 6: Configure a Security Group for <%= vars.platform_name %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 ### Web ELB
 
@@ -243,7 +243,7 @@ The Web ELB Security Group must be named `pcf-web-elb-security-group` and have t
 </tr>
 </table>
 
-See [Step 7: Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 7: Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 ### SSH ELB
 
@@ -283,7 +283,7 @@ The SSH ELB Security Group must have the following outbound rule:
 </tr>
 </table>
 
-See [Step 8: Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 8: Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 ### TCP ELB
 
@@ -322,7 +322,7 @@ The TCP ELB Security Group must have the following outbound rule:
 </tr>
 </table>
 
-See [Step 9: Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 9: Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 ### Outbound NAT
 
@@ -344,7 +344,7 @@ The Outbound NAT Security Group must be named `pcf-nat-security-group` and have 
 </tr>
 </table>
 
-See [Step 10: Configure a Security Group for the Outbound NAT](prepare-env-manual.html#pcfaws-om-natsecgrp) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 10: Configure a Security Group for the Outbound NAT](prepare-env-manual.html#pcfaws-om-natsecgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 ### MySQL
 
@@ -384,13 +384,13 @@ The MySQL Security Group must have the following outbound rules:
 </tr>
 </table>
 
-See [Step 11: Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy Ops Manager on AWS Manually_.
+See [Step 11: Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 ## <a id='ops-manager-ami'></a> Ops Manager AMI
 
 You must locate the public Ops Manager AMI using the AMI ID provided by the PDF downloaded when clicking **Pivotal Ops Manager for AWS** on Pivotal Network.
 
-See [Step 1: Launch a Pivotal Ops Manager AMI](deploy-manual.html#pcfaws-om-ami) in _Deploying Ops Manager on AWS Manually_.
+See [Step 1: Launch a Pivotal Ops Manager AMI](deploy-manual.html#pcfaws-om-ami) in _Deploying Ops Manager on AWS_.
 
 ## <a id='elbs'></a> ELBs
 
@@ -406,7 +406,7 @@ You must create a web ELB with the following configuration:
 * **Security Group**: `pcf-elb-security-group`
 * **Health Check**: TCP Port 8080, Path: `/health`
 
-See [Step 2: Create Web Load Balancer](deploy-manual.html#pcfaws-web-lb) in _Deploying Ops Manager on AWS Manually_.
+See [Step 2: Create Web Load Balancer](deploy-manual.html#pcfaws-web-lb) in _Deploying Ops Manager on AWS_.
 
 ### SSH ELB
 
@@ -416,7 +416,7 @@ See [Step 2: Create Web Load Balancer](deploy-manual.html#pcfaws-web-lb) in _Dep
 * **Security Group**: `pcf-ssh-security-group`
 * **Health Check**: TCP Port 2222
 
-See [Step 3: Create SSH Load Balancer](deploy-manual.html#pcfaws-ssh-lb) in _Deploying Ops Manager on AWS Manually_.
+See [Step 3: Create SSH Load Balancer](deploy-manual.html#pcfaws-ssh-lb) in _Deploying Ops Manager on AWS_.
 
 ### TCP ELB
 
@@ -426,22 +426,22 @@ See [Step 3: Create SSH Load Balancer](deploy-manual.html#pcfaws-ssh-lb) in _Dep
 * **Security Group**: `pcf-tcp-security-group`
 * **Health Check**: TCP Port 80
 
-See [Step 4: Create TCP Load Balancer](deploy-manual.html#pcfaws-tcp-lb) in _Deploying Ops Manager on AWS Manually_.
+See [Step 4: Create TCP Load Balancer](deploy-manual.html#pcfaws-tcp-lb) in _Deploying Ops Manager on AWS_.
 
 ## <a id='dns-config'></a> DNS Configuration
 
 You must navigate to your DNS provider and create CNAME and A records for all three of your load balancers.
 
-See [Step 5: Configure DNS Records](deploy-manual.html#pcfaws-dns) in _Deploying Ops Manager on AWS Manually_.
+See [Step 5: Configure DNS Records](deploy-manual.html#pcfaws-dns) in _Deploying Ops Manager on AWS_.
 
 ## <a id='rds-subnet-group'></a> RDS Subnet Group
 
 You must create a subnet group for RDS named `pcf-rds-subnet-group` from the RDS Dashboard.
 
-See [Step 7: Create RDS Subnet Group](deploy-manual.html#pcfaws-rds-subnet-group) in _Deploying Ops Manager on AWS Manually_.
+See [Step 7: Create RDS Subnet Group](deploy-manual.html#pcfaws-rds-subnet-group) in _Deploying Ops Manager on AWS_.
 
 ## <a id='mysql-db'></a> MySQL Database
 
 You must create a MySQL database from the RDS Dashboard.
 
-See [Step 8: Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying Ops Manager on AWS Manually_.
+See [Step 8: Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying Ops Manager on AWS_.

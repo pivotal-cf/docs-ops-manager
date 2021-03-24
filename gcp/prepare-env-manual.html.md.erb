@@ -1,5 +1,5 @@
 ---
-title: Preparing to Deploy Ops Manager on GCP Manually
+title: Preparing to Deploy Ops Manager on GCP
 owner: Ops Manager
 iaas: GCP
 ---
@@ -772,7 +772,7 @@ To create a load balancer for TCP routing in GCP, do the following:
 
 In this step, you redirect queries for your domain to the IP addresses of your load balancers.
 
-1. Locate the static IP addresses of the load balancers you created in [Preparing to Deploy Ops Manager on GCP Manually](./prepare-env-manual.html):
+1. Locate the static IP addresses of the load balancers you created in [Preparing to Deploy Ops Manager on GCP](./prepare-env-manual.html):
     * An HTTP(S) load balancer named `pcf-global-pcf`
     * A TCP load balancer for WebSockets named `pcf-wss-logs`
     * A TCP load balancer named `pcf-ssh-proxy`
@@ -847,4 +847,4 @@ xyz.EXAMPLE.COM.      1767    IN  A 203.0.113.1</pre>
   * To download <%= vars.app_runtime_abbr %>, log in to [Pivotal Network](https://network.pivotal.io/products/elastic-runtime), select your desired release version, and download **<%= vars.app_runtime_full %>**.
   * To download <%= vars.k8s_runtime_abbr %>, log in to [Pivotal Network](https://network.pivotal.io/products/pivotal-container-service), select your desired release version, and download **<%= vars.k8s_runtime_full %>**.
 
-* After initiating the tile download, proceed to the next step, [Deploying Ops Manager on GCP Manually](./deploy-manual.html).
+* After initiating the tile download, proceed to the next step, [Deploying Ops Manager on GCP](./deploy-manual.html).
