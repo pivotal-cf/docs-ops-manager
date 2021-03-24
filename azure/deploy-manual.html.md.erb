@@ -1,5 +1,5 @@
 ---
-title: Deploying Ops Manager on Azure Manually
+title: Deploying Ops Manager on Azure
 owner: Ops Manager
 ---
 
@@ -7,7 +7,7 @@ owner: Ops Manager
 
 This topic describes how to deploy BOSH and <%= vars.ops_manager %> on Azure by using individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
 
-Before you perform the procedures in this topic, you must have completed the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure Manually](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
+Before you perform the procedures in this topic, you must have completed the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
 
 <p class="note"><strong>Note:</strong> If you are deploying BOSH and <%= vars.ops_manager %> on Azure Stack, complete the procedures in <a href="https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-connect-cli">Install and configure CLI for use with Azure Stack</a> in the Microsoft documentation before following the procedures in this topic.</p>
 
@@ -525,4 +525,4 @@ To finish configuring BOSH Director, do the following:
 
 1. Navigate to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) to the public IP address of <%= vars.ops_manager %>. As a best practice, always use the FQDN to access <%= vars.ops_manager %>.
 
-1. Continue to the [Configuring BOSH Director on Azure Manually](config-manual.html) topic.
+1. Continue to the [Configuring BOSH Director on Azure](config-manual.html) topic.
