@@ -1,5 +1,5 @@
 ---
-title: Deploying Ops Manager on GCP Manually
+title: Deploying Ops Manager on GCP
 owner: Ops Manager
 ---
 
@@ -8,9 +8,9 @@ owner: Ops Manager
 
 This topic describes how to deploy Pivotal Operations Manager for <%= vars.platform_name %> on Google Cloud Platform (GCP).
 
-Before you deploy Ops Manager, see the preparation steps in [Preparing to Deploy Ops Manager on GCP Manually](prepare-env-manual.html).
+Before you deploy Ops Manager, see the preparation steps in [Preparing to Deploy Ops Manager on GCP](prepare-env-manual.html).
 
-After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP Manually](./config-manual.html).
+After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP](./config-manual.html).
 
 ## <a id='select-tgz'></a>Step 1: Locate the Ops Manager Installation File ##
 
@@ -80,8 +80,8 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
   * **Networking**: Select the **Networking** tab, and perform the following steps:
      * Under **Network interfaces**, perform the following steps:
         * Remove the `default` network interface if this interface still exists.
-        * Select the network you created when preparing your environment in the [Create a GCP Network with Subnet](./prepare-env-manual.html#create_network) in _Preparing to Deploy Ops Manager on GCP Manually_ topic. For example, `pcf-virt-net`.
-        * Under **Subnetwork**, select the `pcf-infrastructure-subnet-GCP-REGION` subnet that you created when preparing your environment in the [Create a GCP Network with Subnet](./prepare-env-manual.html#create_network) in _Preparing to Deploy Ops Manager on GCP Manually_ topic.
+        * Select the network you created when preparing your environment in the [Create a GCP Network with Subnet](./prepare-env-manual.html#create_network) in _Preparing to Deploy Ops Manager on GCP_ topic. For example, `pcf-virt-net`.
+        * Under **Subnetwork**, select the `pcf-infrastructure-subnet-GCP-REGION` subnet that you created when preparing your environment in the [Create a GCP Network with Subnet](./prepare-env-manual.html#create_network) in _Preparing to Deploy Ops Manager on GCP_ topic.
         * For **Primary internal IP**, select **Ephemeral (Custom)**. Enter an IP address (for example, `192.168.101.5`) in the **Custom ephemeral IP address** field. Specify the next available internal IP address located within the reserved IP range that you [configure later in BOSH Director](./config-manual.html#network). Do not use the **Gateway IP**, for example `192.168.101.1`.
         * For **External IP**, select **Create IP address**. In the next form, enter a name for the static IP. For example, `om-public-ip`. Click **Reserve**. In the **External IP** dropdown, select the static IP address you just reserved.
      * For **Network tags**, enter `pcf-opsman` and `allow-https`. These tags apply the firewall rules you created in [Create Firewall Rules for the Network](prepare-env-manual.html#firewall_rules) to the Ops Manager VM.
@@ -93,6 +93,6 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 ## <a id="next"></a> Next Steps
 
-After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP Manually](./config-manual.html).
+After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP](./config-manual.html).
 
 Later on, if you need to SSH into the Ops Manager VM to perform diagnostic troubleshooting, see [Log In to the Ops Manager VM with SSH](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI_.
