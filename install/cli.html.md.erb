@@ -3,16 +3,66 @@ title: Using the Ops Manager CLI
 owner: Ops Manager
 ---
 
-This topic describes how to use the Ops Manager command line interface (om CLI) to perform common Ops Manager operations.
+This topic describes how to use the Ops Manager command line interface (om CLI) to perform common <%= vars.ops_manager %> operations.
 
 ## <a id="about"></a> About om CLI
 
-om CLI is a tool that helps you configure and deploy tiles to Ops Manager without using the Ops Manager UI. om CLI acts as an interface to the Ops Manager API, making calls simpler and more intuitive.
+om CLI is a tool that helps you configure and deploy tiles to Ops Manager without using the Ops Manager UI. om CLI communicates with the Ops Manager API, making calls simpler and more intuitive.
+
+With the om CLI, you can also manage <%= vars.ops_manager %> programmatically through platform automation. For more information about platform automation, see [Platform Automation Toolkit](https://docs.pivotal.io/platform-automation).
 
 The om CLI has the following benefits over the Ops Manager API:
 
 - You can `om curl` Ops Manager API calls without sending an authorization token each time
 
-- om CLI commands are simpler and easier to use
+- om CLI commands are simpler and easier to use and memorize
+
 
 For more information about using the om CLI, see [om](https://github.com/pivotal-cf/om) in GitHub.
+
+## <a id="install"></a> Install om CLI
+
+You can install the om CLI in one of the following ways:
+
+- **Mac or Linux Users:** [Install Using Homebrew](#homebrew)
+- **Windows, Mac, or Linux Users:** [Install from Direct Download](#apt-get)
+
+### <a id="homebrew"></a> Install Using Homebrew
+
+If you are on a Mac or Linux machine, you can use Homebrew to install the om CLI. You must first have Homebrew installed to use this method.
+
+To install the om CLI using Homebrew:
+
+1. Download the om CLI.
+
+    ```
+    brew tap pivotal-cf/om https://github.com/pivotal-cf/om
+    ```
+    
+1. Install the om CLI.
+
+    ```
+    brew install om
+    ```
+
+1. Test your installation.
+
+    ```
+    om version
+    ```
+
+### <a id="download"></a> Install from Direct Download
+
+You can install the om CLI directly from the om CLI GitHub repo. 
+
+To install the om CLI from direct download:
+
+1. Go to the [om CLI releases](https://github.com/pivotal-cf/om/releases) in GitHub and choose your release.
+
+1. Download the release from **Assets**. Choose the asset that corresponds with your operating system. For example, download `om-windows-7.2.0.zip` for Windows machines.
+
+1. Unzip your file if needed and run the executable file.
+
+1. Wait for your machine to prompt that the installation is complete.
+
+1. Test your installation by opening a Shell window and running `om version`.
