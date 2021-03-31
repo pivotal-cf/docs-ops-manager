@@ -28,7 +28,7 @@ on the Cloud Foundry website.
 
 **Release Date:** March 31, 2021
 
-- **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN) in addition to a common names (CN). On upgrade to v2.9.18 and later, you must **Apply Changes** to all tiles.
+- **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN) in addition to a common names (CN). On upgrade to v2.9.18 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles.
 
 Ops Manager v2.9.18 uses the following component versions:
 
