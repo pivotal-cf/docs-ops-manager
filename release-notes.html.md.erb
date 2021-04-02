@@ -595,7 +595,20 @@ For more information about stretched clusters, see [Introduction to Stretched Cl
 
 ## <a id='breaking-changes'></a> Breaking Changes
 
-There are no breaking changes in this release of <%= vars.ops_manager %>.
+<%= vars.ops_manager %> v2.8 includes the following breaking changes:
+
+### <a id="cert-regeneration"></a> BOSH DNS Certificates Regeneration
+
+In <%= vars.ops_manager %> v2.8.16 and later, BOSH DNS leaf certificates are automatically regenerated to include the SAN field. On upgrade, you must redeploy all tiles and upgrade all service instances to distribute the BOSH DNS leaf certificates to all VMs.
+
+To allow DNS certificate regeneration and avoid communication issues between system components:
+
+1. On upgrade, run the **Upgrade service instances** errand on all service tiles.
+
+1. **Apply Changes** to all tiles.
+
+If you do not redeploy all tiles and upgrade all service instances, you can experience downtime.
+
 
 ## <a id='known-issues'></a> Known Issues
 
