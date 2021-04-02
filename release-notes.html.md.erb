@@ -777,13 +777,13 @@ For more information about stretched clusters, see [Introduction to Stretched Cl
 
 <%= vars.ops_manager %> v2.9 includes the following breaking changes:
 
-### <a id="bosh-dns-migration"></a> BOSH DNS Certificates Regeneration
+### <a id="cert-regeneration"></a> BOSH DNS Certificates Regeneration
 
-In <%= vars.ops_manager %> v2.9.18 and later, BOSH DNS leaf certificates are automatically regenerated to include the SAN field. You must redeploy all tiles and upgrade all service instances to distribute the BOSH DNS leaf certificates to all VMs.
+In <%= vars.ops_manager %> v2.9.18 and later, BOSH DNS leaf certificates are automatically regenerated to include the SAN field. On upgrade, you must redeploy all tiles and upgrade all service instances to distribute the BOSH DNS leaf certificates to all VMs.
 
 To allow DNS certificate regeneration and avoid communication issues between system components:
 
-1. Run the **Upgrade service instances** errand on all service tiles.
+1. On upgrade, run the **Upgrade service instances** errand on all service tiles.
 
 1. **Apply Changes** to all tiles.
 
