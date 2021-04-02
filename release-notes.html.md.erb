@@ -777,6 +777,18 @@ For more information about stretched clusters, see [Introduction to Stretched Cl
 
 <%= vars.ops_manager %> v2.9 includes the following breaking changes:
 
+### <a id="bosh-dns-migration"></a> BOSH DNS Certificates Regeneration
+
+In <%= vars.ops_manager %> v2.9.18 and later, BOSH DNS leaf certificates are automatically regenerated to include the SAN field. You must redeploy all tiles and upgrade all service instances to distribute the BOSH DNS leaf certificates to all VMs.
+
+To allow DNS certificate regeneration and avoid communication issues between system components:
+
+1. Run the **Upgrade service instances** errand on all service tiles.
+
+1. **Apply Changes** to all tiles.
+
+If you do not redeploy all tiles and upgrade all service instances, you can experience downtime.
+
 ### <a id='maestro'></a> Rotating Certificates in Ops Manager
 
 Before performing certificate rotation with Ops Manager v2.9, you must first upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) to v2.9.
