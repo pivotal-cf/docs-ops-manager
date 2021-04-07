@@ -13,9 +13,11 @@ With the om CLI, you can also manage <%= vars.ops_manager %> programmatically th
 
 The om CLI has the following benefits over the Ops Manager API:
 
-- You can `om curl` Ops Manager API calls without sending an authorization token each time
+- You can `om curl` Ops Manager API calls with easier authentication
 
-- om CLI commands are simpler and easier to use and memorize
+- om CLI commands are easier to use and memorize
+
+- om CLI output can be easier to parse
 
 
 For more information about using the om CLI, see [om](https://github.com/pivotal-cf/om) in GitHub.
@@ -24,10 +26,10 @@ For more information about using the om CLI, see [om](https://github.com/pivotal
 
 You can install the om CLI in one of the following ways:
 
-- **Mac or Linux Users:** [Install Using Homebrew](#homebrew)
-- **Windows, Mac, or Linux Users:** [Install from Direct Download](#apt-get)
+- **Mac or Linux Users:** [Install om CLI Using Homebrew](#homebrew)
+- **Windows, Mac, or Linux Users:** [Install om CLI from Direct Download](#apt-get)
 
-### <a id="homebrew"></a> Install Using Homebrew
+### <a id="homebrew"></a> Install om CLI Using Homebrew
 
 If you are on a Mac or Linux machine, you can use Homebrew to install the om CLI. You must first have Homebrew installed to use this method.
 
@@ -51,7 +53,7 @@ To install the om CLI using Homebrew:
     om version
     ```
 
-### <a id="download"></a> Install from Direct Download
+### <a id="download"></a> Install om CLI from Direct Download
 
 You can install the om CLI directly from the om CLI GitHub repo. 
 
@@ -59,10 +61,62 @@ To install the om CLI from direct download:
 
 1. Go to the [om CLI releases](https://github.com/pivotal-cf/om/releases) in GitHub and choose your release.
 
-1. Download the release from **Assets**. Choose the asset that corresponds with your operating system. For example, download `om-windows-7.2.0.zip` for Windows machines.
+1. Download the release from **Assets**. Choose the asset that corresponds with your operating system. For example, download `om-windows-x.x.x.zip` for Windows machines.
 
 1. Unzip your file if needed and run the executable file.
 
 1. Wait for your machine to prompt that the installation is complete.
 
 1. Test your installation by opening a Shell window and running `om version`.
+
+## <a id="login-cli"></a> Authenticate with the om CLI
+
+For most om CLI commands, you must authenticate with <%= vars.ops_manager %> by putting your <%= vars.ops_manager %> login information into a YAML file.
+
+To authenticate with the om CLI:
+
+1. In your workspace, create a YAML file that represents your Ops Manager environment. Give the file a name. For example:
+  
+    ```bash
+    touch om-cli-env.yml
+    ```
+
+1. Add the following content to the file. For more information about configuring the file, see [Generating an Env File](https://docs.pivotal.io/platform-automation/v5.0/how-to-guides/configuring-env.html) in the Platform Automation Toolkit documentation.
+
+    ```yaml
+    ---
+    target: https://OPS-MANAGER-FQDN
+    username: OPS-MANAGER-USERNAME
+    password: OPS-MANAGER-PASSWORD
+    ```
+
+    Where:
+    - `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
+    - `OPS-MANAGER-USERNAME` is the username that you use when you log into the Ops Manager UI.
+    - `OPS-MANAGER-PASSWORD` is the password that you use when you log into the Ops Manager UI.
+
+1. On your machine, set an environment variable to the absolute filepath of your environment file for easy access.
+
+    ```bash
+    export OM_ENV=PATH-TO-WORKING-DIRECTORY/om-cli-env.yml
+    ``` 
+
+1. Test authentication in your <%= vars.ops_manager %> environment by running the `om products` command.
+
+    ```bash
+    om --env=$OM_ENV products
+    ```
+
+    If successful, see product output. For example:
+    <pre class="terminal">
++----------------------+---------------+------------------+------------------+
+|         NAME         |   AVAILABLE   |      STAGED      |     DEPLOYED     |
++----------------------+---------------+------------------+------------------+
+| cf                   | 2.10.12       | 2.10.12          | 2.10.12          |
+| p-bosh               |               | 2.10.8-build.168 | 2.10.8-build.168 |
+| pivotal-telemetry-om | 1.1.2-build.2 |                  |                  |
++----------------------+---------------+------------------+------------------+</pre>
+
+## <a id="om-cli-commands"></a> om CLI Commands
+
+For a list of all om CLI commands, see [Commands](https://github.com/pivotal-cf/om/blob/main/docs/README.md#commands) in the om CLI GitHub documentation.
