@@ -7,9 +7,10 @@ This topic describes using the BOSH CLI to help diagnose and resolve issues with
 <%= vars.platform_name %> deployment. Before using the information and techniques in this topic,
 review [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/<%= product_info['local_product_version'].to_s.sub('.','-') %>/operating/diagnostics.html).
 
+
 ## <a id="overview"></a> Overview
 
-To follow the steps in this topic, you must log in to the BOSH Director VM. To log in to the BOSH Director VM, see [SSH Into the BOSH Director VM](./ssh-login.html#bosh-director-ssh). The BOSH Director runs
+To follow the steps in this topic, you must log in to the BOSH Director VM. The BOSH Director runs
 on the virtual machine (VM) that <%= vars.platform_name %> deploys on the first install of the BOSH
 Director tile.
 
@@ -52,6 +53,9 @@ tile and repeat the procedure above to record the IP address and VM credentials 
 <p class="note"><strong>Note:</strong> Ensure that there are no <%= vars.platform_name %>
   installations or updates in progress while using the BOSH CLI.</p>
 
+## <a id='ssh'></a> Log in to the <%= vars.platform_name %> VM with SSH
+
+<%= partial "../common/ssh-to-om" %>
 
 ## <a id='log-in'></a> Authenticate with the BOSH Director VM
 
@@ -67,7 +71,7 @@ and do the following:
 
 1. Record the **Bosh Commandline Credentials** from the **Credentials** tab of the BOSH Director tile.
 
-1. SSH into the <%= vars.platform_name %> VM. See [Log into the <%= vars.ops_manager %> VM](./ssh-login.html#ssh-by-iaas).
+1. SSH into the <%= vars.platform_name %> VM. See [Log in to the <%= vars.platform_name %> VM with SSH](#ssh) above.
 
 1. Export all the environment variables by running the following command:
 
@@ -164,6 +168,9 @@ your BOSH Director. For example:
     Logged in as admin@example.org
     </pre>
 
+## <a id='bosh-director-ssh'></a> SSH Into the BOSH Director VM
+
+<%= partial "../common/ssh-to-bosh" %>
 
 ## <a id='cli'></a> Use the BOSH CLI for Troubleshooting
 
