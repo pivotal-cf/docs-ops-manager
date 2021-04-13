@@ -20,7 +20,7 @@ To create an automation client, do one of the following:
 
 To perform this procedure, the UAAC client must be installed on the Ops Manager virtual machine (VM).
 
-1. Open a terminal and SSH into the Ops Manager VM by following the instructions for your IaaS in [Log In to the <%= vars.ops_manager %> VM Using SSH](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI_.
+1. Open a terminal and SSH into the Ops Manager VM by following the instructions for your IaaS in [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
 
 1. Navigate to the Ops Manager **Installation Dashboard** and select the **BOSH Director** tile. In BOSH Director, click the **Status** tab, and record the IP address.
 
@@ -99,7 +99,7 @@ Ops Manager provides an option to create UAA clients during SAML or LDAP configu
 
 4. Click the link for the **Uaa Bosh Client Credentials** to record the client name and secret.
 
-5. Open a terminal and SSH into the Ops Manager VM. Follow the instructions for your SSH in [Log In to the <%= vars.ops_manager %> VM Using SSH](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI_.
+5. Open a terminal and SSH into the Ops Manager VM. See [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
 
 6. Set the client and secret as environment variables on the Ops Manager VM.
    ```

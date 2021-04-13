@@ -41,7 +41,7 @@ During the installation process, Ops Manager combines information from the insta
 
 Perform the following steps to locate, decrypt, and edit the Ops Manager installation files `installation.yml` and `actual-installation.yml`.
 
-1. SSH into the Ops Manager VM by following the steps in [Log In to the <%= vars.ops_manager %> VM with SSH](trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI.
+1. SSH into the Ops Manager VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
 1. On the command line, navigate to the scripts directory:
     <pre class="terminal">
     $ cd /home/tempest-web/tempest/web/scripts/
@@ -81,7 +81,7 @@ Perform the following steps to locate, decrypt, and edit the Ops Manager install
 
 Perform the following steps to locate and edit your Ops Manager product template files:
 
-1. SSH into the Ops Manager VM by following the steps in [Log In to the <%= vars.ops_manager %> VM with SSH](trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI.
+1. SSH into the Ops Manager VM by following the steps in the [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
 1. On the Ops Manager VM, navigate to the `/var/tempest/workspaces/default/metadata` directory.
     <pre class="terminal">
     $ cd /var/tempest/workspaces/default/metadata
@@ -98,7 +98,7 @@ Perform the following steps to locate and edit your Ops Manager product template
 
 Perform the following steps to revert to your backup of an installation or product template file:
 
-1. SSH into the Ops Manager VM by following the steps in [Log In to the <%= vars.ops_manager %> VM with SSH](trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI.
+1. SSH into the Ops Manager VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
 1. Overwrite the modified file with the backup:
     * For the installation file, run the following command:
     <pre class="terminal">$ cp ~/installation-orig.yml /var/tempest/workspaces/default/installation.yml</pre>

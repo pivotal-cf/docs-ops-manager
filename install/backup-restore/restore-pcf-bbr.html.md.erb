@@ -177,7 +177,7 @@ To update <%= vars.ops_manager %>:
 
 To remove the BOSH state file:
 
-1. SSH into your <%= vars.ops_manager %> VM. For more information, see [SSH Into <%= vars.ops_manager %>](../trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI_.
+1. SSH into your <%= vars.ops_manager %> VM. For more information, see [Log Into the <%= vars.ops_manager %> VM with SSH](../ssh-login.html#ssh-by-iaas).
 
 1. To delete the `/var/tempest/workspaces/default/deployments/bosh-state.json` file, go to the <%= vars.ops_manager %> VM and run:
 
@@ -226,7 +226,7 @@ To retrieve the IP address of your BOSH Director from the BOSH Director tile:
 
 To restore BOSH Director:
 
-1. SSH into your jumpbox. If you are using the <%= vars.ops_manager %> VM as your jumpbox, see [Log In to the <%= vars.ops_manager %> VM with SSH](../trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI_ for procedures on how to use SSH to connect to the <%= vars.ops_manager %> VM.
+1. SSH into your jumpbox. If you are using the <%= vars.ops_manager %> VM as your jumpbox, see [Log Into the <%= vars.ops_manager %> VM with SSH](../ssh-login.html#ssh-by-iaas) for procedures on how to use SSH to connect to the <%= vars.ops_manager %> VM.
 
 1. Ensure the BOSH Director backup artifact is in the directory you from which you run BBR.
 
