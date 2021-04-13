@@ -1,0 +1,20 @@
+---
+title: Logging Into Ops Manager VMs with SSH
+owner: Ops Manager
+---
+
+This topic describes how to use SSH to connect to the <%= vars.ops_manager %> VM or the BOSH Director VM.
+
+## <a id="overview"></a> Overview
+
+To troubleshoot your <%= vars.ops_manager %> deployments successfully, you may need to SSH into the <%= vars.ops_manager %> or BOSH Director VM.
+
+After you successfully SSH into the <%= vars.ops_manager %> VM, you can perform troubleshooting operations. For more information about troubleshooting, see [Advanced Troubleshooting with the BOSH CLI](./trouble-advanced.html).
+
+## <a id="ssh-by-iaas"></a> Log Into the <%= vars.ops_manager %> VM with SSH
+
+<%= partial "../common/ssh-to-om" %>
+
+## <a id='bosh-director-ssh'></a> SSH Into the BOSH Director VM with SSH
+
+<%= partial "../common/ssh-to-bosh" %>
