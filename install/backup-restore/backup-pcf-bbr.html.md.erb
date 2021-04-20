@@ -15,7 +15,7 @@ For BBR release notes, see [BOSH Backup and Restore Release Notes](https://docs.
 
 ## <a id='overview'></a> Overview
 
-During the backup, BBR stops the Cloud Controller API and the Cloud Controller workers to create a consistent backup. Only the API functionality is affected, such as when pushing apps or using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
+During the backup, BBR stops the Cloud Controller API and the Cloud Controller workers to create a consistent backup. API functionality is affected, such as when pushing apps or using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
 
 <div class="note warning">
   <strong>Warning:</strong>
@@ -28,6 +28,27 @@ During the backup, BBR stops the Cloud Controller API and the Cloud Controller w
     </ul>
 </div>
 
+## <a id='availability'></a> Component availability during backup
+
+Given that the Cloud Controller API and workers are stopped during a backup, any services which rely on this API will not be functional during a backup. An example of this would be `autoscaler` which will be unable to scale applications during a backup.
+Any component within the TAS deployment which contain lock/unlock scripts for backup will be temporarily unavailable during the backup process. As of TAS 2.11 these components are:
+<ul>
+    <li>cc_deployment_updater</li>
+    <li>cloud-controller-backup</li>
+    <li>cloud_controller_clock</li>
+    <li>cloud_controller_ng</li>
+    <li>cloud_controller_worker</li>
+    <li>credhub</li>
+    <li>pcf-autoscaling</li>
+    <li>policy-server</li>
+    <li>routing-api</li>
+    <li>s3-unversioned-blobstore-backup-restorer</li>
+    <li>tps</li>
+    <li>uaa</li>
+    <li>usage-servicedb</li>
+</ul>
+
+Most of these components are stopped, and then restarted after a successful backup. An exception to this is UAA which enters into a read-only mode for the duration of the backup.
 
 ## <a id='recs'></a> Recommendations
 
