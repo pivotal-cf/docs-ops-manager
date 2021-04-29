@@ -23,7 +23,7 @@ on the Cloud Foundry website.
 
 **Release Date:** March 31, 2021
 
-- **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN). On upgrade to v2.8.16 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles.
+- **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN). On upgrade to v2.8.16 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles. Upgrading <%= vars.ops_manager %> while a CA rotation is in progress will result in the inability to **Apply Changes** due to safety violations.
 - **[Known Issue]** Due to permission changes, running `uaac` as the `ubuntu` user results in the error `/home/tempest-web/tempest/web/vendor/uaac/Gemfile not found`. The current work around is to run `unalias uaac` as the `ubuntu` user before running `uaac`.
 - **[Bug Fix]** Restrict permissions on the `/home/tempest-web` and `/home/ubuntu` directories to 750
 
