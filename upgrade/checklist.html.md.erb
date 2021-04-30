@@ -16,7 +16,7 @@ After completing the steps in this topic, you can continue to [Upgrading <%= var
 
 <p class='note warning'><strong>Warning:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to <%= vars.v_major_version %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.platform_name %></em>.</p>
 
-<p class='note warning'><strong>Warning:</strong> Any certificate rotation <em>must</em> be completed <em>before</em> upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation will result in the inability to **Apply Changes** due to safety violations.</p>
+<p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
 
 ## <a id="back-up-your-pcf-deployment"></a> Back Up Your <%= vars.platform_name %> Deployment
 
