@@ -1,4 +1,0 @@
-2021/04/29 16:31:21 ERROR 44244 os_proc_tree_kill:104: getpgid(44349) returned -1
-2021/04/29 16:31:21 ERROR 44244 os_proc_tree_kill:104: getpgid(44350) returned -1
-2021/04/29 16:31:21 ERROR 44244 os_proc_tree_kill:104: getpgid(44353) returned -1
-2021/04/29 16:33:44 ERROR 44244 os_proc_tree_kill:104: getpgid(44569) returned -1
