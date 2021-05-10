@@ -453,13 +453,13 @@ To delete a single CA:
 1. Determine which CA you want to delete by running:
 
     ```
-    maestro garbage-collect leaf --name "CA-NAME" --dry-run
+    maestro garbage-collect ca --name "CA-NAME" --dry-run
     ```
     Where `CA-NAME` is the name of the CA you want to delete.
 
 1. Delete the CA by running:
 
     ```
-    maestro garbage-collect leaf --name "CA-NAME"
+    maestro garbage-collect ca --name "CA-NAME"
     ```
     Where `CA-NAME` is the name of the CA you want to delete.
