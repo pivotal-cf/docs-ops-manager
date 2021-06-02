@@ -57,7 +57,7 @@ If you deployed the OVF file but cannot connect to in a browser, check that the 
 
 If you experience a communication error while installing Ops Manager or MicroBOSH Director, check the following settings.
 
-* Ensure that the routes are not blocked. vSphere environments use [NSX](http://www.vmware.com/products/nsx.html) for firewall and NAT/SNAT translation and load balancing. All communication between <%= vars.platform_name %> VMs and vCenter or ESXi hosts route through the NSX firewall and are blocked by default.
+* <%= partial '../common/vsphere-firewall-ports' %>
 
 * Open port 443. Ops Manager and MicroBOSH Director VMs require access to vCenter and all ESX through port 443.
 

@@ -89,9 +89,11 @@ For information about security requirements and recommendations for <%= vars.app
 
 <p class="note"><strong>Note:</strong> For POC environments, the internal blobstore can be the primary consumer of storage, as the internal blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
 
-For more information about blobstore storage requirements and recommendations, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+#### <a id="pas-nsx-t-firewall"></a> Firewall
 
-### <a id="pas-nsx-v-dns"></a> DNS
+<%= partial '../../common/vsphere-firewall-ports' %>
+
+#### <a id="pas-nsx-t-dns"></a> DNS
 
 <%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
 
@@ -232,7 +234,11 @@ These sections describe networking requirements and recommendations for <%= vars
 
 You must assign routable external IPs on the server side, such as routable IPs for NATs and load balancers, to the Edge router.
 
-#### <a id="pas-nsx-v-load-balancing"></a> Load Balancing
+#### <a id="pas-nsx-v-firewall"></a> Firewall
+
+<%= partial '../../common/vsphere-firewall-ports' %>
+
+#### <a id="pas-nsx-v-dns"></a> DNS
 
 Load balancing services are available in the ESG. These services are processes that run on the ESG along with other services, such as routing and the firewall.
 
@@ -419,7 +425,11 @@ The routable IP requirements and recommendations for <%= vars.k8s_runtime_abbr %
 
 * **Deployments with several load balancers:** <%= vars.recommended_by %> recommends a `/23` network for deployments that use several load balancers. Deployments with several load balancers have much higher address space consumption for load balancer WIPs. This is because Kubernetes service types allocate IP addresses very frequently. To accommodate the higher address space, allow for four times the address space.
 
-#### <a id="pks-nsx-t-ip-spacing"></a> Networks, Subnets, and IP Spacing
+#### <a id="pks-nsx-t-firewall"></a> Firewall
+
+<%= partial '../../common/vsphere-firewall-ports' %>
+
+#### <a id="pks-nsx-t-ip-spacing"></a> Networks, Subnets, and IP Address Spacing
 
 These considerations and recommendations apply to networks, subnets, and IP spacing for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments:
 
