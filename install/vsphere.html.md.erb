@@ -38,6 +38,10 @@ You can install <%= vars.platform_name %> with one of two runtimes. For more inf
     * **Without NSX-T**: [vSphere Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/vsphere-requirements.html)
     * **With NSX-T**: See the _Preparing to Install <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T_ section of [Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center](https://docs.pivotal.io/pks/vsphere-nsxt-index.html).
 
+### <a id='firewall'></a> Firewall Port Requirements
+
+<%= partial '../common/vsphere-firewall-ports' %>
+
 ### <a id='permissions'></a> vSphere Service Account Requirements
 
 Ops Manager requires read/write permissions to the data center level of the [vSphere Inventory Hierarchy](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-03B36057-B38C-479C-BD78-341CD83A0584.html) to successfully install. Pivotal recommends defining a custom role for the service account that has all privileges for all objects in the data center, including propagating privileges to children.
