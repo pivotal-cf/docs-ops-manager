@@ -81,6 +81,10 @@ The Tier-0 router must have routable external IP address space to advertise on t
 
 <p class="note"><strong>Note:</strong> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
 
+#### <a id="pas-nsx-t-firewall"></a> Firewall
+
+<%= partial '../../common/vsphere-firewall-ports' %>
+
 #### <a id="pas-nsx-t-dns"></a> DNS
 
 <%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
@@ -209,6 +213,10 @@ These sections describe networking requirements and recommendations for <%= vars
 #### <a id="pas-nsx-v-routable-ip"></a> Routable IPs
 
 You must assign routable external IPs on the server side, such as routable IPs for NATs and load balancers, to the Edge router.
+
+#### <a id="pas-nsx-v-firewall"></a> Firewall
+
+<%= partial '../../common/vsphere-firewall-ports' %>
 
 #### <a id="pas-nsx-v-dns"></a> DNS
 
@@ -394,6 +402,10 @@ The routable IP address requirements and recommendations for <%= vars.k8s_runtim
 	<p class="note"><strong>Note:</strong> Compared to vSphere deployments with NSX-V, <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T consumes much more address space for SNATs.</p>
 
 * **Deployments with several load balancers:** <%= vars.company_name %> recommends a `/23` network for deployments that use several load balancers. Deployments with several load balancers have much higher address space consumption for load balancer WIPs. This is because Kubernetes service types allocate IP addresses very frequently. To accommodate the higher address space, allow for four times the address space.
+
+#### <a id="pks-nsx-t-firewall"></a> Firewall
+
+<%= partial '../../common/vsphere-firewall-ports' %>
 
 #### <a id="pks-nsx-t-ip-spacing"></a> Networks, Subnets, and IP Address Spacing
 
