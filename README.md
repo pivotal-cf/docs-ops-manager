@@ -19,7 +19,6 @@ the source for this page in GitHub" at the bottom of the topic.
 
 | **Branch Name** | **Content** | **Location** |
 |-----------------|-------------|--------------|
-| `master` | Ops Manager v2.10 pre-release  | https://docs-pcf-staging.cfapps.io/platform/ops-manager/2-10/ |
 | `2.9` | Ops Manager v2.9  | https://docs.pivotal.io/platform/ops-manager/2-9/index.html |
 | `2.8` | Ops Manager v2.8  | https://docs.pivotal.io/platform/ops-manager/2-8/index.html |
 | `2.7` | Ops Manager v2.7  | https://docs.pivotal.io/platform/ops-manager/2-7/index.html |
@@ -31,7 +30,7 @@ the source for this page in GitHub" at the bottom of the topic.
 | `2.1` | Ops Manager v2.1  | https://docs.pivotal.io/platform/ops-manager/2-1/index.html |
 | `2.0` | Ops Manager v2.0  | https://docs.pivotal.io/platform/ops-manager/2-0/index.html |
 
-**master**: The `master` branch is used to publish the pre-release v2.10 site. Create pull requests on `master` to
+**2.10**: The `2.10` branch is used to publish the v2.10 site. Create pull requests on `2.10` to
 contribute or correct technical inaccuracies in the Ops Manager v2.10 documentation.
 
 **2.9**: The `2.9` branch is used to publish the v2.9 site. Create pull requests on `2.9` to contribute or
