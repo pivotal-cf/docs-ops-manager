@@ -28,7 +28,7 @@ on the Cloud Foundry website.
 
 **Release Date:** June 7, 2021
 
-- **[Bug Fix]** <%= vars.ops_manager %> does not overwrite UAAC
+- **[Known Issue Fix]** <%= vars.ops_manager %> does not overwrite UAAC. Known issue is introduced in <%= vars.ops_manager %> v2.9.18.
 
 
 Ops Manager v2.9.19 uses the following component versions:
@@ -56,7 +56,7 @@ Ops Manager v2.9.19 uses the following component versions:
 **Release Date:** March 31, 2021
 
 - **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN). On upgrade to v2.9.18 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles. Upgrading <%= vars.ops_manager %> while a CA rotation is in progress results in the inability to **Apply Changes** due to safety violations.
-- **[Known Issue]** Due to permission changes, running `uaac` as the `ubuntu` user results in the error `/home/tempest-web/tempest/web/vendor/uaac/Gemfile not found`. The current work around is to run `unalias uaac` as the `ubuntu` user before running `uaac`.
+- **[Known Issue]** Due to permission changes, running `uaac` as the `ubuntu` user results in the error `/home/tempest-web/tempest/web/vendor/uaac/Gemfile not found`. The current work around is to run `unalias uaac` as the `ubuntu` user before running `uaac`. <%= vars.ops_manager %> v2.9.19 and later fixes this issue.
 - **[Bug Fix]** Restrict permissions on the `/home/tempest-web` and `/home/ubuntu` directories to 750
 
 Ops Manager v2.9.18 uses the following component versions:
