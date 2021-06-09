@@ -124,6 +124,31 @@ Consult the table below to determine what additional policies you may want to in
         <th>So I paste this code.</th>
     </tr>
     <tr>
+        <td>Use an AWS Instance Profile instead of AWS Keys.</td>
+        <td><pre class="code" style="max-height: 7em; max-width:30em; overflow: auto">
+{
+  "Sid": "AllowToGetInfoAboutCurrentInstanceProfile",
+  "Effect": "Allow",
+  "Action": [
+    "iam:GetInstanceProfile"
+  ],
+  "Resource": [
+    "${iam_instance_profile_arn}"
+  ]
+},
+{
+  "Sid": "AllowToCreateInstanceWithCurrentInstanceProfile",
+  "Effect": "Allow",
+  "Action": [
+    "iam:PassRole"
+  ],
+  "Resource": [
+    "${iam_ops_manager_role_arn}"
+  ]
+},
+        </td>
+    </tr>
+    <tr>
         <td>Encrypt EBS volumes with AWS Key Management Service (KMS).</td>
         <td><pre class="code" style="max-height: 7em; max-width:30em; overflow: auto">
 {
