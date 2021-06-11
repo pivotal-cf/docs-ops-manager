@@ -124,7 +124,7 @@ Consult the table below to determine what additional policies you may want to in
         <th>So I paste this code.</th>
     </tr>
     <tr>
-        <td>Use an AWS Instance Profile instead of AWS Keys.<p class="note"><strong>Note:</strong> In the corresponding code snippet, replace <code>IAM-INSTANCE-ARN-PROFILE</code> and <code>IAM-OPS-MANAGER-ARN-ROLE</code> with their respective values.</p></td>
+        <td>Use an AWS Instance Profile instead of AWS Keys.</td>
         <td><pre class="code" style="max-height: 7em; max-width:30em; overflow: auto">
 {
   "Sid": "AllowToGetInfoAboutCurrentInstanceProfile",
@@ -146,6 +146,11 @@ Consult the table below to determine what additional policies you may want to in
     "IAM-OPS-MANAGER-ARN-ROLE"
   ]
 },</pre>
+<p>Where:</p>
+<ul>
+    <li><code>IAM-INSTANCE-ARN-PROFILE</code> is the IAM instance ARN profile that you configure in AWS.</li>
+    <li><code>IAM-OPS-MANAGER-ARN-ROLE</code> is the IAM Ops Manager ARN role that you configure in AWS.</li>
+</ul>
         </td>
     </tr>
     <tr>
