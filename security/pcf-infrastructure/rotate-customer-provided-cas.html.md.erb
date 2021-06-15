@@ -1,0 +1,128 @@
+---
+title: Rotating Certificates with Customer-Provided CAs
+owner: Ops Manager
+---
+
+This topic describes how to handle customer-provided certificate authorities (CAs) during an <%= vars.ops_manager %> certificate rotation.
+
+
+## <a id='overview'></a> Overview of Customer-Provided CAs
+
+If you have customer-provided CAs, CredHub Maestro requires that you perform manual steps at the beginning of the certificate rotation process to correctly handle those customer-provided CAs. 
+
+If you are unsure whether customer-provided CAs are installed, see [Check for Customer-Provided CAs](#ca-check) below.
+
+To handle customer-provided CAs, you can use one of two methods:
+
+- **Method One:** If the certificate rotation process is unstarted, see [Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs](#method-one) below. 
+
+- **Method Two:** If you are already in the process of rotating certificates, see [Method Two: Manually Replace the Customer-Provided CAs](#method-two) below. You can use this procedure after encountering the following Maestro error:
+   <pre>certificate authorities latest version is not transitional</pre>
+
+
+## <a id='ca-check'></a> Check for Customer-Provided CAs
+
+Before you rotate CAs, you can check to see if you have customer-provided CAs. If you do have customer-provided CAs, this section also describes where to find and record the CredHub path.
+
+You can identify customer-provided CAs in one of the following ways:
+
+- **From the <%= vars.ops_manager %> UI:**
+  1. Log in to the <%= vars.ops_manager %> dashboard.
+  1. Go to the **Certificates** page. For more information, see [Certificates Page](../../pcf-interface.html#certificates).
+  1. Find customer-provided CAs with the following properties:
+      - **Location:** `credhub`<br/>
+      - **Type:** `CA`<br/>
+      - **Configurable:** `true`<br/>
+  1. If you find no customer-provided CAs, you do not need to do the manual procedure described in this topic.
+  1. Record the **Certificate name**. That is your customer-provided CA CredHub path.
+
+- **From the <%= vars.ops_manager %> API**
+  1. Make a call to `GET` the `api/v0/deployed/certificates` endpoint. For more information about the endpoint, see [Getting Information About Certificates from Products](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Certificates/paths/~1api~1v0~1deployed~1certificates/get) in the <%= vars.ops_manager %> API documentation.
+  1. Find customer-provided CAs with the following properties:
+      - `"configurable: : true`<br/>
+      - `"location" : "credhub"`<br/>
+      - `"s_ca" : true`<br/>
+  1. If you find no customer-provided CAs, you do not need to do the manual procedure described in this topic.
+  1. Record the `variable_path` property. That is your customer-provided CA CredHub path.
+
+- **From CredHub:**<br/>
+  1. Use the CredHub CLI to find customer-provided CAs with the following properties:
+      - `"generated" : false`<br/>
+      - `"certificate_authority" : true`<br/>
+  1. If you find no customer-provided CAs, you do not need to do the manual procedure described in this topic.
+
+If no Customer-provided CAs are found, then Certificate Rotation can proceed as normal, and the remainder of this document can be ignored.
+
+## <a id='method-one'></a> Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs
+
+Pass the list of CredHub paths to the customer-provided CAs to the `exclude_from_rotation` parameter to either the `api/v0/certificate_authorities/generate` or the `api/v0/certificate_authorities` endpoint.
+
+The payload that must be provided to the request has the following structure:
+
+```
+{
+  "exclude_from_rotation": {
+    "certificate_authorities": ["/services/tls_ca", "/credhub/path/to/user_provided_ca1", "/credhub/path/to/user_provided_ca2"]
+  }
+}
+```
+
+<p class="note"><strong>Note:</strong> You will need to get the CredHub paths to the customer-provided CAs. The procedure to do this is detailed in the "Prerequisites" section of this document.</p>
+
+<p class="note warning"><strong>Warning:</strong> the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption during the certificate rotation process.</p>
+
+## <a id='method-two'></a> Method Two: Manually Replace the Customer-Provided CAs
+
+This method must be performed after rotation has been started; it cannot be performed before rotation has started. It should be performed immediately after rotation has been started, but can be performed after Maestro emits the `certificate authorities latest version is not transitional` error.
+
+The steps in this method are as follows:
+
+1. Use `credhub set` to update each customer-provided CA with a new version of that CA.
+
+2. Use `credhub curl` on the `api/v1/certificates/:certificate_id/update_transitional_version` API endpoint to set the transitional flag for each customer-provided CA.
+
+Because there are already customer-provided CAs loaded into CredHub, it is assumed that you are familiar with the `credhub set` command, so no further guidance on that command will be provided.
+
+The structure of the `credhub curl` invocation to set the `transitional` flag on the CAs is as follows:
+
+```
+credhub curl -i -X PUT -p api/v1/certificates/$CERTIFICATE_ID/update_transitional_version -d '{"version": "$VERSION_ID"}'
+```
+
+So, in order to set the `transitional` flag, you must gather the certificate ID of each certificate and the version ID of the latest version of each certificate.
+
+To retrieve the certificate ID of each certificate that must be updated, consult the output of `maestro topology`. Search the `versions` array associated with the certificate for an item that has a `valid_until` date that matches the expiry date of the certificate that was loaded with `credhub set`.
+
+The response from `maestro topology` might look like:
+
+```
+topology:
+    - name: /customer-provided-ca
+      certificate_id: 75b9f5a6-f3c6-42f8-a834-3cfa6098c73a
+      signed_by: /customer-provided-ca
+      versions:
+        - version_id: 7e172086-a08d-4e62-98ba-308942a52e8a
+          certificate_authority: true
+          generated: false
+          valid_until: 2022-04-09T21:20:23Z
+        - version_id: b942c826-e64b-4a75-8a9a-9dd109551daf
+          active: true
+          signing: true
+          certificate_authority: true
+          generated: false
+          valid_until: 2022-04-09T21:19:55Z
+      signs:
+        - name: /bosh_dns_health_client_tls
+          certificate_id: cba8b8e7-e7ec-4584-bce1-e41d75f1511b
+          signed_by: /customer-provided-ca
+          versions:
+            - version_id: b70ae8c0-91a5-4155-9545-a4c6e921bb03
+              generated: true
+              active: true
+              valid_until: 2022-04-09T23:30:45Z
+```
+
+Given this output, you will use the `update_transitional_version` endpoint on the certificate with the id `75b9f5a6-f3c6-42f8-a834-3cfa6098c73a` and the version with the id `7e172086-a08d-4e62-98ba-308942a52e8a`.
+
+After performing this operation on each customer-provided CA, you can continue with the normal Certificate Rotation process.
+
