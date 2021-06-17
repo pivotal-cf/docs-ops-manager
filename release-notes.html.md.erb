@@ -616,6 +616,10 @@ If you do not redeploy all tiles and upgrade all service instances, you can expe
 
 <%= vars.ops_manager %> v2.8 includes the following known issues:
 
+### <a id="rolling-timeout"></a> Rolling App Deployment Does Not Timeout
+
+<%= partial "/pcf/ops-manager/known-issues/rolling-timeout" %>
+
 ### <a id='credhub-generated-field'></a> Reset Manually Set Certificates in CredHub Before Rotating Certificates with CredHub Maestro CLI
 
 If you have manually set any certificates in CredHub on <%= vars.ops_manager %> v2.6 or earlier, you need to reset those certificates before using the CredHub Maestro CLI to rotate CredHub certificates. The CredHub Maestro CLI is available on the <%= vars.ops_manager %> VM.
