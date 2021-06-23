@@ -3,57 +3,31 @@ title: Installing Ops Manager on Azure
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Installing " +  vars.platform_name +  " on Azure"  %>
+<% current_page.data.title = "Installing " +  vars.ops_manager +  " on Azure"  %>
 
-This topic describes how to install <%= vars.platform_name %> on Microsoft Azure.
+This topic describes how to install <%= vars.ops_manager %> on Microsoft Azure.
 
-It includes resource requirements, prerequisites, instructions for installing <%= vars.platform_name %> on Azure, and additional resources.
+It includes resource requirements, prerequisites, instructions for installing <%= vars.ops_manager %> on Azure, and additional resources.
 
 
 ## <a id="overview"></a> Overview
 
-You can install <%= vars.platform_name %> on Azure, Azure Government Cloud, or Azure Germany. For more information about Azure regions, see [Azure regions](https://azure.microsoft.com/en-us/global-infrastructure/regions/) in the Microsoft Azure documentation.
+You can install <%= vars.ops_manager %> on Azure, Azure Government Cloud, or Azure Germany. For more information about Azure regions, see [Azure regions](https://azure.microsoft.com/en-us/global-infrastructure/regions/) in the Microsoft Azure documentation.
 
-You can install <%= vars.platform_name %> on Azure with the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) runtime. There are resource requirements specific to both <%= vars.app_runtime_abbr %> and Azure. Ensure you meet the requirements for <%= vars.app_runtime_abbr %> and the requirements specific to Azure before installing <%= vars.platform_name %> on Azure. For more information, see [Requirements](#requirements).
+You can install <%= vars.ops_manager %> on Azure with the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) runtime. There are resource requirements specific to both <%= vars.app_runtime_abbr %> and Azure. Ensure you meet the requirements for <%= vars.app_runtime_abbr %> and the requirements specific to Azure before installing <%= vars.ops_manager %> on Azure. For more information, see [Requirements](#requirements).
 
 
 ## <a id="requirements"></a> Requirements
 
-This section lists the following resource requirements for installing <%= vars.platform_name %> on Azure:
+This section lists the resource requirements for installing <%= vars.ops_manager %> on Azure:
 
-* <%= vars.app_runtime_abbr %> resource requirements. For more information, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pcf-requirements).
+- For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-9/operating/requirements.html).
 
-* Azure-specific resource requirements. For more information, see [Azure Resource Requirements](#azure-requirements).
-
-### <a id="pcf-requirements"></a> <%= vars.app_runtime_abbr %> Resource Requirements
-
-The following are general resource requirements for deploying and managing an <%= vars.platform_name %> deployment with <%= vars.app_runtime_abbr %>:
-
-* <%= vars.app_runtime_abbr %> requires sufficient IP allocation. The following lists the minimum required IP allocations:
-  * One static IP address for either HAProxy or one of your Gorouters.
-  * One static IP address for each job in each tile. For a full list, see the **Resource Config** pane for each tile.
-  * One static IP address for each job listed below:
-      * Consul
-      * NATS
-      * File Storage
-      * MySQL Proxy
-      * MySQL Server
-      * Backup Restore Node
-      * HAProxy
-      * Router
-      * MySQL Monitor
-      * Diego Brain
-      * TCP Router
-  * One IP for each VM instance created by the service.
-  * An additional IP address for each compilation worker. Use the following formula to determine the total IPs required: `IPs needed = static IPs + VM instances + compilation workers`.
-  * <%= vars.company_name %> recommends that you allocate at least 36 dynamic IP addresses when deploying <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>. BOSH requires additional dynamic IP addresses during installation to compile and deploy VMs, install <%= vars.app_runtime_abbr %>, and connect to services.
-
-* <%= vars.company_name %> recommends using a network without DHCP for deploying <%= vars.app_runtime_abbr %> VMs.
-  <p class="note"><strong>Note:</strong> If you have DHCP, see <a href="./troubleshooting.html">Troubleshooting Deployment Problems</a> to avoid issues with your installation.</p>
+* For Azure-specific resource requirements, see [Azure Resource Requirements](#azure-requirements) below.
 
 ### <a id="azure-requirements"></a> Azure Resource Requirements
 
-The following are the minimum resource requirements for deploying an <%= vars.platform_name %> deployment with <%= vars.app_runtime_abbr %> on Azure:
+The following are the minimum resource requirements for deploying an <%= vars.ops_manager %> deployment with <%= vars.app_runtime_abbr %> on Azure:
 
 * An OS disk of 120&nbsp;GB for the <%= vars.ops_manager %> VM.
   <p class="note"><strong>Note:</strong> <%= vars.ops_manager %> v1.11 requires a BOSH Director VM with at least 8&nbsp;GB memory.</p>
@@ -86,7 +60,7 @@ The following are the minimum resource requirements for deploying an <%= vars.pl
         <td>24</td>
       </tr>
     </table>
-    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox <%= vars.platform_name %> that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
   * **Small Footprint <%= vars.app_runtime_abbr %>:** A new Azure deployment requires the following VMs for Small Footprint <%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>:
     <table id='azure-requirements' border="1" class="nice">
       <tr>
@@ -128,21 +102,21 @@ The following are the minimum resource requirements for deploying an <%= vars.pl
         <td></td>
       </tr>
     </table>
-    <p class="note"><strong>Note:</strong> Some VM instance types are only supported in certain Azure regions. For more information, see <a href="https://azure.microsoft.com/en-us/regions/services/">Products available by region</a> in the Microsoft Azure documentation. To deploy <%= vars.platform_name %> on an Azure region that does not support the above VM instance types, you must override the default VM sizes. For more information, see <a href="https://docs.pivotal.io/pivotalcf/2-2/opsman-api#overriding-defaults-with-custom-disk-types">Overriding defaults with custom disk types</a> in the <%= vars.ops_manager %> API documentation. Changing the default VM sizes may increase the cost of your deployment.</p>
+    <p class="note"><strong>Note:</strong> Some VM instance types are only supported in certain Azure regions. For more information, see <a href="https://azure.microsoft.com/en-us/regions/services/">Products available by region</a> in the Microsoft Azure documentation. To deploy <%= vars.ops_manager %> on an Azure region that does not support the above VM instance types, you must override the default VM sizes. For more information, see <a href="https://docs.pivotal.io/pivotalcf/2-2/opsman-api#overriding-defaults-with-custom-disk-types">Overriding defaults with custom disk types</a> in the <%= vars.ops_manager %> API documentation. Changing the default VM sizes may increase the cost of your deployment.</p>
 
 
 ## <a id="prerequisites"></a> Prerequisites
 
-Before installing <%= vars.platform_name %> on Azure, you must:
+Before installing <%= vars.ops_manager %> on Azure, you must:
 
 * Install the Azure CLI v2.0. To install the Azure CLI for your operating system, see [Preparing to Deploy <%= vars.ops_manager %> on Azure](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/prepare-env-manual.html).
 
 * Configure sufficient IP allocation for <%= vars.app_runtime_abbr %>. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pas).
 
-* Create an SSL certificate for your <%= vars.platform_name %> domain.
-  <p class="note"><strong>Note:</strong> To deploy <%= vars.platform_name %> to a production environment, you must obtain a certificate from a certificate authority (CA). <%= vars.company_name %> recommends using a self-signed certificate generated by <%= vars.ops_manager %> for development and testing purposes only.</p>
+* Create an SSL certificate for your <%= vars.ops_manager %> domain.
+  <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> to a production environment, you must obtain a certificate from a certificate authority (CA). <%= vars.company_name %> recommends using a self-signed certificate generated by <%= vars.ops_manager %> for development and testing purposes only.</p>
 
-* Assign administrative rights to a domain for <%= vars.platform_name %>. You must be able to add wildcard records to this domain.
+* Assign administrative rights to a domain for <%= vars.ops_manager %>. You must be able to add wildcard records to this domain.
 
 * Create a wildcard DNS record that points to your Gorouter or load balancer. Alternatively, you can use a service such as xip.io. For example, `203.0.113.0.xip.io`. Then, create at least one wildcard TLS certificate that matches the DNS record you configured.
   <p class="note"><strong>Note:</strong> With a wildcard DNS record, every hostname in your domain resolves to the IP address of your Gorouter or load balancer. For example, if you create a DNS record `*.example.com` pointing to your Gorouter, every app deployed to the `example.com` domain resolves to the IP address of your Gorouter.</p>
@@ -155,36 +129,36 @@ Before installing <%= vars.platform_name %> on Azure, you must:
 
 * (Optional) Configure external databases. <%= vars.company_name %> recommends using external databases in production deployments for BOSH Director and <%= vars.app_runtime_abbr %>. An external database must be configured to use the UTC timezone.
 
-* (Optional) Configure external user stores. When you deploy <%= vars.platform_name %>, you can select a SAML user store for <%= vars.ops_manager %> or a SAML or LDAP user store for <%= vars.app_runtime_abbr %>, to integrate existing user accounts.
+* (Optional) Configure external user stores. When you deploy <%= vars.ops_manager %>, you can select a SAML user store for <%= vars.ops_manager %> or a SAML or LDAP user store for <%= vars.app_runtime_abbr %>, to integrate existing user accounts.
 
 
-## <a id='install'></a> Install <%= vars.platform_name %> on Azure
+## <a id='install'></a> Install <%= vars.ops_manager %> on Azure
 
 
-To install <%= vars.platform_name %> on Azure, see [Installing <%= vars.platform_name %> on Azure](pcf-azure-manual-config.html).
+To install <%= vars.ops_manager %> on Azure, see [Installing <%= vars.ops_manager %> on Azure](pcf-azure-manual-config.html).
 
-## <a id='install-gov'></a> Install <%= vars.platform_name %> on Azure Government Cloud
+## <a id='install-gov'></a> Install <%= vars.ops_manager %> on Azure Government Cloud
 
-To install <%= vars.platform_name %> on Azure Government Cloud, see [Configuring BOSH Director on Azure Government Cloud](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/gov-cloud.html).
+To install <%= vars.ops_manager %> on Azure Government Cloud, see [Configuring BOSH Director on Azure Government Cloud](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/gov-cloud.html).
 
 
-## <a id='install-germany'></a> Install <%= vars.platform_name %> on Azure Germany
+## <a id='install-germany'></a> Install <%= vars.ops_manager %> on Azure Germany
 
-To install <%= vars.platform_name %> in Azure Germany, see [Configuring BOSH Director on Azure Germany](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/german-cloud.html).
+To install <%= vars.ops_manager %> in Azure Germany, see [Configuring BOSH Director on Azure Germany](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/german-cloud.html).
 
 
 ## <a id='resources'></a> Additional Resources
 
-The following are additional resources related to installing <%= vars.platform_name %> on GCP:
+The following are additional resources related to installing <%= vars.ops_manager %> on GCP:
 
-* For information about troubleshooting the <%= vars.platform_name %> on Azure install process, see [Troubleshooting <%= vars.platform_name %> on Azure](azure-troubleshooting.html).
+* For information about troubleshooting the <%= vars.ops_manager %> on Azure install process, see [Troubleshooting <%= vars.ops_manager %> on Azure](azure-troubleshooting.html).
 
-* For production-level deployment options for <%= vars.platform_name %> on Azure, see [Reference Architecture for <%= vars.platform_name %> on Azure](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/plan/azure/azure_ref_arch.html).
+* For production-level deployment options for <%= vars.ops_manager %> on Azure, see [Reference Architecture for <%= vars.ops_manager %> on Azure](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/plan/azure/azure_ref_arch.html).
 
 * For information about how to manage IaaS users and credentials in Azure, see the [Azure security documentation](https://docs.microsoft.com/en-us/azure/security/).
 
-* For recommendations on how to create and scope Azure accounts for <%= vars.platform_name %>, see [IaaS Permissions Guidelines](iaas-user-roles.html).
+* For recommendations on how to create and scope Azure accounts for <%= vars.ops_manager %>, see [IaaS Permissions Guidelines](iaas-user-roles.html).
 
-* For information about deleting an <%= vars.platform_name %> on Azure installation, see [Deleting <%= vars.platform_name %> from Azure](deleting-azure-install.html).
+* For information about deleting an <%= vars.ops_manager %> on Azure installation, see [Deleting <%= vars.ops_manager %> from Azure](deleting-azure-install.html).
 
-* For information about upgrading <%= vars.platform_name %> on Azure, see [Upgrading BOSH Director on Azure](azure-om-upgrade.html).
+* For information about upgrading <%= vars.ops_manager %> on Azure, see [Upgrading BOSH Director on Azure](azure-om-upgrade.html).
