@@ -3,7 +3,7 @@ title: Installing Pivotal Platform on OpenStack
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Installing " + vars.platform_name + " on OpenStack"  %>
+<% current_page.data.title = "Installing " + vars.ops_manager + " on OpenStack"  %>
 
 This guide describes how to install <%= vars.platform_name %> on OpenStack with Pivotal Operations Manager and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
 
@@ -24,21 +24,20 @@ These documents provide a general reference for OpenStack service credential man
 
 ## <a id="requirements"></a> Requirements
 
-This section describes the requirements for installing <%= vars.platform_name %> on OpenStack, including general requirements for installing <%= vars.platform_name %> with Ops Manager and <%= vars.app_runtime_abbr %> as well as OpenStack requirements.
+This section describes the requirements for installing Pivotal Platform on OpenStack, including general requirements for installing <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> as well as OpenStack requirements.
 
 <p class="note"><strong>Note:</strong> You can install <%= vars.platform_name %> on OpenStack with the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) runtime.
 The <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime is not supported for OpenStack. For more information about <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/2-7/concepts/index.html"><%= vars.app_runtime_abbr %> Concepts</a>. For more information about <%= vars.k8s_runtime_abbr %>, see <a href="https://docs.pivotal.io/pks/index.html"><%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)</a>.</p>
 
 ### <a id="general"></a> General Resource Requirements
 
-<%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
-<%= partial "/pcf/core/2-7/requirements" %>
+For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-7/operating/requirements.html).
 
 ### <a id="openstack"></a> OpenStack Requirements
 
-The following are OpenStack requirements for deploying <%= vars.platform_name %>:
+The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
 
-* <%= vars.platform_name %> is supported on the OpenStack Ocata, Pike, Queens, Rocky, and Stein releases. OpenStack is a collection of inter-operable components and requires general OpenStack expertise to troubleshoot issues that may occur when installing <%= vars.platform_name %> on particular releases and distributions. To verify that your OpenStack platform is compatible with <%= vars.platform_name %>, use the OpenStack Validator tool. To access the OpenStack Validator tool, see [CF OpenStack Validator](https://github.com/cloudfoundry-incubator/cf-openstack-validator) on GitHub.
+* <%= vars.ops_manager %> is supported on the OpenStack Ocata, Pike, Queens, Rocky, and Stein releases. OpenStack is a collection of inter-operable components and requires general OpenStack expertise to troubleshoot issues that may occur when installing <%= vars.ops_manager %> on particular releases and distributions. To verify that your OpenStack platform is compatible with <%= vars.ops_manager %>, use the OpenStack Validator tool. To access the OpenStack Validator tool, see [CF OpenStack Validator](https://github.com/cloudfoundry-incubator/cf-openstack-validator) on GitHub.
 
 * Pivotal recommends granting complete access to the OpenStack logs to the operator managing the <%= vars.platform_name %> installation process.
 
@@ -48,7 +47,7 @@ The following are OpenStack requirements for deploying <%= vars.platform_name %>
 
 * You must have Keystone access to the dedicated OpenStack project, including the following:
   * Auth URL
-  * Username and password. The `PrimaryProject` for the user must be the project you want to use to deploy <%= vars.platform_name %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
+  * Username and password. The `PrimaryProject` for the user must be the project you want to use to deploy <%= vars.ops_manager %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
   * Project name
   * Region (with multiple availability zones if you require high availability)
   * SSL certificate for your wildcard domain (see below)
@@ -86,9 +85,9 @@ The following are OpenStack requirements for deploying <%= vars.platform_name %>
   * Failure to configure your overlay network correctly could cause Apps Manager to fail since applications will not be able to connect to the UAA.
     <p class='note'><strong>Note:</strong> If you are using IPsec, your resource usage will increase by approximately 36 bytes. View the <a href="https://docs.pivotal.io/addon-ipsec/installing.html"> Installing IPsec topic</a> for information, including setting correct MTU values.</p>
 
-## <a id='outputs'></a> Install <%= vars.platform_name %> on OpenStack with <%= vars.app_runtime_abbr %>
+## <a id='outputs'></a> Install <%= vars.ops_manager %> on OpenStack with <%= vars.app_runtime_abbr %>
 
-To install <%= vars.platform_name %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime, do the following:
+To install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime, do the following:
 
 1. Deploy Ops Manager. See [Deploying Ops Manager on OpenStack](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/openstack/setup.html).
 
