@@ -70,14 +70,12 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
          <%= image_tag("../common/images/pcfaws/aws_iam_username.png", :alt => "Screenshot of IAM configuration page 1. The page is titled 'Add user'. It has two sections: 'Set User details' and 'Select AWS access type'.") %>
 
-    1. Enter a user name, such as `pcf-user`.
+    1. Enter a username. For example, enter `pcf-user`.
 
     1. For AWS access type, select **Programmatic access**.
         <p class="note"><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the [Amazon documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).</p>
 
-    1. Click **Next: Permissions**.
-
-    1. Click **Next: Review** and review your choices.
+    1. Click **Next: Permissions** and click **Next: Review**.
         <p class="note"><strong>Note:</strong> On the <strong>Review</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
 
     1. Click **Create user**.
@@ -89,15 +87,11 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
         <%= image_tag("../common/images/aws/create-iam-role.png", :alt => "Screenshot of IAM configuration page 1, titled 'Create role'. It has the sections 'Select type of trusted entity' and 'Choose a use case'.") %>
 
-    1. Select **AWS service** as the role type and select **EC2** as the use case.
+    1. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case.
 
-    1. Click **Next: Permissions**.
+    1. Click **Next: Permissions**, click *Next: Tags**, and click **Next: Review** to progress through the pages.
 
-    1. <%= partial '../common/create-iam-policy' %>
-
-    1. Click **Next: Tags** and **Next: Review**.
-
-    1. Enter a role name, such as `pcf-role`.
+    1. On the **Review** page, enter a role name. For example, enter `pcf-role`.
 
     1. Click **Create role**.
 
@@ -113,7 +107,11 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
      <%= image_tag("../common/images/pcfaws/aws_iam_json.png", :alt => "Screenshot of the user details page. The page is titled 'Create policy'. It has a 'Visual editor' and 'JSON'tab.") %>
 
-1. <%= partial '../common/create-iam-policy' %>
+1. On the **Create policy** page, define a policy:
+
+    1. Copy the policy document included in [<%= vars.platform_name %> for AWS Policy Document](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
+
+    1. Paste the policy document into the **JSON** tab on the **Create policy** page.
 
 1. Click **Review policy**.
 
