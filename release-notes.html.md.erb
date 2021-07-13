@@ -25,6 +25,8 @@ on the Cloud Foundry website.
 
 **Release Date:** June 30, 2021
 
+- **[Known Issue]** Foundations that use multiple vCenter Configs may now encounter Apply Changes that fail with the message "No valid placement found for VM compute and storage requirement". A bug was introduced in <%= vars.ops_manager %> v2.10.15 that requires the following workaround: the datastores listed in the Ephemeral and/or Persistent Datastore Names field of the first vCenter Config must be the union of all Ephemeral or Persistent Datastore Names across all vCenter Configs.
+
 - **[Feature]** Support for vSphere datastore clusters
 - **[Feature]**  A section in the BOSH Director manifest makes obvious what `additional_cloud_properties` overrides are used
 - **[Bug Fix]** Resolved issue with support bundle creation that could cause Apply Changes to fail with the error `No such file or directory - getcwd`
