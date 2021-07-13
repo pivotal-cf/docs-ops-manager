@@ -3,72 +3,73 @@ title: VMC Reference Architecture
 owner: TAS-Anycloud
 ---
 
-This topic describes a reference architecture for <%= vars.platform_name %>, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), on VMware Managed Cloud for AWS (VMC). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
+This topic describes a reference architecture for <%= vars.ops_manager %>, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), on VMware Managed Cloud for AWS (VMC). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
 
-For specific installation instructions for running <%= vars.app_runtime_abbr %> on VMC, see [Deploying <%= vars.app_runtime_abbr %> to VMC](/application-service/2-11/operating/vmc.html).
+For specific installation instructions for running <%= vars.app_runtime_abbr %> on VMC, see [Deploying <%= vars.app_runtime_abbr %> to VMC](https://docs.pivotal.io/application-service/operating/vmc.html).
 
 ## <a id="networking"></a> Networking
 
 These sections provide guidance about networking resources.
 
-### <a id="subnets"></a> Networks, Subnets, and IP Spacing Planning
+### <a id="subnets"></a> Networks, Subnets, and IP Address Spacing Planning
 
-When planning networks, subnets, and IP spacing, consider the following:
+When planning networks, subnets, and IP address spacing, consider the following:
 
 * VMC SDDCs initially provision an NSX-T segment that provides a single class C subnet for workload VMs. Depending on your IP address requirements, you can use this subnet for your entire <%= vars.app_runtime_abbr %> deployment, or add additional segments from the [VMC Console](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-267DEADB-BD01-46B7-82D5-B9AA210CA9EE.html).
 
 * If you want the front end of <%= vars.app_runtime_abbr %> to be accessible from your corporate network or the services running on <%= vars.app_runtime_abbr %> to be able to access corporate resources, you must do one of the following:
-	* provision public IPs [from the SDDC console](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-0E34C56D-C49C-49B6-A9CF-FBFAF14A126C.html?hWord=N4IghgNiBcIG4FsDGACADgVwEYQJatzRAF8g)
-	* connect your SDDC to your on premeses data center with [Direct Connect](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-417EE2F1-0EA5-4808-BDB3-6FF622EECB95.html)
-	* connect your SDDC to your on premeses data center with [a VPN](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-92F6C09E-8E74-430E-8F79-C2E5B2150ADA.html)
+  * Provision public IP addresses from the SDDC console. See [Request or Release a Public IP Address](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-0E34C56D-C49C-49B6-A9CF-FBFAF14A126C.html).
+  * Connect your SDDC to your on-premises data center with Direct Connect. See [Configure AWS Direct Connect Between Your SDDC and On-Premises Data Center](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-417EE2F1-0EA5-4808-BDB3-6FF622EECB95.html)
+  * Connect your SDDC to your on-premises data center with a VPN. See [Configure a VPN Connection Between Your SDDC and On-Premises Data Center](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-92F6C09E-8E74-430E-8F79-C2E5B2150ADA.html).
 
 ## <a id="VPC"></a> AWS VPCs
-When deploying <%= vars.platform_name %> and <%= vars.app_runtime_abbr %> to VMC, it is recommended to create a dedicated Virtual Private Cloud (VPC) on AWS to connect to your VMC SDDC.
 
-Placing AWS services such as RDS in a dedicated connected VPC allows you to connect them to your SDDC while disallowing access from other networks. The AWS VPC is associated to your SDDC [when you connect your AWS account](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.getting-started/GUID-BC0EC6C5-9283-4679-91F8-87AADFB9E116.html?hWord=N4IghgNiBcIG4FsDGACJAnApmALplAygCJEDCKAagAqkgC+QA#connected-aws-account-0).
+When deploying <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> to VMC, VMware recommends creating a dedicated Virtual Private Cloud (VPC) on AWS to connect to your VMC SDDC.
+
+Placing AWS services such as RDS in a dedicated connected VPC allows you to connect them to your SDDC while disallowing access from other networks. The AWS VPC is associated to your SDDC when you connect your AWS account.
+
+For more information, see [Connected AWS Account](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.getting-started/GUID-BC0EC6C5-9283-4679-91F8-87AADFB9E116.html#connected-aws-account-0) in _Deploying and Managing a Software-Defined Data Center_.
 
 
 ## <a id="rds"></a> RDS
 
-Provision a single RDS instance to use as the external database for <%= vars.app_runtime_abbr %>. For compatibility, it is recommended to use MySQL. 
+Provision a single RDS instance to use as the external database for <%= vars.app_runtime_abbr %>. For compatibility, VMware recommends using MySQL.
 
-New database instances require several databases to be created. For more information, see  [External System Database Configuration](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
+New database instances require several databases to be created. For more information, see [External System Database Configuration](https://docs.pivotal.io/application-service/operating/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
 
-It is recommended to provision your RDS instance in the connected VPC. This will allow you to connect to the endpoint for your RDS instance without making your database publicly accessible.
+VMware recommends provisioning your RDS instance in the connected VPC. This allows you to connect to the endpoint for your RDS instance without making your database publicly accessible.
 
 ## <a id="blobstore"></a> Blobstore Storage Accounts
 
-<%= vars.app_runtime_abbr %> requires these buckets:
+<%= vars.app_runtime_abbr %> requires S3 buckets for each of the following:
 
 * Buildpacks
 * Droplets
 * Packages
 * Resources
 
-For better security, use a Gateway endpoint so that only requests from your SDDC can access your S3 buckets. To achieve this configuration:
+For better security, use a gateway endpoint so that only requests from your SDDC can access your S3 buckets. To achieve this configuration:
 
-1. create a Gateway endpoint for S3, following Step 1 in [this document](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws-operations/GUID-B501FA3C-EAF9-4005-AC72-155C3F592281.html)
-1. create S3 buckets required by <%= vars.app_runtime_abbr %>
-1. add a security rule that disallows requests to the bucket unless they come through the gateway (VPC) endpoint as described [here](https://aws.amazon.com/premiumsupport/knowledge-center/block-s3-traffic-vpc-ip/). This should look something like:
+1. Create a gateway endpoint for S3. Follow Step 1 in [Access an S3 Bucket Using an S3 Endpoint](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws-operations/GUID-B501FA3C-EAF9-4005-AC72-155C3F592281.html).
+1. Create the S3 buckets required by <%= vars.app_runtime_abbr %>.
+1. Add a security rule that disallows requests to the S3 bucket unless they come through the VPC endpoint. For more information, see [How can I restrict access to my Amazon S3 bucket using specific VPC endpoints or IP addresses?](https://aws.amazon.com/premiumsupport/knowledge-center/block-s3-traffic-vpc-ip/) in the AWS documentation. This should look like the following:
 
-  ```
-  {
-    "Id": "VPCe",
-    "Version": "2012-10-17",
-    "Statement": [{
-      "Sid": "VPCe",
-      "Effect": "Deny",
-      "Principal": "*",
-      "Action": "s3:*",
-      "Resource": "arn:aws:s3:::yourbucketname/*",  <=== your bucket ARN
-      "Condition": {
-        "StringNotEquals": {
-          "aws:SourceVpce": "vpce-0c279161edeff22c3"  <=== your gateway endpoint
-        }
-      }
-    }]
-  }
-  ```
-
-
-
+	  ```
+	  {
+	    "Id": "VPCe",
+	    "Version": "2012-10-17",
+	    "Statement": [{
+	      "Sid": "VPCe",
+	      "Effect": "Deny",
+	      "Principal": "*",
+	      "Action": "s3:*",
+	      "Resource": "arn:aws:s3:::BUCKET-NAME/*",
+	      "Condition": {
+	        "StringNotEquals": {
+	          "aws:SourceVpce": "vpce-0123456abcdef0123"
+	        }
+	      }
+	    }]
+	  }
+	  ```
+    Where and `BUCKET-NAME` is your S3 bucket's Amazon Resource Name (ARN) and `vpce-0123456abcdef0123` is your gateway endpoint ID.
