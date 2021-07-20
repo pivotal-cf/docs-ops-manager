@@ -21,11 +21,11 @@ on the Cloud Foundry website.
 
 ## <a id='releases'></a> Releases
 
-### <a id="2-10-15-withdrawn"></a> v2.10.15 - Withdrawn
+### <a id="2-10-15"></a> v2.10.15
 
 **Release Date:** June 30, 2021
 
-<p class="note warning"><strong> Warning:</strong> This release has been removed from VMware Tanzu Network because it shipped with a change that affects vSphere users. This change causes unintended recreation of <strong>all</strong> VMs on next Apply Changes.</p>
+<p class="note warning"><strong> Warning:</strong> This release shipped with a change that affects vSphere users. This change causes unintended recreation of <strong>all</strong> VMs and Disks on next Apply Changes. This issue will be fixed in v2.10.16, however, if you have already recreated all VMs and Disks, they will get recreated again once you Apply Changes on v2.10.16.</p>
 
 - **[Known Issue]** Foundations that use multiple vCenter Configs may now encounter Apply Changes that fail with the message "No valid placement found for VM compute and storage requirement". A bug was introduced in <%= vars.ops_manager %> v2.10.15 that requires the following workaround: the datastores listed in the Ephemeral and/or Persistent Datastore Names field of the first vCenter Config must be the union of all Ephemeral or Persistent Datastore Names across all vCenter Configs.
 
