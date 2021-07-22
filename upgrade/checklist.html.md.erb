@@ -45,7 +45,7 @@ Review each of the following links to understand the changes in the new release,
 	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/release-notes/runtime-rn.html#breaking-changes)
 
 * **KPI Changes**
-	* [KPI Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/monitoring/index.html#new)
+	* [KPI Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/index.html#new)
 
 * **Diego Network Communications**:
 	* [Diego Network Communications](../security/networking/diego-network-paths.html)
@@ -250,7 +250,7 @@ If needed, adjust the maximum number of Diego Cells that the platform can upgrad
 
 The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4%. This setting is configured in the BOSH manifest's Diego Cell definition. For more information, see [Prevent Overload](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configuring.html#limitations-considerations) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
-For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="storage"></a> Review File Storage IOPS and Other Upgrade Limiting Factors
 
