@@ -75,6 +75,18 @@ Increased logging could cause platform issues. For more information, see [Increa
 
 1. Select **Keep Unreachable Director VMs** to preserve BOSH Director VMs after a failed deployment for troubleshooting purposes.
 
+1. (Optional) Modify the **Director Workers** value, which sets the number of workers available to execute BOSH Director tasks. This field defaults to `5`.
+
+1. (Optional) **Max Threads** sets the maximum number of threads that the BOSH Director can run simultaneously. <%= vars.company_name %> recommends that you leave the field blank to use the default value, unless doing so results in rate limiting or errors on your IaaS.
+
+1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname**. You can also use this field to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
+
+    <%= image_tag("../common/images/director_workers.png", :alt => "Three text fields labeled 'Director Workers', 'Max Threads', and 'Director Hostname'. The Director Workers field contains the text '5'. The Director Hostname field contains the text 'opsdirector.example.com'.") %>
+
+1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
+
+1. <%= partial "../common/identification-tags" %>
+
 1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
     <%= image_tag("../common/images/director_hm_pager.png", :alt => "At the top of the image is a selected checkbox labeled 'HM Pager Duty Plugin'. Below this checkbox are two text fields labeled, from top to bottom, 'Service Key' and 'HTTP Proxy'. The Service Key field has a red asterisk to denote that it is a required field, and contains the text 'YOUR-PAGERDUTY-SERVICE-KEY'. The HTTP Proxy field contains the text 'YOUR-HTTP-PROXY'.") %>
     * **Service Key**: Enter your API service key from PagerDuty.
@@ -96,17 +108,5 @@ Increased logging could cause platform issues. For more information, see [Increa
 1. <%= partial "../common/blobstore-location" %>
 
 1. <%= partial "../common/director-database-location" %>
-
-1. (Optional) Modify the **Director Workers** value, which sets the number of workers available to execute BOSH Director tasks. This field defaults to `5`.
-
-1. (Optional) **Max Threads** sets the maximum number of threads that the BOSH Director can run simultaneously. <%= vars.company_name %> recommends that you leave the field blank to use the default value, unless doing so results in rate limiting or errors on your IaaS.
-
-1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname**. You can also use this field to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
-
-    <%= image_tag("../common/images/director_workers.png", :alt => "Three text fields labeled 'Director Workers', 'Max Threads', and 'Director Hostname'. The Director Workers field contains the text '5'. The Director Hostname field contains the text 'opsdirector.example.com'.") %>
-
-1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
-
-1. <%= partial "../common/identification-tags" %>
 
 1. Click **Save**.
