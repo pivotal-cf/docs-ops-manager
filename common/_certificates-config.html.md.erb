@@ -1,4 +1,5 @@
 For **Customize Certificate Duration**, you can choose whether certificates generated within Ops Manager and CredHub use the default duration specified for the certificate, or to use a minimum duration instead if the specified duration is less than the minimum for that type of certificate.
   * **Off:** Select this option if you want to use the default durations for certificates created by all products.
   * **On:** Select this option if you want to set a minimum duration for certificates created by all products. If a certificate is created by a product with a longer duration than the corresponding minimum duration setting, the longer duration will be used.
-        1. TODO - describe the two fields
+        1. **CA Certificate Validity Duration (days):** Enter the minimum number of days for which CA certificates should be valid.
+        1. **Leaf Certificate Validity Duration (days):** Enter the minimum number of days for which leaf certificates should be valid. This value must be lower than the CA certificate validity duration.
