@@ -16,6 +16,7 @@ Rotate CAs and leaf certificates before they expire to avoid downtime for your d
 
 When possible, the Ops Manager API invokes CredHub Maestro to rotate certificates. You may encounter CredHub Maestro safety violation errors if you attempt to perform an unsafe operation, such as running a rotation step out of order. For more information about troubleshooting these errors, see [Troubleshooting CredHub Maestro Safety Violations During Certificate Rotation](troubleshoot-cert-errors.html).
 
+<p class='note'><strong>Note:</strong> You can set a minimum duration for certificates within the BOSH Director tile. If you wish to set a minimum duration, it is recommended that you do so prior to starting a certificate rotation. For more information about minimum duration, see <a href="configure-certificate-minimum-duration.html">Configuring Minimum Duration for Certificates</a>.</p>
 
 ## <a id='check-expiration-and-types'></a> Check Certificate Expiration Dates and Types
 

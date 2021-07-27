@@ -20,6 +20,8 @@ This procedure rotates non-configurable leaf certificates visible to the <%= var
 
 ## <a id='procedure'></a> Procedure
 
+<p class='note'><strong>Note:</strong> You can set a minimum duration for certificates within the BOSH Director tile. If you wish to set a minimum duration, it is recommended that you do so prior to starting a certificate rotation. For more information about minimum duration, see <a href="configure-certificate-minimum-duration.html">Configuring Minimum Duration for Certificates</a>.</p>
+
 To rotate non-configurable leaf certificates:
 
 1. Call the <%= vars.ops_manager %> API `regenerate` endpoint by running:
