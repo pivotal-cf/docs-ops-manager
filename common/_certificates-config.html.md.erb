@@ -1,7 +1,6 @@
-For **Customize Certificate Duration**, you can choose whether certificates generated within Ops Manager and CredHub use the default duration specified for the certificate, or to use a minimum duration instead if the specified duration is less than the minimum for that type of certificate.
-  * **Off:** Select this option if you want to use the default durations for certificates created by all products.
-  * **On:** Select this option if you want to set a minimum duration for certificates created by all products. If a certificate is created by a product with a longer duration than the corresponding minimum duration setting, the longer duration will be used.
-        1. **CA Certificate Validity Duration (days):** Enter the minimum number of days for which CA certificates should be valid.
-        1. **Leaf Certificate Validity Duration (days):** Enter the minimum number of days for which leaf certificates should be valid. This value must be lower than the CA certificate validity duration.
-
-<p class="note"><strong>Note:</strong> You must take additional steps after enabling the minimum duration feature to apply the setting to certificates. For more information, see <a href="https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/security/pcf-infrastructure/configure-certificate-minimum-duration.html">Configuring Minimum Duration for Certificates</a></p>
+For **Set Minimum Certificate Duration**, you can choose whether certificates generated within Ops Manager and CredHub use the default duration specified for the certificate or a custom minimum certificate duration value that you specify.
+  * **Off:** Select this option to use the default durations for certificates created by all products.
+  * **On:** Select this option to customize the minimum duration for certificates created by all products. If a product creates a certificate with a longer duration than the value you set, the longer duration is used.
+        1. **CA Certificate Validity Duration (days):** Enter the minimum number of days for which CA certificates are valid.
+        1. **Leaf Certificate Validity Duration (days):** Enter the minimum number of days for which leaf certificates are valid. This value must be lower than the CA certificate validity duration.
+        <p class="note"><strong>Note:</strong> After you set a new certificate duration, you must take additional steps to apply the setting to all certificates. For more information, see <a href="https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/security/pcf-infrastructure/configure-certificate-minimum-duration.html">Configuring Minimum Duration for Certificates</a>.</p>
