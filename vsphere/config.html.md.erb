@@ -49,9 +49,9 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
     * **Virtual Disk Type**: The Virtual Disk Type to provision for all VMs. For guidance on selecting a virtual disk type, see [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/disk-format.html).
     <p class="note"><strong>Note:</strong> Datastores do not support whitespace characters in their names. Including whitespace characters in datastore names causes an error.</p>
     * **Ephemeral Datastore Names (comma delimited)**: The names of the datastores that store ephemeral VM disks deployed by <%= vars.ops_manager %>.
-    * **Ephemeral Datastore Cluster Names (comma delimited)**: The names of the datastore clusters that store ephemeral VM disks deployed by <%= vars.ops_manager %>. This takes precedence over **Ephemeral Datastore Names**.
+    * **Ephemeral Datastore Cluster Names (comma delimited)**: The names of the datastore clusters that store ephemeral VM disks deployed by <%= vars.ops_manager %>. Clusters whose Storage DRS is turned off will be ignored.
     * **Persistent Datastore Names (comma delimited)**: The names of the datastores that store persistent VM disks deployed by <%= vars.ops_manager %>.
-    * **Persistent Datastore Cluster Names (comma delimited)**: The names of the datastore clusters that store persistent VM disks deployed by <%= vars.ops_manager %>. This takes precedence over **Persistent Datastore Names**.
+    * **Persistent Datastore Cluster Names (comma delimited)**: The names of the datastore clusters that store persistent VM disks deployed by <%= vars.ops_manager %>. Clusters whose Storage DRS is turned off will be ignored.
     <p class="note"><strong>Note:</strong> A datastore cluster is a collection of datastores with shared resources and a shared management interface.</p>
     <p class="note warning"><strong>Warning:</strong> When switching from datastores to datastore clusters, you must provide both the original datastore names and the datastore cluster names so that the existing disks can be found.</p>
 1. To configure networking, complete the **vCenter Config** fields described below:
