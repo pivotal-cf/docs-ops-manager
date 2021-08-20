@@ -173,6 +173,17 @@ To update <%= vars.ops_manager %>:
 
 ### <a id="bosh-state"></a> Step 4: Remove BOSH State File
 
+<%= vars.ops_manager %> records the state of the BOSH Director in a BOSH state file.
+<%= vars.ops_manager %> uses this file when performing a BOSH operation or upgrading the BOSH Director.
+For more information, see the [BOSH documentation](https://bosh.io/docs/cli-envs/#deployment-state).
+
+<%= vars.ops_manager %> fails to apply changes if it cannot contact the BOSH Director.
+In most cases this is because the BOSH Director, as described by the BOSH state file, is missing or
+unresponsive.
+
+If this failure is dangerous then it is recommended that you delete the BOSH state file.
+This forces <%= vars.ops_manager %> to create a new BOSH Director.
+
 To remove the BOSH state file:
 
 1. SSH into your <%= vars.ops_manager %> VM. For more information, see [Log Into the <%= vars.ops_manager %> VM with SSH](../ssh-login.html#ssh-by-iaas).
@@ -502,11 +513,11 @@ To return apps to a running state:
 
 ### <a id='odb'></a> Step 16: (Optional) Restore On-Demand Service Instances
 
-If you have on-demand service instances provisioned by an on-demand service broker, 
+If you have on-demand service instances provisioned by an on-demand service broker,
 you can restore them after successfully restoring <%= vars.app_runtime_abbr %>.
 
-<p class="note warning"><strong>Warning:</strong> If the leader is lost and you use an on-demand MySQL service 
-    instance plan that replicates between foundations, purge the lost service instance to avoid accidentally restoring the former 
+<p class="note warning"><strong>Warning:</strong> If the leader is lost and you use an on-demand MySQL service
+    instance plan that replicates between foundations, purge the lost service instance to avoid accidentally restoring the former
     leader. For more information, see <a href="https://docs.pivotal.io/p-mysql/multi-site-trigger-failover.html#clean-up">Delete the Former Leader</a>.
     Delete the former leader before running the <strong>Upgrade All Service Instances</strong> errand for MySQL.
 </p>
