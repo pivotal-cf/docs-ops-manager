@@ -176,6 +176,10 @@ To update <%= vars.ops_manager %>:
 
 ### <a id="bosh-state"></a> Step 4: Remove BOSH State File
 
+<%= vars.ops_manager %> records state about the bosh director in a **BOSH state file**. This is used when <%= vars.ops_manager %> performs a bosh operation, or when it upgrades the bosh director. For more information, see [Deployment State](https://bosh.io/docs/cli-envs/#deployment-state).
+
+If the bosh director is missing, or has become unresponsive, then "apply changes" could fail, because <%= vars.ops_manager %> is attempting to contact the unresponsive bosh director as described by the **BOSH state file**. If this is a danger, then we recommend **deleting the BOSH state file**. This will force <%= vars.ops_manager %> to create a new BOSH director.  
+
 To remove the BOSH state file:
 
 1. SSH into your <%= vars.ops_manager %> VM. For more information, see [Log Into the <%= vars.ops_manager %> VM with SSH](../ssh-login.html#ssh-by-iaas).
