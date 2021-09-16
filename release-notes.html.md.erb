@@ -723,6 +723,12 @@ For information about rotating CAs and certificates using CredHub Maestro, see [
 
 <%= vars.ops_manager %> v2.10 includes the following known issues:
 
+### <a id='recreate-persistent-disks'></a> BOSH Director disk can be recreated unnecessarily
+
+Due to an issue with the bosh cli, the BOSH Director disk can get recreated even though
+the size and properties for it have not changed. This issue does not cause data loss but
+may slow the deployment time while the data is being migrated from the old disk to the new one.
+
 ### <a id='metrics-server-upgrade'></a> Metrics Server Configuration Causes BOSH Director Deployment to Fail During Upgrade
 
 During an upgrade to Ops Manager v2.10, the BOSH Director deployment and
