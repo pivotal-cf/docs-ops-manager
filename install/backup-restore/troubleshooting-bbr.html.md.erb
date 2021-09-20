@@ -157,3 +157,18 @@ There is a problem with your deployment install.
 #### Solution
 
 Contact [Support](https://support.pivotal.io/).
+
+### <a id="metadata-error"></a> Backup Restore VM not enabled
+
+#### Symptom
+
+1. BBR backup is small in size.
+1. BBR backup is missing artifacts for deployed applications on TAS.
+
+#### Explanation
+
+The Backup and Restore VM is not enabled on the Foundation. This VM contains additional required backup scripts that ensure a complete backup of the Foundation.
+
+#### Solution
+
+Ensure that the `backup_restore` VM has been enabled (instances > 0) in the `Resource Config` page of the TAS tile.
