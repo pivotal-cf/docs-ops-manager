@@ -25,7 +25,8 @@ on the Cloud Foundry website.
 
 **Release Date:** September 28, 2021
 
-
+- **[Bug Fix]** BOSH Director disk is no longer (incorrectly) recreated when the size and properties for it have not changed.
+- **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs may not be correctly returned causing the wrong disk to be attached.
 
 <table border="1" class="nice">
   <thead>
@@ -754,6 +755,8 @@ For information about rotating CAs and certificates using CredHub Maestro, see [
 Due to an issue with the bosh cli, the BOSH Director disk can get recreated even though
 the size and properties for it have not changed. This issue does not cause data loss but
 may slow the deployment time while the data is being migrated from the old disk to the new one.
+
+This issue is resolved in Ops Manager v2.10.18.
 
 ### <a id='metrics-server-upgrade'></a> Metrics Server Configuration Causes BOSH Director Deployment to Fail During Upgrade
 
