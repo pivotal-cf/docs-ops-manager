@@ -27,7 +27,7 @@ security policies.
     <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) resource groups for all <%= vars.app_runtime_abbr %> or
     <%= vars.k8s_runtime_abbr %> resources.
 
-### <a id="overview"></a> Diagram
+### <a id="diagram"></a> Diagram
 
 The diagram below illustrates the reference architecture for <%= vars.platform_name %> on Azure using the hub and spoke
 model described above:
@@ -88,7 +88,7 @@ Use Standard Azure Load Balancers (ALBs). To allow Internet ingress, you must cr
 
 During installation, you configure ALBs for <%= vars.app_runtime_abbr %> Gorouters. For more information, see
 [Create Load Balancers](../../azure/deploy-manual.html#lb)
-in _Deploying <%= vars.ops_manager %> on Azure Manually_. When applicable, TCP routers and SSH Proxies also require load balancers.
+in _Deploying <%= vars.ops_manager %> on Azure_. When applicable, TCP routers and SSH Proxies also require load balancers.
 
 The <%= vars.app_runtime_abbr %> system and app domains must resolve to your ALBs and have either a private or a public
 IP address assigned. You set these domains in the **Domains** pane of the <%= vars.app_runtime_abbr %> tile.

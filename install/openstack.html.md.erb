@@ -3,9 +3,9 @@ title: Installing Ops Manager on OpenStack
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Installing " + vars.platform_name + " on OpenStack"  %>
+<% current_page.data.title = "Installing " + vars.ops_manager + " on OpenStack"  %>
 
-This guide describes how to install <%= vars.platform_name %> on OpenStack with <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
+This guide describes how to install <%= vars.ops_manager %> on OpenStack with <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
 
 
 ## <a id="overview"></a> Overview
@@ -24,30 +24,29 @@ These documents provide a general reference for OpenStack service credential man
 
 ## <a id="requirements"></a> Requirements
 
-This section describes the requirements for installing <%= vars.platform_name %> on OpenStack, including general requirements for installing <%= vars.platform_name %> with <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> as well as OpenStack requirements.
+This section describes the requirements for installing <%= vars.ops_manager %> on OpenStack, including general requirements for installing <%= vars.ops_manager %> with <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> as well as OpenStack requirements.
 
-<p class="note"><strong>Note:</strong> You can install <%= vars.platform_name %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime. The <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime is not supported for OpenStack. For more information about <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/concepts/"><%= vars.app_runtime_abbr %> Concepts</a>. For more information about <%= vars.k8s_runtime_abbr %>, see <a href="https://docs.pivotal.io/pks/index.html"><%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)</a>.</p>
+<p class="note"><strong>Note:</strong> You can install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime. The <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime is not supported for OpenStack. For more information about <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/concepts/"><%= vars.app_runtime_abbr %> Concepts</a>. For more information about <%= vars.k8s_runtime_abbr %>, see <a href="https://docs.pivotal.io/pks/index.html"><%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)</a>.</p>
 
 ### <a id="general"></a> General Resource Requirements
 
-<%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
-<%= partial "/pcf/core/2-10/requirements" %>
+For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-11/operating/requirements.html).
 
 ### <a id="openstack"></a> OpenStack Requirements
 
-The following are OpenStack requirements for deploying <%= vars.platform_name %>:
+The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
 
-* <%= vars.platform_name %> is supported on the OpenStack Ocata, Pike, Queens, Rocky, and Stein releases. OpenStack is a collection of inter-operable components and requires general OpenStack expertise to troubleshoot issues that may occur when installing <%= vars.platform_name %> on particular releases and distributions. To verify that your OpenStack platform is compatible with <%= vars.platform_name %>, use the OpenStack Validator tool. To access the OpenStack Validator tool, see [CF OpenStack Validator](https://github.com/cloudfoundry-incubator/cf-openstack-validator) on GitHub.
+* <%= vars.ops_manager %> is supported on the OpenStack Ocata, Pike, Queens, Rocky, and Stein releases. OpenStack is a collection of inter-operable components and requires general OpenStack expertise to troubleshoot issues that may occur when installing <%= vars.ops_manager %> on particular releases and distributions. To verify that your OpenStack platform is compatible with <%= vars.ops_manager %>, use the OpenStack Validator tool. To access the OpenStack Validator tool, see [CF OpenStack Validator](https://github.com/cloudfoundry-incubator/cf-openstack-validator) on GitHub.
 
-* <%= vars.company_name %> recommends granting complete access to the OpenStack logs to the operator managing the <%= vars.platform_name %> installation process.
+* <%= vars.company_name %> recommends granting complete access to the OpenStack logs to the operator managing the <%= vars.ops_manager %> installation process.
 
-* For OpenStack accounts for <%= vars.platform_name %>, <%= vars.company_name %> recommends following the principle of least privilege by scoping privileges to the most restrictive permissions possible for a given role.
+* For OpenStack accounts for <%= vars.ops_manager %>, <%= vars.company_name %> recommends following the principle of least privilege by scoping privileges to the most restrictive permissions possible for a given role.
 
 * You must have a dedicated OpenStack project, formerly known as an OpenStack tenant.
 
 * You must have Keystone access to the dedicated OpenStack project, including the following:
   * Auth URL
-  * Username and password. The `PrimaryProject` for the user must be the project you want to use to deploy <%= vars.platform_name %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
+  * Username and password. The `PrimaryProject` for the user must be the project you want to use to deploy <%= vars.ops_manager %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
   * Project name
   * Region (with multiple availability zones if you require high availability)
   * SSL certificate for your wildcard domain (see below)
@@ -71,10 +70,10 @@ The following are OpenStack requirements for deploying <%= vars.platform_name %>
   * 1&nbsp;TB of storage
   * Nova or Neutron networking with floating IP support
 
-      <p class="note"><strong>Note:</strong> By default, <%= vars.app_runtime_abbr %> deploys the number of VM instances required to run a highly available configuration of <%= vars.platform_name %>. If you are deploying a test or sandbox <%= vars.platform_name %> that does not require HA, then you can scale down the number of instances in your deployment. For information about the number of instances required to run a minimal, non-HA <%= vars.platform_name %> deployment, see [Scaling <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html).</p>
+      <p class="note"><strong>Note:</strong> By default, <%= vars.app_runtime_abbr %> deploys the number of VM instances required to run a highly available configuration of <%= vars.ops_manager %>. If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require HA, then you can scale down the number of instances in your deployment. For information about the number of instances required to run a minimal, non-HA <%= vars.ops_manager %> deployment, see [Scaling <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html).</p>
 
 * The following are requirements for the OpenStack Cinder back end:
-  * <%= vars.platform_name %> requires RAW root disk images. The Cinder back end for your OpenStack project must support RAW.
+  * <%= vars.ops_manager %> requires RAW root disk images. The Cinder back end for your OpenStack project must support RAW.
   * <%= vars.company_name %> recommends that you use a Cinder back end that supports snapshots. This is required for some BOSH functionalities.
   * <%= vars.company_name %> recommends enabling your Cinder back end to delete block storage asynchronously. If this is not possible, it must be able to delete multiple 20&nbsp;GB volumes within 300 seconds.
 
@@ -86,9 +85,9 @@ The following are OpenStack requirements for deploying <%= vars.platform_name %>
     <p class='note'><strong>Note:</strong> If you are using IPsec, your resource usage will increase by approximately 36&nbsp;bytes. For details, including information about setting correct MTU values, see <a href="https://docs.pivotal.io/addon-ipsec/installing.html"> Installing IPsec</a> in the IPsec documentation.</p>
 
 
-## <a id='outputs'></a> Install <%= vars.platform_name %> on OpenStack with <%= vars.app_runtime_abbr %>
+## <a id='outputs'></a> Install <%= vars.ops_manager %> on OpenStack with <%= vars.app_runtime_abbr %>
 
-To install <%= vars.platform_name %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime, do the following:
+To install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime, do the following:
 
 1. Deploy <%= vars.ops_manager %>. See [Deploying <%= vars.ops_manager %> on OpenStack](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/openstack/setup.html).
 

@@ -21,6 +21,10 @@ in _<%= vars.ops_manager %> v2.10 Release Notes_.
 
 Before you jump upgrade to <%= vars.ops_manager %> v2.10.2:
 
+* If you are on <%= vars.ops_manager %> v2.10.8 or earlier, you must complete any 
+in-progress CA rotation before you can jump upgrade. Failure to complete the CA 
+rotation results in the inability to **Apply Changes** due to safety violations.
+
 * If you are on <%= vars.ops_manager %> v2.3 or earlier, you must upgrade to
 v2.4 before you can jump upgrade to v2.10.2.
 
@@ -35,6 +39,18 @@ an upgrade path for your product tiles, see the [Upgrade Planner](https://upgrad
 * If you are using vSphere with NSX-T, you must have NSX-T v2.3 or later installed.
 
 * You have installed Trusty stemcell 3541 or later.
+
+## <a id="bosh-dns-migration"></a> BOSH DNS Certificates Regeneration
+
+In <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field.
+
+When you upgrade to v2.10.9 or later, the BOSH DNS leaf certificates are automatically regenerated to include the SAN field on the next **Apply Changes**.
+
+To allow DNS certificate regeneration and avoid communication issues between system commonents:
+
+1. Run the **Upgrade service instances** errand on all service tiles.
+
+1. **Apply Changes** to all tiles.
 
 
 ## <a id="jump-upgrade"></a> Jump Upgrade
@@ -62,6 +78,11 @@ v2.4 through v2.8 and how to address them before upgrading:
 		<th>Upgrading From</th>
 		<th width="45%">Breaking Change</th>
 		<th>Action Before Upgrading</th>
+	</tr>
+	<tr>
+		<td>Any</td>
+		<td>For <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. If you do not distribute the BOSH DNS leaf certificates to all VMs, you can experience downtime caused by communication issues between system components.</td>
+		<td>When upgrading to <%= vars.ops_manager %> v2.10.9 or later, run the <strong>Upgrade service instances</strong> errand on all service tiles and <strong>Apply Changes</strong> to all tiles. For more information, see <a href="#bosh-dns-migration">BOSH DNS Certificates Regeneration</a> above</td>
 	</tr>
 	<tr>
 		<td>v2.4</td>

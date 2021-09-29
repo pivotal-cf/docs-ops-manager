@@ -5,7 +5,7 @@ owner: Ops Manager
 
 <% current_page.data.title = vars.platform_name + " for AWS Policy Document" %>
 
-Use this policy document to complete _Step 3: Create an IAM User for <%= vars.platform_name %>_ in [Preparing to Deploy Ops Manager on AWS Manually](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/aws/prepare-env-manual.html#create-iam).
+Use this policy document to complete _Create an IAM User for <%= vars.platform_name %>_ in [Preparing to Deploy Ops Manager on AWS](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/aws/prepare-env-manual.html#create-iam).
 
 
 ## <a id="policy-code"></a> The Policy Document Base Code
@@ -122,6 +122,36 @@ Consult the table below to determine what additional policies you may want to in
     <tr>
         <th>I need to...</th>
         <th>So I paste this code.</th>
+    </tr>
+    <tr>
+        <td>Use an AWS Instance Profile instead of AWS Keys.</td>
+        <td><pre class="code" style="max-height: 7em; max-width:30em; overflow: auto">
+{
+  "Sid": "AllowToGetInfoAboutCurrentInstanceProfile",
+  "Effect": "Allow",
+  "Action": [
+    "iam:GetInstanceProfile"
+  ],
+  "Resource": [
+    "IAM-INSTANCE-ARN-PROFILE"
+  ]
+},
+{
+  "Sid": "AllowToCreateInstanceWithCurrentInstanceProfile",
+  "Effect": "Allow",
+  "Action": [
+    "iam:PassRole"
+  ],
+  "Resource": [
+    "IAM-OPS-MANAGER-ARN-ROLE"
+  ]
+},</pre>
+<p>Where:</p>
+<ul>
+    <li><code>IAM-INSTANCE-ARN-PROFILE</code> is the IAM instance ARN profile that you configure in AWS.</li>
+    <li><code>IAM-OPS-MANAGER-ARN-ROLE</code> is the IAM Ops Manager ARN role that you configure in AWS.</li>
+</ul>
+        </td>
     </tr>
     <tr>
         <td>Encrypt EBS volumes with AWS Key Management Service (KMS).</td>

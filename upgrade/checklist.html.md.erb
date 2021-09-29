@@ -5,7 +5,6 @@ owner: Ops Manager
 
 This topic serves as a checklist for preparing to upgrade <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) from v2.9 to <%= vars.v_major_version %>.
 
-
 ## <a id='overview'></a> Overview
 
 This topic contains important preparation steps that you must follow before beginning your upgrade. Failure to follow these instructions may jeopardize your existing deployment data and cause the upgrade to fail.
@@ -16,6 +15,7 @@ After completing the steps in this topic, you can continue to [Upgrading <%= var
 
 <p class='note warning'><strong>Warning:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.platform_name %></em>.</p>
 
+<p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
 
 ## <a id="back-up-your-pcf-deployment"></a> Back Up Your <%= vars.platform_name %> Deployment
 
@@ -44,7 +44,7 @@ Review each of the following links to understand the changes in the new release,
 	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/release-notes/runtime-rn.html#breaking-changes)
 
 * **KPI Changes**
-	* [KPI Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/monitoring/index.html#new)
+	* [KPI Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/index.html#new)
 
 * **Diego Network Communications**
 	* [Diego Network Communications](../security/networking/diego-network-paths.html)
@@ -239,7 +239,7 @@ If needed, adjust the maximum number of Diego Cells that the platform can upgrad
 
 The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4%. This setting is configured in the BOSH manifest's Diego Cell definition. For more information, see [Prevent Overload](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configuring.html#limitations-considerations) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
-For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="storage"></a> Review File Storage IOPS and Other Upgrade Limiting Factors
 

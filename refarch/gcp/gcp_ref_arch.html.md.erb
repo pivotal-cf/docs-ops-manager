@@ -137,11 +137,9 @@ This section describes the possible network layouts for <%= vars.app_runtime_abb
 At a high level, there are currently two possible ways of granting public Internet access to <%= vars.app_runtime_abbr %> as described by the reference architecture:
 
 * NAT provides connectivity from <%= vars.app_runtime_abbr %> internals to the public Internet.
-	* The procedures in [Installing <%= vars.platform_name %> on GCP Manually](../../install/gcp-manual.html) use this method.
+	* The procedures in [Installing <%= vars.platform_name %> on GCP](../../install/gcp-manual.html) use this method.
 
 * Every VM receives its own public IP address (no NAT).
-	* The procedures in [Installing <%= vars.platform_name %> on GCP Using Terraform](../../install/gcp-terraform.html) use this method.
-
 
 #### <a id="no_nat"></a> Public IP Addresses Solution
 
@@ -181,4 +179,4 @@ TLS is terminated for HTTPS on the HTTP load balancer and is terminated for WebS
 
 ### <a id='icmp'></a> ICMP
 
-GCP routers do not respond to ICMP. <%= vars.company_name %> recommends disabling ICMP checks in your BOSH Director network configuration. For more information, see [Step 5: Create Networks Page](../../gcp/config-manual.html#network) in _Configuring BOSH Director on GCP Manually_.
+GCP routers do not respond to ICMP. <%= vars.company_name %> recommends disabling ICMP checks in your BOSH Director network configuration. For more information, see [Step 5: Create Networks Page](../../gcp/config-manual.html#network) in _Configuring BOSH Director on GCP_.

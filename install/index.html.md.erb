@@ -1,102 +1,94 @@
 ---
-breadcrumb: PCF Documentation
 title: Installation Overview
 owner: PCF Documentation
+tiles:
+- name: Part 1&colon; Prepare Your Ops Manager Deployment
+  desc: For more information about planning your deployment by IaaS, see the following topics.
+  links:
+  - name: Preparing to Deploy Ops Manager on AWS
+    url: ../aws/prepare-env-manual.html
+  - name: Preparing to Deploy Ops Manager on Azure
+    url: ../azure/prepare-env-manual.html
+  - name: Preparing to Deploy Ops Manager on GCP
+    url: ../gcp/prepare-env-manual.html
+  - name: Installing Ops Manager on OpenStack
+    url: ./openstack.html
+  - name: Installing Ops Manager on vSphere
+    url: ./vsphere.html
+- name: Part 2&colon; Deploy Ops Manager
+  desc: For more information about deploying by IaaS with Ops Manager, see the following topics.
+  links:
+  - name: Deploying Ops Manager on AWS
+    url: ../aws/deploy-manual.html
+  - name: Deploying Ops Manager on Azure
+    url: ../azure/deploy-manual.html
+  - name: Deploying Ops Manager on GCP
+    url: ../openstack/setup.html
+  - name: Deploying Ops Manager on OpenStack
+    url: ../openstack/setup.html
+  - name: Deploying Ops Manager on vSphere
+    url: ../vsphere/deploy.html
+- name: Part 3&colon; Configure Ops Manager
+  desc: For more information about configuring the BOSH Director tile by IaaS, see the following topics.
+  links:
+  - name: Configuring BOSH Director on AWS
+    url: ../aws/config-manual.html
+  - name: Configuring BOSH Director on Azure
+    url: ../azure/config-manual.html
+  - name: Configuring BOSH Director on GCP
+    url: ../gcp/config-manual.html
+  - name: Configuring BOSH Director on OpenStack
+    url: ../openstack/config.html
+  - name: Configuring BOSH Director on vSphere
+    url: ../vsphere/config.html
+- name: Part 4&colon; Install Runtimes
+  desc: For more information about runtimes, see the following documentation sets.
+  links:
+  - name: VMware Tanzu Application Service for VMs
+    url: https://docs.pivotal.io/application-service/operating/configure-pas.html
+  - name: VMware Tanzu Kubernetes Grid Integrated Edition
+    url: https://docs.pivotal.io/tkgi/index.html
+  - name: Isolation Segment
+    url: https://docs.pivotal.io/application-service/operating/installing-pcf-is.html
+  - name: VMware Tanzu Application Service for VMs [Windows]
+    url: https://docs.pivotal.io/application-service-windows/index.html
+  - name: Small Footprint TAS for VMs
+    url: https://docs.pivotal.io/application-service/2-11/operating/small-footprint.html
+- name: Part 5&colon; Install Services
+  desc: For more information about various services, see the documentation sets listed on the Tanzu Docs homepage.
+  links: 
+  - name: Runtimes and Add-Ons
+    url: https://docs.pivotal.io/#add-ons
 ---
 
 This topic provides an overview of how to install and configure <%= vars.ops_manager %> and app runtimes.
 
+## <a id="overview"></a> About <%= vars.ops_manager %> Installation
 
-## <a id='sequence'></a> Installation Sequence
+<%= vars.ops_manager %> installation is a process that involves choosing an IaaS, building the infrastructure, deploying <%= vars.ops_manager %> with a VM image, configuring <%= vars.ops_manager %> settings, and installing runtimes and services on <%= vars.ops_manager %>.
+
+The <%= vars.ops_manager %> installation process takes place in the following parts:
+
+- **Prepare Your <%= vars.ops_manager %> Deployment:** To prepare your deployment, you must create the required components within your IaaS, which can include load balancers, blobstores, databases, TCP routers, DNS records, and more.
+
+- **Deploy <%= vars.ops_manager %>:** To deploy <%= vars.ops_manager %>, you must download <%= vars.ops_manager %> from <%= vars.product_network %>, create a VM image, create a VM instance, and configure the VM instance to run <%= vars.ops_manager %>. 
+
+- **Configure <%= vars.ops_manager %>:** To configure <%= vars.ops_manager %>, you must log into the <%= vars.ops_manager %> interface and configure settings.
+
+- **Install Runtimes:** To install runtime tiles, you must download the tile from <%= vars.product_network %> and follow that runtime's procedure to configure and deploy the tile.
+
+- **Install Services:** To install service tiles, you must download the tile from <%= vars.product_network %> and follow that service tile's procedure to configure and deploy the tile.
+
+After you successfully install and configure <%= vars.ops_manager %>, you can learn about how to run and operate <%= vars.ops_manager %> as an operator. For more information, see [Operator Guide](../opsguide/index.html).
+
+## <a id='sequence'></a> Install <%= vars.ops_manager %>
 
 <%= vars.ops_manager %>, app runtimes, and associated products can run on multiple IaaSes.
+
 Planning and installing <%= vars.ops_manager %> and app runtimes means building layers from the bottom up,
-starting with the details of your IaaS and ending with "Day 2"
-configurations that you perform on an installed and running deployment.
-
-The typical planning and installation process is:
-
-1. **Plan**
-  - Review the requirements for your IaaS:
-      - [AWS](./aws.html)
-      - [Azure](./azure.html)
-      - [GCP](./gcp.html)
-      - [OpenStack](./openstack.html)
-      - [vSphere](./vsphere.html)
-  - See the Reference Architecture for your IaaS.
-  - Assess your requirements, including capacity, availability, container support, host OS, resource isolation, and geographical distribution. Discuss with your VMware contact.
-
-1. **Deploy BOSH and <%= vars.ops_manager %>**
-  - [BOSH](https://bosh.io) is an open-source tool that lets you run software systems in the cloud.
-      - BOSH and its IaaS-specific Cloud Provider Interfaces (CPIs) are what enable <%= vars.platform_name %> to run on multiple IaaSes.
-      - See [Deploying with BOSH](#bosh) for a description of how BOSH deploys cloud software.
-   - [<%= vars.ops_manager %>](./ops-man.html) is a graphical dashboard that deploys with BOSH. <%= vars.ops_manager %> works with the BOSH Director to manage, configure, and upgrade products such as <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), and services and partner products.
-      - <%= vars.ops_manager %> represents products as _tiles_ with multiple configuration panes that let you input or select configuration values needed for the product.
-      - <%= vars.ops_manager %> generates BOSH manifests containing the user-supplied configuration values, and sends them to the BOSH Director.
-   - A single procedure deploys both BOSH and <%= vars.ops_manager %>.
-
-1. (Optional) **Deploy IPsec BOSH Add-on**
-  - [IPsec](https://docs.pivotal.io/addon-ipsec/index.html) encrypts IP data to secure network traffic.
-  - If IPsec is required for security compliance, deploy it before you install runtimes.
-  - IPsec is deployed with BOSH rather than as an <%= vars.ops_manager %> tile.
-
-1. **Install Runtimes**
-  - [<%= vars.app_runtime_full %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html) (<%= vars.app_runtime_abbr %>) lets developers develop and manage cloud-native apps and software services.
-      - <%= vars.app_runtime_abbr %> is based on the Cloud Foundry Foundation's open-source Application Runtime (formerly Elastic Runtime) project.
-  - [<%= vars.k8s_runtime_full %>](https://docs.pivotal.io/tkgi/index.html) (<%= vars.k8s_runtime_abbr %>) uses BOSH to run and manage Kubernetes container clusters.
-      - <%= vars.k8s_runtime_abbr %> is based on the Cloud Foundry Foundation's open-source Container Runtime (formerly Kubo) project.
-  - [<%= vars.segment_runtime_full %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/installing-pcf-is.html) lets a single <%= vars.app_runtime_abbr %> deployment run apps from separate, isolated pools of computing, routing, and logging resources.
-      - Operators replicate and configure an <%= vars.segment_runtime_full %> tile for each new resource pool they want to create.
-      - You must install <%= vars.app_runtime_abbr %> before you can install <%= vars.segment_runtime_full %>.
-  - [<%= vars.windows_runtime_full %>](https://docs.pivotal.io/application-service-windows/<%= vars.current_major_version.sub('.','-') %>/index.html) (<%= vars.windows_runtime_abbr %>) enables <%= vars.app_runtime_abbr %> to manage Windows Server 2016 (1709) stemcells hosting .NET apps, and can also be replicated to create multiple isolated resource pools.
-      - Operators replicate and configure a <%= vars.windows_runtime_abbr %> tile for each new resource pool they want to create.
-      - You must install <%= vars.app_runtime_abbr %> before you can install <%= vars.windows_runtime_abbr %>.
-  - [Small Footprint <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/small-footprint.html) is an alternative to <%= vars.app_runtime_abbr %> that uses far fewer VMs than <%= vars.app_runtime_abbr %> but has limitations.
-
-1. **Day 2 Configurations**
-  - Day 2 configurations set up internal operations and external integrations on a running deployment.
-      - Examples include front-end configuration, user accounts, logging and monitoring, internal security, and container and stemcell images.
-
-1. **Install Services**
-  - Install software services for developers to use in their apps.
-      - Services include the databases, caches, and message brokers that stateless cloud apps rely on to save information.
-      - Installing and managing software services on <%= vars.platform_name %> is an ongoing process, and is covered in the [<%= vars.platform_name %> Operator Guide](../opsguide/index.html).
+starting with the details of your IaaS and progressing to configurations within the <%= vars.ops_manager %> interface.
 
 
-## <a id='bosh'></a> Deploying with BOSH
+The following sections list how to prepare, install, and deploy <%= vars.ops_manager %> by IaaS.
 
-The following describes how you can use BOSH to run software in the cloud:
-
-1. To use BOSH, you create a _manifest_ `.yml` file that specifies your software system's component processes, the VMs they run on, how they communicate, and anything else they need.
-
-1. The BOSH command-line interface (CLI) or API sends the manifest to the _BOSH Director_, BOSH's executive process.
-
-1. The BOSH Director provisions what it needs from the IaaS, _deploys_ your software to run in the cloud, and heals automatically when VMs go down.
-
-1. BOSH CLI and API commands let you control BOSH-managed processes and allocate or release IaaS resources.
-
-* [Configuring BOSH Director on OpenStack](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/openstack/config.html)
-* [Using Your Own Load Balancer](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/custom-load-balancer.html)
-* [<%= vars.app_runtime_abbr %> User Types](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/user-types.html)
-* [Creating and Managing <%= vars.ops_manager %> User Accounts](./opsman-users.html)
-* [Creating New <%= vars.app_runtime_abbr %> User Accounts](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/creating-account.html)
-* [Logging In to Apps Manager](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/console-login.html)
-* [Adding Existing SAML or LDAP Users to an <%= vars.platform_name %> Deployment](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/external-user-management.html)
-* [Deleting an AWS Installation from the Console](./deleting-aws-install.html)
-* [Modifying Your <%= vars.ops_manager %> Installation and Product Template Files](./modify-ops-man.html)
-* [Managing Errands in <%= vars.ops_manager %>](./managing_errands.html)
-
-
-## <a id='backing-up'></a> Backing Up
-
-* [Backing Up and Restoring Deployments](./backup-restore/index.html)
-
-
-## <a id='monitoring-logging-troubleshooting'></a> Monitoring, Logging, and Troubleshooting
-
-* [Monitoring VMs in <%= vars.platform_name %>](./monitoring.html)
-* [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/diagnostics.html)
-* [Troubleshooting Deployment Problems](./troubleshooting.html)
-* [Troubleshooting <%= vars.ops_manager %> for vSphere](./troubleshooting-vsphere.html)
-* [Recovering from MySQL Cluster Downtime](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/mysql/bootstrap-mysql.html)
-* [Advanced Troubleshooting with the BOSH CLI](./trouble-advanced.html)
+<%= partial "../common/tiles" %>

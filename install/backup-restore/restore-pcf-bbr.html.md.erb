@@ -89,10 +89,8 @@ If you re-create your IaaS resources, you must also add those resources to <%= v
 ### <a id='deploy-import'></a> Step 2: Deploy <%= vars.ops_manager %> and Import Installation Settings
 
 1. Follow the procedures for your IaaS to deploy <%= vars.ops_manager %>:
-    * **AWS:**
-        * If you configured AWS manually, see [Deploying <%= vars.ops_manager %> on AWS Manually](../../aws/deploy-manual.html).
-        * If you used Terraform to install <%= vars.platform_name %> on AWS, see [Installing <%= vars.platform_name %> on AWS Using Terraform](../aws-terraform.html).
-    * **GCP:** See [Deploying <%= vars.ops_manager %> on GCP Manually](../../gcp/deploy-manual.html).
+    * **AWS:** See [Deploying <%= vars.ops_manager %> on AWS](../../aws/deploy-manual.html).
+    * **GCP:** See [Deploying <%= vars.ops_manager %> on GCP](../../gcp/deploy-manual.html).
     * **OpenStack:** See _Step 4: Create <%= vars.ops_manager %> Image_ through _Step 9: Create a DNS Entry_ in [Deploying <%= vars.ops_manager %> on OpenStack](../../openstack/setup.html#create-om-image).
     * **vSphere:** See [Deploying <%= vars.ops_manager %> on vSphere](../../vsphere/deploy.html).
 
@@ -105,15 +103,16 @@ If you re-create your IaaS resources, you must also add those resources to <%= v
 
         1. In the import panel:
           * Enter the **Decryption Passphrase** in use when you exported the installation settings from <%= vars.ops_manager %>.
-          * Click **Choose File** and browse to the installation ZIP file that you exported in [Export Installation Settings](./backup-pcf-bbr.html#export) in _Backing Up Deployments with BBR_.
+          * Click **Browse...** and browse to the installation ZIP file that you exported in [Export Installation Settings](./backup-pcf-bbr.html#export) in _Backing Up Deployments with BBR_.
 
-            <%= image_tag("../images/upgrading/decryption_passphrase.png", :width => "400", :alt => "Import Existing Installation UI") %>
+            <%= image_tag("../images/upgrading/decryption_passphrase.png", :width => "400", :alt => "Screenshot of the Import Existing Installation UI that shows the
+            Decryption Passphrase field, the 'Browse...' button, and the 'Import' button.") %>
 
         1. Click **Import**.
             <p class="note"><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process, and might appear to hang. The import process takes at least 10 minutes, and takes longer the more tiles that were present on the backed-up <%= vars.ops_manager %>.</p>
         1. A **Successfully imported installation** message appears upon completion.
 
-            <%= image_tag("../images/upgrading/success.png", :alt => "Success message") %>
+            <%= image_tag("../images/upgrading/success.png", :alt => "Screenshot of the success message") %>
 
     1. Using the <%= vars.ops_manager %> API:
         1. Run:
@@ -177,9 +176,20 @@ To update <%= vars.ops_manager %>:
 
 ### <a id="bosh-state"></a> Step 4: Remove BOSH State File
 
+<%= vars.ops_manager %> records the state of the BOSH Director in a BOSH state file.
+<%= vars.ops_manager %> uses this file when performing a BOSH operation or upgrading the BOSH Director.
+For more information, see the [BOSH documentation](https://bosh.io/docs/cli-envs/#deployment-state).
+
+<%= vars.ops_manager %> fails to apply changes if it cannot contact the BOSH Director.
+In most cases this is because the BOSH Director, as described by the BOSH state file, is missing or
+unresponsive.
+
+If this failure is dangerous then it is recommended that you delete the BOSH state file.
+This forces <%= vars.ops_manager %> to create a new BOSH Director.
+
 To remove the BOSH state file:
 
-1. SSH into your <%= vars.ops_manager %> VM. For more information, see [SSH Into <%= vars.ops_manager %>](../trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI_.
+1. SSH into your <%= vars.ops_manager %> VM. For more information, see [Log Into the <%= vars.ops_manager %> VM with SSH](../ssh-login.html#ssh-by-iaas).
 
 1. To delete the `/var/tempest/workspaces/default/deployments/bosh-state.json` file, go to the <%= vars.ops_manager %> VM and run:
 
@@ -228,7 +238,7 @@ To retrieve the IP address of your BOSH Director from the BOSH Director tile:
 
 To restore BOSH Director:
 
-1. SSH into your jumpbox. If you are using the <%= vars.ops_manager %> VM as your jumpbox, see [Log In to the <%= vars.ops_manager %> VM with SSH](../trouble-advanced.html#ssh) in _Advanced Troubleshooting with the BOSH CLI_ for procedures on how to use SSH to connect to the <%= vars.ops_manager %> VM.
+1. SSH into your jumpbox. If you are using the <%= vars.ops_manager %> VM as your jumpbox, see [Log Into the <%= vars.ops_manager %> VM with SSH](../ssh-login.html#ssh-by-iaas) for procedures on how to use SSH to connect to the <%= vars.ops_manager %> VM.
 
 1. Ensure the BOSH Director backup artifact is in the directory you from which you run BBR.
 
@@ -496,11 +506,11 @@ To return apps to a running state:
 
 ### <a id='odb'></a> Step 16: (Optional) Restore On-Demand Service Instances
 
-If you have on-demand service instances provisioned by an on-demand service broker, 
+If you have on-demand service instances provisioned by an on-demand service broker,
 you can restore them after successfully restoring <%= vars.app_runtime_abbr %>.
 
-<p class="note warning"><strong>Warning:</strong> If the leader is lost and you use an on-demand MySQL service 
-    instance plan that replicates between foundations, purge the lost service instance to avoid accidentally restoring the former 
+<p class="note warning"><strong>Warning:</strong> If the leader is lost and you use an on-demand MySQL service
+    instance plan that replicates between foundations, purge the lost service instance to avoid accidentally restoring the former
     leader. For more information, see <a href="https://docs.pivotal.io/p-mysql/multi-site-trigger-failover.html#clean-up">Delete the Former Leader</a>.
     Delete the former leader before running the <strong>Upgrade All Service Instances</strong> errand for MySQL.
 </p>

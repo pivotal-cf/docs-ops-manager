@@ -12,9 +12,9 @@ You can use RBAC to manage which operators in your organization can make deploym
 
 For information about configuring <%= vars.ops_manager %> to use internal authentication or SAML authentication, see the BOSH Manager configuration topic for your IaaS:
 
-* [Configuring BOSH Director on AWS](../aws/config-terraform.html#access-om)
+* [Configuring BOSH Director on AWS](../aws/config-manual.html#access-om)
 
-* [Configuring BOSH Director on Azure Manually](../azure/config-manual.html#access-om)
+* [Configuring BOSH Director on Azure](../azure/config-manual.html#access-om)
 
 * [Configuring BOSH Director on GCP](../gcp/config-manual.html#access-om)
 
@@ -71,7 +71,7 @@ If your organization has operators who are devoted to managing certain services 
 
 If you upgrade from an older <%= vars.ops_manager %> instance, you must enable RBAC and assign roles to users before they can access <%= vars.ops_manager %>. If you do not assign any roles to a user, they cannot log in to <%= vars.ops_manager %>.
 
-<p class="note warning"><strong>Warning:</strong> Do not assign roles before you enable RBAC.</p>
+<p class="note warning"><strong>Warning:</strong> Do not assign roles before you enable RBAC. Changing UAA authentication settings causes the roles to delete.</p>
 
 ### <a id="enable-internal"></a> Enable RBAC with Internal Authentication
 
