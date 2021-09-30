@@ -7,12 +7,26 @@ This topic describes how to set values to override the duration for certificate 
 
 ## <a id='overview'></a> Overview
 
-By default, <%= vars.ops_manager %> and CredHub generate certificates using the duration set by the tile and certificate authors. This duration can vary from certificate to certificate.
-In <%= vars.ops_manager %> v2.10.17 and later, you can set values to override the duration for CA and leaf certificates.
-This gives you the option to increase certificate duration and reduce the frequency of required certificate rotations.
+By default, certificates that <%= vars.ops_manager %> and CredHub generate use the duration set by the tile and certificate authors. These durations can vary from certificate to certificate.
+In <%= vars.ops_manager %> v2.10.17 and later, you can set values to override the durations for CA and leaf certificates.
+When you apply an override, you can increase certificate duration and reduce the frequency of required certificate rotations.
 
-If you enable this feature and you configure a duration that is shorter than the minimum set by the tile and certificate author, the certificate is generated with the duration you set.
-If you configure a duration that is longer than the minimum setting, the certificate is generated with the longer duration.
+The following table describes what happens when you enable this feature:
+
+<table>
+  <tr>
+    <th>If you...</th>
+    <th>then...</th>
+  </tr>
+  <tr>
+    <td>configure a duration that is shorter than the default</td>
+    <td>the certificate is generated using the default duration.</td>
+  </tr>
+  <tr>
+    <td>configure a duration that is longer than the default</td>
+    <td>the certificate is generated using the duration you set.</td>
+  </tr>
+</table>
 
 For example, <%= vars.app_runtime_first %> might create a leaf certificate with a duration of 365 days.
 If you configure the minimum leaf duration to be 730 days, then when <%= vars.app_runtime_abbr %> is first deployed or regenerated, the leaf certificates are created using a duration of 730 days instead.
