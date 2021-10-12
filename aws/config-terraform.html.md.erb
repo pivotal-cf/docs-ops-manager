@@ -44,12 +44,12 @@ To complete the procedures in this topic, you must have access to the output fro
     * **SSH Private Key**: Run `terraform output` to view the value of `ops_manager_ssh_private_key`	and enter it into this field. `ops_manager_ssh_private_key` is a `sensitive` value and does not display when you run `terraform apply`.
     * **Region**: Input the AWS region where you deployed <%= vars.ops_manager %>.
     * **AWS EBS disk type**: Select the type of EBS volume for BOSH-deployed VMs to use.
-    <p class="note warning"><strong>Warning:</strong> Changing this value will result in BOSH recreating all VMs.</p>
+    <p class="note warning"><strong>Warning:</strong> If you change this value, BOSH re-creates all VMs when you apply changes.</p>
     * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption
       on persistent disks of all BOSH-deployed VMs, except
       for the <%= vars.ops_manager %> VM and BOSH Director VM. For more information about using Elastic Block Store (EBS) encryption, see [Configuring Amazon EBS Encryption](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/cloudform-om-ebs-config.html).
       <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) are not encrypted.</p>
-      * **Custom Encryption Key (Optional)** Once you enable EBS encryption, you may want to specify a custom Key Management Service (KMS) encryption key. If you don't enter a value, your custom encryption key will default to the account key. For more information, see [Configuring Amazon EBS Encryption](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/cloudform-om-ebs-config.html).
+      * **Custom Encryption Key (Optional)** After you enable EBS encryption, you might want to specify a custom Key Management Service (KMS) encryption key. If you don't enter a value, your custom encryption key defaults to the account key. For more information, see [Configuring Amazon EBS Encryption](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/cloudform-om-ebs-config.html).
 
 1. Click **Save**.
 
