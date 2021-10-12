@@ -186,10 +186,10 @@ To rotate a single CA and its leaf certificates:
     ```
     maestro regenerate ca --name "CA-NAME"
     ```
-    Where `CA-NAME` is the name of the CA you want to rotate. The CA name you provide must 
-    be the full path to the credential. <p class="note"><strong>Note:</strong> 
-    For <%= vars.app_runtime_abbr %> v2.10 and later, 
-    <code>maestro update-transitional latest</code> is not supported. For more information, see 
+    Where `CA-NAME` is the name of the CA you want to rotate. The CA name you provide must
+    be the full path to the credential. <p class="note"><strong>Note:</strong>
+    For <%= vars.app_runtime_abbr %> v2.10 and later,
+    <code>maestro update-transitional latest</code> is not supported. For more information, see
     [Breaking Changes](../../release-notes.html#credhub-regenerate).</p>
 
 1. Redeploy all deployments that use the CA.
@@ -220,6 +220,8 @@ To rotate a single CA and its leaf certificates:
 1. Redeploy all deployments that use the CA.
 
 ### <a id='services-rotation'></a> Rotate the Services TLS CA and Its Leaf Certificates
+
+<%= partial 'minimum-duration' %>
 
 This section describes the procedure for rotating the Services TLS CA and its leaf certificates.
 
