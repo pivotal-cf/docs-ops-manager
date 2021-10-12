@@ -53,7 +53,7 @@ on the Cloud Foundry website.
 
 **Release Date:** September 28, 2021
 
-- **[Bug Fix]** BOSH Director disk is no longer (incorrectly) recreated when the size and properties for it have not changed.
+- **[Bug Fix]** BOSH Director disk is no longer re-created when its size and properties have not changed. See [BOSH Director Disk Is Re-Created Unnecessarily](#recreate-persistent-disks) below.
 - **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs may not be correctly returned causing the wrong disk to be attached.
 
 <table border="1" class="nice">
@@ -792,11 +792,11 @@ For information about rotating CAs and certificates using CredHub Maestro, see [
 
 <%= vars.ops_manager %> v2.10 includes the following known issues:
 
-### <a id='recreate-persistent-disks'></a> BOSH Director disk can be recreated unnecessarily
+### <a id='recreate-persistent-disks'></a> BOSH Director Disk Is Re-Created Unnecessarily
 
-Due to an issue with the bosh cli, the BOSH Director disk can get recreated even though
-the size and properties for it have not changed. This issue does not cause data loss but
-may slow the deployment time while the data is being migrated from the old disk to the new one.
+Due to an issue with the BOSH CLI, the BOSH Director disk can be re-created even when
+the size and properties for it have not changed. This issue does not cause data loss, but
+can slow the deployment time while the data migrates from the old disk to the new disk.
 
 This issue is resolved in Ops Manager v2.10.18.
 
