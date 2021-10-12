@@ -43,6 +43,8 @@ To complete the procedures in this topic, you must have access to the output fro
     * **Key Pair Name**: Enter the value of `ops_manager_ssh_public_key_name` from the Terraform output.
     * **SSH Private Key**: Run `terraform output` to view the value of `ops_manager_ssh_private_key`	and enter it into this field. `ops_manager_ssh_private_key` is a `sensitive` value and does not display when you run `terraform apply`.
     * **Region**: Input the AWS region where you deployed <%= vars.ops_manager %>.
+    * **AWS EBS disk type**: Select the type of EBS volume for BOSH-deployed VMs to use.
+    <p class="note warning"><strong>Warning:</strong> Changing this value will result in BOSH recreating all VMs.</p>
     * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption
       on persistent disks of all BOSH-deployed VMs, except
       for the <%= vars.ops_manager %> VM and BOSH Director VM. For more information about using Elastic Block Store (EBS) encryption, see [Configuring Amazon EBS Encryption](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/cloudform-om-ebs-config.html).
