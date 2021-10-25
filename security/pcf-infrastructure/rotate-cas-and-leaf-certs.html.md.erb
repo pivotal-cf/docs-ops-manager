@@ -196,21 +196,16 @@ To add new CAs:
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
     1. If the service tile has the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
         1. Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
-        1. Click **Review Pending Changes**.
-        1. Click **Apply Changes**.
     1. If the service tile does not have the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-        1. Click **Review Pending Changes**.
-        1. Click **Apply Changes**.
-        1. When the deploy finishes, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
+        1. After the **Apply Changes** in the next step finishes, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
             ```
             bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
             ```
             Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
-1. If you do not have any service tiles installed:
-    1. Click **Review Pending Changes**.
-    1. Click **Apply Changes**.
+1. Click **Review Pending Changes**.
+1. Click **Apply Changes**.
 
 1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Activate the CAs](#activate-new-ca).
 
@@ -309,21 +304,16 @@ To rotate non-configurable leaf certificates:
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
     1. If the service tile has the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
         1. Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
-        1. Click **Review Pending Changes**.
-        1. Click **Apply Changes**.
     1. If the service tile does not have the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-        1. Click **Review Pending Changes**.
-        1. Click **Apply Changes**
-        1. When the deploy finishes, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
+        1. After the **Apply Changes** in the next step finishes, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
             ```
             bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
             ```
             Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
-1. If you do not have any service tiles installed:
-    1. Click **Review Pending Changes**.
-    1. Click **Apply Changes**
+1. Click **Review Pending Changes**.
+1. Click **Apply Changes**
 
 1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete).
 
@@ -390,21 +380,16 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
     1. If the service tile has the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
         1. Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
-        1. Click **Review Pending Changes**.
-        1. Click **Apply Changes**.
     1. If the service tile does not have the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-        1. Click **Review Pending Changes**.
-        1. Click **Apply Changes**.
-        1. When the deploy finishes, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
+        1. After the **Apply Changes** in the next step finishes, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
             ```
             bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
             ```
             Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
-1. If you do not have any service tiles installed:
-    1. Click **Review Pending Changes**.
-    1. Click **Apply Changes**.
+1. Click **Review Pending Changes**.
+1. Click **Apply Changes**.
 
 
 ## <a id='troubleshooting'></a> Troubleshooting
