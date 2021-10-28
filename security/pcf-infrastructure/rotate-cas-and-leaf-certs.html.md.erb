@@ -174,7 +174,7 @@ To add new CAs:
 
 1. Identify the newly added CA, which has `active` set to `false`. Record its GUID.
 
-1. Configure the BOSH Director to recreate VMs: <%= partial 'skip_recreate_step' %>
+1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
     1. Navigate to `https://OPS-MANAGER-FQDN` in a browser, where `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
 
     1. Log in to the <%= vars.ops_manager %> Installation Dashboard.
@@ -194,18 +194,17 @@ To add new CAs:
     1. Click the tile.
     1. Click the **Errands** tab.
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
-    1. If the service tile has the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-        1. Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
+    1. If the service tile has the **Recreate all service instances** errand, enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances. <%= partial 'skip_recreate_step' %>
 
 1. Click **Review Pending Changes**.
 1. Click **Apply Changes**.
-1. If you have service tiles installed and the service tile does not have the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-  1. Manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
+1. If you have service tiles installed and the service tile does not have the **Recreate all service instances** errand, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
       ```
       bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
       ```
      Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
+     <%= partial 'skip_recreate_step' %>
 
 1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Activate the CAs](#activate-new-ca).
 
@@ -286,7 +285,7 @@ To rotate non-configurable leaf certificates:
     The API returns a successful response:
     <pre class="terminal">HTTP/1.1 200 OK</pre>
 
-1. Configure the BOSH Director to recreate VMs: <%= partial 'skip_recreate_step' %>
+1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
     1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
     1. Click the **BOSH Director** tile.
@@ -362,7 +361,7 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
     <br>
     The API returns a successful response:
     <pre class="terminal">HTTP/1.1 200 OK</pre>
-1. Configure the BOSH Director to recreate VMs: <%= partial 'skip_recreate_step' %>
+1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
     1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
     1. Click the **BOSH Director** tile.
@@ -387,7 +386,7 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
   1. Manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
       ```
-      bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
+      bosh -d SERVICE-INSTANCE-DEPLOYMENT re-create
       ```
      Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
