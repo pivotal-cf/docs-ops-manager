@@ -34,7 +34,7 @@ To generate and retrieve a new RSA certificate signed by the root certificate au
     ```
     curl "https://OPS-MANAGER-FQDN/api/v0/certificates/generate" \
           -X POST \
-          -H "Authorization: Bearer UAA-ACCESS-TOKEN"
+          -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
     Where:
@@ -72,7 +72,7 @@ API:
     ```
     curl "https://OPS-MANAGER-FQDN/download_root_ca_cert" \
           -X GET \
-          -H "Authorization: Bearer UAA-ACCESS-TOKEN"
+          -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
     Where:
@@ -89,7 +89,7 @@ To retrieve the <%= vars.ops_manager %> root CA in JSON format:
     ```
     curl "https://OPS-MANAGER-FQDN/api/v0/security/root_ca_certificate" \
           -X GET \
-          -H "Authorization: Bearer UAA-ACCESS-TOKEN"
+          -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
     Where:
@@ -108,7 +108,7 @@ the root CA and certificates that <%= vars.ops_manager %> stores in CredHub:
     ```
     curl "https://OPS-MANAGER-FQDN/api/v0/deployed/certificates" \
           -X GET \
-          -H "Authorization: Bearer UAA-ACCESS-TOKEN"
+          -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
     Where:
