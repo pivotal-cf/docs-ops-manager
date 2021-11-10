@@ -52,7 +52,7 @@ on the Cloud Foundry website.
 
 - **[Feature]** Operators can rotate CAs without having to re-create affected VMs. This requires stemcells Xenial 621.171 or later and Windows 2019.41 or later. For more information, see [Rotating CAs and Leaf Certificates](security/pcf-infrastructure/rotate-cas-and-leaf-certs.html).
 - **[Feature]** Include uaa.log files in support bundle.
-- **[Known Issue]** If you have configured Prometheus alerting rules on this version of Ops Manager, Healthwatch versions 2.0.0 to 2.1.4 fail to deploy.
+- **[Known Issue]** If Prometheus alerting rules are configured on this version of Ops Manager, Healthwatch versions 2.0.0 to 2.1.4 fail to deploy.
 
 <table border="1" class="nice">
   <thead>
@@ -77,10 +77,10 @@ on the Cloud Foundry website.
 
 **Release Date:** October 12, 2021
 
-- **[Feature]** Update Ops Manager to allow users to choose between `gp2` and `gp3` as the default AWS disk type
-- **[Feature]** Certificate durations can be overridden. See [Override Duration for Certificates](#certificate-duration-overrides) below.
-- **[Feature]** Allow additional SSH users to be configured on the BOSH Director
-- **[Feature]** The BOSH Director only accepts TLS 1.2 connections
+- **[Feature]** Operators can choose between `gp2` and `gp3` for the default AWS disk type.
+- **[Feature]** Operators can override certificate durations. See [Override Duration for Certificates](#certificate-duration-overrides) below.
+- **[Feature]** Operators can configure additional SSH users on the BOSH Director.
+- **[Feature]** The BOSH Director accepts TLS v1.2 connections only.
 - **[Known Issue]** If Prometheus alerting rules are configured on this version of Ops Manager, Healthwatch versions 2.0.0 to 2.1.4 fail to deploy.
 
 <table border="1" class="nice">
@@ -107,7 +107,7 @@ on the Cloud Foundry website.
 **Release Date:** September 28, 2021
 
 - **[Bug Fix]** BOSH Director disk is no longer re-created when its size and properties have not changed. See [BOSH Director Disk Is Re-Created Unnecessarily](#recreate-persistent-disks) below.
-- **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs may not be correctly returned causing the wrong disk to be attached.
+- **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs might not be correctly returned, causing the wrong disk to be attached.
 
 <table border="1" class="nice">
   <thead>
@@ -132,10 +132,10 @@ on the Cloud Foundry website.
 
 **Release Date:** September 16, 2021
 
-- **[Known Issue]** TKGI customers are recommended to skip this version. Deployments using the `disk.enableUUID` vmx option and attaching additional SCSI devices (for example, TKGI clusters using persistent volumes) may experience data loss if the VM is powered off and powered on again. This is due to a functional regression causing the VM to mount the wrong disk at startup. This regression is fixed in version 2.10.18.
+- **[Known Issue]** TKGI customers are recommended to skip this version. Deployments using the `disk.enableUUID` vmx option and attaching additional SCSI devices, for example, TKGI clusters using persistent volumes, might experience data loss if the VM is powered off and powered on again. This is due to a functional regression causing the VM to mount the wrong disk at startup. This regression is fixed in v2.10.18.
 
-- **[Bug Fix]** NSX-T server pools can be configured without a port
-- **[Bug Fix]** An error is now returned by the API when using duplicate GUIDs while updating vSphere clusters.
+- **[Bug Fix]** Operators can configure NSX-T server pools without a port.
+- **[Bug Fix]** The API returns an error when using duplicate GUIDs while updating vSphere clusters.
 
 <table border="1" class="nice">
   <thead>
@@ -160,7 +160,7 @@ on the Cloud Foundry website.
 
 **Release Date:** July 22, 2021
 
-- **[Bug Fix]** BOSH Backup and Restore now works correctly when using AWS IAM Profiles.
+- **[Bug Fix]** BOSH Backup and Restore works correctly when using AWS IAM Profiles.
 - **[Bug Fix]** vSphere unexpected VM and persistent disk re-creations no longer occur. However, if you have installed Ops Manager v2.10.15 and already re-created all VMs and disks, they are re-created again after you click **Apply Changes** in Ops Manager v2.10.16.
 
 <table border="1" class="nice">
@@ -186,13 +186,13 @@ on the Cloud Foundry website.
 
 **Release Date:** June 30, 2021
 
-<p class="note warning"><strong> Warning:</strong> This release shipped with a change that affects vSphere users. This change causes unintended recreation of <strong>all</strong> VMs and Disks on next Apply Changes. This issue will be fixed in v2.10.16, however, if you have already recreated all VMs and Disks, they will get recreated again once you Apply Changes on v2.10.16.</p>
+<p class="note warning"><strong> Warning:</strong> This release shipped with a change that affects vSphere users. This change causes unintended recreation of all VMs and disks on the next Apply Changes. This issue is fixed in v2.10.16. However, if you have already re-created all VMs and disks, they are re-created again when you click <strong>Apply Changes</strong> on v2.10.16.</p>
 
-- **[Known Issue]** Foundations that use multiple vCenter Configs may now encounter Apply Changes that fail with the message "No valid placement found for VM compute and storage requirement". A bug was introduced in <%= vars.ops_manager %> v2.10.15 that requires the following workaround: the datastores listed in the Ephemeral and/or Persistent Datastore Names field of the first vCenter Config must be the union of all Ephemeral or Persistent Datastore Names across all vCenter Configs.
+- **[Known Issue]** Foundations that use multiple vCenter Configs might encounter failures when applying changes with the message `No valid placement found for VM compute and storage requirement`. A bug was introduced in <%= vars.ops_manager %> v2.10.15 that requires the following workaround: the datastores listed in the **Ephemeral and/or Persistent Datastore Names** field of the first vCenter Config must be the union of all **Ephemeral or Persistent Datastore Names** across all vCenter Configs.
 
-- **[Feature]** Support for vSphere datastore clusters
-- **[Feature]**  A section in the BOSH Director manifest makes obvious what `additional_cloud_properties` overrides are used
-- **[Bug Fix]** Resolved issue with support bundle creation that could cause Apply Changes to fail with the error `No such file or directory - getcwd`
+- **[Feature]** Support for vSphere datastore clusters.
+- **[Feature]** A section in the BOSH Director manifest makes obvious which `additional_cloud_properties` overrides are used.
+- **[Bug Fix]** Resolved issue with support bundle creation that could cause **Apply Changes** to fail with the error `No such file or directory - getcwd`.
 
 Ops Manager v2.10.15 uses the following component versions:
 
@@ -219,7 +219,7 @@ Ops Manager v2.10.15 uses the following component versions:
 
 **Release Date:** June 16, 2021
 
-- **[Known Issue Fix]** NSX-T Certificate Authentication does not cause Apply Changes to fail. Issue is introduced in v2.10.12.
+- **[Known Issue Fix]** NSX-T Certificate Authentication does not cause **Apply Changes** to fail. Issue is introduced in v2.10.12.
 
 Ops Manager v2.10.14 uses the following component versions:
 
@@ -245,7 +245,7 @@ Ops Manager v2.10.14 uses the following component versions:
 
 **Release Date:** June 10, 2021
 
-- **[Known Issue]** NSX-T Certificate Authentication causes Apply Changes to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`
+- **[Known Issue]** NSX-T Certificate Authentication causes **Apply Changes** to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`.
 
 Ops Manager v2.10.13 uses the following component versions:
 
@@ -271,8 +271,8 @@ Ops Manager v2.10.13 uses the following component versions:
 
 **Release Date:** June 7, 2021
 
-- **[Known Issue]** NSX-T Certificate Authentication causes Apply Changes to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`
-- **[Bug Fix]** Remove unnecessary vSphere privilege
+- **[Known Issue]** NSX-T Certificate Authentication causes **Apply Changes** to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`.
+- **[Bug Fix]** Removes an unnecessary vSphere privilege.
 
 Ops Manager v2.10.12 uses the following component versions:
 
@@ -298,9 +298,9 @@ Ops Manager v2.10.12 uses the following component versions:
 
 **Release Date:** May 11, 2021
 
-- **[Feature]** You can distinguish between fixed and floating stemcells on the _Stemcells_ page in the <%= vars.ops_manager %> UI
-- **[Feature]** Maestro topology output is included in the support bundle
-- **[Feature]** `us-gov-east-1` region is available in AWS GovCloud
+- **[Feature]** You can distinguish between fixed and floating stemcells on the **Stemcells** in the <%= vars.ops_manager %> UI.
+- **[Feature]** Maestro topology output is included in the support bundle.
+- **[Feature]** `us-gov-east-1` region is available in AWS GovCloud.
 
 Ops Manager v2.10.11 uses the following component versions:
 
@@ -328,7 +328,7 @@ Ops Manager v2.10.11 uses the following component versions:
 **Release Date:** April 27, 2021
 
 - **[Known Issue Fix]** <%= vars.ops_manager %> does not overwrite UAAC. Known issue is introduced in <%= vars.ops_manager %> v2.10.9.
-- **[Bug Fix]** Regenerating leaf certificates succeed when CredHub server certificate is expired
+- **[Bug Fix]** Regenerating leaf certificates succeeds when CredHub server certificate is expired.
 
 Ops Manager v2.10.10 uses the following component versions:
 
