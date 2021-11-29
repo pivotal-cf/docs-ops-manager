@@ -23,10 +23,10 @@ on the Cloud Foundry website.
 
 ### <a id="2-10-22"></a> v2.10.22
 
-**Release Date:** November 27, 2021
+**Release Date:** November 29, 2021
 
-- **[Feature]** "Add Content-Security-Policy headers to Ops Manager
-- **[Feature]** Better support increasing bosh worker count from Ops Manager
+- **[Bug Fix]** Identification Tags will no longer be reapplied to VMs on every deploy. This was an issue introduced in 2.10.20. The tags will need to be applied one final time for any VMs deployed using Ops Manager 2.10.20 or 2.10.21.
+- **[Bug Fix]** We now scale the max database connections on the Bosh director database with the number of Bosh workers specified. Previously scaling the workers could lead to running out of database connections.
 
 <table border="1" class="nice">
   <thead>
