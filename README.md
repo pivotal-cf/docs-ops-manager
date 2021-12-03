@@ -80,8 +80,8 @@ To use Bookbinder to view your documentation, perform the following steps:
 1. Clone this repository to the `~/workspace` directory on your local machine.
 1. Clone the following repositories to the `~/workspace` directory on your
 local machine:
-    * [docs-book-om](https://github.com/pivotal-cf/docs-book-om) and
-    * [docs-layout-repo](https://github.com/pivotal-cf/docs-layout-repo) repositories
+    * [docs-book-om](https://github.com/pivotal-cf/docs-book-om)
+    * [docs-layout-repo](https://github.com/pivotal-cf/docs-layout-repo)
     * [docs-partials](https://github.com/pivotal-cf/docs-partials)
 1. Use the **Versions and Branching** table above to determine which branch of `docs-ops-manager` that you need to `git checkout` to build the version of the documentation that you want. If necessary, navigate to the `docs-ops-manager` directory and `git checkout BRANCH-NAME`. 
 1. Navigate in the `docs-book-om` directory.
