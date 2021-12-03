@@ -1,37 +1,42 @@
 # Ops Manager Documentation
 
 This repository contains content for the Ops Manager documentation. We publish the Ops Manager documentation at
-https://docs.pivotal.io/platform/ops-manager/index.html.
+https://docs.pivotal.io/ops-manager/index.html.
 
 ## How To Contribute
 
-Please help us improve the accuracy and completeness of the Ops Manager documentation by contributing content, editing,
-or expertise.
+Please help us improve the accuracy and completeness of the Ops Manager documentation by
+contributing content, editing, or expertise.
 
 A common way to contribute is to file a pull request through GitHub.
 
-Every topic in the Ops Manager documentation has a corresponding file in the
-[https://github.com/pivotal-cf/docs-ops-manager](https://github.com/pivotal-cf/docs-ops-manager) content repository in
-GitHub. To locate the source file for a topic, navigate to the topic on the Ops Manager documentation site and click "View
-the source for this page in GitHub" at the bottom of the topic.
+Every topic in the Ops Manager documentation has a corresponding file in this repository. To locate
+the source file for a topic, navigate to the topic on the Ops Manager documentation site and click
+"View the source for this page in GitHub" at the bottom of the topic.
 
-## Versions and Branching
+[Bookbinder](https://github.com/pivotal-cf/bookbinder/) uses the contents of this repository and others as sources to assemble the documentation for Ops Manager.
 
-| **Branch Name** | **Content** | **Location** |
-|-----------------|-------------|--------------|
-| `2.9` | Ops Manager v2.9  | https://docs.pivotal.io/platform/ops-manager/2-9/index.html |
-| `2.8` | Ops Manager v2.8  | https://docs.pivotal.io/platform/ops-manager/2-8/index.html |
-| `2.7` | Ops Manager v2.7  | https://docs.pivotal.io/platform/ops-manager/2-7/index.html |
-| `2.6` | Ops Manager v2.6  | https://docs.pivotal.io/platform/ops-manager/2-6/index.html |
-| `2.5` | Ops Manager v2.5  | https://docs.pivotal.io/platform/ops-manager/2-5/index.html |
-| `2.4` | Ops Manager v2.4  | https://docs.pivotal.io/platform/ops-manager/2-4/index.html |
-| `2.3` | Ops Manager v2.3  | https://docs.pivotal.io/platform/ops-manager/2-3/index.html |
-| `2.2` | Ops Manager v2.2  | https://docs.pivotal.io/platform/ops-manager/2-2/index.html |
-| `2.1` | Ops Manager v2.1  | https://docs.pivotal.io/platform/ops-manager/2-1/index.html |
-| `2.0` | Ops Manager v2.0  | https://docs.pivotal.io/platform/ops-manager/2-0/index.html |
+## <a name="version-branch"></a> Versions and Branches
 
-**2.10**: The `2.10` branch is used to publish the v2.10 site. Create pull requests on `2.10` to
-contribute or correct technical inaccuracies in the Ops Manager v2.10 documentation.
+| **Book Branch** | **Content Branch** | **Published URL** |
+|-----------------|--------------------|-------------------|
+|          `2.10` |             `2.10` | https://docs.pivotal.io/ops-manager/2-10/index.html |
+|           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
+|           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
+|           `2.7` |              `2.7` | https://docs.pivotal.io/ops-manager/2-7/index.html  |
+|          `edge` |           `master` |          not used |
+|        `master` |           `master` |          not used |
+| `om-previous-versions` | `2.6` | https://docs.pivotal.io/ops-manager/2-6/index.html |
+| `om-previous-versions` | `2.5` | https://docs.pivotal.io/ops-manager/2-5/index.html |
+| `om-previous-versions` | `2.4` | https://docs.pivotal.io/ops-manager/2-4/index.html |
+| `om-previous-versions` | `2.3` | https://docs.pivotal.io/ops-manager/2-3/index.html |
+| `om-previous-versions` | `2.2` | https://docs.pivotal.io/ops-manager/2-2/index.html |
+| `om-previous-versions` | `2.1` | https://docs.pivotal.io/ops-manager/2-1/index.html |
+| `om-previous-versions` | `2.0` | https://docs.pivotal.io/ops-manager/2-0/index.html |
+
+
+**2.10**: The `2.10` branch is used to publish the v2.10 site. Create pull requests on `2.10` to contribute or
+correct technical inaccuracies in the Ops Manager v2.10 documentation.
 
 **2.9**: The `2.9` branch is used to publish the v2.9 site. Create pull requests on `2.9` to contribute or
 correct technical inaccuracies in the Ops Manager v2.9 documentation.
@@ -77,10 +82,13 @@ configuration and assets from [docs-layout-repo](https://github.com/pivotal-cf/d
 To use Bookbinder to view your documentation, perform the following steps:
 
 1. Clone this repository to the `~/workspace` directory on your local machine.
-1. Clone the [docs-book-om](https://github.com/pivotal-cf/docs-book-om) and
-[docs-layout-repo](https://github.com/pivotal-cf/docs-layout-repo) repositories to the `~/workspace` directory on your
-local machine.
-1. Navigate into the `docs-book-om` directory.
+1. Clone the following repositories to the `~/workspace` directory on your
+local machine:
+    * [docs-book-om](https://github.com/pivotal-cf/docs-book-om)
+    * [docs-layout-repo](https://github.com/pivotal-cf/docs-layout-repo)
+    * [docs-partials](https://github.com/pivotal-cf/docs-partials)
+1. Use the **Versions and Branching** table above to determine which branch of `docs-ops-manager` that you need to `git checkout` to build the version of the documentation that you want. If necessary, navigate to the `docs-ops-manager` directory and `git checkout BRANCH-NAME`. 
+1. Navigate in the `docs-book-om` directory.
 1. Run `bundle install` to install all of the necessary gems, including Bookbinder.
 1. Run `bundle exec bookbinder bind local` to build a Rack web-app of the book. After the bind has completed, navigate
 into the `final_app` directory and run `rackup`. Then navigate to `localhost:9292/platform/ops-manager/index.html` in a
@@ -100,4 +108,3 @@ Concourse Pipelines:
 
 * **master**: https://concourse.run.pivotal.io/teams/cf-docs/pipelines/om
 * **edge**: https://concourse.run.pivotal.io/teams/cf-docs/pipelines/om?group=edge
-
