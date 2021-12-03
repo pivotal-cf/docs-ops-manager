@@ -1,35 +1,39 @@
 # Ops Manager Documentation
 
 This repository contains content for the Ops Manager documentation. We publish the Ops Manager documentation at
-https://docs.pivotal.io/platform/ops-manager/index.html.
+https://docs.pivotal.io/ops-manager/index.html.
 
 ## How To Contribute
 
-Please help us improve the accuracy and completeness of the Ops Manager documentation by contributing content, editing,
-or expertise.
+Please help us improve the accuracy and completeness of the Ops Manager documentation by
+contributing content, editing, or expertise.
 
 A common way to contribute is to file a pull request through GitHub.
 
-Every topic in the Ops Manager documentation has a corresponding file in the
-[https://github.com/pivotal-cf/docs-ops-manager](https://github.com/pivotal-cf/docs-ops-manager) content repository in
-GitHub. To locate the source file for a topic, navigate to the topic on the Ops Manager documentation site and click "View
-the source for this page in GitHub" at the bottom of the topic.
+Every topic in the Ops Manager documentation has a corresponding file in this repository. To locate
+the source file for a topic, navigate to the topic on the Ops Manager documentation site and click
+"View the source for this page in GitHub" at the bottom of the topic.
 
-## <a name="version-branch"></a> Versions and Branching
+[Bookbinder](https://github.com/pivotal-cf/bookbinder/) uses the contents of this repository and others as sources to assemble the documentation for Ops Manager.
 
-| **Branch Name** | **Content** | **Location** |
-|-----------------|-------------|--------------|
-| `2.10` | Ops Manager v2.10 | https://docs.pivotal.io/platform/ops-manager/2-10/index.html |
-| `2.9` | Ops Manager v2.9  | https://docs.pivotal.io/platform/ops-manager/2-9/index.html |
-| `2.8` | Ops Manager v2.8  | https://docs.pivotal.io/platform/ops-manager/2-8/index.html |
-| `2.7` | Ops Manager v2.7  | https://docs.pivotal.io/platform/ops-manager/2-7/index.html |
-| `2.6` | Ops Manager v2.6  | https://docs.pivotal.io/platform/ops-manager/2-6/index.html |
-| `2.5` | Ops Manager v2.5  | https://docs.pivotal.io/platform/ops-manager/2-5/index.html |
-| `2.4` | Ops Manager v2.4  | https://docs.pivotal.io/platform/ops-manager/2-4/index.html |
-| `2.3` | Ops Manager v2.3  | https://docs.pivotal.io/platform/ops-manager/2-3/index.html |
-| `2.2` | Ops Manager v2.2  | https://docs.pivotal.io/platform/ops-manager/2-2/index.html |
-| `2.1` | Ops Manager v2.1  | https://docs.pivotal.io/platform/ops-manager/2-1/index.html |
-| `2.0` | Ops Manager v2.0  | https://docs.pivotal.io/platform/ops-manager/2-0/index.html |
+## <a name="version-branch"></a> Versions and Branches
+
+| **Book Branch** | **Content Branch** | **Published URL** |
+|-----------------|--------------------|-------------------|
+|          `2.10` |             `2.10` | https://docs.pivotal.io/ops-manager/2-10/index.html |
+|           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
+|           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
+|           `2.7` |              `2.7` | https://docs.pivotal.io/ops-manager/2-7/index.html  |
+|          `edge` |           `master` |          not used |
+|        `master` |           `master` |          not used |
+| `om-previous-versions` | `2.6` | https://docs.pivotal.io/ops-manager/2-6/index.html |
+| `om-previous-versions` | `2.5` | https://docs.pivotal.io/ops-manager/2-5/index.html |
+| `om-previous-versions` | `2.4` | https://docs.pivotal.io/ops-manager/2-4/index.html |
+| `om-previous-versions` | `2.3` | https://docs.pivotal.io/ops-manager/2-3/index.html |
+| `om-previous-versions` | `2.2` | https://docs.pivotal.io/ops-manager/2-2/index.html |
+| `om-previous-versions` | `2.1` | https://docs.pivotal.io/ops-manager/2-1/index.html |
+| `om-previous-versions` | `2.0` | https://docs.pivotal.io/ops-manager/2-0/index.html |
+
 
 **2.10**: The `2.10` branch is used to publish the v2.10 site. Create pull requests on `2.10` to contribute or
 correct technical inaccuracies in the Ops Manager v2.10 documentation.
