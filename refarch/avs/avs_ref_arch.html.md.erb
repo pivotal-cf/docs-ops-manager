@@ -3,10 +3,10 @@ title: AVS Reference Architecture
 owner: TAS Journey Platform Provider Experience
 ---
 
-This topic describes a reference architecture for <%= vars.platform_name %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), on AVS.
+This topic describes a reference architecture for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), on Azure VMware Solution (AVS).
 It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
 
-For additional requirements and installation instructions for <%= vars.platform_name %> on AVS, see [Installing <%= vars.platform_name %> on AVS](https://docs.pivotal.io/application-service/operating/avs.html).
+For additional requirements and installation instructions for <%= vars.ops_manager %> on AVS, see [Deploying <%= vars.app_runtime_abbr %> to AVS](https://docs.pivotal.io/application-service/operating/avs.html).
 
 
 ## <a id="overview"></a> Overview
@@ -14,7 +14,7 @@ For additional requirements and installation instructions for <%= vars.platform_
 The AVS reference architecture for the <%= vars.app_runtime_abbr %> runtime tiles is based on software-defined networking (SDN) infrastructure.
 AVS offers NSX-T to support SDN infrastructure.
 
-<%= vars.platform_name %> supports these configurations for AVS deployments:
+<%= vars.ops_manager %> supports these configurations for AVS deployments:
 
 * <%= vars.app_runtime_abbr %> on AVS with NSX-T. For more information, see [<%= vars.app_runtime_abbr %> on AVS with NSX-T](#pas-nsx-t).
 
@@ -138,8 +138,8 @@ For information about security requirements and recommendations for <%= vars.app
 
 ### <a id="pas-nsx-t-blobstore"></a> Blobstore Storage
 
-Use Azure Blob Storage as the external file storage option for <%= vars.platform_name %>. This provides redundancy for
-high-availability deployments of <%= vars.platform_name %> and unlimited scaling. Azure Blob Storage provides
+Use Azure Blob Storage as the external file storage option for <%= vars.ops_manager %>. This provides redundancy for
+high-availability deployments of <%= vars.ops_manager %> and unlimited scaling. Azure Blob Storage provides
 fully-redundant hot, cold, or archival storage in either local, regional, or global offerings.
 
 <%= vars.ops_manager %> requires a bucket for the BOSH blobstore.
@@ -158,4 +158,4 @@ These buckets require an associated role for read/write access.
 
 ### <a id="pas-hcx-migration"></a> HCX Migrations
 
-HCX Migration of <%= vars.platform_name %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), on AVS is not supported at this time.
+HCX Migration of <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_abbr %>, on AVS is not supported at this time.
