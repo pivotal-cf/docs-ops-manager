@@ -903,7 +903,7 @@ This issue is resolved in Ops Manager v2.10.1.
 
 <%= partial "/pcf/ops-manager/known-issues/increased_logging_ki" %>
 
-### <a id='credhub-generated-field'></a> Reset Manually Set Certificates in CredHub Before Rotating Certificates with the <%= vars.ops_manager %> API
+### <a id='credhub-generated-field'></a> Reset Manually-Set Certificates in CredHub Before Rotating Certificates with the <%= vars.ops_manager %> API
 
 <!--- If and when this KI is fixed, remove the cross-reference to it in security/pcf-infrastructure/advanced-certificate-rotation.html#prerequisites --->
 
@@ -917,7 +917,7 @@ For more information about rotating certificates using the <%= vars.ops_manager 
 
 ### <a id='maestro-gc-error'></a> Maestro Garbage Collection Error
 
-When running a maestro garbage collect, it will indicate an error like this:
+When running `maestro garbage collect`, you might see an error like this:
 
 ```
 $ maestro garbage-collect ca --all
@@ -929,4 +929,4 @@ not_deleted:
 error: could not delete some certificate versions
 ```
 
-This error can be ignored, because the certificate should not be deleted.
+You can ignore this error. The certificate should not be deleted.
