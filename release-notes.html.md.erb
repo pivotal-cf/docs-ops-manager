@@ -914,3 +914,19 @@ Resetting these certificates is not a required condition for the <%= vars.ops_ma
 To reset a certificate in CredHub, see [Reviewing and Resetting Manually Set Certificates in CredHub](security/pcf-infrastructure/manual-credhub-certificate.html).
 
 For more information about rotating certificates using the <%= vars.ops_manager %> API, see [Overview of Certificate Rotation](security/pcf-infrastructure/api-cert-rotation.html). For more information about the `certificate_authorities/active/regenerate` endpoint, see [Rotate Certificates](https://docs.pivotal.io/pivotalcf/2-10/opsman-api/#create-root-certificate-authorities) in the <%= vars.ops_manager %> API documentation.
+
+### <a id='maestro-gc-error'></a> Maestro Garbage Collection Error
+
+When running a maestro garbage collect, it will indicate an error like this:
+
+```
+$ maestro garbage-collect ca --all
+not_deleted:
+    - name: /services/tls_ca
+      certificate_id: aaaaaaaa-bbbb-cccc-1111-aaaaaaaaaaa
+      version_ids:
+        - aaaaaaa-11111-22222-33333-bbbbbbbbbb
+error: could not delete some certificate versions
+```
+
+This error can be ignored, because the certificate should not be deleted.
