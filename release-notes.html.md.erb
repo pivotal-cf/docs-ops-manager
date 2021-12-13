@@ -60,6 +60,7 @@ on the Cloud Foundry website.
 
 **Release Date:** November 29, 2021
 
+- **[Feature]** The IMDS Hop Limit can now be configured on AWS. See the `metadata_options` property on the [bosh.io AWS CPI documentation](https://bosh.io/docs/aws-cpi/#resource-pools)
 - **[Bug Fix]** Ops Manager does not re-apply Identification Tags to VMs on every deploy. This issue was introduced in v2.10.20. The tags must be applied one final time for any VMs deployed using Ops Manager v2.10.20 or v2.10.21.
 - **[Bug Fix]** Ops Manager scales the maximum database connections on the BOSH Director database with the number of BOSH workers specified. Previously, scaling the workers could lead to running out of database connections.
 
