@@ -28,7 +28,16 @@ on the Cloud Foundry website.
 
 **Release Date:** December 16, 2021
 
+<div class="note warning"><strong>Warning:</strong>
+  <p>See the following warnings:</p>
+    <ul>
+      <li>VMware recommends upgrading to this Ops Manager patch as soon as possible to address
+    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.</li>
+      <li>This vulnerability also affects <%= vars.app_runtime_abbr %>. VMware recommends upgrading to <%= vars.app_runtime_abbr %> v2.12.3 as soon as possible. For more information, see the <a href="https://docs.pivotal.io/application-service/2-12/release-notes/runtime-rn.html#2.12.3"><%= vars.app_runtime_abbr %> v2.12.3 release notes</a>.</li>
+    </ul>
+  </div>
 
+- **[Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
 
 <table border="1" class="nice">
   <thead>
@@ -53,7 +62,15 @@ on the Cloud Foundry website.
 
 **Release Date:** December 12, 2021
 
-- **[Bug Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
+<div class="note warning"><strong>Warning:</strong>
+  <p>See the following warnings:</p>
+    <ul>
+      <li>This patch upgrades components using Log4j to version 2.15 in order to mitigate <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. It is now recommended to upgrade to patch 2.9.25, which uses Log4j version 2.16 instead. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.</li>
+    </ul>
+  </div>
+
+
+- **[Incomplete Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
 
 <table border="1" class="nice">
   <thead>
