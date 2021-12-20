@@ -28,7 +28,7 @@ on the Cloud Foundry website.
   <ul>
     <li>VMware recommends upgrading to this Ops Manager patch as soon as possible to address
     <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.</li>
-    <li>This vulnerability also affects <%= vars.app_runtime_abbr %>. VMware recommends upgrading to <%= vars.app_runtime_abbr %> v2.12.5 as soon as possible. For more information, see the <a href="https://docs.pivotal.io/application-service/2-12/release-notes/runtime-rn.html#2.12.5"><%= vars.app_runtime_abbr %> v2.12.5 release notes</a>.</li>
+    <li>This vulnerability also affects TAS for VMs. VMware recommends upgrading to TAS for VMs v2.12.5 as soon as possible. For more information, see the <a href="https://docs.pivotal.io/application-service/2-12/release-notes/runtime-rn.html#2.12.5">TAS for VMs v2.12.5 release notes</a>.</li>
   </ul>
 </div>
 
@@ -550,11 +550,11 @@ For how to configure BOSH Director authentication to NSX, see [Step 2: Configure
 
 ### <a id='opsman-metrics'></a> All Platform VMs Emit System Metrics
 
-The `runtime_config` code in <%= vars.ops_manager %> v2.8 installs a system metrics agent on all <%= vars.platform_name %> VMs. This lets [Pivotal Healthwatch](https://docs.pivotal.io/pcf-healthwatch), [Pivotal App Metrics](https://docs.pivotal.io/app-metrics) and other platform tools consume VM metrics from <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), hosted services, and any other products deployed by <%= vars.ops_manager %>.
+The `runtime_config` code in <%= vars.ops_manager %> v2.8 installs a system metrics agent on all <%= vars.platform_name %> VMs. This lets [Pivotal Healthwatch](https://docs.pivotal.io/pcf-healthwatch), [Pivotal App Metrics](https://docs.pivotal.io/app-metrics) and other platform tools consume VM metrics from <%= vars.app_runtime_full %> (TAS for VMs), <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), hosted services, and any other products deployed by <%= vars.ops_manager %>.
 
 System metrics report usage and status of VM memory, disk, CPU, network, load, and swap space. For a complete list of metrics, see [VM Metrics](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md#vm-metrics) in _System Metrics Agent_ in the System Metrics repository on GitHub.
 
-Before <%= vars.ops_manager %> v2.8, the metrics agent was installed only on <%= vars.app_runtime_abbr %> VMs, and VMs deployed by other products did not emit the system metrics described above.
+Before <%= vars.ops_manager %> v2.8, the metrics agent was installed only on TAS for VMs VMs, and VMs deployed by other products did not emit the system metrics described above.
 
 Increased logging could cause platform issues. For more information, see [Increased Logging Slows Platform Functions](#increased-logging).
 
