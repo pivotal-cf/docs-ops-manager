@@ -23,9 +23,13 @@ on the Cloud Foundry website.
 
 ### <a id="2-10-26"></a> v2.10.26
 
-**Release Date:** January 12, 2022
+**Release Date:** January 13, 2022
 
-
+- **[Bug Fix]** Ops Manager OpenAPI documentation fixes.
+    - Sample URLs in the documentation will no longer have a duplicate and erroneous "/api/v0" component in their path.
+    - The hostname in the URLs has been corrected and will no longer be "{opsmanager-installation}}"
+    - The warning in the API documentation about unsupported parallel API calls has been made clearer. Additional words added to mention that calls made by different users, but at the same time are just as unsupported as calls by the same user.
+- **[Bug Fix]** Includes Bosh Director v271.18.0. This fixes the incorrect handling of the `NO_PROXY` setting in Ops Manager that may have been introduced in version `v2.10.16`. You should now be able to enter hosts in the No Proxy field of the Ops Manager's Proxy Settings dialog and have Ops Manager, Bosh, and Bosh-Deployed VMs reach out to those hosts directly.
 
 <table border="1" class="nice">
   <thead>
