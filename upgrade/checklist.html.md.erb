@@ -156,7 +156,7 @@ In some cases, if you have previously disabled lifecycle errands for any install
 
 ### <a id="stemcell-compat"></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 
-Before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>, operators who have deployed any BOSH-managed add-ons such as **IPsec**, **Anti-Virus**, or **File Integrity Monitoring** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service-windows/<%= vars.current_major_version.sub('.','-') %>/index.html).
+Before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>, operators who have deployed any BOSH-managed add-ons such as **IPsec**, **Anti-Virus**, or **File Integrity Monitoring** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/windows/index.html).
 
 For example, **File Integrity Monitor** (FIM) is not supported on Windows. Therefore, the manifest must use an `include` directive to specify the target OS stemcell of `ubuntu-trusty` and `ubuntu-xenial`.
 
