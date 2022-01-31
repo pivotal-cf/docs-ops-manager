@@ -34,15 +34,15 @@ Review each of the following links to understand the changes in the new release,
 
 * **Release Notes**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/release-notes/runtime-rn.html)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html)
 
 * **Known Issues**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Known Issues](../release-notes.html#known-issues)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Known Issues](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/release-notes/runtime-rn.html#known-issues)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Known Issues](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html#known-issues)
 
 * **Breaking Changes**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Breaking Changes](../release-notes.html#breaking-changes)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/release-notes/runtime-rn.html#breaking-changes)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html#breaking-changes)
 
 * **KPI Changes**
 	* [KPI Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/index.html#new)
@@ -158,7 +158,7 @@ If the scheduling is set to **Never clean up Diego Cell disk space** or **Routin
 
 If you are upgrading from <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.6 or earlier, do not change your Syslog Agent configuration when you stage <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.7 or later for the first time. For example, if Syslog Agents are enabled on your current version of <%= vars.app_runtime_abbr %>, ensure that Syslog Agents are enabled when you stage <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.7 or later for the first time.
 
-If you change your Syslog Agent configuration after staging and before the first deploy of <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.7 or later, there is a significant period of log loss or log duplication while BOSH enables or disables Syslog Agents. For more information about this log loss or duplication, see [Duplicate or Missing Logs](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/overview/release-notes/runtime-rn.html#duplicate-logs) in _<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes_ in the <%= vars.app_runtime_abbr %> documentation.
+If you change your Syslog Agent configuration after staging and before the first deploy of <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.7 or later, there is a significant period of log loss or log duplication while BOSH enables or disables Syslog Agents. For more information about this log loss or duplication, see [Duplicate or Missing Logs](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html#duplicate-logs) in _<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes_ in the <%= vars.app_runtime_abbr %> documentation.
 
 You can edit the Syslog Agent configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.7
 or later after the first deploy. To edit your Syslog Agent configuration, see
@@ -167,7 +167,7 @@ in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %
 
 ### <a id="stemcell-compat"></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 
-Before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>, operators who have deployed any <%= vars.platform_code %> add-ons such as **IPsec for <%= vars.platform_code %>**, **ClamAV for <%= vars.platform_code %>**, or **File Integrity Monitoring for <%= vars.platform_code %>** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service-windows/<%= vars.current_major_version.sub('.','-') %>/index.html).
+Before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>, operators who have deployed any <%= vars.platform_code %> add-ons such as **IPsec for <%= vars.platform_code %>**, **ClamAV for <%= vars.platform_code %>**, or **File Integrity Monitoring for <%= vars.platform_code %>** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/2-7/windows/index.html).
 
 For example, **File Integrity Monitor for <%= vars.platform_code %>** (FIM) is not supported on Windows. Therefore, the manifest must use an `include` directive to specify the target OS stemcell of `ubuntu-trusty` and `ubuntu-xenial`.
 
