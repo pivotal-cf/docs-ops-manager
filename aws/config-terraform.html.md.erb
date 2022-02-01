@@ -405,7 +405,7 @@ To assign your load balancer VMs to the correct target groups and security group
     ```sh
     om -k create-vm-extension \
     --name "web-lb-security-groups" \
-    --cloud-properties '{ "security_groups": ["web_lb_security_group", "vms_security_group"], "target_groups":["web-lb-target-groups"] }'
+    --cloud-properties '{ "security_groups": ["web_lb_security_group", "vms_security_group"] }'
     ```
 
 1. Run the following command to create a VM extension for the SSH VM:
@@ -413,7 +413,7 @@ To assign your load balancer VMs to the correct target groups and security group
     ```
     om -k create-vm-extension \
     --name "ssh-lb-security-groups" \
-    --cloud-properties '{ "security_groups": ["ssh_lb_security_group", "vms_security_group"], "target_groups":["ssh-lb-target-groups"] }'
+    --cloud-properties '{ "security_groups": ["ssh_lb_security_group", "vms_security_group"] }'
     ```
 
 
@@ -422,7 +422,7 @@ To assign your load balancer VMs to the correct target groups and security group
     ```
     om -k create-vm-extension \
     --name "tcp-lb-security-groups" \
-    --cloud-properties '{ "security_groups": ["tcp_lb_security_group", "vms_security_group"], "target_groups":["tcp-lb-target-groups"] }'
+    --cloud-properties '{ "security_groups": ["tcp_lb_security_group", "vms_security_group"] }'
     ```
 
 ## <a id="custom-vm-extensions"></a> Step 12: (Optional) Add Custom VM Extensions
