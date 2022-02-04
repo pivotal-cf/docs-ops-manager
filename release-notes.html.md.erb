@@ -51,6 +51,10 @@ on the Cloud Foundry website.
 **Release Date:** February 02, 2022
 
 - **[Known Issue]** The BOSH CLI included on the Ops Manager VM can cause deployment failures in certain circumstances. If a BOSH release that includes compiled packages is uploaded, and an identical BOSH release that includes source packages already exists on the BOSH Director, the deployment might fail. If you run into this situation, please contact support.
+
+- **[Security Fix]** Upgrades the OpsManager PostgreSQL to 13.5 and the BOSH Director PostgreSQL to 10.19 to fix a potential MITM vulnerability.
+([CVE-2021-23214](https://www.postgresql.org/support/security/CVE-2021-23214/))
+
 - **[Bug Fix]** For Azure deployments, Ops Manager correctly respects the storage type you set in the UI.
 - **[Bug Fix]** For vSphere deployments, Ops Manager should not generate a "Too many open file handles" error due to open vCenter connections.
 
