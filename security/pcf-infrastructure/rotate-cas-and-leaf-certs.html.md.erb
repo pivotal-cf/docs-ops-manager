@@ -390,6 +390,16 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
       ```
      Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
+## <a id='specialized-procedures'></a> Certificates with Specialized Procedures
+
+Some certificates are not rotated when using the standard rotation procedure above. The following are certificates that use a separate, specialized rotation procedure.
+
+| Certificate | Tile | Procedure |
+|-------------|------|-----------|
+| `/services/tls_ca` | - | [Rotating the Services TLS CA and Its Leaf Certificates](services_tls_ca_rotate.html) |
+| `/telemetry-ca-cert` | Telemetry v1.2.1 and earlier | [How to rotate the telemetry-ca-cert in Operations Manager](https://community.pivotal.io/s/article/How-to-rotate-the-telemetry-ca-cert) |
+| `/services/tls_leaf` | <%= vars.app_runtime_abbr %> v2.10.0 - v2.10.13 | [Rotate /services/tls_leaf manually](https://community.pivotal.io/s/article/Rotate-services-tls-leaf-manually) |
+
 
 ## <a id='troubleshooting'></a> Troubleshooting
 

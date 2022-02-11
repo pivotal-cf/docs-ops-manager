@@ -41,6 +41,14 @@ To rotate configurable leaf certificates:
 
 1. Click **Apply Changes**.
 
+## <a id='specialized-procedures'></a> Certificates with Specialized Procedures
+
+Some certificates are not rotated when using the standard rotation procedure above. The following are certificates that use a separate, specialized rotation procedure.
+
+| Certificate | Tile | Procedure |
+|-------------|------|-----------|
+| `.properties.saml_service_provider_cert` | BOSH Director | [How to check and rotate Ops Manager SAML Certificate before it expires](https://community.pivotal.io/s/article/how-to-check-and-rotate-ops-manager-saml-certificate-before-it-expires) |
+| `.uaa.service_provider_key_credentials` | <%= vars.app_runtime_abbr %> | [Rotating Identity Provider SAML Certificates](rotate-saml-ca.html) |
 
 ## <a id='troubleshooting'></a> Troubleshooting
 
