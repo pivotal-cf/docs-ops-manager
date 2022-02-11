@@ -392,13 +392,13 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
 
 ## <a id='specialized-procedures'></a> Certificates with Specialized Procedures
 
-Some certificates are not rotated when using the standard rotation procedure above. The following are certificates that use a separate, specialized rotation procedure.
+Some certificates are not rotated when using the standard rotation procedure. The following table lists certificates that use a separate, specialized rotation procedure and provides links to documentation and Knowledge Base articles to help you rotate these certificates.
 
 | Certificate | Tile | Procedure |
 |-------------|------|-----------|
-| `/services/tls_ca` | - | [Rotating the Services TLS CA and Its Leaf Certificates](services_tls_ca_rotate.html) |
+| `/services/tls_ca` | _n/a_ | [Rotating the Services TLS CA and Its Leaf Certificates](services_tls_ca_rotate.html) |
 | `/telemetry-ca-cert` | Telemetry v1.2.1 and earlier | [How to rotate the telemetry-ca-cert in Operations Manager](https://community.pivotal.io/s/article/How-to-rotate-the-telemetry-ca-cert) |
-| `/services/tls_leaf` | <%= vars.app_runtime_abbr %> v2.10.0 - v2.10.13 | [Rotate /services/tls_leaf manually](https://community.pivotal.io/s/article/Rotate-services-tls-leaf-manually) |
+| `/services/tls_leaf` | <%= vars.app_runtime_abbr %> v2.10.0 – v2.10.13 | [Rotate /services/tls_leaf manually](https://community.pivotal.io/s/article/Rotate-services-tls-leaf-manually) |
 
 
 ## <a id='troubleshooting'></a> Troubleshooting
