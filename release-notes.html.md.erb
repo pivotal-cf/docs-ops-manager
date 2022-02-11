@@ -25,6 +25,8 @@ on the Cloud Foundry website.
 
 **Release Date:** February 11, 2022
 
+- **[Bug Fix]** The UAA issue introduced in [v2.10.27](#2-10-27) causing UAA startup to fail on Air Gapped environments.
+- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release. This issue occurred when uploading a BOSH release containing source packages when the BOSH director already had a copy of the same release with compiled packages.
 
 
 <table border="1" class="nice">
@@ -50,9 +52,7 @@ on the Cloud Foundry website.
 
 **Release Date:** February 04, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-We've received reports of UAA failing to start on Air Gapped Ops Manager environments, we are still investigating but currently recommend not upgrading Air Gapped environments.
-</div>
+- **[Known Issue]** UAA will fail to start on Air Gapped Ops Manager environments.
 
 - **[Bug Fix]** The BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release.
 - **[Feature]** The Azure CPI has been updated to allow load balancers to be specified via an array of hashes. This is not available in the UI but can be used when manually configuring bosh configs.
@@ -80,10 +80,7 @@ We've received reports of UAA failing to start on Air Gapped Ops Manager environ
 
 **Release Date:** February 02, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-We've received reports of UAA failing to start on Air Gapped Ops Manager environments, we are still investigating but currently recommend not upgrading Air Gapped environments.
-</div>
-
+- **[Known Issue]** UAA will fail to start on Air Gapped Ops Manager environments.
 - **[Known Issue]** The BOSH CLI included on the Ops Manager VM can cause deployment failures in certain circumstances. If a BOSH release that includes compiled packages is uploaded, and an identical BOSH release that includes source packages already exists on the BOSH Director, the deployment might fail. If you run into this situation, please contact support.
 
 - **[Security Fix]** Upgrades the OpsManager PostgreSQL to 13.5 and the BOSH Director PostgreSQL to 10.19 to fix a potential MITM vulnerability.
