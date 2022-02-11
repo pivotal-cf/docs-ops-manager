@@ -25,9 +25,8 @@ on the Cloud Foundry website.
 
 **Release Date:** February 11, 2022
 
-- **[Bug Fix]** The UAA issue introduced in [v2.10.27](#2-10-27) causing UAA startup to fail on Air Gapped environments.
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release. This issue occurred when uploading a BOSH release containing source packages when the BOSH director already had a copy of the same release with compiled packages.
-
+- **[Bug Fix]** The UAA issue introduced in [v2.10.27](#2-10-27) causing UAA startup to fail on air-gapped environments is resolved in this release.
+- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release. This issue caused deployment failures if a BOSH release that includes compiled packages was uploaded, and an identical BOSH release that includes source packages already existed on the BOSH Director.
 
 <table border="1" class="nice">
   <thead>
@@ -41,9 +40,9 @@ on the Cloud Foundry website.
     <td>Tanzu Ops Manager</td><td>2.10.29-build.402*</td>
   </tr>
   <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>621.208*</td></tr><tr><td>BBR SDK</td><td>1.18.33</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.2*</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.34*</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.15*</td></tr><tr><td>Credhub CLI</td><td>2.9.3*</td></tr><tr><td>BBR CLI</td><td>1.9.24</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-  
+
     <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  
+
   </tbody>
 </table>
 
@@ -52,10 +51,9 @@ on the Cloud Foundry website.
 
 **Release Date:** February 04, 2022
 
-- **[Known Issue]** UAA will fail to start on Air Gapped Ops Manager environments.
-
+- **[Known Issue]** UAA fails to start in air-gapped Ops Manager environments.
 - **[Bug Fix]** The BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release.
-- **[Feature]** The Azure CPI has been updated to allow load balancers to be specified via an array of hashes. This is not available in the UI but can be used when manually configuring bosh configs.
+- **[Feature]** The Azure CPI has been updated to allow load balancers to be specified using an array of hashes. This is not available in the UI, but can be configured manually with BOSH.
 
 <table border="1" class="nice">
   <thead>
@@ -80,14 +78,14 @@ on the Cloud Foundry website.
 
 **Release Date:** February 02, 2022
 
-- **[Known Issue]** UAA will fail to start on Air Gapped Ops Manager environments.
+- **[Known Issue]** UAA fails to start in air-gapped Ops Manager environments.
 - **[Known Issue]** The BOSH CLI included on the Ops Manager VM can cause deployment failures in certain circumstances. If a BOSH release that includes compiled packages is uploaded, and an identical BOSH release that includes source packages already exists on the BOSH Director, the deployment might fail. If you run into this situation, please contact support.
 
-- **[Security Fix]** Upgrades the OpsManager PostgreSQL to 13.5 and the BOSH Director PostgreSQL to 10.19 to fix a potential MITM vulnerability.
+- **[Security Fix]** Upgrades the Ops Manager PostgreSQL to 13.5 and the BOSH Director PostgreSQL to 10.19 to fix a potential MITM vulnerability.
 ([CVE-2021-23214](https://www.postgresql.org/support/security/CVE-2021-23214/))
 
 - **[Bug Fix]** For Azure deployments, Ops Manager correctly respects the storage type you set in the UI.
-- **[Bug Fix]** For vSphere deployments, Ops Manager should not generate a "Too many open file handles" error due to open vCenter connections.
+- **[Bug Fix]** For vSphere deployments, Ops Manager does not generate a `Too many open file handles` error due to open vCenter connections.
 
 <table border="1" class="nice">
   <thead>
