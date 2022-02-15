@@ -326,11 +326,28 @@ To rotate a manually set CA:
 
 1. Use the CredHub CLI or CredHub API to set the new CA at the same path as the original. To download and install the CredHub CLI, see the [CredHub CLI](https://github.com/cloudfoundry-incubator/credhub-cli) repository on GitHub. For more information about the CredHub API, see the [CredHub API documentation](https://docs.cloudfoundry.org/api/credhub/).
 
+1. Determine which tiles or service instances are using the rotated certificate:
+    1. Get the list of deployment names using one of the following methods:
+        1. Run the following command to get a list of deployments using the CA or its leaf certificates:
+
+            ```
+            maestro --json ls | jq -r '.metadata[] | select(.name == "/PATH/TO/CA/IN/CREDHUB" or .signed_by == "/PATH/TO/CA/IN/CREDHUB") | .deployment_name' | sort | uniq
+            ```
+        2. If you want to determine the deployments manually, then:
+            1. Use Maestro to get a list of all certificates by running:
+
+                ```
+                maestro ls
+                ```
+            1. Locate the output entries whose name or signed_by field matches the CredHub path of the CA that was rotated. Note that certificates may be listed multiple times if they are associated with multiple deployments.
+            1. For each output entry, look at the `deployment_name` key. This corresponds to a tile that you will need to redeploy.
+    1. Entries with a deployment name like `service-instance-*` are certificates associated with a service instance created by a service tile. You will need to redeploy the corresponding service tile and enable its **Upgrade all service instances** errand.
+
 1. Redeploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-    1. For each service tile you have deployed:
+    1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificates. If unsure, enable the **Select All Products** checkbox.
+    1. For each service tile you are deploying:
         1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands may be slightly different between services.</p>
@@ -352,8 +369,8 @@ To rotate a manually set CA:
 1. Redeploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-    1. For each service tile you have deployed:
+    1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificates. If unsure, enable the **Select All Products** checkbox.
+    1. For each service tile you are deploying:
         1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands may be slightly different between services.</p>
@@ -368,8 +385,8 @@ To rotate a manually set CA:
 1. Redeploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-    1. For each service tile you have deployed:
+    1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificates. If unsure, enable the **Select All Products** checkbox.
+    1. For each service tile you are deploying:
         1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands may be slightly different between services.</p>
@@ -385,11 +402,27 @@ To rotate a manually set leaf certificate:
 
 1. Use the CredHub CLI or CredHub API to set the new leaf certificate at the same path as the original. To download and install the CredHub CLI, see the [CredHub CLI](https://github.com/cloudfoundry-incubator/credhub-cli) repository on GitHub. For more information about the CredHub API, see the [CredHub API documentation](https://docs.cloudfoundry.org/api/credhub/).
 
+1. Determine which tiles or service instances are using the rotated certificate:
+    1. Get the list of deployment names using one of the following methods:
+        1. Run the following command to get a list of deployments using the certificate:
+
+            ```
+            maestro --json ls | jq -r '.metadata[] | select(.name == "/PATH/TO/CERTIFICATE/IN/CREDHUB") | .deployment_name' | sort | uniq
+            ```
+        2. If you want to determine the deployments manually, then:
+            1. Use Maestro to get a list of all certificates by running:
+
+                ```
+                maestro ls
+                ```
+            1. Locate the output entries whose name matches the CredHub path of the certificate that was rotated. Note that a certificate may be listed multiple times if it is associated with multiple deployments.
+            1. For each output entry, look at the `deployment_name` key. This corresponds to a tile that you will need to redeploy.
+    1. Entries with a deployment name like `service-instance-*` are certificates associated with a service instance created by a service tile. You will need to redeploy the corresponding service tile and enable its **Upgrade all service instances** errand.
 1. Redeploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-    1. For each service tile you have deployed:
+    1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificate. If unsure, enable the **Select All Products** checkbox.
+    1. For each service tile you are deploying:
         1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands may be slightly different between services.</p>
