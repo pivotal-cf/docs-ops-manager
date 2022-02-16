@@ -25,8 +25,9 @@ on the Cloud Foundry website.
 
 **Release Date:** February 16, 2022
 
-- **[Bug Fix]** IMDS V2 breaks Spot Instances in Opsman
-- **[Feature]** Ensure Ops Manager configures Bosh blobstore to only talk TLS
+- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.9.28](#2-9-28) is resolved in this release. This issue caused deployment failures if a Tile used a compiled BOSH release that shared some packages with a BOSH release already uploaded to the BOSH director.
+- **[Bug Fix]** BOSH deployments failing when enabling Spot Instances via VM Extensions is resolved in this release.
+- **[Feature]** The BOSH Blobstore is now configured to only allow TLS communication. Communication was previously done via TLS, but non-TLS requests were still allowed.
 
 <table border="1" class="nice">
   <thead>
