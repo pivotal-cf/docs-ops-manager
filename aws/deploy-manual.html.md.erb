@@ -3,7 +3,7 @@ title: Deploying Ops Manager on AWS
 owner: Ops Manager
 ---
 
-This topic describes how to deploy <%= vars.platform_name %> on Amazon Web Services (AWS).
+This topic describes how to deploy <%= vars.ops_manager %> on Amazon Web Services (AWS).
 
 Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html).
 
@@ -101,7 +101,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
       - If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
         <p class="note"><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate.</p>
   1. For **Certificate Name**, select the desired certificate.
-  1. For **Security Policy**, select the policy you created in [Step 3: Create an IAM User for <%= vars.platform_name %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+  1. For **Security Policy**, select the policy you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
   1. Click **Next: Configure Security Groups**.
 
 1. For **Step 3: Configure Security Groups**, do the following:
@@ -333,7 +333,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 ## <a id='pcfaws-mysql-rds'></a> Step 8: Create a MySQL Database Using AWS RDS
 
-<p class="note"><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.platform_name %> on AWS.</p>
+<p class="note"><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.ops_manager %> on AWS.</p>
 
 1. Navigate to the RDS Dashboard.
 
@@ -374,4 +374,4 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 When the instance has launched, you can do either of the following:
 
 - Review [Required AWS Objects](required-objects.html) to verify that you created the correct resources in AWS.
-- Proceed to [Configuring BOSH Director on AWS](config-manual.html) to continue deploying <%= vars.platform_name %>.
+- Proceed to [Configuring BOSH Director on AWS](config-manual.html) to continue deploying <%= vars.ops_manager %>.

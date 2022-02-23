@@ -3,7 +3,7 @@ title: Adding and Deleting Products
 owner: Ops Manager
 ---
 
-This topic describes adding and deleting additional products from your <%= vars.platform_name %>
+This topic describes adding and deleting additional products from your <%= vars.ops_manager %>
 installation, such as [VMware Tanzu™ RabbitMQ® for VMs](https://network.pivotal.io/products/p-rabbitmq).
 
 <p class="note"><strong>Note:</strong> In <%= vars.ops_manager %>, all product tiles use floating
@@ -15,11 +15,11 @@ installation, such as [VMware Tanzu™ RabbitMQ® for VMs](https://network.pivot
 
 ## <a id="add-import"></a> Add and Import Products
 
-To add or import a product to your <%= vars.platform_name %> installation:
+To add or import a product to your <%= vars.ops_manager %> installation:
 
 1. Download products from [<%= vars.product_network %>] (https://network.pivotal.io). If you
 cannot download products from <%= vars.product_network %> due to restricted network connectivity,
-see [Installing <%= vars.platform_name %> in Air-Gapped Environments](offline_installation.html).
+see [Installing <%= vars.ops_manager %> in Air-Gapped Environments](offline_installation.html).
 
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and log in.
 
@@ -45,8 +45,8 @@ the product.
 post-install errands or review the default settings. Post-install errands are scripts that
 automatically run after a product installs, before <%= vars.ops_manager %> makes the product
 available for use. For more information about post-install errands, see [Errands]
-(http://docs.pivotal.io/tiledev/<%= vars.current_major_version.sub('.','-') %>/tile-errands.html)
-in the <%= vars.platform_name %> Tile Developer Guide.
+(http://docs.pivotal.io/tiledev/tile-errands.html)
+in the <%= vars.ops_manager %> Tile Developer Guide.
   <p class="note"><strong>Note:</strong> By default, <%= vars.ops_manager %> reruns errands
     even if they are not necessary due to settings left from a previous install. Leaving errands
     checked at all times can cause updates and other processes to take longer. To prevent an
@@ -68,7 +68,7 @@ the product.
 
 ## <a id='pivnet-api'></a> Using the <%= vars.product_network %> API to Upgrade Products
 
-Instead of manually downloading each new version of the products in your <%= vars.platform_name %>
+Instead of manually downloading each new version of the products in your <%= vars.ops_manager %>
 installation, you can upgrade your products by connecting your <%= vars.ops_manager %> Installation
 Dashboard with <%= vars.product_network %> using a API token. Once you have uploaded a product,
 all subsequent product upgrades appear automatically in the <%= vars.ops_manager %> Installation
@@ -129,7 +129,7 @@ Dashboard, locate the product you want to upgrade.
 
 You can use the <%= vars.ops_manager %> API or the **Review Pending Changes** page in the
 <%= vars.ops_manager %> Installation Dashboard to apply pending changes only to the BOSH Director
-when you stage multiple products in a new <%= vars.platform_name %> installation or as part
+when you stage multiple products in a new <%= vars.ops_manager %> installation or as part
 of an upgrade.
 
 For more information, see [Reviewing Pending Product Changes](review-pending-changes.html).

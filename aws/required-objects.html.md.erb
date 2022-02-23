@@ -3,11 +3,11 @@ title: Required AWS Objects
 owner: Ops Manager
 ---
 
-This topic describes the objects you create in Amazon Web Services (AWS) in order to deploy <%= vars.platform_name %>.
+This topic describes the objects you create in Amazon Web Services (AWS) in order to deploy <%= vars.ops_manager %>.
 
 ## <a id='overview'></a>Overview
 
-Use this topic to determine the resource requirements of <%= vars.platform_name %> on AWS, or to verify that you created the correct resources after completing the procedures in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html) and [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
+Use this topic to determine the resource requirements of <%= vars.ops_manager %> on AWS, or to verify that you created the correct resources after completing the procedures in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html) and [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
 
 ## <a id='s3-buckets-om-pas'></a> S3 Buckets
 
@@ -19,15 +19,15 @@ As part of the preparing to deploy process, you must create the following S3 buc
 * `pcf-resources-bucket`
 * `pcf-droplets-bucket`
 
-These buckets must be empty when you install or reinstall <%= vars.platform_name %>.
+These buckets must be empty when you install or reinstall <%= vars.ops_manager %>.
 
 See [Step 2: Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-## <a id='iam-user-pcf'></a> IAM User for <%= vars.platform_name %>
+## <a id='iam-user-pcf'></a> IAM User for <%= vars.ops_manager %>
 
-You must create an IAM user for <%= vars.platform_name %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.platform_name %> for AWS Policy Document](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/policy-doc.html).
+You must create an IAM user for <%= vars.ops_manager %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html).
 
-See [Step 3: Create an IAM User for <%= vars.platform_name %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='key-pair'></a> Key Pair
 

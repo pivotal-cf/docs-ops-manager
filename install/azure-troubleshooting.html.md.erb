@@ -7,7 +7,7 @@ owner: Ops Manager, Release Integration
 
 <html class="list-style-none"></html>
 
-This topic describes how to troubleshoot known issues when deploying or running <%= vars.platform_name %> on Azure.
+This topic describes how to troubleshoot known issues when deploying or running <%= vars.ops_manager %> on Azure.
 
 
 ## <a id="install-issues"></a> Installation Issues
@@ -18,7 +18,7 @@ This section describes how to troubleshoot known installation issues.
 
 #### Symptom
 
-You cannot copy the <%= vars.ops_manager %> image into your storage account as part of [Step 4: Boot <%= vars.ops_manager %>](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+You cannot copy the <%= vars.ops_manager %> image into your storage account as part of [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
 
 #### Explanation
 
@@ -56,11 +56,11 @@ Exited with 1.
 
 #### Explanation
 
-You provided a passphrase when creating your key pair in [Step 4: Boot <%= vars.ops_manager %>](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+You provided a passphrase when creating your key pair in [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
 
 #### Solution
 
-Create a new key pair with no passphrase and re-do the installation. For more information, see [Step 4: Boot <%= vars.ops_manager %>](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+Create a new key pair with no passphrase and re-do the installation. For more information, see [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
 
 ### <a id="database-permissions"></a> Insufficient External Database Permissions
 
@@ -109,6 +109,6 @@ HTTP libraries for Java and Go, running with default settings, prune connections
 
 #### Solution
 
-In the **Networking** pane of the <%= vars.app_runtime_abbr %> tile, set **Front end idle timeout** to `240` seconds or less, so that <%= vars.platform_name %> regenerates the front end connection before it times out.
+In the **Networking** pane of the <%= vars.app_runtime_abbr %> tile, set **Front end idle timeout** to `240` seconds or less, so that <%= vars.ops_manager %> regenerates the front end connection before it times out.
 
 For more information, see [Azure Networking Connection Idle for more than Four minutes](https://community.pivotal.io/s/article/Azure-Networking-Connection-Idle-for-more-than-Four-minutes) in the Knowledge Base.

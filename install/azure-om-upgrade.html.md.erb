@@ -3,9 +3,9 @@ title: Upgrading BOSH Director on Azure
 owner: Ops Manager
 ---
 
-This topic describes how to upgrade BOSH Director for <%= vars.platform_name %> on Azure.
+This topic describes how to upgrade BOSH Director for <%= vars.ops_manager %> on Azure.
 
-Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Upgrading <%= vars.platform_name %>](upgrading-pcf.html#upgrade_ops).
+Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html#upgrade_ops).
 
 
 ## <a id='overview'></a> Overview
@@ -45,7 +45,7 @@ To export environment variables:
     ```
     az cloud set --name AzureCloud
     ```
-    If you deployed <%= vars.platform_name %> in an environment other than Azure Cloud, consult the following list:
+    If you deployed <%= vars.ops_manager %> in an environment other than Azure Cloud, consult the following list:
     * For Azure China, replace `AzureCloud` with `AzureChinaCloud`. If logging in to `AzureChinaCloud` fails with a `CERT_UNTRUSTED` error, use Node v4 or later.
     * For Azure Government Cloud, replace `AzureCloud` with `AzureUSGovernment`.
     * For Azure Germany, replace `AzureCloud` with `AzureGermanCloud`.
@@ -57,7 +57,7 @@ To export environment variables:
     ```
     Authenticate by navigating to the URL in the output, entering the provided code, and clicking your account.
 
-1. Ensure that the following environment variables are set to the names of the resources you created when deploying <%= vars.ops_manager %> as part of the procedures in [Deploying <%= vars.ops_manager %> on Azure](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/deploy-manual.html):
+1. Ensure that the following environment variables are set to the names of the resources you created when deploying <%= vars.ops_manager %> as part of the procedures in [Deploying <%= vars.ops_manager %> on Azure](../azure/deploy-manual.html):
   * `$RESOURCE_GROUP`: This should be set to the name of your resource group. To list the resource groups for your subscription, run:
 
       ```
@@ -332,4 +332,4 @@ To create an <%= vars.ops_manager %> VM instance:
 
 ## <a id='next'></a> Next Steps
 
-After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.platform_name %>](upgrading-pcf.html).
+After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).

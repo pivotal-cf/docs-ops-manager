@@ -4,32 +4,32 @@ owner: Ops Manager
 iaas: GCP
 ---
 
-This topic describes the preparation steps required to install <%= vars.platform_name %> on Google Cloud Platform (GCP).
+This topic describes the preparation steps required to install <%= vars.ops_manager %> on Google Cloud Platform (GCP).
 
 
 ## <a id="prerequisites"></a> Prerequisites
 
 Before you prepare your <%= vars.ops_manager %> installation, do the following depending on the runtime you intend to deploy:
 
-- If you are deploying <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), see [<%= vars.platform_name %> on GCP Requirements](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/gcp.html).
+- If you are deploying <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), see [<%= vars.ops_manager %> on GCP Requirements](../install/gcp.html).
 
 - If you are deploying Enterprise <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), see [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/gcp-requirements.html).
 
 
 ## <a id="config-components"></a> Configuration and Components
 
-This section outlines high-level infrastructure options for <%= vars.platform_name %> on GCP. A <%= vars.platform_name %> deployment includes <%= vars.ops_manager %> and your chosen runtime. For example, both <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>
-and <%= vars.ops_manager %> with <%= vars.k8s_runtime_abbr %> are <%= vars.platform_name %> deployments. For more information, review the deployment
-options and recommendations in [Reference Architecture for <%= vars.platform_name %> on GCP](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/gcp/gcp_ref_arch.html).
+This section outlines high-level infrastructure options for <%= vars.ops_manager %> on GCP. A <%= vars.ops_manager %> deployment includes <%= vars.ops_manager %> and your chosen runtime. For example, both <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>
+and <%= vars.ops_manager %> with <%= vars.k8s_runtime_abbr %> are <%= vars.ops_manager %> deployments. For more information, review the deployment
+options and recommendations in [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
 
-You can deploy <%= vars.platform_name %> using one of two main configurations on a GCP virtual private cloud (VPC):
+You can deploy <%= vars.ops_manager %> using one of two main configurations on a GCP virtual private cloud (VPC):
 
   * A _single-project_ configuration that gives <%= vars.ops_manager %> full access to VPC resources
   * A _shared VPC_ configuration in which <%= vars.ops_manager %> shares VPC resources
 
-See [Shared vs Single-Project VPCs](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/gcp/gcp_ref_arch.html#shared-vs-single) in _Reference Architecture for <%= vars.platform_name %> on GCP for a full discussion and recommendations.
+See [Shared vs Single-Project VPCs](../refarch/gcp/gcp_ref_arch.html#shared-vs-single) in _Reference Architecture for <%= vars.ops_manager %> on GCP for a full discussion and recommendations.
 
-When deploying <%= vars.platform_name %> on GCP, <%= vars.company_name %> recommends using the following GCP components:
+When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommends using the following GCP components:
 
   * [Google Cloud SQL](https://cloud.google.com/sql/docs/) for external database services
   * [NAT Gateway Instances](https://cloud.google.com/solutions/connecting-securely#natgateway) to limit the number of VMs with public IP addresses
@@ -63,7 +63,7 @@ When deploying <%= vars.platform_name %> on GCP, <%= vars.company_name %> recomm
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
-<p class='note'><strong>Note:</strong> You can use this service account to configure file storage for <%= vars.app_runtime_abbr %>. For more information, see <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/pas-file-storage.html#gcp">GCP</a> in<em>Configuring File Storage for <%= vars.app_runtime_abbr %></em>.</p>
+<p class='note'><strong>Note:</strong> You can use this service account to configure file storage for <%= vars.app_runtime_abbr %>. For more information, see <a href="https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp">GCP</a> in<em>Configuring File Storage for <%= vars.app_runtime_abbr %></em>.</p>
 
 
 ## <a id="enable_compute_resource_api"></a> Step 2: Enable Google Cloud APIs
@@ -183,7 +183,7 @@ Use NAT instances when you want to expose only a minimal number of public IP add
 Creating NAT instances permits internet access from cluster VMs.
 You might, for example, need this internet access for pulling Docker images or enabling internet access for your workloads.
 
-For more information, see [Reference Architecture for <%= vars.platform_name %> on GCP](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/gcp/gcp_ref_arch.html#common_network) and the [GCP documentation](https://cloud.google.com/solutions/connecting-securely#natgateway).
+For more information, see [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html#common_network) and the [GCP documentation](https://cloud.google.com/solutions/connecting-securely#natgateway).
 
 1. In the GCP console, with your single project or shared-VPC host project selected, navigate to **Compute Engine** > **VM instances**.
   ![Screenshot of the GCP Console Compute Engine menu. The Compute Engine menu expands to show the VM instaces option.](../common/images/gcp/gcp-vm-instances.png)
@@ -505,13 +505,13 @@ Shared-VPC installation typically use an internal TCP/UDP load balancer to minim
 
 To create an internal load balancer for <%= vars.ops_manager %> on GCP, do the following.
 
-1. Create an internal-facing TCP/UDP load balancer for each region of your <%= vars.platform_name %> deployment.
+1. Create an internal-facing TCP/UDP load balancer for each region of your <%= vars.ops_manager %> deployment.
 <p class="note"><strong>Note</strong>: GCP Internal Load Balancer (iLB) is a regional product. Within the same VPC/network, client VMs in a different region from the iLB cannot access the iLB. For more information, see the <a href="https://cloud.google.com/load-balancing/docs/internal/setting-up-internal#global_routing_issue">GCP documentation</a>.</p>
 
 1. Assign private IP addresses to the load balancers.
 
-1. After you have deployed <%= vars.ops_manager %>, follow instructions in [Create or Update a VM Extension](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/custom-vm-extensions.html#create-vm-extension) to add a custom VM extension that applies internal load balancing to all VMs deployed by BOSH.
-  - For example, the following manifest code adds a VM extension `backend-pool` to <%= vars.platform_name %> VMs:
+1. After you have deployed <%= vars.ops_manager %>, follow instructions in [Create or Update a VM Extension](../install/custom-vm-extensions.html#create-vm-extension) to add a custom VM extension that applies internal load balancing to all VMs deployed by BOSH.
+  - For example, the following manifest code adds a VM extension `backend-pool` to <%= vars.ops_manager %> VMs:
 
     ```
 vm_extensions:
@@ -525,7 +525,7 @@ vm_extensions:
 
 ### <a id="http_loadbalancer"></a> Create HTTP Load Balancer
 
-To create a global HTTP load balancer for <%= vars.platform_name %> on GCP, do the following:
+To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP, do the following:
 
 1. [Create Instance Group](#create-instance-group)
 1. [Create Health Check](#create-health-check)
@@ -648,7 +648,7 @@ To create a global HTTP load balancer for <%= vars.platform_name %> on GCP, do t
 
 ## <a id="tcp_websockets_lb"></a> Step 9: Create TCP WebSockets Load Balancer
 
-The load balancer for tailing logs with WebSockets for <%= vars.platform_name %> on GCP operates on TCP port `443`.
+The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> on GCP operates on TCP port `443`.
 
 1. From the GCP console, select **Network services > Load balancing > Create load balancer**.
 

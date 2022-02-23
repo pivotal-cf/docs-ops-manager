@@ -126,7 +126,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
     <p class="note"><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
 
 1. <%= partial "../common/azure-environment" %>
-    <p class="note"><strong>Note:</strong> To deploy <%= vars.platform_name %> on Azure using Active Directory Federation Services (ADFS), select <strong>Azure Stack</strong>. For more information about ADFS for Azure, see <a href="https://docs.pivotal.io/platform/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
+    <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS), select <strong>Azure Stack</strong>. For more information about ADFS for Azure, see <a href="https://docs.pivotal.io/platform/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
 
 1. (Optional) If you selected `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
   1. For **Domain**, enter the domain for your Azure Stack deployment. For example, `local.azurestack.external`.
@@ -352,7 +352,7 @@ To create the services network, do the following:
 
 ## <a id="next"></a> Next Steps
 
-* (Optional) When <%= vars.ops_manager %> finishes deploying, deploy BOSH Add-ons to your system. For more information, see [Deploying BOSH Add-Ons](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/add-ons.html).
+* (Optional) When <%= vars.ops_manager %> finishes deploying, deploy BOSH Add-ons to your system. For more information, see [Deploying BOSH Add-Ons](../install/add-ons.html).
 
-* Install one or more <%= vars.platform_name %> runtime environments to complete your installation.
-  For more information, see [<%= vars.platform_name %> Runtimes](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/runtimes.html).
+* Install one or more <%= vars.ops_manager %> runtime environments to complete your installation.
+  For more information, see [<%= vars.ops_manager %> Runtimes](../install/runtimes.html).

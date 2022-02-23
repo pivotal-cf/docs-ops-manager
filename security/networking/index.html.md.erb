@@ -3,31 +3,31 @@ title: Network Security
 owner: Security
 ---
 
-This topic describes some of the networking and routing security options for your <%= vars.platform_name %> deployment.
+This topic describes some of the networking and routing security options for your <%= vars.ops_manager %> deployment.
 
 
 ## <a id="secure_traffic"></a> Securing Traffic and Controlling Routes
 
-You can enable and configure a number of customization options to secure traffic in and out of your <%= vars.platform_name %> deployment.
+You can enable and configure a number of customization options to secure traffic in and out of your <%= vars.ops_manager %> deployment.
 
-* [TLS Connections in <%= vars.platform_name %> Deployments](tls-info.html)
-* [Securing Traffic into <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/adminguide/securing-traffic.html)
-* [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/operating/security_config.html)
-* [Enabling TCP Routing](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/adminguide/enabling-tcp-routing.html)
+* [TLS Connections in <%= vars.ops_manager %> Deployments](tls-info.html)
+* [Securing Traffic into <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/adminguide/securing-traffic.html)
+* [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/application-service/operating/security_config.html)
+* [Enabling TCP Routing](https://docs.pivotal.io/application-service/adminguide/enabling-tcp-routing.html)
 
 
 ## <a id="use_ipsec"></a> Using the IPsec Add-On
 
-The IPsec add-on for <%= vars.platform_name %> provides additional security to the network layer for each BOSH-deployed virtual machine (VM).
+The IPsec add-on for <%= vars.ops_manager %> provides additional security to the network layer for each BOSH-deployed virtual machine (VM).
 
-The <%= vars.platform_name %> IPsec add-on secures network traffic within an <%= vars.platform_name %> deployment and provides internal system protection if a malicious actor breaches your firewall.
+The <%= vars.ops_manager %> IPsec add-on secures network traffic within an <%= vars.ops_manager %> deployment and provides internal system protection if a malicious actor breaches your firewall.
 
 * [Securing Data in Transit with the IPsec Add-on](http://docs.pivotal.io/addon-ipsec/)
 * [Rotating IPsec Credentials](http://docs.pivotal.io/addon-ipsec/credentials.html)
-* [Installing the <%= vars.platform_name %> IPsec Add-On](http://docs.pivotal.io/addon-ipsec/installing.html)
+* [Installing the <%= vars.ops_manager %> IPsec Add-On](http://docs.pivotal.io/addon-ipsec/installing.html)
 
 
-## <a id="net_commpaths"></a> Network Communication Paths in <%= vars.platform_name %>
+## <a id="net_commpaths"></a> Network Communication Paths in <%= vars.ops_manager %>
 
 * [BOSH DNS Network Communications](bosh-dns-network-paths.html)
 * [Cloud Controller Network Communications](cc-network-paths.html)

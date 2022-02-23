@@ -3,7 +3,7 @@ title: Configuring Amazon EBS Encryption
 owner: Ops Manager
 ---
 
-<%= vars.platform_name %> supports Amazon Elastic Block Store (EBS) encryption for <%= vars.platform_name %> deployments on AWS. You can use this feature to meet data-at-rest encryption requirements or as a security best practice. This feature uses AWS Key Management Service (KMS).
+<%= vars.ops_manager %> supports Amazon Elastic Block Store (EBS) encryption for <%= vars.ops_manager %> deployments on AWS. You can use this feature to meet data-at-rest encryption requirements or as a security best practice. This feature uses AWS Key Management Service (KMS).
 
 <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) for Windows are not encrypted.</p>
 
@@ -12,7 +12,7 @@ By following the procedures in this topic, you can use full disk encryption for 
 * BOSH and all present and future VMs
 * The <%= vars.ops_manager %> VM
 
-There is no performance penalty for using encrypted EBS volumes. <%= vars.company_name %> recommends that all users of <%= vars.platform_name %> on AWS enable encryption.
+There is no performance penalty for using encrypted EBS volumes. <%= vars.company_name %> recommends that all users of <%= vars.ops_manager %> on AWS enable encryption.
 
 <p class="note"><strong>Note:</strong> Before you enable EBS encryption with KMS, you may need to update your AWS policy. For more information, see <a href="policy-doc.html#add-policies">Add Additional AWS Policies</a>.</p>
 

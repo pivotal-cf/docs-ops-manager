@@ -28,7 +28,7 @@ the recommended remediation procedures.
 ### <a id='reinstall_bosh'></a>BOSH Does Not Reinstall ###
 
 You might want to reinstall BOSH for troubleshooting purposes.
-However, if <%= vars.platform_name %> does not detect any changes, BOSH does not reinstall.
+However, if <%= vars.ops_manager %> does not detect any changes, BOSH does not reinstall.
 To force a reinstall of BOSH, select **BOSH Director > Resource Sizes**
 and change a resource value.
 For example, you could increase the amount of RAM by 4&nbsp;MB.
@@ -110,7 +110,7 @@ determine whether you are experiencing routing issues.
 ### <a id='RSA-cert'></a>Install Exits With a Creates/Updates/Deletes App Failure or With a 403 Error###
 
 **Scenario 1:**
-Your <%= vars.platform_name %> install exits with the following 403 error when you attempt to
+Your <%= vars.ops_manager %> install exits with the following 403 error when you attempt to
 log in to the Apps Manager:
 
 <pre>
@@ -122,7 +122,7 @@ log in to the Apps Manager:
 </pre>
 
 **Scenario 2:**
-Your <%= vars.platform_name %> install exits with a `creates/updates/deletes an app (FAILED - 1)` error message with the following stack trace:
+Your <%= vars.ops_manager %> install exits with a `creates/updates/deletes an app (FAILED - 1)` error message with the following stack trace:
 
 <pre>
 1) App CRUD creates/updates/deletes an app
@@ -163,16 +163,16 @@ To remove the <%= vars.app_runtime_abbr %> dependency, change the value of this 
 
 ### <a id='out_of_disk_space'></a>Out of Disk Space Error ###
 
-<%= vars.platform_name %> displays an `Out of Disk Space` error if log files expand to fill
+<%= vars.ops_manager %> displays an `Out of Disk Space` error if log files expand to fill
 all available disk space.
-If this happens, rebooting the <%= vars.platform_name %> installation VM clears the tmp
+If this happens, rebooting the <%= vars.ops_manager %> installation VM clears the tmp
 directory of these log files and resolves the error.
 
 If users receive `Out of Disk Space` errors when trying to push apps, this can mean that
 Diego cells may be running out of disk space capacity.
 
-To perform a detailed analysis of disk usage by containers and host VMs in your <%= vars.platform_name %> deployment,
-see [Examining GrootFS Disk Usage](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/adminguide/examining_grootfs_disk.html).
+To perform a detailed analysis of disk usage by containers and host VMs in your <%= vars.ops_manager %> deployment,
+see [Examining GrootFS Disk Usage](https://docs.pivotal.io/application-service/adminguide/examining_grootfs_disk.html).
 
 ### <a id='vsphere_fails'></a>Installing BOSH Director Fails in vSphere ###
 
@@ -217,7 +217,7 @@ When MySQL cannot communicate with UAA, <%= vars.ops_manager %> shows the follow
 > **Error: 'mysql_monitor/12a3b456-cd7e-8fgh-9012-345678b90ijk (0)' is not running after update. Review logs for failed jobs: replication-canary.**
 
 If you see this error, create firewall rules that allow MySQL to reach UAA, using
-[MySQL Network Communications](https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/security/networking/mysql-network-paths.html) as a
+[MySQL Network Communications](../security/networking/mysql-network-paths.html) as a
 reference.
 
 ### <a id='ip_address_taken'></a><%= vars.ops_manager %> Hangs During MicroBOSH Install or HAProxy States "IP Address Already Taken" ###
@@ -228,14 +228,14 @@ During a <%= vars.app_runtime_abbr %> installation, you might receive the follow
   deployment manifest" task.
 * When you set the IP address for the HAProxy, the "IP Address Already Taken" message appears.
 
-When you install the BOSH Director, you assign it an IP address. <%= vars.platform_name %>
+When you install the BOSH Director, you assign it an IP address. <%= vars.ops_manager %>
 then takes the next two consecutive IP addresses, assigns the first to MicroBOSH, and reserves the
 second. For example:
 
 ```
-203.0.113.1 - <%= vars.platform_name %> (User assigned)
-203.0.113.2 - MicroBOSH (<%= vars.platform_name %> assigned)
-203.0.113.3 - Reserved (<%= vars.platform_name %> reserved)
+203.0.113.1 - <%= vars.ops_manager %> (User assigned)
+203.0.113.2 - MicroBOSH (<%= vars.ops_manager %> assigned)
+203.0.113.3 - Reserved (<%= vars.ops_manager %> reserved)
 ```
 
 To resolve this issue, ensure that the next two subsequent IP addresses from the manually assigned
@@ -270,11 +270,11 @@ information.
 ## <a id='common_problems_firewalls'></a>Common Issues Caused by Firewalls ##
 
 This section describes various issues you might encounter when installing
-<%= vars.platform_name %> in an environment that uses a strong firewall.
+<%= vars.ops_manager %> in an environment that uses a strong firewall.
 
 ### <a id='DNS_res_fails'></a>DNS Resolution Fails ###
 
-When you install <%= vars.platform_name %> in an environment that uses a strong firewall, the
+When you install <%= vars.ops_manager %> in an environment that uses a strong firewall, the
 firewall might block DNS resolution. To resolve this issue, see
 [Verify Ops Manager Resolves DNS Entries Behind a Firewall](config_firewall.html#DNS_fails) in
 _Preparing Your Firewall_.

@@ -3,7 +3,7 @@ title: Configuring a Shared VPC on GCP
 owner: Ops Manager
 ---
 
-This topic describes the preparation steps required to configure and integrate a shared Virtual Private Cloud (VPC) on Google Cloud Platform (GCP) with <%= vars.platform_name %>.
+This topic describes the preparation steps required to configure and integrate a shared Virtual Private Cloud (VPC) on Google Cloud Platform (GCP) with <%= vars.ops_manager %>.
 
 GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables you to assign GCP resources to individual projects within an organization but allows communication and shared services between projects. For more information about shared VPCs, see [Shared VPC Overview](https://cloud.google.com/compute/docs/shared-vpc/) in the GCP documentation.
 
@@ -26,11 +26,11 @@ Follow the procedure in [Enabling a shared VPC host project](https://cloud.googl
 
 ## <a id="network"></a> Step 2: Create a Shared VPC Network
 
-Follow the procedures in [Preparing to Deploy <%= vars.ops_manager %> on GCP](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/gcp/prepare-env-manual.html) to create a new network with firewall rules. Then follow the procedures in:
+Follow the procedures in [Preparing to Deploy <%= vars.ops_manager %> on GCP](../gcp/prepare-env-manual.html) to create a new network with firewall rules. Then follow the procedures in:
 
-* [Step 3: Create a GCP Network with Subnet](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/gcp/prepare-env-manual.html#create_network)
+* [Step 3: Create a GCP Network with Subnet](../gcp/prepare-env-manual.html#create_network)
 
-* [Step 5: Create Firewall Rules for the Network](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/gcp/prepare-env-manual.html#firewall_rules)
+* [Step 5: Create Firewall Rules for the Network](../gcp/prepare-env-manual.html#firewall_rules)
 
 
 ## <a id="shared"></a> Step 3: Connect the Shared VPC to <%= vars.ops_manager %>

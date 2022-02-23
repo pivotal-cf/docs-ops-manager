@@ -11,7 +11,7 @@ This topic describes how to rotate certificate authorities (CAs) and leaf certif
 This procedure uses the <%= vars.ops_manager %> API to rotate the <%= vars.ops_manager %> root CA and leaf certificates. When you rotate the <%= vars.ops_manager %> root CA, the <%= vars.ops_manager %> API automatically rotates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
 
 This procedure includes three redeploys. The first deploy adds the new CA certificates to
-<%= vars.platform_name %> components. The second deploy replaces the old leaf certificates
+<%= vars.ops_manager %> components. The second deploy replaces the old leaf certificates
 with the new leaf certificates. The third deploy removes the old CA certificates, leaving
 only the new CA certificates.
 
@@ -43,7 +43,7 @@ cannot be rotated using this procedure. For information about how to rotate the 
 
 ### <a id='add-new-ca'></a> Step 1: Add New CAs
 
-This section describes how to add a new root CA for <%= vars.ops_manager %>. The new root CA can be an <%= vars.platform_name %>-generated CA or your own custom CA.
+This section describes how to add a new root CA for <%= vars.ops_manager %>. The new root CA can be an <%= vars.ops_manager %>-generated CA or your own custom CA.
 
 This procedure also automatically regenerates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
 
@@ -55,7 +55,7 @@ To add new CAs:
   <p class="note"><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
 
 1. Use <%= vars.ops_manager %> to generate a new CA, or add your own custom CA:
-  <p class ="note"><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.platform_name %>.</p>
+  <p class ="note"><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
   * **To use your own custom CA:** Call the <%= vars.ops_manager %> API `certificate_authorities` endpoint by running:
 
         ```
@@ -89,7 +89,7 @@ To add new CAs:
               ]
         }
         </pre>
-  * **To use an <%= vars.platform_name %>-generated CA:** Call the <%= vars.ops_manager %> API `generate` endpoint by running:
+  * **To use an <%= vars.ops_manager %>-generated CA:** Call the <%= vars.ops_manager %> API `generate` endpoint by running:
 
         ```
         curl "https://OPS-MANAGER-FQDN/api/v0/certificate_authorities/generate" \
@@ -247,7 +247,7 @@ To activate the CAs that you added in [Add New CAs](#add-new-ca) above:
 
 ### <a id='rotate-config-after-new-root'></a> Step 3: Rotate Configurable Leaf Certificates
 
-Any configurable leaf certificates generated from the <%= vars.ops_manager %> root CA must be rotated. These are the leaf certificates that you generated using the **Generate RSA Certificate** button in the <%= vars.ops_manager %> UI. For example, see [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/security_config.html) in the <%= vars.app_runtime_abbr %> documentation.
+Any configurable leaf certificates generated from the <%= vars.ops_manager %> root CA must be rotated. These are the leaf certificates that you generated using the **Generate RSA Certificate** button in the <%= vars.ops_manager %> UI. For example, see [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/application-service/operating/security_config.html) in the <%= vars.app_runtime_abbr %> documentation.
 
 To regenerate and rotate each configurable leaf certificate that expires soon:
 

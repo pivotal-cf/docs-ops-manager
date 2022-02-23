@@ -4,26 +4,26 @@ owner: Ops Manager
 ---
 
 This guide provides help with diagnosing and resolving issues that are specific to
-<%= vars.platform_name %> deployments on VMware vSphere.
+<%= vars.ops_manager %> deployments on VMware vSphere.
 
-For infrastructure-agnostic troubleshooting help, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/diagnostics.html).
+For infrastructure-agnostic troubleshooting help, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
 
 ## <a id='common-issues'></a> Common Issues
 
-The following sections list common issues that you might encounter with <%= vars.platform_name %>
+The following sections list common issues that you might encounter with <%= vars.ops_manager %>
 and possible resolutions.
 
-### <a id='vcenter-setting'></a> <%= vars.platform_name %> Installation Fails
+### <a id='vcenter-setting'></a> <%= vars.ops_manager %> Installation Fails
 
 If you modify the vCenter Statistics Interval Duration setting from its default setting of five
-minutes, the <%= vars.platform_name %> installation might fail at the MicroBOSH deployment stage,
+minutes, the <%= vars.ops_manager %> installation might fail at the MicroBOSH deployment stage,
 and the logs might contain the following error message:
 
 ```
 The specified parameter is not correct, interval
 ```
 
-This failure happens because <%= vars.platform_name %> expects a default value of five minutes, and
+This failure happens because <%= vars.ops_manager %> expects a default value of five minutes, and
 the call to this method fails when the retrieved value does not match the expected default value.
 
 To resolve this issue, launch vCenter, navigate to **Administration > vCenter Server Settings > Statistics**,
@@ -42,11 +42,11 @@ If you set the Automation level to **Manual**, the BOSH automated installation w
 
 <%= image_tag("troubleshooting/drs_automation_level.png", :alt => "Screenshot of the New Cluster Wizard. The 'Automation Level' page shows the 'partially automated' button selected.") %>
 
-### <a id='net-settings'></a> <%= vars.platform_name %> Loses IP Address After HA or Reboot
+### <a id='net-settings'></a> <%= vars.ops_manager %> Loses IP Address After HA or Reboot
 
-<%= vars.platform_name %> can lose its IP address and use DHCP due to an issue in the open source
+<%= vars.ops_manager %> can lose its IP address and use DHCP due to an issue in the open source
 version of VMware Tools. For more information to troubleshoot this issue, see
-[IP is not Getting Assigned in vSphere after <%= vars.platform_name %> Restart](https://community.pivotal.io/s/article/IP-is-not-Getting-Assigned-in-vSphere-after-Ops-Manager-Restart)
+[IP is not Getting Assigned in vSphere after <%= vars.ops_manager %> Restart](https://community.pivotal.io/s/article/IP-is-not-Getting-Assigned-in-vSphere-after-Ops-Manager-Restart)
 in the Knowledge Base.
 
 ### <a id='net-settings'></a> Cannot Connect to the OVF in a Browser
@@ -54,11 +54,11 @@ in the Knowledge Base.
 If you deployed the OVF file but cannot connect to it in a browser, check that the network settings
 you entered in the wizard are correct.
 
-1. Access the <%= vars.platform_name %> installation VM using the vSphere Console. If your network
+1. Access the <%= vars.ops_manager %> installation VM using the vSphere Console. If your network
 settings are configured incorrectly, you cannot SSH into the installation VM.
 
 1. Log in using the private SSH key associated with the public SSH key that you provided when you
-imported the <%= vars.platform_name %> `.ova` in vCenter.
+imported the <%= vars.ops_manager %> `.ova` in vCenter.
 
 1. Confirm that the network settings are correct by checking that the `ADDRESS`, `NETMASK`,
 `GATEWAY`, and `DNS-NAMESERVERS` entries are correct in `/etc/network/interfaces`.
@@ -78,19 +78,19 @@ and select the correct network.
 
 ### <a id='communication'></a> Installation Fails with Failed Network Connection
 
-If you experience a communication error while installing <%= vars.platform_name %> or MicroBOSH
+If you experience a communication error while installing <%= vars.ops_manager %> or MicroBOSH
 Director, check the following:
 
 * <%= partial '../common/vsphere-firewall-ports' %>
 
-* Open port 443. <%= vars.platform_name %> and MicroBOSH Director VMs require access to vCenter and
+* Open port 443. <%= vars.ops_manager %> and MicroBOSH Director VMs require access to vCenter and
 all ESX through port 443.
 
 * Allocate more IP addresses. BOSH requires that you allocate a sufficient number of additional
 dynamic IP addresses when configuring a reserved IP address range during installation. BOSH uses
 these IP addresses during installation to compile and deploy VMs, install
 <%= vars.app_runtime_abbr %>, and connect to services. <%= vars.company_name %> recommends that you
-allocate at least 36 dynamic IP addresses when deploying <%= vars.platform_name %> and
+allocate at least 36 dynamic IP addresses when deploying <%= vars.ops_manager %> and
 <%= vars.app_runtime_abbr %>.
 
 ### <a id="database-permissions"></a> Insufficient External Database Permissions

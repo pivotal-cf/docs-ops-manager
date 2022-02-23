@@ -53,6 +53,6 @@ The following table lists network communication paths that are outbound from MyS
 | mysql_monitor | uaa | 8443 | TCP | HTTPS | OAuth |
 | mysql_proxy (Route Registrar) | nats | 4222 | TCP | NATS | Basic authentication |
 
-<p class="note"><strong>Note:</strong> If you select the <strong>Enable inactive mysql port</strong> checkbox on the <strong>Internal MySQL</strong> pane of the <%= vars.app_runtime_abbr %> tile, you can run auditing and reporting queries on an inactive MySQL node over port 3336. For more information, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#internal-mysql">Configure Internal MySQL</a> in <em>Configuring <%= vars.app_runtime_abbr %></em>.</p>
+<p class="note"><strong>Note:</strong> If you select the <strong>Enable inactive mysql port</strong> checkbox on the <strong>Internal MySQL</strong> pane of the <%= vars.app_runtime_abbr %> tile, you can run auditing and reporting queries on an inactive MySQL node over port 3336. For more information, see <a href="https://docs.pivotal.io/application-service/operating/configure-pas.html#internal-mysql">Configure Internal MySQL</a> in <em>Configuring <%= vars.app_runtime_abbr %></em>.</p>
 
 <%= partial "bosh-dns" %>

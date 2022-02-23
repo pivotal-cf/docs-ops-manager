@@ -101,10 +101,10 @@ BBR can back up and restore the BOSH Director configured with:
 
 * An internal blobstore or an external versioned S3 blobstore.
 
-<p class="note"><strong>Note:</strong> BBR support for backing up and restoring external databases and blobstores varies across <%= vars.platform_name %> versions. For more information, see <a href="#version-compatibility">External Storage Support Across <%= vars.platform_name %> Versions</a>.</p>
+<p class="note"><strong>Note:</strong> BBR support for backing up and restoring external databases and blobstores varies across <%= vars.ops_manager %> versions. For more information, see <a href="#version-compatibility">External Storage Support Across <%= vars.ops_manager %> Versions</a>.</p>
 
 
-## <a id="version-compatibility"></a> External Storage Support Across <%= vars.platform_name %> Versions
+## <a id="version-compatibility"></a> External Storage Support Across <%= vars.ops_manager %> Versions
 
 You can use BBR to back up and restore the following types of external database and blobstore configurations:
 
@@ -596,12 +596,12 @@ After creating your backup successfully:
 
 ### <a id='validate-backup'></a> Step 13: (Optional) Validate Your Backup
 
-After backing up <%= vars.platform_name %>, consider validating your backup by restoring it and checking the apps. BBR is designed for disaster recovery and BBR backups are only compatible with environments matching their source environment's configuration.
+After backing up <%= vars.ops_manager %>, consider validating your backup by restoring it and checking the apps. BBR is designed for disaster recovery and BBR backups are only compatible with environments matching their source environment's configuration.
 
 <div class="note warning"><strong>Warning:</strong>
   <ul>
     <li><strong>The VMs and disks from the backed-up BOSH Director must not be visible to the new BOSH Director</strong> when validating your backup. As a result, <%= vars.company_name %> recommends that you deploy the new BOSH Director to a different IaaS network and account than the VMs and disks of the backed-up BOSH Director.</li>
-    <li><strong>Data services outside of <%= vars.platform_name %> might produce unexpected side effects during restoration.</strong> Restored apps and services might attempt to connect to data services when you restore to a new environment. For example, consider an app that processes mail queues and connects to an external database. When you validate your backup in a test environment, the app might start processing the queue, and this work might be lost.</li>
+    <li><strong>Data services outside of <%= vars.ops_manager %> might produce unexpected side effects during restoration.</strong> Restored apps and services might attempt to connect to data services when you restore to a new environment. For example, consider an app that processes mail queues and connects to an external database. When you validate your backup in a test environment, the app might start processing the queue, and this work might be lost.</li>
   </ul>
 </div>
 
@@ -619,7 +619,7 @@ To spin up a second environment and test the backup:
 
 #### <a id='ert-validate'></a> Validate Your <%= vars.app_runtime_abbr %> Backup Only
 
-For a sandbox or other non-production environment, you can optionally perform an _in-place_ restore of <%= vars.app_runtime_abbr %> only. In this case, you restore the <%= vars.app_runtime_abbr %> backup to the same <%= vars.platform_name %> environment that the backup was created from. For more information, see [Step 12: Redeploy <%= vars.app_runtime_abbr %>](restore-pcf-bbr.html#restore-ert) in _Restoring Deployments from Backup with BBR_.
+For a sandbox or other non-production environment, you can optionally perform an _in-place_ restore of <%= vars.app_runtime_abbr %> only. In this case, you restore the <%= vars.app_runtime_abbr %> backup to the same <%= vars.ops_manager %> environment that the backup was created from. For more information, see [Step 12: Redeploy <%= vars.app_runtime_abbr %>](restore-pcf-bbr.html#restore-ert) in _Restoring Deployments from Backup with BBR_.
 
 
 ## <a id='logging'></a> Logging
