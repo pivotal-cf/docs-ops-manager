@@ -10,13 +10,13 @@ This topic describes how to prepare a Hardware Security Module (HSM) to store Cr
 
 SafeNet Luna HSM is the only HSM option that you can use as a CredHub encryption provider. The Amazon Web Services (AWS) [CloudHSM Classic](https://aws.amazon.com/cloudhsm/faqs-classic/) service uses SafeNet Luna HSMs. For more information about SafeNet Luna HSM, see the [SafeNet Luna Network HSMs](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) product page.
 
-When configuring <%= vars.ops_manager_full %>, BOSH CredHub uses a single HSM to store encryption keys. In <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), you can configure multiple HSMs for runtime CredHub to use as encryption providers.
+When configuring <%= vars.ops_manager_full %>, BOSH CredHub uses a single HSM to store encryption keys. In <%= vars.app_runtime_full %> (PAS), you can configure multiple HSMs for runtime CredHub to use as encryption providers.
 
 To configure BOSH CredHub, see _Step 3: Configure Director_ in the [BOSH Director configuration topic for your IaaS](deploy-bosh-om.html#contents).
 
-<p class="note"><strong>Note:</strong> If you use <%= vars.ops_manager %> v2.7.4 or later, you can configure multiple HSMs for BOSH CredHub using the Ops Manager API. For more information, see the <a href="https://docs.pivotal.io/platform/opsman-api/#updating-director-and-iaas-properties-experimental"><%= vars.ops_manager %> API documentation</a>.</p>
+<p class="note"><strong>Note:</strong> If you use <%= vars.ops_manager %> v2.7.4 or later, you can configure multiple HSMs for BOSH CredHub using the Ops Manager API. For more information, see the <a href="https://docs.pivotal.io/platform/2-7/opsman-api/#updating-director-and-iaas-properties-experimental"><%= vars.ops_manager %> API documentation</a>.</p>
 
-Configure runtime CredHub with one or more HSMs to securely manage service broker credentials. To configure runtime CredHub, see [Step 1: Configure the <%= vars.app_runtime_abbr %> Tile](https://docs.pivotal.io/application-service/2-7/operating/secure-si-creds.html#pas-config) in _Securing Service Instance Credentials with Runtime CredHub_.
+Configure runtime CredHub with one or more HSMs to securely manage service broker credentials. To configure runtime CredHub, see [Step 1: Configure the PAS Tile](https://docs.pivotal.io/application-service/2-7/operating/secure-si-creds.html#pas-config) in _Securing Service Instance Credentials with Runtime CredHub_.
 
 
 ## <a id='checklist'></a> Prerequisites
@@ -42,7 +42,7 @@ The procedures in these sections describe how to initialize and configure new HS
 
 To initialize a new HSM and set its policies:
 
-1. Run: 
+1. Run:
 
     ```
     ssh -i path/to/ssh-key.pem manager@HSM-IP-ADDRESS
@@ -57,7 +57,7 @@ To initialize a new HSM and set its policies:
     Where `LABEL` is the label you want to give the HSM.
     <br>
     <br>
-    Initialize all HSMs into the same cloning domain to guarantee high availability for your <%= vars.platform_name %> deployment.
+    Initialize all HSMs into the same cloning domain to guarantee high availability for your <%= vars.ops_manager %> deployment.
 
 1. Log in to the HSM using the password you just created by running:
 
@@ -93,7 +93,7 @@ To initialize a new HSM and set its policies:
 
 To retrieve your HSM certificate:
 
-1. Run: 
+1. Run:
 
     ```
     scp -i path/to/ssh-key.pem \
@@ -108,7 +108,7 @@ BOSH CredHub uses this certificate to validate the identity of the HSM when conn
 
 To create an HSM partition to hold the encryption keys:
 
-1. Run: 
+1. Run:
 
     ```
     lunash:> partition create -partition PARTITION-NAME -domain CLONING-DOMAIN
@@ -198,7 +198,7 @@ To register a client host and partitions for your HSM:
 
 ## <a id="hsm-encryption-keys"></a> Encryption Keys on the HSM
 
-You can set which key is used for encryption operations by defining the encryption key name in the **Director Config** pane of the BOSH Director tile for BOSH Credhub, or the **CredHub** pane of the <%= vars.app_runtime_abbr %> tile for runtime CredHub. If a key already exists on the HSM, CredHub uses it by default. If a key does not exist on the HSM, CredHub creates one automatically in the referenced partition.
+You can set which key is used for encryption operations by defining the encryption key name in the **Director Config** pane of the BOSH Director tile for BOSH Credhub, or the **CredHub** pane of the PAS tile for runtime CredHub. If a key already exists on the HSM, CredHub uses it by default. If a key does not exist on the HSM, CredHub creates one automatically in the referenced partition.
 
 When you generate a new key, you should review the list of keys on each HSM to validate that key replication is occurring. If new keys do not propagate among the HSMs, you could get locked out of HSMs.
 
@@ -210,4 +210,3 @@ To review stored keys on a partition:
     lunash:> partition showContents -partition PARTITION-NAME
     ```
     Where `PARTITION-NAME` is the name of your partition.
-

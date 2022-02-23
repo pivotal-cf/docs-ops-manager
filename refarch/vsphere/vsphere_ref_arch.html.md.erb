@@ -3,37 +3,38 @@ title: vSphere Reference Architecture
 owner: Customer0
 ---
 
-This topic describes reference architectures for <%= vars.platform_name %> on vSphere. It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
+This topic describes a reference architecture for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (PAS) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on vSphere.
+It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
 
-For additional requirements and installation instructions for <%= vars.platform_name %> on vSphere, see [Installing <%= vars.platform_name %> on vSphere](../../install/vsphere.html).
+For additional requirements and installation instructions for <%= vars.ops_manager %> on vSphere, see [Installing <%= vars.ops_manager %> on vSphere](../../install/vsphere.html).
 
 
 ## <a id="overview"></a> Before You Begin
 
 <%= vars.platform_name %> products contain feature sets that, when used, impact designs in this reference architecture.
 
-### <a id="overview"></a> Isolation Segments
+### <a id="ist"></a> Isolation Segments
 
-Isolation segments are delivered as a tile in <%= vars.ops_manager_full %>. They are used to create smaller individual deployments of <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) components, Gorouters, and Diego Cells to help isolate workloads. For example, the isolation criteria could include capacity management or audit compliance. Isolation segments can be also be patched independently from the <%= vars.app_runtime_abbr %> tile or other isolation segments.
+Isolation segments are delivered as a tile in <%= vars.ops_manager_full %>. They are used to create smaller individual deployments of <%= vars.app_runtime_full %> (PAS) components, Gorouters, and Diego Cells to help isolate workloads. For example, the isolation criteria could include capacity management or audit compliance. Isolation segments can be also be patched independently from the PAS tile or other isolation segments.
 
-<%= vars.recommended_by %> recommends that when using isolation segments, you should deploy all containers to an isolation segment, and deploy only system-level components to the <%= vars.app_runtime_abbr %> tile. By moving all app workloads to an isolation segment, you get more control over the network usage, capacity planning, firewalling, and business continuity.
+<%= vars.recommended_by %> recommends that when using isolation segments, you should deploy all containers to an isolation segment, and deploy only system-level components to the PAS tile. By moving all app workloads to an isolation segment, you get more control over the network usage, capacity planning, firewalling, and business continuity.
 
-### <a id="overview"></a> Host Groups
+### <a id="host-groups"></a> Host Groups
 
-Host groups allow you create virtual PaaS failure domains independently of physical IaaS capacity. In <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) on vSphere, this amounts to creating multiple Availability Zones (AZs) that do not have to align perfectly with vSphere constructs, such as clusters or pools.
+Host groups allow you create virtual PaaS failure domains independently of physical IaaS capacity. In PAS or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) on vSphere, this amounts to creating multiple Availability Zones (AZs) that do not have to align perfectly with vSphere constructs, such as clusters or pools.
 
 You can use host groups to gain PaaS high availability (HA) with undersized IaaS capacity. Alternatively, host groups can be used to create AZs that can grow in an elastic way as the IaaS grows.
 
-### <a id="overview"></a> Multiple vCenter Support
+### <a id="multi-vcenter"></a> Multiple vCenter Support
 
-Multiple vCenter Support can allow you to use <%= vars.app_runtime_abbr %> in a mature vSphere environment. Coupled with host groups, a brown field deployment strategy can happen as hosts in existing vSphere clusters can be set aside for <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>. You can also structure <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %> geographically without needing to stretch IaaS elements.
+Multiple vCenter Support can allow you to use PAS in a mature vSphere environment. Coupled with host groups, a brown field deployment strategy can happen as hosts in existing vSphere clusters can be set aside for PAS or <%= vars.k8s_runtime_abbr %>. You can also structure PAS or <%= vars.k8s_runtime_abbr %> geographically without needing to stretch IaaS elements.
 
 
 ## <a id="overview"></a> Overview
 
 ### <a id="pas-nsx-t-ha"></a> High Availability
 
-For information about HA requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere, see [High Availability](../index.html#pas-ha) in _Platform Architecture and Planning Overview_.
+For information about HA requirements and recommendations for PAS on vSphere, see [High Availability](../index.html#pas-ha) in _Platform Architecture and Planning Overview_.
 
 ### <a id="pas-nsx-t-shared-storage"></a> Shared Storage
 
@@ -55,7 +56,7 @@ With this arrangement, all VMs in the same installation and cluster share a dedi
 
 ### <a id="pas-nsx-t-storage-capacity"></a> Storage Capacity
 
-<%= vars.recommended_by %> recommends these storage capacity allocations for production and non-production <%= vars.app_runtime_abbr %> environments:
+<%= vars.recommended_by %> recommends these storage capacity allocations for production and non-production PAS environments:
 
 * **Production environments**: Configure at least 8&nbsp;TB of data storage. You can configure this as either one 8&nbsp;TB store or a number of smaller volumes that sum to 8&nbsp;TB. Frequently-used developments may require significantly more storage to accommodate new code and buildpacks.
 
@@ -65,7 +66,7 @@ With this arrangement, all VMs in the same installation and cluster share a dedi
 
 <p class="note"><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must disable the s-vMotion feature on any datastores used by <%= vars.platform_name %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.platform_name %> to a New Datastore in vSphere</a>.</p>
 
-For more information about general storage requirements and recommendations for <%= vars.app_runtime_abbr %>, see [Storage](../index.html#pas-storage) in _Platform Architecture and Planning Overview_.
+For more information about general storage requirements and recommendations for PAS, see [Storage](../index.html#pas-storage) in _Platform Architecture and Planning Overview_.
 
 ### <a id="pas-nsx-t-sql"></a> SQL Server
 
@@ -73,21 +74,21 @@ An internal MySQL database is sufficient for use in production environments.
 
 However, an external database provides more control over database management for large environments that require multiple data centers.
 
-For information about configuring system databases on <%= vars.app_runtime_abbr %>, see [Configure System Databases](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
+For information about configuring system databases on PAS, see [Configure System Databases](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#sys-db) in _Configuring PAS_.
 
 ### <a id="pas-nsx-t-security"></a> Security
 
-For information about security requirements and recommendations for <%= vars.app_runtime_abbr %> deployments, see [Security](../index.html#pas-security) in _Platform Architecture and Planning Overview_.
+For information about security requirements and recommendations for PAS deployments, see [Security](../index.html#pas-security) in _Platform Architecture and Planning Overview_.
 
 ### <a id="pas-nsx-t-blobstore"></a> Blobstore Storage
 
-<%= vars.app_runtime_abbr %> ships with an internal blobstore. It is recommended for POC deployments. <%= vars.recommended_by %> recommends that you use these blobstore storages for production and non-production <%= vars.app_runtime_abbr %> environments:
+PAS ships with an internal blobstore. It is recommended for POC deployments. <%= vars.recommended_by %> recommends that you use these blobstore storages for production and non-production PAS environments:
 
 * **Production/test environments:** Use an external S3 storage appliance as the blobstore, such as Dell ECS, Minio, or any other S3-compatible datastore in your environment.
 
 * **POC environments:** Use the internal blobstore.
 
-<p class="note"><strong>Note:</strong> For POC environments, the internal blobstore can be the primary consumer of storage, as the internal blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
+<p class="note"><strong>Note:</strong> For POC environments, the internal blobstore can be the primary consumer of storage, as the internal blobstore must be actively maintained. PAS deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
 
 #### <a id="pas-nsx-t-firewall"></a> Firewall
 
@@ -95,13 +96,13 @@ For information about security requirements and recommendations for <%= vars.app
 
 #### <a id="pas-nsx-t-dns"></a> DNS
 
-<%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
+PAS requires a system domain, app domain, and several wildcard domains.
 
-For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
+For more information about DNS requirements for PAS, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
 
 ### <a id="networking"></a> Networking
 
-The vSphere reference architecture for the <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> runtimes is based on software-defined networking (SDN) infrastructure. vSphere offers NSX-T and NSX-V to support SDN infrastructure.
+The vSphere reference architecture for the PAS and <%= vars.k8s_runtime_abbr %> runtimes is based on software-defined networking (SDN) infrastructure. vSphere offers NSX-T and NSX-V to support SDN infrastructure.
 
 <%= vars.recommended_by %> recommends using an SDN to take advantage of features including:
 
@@ -109,7 +110,7 @@ The vSphere reference architecture for the <%= vars.app_runtime_abbr %> and <%= 
 
 * VLAN exhaustion avoidance with the use of virtualized logical networks
 
-* DNAT/SNAT services to create separate, non-routable network spaces for the <%= vars.app_runtime_abbr %> installation
+* DNAT/SNAT services to create separate, non-routable network spaces for the PAS installation
 
 * Load balancing services to pass traffic through Layer 4 to pools of platform routers at Layer 7
 
@@ -119,42 +120,42 @@ The vSphere reference architecture for the <%= vars.app_runtime_abbr %> and <%= 
 
 <%= vars.platform_name %> supports these configurations for <%= vars.platform_name %> on vSphere deployments:
 
-* <%= vars.app_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-T](#pas-nsx-t).
+* PAS on vSphere with NSX-T. For more information, see [PAS on vSphere with NSX-T](#pas-nsx-t).
 
-* <%= vars.app_runtime_abbr %> on vSphere with NSX-V. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-V](#pas-nsx-v).
+* PAS on vSphere with NSX-V. For more information, see [PAS on vSphere with NSX-V](#pas-nsx-v).
 
-* <%= vars.app_runtime_abbr %> on vSphere without NSX. For more information, see [<%= vars.app_runtime_abbr %> on vSphere without NSX](#pas-routed).
+* PAS on vSphere without NSX. For more information, see [PAS on vSphere without NSX](#pas-routed).
 
 * <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere with NSX-T](#pks-nsx-t).
 
 * <%= vars.k8s_runtime_abbr %> on vSphere without NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere without NSX-T](#pks-without-nsx-t).
 
 
-## <a id="pas-nsx-t"></a> <%= vars.app_runtime_abbr %> on vSphere with NSX-T
+## <a id="pas-nsx-t"></a> PAS on vSphere with NSX-T
 
-These sections describe the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments. They also provide requirements and recommendations for deploying <%= vars.app_runtime_abbr %> on vSphere with NSX-T, such as network, load balancing, and storage capacity requirements and recommendations.
+These sections describe the reference architecture for PAS on vSphere with NSX-T deployments. They also provide requirements and recommendations for deploying PAS on vSphere with NSX-T, such as network, load balancing, and storage capacity requirements and recommendations.
 
 ### <a id="pas-nsx-t-diagram"></a> Architecture
 
-The diagram below illustrates reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments:
+The diagram below illustrates reference architecture for PAS on vSphere with NSX-T deployments:
 
-![The diagram shows the architecture for a <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-T.png)
+![The diagram shows the architecture for a PAS on vSphere with NSX-T deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-T.png)
 
-<%= vars.app_runtime_abbr %> deployments with NSX-T are deployed with three clusters and three AZs.
+PAS deployments with NSX-T are deployed with three clusters and three AZs.
 
-An NSX-T Tier-0 router is on the front end of the <%= vars.app_runtime_abbr %> deployment. This router is a central logical router into and out of the <%= vars.app_runtime_abbr %> platform. Routing configuration on the IP backbone can be static or dynamic using BGP on the Tier-0 router. Several Tier-1 routers, such as the router for the <%= vars.app_runtime_abbr %> and infrastructure subnets, connect to the Tier-0 router as child routing points to and from other child T1 routers and from the routed IP backbone.
+An NSX-T Tier-0 router is on the front end of the PAS deployment. This router is a central logical router into and out of the PAS platform. Routing configuration on the IP backbone can be static or dynamic using BGP on the Tier-0 router. Several Tier-1 routers, such as the router for the PAS and infrastructure subnets, connect to the Tier-0 router as child routing points to and from other child T1 routers and from the routed IP backbone.
 
 ### <a id="pas-nsx-t-diagram"></a> NSX-T Container Plugin Requirement
 
-<%= vars.app_runtime_abbr %> deployments require the VMware NSX-T Container Plugin for <%= vars.platform_name %> to enable the SDN features available through NSX-T.
+PAS deployments require the VMware NSX-T Container Plugin for <%= vars.platform_name %> to enable the SDN features available through NSX-T.
 
 The NSX-T Container Plugin enables a container networking stack and integrates with NSX-T.
 
-<p class="note"><strong>Note:</strong> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plugin, go to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in for <%= vars.platform_name %></a> page on Pivotal Network.</p>
+<p class="note"><strong>Note:</strong> To use NSX-T with PAS, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the PAS tile. To download the NSX-T Container Plugin, go to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in for <%= vars.platform_name %></a> page on Pivotal Network.</p>
 
 ### <a id="pas-nsx-t-networking"></a> Networking
 
-These sections describe networking requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
+These sections describe networking requirements and recommendations for PAS on vSphere with NSX-V deployments.
 
 #### <a id="pas-nsx-t-routable-ip"></a> Routable IPs
 
@@ -167,11 +168,11 @@ The Tier-0 router must have routable external IP address space assigned to peer 
 
 #### <a id="pas-nsx-t-load-balancing"></a> Load Balancing
 
-The load balancing requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments are:
+The load balancing requirements and recommendations for PAS on vSphere with NSX-T deployments are:
 
 * You must configure NSX-T load balancers for the Gorouters.
-  * The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer VIP.
-  * You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
+  * The domains for the PAS system and apps must resolve to the load balancer VIP.
+  * You must assign either a private or a public IP address assigned to the domains for the PAS system and apps.
 
 * <%= vars.recommended_by %> recommends that you configure load balancers at Layer 4 for the Gorouters. With Layer 4 load balancers, HTTP/HTTPS traffic passes through the load balancers and SSL is terminated at the Gorouters. This approach reduces overhead processing. This burden is better shared amongst a number of Gorouters as compared to a single, logical NSX load balancer.
   <p class='note'><strong>Note:</strong> It is possible to use Layer 7 load balancers and terminate or initiate SSL at the load balancers. However, <%= vars.recommended_by %> does not recommend this approach, since it adds additional overhead processing.</p>
@@ -182,15 +183,15 @@ The load balancing requirements and recommendations for <%= vars.app_runtime_abb
 
 #### <a id="pas-nsx-t-networking-subnets-ip"></a> Networking, Subnets, and IP Spacing
 
-The requirements and recommendations related to networks, subnets, and IP spacing for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments are:
+The requirements and recommendations related to networks, subnets, and IP spacing for PAS on vSphere with NSX-T deployments are:
 
-* <%= vars.app_runtime_abbr %> requires statically-defined networks to host <%= vars.app_runtime_abbr %> component VMs.
+* PAS requires statically-defined networks to host PAS component VMs.
 
 * The tenant side uses a series of non-routable address ranges when using NAT.
 
-* NSX-T dynamically assigns <%= vars.app_runtime_abbr %> org networks and adds a Tier-1 router. These org networks are automatically instantiated based on a non-overlapping block of address space. You can configure the block of address space in the **NCP Configuration** section of the NSX-T tile in <%= vars.ops_manager_full %>. The default is `/24`. This means that every org in <%= vars.app_runtime_abbr %> is assigned a new `/24` network.
+* NSX-T dynamically assigns PAS org networks and adds a Tier-1 router. These org networks are automatically instantiated based on a non-overlapping block of address space. You can configure the block of address space in the **NCP Configuration** section of the NSX-T tile in <%= vars.ops_manager_full %>. The default is `/24`. This means that every org in PAS is assigned a new `/24` network.
 
-For more information about <%= vars.app_runtime_abbr %> subnets, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
+For more information about PAS subnets, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
 Below is an example subnet layout using NAT:
 
@@ -202,33 +203,33 @@ Below is an example subnet layout using NAT:
 * On-demand orgs - 192.168.128.0/17 (in /24 segments - auto-allocated by NSX-T only)
 
 
-## <a id="pas-nsx-v"></a> <%= vars.app_runtime_abbr %> on vSphere with NSX-V
+## <a id="pas-nsx-v"></a> PAS on vSphere with NSX-V
 
-These sections describe the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments. They also provide requirements and recommendations for deploying <%= vars.app_runtime_abbr %> on vSphere with NSX-V, such as network, load balancing, and storage capacity requirements and recommendations.
+These sections describe the reference architecture for PAS on vSphere with NSX-V deployments. They also provide requirements and recommendations for deploying PAS on vSphere with NSX-V, such as network, load balancing, and storage capacity requirements and recommendations.
 
-<%= vars.app_runtime_abbr %> on vSphere with NSX-V enables services provided by NSX on the <%= vars.app_runtime_abbr %> platform, such as an Edge services gateway (ESG), load balancers, firewall services, and NAT/SNAT services.
+PAS on vSphere with NSX-V enables services provided by NSX on the PAS platform, such as an Edge services gateway (ESG), load balancers, firewall services, and NAT/SNAT services.
 
 ### <a id="pas-nsx-v-diagram"></a> Architecture
 
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
+The diagram below illustrates the reference architecture for PAS on vSphere with NSX-V deployments.
 
-![The diagram shows the architecture for a <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-V.png)
+![The diagram shows the architecture for a PAS on vSphere with NSX-V deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-V.png)
 
 [View a larger version of this diagram](../images/v2/export/PAS_vSphere_NSX-V.png).
 
-<%= vars.app_runtime_abbr %> deployments with NSX-V are deployed with three clusters and three AZs.
+PAS deployments with NSX-V are deployed with three clusters and three AZs.
 
-<%= vars.app_runtime_abbr %> deployments with NSX-V also include an NSX-V Edge router on the front end.
+PAS deployments with NSX-V also include an NSX-V Edge router on the front end.
 
-North-south traffic in NSX-V is handled by the Edge Services Gateway (ESG). Traffic entering and leaving a <%= vars.app_runtime_abbr %> installation as a tenant behind an ESG is considered north-south. Traffic between the networks deployed on the tenant side of an ESG is considered east-west, which could be routed by the ESG or by a distributed logical router (DLR).
+North-south traffic in NSX-V is handled by the Edge Services Gateway (ESG). Traffic entering and leaving a PAS installation as a tenant behind an ESG is considered north-south. Traffic between the networks deployed on the tenant side of an ESG is considered east-west, which could be routed by the ESG or by a distributed logical router (DLR).
 
-Compared to NSX-T architecture, NSX-V architecture does not use Tier-1 routers to connect the central router to the various subnets for the <%= vars.app_runtime_abbr %> deployment.
+Compared to NSX-T architecture, NSX-V architecture does not use Tier-1 routers to connect the central router to the various subnets for the PAS deployment.
 
 For more information about using an ESG on vSphere, see [Using Edge Services Gateway on VMware NSX](vsphere_nsx_cookbook.html).
 
 ### <a id="pas-nsx-v-networking"></a> Networking
 
-These sections describe networking requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
+These sections describe networking requirements and recommendations for PAS on vSphere with NSX-V deployments.
 
 #### <a id="pas-nsx-v-routable-ip"></a> Routable IPs
 
@@ -242,12 +243,12 @@ You must assign routable external IPs on the server side, such as routable IPs f
 
 Load balancing services are available in the ESG. These services are processes that run on the ESG along with other services, such as routing and the firewall.
 
-The load balancing requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments are:
+The load balancing requirements and recommendations for PAS on vSphere with NSX-V deployments are:
 
 * ESG load balancers can be configured as either Layer 4 (encryption pass-through) or Layer 7 (encryption termination and initiation). <%= vars.recommended_by %> recommends using Layer 4 services at the ESG in order to reduce processing overhead in the ESG.
   <p class='note'><strong>Note:</strong> It is possible to use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.recommended_by %> does not recommend this approach, since it adds additional overhead processing.</p>
 
-* The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer. If the ESG is also the load balancer, these domains will resolve to a VIP on that ESG.
+* The domains for the PAS system and apps must resolve to the load balancer. If the ESG is also the load balancer, these domains will resolve to a VIP on that ESG.
 
 * If you are also using features such as TCP routing or a proxy for SSH, you can deploy a load balancer service for them in the same, or a different ESG.
 
@@ -265,7 +266,7 @@ For information about network, subnet, and IP space planning requirements and re
 
 ### <a id="pas-nsx-v-ha"></a> High Availability
 
-For information about HA requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere, see [High Availability](../index.html#pas-ha) in _Platform Architecture and Planning Overview_.
+For information about HA requirements and recommendations for PAS on vSphere, see [High Availability](../index.html#pas-ha) in _Platform Architecture and Planning Overview_.
 
 ### <a id="pas-nsx-v-shared-storage"></a> Shared Storage
 
@@ -275,17 +276,17 @@ For information about horizontal and vertical shared storage, see [Shared Storag
 
 ### <a id="pas-nsx-v-storage-capacity"></a> Storage Capacity
 
-<%= vars.recommended_by %> recommends these storage capacity allocations for production and non-production <%= vars.app_runtime_abbr %> environments:
+<%= vars.recommended_by %> recommends these storage capacity allocations for production and non-production PAS environments:
 
 * **Production environments**: Configure at least 8&nbsp;TB of data storage. You can configure this as either one 8&nbsp;TB store or a number of smaller volumes that sum to 8&nbsp;TB. Frequently-used developments may require significantly more storage to accommodate new code and buildpacks.
 
 * **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
 
-<p class="note"><strong>Note:</strong> <%= vars.platform_name %> does not support using vSphere Storage Clusters with the latest versions of <%= vars.platform_name %> validated for the reference architecture. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
+<p class="note"><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
-<p class="note"><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must disable the s-vMotion feature on any datastores used by <%= vars.platform_name %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.platform_name %> to a New Datastore in vSphere</a>.</p>
+<p class="note"><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must disable the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
 
-For more information about general storage requirements and recommendations for <%= vars.app_runtime_abbr %>, see
+For more information about general storage requirements and recommendations for PAS, see
 [Storage](../index.html#pas-storage) in _Platform Architecture and Planning Overview_.
 
 ### <a id="pas-nsx-v-sql"></a> SQL Server
@@ -294,42 +295,42 @@ An internal MySQL database is sufficient for use in production environments.
 
 However, an external database provides more control over database management for large environments that require multiple data centers.
 
-For information about configuring system databases on <%= vars.app_runtime_abbr %>, see [Configure System Databases](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
+For information about configuring system databases on PAS, see [Configure System Databases](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#sys-db) in _Configuring PAS_.
 
 ### <a id="pas-nsx-v-security"></a> Security
 
-For information about security requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere deployments, see [Security](../index.html#pas-security) in _Platform Architecture and Planning Overview_.
+For information about security requirements and recommendations for PAS on vSphere deployments, see [Security](../index.html#pas-security) in _Platform Architecture and Planning Overview_.
 
 ### <a id="pas-nsx-v-blobstore"></a> Blobstore Storage
 
-<%= vars.app_runtime_abbr %> ships with an internal blobstore. It is recommended for POC deployments. <%= vars.recommended_by %> recommends that you use these blobstore storages for production and non-production <%= vars.app_runtime_abbr %> environments:
+PAS ships with an internal blobstore. It is recommended for POC deployments. <%= vars.recommended_by %> recommends that you use these blobstore storages for production and non-production PAS environments:
 
 * **Production and test environments:** Use an external S3 storage appliance as the blobstore, such as Dell ECS, Minio, or any other S3-compatible datastore in your environment.
 
 * **Non-production environments:** Use the internal blobstore.
 
-<p class="note"><strong>Note:</strong> For POC environments, the internal blobstore can be the primary consumer of storage, as the internal blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
+<p class="note"><strong>Note:</strong> For POC environments, the internal blobstore can be the primary consumer of storage, as the internal blobstore must be actively maintained. PAS deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
 
-For more information about blobstore storage requirements and recommendations, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+For more information about blobstore storage requirements and recommendations, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring PAS for Upgrades_.
 
 
-## <a id="pas-routed"></a> <%= vars.app_runtime_abbr %> on vSphere without NSX
+## <a id="pas-routed"></a> PAS on vSphere without NSX
 
-These sections describe the architecture for <%= vars.app_runtime_abbr %> on vSphere without software-defined networking deployments.
+These sections describe the architecture for PAS on vSphere without software-defined networking deployments.
 
-<p class="note"><strong>Note:</strong> This architecture was validated for earlier versions of <%= vars.app_runtime_abbr %>.
-However, it has not been validated for <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.
+<p class="note"><strong>Note:</strong> This architecture was validated for earlier versions of PAS.
+However, it has not been validated for PAS <%= vars.v_major_version %>.
 </p>
 
 ### <a id="pas-routed-networking"></a> Networking
 
-Without an SDN, IP allocations all come from routed network space. Discussions and planning within your organization are essential to acquiring the necessary amount of IP space for a <%= vars.app_runtime_abbr %> deployment with future growth considerations. This is because routed IP address space is a premium resource, and adding more later is difficult, costly, and time-consuming.
+Without an SDN, IP allocations all come from routed network space. Discussions and planning within your organization are essential to acquiring the necessary amount of IP space for a PAS deployment with future growth considerations. This is because routed IP address space is a premium resource, and adding more later is difficult, costly, and time-consuming.
 
-Below is a best-guess layout for IP space utilization in a single <%= vars.app_runtime_abbr %> deployment:
+Below is a best-guess layout for IP space utilization in a single PAS deployment:
 
 * Infrastructure - /28
 
-* <%= vars.app_runtime_abbr %> deployment - /23<br>This size is almost completely dependent on the estimated desired capacity for containers. It can be smaller, but <%= vars.recommended_by %> does not recommend using a larger size in a single deployment.
+* PAS deployment - /23<br>This size is almost completely dependent on the estimated desired capacity for containers. It can be smaller, but <%= vars.recommended_by %> does not recommend using a larger size in a single deployment.
 
 * Services - /23<br>This size is almost completely dependent on the estimated desired capacity for services. Resize as necessary.
 

@@ -1,131 +1,131 @@
 ---
 title: Ongoing Operations
-owner: PCF Documentation
+owner: Ops Manager Documentation
 ---
 
-This topic describes how to perform routine operations on a running <%= vars.platform_name %>.
+This topic describes how to perform routine operations on a running <%= vars.ops_manager %>.
 
 
 ## <a id='overview'></a> Overview
 
-Ongoing operations are procedures that <%= vars.platform_name %> operators routinely perform to keep the platform working as it should, or to change how it works if the platform needs to do something new or has a problem.
+Ongoing operations are procedures that <%= vars.ops_manager %> operators routinely perform to keep the platform working as it should, or to change how it works if the platform needs to do something new or has a problem.
 
 Examples include:
 
-* Performing <%= vars.platform_name %> upgrades
+* Performing <%= vars.ops_manager %> upgrades
 * Making changes to your IaaS and external components
 * Monitoring platform health, checking logs, and generating usage reports
 * Tuning the platform to eliminate bottlenecks or increase capacity
 * Giving developers access to new software services, stacks, and app capabilities
 * Backing up and restoring the platform
 
-In addition to these tasks, <%= vars.platform_name %> operators also routinely perform Day 2 configurations to configure or change platform features and integrations even well past Day 2. For more information, see [Day 2 Configurations](https://docs.pivotal.io/platform/customizing/day2.html).
+In addition to these tasks, <%= vars.ops_manager %> operators also routinely perform Day 2 configurations to configure or change platform features and integrations even well past Day 2. For more information, see [Day 2 Configurations](https://docs.pivotal.io/application-service/2-7/operating/day2.html).
 
 
 ## <a id='contents'></a> Contents
 
 ### <a id='upgrading'></a> Upgrading
 
-* [Upgrading <%= vars.platform_name %>](https://docs.pivotal.io/platform/customizing/upgrading-pcf.html)
+* [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html)
 
-* [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.platform_name %> Products](https://docs.pivotal.io/platform/customizing/upgrading-products.html)
+* [Upgrading PAS and Other <%= vars.ops_manager %> Products](../install/upgrading-products.html)
 
-* [cf push Availability During <%= vars.app_runtime_abbr %> Upgrades](https://docs.pivotal.io/platform/customizing/cfpush-availability-during-upgrade.html)
+* [cf push Availability During PAS Upgrades](https://docs.pivotal.io/application-service/2-7/operating/cfpush-availability-during-upgrade.html)
 
-* [Upgrading <%= vars.ops_manager %> on Azure](https://docs.pivotal.io/platform/customizing/azure-om-upgrade.html)
+* [Upgrading <%= vars.ops_manager %> on Azure](../install/azure-om-upgrade.html)
 
-* [Upgrading <%= vars.ops_manager %> on GCP](https://docs.pivotal.io/platform/customizing/gcp-om-upgrade.html)
+* [Upgrading <%= vars.ops_manager %> on GCP](../install/gcp-om-upgrade.html)
 
-* [Upgrade Load Example&#58; Pivotal Web Services](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/pws_upgrade_load.html)
+* [Upgrade Load Example&#58; Pivotal Web Services](https://docs.pivotal.io/application-service/2-7/operating/pws_upgrade_load.html)
 
 ### <a id='changes'></a> IaaS Changes
 
-* [Migrating <%= vars.platform_name %> to a New Datastore in vSphere](https://docs.pivotal.io/platform/refarch/vsphere/vsphere_migrate_datastore.html)
+* [Migrating <%= vars.ops_manager %> to a New Datastore in vSphere](../refarch/vsphere/vsphere_migrate_datastore.html)
 
-* [Upgrading vSphere without <%= vars.platform_name %> Downtime](https://docs.pivotal.io/platform/refarch/vsphere/vsphere_upgrade.html)
+* [Upgrading vSphere without <%= vars.ops_manager %> Downtime](../refarch/vsphere/vsphere_upgrade.html)
 
-* [Deleting <%= vars.platform_name %> on AWS](https://docs.pivotal.io/platform/customizing/deleting-aws-install.html)
+* [Deleting <%= vars.ops_manager %> on AWS](../install/deleting-aws-install.html)
 
-* [Deleting <%= vars.platform_name %> on Azure](https://docs.pivotal.io/platform/customizing/deleting-azure-install.html)
+* [Deleting <%= vars.ops_manager %> on Azure](../install/deleting-azure-install.html)
 
-* [Deleting <%= vars.platform_name %> on GCP](https://docs.pivotal.io/platform/customizing/deleting-gcp-install.html)
+* [Deleting <%= vars.ops_manager %> on GCP](../install/deleting-gcp-install.html)
 
 ### <a id='monitoring'></a> Monitoring, Logging, and Reporting
 
-* [Logs and Metrics Sources](https://docs.pivotal.io/platform/loggregator/data-sources.html)
+* [Logs and Metrics Sources](https://docs.pivotal.io/application-service/2-7/loggregator/data-sources.html)
 
-* [Monitoring <%= vars.platform_name %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/index.html)
+* [Monitoring <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/2-7/operating/monitoring/index.html)
 
-	* [Key Performance Indicators](https://docs.pivotal.io/platform/monitoring/kpi.html)
+	* [Key Performance Indicators](https://docs.pivotal.io/application-service/2-7/operating/monitoring/kpi.html)
 
-	* [Key Capacity Scaling Indicators](https://docs.pivotal.io/platform/monitoring/key-cap-scaling.html)
+	* [Key Capacity Scaling Indicators](https://docs.pivotal.io/application-service/2-7/operating/monitoring/key-cap-scaling.html)
 
-	* [Selecting and Configuring a Monitoring System](https://docs.pivotal.io/platform/monitoring/metrics.html)
+	* [Selecting and Configuring a Monitoring System](https://docs.pivotal.io/application-service/2-7/operating/monitoring/metrics.html)
 
-* [Loggregator Architecture](https://docs.pivotal.io/platform/loggregator/architecture.html)
+* [Loggregator Architecture](https://docs.pivotal.io/application-service/2-7/loggregator/architecture.html)
 
-* [Loggregator Guide for <%= vars.app_runtime_abbr %> Operators](https://docs.pivotal.io/platform/loggregator/log-ops-guide.html)
+* [Loggregator Guide for PAS Operators](https://docs.pivotal.io/application-service/2-7/loggregator/log-ops-guide.html)
 
-* [Security Event Logging](https://docs.pivotal.io/platform/loggregator/cc-uaa-logging.html)
+* [Security Event Logging](https://docs.pivotal.io/application-service/2-7/loggregator/cc-uaa-logging.html)
 
-* [Reporting Instance Usage with Apps Manager](https://docs.pivotal.io/application-service/operating/accounting-report-apps-man.html)
+* [Reporting Instance Usage with Apps Manager](https://docs.pivotal.io/application-service/2-7/operating/accounting-report-apps-man.html)
 
-* [Reporting App, Task, and Service Instance Usage](https://docs.pivotal.io/application-service/operating/accounting-report.html)
+* [Reporting App, Task, and Service Instance Usage](https://docs.pivotal.io/application-service/2-7/operating/accounting-report.html)
 
-* [Monitoring <%= vars.platform_name %> VMs from <%= vars.ops_manager %>](https://docs.pivotal.io/platform/customizing/monitoring.html)
+* [Monitoring VMs in <%= vars.ops_manager %>](../install/monitoring.html)
 
-* [Monitoring <%= vars.platform_name %> VMs from vSphere](https://docs.pivotal.io/platform/customizing/monitoring-vsphere.html)
+* [Monitoring <%= vars.platform_name %> VMs from vSphere](../install/monitoring-vsphere.html)
 
 ### <a id='tuning'></a> Platform Tuning
 
-* [Scaling <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/scaling-ert-components.html)
+* [Scaling PAS](https://docs.pivotal.io/application-service/2-7/operating/scaling-ert-components.html)
 
-* [Managing Internal Databases](https://docs.pivotal.io/application-service/operating/internal-databases.html)
+* [Managing Internal Databases](https://docs.pivotal.io/application-service/2-7/operating/internal-databases.html)
 
-* [Gorouter Back End Keep-Alive Connections](https://docs.pivotal.io/platform/adminguide/routing-keepalive.html)
+* [Gorouter Back End Keep-Alive Connections](https://docs.pivotal.io/application-service/2-7/adminguide/routing-keepalive.html)
 
-* [High Availability in <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/platform/concepts/high-availability.html)
+* [High Availability in PAS](https://docs.pivotal.io/application-service/2-7/concepts/high-availability.html)
 
 ### <a id='devs'></a> Enabling Developers
 
-* [Adding and Deleting Products](https://docs.pivotal.io/platform/customizing/add-delete.html)
+* [Adding and Deleting Products](../install/add-delete.html)
 
-* [Managing Isolation Segments](https://docs.pivotal.io/platform/adminguide/isolation-segments.html)
+* [Managing Isolation Segments](https://docs.pivotal.io/application-service/2-7/adminguide/isolation-segments.html)
 
-* [Routing for Isolation Segments](https://docs.pivotal.io/platform/adminguide/routing-is.html)
+* [Routing for Isolation Segments](https://docs.pivotal.io/application-service/2-7/adminguide/routing-is.html)
 
-* [Enabling Volume Services](https://docs.pivotal.io/application-service/operating/enable-vol-services.html)
+* [Enabling Volume Services](https://docs.pivotal.io/application-service/2-7/operating/enable-vol-services.html)
 
-* [Configuring Container-to-Container Networking](https://docs.pivotal.io/platform/devguide/deploy-apps/cf-networking.html)
+* [Configuring Container-to-Container Networking](https://docs.pivotal.io/application-service/devguide/deploy-apps/cf-networking.html)
 
-* [Switching App Domains](https://docs.pivotal.io/application-service/operating/switching-domains.html)
+* [Switching App Domains](https://docs.pivotal.io/application-service/2-7/operating/switching-domains.html)
 
 ### <a id='backups'></a> Backing Up
 
-* [Disaster Recovery in <%= vars.platform_name %>](https://docs.pivotal.io/platform/customizing/backup-restore/disaster-recovery.html)
+* [Disaster Recovery in <%= vars.platform_name %>](../install/backup-restore/disaster-recovery.html)
 
-* [Backing Up and Restoring <%= vars.platform_name %>](https://docs.pivotal.io/platform/customizing/backup-restore/index.html)
+* [Backing Up and Restoring <%= vars.platform_name %>](../install/backup-restore/index.html)
 
-* [Backing Up <%= vars.platform_name %> with BBR](https://docs.pivotal.io/platform/customizing/backup-restore/backup-pcf-bbr.html)
+* [Backing Up <%= vars.platform_name %> with BBR](../install/backup-restore/backup-pcf-bbr.html)
 
-* [<%= vars.app_runtime_abbr %> Component Availability During Backup](https://docs.pivotal.io/platform/customizing/backup-restore/component-backups.html)
+* [PAS  Component Availability During Backup](../install/backup-restore/component-backups.html)
 
-* [Restoring <%= vars.platform_name %> from Backup with BBR](https://docs.pivotal.io/platform/customizing/backup-restore/restore-pcf-bbr.html)
+* [Restoring <%= vars.platform_name %> from Backup with BBR](../install/backup-restore/restore-pcf-bbr.html)
 
-* [Stopping and Starting Virtual Machines](https://docs.pivotal.io/platform/adminguide/start-stop-vms.html)
+* [Stopping and Starting Virtual Machines](https://docs.pivotal.io/application-service/2-7/adminguide/start-stop-vms.html)
 
-* [Troubleshooting BBR](https://docs.pivotal.io/platform/customizing/backup-restore/troubleshooting-bbr.html)
+* [Troubleshooting BBR](../install/backup-restore/troubleshooting-bbr.html)
 
 * [BOSH Backup and Restore (Open-Source Documentation)](http://docs.cloudfoundry.org/bbr/index.html)
 
 ### <a id='security'></a> Security
 
-* [Retrieving Credentials from Your Deployment](https://docs.pivotal.io/platform/customizing/credentials.html)
+* [Retrieving Credentials from Your Deployment](../install/credentials.html)
 
-* [Restricting App Access to Internal <%= vars.platform_name %> Components](https://docs.pivotal.io/application-service/operating//app-sec-groups.html)
+* [Restricting App Access to Internal <%= vars.ops_manager %> Components](https://docs.pivotal.io/application-service/2-7/operating/app-sec-groups.html)
 
-* [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/application-service/operating//security_config.html)
+* [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/application-service/2-7/operating/security_config.html)
 
 * [Overview of Certificate Rotation](../security/pcf-infrastructure/api-cert-rotation.html)
 
-* [Rotating Runtime CredHub Encryption Keys](https://docs.pivotal.io/application-service/operating//credential-rotation.html)
+* [Rotating Runtime CredHub Encryption Keys](https://docs.pivotal.io/application-service/2-7/operating/credential-rotation.html)

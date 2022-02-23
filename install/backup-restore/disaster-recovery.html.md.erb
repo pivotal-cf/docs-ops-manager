@@ -114,7 +114,11 @@ Blobstores can be very large. To minimize downtime, BBR only takes blob metadata
   * RabbitMQ for <%= vars.platform_name %>
   * Redis for <%= vars.platform_name %>
 
-* **External blobstores and databases:** BBR support for backing up and restoring external databases and blobstores varies across <%= vars.platform_name %> versions. For more information, see [Supported Components](backup-pcf-bbr.html#supported) and [External Storage Support Across <%= vars.platform_name %> Versions](backup-pcf-bbr.html#version-compatibility) in _Backing Up <%= vars.platform_name %> with BBR_.
+* **External blobstores and databases:** BBR support for backing up and restoring external databases
+    and blobstores varies across <%= vars.ops_manager %> versions.
+    For more information, see [Supported Components](backup-pcf-bbr.html#supported) and
+    [External Storage Support Across <%= vars.ops_manager %> Versions](backup-pcf-bbr.html#version-compatibility)
+    in _Backing Up Deployments with BBR_.
 
 ### <a id="best-practices"></a> Best Practices
 
@@ -181,8 +185,8 @@ The following table compares backing up and restoring using BBR to recreating a 
 </tr>
 <tr>
   <th>Preconditions</th>
-    <td>IaaS prepared for <%= vars.platform_name %> install</td>
-    <td>IaaS prepared for <%= vars.platform_name %> install</td>
+    <td>IaaS prepared for <%= vars.ops_manager %> and runtime install</td>
+    <td>IaaS prepared for <%= vars.ops_manager %> and runtime install</td>
 </tr>
 <tr>
   <th>Steps</th>
@@ -248,7 +252,7 @@ Both the restore and re-create data disaster recovery options require standing u
 <tbody>
 <tr>
   <th><p><strong>Active-cold</strong></p></th>
-    <td><p>Public cloud environment ready for <%= vars.platform_name %> installation, no <%= vars.platform_name %> installed. This saves both IaaS costs and <%= vars.platform_name %> instance costs. For on-premise installations, this requires hardware on standby that is ready to install on, which might not be a realistic option.</p></td>
+    <td><p>Public cloud environment ready for installation, no <%= vars.ops_manager %> and runtime installed. This saves both IaaS costs and instance costs. For on-premise installations, this requires hardware on standby that is ready to install on, which might not be a realistic option.</p></td>
 </tr>
 <tr>
   <th><p><strong>Active-warm</strong></p></th>

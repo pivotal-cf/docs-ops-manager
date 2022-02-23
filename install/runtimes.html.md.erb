@@ -5,14 +5,14 @@ owner: PCF Documentation
 
 <% current_page.data.title = vars.platform_name + " Runtimes"  %>
 
-This topic describes the runtime environments you can install on <%= vars.platform_name %>.
+This topic describes the runtime environments you can install on <%= vars.ops_manager %>.
 
 
 ## <a id='overview'></a> Overview
 
-<%= vars.platform_name %> includes runtime environment options that support apps and containers running on Linux and Windows VMs at different levels of resource usage and isolation. You install your chosen runtime or runtimes using the Ops Manager Installation Dashboard.
+<%= vars.ops_manager %> includes runtime environment options that support apps and containers running on Linux and Windows VMs at different levels of resource usage and isolation. You install your chosen runtime or runtimes using the Ops Manager Installation Dashboard.
 
-<%= vars.platform_name %> includes support for the following primary runtime environments:
+<%= vars.ops_manager %> includes support for the following primary runtime environments:
 
 - [<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>)](#pas)
 
@@ -21,7 +21,7 @@ This topic describes the runtime environments you can install on <%= vars.platfo
 
 ## <a id='pas'></a> <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>)
 
-<%= vars.app_runtime_abbr %> lets developers develop and manage cloud-native apps and software services running on Linux. <%= vars.app_runtime_abbr %> is based on the open-source Cloud Foundry Application Runtime project. To install and configure <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html).
+<%= vars.app_runtime_abbr %> lets developers develop and manage cloud-native apps and software services running on Linux. <%= vars.app_runtime_abbr %> is based on the open-source Cloud Foundry Application Runtime project. To install and configure <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
 
 As an alternative to <%= vars.app_runtime_abbr %>, you can install [Small Footprint <%= vars.app_runtime_abbr %>](#small-footprint) to deploy your app using fewer resources.
 
@@ -38,7 +38,7 @@ For more information about Small Footprint <%= vars.app_runtime_abbr %>, see [Ge
 
 ### <a id='pasw'></a> <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>)
 
-<%= vars.windows_runtime_abbr %> lets <%= vars.platform_name %> host apps on Windows VMs and enables <%= vars.platform_name %> developers to push .NET apps to these Windows Diego Cells. You must install <%= vars.app_runtime_abbr %> before you can install <%= vars.windows_runtime_abbr %>.
+<%= vars.windows_runtime_abbr %> lets <%= vars.ops_manager %> host apps on Windows VMs and enables <%= vars.ops_manager %> developers to push .NET apps to these Windows Diego Cells. You must install <%= vars.app_runtime_abbr %> before you can install <%= vars.windows_runtime_abbr %>.
 
 For more information about <%= vars.windows_runtime_abbr %>, see [<%= vars.windows_runtime_full %>](https://docs.pivotal.io/application-service/2-7/windows/index.html).
 
@@ -51,6 +51,6 @@ To install <%= vars.segment_runtime_full %>, see [Installing <%= vars.segment_ru
 
 ## <a id='pks'></a><%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)
 
-<%= vars.k8s_runtime_abbr %> lets operators provision, operate, and manage enterprise-grade Kubernetes clusters on <%= vars.platform_name %>. <%= vars.k8s_runtime_abbr %> is based on the open-source Cloud Foundry Container Runtime project.
+<%= vars.k8s_runtime_abbr %> lets operators provision, operate, and manage enterprise-grade Kubernetes clusters on <%= vars.ops_manager %>. <%= vars.k8s_runtime_abbr %> is based on the open-source Cloud Foundry Container Runtime project.
 
 To install and configure <%= vars.k8s_runtime_abbr %>, see [Installing Enterprise <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/pks/installing.html).

@@ -2,7 +2,7 @@ Select a **Blobstore Location** to either configure the blobstore as an internal
   <p class='note'><strong>Note:</strong> After you deploy <%= vars.ops_manager %>, you cannot change the blobstore location.</p>
   * **Internal:** Select this option to use an internal blobstore. <%= vars.ops_manager %> creates a new VM for blob storage. No additional configuration is required.
       * **Enable TLS:** <%= vars.recommended_by %> recommends that you select this checkbox to enable TLS to the blobstore.
-        <p class='note'><strong>Note:</strong> If you are using <%= vars.windows_runtime_abbr %> 2016, make sure you have downloaded Windows stemcell v1709.10 or later before enabling TLS. For more information, see <a href="https://docs.pivotal.io/platform/stemcells/windows-stemcell-v2019x.html#1709.10">Stemcell v2019.x (Windows Server version 2019) Release Notes</a>.</p>
+        <p class='note'><strong>Note:</strong> If you are using <%= vars.windows_runtime_abbr %> 2016, make sure you have downloaded Windows stemcell v1709.10 or later before enabling TLS. For more information, see <a href="https://docs.pivotal.io/stemcells/windows-stemcell-v2019x.html#1709.10">Stemcell v2019.x (Windows Server version 2019) Release Notes</a>.</p>
   * **S3 Compatible Blobstore:** Select this option to use an external S3-compatible endpoint.
     <% if current_page.data.iaas == "AWS" %>
     When you have created an S3 bucket, configure the following fields:

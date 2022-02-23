@@ -27,7 +27,7 @@ This section lists the resource requirements for installing <%= vars.ops_manager
 
 ### <a id="azure-requirements"></a> Azure Resource Requirements
 
-The following are the minimum resource requirements for deploying a <%= vars.platform_name %> deployment with Ops Manager and <%= vars.app_runtime_abbr %> on Azure:
+The following are the minimum resource requirements for deploying Ops Manager and <%= vars.app_runtime_abbr %> on Azure:
 
 * An OS disk of 120&nbsp;GB for the Ops Manager VM.
   <p class="note"><strong>Note:</strong> Ops Manager v1.11 requires a Director VM with at least 8&nbsp;GB memory.</p>
@@ -94,14 +94,14 @@ The following are the minimum resource requirements for deploying a <%= vars.pla
     <td></td>
   </tr>
 </table>
-  <p class="note"><strong>Note:</strong> Some VM instance types are only supported in certain Azure regions. For more information, see <a href="https://azure.microsoft.com/en-us/regions/services/">Products available by region</a> in the Azure documentation. To deploy <%= vars.platform_name %> on an Azure region that does not support the above VM instance types, you must override the default VM sizes. For more information, see <a href="https://docs.pivotal.io/pivotalcf/2-2/opsman-api#overriding-defaults-with-custom-disk-types">Overriding defaults with custom disk types</a> in the Ops Manager API documentation. Changing the default VM sizes may increase the cost of your deployment. </p>
+  <p class="note"><strong>Note:</strong> Some VM instance types are only supported in certain Azure regions. For more information, see <a href="https://azure.microsoft.com/en-us/regions/services/">Products available by region</a> in the Azure documentation. To deploy <%= vars.ops_manager %> on an Azure region that does not support the above VM instance types, you must override the default VM sizes. For more information, see <a href="https://docs.pivotal.io/pivotalcf/2-2/opsman-api#overriding-defaults-with-custom-disk-types">Overriding defaults with custom disk types</a> in the Ops Manager API documentation. Changing the default VM sizes may increase the cost of your deployment.</p>
 
 
 ## <a id="prerequisites"></a> Prerequisites
 
 Before installing <%= vars.ops_manager %> on Azure, you must:
 
-* Install the Azure CLI v2.0. For instructions on how to install the Azure CLI for your operating system, see [Preparing to Deploy Ops Manager on Azure](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/prepare-env-manual.html).
+* Install the Azure CLI v2.0. To install the Azure CLI for your operating system, see [Preparing to Deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html).
 
 * Configure sufficient IP allocation for <%= vars.app_runtime_abbr %>. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pas).
 
@@ -117,7 +117,7 @@ Before installing <%= vars.ops_manager %> on Azure, you must:
 
 * Install the most recent version of the Cloud Foundry Command Line Interface (cf CLI). See [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli#downloads) in GitHub.
 
-* **(Optional)** Configure external storage. Pivotal recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_ for Upgrades.
+* (Optional) Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 * **(Optional)** Configure external databases. Pivotal recommends using external databases in production deployments for BOSH Director and <%= vars.app_runtime_abbr %>. An external database must be configured to use the UTC timezone.
 
@@ -131,12 +131,12 @@ To install <%= vars.ops_manager %> on Azure, see [Installing <%= vars.ops_manage
 
 ## <a id='install-gov'></a> Install <%= vars.ops_manager %> on Azure Government Cloud
 
-To install <%= vars.ops_manager %> on Azure Government Cloud, see [Configuring BOSH Director on Azure Government Cloud](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/gov-cloud.html).
+To install <%= vars.ops_manager %> on Azure Government Cloud, see [Configuring BOSH Director on Azure Government Cloud](../azure/gov-cloud.html).
 
 
 ## <a id='install-germany'></a> Install <%= vars.ops_manager %> on Azure Germany
 
-To install <%= vars.ops_manager %> in Azure Germany, see [Configuring BOSH Director on Azure Germany](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/german-cloud.html).
+To install <%= vars.ops_manager %> in Azure Germany, see [Configuring BOSH Director on Azure Germany](../azure/german-cloud.html).
 
 
 ## <a id='resources'></a> Additional Resources
@@ -145,7 +145,7 @@ The following are additional resources related to installing <%= vars.ops_manage
 
 * For information about troubleshooting the <%= vars.ops_manager %> on Azure install process, see [Troubleshooting <%= vars.ops_manager %> on Azure](azure-troubleshooting.html).
 
-* For production-level deployment options for <%= vars.platform_name %> on Azure, see [Azure Reference Architecture](https://docs.pivotal.io/platform/2-7/plan/azure/azure_ref_arch.html).
+* For production-level deployment options for <%= vars.ops_manager %> on Azure, see [Reference Architecture for <%= vars.ops_manager %> on Azure](../refarch/azure/azure_ref_arch.html).
 
 * For information about how to manage IaaS users and credentials in Azure, see [Azure security documentation](https://docs.microsoft.com/en-us/azure/security/).
 

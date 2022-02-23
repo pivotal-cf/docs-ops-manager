@@ -35,9 +35,8 @@ Microsoft Azure documentation.
     $ az cloud set --name AzureCloud
     </pre>
 
-    <p class="note"><strong>Note</strong>: For more information about installing Ops Manager in the China
-    Region, see <a href="https://docs.pivotal.io/platform/customizing/offline_installation.html#install_china">Install in the China Region</a>
-    in <em>Installing <%= vars.platform_name %> in Airgapped Environments</em> in the Pivotal documentation.</p>
+    <p class="note"><strong>Note:</strong> For more information about installing Ops Manager in the China
+    Region, see <a href="../install/offline_installation.html#install_china">Install in the China Region</a> in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
 
 1. To log in, run the following command:
 
@@ -72,7 +71,7 @@ Microsoft Azure documentation.
       "isDefault": true,
       "registeredProviders": [],
       "environmentName": "AzureCloud"
-   },      
+   },
    {
       "id": "87654321-1234-5678-1234-678912345678",
       "name": "Sample Subscription1",
@@ -88,7 +87,7 @@ Microsoft Azure documentation.
      }
     ]
     </pre>
- 
+
 1. Identify your default subscription in the output of this command by locating the subscription
 listed that has `isDefault` set to `true`. To deploy Ops Manager to a different subscription, you must set
 the other subscription as the default. To set a new default subscription, run the following command:
@@ -151,7 +150,7 @@ account to log in to your Azure subscription.
     }
     </pre>
 
-##<a id="create-configure"></a> Step 4: Create and Configure a Service Principal 
+##<a id="create-configure"></a> Step 4: Create and Configure a Service Principal
 
 1. To create a service principal, run the following command:
 
@@ -193,7 +192,7 @@ the Owner role on your service principal, run the following command:
     --role "Owner" \
     --scope /subscriptions/87654321-1234-5678-1234-567891234567
     </pre>
-    <p class="note"><strong>Note:</strong> If you need to use multiple resource groups for your 
+    <p class="note"><strong>Note:</strong> If you need to use multiple resource groups for your
     deployment on Azure, you can define custom roles for your Service Principal. These roles allow
     BOSH to deploy  to pre-existing network resources outside of the resource group.</p>
 
@@ -231,7 +230,7 @@ To verify your service principal, run the following command to log in to your se
 
 ```
 az login --username APP_ID --password CLIENT_SECRET \
---service-principal --tenant TENANT_ID 
+--service-principal --tenant TENANT_ID
 ```
 Where:
 

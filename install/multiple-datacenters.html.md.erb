@@ -4,7 +4,7 @@ owner: Ops Manager
 iaas: vSphere and OpenStack
 ---
 
-This topic describes how you can add, delete, and modify multiple data centers in the IaaS config pane of the BOSH Director tile. This allows you to spread instances across regions without having to deploy and manage multiple <%= vars.platform_name %> foundations.
+This topic describes how you can add, delete, and modify multiple data centers in the IaaS config pane of the BOSH Director tile. This allows you to spread instances across regions without having to deploy and manage multiple <%= vars.ops_manager %> foundations.
 
 <p class='note'><strong>Note:</strong> You can only have multiple data centers with vSphere and OpenStack.</p>
 
@@ -21,8 +21,8 @@ To add a new IaaS config, do the following:
 1. Enter a unique **Name** for your config.
 
 1. Complete the rest of the form.
-  - For more information about the fields in vSphere, see _Step 2: Configure vCenter_ in [Configuring BOSH Director on vSphere](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/vsphere/config.html#vcenter-config).
-  - For more information about the fields in OpenStack, see _Step 2: OpenStack Configs Page_ in [Configuring BOSH Director on OpenStack](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/openstack/config.html#openstack-config).
+  - For more information about the fields in vSphere, see _Step 2: Configure vCenter_ in [Configuring BOSH Director on vSphere](../vsphere/config.html#vcenter-config).
+  - For more information about the fields in OpenStack, see _Step 2: OpenStack Configs Page_ in [Configuring BOSH Director on OpenStack](../openstack/config.html#openstack-config).
 
 1. Click **Save**.
 
@@ -58,7 +58,7 @@ To delete your IaaS config, do the following:
 
 1. Click **Save**
 
-1. Go to the IaaS config pane. 
+1. Go to the IaaS config pane.
 
 1. Click the trashcan icon to delete your IaaS config.
 

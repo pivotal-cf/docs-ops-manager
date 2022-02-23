@@ -13,7 +13,7 @@ For more information, see [Rotating the Services TLS CA and Its Leaf Certificate
 
 <%= vars.ops_manager %> stores some of its internal CA (certificate authority) and
 non-CA certificates in the BOSH CredHub credentials store.
-For more information, see [BOSH CredHub](https://docs.pivotal.io/platform/credhub/#bosh).
+For more information, see [BOSH CredHub](https://docs.pivotal.io/credhub/#bosh).
 
 To access the BOSH CredHub credentials store, you must retrieve
 credentials from the BOSH Director and then use the credentials
@@ -42,7 +42,7 @@ To access BOSH CredHub:
   the BOSH CredHub client secret.
 
 1. Follow the procedure in
-[Gather Credential and IP Address Information](https://docs.pivotal.io/platform/customizing/trouble-advanced.html#gather)
+[Gather Credential and IP Address Information](../../install/trouble-advanced.html#gather)
 to obtain the information needed to log in to the BOSH Director VM.
 Record the IP address for the BOSH Director and the Director Credentials.
 
@@ -79,4 +79,3 @@ CredHub server by running the following command:
     <pre class="terminal">$ credhub login \
     --client-name=credhub \
     --client-secret=abcdefghijklm123456789</pre>
-

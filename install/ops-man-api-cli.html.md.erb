@@ -7,21 +7,21 @@ This topic introduces three tools for running Pivotal Operations Manager operati
 
 ## <a id='overview'></a> Overview
 
-<%= vars.platform_name %> includes three related tools that let you run Ops Manager operations programmatically and from the command line, rather than from the Ops Manager GUI:
+<%= vars.ops_manager %> includes three related tools that let you run Ops Manager operations programmatically and from the command line, rather than from the Ops Manager GUI:
 
-* The Ops Manager API. For more information, see the [Ops Manager API documentation](https://docs.pivotal.io/platform/opsman-api).
+* The Ops Manager API. For more information, see the [Ops Manager API documentation](https://docs.pivotal.io/platform/2-8/opsman-api).
 * The `om` command-line interface (CLI).  For more information about `om`, see the [`om` repository](https://github.com/pivotal-cf/om).
 * Platform Automation tasks. For more information, see the [Platform Automation](http://docs.pivotal.io/platform-automation) documentation.
 
 These three tools control the Ops Manager VM at different levels of abstraction. Platform operators and tile developers use them as described below.
 
-For more information about tile development, see [<%= vars.platform_name %> Tile Developer Guide](http://docs.pivotal.io/tiledev/index.html).
+For more information about tile development, see the [<%= vars.ops_manager %> Tile Developer Guide](http://docs.pivotal.io/tiledev/index.html).
 
 ## <a id='api'></a> Ops Manager API
 
 The Ops Manager API offers the most granular control of the Ops Manager VM, The API enables users to do the following:
 
-- Automate component-level testing of <%= vars.platform_name %> product tiles
+- Automate component-level testing of <%= vars.ops_manager %> product tiles
 - Manage Ops Manager user accounts
 - Develop and debug product tiles
 - Access product property values that are not exposed in a product tile GUI
@@ -45,7 +45,7 @@ For information, including how to install `om` and a usage example, see [Using t
 
 Platform Automation tasks call the `om` CLI to do the following:
 
-- Serve as building blocks for Continuous Integration (CI) pipelines that automate installation and updating of <%= vars.platform_name %> foundations
+- Serve as building blocks for Continuous Integration (CI) pipelines that automate installation and updating of <%= vars.ops_manager %> foundations
 - Within pipelines, store and retrieve product configuration values from secrets vaults like CredHub and code repositories like GitHub.
 
 For a complete list of Platform Automation tasks, see [Concourse Tasks](https://docs.pivotal.io/platform-automation/v3.0/reference/task.html) in the Platform Automation documentation.

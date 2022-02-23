@@ -13,7 +13,7 @@ For BBR release notes, see [BOSH Backup and Restore Release Notes](https://docs.
 
 To perform the procedures in this topic, you must have backed up <%= vars.platform_name %> by following the procedure in [Backing Up <%= vars.platform_name %> with BBR](backup-pcf-bbr.html).
 
-The procedures described in this topic prepare your environment for <%= vars.platform_name %>, deploy <%= vars.ops_manager %>, import your installation settings, and use BBR to restore your <%= vars.platform_name %> components.
+The procedures described in this topic prepare your environment for <%= vars.ops_manager %>, deploy <%= vars.ops_manager %>, import your installation settings, and use BBR to restore your <%= vars.ops_manager %> components.
 
 <p class="note warning"><strong>Warning:</strong> Restoring <%= vars.platform_name %> with BBR is a destructive operation. If the restore fails, the new environment could be left in an unusable state and require re-provisioning. Only perform the procedures in this topic for the purpose of disaster recovery, such as re-creating <%= vars.platform_name %> after a storage-area network (SAN) corruption.</p>
 
@@ -38,7 +38,7 @@ For a backup artifact to be restorable, these restrictions apply:
 
 * **Limited validation:** BBR puts the backed-up data into the corresponding instance groups and jobs in the restored environment, but cannot validate the restore beyond that. For example, if the MySQL encryption key is different in the restore environment, the BBR restore might succeed, but the restored MySQL database is unusable.
 
-* **<%= vars.platform_name %> version:** BBR can restore to the same version of <%= vars.platform_name %> that was backed up. BBR does not support restoring to other major, minor, or patch releases.
+* **<%= vars.ops_manager %> version:** BBR can restore to the same version of <%= vars.ops_manager %> that was backed up. BBR does not support restoring to other major, minor, or patch releases.
 
 <p class="note"><strong>Note:</strong> A change in VM size or underlying hardware does not affect the ability of BBR to restore data, as long as there is adequate storage space to restore the data.</p>
 
@@ -161,7 +161,7 @@ To update <%= vars.ops_manager %>:
 
 1. If necessary, select **Networking** and update the load balancer SSL certificate and private key under **Certificates and private keys for the Gorouter and HAProxy**.
 
-1. If your environment has a new DNS address, update the old environment DNS entries to point to the new load balancer addresses. For more information, see [Configure Networking](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#networking) in _Configuring TAS for VMs_ and follow the instructions for your IaaS.
+1. If your environment has a new DNS address, update the old environment DNS entries to point to the new load balancer addresses. For more information, see [Configure Networking](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#networking) in _Configuring TAS for VMs_ and follow the instructions for your IaaS.
 
 1. If your <%= vars.app_runtime_abbr %> deployment uses an external blobstore, ensure that the <%= vars.app_runtime_abbr %> tile is configured to use a different blobstore. Otherwise, it attempts to connect to the blobstore that the backed-up <%= vars.app_runtime_abbr %> deployment is using.
 
@@ -284,7 +284,7 @@ If the command fails:
 
 ### <a id='identify-deployment'></a> Step 10: Identify Your Deployment
 
-To identify the name of the BOSH deployment that contains <%= vars.platform_name %>:
+To identify the name of the BOSH deployment that contains <%= vars.ops_manager %>:
 
 1. Log in to your BOSH Director.
 
@@ -374,7 +374,7 @@ If your foundation is configured to use an external MySQL database instance,
 re-create the databases on the external database instance, and
 then ensure that your external database is suitably configured.
 For an example of how to create external databases,
-see [Creating Databases for <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/create-pas-dbs.html).
+see [Creating Databases for <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/create-pas-dbs.html).
 
 If you do not know whether your foundation uses an external or internal database,
 look on the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
@@ -382,7 +382,7 @@ look on the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
 If your external database VM instance has also changed, for example, if the database instance has been lost,
 update the configuration settings in the **Databases** pane on the <%= vars.app_runtime_abbr %> tile.
 For information about the **Databases** pane,
-see [Configure Databases](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#sys-db).
+see [Configure Databases](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#sys-db).
 
 
 #### <a id='redeploy-pas'></a> Redeploy <%= vars.app_runtime_abbr %>
@@ -419,7 +419,7 @@ For this step, you must restore data to pre-provisioned service tiles.
 
 The procedures for restoring service data vary. For more information, see the documentation for your service tile.
 
-For example, if you are using Redis for <%= vars.platform_name %> v1.14, see [Using BOSH Backup and Restore (BBR)](https://docs.pivotal.io/redis/1-14/bbr-backup.html).
+For example, if you are using Redis for <%= vars.ops_manager %> v1.14, see [Using BOSH Backup and Restore (BBR)](https://docs.pivotal.io/redis/1-14/bbr-backup.html).
 
 ### <a id='restore-ert'></a> Step 14: Restore <%= vars.app_runtime_abbr %>
 

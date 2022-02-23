@@ -5,9 +5,9 @@ owner: Ops Manager
 
 
 
-Default quotas on a new GCP subscription do not have enough quota for a typical production-level <%= vars.platform_name %> deployment.
+Default quotas on a new GCP subscription do not have enough quota for a typical production-level <%= vars.ops_manager %> deployment.
 
-The following table lists recommended resource quotas for a single <%= vars.platform_name %> deployment.
+The following table lists recommended resource quotas for a single <%= vars.ops_manager %> deployment.
 
 <table class="nice">
 <tr>
@@ -99,6 +99,6 @@ The following table lists recommended resource quotas for a single <%= vars.plat
 <sup>&#42;</sup> Assuming a deployment with 100 app instances.<br/>
 <sup>&#42;</sup><sup>&#42;</sup>  Assuming a SNAT topology.
 
-To view production-level deployment options for <%= vars.platform_name %> on GCP, see [GCP Reference Architecture](https://docs.pivotal.io/platform/2-7/plan/gcp/gcp_ref_arch.html).
+To view production-level deployment options for <%= vars.ops_manager %> on GCP, see the [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
 
-For instructions about setting up the GCP resources required to deploy <%= vars.platform_name %>, see [Preparing to Deploy Ops Manager on GCP](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/gcp/prepare-env-manual.html).
+For instructions about setting up the GCP resources required to deploy <%= vars.ops_manager %>, see [Preparing to Deploy <%= vars.ops_manager %> on GCP](../gcp/prepare-env-manual.html).

@@ -3,9 +3,9 @@ title: Using Edge Services Gateway on VMware NSX
 owner: Customer0
 ---
 
-This topic describes how to configure the NSX firewall, load balancing, and NAT/SNAT services for <%= vars.platform_name %> on vSphere installations. These NSX-provided services take the place of an external device or the bundled HAProxy VM in <%= vars.platform_name %>.
+This topic describes how to configure the NSX firewall, load balancing, and NAT/SNAT services for <%= vars.ops_manager %> on vSphere installations. These NSX-provided services take the place of an external device or the bundled HAProxy VM in <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
 
-This document presents the reader with fundamental configuration options of an Edge Services Gateway (ESG) with <%= vars.platform_name %> and vSphere NSX. Its purpose is not to dictate the settings required on every deployment, but instead to empower the NSX Administrator with the ability to establish a known good "base" configuration and apply specific security configurations as required.
+This document presents the reader with fundamental configuration options of an Edge Services Gateway (ESG) with <%= vars.ops_manager %> and vSphere NSX. Its purpose is not to dictate the settings required on every deployment, but instead to empower the NSX Administrator with the ability to establish a known good "base" configuration and apply specific security configurations as required.
 
 If you are using NSX, the specific configurations described here supersede any general recommendations in [Preparing Your Firewall](../../install/config_firewall.html).
 
@@ -14,9 +14,9 @@ If you are using NSX, the specific configurations described here supersede any g
 
 This topic assumes that the reader has the level of skill required to install and configure these products:
 
-*	VMware vSphere v5.5 or greater
-*	NSX v6.1.x or greater
-*	<%= vars.platform_name %> v1.6 or greater
+*	VMware vSphere v5.5 or later
+*	NSX v6.1.x or later
+*	<%= vars.ops_manager %> v1.6 or later
 
 For detailed installation and configuration information about these products, see:
 
@@ -26,12 +26,12 @@ For detailed installation and configuration information about these products, se
 
 *	[Reference Design: VMware NSX for vSphere (NSX) Network Virtualization Design Guide](https://www.vmware.com/files/pdf/products/nsx/vmw-nsx-network-virtualization-design-guide.pdf)
 
-* The	[<%= vars.platform_name %> documentation](http://docs.pivotal.io/platform/installing/pcf-docs.html)
+* [Installation Overview](../../install/index.html)
 
 
 ## <a id="overview"></a> General Overview
 
-This cookbook follows a three-step recipe to deploy <%= vars.platform_name %> behind an ESG:
+This cookbook follows a three-step recipe to deploy <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %>, and services behind an ESG:
 
 1. [Configure Firewall](#firewall)
 1. [Configure Load Balancer](#load_balancer)
@@ -42,9 +42,9 @@ The ESG can scale to accommodate very large <%= vars.platform_name %> deployment
 This cookbook focuses on a single-site deployment and makes these design assumptions:
 
 *	There are five non-routable networks on the tenant (inside) side of the ESG.
-   * The **infra** network is used to deploy <%= vars.ops_manager_full %> and BOSH Director.
-   * The **deployment** network is used exclusively by <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) to deploy Diego Cells that host apps and related elements.
-   * The **tiles** network is used for all other deployed tiles in a <%= vars.platform_name %> installation.
+   * The **infra** network is used to deploy <%= vars.ops_manager %> and BOSH Director.
+   * The **deployment** network is used exclusively by <%= vars.app_runtime_abbr %> to deploy Diego Cells that host apps and related elements.
+   * The **tiles** network is used for all other deployed tiles in an <%= vars.ops_manager %> installation.
    * The **services** network is used by BOSH Director for service tiles.
    * The **container-to-container** network is used for container to container communication in the Diego Cells.
 
@@ -93,17 +93,17 @@ Additionally, assign these IP addresses and address ranges within your network:
 
 1.	Assign IP Addresses to the "Uplink" (outside) interface.
   *	Typically, you have one SNAT and three DNATs per ESG.
-  *	IP associated for SNAT use: All <%= vars.platform_name %> internal IP addresses appear to be coming from this IP address at the ESG.
+  *	IP associated for SNAT use: All <%= vars.ops_manager %> internal IP addresses appear to be coming from this IP address at the ESG.
   *	IP associated with <%= vars.ops_manager %> DNAT: This IP address is the publicly routable interface for <%= vars.ops_manager %> UI and SSH access.
 
 1.	Assign "Internal" Interface IP Address Space to the Edge Gateway.
-  *	192.168.10.0/26 = <%= vars.platform_name %> deployment network (logical switch or port group)
+  *	192.168.10.0/26 = <%= vars.ops_manager %> deployment network (logical switch or port group)
   *	192.168.20.0/22 = Deployment network for the <%= vars.app_runtime_abbr %> tile
   *	192.168.24.0/22 = Tiles network for all tiles besides <%= vars.app_runtime_abbr %>
   * 192.168.28.0/22 = Dynamic services network for BOSH Director-managed service tiles.
   * 10.255.0.0/16 = Container-to-container network for intercontainer communication.
 
-You must update the security group and load balancer information for your <%= vars.app_runtime_abbr %> deployments using NSX-V on vSphere through the <%= vars.ops_manager %> API. For more information, see [vSphere with NSX-T or NSX-V](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-lb.html#vsphere) in _Configuring Load Balancing for <%= vars.app_runtime_abbr %>_.
+You must update the security group and load balancer information for your <%= vars.app_runtime_abbr %> deployments using NSX-V on vSphere through the <%= vars.ops_manager %> API. For more information, see [vSphere with NSX-T or NSX-V](https://docs.pivotal.io/application-service/2-7/operating/configure-lb.html#vsphere) in _Configuring Load Balancing for <%= vars.app_runtime_abbr %>_.
 
 ## <a id="firewall"></a> Step 1: Configure Firewall
 
@@ -298,7 +298,7 @@ To create monitors for pools:
 
 These monitors are selected during the next step when pools are created. A pool and a monitor are matched 1:1.
 
-### <a id="pools"></a> Step 2.6: Create Pools of Multi-Element <%= vars.platform_name %> Targets
+### <a id="pools"></a> Step 2.6: Create Pools of Multi-Element <%= vars.ops_manager %> Targets
 
 This procedure describes creating the pools of resources that ESG load-balances to: the Gorouter, TCP router, and Diego Brain jobs deployed by BOSH Director. If the IP addresses specified in the configuration do not exactly match the IP addresses reserved or used for the resources, then the pool does not effectively load-balance.
 
@@ -518,4 +518,4 @@ The ESG also supports scenarios where Private RFC subnets and NAT are not utiliz
 
 Additionally, the ESG supports up to 10 Interfaces allowing for more Uplink options if necessary.
 
-This topic describes using Private RFC-1918 subnets with <%= vars.platform_name %> deployment networks because they are commonly used. ESG devices are capable of leveraging ECMP, OSPF, BGP, and IS-IS to handle dynamic routing of customer and public L3 IP space. That design is out of scope for this topic, but is supported by VMware NSX and <%= vars.platform_name %>.
+This topic describes using Private RFC-1918 subnets with deployment networks because they are commonly used. ESG devices are capable of leveraging ECMP, OSPF, BGP, and IS-IS to handle dynamic routing of customer and public L3 IP space. That design is out of scope for this topic, but is supported by VMware NSX and <%= vars.ops_manager %>.

@@ -5,13 +5,13 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.platform_name + " on Azure" %>
 
-This topic explains how to install <%= vars.platform_name %> on Microsoft Azure manually.
+This topic explains how to install <%= vars.ops_manager %> on Microsoft Azure manually.
 
-To install <%= vars.platform_name %> on Azure manually, do the following:
+To install <%= vars.ops_manager %> on Azure manually, do the following:
 
-1. Deploy Pivotal Operations Manager. See [Deploying Ops Manager on Azure](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/deploy-manual.html).
+1. Deploy <%= vars.ops_manager %>. See [Deploying <%= vars.ops_manager %> on Azure](../azure/deploy-manual.html).
 
-1. Configure BOSH Director. See [Configuring BOSH Director on Azure](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/config-manual.html).
+1. Configure BOSH Director. See [Configuring BOSH Director on Azure](../azure/config-manual.html).
 
 ## <a id="next"></a> Next Steps
 
@@ -19,7 +19,7 @@ After completing the procedures above, configure a runtime.
 
 For information about installing and configuring a runtime, see the following:
 
-* [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html).
-* [Installing <%= vars.k8s_runtime_abbr %> on Azure](https://docs.pivotal.io/tkgi/1-9/installing-cli.html).
+* [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
+* [Installing <%= vars.k8s_runtime_abbr %> on Azure](https://docs.pivotal.io/tkgi/installing-cli.html).
 * [Installing and Configuring TAS for VMs on Windows](https://docs.pivotal.io/application-service/2-7/windows/installing.html)
 * [Installing Small Footprint TAS for VMs](https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html#install)
