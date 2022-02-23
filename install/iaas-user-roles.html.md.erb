@@ -5,7 +5,7 @@ owner: Program Management
 
 This topic describes practices recommended by <%= vars.company_name %> for creating secure IaaS user roles.
 
-The connection between <%= vars.platform_name %> and IaaS providers requires IaaS accounts with appropriate permissions.
+The connection between <%= vars.ops_manager %> and IaaS providers requires IaaS accounts with appropriate permissions.
 These accounts act on behalf of the operator to access IaaS functionality,
 such as creating VMs, managing networks and storage, and other related services.
 
@@ -23,13 +23,13 @@ See the recommendations detailed in [AWS Permissions Guidelines](./aws-iaas-user
 
 ##<a id="azure"></a>Azure Guidelines
 
-See the permissions recommendations in [Preparing to Deploy <%= vars.ops_manager %> on Azure](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/prepare-env-manual.html), and use the minimum permissions necessary when creating your service principal.
+See the permissions recommendations in [Preparing to Deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html), and use the minimum permissions necessary when creating your service principal.
 
 ##<a id="gcp"></a>GCP Guidelines
 
 For GCP, <%= vars.company_name %> recommends using two different accounts with the least privilege.
 
-Use one account with the minimum permissions required to create desired GCP resources in your GCP project, then create a separate service account with the minimum permissions required to deploy <%= vars.app_runtime_abbr %> and other tiles. For more information about creating the service account, see _Step 1: Set up IAM Service Accounts_ in [Preparing to Deploy <%= vars.ops_manager %> on GCP](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/gcp/prepare-env-manual.html#iam_account).
+Use one account with the minimum permissions required to create desired GCP resources in your GCP project, then create a separate service account with the minimum permissions required to deploy <%= vars.app_runtime_abbr %> and other tiles. For more information about creating the service account, see _Step 1: Set up IAM Service Accounts_ in [Preparing to Deploy <%= vars.ops_manager %> on GCP](../gcp/prepare-env-manual.html#iam_account).
 
 ##<a id="openstack"></a>OpenStack Guidelines
 
@@ -37,4 +37,4 @@ Use one account with the minimum permissions required to create desired GCP reso
 
 ##<a id="vsphere"></a>vSphere Guidelines
 
-See the vCenter permissions recommendations in [Installing <%= vars.platform_name %> on vSphere](vsphere.html#permissions).
+See the vCenter permissions recommendations in [Installing <%= vars.ops_manager %> on vSphere](vsphere.html#permissions).

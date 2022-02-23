@@ -10,17 +10,17 @@ This topic serves as a checklist for preparing to upgrade <%= vars.ops_manager %
 
 This topic contains important preparation steps that you must follow before beginning your upgrade. Failure to follow these instructions may jeopardize your existing deployment data and cause the upgrade to fail.
 
-After completing the steps in this topic, you can continue to [Upgrading <%= vars.platform_name %>](../install/upgrading-pcf.html).
+After completing the steps in this topic, you can continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).
 
-<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v2.10 from <%= vars.ops_manager %> v2.8. To upgrade to <%= vars.ops_manager %> v2.10, see [Jump Upgrade to <%= vars.ops_manager %> v2.10](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading <%= vars.platform_name %>_.
+<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v2.10 from <%= vars.ops_manager %> v2.4 through v2.8. To upgrade directly to <%= vars.ops_manager %> v2.10 from <%= vars.ops_manager %> v2.4 through v2.8, see [Jump Upgrade from <%= vars.ops_manager %> v2.4 Through v2.8](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading <%= vars.ops_manager %>_.
 
-<p class='note warning'><strong>Warning:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to <%= vars.v_major_version %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.platform_name %></em>.</p>
+<p class='note warning'><strong>Warning:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.ops_manager %></em>.</p>
 
 <p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
 
-## <a id="back-up-your-pcf-deployment"></a> Back Up Your <%= vars.platform_name %> Deployment
+## <a id="back-up-your-pcf-deployment"></a> Back Up Your <%= vars.ops_manager %> Deployment
 
-<%= vars.company_name %> recommends backing up your <%= vars.platform_name %> deployment before upgrading, to restore in the case of failure. To do this, follow the procedure in [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
+<%= vars.company_name %> recommends backing up your <%= vars.ops_manager %> deployment before upgrading, to restore in the case of failure. To do this, follow the instructions in [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
 
 
 ## <a id='decryption-passphrase'></a> Find Your Decryption Passphrase for <%= vars.ops_manager %>
@@ -28,24 +28,24 @@ After completing the steps in this topic, you can continue to [Upgrading <%= var
 To complete the <%= vars.ops_manager %> upgrade, you must have your <%= vars.ops_manager %> decryption passphrase. You defined this decryption passphrase during the initial installation of <%= vars.ops_manager %>.
 
 
-## <a id="review-runtime-release-notes"></a> Review Changes in <%= vars.platform_name %> and <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>
+## <a id="review-runtime-release-notes"></a> Review Changes in <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>
 
 Review each of the following links to understand the changes in the new release, such as new features, known issues, and breaking changes.
 
 * **Release Notes**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html)
 
 * **Known Issues**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Known Issues](../release-notes.html#known-issues)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Known Issues](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html#known-issues)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Known Issues](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#known-issues)
 
 * **Breaking Changes**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Breaking Changes](../release-notes.html#breaking-changes)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html#breaking-changes)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#breaking-changes)
 
 * **KPI Changes**
-	* [KPI Changes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/index.html#new)
+	* [KPI Changes](https://docs.pivotal.io/application-service/operating/monitoring/index.html#new)
 
 * **Diego Network Communications**:
 	* [Diego Network Communications](../security/networking/diego-network-paths.html)
@@ -62,13 +62,13 @@ For more information, see the [VMware Product Interoperability Matrix](https://i
 
 ## <a id="tiles-addons"></a> Update Tiles and Add-Ons
 
-These sections describe changes you must make to your product tiles and add-ons before upgrading <%= vars.platform_name %>.
+These sections describe changes you must make to your product tiles and add-ons before upgrading <%= vars.ops_manager %>.
 
 ### <a id="compatibility"></a> Review Service Tile Compatibility
 
-Before you upgrade, check whether the service tiles that you currently have are compatible with the new version of <%= vars.platform_name %>.
+Before you upgrade, check whether the service tiles that you currently have are compatible with the new version of <%= vars.ops_manager %>.
 
-To check all the service tiles in your current <%= vars.platform_name %> deployment, use [Upgrade Planner](https://upgrade-planner.pivotal.io/).
+To check all the service tiles in your current <%= vars.ops_manager %> deployment, use [Upgrade Planner](https://upgrade-planner.pivotal.io/).
 
 For information about how to use Upgrade Planner, see the [Upgrade Planner documentation](https://upgrade-planner.pivotal.io/docs).
 
@@ -80,9 +80,9 @@ Alternatively, you can do the following:
 
 1. See the **Depends On** section under **Release Details**. For more information, see the tile's release notes.
 
-If the currently-deployed version of a tile is not compatible with <%= vars.platform_name %> v2.10, you must upgrade the tile to a compatible version before you upgrade <%= vars.platform_name %>. You do not need to upgrade tiles that are compatible with both <%= vars.platform_name %> v2.8 and <%= vars.v_major_version %>.
+If the currently-deployed version of a tile is not compatible with <%= vars.ops_manager %> v2.10, you must upgrade the tile to a compatible version before you upgrade <%= vars.ops_manager %>. You do not need to upgrade tiles that are compatible with both <%= vars.ops_manager %> v2.9 and v2.10.
 
-Some partner service tiles may be incompatible with <%= vars.platform_name %> <%= vars.v_major_version %>.
+Some partner service tiles may be incompatible with <%= vars.ops_manager %> <%= vars.v_major_version %>.
 For information about partner service tile compatibility,
 review the **Depends On** section on your partner tile download page, see the tile release documentation in the [VMware Tanzu documentation](https://docs.pivotal.io), or contact the partner organization that produces the service tile.
 
@@ -92,21 +92,21 @@ You can use the empty table below as a template for recording and tracking the t
 
 |        |        | **Sandbox** | **Non-Prod** | **Prod** | **Other...** |
 | ------ | ------ | ----------- | ------------ | -------- | ------------ |
-| **<%= vars.platform_name %>** | [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) |        |        |        |        |
+| **<%= vars.ops_manager %>** | [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) |        |        |        |        |
 |        | [<%= vars.app_runtime_full %>](https://network.pivotal.io/products/elastic-runtime) |        |        |        |        |
-| **<%= vars.platform_name %> Services** | [VMware Tanzu SQL &#91;MySQL for VMs&#93;](https://network.pivotal.io/products/pivotal-mysql) |        |        |        |        |
+| **<%= vars.ops_manager %> Services** | [VMware Tanzu SQL &#91;MySQL for VMs&#93;](https://network.pivotal.io/products/pivotal-mysql) |        |        |        |        |
 |        | [Redis for VMware Tanzu Application Service](https://network.pivotal.io/products/p-redis) |        |        |        |        |
 |        | [RabbitMQ for VMware Tanzu &#91;VMs&#93;](https://network.pivotal.io/products/p-rabbitmq) |        |        |        |        |
 |        | [Single Sign-On for VMware Tanzu](https://network.pivotal.io/products/p-identity) (SSO) |        |        |        |        |
 |        | [Spring Cloud Services for VMware Tanzu](https://network.pivotal.io/products/p-spring-cloud-services) |        |        |          |        |
 |        | [Concourse](https://network.pivotal.io/products/p-concourse) |        |        |        |        |
 |        | ... |        |        |        |        |
-| **<%= vars.platform_name %> Partner Services** | [New Relic](https://network.pivotal.io/products/p-new-relic) |        |        |        |        |
+| **<%= vars.ops_manager %> Partner Services** | [New Relic](https://network.pivotal.io/products/p-new-relic) |        |        |        |        |
 |        | ... |        |        |        |        |
 
 ### <a id="upgrade-service-tiles"></a> Upgrade Services Tiles
 
-Upgrade all service tiles to versions that are compatible with <%= vars.platform_name %> <%= vars.v_major_version %>. Service tiles are add-on products you install alongside your runtime. For example, VMware Tanzu SQL [MySQL for VMs], Healthwatch, and RabbitMQ for VMware Tanzu [VMs] are service tiles.
+Upgrade all service tiles to versions that are compatible with <%= vars.ops_manager %> <%= vars.v_major_version %>. Service tiles are add-on products you install alongside your runtime. For example, VMware Tanzu SQL [MySQL for VMs], Healthwatch, and RabbitMQ for VMware Tanzu [VMs] are service tiles.
 
 Do not upgrade runtime tiles, such as <%= vars.app_runtime_abbr %>, <%= vars.windows_runtime_abbr %>, or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) at this time.
 
@@ -114,7 +114,7 @@ To verify version compatibility, see [Upgrade Planner](https://upgrade-planner.p
 
 ### <a id='bosh-director'></a> Configure BOSH Director
 
-With each release of a new <%= vars.platform_name %> version, BOSH Director may require specific updates before upgrading to the new version. For actions to take before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>, see the sections below.
+With each release of a new <%= vars.ops_manager %> version, BOSH Director may require specific updates before upgrading to the new version. For actions to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, see the sections below.
 
 #### <a id="check-specs"></a> Check Required Machine Specifications
 
@@ -122,7 +122,7 @@ Check the required machine specifications for <%= vars.ops_manager %> v2.10. The
 
 ### <a id='patch'></a> Configure <%= vars.app_runtime_abbr %>
 
-With each release of a new <%= vars.platform_name %> version, <%= vars.app_runtime_abbr %> may require specific updates before upgrading to the new version. See the following sections for what action to take before upgrading to <%= vars.platform_name %> v2.10:
+With each release of a new <%= vars.ops_manager %> version, <%= vars.app_runtime_abbr %> may require specific updates before upgrading to the new version. See the following sections for what action to take before upgrading to <%= vars.ops_manager %> v2.10:
 
 #### <a id='disable-hostname-validation'></a> Disable Hostname Validation for External Databases on GCP and Azure
 
@@ -142,11 +142,11 @@ To disable hostname validation:
 
 1. Deselect the **Enable hostname verification** checkbox. This checkbox is selected by default.
 
-For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see [Configure Databases](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see [Configure Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
 
 #### <a id="disable-unused-errands"></a> (Optional) Disable Unused Errands
 
-To save upgrade time, you can disable unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/<%= vars.current_major_version.sub('.','-') %>/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
+To save upgrade time, you can disable unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
 
 In some cases, if you have previously disabled lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
@@ -160,7 +160,7 @@ For more information, see [Configure Errands](https://docs.pivotal.io/applicatio
 
 ### <a id="stemcell-compat"></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 
-Before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>, operators who have deployed any BOSH-managed add-ons such as **IPsec**, **Anti-Virus**, or **File Integrity Monitoring** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/2-9/windows/index.html).
+Before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, operators who have deployed any BOSH-managed add-ons such as **IPsec**, **Anti-Virus**, or **File Integrity Monitoring** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/windows/index.html).
 
 For example, **File Integrity Monitor** (FIM) is not supported on Windows. Therefore, the manifest must use an `include` directive to specify the target OS stemcell of `ubuntu-trusty` and `ubuntu-xenial`.
 
@@ -178,7 +178,7 @@ To update an add-on manifest:
           - os: ubuntu-xenial
     ```
 
-1. Upload the modified manifest file to your <%= vars.platform_name %> deployment. For example instructions, see [Installing File Integrity Monitoring on BOSH Director](https://docs.pivotal.io/addon-fim/2-0/installing-bosh.html) in the File Integrity Monitoring documentation.
+1. Upload the modified manifest file to your <%= vars.ops_manager %> deployment. For example instructions, see [Installing File Integrity Monitoring on BOSH Director](https://docs.pivotal.io/addon-fim/2-0/installing-bosh.html) in the File Integrity Monitoring documentation.
 
 If you use any other BOSH-managed add-ons in your deployment, you should verify OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Addons Block](https://bosh.io/docs/runtime-config.html#addons) in _Director Runtime Config_ in the BOSH documentation.
 
@@ -200,7 +200,7 @@ For more information, see [Azure Blobstores](../install/backup-restore/enabling-
 
 Depending on the requirements of your deployment, you may need to rotate your certificate authority (CA) certificates. The non-configurable certificates in your deployment expire every two years. You must regenerate and rotate them so that critical components do not face a complete outage.
 
-<p class="note"><strong>Note:</strong> <%= vars.platform_name %> uses SHA-2 certificates and hashes by default. You can convert existing SHA-1 hashes into SHA-2 hashes by rotating your <%= vars.ops_manager %> certificates using the procedure described in <a href="../security/pcf-infrastructure/rotate-saml-ca.html">Rotating Identity Provider SAML Certificates</a>.</p>
+<p class="note"><strong>Note:</strong> <%= vars.ops_manager %> uses SHA-2 certificates and hashes by default. You can convert existing SHA-1 hashes into SHA-2 hashes by rotating your <%= vars.ops_manager %> certificates using the procedure described in <a href="../security/pcf-infrastructure/rotate-saml-ca.html">Rotating Identity Provider SAML Certificates</a>.</p>
 
 To retrieve information about all the RSA and CA certificates for the BOSH Director and other products in your deployment, you can use the `GET /api/v0/deployed/certificates?expires_within=TIME` request of the <%= vars.ops_manager %> API.
 
@@ -239,28 +239,28 @@ The KPIs that monitor these these resources are are:
 
 ### <a id="adjust-diego-cell-limits"></a> Adjust Diego Cell Limits
 
-If needed, adjust the maximum number of Diego Cells that the platform can upgrade simultaneously, to avoid overloading the other Diego Cells. For more information, see [Limit Component Instance Restarts](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configuring.html#limit-restart) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
+If needed, adjust the maximum number of Diego Cells that the platform can upgrade simultaneously, to avoid overloading the other Diego Cells. For more information, see [Limit Component Instance Restarts](https://docs.pivotal.io/application-service/operating/configuring.html#limit-restart) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
-The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4%. This setting is configured in the BOSH manifest's Diego Cell definition. For more information, see [Prevent Overload](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configuring.html#limitations-considerations) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
+The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4%. This setting is configured in the BOSH manifest's Diego Cell definition. For more information, see [Prevent Overload](https://docs.pivotal.io/application-service/operating/configuring.html#limitations-considerations) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
-For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/operating/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="storage"></a> Review File Storage IOPS and Other Upgrade Limiting Factors
 
-During the <%= vars.platform_name %> upgrade process, a large quantity of data is moved around on disk.
+During the <%= vars.ops_manager %> upgrade process, a large quantity of data is moved around on disk.
 
-To ensure a successful upgrade of your deployment, verify that your underlying <%= vars.app_runtime_abbr %> file storage is performant enough to handle the upgrade. For more information about the configurations to evaluate, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
+To ensure a successful upgrade of your deployment, verify that your underlying <%= vars.app_runtime_abbr %> file storage is performant enough to handle the upgrade. For more information about the configurations to evaluate, see [Configure File Storage](https://docs.pivotal.io/application-service/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
 In addition to file storage IOPS, consider additional existing deployment factors that can impact overall upgrade duration and performance:
 
 | **Factor** | **Impact** |
 | ---------- | ---------- |
 | **Network latency** | Network latency can contribute to how long it takes to move app instance data to new containers. |
-| **Number of ASGs** | A large number of App Security Groups (ASGs) in your deployment can contribute to an increase in app instance container startup time. For more information, see [App Security Groups](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/concepts/asg.html) in the <%= vars.app_runtime_abbr %> documentation. |
+| **Number of ASGs** | A large number of App Security Groups (ASGs) in your deployment can contribute to an increase in app instance container startup time. For more information, see [App Security Groups](https://docs.pivotal.io/application-service/concepts/asg.html) in the <%= vars.app_runtime_abbr %> documentation. |
 | **Number of app instances and app growth** | A large increase in the number of app instances and average droplet size since the initial deployment can increase the upgrade impact on your system. |
 
 For example upgrade-related performance measurements of an existing production deployment,
-see [Upgrade Load Example: Pivotal Web Services During Upgrade](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/pws_upgrade_load.html) in the <%= vars.app_runtime_abbr %> documentation.
+see [Upgrade Load Example: Pivotal Web Services During Upgrade](https://docs.pivotal.io/application-service/operating/pws_upgrade_load.html) in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="bosh-clean-up"></a> Run BOSH Clean-Up
 
@@ -282,11 +282,14 @@ These sections describe steps for ensuring your deployment is healthy before you
 
 ### <a id="collect-foundation-health-status"></a> Collect Foundation Health Status
 
-For collecting foundation health status, <%= vars.company_name %> recommends Healthwatch, which monitors and alerts on the current health, performance, and capacity of your <%= vars.platform_name %> deployment. For more information, see the [Healthwatch documentation](https://docs.pivotal.io/healthwatch/index.html).
+For collecting foundation health status, <%= vars.company_name %> recommends Healthwatch,
+which monitors and alerts on the current health, performance,
+and capacity of your <%= vars.ops_manager %> deployment.
+For more information, see the [Healthwatch documentation](https://docs.pivotal.io/healthwatch/index.html).
 
 If you are not using Healthwatch, you can do some or all of the following to collect foundation health status:
 
-* If your <%= vars.platform_name %> deployment has external metrics monitoring set up, verify that VM CPU, RAM, and disk use levels are within reasonable levels.
+* If your <%= vars.ops_manager %> deployment has external metrics monitoring set up, verify that VM CPU, RAM, and disk use levels are within reasonable levels.
 
 * Check your system status.
 	* To check the status of your BOSH instances, run:
@@ -322,7 +325,7 @@ If you are not using Healthwatch, you can do some or all of the following to col
 
 * Check that <%= vars.ops_manager %> persistent disk usage is below 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk) above.
 
-* (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see [Viewing Logs in the Command Line Interface](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/devguide/deploy-apps/streaming-logs.html#view) in _App Logging in <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
+* (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see [Viewing Logs in the Command Line Interface](https://docs.pivotal.io/application-service/devguide/deploy-apps/streaming-logs.html#view) in _App Logging in <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="push-test-app"></a> Push and Scale a Test App
 
@@ -332,7 +335,7 @@ Check that a test app can be pushed and scaled horizontally, manually, or throug
 
 If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster.
 
-For BOSH CLI v2 instructions, see [Running mysql-diag](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
+For BOSH CLI v2 instructions, see [Running mysql-diag](https://docs.pivotal.io/application-service/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="check-health"></a> Review Pending and Recent Changes
 
@@ -357,9 +360,9 @@ To export your installation:
 
 1. On the **Settings** page, select **Export Installation Settings** from the left menu, then click **Export Installation Settings**.
 
-This exports the current <%= vars.platform_name %> installation with all of its assets.
+This exports the current <%= vars.ops_manager %> installation with all of its assets.
 
-When you export an installation, the export contains the base VM images, necessary packages, and configuration settings, but does not include releases between upgrades if <%= vars.platform_name %> has already uploaded them to BOSH. When backing up your deployment, you must take this into account by backing up the BOSH blobstore that contains the uploaded releases. BOSH Backup and Restore (BBR) backs up the BOSH blobstore. For more information, see [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
+When you export an installation, the export contains the base VM images, necessary packages, and configuration settings, but does not include releases between upgrades if <%= vars.ops_manager %> has already uploaded them to BOSH. When backing up your deployment, you must take this into account by backing up the BOSH blobstore that contains the uploaded releases. BOSH Backup and Restore (BBR) backs up the BOSH blobstore. For more information, see [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
 
 * The export time depends on the size of the exported file.
 
@@ -370,4 +373,4 @@ When you export an installation, the export contains the base VM images, necessa
 
 ## <a id="next-steps"></a> Next Steps
 
-Now that you have completed the Upgrade Preparation Checklist, continue to [Upgrading <%= vars.platform_name %>](../install/upgrading-pcf.html).
+Now that you have completed the Upgrade Preparation Checklist, continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).

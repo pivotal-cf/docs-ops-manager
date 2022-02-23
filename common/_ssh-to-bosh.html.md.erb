@@ -1,6 +1,6 @@
 Do the following steps to log in to the BOSH Director VM with SSH:
 
-1. From <%= vars.platform_name %>, open the BOSH Director tile.
+1. From <%= vars.ops_manager %>, open the BOSH Director tile.
 
 1. Select the **Credentials** tab.
 
@@ -11,7 +11,7 @@ credential structure.
 `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----`.
 
      <p class="note warning"><strong>Warning:</strong> Keep the key secure. The key provides full
-    access to the entire <%= vars.platform_name %> environment.</p>
+    access to the entire <%= vars.ops_manager %> environment.</p>
 
 1. Replace all `\n` characters in `bbr.pem` with a line break.
 

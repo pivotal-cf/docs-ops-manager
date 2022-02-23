@@ -3,10 +3,10 @@ title: Configuring AD FS as an Identity Provider
 owner: Identity
 ---
 
-This topic describes configuring Active Directory Federation Services (AD FS) as your identity provider (IDP) in <%= vars.platform_name %> and AD FS.
+This topic describes configuring Active Directory Federation Services (AD FS) as your identity provider (IDP) in <%= vars.ops_manager %> and AD FS.
 
 
-## <a id='idp'></a> Configure SAML Integration in <%= vars.platform_name %>
+## <a id='idp'></a> Configure SAML Integration in <%= vars.ops_manager %>
 
 You can use AD FS as your SAML IDP for <%= vars.ops_manager_full %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
 
@@ -31,7 +31,7 @@ To configure <%= vars.ops_manager %> to use AD FS as your SAML IDP:
   * [Configuring BOSH Director on OpenStack](../openstack/config.html#idp)
   * [Configuring BOSH Director on vSphere](../vsphere/config.html#idp)
 
-<p class="note"><strong>Note:</strong> You can set up SAML access for <%= vars.ops_manager %> during the initial <%= vars.platform_name %> installation or later by navigating to <strong>Settings</strong> in the user menu in the <%= vars.ops_manager %> Installation Dashboard, configuring the <strong>Authentication Method</strong> pane, and then clicking <strong>Review Pending Changes</strong> and <strong>Apply Changes</strong>.</p>
+<p class="note"><strong>Note:</strong> You can set up SAML access for <%= vars.ops_manager %> during the initial <%= vars.ops_manager %> installation or later by navigating to <strong>Settings</strong> in the user menu in the <%= vars.ops_manager %> Installation Dashboard, configuring the <strong>Authentication Method</strong> pane, and then clicking <strong>Review Pending Changes</strong> and <strong>Apply Changes</strong>.</p>
 
 ### <a id='pas'></a> Configure SAML Integration in <%= vars.app_runtime_abbr %>
 
@@ -39,14 +39,14 @@ To configure <%= vars.app_runtime_abbr %> to use AD FS as your SAML IDP:
 
 1. Download your IDP metadata from `https://AD-FS-HOSTNAME/federationmetadata/2007-06/federationmetadata.xml`, where `AD-FS-HOSTNAME` is the hostname of your AD FS deployment.
 
-1. Follow the procedure in [Configure <%= vars.platform_name %> as a Service Provider for SAML](http://docs.pivotal.io/application-service/operating/auth-sso.html#configure-pcf-for-saml) in _Configuring Authentication and Enterprise SSO for <%= vars.app_runtime_abbr %>_.
+1. Follow the procedure in [Configure <%= vars.ops_manager %> as a Service Provider for SAML](http://docs.pivotal.io/application-service/operating/auth-sso.html#configure-pcf-for-saml) in _Configuring Authentication and Enterprise SSO for <%= vars.app_runtime_abbr %>_.
 
 
 ## <a id='adfs'></a> Configure SAML Integration in AD FS
 
-To designate <%= vars.platform_name %> as your SAML service provider (SP) in AD FS:
+To designate <%= vars.ops_manager %> as your SAML service provider (SP) in AD FS:
 
-1. Download your SP metadata from `https://login.SYSTEM-DOMAIN/saml/metadata`, where `SYSTEM-DOMAIN` is the system domain of your <%= vars.platform_name %> deployment.
+1. Download your SP metadata from `https://login.SYSTEM-DOMAIN/saml/metadata`, where `SYSTEM-DOMAIN` is the system domain of your <%= vars.ops_manager %> deployment.
 
 1. Open your **ADFS Management** console.
 
@@ -112,7 +112,7 @@ To designate <%= vars.platform_name %> as your SAML service provider (SP) in AD 
   1. Enter a **Claim rule name**.
   1. For **Incoming claim type**, select **Group SID**.
   1. Click **Browse**.
-  1. Locate the security group in your domain of which <%= vars.platform_name %> developers are a part.
+  1. Locate the security group in your domain of which <%= vars.ops_manager %> developers are a part.
   1. Click **OK**.
   1. Ensure **Permit access to users with this incoming claim** is selected.
   1. Click **Finish**.

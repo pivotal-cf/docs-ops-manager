@@ -5,12 +5,12 @@ owner: Security
 
 <% current_page.data.title = "Certificates on " + vars.platform_name %>
 
-This topic describes the sources and uses for certificates to secure both internal and external networking calls in <%= vars.platform_name %>.
+This topic describes the sources and uses for certificates to secure both internal and external networking calls in <%= vars.ops_manager %>.
 
 
 ## <a id="sources"></a> Certificate Sources
 
-Certificates in <%= vars.platform_name %> originate from these sources:
+Certificates in <%= vars.ops_manager %> originate from these sources:
 
 * [Enterprise Root Certificate Authority (CA)](#enterprise-root-ca)
 
@@ -24,7 +24,7 @@ Generating certificates against a root CA is a good implementation for systems t
 
 ### <a id="credhub"></a>CredHub
 
-You can use CredHub as a source for certificates in <%= vars.platform_name %>. These certificates can either be self-signed or signed by an imported trusted CA. Certificates are self-signed by default.
+You can use CredHub as a source for certificates in <%= vars.ops_manager %>. These certificates can either be self-signed or signed by an imported trusted CA. Certificates are self-signed by default.
 
 Use CredHub for:
 
@@ -32,6 +32,6 @@ Use CredHub for:
 * Dynamic generation of certificates
 * More secure communication between platform components, apps, and services
 
-<%= vars.company_name %> recommends using CredHub for high availability and good security posture in <%= vars.platform_name %>.
+<%= vars.company_name %> recommends using CredHub for high availability and good security posture in <%= vars.ops_manager %>.
 
-For more information, see [CredHub](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/credhub/index.html).
+For more information, see [CredHub](https://docs.pivotal.io/credhub/index.html).

@@ -60,7 +60,7 @@ The following are the minimum resource requirements for deploying an <%= vars.op
         <td>24</td>
       </tr>
     </table>
-    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
   * **Small Footprint <%= vars.app_runtime_abbr %>:** A new Azure deployment requires the following VMs for Small Footprint <%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>:
     <table id='azure-requirements' border="1" class="nice">
       <tr>
@@ -109,7 +109,7 @@ The following are the minimum resource requirements for deploying an <%= vars.op
 
 Before installing <%= vars.ops_manager %> on Azure, you must:
 
-* Install the Azure CLI v2.0. To install the Azure CLI for your operating system, see [Preparing to Deploy <%= vars.ops_manager %> on Azure](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/prepare-env-manual.html).
+* Install the Azure CLI v2.0. To install the Azure CLI for your operating system, see [Preparing to Deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html).
 
 * Configure sufficient IP allocation for <%= vars.app_runtime_abbr %>. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pas).
 
@@ -125,7 +125,7 @@ Before installing <%= vars.ops_manager %> on Azure, you must:
 
 * Install the most recent version of the Cloud Foundry Command Line Interface (cf CLI). For more information, see the [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli) repository on GitHub.
 
-* (Optional) Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+* (Optional) Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 * (Optional) Configure external databases. <%= vars.company_name %> recommends using external databases in production deployments for BOSH Director and <%= vars.app_runtime_abbr %>. An external database must be configured to use the UTC timezone.
 
@@ -139,12 +139,12 @@ To install <%= vars.ops_manager %> on Azure, see [Installing <%= vars.ops_manage
 
 ## <a id='install-gov'></a> Install <%= vars.ops_manager %> on Azure Government Cloud
 
-To install <%= vars.ops_manager %> on Azure Government Cloud, see [Configuring BOSH Director on Azure Government Cloud](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/gov-cloud.html).
+To install <%= vars.ops_manager %> on Azure Government Cloud, see [Configuring BOSH Director on Azure Government Cloud](../azure/gov-cloud.html).
 
 
 ## <a id='install-germany'></a> Install <%= vars.ops_manager %> on Azure Germany
 
-To install <%= vars.ops_manager %> in Azure Germany, see [Configuring BOSH Director on Azure Germany](/platform/ops-manager/<%= vars.current_major_version.sub('.','-') %>/azure/german-cloud.html).
+To install <%= vars.ops_manager %> in Azure Germany, see [Configuring BOSH Director on Azure Germany](../azure/german-cloud.html).
 
 
 ## <a id='resources'></a> Additional Resources
@@ -153,7 +153,7 @@ The following are additional resources related to installing <%= vars.ops_manage
 
 * For information about troubleshooting the <%= vars.ops_manager %> on Azure install process, see [Troubleshooting <%= vars.ops_manager %> on Azure](azure-troubleshooting.html).
 
-* For production-level deployment options for <%= vars.ops_manager %> on Azure, see [Reference Architecture for <%= vars.ops_manager %> on Azure](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/plan/azure/azure_ref_arch.html).
+* For production-level deployment options for <%= vars.ops_manager %> on Azure, see [Reference Architecture for <%= vars.ops_manager %> on Azure](../refarch/azure/azure_ref_arch.html).
 
 * For information about how to manage IaaS users and credentials in Azure, see the [Azure security documentation](https://docs.microsoft.com/en-us/azure/security/).
 

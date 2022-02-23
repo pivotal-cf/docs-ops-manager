@@ -4,7 +4,7 @@ owner: Ops Manager
 iaas: AWS
 ---
 
-This topic describes how to configure BOSH Director to deploy <%= vars.platform_name %> on Amazon Web Services (AWS).
+This topic describes how to configure BOSH Director to deploy <%= vars.ops_manager %> on Amazon Web Services (AWS).
 
 Before beginning this procedure, ensure that you have successfully completed all of the steps in [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
 
@@ -23,15 +23,15 @@ Before beginning this procedure, ensure that you have successfully completed all
     <%= image_tag("../common/images/cloudform/aws-config.png", :alt => "The 'AWS Management Console Config' page in Ops Manager. See the following steps for information about each field.") %>
 
 1. Select **Use AWS Keys** or **Use AWS Instance Profile**.
-    * **Access Key ID** and **AWS Secret Key**: To retrieve your AWS key information, use the AWS Identity and Access Management (IAM) credentials that you generated in [Step 3: Create an IAM User for <%= vars.platform_name %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-    * **AWS IAM Instance Profile**: Enter the name of the IAM profile you created in [Step 3: Create an IAM User for <%= vars.platform_name %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * **Access Key ID** and **AWS Secret Key**: To retrieve your AWS key information, use the AWS Identity and Access Management (IAM) credentials that you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * **AWS IAM Instance Profile**: Enter the name of the IAM profile you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 1. Complete the rest of the **AWS Management Console Config** page:
-    * **Security Group ID**: Enter the **Group ID** of the `pcf-vms-security-group` you created for your <%= vars.platform_name %> VMs in the [Step 6: Configure a Security Group for <%= vars.platform_name %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Locate the Group ID in the **Security Groups** tab of your EC2 Dashboard.
+    * **Security Group ID**: Enter the **Group ID** of the `pcf-vms-security-group` you created for your <%= vars.ops_manager %> VMs in the [Step 6: Configure a Security Group for <%= vars.ops_manager %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Locate the Group ID in the **Security Groups** tab of your EC2 Dashboard.
     * **Key Pair Name**: Enter `pcf-ops-manager-key`.
-    * **SSH Private Key**: Open the AWS key pair `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for <%= vars.platform_name %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
+    * **SSH Private Key**: Open the AWS key pair `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
     * **Region**: Select the region where you deployed Ops Manager.
-    * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and Director VM. For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for <%= vars.platform_name %> on AWS](../install/cloudform-om-ebs-config.html).
+    * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and Director VM. For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for <%= vars.ops_manager %> on AWS](../install/cloudform-om-ebs-config.html).
     <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) or <%= vars.windows_runtime_abbr %> 2012 R2 are not encrypted.</p>
 
 1. Click **Save**.
@@ -401,8 +401,8 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
 
 ## <a id="next"></a> Next Steps
 
-After completing the procedures in this topic, you must configure a runtime for <%= vars.platform_name %>.
-You can install <%= vars.platform_name %> on AWS with the <%= vars.app_runtime_abbr %> runtime.
+After completing the procedures in this topic, you must configure a runtime for <%= vars.ops_manager %>.
+You can install <%= vars.ops_manager %> on AWS with the <%= vars.app_runtime_abbr %> runtime.
 
 To configure <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>]
-(https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html).
+(https://docs.pivotal.io/application-service/operating/configure-pas.html).

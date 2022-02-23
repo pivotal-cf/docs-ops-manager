@@ -16,7 +16,7 @@ The procedure below describes upgrading <%= vars.ops_manager %>, <%= vars.app_ru
 
 The apps in your deployment continue to run during the upgrade. However, you cannot write to your deployment or make changes to apps during the upgrade.
 
-For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components, see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/understanding-pas.html).
+For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components, see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.pivotal.io/application-service/operating/understanding-pas.html).
 
 <%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v2.10 from <%= vars.ops_manager %> v2.8. To upgrade <%= vars.ops_manager %> to v2.10, see [Jump Upgrade to <%= vars.ops_manager %> v2.10](#jump-upgrade) below. To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> to <%= vars.v_major_version %> from v2.8, see [Task 1: Prepare to Upgrade](#prepare) below.
 
@@ -29,7 +29,7 @@ To jump upgrade to <%= vars.ops_manager %> v2.10:
 
 1. Review the prerequisites and breaking changes described in [Jump Upgrading to <%= vars.ops_manager %> v2.10](https://docs.pivotal.io/ops-manager/2-10/jump-upgrades.html).
 
-1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.platform_name %> v2.10](https://docs.pivotal.io/ops-manager/2-10/upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
+1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.ops_manager %> v2.10](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
 
 1. Follow the procedure in the v2.10 version of _Upgrading <%= vars.platform_name %>_ to upgrade <%= vars.ops_manager %>, starting at [Task 1: Prepare to Upgrade](https://docs.pivotal.io/ops-manager/2-10/install/upgrading-pcf.html#prepare). Do not complete the steps to upgrade <%= vars.app_runtime_abbr %>.
 
@@ -40,19 +40,19 @@ Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you
 
 To upgrade <%= vars.app_runtime_abbr %> to <%= vars.v_major_version %>:
 
-1. Complete the steps that are specific to <%= vars.app_runtime_abbr %> in [Upgrade Preparation Checklist for <%= vars.platform_name %> <%= vars.v_major_version %>](../upgrade/checklist.html).
+1. Locate the version of [Upgrade Preparation Checklist for <%= vars.ops_manager %>](../upgrade/checklist.html) that is specific to the minor release version to which you are upgrading and complete the steps that are specific to <%= vars.app_runtime_abbr %>.
 
-1. See [Configuring <%= vars.app_runtime_abbr %> for Upgrades](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.platform_name %> Products](upgrading-products.html).
+1. See the versions of [Configuring <%= vars.app_runtime_abbr %> for Upgrades](https://docs.pivotal.io/application-service/2-9/operating/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
 
 
 ## <a id="prepare"></a> Task 1: Prepare to Upgrade
 
-If you have not already, complete the steps in [Upgrade Preparation Checklist for <%= vars.platform_name %> <%= vars.v_major_version %>](../upgrade/checklist.html).
+If you have not already, complete the steps in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html).
 
 
 ## <a id="upgrade_ops"></a> Task 2: Upgrade Ops Manager and Installed Products to <%= vars.v_major_version %>
 
-The following sections describe how to upgrade Ops Manager and installed products to <%= vars.platform_name %> <%= vars.v_major_version %>:
+The following sections describe how to upgrade Ops Manager and installed products to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
 * [Import Installation to Ops Manager <%= vars.v_major_version %> VM](#upgrade)
 * [Import New <%= vars.app_runtime_abbr %> and Product Tiles](#upgrade-products)
@@ -85,7 +85,7 @@ select **Import Existing Installation**.
 You set this passphrase during your initial installation of Ops Manager.
     <p class="note"><strong>Note:</strong> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
 
-1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.platform_name %> <%= vars.v_major_version %>_.
+1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
     <%= image_tag("./images/upgrading/decryption_passphrase.png", alt: "Below the VMware logo is a field labeled 'Decryption Passphrase' containing five hidden characters. Below this field is the text 'Enter file', below which is a small, rectangular gray button labeled 'Choose File'. To the right of the 'Choose File' button is the filename 'installation (4).zip'. Below this button and filename is a rectangular blue button labeled 'Import' in white text.", :width => "400") %>
 
@@ -118,7 +118,7 @@ To upgrade your product versions:
 
 1. Click the newly-added tile to review and save any configurable options.
 
-1. (Optional) If you use other service tiles, you can upgrade them following the same procedure. For more information, see [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.platform_name %> Products](upgrading-products.html).
+1. (Optional) If you use other service tiles, you can upgrade them following the same procedure. For more information, see [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html).
 
 ### <a id="perform-upgrade"></a> Perform Your Upgrade
 
@@ -137,7 +137,7 @@ To perform your upgrade to Ops Manager <%= vars.v_major_version %>:
 
 ## <a id="monitor"></a> (Optional) Task 3: Monitor Upgrade
 
-The following sections describe how to monitor your <%= vars.platform_name %> foundation during the upgrade and troubleshoot issues:
+The following sections describe how to monitor your <%= vars.ops_manager %> foundation during the upgrade and troubleshoot issues:
 
 * [Check Status and Performance](#status)
 * [Check Diego State](#diego)
@@ -152,7 +152,7 @@ VMware recommends live-monitoring your upgrade with Healthwatch, which captures,
 
 * BOSH-reported VM metrics
 * Runtime component metrics
-* [Key Performance Indicators](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/kpi.html) and [Key Scaling Indicators](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/monitoring/key-cap-scaling.html)
+* [Key Performance Indicators](https://docs.pivotal.io/application-service/operating/monitoring/kpi.html) and [Key Scaling Indicators](https://docs.pivotal.io/application-service/operating/monitoring/key-cap-scaling.html)
 * Healthwatch-generated [super metrics](https://docs.pivotal.io/healthwatch/metrics.html)
 
 For more information, see the [Healthwatch documentation](https://docs.pivotal.io/healthwatch/index.html).
@@ -235,7 +235,7 @@ and clean up after upgrading:
 
 ### <a id="bosh-alias"></a> Re-Create BOSH Alias
 
-To log in to BOSH after upgrading <%= vars.platform_name %>, you must re-create your alias.
+To log in to BOSH after upgrading <%= vars.ops_manager %>, you must re-create your alias.
 
 To re-create your alias using BOSH:
 
@@ -258,7 +258,7 @@ To install the version of the Cloud Foundry Command Line Interface (cf CLI) pack
 
 1. Unzip the cf CLI ZIP file containing compressed binaries for the cf CLI.
 
-1. Follow the procedure in [Install the cf CLI Using a Compressed Binary](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/cf-cli/install-go-cli.html#bin) in _Installing the cf CLI_ in the <%= vars.app_runtime_abbr %> documentation.
+1. Follow the procedure in [Install the cf CLI Using a Compressed Binary](https://docs.pivotal.io/application-service/cf-cli/install-go-cli.html#bin) in _Installing the cf CLI_ in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="health"></a> Check the Health of Your Deployment
 
@@ -279,7 +279,7 @@ To check the health of your deployment:
 
 1. Push and horizontally scale a test app to test <%= vars.app_runtime_abbr %> performance.
 
-1. If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster. For more information, see the BOSH CLI v2 instructions in [Running mysql-diag](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
+1. If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster. For more information, see the BOSH CLI v2 instructions in [Running mysql-diag](https://docs.pivotal.io/application-service/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="resource-settings"></a> Check Resource Settings
 
@@ -308,4 +308,4 @@ To clean up old stemcells, releases, orphaned disks, and other unused resources:
 
 VMware recommends telling developers to restage any apps that use buildpacks that were updated as a part of this upgrade.
 
-For more information about how developers can restage apps, see [Restage Your App](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/devguide/deploy-apps/start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about how developers can restage apps, see [Restage Your App](https://docs.pivotal.io/application-service/devguide/deploy-apps/start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.

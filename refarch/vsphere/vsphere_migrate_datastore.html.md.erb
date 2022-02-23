@@ -5,14 +5,14 @@ owner: Customer0
 
 <% current_page.data.title = "Migrating " + vars.platform_name + " to a New Datastore in vSphere"  %>
 
-This topic describes how to migrate your <%= vars.platform_name %> installation to a new vSphere datastore.
+This topic describes how to migrate your <%= vars.ops_manager %> installation to a new vSphere datastore.
 
 
 ## <a id="prereqs"></a> Prerequisites
 
 Both the new and existing vSphere datastores must reside in the same datacenter.
 
-To avoid service disruption, <%= vars.company_name %> recommends that you configure your overall <%= vars.platform_name %> deployment for high availability (HA). In addition, check for configurations necessary to achieve HA in each of your installed product tiles.
+To avoid service disruption, <%= vars.company_name %> recommends that you configure your overall <%= vars.ops_manager %> deployment for high availability (HA). In addition, check for configurations necessary to achieve HA in each of your installed product tiles.
 
 If your environment has any single points of failure, service may be disrupted as a result of the migration.
 
@@ -23,9 +23,9 @@ These sections describe the steps you should perform prior to the migration.
 
 ### <a id="backup"></a> Step 1: Back Up Your Environment
 
-Ensure that your <%= vars.platform_name %> environment is fully backed up.
+Ensure that your <%= vars.ops_manager %> environment is fully backed up.
 
-For more information about how to back up <%= vars.platform_name %>, see [Backing Up Deployments](../../install/backup-restore/index.html).
+For more information about how to back up <%= vars.ops_manager %>, see [Backing Up Deployments](../../install/backup-restore/index.html).
 
 ### <a a id="doc"></a> Step 2: Document Current Environment Settings
 
@@ -58,7 +58,7 @@ such as <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or
 
 ### <a id="tile_heatlh"></a> Step 4: Check Installed Products Health
 
-In each tile installed in your <%= vars.platform_name %> deployment, check the **Status** tab and make sure there are no errors or reported issues.
+In each tile installed in your <%= vars.ops_manager %> deployment, check the **Status** tab and make sure there are no errors or reported issues.
 
 ### <a id="opsman_health"></a> Step 5: Check BOSH Director Status
 
@@ -71,9 +71,9 @@ To check the status of your BOSH Director:
 1. Before proceeding with the migration, click **Review Pending Changes** and **Apply Changes** to make sure there are no errors in the Installation Log.
 
 
-## <a id="migrate_proc"></a> Procedure: Migrate <%= vars.platform_name %> to a New Datastore
+## <a id="migrate_proc"></a> Procedure: Migrate <%= vars.ops_manager %> to a New Datastore
 
-To migrate your <%= vars.platform_name %> deployment to a new datastore:
+To migrate your <%= vars.ops_manager %> deployment to a new datastore:
 
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -89,7 +89,7 @@ To migrate your <%= vars.platform_name %> deployment to a new datastore:
 1. Click **Review Pending Changes**, then **Apply Changes**.
 
 1. Confirm that the BOSH Director VM has persistent disk on the new datastore.
-   1. Select **vCenter Resource Pools** and select the **Resource Pool** that contains your <%= vars.platform_name %> deployment VMs and new datastore.
+   1. Select **vCenter Resource Pools** and select the **Resource Pool** that contains your <%= vars.ops_manager %> deployment VMs and new datastore.
    1. Click the **Related Objects** and **Virtual Machines**.
    1. Locate the <%= vars.ops_manager %> VM and verify that the VM has an expected value in the **Provisioned Space** column.
     <%= image_tag('vsphere-web-client.png', :alt => "Screenshot shows 'Virtual Machines' button enabled in 'Production' resource pool and a table row 'Provisioned Space' value of '22.09 GB'.") %>

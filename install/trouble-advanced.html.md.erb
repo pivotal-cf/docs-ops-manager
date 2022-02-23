@@ -4,29 +4,29 @@ owner: Ops Manager
 ---
 
 This topic describes using the BOSH CLI to help diagnose and resolve issues with your
-<%= vars.platform_name %> deployment. Before using the information and techniques in this topic,
+<%= vars.ops_manager %> deployment. Before using the information and techniques in this topic,
 review [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
 
 ## <a id="overview"></a> Overview
 
 To follow the steps in this topic, you must log in to the BOSH Director VM. The BOSH Director runs
-on the virtual machine (VM) that <%= vars.platform_name %> deploys on the first install of the BOSH
+on the virtual machine (VM) that <%= vars.ops_manager %> deploys on the first install of the BOSH
 Director tile.
 
 After authenticating into the BOSH Director, you can run specific commands using the BOSH Command
 Line Interface (BOSH CLI). BOSH Director diagnostic commands have access to information about your
-entire <%= vars.platform_name %> installation.
+entire <%= vars.ops_manager %> installation.
 
 <p class="note"><strong>Note:</strong> Before running any BOSH CLI commands, verify that no BOSH
-  Director tasks are running on the <%= vars.platform_name %> VM. For more information, see
+  Director tasks are running on the <%= vars.ops_manager %> VM. For more information, see
   <a href="https://bosh.io/docs/cli-v2#task-mgmt">Tasks</a> in <em>BOSH CLI commands</em>
   in the BOSH documentation.</p>
 
 ## <a id='gather'></a> Gather Credential and IP Address Information
 
-Before you begin troubleshooting with the BOSH CLI, follow the instructions below to collect the information you need from the <%= vars.platform_name %> interface.
+Before you begin troubleshooting with the BOSH CLI, follow the instructions below to collect the information you need from the <%= vars.ops_manager %> interface.
 
-1. Open the <%= vars.platform_name %> interface by navigating to the <%= vars.platform_name %>
+1. Open the <%= vars.ops_manager %> interface by navigating to the <%= vars.ops_manager %>
 fully qualified domain name (FQDN) in a web browser.
 
 1. Click the **BOSH Director** tile and select the **Status** tab.
@@ -47,12 +47,12 @@ Director runs.
 1. **(Optional)** To prepare to troubleshoot the job VM for any other product, click the product
 tile and repeat the procedure above to record the IP address and VM credentials for that job VM.
 
-1. Log out of <%= vars.platform_name %>.
+1. Log out of <%= vars.ops_manager %>.
 
-<p class="note"><strong>Note:</strong> Ensure that there are no <%= vars.platform_name %>
+<p class="note"><strong>Note:</strong> Ensure that there are no <%= vars.ops_manager %>
   installations or updates in progress while using the BOSH CLI.</p>
 
-## <a id='ssh'></a> Log in to the <%= vars.platform_name %> VM with SSH
+## <a id='ssh'></a> Log in to the <%= vars.ops_manager %> VM with SSH
 
 <%= partial "../common/ssh-to-om" %>
 
@@ -60,17 +60,17 @@ tile and repeat the procedure above to record the IP address and VM credentials 
 
 To authenticate with BOSH, use one of the following methods:
 
-* [Set the BOSH Environment Variables on the <%= vars.platform_name %> VM](#export-bosh-envs)
+* [Set the BOSH Environment Variables on the <%= vars.ops_manager %> VM](#export-bosh-envs)
 * [Create a Local BOSH Director Alias](#bosh-alias)
 
-### <a id='export-bosh-envs'></a> Set the BOSH Environment Variables on the <%= vars.platform_name %> VM
+### <a id='export-bosh-envs'></a> Set the BOSH Environment Variables on the <%= vars.ops_manager %> VM
 
-If you have access to the <%= vars.platform_name %> VM, SSH into the <%= vars.platform_name %> VM
+If you have access to the <%= vars.ops_manager %> VM, SSH into the <%= vars.ops_manager %> VM
 and do the following:
 
 1. Record the **Bosh Commandline Credentials** from the **Credentials** tab of the BOSH Director tile.
 
-1. SSH into the <%= vars.platform_name %> VM. See [Log in to the <%= vars.platform_name %> VM with SSH](#ssh) above.
+1. SSH into the <%= vars.ops_manager %> VM. See [Log in to the <%= vars.ops_manager %> VM with SSH](#ssh) above.
 
 1. Export all the environment variables by running the following command:
 
@@ -117,11 +117,11 @@ To create a BOSH Director alias and log in to the BOSH Director VM, do the follo
 #### <a id='uaa-bosh'></a> Log In to the BOSH Director VM with UAA
 
 1. Retrieve the Director username and password in one of the following ways:
-  * In <%= vars.platform_name %>, click the BOSH Director, select the **Credentials** tab, and
+  * In <%= vars.ops_manager %>, click the BOSH Director, select the **Credentials** tab, and
     click the link to **Director Credentials**.
   * Browse to `https://FQDN/api/v0/deployed/director/credentials/director_credentials`
     to obtain the password, where `FQDN` is the fully qualified domain name of
-    <%= vars.platform_name %>.
+    <%= vars.ops_manager %>.
 
 1. Run `bosh -e MY-ENV log-in` to log in to the BOSH Director VM, where `MY-ENV` is the alias for
 your BOSH Director. For example:

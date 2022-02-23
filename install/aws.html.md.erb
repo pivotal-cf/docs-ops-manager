@@ -162,7 +162,7 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
           <td>Required</td>
       </tr>
     </table>
-    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
   * **Small Footprint <%= vars.app_runtime_abbr %>:** To run Small Footprint <%= vars.app_runtime_abbr %>, a new AWS deployment requires:
     <table id='aws-requirements' border="1" class="nice">
       <tr>
@@ -306,5 +306,3 @@ The following are additional resources related to installing <%= vars.ops_manage
 * For best practices for managing IaaS users and permissions, see [Temporary Security Credentials](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) in the AWS documentation.
 
 * For recommendations on how to create and scope AWS accounts for <%= vars.ops_manager %>, see [AWS Permissions Guidelines](aws-iaas-user-roles.html).
-
-* For more information about certificate requirements for installing <%= vars.ops_manager %>, see [Certificate Requirements](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/adminguide/).

@@ -3,9 +3,9 @@ title: AWS Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.platform_name %>, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on Amazon Web Services (AWS). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
+This topic describes a reference architecture for <%= vars.ops_manager %>, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on Amazon Web Services (AWS). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
 
-For general requirements for running <%= vars.platform_name %> and specific requirements for running <%= vars.platform_name %> on AWS, see [<%= vars.platform_name %> on AWS Requirements](../../install/aws.html).
+For general requirements for running <%= vars.ops_manager %> and specific requirements for running <%= vars.ops_manager %> on AWS, see [<%= vars.ops_manager %> on AWS Requirements](../../install/aws.html).
 
 
 ## <a id="pas"></a> <%= vars.app_runtime_abbr %>
@@ -38,13 +38,13 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 
 * In AWS, each availability zone (AZ) requires its own subnet of which the first five IPs are reserved.
 
-* Your organization might not have the IP space necessary to deploy <%= vars.app_runtime_abbr %> in a consistent manner. To alleviate this, <%= vars.company_name %> recommends using the `100.64` address space to deploy a NAT instance and router so that the <%= vars.platform_name %> deployment can use few IP addresses.
+* Your organization might not have the IP space necessary to deploy <%= vars.app_runtime_abbr %> in a consistent manner. To alleviate this, <%= vars.company_name %> recommends using the `100.64` address space to deploy a NAT instance and router so that the <%= vars.ops_manager %> deployment can use few IP addresses.
 
 * If you want the front end of <%= vars.app_runtime_abbr %> to be accessible from your corporate network or the services running on <%= vars.app_runtime_abbr %> to be able to access corporate resources, you must either provide routable IPs to your VPC or use NAT.
 
 * If you want a VPC that is only public-facing, no special consideration is necessary for the use of IPs.
 
-* To understand the action required depending on the type of traffic you want to allow for your <%= vars.platform_name %> deployment, see the table below:
+* To understand the action required depending on the type of traffic you want to allow for your <%= vars.ops_manager %> deployment, see the table below:
 	<table>
 		<tr>
 			<th>If you want...</th>
@@ -114,7 +114,7 @@ These options are available for choosing your network topology:
 
 ### <a id="rds"></a> RDS
 
-Use a single RDS instance for BOSH and <%= vars.app_runtime_abbr %>. This instance requires several databases. For more information, see [Step 3: Director Config Page](../../aws/config-manual.html#pcfaws-om-dirconfig) in _Configuring BOSH Director on AWS_ and [External System Database Configuration](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
+Use a single RDS instance for BOSH and <%= vars.app_runtime_abbr %>. This instance requires several databases. For more information, see [Step 3: Director Config Page](../../aws/config-manual.html#pcfaws-om-dirconfig) in _Configuring BOSH Director on AWS_ and [External System Database Configuration](https://docs.pivotal.io/application-service/operating/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id="blobstore"></a> Blobstore Storage Accounts
 
@@ -222,4 +222,4 @@ Use a single RDS instance for BOSH. This instance requires a database. For more 
 
 To create and manage Kubernetes master and worker nodes, use Instance Profiles. For more information, see [Kubernetes Cloud Provider](https://docs.pivotal.io/pks/installing-pks-aws.html#cloud-provider) in _Installing Enterprise <%= vars.k8s_runtime_abbr %> on AWS_.
 
-For information about installing the required AWS constructs for <%= vars.k8s_runtime_abbr %>, see [Installing <%= vars.platform_name %> on AWS](../../install/aws.html).
+For information about installing the required AWS constructs for <%= vars.k8s_runtime_abbr %>, see [Installing <%= vars.ops_manager %> on AWS](../../install/aws.html).

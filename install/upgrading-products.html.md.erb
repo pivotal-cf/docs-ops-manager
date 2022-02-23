@@ -13,28 +13,28 @@ for <%= vars.app_runtime_abbr %> is released, or if new features are introduced 
 release of a product tile.
 
 For <%= vars.app_runtime_abbr %> component and version information, see [<%= vars.app_runtime_full %>
-<%= vars.v_major_version %> Release Notes](http://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html).
+<%= vars.v_major_version %> Release Notes](http://docs.pivotal.io/application-service/release-notes/runtime-rn.html).
 
 <p class="note"><strong>Note:</strong> If you cannot download products from <%= vars.product_network %>
   due to restricted network connectivity, see <a href="offline_installation.html">Installing
-  <%= vars.platform_name %> in Air-Gapped Environments</a>.</p>
+  <%= vars.ops_manager %> in Air-Gapped Environments</a>.</p>
 
 
 ## <a id="before-upgrade"></a> Prerequisites
 
 Before you upgrade to point releases:
 
-* You must have completed the procedure in [Upgrading <%= vars.platform_name %>](upgrading-pcf.html).
+* You must have completed the procedure in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).
 
 * For the latest compatibility information, see [Upgrade Planner](https://upgrade-planner.pivotal.io/) before upgrading <%= vars.app_runtime_abbr %>.
 
 * **Important:** Read the _Known Issues_ sections for the products that you plan to install
 before starting. For all available product release notes, see:
-  * [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/release-notes.html) in the <%= vars.ops_manager %>
+  * [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html) in the <%= vars.ops_manager %>
   documentation
-  * [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/runtime-rn.html)
+  * [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html)
   in the <%= vars.app_runtime_abbr %> documentation
-  * [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/release-notes/segment-rn.html)
+  * [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html)
   in the <%= vars.app_runtime_abbr %> documentation
   * [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/2-9/windows/release-notes.html)
   in the <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) documentation
@@ -71,7 +71,7 @@ staging area.
 1. Click **Apply Changes** to install the service.
 
 
-## <a id="other-products"></a> Upgrading <%= vars.platform_name %> Products
+## <a id="other-products"></a> Upgrading <%= vars.ops_manager %> Products
 
 <p class="note"><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
   the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
@@ -79,8 +79,8 @@ staging area.
   <%= vars.product_network %> API to Upgrade Products</a> in <em>Adding and Deleting Products</em>.</p>
 
 This section describes how to upgrade individual products like [Single Sign-On for VMware Tanzu]
-(https://docs.pivotal.io/p-identity/index.html), [MySQL for VMware Tanzu](https://docs.pivotal.io/p-mysql/index.html), [VMware RabbitMQ](https://docs.pivotal.io/rabbitmq-cf/index.html), and [App Metrics]
-(https://docs.pivotal.io/app-metrics/index.html) in your <%= vars.platform_name %> deployment.
+(https://docs.pivotal.io/p-identity/index.html), [VMware Tanzu SQL [MySQL]](https://docs.pivotal.io/p-mysql/index.html), [VMware RabbitMQ](https://docs.pivotal.io/rabbitmq-cf/index.html), and [App Metrics]
+(https://docs.pivotal.io/app-metrics/index.html) in your <%= vars.ops_manager %> deployment.
 Ensure you review the individual product upgrade procedure for each tile.
 
 To upgrade your products:

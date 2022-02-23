@@ -61,7 +61,7 @@ For more information, see the [Routing API documentation](https://github.com/clo
 
 ## <a id="usage-service"></a> Usage Service
 
-The Usage service is unavailable during backup. You cannot access the API as described in [Monitoring App, Task, and Service Instance Usage](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/accounting-report.html). Additionally, you cannot view usage and accounting reports as described in [Monitoring Instance Usage with Apps Manager](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/accounting-report-apps-man.html).
+The Usage service is unavailable during backup. You cannot access the API as described in [Monitoring App, Task, and Service Instance Usage](https://docs.pivotal.io/application-service/operating/accounting-report.html). Additionally, you cannot view usage and accounting reports as described in [Monitoring Instance Usage with Apps Manager](https://docs.pivotal.io/application-service/operating/accounting-report-apps-man.html).
 
 The following table describes the backup process for Usage service:
 
@@ -88,7 +88,7 @@ The following table describes the backup process for App Autoscaler:
 
 <p class="note"><strong>Note:</strong> The App Autoscaler service runs as a set of <%= vars.app_runtime_abbr %> apps in the <code>system</code> org.</p>
 
-For more information, see [Scaling an App Using App Autoscaler](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/appsman-services/autoscaler/using-autoscaler.html).
+For more information, see [Scaling an App Using App Autoscaler](https://docs.pivotal.io/application-service/appsman-services/autoscaler/using-autoscaler.html).
 
 
 ## <a id="nfs-volume-services"></a> NFS Volume Service
@@ -107,7 +107,7 @@ The Notification Service is not available during backup with BBR due to its depe
 
 ## <a id="network-policy-server"></a> Network Policy Server
 
-The Network Policy Server is unavailable during backup. While existing policies are still enforced, you cannot use the cf CLI to add or remove policies for container networking as described in [Configuring Container-to-Container Networking](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/devguide/deploy-apps/cf-networking.html).
+The Network Policy Server is unavailable during backup. While existing policies are still enforced, you cannot use the cf CLI to add or remove policies for container networking as described in [Configuring Container-to-Container Networking](https://docs.pivotal.io/application-service/devguide/deploy-apps/cf-networking.html).
 
 
 ## <a id="credhub"></a> CredHub

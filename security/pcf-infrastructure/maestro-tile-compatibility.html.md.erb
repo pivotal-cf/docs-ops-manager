@@ -3,7 +3,7 @@ title: CredHub Maestro Tile Compatibility
 owner: CredHub Maestro
 ---
 
-This table describes which <%= vars.platform_name %> tiles are compatible or not compatible with CredHub Maestro. A tile that is compatible with CredHub Maestro has certificates that you can rotate using CredHub Maestro.
+This table describes which <%= vars.ops_manager %> tiles are compatible or not compatible with CredHub Maestro. A tile that is compatible with CredHub Maestro has certificates that you can rotate using CredHub Maestro.
 
 For more information about CredHub Maestro, see [Getting Started with CredHub Maestro](getting-started-with-maestro-cli.html) and [Advanced Certificate Rotation with CredHub Maestro](advanced-certificate-rotation.html).
 
@@ -22,7 +22,7 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
     <td>pivotal-container-service</td>
     <td><em>n/a</em></td>
     <td>Yes</td>
-    <td>If a multi-runtime <%= vars.platform_name %> deployment includes <%= vars.k8s_runtime_abbr %> v1.9 or later, you must use CredHub Maestro to rotate the following certificates:
+    <td>If a multi-runtime <%= vars.ops_manager %> deployment includes <%= vars.k8s_runtime_abbr %> v1.9 or later, you must use CredHub Maestro to rotate the following certificates:
       <ul>
         <li>The <%= vars.k8s_runtime_abbr %> certificate authorities (CAs) <code>kubo_ca_2018</code> and <code>etcd_ca_201</code>, as well as their leaf certificates. For more information, see <a href="https://docs.pivotal.io/tkgi/1-9/rotate-cluster-certificates.html#unique">Rotate Cluster-Specific Certificates (Non-NSX-T)</a> in <em>Rotating Cluster Certificates</em> in the <%= vars.k8s_runtime_abbr %> documentation.</li>
         <li>Cluster-specific <code>tls-nsx-t</code> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</li>
@@ -35,7 +35,7 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
     <td>pivotal-container-service</td>
     <td><em>n/a</em></td>
     <td>No</td>
-    <td>You cannot use CredHub Maestro to rotate certificates for <%= vars.k8s_runtime_abbr %> v1.8 and earlier. However, if a multi-runtime <%= vars.platform_name %> deployment includes <%= vars.k8s_runtime_abbr %> v1.8 or earlier, you must use CredHub Maestro to rotate CredHub-managed certificates for all other runtimes. For more information, see <a href="advanced-certificate-rotation.html#when-to-use">When to Use CredHub Maestro for Certificate Rotation</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</td>
+    <td>You cannot use CredHub Maestro to rotate certificates for <%= vars.k8s_runtime_abbr %> v1.8 and earlier. However, if a multi-runtime <%= vars.ops_manager %> deployment includes <%= vars.k8s_runtime_abbr %> v1.8 or earlier, you must use CredHub Maestro to rotate CredHub-managed certificates for all other runtimes. For more information, see <a href="advanced-certificate-rotation.html#when-to-use">When to Use CredHub Maestro for Certificate Rotation</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</td>
   </tr>
   <tr>
     <td>File Integrity Monitoring</td>

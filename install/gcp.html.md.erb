@@ -69,7 +69,7 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
     <td>16</td>
   </tr>
 </table>
-<p class="note"><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+<p class="note"><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
 
   * **Small Footprint <%= vars.app_runtime_abbr %>:** At a minimum, a new GCP deployment requires the following VMs to run Small Footprint <%= vars.app_runtime_abbr %>:
 <table id='small-footprint' border="1" class="nice">
@@ -198,6 +198,5 @@ To install <%= vars.ops_manager %> on GCP, see [Installing <%= vars.ops_manager 
 The following are additional resources related to installing <%= vars.ops_manager %> on GCP:
 
 - For general authentication guidelines for GCP, see [GCP authentication documentation](https://cloud.google.com/docs/authentication).
-- For more information about troubleshooting the <%= vars.ops_manager %> on GCP infrastructure, see [Troubleshooting <%= vars.ops_manager %> on GCP](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/gcp-troubleshooting.html).
-- For production-level deployment options for <%= vars.ops_manager %> on GCP, see [Reference Architecture for <%= vars.ops_manager %> on GCP](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/plan/gcp/gcp_ref_arch.html).
-- For general certificate requirements for deploying <%= vars.ops_manager %>, see [Certificate Requirements](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/adminguide/).
+- For more information about troubleshooting the <%= vars.ops_manager %> on GCP infrastructure, see [Troubleshooting <%= vars.ops_manager %> on GCP](https://docs.pivotal.io/application-service/operating/gcp-troubleshooting.html).
+- For production-level deployment options for <%= vars.ops_manager %> on GCP, see [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
