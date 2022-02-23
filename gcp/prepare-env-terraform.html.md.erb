@@ -7,15 +7,15 @@ install_type: terraform
 
 <%= partial "/pcf/warning-terraform" %>
 
-This guide describes the preparation steps required to install <%= vars.platform_name %>  on Google Cloud Platform (GCP) using Terraform templates.
+This guide describes the preparation steps required to install <%= vars.ops_manager %>  on Google Cloud Platform (GCP) using Terraform templates.
 
-The Terraform template for <%= vars.platform_name %> on GCP describes a set of GCP resources and properties. For more information about how Terraform creates resources in GCP, see [Google Cloud Provider](https://www.terraform.io/docs/providers/google/index.html) on the Terraform site.
+The Terraform template for <%= vars.ops_manager %> on GCP describes a set of GCP resources and properties. For more information about how Terraform creates resources in GCP, see [Google Cloud Provider](https://www.terraform.io/docs/providers/google/index.html) on the Terraform site.
 
-You may also find it helpful to review different deployment options in the [GCP Reference Architecture](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/gcp/gcp_ref_arch.html).
+You may also find it helpful to review different deployment options in [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
 
 ## <a id="prereqs"></a> Prerequisites
 
-In addition to fulfilling the prerequisites listed in [Installing <%= vars.platform_name %> on GCP](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/gcp.html), ensure you have the following:
+In addition to fulfilling the prerequisites listed in [Installing <%= vars.ops_manager %> on GCP](../install/gcp.html), ensure you have the following:
 
 * The [Terraform CLI](https://www.terraform.io/intro/getting-started/install.html)
 * The [Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstarts)
@@ -30,7 +30,7 @@ In addition to fulfilling the prerequisites listed in [Installing <%= vars.platf
 ## <a id="svc-key"></a> Step 1: Obtain a GCP Service Account Key File
 
 To use the Terraform templates to create the necessary infrastructure
-resources for <%= vars.platform_name %>, you need a service account key file.
+resources for <%= vars.ops_manager %>, you need a service account key file.
 <br><br>
 To create an account key file, follow the procedure below corresponding to your own use case.
 
@@ -148,7 +148,7 @@ the Terraform files for your runtime.
     </tr>
     <tr>
       <td><code>YOUR-DNS-SUFFIX</code></td>
-      <td>Enter a domain name to use as part of the system domain for your <%= vars.platform_name %> deployment. Terraform creates DNS records in GCP using <code>YOUR-ENVIRONMENT-NAME</code> and <code>YOUR-DNS-SUFFIX</code>. For example, if you enter <code>example.com</code> for your DNS suffix and have <code>pcf</code> as your environment name, Terraform creates DNS records at <code>pcf.example.com</code>.</td>
+      <td>Enter a domain name to use as part of the system domain for your <%= vars.ops_manager %> deployment. Terraform creates DNS records in GCP using <code>YOUR-ENVIRONMENT-NAME</code> and <code>YOUR-DNS-SUFFIX</code>. For example, if you enter <code>example.com</code> for your DNS suffix and have <code>pcf</code> as your environment name, Terraform creates DNS records at <code>pcf.example.com</code>.</td>
     </tr>
     <tr>
       <td><code>YOUR-CERTIFICATE</code></td>
@@ -264,7 +264,7 @@ Follow these steps to use the Terraform CLI to create resources on GCP:
 
 1. In a browser, navigate to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
 
-1. Create a new NS (Name server) record for your <%= vars.platform_name %> system domain. Your system domain is `YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX`.
+1. Create a new NS (Name server) record for your <%= vars.ops_manager %> system domain. Your system domain is `YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX`.
   1. In this record, enter the name servers included in `env_dns_zone_name_servers` from your Terraform output.
 
 

@@ -11,7 +11,7 @@ The instructions in this topic are based on vSphere 6.5 using the vSphere Client
 ## <a id="pas_and_pks"></a> Runtime Considerations
 
 For security purposes, VMware requires a dedicated instance of Ops Manager for use with Pivotal
-Container Service (<%= vars.k8s_runtime_abbr %>). 
+Container Service (<%= vars.k8s_runtime_abbr %>).
 
 <p class="note warning"><strong>Warning:</strong> If you are installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
 integration, follow the instructions in
@@ -25,20 +25,20 @@ integration, follow the instructions in
 
 1. Create one or more vSphere clusters. A vSphere cluster is a collection of ESXi hosts and associated virtual machines (VMs) with shared resources and a shared management interface. Follow the steps below to create a vSphere cluster:
     <p class="note"><strong>Note:</strong>  For highly available, production-ready environments, you
-    must create more than one cluster. For more information, see <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> and
-    <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/vsphere/vsphere_ref_arch.html#scaling">Scaling and Capacity Management</a> in _vSphere Reference Architecture_.</p>
+    must create more than one cluster. For more information, see <a href="../refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> and
+    <a href="../refarch/vsphere/vsphere_ref_arch.html#scaling">Scaling and Capacity Management</a> in _vSphere Reference Architecture_.</p>
     1. Right-click the vSphere Datacenter object.
-    
-    1. Select **New Cluster**. 
-    
+
+    1. Select **New Cluster**.
+
     1. Name the Cluster. For example, `Cluster1`.
-    
-    1. Select **Turn ON vSphere DRS** to enable DRS. Set DRS Automation to **Partially Automated** 
+
+    1. Select **Turn ON vSphere DRS** to enable DRS. Set DRS Automation to **Partially Automated**
       or **Full Automated**.
-    
+
     1. Select **Turn ON vSphere HA** to enable vSphere HA.
 
-1. If you created more than one vSphere cluster, configure shared storage for the clusters. You can allocate shared storage to the clusters using one of two common approaches: horizontal or vertical. For more information about configuring shared storage for clusters, see [Storage Design](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/vsphere/vsphere_ref_arch.html#storage) in _vSphere Reference Architecture_.
+1. If you created more than one vSphere cluster, configure shared storage for the clusters. You can allocate shared storage to the clusters using one of two common approaches: horizontal or vertical. For more information about configuring shared storage for clusters, see [Storage Design](../refarch/vsphere/vsphere_ref_arch.html#storage) in _vSphere Reference Architecture_.
   <p class="note warning"><b>Warning:</b> Failure to properly configure shared storage for vSphere clusters could result in downtime and unrecoverable loss of data.</p>
 
 1. Create a resource pool for the management components in your deployment. Resource pools are
@@ -50,27 +50,27 @@ vSphere objects used to organize resources.
 
     Follow the steps below to create a vSphere resource pool:
     1. Right-click the vSphere cluster object that you created.
-    
+
     1. Select **New Resource Pool**.
-    
+
     1. Name the resource pool. For example, `RP-MGMT`.
-    
+
     1. Review the default CPU and Memory settings and adjust if necessary. This is not common.
-    
+
     1. Click **OK**.
 
 1. (Optional) If desired, create host groups within the clusters. For information about using host groups in vSphere, see [Host Groups in vSphere](host-groups.html).
 
     1. Select the **Cluster** where you want to create a host group.
-    
+
     1. Select the **Configure** tab.
-  
+
     1. Under **Configuration**, select **VM/Host Groups**.
 
     1. Click **Add** and configure the host group as follows:
         - Name: Enter a name for the host group.
         - Type: Select **Host Group** from the drop down.
-        - Click **Add** and select the ESXi host(s) to include in the host group. 
+        - Click **Add** and select the ESXi host(s) to include in the host group.
         - Click **OK**.
 
 ## <a id="deploy"></a> Deploy <%= vars.ops_manager %>
@@ -87,7 +87,7 @@ Ops Manager for vSphere is provided as an OVA file. An OVA file is a template fo
 
 1. Review template selection and click **Next**.
 
-1. At the **Select a name and folder** screen: 
+1. At the **Select a name and folder** screen:
     * Enter a name for the Ops Manager virtual machine, or use the default name.
     * Select the **Datacenter** object.
     * Click **Next**.
@@ -99,15 +99,15 @@ Ops Manager for vSphere is provided as an OVA file. An OVA file is a template fo
     <%= image_tag("../common/images/vsphere/vsphere_om-deploy-10.png", :alt => "Under 'select a compute resource,' pas-az1 is highlighted in light blue in the resource list.") %>
 
     <p class="note"><strong>Note</strong>: Hardware virtualization must be turned off if your
-    vSphere host does not support VT-X/EPT. Refer to <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.platform_name %> on vSphere Requirements</em> for more information.</p>
+    vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.ops_manager %> on vSphere Requirements</em> for more information.</p>
 
 1. At the **Review Details** screen, confirm the configuration up to this point and click **Next**.
 
 1. At the **Select Storage** screen, select the virtual disk format.
     1. Choose a Datastore.
         * If you use vSAN, select the vSAN datastore and apply the default storage policy.
-        * If you use a dedicated disk, select the appropriate disk format for your deployment needs. If in doubt, choose **Thin Provision**. For more information about disk formats, see [vSphere Virtual Disk Types](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/disk-format.html).
-    1. Click **Next**. 
+        * If you use a dedicated disk, select the appropriate disk format for your deployment needs. The default type is **Thin Provision**, but you can choose to use a thick provisioned disk such as **Thick Provisioned Lazy Zeroed**. For more information, see [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html).
+    1. Click **Next**.
 
     <p class="note warning"><strong>Warning</strong>: Ops Manager requires a VM with at least 8&nbsp;GB memory.</p>
 
@@ -139,9 +139,9 @@ Ops Manager for vSphere is provided as an OVA file. An OVA file is a template fo
 
 1. Create a DNS entry for the IP address that you used for Ops Manager. You must use this fully qualified domain name when you log into Ops Manager.
 
-    <p class="note"><strong>Note</strong>: Ops Manager security features require you to create a fully qualified domain name to access Ops Manager during the initial configuration. For more information, see <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/vsphere.html"><%= vars.platform_name %> on vSphere Requirements</a>.</p>
+    <p class="note"><strong>Note</strong>: <%= vars.ops_manager %> security features require you to create a fully qualified domain name to access <%= vars.ops_manager %> during the initial configuration. For more information, see <a href="../install/vsphere.html"><%= vars.ops_manager %> on vSphere Requirements</a>.</p>
 
-1. Select the Ops Manager VM and click **Actions** > **Power** > **Power On**. 
+1. Select the Ops Manager VM and click **Actions** > **Power** > **Power On**.
 
     Once the VM boots, the Ops Manager web interface is available at the IP address that you specified.
 

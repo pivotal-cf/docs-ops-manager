@@ -6,9 +6,9 @@ owner: Ops Manager
 
 
 This guide describes how to provision the OpenStack infrastructure where you
-need to install [<%= vars.platform_name %>](https://network.pivotal.io/products/pivotal-cf). Use this topic when [Installing <%= vars.platform_name %> on OpenStack](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/openstack.html).
+need to install [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf). Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
 
-After completing this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html) and [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html).
+After completing this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html) and [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
 
 <p class="note"><strong>Note:</strong> This document uses Mirantis OpenStack for screenshots and examples. The screens of your OpenStack vendor configuration interface may differ.</p>
 
@@ -150,11 +150,11 @@ After completing this procedure, complete all of the steps in [Configuring BOSH 
 
 ## <a id='validate-openstack'></a> Step 3: (Optional) Run the CF OpenStack Validator Tool
 
-As an optional but recommended step, you can now run the CF OpenStack Validator tool against your OpenStack tenant to verify support for <%= vars.platform_name %>.
+As an optional but recommended step, you can now run the CF OpenStack Validator tool against your OpenStack tenant to verify support for <%= vars.ops_manager %>.
 
 1. Follow the directions for running the [CF OpenStack Validator Tool](https://github.com/cloudfoundry-incubator/cf-openstack-validator).
 
-2. When configuring the CPI version used by the Validator, specify the OpenStack CPI version indicated in the [Pivotal Operations Manager Release Notes](https://docs.pivotal.io/platform/pcf-release-notes/opsmanager-rn.html) for the <%= vars.platform_name %> release that you are planning to deploy.
+2. When configuring the CPI version used by the Validator, specify the OpenStack CPI version indicated in the [<%= vars.ops_manager %> Release Notes](../release-notes.html) for the <%= vars.ops_manager %> release that you are planning to deploy.
 
 Troubleshooting the output of the CF OpenStack Validator tool is beyond the scope of this document.
 
@@ -329,8 +329,8 @@ You must use this fully qualified domain name when you log into Ops Manager for 
 
 ## <a id='configure-ops'></a> Step 10: Configure BOSH Director for OpenStack
 
-After completing this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html) and [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/configure-pas.html).
+After completing this procedure, complete all of the steps in the [Configuring BOSH Director on OpenStack](config.html) and [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
 
 ---
 
-Return to [Installing <%= vars.platform_name %> on OpenStack](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/openstack.html).
+Return to [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).

@@ -3,14 +3,16 @@ title: Troubleshooting Ops Manager for VMware vSphere
 owner: Ops Manager
 ---
 
-This guide provides help with diagnosing and resolving issues that are specific to [<%= vars.platform_name %>](https://network.pivotal.io/products/pivotal-cf) deployments on VMware vSphere.
+This guide provides help with diagnosing and resolving issues that are specific to
+<%= vars.ops_manager %> deployments on VMware vSphere.
 
-For infrastructure-agnostic troubleshooting help, see [Diagnosing Problems in <%= vars.platform_name %>](https://docs.pivotal.io/application-service/2-8/operating/diagnostics.html).
+For infrastructure-agnostic troubleshooting help, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
 
 
 ## <a id='common_probs'></a> Common Issues
 
-The following sections list common issues you might encounter and possible resolutions.
+The following sections list common issues that you might encounter with <%= vars.ops_manager %>
+and possible resolutions.
 
 ### <a id='vcenter-setting'></a> <%= vars.platform_name %> Installation Fails
 
@@ -37,9 +39,11 @@ Ops Manager can lose its IP address and use DHCP due to an issue in the open sou
 
 If you deployed the OVF file but cannot connect to in a browser, check that the network settings you entered in the wizard are correct.
 
-1. Access the <%= vars.platform_name %> installation VM using the vSphere Console. If your network settings are configured incorrectly, you cannot SSH into the installation VM.
+1. Access the <%= vars.ops_manager %> installation VM using the vSphere Console. If your network
+settings are configured incorrectly, you cannot SSH into the installation VM.
 
-1. Log in using the private SSH key associated with the public SSH key that you provided when you imported the <%= vars.platform_name %> `.ova` in vCenter.
+1. Log in using the private SSH key associated with the public SSH key that you provided when you
+imported the <%= vars.ops_manager %> `.ova` in vCenter.
 
 1. Confirm that the network settings are correct by checking that the ADDRESS, NETMASK, GATEWAY, and DNS-NAMESERVERS entries are correct in `/etc/network/interfaces`.
 

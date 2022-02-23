@@ -3,21 +3,24 @@ title: OpenStack Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.platform_name %> on OpenStack. This architecture is valid for most production-grade <%= vars.platform_name %> deployments in a single project using three availability zones (AZs).
+This topic describes a reference architecture for <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) on OpenStack.
+<%= vars.app_runtime_abbr %> runs on <%= vars.ops_manager %>,
+and this architecture is valid for most production-grade <%= vars.ops_manager %> deployments in a single project using three availability zones (AZs).
 
-For general requirements for running <%= vars.platform_name %> and specific requirements for running <%= vars.platform_name %> on OpenStack, see [OpenStack on <%= vars.platform_name %> Requirements](../../install/openstack.html).
+For general requirements for running <%= vars.ops_manager %> and specific requirements for running <%= vars.ops_manager %> on OpenStack, see [OpenStack on <%= vars.ops_manager %> Requirements](../../install/openstack.html).
 
 
-## <a id="refarchs"></a><%= vars.platform_name %> Reference Architectures
+## <a id="refarchs"></a><%= vars.ops_manager %> Reference Architectures
 
-A <%= vars.platform_name %> reference architecture describes a proven approach for deploying <%= vars.platform_name %> on a specific IaaS, such as OpenStack, that meets these requirements:
+An <%= vars.ops_manager %> reference architecture describes a proven approach for deploying <%= vars.ops_manager %> on a specific IaaS, such as OpenStack, that meets these requirements:
 
 * Secure
 * Publicly-accessible
-* Includes common <%= vars.platform_name %>-managed services such as MySQL, RabbitMQ, and Spring Cloud Services
+* Includes common <%= vars.ops_manager %>-managed runtimes and services,
+such as  for <%= vars.app_runtime_abbr %>, VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
 * Can host at least 100 app instances
 
-Pivotal provides reference architectures to help you determine the best configuration for your <%= vars.platform_name %> deployment.
+<%= vars.company_name %> provides reference architectures to help you determine the best configuration for your <%= vars.ops_manager %> deployment.
 
 
 ## <a id="base_components"></a> Base Reference Architecture Components
@@ -178,7 +181,7 @@ The table below lists the network objects in this reference architecture.
   </tr>
   <tr>
     <td><strong>Load Balancers</strong></td>
-    <td><%= vars.platform_name %> on OpenStack requires a load balancer, which can be configured with multiple listeners to forward HTTP, HTTPS, and TCP traffic. <%= vars.recommended_by %> recommends two load balancers: one to forward the traffic to the Gorouters, <code>AppsLB</code>; and the other to forward the traffic to the Diego Brain SSH proxy, <code>SSHLB</code>.
+    <td><%= vars.ops_manager %> on OpenStack requires a load balancer, which can be configured with multiple listeners to forward HTTP, HTTPS, and TCP traffic. <%= vars.company_name %> recommends two load balancers: one to forward the traffic to the Gorouters, <code>AppsLB</code>; and the other to forward the traffic to the Diego Brain SSH proxy, <code>SSHLB</code>.
     <br><br>
     The table below describes the required listeners for each load balancer:
       <table>

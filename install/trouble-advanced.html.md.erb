@@ -3,24 +3,31 @@ title: Advanced Troubleshooting with the BOSH CLI
 owner: Ops Manager
 ---
 
-This topic describes using the BOSH CLI to help diagnose and resolve issues with your [<%= vars.platform_name %>](https://network.pivotal.io/products/pivotal-cf) deployment. Before using the information and techniques in this topic, review [Diagnosing Problems in <%= vars.platform_name %>](https://docs.pivotal.io/application-service/2-8/operating/diagnostics.html).
+This topic describes using the BOSH CLI to help diagnose and resolve issues with your
+<%= vars.ops_manager %> deployment. Before using the information and techniques in this topic,
+review [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
 
 ## <a id="overview"></a> Overview
 
 To follow the steps in this topic, you must log in to the BOSH Director VM. The BOSH Director runs
-on the virtual machine (VM) that <%= vars.platform_name %> deploys on the first install of the BOSH
+on the virtual machine (VM) that <%= vars.ops_manager %> deploys on the first install of the BOSH
 Director tile.
 
-After authenticating into the BOSH Director, you can run specific commands using the BOSH Command Line Interface (BOSH CLI). BOSH Director diagnostic commands have access to information about your entire <%= vars.platform_name %> installation.
+After authenticating into the BOSH Director, you can run specific commands using the BOSH Command
+Line Interface (BOSH CLI). BOSH Director diagnostic commands have access to information about your
+entire <%= vars.ops_manager %> installation.
 
-<p class="note"><strong>Note:</strong> Before running any BOSH CLI commands, verify that no BOSH Director tasks are running on the Ops Manager VM. For more information, see <em>Tasks</em> in <a href="https://bosh.io/docs/cli-v2#task-mgmt">BOSH CLI commands</a> in the BOSH documentation.</p>
-
+<p class="note"><strong>Note:</strong> Before running any BOSH CLI commands, verify that no BOSH
+  Director tasks are running on the <%= vars.ops_manager %> VM. For more information, see
+  <a href="https://bosh.io/docs/cli-v2#task-mgmt">Tasks</a> in <em>BOSH CLI commands</em>
+  in the BOSH documentation.</p>
 
 ## <a id='gather'></a> Gather Credential and IP Address Information
 
-Before you begin troubleshooting with the BOSH CLI, follow the instructions below to collect the information you need from the Ops Manager interface.
+Before you begin troubleshooting with the BOSH CLI, follow the instructions below to collect the information you need from the <%= vars.ops_manager %> interface.
 
-1. Open the Ops Manager interface by navigating to the Ops Manager fully qualified domain name (FQDN) in a web browser.
+1. Open the <%= vars.ops_manager %> interface by navigating to the <%= vars.ops_manager %>
+fully qualified domain name (FQDN) in a web browser.
 
 1. Click the **BOSH Director** tile and select the **Status** tab.
 

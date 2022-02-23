@@ -3,15 +3,11 @@ title: Pivotal Platform Operators
 owners: CAPI, Identity
 ---
 
-This topic describes the roles and permissions of the operator user type in a <%= vars.platform_name %> deployment.
+This topic describes the roles and permissions of the operator user type in an <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) deployment.
 
 ## <a id="overview"></a> Overview
 
-There are various user types in a <%= vars.platform_name %> deployment. Roles are assigned categories that more specifically define functions that a user can perform.
-For more information about user types in <%= vars.platform_name %>,
-see [User Accounts and Communications](https://docs.pivotal.io/application-service/2-8/adminguide/user-accounts-index.html).
-
-Operators are users who run a <%= vars.platform_name %> deployment and have admin privileges. Operators are also referred to as <%= vars.platform_name %> Ops Manager admins and runtime admins because they perform an admin role within these contexts.
+There are various user types in <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> deployments. Roles are assigned categories that more specifically define functions that a user can perform. For more information about user types in <%= vars.app_runtime_abbr %>, see [<%= vars.app_runtime_abbr %> User Types](https://docs.pivotal.io/application-service/operating/user-types.html).
 
 
 ## <a id="operator-tools-tasks"></a> Operator Tools and Tasks
@@ -32,7 +28,7 @@ When Ops Manager starts up for the first time, the operator specifies one of the
 * Internal authentication, using a new UAA database that Ops Manager creates.
 * External authentication, through an existing identity provider accessed through SAML protocol.
 
-The operator can then use the UAA CLI (UAAC) to create more operator accounts. For more information, see [Creating and Managing Ops Manager User and Client Accounts](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/opsman-users.html).
+The operator can then use the UAA CLI (UAAC) to create more operator accounts. For more information, see [Creating and Managing Ops Manager User and Client Accounts](../install/opsman-users.html).
 
 ## <a id='table'></a> Operator Roles and Permissions
 

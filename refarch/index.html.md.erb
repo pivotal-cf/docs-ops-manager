@@ -1,30 +1,30 @@
 ---
-breadcrumb: <%= vars.platform_name %> Documentation
+breadcrumb: Ops Manager Documentation
 title: Platform Architecture and Planning Overview
 owner: Customer0
 ---
 
-This topic describes reference architectures and other plans for installing <%= vars.platform_name %> on any infrastructure to support the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime environments.
+This topic describes reference architectures and other plans for installing <%= vars.ops_manager %> on any infrastructure to support the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime environments.
 
 
 ## <a id="overview"></a> Overview
 
-A <%= vars.platform_name %> reference architecture describes a proven approach for deploying <%= vars.platform_name %> on a specific IaaS, such as AWS, Azure, GCP, OpenStack, or vSphere. <%= vars.platform_name %> reference architectures meet these requirements:
+The reference architectures in this section describe a proven approach for deploying <%= vars.ops_manager %> and runtimes, such as <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>, on a specific IaaS, such as AWS, Azure, GCP, OpenStack, or vSphere. These reference architectures meet the following requirements:
 
 * Secure
 * Publicly accessible
-* Includes common <%= vars.platform_name %>-managed services such as MySQL, RabbitMQ, and Spring Cloud Services
+* Includes common <%= vars.ops_manager %>-managed services such as VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
 * Can host at least 100 app instances
 * Are deployed and validated by VMware to support <%= vars.ops_manager_full %>, <%= vars.app_runtime_abbr %>, and <%= vars.k8s_runtime_abbr %>. This is true for all infrastructures except OpenStack for <%= vars.k8s_runtime_abbr %>.
 
-You can use <%= vars.platform_name %> reference architectures to help plan the best configuration for your <%= vars.platform_name %> deployment on your IaaS.
+You can use <%= vars.ops_manager %> reference architectures to help plan the best configuration for your <%= vars.ops_manager %> deployment on your IaaS.
 
 <p class="note"><strong>Note: </strong> OpenStack does not support <%= vars.k8s_runtime_abbr %>.</p>
 
 
 ## <a id="topics"></a> Reference Architecture and Planning Topics
 
-All <%= vars.platform_name %> reference architectures except OpenStack start with the base <%= vars.app_runtime_abbr %> architecture and base <%= vars.k8s_runtime_abbr %> architecture.
+All <%= vars.ops_manager %> reference architectures start with the base <%= vars.app_runtime_abbr %> architecture and base <%= vars.k8s_runtime_abbr %> architecture.
 
 These IaaS-specific topics build on these two common base architectures:
 
@@ -34,7 +34,7 @@ These IaaS-specific topics build on these two common base architectures:
 * [OpenStack Reference Architecture](./openstack/openstack_ref_arch.html)
 * [vSphere Reference Architecture](./vsphere/vsphere_ref_arch.html)
 
-These topics address aspects of platform architecture and planning that the <%= vars.platform_name %> reference architectures do not cover:
+These topics address aspects of platform architecture and planning that the <%= vars.ops_manager %> reference architectures do not cover:
 
 * [Implementing a Multi-Foundation <%= vars.k8s_runtime_abbr %> Deployment](https://docs.pivotal.io/pks/nsxt-multi-pks.html)
 * [Using Global DNS Load Balancers for Multi-Foundation](global-dns-lb.html)
@@ -58,7 +58,7 @@ The table below describes the internal component placements shown in the diagram
 | <%= vars.ops_manager %> | Deployed on one of the three public subnets. Accessible by fully-qualified domain name (FQDN) or through an optional jumpbox. |
 | BOSH Director | Deployed on the infrastructure subnet. |
 | Jumpbox | Optional. Deployed on the infrastructure subnet for accessing <%= vars.app_runtime_abbr %> management components such as <%= vars.ops_manager %> and the Cloud Foundry Command Line Interface (cf CLI). |
-| Gorouters (HTTP routers in <%= vars.platform_name %>) | Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ. Accessed through the HTTP, HTTPS, and SSL load balancers. |
+| Gorouters (HTTP routers in <%= vars.ops_manager %>) | Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ. Accessed through the HTTP, HTTPS, and SSL load balancers. |
 | Diego Brain | Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ. The Diego Brain component is required, but SSH container access support through the Diego Brain is optional, and enabled through the SSH load balancers. |
 | TCP routers | Optional. Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ, to support TCP routing. |
 | Service tiles | Service brokers and shared services instances are deployed to the Services subnet. Dedicated on-demand service instances are deployed to an on-demand services subnet. |
@@ -114,20 +114,19 @@ To back up and restore a foundation externally, use BOSH Backup and Restore (BBR
 
 <%= vars.app_runtime_abbr %> requires disk storage for each component, for both persistent data and to allocate to ephemeral data. You size these disks in the **Resource Config** pane of the <%= vars.app_runtime_abbr %> tile. For more information about storage configuration and capacity planning, see the corresponding section in the [reference architecture for your IaaS](#topics).
 
-The platform also requires you to configure file storage for large shared objects. These blobstores can be external or internal. For details, see [Configuring File Storage for <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/pas-file-storage.html).
+The platform also requires you to configure file storage for large shared objects. These blobstores can be external or internal. For details, see [Configuring File Storage for <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/pas-file-storage.html).
 
 ### <a id="pas-security"></a> Security
 
 For information about how <%= vars.app_runtime_abbr %> implements security, see:
 
-* [<%= vars.platform_name %> Infrastructure Security
-](https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/security/pcf-infrastructure/index.html)
+* [<%= vars.ops_manager %> Infrastructure Security](../security/pcf-infrastructure/index.html)
 
-* [Security Concepts](https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/security/concepts/index.html)
+* [Security Concepts](../security/concepts/index.html)
 
-* [Certificates and TLS in <%= vars.platform_name %>](https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/security/pcf-infrastructure/certificates-index.html)
+* [Certificates and TLS in <%= vars.ops_manager %>](../security/pcf-infrastructure/certificates-index.html)
 
-* [Network Communication Paths in <%= vars.platform_name %>](https://docs.pivotal.io/ops-manager/<%= vars.current_major_version.sub('.','-') %>/security/networking/#net_commpaths) in _Network Security_
+* [Network Communication Paths in <%= vars.ops_manager %>](../security/networking/#net_commpaths) in _Network Security_
 
 ### <a id="pas-domains"></a> Domain Names
 
@@ -145,7 +144,7 @@ You must also define these wildcard domain names and include them when creating 
 
 ### <a id="pas-scaling"></a> Component Scaling
 
-For recommendations on scaling <%= vars.app_runtime_abbr %> for different deployment scenarios, see [Scaling <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/operating/scaling-ert-components.html).
+For recommendations on scaling <%= vars.app_runtime_abbr %> for different deployment scenarios, see [Scaling <%= vars.app_runtime_abbr %> ](https://docs.pivotal.io/application-service/operating/scaling-ert-components.html).
 
 
 ## <a id="pks-base"></a> <%= vars.k8s_runtime_abbr %> Architecture

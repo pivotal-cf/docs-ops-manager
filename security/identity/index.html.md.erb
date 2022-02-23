@@ -3,65 +3,65 @@ title: Credential and Identity Management
 owner: Security
 ---
 
-The topics in this section describe different aspects of identity management, including credential management handled by CredHub, user creation and permissions management, and authentication for <%= vars.platform_name %>.
+The topics in this section describe different aspects of identity management, including credential management handled by CredHub, user creation and permissions management, and authentication for <%= vars.ops_manager %>.
 
 
 ## <a id="general"></a> General Identity Management
 
-These topics provide general information about credential and identity management in <%= vars.platform_name %>:
+These topics provide general information about credential and identity management in <%= vars.ops_manager %>:
 
-* [<%= vars.platform_name %> User Types](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing//user-types.html)
-* [Retrieving Credentials from Your Deployment](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing//credentials.html)
+* [<%= vars.app_runtime_abbr %> User Types](https://docs.pivotal.io/application-service/operating/user-types.html)
+* [Retrieving Credentials from Your Deployment](../../install/credentials.html)
 
 
 ## <a id="credhub"></a> CredHub Documentation
 
-CredHub provides centralized credential management in <%= vars.platform_name %>. Credentials can include passwords, certificates, and SSH keys.
+CredHub provides centralized credential management in <%= vars.ops_manager %>. Credentials can include passwords, certificates, and SSH keys.
 
 CredHub centralizes and secures credential generation, storage, lifecycle management, and system access.
 
 These topics provide general information about CredHub:
 
-* [CredHub](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/credhub/index.html)
-* [CredHub Credential Types](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/credhub/credential-types.html)
+* [CredHub](https://docs.pivotal.io/credhub/index.html)
+* [CredHub Credential Types](https://docs.pivotal.io/credhub/credential-types.html)
 
 
 ## <a id="uaa"></a> UAA Documentation
 
-<%= vars.platform_name %> uses User Account and Authentication (UAA) to manage account roles and permissions in <%= vars.platform_name %> runtimes.
+<%= vars.ops_manager %> uses User Account and Authentication (UAA) to manage account roles and permissions in <%= vars.ops_manager %> runtimes.
 
 UAA supports access control as OAuth2 services and can store user information internally, or connect to external user stores through LDAP or SAML.
 
 These topics provide general information about UAA:
 
-* [UAA Overview](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/uaa/uaa-overview.html)
-* [UAA Concepts](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/uaa/uaa-concepts.html)
-* [UAA Architecture](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/concepts/architecture/uaa.html)
-* [Identity Providers in UAA](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/uaa/identity-providers.html)
+* [UAA Overview](https://docs.pivotal.io/application-service/uaa/uaa-overview.html)
+* [UAA Concepts](https://docs.pivotal.io/application-service/uaa/uaa-concepts.html)
+* [UAA Architecture](https://docs.pivotal.io/application-service/concepts/architecture/uaa.html)
+* [Identity Providers in UAA](https://docs.pivotal.io/application-service/uaa/identity-providers.html)
 
 
-## <a id="pcf"></a> <%= vars.platform_name %> Roles and User Accounts
+## <a id="pcf"></a> <%= vars.ops_manager %> Roles and User Accounts
 
-These topics describe how to manage <%= vars.platform_name %> roles and user accounts in <%= vars.platform_name %>:
+These topics describe how to manage <%= vars.ops_manager %> roles and user accounts in <%= vars.ops_manager %>:
 
-* [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/uaa/uaa-user-management.html)
-* [Adding Existing SAML or LDAP Users to a <%= vars.platform_name %> Deployment](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/opsguide/external-user-management.html)
+* [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.pivotal.io/application-service/uaa/uaa-user-management.html)
+* [Adding Existing SAML or LDAP Users to an <%= vars.ops_manager %> Deployment](https://docs.pivotal.io/application-service/operating/external-user-management.html)
 
 ### <a id="ops-man"></a> <%= vars.ops_manager_full %> Roles and Permissions
 
 These topics provide information about <%= vars.ops_manager %> roles and permissions:
 
-* [Creating UAA Clients for BOSH Director](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing//opsmanager-create-bosh-client.html)
-* [Configuring Role-Based Access Control (RBAC) in <%= vars.ops_manager %>](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/opsguide/config-rbac.html)
-* [Creating and Managing <%= vars.ops_manager %> User Accounts](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing//opsman-users.html)
+* [Creating UAA Clients for BOSH Director](../../install/opsmanager-create-bosh-client.html)
+* [Configuring Role-Based Access Control (RBAC) in <%= vars.ops_manager %>](../../opsguide/config-rbac.html)
+* [Creating and Managing <%= vars.ops_manager %> User Accounts](../../install/opsman-users.html)
 
 ### <a id="pas"></a> <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) Roles and Permissions
 
 These topics provide information about <%= vars.app_runtime_abbr %> roles and permissions:
 
-* [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/concepts/roles.html):
-* [Creating New <%= vars.app_runtime_abbr %> User Accounts](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/opsguide/creating-account.html)
-* [Managing User Roles with Apps Manager](https://docs.pivotal.io/application-service/<%= vars.current_major_version.sub('.','-') %>/console/console-roles.html)
+* [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/application-service/concepts/roles.html):
+* [Creating New <%= vars.app_runtime_abbr %> User Accounts](https://docs.pivotal.io/application-service/operating/creating-account.html)
+* [Managing User Roles with Apps Manager](https://docs.pivotal.io/application-service/console/console-roles.html)
 
 ### <a id="pks"></a> <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) Roles and Permissions
 

@@ -7,9 +7,9 @@ install_type: terraform
 
 <%= partial "/pcf/warning-terraform" %>
 
-This topic describes how to configure the BOSH Director for <%= vars.platform_name %> on Google Cloud Platform (GCP) after [Preparing to Deploy Ops Manager on GCP Using Terraform](./prepare-env-terraform.html).
+This topic describes how to configure the BOSH Director for <%= vars.ops_manager %> on Google Cloud Platform (GCP) after [Preparing to Deploy <%= vars.ops_manager %> on GCP Using Terraform](./prepare-env-terraform.html).
 
-<p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the Pivotal Operations Manager API. For more information, see the <a href="http://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/ops-man-api.html">Using the Ops Manager API</a> topic.</p>
+<p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the Pivotal Operations Manager API. For more information, see the <a href="../install/ops-man-api.html">Using the Ops Manager API</a> topic.</p>
 
 
 ## <a id='prereq'></a> Prerequisite
@@ -49,7 +49,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
   <div class="note"><strong>Note:</strong> Pivotal recommends at least three availability zones for a highly available installation.
     <ul>
-      <li>For configuring a <%= vars.app_runtime_abbr %> deployment with multiple availability zones, see <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/refarch/gcp/gcp_ref_arch.html">GCP Reference Architecture</a>.</li>
+      <li>For configuring a <%= vars.app_runtime_abbr %> deployment with multiple availability zones, see <a href="../refarch/gcp/gcp_ref_arch.html">Reference Architecture for <%= vars.ops_manager %> on GCP</a>.</li>
       <li>For <%= vars.k8s_runtime_abbr %> best practices for distributing workloads across multiple availability zones and clusters, see <a href="https://docs.pivotal.io/pks/maintain-uptime.html">Maintaining Workload Uptime</a>.</li>
     </ul>
   </div>
@@ -68,7 +68,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 1. Make sure **Enable ICMP checks** is not selected. GCP routers do not respond to ICMP pings.
 
 1. Use the **Add Network** button to create the following three networks:
-    <p class="note"><strong>Note:</strong> To use a shared VPC network, enter the shared VPC host project name before the network name in the format <code>VPC-PROJECT-NAME/NETWORK-NAME/SUBNET-NAME/REGION-NAME</code>. For example, <code>vpc-project/opsmgr/central/us-central1</code>. For more information, see <a href="http://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/gcp-shared-vpc.html">Configuring a Shared VPC on GCP</a>.</p>
+    <p class="note"><strong>Note:</strong> To use a shared VPC network, enter the shared VPC host project name before the network name in the format <code>VPC-PROJECT-NAME/NETWORK-NAME/SUBNET-NAME/REGION-NAME</code>. For example, <code>vpc-project/opsmgr/central/us-central1</code>. For more information, see <a href="../install/gcp-shared-vpc.html">Configuring a Shared VPC on GCP</a>.</p>
     <h3>Infrastructure Network</h3>
     <table>
       <tr>
@@ -213,6 +213,6 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 After you complete this procedure, follow the instructions for the runtime you intend to install.
 <ul>
-  <li>To deploy <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/configure-pas.html).</li>
+  <li>To deploy <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).</li>
   <li>To prepare to deploy <%= vars.k8s_runtime_abbr %>, see [Creating Service Accounts in GCP for <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/pks/gcp-service-accounts.html).</li>
 </ul>

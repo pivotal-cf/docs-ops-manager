@@ -45,9 +45,9 @@ To complete the procedures in this topic, you must have access to the output fro
     * **Region**: Input the AWS region where you deployed Ops Manager.
     * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption
       on persistent disks of all BOSH-deployed VMs, except
-      for the Ops Manager VM and BOSH Director VM. For more information about using Elastic Block Store (EBS) encryption, see [Configuring Amazon EBS Encryption](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/cloudform-om-ebs-config.html).
+      for the <%= vars.ops_manager %> VM and BOSH Director VM. For more information about using Elastic Block Store (EBS) encryption, see [Configuring Amazon EBS Encryption](../install/cloudform-om-ebs-config.html).
       <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) are not encrypted.</p>
-      * **Custom Encryption Key (Optional)** Once you enable EBS encryption, you may want to specify a custom Key Management Service (KMS) encryption key. If you don't enter a value, your custom encryption key will default to the account key. For more information, see [Configuring Amazon EBS Encryption](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/cloudform-om-ebs-config.html).
+      * **Custom Encryption Key (Optional)** After you enable EBS encryption, you might want to specify a custom Key Management Service (KMS) encryption key. If you don't enter a value, your custom encryption key defaults to the account key. For more information, see [Configuring Amazon EBS Encryption](../install/cloudform-om-ebs-config.html).
 
 1. Click **Save**.
 
@@ -444,6 +444,6 @@ To assign your load balancer VMs to the correct target groups and security group
     <%= image_tag("../common/images/cloudform/ops-manager-complete.png", :alt => "A pop-up window with a round, gray X button in the upper-right corner and the words 'Changed Applied' next to a round, green circle containing a checkmark. Below 'Changed Applied' are the words 'Ops Manager Director was successfully installed. We recommend that you export a backup of this installation from the actions menu.' Below this text and to the right of the pop-up window are a gray, rectangular button labeled 'Close' next to a blue, rectangular button labeled 'Return to Installation Dashboard'.") %>
 
 1. After you complete this procedure, continue to the topic for the runtime you are installing:
-  * **<%= vars.app_runtime_abbr %>**: [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/configure-pas.html)
+  * **<%= vars.app_runtime_abbr %>**: [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html)
   * **<%= vars.k8s_runtime_abbr %> v1.2**: [Installing <%= vars.k8s_runtime_abbr %> on AWS](https://docs.pivotal.io/pks/1-2/installing-pks-aws.html)
   * **<%= vars.k8s_runtime_abbr %> v1.3**: [Installing <%= vars.k8s_runtime_abbr %> on AWS](https://docs.pivotal.io/pks/1-3/installing-pks-aws.html)

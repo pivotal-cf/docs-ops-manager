@@ -6,7 +6,7 @@ owner: Ops Manager
 
 <html class="list-style-none"></html>
 
-This topic describes how to deploy Pivotal Operations Manager for <%= vars.platform_name %> on Google Cloud Platform (GCP).
+This topic describes how to deploy <%= vars.ops_manager %> on Google Cloud Platform (GCP).
 
 Before you deploy Ops Manager, see the preparation steps in [Preparing to Deploy Ops Manager on GCP](prepare-env-manual.html).
 
@@ -65,7 +65,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
         |Memory| 8&nbsp;GB |
   * **Boot disk**: Click **Change**, then perform the following steps:
      * Click **Custom images** if it is not already selected.
-     * Select the **Boot disk type**. If your environment has high performance needs, select **SSD**. As an example, environments used to [develop <%= vars.platform_name %> tiles](http://docs.pivotal.io/tiledev/) might benefit from a higher performing Ops Manager VM boot disk. For most environments, you can select **Standard**.
+     * Select the **Boot disk type**. If your environment has high performance needs, select **SSD**. As an example, environments used to [develop <%= vars.ops_manager %> tiles](http://docs.pivotal.io/tiledev/) might benefit from a higher performing <%= vars.ops_manager %> VM boot disk. For most environments, you can select **Standard**.
      * Set the **Size (GB)** of the boot disk to the minimum or higher.
 
             | **Machine Spec** | **Minimum Value** |
