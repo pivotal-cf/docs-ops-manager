@@ -7,7 +7,7 @@ iaas: vSphere
 This topic describes how to configure the BOSH Director tile for VMware vSphere.
 
 You can also perform the procedures in this topic using the Pivotal Operations Manager API. For more information,
-see <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/ops-man-api.html">Using the Ops Manager API</a>.
+see <a href="../install/ops-man-api.html">Using the Ops Manager API</a>.
 
 <p class="note warning"><strong>WARNING:</strong> If you are installing <%= vars.k8s_runtime_full %>
 (<%= vars.k8s_runtime_abbr %>) on vSphere with NSX-T integration, follow the instructions in <a href="https://docs.pivotal.io/pks/vsphere-nsxt-om-config.html">Configuring BOSH Director with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the procedure described in this topic.</p>
@@ -17,7 +17,7 @@ After you complete this procedure, follow the configuration instructions for the
 </br>
 For example:
 <ul>
-  <li> To install <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), see <a href="https://docs.pivotal.io/application-service/operating/configure-pas.html">Configuring <%= vars.app_runtime_abbr %></a>.</li>
+  <li> To install <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), see <a href="https://docs.pivotal.io/application-service/2-8/operating/configure-pas.html">Configuring <%= vars.app_runtime_abbr %></a>.</li>
   <li> To install <%= vars.k8s_runtime_abbr %>, see [Installing <%= vars.k8s_runtime_abbr %> on vSphere](https://docs.pivotal.io/pks/installing-pks-vsphere.html).</li>
 </ul>
 
@@ -47,7 +47,7 @@ Before you begin this procedure, you must complete all steps in [Deploying Ops M
     * **vCenter Username**: A vCenter username with create and delete privileges for virtual machines (VMs) and folders.
     * **vCenter Password**: The password for the vCenter user specified above.
     * **Datacenter Name**: The name of the datacenter as it appears in vCenter.
-    * **Virtual Disk Type**: The Virtual Disk Type to provision for all VMs. For guidance on selecting a virtual disk type, see [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html).
+    * **Virtual Disk Type**: The Virtual Disk Type to provision for all VMs. For guidance on selecting a virtual disk type, see [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/2-8/operating/disk-format.html).
     <p class="note"><strong>Note:</strong> Datastores do not support whitespace characters in their names. Including whitespace characters in datastore names causes an error.</p>
     * **Ephemeral Datastore Names (comma delimited)**: The names of the datastores that store ephemeral VM disks deployed by Ops Manager.
     * **Persistent Datastore Names (comma delimited)**: The names of the datastores that store persistent VM disks deployed by Ops Manager.
@@ -95,7 +95,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 Pivotal recommends that you use at least three AZs for a highly available installation of your chosen runtime.
 
-<p class="note"><strong>Note:</strong> For more information about AZs and high availability in vSphere, see <a href="https://docs.pivotal.io/platform/refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> in <em>vSphere Reference Architecture</em>.</p>
+<p class="note"><strong>Note:</strong> For more information about AZs and high availability in vSphere, see <a href="../refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> in <em>vSphere Reference Architecture</em>.</p>
 
 1. Select **Create Availability Zones** to navigate to the pane.
     <%= image_tag("../common/images/create-az.png", :alt => "The 'Create Availability Zones' pane shows a list of two availability zones: 'first-az' and 'second-az' with a button to the right to 'Add'. The 'first-az' is expanded and shows the fields 'Name' and 'IaaS Configuration'. Below that, still in the expanded 'first-az', a subhead called 'Clusters' lists a group of two fields, 'Cluster' and 'Resource Pool' with a button to the right to 'Add Cluster'.") %>
@@ -390,7 +390,7 @@ and you want to configure security and load balancing for the BOSH Director job:
 After you complete this procedure, follow the instructions for the runtime that you intend to install.
 
 <ul>
-  <li>To install <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/operating/configure-pas.html">Configuring <%= vars.app_runtime_abbr %></a>.</li>
+  <li>To install <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/2-8/operating/configure-pas.html">Configuring <%= vars.app_runtime_abbr %></a>.</li>
   <li>To install <%= vars.k8s_runtime_abbr %>, see <a href="https://docs.pivotal.io/tkgi/installing-vsphere.html">Installing <%= vars.k8s_runtime_abbr %> on vSphere</a>.</li>
 </ul>
 

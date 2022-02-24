@@ -45,7 +45,7 @@ Review each of the following links to understand the changes in the new release,
 	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#breaking-changes)
 
 * **KPI Changes**
-	* [KPI Changes](https://docs.pivotal.io/application-service/operating/monitoring/index.html#new)
+	* [KPI Changes](https://docs.pivotal.io/application-service/2-8/operating/monitoring/index.html#new)
 
 * **Diego Network Communications**:
 	* [Diego Network Communications](../security/networking/diego-network-paths.html)
@@ -123,7 +123,7 @@ If you do not enable Syslog Agents prior to upgrade, the upgrade to <%= vars.app
 
 #### <a id="disable-unused-errands"></a> (Optional) Disable Unused Errands
 
-To save upgrade time, you can disable unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/<%= vars.current_major_version.sub('.','-') %>/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
+To save upgrade time, you can disable unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/2-8/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
 
 In some cases, if you have previously disabled lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Adding and Deleting Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
@@ -255,28 +255,28 @@ The KPIs that monitor these these resources are are:
 
 ### <a id="adjust-diego-cell-limits"></a> Adjust Diego Cell Limits
 
-If needed, adjust the maximum number of Diego Cells that the platform can upgrade simultaneously, to avoid overloading the other Diego Cells. For more information, see [Limit Component Instance Restarts](https://docs.pivotal.io/application-service/operating/configuring.html#limit-restart) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
+If needed, adjust the maximum number of Diego Cells that the platform can upgrade simultaneously, to avoid overloading the other Diego Cells. For more information, see [Limit Component Instance Restarts](https://docs.pivotal.io/application-service/2-8/operating/configuring.html#limit-restart) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
-The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4%. This setting is configured in the BOSH manifest's Diego Cell definition. For more information, see [Prevent Overload](https://docs.pivotal.io/application-service/operating/configuring.html#limitations-considerations) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
+The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4%. This setting is configured in the BOSH manifest's Diego Cell definition. For more information, see [Prevent Overload](https://docs.pivotal.io/application-service/2-8/operating/configuring.html#limitations-considerations) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
-For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/operating/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/2-8/operating/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="storage"></a> Review File Storage IOPS and Other Upgrade Limiting Factors
 
 During the <%= vars.ops_manager %> upgrade process, a large quantity of data is moved around on disk.
 
-To ensure a successful upgrade of your deployment, verify that your underlying <%= vars.app_runtime_abbr %> file storage is performant enough to handle the upgrade. For more information about the configurations to evaluate, see [Configure File Storage](https://docs.pivotal.io/application-service/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
+To ensure a successful upgrade of your deployment, verify that your underlying <%= vars.app_runtime_abbr %> file storage is performant enough to handle the upgrade. For more information about the configurations to evaluate, see [Configure File Storage](https://docs.pivotal.io/application-service/2-8/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
 In addition to file storage IOPS, consider additional existing deployment factors that can impact overall upgrade duration and performance:
 
 | **Factor** | **Impact** |
 | ---------- | ---------- |
 | **Network latency** | Network latency can contribute to how long it takes to move app instance data to new containers. |
-| **Number of ASGs** | A large number of App Security Groups (ASGs) in your deployment can contribute to an increase in app instance container startup time. For more information, see [App Security Groups](https://docs.pivotal.io/application-service/concepts/asg.html) in the <%= vars.app_runtime_abbr %> documentation. |
+| **Number of ASGs** | A large number of App Security Groups (ASGs) in your deployment can contribute to an increase in app instance container startup time. For more information, see [App Security Groups](https://docs.pivotal.io/application-service/2-8/concepts/asg.html) in the <%= vars.app_runtime_abbr %> documentation. |
 | **Number of app instances and app growth** | A large increase in the number of app instances and average droplet size since the initial deployment can increase the upgrade impact on your system. |
 
 For example upgrade-related performance measurements of an existing production deployment,
-see [Upgrade Load Example: Pivotal Web Services During Upgrade](https://docs.pivotal.io/application-service/operating/pws_upgrade_load.html) in the <%= vars.app_runtime_abbr %> documentation.
+see [Upgrade Load Example: Pivotal Web Services During Upgrade](https://docs.pivotal.io/application-service/2-8/operating/pws_upgrade_load.html) in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id="bosh-clean-up"></a> Run BOSH Clean-Up
 

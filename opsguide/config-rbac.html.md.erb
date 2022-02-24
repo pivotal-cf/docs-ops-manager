@@ -114,11 +114,11 @@ Follow the procedure in [Enable RBAC with Internal Authentication](#enable-inter
 
 ## <a id="create-users"></a> Create User Accounts in <%= vars.ops_manager %>
 
-To assign RBAC roles to operators, you must first create user accounts for them. For more information about creating user accounts in <%= vars.ops_manager %> with the User Account and Authentication (UAA) module, see [Creating and Managing <%= vars.ops_manager %> User Accounts](https://docs.pivotal.io/platform/customizing/opsman-users.html).
+To assign RBAC roles to operators, you must first create user accounts for them. For more information about creating user accounts in <%= vars.ops_manager %> with the User Account and Authentication (UAA) module, see [Creating and Managing <%= vars.ops_manager %> User Accounts](../install/opsman-users.html).
 
 In addition to user accounts, you can create a client account to add to <%= vars.ops_manager %>. Client accounts manage automation tasks, such as upgrade scripts, log management, and other behaviors that might be negatively impacted if managed by a user account. You can add a client account either before initial deployment or to an existing deployment.
 
-For more information about client accounts, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](https://docs.pivotal.io/platform/customizing/opsman-users.html).
+For more information about client accounts, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](../install/opsman-users.html).
 
 
 ## <a id="manage-roles"></a> Manage RBAC Roles in <%= vars.ops_manager %>
@@ -127,7 +127,7 @@ You can assign the roles defined in [Roles in <%= vars.ops_manager %>](#about) t
 
 ### <a id="write-internal"></a> Manage Roles with Internal Authentication
 
-If you configured <%= vars.ops_manager %> to use internal authentication, you can configure roles using the UAA Command Line Interface (UAAC). For more information, see [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.pivotal.io/platform/uaa/uaa-user-management.html).
+If you configured <%= vars.ops_manager %> to use internal authentication, you can configure roles using the UAA Command Line Interface (UAAC). For more information, see [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.pivotal.io/application-service/2-8/uaa/uaa-user-management.html).
 
 To use the UAAC to configure roles:
 

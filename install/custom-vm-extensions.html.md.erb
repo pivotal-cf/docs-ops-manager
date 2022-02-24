@@ -7,7 +7,7 @@ This topic describes how to add, delete, apply, and list custom VM extensions us
 
 VM extensions allow you to specify IaaS-specific configurations for your VMs such as associated security groups and load balancers. You can use the Ops Manager API to create custom VM extensions, give them names, and associate those names with BOSH jobs.
 
-The **Resource Config** pane in a product tile lets you configure some IaaS-specific load balancing and security properties, and creates VM extensions to support them.  For examples from the <%= vars.ops_manager %> product, see [Configuring Load Balancing for <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/operating/configure-lb.html).
+The **Resource Config** pane in a product tile lets you configure some IaaS-specific load balancing and security properties, and creates VM extensions to support them.  For examples from the <%= vars.ops_manager %> product, see [Configuring Load Balancing for <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/2-8/operating/configure-lb.html).
 
 <p class="note warning"><strong>WARNING</strong>: If you use custom VM extensions, you may override other settings. For example, if you use a custom VM extension to add tags, the default tags are removed from all instance groups. To use default tags with custom VM extensions, apply the tags manually.</p>
 
@@ -54,7 +54,7 @@ curl "https://example.com/api/v0/staged/vm_extensions/vm_ext1" \
     -d '{"name": "vm_ext1"}'
 </pre>
 
-For more information about this command, see [Deleting a vm extension](https://docs.pivotal.io/platform/opsman-api/#deleting-a-vm-extension) in the Ops Manager API docs.
+For more information about this command, see [Deleting a vm extension](https://docs.pivotal.io/platform/2-8/opsman-api/#deleting-a-vm-extension) in the Ops Manager API docs.
 
 ## <a id="apply-vm-extensions"></a> Apply VM Extensions to a Job
 
@@ -87,7 +87,7 @@ curl "https://example.com/api/v0/staged/products/product-type1-guid/jobs/example
 
 <p class="note"><strong>Note:</strong> You must apply changes in order for the new custom VM extension to take effect.</p>
 
-For more information about this command, see [Configuring resources for a job](https://docs.pivotal.io/platform/opsman-api/#configuring-resources-for-a-job) in the Ops Manager API docs.
+For more information about this command, see [Configuring resources for a job](https://docs.pivotal.io/platform/2-8/opsman-api/#configuring-resources-for-a-job) in the Ops Manager API docs.
 
 ## <a id="deployed-vm-extensions"></a> See Deployed VM Extensions
 
@@ -124,4 +124,4 @@ See the following example output:
 }
 </pre>
 
-For more information about this command, see [Creating a new VM extension](https://docs.pivotal.io/platform/opsman-api#creating-a-new-vm-extension) in the Ops Manager API documentation.
+For more information about this command, see [Creating a new VM extension](https://docs.pivotal.io/platform/2-8/opsman-api#creating-a-new-vm-extension) in the Ops Manager API documentation.

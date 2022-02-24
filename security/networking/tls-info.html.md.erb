@@ -80,7 +80,7 @@ The following diagram illustrates TLS communication between apps and managed, on
 
 BOSH CredHub issues certificates to the Pivotal Cloud Cache components. For the app, the developer must retrieve a copy of this certificate using the CredHub API and place it in the truststore for the app. For more information, see [Developing an App Under TLS](https://docs.pivotal.io/p-cloud-cache/tls-enabled-app.html) in the Pivotal Cloud Cache documentation.
 
-Separately, <%= vars.app_runtime_abbr %> Runtime CredHub might store credentials for the app to access a service over the TLS connection, adding a second layer of security. For more information, see [Securing Services Instance Credentials with Runtime CredHub](https://docs.pivotal.io/application-service/operating/secure-si-creds.html).
+Separately, <%= vars.app_runtime_abbr %> Runtime CredHub might store credentials for the app to access a service over the TLS connection, adding a second layer of security. For more information, see [Securing Services Instance Credentials with Runtime CredHub](https://docs.pivotal.io/application-service/2-8/operating/secure-si-creds.html).
 
 ### <a id="app-to-external-service"></a> Between Apps and External Services
 
@@ -196,7 +196,7 @@ For more information about instance identity credentials, see [Instance Identity
 
 By default, <%= vars.ops_manager %> uses a limited set of cipher suites to secure its internal communications. However, some components used in <%= vars.ops_manager %>, like the Gorouter and HAProxy, may support additional TLS cipher suites to accommodate older clients outside of <%= vars.ops_manager %>.
 
-<p class="note"><strong>Note:</strong> The AWS Classic load balancer does not support the recommended TLS cipher suites. For details and mitigations, see <a href="https://docs.pivotal.io/application-service/adminguide/securing-traffic.html#ciphers">TLS Cipher Suite Support</a> in <em>Securing Traffic into <%= vars.app_runtime_abbr %></em>.</p>
+<p class="note"><strong>Note:</strong> The AWS Classic load balancer does not support the recommended TLS cipher suites. For details and mitigations, see <a href="https://docs.pivotal.io/application-service/2-8/adminguide/securing-traffic.html#ciphers">TLS Cipher Suite Support</a> in <em>Securing Traffic into <%= vars.app_runtime_abbr %></em>.</p>
 
 For components that allow you to configure TLS cipher suites, only specify the TLS cipher suites that you need.
 
@@ -220,9 +220,9 @@ The TLS cipher suites <%= vars.recommended_by %> recommends for the Gorouter are
 * ECDHE-RSA-AES128-GCM-SHA256
 * ECDHE-RSA-AES256-GCM-SHA384
 
-You can specify other cipher suites and a different minimum version of TLS support if your deployment requires it. For a list of other cipher suites and other versions of TLS that are optionally supported by the Gorouter, see [TLS Cipher Suite Support](https://docs.pivotal.io/application-service/adminguide/securing-traffic.html#ciphers) in _Securing Traffic into <%= vars.app_runtime_abbr %>_.
+You can specify other cipher suites and a different minimum version of TLS support if your deployment requires it. For a list of other cipher suites and other versions of TLS that are optionally supported by the Gorouter, see [TLS Cipher Suite Support](https://docs.pivotal.io/application-service/2-8/adminguide/securing-traffic.html#ciphers) in _Securing Traffic into <%= vars.app_runtime_abbr %>_.
 
-For instructions on how to configure the TLS cipher suites for the Gorouter, see [Configure Networking](https://docs.pivotal.io/application-service/operating/configure-pas.html#networking) in _Configuring <%= vars.app_runtime_abbr %>_.
+For instructions on how to configure the TLS cipher suites for the Gorouter, see [Configure Networking](https://docs.pivotal.io/application-service/2-8/operating/configure-pas.html#networking) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id="cipher_haproxy"></a> HAProxy Configuration
 
@@ -241,4 +241,4 @@ If you use the default and recommended Gorouter TLS cipher suites in <%= vars.ap
 
 If you change the default Gorouter TLS cipher suites in <%= vars.app_runtime_abbr %>, and you change the TLS cipher suites for HAProxy, ensure that you have at least one overlapping TLS cipher suite within the two sets.
 
-For instructions on how to configure the TLS cipher suites for HAProxy, see [Configure Networking](https://docs.pivotal.io/application-service/operating/configure-pas.html#networking) in _Configuring <%= vars.app_runtime_abbr %>_.
+For instructions on how to configure the TLS cipher suites for HAProxy, see [Configure Networking](https://docs.pivotal.io/application-service/2-8/operating/configure-pas.html#networking) in _Configuring <%= vars.app_runtime_abbr %>_.

@@ -87,11 +87,11 @@ local machine:
     * [docs-book-om](https://github.com/pivotal-cf/docs-book-om)
     * [docs-layout-repo](https://github.com/pivotal-cf/docs-layout-repo)
     * [docs-partials](https://github.com/pivotal-cf/docs-partials)
-1. Use the **Versions and Branching** table above to determine which branch of `docs-ops-manager` that you need to `git checkout` to build the version of the documentation that you want. If necessary, navigate to the `docs-ops-manager` directory and `git checkout BRANCH-NAME`. 
+1. Use the **Versions and Branching** table above to determine which branch of `docs-ops-manager` that you need to `git checkout` to build the version of the documentation that you want. If necessary, navigate to the `docs-ops-manager` directory and `git checkout BRANCH-NAME`.
 1. Navigate in the `docs-book-om` directory.
 1. Run `bundle install` to install all of the necessary gems, including Bookbinder.
 1. Run `bundle exec bookbinder bind local` to build a Rack web-app of the book. After the bind has completed, navigate
-into the `final_app` directory and run `rackup`. Then navigate to `localhost:9292/platform/ops-manager/index.html` in a
+into the `final_app` directory and run `rackup`. Then navigate to `localhost:9292/ops-manager/index.html` in a
 browser.
 
 ## Continuous Integration and Continuous Delivery
@@ -100,11 +100,10 @@ We use Concourse pipelines to provide continuous integration and continuous deli
 or the [https://github.com/pivotal-cf/docs-book-om](https://github.com/pivotal-cf/docs-book-om) Book repository trigger a
 "bind" where the disparate parts of the Ops Manager documentation are assembled into a single web app. A successful bind
 triggers pushing the app to the staging site,
-[https://docs-pcf-staging.cfapps.io/platform/ops-manager](http://docs-pcf-staging.cfapps.io/platform/ops-manager). After
+[https://docs-pcf-staging.tas.vmware.com/ops-manager](http://docs-pcf-staging.tas.vmware.com/ops-manager). After
 review, the staging site is manually pushed to the production site,
-[https://docs.pivotal.io/platform/ops-manager/](https://docs.pivotal.io/platform/ops-manager/).
+[https://docs.pivotal.io/ops-manager/](https://docs.pivotal.io/ops-manager/).
 
-Concourse Pipelines:
+Concourse Pipeline:
 
-* **master**: https://concourse.run.pivotal.io/teams/cf-docs/pipelines/om
-* **edge**: https://concourse.run.pivotal.io/teams/cf-docs/pipelines/om?group=edge
+* **2.8**: https://runway-ci.eng.vmware.com/teams/mapbu-docs/pipelines/om?group=2-8

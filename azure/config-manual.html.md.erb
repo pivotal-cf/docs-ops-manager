@@ -18,11 +18,11 @@ Before you perform the procedures in this topic, you must have completed the pro
 * [Preparing to Deploy Ops Manager on Azure](prepare-env-manual.html)
 * [Deploying Ops Manager on Azure](deploy-manual.html)
 
-<p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the Ops Manager API. For more information, see <a href="https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/ops-man-api.html">Using the Ops Manager API</a>.</p>
+<p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the Ops Manager API. For more information, see <a href="../install/ops-man-api.html">Using the Ops Manager API</a>.</p>
 
 ### <a id="stack-gov-prereqs"></a> Prerequisites for Azure Stack or Azure Government Cloud
 
-If you use Azure Government Cloud, you must set custom VM types for a successful deployment. You can set custom VM types with the Ops Manager API. For more information, see [Using the Ops Manager API](https://docs.pivotal.io/platform/<%= vars.current_major_version.sub('.','-') %>/customizing/ops-man-api.html).
+If you use Azure Government Cloud, you must set custom VM types for a successful deployment. You can set custom VM types with the Ops Manager API. For more information, see [Using the Ops Manager API](../install/ops-man-api.html).
 
 Example `curl` command to set a VM types:
 
@@ -126,7 +126,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
     <p class="note"><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
 
 1. <%= partial "../common/azure-environment" %>
-    <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS), select <strong>Azure Stack</strong>. For more information about ADFS for Azure, see <a href="https://docs.pivotal.io/platform/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
+    <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS), select <strong>Azure Stack</strong>. For more information about ADFS for Azure, see <a href="https://docs.pivotal.io/pivotalcf/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
 
 1. (Optional) If you selected `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
   1. For **Domain**, enter the domain for your Azure Stack deployment. For example, `local.azurestack.external`.
