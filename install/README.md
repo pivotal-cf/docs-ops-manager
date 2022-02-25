@@ -8,7 +8,7 @@ to the PCF Docs Services tracker and notify the Services Docs PM.
 
 ## Which book repos publish this repo?
 
-Currently only the [docs-book-pivotalcf](https://github.com/pivotal-cf/docs-partials) repo publishes this repo. 
+Currently only the [docs-book-pivotalcf](https://github.com/pivotal-cf/docs-partials) repo publishes this repo.
 
 ## Which branch to use?
 
@@ -16,8 +16,9 @@ Currently only the [docs-book-pivotalcf](https://github.com/pivotal-cf/docs-part
 
 | Branch name | Use for… |
 |-------------| -------|
-| master      | "edge" branch for Ops Manager and TAS for VMs v2.10, publishes to https://docs-pcf-staging.cfapps.io/platform/2-10/customizing/
-| 2.9		  | v2.9.x |
+| master      | Not in use |
+| 2.10        | v2.10.x |
+| 2.9		      | v2.9.x |
 | 2.8         | v2.8.x |
 | 2.7         | v2.7.x |
 | 2.6         | EOGS v2.6.x. |
@@ -51,4 +52,3 @@ $ bundle install
 $ bundle exec bookbinder watch
 $ open http://127.0.0.1:XXXX/platform/<version, such as `2-10`>/customizing
 ```
-
