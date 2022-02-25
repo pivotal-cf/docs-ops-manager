@@ -29,7 +29,7 @@ CDEFGH12345678ABCDEFGH12345678ABCDEFGH12345678ABBB
 EFGH12345678ABCDEFGH12345678ABCDEFGH12345678ABCDEF
 GH12345678ABCDEFGH12345678ABCDEFGH12345678...
 ------END CERTIFICATE------</pre>
-  <p class="note"><strong>Note:</strong> If you want to use Docker registries to run <%= vars.app_runtime_abbr %> app instances in Docker containers, enter the certificate for your private Docker registry in this field. For more information about running app instances in <%= vars.app_runtime_abbr %> using Docker registries, see <a href="https://docs.pivotal.io/application-service/operating/docker-registry.html">Using Docker Registries</a>.</p>
+  <p class="note"><strong>Note:</strong> If you want to use Docker registries to run <%= vars.app_runtime_abbr %> app instances in Docker containers, enter the certificate for your private Docker registry in this field. For more information about running app instances in <%= vars.app_runtime_abbr %> using Docker registries, see <a href="https://docs.pivotal.io/application-service/2-9/operating/docker-registry.html">Using Docker Registries</a>.</p>
 
 1. To include the <%= vars.ops_manager %> root CA in the **Trusted Certificates** field, select the **Include OpsManager Root CA in Trusted Certs** checkbox. BOSH Director includes this CA in the trust store of every VM that it deploys.
   <p class="note warning"><strong>Warning:</strong> If you are using Ops Manager to generate certificates for either a load balancer or router, then you must select this checkbox.</p>

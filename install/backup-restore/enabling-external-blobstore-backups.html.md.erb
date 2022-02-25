@@ -79,7 +79,7 @@ To determine if external blobstore support is included in the version of <%= var
 
 ## <a id="s3"></a> S3 or S3-Compatible Blobstores
 
-In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up and restoring versioned and unversioned S3 or S3-compatible blobstores by default. For more information about configuring an S3 or S3-compatible blobstore, see [AWS](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#aws) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
+In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up and restoring versioned and unversioned S3 or S3-compatible blobstores by default. For more information about configuring an S3 or S3-compatible blobstore, see [AWS](https://docs.pivotal.io/application-service/2-9/operating/pas-file-storage.html#aws) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
 
 <div class="note">
   <strong>Note:</strong>
@@ -94,11 +94,11 @@ In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up 
 
 To configure your Azure blobstore for backups, you must enable soft delete in your Azure Storage account. You can also enable soft delete for existing Azure storage accounts that were not initially created with soft delete enabled. For more information, see [Soft delete for Azure Storage blobs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-soft-delete#quickstart) in the Microsoft documentation.
 
-After enabling soft delete, you can enable Azure blobstore backups in <%= vars.ops_manager %> for new or existing blobstores. For more information, see [Azure](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#azure) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
+After enabling soft delete, you can enable Azure blobstore backups in <%= vars.ops_manager %> for new or existing blobstores. For more information, see [Azure](https://docs.pivotal.io/application-service/2-9/operating/pas-file-storage.html#azure) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
 
 To save storage space and cost, <%= vars.company_name %> recommends that you configure a retention.
 
 
 ## <a id="gcs"></a> GCS Blobstores
 
-For more information about configuring a GCS blobstore, see [GCP](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
+For more information about configuring a GCS blobstore, see [GCP](https://docs.pivotal.io/application-service/2-9/operating/pas-file-storage.html#gcp) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.

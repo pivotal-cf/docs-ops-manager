@@ -8,7 +8,7 @@ iaas: vSphere
 
 This guide describes how to install [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) on vSphere.
 
-If you experience a problem while following the steps below, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html) or the _Known Issues_ sections of the following topics:
+If you experience a problem while following the steps below, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/2-9/operating/diagnostics.html) or the _Known Issues_ sections of the following topics:
 
 * [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html#known-issues) in the <%= vars.ops_manager %> documentation
 
@@ -33,7 +33,7 @@ This section describes the resource requirements for installing <%= vars.ops_man
 
 You can install <%= vars.ops_manager %> with one of two runtimes. For more information about the requirements for each runtime, see the following:
 
-* **<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>):** [<%= vars.app_runtime_abbr %> on vSphere Requirements](https://docs.pivotal.io/application-service/operating/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/operating/vsphere-nsx-t.html).
+* **<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>):** [<%= vars.app_runtime_abbr %> on vSphere Requirements](https://docs.pivotal.io/application-service/2-9/operating/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/2-9/operating/vsphere-nsx-t.html).
 * **<%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>):**
     * **Without NSX-T:** [vSphere Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/vsphere-requirements.html)
     * **With NSX-T:** See the _Preparing to Install <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T_ section of [Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center](https://docs.pivotal.io/pks/vsphere-nsxt-index.html).
@@ -82,7 +82,7 @@ Complete the following procedures to install <%= vars.ops_manager %> on vSphere:
 
 See the following topics for additional configuration options:
 
-* [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html)
+* [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/2-9/operating/disk-format.html)
 * [Using the BOSH Resurrector](./resurrector.html)
 * [Availability Zones in vSphere](./understand-az.html)
 
@@ -93,8 +93,8 @@ After completing the procedures above, configure a runtime.
 For information about installing and configuring a runtime, see the following:
 
 * **<%= vars.app_runtime_abbr %>:**
-    * **Without NSX-T:** [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html)
-    * **With NSX-T:** [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/operating/vsphere-nsx-t.html)
+    * **Without NSX-T:** [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-9/operating/configure-pas.html)
+    * **With NSX-T:** [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/2-9/operating/vsphere-nsx-t.html)
         <p class="note"><strong>Note</strong>: You must install the NSX-T tile before you install or Upgrade the <%= vars.app_runtime_abbr %> tile.</p>
 * **<%= vars.k8s_runtime_abbr %>:**
     * **Without NSX-T:** [Installing <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/tkgi/vsphere-index.html)
