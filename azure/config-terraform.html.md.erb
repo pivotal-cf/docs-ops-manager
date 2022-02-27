@@ -15,11 +15,11 @@ This topic describes how to configure the BOSH Director tile within Pivotal Oper
 To complete the procedures in this topic, you must have access to the output generated when you ran `terraform apply` to create resources for this deployment. To view this output, run `terraform output` in the directory where you ran `terraform apply`. You use tidhe values in this output to configure the BOSH Director tile.
 
 
-## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='access-om'></a> Step 1: Log Into Ops Manager
 
 1. In a web browser, navigate to the fully qualified domain name (FQDN) of Ops Manager. Use the `ops_manager_dns` value from running `terraform output`.
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log into Ops Manager. To log in, see [Log In to Ops Manager For the First Time](../login.html#login-first-time).
 
 ## <a id='azure-config'></a> Step 2: Azure Config Page
 
@@ -67,20 +67,20 @@ To complete the procedures in this topic, you must have access to the output gen
 
 Select **Create Networks** and follow the procedures in this section to add the network configuration that you created for your VPC.
 
-* [Create Network for <%= vars.app_runtime_abbr %>](#pas-network)
-* [Create Network for <%= vars.k8s_runtime_abbr %>](#pks-network)
+* [Create Network for PAS](#pas-network)
+* [Create Network for TKGI](#pks-network)
 
-### <a id='pas-network'></a> Create Network for <%= vars.app_runtime_abbr %>
+### <a id='pas-network'></a> Create Network for PAS
 
 Create the following three networks:
 
-* [<%= vars.app_runtime_abbr %> Infrastructure Network](#pas-infrastructure-network)
-* [<%= vars.app_runtime_abbr %> Runtime Network](#pas-runtime-network)
-* [<%= vars.app_runtime_abbr %> Services Network](#pas-services-network)
+* [PAS Infrastructure Network](#pas-infrastructure-network)
+* [PAS Runtime Network](#pas-runtime-network)
+* [PAS Services Network](#pas-services-network)
 
 <p class="note"><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
-#### <a id='pas-infrastructure-network'></a> <%= vars.app_runtime_abbr %> Infrastructure Network
+#### <a id='pas-infrastructure-network'></a> PAS Infrastructure Network
 
 To create the infrastructure network, do the following:
 
@@ -131,7 +131,7 @@ To create the infrastructure network, do the following:
 
 1. Click **Save**.<%= vars.expand_network_azs %>
 
-#### <a id='pas-runtime-network'></a> <%= vars.app_runtime_abbr %> Runtime Network
+#### <a id='pas-runtime-network'></a> PAS Runtime Network
 
 1. Click **Add Network**.
 
@@ -178,7 +178,7 @@ To create the infrastructure network, do the following:
 
 1. Click **Save**.
 
-#### <a id='pas-services-network'></a> <%= vars.app_runtime_abbr %> Services Network
+#### <a id='pas-services-network'></a> PAS Services Network
 
 1. Click **Add Network**.
 
@@ -228,19 +228,19 @@ To create the infrastructure network, do the following:
 1. You might see red warnings.
    Ignore them only if **Enable ICMP checks** is not selected.
 
-If you complete this step for <%= vars.app_runtime_abbr %>, proceed to [Assign AZs and Networks Page](#assign-networks).
+If you complete this step for PAS, proceed to [Assign AZs and Networks Page](#assign-networks).
 
-### <a id='pks-network'></a> Create Network for <%= vars.k8s_runtime_abbr %>
+### <a id='pks-network'></a> Create Network for TKGI
 
 Create the following three networks:
 
-* [<%= vars.k8s_runtime_abbr %> Infrastructure Network](#pks-infrastructure-network)
-* [<%= vars.k8s_runtime_abbr %> Runtime Network](#pks-runtime-network)
-* [<%= vars.k8s_runtime_abbr %> Services Network](#pks-services-network)
+* [TKGI Infrastructure Network](#pks-infrastructure-network)
+* [TKGI Runtime Network](#pks-runtime-network)
+* [TKGI Services Network](#pks-services-network)
 
 <p class="note"><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
-#### <a id='pks-infrastructure-network'></a> <%= vars.k8s_runtime_abbr %> Infrastructure Network
+#### <a id='pks-infrastructure-network'></a> TKGI Infrastructure Network
 
 To create the infrastructure network, do the following:
 
@@ -290,7 +290,7 @@ To create the infrastructure network, do the following:
 
 1. Click **Save**.
 
-#### <a id='pks-runtime-network'></a> <%= vars.k8s_runtime_abbr %> Runtime Network
+#### <a id='pks-runtime-network'></a> TKGI Runtime Network
 
 1. Click **Add Network**.
 
@@ -338,7 +338,7 @@ To create the infrastructure network, do the following:
 
 1. Click **Save**.
 
-### <a id='pks-services-network'></a> <%= vars.k8s_runtime_abbr %> Services Network
+### <a id='pks-services-network'></a> TKGI Services Network
 
 1. Click **Add Network**.
 
@@ -425,7 +425,7 @@ To create the infrastructure network, do the following:
 1. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class="note"><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, Ops Manager automatically uses the new recommended allocation.</p>
-    <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>),
+    <p class="note"><strong>Note:</strong> If you install Pivotal Application Service for Windows (PASW),
     provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 1. (Optional) To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox.
@@ -455,6 +455,6 @@ To create an application gateway, follow the procedures in [Create an applicatio
 
 After you complete this procedure, do one of the following:
 <ul>
-  <li>If you are deploying <%= vars.app_runtime_abbr %>, follow the procedures in [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).</li>
-  <li>If you are deploying <%= vars.k8s_runtime_abbr %>, follow the procedures in [Creating Managed Identities in Azure for <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/pks/azure-managed-identities.html).</li>
+  <li>If you are deploying PAS, follow the procedures in [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).</li>
+  <li>If you are deploying TKGI, follow the procedures in [Creating Managed Identities in Azure for TKGI](https://docs.pivotal.io/pks/azure-managed-identities.html).</li>
 </ul>

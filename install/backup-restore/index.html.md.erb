@@ -5,18 +5,18 @@ owner: RelEng
 
 <% $this_topic="index" %>
 
-This topic provides an overview of backing up and restoring your <%= vars.ops_manager %> deployment.
+This topic provides an overview of backing up and restoring your deployment.
 
 
 ## <a id='before'></a> Before You Back Up
 
-When backing up data in your <%= vars.platform_name %> deployment, consider:
+When backing up data in your deployment, consider:
 
 * If your deployment uses external databases, check that it is a supported database configuration.
-  For more information, see [External Storage Support Across <%= vars.ops_manager %> Versions](backup-pcf-bbr.html#version-compatibility)
+  For more information, see [External Storage Support Across Ops Manager Versions](backup-pcf-bbr.html#version-compatibility)
   in _Backing Up Deployments with BBR_.
 
-* If your <%= vars.platform_name %> deployment uses internal databases, follow the backup and restore instructions for the MySQL server in the BBR documentation. For more information, see [Backup and Restore with BBR](#bbr).
+* If your deployment uses internal databases, follow the backup and restore instructions for the MySQL server in the BBR documentation. For more information, see [Backup and Restore with BBR](#bbr).
 
 <strong><a id='gdpr'></a>General Data Protection Regulation</strong>
 
@@ -29,9 +29,9 @@ Backup artifacts might contain personal data covered by GDPR. For example, a bac
 
 BOSH Backup and Restore (BBR) is a command-line tool for backing up and restoring BOSH deployments.
 
-To perform a backup of your <%= vars.platform_name %> deployment with BBR, see [Backing Up <%= vars.platform_name %> with BBR](backup-pcf-bbr.html).
+To perform a backup of your deployment with BBR, see [Backing Up Deployments with BBR](backup-pcf-bbr.html).
 
-To restore your <%= vars.platform_name %> deployment with BBR, see [Restoring <%= vars.platform_name %> from Backup with BBR](restore-pcf-bbr.html).
+To restore your deployment with BBR, see [Restoring Deployments from Backup with BBR](restore-pcf-bbr.html).
 
 To troubleshoot problems with BBR, see [Troubleshooting BBR](troubleshooting-bbr.html).
 
@@ -44,6 +44,6 @@ There are many different restore cases that can arise with BOSH Directors and PA
 
 * [Restoring Lost PAS Data](incident-response-guides/lost-cf-data.html)
 
-* [Recovering from an <%= vars.ops_manager %> and PAS Upgrade Failure](incident-response-guides/failed-pas-upgrade.html)
+* [Recovering from an Ops Manager and PAS Upgrade Failure](incident-response-guides/failed-pas-upgrade.html)
 
 These guides do not cover all possible restore scenarios. If you encounter another restore case, then some information in these guides might be applicable. For guidance, contact [Support](https://support.pivotal.io/).

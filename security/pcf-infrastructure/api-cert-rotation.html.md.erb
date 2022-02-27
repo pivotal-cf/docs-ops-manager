@@ -3,16 +3,16 @@ title: Overview of Certificate Rotation
 owner: Ops Manager
 ---
 
-This topic provides an overview of rotating certificate authorities (CAs) and leaf certificates in <%= vars.ops_manager %>.
+This topic provides an overview of rotating certificate authorities (CAs) and leaf certificates in Ops Manager.
 
 
 ## <a id='overview'></a> Overview
 
-The <%= vars.ops_manager %> API manages and lists internal CAs and leaf certificates that enable <%= vars.ops_manager %> components to communicate with each other securely using TLS. It can also list certificates used externally, such as SAML certificates that authenticate to an external identity provider (IDP).
+The Ops Manager API manages and lists internal CAs and leaf certificates that enable Ops Manager components to communicate with each other securely using TLS. It can also list certificates used externally, such as SAML certificates that authenticate to an external identity provider (IDP).
 
-For more information about the CAs and leaf certificates visible to the <%= vars.ops_manager %> API, see [Certificate Types](certificate-types.html).
+For more information about the CAs and leaf certificates visible to the Ops Manager API, see [Certificate Types](certificate-types.html).
 
-Rotate CAs and leaf certificates before they expire to avoid downtime for your deployment. To rotate certificates in <%= vars.ops_manager %>, first check the expiration dates of all certificates. Then, based on the types of certificates that expire soon, follow a certificate rotation procedure to replace expiring certificates and deploy BOSH to apply changes.
+Rotate CAs and leaf certificates before they expire to avoid downtime for your deployment. To rotate certificates in Ops Manager, first check the expiration dates of all certificates. Then, based on the types of certificates that expire soon, follow a certificate rotation procedure to replace expiring certificates and deploy BOSH to apply changes.
 
 
 ## <a id='check-expiration-and-types'></a> Check Certificate Expiration Dates and Types
@@ -27,7 +27,7 @@ To check the types and expiration dates of your certificates, see [Checking Expi
 
 ## <a id='procedures'></a> Certificate Rotation Procedures
 
-The topics listed in this section explain how to rotate certificates in <%= vars.ops_manager %>, including the <%= vars.ops_manager %> root CA, BOSH NATS CA, CAs stored in CredHub, and leaf certificates. There are different rotation procedures for each type of certificate that requires rotation.
+The topics listed in this section explain how to rotate certificates in Ops Manager, including the Ops Manager root CA, BOSH NATS CA, CAs stored in CredHub, and leaf certificates. There are different rotation procedures for each type of certificate that requires rotation.
 
 <p class='note warning'><strong>Warning:</strong> The rotation procedures described in the topics below do not work if the certificates have already expired. If the certificates have expired, contact <a href="https://support.pivotal.io/">Pivotal Support</a> for guidance.</p>
 
@@ -35,18 +35,18 @@ To rotate certificates, follow one of these procedures:
 
 * To rotate non-rotatable certificates, contact [Pivotal Support](https://support.pivotal.io/).
 
-* To rotate the <%= vars.ops_manager %> root CA and leaf certificates, see [Rotating the Root CA and Leaf Certificates](rotate-cas-and-leaf-certs.html). This procedure also rotates the BOSH NATS CA.
+* To rotate the Ops Manager root CA and leaf certificates, see [Rotating the Root CA and Leaf Certificates](rotate-cas-and-leaf-certs.html). This procedure also rotates the BOSH NATS CA.
 
-* To rotate non-configurable leaf certificates, but not the <%= vars.ops_manager %> root CA or BOSH NATS CA, see [Rotating Non-Configurable Leaf Certificates](rotate-non-configurable-certs.html).
+* To rotate non-configurable leaf certificates, but not the Ops Manager root CA or BOSH NATS CA, see [Rotating Non-Configurable Leaf Certificates](rotate-non-configurable-certs.html).
 
-* To rotate configurable leaf certificates, but not the <%= vars.ops_manager %> root CA or BOSH NATS CA, see [Rotating Configurable Leaf Certificates](rotate-configurable-certs.html).
+* To rotate configurable leaf certificates, but not the Ops Manager root CA or BOSH NATS CA, see [Rotating Configurable Leaf Certificates](rotate-configurable-certs.html).
 
 * To rotate the Services TLS CA certificate, see [Rotating the Services TLS CA and Its Leaf Certificates](services_tls_ca_rotate.html).
 
 
 ## <a id='other-certs'></a> Rotating Other Certificates
 
-Other certificates that the <%= vars.ops_manager %> API does not rotate include:
+Other certificates that the Ops Manager API does not rotate include:
 
 * IDP SAML certificates. To rotate IDP SAML certificates, see [Rotating Identity Provider SAML Certificates](rotate-saml-ca.html).
 

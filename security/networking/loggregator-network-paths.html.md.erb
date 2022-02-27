@@ -3,7 +3,7 @@ title: Loggregator Network Communications
 owner: Loggregator
 ---
 
-This topic describes Loggregator internal network communication paths with other <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) components.
+This topic describes Loggregator internal network communication paths with other Pivotal Application Service (PAS) components.
 
 For more information about Loggregator components and architecture, see [Loggregator Components and Architecture](https://docs.pivotal.io/application-service/2-7/loggregator/architecture.html).
 
@@ -20,7 +20,7 @@ The following table lists network communication paths for Loggregator:
 | loggregator_trafficcontroller | uaa | 8443 | TCP | HTTPS | TLS |
 | loggregator_trafficcontroller | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
 | loggregator_trafficcontroller (Reverse Log Proxy) | doppler | 8082 | TCP | gRPC over HTTP/2 | Mutual TLS |
-| Any&#42; | loggregator_trafficcontroller (<%= vars.app_runtime_abbr %> authentication proxy) | 8083 | TCP | HTTP | OAuth |
+| Any&#42; | loggregator_trafficcontroller (PAS authentication proxy) | 8083 | TCP | HTTP | OAuth |
 | loggregator_trafficcontroller (Route Registrar) | nats | 4222 | TCP | NATS | Basic authentication |
 | loggregator_trafficcontroller (Metrics Forwarder) | BOSH Director (Metrics Server) | 25555 and 8443 | TCP | gRPC over HTTP/2 | Mutual TLS |
 | loggregator_trafficcontroller | doppler (Log Cache) | 8080 | TCP | gRPC over HTTP/2 | Mutual TLS |

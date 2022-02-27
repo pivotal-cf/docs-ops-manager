@@ -7,18 +7,18 @@ owner: Ops Manager, Release Integration
 
 <html class="list-style-none"></html>
 
-This topic describes how to troubleshoot known issues when deploying or running <%= vars.ops_manager %> on Azure.
+This topic describes how to troubleshoot known issues when deploying or running Ops Manager on Azure.
 
 
 ## <a id="install-issues"></a> Installation Issues
 
 This section describes how to troubleshoot known installation issues.
 
-### <a id="cannot-copy-om"></a> Cannot Copy the <%= vars.ops_manager_full %> Image
+### <a id="cannot-copy-om"></a> Cannot Copy the Ops Manager Image
 
 #### Symptom
 
-You cannot copy the <%= vars.ops_manager %> image into your storage account as part of [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+You cannot copy the Ops Manager image into your storage account as part of [Step 4: Boot Ops Manager](../azure/deploy-manual.html#boot) in _Deploying Ops Manager on Azure_.
 
 #### Explanation
 
@@ -32,7 +32,7 @@ Install the Azure CLI v2.0 by following the instructions for your operating syst
 
 #### Symptom
 
-After clicking **Review Pending Changes**, then **Apply Changes** to install <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), the deployment fails at `create-env` with an error message similar to the following:
+After clicking **Review Pending Changes**, then **Apply Changes** to install Ops Manager and Pivotal Application Service (PAS), the deployment fails at `create-env` with an error message similar to the following:
 
 ```
 Command 'deploy' failed:
@@ -52,11 +52,11 @@ Exited with 1.
 
 #### Explanation
 
-You provided a passphrase when creating your key pair in [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+You provided a passphrase when creating your key pair in [Step 4: Boot Ops Manager](../azure/deploy-manual.html#boot) in _Deploying Ops Manager on Azure_.
 
 #### Solution
 
-Create a new key pair with no passphrase and re-do the installation. For more information, see [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+Create a new key pair with no passphrase and re-do the installation. For more information, see [Step 4: Boot Ops Manager](../azure/deploy-manual.html#boot) in _Deploying Ops Manager on Azure_.
 
 ### <a id="database-permissions"></a> Insufficient External Database Permissions
 
@@ -83,9 +83,9 @@ To mitigate slow performance or timeouts, the default value of the **Gorouter ti
 
 To edit the **Gorouter timeout to back ends** field:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Navigate to the Ops Manager Installation Dashboard.
 
-1. Click the <%= vars.app_runtime_abbr %> tile.
+1. Click the PAS tile.
 
 1. Select **Networking**.
 
@@ -105,6 +105,6 @@ HTTP libraries for Java and Go, running with default settings, prune connections
 
 #### Solution
 
-In the **Networking** pane of the <%= vars.app_runtime_abbr %> tile, set **Front end idle timeout** to `240` seconds or less, so that <%= vars.ops_manager %> regenerates the front end connection before it times out.
+In the **Networking** pane of the PAS tile, set **Front end idle timeout** to `240` seconds or less, so that Ops Manager regenerates the front end connection before it times out.
 
 For more information, see [Azure Networking Connection Idle for more than Four minutes](https://community.pivotal.io/s/article/Azure-Networking-Connection-Idle-for-more-than-Four-minutes) in the Pivotal Knowledge Base.

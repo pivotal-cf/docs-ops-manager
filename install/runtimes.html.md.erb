@@ -5,52 +5,52 @@ owner: PCF Documentation
 
 <% current_page.data.title = vars.platform_name + " Runtimes"  %>
 
-This topic describes the runtime environments you can install on <%= vars.ops_manager %>.
+This topic describes the runtime environments you can install on Ops Manager.
 
 
 ## <a id='overview'></a> Overview
 
-<%= vars.ops_manager %> includes runtime environment options that support apps and containers running on Linux and Windows VMs at different levels of resource usage and isolation. You install your chosen runtime or runtimes using the Ops Manager Installation Dashboard.
+Ops Manager includes runtime environment options that support apps and containers running on Linux and Windows VMs at different levels of resource usage and isolation. You install your chosen runtime or runtimes using the Ops Manager Installation Dashboard.
 
-<%= vars.ops_manager %> includes support for the following primary runtime environments:
+Ops Manager includes support for the following primary runtime environments:
 
-- [<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>)](#pas)
+- [Pivotal Application Service (PAS)](#pas)
 
-- [Enterprise <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)](#pks)
-
-
-## <a id='pas'></a> <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>)
-
-<%= vars.app_runtime_abbr %> lets developers develop and manage cloud-native apps and software services running on Linux. <%= vars.app_runtime_abbr %> is based on the open-source Cloud Foundry Application Runtime project. To install and configure <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
-
-As an alternative to <%= vars.app_runtime_abbr %>, you can install [Small Footprint <%= vars.app_runtime_abbr %>](#small-footprint) to deploy your app using fewer resources.
-
-After you install the <%= vars.app_runtime_abbr %> runtime tile, you can also install the following runtime tiles that extend the functionality of <%= vars.app_runtime_abbr %>:
-
-- [<%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>)](#pasw)
-- [<%= vars.segment_runtime_full %>](#ist)
-
-### <a id='small-footprint'></a> Small Footprint <%= vars.app_runtime_abbr %>
-
-Small Footprint <%= vars.app_runtime_abbr %> is an alternative to <%= vars.app_runtime_abbr %> that uses significantly fewer VMs than <%= vars.app_runtime_abbr %>, but limits system capacity and availability.
-
-For more information about Small Footprint <%= vars.app_runtime_abbr %>, see [Getting Started with Small Footprint <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html).
-
-### <a id='pasw'></a> <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>)
-
-<%= vars.windows_runtime_abbr %> lets <%= vars.ops_manager %> host apps on Windows VMs and enables <%= vars.ops_manager %> developers to push .NET apps to these Windows Diego Cells. You must install <%= vars.app_runtime_abbr %> before you can install <%= vars.windows_runtime_abbr %>.
-
-For more information about <%= vars.windows_runtime_abbr %>, see [<%= vars.windows_runtime_full %>](https://docs.pivotal.io/application-service/2-7/windows/index.html).
-
-### <a id='ist'></a> <%= vars.segment_runtime_full %>
-
-<%= vars.segment_runtime_full %> extends <%= vars.app_runtime_abbr %> to run apps in separate segments with their own isolated computing, routing, and logging resource pools. Operators replicate and configure an Isolation Segment tile for each new resource pool they want to create. You must install <%= vars.app_runtime_abbr %> before you can install <%= vars.segment_runtime_full %>.
-
-To install <%= vars.segment_runtime_full %>, see [Installing <%= vars.segment_runtime_full %>](https://docs.pivotal.io/application-service/2-7/operating/installing-pcf-is.html).
+- [Enterprise VMware Tanzu Kubernetes Grid Integrated Edition (TKGI)](#pks)
 
 
-## <a id='pks'></a><%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)
+## <a id='pas'></a> Pivotal Application Service (PAS)
 
-<%= vars.k8s_runtime_abbr %> lets operators provision, operate, and manage enterprise-grade Kubernetes clusters on <%= vars.ops_manager %>. <%= vars.k8s_runtime_abbr %> is based on the open-source Cloud Foundry Container Runtime project.
+PAS lets developers develop and manage cloud-native apps and software services running on Linux. PAS is based on the open-source Cloud Foundry Application Runtime project. To install and configure PAS, see [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
 
-To install and configure <%= vars.k8s_runtime_abbr %>, see [Installing Enterprise <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/pks/installing.html).
+As an alternative to PAS, you can install [Small Footprint PAS](#small-footprint) to deploy your app using fewer resources.
+
+After you install the PAS runtime tile, you can also install the following runtime tiles that extend the functionality of PAS:
+
+- [Pivotal Application Service for Windows (PASW)](#pasw)
+- [Pivotal Isolation Segment](#ist)
+
+### <a id='small-footprint'></a> Small Footprint PAS
+
+Small Footprint PAS is an alternative to PAS that uses significantly fewer VMs than PAS, but limits system capacity and availability.
+
+For more information about Small Footprint PAS, see [Getting Started with Small Footprint PAS](https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html).
+
+### <a id='pasw'></a> Pivotal Application Service for Windows (PASW)
+
+PASW lets Ops Manager host apps on Windows VMs and enables Ops Manager developers to push .NET apps to these Windows Diego Cells. You must install PAS before you can install PASW.
+
+For more information about PASW, see [Pivotal Application Service for Windows](https://docs.pivotal.io/application-service/2-7/windows/index.html).
+
+### <a id='ist'></a> Pivotal Isolation Segment
+
+Pivotal Isolation Segment extends PAS to run apps in separate segments with their own isolated computing, routing, and logging resource pools. Operators replicate and configure an Isolation Segment tile for each new resource pool they want to create. You must install PAS before you can install Pivotal Isolation Segment.
+
+To install Pivotal Isolation Segment, see [Installing Pivotal Isolation Segment](https://docs.pivotal.io/application-service/2-7/operating/installing-pcf-is.html).
+
+
+## <a id='pks'></a>VMware Tanzu Kubernetes Grid Integrated Edition (TKGI)
+
+TKGI lets operators provision, operate, and manage enterprise-grade Kubernetes clusters on Ops Manager. TKGI is based on the open-source Cloud Foundry Container Runtime project.
+
+To install and configure TKGI, see [Installing Enterprise TKGI](https://docs.pivotal.io/pks/installing.html).

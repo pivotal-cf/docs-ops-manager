@@ -5,37 +5,37 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.ops_manager + " on GCP"  %>
 
-This topic describes how to install [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) on Google Cloud Platform (GCP).
+This topic describes how to install [Ops Manager](https://network.pivotal.io/products/pivotal-cf) on Google Cloud Platform (GCP).
 
-It includes resource requirements, prerequisites, instructions for installing <%= vars.ops_manager %> on GCP, and additional resources.
+It includes resource requirements, prerequisites, instructions for installing Ops Manager on GCP, and additional resources.
 
 ## <a id="overview"></a> Overview
 
-You can install <%= vars.ops_manager %> on GCP with either the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime. There are resource requirements specific to each runtime. Ensure you meet the requirements for your runtime and the requirements specific to GCP before installing <%= vars.ops_manager %> on GCP.
+You can install Ops Manager on GCP with either the Pivotal Application Service (PAS) or VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) runtime. There are resource requirements specific to each runtime. Ensure you meet the requirements for your runtime and the requirements specific to GCP before installing Ops Manager on GCP.
 
 ## <a id="requirements"></a> Requirements
 
-This section lists the following resource requirements for installing <%= vars.ops_manager %> on GCP:
+This section lists the following resource requirements for installing Ops Manager on GCP:
 
-* General <%= vars.ops_manager %> resource requirements. See [<%= vars.ops_manager %> Resource Requirements](#general-requirements).
+* General Ops Manager resource requirements. See [Ops Manager Resource Requirements](#general-requirements).
 * GCP-specific resource requirements. See [GCP Resource Requirements](#gcp-requirements).
 
-### <a id="general-requirements"></a> <%= vars.ops_manager %> Resource Requirements
+### <a id="general-requirements"></a> Ops Manager Resource Requirements
 
-This section lists resource requirements for installing <%= vars.ops_manager %> on GCP. It includes links to general resource requirements for both the <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> runtimes.
+This section lists resource requirements for installing Ops Manager on GCP. It includes links to general resource requirements for both the PAS and TKGI runtimes.
 
-See one of the following topics, depending on the runtime you plan to install using <%= vars.ops_manager %>:
+See one of the following topics, depending on the runtime you plan to install using Ops Manager:
 
-* For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-7/operating/requirements.html).
-* For <%= vars.k8s_runtime_abbr %>-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
+* For PAS-specific resource requirements, see [PAS Resource Requirements](https://docs.pivotal.io/application-service/2-7/operating/requirements.html).
+* For TKGI-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
 
 ### <a id="gcp-requirements"></a> GCP Resource Requirements
 
-The following are GCP-specific resource requirements for installing <%= vars.ops_manager %> on GCP:
+The following are GCP-specific resource requirements for installing Ops Manager on GCP:
 
-* Installing <%= vars.ops_manager %> on GCP requires a minimum of the following VM instance limits in your GCP account. The number of VMs required depends on the number of tiles and availability zones you plan to deploy. The following VM guidelines apply to the <%= vars.app_runtime_abbr %> and Small Footprint <%= vars.app_runtime_abbr %> runtimes:
+* Installing Ops Manager on GCP requires a minimum of the following VM instance limits in your GCP account. The number of VMs required depends on the number of tiles and availability zones you plan to deploy. The following VM guidelines apply to the PAS and Small Footprint PAS runtimes:
 
-  * **<%= vars.app_runtime_abbr %>**: At a minimum, a new GCP deployment requires the following `custom` VMs for <%= vars.app_runtime_abbr %> and Ops Manager:
+  * **PAS**: At a minimum, a new GCP deployment requires the following `custom` VMs for PAS and Ops Manager:
 <table border='1' class='nice'>
   <tr>
     <th width ="33%">VM Count</th>
@@ -67,9 +67,9 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
     <td>16</td>
   </tr>
 </table>
-<p class="note"><strong>Note:</strong> If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/2-7/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+<p class="note"><strong>Note:</strong> If you are deploying a test or sandbox Ops Manager that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/2-7/operating/scaling-ert-components.html">Scaling PAS</a>.</p>
 
-  * **Small Footprint <%= vars.app_runtime_abbr %>**: At a minimum, a new GCP deployment requires the following VMs to run Small Footprint <%= vars.app_runtime_abbr %>:
+  * **Small Footprint PAS**: At a minimum, a new GCP deployment requires the following VMs to run Small Footprint PAS:
 <table id='small-footprint' border="1" class="nice">
   <tr>
     <th width ="15%"></th>
@@ -79,7 +79,7 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
     <th width ="15%">RAM (GB)</th>
     <th width ="25%">Notes</th>
   </tr><tr>
-    <th rowspan=7>Small Footprint <%= vars.app_runtime_abbr %></th>
+    <th rowspan=7>Small Footprint PAS</th>
     <td>micro</td>
     <td>11</td>
     <td>1</td>
@@ -136,14 +136,14 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
     <td></td>
   </tr>
 </table>
-  * **<%= vars.k8s_runtime_abbr %>**: See [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/gcp-requirements.html).
+  * **TKGI**: See [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/gcp-requirements.html).
 
-* (<%= vars.app_runtime_abbr %>-only) Your GCP project must have sufficient quota to deploy all the VMs needed to install <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>. For a list of suggested quotas, see [Recommended GCP Quotas](./gcp-quotas.html).
+* (PAS-only) Your GCP project must have sufficient quota to deploy all the VMs needed to install Ops Manager with PAS. For a list of suggested quotas, see [Recommended GCP Quotas](./gcp-quotas.html).
 
 
 ## <a id="prerequisites"></a> Prerequisites
 
-To install <%= vars.ops_manager %> on GCP, you must do the following:
+To install Ops Manager on GCP, you must do the following:
 
 * Install the Google Cloud SDK on your machine and authenticate it to your GCP account. To download the Google Cloud SDK, see [Google Cloud SDK](https://cloud.google.com/sdk/).
 
@@ -159,43 +159,43 @@ To install <%= vars.ops_manager %> on GCP, you must do the following:
    * To use Cloud DNS, the following permission is required to add and modify DNS entries:
      * **Project** > **Owner**
 
-* Create an SSL certificate for your <%= vars.ops_manager %> domain.
-  <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> to a production environment, you must obtain a certificate from a certificate authority. <%= vars.company_name %> recommends using a self-signed certificate generated by <%= vars.ops_manager %> for development and testing purposes only.</p>
+* Create an SSL certificate for your Ops Manager domain.
+  <p class="note"><strong>Note:</strong> To deploy Ops Manager to a production environment, you must obtain a certificate from a certificate authority. <%= vars.company_name %> recommends using a self-signed certificate generated by Ops Manager for development and testing purposes only.</p>
 
-* Assign administrative rights to a domain for <%= vars.ops_manager %>. You need to be able to add wildcard records to this domain.
+* Assign administrative rights to a domain for Ops Manager. You need to be able to add wildcard records to this domain.
 
 * Create a wildcard DNS record that points to your router or load balancer. Alternatively, you can use a service such as xip.io. For example, `203.0.113.0.xip.io`. Then, create at least one wildcard TLS certificate that matches the DNS record you configured.
   <p class="note"><strong>Note:</strong>  With a wildcard DNS record, every hostname in your domain resolves to the IP address of your router or load balancer. For example, if you create a DNS record `*.example.com` pointing to your router, every app deployed to the `example.com` domain resolves to the IP address of your router.</p>
 
 * Create one or more NTP servers, if the NTP servers are not already provided by your GCP project.
 
-* Install the most recent version of one of the following CLIs, depending on your <%= vars.ops_manager %> runtime:
-  * **<%= vars.app_runtime_abbr %>:** The Cloud Foundry Command Line Interface (cf CLI). See [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli#downloads) in GitHub.
-  * **<%= vars.k8s_runtime_abbr %>:** The <%= vars.k8s_runtime_abbr %> CLI. See [Installing the <%= vars.k8s_runtime_abbr %> CLI](https://docs.pivotal.io/pks/installing-pks-cli.html).
+* Install the most recent version of one of the following CLIs, depending on your Ops Manager runtime:
+  * **PAS:** The Cloud Foundry Command Line Interface (cf CLI). See [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli#downloads) in GitHub.
+  * **TKGI:** The TKGI CLI. See [Installing the TKGI CLI](https://docs.pivotal.io/pks/installing-pks-cli.html).
 
-* **(<%= vars.app_runtime_abbr %>-only)** Request a quota increase for your GCP project. For GCP quota requirements, see [GCP Resource Requirements](#gcp-requirements). To request an increase, see [Quotas](https://console.cloud.google.com/iam-admin/quotas) in the GCP console.
+* **(PAS-only)** Request a quota increase for your GCP project. For GCP quota requirements, see [GCP Resource Requirements](#gcp-requirements). To request an increase, see [Quotas](https://console.cloud.google.com/iam-admin/quotas) in the GCP console.
 
-* **(<%= vars.app_runtime_abbr %>-only)** Configure sufficient IP allocation. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pas) above.
+* **(PAS-only)** Configure sufficient IP allocation. For more information about IP allocation requirements, see [PAS Resource Requirements](#pas) above.
 
-* **(Optional)** **(<%= vars.app_runtime_abbr %>-only)** Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+* **(Optional)** **(PAS-only)** Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring PAS for Upgrades_.
 
-* **(Optional)** **(<%= vars.app_runtime_abbr %> and Ops Manager-only)** Configure external databases. Pivotal recommends using external databases in production deployments for BOSH Director and <%= vars.app_runtime_abbr %>. An external database must be configured to use the UTC timezone.
+* **(Optional)** **(PAS and Ops Manager-only)** Configure external databases. Pivotal recommends using external databases in production deployments for BOSH Director and PAS. An external database must be configured to use the UTC timezone.
 
-* **(Optional)** **(<%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>-only)** Configure external user stores. When you deploy <%= vars.ops_manager %>, you can select a SAML user store for <%= vars.ops_manager %> or a SAML or LDAP user store for <%= vars.app_runtime_abbr %>, to integrate existing user accounts.
+* **(Optional)** **(PAS and Ops Manager-only)** Configure external user stores. When you deploy Ops Manager, you can select a SAML user store for Ops Manager or a SAML or LDAP user store for PAS, to integrate existing user accounts.
 
 
-## <a id="install"></a> Install <%= vars.ops_manager %> on GCP
+## <a id="install"></a> Install Ops Manager on GCP
 
-You can install <%= vars.ops_manager %> on GCP.
+You can install Ops Manager on GCP.
 
-To install <%= vars.ops_manager %> on GCP, see [Installing <%= vars.ops_manager %> on GCP](gcp-manual.html)
+To install Ops Manager on GCP, see [Installing Ops Manager on GCP](gcp-manual.html)
 
 
 ## <a id="resources"></a> Additional Resources
 
-The following are additional resources related to installing <%= vars.ops_manager %> on GCP:
+The following are additional resources related to installing Ops Manager on GCP:
 
 - For general authentication guidelines for GCP, see [GCP authentication documentation](https://cloud.google.com/docs/authentication).
-- For more information about troubleshooting the <%= vars.ops_manager %> on GCP infrastructure, see [Troubleshooting <%= vars.ops_manager %> on GCP](https://docs.pivotal.io/application-service/2-7/operating/gcp-troubleshooting.html).
-- For production-level deployment options for <%= vars.ops_manager %> on GCP, see [GCP Reference Architecture](../refarch/gcp/gcp_ref_arch.html).
-- For general certificate requirements for deploying <%= vars.ops_manager %>, see [Certificate Requirements](https://docs.pivotal.io/application-service/2-7/adminguide/securing-traffic.html#certtypes).
+- For more information about troubleshooting the Ops Manager on GCP infrastructure, see [Troubleshooting Ops Manager on GCP](https://docs.pivotal.io/application-service/2-7/operating/gcp-troubleshooting.html).
+- For production-level deployment options for Ops Manager on GCP, see [GCP Reference Architecture](../refarch/gcp/gcp_ref_arch.html).
+- For general certificate requirements for deploying Ops Manager, see [Certificate Requirements](https://docs.pivotal.io/application-service/2-7/adminguide/securing-traffic.html#certtypes).

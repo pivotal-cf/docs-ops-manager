@@ -6,7 +6,7 @@ owner: Ops Manager
 
 <html class="list-style-none"></html>
 
-This topic describes how to deploy <%= vars.ops_manager %> on Google Cloud Platform (GCP).
+This topic describes how to deploy Ops Manager on Google Cloud Platform (GCP).
 
 Before you deploy Ops Manager, see the preparation steps in [Preparing to Deploy Ops Manager on GCP](prepare-env-manual.html).
 
@@ -65,13 +65,13 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
         |Memory| 8&nbsp;GB |
   * **Boot disk**: Click **Change**, then perform the following steps:
      * Click **Custom images** if it is not already selected.
-     * Select the **Boot disk type**. If your environment has high performance needs, select **SSD**. As an example, environments used to [develop <%= vars.ops_manager %> tiles](http://docs.pivotal.io/tiledev/) might benefit from a higher performing <%= vars.ops_manager %> VM boot disk. For most environments, you can select **Standard**.
+     * Select the **Boot disk type**. If your environment has high performance needs, select **SSD**. As an example, environments used to [develop Ops Manager tiles](http://docs.pivotal.io/tiledev/) might benefit from a higher performing Ops Manager VM boot disk. For most environments, you can select **Standard**.
      * Set the **Size (GB)** of the boot disk to the minimum or higher.
 
             | **Machine Spec** | **Minimum Value** |
             |------------------|----------------------|
             |Boot disk|100&nbsp;GB|
-     * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.<br>
+     * Select the Ops Manager image you created in the previous step if it is not already selected.<br>
         <%= image_tag("../common/images/gcp/boot_image.png", :alt => "Screenshot of the VM instance dialog. The page is titled 'Boot disk'. It shows the example image selected.") %>
      * Click **Select** to save.
   * Under **Identity and API access**, select the **Service account** you created when preparing your environment during the step [Set up IAM Service Accounts](./prepare-env-manual.html#iam_account).
@@ -95,4 +95,4 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP](./config-manual.html).
 
-Later on, if you need to SSH into the <%= vars.ops_manager %> VM to perform diagnostic troubleshooting, see [Log Into the <%= vars.ops_manager %> VM](../install/ssh-login.html#ssh-by-iaas).
+Later on, if you need to SSH into the Ops Manager VM to perform diagnostic troubleshooting, see [Log Into the Ops Manager VM](../install/ssh-login.html#ssh-by-iaas).

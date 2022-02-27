@@ -5,36 +5,36 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.platform_name + " on GCP" %>
 
-This topic explains how to install <%= vars.ops_manager %> on GCP manually.
+This topic explains how to install Ops Manager on GCP manually.
 
 ## <a id="overview"></a> Overview
 
-You can install <%= vars.ops_manager %> on GCP with either the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime.
+You can install Ops Manager on GCP with either the Pivotal Application Service (PAS) or VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) runtime.
 
-To install <%= vars.ops_manager %> on GCP manually, do one of the following:
+To install Ops Manager on GCP manually, do one of the following:
 
-* Install with <%= vars.app_runtime_abbr %>. See [Install with <%= vars.app_runtime_abbr %>](#manual-pas).
-* Install with <%= vars.k8s_runtime_abbr %>. See [Install with <%= vars.k8s_runtime_abbr %>](#manual-pks).
+* Install with PAS. See [Install with PAS](#manual-pas).
+* Install with TKGI. See [Install with TKGI](#manual-pks).
 
-## <a id="manual-pas"></a> Install with <%= vars.app_runtime_abbr %>
+## <a id="manual-pas"></a> Install with PAS
 
-To install manually with <%= vars.app_runtime_abbr %>, do the following:
+To install manually with PAS, do the following:
 
-1. Prepare to deploy <%= vars.ops_manager %>. See [Preparing to Deploy <%= vars.ops_manager %> on GCP](../gcp/prepare-env-manual.html).
+1. Prepare to deploy Ops Manager. See [Preparing to Deploy Ops Manager on GCP](../gcp/prepare-env-manual.html).
 
-1. Deploy <%= vars.ops_manager %>. See [Deploying <%= vars.ops_manager %> on GCP](../gcp/deploy-manual.html).
+1. Deploy Ops Manager. See [Deploying Ops Manager on GCP](../gcp/deploy-manual.html).
 
 1. Configure BOSH Director. See [Configuring BOSH Director on GCP](../gcp/config-manual.html).
 
 1. (Optional). Configure a shared VPC. See [(Optional) Configuring a Shared VPC on GCP](./gcp-shared-vpc.html).
 
-## <a id="manual-pks"></a> Install with <%= vars.k8s_runtime_abbr %>
+## <a id="manual-pks"></a> Install with TKGI
 
-To install manually with <%= vars.k8s_runtime_abbr %>, do the following:
+To install manually with TKGI, do the following:
 
-1. Prepare to deploy <%= vars.ops_manager %>. See [Preparing to Deploy <%= vars.ops_manager %> on GCP](../gcp/prepare-env-manual.html).
+1. Prepare to deploy Ops Manager. See [Preparing to Deploy Ops Manager on GCP](../gcp/prepare-env-manual.html).
 
-1. Deploy <%= vars.ops_manager %>. See [Deploying <%= vars.ops_manager %> on GCP](../gcp/deploy-manual.html).
+1. Deploy Ops Manager. See [Deploying Ops Manager on GCP](../gcp/deploy-manual.html).
 
 1. Configure BOSH Director. See [Configuring BOSH Director on GCP](../gcp/config-manual.html).
 
@@ -46,7 +46,7 @@ After completing the procedures above, configure a runtime.
 
 For information about installing and configuring a runtime, see the following:
 
-* Configure <%= vars.app_runtime_abbr %>. See [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
-* Configure <%= vars.k8s_runtime_abbr %>. See [Installing <%= vars.k8s_runtime_abbr %> on GCP](https://docs.pivotal.io/tkgi/installing-gcp.html).
+* Configure PAS. See [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
+* Configure TKGI. See [Installing TKGI on GCP](https://docs.pivotal.io/tkgi/installing-gcp.html).
 * [Installing and Configuring TAS for VMs on Windows](https://docs.pivotal.io/application-service/2-7/windows/installing.html)
 * [Installing Small Footprint TAS for VMs](https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html#install)

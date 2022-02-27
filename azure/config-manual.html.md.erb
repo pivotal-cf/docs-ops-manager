@@ -82,11 +82,11 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 | |	Standard_F48s_v2 |
 | |	Standard_F64s_v2 |
 
-## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='access-om'></a> Step 1: Log Into Ops Manager
 
-1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you created in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
+1. In a web browser, navigate to the fully qualified domain name (FQDN) of Ops Manager that you created in [Deploying Ops Manager on Azure](deploy-manual.html).
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log into Ops Manager. To log in, see [Log In to Ops Manager For the First Time](../login.html#login-first-time).
 
 ## <a id='azure-config'></a> Step 2: Azure Config Page
 
@@ -126,7 +126,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
     <p class="note"><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
 
 1. <%= partial "../common/azure-environment" %>
-    <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS), select <strong>Azure Stack</strong>. For more information about ADFS for Azure, see <a href="https://docs.pivotal.io/pivotalcf/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
+    <p class="note"><strong>Note:</strong> To deploy Ops Manager on Azure using Active Directory Federation Services (ADFS), select <strong>Azure Stack</strong>. For more information about ADFS for Azure, see <a href="https://docs.pivotal.io/pivotalcf/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
 
 1. (Optional) If you selected `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
   1. For **Domain**, enter the domain for your Azure Stack deployment. For example, `local.azurestack.external`.
@@ -326,7 +326,7 @@ To create the services network, do the following:
 1. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class="note"><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, Ops Manager automatically uses the updated recommended allocation.</p>
-    <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>),
+    <p class="note"><strong>Note:</strong> If you install Pivotal Application Service for Windows (PASW),
     provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 1. (Optional) To add a load balancer to the BOSH Director:
@@ -352,7 +352,7 @@ To create the services network, do the following:
 
 ## <a id="next"></a> Next Steps
 
-* (Optional) When <%= vars.ops_manager %> finishes deploying, deploy BOSH Add-ons to your system. For more information, see [Deploying BOSH Add-Ons](../install/add-ons.html).
+* (Optional) When Ops Manager finishes deploying, deploy BOSH Add-ons to your system. For more information, see [Deploying BOSH Add-Ons](../install/add-ons.html).
 
-* Install one or more <%= vars.ops_manager %> runtime environments to complete your installation.
-  For more information, see [<%= vars.ops_manager %> Runtimes](../install/runtimes.html).
+* Install one or more Ops Manager runtime environments to complete your installation.
+  For more information, see [Ops Manager Runtimes](../install/runtimes.html).

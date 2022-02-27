@@ -3,22 +3,22 @@ title: OpenStack Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.platform_name  %> on OpenStack. This architecture is valid for most production-grade <%= vars.platform_name %> deployments in a single project using three availability zones (AZs).
+This topic describes a reference architecture for Ops Manager on OpenStack. This architecture is valid for most production-grade deployments in a single project using three availability zones (AZs).
 
-For general requirements for running <%= vars.ops_manager %> and specific requirements for running <%= vars.ops_manager %> on OpenStack, see [OpenStack on <%= vars.ops_manager %> Requirements](../../install/openstack.html).
+For general requirements for running Ops Manager and specific requirements for running Ops Manager on OpenStack, see [OpenStack on Ops Manager Requirements](../../install/openstack.html).
 
 
-## <a id="refarchs"></a><%= vars.ops_manager %> Reference Architectures
+## <a id="refarchs"></a>Ops Manager Reference Architectures
 
-An <%= vars.ops_manager %> reference architecture describes a proven approach for deploying <%= vars.ops_manager %> on a specific IaaS, such as OpenStack, that meets these requirements:
+An Ops Manager reference architecture describes a proven approach for deploying Ops Manager on a specific IaaS, such as OpenStack, that meets these requirements:
 
 * Secure
 * Publicly-accessible
-* Includes common <%= vars.ops_manager %>-managed runtimes and services,
+* Includes common Ops Manager-managed runtimes and services,
 such as  for PAS, VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
 * Can host at least 100 app instances
 
-<%= vars.company_name %> provides reference architectures to help you determine the best configuration for your <%= vars.ops_manager %> deployment.
+<%= vars.company_name %> provides reference architectures to help you determine the best configuration for your Ops Manager deployment.
 
 
 ## <a id="base_components"></a> Base Reference Architecture Components
@@ -33,7 +33,7 @@ The table below lists the components that are part of a base reference architect
     <td>Domain zones and routes in use by the reference architecture include:<br><br>
       <ul>
          <li>Zones for *.apps and *.sys (required)</li>
-         <li>A route for <%= vars.ops_manager_full %> (required)</li>
+         <li>A route for Ops Manager (required)</li>
          <li>A route for Doppler (required)</li>
          <li>A route for Loggregator (required)</li>
          <li>A route for SSH access to app containers (optional)</li>
@@ -42,7 +42,7 @@ The table below lists the components that are part of a base reference architect
     </td>
   </tr>
   <tr>
-    <td><strong><%= vars.ops_manager %></strong></td>
+    <td><strong>Ops Manager</strong></td>
     <td>Deployed on the infrastructure network and accessible by fully-qualified domain name (FQDN) or through an optional jumpbox.</td>
   </tr>
   <tr>
@@ -59,7 +59,7 @@ The table below lists the components that are part of a base reference architect
   </tr>
   <tr>
     <td><strong>Gorouters</strong></td>
-    <td>Accessed through the Application Load Balancer. Deployed on the <%= vars.app_runtime_full %> (PAS) network, one per AZ.</td>
+    <td>Accessed through the Application Load Balancer. Deployed on the Pivotal Application Service (PAS) network, one per AZ.</td>
   </tr>
   <tr>
     <td><strong>Diego Brains</strong></td>
@@ -83,10 +83,10 @@ The table below lists the components that are part of a base reference architect
   </tr>
   <tr>
   	<td><strong>Service Accounts</strong></td>
-  	<td><%= vars.recommended_by %> recommends two service accounts: one for OpenStack "paving," and the other for <%= vars.ops_manager %> and BOSH.<br><br>
+  	<td><%= vars.recommended_by %> recommends two service accounts: one for OpenStack "paving," and the other for Ops Manager and BOSH.<br><br>
       <ul>
         <li><strong>Admin Account:</strong> Concourse uses this account to provision required OpenStack resources as well as a Keystone service account.</li>
-  		  <li><strong>Keystone Service Account:</strong> This service account is automatically provisioned with restricted access only to resources needed by <%= vars.platform_name %>.
+  		  <li><strong>Keystone Service Account:</strong> This service account is automatically provisioned with restricted access only to resources needed by Ops Manager.
       </ul>
   	 </td>
   </tr>
@@ -106,19 +106,19 @@ The table below lists the network objects in this reference architecture.
 <th><strong>Estimated Number</strong></th>
   <tr>
     <td><strong>Floating IP addresses</strong></td>
-    <td>Two per deployment: one assigned to <%= vars.ops_manager %>, the other to your jumpbox.</td>
+    <td>Two per deployment: one assigned to Ops Manager, the other to your jumpbox.</td>
     <td>2</td>
   </tr>
   <tr>
     <td><strong>Project</strong></td>
-    <td>One per deployment. A <%= vars.platform_name %> deployment exists within a single project and a single OpenStack region, but should distribute <%= vars.platform_name %> jobs and instances across three OpenStack AZs to ensure high availability.</td>
+    <td>One per deployment. A deployment exists within a single project and a single OpenStack region, but should distribute Ops Manager jobs and instances across three OpenStack AZs to ensure high availability.</td>
     <td>1</td>
   </tr>
   <tr>
     <td><strong>Networks</strong></td>
     <td>The reference architecture requires these Tenant Networks:
       <ul>
-        <li>1 x (/24) <strong>Infrastructure</strong> (<%= vars.ops_manager %>, BOSH Director, Jumpbox).</li>
+        <li>1 x (/24) <strong>Infrastructure</strong> (Ops Manager, BOSH Director, Jumpbox).</li>
         <li>1 x (/20) <strong>PAS</strong> (Gorouters, Diego Cells, Cloud Controllers, etc.).</li>
         <li>1 x (/20) <strong>Services</strong> (RabbitMQ, MySQL, Spring Cloud Services, etc.)</li>
         <li>1 x (/24) <strong>On-demand services</strong> (various)</li>
@@ -156,14 +156,14 @@ The table below lists the network objects in this reference architecture.
     		<td>22</td>
     		<td>0.0.0.0/0</td>
     		<td>TCP</td>
-    		<td><%= vars.ops_manager %> SSH access</td>
+    		<td>Ops Manager SSH access</td>
     	</tr>
     	<tr>
     		<td>OpsMgrSG</td>
     		<td>443</td>
     		<td>0.0.0.0/0</td>
     		<td>TCP</td>
-    		<td><%= vars.ops_manager %> HTTP access</td>
+    		<td>Ops Manager HTTP access</td>
     	</tr>
     	<tr>
     		<td>VmsSG</td>
@@ -179,7 +179,7 @@ The table below lists the network objects in this reference architecture.
   </tr>
   <tr>
     <td><strong>Load Balancers</strong></td>
-    <td><%= vars.ops_manager %> on OpenStack requires a load balancer, which can be configured with multiple listeners to forward HTTP, HTTPS, and TCP traffic. <%= vars.company_name %> recommends two load balancers: one to forward the traffic to the Gorouters, <code>AppsLB</code>; and the other to forward the traffic to the Diego Brain SSH proxy, <code>SSHLB</code>.
+    <td>Ops Manager on OpenStack requires a load balancer, which can be configured with multiple listeners to forward HTTP, HTTPS, and TCP traffic. <%= vars.company_name %> recommends two load balancers: one to forward the traffic to the Gorouters, <code>AppsLB</code>; and the other to forward the traffic to the Diego Brain SSH proxy, <code>SSHLB</code>.
     <br><br>
     The table below describes the required listeners for each load balancer:
       <table>
@@ -223,7 +223,7 @@ The table below lists the network objects in this reference architecture.
   </tr>
   <tr>
     <td><strong>Jumpbox</strong></td>
-    <td>Optional. Provides a way of accessing different network components. For example, you can configure it with your own permissions and then set it up to access to Pivotal Network to download tiles. Using a jumpbox is particularly useful in IaaSes where <%= vars.ops_manager %> does not have a public IP address. In these cases, you can SSH into <%= vars.ops_manager %> or any other component through the jumpbox.
+    <td>Optional. Provides a way of accessing different network components. For example, you can configure it with your own permissions and then set it up to access to Pivotal Network to download tiles. Using a jumpbox is particularly useful in IaaSes where Ops Manager does not have a public IP address. In these cases, you can SSH into Ops Manager or any other component through the jumpbox.
     </td>
     <td>1</td>
   </tr>

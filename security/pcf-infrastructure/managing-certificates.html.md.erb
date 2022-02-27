@@ -3,25 +3,25 @@ title: Managing Certificates with the Ops Manager API
 owner: Ops Manager
 ---
 
-This topic describes how to manage and retrieve information about certificates in <%= vars.ops_manager %>
-using the <%= vars.ops_manager %> API.
+This topic describes how to manage and retrieve information about certificates in Ops Manager
+using the Ops Manager API.
 
 
 ## <a id='overview'></a> Overview
 
-The <%= vars.ops_manager %> API includes endpoints for managing and retrieving information
-about certificates in an <%= vars.ops_manager %> deployment.
+The Ops Manager API includes endpoints for managing and retrieving information
+about certificates in an Ops Manager deployment.
 
-For more information about <%= vars.ops_manager %> API endpoints for managing certificates,
-see [Certificate Authorities](https://docs.pivotal.io/platform/2-7/opsman-api/#tag/Certificate-Authorities) in the <%= vars.ops_manager %> API documentation.
+For more information about Ops Manager API endpoints for managing certificates,
+see [Certificate Authorities](https://docs.pivotal.io/platform/2-7/opsman-api/#tag/Certificate-Authorities) in the Ops Manager API documentation.
 
 
 ## <a id='prerequisites'></a> Prerequisites
 
-To use the <%= vars.ops_manager %> API, you must generate an access token by authenticating
-with the <%= vars.ops_manager %> User Account and Authentication (UAA) server.
+To use the Ops Manager API, you must generate an access token by authenticating
+with the Ops Manager User Account and Authentication (UAA) server.
 
-For more information about authenticating with UAA, see [Using the <%= vars.ops_manager %> API]
+For more information about authenticating with UAA, see [Using the Ops Manager API]
 (../../install/ops-man-api.html).
 
 
@@ -38,33 +38,33 @@ To generate and retrieve a new RSA certificate signed by the root certificate au
           -i
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %>
+    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your Ops Manager
     deployment.
-    * `UAA-ACCESS-TOKEN` is your <%= vars.ops_manager %> access token without any newline
+    * `UAA-ACCESS-TOKEN` is your Ops Manager access token without any newline
     characters such as `\n`.
 
 
-## <a id='root-certs'></a> Retrieve the <%= vars.ops_manager %> Root CA
+## <a id='root-certs'></a> Retrieve the Ops Manager Root CA
 
-You can view the <%= vars.ops_manager %> root CA as a file or in JSON format.
+You can view the Ops Manager root CA as a file or in JSON format.
 
-### <a id='root-certs-file-ui'></a> Retrieve the <%= vars.ops_manager %> Root CA as a File Through the <%= vars.ops_manager %> UI
+### <a id='root-certs-file-ui'></a> Retrieve the Ops Manager Root CA as a File Through the Ops Manager UI
 
-To retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %>
+To retrieve the Ops Manager root CA as a file through the Ops Manager
 UI:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Navigate to the Ops Manager Installation Dashboard.
 
 1. From the account menu dropdown in the upper-right corner of the screen, select **Settings**.
 
 1. Select **Advanced Options**.
 
-1. Select **Download Root CA Cert**. Your browser downloads the <%= vars.ops_manager %> root
+1. Select **Download Root CA Cert**. Your browser downloads the Ops Manager root
 CA certificate file.
 
-### <a id='root-certs-file'></a> Retrieve the <%= vars.ops_manager %> Root CA as a File Through the <%= vars.ops_manager %> API
+### <a id='root-certs-file'></a> Retrieve the Ops Manager Root CA as a File Through the Ops Manager API
 
-To retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %>
+To retrieve the Ops Manager root CA as a file through the Ops Manager
 API:
 
 1. Run:
@@ -76,13 +76,13 @@ API:
           -i
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
-    * `UAA-ACCESS-TOKEN` is your <%= vars.ops_manager %> access token without any newline
+    * `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager deployment.
+    * `UAA-ACCESS-TOKEN` is your Ops Manager access token without any newline
     characters such as `\n`.
 
-### <a id='root-certs-json'></a> Retrieve the <%= vars.ops_manager %> Root CA in JSON Format
+### <a id='root-certs-json'></a> Retrieve the Ops Manager Root CA in JSON Format
 
-To retrieve the <%= vars.ops_manager %> root CA in JSON format:
+To retrieve the Ops Manager root CA in JSON format:
 
 1. Run:
 
@@ -93,15 +93,15 @@ To retrieve the <%= vars.ops_manager %> root CA in JSON format:
           -i
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
-    * `UAA-ACCESS-TOKEN` is your <%= vars.ops_manager %> access token without any newline
+    * `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager deployment.
+    * `UAA-ACCESS-TOKEN` is your Ops Manager access token without any newline
     characters such as `\n`.
 
 
 ## <a id='list-rsa-certs'></a> List All RSA Certificates
 
-To view metadata from all deployed RSA certificates visible to <%= vars.ops_manager %>, including
-the root CA and certificates that <%= vars.ops_manager %> stores in CredHub:
+To view metadata from all deployed RSA certificates visible to Ops Manager, including
+the root CA and certificates that Ops Manager stores in CredHub:
 
 1. Run:
 
@@ -112,6 +112,6 @@ the root CA and certificates that <%= vars.ops_manager %> stores in CredHub:
           -i
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
-    * `UAA-ACCESS-TOKEN` is your <%= vars.ops_manager %> access token without any newline
+    * `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager deployment.
+    * `UAA-ACCESS-TOKEN` is your Ops Manager access token without any newline
     characters such as `\n`.

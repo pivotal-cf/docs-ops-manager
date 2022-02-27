@@ -10,11 +10,11 @@ This topic describes how to prepare a Hardware Security Module (HSM) to store Cr
 
 SafeNet Luna HSM is the only HSM option that you can use as a CredHub encryption provider. The Amazon Web Services (AWS) [CloudHSM Classic](https://aws.amazon.com/cloudhsm/faqs-classic/) service uses SafeNet Luna HSMs. For more information about SafeNet Luna HSM, see the [SafeNet Luna Network HSMs](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) product page.
 
-When configuring <%= vars.ops_manager_full %>, BOSH CredHub uses a single HSM to store encryption keys. In <%= vars.app_runtime_full %> (PAS), you can configure multiple HSMs for runtime CredHub to use as encryption providers.
+When configuring Ops Manager, BOSH CredHub uses a single HSM to store encryption keys. In Pivotal Application Service (PAS), you can configure multiple HSMs for runtime CredHub to use as encryption providers.
 
 To configure BOSH CredHub, see _Step 3: Configure Director_ in the [BOSH Director configuration topic for your IaaS](deploy-bosh-om.html#contents).
 
-<p class="note"><strong>Note:</strong> If you use <%= vars.ops_manager %> v2.7.4 or later, you can configure multiple HSMs for BOSH CredHub using the Ops Manager API. For more information, see the <a href="https://docs.pivotal.io/platform/2-7/opsman-api/#updating-director-and-iaas-properties-experimental"><%= vars.ops_manager %> API documentation</a>.</p>
+<p class="note"><strong>Note:</strong> If you use Ops Manager v2.7.4 or later, you can configure multiple HSMs for BOSH CredHub using the Ops Manager API. For more information, see the <a href="https://docs.pivotal.io/platform/2-7/opsman-api/#updating-director-and-iaas-properties-experimental">Ops Manager API documentation</a>.</p>
 
 Configure runtime CredHub with one or more HSMs to securely manage service broker credentials. To configure runtime CredHub, see [Step 1: Configure the PAS Tile](https://docs.pivotal.io/application-service/2-7/operating/secure-si-creds.html#pas-config) in _Securing Service Instance Credentials with Runtime CredHub_.
 
@@ -57,7 +57,7 @@ To initialize a new HSM and set its policies:
     Where `LABEL` is the label you want to give the HSM.
     <br>
     <br>
-    Initialize all HSMs into the same cloning domain to guarantee high availability for your <%= vars.ops_manager %> deployment.
+    Initialize all HSMs into the same cloning domain to guarantee high availability for your Ops Manager deployment.
 
 1. Log in to the HSM using the password you just created by running:
 

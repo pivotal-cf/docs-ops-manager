@@ -4,26 +4,26 @@ owner: Ops Manager
 ---
 
 This guide provides help with diagnosing and resolving issues that are specific to
-<%= vars.ops_manager %> deployments on VMware vSphere.
+Ops Manager deployments on VMware vSphere.
 
 For infrastructure-agnostic troubleshooting help, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/2-7/operating/diagnostics.html).
 
 
 ## <a id='common_probs'></a> Common Issues
 
-The following sections list common issues that you might encounter with <%= vars.ops_manager %>
+The following sections list common issues that you might encounter with Ops Manager
 and possible resolutions.
 
-### <a id='vcenter-setting'></a> <%= vars.platform_name %> Installation Fails
+### <a id='vcenter-setting'></a> Ops Manager Installation Fails
 
-If you modify the vCenter Statistics Interval Duration setting from its default setting of 5 minutes, the <%= vars.platform_name %> installation might fail at the MicroBOSH deployment stage, and the logs might contain the following error message:
+If you modify the vCenter Statistics Interval Duration setting from its default setting of 5 minutes, Ops Manager installation might fail at the MicroBOSH deployment stage, and the logs might contain the following error message:
 `The specified parameter is not correct, interval`. This failure happens because Pivotal Operations Manager expects a default value of 5 minutes, and the call to this method fails when the retrieved value does not match the expected default value.
 
 To resolve this issue, launch vCenter, navigate to **Administration > vCenter Server Settings > Statistics**, and reset the vCenter Statistics Interval Duration setting to 5 minutes.
 
 ### <a id='bosh_install'></a> BOSH Automated Installation Fails
 
-Before starting an <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) deployment, you must set up and configure a vSphere cluster.
+Before starting an Pivotal Application Service (PAS) deployment, you must set up and configure a vSphere cluster.
 
 If you enable vSphere DRS (Distributed Resource Scheduler) for the cluster, you must set the Automation level to **Partially automated** or **Fully automated**.
 
@@ -39,11 +39,11 @@ Ops Manager can lose its IP address and use DHCP due to an issue in the open sou
 
 If you deployed the OVF file but cannot connect to in a browser, check that the network settings you entered in the wizard are correct.
 
-1. Access the <%= vars.ops_manager %> installation VM using the vSphere Console. If your network
+1. Access the Ops Manager installation VM using the vSphere Console. If your network
 settings are configured incorrectly, you cannot SSH into the installation VM.
 
 1. Log in using the private SSH key associated with the public SSH key that you provided when you
-imported the <%= vars.ops_manager %> `.ova` in vCenter.
+imported the Ops Manager `.ova` in vCenter.
 
 1. Confirm that the network settings are correct by checking that the ADDRESS, NETMASK, GATEWAY, and DNS-NAMESERVERS entries are correct in `/etc/network/interfaces`.
 
@@ -65,7 +65,7 @@ If you experience a communication error while installing Ops Manager or MicroBOS
 
 * Open port 443. Ops Manager and MicroBOSH Director VMs require access to vCenter and all ESX through port 443.
 
-* Allocate more IP addresses. BOSH requires that you allocate a sufficient number of additional dynamic IP addresses when configuring a reserved IP address range during installation. BOSH uses these IP addresses during installation to compile and deploy VMs, install <%= vars.app_runtime_abbr %>, and connect to services. <%= vars.recommended_by %> recommends that you allocate at least 36 dynamic IP addresses when deploying Ops Manager and <%= vars.app_runtime_abbr %>.
+* Allocate more IP addresses. BOSH requires that you allocate a sufficient number of additional dynamic IP addresses when configuring a reserved IP address range during installation. BOSH uses these IP addresses during installation to compile and deploy VMs, install PAS, and connect to services. <%= vars.recommended_by %> recommends that you allocate at least 36 dynamic IP addresses when deploying Ops Manager and PAS.
 
 ### <a id="database-permissions"></a> Insufficient External Database Permissions
 

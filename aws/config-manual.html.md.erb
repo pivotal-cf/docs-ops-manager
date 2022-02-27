@@ -4,15 +4,15 @@ owner: Ops Manager
 iaas: AWS
 ---
 
-This topic describes how to configure BOSH Director to deploy <%= vars.ops_manager %> on Amazon Web Services (AWS).
+This topic describes how to configure BOSH Director to deploy Ops Manager on Amazon Web Services (AWS).
 
 Before beginning this procedure, ensure that you have successfully completed all of the steps in [Deploying Ops Manager on AWS](deploy-manual.html).
 
-## <a id='pcfaws-om-access'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='pcfaws-om-access'></a> Step 1: Log Into Ops Manager
 
 1. In a web browser, navigate to the fully qualified domain you created in the [Configure DNS Records](./deploy-manual.html#pcfaws-dns) step of _Deploying Ops Manager on AWS_.
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log into Ops Manager. To log in, see [Log In to Ops Manager For the First Time](../login.html#login-first-time).
 
 ## <a id='pcfaws-om-awsconfig'></a> Step 2: AWS Config Page
 
@@ -23,16 +23,16 @@ Before beginning this procedure, ensure that you have successfully completed all
     <%= image_tag("../common/images/cloudform/aws-config.png", :alt => "The 'AWS Management Console Config' page in Ops Manager. See the following steps for information about each field.") %>
 
 1. Select **Use AWS Keys** or **Use AWS Instance Profile**.
-    * **Access Key ID** and **AWS Secret Key**: To retrieve your AWS key information, use the AWS Identity and Access Management (IAM) credentials that you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-    * **AWS IAM Instance Profile**: Enter the name of the IAM profile you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * **Access Key ID** and **AWS Secret Key**: To retrieve your AWS key information, use the AWS Identity and Access Management (IAM) credentials that you generated in [Step 3: Create an IAM User for Ops Manager](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_.
+    * **AWS IAM Instance Profile**: Enter the name of the IAM profile you created in [Step 3: Create an IAM User for Ops Manager](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_.
 
 1. Complete the rest of the **AWS Management Console Config** page:
-    * **Security Group ID**: Enter the **Group ID** of the `pcf-vms-security-group` you created for your <%= vars.ops_manager %> VMs in the [Step 6: Configure a Security Group for <%= vars.ops_manager %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Locate the Group ID in the **Security Groups** tab of your EC2 Dashboard.
+    * **Security Group ID**: Enter the **Group ID** of the `pcf-vms-security-group` you created for your Ops Manager VMs in the [Step 6: Configure a Security Group for Ops Manager VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy Ops Manager on AWS_. Locate the Group ID in the **Security Groups** tab of your EC2 Dashboard.
     * **Key Pair Name**: Enter `pcf-ops-manager-key`.
-    * **SSH Private Key**: Open the AWS key pair `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
+    * **SSH Private Key**: Open the AWS key pair `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for Ops Manager](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
     * **Region**: Select the region where you deployed Ops Manager.
-    * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and Director VM. For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for <%= vars.ops_manager %> on AWS](../install/cloudform-om-ebs-config.html).
-    <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) or <%= vars.windows_runtime_abbr %> 2012 R2 are not encrypted.</p>
+    * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and Director VM. For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for Ops Manager on AWS](../install/cloudform-om-ebs-config.html).
+    <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with Pivotal Application Service for Windows (PASW) or PASW 2012 R2 are not encrypted.</p>
 
 1. Click **Save**.
 
@@ -43,7 +43,7 @@ Before beginning this procedure, ensure that you have successfully completed all
 
 ## <a id='az'></a> Step 4: Create Availability Zones Page
 
-<p class="note"><strong>Note:</strong> Pivotal recommends at least three availability zones (AZs) for a highly available installation of <%= vars.app_runtime_abbr %>. The procedures in <a href="prepare-env-manual.html">Preparing to Deploy Ops Manager on AWS</a> use 3 AZs.</p>
+<p class="note"><strong>Note:</strong> Pivotal recommends at least three availability zones (AZs) for a highly available installation of PAS. The procedures in <a href="prepare-env-manual.html">Preparing to Deploy Ops Manager on AWS</a> use 3 AZs.</p>
 
 1. Select **Create Availability Zones**.
 <%= image_tag("../common/images/cloudform/create-az.png", :alt => "The 'Create Availability Zones' page in Ops Manager. See the following step for information about each field.") %>
@@ -330,9 +330,9 @@ Before beginning this procedure, ensure that you have successfully completed all
 
 1. Click **Save**.
 
-    <p class="note"><strong>Note:</strong> If you are deploying <%= vars.k8s_runtime_abbr %> with a <%= vars.k8s_runtime_abbr %> workload load balancer,
-    you must tag each AWS subnet with your <%= vars.k8s_runtime_abbr %> Kubernetes cluster unique identifier before you create the load balancer.
-    For more information about tagging subnets with a <%= vars.k8s_runtime_abbr %> cluster unique identifier,
+    <p class="note"><strong>Note:</strong> If you are deploying TKGI with a TKGI workload load balancer,
+    you must tag each AWS subnet with your TKGI Kubernetes cluster unique identifier before you create the load balancer.
+    For more information about tagging subnets with a TKGI cluster unique identifier,
     see <a href="https://docs.pivotal.io/pks/deploy-workloads.html#aws">AWS Prerequisites</a>.</p>
 
     <%= vars.expand_network_azs %>
@@ -371,7 +371,7 @@ Before beginning this procedure, ensure that you have successfully completed all
 choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class="note"><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, Ops Manager automatically uses the new recommended allocation.</p>
-    <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_abbr %>, provision your <strong>Master Compilation Job</strong>
+    <p class="note"><strong>Note:</strong> If you install PASW, provision your <strong>Master Compilation Job</strong>
     with at least 100&nbsp;GB of disk space.</p>
 
 1. (Optional) To configure an Application Load Balancer (ALB) for your BOSH Director, click the icon next to the **BOSH Director** job name to see more fields.
@@ -401,8 +401,8 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
 
 ## <a id="next"></a> Next Steps
 
-After completing the procedures in this topic, you must configure a runtime for <%= vars.ops_manager %>.
-You can install <%= vars.ops_manager %> on AWS with the <%= vars.app_runtime_abbr %> runtime.
+After completing the procedures in this topic, you must configure a runtime for Ops Manager.
+You can install Ops Manager on AWS with the PAS runtime.
 
-To configure <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>]
+To configure PAS, see [Configuring PAS]
 (https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).

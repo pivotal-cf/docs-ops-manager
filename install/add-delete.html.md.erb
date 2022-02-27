@@ -3,10 +3,10 @@ title: Adding and Deleting Products
 owner: Ops Manager
 ---
 
-This topic describes adding and deleting additional products from your <%= vars.ops_manager %>
+This topic describes adding and deleting additional products from your Ops Manager
 installation, such as [VMware Tanzu™ RabbitMQ® for VMs](https://network.pivotal.io/products/p-rabbitmq).
 
-<p class="note"><strong>Note:</strong> In <%= vars.ops_manager %>, all product tiles use floating
+<p class="note"><strong>Note:</strong> In Ops Manager, all product tiles use floating
   stemcells by default. This increases the security of your deployment by enabling tiles to
   automatically use the latest patched version of a stemcell, but it may significantly increase
   the amount of time required by a tile upgrade. For more information, see
@@ -15,13 +15,13 @@ installation, such as [VMware Tanzu™ RabbitMQ® for VMs](https://network.pivot
 
 ## <a id="add-import"></a> Add and Import Products
 
-To add or import a product to your <%= vars.ops_manager %> installation:
+To add or import a product to your Ops Manager installation:
 
 1. Download products from [<%= vars.product_network %>] (https://network.pivotal.io). If you
 cannot download products from <%= vars.product_network %> due to restricted network connectivity,
-see [Installing <%= vars.ops_manager %> in Air-Gapped Environments](offline_installation.html).
+see [Installing Ops Manager in Air-Gapped Environments](offline_installation.html).
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and log in.
+1. Navigate to the Ops Manager Installation Dashboard and log in.
 
 1. Click **Import a Product**.
 
@@ -31,10 +31,10 @@ it appears in the product list beneath the **Import a Product** button. If the p
 you selected is not the latest version, the most up-to-date version appears in your product
 list.
 
-1. Add the product tile to the <%= vars.ops_manager %> Installation Dashboard by clicking the
+1. Add the product tile to the Ops Manager Installation Dashboard by clicking the
 green **+** icon in the bottom-right corner of the product listing.
 
-1. The product tile appears in the <%= vars.ops_manager %> Installation Dashboard. If the product
+1. The product tile appears in the Ops Manager Installation Dashboard. If the product
 requires configuration, the bar at the bottom of the tile appears orange. If necessary, configure
 the product.
 
@@ -43,11 +43,11 @@ the product.
 
 1. (Optional) In the product configuration view, select the **Errands** pane to configure
 post-install errands or review the default settings. Post-install errands are scripts that
-automatically run after a product installs, before <%= vars.ops_manager %> makes the product
+automatically run after a product installs, before Ops Manager makes the product
 available for use. For more information about post-install errands, see [Errands]
 (http://docs.pivotal.io/tiledev/tile-errands.html)
-in the <%= vars.ops_manager %> Tile Developer Guide.
-  <p class="note"><strong>Note:</strong> By default, <%= vars.ops_manager %> reruns errands
+in the Ops Manager Tile Developer Guide.
+  <p class="note"><strong>Note:</strong> By default, Ops Manager reruns errands
     even if they are not necessary due to settings left from a previous install. Leaving errands
     checked at all times can cause updates and other processes to take longer. To prevent an
     errand from running, disable the checkbox for the errand in the <strong>Errands</strong>
@@ -68,20 +68,20 @@ the product.
 
 ## <a id='pivnet-api'></a> Using the <%= vars.product_network %> API to Upgrade Products
 
-Instead of manually downloading each new version of the products in your <%= vars.ops_manager %>
-installation, you can upgrade your products by connecting your <%= vars.ops_manager %> Installation
+Instead of manually downloading each new version of the products in your Ops Manager
+installation, you can upgrade your products by connecting your Ops Manager Installation
 Dashboard with <%= vars.product_network %> using a API token. Once you have uploaded a product,
-all subsequent product upgrades appear automatically in the <%= vars.ops_manager %> Installation
+all subsequent product upgrades appear automatically in the Ops Manager Installation
 Dashboard.
 
 <p class="note"><strong>Note:</strong> You can only use the <%= vars.product_network %> API
-  if you have access to the Internet, since communication between <%= vars.ops_manager %> and
+  if you have access to the Internet, since communication between Ops Manager and
   <%= vars.product_network %> is necessary to import your products. If you are on an isolated
   network, do not save your API token.</p>
 
-### <a id='update-with-api'></a> Connect the <%= vars.ops_manager %> Installation Dashboard with <%= vars.product_network %>
+### <a id='update-with-api'></a> Connect the Ops Manager Installation Dashboard with <%= vars.product_network %>
 
-To connect the <%= vars.ops_manager %> Installation Dashboard with <%= vars.product_network %>:
+To connect the Ops Manager Installation Dashboard with <%= vars.product_network %>:
 
 1. Log in to [<%= vars.product_network %>](https://network.pivotal.io).
 
@@ -91,7 +91,7 @@ To connect the <%= vars.ops_manager %> Installation Dashboard with <%= vars.prod
 
 1. Copy the **Legacy API Token**.
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and log in.
+1. Navigate to the Ops Manager Installation Dashboard and log in.
 
 1. Click your username, located in the upper top right side of the page.
 
@@ -105,13 +105,13 @@ To connect the <%= vars.ops_manager %> Installation Dashboard with <%= vars.prod
 
 ### <a id='update-products'></a> Update Existing Products
 
-After you save the <%= vars.product_network %> API token to the <%= vars.ops_manager %> Installation
-Dashboard, the latest versions of your existing products appear in the <%= vars.ops_manager %>
+After you save the <%= vars.product_network %> API token to the Ops Manager Installation
+Dashboard, the latest versions of your existing products appear in the Ops Manager
 Installation Dashboard.
 
 To upgrade an existing product to the latest version:
 
-1. In the product list located on the left side of the <%= vars.ops_manager %> Installation
+1. In the product list located on the left side of the Ops Manager Installation
 Dashboard, locate the product you want to upgrade.
 
 1. In the bottom-right corner of the product listing, click the green download icon.
@@ -127,9 +127,9 @@ Dashboard, locate the product you want to upgrade.
 
 ## <a id='apply-changes'></a> Apply Changes to the BOSH Director
 
-You can use the <%= vars.ops_manager %> API or the **Review Pending Changes** page in the
-<%= vars.ops_manager %> Installation Dashboard to apply pending changes only to the BOSH Director
-when you stage multiple products in a new <%= vars.ops_manager %> installation or as part
+You can use the Ops Manager API or the **Review Pending Changes** page in the
+Ops Manager Installation Dashboard to apply pending changes only to the BOSH Director
+when you stage multiple products in a new Ops Manager installation or as part
 of an upgrade.
 
 For more information, see [Reviewing Pending Product Changes](review-pending-changes.html).

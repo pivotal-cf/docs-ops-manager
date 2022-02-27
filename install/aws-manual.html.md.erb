@@ -5,23 +5,23 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.platform_name + " on AWS" %>
 
-This topic explains how to install <%= vars.ops_manager %> on Amazon Web Services (AWS) manually.
+This topic explains how to install Ops Manager on Amazon Web Services (AWS) manually.
 
 ## <a id="overview"></a> Overview
 
-You can install <%= vars.ops_manager %> on AWS manually for use with the <%= vars.app_runtime_full %>
-(<%= vars.app_runtime_abbr %>) runtime.
+You can install Ops Manager on AWS manually for use with the Pivotal Application Service
+(PAS) runtime.
 
 
-## <a id="manual-pas"></a> Install <%= vars.ops_manager %> on AWS
+## <a id="manual-pas"></a> Install Ops Manager on AWS
 
-To install <%= vars.ops_manager %> manually on AWS for use with <%= vars.app_runtime_abbr %>:
+To install Ops Manager manually on AWS for use with PAS:
 
 1. (Optional) Review the resources you must deploy to AWS. For more information, see [Required AWS Objects](../aws/required-objects.html).
 
-1. Prepare your AWS environment. For more information, see [Preparing to Deploy <%= vars.ops_manager %> on AWS](../aws/prepare-env-manual.html).
+1. Prepare your AWS environment. For more information, see [Preparing to Deploy Ops Manager on AWS](../aws/prepare-env-manual.html).
 
-1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on AWS](../aws/deploy-manual.html).
+1. Deploy Ops Manager. For more information, see [Deploying Ops Manager on AWS](../aws/deploy-manual.html).
 
 1. (Optional) Verify that you deployed all of the required resources to AWS. For more information, see [Required AWS Objects](../aws/required-objects.html).
 
@@ -33,7 +33,7 @@ After completing the procedures above, configure a runtime.
 
 For information about installing and configuring a runtime, see the following:
 
-* [Configuring <%= vars.app_runtime_full %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
-* [Installing <%= vars.k8s_runtime_abbr %> on AWS](https://docs.pivotal.io/tkgi/installing-aws.html).
+* [Configuring Pivotal Application Service](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
+* [Installing TKGI on AWS](https://docs.pivotal.io/tkgi/installing-aws.html).
 * [Installing and Configuring TAS for VMs on Windows](https://docs.pivotal.io/application-service/2-7/windows/installing.html)
 * [Installing Small Footprint TAS for VMs](https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html#install)

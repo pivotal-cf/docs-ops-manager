@@ -3,7 +3,7 @@ title: Diego Network Communications
 owner: Diego
 ---
 
-This topic describes Diego internal network communication paths with other <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) components.
+This topic describes Diego internal network communication paths with other Pivotal Application Service (PAS) components.
 
 For more information about Diego components and architecture, see [How Diego Pushes an App](https://docs.pivotal.io/application-service/2-7/concepts/diego/diego-architecture.html#diagram) in _Diego Components and Architecture_.
 
@@ -33,7 +33,7 @@ The following table lists network communication paths that are internal for Dieg
 | diego_cell (local Route Emitter) | diego_database (BBS) | 8889 | TCP | HTTPS | Mutual TLS |
 | diego_cell (Rep) | diego_brain (CC Uploader) | 9091 | TCP | HTTPS | Mutual TLS |
 | diego_cell (Rep) | diego_brain (File Server)<sup>&#8258;</sup> | 8080 | TCP | HTTPS | None |
-| diego_cell (Rep) in <%= vars.segment_runtime_full %>, different subnet | diego_brain (File Server) | 8447 | TCP | HTTPS | Mutual TLS |
+| diego_cell (Rep) in Pivotal Isolation Segment, different subnet | diego_brain (File Server) | 8447 | TCP | HTTPS | Mutual TLS |
 | diego_cell (Rep) | diego_database (BBS) | 8889 | TCP | HTTPS | Mutual TLS |
 | diego_cell (Rep) | diego_database (Locket) | 8891 | TCP | HTTPS | Mutual TLS |
 | diego_database (BBS) | diego_brain (Auctioneer) | 9016 | TCP | HTTPS | Mutual TLS |
@@ -61,7 +61,7 @@ The following table lists network communication paths that are outbound from Die
 | diego_database (BBS) | mysql_proxy<sup>&#8224;</sup> | 3306 | TCP | MySQL | MySQL authentication<sup>&#42;&#42;</sup> |
 | diego_database (Locket) | mysql_proxy<sup>&#8224;</sup> | 3306 | TCP | MySQL | MySQL authentication<sup>&#42;&#42;</sup> |
 
-<sup>&#42;</sup>The destination depends on your <%= vars.app_runtime_abbr %> blobstore configuration. If you use the internal blobstore, the Diego Cell communicates to the blobstore using TLS on port 4443.
+<sup>&#42;</sup>The destination depends on your PAS blobstore configuration. If you use the internal blobstore, the Diego Cell communicates to the blobstore using TLS on port 4443.
 
 <sup>&#42;&#42;</sup>MySQL authentication uses the MySQL native password method.
 

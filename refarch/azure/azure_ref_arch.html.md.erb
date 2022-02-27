@@ -3,18 +3,18 @@ title: Azure Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on Azure. It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
+This topic describes a reference architecture for Ops Manager and any runtime products, including Pivotal Application Service (PAS) and VMware Tanzu Kubernetes Grid Integrated Edition (TKGI), on Azure. It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
 
-For additional requirements and installation instructions for running <%= vars.ops_manager %> on Azure, see
-[Installing <%= vars.ops_manager %> on Azure](../../install/azure.html).
+For additional requirements and installation instructions for running Ops Manager on Azure, see
+[Installing Ops Manager on Azure](../../install/azure.html).
 
 ## <a id="overview"></a> Overview
 
 Azure Virtual Data Center (VDC) uses a hub and spoke model for extending on-premises data centers. For more
 information about VDC, see the [Azure Virtual Datacenter e-book](https://azure.microsoft.com/en-us/resources/azure-virtual-datacenter/).
 
-When installing <%= vars.ops_manager %>, you can use this model to place resources in resource groups. For example, an
-<%= vars.ops_manager %> installation contains:
+When installing Ops Manager, you can use this model to place resources in resource groups. For example, an
+Ops Manager installation contains:
 
 * **Hub**:
   * A central IT resource group included in Azure VDC setup. This is where you define firewall, access control, and
@@ -22,20 +22,20 @@ security policies.
 
 * **Spokes**:
   * A Network resource group for all network resources.
-  * <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or
-    <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) resource groups for all <%= vars.app_runtime_abbr %> or
-    <%= vars.k8s_runtime_abbr %> resources.
+  * Pivotal Application Service (PAS) or
+    VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) resource groups for all PAS or
+    TKGI resources.
 
 ### <a id="overview"></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.ops_manager %> on Azure using the hub and spoke
+The diagram below illustrates the reference architecture for Ops Manager on Azure using the hub and spoke
 model described above:
 
-![This diagram illustrates <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on Azure using Availability Sets. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures.](../images/PAS_Azure.png)
+![This diagram illustrates Ops Manager with PAS on Azure using Availability Sets. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures.](../images/PAS_Azure.png)
 
 [View a larger version of this diagram](../images/PAS_Azure.png).
 
-The sections below provide guidance about the resources that you use for running <%= vars.ops_manager %> on Azure.
+The sections below provide guidance about the resources that you use for running Ops Manager on Azure.
 
 ## <a id="networking"></a> Networking
 
@@ -43,7 +43,7 @@ The following sections provide guidance about networking resources.
 
 ### <a id="network-considerations"></a> General Requirements and Recommendations
 
-The following are general requirements and recommendations related to networking when running <%= vars.ops_manager %>
+The following are general requirements and recommendations related to networking when running Ops Manager
 on Azure:
 
 * You must enable Virtual Network peering between hub and spoke resource groups. For more information, see
@@ -65,46 +65,46 @@ exfiltration.
 
 ### <a id="dns"></a> DNS
 
-For your <%= vars.platform_name %> domains, use a sub-zone of an Azure DNS zone.
+For your Ops Manager domains, use a sub-zone of an Azure DNS zone.
 
 Azure DNS supports DNS delegation, which allows sub-level domains to be hosted within Azure. For example, a company
-domain of `example.com` has an <%= vars.ops_manager %> zone in Azure DNS of `pcf.example.com`.
+domain of `example.com` has an Ops Manager zone in Azure DNS of `pcf.example.com`.
 
 Azure DNS does not support recursion. To properly configure Azure DNS:
 
 1. Create an `NS` record with your registrar that points to the four name servers supplied by your Azure DNS Zone
 configuration.
 
-1. Create the required wildcard `A` records for the <%= vars.app_runtime_abbr %> app and system domains, as well as any
-other records desired for your <%= vars.ops_manager %> deployments.
+1. Create the required wildcard `A` records for the PAS app and system domains, as well as any
+other records desired for your Ops Manager deployments.
 
-You do not need to make any configuration changes in <%= vars.ops_manager %> to support Azure DNS.
+You do not need to make any configuration changes in Ops Manager to support Azure DNS.
 
 ### <a id="lb-types"></a> Load Balancing
 
 Use Standard Azure Load Balancers (ALBs). To allow internet ingress, you must create the ALBs with elastic IP addresses.
 
-During installation, you configure ALBs for <%= vars.app_runtime_abbr %> Gorouters. For more information, see
+During installation, you configure ALBs for PAS Gorouters. For more information, see
 [Create Load Balancers](../../azure/deploy-manual.html#lb)
-in _Deploying <%= vars.ops_manager %> on Azure_. When applicable, TCP routers and SSH Proxies also require load balancers.
+in _Deploying Ops Manager on Azure_. When applicable, TCP routers and SSH Proxies also require load balancers.
 
-The <%= vars.app_runtime_abbr %> system and app domains must resolve to your ALBs and have either a private or a public
-IP address assigned. You set these domains in the **Domains** pane of the <%= vars.app_runtime_abbr %> tile.
+The PAS system and app domains must resolve to your ALBs and have either a private or a public
+IP address assigned. You set these domains in the **Domains** pane of the PAS tile.
 
 ### <a id="networks"></a> Networks
 
-<%= vars.ops_manager %> requires the networks defined in the base reference architectures for
-<%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %>. For more information, see the _Networks_ sections in
+Ops Manager requires the networks defined in the base reference architectures for
+PAS and TKGI. For more information, see the _Networks_ sections in
 [Platform Architecture and Planning Overview](../index.html).
 
-### <a id="pas-single-azure-resource"></a> <%= vars.app_runtime_abbr %> on a Single Resource Group
+### <a id="pas-single-azure-resource"></a> PAS on a Single Resource Group
 
 If shared network resources do not exist in an Azure subscription, you can use a single resource group to deploy
-<%= vars.ops_manager %> and define network constructs.
+Ops Manager and define network constructs.
 
 ## <a id="ha-considerations"></a> High Availability (HA)
 
-<p class="note"><strong>Note:</strong> As of <%= vars.ops_manager %> v2.5.3, <%= vars.ops_manager %> on Azure
+<p class="note"><strong>Note:</strong> As of Ops Manager v2.5.3, Ops Manager on Azure
 supports both availability zones (AZs) and Availability Sets.</p>
 
 Use AZs instead of Availability Sets in all Azure regions where they are available. AZs solve the placement group
@@ -127,7 +127,7 @@ For additional guidance depending on your use case, see the table below:
   </tr>
   <tr>
     <td>Existing foundation in AZ-enabled region</td>
-    <td>Migrate to a new <%= vars.ops_manager %> foundation, or to an <%= vars.ops_manager %> v2.5.3 or later foundation
+    <td>Migrate to a new Ops Manager foundation, or to an Ops Manager v2.5.3 or later foundation
         so that you can use AZs. These existing foundations, especially those using older families of VMs such as
         <code>DS_v2</code>, risk running out of capacity as they scale.
     </td>
@@ -152,9 +152,9 @@ in the Microsoft Azure documentation.
 AZs are an Azure primitive that supports HA within a region. They are physically separate data centers in the same
 region, each with of separate power, cooling, and network.
 
-The diagram below illustrates <%= vars.app_runtime_abbr %> deployed on Azure using AZs:
+The diagram below illustrates PAS deployed on Azure using AZs:
 
-![This diagram illustrates <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on Azure using AZs. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures.](../images/PAS_Azure_with_AZs.png)
+![This diagram illustrates Ops Manager with PAS on Azure using AZs. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures.](../images/PAS_Azure_with_AZs.png)
 
 [View a larger version of this diagram](../images/PAS_Azure_with_AZs.png).
 
@@ -174,7 +174,7 @@ provides.
 Availability Sets were the first Azure primitive to support high availability within a region.
 
 <p class="note warning"><strong>Warning:</strong> Availability Sets are implemented at the hardware rack level, which
-can cause issues when deploying <%= vars.ops_manager %> on Azure. For more information, see
+can cause issues when deploying Ops Manager on Azure. For more information, see
 <a href="#placement-group-pinning">Placement Group Pinning Issues</a> below.</p>
 
 Availability Sets have the following properties:
@@ -190,7 +190,7 @@ ensuring downtime incurred by an update does not affect the availability of the 
 
 #### <a id="placement-group-pinning"></a> Placement Group Pinning Issues
 
-In <%= vars.platform_name %> on Azure in Availability Set HA mode, VMs for a particular job are pinned to a placement
+In Ops Manager on Azure in Availability Set HA mode, VMs for a particular job are pinned to a placement
 group determined when the first VM in the Availability Set is provisioned. This is because BOSH places VMs for each job
 within the same Availability Set.
 
@@ -213,24 +213,24 @@ For storage, <%= vars.recommended_by %> recommends:
 feature that handles the correct distribution of VHDs over storage accounts to maintain high IOPS as well as high
 availability for the VMs.
 
-* Use five storage accounts. <%= vars.platform_name %> on Azure requires five storage accounts: one for BOSH, one for
-<%= vars.ops_manager %>, and three for <%= vars.app_runtime_abbr %>. Each account comes with a set amount of disk space.
+* Use five storage accounts. Ops Manager on Azure requires five storage accounts: one for BOSH, one for
+Ops Manager, and three for PAS. Each account comes with a set amount of disk space.
 Azure storage accounts have an IOPs limit of about 20k per account, which generally corresponds to a BOSH job/VM limit
 of 20 VMs each.
 
 ## <a id="sql-server"></a> SQL Server
 
-The Internal MySQL database provided by <%= vars.app_runtime_abbr %> is sufficient for production use.
+The Internal MySQL database provided by PAS is sufficient for production use.
 
 ## <a id="blobstore-storage-accts"></a> Blobstore Storage Account
 
-Use Azure Blob Storage as the external file storage option for <%= vars.ops_manager %>. This provides redundancy for
-high-availability deployments of <%= vars.ops_manager %> and unlimited scaling. Azure Blob Storage provides
+Use Azure Blob Storage as the external file storage option for Ops Manager. This provides redundancy for
+high-availability deployments of Ops Manager and unlimited scaling. Azure Blob Storage provides
 fully-redundant hot, cold, or archival storage in either local, regional, or global offerings.
 
-<%= vars.ops_manager %> requires a bucket for the BOSH blobstore.
+Ops Manager requires a bucket for the BOSH blobstore.
 
-<%= vars.app_runtime_abbr %> requires the following buckets:
+PAS requires the following buckets:
 
 * Buildpacks
 
@@ -244,7 +244,7 @@ These buckets require an associated role for read/write access.
 
 ## <a id="identity-management"></a> Identity Management
 
-Use unique managed identities to deploy <%= vars.ops_manager %>, BOSH Director, Microsoft Azure Service Broker, and any
+Use unique managed identities to deploy Ops Manager, BOSH Director, Microsoft Azure Service Broker, and any
 other tiles that require independent credentials. Ensure that each managed identity is scoped to the least privilege
 necessary to operate.
 

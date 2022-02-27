@@ -5,41 +5,41 @@ owner: RelEng
 
 <% current_page.data.title = "Upgrading " + vars.app_runtime_abbr + " and Other " + vars.platform_name + " Products" %>
 
-This topic describes how to upgrade to a point release of <%= vars.app_runtime_full %>
-(<%= vars.app_runtime_abbr %>) and other product tiles without upgrading <%= vars.ops_manager_full %>.
-For example, use this topic to upgrade from <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.0
-to <%= vars.v_major_version %>.1. You might need to perform this upgrade if a security update
-for <%= vars.app_runtime_abbr %> is released, or if new features are introduced in a point
+This topic describes how to upgrade to a point release of Pivotal Application Service
+(PAS) and other product tiles without upgrading Ops Manager.
+For example, use this topic to upgrade from PAS v2.7.0
+to v2.7.1. You might need to perform this upgrade if a security update
+for PAS is released, or if new features are introduced in a point
 release of a product tile.
 
-For <%= vars.app_runtime_abbr %> component and version information, see [<%= vars.app_runtime_full %>
-<%= vars.v_major_version %> Release Notes](http://docs.pivotal.io/application-service/release-notes/runtime-rn.html).
+For PAS component and version information, see [Pivotal Application Service
+v2.7 Release Notes](http://docs.pivotal.io/application-service/release-notes/runtime-rn.html).
 
 <p class="note"><strong>Note:</strong> If you cannot download products from <%= vars.product_network %>
   due to restricted network connectivity, see <a href="offline_installation.html">Installing
-  <%= vars.ops_manager %> in Air-Gapped Environments</a>.</p>
+  Ops Manager in Air-Gapped Environments</a>.</p>
 
 
 ## <a id="before-upgrade"></a> Prerequisites
 
 Before you upgrade to point releases:
 
-* You must have completed the procedure in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).
+* You must have completed the procedure in [Upgrading Ops Manager](upgrading-pcf.html).
 
-* For the latest compatibility information, see [Upgrade Planner](https://upgrade-planner.pivotal.io/) before upgrading <%= vars.app_runtime_abbr %>.
+* For the latest compatibility information, see [Upgrade Planner](https://upgrade-planner.pivotal.io/) before upgrading PAS.
 
 * **Important:** Read the _Known Issues_ sections for the products that you plan to install
 before starting. For all available product release notes, see:
-  * [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html) in the <%= vars.ops_manager %>
+  * [Ops Manager v2.7 Release Notes](../release-notes.html) in the Ops Manager
   documentation
-  * [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html)
-  in the <%= vars.app_runtime_abbr %> documentation
-  * [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html)
-  in the <%= vars.app_runtime_abbr %> documentation
-  * [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/2-7/windows/release-notes.html)
-  in the <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) documentation
-  * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html) in the <%= vars.k8s_runtime_full %>
-  (<%= vars.k8s_runtime_abbr %>) documentation
+  * [Pivotal Application Service v2.7 Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html)
+  in the PAS documentation
+  * [Pivotal Isolation Segment v2.7 Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html)
+  in the PAS documentation
+  * [Pivotal Application Service for Windows v2.7 Release Notes](https://docs.pivotal.io/application-service/2-7/windows/release-notes.html)
+  in the Pivotal Application Service for Windows (PASW) documentation
+  * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html) in the VMware Tanzu Kubernetes Grid Integrated Edition
+  (TKGI) documentation
 
 
 ## <a id="check-disk-space"></a> Check BOSH Director Disk Space
@@ -48,18 +48,18 @@ before starting. For all available product release notes, see:
 <%= partial "/pcf/core/2-7/check_disk_before_upgrade" %>
 
 
-## <a id="upgrade-er"></a> Upgrading <%= vars.app_runtime_abbr %>
+## <a id="upgrade-er"></a> Upgrading PAS
 
 <p class="note"><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
-  the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
+  the latest product versions automatically appear in the Ops Manager Installation
   Dashboard. For more information, see <a href="add-delete.html#pivnet-api">Using
   <%= vars.product_network %> API to Upgrade Products</a> in <em>Adding and Deleting Products</em>.</p>
 
-To upgrade <%= vars.app_runtime_abbr %> without upgrading <%= vars.ops_manager %>:
+To upgrade PAS without upgrading Ops Manager:
 
 1. Download the product file from [<%= vars.product_network %>](https://network.pivotal.io/).
 
-1. Import the product file to your <%= vars.ops_manager %> Installation Dashboard.
+1. Import the product file to your Ops Manager Installation Dashboard.
 
 1. Click the **+** icon next to the uploaded product description to add this product to your
 staging area.
@@ -71,18 +71,14 @@ staging area.
 1. Click **Apply Changes** to install the service.
 
 
-## <a id="other-products"></a> Upgrading <%= vars.ops_manager %> Products
+## <a id="other-products"></a> Upgrading Ops Manager Products
 
 <p class="note"><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
-  the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
+  the latest product versions automatically appear in the Ops Manager Installation
   Dashboard. For more information, see <a href="add-delete.html#pivnet-api">Using
   <%= vars.product_network %> API to Upgrade Products</a> in <em>Adding and Deleting Products</em>.</p>
 
-This section describes how to upgrade individual products like [Single Sign-On for
-<%= vars.platform_name %>](https://docs.pivotal.io/p-identity/index.html), [MySQL for
-<%= vars.platform_name %>](https://docs.pivotal.io/p-mysql/index.html), [RabbitMQ for
-<%= vars.platform_name %>](https://docs.pivotal.io/rabbitmq-cf/index.html), and [Pivotal
-App Metrics](https://docs.pivotal.io/app-metrics/index.html) in your <%= vars.platform_name %>
+This section describes how to upgrade individual products like [Single Sign-On for VMware Tanzu Application Service](https://docs.pivotal.io/p-identity/index.html), [VMware Tanzu SQL with MySQL for VMs](https://docs.pivotal.io/p-mysql/index.html), [VMware Tanzu RabbitMQ for VMs](https://docs.pivotal.io/rabbitmq-cf/index.html), and [App Metrics](https://docs.pivotal.io/app-metrics/index.html) in your
 deployment. Ensure you review the individual product upgrade procedure for each tile.
 
 To upgrade your products:
@@ -93,7 +89,7 @@ To upgrade your products:
 product is tied to exactly one stemcell. Download the stemcell that matches your product and
 version.
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Navigate to the Ops Manager Installation Dashboard.
 
 1. Click **Import a Product**.
 
@@ -103,7 +99,7 @@ it appears in your product list. If the product that you selected is not the lat
 the most up-to-date version appears in your product list.
 
 1. Click the **+** icon next to the product description to add the product tile to the
-<%= vars.ops_manager %> Installation Dashboard.
+Ops Manager Installation Dashboard.
 
 1. Repeat the import, upload, and upgrade steps for each product you downloaded.
 
@@ -112,7 +108,7 @@ must configure the product to trust the self-signed certificate. To configure a 
 trust the self-signed certificate:
     1. Click the product tile.
     1. In the left-hand column, select the setting page containing the SSL certificate configuration.
-    For example, for <%= vars.app_runtime_abbr %>, select the **HAProxy** pane.
+    For example, for PAS, select the **HAProxy** pane.
     1. Check the **Trust Self-Signed Certificates** box.
     1. Click **Save**.
 
@@ -132,10 +128,10 @@ To upgrade a replicated tile, you must:
 
 This example workflow assumes the following:
 
-* You used the Replicator to generate a replica of the <%= vars.segment_runtime_full %> v1
+* You used the Replicator to generate a replica of the Pivotal Isolation Segment v1
 tile.
 * You used the `name` **seg-one**.
-* You installed the tile in <%= vars.ops_manager %>.
+* You installed the tile in Ops Manager.
 * You used the following sample Replicator command for the initial installation:
 
     ```mac
@@ -145,12 +141,12 @@ tile.
     --output /output/p-isolation-segment-v1-seg-one.pivotal
     ```
 
-To upgrade your replicated tile to <%= vars.segment_runtime_full %> v2:
+To upgrade your replicated tile to Pivotal Isolation Segment v2:
 
-1. Download and unzip the new Replicator from the [<%= vars.segment_runtime_full %>]
+1. Download and unzip the new Replicator from the [Pivotal Isolation Segment]
 (https://network.pivotal.io/products/p-isolation-segment/) page on <%= vars.product_network %>.
 You must download the version of Replicator that corresponds with the version of the
-<%= vars.segment_runtime_full %> tile you want to replicate.
+Pivotal Isolation Segment tile you want to replicate.
 
 1. Create the replica by running:
 
@@ -163,8 +159,8 @@ You must download the version of Replicator that corresponds with the version of
     Where:
     * `NAME-OF-EXISTING-REPLICA` must be the same as the name used for the existing replica.
     In this example, this name is **seg-one**.
-    * `PATH-TO-NEW-TILE` is the path to the new <%= vars.segment_runtime_full %> tile.
+    * `PATH-TO-NEW-TILE` is the path to the new Pivotal Isolation Segment tile.
 
 1. After you create the replica tile **p-isolation-segment-v2-seg-one.pivotal**, upload it
-to the <%= vars.ops_manager %> Installation Dashboard. This upgrades the <%= vars.segment_runtime_full %>
+to the Ops Manager Installation Dashboard. This upgrades the Pivotal Isolation Segment
 v1 replica tile in place.

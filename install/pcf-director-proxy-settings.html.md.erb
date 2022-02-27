@@ -14,15 +14,15 @@ The following diagram illustrates how a proxy mediates HTTP and HTTPS requests b
 
 For more information about BOSH components, see the [BOSH documentation](https://bosh.io/docs/bosh-components.html).
 
-<p class='note'><strong>Note:</strong> <%= vars.ops_manager %> only supports proxying requests between the BOSH CPI and the IaaS API. It does not support proxying blobstore and database traffic.</p>
+<p class='note'><strong>Note:</strong> Ops Manager only supports proxying requests between the BOSH CPI and the IaaS API. It does not support proxying blobstore and database traffic.</p>
 
 ## Configure Proxy ##
 
-Perform the following steps to configure your proxy for the BOSH CPI when <%= vars.platform_name %> Operations Manager starts for the first time:
+Perform the following steps to configure your proxy for the BOSH CPI when Ops Manager starts for the first time:
 
 1. Ensure that you have installed your proxy and that it is functioning properly. You can install one proxy for HTTPS requests and another proxy for HTTP requests, or choose to use the same proxy for both kinds of traffic.
 
-1. Follow the <%= vars.ops_manager %> installation instructions for your IaaS. For more information, see [Installing <%= vars.ops_manager %>](../install/index.html).
+1. Follow the Ops Manager installation instructions for your IaaS. For more information, see [Installing Ops Manager](../install/index.html).
 
 1. When Ops Manager starts for the first time, you must select **Use an Identity Provider** or **Internal Authentication**. See the following IaaS-specific topics for more information:
     * [Configuring BOSH Director on AWS](../aws/config-manual.html#access-om)
@@ -30,7 +30,7 @@ Perform the following steps to configure your proxy for the BOSH CPI when <%= va
     * [Configuring BOSH Director on OpenStack](../openstack/config.html#log-in)
 
 1. Both the **Use an Identity Provider** and the **Internal Authentication** login pages include fields for **HTTP proxy**, **HTTPS proxy**, and **No proxy**.
-<p class="note"><strong>Note:</strong> For the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) runtime, editing proxy settings in the BOSH Director propagates those settings to the Garden Diego cells in <%= vars.app_runtime_abbr %>. Sharing these proxy settings between Ops Manager and <%= vars.app_runtime_abbr %> enables the operator to reach a Docker Hub through a proxy within an environment that lacks internet connectivity.</p>
+<p class="note"><strong>Note:</strong> For the Pivotal Application Service (PAS) runtime, editing proxy settings in the BOSH Director propagates those settings to the Garden Diego cells in PAS. Sharing these proxy settings between Ops Manager and PAS enables the operator to reach a Docker Hub through a proxy within an environment that lacks internet connectivity.</p>
 Complete the fields with the following information:
     * **HTTP proxy**: Enter the URL for the proxy that handles HTTPS requests between the BOSH CPI and the IaaS API.
     * **HTTPS proxy**: Enter the URL for the proxy that handles HTTP requests between the BOSH CPI and the IaaS API. If you are using the same proxy to handle both HTTPS and HTTP traffic, enter the same URL as **HTTP proxy**.

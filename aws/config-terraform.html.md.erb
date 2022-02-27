@@ -16,11 +16,11 @@ Amazon Web Services (AWS) after [Deploying Ops Manager on AWS Using Terraform](.
 To complete the procedures in this topic, you must have access to the output from when you ran `terraform apply` to create resources for this deployment. You can view this output at any time by running `terraform output`. You use the values in your Terraform output to configure the BOSH Director tile.
 
 
-## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='access-om'></a> Step 1: Log Into Ops Manager
 
 1. In a web browser, navigate to the fully qualified domain name (FQDN) of Ops Manager. Use the `ops_manager_dns` value from running `terraform output`.
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log into Ops Manager. To log in, see [Log In to Ops Manager For the First Time](../login.html#login-first-time).
 
 ## <a id='aws-config'></a> Step 2: AWS Config Page
 
@@ -43,8 +43,8 @@ To complete the procedures in this topic, you must have access to the output fro
     * **Region**: Input the AWS region where you deployed Ops Manager.
     * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption
       on persistent disks of all BOSH-deployed VMs, except
-      for the <%= vars.ops_manager %> VM and BOSH Director VM. For more information about using Elastic Block Store (EBS) encryption, see [Configuring Amazon EBS Encryption](../install/cloudform-om-ebs-config.html).
-      <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) are not encrypted.</p>
+      for the Ops Manager VM and BOSH Director VM. For more information about using Elastic Block Store (EBS) encryption, see [Configuring Amazon EBS Encryption](../install/cloudform-om-ebs-config.html).
+      <p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with Pivotal Application Service for Windows (PASW) are not encrypted.</p>
       * **Custom Encryption Key (Optional)** After you enable EBS encryption, you might want to specify a custom Key Management Service (KMS) encryption key. If you don't enter a value, your custom encryption key defaults to the account key. For more information, see [Configuring Amazon EBS Encryption](../install/cloudform-om-ebs-config.html).
 
 1. Click **Save**.
@@ -341,7 +341,7 @@ To complete the procedures in this topic, you must have access to the output fro
 
 1. Click **Save**.
 
-    <p class="note"><strong>Note:</strong> If you are deploying <%= vars.k8s_runtime_abbr %> with a <%= vars.k8s_runtime_abbr %> workload load balancer, you must tag each AWS subnet with your <%= vars.k8s_runtime_abbr %> Kubernetes cluster unique identifier before you create the load balancer. For more information about tagging subnets with a <%= vars.k8s_runtime_abbr %> cluster unique identifier, see <a href="https://docs.pivotal.io/pks/deploy-workloads.html#aws">AWS Prerequisites</a>.</p>
+    <p class="note"><strong>Note:</strong> If you are deploying TKGI with a TKGI workload load balancer, you must tag each AWS subnet with your TKGI Kubernetes cluster unique identifier before you create the load balancer. For more information about tagging subnets with a TKGI cluster unique identifier, see <a href="https://docs.pivotal.io/pks/deploy-workloads.html#aws">AWS Prerequisites</a>.</p>
 
     <%= vars.expand_network_azs %>
 
@@ -378,7 +378,7 @@ To complete the procedures in this topic, you must have access to the output fro
 1. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class="note"><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, Ops Manager automatically uses the new recommended allocation.</p>
-    <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_abbr %>, provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+    <p class="note"><strong>Note:</strong> If you install PASW, provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 1. (Optional) To configure an Application Load Balancer (ALB) for your BOSH Director, click the icon next to the **BOSH Director** job name to see more fields.
 Enter your AWS target group name in the **Load Balancers** field for the **BOSH Director** job. Prepend the name with `alb:`. For example, enter `alb:target-group-name`.<br><br>
@@ -442,6 +442,6 @@ To assign your load balancer VMs to the correct target groups and security group
     <%= image_tag("../common/images/cloudform/ops-manager-complete.png", :alt => "A pop-up window with a round, gray X button in the upper-right corner and the words 'Changed Applied' next to a round, green circle containing a checkmark. Below 'Changed Applied' are the words 'Ops Manager Director was successfully installed. We recommend that you export a backup of this installation from the actions menu.' Below this text and to the right of the pop-up window are a gray, rectangular button labeled 'Close' next to a blue, rectangular button labeled 'Return to Installation Dashboard'.") %>
 
 1. After you complete this procedure, continue to the topic for the runtime you are installing:
-  * **<%= vars.app_runtime_abbr %>**: [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html)
-  * **<%= vars.k8s_runtime_abbr %> v1.2**: [Installing <%= vars.k8s_runtime_abbr %> on AWS](https://docs.pivotal.io/pks/1-2/installing-pks-aws.html)
-  * **<%= vars.k8s_runtime_abbr %> v1.3**: [Installing <%= vars.k8s_runtime_abbr %> on AWS](https://docs.pivotal.io/pks/1-3/installing-pks-aws.html)
+  * **PAS**: [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html)
+  * **TKGI v1.2**: [Installing TKGI on AWS](https://docs.pivotal.io/pks/1-2/installing-pks-aws.html)
+  * **TKGI v1.3**: [Installing TKGI on AWS](https://docs.pivotal.io/pks/1-3/installing-pks-aws.html)

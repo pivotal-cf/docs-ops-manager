@@ -6,11 +6,11 @@ owner: Program Management
 This topic describes practices recommended by Pivotal for creating secure IaaS
 user roles.
 
-The connection between <%= vars.ops_manager %> and IaaS providers requires IaaS accounts with appropriate permissions.
+The connection between Ops Manager and IaaS providers requires IaaS accounts with appropriate permissions.
 These accounts act on behalf of the operator to access IaaS functionality,
 such as creating VMs, managing networks and storage, and other related services.
 
-Pivotal Operations Manager and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) can be configured with IaaS users in different ways depending on your IaaS. Other product tiles and services might also use their own IaaS credentials. Refer to the documentation for those product tiles or services to configure them securely.
+Pivotal Operations Manager and Pivotal Application Service (PAS) can be configured with IaaS users in different ways depending on your IaaS. Other product tiles and services might also use their own IaaS credentials. Refer to the documentation for those product tiles or services to configure them securely.
 
 ##<a id="lpus"></a> Least Privileged Users (LPUs)
 
@@ -24,13 +24,13 @@ See the recommendations detailed in [AWS Permissions Guidelines](aws-iaas-user-r
 
 ##<a id="azure"></a>Azure Guidelines
 
-See the permissions recommendations in [Preparing to Deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html), and use the minimum permissions necessary when creating your service principal.
+See the permissions recommendations in [Preparing to Deploy Ops Manager on Azure](../azure/prepare-env-manual.html), and use the minimum permissions necessary when creating your service principal.
 
 ##<a id="gcp"></a>GCP Guidelines
 
 For GCP, Pivotal recommends using two different accounts with the least privilege.
 
-Use one account with the minimum permissions required to create desired GCP resources in your GCP project, then create a separate service account with the minimum permissions required to deploy <%= vars.app_runtime_abbr %> and other tiles. For more information about creating the service account, see _Step 1: Set up IAM Service Accounts_ in [Preparing to Deploy <%= vars.ops_manager %> on GCP](../gcp/prepare-env-manual.html#iam_account).
+Use one account with the minimum permissions required to create desired GCP resources in your GCP project, then create a separate service account with the minimum permissions required to deploy PAS and other tiles. For more information about creating the service account, see _Step 1: Set up IAM Service Accounts_ in [Preparing to Deploy Ops Manager on GCP](../gcp/prepare-env-manual.html#iam_account).
 
 ##<a id="openstack"></a>OpenStack Guidelines
 
@@ -38,4 +38,4 @@ Pivotal recommends following the principle of least privilege by scoping privile
 
 ##<a id="vsphere"></a>vSphere Guidelines
 
-See the vCenter permissions recommendations in [Installing <%= vars.ops_manager %> on vSphere](vsphere.html#permissions).
+See the vCenter permissions recommendations in [Installing Ops Manager on vSphere](vsphere.html#permissions).

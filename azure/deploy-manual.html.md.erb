@@ -5,7 +5,7 @@ owner: Ops Manager
 
 <html class="list-style-none"></html>
 
-This topic describes how to deploy BOSH and Pivotal Operations Manager for <%= vars.platform_name %> on Azure by using individual commands to create resources. Pivotal recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
+This topic describes how to deploy BOSH and Ops Manager on Azure by using individual commands to create resources. Pivotal recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
 
 Before you perform the procedures in this topic, you must have completed the procedures in [Preparing to Deploy Ops Manager on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
 
@@ -144,7 +144,7 @@ To create network resources for your deployment, do the following:
 
 ## <a id='storage'></a> Step 2: Create BOSH and Deployment Storage Accounts
 
-<%= vars.ops_manager %> on Azure uses multiple general-purpose Azure storage accounts. The BOSH and <%= vars.ops_manager %> VMs use one main BOSH account, and the other components share five or more deployment storage accounts.
+Ops Manager on Azure uses multiple general-purpose Azure storage accounts. The BOSH and Ops Manager VMs use one main BOSH account, and the other components share five or more deployment storage accounts.
 
 To create storage accounts for BOSH and your deployment, do the following:
 
@@ -247,7 +247,7 @@ Your load balancer configuration depends on whether you want apps to be availabl
 
 To create load balancers, do the following:
 
-1. **Required:** <%= vars.app_runtime_abbr %> Load Balancer
+1. **Required:** PAS Load Balancer
     1. Create a load balancer named `pcf-lb`. A static IP address will be automatically created for Standard SKU load balancers unless specified otherwise with `--public-ip-address-allocation Dynamic`.
         <pre class="terminal">
         $ az network lb create --name pcf-lb \

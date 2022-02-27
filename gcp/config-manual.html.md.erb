@@ -5,12 +5,12 @@ iaas: GCP
 install_type: manual
 ---
 
-This topic describes how to configure the BOSH Director in <%= vars.ops_manager %> on Google Cloud Platform (GCP).
+This topic describes how to configure the BOSH Director in Ops Manager on Google Cloud Platform (GCP).
 
 <p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the Ops Manager API. For more information, see <a href="../install/ops-man-api.html">Using the Ops Manager API</a>.</p>
 
 
-## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='access-om'></a> Step 1: Log Into Ops Manager
 
 To configure BOSH Director, you must first access your Ops Manager installation and determine how your user database is maintained.
 
@@ -19,7 +19,7 @@ To access Ops Manager:
 1. In a web browser, navigate to the fully qualified domain name (FQDN) of Ops Manager that you set up in [Deploying Ops Manager on GCP](./deploy-manual.html).
   <p class="note"><strong>Note:</strong> In order to set up Ops Manager authentication correctly, Pivotal recommends using an FQDN to access Ops Manager. Using an ephemeral IP address to access Ops Manager can cause authentication errors upon subsequent access.</p>
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log into Ops Manager. To log in, see [Log In to Ops Manager For the First Time](../login.html#login-first-time).
 
 ## <a id='gcp-config'></a> Step 2: Configure GCP Tile
 
@@ -29,9 +29,9 @@ To configure your GCP tile:
 
 1. Select **Google Config** and complete the following fields:
     * **Project ID**: Enter your GCP project ID in lowercase, such as: `your-gcp-project-id`.
-    * **Default Deployment Tag**: Enter the prefix that you used when creating the GCP resources for this <%= vars.ops_manager %> installation.
-    * Select **AuthJSON**. In the field below, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
-        <p class="note"><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
+    * **Default Deployment Tag**: Enter the prefix that you used when creating the GCP resources for this Ops Manager installation.
+    * Select **AuthJSON**. In the field below, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy Ops Manager on GCP_.
+        <p class="note"><strong>Note:</strong> As an alternative, you can select <strong>The Ops Manager VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy Ops Manager on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
        <%= image_tag("../common/images/gcp/google_config.png", :alt => "At the top of the image is the header 'Google Cloud Platform Config', underneath which is a horizonal line. Below the line are two text fields: one labeled 'Project ID' with a red asterisk to denote that it is a required field, and another labeled 'Default Deployment Tag'. Below this are two options: one selected radio button labeled 'The Ops Manager VM Service Account', and another button labeled 'AuthJSON'. Underneath 'AuthJSON' is a blank text area. At the bottom of the image is a blue, rectangular button labeled 'Save'.") %>
 1. Click **Save**.
 
@@ -46,8 +46,8 @@ To configure the **Director Config** pane in the BOSH Director tile, you must ha
 
 <div class="note"><strong>Note:</strong> Pivotal recommends at least three availability zones (AZs) for a highly available installation.
   <ul>
-    <li>For configuring a <%= vars.app_runtime_abbr %> deployment with multiple AZs, see <a href="../refarch/gcp/gcp_ref_arch.html">Reference Architecture for <%= vars.ops_manager %> on GCP</a>.</li>
-    <li>For <%= vars.k8s_runtime_abbr %> best practices for distributing workloads across multiple AZs and clusters, see <a href="https://docs.pivotal.io/pks/maintain-uptime.html">Maintaining Workload Uptime</a>.</li>
+    <li>For configuring a PAS deployment with multiple AZs, see <a href="../refarch/gcp/gcp_ref_arch.html">Reference Architecture for Ops Manager on GCP</a>.</li>
+    <li>For TKGI best practices for distributing workloads across multiple AZs and clusters, see <a href="https://docs.pivotal.io/pks/maintain-uptime.html">Maintaining Workload Uptime</a>.</li>
   </ul>
 </div>
 
@@ -213,7 +213,7 @@ To configure the **Resource Config** pane:
     <%= image_tag("../common/images/gcp/om_resource_config.png", :alt => "At the top of the image is the header 'Resource Config'. In the top right corner of the image is a blue, rectangular button labeled 'Save'. Below the header are four columns labeled, from left to right, 'Job', 'Instances', 'VM Type', and 'Persistent Disk Type'. Under 'Job' are rows labeled with the names of two VMs, 'BOSH Director' and 'Master Compilation Job'. The 'Master Compilation Job' row is expanded, which reveals a 'Load Balancers' field and an 'Internet Connected' checkbox. The 'Load Balancers' field is blank and the 'Internet Connected' checkbox is selected. Under 'Instances' are two dropdowns, with 'Automatic: 1' for BOSH Director and '1' for Master Compilation Job selected. Under 'VM Type' are two dropdowns, with 'Automatic: large.disk (cpu: 2...' selected for BOSH Director and 'small (cpu: 1, ram: 2 GB, disk...' selected for Master Compilation Job. Under 'Persistent Disk Type' is one dropdown with 'Automatic: 50 GB' selected for BOSH Director and the word 'None' for Master Compilation Job.") %>
 
 1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The checkbox gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy Ops Manager on GCP](./prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
-  <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+  <p class="note"><strong>Note:</strong> If you install Pivotal Application Service for Windows (PASW), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 
 ## <a id="custom-vm-extensions"></a> Step 11: (Optional) Add Custom VM Extensions
@@ -239,6 +239,6 @@ To complete your BOSH Director installation:
 
 After you complete this procedure, follow the instructions for the runtime you intend to install.
 
-* To deploy <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
+* To deploy PAS, see [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
 
-* To prepare to deploy <%= vars.k8s_runtime_abbr %>, see [Creating Service Accounts in GCP for <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/pks/gcp-service-accounts.html).
+* To prepare to deploy TKGI, see [Creating Service Accounts in GCP for TKGI](https://docs.pivotal.io/pks/gcp-service-accounts.html).

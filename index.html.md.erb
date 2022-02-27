@@ -56,62 +56,62 @@ tiles:
     url: ./install/monitoring.html
 ---
 
-This topic introduces <%= vars.ops_manager %> (previously Pivotal <%= vars.ops_manager %> or PCF <%= vars.ops_manager %>) and describes how to get started.
+This topic introduces Ops Manager (previously Pivotal Ops Manager or PCF Ops Manager) and describes how to get started.
 
 
-## <a id="overview"></a> About <%= vars.ops_manager %>
+## <a id="overview"></a> About Ops Manager
 
-<%= vars.ops_manager %> is a software tool to help you expand and manage products you can install on your deployment. These products are represented as a _tile_ in the UI.
+Ops Manager is a software tool to help you expand and manage products you can install on your deployment. These products are represented as a _tile_ in the UI.
 
-<%= vars.ops_manager %> deploys with the BOSH Director tile by default, which is a single point of control for VMs. The BOSH Director supports various IaaSes, including AWS, Azure, GCP, OpenStack, and vSphere.
+Ops Manager deploys with the BOSH Director tile by default, which is a single point of control for VMs. The BOSH Director supports various IaaSes, including AWS, Azure, GCP, OpenStack, and vSphere.
 
-With <%= vars.ops_manager %>, you can install two types of tiles:
+With Ops Manager, you can install two types of tiles:
 
-- **Runtime Tiles:** You can install VM- or Kubernetes-based runtimes, which dynamically runs apps and other processes to balance demand throughout app lifecycles. Example runtimes managed though <%= vars.ops_manager %> include <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>).
+- **Runtime Tiles:** You can install VM- or Kubernetes-based runtimes, which dynamically runs apps and other processes to balance demand throughout app lifecycles. Example runtimes managed though Ops Manager include Pivotal Application Service (PAS) and VMware Tanzu Kubernetes Grid Integrated Edition (TKGI).
 
-- **Service Tiles:** You can install various services that help support your deployment. Example types of services managed through <%= vars.ops_manager %> include MySQL, Redis, and Gemfire.
+- **Service Tiles:** You can install various services that help support your deployment. Example types of services managed through Ops Manager include MySQL, Redis, and Gemfire.
 
 For more information about the tiles you can install, see [<%= vars.product_network %>](https://network.pivotal.io/).
 
 
 
-## <a id="responsibilities"></a> <%= vars.ops_manager %> Responsibilities
+## <a id="responsibilities"></a> Ops Manager Responsibilities
 
-<%= vars.ops_manager %> is managed by an _operator_. The operator is responsible for installing and maintaining runtime and service tiles.
+Ops Manager is managed by an _operator_. The operator is responsible for installing and maintaining runtime and service tiles.
 
 ### <a id="operator"></a> Operator Responsibilities
 
-The <%= vars.ops_manager %> operator is responsible for:
+The Ops Manager operator is responsible for:
 
-* Configuring <%= vars.ops_manager %> capabilities
+* Configuring Ops Manager capabilities
 
-* Integrating <%= vars.ops_manager %> with external systems
+* Integrating Ops Manager with external systems
 
-* Updating <%= vars.ops_manager %> and installed products
+* Updating Ops Manager and installed products
 
-* Monitoring <%= vars.ops_manager %> health and performance
+* Monitoring Ops Manager health and performance
 
-* Adjusting <%= vars.ops_manager %> resources and options to fix health or performance issues
+* Adjusting Ops Manager resources and options to fix health or performance issues
 
-* Diagnosing and troubleshooting <%= vars.ops_manager %> problems
+* Diagnosing and troubleshooting Ops Manager problems
 
-* Managing <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) users, resources, and infrastructure
+* Managing Pivotal Application Service (PAS) users, resources, and infrastructure
 
 * Installing software services and otherwise enabling developers
 
-* Creating and managing <%= vars.ops_manager %> user and client accounts
+* Creating and managing Ops Manager user and client accounts
 
 
 ### <a id=""></a> Limited-Access Operator Responsibilities
 
-Operators can give limited-access view or write <%= vars.ops_manager %> responsibilites to others within an organization.
+Operators can give limited-access view or write Ops Manager responsibilites to others within an organization.
 
 For more information about privileges, see [Configuring Role-Based Access Control (RBAC) in Ops Manager](./opsguide/config-rbac.html).
 
 
-## <a id='related'></a> <%= vars.ops_manager %> Documentation
+## <a id='related'></a> Ops Manager Documentation
 
-The following sections describe where to get started in the <%= vars.ops_manager %> documentation.
+The following sections describe where to get started in the Ops Manager documentation.
 
 <%# The following partial uses content from the frontmatter at the top of this file. %>
 <%= partial "./common/tiles" %>

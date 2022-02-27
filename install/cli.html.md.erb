@@ -3,13 +3,13 @@ title: Using the Ops Manager CLI
 owner: Ops Manager
 ---
 
-This topic describes how to use the Ops Manager command line interface (om CLI) to perform common <%= vars.ops_manager %> operations.
+This topic describes how to use the Ops Manager command line interface (om CLI) to perform common Ops Manager operations.
 
 ## <a id="about"></a> About om CLI
 
 om CLI is a tool that helps you configure and deploy tiles to Ops Manager without using the Ops Manager UI. om CLI communicates with the Ops Manager API and makes commands simpler.
 
-With the om CLI, you can also manage <%= vars.ops_manager %> programmatically through platform automation. For more information about platform automation, see the [Platform Automation Toolkit](https://docs.pivotal.io/platform-automation).
+With the om CLI, you can also manage Ops Manager programmatically through platform automation. For more information about platform automation, see the [Platform Automation Toolkit](https://docs.pivotal.io/platform-automation).
 
 The om CLI has the following benefits over the Ops Manager API:
 
@@ -71,7 +71,7 @@ To install the om CLI from direct download:
 
 ## <a id="login-cli"></a> Authenticate with the om CLI
 
-For most om CLI commands, you must authenticate with <%= vars.ops_manager %> by putting your <%= vars.ops_manager %> login information into a YAML file.
+For most om CLI commands, you must authenticate with Ops Manager by putting your Ops Manager login information into a YAML file.
 
 To authenticate with the om CLI:
 
@@ -91,7 +91,7 @@ To authenticate with the om CLI:
     ```
 
     Where:
-    - `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
+    - `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager deployment.
     - `OPS-MANAGER-USERNAME` is the username that you use when you log into the Ops Manager UI.
     - `OPS-MANAGER-PASSWORD` is the password that you use when you log into the Ops Manager UI.
 
@@ -101,7 +101,7 @@ To authenticate with the om CLI:
     export OM_ENV=PATH-TO-WORKING-DIRECTORY/om-cli-env.yml
     ``` 
 
-1. Test authentication in your <%= vars.ops_manager %> environment by running the `om products` command.
+1. Test authentication in your Ops Manager environment by running the `om products` command.
 
     ```bash
     om --env=$OM_ENV products

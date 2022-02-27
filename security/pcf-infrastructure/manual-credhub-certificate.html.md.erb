@@ -12,7 +12,7 @@ A manually set certificate is a certificate that an operator has added directly 
 
 For example, you or another operator may have provided an existing certificate to BOSH CredHub as described in [Preparing for TLS](https://docs.pivotal.io/p-mysql/2-5/prepare-tls.html) in the MySQL for PCF documentation.
 
-To ensure that <%= vars.ops_manager %> does not rotate these certificates alongside CredHub-generated certificates, you must ensure that the `generated` field of all manually set certificates is set to `false` in CredHub.
+To ensure that Ops Manager does not rotate these certificates alongside CredHub-generated certificates, you must ensure that the `generated` field of all manually set certificates is set to `false` in CredHub.
 
 In this procedure, you use the CredHub CLI to review existing certificates and then check for manually set certificates. If you find any manually set certificates that require updates, you can use the CredHub CLI to reset the certificate.
 
@@ -22,7 +22,7 @@ You need the BOSH client name and client secret to use the CredHub CLI.
 
 To find the BOSH CredHub client name and client secret:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Navigate to the Ops Manager Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
@@ -47,11 +47,11 @@ To find the BOSH CredHub client name and client secret:
 
 ## <a id="login-credhub"></a> Target and Log in to the BOSH CredHub API Server
 
-You can run CredHub CLI commands on the <%= vars.ops_manager %> VM.
+You can run CredHub CLI commands on the Ops Manager VM.
 
 To login and access the CredHub API:
 
-1. SSH into the <%= vars.ops_manager %> VM. For IaaS-specific instructions on how to SSH, see [Log Into the <%= vars.ops_manager %> VM with SSH](../../install/ssh-login.html#ssh-by-iaas).
+1. SSH into the Ops Manager VM. For IaaS-specific instructions on how to SSH, see [Log Into the Ops Manager VM with SSH](../../install/ssh-login.html#ssh-by-iaas).
 
 1. Set the CredHub API target of the CLI by running:
 

@@ -3,9 +3,9 @@ title: Upgrading BOSH Director on AWS
 owner: Ops Manager
 ---
 
-This topic describes how to upgrade BOSH Director for <%= vars.ops_manager %> on Amazon Web Services (AWS).
+This topic describes how to upgrade BOSH Director for Ops Manager on Amazon Web Services (AWS).
 
-Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>](upgrading-pcf.html#upgrade_ops) in _Upgrading <%= vars.ops_manager %>_.
+Complete the tasks in this topic as part of the Ops Manager upgrade process. For more information, see [Task 2: Upgrade Ops Manager and Installed Products to v2.7](upgrading-pcf.html#upgrade_ops) in _Upgrading Ops Manager_.
 
 
 ## <a id='overview'></a> Overview
@@ -13,15 +13,15 @@ Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade 
 <%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
 <%= partial "/pcf/core/2-11/om_upgrade_overview" %>
 
-For <%= vars.ops_manager %> installations on AWS, the VM that hosts the new version of <%= vars.ops_manager %> uses an Amazon Machine Image (AMI) specific to your region.
+For Ops Manager installations on AWS, the VM that hosts the new version of Ops Manager uses an Amazon Machine Image (AMI) specific to your region.
 
-To create an <%= vars.ops_manager %> VM instance:
+To create an Ops Manager VM instance:
 
-1. Retrieve the <%= vars.ops_manager %> AMI ID. For more information, see [Retrieve <%= vars.ops_manager %> AMI ID](#pcfaws-om-ami).
+1. Retrieve the Ops Manager AMI ID. For more information, see [Retrieve Ops Manager AMI ID](#pcfaws-om-ami).
 
-1. Launch the AMI. For more information, see [Launch <%= vars.ops_manager %> AMI](#pcfaws-om-ami).
+1. Launch the AMI. For more information, see [Launch Ops Manager AMI](#pcfaws-om-ami).
 
-1. Edit the <%= vars.ops_manager %> DNS A Record. For more information, see [Edit <%= vars.ops_manager %> DNS A Record](#dns).
+1. Edit the Ops Manager DNS A Record. For more information, see [Edit Ops Manager DNS A Record](#dns).
 
 
 ## <a id='prerequisites'></a> Prerequisites
@@ -29,26 +29,26 @@ To create an <%= vars.ops_manager %> VM instance:
 <%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
 <%= partial "/pcf/core/2-11/om_upgrade_prerequisite" %>
 
-## <a id='pcfaws-om-ami'></a> Retrieve <%= vars.ops_manager %> AMI ID
+## <a id='pcfaws-om-ami'></a> Retrieve Ops Manager AMI ID
 
-<%= vars.ops_manager %> has a different AMI ID for each region. Retrieve and record the AMI ID for your region. You use this AMI ID when launching the <%= vars.ops_manager %> AMI instance.
+Ops Manager has a different AMI ID for each region. Retrieve and record the AMI ID for your region. You use this AMI ID when launching the Ops Manager AMI instance.
 
-To retrieve the AMI ID for <%= vars.ops_manager %>:
+To retrieve the AMI ID for Ops Manager:
 
-1. Navigate to the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network.
+1. Navigate to the [Ops Manager](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network.
 
-1. Select the version of <%= vars.ops_manager %> you want to install from the **Releases** dropdown.
+1. Select the version of Ops Manager you want to install from the **Releases** dropdown.
 
-1. In the **Release Download Files**, click the file named **<%= vars.ops_manager %> for AWS** to download a PDF.
+1. In the **Release Download Files**, click the file named **Ops Manager for AWS** to download a PDF.
 
 1. Open the PDF and record the AMI ID for your region.
 
 
-## <a id='pcfaws-om-ami'></a> Launch <%= vars.ops_manager %> AMI
+## <a id='pcfaws-om-ami'></a> Launch Ops Manager AMI
 
-Use the AMI ID for your region to launch an AMI instance that hosts the new version of <%= vars.ops_manager %>.
+Use the AMI ID for your region to launch an AMI instance that hosts the new version of Ops Manager.
 
-To launch the AMI for <%= vars.ops_manager %>:
+To launch the AMI for Ops Manager:
 
 1. Navigate to your EC2 Dashboard.
 
@@ -61,14 +61,14 @@ To launch the AMI for <%= vars.ops_manager %>:
 
     <%= image_tag("pcfaws/pcf_aws_ami.png", :alt => "AWS AMI interface") %>
 
-1. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS):
+1. (Optional) If you want to encrypt the VM that runs Ops Manager with AWS Key Management Service (KMS):
   1. Right-click the row that lists your AMI and click **Copy AMI**.
   1. Select your **Destination region**.
   1. Enable **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) in _Copying an AMI_ in the AWS documentation.
   1. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
   1. Click **Copy AMI**. You can use the new AMI you copied for the next steps.
 
-1. Select the row that lists your <%= vars.ops_manager %> AMI and click **Launch**.
+1. Select the row that lists your Ops Manager AMI and click **Launch**.
 
 1. Choose **m5.large** for your instance type.
 
@@ -97,22 +97,22 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 1. Click **Next: Configure Security Group**.
 
-1. Select the `<%= vars.product_name_lc %>-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](../aws/prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+1. Select the `<%= vars.product_name_lc %>-ops-manager-security-group` that you created in [Configure a Security Group for Ops Manager](../aws/prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy Ops Manager on AWS_.
 
 1. Click **Review and Launch** and confirm the instance launch details.
 
 1. Click **Launch**.
 
-1. Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
+1. Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the Ops Manager VM.
 
     <%= image_tag("pcfaws/select_pcfpem_keypair.png", :alt => "AWS Key Pair Selection UI") %>
 
 
-## <a id='dns'></a> Edit <%= vars.ops_manager %> DNS A Record
+## <a id='dns'></a> Edit Ops Manager DNS A Record
 
-After you deploy the new <%= vars.ops_manager %> VM, edit the <%= vars.ops_manager %> DNS record in the EC2 dashboard to point to the IP address for the new VM.
+After you deploy the new Ops Manager VM, edit the Ops Manager DNS record in the EC2 dashboard to point to the IP address for the new VM.
 
-To edit the <%= vars.ops_manager %> DNS A record:
+To edit the Ops Manager DNS A record:
 
 1. Click **View Instances** to access the **Instances** page on the EC2 Dashboard.
 
@@ -120,9 +120,9 @@ To edit the <%= vars.ops_manager %> DNS A record:
 
 1. Locate the **IPv4 Public IP** value in the instance **Description** tab, and record this value for use in the next step.
 
-1. In your DNS provider, edit the **A** record for `<%= vars.product_name_lc %>.SYSTEM-DOMAIN` to point to the IP address recorded in the previous step, where `SYSTEM-DOMAIN` is the system domain of your <%= vars.ops_manager %> deployment.
+1. In your DNS provider, edit the **A** record for `<%= vars.product_name_lc %>.SYSTEM-DOMAIN` to point to the IP address recorded in the previous step, where `SYSTEM-DOMAIN` is the system domain of your Ops Manager deployment.
 
 
 ## <a id='continue'></a> Next Steps
 
-After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](./upgrading-pcf.html)
+After you complete this procedure, continue to the upgrade instructions in [Upgrading Ops Manager](./upgrading-pcf.html)

@@ -5,37 +5,37 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.ops_manager + " on AWS"  %>
 
-This guide describes how to install [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) on Amazon Web Services (AWS).
+This guide describes how to install [Ops Manager](https://network.pivotal.io/products/pivotal-cf) on Amazon Web Services (AWS).
 
 
 ## <a id='overview'></a> Overview
 
-You can install <%= vars.ops_manager %> on AWS with either the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime. There are resource requirements specific to each runtime. Ensure you meet the requirements for your runtime and the requirements specific to AWS before installing <%= vars.ops_manager %> on AWS.
+You can install Ops Manager on AWS with either the Pivotal Application Service (PAS) or VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) runtime. There are resource requirements specific to each runtime. Ensure you meet the requirements for your runtime and the requirements specific to AWS before installing Ops Manager on AWS.
 
 
 ## <a id="requirements"></a> Requirements
 
-This section lists the following resource requirements for installing <%= vars.ops_manager %> on AWS:
+This section lists the following resource requirements for installing Ops Manager on AWS:
 
-* General <%= vars.ops_manager %> resource requirements. For more information, see [<%= vars.ops_manager %> Resource Requirements](#general-requirements).
+* General Ops Manager resource requirements. For more information, see [Ops Manager Resource Requirements](#general-requirements).
 
 * AWS-specific resource requirements. For more information, see [AWS Resource Requirements](#aws-requirements).
 
-### <a id="general-requirements"></a> <%= vars.ops_manager %> Resource Requirements
+### <a id="general-requirements"></a> Ops Manager Resource Requirements
 
-This section lists resource requirements for installing <%= vars.ops_manager %> on AWS. It includes links to general resource requirements for both the <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> runtimes.
+This section lists resource requirements for installing Ops Manager on AWS. It includes links to general resource requirements for both the PAS and TKGI runtimes.
 
-See one of the following topics, depending on the runtime you plan to install using <%= vars.ops_manager %>:
+See one of the following topics, depending on the runtime you plan to install using Ops Manager:
 
-* For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-7/operating/requirements.html).
-* For <%= vars.k8s_runtime_abbr %>-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
+* For PAS-specific resource requirements, see [PAS Resource Requirements](https://docs.pivotal.io/application-service/2-7/operating/requirements.html).
+* For TKGI-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
 
 ### <a id="aws-requirements"></a> AWS Resource Requirements
 
-The following are AWS-specific resource requirements for installing <%= vars.ops_manager %> on AWS with an external database and external file storage:
+The following are AWS-specific resource requirements for installing Ops Manager on AWS with an external database and external file storage:
 
-* Installing <%= vars.ops_manager %> on AWS requires a minimum of the following VM instance limits in your AWS account. The number of VMs required depends on the number of tiles and availability zones (AZs) you plan to deploy. The following VM guidelines apply to the <%= vars.app_runtime_abbr %>, Small Footprint <%= vars.app_runtime_abbr %>, and <%= vars.k8s_runtime_abbr %> runtimes:
-  * **<%= vars.app_runtime_abbr %>:** At a minimum, a new AWS deployment requires the following VMs for <%= vars.app_runtime_abbr %>:
+* Installing Ops Manager on AWS requires a minimum of the following VM instance limits in your AWS account. The number of VMs required depends on the number of tiles and availability zones (AZs) you plan to deploy. The following VM guidelines apply to the PAS, Small Footprint PAS, and TKGI runtimes:
+  * **PAS:** At a minimum, a new AWS deployment requires the following VMs for PAS:
     <table border="1" class="nice">
       <tr>
         <th>AWS Requirements</th>
@@ -44,7 +44,7 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
         <th>Default VM Count</th>
         <th>Required or Optional VM</th>
       </tr><tr>
-        <th rowspan=22><%= vars.app_runtime_abbr %></th>
+        <th rowspan=22>PAS</th>
           <td>NATS</td>
           <td>t3.micro</td>
           <td>2</td>
@@ -155,15 +155,15 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
           <td>0</td>
           <td>Optional</td>
       </tr><tr>
-        <th rowspan=2><%= vars.ops_manager %></th>
+        <th rowspan=2>Ops Manager</th>
           <td>BOSH Director</td>
           <td>m5.large</td>
           <td>1</td>
           <td>Required</td>
       </tr>
     </table>
-    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/2-7/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
-  * **Small Footprint <%= vars.app_runtime_abbr %>:** To run Small Footprint <%= vars.app_runtime_abbr %>, a new AWS deployment requires:
+    <p class="note"><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/2-7/operating/scaling-ert-components.html">Scaling PAS</a>.</p>
+  * **Small Footprint PAS:** To run Small Footprint PAS, a new AWS deployment requires:
     <table id='aws-requirements' border="1" class="nice">
       <tr>
       	<th>AWS Requirements</th>
@@ -173,7 +173,7 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
         <th>Minimum HA VM Count</th>
         <th>Required or Optional VM</th>
       </tr><tr>
-        <th rowspan=12>Small Footprint <%= vars.app_runtime_abbr %></th>
+        <th rowspan=12>Small Footprint PAS</th>
           <td>Compute</td>
           <td>r5.xlarge</td>
           <td>1</td>
@@ -246,7 +246,7 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
           <td>1</td>
           <td>Optional</td>
       </tr><tr>
-        <th rowspan=2><%= vars.ops_manager %></th>
+        <th rowspan=2>Ops Manager</th>
           <td>BOSH Director</td>
           <td>m5.large</td>
           <td>1</td>
@@ -255,8 +255,8 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
       </tr>
     </table>
 <br />
-  - **<%= vars.k8s_runtime_abbr %>**: See [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/aws-requirements.html).
-* The following AWS resources are required for installing <%= vars.platform_name %> on AWS with <%= vars.app_runtime_abbr %>:
+  - **TKGI**: See [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/aws-requirements.html).
+* The following AWS resources are required for installing Ops Manager on AWS with PAS:
   * 3 Elastic Load Balancers (ELBs)
   * 1 Relational Database Service. As a minimum, Pivotal recommends using a db.m5.xlarge instance with at least 100&nbsp;GB of allocated storage.
   * 5 S3 Buckets
@@ -264,39 +264,39 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
 
 ## <a id="prerequisites"></a> Prerequisites
 
-To install <%= vars.ops_manager %> on AWS, you must:
+To install Ops Manager on AWS, you must:
 
-* Increase or remove the VM instance limits in your AWS account. Installing <%= vars.ops_manager %> requires more than the default 20 concurrent instances. For more information about VM resource requirements, see [Requirements](#requirements).
+* Increase or remove the VM instance limits in your AWS account. Installing Ops Manager requires more than the default 20 concurrent instances. For more information about VM resource requirements, see [Requirements](#requirements).
 
 * Configure your AWS account with the appropriate AWS region. For more information about selecting the correct region for your deployment, see [Region and Availability Zone Concepts](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions-availability-zones) in the AWS documentation.
 
 * Install the AWS CLI. Configure the AWS CLI with the user credentials that have admin access to your AWS account. To download the AWS CLI, see [AWS CLI](https://aws.amazon.com/cli/).
 
-* Configure an AWS EC2 key pair to use with your <%= vars.ops_manager %> deployment. For more information, see [Creating an EC2 Key Pair](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-keypair.html) in the AWS documentation.
+* Configure an AWS EC2 key pair to use with your Ops Manager deployment. For more information, see [Creating an EC2 Key Pair](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-keypair.html) in the AWS documentation.
 
-* Register a wildcard domain for your <%= vars.ops_manager %> installation. For more information, see [SSL/TLS Certificates for Classic Load Balancers](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ssl-server-cert.html#create-cert) in the AWS documentation.
+* Register a wildcard domain for your Ops Manager installation. For more information, see [SSL/TLS Certificates for Classic Load Balancers](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ssl-server-cert.html#create-cert) in the AWS documentation.
 
-* Create an SSL certificate for your <%= vars.platform_name %> domain. For more information, see the [AWS documentation about SSL certificates](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ssl-server-cert.html).
-  <p class="note"><strong>Note:</strong> To deploy <%= vars.platform_name %> to a production environment, you must obtain a certificate from a certificate authority. Pivotal recommends using a self-signed certificate generated by Ops Manager for development and testing purposes only.</p>
+* Create an SSL certificate for your Ops Manager domain. For more information, see the [AWS documentation about SSL certificates](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ssl-server-cert.html).
+  <p class="note"><strong>Note:</strong> To deploy Ops Manager to a production environment, you must obtain a certificate from a certificate authority. Pivotal recommends using a self-signed certificate generated by Ops Manager for development and testing purposes only.</p>
 
-* **(<%= vars.app_runtime_abbr %>-only)** Configure sufficient IP allocation. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pas) above.
+* **(PAS-only)** Configure sufficient IP allocation. For more information about IP allocation requirements, see [PAS Resource Requirements](#pas) above.
 
-* (Optional) **(<%= vars.app_runtime_abbr %> only)** Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+* (Optional) **(PAS only)** Configure external storage. Pivotal recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configuring.html#file-storage) in _Configuring PAS for Upgrades_.
 
-* **(Optional)** **(<%= vars.app_runtime_abbr %> and Ops Manager-only)** Configure external databases. Pivotal recommends using external databases in production deployments for BOSH Director and <%= vars.app_runtime_abbr %>. An external database must be configured to use the UTC timezone.
+* **(Optional)** **(PAS and Ops Manager only)** Configure external databases. Pivotal recommends using external databases in production deployments for BOSH Director and PAS. An external database must be configured to use the UTC timezone.
 
-* **(Optional)** **(<%= vars.app_runtime_abbr %> and Ops Manager-only)** Configure external user stores. When you deploy <%= vars.platform_name %>, you can select a SAML user store for Ops Manager or a SAML or LDAP user store for <%= vars.app_runtime_abbr %>, to integrate existing user accounts.
-
-
-## <a id="install"></a> Install <%= vars.ops_manager %> on AWS
+* **(Optional)** **(PAS and Ops Manager only)** Configure external user stores. When you deploy Ops Manager, you can select a SAML user store for Ops Manager or a SAML or LDAP user store for PAS, to integrate existing user accounts.
 
 
-To install <%= vars.ops_manager %> on AWS, see [Installing <%= vars.ops_manager %> on AWS](aws-manual.html).
+## <a id="install"></a> Install Ops Manager on AWS
+
+
+To install Ops Manager on AWS, see [Installing Ops Manager on AWS](aws-manual.html).
 
 
 ## <a id="resources"></a> Additional Resources
 
-The following are additional resources related to installing <%= vars.ops_manager %> on AWS:
+The following are additional resources related to installing Ops Manager on AWS:
 
 * For information about AWS identity and access management, see [What is IAM?](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) in the AWS documentation.
 
@@ -304,6 +304,6 @@ The following are additional resources related to installing <%= vars.ops_manage
 
 * For best practices for managing IaaS users and permissions, see [Temporary Security Credentials](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) in the AWS documentation.
 
-* For recommendations on how to create and scope AWS accounts for <%= vars.ops_manager %>, see [AWS Permissions Guidelines](./aws-iaas-user-roles.html).
+* For recommendations on how to create and scope AWS accounts for Ops Manager, see [AWS Permissions Guidelines](./aws-iaas-user-roles.html).
 
-* For more information about certificate requirements for installing <%= vars.ops_manager %>, see [Certificate Requirements](https://docs.pivotal.io/application-service/2-7/adminguide/securing-traffic.html#certtypes).
+* For more information about certificate requirements for installing Ops Manager, see [Certificate Requirements](https://docs.pivotal.io/application-service/2-7/adminguide/securing-traffic.html#certtypes).

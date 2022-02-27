@@ -3,29 +3,29 @@ title: Testing, Release, and Security Lifecycle
 owner: Security
 ---
 
-This topic explains how <%= vars.company_name %>'s development practices, automated build tools, and organizational structures work together to create and support stable releases of <%= vars.ops_manager %>.
+This topic explains how Pivotal's development practices, automated build tools, and organizational structures work together to create and support stable releases of Ops Manager.
 
 
 ## <a id='overview'></a> Overview
 
-* <%= vars.ops_manager %> teams building system components receive frequent feedback, which helps to secure code from exposure to vulnerability.
+* Ops Manager teams building system components receive frequent feedback, which helps to secure code from exposure to vulnerability.
 
-* Every <%= vars.ops_manager %> release follows a strict workflow and passes through numerous quality and compliance checks before distribution.
+* Every Ops Manager release follows a strict workflow and passes through numerous quality and compliance checks before distribution.
 
 * Teams build tests into the product consistently and run them automatically with any code change.
 
 
 ## <a id='mechanics'></a> Release Mechanics
 
-Pivotal releases, patches, and supports multiple versions of <%= vars.platform_name %> simultaneously. This section explains the versioning and support conventions Pivotal follows.
+Pivotal releases, patches, and supports multiple versions of Ops Manager and runtime products simultaneously. This section explains the versioning and support conventions Pivotal follows.
 
 ### <a id='versioning'></a> Versioning
 
-Pivotal numbers <%= vars.platform_name %> releases following a semantic versioning format, _X.Y.Z_, where _X_ and _Y_ indicate major and minor releases, and _Z_ designates patch releases. Major and minor releases change <%= vars.platform_name %> functionality. Patch releases are backward-compatible security patches or bug fixes. For more information about semantic versioning, see the [Semantic Versioning 2.0.0](https://semver.org/) website.
+Pivotal numbers releases following a semantic versioning format, _X.Y.Z_, where _X_ and _Y_ indicate major and minor releases, and _Z_ designates patch releases. Major and minor releases change functionality. Patch releases are backward-compatible security patches or bug fixes. For more information about semantic versioning, see the [Semantic Versioning 2.0.0](https://semver.org/) website.
 
 ### <a id='support'></a> Support
 
-As of <%= vars.platform_old %> (<%= vars.platform_code %>) v1.8, Pivotal supports each major and minor platform release according to the following criteria:
+As of Pivotal Cloud Foundry (PCF) v1.8, Pivotal supports each major and minor platform release according to the following criteria:
 
 * Pivotal supports the release for at least nine months following its first publication date.
 * Pivotal supports the last three major or minor releases, even if this extends coverage beyond nine months.
@@ -34,15 +34,15 @@ Support includes maintenance updates and upgrades, bug and security fixes, and t
 
 ### <a id='patch-releases'></a> Patch Releases
 
-Patch releases are more frequent and less predictable than major and minor releases. The <%= vars.platform_code %> v1.6.x line provides a good example of their frequency. <%= vars.platform_code %> v1.6.1 was released on October 26, 2015. Through August 2016, 36 additional patches of Elastic Runtime v1.6.x and 18 patches of <%= vars.ops_manager %> v1.6.x provided security and bug fixes to customers.
+Patch releases are more frequent and less predictable than major and minor releases. The PCF v1.6.x line provides a good example of their frequency. PCF v1.6.1 was released on October 26, 2015. Through August 2016, 36 additional patches of Elastic Runtime v1.6.x and 18 patches of Ops Manager v1.6.x provided security and bug fixes to customers.
 
-<%= vars.company_name %> identifies security issues using standard nomenclature from [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/), [Ubuntu Security Notices (USN)](https://www.ubuntu.com/usn/), and other third-party sources. For more information about security fixes in core <%= vars.ops_manager %> code or packaged dependencies, see [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../../release-notes.html) and [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html).
+<%= vars.company_name %> identifies security issues using standard nomenclature from [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/), [Ubuntu Security Notices (USN)](https://www.ubuntu.com/usn/), and other third-party sources. For more information about security fixes in core Ops Manager code or packaged dependencies, see [Ops Manager v2.7 Release Notes](../../release-notes.html) and [Pivotal Application Service v2.7 Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html).
 
-The Pivotal Application Security Team maintains a running list of security fixes in <%= vars.ops_manager %> and <%= vars.ops_manager %> dependencies. To see their most recent findings, see [Pivotal Application Security Team](https://tanzu.vmware.com/security) on the VMware Tanzu website.
+The Pivotal Application Security Team maintains a running list of security fixes in Ops Manager and Ops Manager dependencies. To see their most recent findings, see [Pivotal Application Security Team](https://tanzu.vmware.com/security) on the VMware Tanzu website.
 
 ### <a id='upgrading'></a> Upgrading
 
-All <%= vars.ops_manager %> releases pass through extensive test suites that include automated unit, integration, and acceptance tests on multiple IaaSes. Regardless of this extensive testing, <%= vars.company_name %> recommends that you test major and minor releases in a non-production environment before implementing them across your deployment. Upgrade your production environment as soon as possible after you validate the new release on your test environment.
+All Ops Manager releases pass through extensive test suites that include automated unit, integration, and acceptance tests on multiple IaaSes. Regardless of this extensive testing, <%= vars.company_name %> recommends that you test major and minor releases in a non-production environment before implementing them across your deployment. Upgrade your production environment as soon as possible after you validate the new release on your test environment.
 
 
 ## <a id='testing'></a> Release Testing, Integration, and Validation
@@ -55,30 +55,30 @@ Pivotal's development process relies on a strict workflow with continuous automa
 
 With every software change, automated build pipelines trigger these tests for the new software component and for everything it touches. If a new code check-in does not pass its tests or causes a failure elsewhere, it pauses the build pipeline for the entire team, or sometimes all of Pivotal R&D. The transparency of this process encourages developers to work together to address code issues quickly.
 
-<%= vars.company_name %> applies the following automated testing approaches, scenarios, and frameworks to <%= vars.ops_manager %> components and to the release as a whole:
+<%= vars.company_name %> applies the following automated testing approaches, scenarios, and frameworks to Ops Manager components and to the release as a whole:
 
 * **Unit tests:** Development teams write unit tests to express and validate desired functional behavior of product components. Typical frameworks used are [RSpec](http://rspec.info/) and [Ginkgo](https://onsi.github.io/ginkgo/). These tests run continuously throughout the development cycle.
 
 * **OSS integration tests:** The Release Integration team exercises a full deployment of open-source Cloud Foundry to validate all end-user features. They maintain the [Cloud Foundry Acceptance Test](https://github.com/cloudfoundry/cf-acceptance-tests) (CATs) suite alongside the OSS cf-release. Cloud Foundry component teams also contribute acceptance test suites at the OSS Integration Test level. These tests exercise and validate their components' functional, performance, and integration health.
 
-* **<%= vars.ops_manager %> integration tests:** The <%= vars.ops_manager %> Release Engineering (RelEng) team validates the quality and cross-product integration health of the commercial <%= vars.ops_manager %> release. RelEng runs OSS Acceptance Tests against all supported releases. These tests run on full <%= vars.ops_manager %> instances configured to represent diverse real-world customer scenarios on various IaaSes and using both internal and external load balancer, database, blobstore, and user store solutions.
+* **Ops Manager integration tests:** The Ops Manager Release Engineering (RelEng) team validates the quality and cross-product integration health of the commercial Ops Manager release. RelEng runs OSS Acceptance Tests against all supported releases. These tests run on full Ops Manager instances configured to represent diverse real-world customer scenarios on various IaaSes and using both internal and external load balancer, database, blobstore, and user store solutions.
 
 ### <a id='release-gates'></a> Additional Pre-Release Gates: Internal, PWS, and Compliance
 
-In addition to its automated unit and integration testing, <%= vars.company_name %> deploys all upgrades slated for upcoming <%= vars.ops_manager %> releases on at-scale test environments. Prior to each major or minor commercial release, <%= vars.company_name %> runs the entire <%= vars.ops_manager %> suite of services on several internally-managed large integration environments that run customer-like data and workloads.
+In addition to its automated unit and integration testing, <%= vars.company_name %> deploys all upgrades slated for upcoming Ops Manager releases on at-scale test environments. Prior to each major or minor commercial release, <%= vars.company_name %> runs the entire Ops Manager suite of services on several internally-managed large integration environments that run customer-like data and workloads.
 
-<%= vars.company_name %> also pushes upcoming <%= vars.ops_manager %> feature upgrades and patches to its [Pivotal Web Services](http://run.pivotal.io/) (PWS) platform, where customers continually deploy and host hundreds of mission-critical apps at scale, 24/7. The PWS environment gives <%= vars.company_name %> a continuous source of real-world usage and performance metrics that inform product development teams.
+<%= vars.company_name %> also pushes upcoming Ops Manager feature upgrades and patches to its [Pivotal Web Services](http://run.pivotal.io/) (PWS) platform, where customers continually deploy and host hundreds of mission-critical apps at scale, 24/7. The PWS environment gives <%= vars.company_name %> a continuous source of real-world usage and performance metrics that inform product development teams.
 
-All <%= vars.ops_manager %> product teams participate in go-to-market steps for each release, as is often required for shipping a legally compliant product. Examples include [Open Source License File](https://network.pivotal.io/open-source) attribution and an Export Compliance classification.
+All Ops Manager product teams participate in go-to-market steps for each release, as is often required for shipping a legally compliant product. Examples include [Open Source License File](https://network.pivotal.io/open-source) attribution and an Export Compliance classification.
 
 
 ## <a id='bug-fixes'></a> Patch Releases: Security and Bug Fixes
 
-<%= vars.company_name %> uses established processes to track, disclose, and remediate vulnerabilities in <%= vars.ops_manager %> and related dependent components. This section explains how <%= vars.company_name %> identifies vulnerabilities and implements fixes for them.
+<%= vars.company_name %> uses established processes to track, disclose, and remediate vulnerabilities in Ops Manager and related dependent components. This section explains how <%= vars.company_name %> identifies vulnerabilities and implements fixes for them.
 
 ### <a id='vulnerabilities'></a> Identifying Security Vulnerabilities
 
-<%= vars.company_name %> has an established process to track and patch vulnerabilities in software dependencies and <%= vars.ops_manager %> software. Additionally, the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page describes a responsible disclosure process for reporting vulnerabilities identified in <%= vars.company_name %> software by third parties.
+<%= vars.company_name %> has an established process to track and patch vulnerabilities in software dependencies and Ops Manager software. Additionally, the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page describes a responsible disclosure process for reporting vulnerabilities identified in <%= vars.company_name %> software by third parties.
 
 Pivotal uses multiple methods to identify security vulnerabilities in Pivotal software and dependencies internally, including:
 
@@ -93,7 +93,7 @@ Pivotal also monitors externally-reported vulnerabilities from many sources, inc
 * Cloud Foundry Foundation security notifications from member companies
 * Customer, prospect and other third-party security reports
 
-When <%= vars.company_name %> discovers a potential security vulnerability in <%= vars.ops_manager %>, the security team opens an issue to assess it. If it confirms the vulnerability exists, <%= vars.company_name %> identifies and updates affected components with plans to backport the fix to stable releases. Fixes are implemented on a target timeline based on the severity level of the vulnerability. For more information, see [<%= vars.ops_manager %> Security Overview and Policy](pcf-security.html).
+When <%= vars.company_name %> discovers a potential security vulnerability in Ops Manager, the security team opens an issue to assess it. If it confirms the vulnerability exists, <%= vars.company_name %> identifies and updates affected components with plans to backport the fix to stable releases. Fixes are implemented on a target timeline based on the severity level of the vulnerability. For more information, see [Ops Manager Security Overview and Policy](pcf-security.html).
 
 
 ## <a id='lifecycle'></a> Fix, Test, and Release Lifecycle

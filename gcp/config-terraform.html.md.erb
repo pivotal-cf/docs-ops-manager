@@ -7,7 +7,7 @@ install_type: terraform
 
 <%= partial "/pcf/warning-terraform" %>
 
-This topic describes how to configure the BOSH Director for <%= vars.ops_manager %> on Google Cloud Platform (GCP) after [Preparing to Deploy <%= vars.ops_manager %> on GCP Using Terraform](./prepare-env-terraform.html).
+This topic describes how to configure the BOSH Director for Ops Manager on Google Cloud Platform (GCP) after [Preparing to Deploy Ops Manager on GCP Using Terraform](./prepare-env-terraform.html).
 
 <p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the Pivotal Operations Manager API. For more information, see the <a href="../install/ops-man-api.html">Using the Ops Manager API</a> topic.</p>
 
@@ -17,13 +17,13 @@ This topic describes how to configure the BOSH Director for <%= vars.ops_manager
 To complete the procedures in this topic, you must have access to the output from when you ran `terraform apply` to create resources for this deployment. You can view this output at any time by running `terraform output`. You use the values in your Terraform output to configure the BOSH Director tile.
 
 
-## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='access-om'></a> Step 1: Log Into Ops Manager
 
 1. In a web browser, navigate to the fully qualified domain name (FQDN) of Ops Manager. Use the `ops_manager_dns` value from running `terraform output`.
 
     <p class="note"><strong>Note:</strong> In order to set up Ops Manager authentication correctly, Pivotal recommends using a Fully Qualified Domain Name (FQDN) to access Ops Manager. Using an ephemeral IP address to access Ops Manager can cause authentication errors upon subsequent access.</p>
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log into Ops Manager. To log in, see [Log In to Ops Manager For the First Time](../login.html#login-first-time).
 
 ## <a id='gcp-config'></a> Step 2: Google Cloud Platform Config
 
@@ -48,8 +48,8 @@ To complete the procedures in this topic, you must have access to the output fro
 
   <div class="note"><strong>Note:</strong> Pivotal recommends at least three availability zones for a highly available installation.
     <ul>
-      <li>For configuring a <%= vars.app_runtime_abbr %> deployment with multiple availability zones, see <a href="../refarch/gcp/gcp_ref_arch.html">Reference Architecture for <%= vars.ops_manager %> on GCP</a>.</li>
-      <li>For <%= vars.k8s_runtime_abbr %> best practices for distributing workloads across multiple availability zones and clusters, see <a href="https://docs.pivotal.io/pks/maintain-uptime.html">Maintaining Workload Uptime</a>.</li>
+      <li>For configuring a PAS deployment with multiple availability zones, see <a href="../refarch/gcp/gcp_ref_arch.html">Reference Architecture for Ops Manager on GCP</a>.</li>
+      <li>For TKGI best practices for distributing workloads across multiple availability zones and clusters, see <a href="https://docs.pivotal.io/pks/maintain-uptime.html">Maintaining Workload Uptime</a>.</li>
     </ul>
   </div>
 
@@ -189,7 +189,7 @@ To complete the procedures in this topic, you must have access to the output fro
 
 1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The Terraform templates do not provision a Network Address Translation (NAT) box for internet connectivity to your VMs, so instead VMs are provided with ephemeral public IP addresses to allow the jobs to reach the internet.
   <p class="note"><strong>Note:</strong> If you want to provision a Network Address Translation (NAT) box to provide internet connectivity to your VMs instead of providing them with public IP addresses, deselect the <strong>Internet Connected</strong> checkboxes. For more information about using NAT in GCP, see the <a href="https://cloud.google.com/compute/docs/networking">GCP documentation</a>.</p>
-  <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+  <p class="note"><strong>Note:</strong> If you install Pivotal Application Service for Windows (PASW), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 ## <a id='custom-vm-extensions'></a> Step 10: (Optional) Add Custom VM Extensions
 
@@ -212,6 +212,6 @@ To complete the procedures in this topic, you must have access to the output fro
 
 After you complete this procedure, follow the instructions for the runtime you intend to install.
 <ul>
-  <li>To deploy <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).</li>
-  <li>To prepare to deploy <%= vars.k8s_runtime_abbr %>, see [Creating Service Accounts in GCP for <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/pks/gcp-service-accounts.html).</li>
+  <li>To deploy PAS, see [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).</li>
+  <li>To prepare to deploy TKGI, see [Creating Service Accounts in GCP for TKGI](https://docs.pivotal.io/pks/gcp-service-accounts.html).</li>
 </ul>

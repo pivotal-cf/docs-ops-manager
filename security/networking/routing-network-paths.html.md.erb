@@ -3,7 +3,7 @@ title: Routing Network Communications
 owner: CF for VMs Networking
 ---
 
-This topic describes the internal network communication paths of the routing subsystem with other <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) components.
+This topic describes the internal network communication paths of the routing subsystem with other Pivotal Application Service (PAS) components.
 
 
 ## <a id="http"></a> HTTP Routing
@@ -46,7 +46,7 @@ The following table lists network communication paths for TCP routing:
 
 <sup>&#42;</sup> This communication happens through a load balancer and a Gorouter. Requests are received by Routing API on port 3000.
 
-<sup>&#8224;</sup> You can use this port range to configure the port in the <%= vars.app_runtime_abbr %> tile.
+<sup>&#8224;</sup> You can use this port range to configure the port in the PAS tile.
 
 <sup>&#42;&#42;</sup> MySQL authentication uses the MySQL native password method.
 

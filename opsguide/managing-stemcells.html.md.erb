@@ -3,7 +3,7 @@ title: Importing and Managing Stemcells
 owner: Ops Manager
 ---
 
-This topic explains how to use the Stemcell Library in <%= vars.ops_manager_full %> to import and stage stemcells to products.
+This topic explains how to use the Stemcell Library in Ops Manager to import and stage stemcells to products.
 
 
 ## <a id='overview'></a> Overview
@@ -12,7 +12,7 @@ The Stemcell Library imports and stages stemcells to products.
 
 For more conceptual information about floating stemcells and stemcell upgrades, see [Floating Stemcells](../install/understanding-stemcells.html).
 
-<p class='note warning'><strong>Warning:</strong> Some product releases require Xenial stemcells, as listed in <a href="https://docs.pivotal.io/stemcells/xenial-tiles.html">Tiles Using Xenial Stemcells in <%= vars.ops_manager %></a>. If you are importing and using Xenial stemcells for the first time, see <a href="https://docs.pivotal.io/pivotalcf/2-3/pcf-release-notes/breaking-changes.html#xenial">Updates for Xenial Stemcell Support</a>.</p>
+<p class='note warning'><strong>Warning:</strong> Some product releases require Xenial stemcells, as listed in <a href="https://docs.pivotal.io/stemcells/xenial-tiles.html">Tiles Using Xenial Stemcells in Ops Manager</a>. If you are importing and using Xenial stemcells for the first time, see <a href="https://docs.pivotal.io/pivotalcf/2-3/pcf-release-notes/breaking-changes.html#xenial">Updates for Xenial Stemcell Support</a>.</p>
 
 
 ## <a id="import"></a> Import and Stage a Stemcell
@@ -22,12 +22,12 @@ To import and stage a stemcell:
 1. Download the appropriate `.tgz` stemcell file from [Pivotal Network](https://network.pivotal.io/products/pivotal-cf).
 	<p class="note">
 		<strong>Note:</strong>
-		<%= vars.ops_manager %> does not support heavy or full stemcells for the AWS and GCP IaaSes.
+		Ops Manager does not support heavy or full stemcells for the AWS and GCP IaaSes.
 		For these IaaSes, you must use a light stemcell.
 		For more information about light stemcells, see <a href="https://bosh.io/docs/build-stemcell/#light-stemcells">Light Stemcells</a> in the BOSH documentation.
 	</p>
 
-1. Click **Import Stemcell** to permanently import a stemcell into <%= vars.ops_manager %>.
+1. Click **Import Stemcell** to permanently import a stemcell into Ops Manager.
 
 1. A pop-up appears for you to select which products to stage with the imported stemcell. Select the checkboxes of the products you want to stage.
   ![A pop-up that appears after importing a stemcell. At the top of the pop-up is the header 'Import Stemcell' in gray letters. Under the header is the text "Select the products you want to stage with light-bosh-stemcell-3541.5-google-kvm-ubuntu-trusty". Below is a row containing a selected checkbox with the text "Product" in bold letters to the right of the checkbox. Below this row is another row containing another selected checkbox and the text "Ops Manager: Example Product v2.1-committed.20180209.125552-stemcell.3541.4". In the bottom-right corner of the pop-up are two buttons: one labeled "Dismiss" in gray letters, and one blue, rectangular button labeled "Apply Stemcell to Products" in white letters.](./images/staging-modal.png)

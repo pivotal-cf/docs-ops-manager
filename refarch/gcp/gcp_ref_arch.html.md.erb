@@ -3,33 +3,33 @@ title: GCP Reference Architecture
 owner: Customer0
 ---
 
-This topic describes two reference architectures for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on Google Cloud Platform (GCP): on a shared virtual private cloud (VPC) and on a single-project VPC. This topic also outlines multiple networking variants for VPC deployment. The architectures are validated for production-grade <%= vars.ops_manager %> deployments using multiple availability zones (AZs).
+This topic describes two reference architectures for Ops Manager and any runtime products, including Pivotal Application Service (PAS) and VMware Tanzu Kubernetes Grid Integrated Edition (TKGI), on Google Cloud Platform (GCP): on a shared virtual private cloud (VPC) and on a single-project VPC. This topic also outlines multiple networking variants for VPC deployment. The architectures are validated for production-grade Ops Manager deployments using multiple availability zones (AZs).
 
-For general requirements for running <%= vars.ops_manager %> and specific requirements for running <%= vars.ops_manager %> on GCP, see [<%= vars.ops_manager %> on GCP Requirements](../../install/gcp.html)
+For general requirements for running Ops Manager and specific requirements for running Ops Manager on GCP, see [Ops Manager on GCP Requirements](../../install/gcp.html)
 
 
-## <a id="refarchs"></a> <%= vars.ops_manager %> Reference Architectures
+## <a id="refarchs"></a> Ops Manager Reference Architectures
 
-An <%= vars.ops_manager %> reference architecture describes a proven approach for deploying <%= vars.ops_manager %> on a specific IaaS, such as GCP.
+An Ops Manager reference architecture describes a proven approach for deploying Ops Manager on a specific IaaS, such as GCP.
 
-An <%= vars.ops_manager %> reference architecture must meet these requirements:
+An Ops Manager reference architecture must meet these requirements:
 
 * Be secure
 * Be publicly accessible
-* Include common <%= vars.ops_manager %>-managed services such as VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
+* Include common Ops Manager-managed services such as VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
 * Be able to host at least 100 app instances
 
-<%= vars.company_name %> provides reference architectures to help you determine the best configuration for your <%= vars.ops_manager %> deployment.
+<%= vars.company_name %> provides reference architectures to help you determine the best configuration for your Ops Manager deployment.
 
 
 ## <a id="shared-vs-single"></a> Shared vs Single-Project VPCs
 
-A shared VPC installation is harder to configure than an <%= vars.ops_manager %> deployment on a single-project VPC, because the required account privileges and resource allocations are more granular and complex. But the shared VPC architecture allows network assets to be centrally located, which simplifies auditing and security. <%= vars.company_name %> recommends the shared VPC model for:
+A shared VPC installation is harder to configure than an Ops Manager deployment on a single-project VPC, because the required account privileges and resource allocations are more granular and complex. But the shared VPC architecture allows network assets to be centrally located, which simplifies auditing and security. <%= vars.company_name %> recommends the shared VPC model for:
 
 * Deployments with deep auditing and security requirements
 * When networks hosting the foundation need to connect back to an internal network through a VPN or interconnect
 
-A single-project VPC lets the platform architect give <%= vars.ops_manager %> full access to the VPC and its resources, which makes configuration easier. <%= vars.company_name %> recommends single-project VPC architecture for:
+A single-project VPC lets the platform architect give Ops Manager full access to the VPC and its resources, which makes configuration easier. <%= vars.company_name %> recommends single-project VPC architecture for:
 
 * Standalone deployments that do not connect to an internal network
 * Test and experimental deployments, and for projects which do not belong to an organization
@@ -37,7 +37,7 @@ A single-project VPC lets the platform architect give <%= vars.ops_manager %> fu
 
 ## <a id="shared-vpc"></a> Shared VPC GCP Reference Architecture
 
-The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
+The diagram below illustrates a reference architecture for a deployment of Ops Manager on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
 
 
 <%= image_tag('gcp-overview-shared-vpc.png', :alt => "Complex diagram showing many high-level system and routing components.") %>
@@ -66,14 +66,14 @@ The diagram shows two customer networks in GCP. One shows the traditional setup 
 
 GCP allocates resources using a hierarchy that centers around projects. To create a VPC, architects define a _host project_ that allocates network resources for the VPC, such as address space and firewall rules. Then they can define one or more _service projects_ to run within the VPC, which share the network resources allocated by the host project and include their own non-network resources, such as VMs and storage buckets.
 
-To install <%= vars.ops_manager %>, <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), and services in a shared VPC on GCP, you create a host project for the VPC and a service project dedicated to running <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %>, and services.
+To install Ops Manager, Pivotal Application Service (PAS), and services in a shared VPC on GCP, you create a host project for the VPC and a service project dedicated to running Ops Manager, PAS, and services.
 
 #### <a id="host-resources"></a> Host Project Resources
 
-The host project centrally manages these shared VPC network resources for <%= vars.platform_name %>:
+The host project centrally manages these shared VPC network resources for Ops Manager:
 
-* Infra subnet (<%= vars.ops_manager_full %> and BOSH Director)
-* <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) subnet
+* Infra subnet (Ops Manager and BOSH Director)
+* Pivotal Application Service (PAS) subnet
 * Services subnet
 * Isolation Segments
 * Firewall rules
@@ -83,12 +83,12 @@ The host project centrally manages these shared VPC network resources for <%= va
 
 #### <a id="service-resources"></a> Service Project Resources
 
-The <%= vars.platform_name %> service project manages these resources:
+The Ops Manager service project manages these resources:
 
 * Google Cloud Compute instances (VMs)
     * BOSH
-    * <%= vars.ops_manager %>
-    * VMs deployed by BOSH, such as <%= vars.platform_name %> and service components
+    * Ops Manager
+    * VMs deployed by BOSH, such as Ops Manager and service components
 
 * Google Cloud Storage buckets for blobstore
     * BOSH Director
@@ -97,9 +97,9 @@ The <%= vars.platform_name %> service project manages these resources:
     * Droplets
     * Packages
 
-* Service account and a service account key for <%= vars.platform_name %> to access the storage buckets
+* Service account and a service account key for Ops Manager to access the storage buckets
 
-* A service account for <%= vars.ops_manager %>
+* A service account for Ops Manager
 
 * Load balancers
 
@@ -108,7 +108,7 @@ The <%= vars.platform_name %> service project manages these resources:
 
 ## <a id="single-vpc"></a> Single-Project VPC Base GCP Reference Architecture
 
-The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP.
+The diagram below illustrates a reference architecture for a deployment of Ops Manager on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP.
 
 <%= image_tag('gcp-overview-single-vpc.png', :alt => "Diagram of GCP Reference Architecture. Components listed in the following section.") %>
 
@@ -120,38 +120,38 @@ The table below lists the components that are part of a reference architecture d
 
 | **Component** | **Reference Architecture Notes** |
 | ------------- | -------------------------------- |
-| **Domains and DNS** | Domain zones and routes in use by the reference architecture include: domains for *.apps and *.system (required), a route for <%= vars.ops_manager %> (required), a route for Doppler (required), a route for Loggregator (required), a route for SSH access to app containers (optional), and a route for TCP routing to apps (optional). Reference architecture uses GCP Cloud DNS as the DNS provider. |
-| **<%= vars.ops_manager %>** | Deployed on the infrastructure subnet and accessible by fully-qualified domain name (FQDN) or through an optional jumpbox. |
+| **Domains and DNS** | Domain zones and routes in use by the reference architecture include: domains for *.apps and *.system (required), a route for Ops Manager (required), a route for Doppler (required), a route for Loggregator (required), a route for SSH access to app containers (optional), and a route for TCP routing to apps (optional). Reference architecture uses GCP Cloud DNS as the DNS provider. |
+| **Ops Manager** | Deployed on the infrastructure subnet and accessible by fully-qualified domain name (FQDN) or through an optional jumpbox. |
 | **BOSH Director** | Deployed on the infrastructure subnet. |
-| **Gorouters** | Accessed through the HTTP and TCP WebSockets load balancers. Deployed on the <%= vars.app_runtime_abbr %> subnet, one job per AZ. |
-| **Diego Brains** | Required. However, the SSH container access functionality is optional and enabled through the SSH Proxy load balancer. Deployed on the <%= vars.app_runtime_abbr %> subnet, one job per AZ. |
-| **TCP routers** | Optional feature for TCP routing. Deployed on the <%= vars.app_runtime_abbr %> subnet, one job per AZ.|
+| **Gorouters** | Accessed through the HTTP and TCP WebSockets load balancers. Deployed on the PAS subnet, one job per AZ. |
+| **Diego Brains** | Required. However, the SSH container access functionality is optional and enabled through the SSH Proxy load balancer. Deployed on the PAS subnet, one job per AZ. |
+| **TCP routers** | Optional feature for TCP routing. Deployed on the PAS subnet, one job per AZ.|
 | **Database** | Reference architecture uses GCP Cloud SQL rather than internal databases. Configure your database with a strong password and limit access only to components that require database access. |
 | **Blob Storage and Buckets** | For buildpacks, droplets, packages, and resources. Reference architecture uses Google Cloud Storage rather than internal file storage. |
-| **Services** | Deployed on the <%= vars.platform_name %>-managed services subnet. Each service is deployed to each AZ. |
+| **Services** | Deployed on the Ops Manager-managed services subnet. Each service is deployed to each AZ. |
 
-### <a id="common_network"></a> Alternative GCP Network Layouts for <%= vars.platform_name %>
+### <a id="common_network"></a> Alternative GCP Network Layouts for Ops Manager
 
-This section describes the possible network layouts for <%= vars.platform_name %> deployments as covered by the reference architecture of <%= vars.platform_name %> on GCP.
+This section describes the possible network layouts for deployments as covered by the reference architecture of Ops Manage on GCP.
 
-At a high level, there are currently two possible ways of granting public Internet access to <%= vars.platform_name %> as described by the reference architecture:
+At a high level, there are currently two possible ways of granting public Internet access to Ops Manage as described by the reference architecture:
 
 | **Services** | Deployed on the managed services subnet. Each service is deployed to each AZ. |
 
 ### <a id="common_network"></a> Alternative GCP Network Layouts
 
-This section describes the possible network layouts for <%= vars.app_runtime_abbr %> deployments as covered by the reference architecture of <%= vars.ops_manager %> on GCP.
+This section describes the possible network layouts for PAS deployments as covered by the reference architecture of Ops Manager on GCP.
 
-At a high level, there are currently two possible ways of granting public Internet access to <%= vars.app_runtime_abbr %> as described by the reference architecture:
+At a high level, there are currently two possible ways of granting public Internet access to PAS as described by the reference architecture:
 
-* NAT provides connectivity from <%= vars.app_runtime_abbr %> internals to the public Internet.
-	* The procedures in [Installing <%= vars.ops_manager %> on GCP](../../install/gcp-manual.html) use this method.
+* NAT provides connectivity from PAS internals to the public Internet.
+	* The procedures in [Installing Ops Manager on GCP](../../install/gcp-manual.html) use this method.
 
 * Every VM receives its own public IP address (no NAT).
 
 #### <a id="no_nat"></a> Public IP Addresses Solution
 
-If you prefer not to use a NAT solution, you can configure <%= vars.platform_name %> on GCP to assign public IP addresses for all components. This type of deployment may be more performant since most of the network traffic between <%= vars.platform_name %> components are routed through the front end load balancer and the Gorouter.
+If you prefer not to use a NAT solution, you can configure Ops Manage on GCP to assign public IP addresses for all components. This type of deployment may be more performant since most of the network traffic between components is routed through the front end load balancer and the Gorouter.
 
 #### <a id="network_components"></a> Network Objects
 
@@ -159,14 +159,14 @@ The table below lists the network objects expected for each type of reference ar
 
 | **Network Object** | **Notes** | **Minimum Number: NAT-Based** | **Minimum Number: Public IP Addresses** |
 | ------------------ | --------- | ----------------------------- | --------------------------------------- |
-| **External IPs** | For a NAT solution, use global IP address for apps and system access, and <%= vars.ops_manager %> or an optional jumpbox. | 2 | 30+ |
+| **External IPs** | For a NAT solution, use global IP address for apps and system access, and Ops Manager or an optional jumpbox. | 2 | 30+ |
 | **NAT** | One NAT per AZ. | 3 | 0 |
-| **Network** | One per deployment. GCP Network objects allow multiple subnets with multiple CIDRs, so a typical deployment of <%= vars.platform_name %> likely only ever requires one GCP Network object. | 1 | 1 |
-| **Subnets** | Separate subnets for infrastructure (<%= vars.ops_manager %>, BOSH Director, Jumpbox), <%= vars.app_runtime_abbr %>, and services. Using separate subnets allows you to configure different firewall rules due to your needs. | 3 | 3 |
-| **Routes** | Routes are typically created by GCP dynamically when subnets are created, but you may need to create additional routes to force outbound communication to dedicated SNAT nodes. These objects are required to deploy <%= vars.platform_name %> without public IP addresses. | 3+ | 3|
+| **Network** | One per deployment. GCP Network objects allow multiple subnets with multiple CIDRs, so a typical deployment of Ops Manager likely only ever requires one GCP Network object. | 1 | 1 |
+| **Subnets** | Separate subnets for infrastructure (Ops Manager, BOSH Director, Jumpbox), PAS, and services. Using separate subnets allows you to configure different firewall rules due to your needs. | 3 | 3 |
+| **Routes** | Routes are typically created by GCP dynamically when subnets are created, but you may need to create additional routes to force outbound communication to dedicated SNAT nodes. These objects are required to deploy Ops Manager without public IP addresses. | 3+ | 3|
 | **Firewall Rules** | GCP firewall rules are bound to a Network object and can be created to use IP ranges, subnets, or instance tags to match for source and destination fields in a rule. The preferred method used in the reference architecture deployment is instance tags. | 6+ | 6+ |
 | **Load balancers** | Used to handle requests to Gorouters and infrastructure components. GCP uses two or more load balancers. The HTTP load balancer and TCP WebSockets load balancer are both required. The TCP router load balancer used for TCP routing and the SSH load balancer that allows SSH access to Diego apps are both optional. The HTTP load balancer provides SSL termination. | 2+ | 2+ |
-| **Jumpbox** | Optional. Provides a way of accessing different network components. For example, you can configure it with your own permissions and then set it up to access to Pivotal Network to download tiles. Using a jumpbox is particularly useful in IaaSes where <%= vars.ops_manager %> does not have a public IP address. In these cases, you can SSH into <%= vars.ops_manager %> or any other component through the jumpbox. | (1) | (1)|
+| **Jumpbox** | Optional. Provides a way of accessing different network components. For example, you can configure it with your own permissions and then set it up to access to Pivotal Network to download tiles. Using a jumpbox is particularly useful in IaaSes where Ops Manager does not have a public IP address. In these cases, you can SSH into Ops Manager or any other component through the jumpbox. | (1) | (1)|
 
 
 ## <a id="network_comm"></a> Network Communication in GCP Deployments
@@ -175,7 +175,7 @@ These sections provide more background on the reasons behind certain network con
 
 ### <a id='lb-to-gorouter'></a> Load Balancer to Gorouter Communications and TLS Termination
 
-In a <%= vars.platform_name %> on GCP deployment, the Gorouter receives two types of traffic:
+In an Ops Manager on GCP deployment, the Gorouter receives two types of traffic:
 
 * Unencrypted HTTP traffic on port 80 that is decrypted by the HTTP(S) load balancer.
 
@@ -183,7 +183,7 @@ In a <%= vars.platform_name %> on GCP deployment, the Gorouter receives two type
 
 TLS is terminated for HTTPS on the HTTP load balancer and is terminated for WebSockets (WSS) traffic on the Gorouter.
 
-<%= vars.platform_name %> deployments on GCP use two load balancers to handle Gorouter traffic because HTTP load balancers currently do not support WebSockets.
+Ops Manager deployments on GCP use two load balancers to handle Gorouter traffic because HTTP load balancers currently do not support WebSockets.
 
 ### <a id='icmp'></a> ICMP
 

@@ -5,15 +5,15 @@ iaas: GCP
 install_type: terraform
 ---
 
-This guide describes the preparation steps required to install <%= vars.ops_manager %>  on Google Cloud Platform (GCP) using Terraform templates.
+This guide describes the preparation steps required to install Ops Manager  on Google Cloud Platform (GCP) using Terraform templates.
 
-The Terraform template for <%= vars.ops_manager %> on GCP describes a set of GCP resources and properties. For more information about how Terraform creates resources in GCP, see [Google Cloud Provider](https://www.terraform.io/docs/providers/google/index.html) on the Terraform site.
+The Terraform template for Ops Manager on GCP describes a set of GCP resources and properties. For more information about how Terraform creates resources in GCP, see [Google Cloud Provider](https://www.terraform.io/docs/providers/google/index.html) on the Terraform site.
 
-You may also find it helpful to review different deployment options in [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
+You may also find it helpful to review different deployment options in [Reference Architecture for Ops Manager on GCP](../refarch/gcp/gcp_ref_arch.html).
 
 ## <a id="prereqs"></a> Prerequisites
 
-In addition to fulfilling the prerequisites listed in [Installing <%= vars.ops_manager %> on GCP](../install/gcp.html), ensure you have the following:
+In addition to fulfilling the prerequisites listed in [Installing Ops Manager on GCP](../install/gcp.html), ensure you have the following:
 
 * The [Terraform CLI](https://www.terraform.io/intro/getting-started/install.html)
 * The [Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstarts)
@@ -28,7 +28,7 @@ In addition to fulfilling the prerequisites listed in [Installing <%= vars.ops_m
 ## <a id="svc-key"></a> Step 1: Obtain a GCP Service Account Key File
 
 To use the Terraform templates to create the necessary infrastructure
-resources for <%= vars.ops_manager %>, you need a service account key file.
+resources for Ops Manager, you need a service account key file.
 <br><br>
 To create an account key file, follow the procedure below corresponding to your own use case.
 
@@ -65,7 +65,7 @@ Before you can run Terraform commands to provision infrastructure resources,
 you must download the GCP Terraform Templates and create a Terraform template variables
 file as described below:
 
-1. On [Pivotal Network](https://network.pivotal.io), navigate to the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) release.
+1. On [Pivotal Network](https://network.pivotal.io), navigate to the Pivotal Application Service (PAS) release.
 
 1. Download the GCP Terraform ZIP file.
 
@@ -146,7 +146,7 @@ the Terraform files for your runtime.
     </tr>
     <tr>
       <td><code>YOUR-DNS-SUFFIX</code></td>
-      <td>Enter a domain name to use as part of the system domain for your <%= vars.ops_manager %> deployment. Terraform creates DNS records in GCP using <code>YOUR-ENVIRONMENT-NAME</code> and <code>YOUR-DNS-SUFFIX</code>. For example, if you enter <code>example.com</code> for your DNS suffix and have <code>pcf</code> as your environment name, Terraform creates DNS records at <code>pcf.example.com</code>.</td>
+      <td>Enter a domain name to use as part of the system domain for your Ops Manager deployment. Terraform creates DNS records in GCP using <code>YOUR-ENVIRONMENT-NAME</code> and <code>YOUR-DNS-SUFFIX</code>. For example, if you enter <code>example.com</code> for your DNS suffix and have <code>pcf</code> as your environment name, Terraform creates DNS records at <code>pcf.example.com</code>.</td>
     </tr>
     <tr>
       <td><code>YOUR-CERTIFICATE</code></td>
@@ -211,7 +211,7 @@ ISO_SEG_SSL_KEY
 
 ### <a id="cloudsql"></a> External Database
 
-1. If you want to use an external Google Cloud SQL database for Ops Manager and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), add the following to your `terraform.tfvars` file:
+1. If you want to use an external Google Cloud SQL database for Ops Manager and Pivotal Application Service (PAS), add the following to your `terraform.tfvars` file:
 
     ```
     external_database = true
@@ -228,7 +228,7 @@ ISO_SEG_SSL_KEY
 
 ### <a id="gcs"></a> External Storage Buckets
 
-If you want to use Google Cloud Storage buckets for the <%= vars.app_runtime_abbr %> Cloud Controller, add the following to your `terraform.tfvars` file:
+If you want to use Google Cloud Storage buckets for the PAS Cloud Controller, add the following to your `terraform.tfvars` file:
 
 ```
 create_gcs_buckets = true
@@ -262,7 +262,7 @@ Follow these steps to use the Terraform CLI to create resources on GCP:
 
 1. In a browser, navigate to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
 
-1. Create a new NS (Name server) record for your <%= vars.ops_manager %> system domain. Your system domain is `YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX`.
+1. Create a new NS (Name server) record for your Ops Manager system domain. Your system domain is `YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX`.
   1. In this record, enter the name servers included in `env_dns_zone_name_servers` from your Terraform output.
 
 

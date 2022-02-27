@@ -3,24 +3,24 @@ title: Checking Expiration Dates and Certificate Types
 owner: Ops Manager
 ---
 
-This topic describes how to check the expiration dates and types of the certificate authorities (CAs) and leaf certificates that the <%= vars.ops_manager %> API manages. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
+This topic describes how to check the expiration dates and types of the certificate authorities (CAs) and leaf certificates that the Ops Manager API manages. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
 
 
 ## <a id="overview"></a> Overview
 
-You must use the <%= vars.ops_manager %> API to manually check the expiration dates and types of the certificates that the <%= vars.ops_manager %> API manages. For more information, see [Procedure](#check-api) below.
+You must use the Ops Manager API to manually check the expiration dates and types of the certificates that the Ops Manager API manages. For more information, see [Procedure](#check-api) below.
 
 To configure Concourse to automatically monitor expiring certificates, you can use Platform Automation. For more information, see [expiring-certificates](https://docs.pivotal.io/platform-automation/v4.1/tasks.html#expiring-certificates) in the Platform Automation documentation.
 
 
 ## <a id='check-api'></a> Procedure
 
-To check certificate expiration dates and types through the <%= vars.ops_manager %> API:
+To check certificate expiration dates and types through the Ops Manager API:
 
-1. Follow the procedure in [Using <%= vars.ops_manager %> API](../../install/ops-man-api.html) to target and authenticate with the <%= vars.ops_manager %> User Account and Authentication (UAA) server. Record your <%= vars.ops_manager %> access token, and use it for `UAA-ACCESS-TOKEN` in the steps below.
-  <p class="note"><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
+1. Follow the procedure in [Using Ops Manager API](../../install/ops-man-api.html) to target and authenticate with the Ops Manager User Account and Authentication (UAA) server. Record your Ops Manager access token, and use it for `UAA-ACCESS-TOKEN` in the steps below.
+  <p class="note"><strong>Note:</strong> When you record your Ops Manager access token, remove any newline characters such as <code>\n</code>.</p>
 
-1. To retrieve the certificates, call the `/deployed/certificates` endpoint of the <%= vars.ops_manager %> API by running:
+1. To retrieve the certificates, call the `/deployed/certificates` endpoint of the Ops Manager API by running:
 
     ```
     curl "https://OPS-MANAGER-FQDN/api/v0/deployed/certificates" \
@@ -28,7 +28,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
           -i
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> deployment.
+    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your Ops Manager deployment.
     * `UAA-ACCESS-TOKEN` is the `access_token` value you recorded in the previous step.
     <br>
     <br>
@@ -37,7 +37,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
           * Valid letter codes are `d` for days, `w` for weeks, `m` for months, and `y` for years. For example, querying to `https://OPS-MANAGER-FQDN/api/v0/deployed/certificates?expires_within=6m` searches for certificates expiring within six months.
       * To make the JSON output more readable, you can pipe your `curl` command to [jq](https://stedolan.github.io/jq/) or another text editor with JSON formatting.
 
-1. The `deployed/certificates` output lists all CAs and leaf certificates visible to the <%= vars.ops_manager %> API, whether they are stored in <%= vars.ops_manager %> directly or stored in CredHub. To determine the expiration date and type for each certificate listed:
+1. The `deployed/certificates` output lists all CAs and leaf certificates visible to the Ops Manager API, whether they are stored in Ops Manager directly or stored in CredHub. To determine the expiration date and type for each certificate listed:
   1. Determine the expiration date from the `valid_until` value. For example, the root CA listed below expires on August 12, 2020:
     <pre class='terminal'>
     {

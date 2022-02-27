@@ -4,31 +4,31 @@ owner: Ops Manager
 iaas: GCP
 ---
 
-This topic describes the preparation steps required to install <%= vars.ops_manager %> on Google Cloud Platform (GCP).
+This topic describes the preparation steps required to install Ops Manager on Google Cloud Platform (GCP).
 
 
 ## <a id="prerequisites"></a> Prerequisites
 
 Before you prepare your Ops Manager installation, do the following depending on the runtime you intend to deploy:
 
-- If you are deploying <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), see [<%= vars.ops_manager %> on GCP Requirements](../install/gcp.html).
+- If you are deploying Pivotal Application Service (PAS), see [Ops Manager on GCP Requirements](../install/gcp.html).
 
-- If you are deploying <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), see [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/gcp-requirements.html).
+- If you are deploying VMware Tanzu Kubernetes Grid Integrated Edition (TKGI), see [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/gcp-requirements.html).
 
 
 ## <a id="config-components"></a> Configuration and Components
 
-This section outlines high-level infrastructure options for <%= vars.ops_manager %> on GCP. For more information, review the deployment
-options and recommendations in [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
+This section outlines high-level infrastructure options for Ops Manager on GCP. For more information, review the deployment
+options and recommendations in [Reference Architecture for Ops Manager on GCP](../refarch/gcp/gcp_ref_arch.html).
 
-You can deploy <%= vars.ops_manager %> using one of two main configurations on a GCP virtual private cloud (VPC):
+You can deploy Ops Manager using one of two main configurations on a GCP virtual private cloud (VPC):
 
   * A _single-project_ configuration that gives Ops Manager full access to VPC resources
   * A _shared VPC_ configuration in which Ops Manager shares VPC resources
 
-See [Shared vs Single-Project VPCs](../refarch/gcp/gcp_ref_arch.html#shared-vs-single) in _Reference Architecture for <%= vars.ops_manager %> on GCP for a full discussion and recommendations.
+See [Shared vs Single-Project VPCs](../refarch/gcp/gcp_ref_arch.html#shared-vs-single) in _Reference Architecture for Ops Manager on GCP for a full discussion and recommendations.
 
-When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommends using the following GCP components:
+When deploying Ops Manager on GCP, <%= vars.company_name %> recommends using the following GCP components:
 
   * [Google Cloud SQL](https://cloud.google.com/sql/docs/) for external database services
   * [NAT Gateway Instances](https://cloud.google.com/solutions/connecting-securely#natgateway) to limit the number of VMs with public IP addresses
@@ -62,7 +62,7 @@ Ops Manager uses IAM service accounts to access GCP resources.
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
-<p class='note'><strong>Note:</strong> You can use this service account to configure file storage for <%= vars.app_runtime_abbr %>. For more information, see <a href="https://docs.pivotal.io/application-service/2-7/operating/pas-file-storage.html#gcp">GCP</a> in<em>Configuring File Storage for <%= vars.app_runtime_abbr %></em>.</p>
+<p class='note'><strong>Note:</strong> You can use this service account to configure file storage for PAS. For more information, see <a href="https://docs.pivotal.io/application-service/2-7/operating/pas-file-storage.html#gcp">GCP</a> in<em>Configuring File Storage for PAS</em>.</p>
 
 
 ## <a id="enable_compute_resource_api"></a> Step 2: Enable Google Cloud APIs
@@ -182,7 +182,7 @@ Use NAT instances when you want to expose only a minimal number of public IP add
 Creating NAT instances permits internet access from cluster VMs.
 You might, for example, need this internet access for pulling Docker images or enabling internet access for your workloads.
 
-For more information, see [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html#common_network) and the [GCP documentation](https://cloud.google.com/solutions/connecting-securely#natgateway).
+For more information, see [Reference Architecture for Ops Manager on GCP](../refarch/gcp/gcp_ref_arch.html#common_network) and the [GCP documentation](https://cloud.google.com/solutions/connecting-securely#natgateway).
 
 1. In the GCP console, with your single project or shared-VPC host project selected, navigate to **Compute Engine** > **VM instances**.
   ![Screenshot of the GCP Console Compute Engine menu. The Compute Engine menu expands to show the VM instaces option.](../common/images/gcp/gcp-vm-instances.png)
@@ -414,9 +414,9 @@ This step assigns tags and firewall rules to Ops Manager components and VMs that
    * `default-allow-rdp`
    * `default-allow-ssh`
 
-If you are deploying **<%= vars.k8s_runtime_abbr %> only**, continue to [Next Steps](#next-steps).
+If you are deploying **TKGI only**, continue to [Next Steps](#next-steps).
 
-If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed to the following step.
+If you are deploying **PAS or other runtimes**, proceed to the following step.
 
 
 ## <a id="dbs"></a> Step 6: Create Database Instance and Databases
@@ -504,13 +504,13 @@ Shared-VPC installation typically use an internal TCP/UDP load balancer to minim
 
 To create an internal load balancer for Ops Manager on GCP, do the following.
 
-1. Create an internal-facing TCP/UDP load balancer for each region of your <%= vars.ops_manager %> deployment.
+1. Create an internal-facing TCP/UDP load balancer for each region of your Ops Manager deployment.
 <p class="note"><strong>Note</strong>: GCP Internal Load Balancer (iLB) is a regional product. Within the same VPC/network, client VMs in a different region from the iLB cannot access the iLB. For more information, see the <a href="https://cloud.google.com/load-balancing/docs/internal/setting-up-internal#global_routing_issue">GCP documentation</a>.</p>
 
 1. Assign private IP addresses to the load balancers.
 
-1. After you have deployed <%= vars.ops_manager %>, follow instructions in [Create or Update a VM Extension](../install/custom-vm-extensions.html#create-vm-extension) to add a custom VM extension that applies internal load balancing to all VMs deployed by BOSH.
-  - For example, the following manifest code adds a VM extension `backend-pool` to <%= vars.ops_manager %> VMs:
+1. After you have deployed Ops Manager, follow instructions in [Create or Update a VM Extension](../install/custom-vm-extensions.html#create-vm-extension) to add a custom VM extension that applies internal load balancing to all VMs deployed by BOSH.
+  - For example, the following manifest code adds a VM extension `backend-pool` to Ops Manager VMs:
 
     ```
 vm_extensions:
@@ -524,7 +524,7 @@ vm_extensions:
 
 ### <a id="http_loadbalancer"></a> Create HTTP Load Balancer
 
-To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP, do the following:
+To create a global HTTP load balancer for Ops Manager on GCP, do the following:
 
 1. [Create Instance Group](#create-instance-group)
 1. [Create Health Check](#create-health-check)
@@ -634,7 +634,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP, do the
   * In the **Public key certificate** field, copy in the contents of your public certificate, or upload your certificate as a .pem file.
      If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Certificate field into the Ops Manager **Public key certificate** field.
   * In the **Certificate chain** field, enter or upload your certificate chain in the .pem format.
-  If you are using a self-signed certificate, such as a <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>-generated certificate, do not enter a value in the **Certificate Chain** field.
+  If you are using a self-signed certificate, such as a PAS or TKGI-generated certificate, do not enter a value in the **Certificate Chain** field.
   * In the **Private key** field, copy in the contents or upload the .pem file of the private key for the certificate.
   If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Private Key field into the Ops Manager **Private key** field.
 
@@ -647,7 +647,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP, do the
 
 ## <a id="tcp_websockets_lb"></a> Step 9: Create TCP WebSockets Load Balancer
 
-The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> on GCP operates on TCP port `443`.
+The load balancer for tailing logs with WebSockets for Ops Manager on GCP operates on TCP port `443`.
 
 1. From the GCP console, select **Network services > Load balancing > Create load balancer**.
 
@@ -842,8 +842,8 @@ xyz.EXAMPLE.COM.      1767    IN  A 203.0.113.1</pre>
 
 ## <a id="next-steps"></a> Next Steps
 
-* (Optional) To prepare for deploying either a <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %> tile on GCP, you can download the needed runtime tile in advance:
-  * To download <%= vars.app_runtime_abbr %>, log in to [Pivotal Network](https://network.pivotal.io/products/elastic-runtime), select your desired release version, and download **<%= vars.app_runtime_full %>**.
-  * To download <%= vars.k8s_runtime_abbr %>, log in to [Pivotal Network](https://network.pivotal.io/products/pivotal-container-service), select your desired release version, and download **<%= vars.k8s_runtime_full %>**.
+* (Optional) To prepare for deploying either a PAS or TKGI tile on GCP, you can download the needed runtime tile in advance:
+  * To download PAS, log in to [Pivotal Network](https://network.pivotal.io/products/elastic-runtime), select your desired release version, and download **Pivotal Application Service**.
+  * To download TKGI, log in to [Pivotal Network](https://network.pivotal.io/products/pivotal-container-service), select your desired release version, and download **VMware Tanzu Kubernetes Grid Integrated Edition**.
 
 * After initiating the tile download, proceed to the next step, [Deploying Ops Manager on GCP](./deploy-manual.html).

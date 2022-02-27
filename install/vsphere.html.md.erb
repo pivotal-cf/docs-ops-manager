@@ -6,24 +6,24 @@ iaas: vSphere
 
 <% current_page.data.title = "Installing " + vars.ops_manager + " on vSphere"  %>
 
-This guide describes how to install [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) on vSphere.
+This guide describes how to install [Ops Manager](https://network.pivotal.io/products/pivotal-cf) on vSphere.
 
 If you experience a problem while following the steps below, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/2-7/operating/diagnostics.html) or the _Known Issues_ sections of the following topics:
 
-* [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html#known-issues) in the <%= vars.ops_manager %> documentation
+* [Ops Manager v2.7 Release Notes](../release-notes.html#known-issues) in the Ops Manager documentation
 
-* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
+* [Pivotal Application Service v2.7 Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#known-issues) in the PAS documentation
 
-* [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
+* [Pivotal Isolation Segment v2.7 Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html#known-issues) in the PAS documentation
 
- [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/2-7/windows/release-notes.html#known-issues) in the <%= vars.windows_runtime_abbr %> documentation
+ [Pivotal Application Service for Windows v2.7 Release Notes](https://docs.pivotal.io/application-service/2-7/windows/release-notes.html#known-issues) in the PASW documentation
 
-* [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html#known-issues) in the <%= vars.k8s_runtime_abbr %> documentation
+* [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html#known-issues) in the TKGI documentation
 
 
 ## <a id='prerequisites'></a> Requirements
 
-This section describes the resource requirements for installing <%= vars.ops_manager %>.
+This section describes the resource requirements for installing Ops Manager.
 
 <p class='note'><strong>Note:</strong> If you are using the Cisco Nexus 1000v Switch, see <a href="nexus-switch.html">Using the Cisco Nexus 1000v Switch with Ops Manager</a> for more information.</p>
 
@@ -31,12 +31,12 @@ This section describes the resource requirements for installing <%= vars.ops_man
 
 ### <a id='runtimes'></a> Resource Requirements
 
-You can install <%= vars.ops_manager %> with one of two runtimes. For more information about the requirements for each runtime, see the following:
+You can install Ops Manager with one of two runtimes. For more information about the requirements for each runtime, see the following:
 
-* **<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>)**: [<%= vars.app_runtime_abbr %> on vSphere Requirements](https://docs.pivotal.io/application-service/2-7/operating/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/2-7/operating/vsphere-nsx-t.html).
-* **<%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)**:
+* **Pivotal Application Service (PAS)**: [PAS on vSphere Requirements](https://docs.pivotal.io/application-service/2-7/operating/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying PAS with NSX-T Networking](https://docs.pivotal.io/application-service/2-7/operating/vsphere-nsx-t.html).
+* **VMware Tanzu Kubernetes Grid Integrated Edition (TKGI)**:
     * **Without NSX-T**: [vSphere Prerequisites and Resource Requirements](https://docs.pivotal.io/pks/vsphere-requirements.html)
-    * **With NSX-T**: See the _Preparing to Install <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T_ section of [Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center](https://docs.pivotal.io/pks/vsphere-nsxt-index.html).
+    * **With NSX-T**: See the _Preparing to Install TKGI on vSphere with NSX-T_ section of [Installing TKGI on vSphere with NSX-T Data Center](https://docs.pivotal.io/pks/vsphere-nsxt-index.html).
 
 ### <a id='firewall'></a> Firewall Port Requirements
 
@@ -50,8 +50,8 @@ Since Ops Manager passes all required credentials through to BOSH, you only need
 
 For more information about service account requirements, see the following topics:
 
-* **<%= vars.app_runtime_abbr %>:** [vSphere Service Account Requirements](../vsphere/vsphere-service-account.html)
-* **<%= vars.k8s_runtime_abbr %>:** [Create the BOSH/<%= vars.ops_manager %> Service Account](https://docs.pivotal.io/pks/vsphere-prepare-env.html#create-bosh-ops-man) in _Preparing vSphere Before Deploying <%= vars.k8s_runtime_abbr %>_
+* **PAS:** [vSphere Service Account Requirements](../vsphere/vsphere-service-account.html)
+* **TKGI:** [Create the BOSH/Ops Manager Service Account](https://docs.pivotal.io/pks/vsphere-prepare-env.html#create-bosh-ops-man) in _Preparing vSphere Before Deploying TKGI_
 
 <p class="note"><strong>Note:</strong> You can also apply the default <a href="http://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.pg.doc/PG_Appx_Privileges_Reference.22.4.html">VMware Administrator System Role</a> to the service account to achieve the appropriate permission level.</p>
 
@@ -68,13 +68,13 @@ The following guides contain best practices for securing and managing a vSphere 
 
 ## <a id='procedure'></a> Procedure
 
-This section describes the steps for installing <%= vars.ops_manager %>.
+This section describes the steps for installing Ops Manager.
 
 ### <a id='install-om'></a> Step 1: Install Ops Manager
 
 Complete the following procedures to install Ops Manager on vSphere:
 
-1. [Deploying <%= vars.ops_manager %> to vSphere](../vsphere/deploy.html)
+1. [Deploying Ops Manager to vSphere](../vsphere/deploy.html)
 
 1. [Configuring BOSH Director on vSphere](../vsphere/config.html)
 
@@ -92,12 +92,12 @@ After completing the procedures above, configure a runtime.
 
 For information about installing and configuring a runtime, see the following:
 
-* **<%= vars.app_runtime_abbr %>:**
-    * **Without NSX-T:** [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html)
-    * **With NSX-T:** [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/2-7/operating/vsphere-nsx-t.html)
-        <p class="note"><strong>Note</strong>: You must install the NSX-T tile before you install or Upgrade the <%= vars.app_runtime_abbr %> tile.</p>
-* **<%= vars.k8s_runtime_abbr %>:**
-    * **Without NSX-T:** [Installing <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/tkgi/vsphere-index.html)
-    * **With NSX-T:** [Deploying NSX-T for <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/tkgi/nsxt-deploy.html)
+* **PAS:**
+    * **Without NSX-T:** [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html)
+    * **With NSX-T:** [Deploying PAS with NSX-T Networking](https://docs.pivotal.io/application-service/2-7/operating/vsphere-nsx-t.html)
+        <p class="note"><strong>Note</strong>: You must install the NSX-T tile before you install or Upgrade the PAS tile.</p>
+* **TKGI:**
+    * **Without NSX-T:** [Installing TKGI](https://docs.pivotal.io/tkgi/vsphere-index.html)
+    * **With NSX-T:** [Deploying NSX-T for TKGI](https://docs.pivotal.io/tkgi/nsxt-deploy.html)
 * [Installing and Configuring TAS for VMs on Windows](https://docs.pivotal.io/application-service/2-7/windows/installing.html)
 * [Installing Small Footprint TAS for VMs](https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html#install)

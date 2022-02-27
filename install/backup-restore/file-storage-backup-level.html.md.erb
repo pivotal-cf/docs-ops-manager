@@ -3,14 +3,14 @@ title: File Storage Backup Level
 owner: RelEng
 ---
 
-This topic explains the options for configuring <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) file storage backups. It includes information about the advantages and disadvantages of doing a complete file storage backup or configuring <%= vars.app_runtime_abbr %> to exclude droplets or both droplets and packages from your backup.
+This topic explains the options for configuring Pivotal Application Service (PAS) file storage backups. It includes information about the advantages and disadvantages of doing a complete file storage backup or configuring PAS to exclude droplets or both droplets and packages from your backup.
 
-For information about configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets or to exclude droplets and packages, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
+For information about configuring the PAS blobstore to exclude droplets or to exclude droplets and packages, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#file-storage) in _Configuring PAS_.
 
 
 ## <a id="overview"></a> Overview
 
-You can choose from the following options to configure <%= vars.app_runtime_abbr %> file storage backups:
+You can choose from the following options to configure PAS file storage backups:
 
 * Complete file storage backup
 * Exclude droplets from the file storage backup
@@ -37,20 +37,20 @@ The following table gives approximate values for the proportion of the blobstore
 
 A complete file storage backup contains the complete blobstore, including droplets, packages, and buildpacks. This is the default behavior. This backup is the largest and slowest but has the lowest RTO.
 
-When restoring from this backup, apps automatically return in a running state because <%= vars.app_runtime_abbr %> is restored with the expected droplets and can reschedule the apps without any manual intervention.
+When restoring from this backup, apps automatically return in a running state because PAS is restored with the expected droplets and can reschedule the apps without any manual intervention.
 
 ### <a id='exclude-droplets-file-storage'></a> File Storage Backups Excluding Droplets
 
-If you configure <%= vars.app_runtime_abbr %> to exclude droplets from the file storage backups, the backup is a smaller and faster, but has an increased RTO.
+If you configure PAS to exclude droplets from the file storage backups, the backup is a smaller and faster, but has an increased RTO.
 
-When restoring from this backup, apps return in a stopped state because the foundation does not have their corresponding droplets. Developers must restage each app to return them to a running state. <%= vars.app_runtime_abbr %> must recompile the droplet using the packages in the backup then deploy the new droplet. This process increases the RTO.
+When restoring from this backup, apps return in a stopped state because the foundation does not have their corresponding droplets. Developers must restage each app to return them to a running state. PAS must recompile the droplet using the packages in the backup then deploy the new droplet. This process increases the RTO.
 
-For more information about configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
+For more information about configuring the PAS blobstore to exclude droplets, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#file-storage) in _Configuring PAS_.
 
 ### <a id='exclude-droplets-packages-file-storage'></a> File Storage Backups Excluding Droplets and Packages
 
-If you configure <%= vars.app_runtime_abbr %> to exclude droplets and packages from the file storage backup, the backup is smaller and faster than the other two options, but with an even greater RTO.
+If you configure PAS to exclude droplets and packages from the file storage backup, the backup is smaller and faster than the other two options, but with an even greater RTO.
 
 When restoring from this backup, apps return in a stopped state because the foundation does not have their corresponding droplets or packages. Developers must re-push each app to return them to a running state. This uploads the app packages, compiles them, and deploys a new droplet. This process increases the RTO.
 
-For more information about to configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets and packages, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
+For more information about to configuring the PAS blobstore to exclude droplets and packages, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#file-storage) in _Configuring PAS_.

@@ -3,58 +3,58 @@ title: Ongoing Operations
 owner: Ops Manager Documentation
 ---
 
-This topic describes how to perform routine operations on a running <%= vars.ops_manager %>.
+This topic describes how to perform routine operations on a running Ops Manager.
 
 
 ## <a id='overview'></a> Overview
 
-Ongoing operations are procedures that <%= vars.ops_manager %> operators routinely perform to keep the platform working as it should, or to change how it works if the platform needs to do something new or has a problem.
+Ongoing operations are procedures that Ops Manager operators routinely perform to keep the platform working as it should, or to change how it works if the platform needs to do something new or has a problem.
 
 Examples include:
 
-* Performing <%= vars.ops_manager %> upgrades
+* Performing Ops Manager upgrades
 * Making changes to your IaaS and external components
 * Monitoring platform health, checking logs, and generating usage reports
 * Tuning the platform to eliminate bottlenecks or increase capacity
 * Giving developers access to new software services, stacks, and app capabilities
 * Backing up and restoring the platform
 
-In addition to these tasks, <%= vars.ops_manager %> operators also routinely perform Day 2 configurations to configure or change platform features and integrations even well past Day 2. For more information, see [Day 2 Configurations](https://docs.pivotal.io/application-service/2-7/operating/day2.html).
+In addition to these tasks, Ops Manager operators also routinely perform Day 2 configurations to configure or change platform features and integrations even well past Day 2. For more information, see [Day 2 Configurations](https://docs.pivotal.io/application-service/2-7/operating/day2.html).
 
 
 ## <a id='contents'></a> Contents
 
 ### <a id='upgrading'></a> Upgrading
 
-* [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html)
+* [Upgrading Ops Manager](../install/upgrading-pcf.html)
 
-* [Upgrading PAS and Other <%= vars.ops_manager %> Products](../install/upgrading-products.html)
+* [Upgrading PAS and Other Ops Manager Products](../install/upgrading-products.html)
 
 * [cf push Availability During PAS Upgrades](https://docs.pivotal.io/application-service/2-7/operating/cfpush-availability-during-upgrade.html)
 
-* [Upgrading <%= vars.ops_manager %> on Azure](../install/azure-om-upgrade.html)
+* [Upgrading Ops Manager on Azure](../install/azure-om-upgrade.html)
 
-* [Upgrading <%= vars.ops_manager %> on GCP](../install/gcp-om-upgrade.html)
+* [Upgrading Ops Manager on GCP](../install/gcp-om-upgrade.html)
 
 * [Upgrade Load Example&#58; Pivotal Web Services](https://docs.pivotal.io/application-service/2-7/operating/pws_upgrade_load.html)
 
 ### <a id='changes'></a> IaaS Changes
 
-* [Migrating <%= vars.ops_manager %> to a New Datastore in vSphere](../refarch/vsphere/vsphere_migrate_datastore.html)
+* [Migrating Ops Manager to a New Datastore in vSphere](../refarch/vsphere/vsphere_migrate_datastore.html)
 
-* [Upgrading vSphere without <%= vars.ops_manager %> Downtime](../refarch/vsphere/vsphere_upgrade.html)
+* [Upgrading vSphere without Ops Manager Downtime](../refarch/vsphere/vsphere_upgrade.html)
 
-* [Deleting <%= vars.ops_manager %> on AWS](../install/deleting-aws-install.html)
+* [Deleting Ops Manager on AWS](../install/deleting-aws-install.html)
 
-* [Deleting <%= vars.ops_manager %> on Azure](../install/deleting-azure-install.html)
+* [Deleting Ops Manager on Azure](../install/deleting-azure-install.html)
 
-* [Deleting <%= vars.ops_manager %> on GCP](../install/deleting-gcp-install.html)
+* [Deleting Ops Manager on GCP](../install/deleting-gcp-install.html)
 
 ### <a id='monitoring'></a> Monitoring, Logging, and Reporting
 
 * [Logs and Metrics Sources](https://docs.pivotal.io/application-service/2-7/loggregator/data-sources.html)
 
-* [Monitoring <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/2-7/operating/monitoring/index.html)
+* [Monitoring Ops Manager](https://docs.pivotal.io/application-service/2-7/operating/monitoring/index.html)
 
 	* [Key Performance Indicators](https://docs.pivotal.io/application-service/2-7/operating/monitoring/kpi.html)
 
@@ -72,9 +72,9 @@ In addition to these tasks, <%= vars.ops_manager %> operators also routinely per
 
 * [Reporting App, Task, and Service Instance Usage](https://docs.pivotal.io/application-service/2-7/operating/accounting-report.html)
 
-* [Monitoring VMs in <%= vars.ops_manager %>](../install/monitoring.html)
+* [Monitoring VMs in Pivotal Platform](../install/monitoring.html)
 
-* [Monitoring <%= vars.platform_name %> VMs from vSphere](../install/monitoring-vsphere.html)
+* [Monitoring Pivotal Platform VMs from vSphere](../install/monitoring-vsphere.html)
 
 ### <a id='tuning'></a> Platform Tuning
 
@@ -102,15 +102,15 @@ In addition to these tasks, <%= vars.ops_manager %> operators also routinely per
 
 ### <a id='backups'></a> Backing Up
 
-* [Disaster Recovery in <%= vars.platform_name %>](../install/backup-restore/disaster-recovery.html)
+* [Disaster Recovery](../install/backup-restore/disaster-recovery.html)
 
-* [Backing Up and Restoring <%= vars.platform_name %>](../install/backup-restore/index.html)
+* [Backing Up and Restoring Deployments](../install/backup-restore/index.html)
 
-* [Backing Up <%= vars.platform_name %> with BBR](../install/backup-restore/backup-pcf-bbr.html)
+* [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html)
 
 * [PAS  Component Availability During Backup](../install/backup-restore/component-backups.html)
 
-* [Restoring <%= vars.platform_name %> from Backup with BBR](../install/backup-restore/restore-pcf-bbr.html)
+* [Restoring Deployments from Backup with BBR](../install/backup-restore/restore-pcf-bbr.html)
 
 * [Stopping and Starting Virtual Machines](https://docs.pivotal.io/application-service/2-7/adminguide/start-stop-vms.html)
 
@@ -122,7 +122,7 @@ In addition to these tasks, <%= vars.ops_manager %> operators also routinely per
 
 * [Retrieving Credentials from Your Deployment](../install/credentials.html)
 
-* [Restricting App Access to Internal <%= vars.ops_manager %> Components](https://docs.pivotal.io/application-service/2-7/operating/app-sec-groups.html)
+* [Restricting App Access to Internal Ops Manager Components](https://docs.pivotal.io/application-service/2-7/operating/app-sec-groups.html)
 
 * [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/application-service/2-7/operating/security_config.html)
 

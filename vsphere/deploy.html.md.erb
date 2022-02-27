@@ -11,11 +11,11 @@ The instructions in this topic are based on vSphere 6.5 using the vSphere Client
 ## <a id="pas_and_pks"></a> Runtime Considerations
 
 For security purposes, VMware requires a dedicated instance of Ops Manager for use with Pivotal
-Container Service (<%= vars.k8s_runtime_abbr %>).
+Container Service (TKGI).
 
-<p class="note warning"><strong>Warning:</strong> If you are installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
+<p class="note warning"><strong>Warning:</strong> If you are installing TKGI on vSphere with NSX-T
 integration, follow the instructions in
-<a href="https://docs.pivotal.io/pks/vsphere-nsxt-om-deploy.html">Deploying Ops Manager with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the steps described in this topic.</p>
+<a href="https://docs.pivotal.io/pks/vsphere-nsxt-om-deploy.html">Deploying Ops Manager with NSX-T for TKGI</a> instead of performing the steps described in this topic.</p>
 
 ## <a id="prepare-vsphere"></a> Prepare vSphere
 
@@ -44,8 +44,8 @@ integration, follow the instructions in
 1. Create a resource pool for the management components in your deployment. Resource pools are
 vSphere objects used to organize resources.
     <p class="note"><strong>Note:</strong> The management resource pool separates non-HA components
-    such as Ops Manager and BOSH Director. For example, if you deploy Ops Manager for use with <%= vars.k8s_runtime_abbr %>,
-    the <%= vars.k8s_runtime_abbr %> management plane includes Ops Manager, BOSH Director, the <%= vars.k8s_runtime_abbr %> control plane, and
+    such as Ops Manager and BOSH Director. For example, if you deploy Ops Manager for use with TKGI,
+    the TKGI management plane includes Ops Manager, BOSH Director, the TKGI control plane, and
     Harbor(optional).</p>
 
     Follow the steps below to create a vSphere resource pool:
@@ -83,7 +83,7 @@ Ops Manager for vSphere is provided as an OVA file. An OVA file is a template fo
 1. At the **Select a compute resource** screen, select the compute resource where the Ops Manager VM will run and click **Next**. Select the Resource Pool for the management components.
 
     <p class="note"><strong>Note</strong>: Hardware virtualization must be turned off if your
-    vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.ops_manager %> on vSphere Requirements</em> for more information.</p>
+    vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em>Ops Manager on vSphere Requirements</em> for more information.</p>
 
 1. At the **Review Details** screen, confirm the configuration up to this point and click **Next**.
 
@@ -100,14 +100,14 @@ Ops Manager for vSphere is provided as an OVA file. An OVA file is a template fo
 1. At the **Select Networks** screen, select the standard **VM Network**, and click **Next**.
 
 1. At the **Customize template** screen, enter the following information, and click **Next**.
-   * **IP Address**: The IP address of the <%= vars.ops_manager %> network interface. For example, `10.0.0.2`.
-   * **Netmask**: The network mask for <%= vars.ops_manager %>. For example, `255.255.255.0`.
-   * **Default Gateway**: The default gateway for <%= vars.ops_manager %> to use. For example, `10.0.0.1`.
-   * **DNS**: One or more DNS servers for the <%= vars.ops_manager %> VM to use. For example, `10.20.20.1`.
-   * **NTP Servers**: The IP address of one or more NTP servers for <%= vars.ops_manager %>. For example, `10.113.60.176`.
-   * **Public SSH Key**: Enter pre-existing public SSH key value to allow SSH access to the <%= vars.ops_manager %> VM. Enter the full key in the `ssh-rsa AAA...` format.
-      <p class="note warning"><strong>Warning</strong>: You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
-   * **Custom hostname**: The hostname for the <%= vars.ops_manager %> VM. For example, `ops-manager`.
+   * **IP Address**: The IP address of the Ops Manager network interface. For example, `10.0.0.2`.
+   * **Netmask**: The network mask for Ops Manager. For example, `255.255.255.0`.
+   * **Default Gateway**: The default gateway for Ops Manager to use. For example, `10.0.0.1`.
+   * **DNS**: One or more DNS servers for the Ops Manager VM to use. For example, `10.20.20.1`.
+   * **NTP Servers**: The IP address of one or more NTP servers for Ops Manager. For example, `10.113.60.176`.
+   * **Public SSH Key**: Enter pre-existing public SSH key value to allow SSH access to the Ops Manager VM. Enter the full key in the `ssh-rsa AAA...` format.
+      <p class="note warning"><strong>Warning</strong>: You cannot deploy Ops Manager successfully without adding a public key. If you do not add a key, Ops Manager shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
+   * **Custom hostname**: The hostname for the Ops Manager VM. For example, `ops-manager`.
 
 1. At the **Ready to complete** screen, review the configuration settings and click **Finish**.
 
@@ -121,7 +121,7 @@ Ops Manager for vSphere is provided as an OVA file. An OVA file is a template fo
 
 1. Create a DNS entry for the IP address that you used for Ops Manager. You must use this fully qualified domain name when you log into Ops Manager.
 
-    <p class="note"><strong>Note</strong>: <%= vars.ops_manager %> security features require you to create a fully qualified domain name to access <%= vars.ops_manager %> during the initial configuration. For more information, see <a href="../install/vsphere.html"><%= vars.ops_manager %> on vSphere Requirements</a>.</p>
+    <p class="note"><strong>Note</strong>: Ops Manager security features require you to create a fully qualified domain name to access Ops Manager during the initial configuration. For more information, see <a href="../install/vsphere.html">Ops Manager on vSphere Requirements</a>.</p>
 
 1. Select the Ops Manager VM and click **Actions** > **Power** > **Power On**.
 

@@ -11,19 +11,19 @@ For more information, see [Rotating the Services TLS CA and Its Leaf Certificate
 
 ## <a id="overview"></a> Overview
 
-<%= vars.ops_manager %> stores some of its internal CA (certificate authority) and
+Ops Manager stores some of its internal CA (certificate authority) and
 non-CA certificates in the BOSH CredHub credentials store.
 For more information, see [BOSH CredHub](https://docs.pivotal.io/credhub/#bosh).
 
 To access the BOSH CredHub credentials store, you must retrieve
 credentials from the BOSH Director and then use the credentials
-to log in to CredHub from the <%= vars.ops_manager %> VM.
+to log in to CredHub from the Ops Manager VM.
 
 ## <a id="credhub"></a> Procedure
 
 To access BOSH CredHub:
 
-1. In the <%= vars.ops_manager %> Installation Dashboard, click the **BOSH Director** tile.
+1. In the Ops Manager Installation Dashboard, click the **BOSH Director** tile.
 
 1. Click the **Credentials** tab.
 
@@ -46,10 +46,10 @@ To access BOSH CredHub:
 to obtain the information needed to log in to the BOSH Director VM.
 Record the IP address for the BOSH Director and the Director Credentials.
 
-1. Log in to the <%= vars.ops_manager %> VM by following the procedure in
-[Log Into the <%= vars.ops_manager %> VM with SSH](../../install/ssh-login.html#ssh-by-iaas).
+1. Log in to the Ops Manager VM by following the procedure in
+[Log Into the Ops Manager VM with SSH](../../install/ssh-login.html#ssh-by-iaas).
 
-1. From the <%= vars.ops_manager %> VM, set the API target of the CredHub CLI to your BOSH
+1. From the Ops Manager VM, set the API target of the CredHub CLI to your BOSH
 CredHub server by running the following command:
 
     ```

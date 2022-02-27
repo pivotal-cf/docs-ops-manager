@@ -5,21 +5,21 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.platform_name + " on AWS using Terraform" %>
 
-This topic explains how to install <%= vars.ops_manager %> on AWS using Terraform.
+This topic explains how to install Ops Manager on AWS using Terraform.
 
 ## <a id="overview"></a> Overview
 
-After you install <%= vars.ops_manager %> on AWS using Terraform,
-you can install either the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or
-<%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime on the <%= vars.ops_manager %>.
+After you install Ops Manager on AWS using Terraform,
+you can install either the Pivotal Application Service (PAS) or
+VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) runtime on the Ops Manager.
 
 1. Configure BOSH Director. See [Configuring BOSH Director on AWS Using Terraform](../aws/config-terraform.html).
 
-## <a id="terraform-pks"></a> Install with <%= vars.k8s_runtime_abbr %> Using Terraform
+## <a id="terraform-pks"></a> Install with TKGI Using Terraform
 
-To install with <%= vars.k8s_runtime_abbr %> using Terraform, do the following:
+To install with TKGI using Terraform, do the following:
 
-1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on AWS Using Terraform](../aws/prepare-env-terraform.html).
+1. Deploy Ops Manager. For more information, see [Deploying Ops Manager on AWS Using Terraform](../aws/prepare-env-terraform.html).
 
 1. Configure BOSH Director. For more information, see [Configuring BOSH Director on AWS Using Terraform](../aws/config-terraform.html).
 
@@ -29,7 +29,7 @@ After completing the procedures above, configure a runtime.
 
 For information about installing and configuring a runtime, see the following:
 
-* [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
-* [Installing <%= vars.k8s_runtime_abbr %> on AWS](https://docs.pivotal.io/tkgi/installing-aws.html).
+* [Configuring PAS](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html).
+* [Installing TKGI on AWS](https://docs.pivotal.io/tkgi/installing-aws.html).
 * [Installing and Configuring TAS for VMs on Windows](https://docs.pivotal.io/application-service/2-7/windows/installing.html)
 * [Installing Small Footprint TAS for VMs](https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html#install)

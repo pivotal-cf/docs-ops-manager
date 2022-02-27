@@ -3,14 +3,14 @@ title: BOSH DNS Network Communications
 owner: BOSH
 ---
 
-This topic describes BOSH DNS internal network communication paths with other <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) components.
+This topic describes BOSH DNS internal network communication paths with other Pivotal Application Service (PAS) components.
 
 For more information about BOSH DNS, see [Native DNS Support](https://bosh.io/docs/dns.html) in the BOSH documentation.
 
 
 ## <a name="inbound"></a> BOSH DNS Communications
 
-The following table lists network communication paths for BOSH DNS. For information about configuring BOSH DNS in the BOSH Director, see [BOSH DNS Config Pane in the BOSH Director Tile](https://docs.pivotal.io/pivotalcf/2-4/pcf-release-notes/opsmanager-rn.html#dns-form) in the _<%= vars.ops_manager_full %> v2.4 Release Notes_.
+The following table lists network communication paths for BOSH DNS. For information about configuring BOSH DNS in the BOSH Director, see [BOSH DNS Config Pane in the BOSH Director Tile](https://docs.pivotal.io/pivotalcf/2-4/pcf-release-notes/opsmanager-rn.html#dns-form) in the _Ops Manager v2.4 Release Notes_.
 
 <p class="note"><strong>Note:</strong> Port 8853 is the destination port for communications between BOSH DNS health processes. You must allow TCP traffic on 8853 for all VMs running BOSH DNS.</p>
 

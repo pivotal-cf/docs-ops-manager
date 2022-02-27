@@ -28,25 +28,25 @@ To create a new persistent disk for the BOSH Director:
 
 1. Create a new persistent disk using your IaaS console.
 
-1. Log in to the <%= vars.ops_manager %> VM. For more information, see [Log Into the <%= vars.ops_manager %> VM with SSH](../../ssh-login.html#ssh-by-iaas).
+1. Log in to the Ops Manager VM. For more information, see [Log Into the Ops Manager VM with SSH](../../ssh-login.html#ssh-by-iaas).
 
 1. Open the `bosh-state.json` file in a text editor.
 
 1. Edit the `disks.cid` value to match the new persistent disk you created in the first step.
 
-1. Update the persistent disk size in <%= vars.ops_manager %> and then click **Apply Changes**. This creates a new BOSH Director VM and attaches the new persistent disk to it.
+1. Update the persistent disk size in Ops Manager and then click **Apply Changes**. This creates a new BOSH Director VM and attaches the new persistent disk to it.
 
 
 ## <a id="perform-restore"></a> Perform the Restore
 
 <p class="note warning"><strong>Warning:</strong> BBR restore is a destructive process which removes any current data in your deployment. Performing a restore overwrites all new data since you created your most recent backup artifact.</p>
 
-Perform a BOSH Director restore by following the BBR instructions in [Step 8: Restore the BOSH Director](../restore-pcf-bbr.html#restore-bosh) in _Restoring <%= vars.platform_name %> From Backup with BBR_.
+Perform a BOSH Director restore by following the BBR instructions in [Step 8: Restore the BOSH Director](../restore-pcf-bbr.html#restore-bosh) in _Restoring Deployments from Backup with BBR_.
 
 
 ## <a id="consolidate"></a> Consolidate Your Environment
 
-After you successfully restore your BOSH Director, the BOSH Director uses the VM references that were stored in the backup artifact. If you clicked **Apply Changes** in <%= vars.ops_manager %> between when the backup and the restore took place, check if any BOSH-deployed VMs were deleted or added.
+After you successfully restore your BOSH Director, the BOSH Director uses the VM references that were stored in the backup artifact. If you clicked **Apply Changes** in Ops Manager between when the backup and the restore took place, check if any BOSH-deployed VMs were deleted or added.
 
 If changes have occurred, ensure that the BOSH Director database is consistent with the current state of your IaaS after the restore. If VMs were deleted, the BOSH Director still has references to these deleted VMs after the restore. If VMs were added, the BOSH Director has no knowledge of the new VMs.
 

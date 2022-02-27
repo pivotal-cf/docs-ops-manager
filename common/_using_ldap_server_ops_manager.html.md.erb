@@ -1,4 +1,4 @@
-To configure <%= vars.ops_manager %> to log in by default using an LDAP server for user authentication:
+To configure Ops Manager to log in by default using an LDAP server for user authentication:
 
 1. For **Server URL**, enter the URL that points to your LDAP server. With multiple LDAP servers, separate their URLs with spaces. Each URL must include one of the following protocols:
     * `ldap://`: This specifies that the LDAP server uses an unencrypted connection.
@@ -16,7 +16,7 @@ To configure <%= vars.ops_manager %> to log in by default using an LDAP server f
 In the LDAP search filter string that you use to configure your runtime, use `{0}` instead of the username. For example, use `cn={0}` to return all LDAP objects with the same common name as the username.
 <br><br>
 In addition to `cn`, other attributes commonly searched for and returned are `mail`, `uid` and, in the case of Active Directory, `sAMAccountName`.
-    <p class="note"><strong>Note:</strong> For instructions for testing and troubleshooting your LDAP search filters, see <a href="https://community.pivotal.io/s/article/Configuring-LDAP-Integration-with-Pivotal-Cloud-Foundry">Configuring LDAP Integration with <%= vars.platform_name %></a> in the Pivotal Support Knowledge Base.</p>
+    <p class="note"><strong>Note:</strong> For instructions for testing and troubleshooting your LDAP search filters, see <a href="https://community.pivotal.io/s/article/Configuring-LDAP-Integration-with-Pivotal-Cloud-Foundry">Configuring LDAP integration with VMware Tanzu Application Service (TAS) for VMs</a> in the Pivotal Support Knowledge Base.</p>
 
 1. For **Group Search Base**, enter the location in the LDAP directory tree from which the LDAP Group search begins. For example, a domain named "cloud.example.com" typically uses the following LDAP Group Search Base: `ou=Groups,dc=example,dc=com`
 

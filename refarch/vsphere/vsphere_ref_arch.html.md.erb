@@ -3,31 +3,31 @@ title: vSphere Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (PAS) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on vSphere.
+This topic describes a reference architecture for Ops Manager and any runtime products, including Pivotal Application Service (PAS) and VMware Tanzu Kubernetes Grid Integrated Edition (TKGI), on vSphere.
 It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
 
-For additional requirements and installation instructions for <%= vars.ops_manager %> on vSphere, see [Installing <%= vars.ops_manager %> on vSphere](../../install/vsphere.html).
+For additional requirements and installation instructions for Ops Manager on vSphere, see [Installing Ops Manager on vSphere](../../install/vsphere.html).
 
 
 ## <a id="overview"></a> Before You Begin
 
-<%= vars.platform_name %> products contain feature sets that, when used, impact designs in this reference architecture.
+Ops Manager products contain feature sets that, when used, impact designs in this reference architecture.
 
 ### <a id="ist"></a> Isolation Segments
 
-Isolation segments are delivered as a tile in <%= vars.ops_manager_full %>. They are used to create smaller individual deployments of <%= vars.app_runtime_full %> (PAS) components, Gorouters, and Diego Cells to help isolate workloads. For example, the isolation criteria could include capacity management or audit compliance. Isolation segments can be also be patched independently from the PAS tile or other isolation segments.
+Isolation segments are delivered as a tile in Ops Manager. They are used to create smaller individual deployments of Pivotal Application Service (PAS) components, Gorouters, and Diego Cells to help isolate workloads. For example, the isolation criteria could include capacity management or audit compliance. Isolation segments can be also be patched independently from the PAS tile or other isolation segments.
 
 <%= vars.recommended_by %> recommends that when using isolation segments, you should deploy all containers to an isolation segment, and deploy only system-level components to the PAS tile. By moving all app workloads to an isolation segment, you get more control over the network usage, capacity planning, firewalling, and business continuity.
 
 ### <a id="host-groups"></a> Host Groups
 
-Host groups allow you create virtual PaaS failure domains independently of physical IaaS capacity. In PAS or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) on vSphere, this amounts to creating multiple Availability Zones (AZs) that do not have to align perfectly with vSphere constructs, such as clusters or pools.
+Host groups allow you create virtual PaaS failure domains independently of physical IaaS capacity. In PAS or VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) on vSphere, this amounts to creating multiple Availability Zones (AZs) that do not have to align perfectly with vSphere constructs, such as clusters or pools.
 
 You can use host groups to gain PaaS high availability (HA) with undersized IaaS capacity. Alternatively, host groups can be used to create AZs that can grow in an elastic way as the IaaS grows.
 
 ### <a id="multi-vcenter"></a> Multiple vCenter Support
 
-Multiple vCenter Support can allow you to use PAS in a mature vSphere environment. Coupled with host groups, a brown field deployment strategy can happen as hosts in existing vSphere clusters can be set aside for PAS or <%= vars.k8s_runtime_abbr %>. You can also structure PAS or <%= vars.k8s_runtime_abbr %> geographically without needing to stretch IaaS elements.
+Multiple vCenter Support can allow you to use PAS in a mature vSphere environment. Coupled with host groups, a brown field deployment strategy can happen as hosts in existing vSphere clusters can be set aside for PAS or TKGI. You can also structure PAS or TKGI geographically without needing to stretch IaaS elements.
 
 
 ## <a id="overview"></a> Overview
@@ -38,19 +38,19 @@ For information about HA requirements and recommendations for PAS on vSphere, se
 
 ### <a id="pas-nsx-t-shared-storage"></a> Shared Storage
 
-<%= vars.platform_name %> requires shared storage. You can allocate networked storage to the host clusters following one of two common approaches: horizontal or vertical. The approach you follow reflects how your data center arranges its storage and host blocks in its physical layout.
+Ops Manager requires shared storage. You can allocate networked storage to the host clusters following one of two common approaches: horizontal or vertical. The approach you follow reflects how your data center arranges its storage and host blocks in its physical layout.
 
 #### <a id="horizontal-shared-storage"></a> Horizontal Shared Storage
 
-With the horizontal shared storage approach, you grant all hosts access to all datastores and assign a subset to each <%= vars.platform_name %> installation.
+With the horizontal shared storage approach, you grant all hosts access to all datastores and assign a subset to each Ops Manager installation.
 
-For example, with six datastores `ds01` through `ds06`, you grant all nine hosts access to all six datastores. You then provision your first <%= vars.platform_name %> installation to use stores `ds01` through `ds03`  and your second <%= vars.platform_name %> installation to use `ds04` through `ds06`.
+For example, with six datastores `ds01` through `ds06`, you grant all nine hosts access to all six datastores. You then provision your first Ops Manager installation to use stores `ds01` through `ds03`  and your second Ops Manager installation to use `ds04` through `ds06`.
 
 #### <a id="vertical-shared-storage"></a> Vertical Shared Storage
 
 With the vertical shared storage approach, you grant each cluster its own datastores, creating a cluster-aligned storage strategy. vSphere VSAN is an example of this architecture.
 
-For example, with six datastores `ds01` through `ds06`, you assign datastores `ds01` and `ds02` to a cluster, `ds03` and `ds04` to a second cluster, and `ds05` and `ds06` to a third cluster. You then provision your first <%= vars.platform_name %> installation to use `ds01`, `ds03`, and `ds05`, and your second <%= vars.platform_name %> installation to use `ds02`, `ds04`, and `ds06`.
+For example, with six datastores `ds01` through `ds06`, you assign datastores `ds01` and `ds02` to a cluster, `ds03` and `ds04` to a second cluster, and `ds05` and `ds06` to a third cluster. You then provision your first Ops Manager installation to use `ds01`, `ds03`, and `ds05`, and your second Ops Manager installation to use `ds02`, `ds04`, and `ds06`.
 
 With this arrangement, all VMs in the same installation and cluster share a dedicated datastore.
 
@@ -62,9 +62,9 @@ With this arrangement, all VMs in the same installation and cluster share a dedi
 
 * **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
 
-<p class="note"><strong>Note:</strong> <%= vars.platform_name %> does not support using vSphere Storage Clusters with the latest versions of <%= vars.platform_name %> validated for the reference architecture. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
+<p class="note"><strong>Note:</strong> Ops Manager does not support using vSphere Storage Clusters with the latest versions of Ops Manager validated for the reference architecture. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
-<p class="note"><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must disable the s-vMotion feature on any datastores used by <%= vars.platform_name %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.platform_name %> to a New Datastore in vSphere</a>.</p>
+<p class="note"><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must disable the s-vMotion feature on any datastores used by Ops Manager. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">Migrating Pivotal Platform to a New Datastore in vSphere</a>.</p>
 
 For more information about general storage requirements and recommendations for PAS, see [Storage](../index.html#pas-storage) in _Platform Architecture and Planning Overview_.
 
@@ -102,7 +102,7 @@ For more information about DNS requirements for PAS, see [Domain Names](../index
 
 ### <a id="networking"></a> Networking
 
-The vSphere reference architecture for the PAS and <%= vars.k8s_runtime_abbr %> runtimes is based on software-defined networking (SDN) infrastructure. vSphere offers NSX-T and NSX-V to support SDN infrastructure.
+The vSphere reference architecture for the PAS and TKGI runtimes is based on software-defined networking (SDN) infrastructure. vSphere offers NSX-T and NSX-V to support SDN infrastructure.
 
 <%= vars.recommended_by %> recommends using an SDN to take advantage of features including:
 
@@ -118,7 +118,7 @@ The vSphere reference architecture for the PAS and <%= vars.k8s_runtime_abbr %> 
 
 * Virtual, distributed routing and firewall services native to the hypervisor
 
-<%= vars.platform_name %> supports these configurations for <%= vars.platform_name %> on vSphere deployments:
+Ops Manager supports these configurations for vSphere deployments:
 
 * PAS on vSphere with NSX-T. For more information, see [PAS on vSphere with NSX-T](#pas-nsx-t).
 
@@ -126,9 +126,9 @@ The vSphere reference architecture for the PAS and <%= vars.k8s_runtime_abbr %> 
 
 * PAS on vSphere without NSX. For more information, see [PAS on vSphere without NSX](#pas-routed).
 
-* <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere with NSX-T](#pks-nsx-t).
+* TKGI on vSphere with NSX-T. For more information, see [TKGI on vSphere with NSX-T](#pks-nsx-t).
 
-* <%= vars.k8s_runtime_abbr %> on vSphere without NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere without NSX-T](#pks-without-nsx-t).
+* TKGI on vSphere without NSX-T. For more information, see [TKGI on vSphere without NSX-T](#pks-without-nsx-t).
 
 
 ## <a id="pas-nsx-t"></a> PAS on vSphere with NSX-T
@@ -147,11 +147,11 @@ An NSX-T Tier-0 router is on the front end of the PAS deployment. This router is
 
 ### <a id="pas-nsx-t-diagram"></a> NSX-T Container Plugin Requirement
 
-PAS deployments require the VMware NSX-T Container Plugin for <%= vars.platform_name %> to enable the SDN features available through NSX-T.
+PAS deployments require the VMware NSX-T Container Plugin for Ops Manager to enable the SDN features available through NSX-T.
 
 The NSX-T Container Plugin enables a container networking stack and integrates with NSX-T.
 
-<p class="note"><strong>Note:</strong> To use NSX-T with PAS, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the PAS tile. To download the NSX-T Container Plugin, go to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in for <%= vars.platform_name %></a> page on Pivotal Network.</p>
+<p class="note"><strong>Note:</strong> To use NSX-T with PAS, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the PAS tile. To download the NSX-T Container Plugin, go to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in</a> page on Pivotal Network.</p>
 
 ### <a id="pas-nsx-t-networking"></a> Networking
 
@@ -162,7 +162,7 @@ These sections describe networking requirements and recommendations for PAS on v
 The Tier-0 router must have routable external IP address space assigned to peer with other routers on that backbone (BGP routing) or simply be an addressable routing point (static routing). Select a network range for the Tier-0 router with enough addresses, as the network is separated into these two jobs:
 
 * Routing incoming and outgoing traffic on the IP backbone.
-* DNATs and SNATs, load balancer VIPs, and other <%= vars.platform_name %> components.
+* DNATs and SNATs, load balancer VIPs, and other Ops Manager components.
 
 <p class="note"><strong>Note:</strong> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
 
@@ -189,7 +189,7 @@ The requirements and recommendations related to networks, subnets, and IP spacin
 
 * The tenant side uses a series of non-routable address ranges when using NAT.
 
-* NSX-T dynamically assigns PAS org networks and adds a Tier-1 router. These org networks are automatically instantiated based on a non-overlapping block of address space. You can configure the block of address space in the **NCP Configuration** section of the NSX-T tile in <%= vars.ops_manager_full %>. The default is `/24`. This means that every org in PAS is assigned a new `/24` network.
+* NSX-T dynamically assigns PAS org networks and adds a Tier-1 router. These org networks are automatically instantiated based on a non-overlapping block of address space. You can configure the block of address space in the **NCP Configuration** section of the NSX-T tile in Ops Manager. The default is `/24`. This means that every org in PAS is assigned a new `/24` network.
 
 For more information about PAS subnets, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
@@ -270,7 +270,7 @@ For information about HA requirements and recommendations for PAS on vSphere, se
 
 ### <a id="pas-nsx-v-shared-storage"></a> Shared Storage
 
-<%= vars.platform_name %> requires shared storage. You can allocate networked storage to the host clusters following one of two common approaches: horizontal or vertical. The approach you follow reflects how your data center arranges its storage and host blocks in its physical layout.
+Ops Manager requires shared storage. You can allocate networked storage to the host clusters following one of two common approaches: horizontal or vertical. The approach you follow reflects how your data center arranges its storage and host blocks in its physical layout.
 
 For information about horizontal and vertical shared storage, see [Shared Storage](#pas-nsx-t-shared-storage).
 
@@ -282,9 +282,9 @@ For information about horizontal and vertical shared storage, see [Shared Storag
 
 * **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
 
-<p class="note"><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
+<p class="note"><strong>Note:</strong> The latest versions of Ops Manager validated for the reference architecture do not support using vSphere Storage Clusters. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
-<p class="note"><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must disable the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
+<p class="note"><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must disable the s-vMotion feature on any datastores used by Ops Manager. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate Ops Manager to a New Datastore in vSphere</a>.</p>
 
 For more information about general storage requirements and recommendations for PAS, see
 [Storage](../index.html#pas-storage) in _Platform Architecture and Planning Overview_.
@@ -319,7 +319,7 @@ For more information about blobstore storage requirements and recommendations, s
 These sections describe the architecture for PAS on vSphere without software-defined networking deployments.
 
 <p class="note"><strong>Note:</strong> This architecture was validated for earlier versions of PAS.
-However, it has not been validated for PAS <%= vars.v_major_version %>.
+However, it has not been validated for PAS v2.7.
 </p>
 
 ### <a id="pas-routed-networking"></a> Networking
@@ -339,33 +339,33 @@ Below is a best-guess layout for IP space utilization in a single PAS deployment
 Isolation segments can help with satisfying IP address space needs in a routed network design. You can build smaller groups of Gorouters and Diego Cells aligned to a particular service. Smaller groups use less IP address space.
 
 
-## <a id="pks-nsx-t"></a> <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
+## <a id="pks-nsx-t"></a> TKGI on vSphere with NSX-T
 
-These sections describe the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments. They also provide requirements and recommendations for deploying <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T, such as network, load balancing, and storage capacity requirements and recommendations.
+These sections describe the reference architecture for TKGI on vSphere with NSX-T deployments. They also provide requirements and recommendations for deploying TKGI on vSphere with NSX-T, such as network, load balancing, and storage capacity requirements and recommendations.
 
 ### <a id="pks-nsx-t-diagram"></a> Architecture
 
-The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments.
+The diagram below illustrates the reference architecture for TKGI on vSphere with NSX-T deployments.
 
-![The diagram shows the architecture for a <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PKS_vSphere_NSX-T.png)
+![The diagram shows the architecture for a TKGI on vSphere with NSX-T deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PKS_vSphere_NSX-T.png)
 
 [View a larger version of this diagram](../images/v2/export/PKS_vSphere_NSX-T.png).
 
-<%= vars.k8s_runtime_abbr %> deployments with NSX-T are deployed with three clusters and three AZs.
+TKGI deployments with NSX-T are deployed with three clusters and three AZs.
 
-An NSX-T Tier-0 router is on the front end of the <%= vars.k8s_runtime_abbr %> deployment. This router is a central logical router into the <%= vars.k8s_runtime_abbr %> platform. You can configure static or dynamic routing using BGP from the routed IP backbone through the Tier-0 router.
+An NSX-T Tier-0 router is on the front end of the TKGI deployment. This router is a central logical router into the TKGI platform. You can configure static or dynamic routing using BGP from the routed IP backbone through the Tier-0 router.
 
-Several Tier-1 routers, such as the router for the infrastructure subnet, connect to the Tier-0 router. New Tier-1 routers are created on-demand as new clusters and namespaces are added to <%= vars.k8s_runtime_abbr %>.
+Several Tier-1 routers, such as the router for the infrastructure subnet, connect to the Tier-0 router. New Tier-1 routers are created on-demand as new clusters and namespaces are added to TKGI.
 
-<p class="note"><strong>Note:</strong> The <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T architecture supports multiple master nodes for <%= vars.k8s_runtime_abbr %> v1.2 and later.</p>
+<p class="note"><strong>Note:</strong> The TKGI on vSphere with NSX-T architecture supports multiple master nodes for TKGI v1.2 and later.</p>
 
 ### <a id="pks-nsx-t-networking"></a> Networking
 
-These sections describe networking requirements and recommendations for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments.
+These sections describe networking requirements and recommendations for TKGI on vSphere with NSX-T deployments.
 
 #### <a id="pks-nsx-t-load-balancing"></a> Load Balancing
 
-The load balancing requirements and recommendations for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments are:
+The load balancing requirements and recommendations for TKGI on vSphere with NSX-T deployments are:
 
 * Use standard NSX-T load balancers. Layer 4 and Layer 7 NSX-T load balancers are created automatically during app deployment.
 
@@ -377,7 +377,7 @@ The load balancing requirements and recommendations for <%= vars.k8s_runtime_abb
 
 * If you use a third-party ingress routing service, you must:
 	* Create wildcard DNS entries to point to the service.
-	* Define domain information for the ingress routing service in the manifest of the <%= vars.k8s_runtime_abbr %> on vSphere deployment. For example:
+	* Define domain information for the ingress routing service in the manifest of the TKGI on vSphere deployment. For example:
 
 		```
 		apiVersion: extensions/v1beta1
@@ -396,7 +396,7 @@ The load balancing requirements and recommendations for <%= vars.k8s_runtime_abb
 		          servicePort: 8080
 		```
 
-* When you push a <%= vars.k8s_runtime_abbr %> on vSphere deployment with a service `type` set to `LoadBalancer`, NSX-T automatically creates a new WIP for the deployment on the existing load balancer for that namespace. You must specify a listening and translation port in the service, a name for tagging, and a protocol. For example:
+* When you push a TKGI on vSphere deployment with a service `type` set to `LoadBalancer`, NSX-T automatically creates a new WIP for the deployment on the existing load balancer for that namespace. You must specify a listening and translation port in the service, a name for tagging, and a protocol. For example:
 
 	```
 	apiVersion: v1
@@ -414,15 +414,15 @@ The load balancing requirements and recommendations for <%= vars.k8s_runtime_abb
 
 #### <a id="pks-nsx-t-external-routing"></a> Routable IPs
 
-The routable IP requirements and recommendations for <%= vars.k8s_runtime_abbr %> with NSX-T deployments are:
+The routable IP requirements and recommendations for TKGI with NSX-T deployments are:
 
-* **Deployments with <%= vars.k8s_runtime_abbr %> NSX-T ingress:** <%= vars.recommended_by %> recommends a `/25` network for deployments with <%= vars.k8s_runtime_abbr %> NSX-T ingress. The Tier-0 router must have routable external IP address space to advertise on the BGP network with its peers.
+* **Deployments with TKGI NSX-T ingress:** <%= vars.recommended_by %> recommends a `/25` network for deployments with TKGI NSX-T ingress. The Tier-0 router must have routable external IP address space to advertise on the BGP network with its peers.
 	</br>
 	</br>
 	Select a network range for the Tier-0 router with enough space so that the network can be separated into these two jobs:
     * Routing incoming and outgoing traffic
-    * DNATs and SNATs, load balancer WIPs, and other <%= vars.platform_name %> components
-	<p class="note"><strong>Note:</strong> Compared to vSphere deployments with NSX-V, <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T consumes much more address space for SNATs.</p>
+    * DNATs and SNATs, load balancer WIPs, and other Ops Manager components
+	<p class="note"><strong>Note:</strong> Compared to vSphere deployments with NSX-V, TKGI on vSphere with NSX-T consumes much more address space for SNATs.</p>
 
 * **Deployments with several load balancers:** <%= vars.recommended_by %> recommends a `/23` network for deployments that use several load balancers. Deployments with several load balancers have much higher address space consumption for load balancer WIPs. This is because Kubernetes service types allocate IP addresses very frequently. To accommodate the higher address space, allow for four times the address space.
 
@@ -432,28 +432,28 @@ The routable IP requirements and recommendations for <%= vars.k8s_runtime_abbr %
 
 #### <a id="pks-nsx-t-ip-spacing"></a> Networks, Subnets, and IP Address Spacing
 
-These considerations and recommendations apply to networks, subnets, and IP spacing for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments:
+These considerations and recommendations apply to networks, subnets, and IP spacing for TKGI on vSphere with NSX-T deployments:
 
-* Allocate a large network block for <%= vars.k8s_runtime_abbr %> clusters and pods:
-	* **<%= vars.k8s_runtime_abbr %> clusters:** Configure a `172.24.0.0/14` network block.
-	* **<%= vars.k8s_runtime_abbr %> pods:** Configure a `172.28.0.0/14` network block.
+* Allocate a large network block for TKGI clusters and pods:
+	* **TKGI clusters:** Configure a `172.24.0.0/14` network block.
+	* **TKGI pods:** Configure a `172.28.0.0/14` network block.
   <br>
   <br>
-	NSX-T creates IP address blocks of `/24` from these `/14` networks by default each time a new cluster or pod is created. You can configure this CIDR range for <%= vars.k8s_runtime_abbr %> in <%= vars.ops_manager %>.
+	NSX-T creates IP address blocks of `/24` from these `/14` networks by default each time a new cluster or pod is created. You can configure this CIDR range for TKGI in Ops Manager.
 
-* When deploying <%= vars.k8s_runtime_abbr %> with <%= vars.ops_manager %>, you must allow for a block of address space for dynamic networks that <%= vars.k8s_runtime_abbr %> deploys for each namespace. The recommended address space allows you to view a queue of which jobs relate to each service.
+* When deploying TKGI with Ops Manager, you must allow for a block of address space for dynamic networks that TKGI deploys for each namespace. The recommended address space allows you to view a queue of which jobs relate to each service.
 
-* When a new <%= vars.k8s_runtime_abbr %> cluster is created, <%= vars.k8s_runtime_abbr %> creates a new `/24` network from <%= vars.k8s_runtime_abbr %> cluster address space.
+* When a new TKGI cluster is created, TKGI creates a new `/24` network from TKGI cluster address space.
 
-* When a new app is deployed, new NSX-T Tier-1 routers are generated and <%= vars.k8s_runtime_abbr %> creates a `/24` network from the <%= vars.k8s_runtime_abbr %> pods network.
+* When a new app is deployed, new NSX-T Tier-1 routers are generated and TKGI creates a `/24` network from the TKGI pods network.
 
-* Allocate a large IP block in NSX-T for Kubernetes pods. For example, a `/14` network. NSX-T creates address blocks of `/24` by default. This CIDR range for Kubernetes services network ranges is configurable in <%= vars.ops_manager %>.
+* Allocate a large IP block in NSX-T for Kubernetes pods. For example, a `/14` network. NSX-T creates address blocks of `/24` by default. This CIDR range for Kubernetes services network ranges is configurable in Ops Manager.
 
 For more information, see [Networks](../index.html#pks-network) in _Platform Architecture and Planning Overview_.
 
 ### <a id="pks-nsx-t-multitenancy"></a> Multi-Tenancy
 
-For <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments, networks are created dynamically for both <%= vars.k8s_runtime_abbr %> clusters and pods.
+For TKGI on vSphere with NSX-T deployments, networks are created dynamically for both TKGI clusters and pods.
 
 To accommodate these dynamically-created networks, <%= vars.recommended_by %> recommends that you use multiple clusters, rather than a single cluster with multiple namespaces.
 
@@ -461,9 +461,9 @@ Multiple clusters provide additional features such as security, customization on
 
 ### <a id="pks-nsx-t-master-nodes"></a> Master Nodes
 
-The <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T architecture supports multiple master nodes for <%= vars.k8s_runtime_abbr %> v1.2 and later.
+The TKGI on vSphere with NSX-T architecture supports multiple master nodes for TKGI v1.2 and later.
 
-You can define the number of master nodes per plan in the <%= vars.k8s_runtime_abbr %> tile in <%= vars.ops_manager %>. The number of master nodes should be an odd number to allow `etcd` to form a quorum.
+You can define the number of master nodes per plan in the TKGI tile in Ops Manager. The number of master nodes should be an odd number to allow `etcd` to form a quorum.
 
 <%= vars.recommended_by %> recommends that you have at least one master node per AZ for HA and disaster recovery.
 
@@ -473,9 +473,9 @@ For information about HA requirements and recommendations, see [High Availabilit
 
 ### <a id="pks-nsx-t-storage-capacity"></a> Storage Capacity
 
-<%= vars.recommended_by %> recommends the following storage capacity allocation for production and non-production <%= vars.k8s_runtime_abbr %> environments:
+<%= vars.recommended_by %> recommends the following storage capacity allocation for production and non-production TKGI environments:
 
-<%= vars.k8s_runtime_abbr %> on vSphere supports static persistent volume provisioning and dynamic persistent volume provisioning.
+TKGI on vSphere supports static persistent volume provisioning and dynamic persistent volume provisioning.
 
 For more information about storage requirements and recommendations, see [PersistentVolume Storage Options on vSphere](https://docs.pivotal.io/pks/vsphere-persistent-storage.html)
 
@@ -483,13 +483,13 @@ For more information about storage requirements and recommendations, see [Persis
 
 For information about security requirements and recommendations, see [Security](../index.html#pks-security) in _Platform Architecture and Planning Overview_.
 
-## <a id="pks-without-nsx-t"></a> <%= vars.k8s_runtime_abbr %> on vSphere without NSX-T
+## <a id="pks-without-nsx-t"></a> TKGI on vSphere without NSX-T
 
-You can deploy <%= vars.k8s_runtime_abbr %> without NSX-T.
-If you want to deploy <%= vars.k8s_runtime_abbr %> without NSX-T, select
+You can deploy TKGI without NSX-T.
+If you want to deploy TKGI without NSX-T, select
 **Flannel** as your container network interface in the **Networking** pane of
-the <%= vars.k8s_runtime_abbr %> tile.
+the TKGI tile.
 
 Select from networks already identified in Ops Manager to deploy the
-<%= vars.k8s_runtime_abbr %> API and <%= vars.k8s_runtime_abbr %>-provisioned
+TKGI API and TKGI-provisioned
 Kubernetes clusters.

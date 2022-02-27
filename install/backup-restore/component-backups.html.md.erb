@@ -3,7 +3,7 @@ title: PAS Component Availability During Backup
 owner: Component Teams
 ---
 
-This topic describes the operational impact of backing up <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) components with BBR.
+This topic describes the operational impact of backing up Pivotal Application Service (PAS) components with BBR.
 
 
 ## <a id='overview'></a> Overview
@@ -46,7 +46,7 @@ The following table describes the backup process for UAA:
 | Stage | Description |
 | ----- | ----------- |
 | 1: Pre-backup lock | UAA enters read-only mode. |
-| 2: Backup | The BBR SDK backup script runs to back up the UAA database, which contains <%= vars.app_runtime_abbr %> user credentials. |
+| 2: Backup | The BBR SDK backup script runs to back up the UAA database, which contains PAS user credentials. |
 | 3: Post-backup unlock | UAA exits read-only mode. |
 
 
@@ -71,7 +71,7 @@ The following table describes the backup process for Usage service:
 | 2: Backup | The BBR SDK backup script runs to back up the Usage service database. |
 | 3: Post-backup unlock | The Usage service apps in the `system` org start again. This unlock occurs after the Cloud Controller and UAA components unlock. |
 
-<p class="note"><strong>Note:</strong> The Usage service runs as a set of <%= vars.app_runtime_abbr %> apps in the <code>system</code> org.</p>
+<p class="note"><strong>Note:</strong> The Usage service runs as a set of PAS apps in the <code>system</code> org.</p>
 
 
 ## <a id="app-autoscaler"></a> App Autoscaler
@@ -86,7 +86,7 @@ The following table describes the backup process for App Autoscaler:
 | 2: Backup | The BBR SDK backup script runs to back up the App Autoscaler database. |
 | 3: Post-backup unlock | The Autoscaler apps in the `system` org start again. This unlock occurs after the Cloud Controller and UAA components unlock. |
 
-<p class="note"><strong>Note:</strong> The App Autoscaler service runs as a set of <%= vars.app_runtime_abbr %> apps in the <code>system</code> org.</p>
+<p class="note"><strong>Note:</strong> The App Autoscaler service runs as a set of PAS apps in the <code>system</code> org.</p>
 
 For more information, see [Scaling an App Using App Autoscaler](https://docs.pivotal.io/application-service/2-7/appsman-services/autoscaler/using-autoscaler.html).
 

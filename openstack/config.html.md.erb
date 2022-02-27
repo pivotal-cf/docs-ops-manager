@@ -4,7 +4,7 @@ owner: Ops Manager
 iaas: OpenStack
 ---
 
-This topic describes how to configure BOSH Director after deploying [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) on OpenStack. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
+This topic describes how to configure BOSH Director after deploying [Ops Manager](https://network.pivotal.io/products/pivotal-cf) on OpenStack. Use this topic when [Installing Ops Manager on OpenStack](../install/openstack.html).
 
 * Before beginning this procedure, ensure that you have successfully completed all steps in [Provisioning the OpenStack Infrastructure](./setup.html).
 
@@ -13,11 +13,11 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
 <p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the Pivotal Operations Manager API. For more information, see <a href="../install/ops-man-api.html">Using the Ops Manager API</a>.</p>
 
 
-## <a id='log-in'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='log-in'></a> Step 1: Log Into Ops Manager
 
 1. In a web browser, navigate to the fully qualified domain you created in the [Create a DNS Entry](./setup.html#dns-entry) step of _Provisioning the OpenStack Infrastructure_.
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log into Ops Manager. To log in, see [Log In to Ops Manager For the First Time](../login.html#login-first-time).
 
 ## <a id='openstack-config'></a> Step 2: OpenStack Configs Page
 
@@ -38,7 +38,7 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
       * If you choose **v3**, enter the OpenStack Keystone domain to authenticate against in the **Domain** field. For more information about Keystone domains in OpenStack, see [Domains](https://docs.openstack.org/security-guide/identity/domains.html) in the _OpenStack documentation_.
 
         <%= image_tag("../common/images/openstack/om-config-name.png", :alt => "At the top of the image is the header 'OpenStack Config', underneath which is a horizontal line. Below the line are two text fields labeled 'Name' and 'Authentication URL', both with red asterisks to denote that they are required fields. The Name field contains the text 'default'. The Authentication URL field contains the text 'http://10.87.16.4:5000/v2.0'. Below the Authentication URL field are the words 'Keystone Version', below which are two options: a selected radio button labeled 'v2', and a radio button labeled 'v3'. Below these buttons is a grayed-out text field labeled 'Domain'.") %>
-    * **Username**: Enter your OpenStack Horizon username. The `PrimaryProject` for the user must be the project you are using to deploy <%= vars.ops_manager %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
+    * **Username**: Enter your OpenStack Horizon username. The `PrimaryProject` for the user must be the project you are using to deploy Ops Manager. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
     * **Password**: Enter your OpenStack Horizon password.
     * **Tenant**: Enter your OpenStack tenant name.
     * **Region**: Enter `RegionOne`, or another region if recommended by your OpenStack administrator.
@@ -180,4 +180,4 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
 
 ---
 
-Return to [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
+Return to [Installing Ops Manager on OpenStack](../install/openstack.html).

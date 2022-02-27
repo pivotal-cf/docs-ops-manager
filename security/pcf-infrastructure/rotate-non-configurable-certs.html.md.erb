@@ -3,21 +3,21 @@ title: Rotating Non-Configurable Leaf Certificates
 owner: Ops Manager
 ---
 
-This topic describes how to rotate non-configurable leaf certificates for your <%= vars.platform_name %> deployment. To rotate all certificates in your <%= vars.platform_name %> deployment, see [Rotating the Root CA and Leaf Certificates](rotate-cas-and-leaf-certs.html).
+This topic describes how to rotate non-configurable leaf certificates for your Ops Manager deployment. To rotate all certificates in your deployment, see [Rotating the Root CA and Leaf Certificates](rotate-cas-and-leaf-certs.html).
 
 
 ## <a id='overview'></a> Overview
 
-This procedure rotates non-configurable leaf certificates visible to the <%= vars.ops_manager %> API.
+This procedure rotates non-configurable leaf certificates visible to the Ops Manager API.
 
-<p class='note warning'><strong>Warning:</strong> This procedure does not rotate the <%= vars.ops_manager %> root certificate authority (CA) or other CAs in your deployment. To rotate CAs and leaf certificates, see <a href="rotate-cas-and-leaf-certs.html">Rotating the Root CA and Leaf Certificates</a>.</p>
+<p class='note warning'><strong>Warning:</strong> This procedure does not rotate the Ops Manager root certificate authority (CA) or other CAs in your deployment. To rotate CAs and leaf certificates, see <a href="rotate-cas-and-leaf-certs.html">Rotating the Root CA and Leaf Certificates</a>.</p>
 
 
 ## <a id='procedure'></a> Procedure
 
 To rotate non-configurable leaf certificates:
 
-1. Call the <%= vars.ops_manager %> API `regenerate` endpoint by running:
+1. Call the Ops Manager API `regenerate` endpoint by running:
 
     ```
     curl "https://OPS-MANAGER-FQDN/api/v0/certificate_authorities/active/regenerate" \
@@ -28,14 +28,14 @@ To rotate non-configurable leaf certificates:
           -i
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> deployment.
+    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your Ops Manager deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
     <br>
     <br>
     The API returns a successful response:
     <pre class="terminal">HTTP/1.1 200 OK</pre>
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Navigate to the Ops Manager Installation Dashboard.
 
 1. If you have any on-demand service tiles installed, for each on-demand service tile:
     1. Click the tile.

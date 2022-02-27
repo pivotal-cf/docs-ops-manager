@@ -3,16 +3,16 @@ title: Configuring Amazon EBS Encryption
 owner: Ops Manager
 ---
 
-<%= vars.ops_manager %> supports Amazon Elastic Block Store (EBS) encryption for <%= vars.ops_manager %> deployments on AWS. You can use this feature to meet data-at-rest encryption requirements or as a security best practice. This feature uses AWS Key Management Service (KMS).
+Ops Manager supports Amazon Elastic Block Store (EBS) encryption for Ops Manager deployments on AWS. You can use this feature to meet data-at-rest encryption requirements or as a security best practice. This feature uses AWS Key Management Service (KMS).
 
-<p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) for Windows are not encrypted.</p>
+<p class="note"><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with Pivotal Application Service (PAS) for Windows are not encrypted.</p>
 
 By following the procedures in this topic, you can use full disk encryption for all persistent disks on the following VMs:
 
 * BOSH and all present and future VMs
 * The Pivotal Operations Manager VM
 
-There is no performance penalty for using encrypted EBS volumes. <%= vars.company_name %> recommends that all users of <%= vars.ops_manager %> on AWS enable encryption.
+There is no performance penalty for using encrypted EBS volumes. <%= vars.company_name %> recommends that all users of Ops Manager on AWS enable encryption.
 
 <p class="note"><strong>Note:</strong> Before you enable EBS encryption with KMS, you may need to update your AWS policy. For more information, see <a href="policy-doc.html#add-policies">Add Additional AWS Policies</a>.</p>
 
@@ -66,13 +66,13 @@ key/12345678-9012-3456-7890-123456789012
 
 	<%= image_tag("cloudform/encrypt-ebs-errors.png", :alt => "Example Ops Manager Amazon EBS Encryption errors") %>
 
-	If you find a job that should be encrypted in the error list, modify the instance type for that job in the **Resource Config** page of the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>). Select an instance type that supports encryption. Pivotal recommends using `t3.large`.
+	If you find a job that should be encrypted in the error list, modify the instance type for that job in the **Resource Config** page of the Pivotal Application Service (PAS). Select an instance type that supports encryption. Pivotal recommends using `t3.large`.
 
-1. After you make your changes in <%= vars.app_runtime_abbr %>, return to Ops Manager and click **Review Pending Changes**, then **Apply Changes**.
+1. After you make your changes in PAS, return to Ops Manager and click **Review Pending Changes**, then **Apply Changes**.
 
 <p class="note warning"><strong>WARNING:</strong> After you enable or disable <strong>Encrypt Linux EBS Volumes</strong> and click <strong>Review Pending Changes</strong>, then <strong>Apply Changes</strong>, Ops Manager recreates all existing persistent VM disks.</p>
 
 
 ## <a id="enable-om"></a> Enable Encryption for Ops Manager
 
-To encrypt the <%= vars.ops_manager %> VM, you must manually re-launch <%= vars.ops_manager %> with a new Amazon Machine Image (AMI). For more information, see [Step 1: Launch an <%= vars.ops_manager %> AMI](../aws/deploy-manual.html#pcfaws-om-ami) in _Deploying <%= vars.ops_manager %> on AWS_.
+To encrypt the Ops Manager VM, you must manually re-launch Ops Manager with a new Amazon Machine Image (AMI). For more information, see [Step 1: Launch an Ops Manager AMI](../aws/deploy-manual.html#pcfaws-om-ami) in _Deploying Ops Manager on AWS_.

@@ -3,46 +3,46 @@ title: Upgrade Preparation Checklist for Pivotal Platform v2.7
 owner: Ops Manager
 ---
 
-This topic serves as a checklist for preparing to upgrade <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (PAS) from v2.6 to <%= vars.v_major_version %>.
+This topic serves as a checklist for preparing to upgrade Ops Manager and Pivotal Application Service (PAS) from v2.6 to v2.7.
 
 
 ## <a id='overview'></a> Overview
 
 This topic contains important preparation steps that you must follow before beginning your upgrade. Failure to follow these instructions may jeopardize your existing deployment data and cause the upgrade to fail.
 
-After completing the steps in this topic, you can continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).
+After completing the steps in this topic, you can continue to [Upgrading Ops Manager](../install/upgrading-pcf.html).
 
-<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v2.10 from <%= vars.ops_manager %> v2.6. To upgrade to <%= vars.ops_manager %> v2.10, see [Jump Upgrade to <%= vars.ops_manager %> v2.10](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading <%= vars.platform_name %>_.
+<%= vars.company_name %> recommends upgrading directly to Ops Manager v2.10 from Ops Manager v2.6. To upgrade to Ops Manager v2.10, see [Jump Upgrade to Ops Manager v2.10](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading Pivotal Platform_.
 
-<p class='note warning'><strong>Warning:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading PAS. Skipping minor versions when upgrading PAS may result in additional breaking changes. To avoid this, upgrade PAS to <%= vars.v_major_version %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade PAS</a> in <em>Upgrading <%= vars.platform_name %></em>.</p>
+<p class='note warning'><strong>Warning:</strong> Although you can skip minor versions when upgrading Ops Manager, you should not skip minor versions when upgrading PAS. Skipping minor versions when upgrading PAS may result in additional breaking changes. To avoid this, upgrade PAS to v2.7. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade PAS</a> in <em>Upgrading Pivotal Platform</em>.</p>
 
-<p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
+<p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading Ops Manager. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
 
-## <a id="back-up-your-pcf-deployment"></a> Back Up Your <%= vars.platform_code %> Deployment
+## <a id="back-up-your-pcf-deployment"></a> Back Up Your PCF Deployment
 
-<%= vars.company_name %> recommends backing up your <%= vars.platform_old %> (<%= vars.platform_code %>) deployment before upgrading, to restore in the case of failure. To do this, follow the procedure in [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
-
-
-## <a id='decryption-passphrase'></a> Find Your Decryption Passphrase for <%= vars.ops_manager %>
-
-To complete the <%= vars.ops_manager %> upgrade, you must have your <%= vars.ops_manager %> decryption passphrase. You defined this decryption passphrase during the initial installation of <%= vars.ops_manager %>.
+<%= vars.company_name %> recommends backing up your deployment before upgrading, to restore in the case of failure. To do this, follow the procedure in [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
 
 
-## <a id="review-runtime-release-notes"></a> Review Changes in <%= vars.ops_manager %> and PAS <%= vars.v_major_version %>
+## <a id='decryption-passphrase'></a> Find Your Decryption Passphrase for Ops Manager
+
+To complete the Ops Manager upgrade, you must have your Ops Manager decryption passphrase. You defined this decryption passphrase during the initial installation of Ops Manager.
+
+
+## <a id="review-runtime-release-notes"></a> Review Changes in Ops Manager and PAS v2.7
 
 Review each of the following links to understand the changes in the new release, such as new features, known issues, and breaking changes.
 
 * **Release Notes**
-	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html)
+	* [Ops Manager v2.7 Release Notes](../release-notes.html)
+	* [Pivotal Application Service v2.7 Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html)
 
 * **Known Issues**
-	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Known Issues](../release-notes.html#known-issues)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Known Issues](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#known-issues)
+	* [Ops Manager v2.7 Known Issues](../release-notes.html#known-issues)
+	* [Pivotal Application Service v2.7 Known Issues](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#known-issues)
 
 * **Breaking Changes**
-	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Breaking Changes](../release-notes.html#breaking-changes)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#breaking-changes)
+	* [Ops Manager v2.7 Breaking Changes](../release-notes.html#breaking-changes)
+	* [Pivotal Application Service v2.7 Breaking Changes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#breaking-changes)
 
 * **KPI Changes**
 	* [KPI Changes](https://docs.pivotal.io/application-service/2-7/operating/monitoring/index.html#new)
@@ -53,44 +53,44 @@ Review each of the following links to understand the changes in the new release,
 
 ## <a id="restage-windows-apps"></a> Restage Windows Apps
 
-The `windows2016` stack is deprecated in <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) <%= vars.v_major_version %>.
+The `windows2016` stack is deprecated in Pivotal Application Service for Windows (PASW) v2.7.
 
-Before upgrading to <%= vars.windows_runtime_abbr %> <%= vars.v_major_version %> from <%= vars.windows_runtime_abbr %> v2.6, all Windows apps that were pushed with the `windows2016` stack must be restaged to use the `windows` stack.
+Before upgrading to PASW v2.7 from PASW v2.6, all Windows apps that were pushed with the `windows2016` stack must be restaged to use the `windows` stack.
 
-For more information, see [Deprecation of the windows2016 Stack](https://docs.pivotal.io/pivotalcf/2-6/pcf-release-notes/windows-rn.html#windows2016) in _<%= vars.windows_runtime_full %> v2.6 Release Notes_.
+For more information, see [Deprecation of the windows2016 Stack](https://docs.pivotal.io/pivotalcf/2-6/pcf-release-notes/windows-rn.html#windows2016) in _Pivotal Application Service for Windows v2.6 Release Notes_.
 
-If you are running <%= vars.windows_runtime_abbr %> v2.4.4 or later on <%= vars.platform_code %> v2.6, you can also restage your apps before upgrading to <%= vars.windows_runtime_abbr %> v2.6. For more information about upgrading to <%= vars.windows_runtime_abbr %> v2.6, see [Upgrade to <%= vars.windows_runtime_abbr %> v2.6](#upgrade-pasw) below.
+If you are running PASW v2.4.4 or later on PCF v2.6, you can also restage your apps before upgrading to PASW v2.6. For more information about upgrading to PASW v2.6, see [Upgrade to PASW v2.6](#upgrade-pasw) below.
 
 
 ## <a id="tiles-addons"></a> Update Tiles and Add-Ons
 
-These sections describe changes you must make to your product tiles and add-ons before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>.
+These sections describe changes you must make to your product tiles and add-ons before upgrading to Ops Manager v2.7.
 
-### <a id="upgrade-pasw"></a> Upgrade to <%= vars.windows_runtime_abbr %> v2.6
+### <a id="upgrade-pasw"></a> Upgrade to PASW v2.6
 
-If you are running <%= vars.windows_runtime_abbr %> v2.4.4 or later on <%= vars.platform_code %> v2.6 and want to upgrade to <%= vars.platform_name %> <%= vars.v_major_version %>, you must upgrade to <%= vars.windows_runtime_abbr %> v2.6 before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>. To download <%= vars.windows_runtime_abbr %>, go to the [<%= vars.windows_runtime_full %>](https://network.pivotal.io/products/pas-windows) page on Pivotal Network.
+If you are running PASW v2.4.4 or later on Ops Manager v2.6 and want to upgrade to Ops Manager v2.7, you must upgrade to PASW v2.6 before upgrading to Ops Manager v2.7. To download PASW, go to the [Pivotal Application Service for Windows](https://network.pivotal.io/products/pas-windows) page on Pivotal Network.
 
-### <a id="upgrade-stemcell"></a> Upgrade Stemcell to v2019.4 or Later for <%= vars.windows_runtime_abbr %> v2.6
+### <a id="upgrade-stemcell"></a> Upgrade Stemcell to v2019.4 or Later for PASW v2.6
 
-If you are running <%= vars.windows_runtime_abbr %> v2.6 using Windows stemcell v2019.3, you must upgrade your stemcell to v2019.4 or later before you upgrade to Ops Manager <%= vars.v_major_version %>.
+If you are running PASW v2.6 using Windows stemcell v2019.3, you must upgrade your stemcell to v2019.4 or later before you upgrade to Ops Manager v2.7.
 
 To upgrade your stemcell, go to the [Pivotal Stemcells (Windows)](https://network.pivotal.io/products/stemcells-windows-server) page on Pivotal Network.
 
 ### <a id="update-SCS-2"></a> Upgrade to SCS v2.1 or Remove SCS v2.0
 
-Pivotal Spring Cloud Services (SCS) v2.0.x is not compatible with <%= vars.platform_name %> <%= vars.v_major_version %>. You cannot upgrade to Ops Manager <%= vars.v_major_version %> or PAS <%= vars.v_major_version %> without either removing SCS v2.0.x or upgrading from SCS v2.0.x to SCS v2.1.x first.
+Pivotal Spring Cloud Services (SCS) v2.0.x is not compatible with Ops Manager v2.7. You cannot upgrade to Ops Manager v2.7 or PAS v2.7 without either removing SCS v2.0.x or upgrading from SCS v2.0.x to SCS v2.1.x first.
 
-If you need to use the `p-circuit-breaker-dashboard` service in SCS v2.0.x, you must upgrade SCS v2.0.x to SCS v2.1.x before you upgrade to <%= vars.platform_name %> <%= vars.v_major_version %>.
+If you need to use the `p-circuit-breaker-dashboard` service in SCS v2.0.x, you must upgrade SCS v2.0.x to SCS v2.1.x before you upgrade to Ops Manager v2.7.
 
 If you are running SCS v3.0.x or SCS v3.1.x alongside SCS v2.0.x and do not require `p-circuit-breaker-dashboard` functionality, you can remove SCS v2.0.x entirely after migrating completely to SCS v3.1.x. To do this, see [How to Upgrade to SCS v3.1.x](https://docs.pivotal.io/spring-cloud-services/3-1/product-upgrades.html#upgrade-to-3-1) in _Upgrading Pivotal Spring Cloud Services_ in the SCS documentation.
 
-After you successfully remove SCS v2.0.x or upgrade to SCS v2.1.x, you can proceed with the <%= vars.platform_name %> <%= vars.v_major_version %> upgrade.
+After you successfully remove SCS v2.0.x or upgrade to SCS v2.1.x, you can proceed with the Ops Manager v2.7 upgrade.
 
 ### <a id="compatibility"></a> Review Service Tile Compatibility
 
-Before you upgrade, check whether the service tiles that you currently have are compatible with the new version of <%= vars.ops_manager %>.
+Before you upgrade, check whether the service tiles that you currently have are compatible with the new version of Ops Manager.
 
-To check <%= vars.platform_name %> versions supported by a service tile, either from Pivotal or a Pivotal partner:
+To check Ops Manager versions supported by a service tile, either from Pivotal or a Pivotal partner:
 
 1. Navigate to the tile's download page on [Pivotal Network](https://network.pivotal.io).
 
@@ -98,9 +98,9 @@ To check <%= vars.platform_name %> versions supported by a service tile, either 
 
 1. See the **Depends On** section under **Release Details**. For more information, see the tile's release notes.
 
-If the currently-deployed version of a tile is not compatible with <%= vars.platform_name %> <%= vars.v_major_version %>, you must upgrade the tile to a compatible version before you upgrade to <%= vars.platform_name %> <%= vars.v_major_version %>. You do not need to upgrade tiles that are compatible with both <%= vars.platform_code %> v2.6 and <%= vars.platform_name %> <%= vars.v_major_version %>.
+If the currently-deployed version of a tile is not compatible with Ops Manager v2.7, you must upgrade the tile to a compatible version before you upgrade to Ops Manager v2.7. You do not need to upgrade tiles that are compatible with both Ops Manager v2.6 and Ops Manager v2.7.
 
-Some partner service tiles may be incompatible with <%= vars.ops_manager %> <%= vars.v_major_version %>.
+Some partner service tiles may be incompatible with Ops Manager v2.7.
 For information about partner service tile compatibility,
 review the **Depends On** section on your partner tile download page, see the tile release documentation in the [VMware Tanzu documentation](https://docs.pivotal.io), or contact the partner organization that produces the service tile.
 
@@ -110,41 +110,41 @@ You can use the empty table below as a model to print out or adapt for recording
 
 |        |        | **Sandbox** | **Non-Prod** | **Prod** | **Other...** |
 | ------ | ------ | ----------- | ------------ | -------- | ------------ |
-| **<%= vars.ops_manager %>** | [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) |        |        |        |        |
-|        | [<%= vars.app_runtime_full %>](https://network.pivotal.io/products/elastic-runtime) |        |        |        |        |
-| **<%= vars.ops_manager %> Services** | [VMware Tanzu SQL &#91;MySQL for VMs&#93;](https://network.pivotal.io/products/pivotal-mysql) |        |        |        |        |
+| **Ops Manager** | [Ops Manager](https://network.pivotal.io/products/ops-manager) |        |        |        |        |
+|        | [Pivotal Application Service](https://network.pivotal.io/products/elastic-runtime) |        |        |        |        |
+| **Ops Manager Services** | [VMware Tanzu SQL &#91;MySQL for VMs&#93;](https://network.pivotal.io/products/pivotal-mysql) |        |        |        |        |
 |        | [Redis](https://network.pivotal.io/products/p-redis) |        |        |        |        |
 |        | [RabbitMQ](https://network.pivotal.io/products/p-rabbitmq) |        |        |        |        |
 |        | [Single Sign-On](https://network.pivotal.io/products/p-identity) (SSO) |        |        |        |        |
 |        | [Spring Cloud Services](https://network.pivotal.io/products/p-spring-cloud-services) |        |        |          |        |
 |        | [Concourse](https://network.pivotal.io/products/p-concourse) |        |        |        |        |
 |        | ... |        |        |        |        |
-| **<%= vars.ops_manager %> Partner Services** | [New Relic](https://network.pivotal.io/products/p-new-relic) |        |        |        |        |
+| **Ops Manager Partner Services** | [New Relic](https://network.pivotal.io/products/p-new-relic) |        |        |        |        |
 |        | ... |        |        |        |        |
 
 ### <a id="upgrade-service-tiles"></a> Upgrade Services Tiles
 
-Upgrade all service tiles to versions that are compatible with <%= vars.ops_manager %> <%= vars.v_major_version %>. Service tiles are add-on products you install alongside your runtime. For example, VMware Tanzu SQL [MySQL for VMs], Healthwatch, and RabbitMQ for VMware Tanzu [VMs] are service tiles.
+Upgrade all service tiles to versions that are compatible with Ops Manager v2.7. Service tiles are add-on products you install alongside your runtime. For example, VMware Tanzu SQL [MySQL for VMs], Healthwatch, and RabbitMQ for VMware Tanzu [VMs] are service tiles.
 
-Do not upgrade runtime tiles, such as PAS, <%= vars.windows_runtime_abbr %>, or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) at this time.
+Do not upgrade runtime tiles, such as PAS, PASW, or VMware Tanzu Kubernetes Grid Integrated Edition (TKGI) at this time.
 
 To check version compatibility, see the [Compatibility Matrix](http://docs.pivotal.io/resources/product-compatibility-matrix.pdf) and service tile documentation.
 
 ### <a id='bosh-director'></a> Configure BOSH Director
 
-With each release of a new <%= vars.ops_manager %> version, BOSH Director may require specific updates before upgrading to the new version. For actions to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, see the sections below.
+With each release of a new Ops Manager version, BOSH Director may require specific updates before upgrading to the new version. For actions to take before upgrading to Ops Manager v2.7, see the sections below.
 
 #### <a id="check-specs"></a> Check Required Machine Specifications
 
-Check the required machine specifications for <%= vars.ops_manager %> <%= vars.v_major_version %>. These specifications are specific to your IaaS. If these specifications do not match your existing <%= vars.ops_manager %> deployment, modify the values of your <%= vars.ops_manager %> VM instance. For example, if the boot disk of your existing <%= vars.ops_manager %> deployment is 50&nbsp;GB and the new <%= vars.ops_manager %> deployment requires 100&nbsp;GB, increase the size of your <%= vars.ops_manager %> boot disk to 100&nbsp;GB.
+Check the required machine specifications for Ops Manager v2.7. These specifications are specific to your IaaS. If these specifications do not match your existing Ops Manager deployment, modify the values of your Ops Manager VM instance. For example, if the boot disk of your existing Ops Manager deployment is 50&nbsp;GB and the new Ops Manager deployment requires 100&nbsp;GB, increase the size of your Ops Manager boot disk to 100&nbsp;GB.
 
 ### <a id='patch'></a> Configure PAS
 
-With each release of a new <%= vars.ops_manager %> version, PAS may require specific updates before upgrading to the new version. See the following sections for what action to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>:
+With each release of a new Ops Manager version, PAS may require specific updates before upgrading to the new version. See the following sections for what action to take before upgrading to Ops Manager v2.7:
 
 #### <a id="disable-unused-errands"></a> (Optional) Disable Unused Errands
 
-To save upgrade time, you can disable unused PAS post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/2-8/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
+To save upgrade time, you can disable unused PAS post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/2-7/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
 
 In some cases, if you have previously disabled lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Adding and Deleting Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
@@ -154,22 +154,22 @@ In the **App Containers** pane of the PAS tile, if **Docker images disk cleanup 
 
 If the scheduling is set to **Never clean up Diego Cell disk space** or **Routinely clean up Diego Cell disk space**, or the reserved disk space value is set to the default of `15360`, no action is necessary. All thresholds will migrate to a sensible value when you upgrade PAS. For more information, see [Options for Disk Cleanup](https://docs.pivotal.io/application-service/2-7/operating/config-cell-cleanup.html#options) in _Configuring Diego Cell Disk Cleanup Scheduling_ in the PAS documentation.
 
-#### <a id="syslog-agents"></a> Do Not Edit Syslog Agent Configuration When Upgrading from PAS <%= vars.v_major_version %>.6 or Earlier
+#### <a id="syslog-agents"></a> Do Not Edit Syslog Agent Configuration When Upgrading from PAS v2.7.6 or Earlier
 
-If you are upgrading from PAS <%= vars.v_major_version %>.6 or earlier, do not change your Syslog Agent configuration when you stage PAS <%= vars.v_major_version %>.7 or later for the first time. For example, if Syslog Agents are enabled on your current version of PAS, ensure that Syslog Agents are enabled when you stage PAS <%= vars.v_major_version %>.7 or later for the first time.
+If you are upgrading from PAS v2.7.6 or earlier, do not change your Syslog Agent configuration when you stage PAS v2.7.7 or later for the first time. For example, if Syslog Agents are enabled on your current version of PAS, ensure that Syslog Agents are enabled when you stage PAS v2.7.7 or later for the first time.
 
-If you change your Syslog Agent configuration after staging and before the first deploy of PAS <%= vars.v_major_version %>.7 or later, there is a significant period of log loss or log duplication while BOSH enables or disables Syslog Agents. For more information about this log loss or duplication, see [Duplicate or Missing Logs](https://docs.pivotal.io/application-service/2-7/release-notes/runtime-rn.html#duplicate-logs) in _<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes_ in the PAS documentation.
+If you change your Syslog Agent configuration after staging and before the first deploy of PAS v2.7.7 or later, there is a significant period of log loss or log duplication while BOSH enables or disables Syslog Agents. For more information about this log loss or duplication, see [Duplicate or Missing Logs](https://docs.pivotal.io/application-service/2-7/release-notes/runtime-rn.html#duplicate-logs) in _Pivotal Application Service v2.7 Release Notes_ in the PAS documentation.
 
-You can edit the Syslog Agent configuration in PAS <%= vars.v_major_version %>.7
+You can edit the Syslog Agent configuration in PAS v2.7.7
 or later after the first deploy. To edit your Syslog Agent configuration, see
 [Configure System Logging](https://docs.pivotal.io/application-service/2-7/operating/configure-pas.html#sys-logging)
 in _Configuring PAS_ in the PAS documentation.
 
 ### <a id="stemcell-compat"></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 
-Before upgrading to <%= vars.platform_name %> <%= vars.v_major_version %>, operators who have deployed any <%= vars.platform_code %> add-ons such as **IPsec for <%= vars.platform_code %>**, **ClamAV for <%= vars.platform_code %>**, or **File Integrity Monitoring for <%= vars.platform_code %>** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/2-7/windows/index.html).
+Before upgrading to Ops Manager v2.7, operators who have deployed any PCF add-ons such as **IPsec for PCF**, **ClamAV for PCF**, or **File Integrity Monitoring for PCF** and who have deployed or are planning to deploy PASW must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [PASW documentation](https://docs.pivotal.io/application-service/2-7/windows/index.html).
 
-For example, **File Integrity Monitor for <%= vars.platform_code %>** (FIM) is not supported on Windows. Therefore, the manifest must use an `include` directive to specify the target OS stemcell of `ubuntu-trusty` and `ubuntu-xenial`.
+For example, **File Integrity Monitor for PCF** (FIM) is not supported on Windows. Therefore, the manifest must use an `include` directive to specify the target OS stemcell of `ubuntu-trusty` and `ubuntu-xenial`.
 
 <p class="note"><strong>Note:</strong> To upgrade to a Xenial stemcell, see the documentation for each add-on and follow the instructions.</p>
 
@@ -185,7 +185,7 @@ To update an add-on manifest:
           - os: ubuntu-xenial
     ```
 
-1. Upload the modified manifest file to your <%= vars.ops_manager %> deployment. For example instructions, see [Installing File Integrity Monitoring on BOSH Director](https://docs.pivotal.io/addon-fim/2-0/installing-bosh.html) in the File Integrity Monitoring documentation.
+1. Upload the modified manifest file to your Ops Manager deployment. For example instructions, see [Installing File Integrity Monitoring on BOSH Director](https://docs.pivotal.io/addon-fim/2-0/installing-bosh.html) in the File Integrity Monitoring documentation.
 
 If you use any other BOSH-managed add-ons in your deployment, you should verify OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Addons Block](https://bosh.io/docs/runtime-config.html#addons) in _Director Runtime Config_ in the BOSH documentation.
 
@@ -207,9 +207,9 @@ For more information, see [Azure Blobstores](../install/backup-restore/enabling-
 
 Depending on the requirements of your deployment, you may need to rotate your certificate authority (CA) certificates. The non-configurable certificates in your deployment expire every two years. You must regenerate and rotate them so that critical components do not face a complete outage.
 
-<p class="note"><strong>Note:</strong> <%= vars.ops_manager %> uses SHA-2 certificates and hashes by default. You can convert existing SHA-1 hashes into SHA-2 hashes by rotating your <%= vars.ops_manager %> certificates using the procedure described in <a href="../security/pcf-infrastructure/rotate-saml-ca.html">Rotating Identity Provider SAML Certificates</a>.</p>
+<p class="note"><strong>Note:</strong> Ops Manager uses SHA-2 certificates and hashes by default. You can convert existing SHA-1 hashes into SHA-2 hashes by rotating your Ops Manager certificates using the procedure described in <a href="../security/pcf-infrastructure/rotate-saml-ca.html">Rotating Identity Provider SAML Certificates</a>.</p>
 
-To retrieve information about all the RSA and CA certificates for the BOSH Director and other products in your deployment, you can use the `GET /api/v0/deployed/certificates?expires_within=TIME` request of the <%= vars.ops_manager %> API.
+To retrieve information about all the RSA and CA certificates for the BOSH Director and other products in your deployment, you can use the `GET /api/v0/deployed/certificates?expires_within=TIME` request of the Ops Manager API.
 
 In this request, the `expires_within` parameter is optional. Valid values for the parameter are `d` for days, `w` for weeks, `m` for months, and `y` for years. For example, to search for certificates expiring within one month, replace `TIME` with `1m`:
 
@@ -221,7 +221,7 @@ curl "https://OPS-MANAGER-FQDN/api/v0/deployed/certificates?expires_within=1m" \
 
 Where:
 
-* `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> deployment.
+* `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your Ops Manager deployment.
 * `UAA-ACCESS-TOKEN` is your UAA access token.
 
 For information about regenerating and rotating CA certificates, see [Overview of Certificate Rotation](../security/pcf-infrastructure/api-cert-rotation.html).
@@ -254,7 +254,7 @@ For more information about these KPIs, see [Diego Cell Metrics](https://docs.piv
 
 ### <a id="storage"></a> Review File Storage IOPS and Other Upgrade Limiting Factors
 
-During the <%= vars.ops_manager %> upgrade process, a large quantity of data is moved around on disk.
+During the Ops Manager upgrade process, a large quantity of data is moved around on disk.
 
 To ensure a successful upgrade of your deployment, verify that your underlying PAS file storage is performant enough to handle the upgrade. For more information about the configurations to evaluate, see [Configure File Storage](https://docs.pivotal.io/application-service/2-7/operating/configuring.html#file-storage) in _Configuring PAS for Upgrades_ in the PAS documentation.
 
@@ -291,7 +291,7 @@ These sections describe steps for ensuring your deployment is healthy before you
 
 For collecting foundation health status, <%= vars.company_name %> recommends Healthwatch,
 which monitors and alerts on the current health, performance,
-and capacity of your <%= vars.ops_manager %> deployment.
+and capacity of your Ops Manager deployment.
 For more information, see the [Healthwatch documentation](https://docs.pivotal.io/healthwatch/index.html).
 
 If you are not using Pivotal Healthwatch, you can do some or all of the following to collect foundation health status:
@@ -328,7 +328,7 @@ If you are not using Pivotal Healthwatch, you can do some or all of the followin
 
 * Check the **Status** tab of each PAS tile for VM CPU, RAM, and disk use levels.
 
-* Check that <%= vars.ops_manager %> persistent disk usage is below 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk) above.
+* Check that Ops Manager persistent disk usage is below 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk) above.
 
 * (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see [Viewing Logs in the Command Line Interface](https://docs.pivotal.io/application-service/devguide/deploy-apps/streaming-logs.html#view) in _App Logging in PAS_ in the PAS documentation.
 
@@ -361,13 +361,13 @@ To review pending and recent changes:
 
 To export your installation:
 
-1. In the <%= vars.ops_manager %> Installation Dashboard, click the account dropdown and select **Settings**.
+1. In the Ops Manager Installation Dashboard, click the account dropdown and select **Settings**.
 
 1. On the **Settings** page, select **Export Installation Settings** from the left menu, then click **Export Installation Settings**.
 
-This exports the current <%= vars.platform_code %> installation with all of its assets.
+This exports the current PCF installation with all of its assets.
 
-When you export an installation, the export contains the base VM images, necessary packages, and configuration settings, but does not include releases between upgrades if <%= vars.ops_manager %> has already uploaded them to BOSH. When backing up your deployment, you must take this into account by backing up the BOSH blobstore that contains the uploaded releases. BOSH Backup and Restore (BBR) backs up the BOSH blobstore. For more information, see [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
+When you export an installation, the export contains the base VM images, necessary packages, and configuration settings, but does not include releases between upgrades if Ops Manager has already uploaded them to BOSH. When backing up your deployment, you must take this into account by backing up the BOSH blobstore that contains the uploaded releases. BOSH Backup and Restore (BBR) backs up the BOSH blobstore. For more information, see [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
 
 * The export time depends on the size of the exported file.
 
@@ -378,4 +378,4 @@ When you export an installation, the export contains the base VM images, necessa
 
 ## <a id="next-steps"></a> Next Steps
 
-Now that you have completed the Upgrade Preparation Checklist, continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).
+Now that you have completed the Upgrade Preparation Checklist, continue to [Upgrading Ops Manager](../install/upgrading-pcf.html).

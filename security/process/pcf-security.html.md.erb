@@ -5,9 +5,9 @@ owner: Security
 
 <% current_page.data.title = vars.platform_name + " Security Overview and Policy"  %>
 
-This document outlines <%= vars.company_name %>'s security policy and is addressed to operators deploying <%= vars.ops_manager %>.
+This document outlines <%= vars.company_name %>'s security policy and is addressed to operators deploying Ops Manager.
 
-For a comprehensive overview of the security architecture of each <%= vars.app_runtime_full %> (PAS) component, see [PAS Security](https://docs.pivotal.io/application-service/2-7/concepts/security.html).
+For a comprehensive overview of the security architecture of each Pivotal Application Service (PAS) component, see [PAS Security](https://docs.pivotal.io/application-service/2-7/concepts/security.html).
 
 
 ## <a id='monitor'></a> How Pivotal Monitors for Security Vulnerabilities
@@ -23,16 +23,16 @@ Pivotal encourages users who become aware of a security vulnerability in Pivotal
 
 ## <a id='notification-policy'></a> Notification Policy
 
-<%= vars.ops_manager %> has many customer stakeholders who need to know about security updates. When there is a possible security vulnerability identified for an <%= vars.ops_manager %> component, <%= vars.company_name %> does the following:
+Ops Manager has many customer stakeholders who need to know about security updates. When there is a possible security vulnerability identified for an Ops Manager component, <%= vars.company_name %> does the following:
 
-1. Assess the impact to <%= vars.ops_manager %>.
+1. Assess the impact to Ops Manager.
 
-1. If the vulnerability would affect an <%= vars.ops_manager %> component, <%= vars.company_name %> schedules an update for the impacted components.
+1. If the vulnerability would affect an Ops Manager component, <%= vars.company_name %> schedules an update for the impacted components.
 
 1. Update the affected components and perform system tests.
 
 1. Announce the fix publicly through the following channels:
-  1. Automated notification to end users who have downloaded or subscribed to an <%= vars.ops_manager %> product on [<%= vars.product_network %>](https://network.pivotal.io) when a new, fixed version is available.
+  1. Automated notification to end users who have downloaded or subscribed to an Ops Manager product on [<%= vars.product_network %>](https://network.pivotal.io) when a new, fixed version is available.
   1. Adding a new post to the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page.
 
 
@@ -40,7 +40,7 @@ Pivotal encourages users who become aware of a security vulnerability in Pivotal
 
 For vulnerabilities related to Ubuntu provided packages, Pivotal follows Canonical's priority levels. For other vulnerabilities, Pivotal follows Common Vulnerability Scoring System v3.0 standards when assessing severity. For more information about Canonical's priority levels, see [CVE Priority](http://people.canonical.com/~ubuntu-security/cve/priority.html) in Ubuntu CVE Tracker. For more information about Common Vulnerability Scoring System v3.0 standards, see [Common Vulnerability Scoring System version 3.1: Specification Document](https://www.first.org/cvss/specification-document) on the FIRST website.
 
-<%= vars.company_name %> uses Canonical's Ubuntu distribution of Linux for <%= vars.ops_manager %> Ubuntu stemcells and rootfs. Canonical provides <%= vars.company_name %> with support services allowing <%= vars.company_name %> to escalate CVEs that <%= vars.company_name %> determine might affect <%= vars.ops_manager %>. In general, <%= vars.company_name %> does not escalate to upstream open source software components or vendors for Medium or Low CVEs that are not yet patched. <%= vars.ops_manager %> can escalate on behalf of a customer for High or Critical CVEs. <%= vars.ops_manager %> customers who are interested in addressing CVEs in Ubuntu that are not yet patched can establish their own support relationship with Canonical through the [Support](https://www.ubuntu.com/support) page on the Ubuntu website.
+<%= vars.company_name %> uses Canonical's Ubuntu distribution of Linux for Ops Manager Ubuntu stemcells and rootfs. Canonical provides <%= vars.company_name %> with support services allowing <%= vars.company_name %> to escalate CVEs that <%= vars.company_name %> determine might affect Ops Manager. In general, <%= vars.company_name %> does not escalate to upstream open source software components or vendors for Medium or Low CVEs that are not yet patched. Ops Manager can escalate on behalf of a customer for High or Critical CVEs. Ops Manager customers who are interested in addressing CVEs in Ubuntu that are not yet patched can establish their own support relationship with Canonical through the [Support](https://www.ubuntu.com/support) page on the Ubuntu website.
 
 Pivotal reports the severity of vulnerabilities using the following severity classes:
 
@@ -59,9 +59,9 @@ Low vulnerabilities are all other issues that have a security impact. These incl
 
 ## <a id='release-policy'></a> Release Policy
 
-<%= vars.platform_name %> schedules regular monthly releases of software in the <%= vars.platform_name %> suite to address Low and Medium severity vulnerability exploits. When High severity vulnerability exploits are identified, <%= vars.platform_name %> releases fixes to software in the <%= vars.platform_name %> suite on-demand, with as fast a turnaround as possible.
+Ops Manager schedules regular monthly releases of software in the Pivotal Platform suite to address Low and Medium severity vulnerability exploits. When High severity vulnerability exploits are identified, Ops Manager releases fixes to software in the Pivotal Platform suite on-demand, with as fast a turnaround as possible.
 
 
 ## <a id='alerts'></a> Alerts and Actions Archive
 
-To review an archive of <%= vars.ops_manager %> vulnerability reports, see the <%= vars.company_name %> Product Vulnerability Reports on the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page.
+To review an archive of Ops Manager vulnerability reports, see the <%= vars.company_name %> Product Vulnerability Reports on the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page.

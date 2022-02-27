@@ -3,9 +3,9 @@ title: Using Edge Services Gateway on VMware NSX
 owner: Customer0
 ---
 
-This topic describes how to configure the NSX firewall, load balancing, and NAT/SNAT services for <%= vars.ops_manager %> on vSphere installations. These NSX-provided services take the place of an external device or the bundled HAProxy VM in <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
+This topic describes how to configure the NSX firewall, load balancing, and NAT/SNAT services for Ops Manager on vSphere installations. These NSX-provided services take the place of an external device or the bundled HAProxy VM in Pivotal Application Service (PAS).
 
-This document presents the reader with fundamental configuration options of an Edge Services Gateway (ESG) with <%= vars.ops_manager %> and vSphere NSX. Its purpose is not to dictate the settings required on every deployment, but instead to empower the NSX Administrator with the ability to establish a known good "base" configuration and apply specific security configurations as required.
+This document presents the reader with fundamental configuration options of an Edge Services Gateway (ESG) with Ops Manager and vSphere NSX. Its purpose is not to dictate the settings required on every deployment, but instead to empower the NSX Administrator with the ability to establish a known good "base" configuration and apply specific security configurations as required.
 
 If you are using NSX, the specific configurations described here supersede any general recommendations in [Preparing Your Firewall](../../install/config_firewall.html).
 
@@ -16,7 +16,7 @@ This topic assumes that the reader has the level of skill required to install an
 
 *	VMware vSphere v5.5 or later
 *	NSX v6.1.x or later
-*	<%= vars.ops_manager %> v1.6 or later
+*	Ops Manager v1.6 or later
 
 For detailed installation and configuration information about these products, see:
 
@@ -31,20 +31,20 @@ For detailed installation and configuration information about these products, se
 
 ## <a id="overview"></a> General Overview
 
-This cookbook follows a three-step recipe to deploy <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %>, and services behind an ESG:
+This cookbook follows a three-step recipe to deploy Ops Manager, PAS, and services behind an ESG:
 
 1. [Configure Firewall](#firewall)
 1. [Configure Load Balancer](#load_balancer)
 1. [Configure NAT/SNAT](#nat_snat)
 
-The ESG can scale to accommodate very large <%= vars.platform_name %> deployments as needed.
+The ESG can scale to accommodate very large deployments as needed.
 
 This cookbook focuses on a single-site deployment and makes these design assumptions:
 
 *	There are five non-routable networks on the tenant (inside) side of the ESG.
-   * The **infra** network is used to deploy <%= vars.ops_manager %> and BOSH Director.
-   * The **deployment** network is used exclusively by <%= vars.app_runtime_abbr %> to deploy Diego Cells that host apps and related elements.
-   * The **tiles** network is used for all other deployed tiles in an <%= vars.ops_manager %> installation.
+   * The **infra** network is used to deploy Ops Manager and BOSH Director.
+   * The **deployment** network is used exclusively by PAS to deploy Diego Cells that host apps and related elements.
+   * The **tiles** network is used for all other deployed tiles in an Ops Manager installation.
    * The **services** network is used by BOSH Director for service tiles.
    * The **container-to-container** network is used for container to container communication in the Diego Cells.
 
@@ -56,13 +56,13 @@ This cookbook focuses on a single-site deployment and makes these design assumpt
   *	One reserved for NSX use (Controller to Edge I/F)
   *	One for NSX Load Balancer to Gorouters
   * One for NSX Load Balancer to Diego Brains for SSH to apps
-  *	One routable IP address, used to access the <%= vars.ops_manager %> front end
+  *	One routable IP address, used to access the Ops Manager front end
   *	One routable IP address, used with SNAT egress
   *	Five for future use
 
 <%= vars.recommended_by %> recommends that operators deploy the ESGs as high availability (HA) pairs in vSphere. <%= vars.recommended_by %> also recommends that they be sized "large" or greater for any pre-production or production use. The deployed size of the ESG impacts its overall performance, including how many SSL tunnels it can terminate.
 
-The ESGs have an interface in each port group used by <%= vars.platform_name %> as well as a port group on the service provider (outside), often called the "transit network". Each <%= vars.platform_name %> installation has a set of port groups in a vSphere DVS to support connectivity, so that the ESG arrangement is repeated for every <%= vars.platform_name %> install. It is not necessary to build a DVS for each ESG/<%= vars.platform_name %> install. You do not re-use an ESG amongst <%= vars.platform_name %> deployments. NSX Logical Switches (VXLAN vWires) are ideal candidates for use with this architecture.
+The ESGs have an interface in each port group used by Ops Manager as well as a port group on the service provider (outside), often called the "transit network". Each Ops Manager installation has a set of port groups in a vSphere DVS to support connectivity, so that the ESG arrangement is repeated for every Ops Manager install. It is not necessary to build a DVS for each ESG/Ops Manager install. You do not re-use an ESG amongst Ops Manager deployments. NSX Logical Switches (VXLAN vWires) are ideal candidates for use with this architecture.
 
 The diagram below illustrates an example of port groups used with an ESG:
 
@@ -85,7 +85,7 @@ The diagram below illustrates container-to-container networking. The overlay add
 
 ## <a id="prereq"></a> Prep Step: Configure DNS and Network Prerequisites
 
-As a prerequisite, create wildcard DNS entries for system and apps domains in <%= vars.platform_name %>. Map these domains to the selected IP address on the uplink (outside) interface of the ESG in your DNS server.
+As a prerequisite, create wildcard DNS entries for system and apps domains in Ops Manager. Map these domains to the selected IP address on the uplink (outside) interface of the ESG in your DNS server.
 
 The wildcard DNS `A` record must resolve to an IP address associated with the outside interface of the ESG for it to function as a load balancer. You can either use a single IP address to resolve both the system and apps domain, or one IP address for each.
 
@@ -93,23 +93,23 @@ Additionally, assign these IP addresses and address ranges within your network:
 
 1.	Assign IP Addresses to the "Uplink" (outside) interface.
   *	Typically, you have one SNAT and three DNATs per ESG.
-  *	IP associated for SNAT use: All <%= vars.ops_manager %> internal IP addresses appear to be coming from this IP address at the ESG.
-  *	IP associated with <%= vars.ops_manager %> DNAT: This IP address is the publicly routable interface for <%= vars.ops_manager %> UI and SSH access.
+  *	IP associated for SNAT use: All Ops Manager internal IP addresses appear to be coming from this IP address at the ESG.
+  *	IP associated with Ops Manager DNAT: This IP address is the publicly routable interface for Ops Manager UI and SSH access.
 
 1.	Assign "Internal" Interface IP Address Space to the Edge Gateway.
-  *	192.168.10.0/26 = <%= vars.ops_manager %> deployment network (logical switch or port group)
-  *	192.168.20.0/22 = Deployment network for the <%= vars.app_runtime_abbr %> tile
-  *	192.168.24.0/22 = Tiles network for all tiles besides <%= vars.app_runtime_abbr %>
+  *	192.168.10.0/26 = Ops Manager deployment network (logical switch or port group)
+  *	192.168.20.0/22 = Deployment network for the PAS tile
+  *	192.168.24.0/22 = Tiles network for all tiles besides PAS
   * 192.168.28.0/22 = Dynamic services network for BOSH Director-managed service tiles.
   * 10.255.0.0/16 = Container-to-container network for intercontainer communication.
 
-You must update the security group and load balancer information for your <%= vars.app_runtime_abbr %> deployments using NSX-V on vSphere through the <%= vars.ops_manager %> API. For more information, see [vSphere with NSX-T or NSX-V](https://docs.pivotal.io/application-service/2-7/operating/configure-lb.html#vsphere) in _Configuring Load Balancing for <%= vars.app_runtime_abbr %>_.
+You must update the security group and load balancer information for your PAS deployments using NSX-V on vSphere through the Ops Manager API. For more information, see [vSphere with NSX-T or NSX-V](https://docs.pivotal.io/application-service/2-7/operating/configure-lb.html#vsphere) in _Configuring Load Balancing for PAS_.
 
 ## <a id="firewall"></a> Step 1: Configure Firewall
 
-This procedure populates the ESG internal firewall with rules to protect a <%= vars.platform_name %> installation.
+This procedure populates the ESG internal firewall with rules to protect an Ops Manager installation.
 
-These rules provide granular control on what can be accessed within a <%= vars.platform_name %> installation. For example, rules can be used to allow or deny another <%= vars.platform_name %> installation behind a different ESG access to apps published within the installation you are protecting.
+These rules provide granular control on what can be accessed within an Ops Manager installation. For example, rules can be used to allow or deny another Ops Manager installation behind a different ESG access to apps published within the installation you are protecting.
 
 This step is not required for the installation to function properly when the firewall feature is disabled or set to **Allow All**.
 
@@ -123,8 +123,8 @@ To configure the ESG firewall:
 
     | Name | Source | Destination | Service | Action |
     | ---- | ------ | ----------- | ------- | ------ |
-    | Allow Ingress -> <%= vars.ops_manager %> | Any | OPS-MANAGER-IP | SSH, HTTP, HTTPS | Accept |
-    | Allow Ingress -> <%= vars.app_runtime_abbr %> | Any | NSX-LOAD-BALANCER-IP | HTTP, HTTPS | Accept |
+    | Allow Ingress -> Ops Manager | Any | OPS-MANAGER-IP | SSH, HTTP, HTTPS | Accept |
+    | Allow Ingress -> PAS | Any | NSX-LOAD-BALANCER-IP | HTTP, HTTPS | Accept |
     | Allow Ingress -> SSH for Apps | Any | tcp:DIEGO-BRAIN-IP:2222 | Any | Accept |
     | Allow Ingress -> TCProuter | Any | tcp:NSX-TCP-LOAD-BALANCER-IP:5000 | Any | Accept |
     | Allow Inside <-> Inside | 192.168.10.0/26 192.168.20.0/22 192.168.24.0/22 192.168.28.0/22 | 192.168.10.0/26 192.168.20.0/22 192.168.24.0/22 192.168.28.0/22 | Any | Accept |
@@ -140,7 +140,7 @@ To configure the ESG firewall:
 
 ## <a id="load_balancer"></a> Step 2: Configure Load Balancer
 
-The ESG provides software load balancing functionality, equivalent to the bundled HAProxy that is included with <%= vars.platform_name %>, or hardware appliances such as an F5 or A10 load balancer.
+The ESG provides software load balancing functionality, equivalent to the bundled HAProxy that is included with Ops Manager, or hardware appliances such as an F5 or A10 load balancer.
 
 This step is required for the installation to function properly.
 
@@ -160,19 +160,19 @@ There are seven high-level steps to this procedure:
 
 1. Create a Virtual Server (also known as a VIP) to pool-balanced IP addresses.
 
-To do this procedure, you need PEM files of SSL certificates provided by the certificate supplier for only this installation of <%= vars.platform_name %>, or the self-signed SSL certificates generated during <%= vars.platform_name %> installation.
+To do this procedure, you need PEM files of SSL certificates provided by the certificate supplier for only this installation of Ops Manager, or the self-signed SSL certificates generated during Ops Manager installation.
 
-In this procedure, you combine the ESG's IP address used for load balancing with a series of internal IP addresses provisioned for Gorouters in <%= vars.platform_name %>. It is important to know the IP addresses used for the Gorouters beforehand.
+In this procedure, you combine the ESG's IP address used for load balancing with a series of internal IP addresses provisioned for Gorouters in Ops Manager. It is important to know the IP addresses used for the Gorouters beforehand.
 
-You can pre-select or reserved IP addresses prior to deployment. Otherwise, you can discover them after deployment by looking them up in BOSH Director, which lists them in the release information of your <%= vars.app_runtime_abbr %> installation. <%= vars.recommended_by %> recommends using IP addresses that you pre-select or reserve prior to deployment.
+You can pre-select or reserved IP addresses prior to deployment. Otherwise, you can discover them after deployment by looking them up in BOSH Director, which lists them in the release information of your PAS installation. <%= vars.recommended_by %> recommends using IP addresses that you pre-select or reserve prior to deployment.
 
 You do all of the procedures in these sections through the ESG UI.
 
 ### <a id="import_ssl"></a> Step 2.1: Import SSL Certificate
 
-<%= vars.platform_name %> requires SSL termination at the load balancer.
+Ops Manager requires SSL termination at the load balancer.
 
-<p class="note"><strong>Note:</strong> If you intend to pass SSL termination through the load balancer directly to the Gorouters, you can skip the step below and select <strong>Enable SSL Passthru</strong> in your <code><%= vars.platform_code %>-HTTP</code> Application Profile.</p>
+<p class="note"><strong>Note:</strong> If you intend to pass SSL termination through the load balancer directly to the Gorouters, you can skip the step below and select <strong>Enable SSL Passthru</strong> in your <code>PCF-HTTP</code> Application Profile.</p>
 
 To enable SSL termination at the load balancer in ESG:
 
@@ -186,7 +186,7 @@ To enable SSL termination at the load balancer in ESG:
 
 1. Click the green **+** button to add a certificate.
 
-1. Enter the PEM file contents from the **Networking** pane of the <%= vars.app_runtime_abbr %> tile.
+1. Enter the PEM file contents from the **Networking** pane of the PAS tile.
 
 1. Click **Save**.
 
@@ -208,34 +208,34 @@ To enable the load balancer:
 
 ### <a id="create_app"></a> Step 2.3: Create Application Profiles
 
-The Application Profiles allow advanced `X-Forwarded` options as well as linking to the SSL certificate. You must create three profiles: `<%= vars.platform_code %>-HTTP`, `<%= vars.platform_code %>-HTTPS`, and `<%= vars.platform_code %>-TCP`.
+The Application Profiles allow advanced `X-Forwarded` options as well as linking to the SSL certificate. You must create three profiles: `PCF-HTTP`, `PCF-HTTPS`, and `PCF-TCP`.
 
 1. Select **Load Balancer**.
 
 1. Select **Global Application Profiles**.
 
-1. To create the `<%= vars.platform_code %>-HTTP` rule:
+1. To create the `PCF-HTTP` rule:
   1. Click the green **+** button.
   1. Click the pencil icon to to edit the profile.
-  1. In the **Name** field, enter `<%= vars.platform_code %>-HTTP`.
+  1. In the **Name** field, enter `PCF-HTTP`.
   1. Enable the **Insert X-Forwarded-For HTTP header** checkbox.
 
     <%= image_tag('vsphere-app-profile-pcf-http.png', :alt => "'Edit Profile' screen  shows several fields, including 'Name' and 'Insert X-Forwarded-For HTTP header' enabled.") %>
 
-1. To create the `<%= vars.platform_code %>-HTTPS` rule:
+1. To create the `PCF-HTTPS` rule:
   1. Click the green **+** button.
   1. Click the pencil icon to to edit the profile.
-  1. In the **Name** field, enter `<%= vars.platform_code %>-HTTPS`.
+  1. In the **Name** field, enter `PCF-HTTPS`.
   1. Enable the **Insert X-Forwarded-For HTTP header** checkbox.
   1. Enter the service certificate you inserted previously
   1. If encrypting TLS traffic to the Gorouters, select the **Enable Pool Side SSL** checkbox. Otherwise, leave the checkbox deselected.
 
     <%= image_tag('vsphere-app-profile-pcf-https.png', :alt => "'Edit Profile' screen has table filtered by 'Service Certificates' and a cert in a table.") %>
 
-1. To create the `<%= vars.platform_code %>-TCP` rule:
+1. To create the `PCF-TCP` rule:
   1. Click the green **+** button.
   1. Click the pencil icon to to edit the profile.
-  1. In the **Name** field, enter `<%= vars.platform_code %>-TCP`.
+  1. In the **Name** field, enter `PCF-TCP`.
   1. From the **Type** dropdown, select **TCP**.
 
     <%= image_tag('vsphere-app-profile-pcf-tcp.png', :alt => "'Edit Profile' screen has 'Type' dropdown set to TCP.") %>
@@ -298,7 +298,7 @@ To create monitors for pools:
 
 These monitors are selected during the next step when pools are created. A pool and a monitor are matched 1:1.
 
-### <a id="pools"></a> Step 2.6: Create Pools of Multi-Element <%= vars.ops_manager %> Targets
+### <a id="pools"></a> Step 2.6: Create Pools of Multi-Element Ops Manager Targets
 
 This procedure describes creating the pools of resources that ESG load-balances to: the Gorouter, TCP router, and Diego Brain jobs deployed by BOSH Director. If the IP addresses specified in the configuration do not exactly match the IP addresses reserved or used for the resources, then the pool does not effectively load-balance.
 
@@ -321,7 +321,7 @@ To create a pool for `http-routers`:
 1. From the **Monitors** dropdown, select **http-routers**.
 
 1. Under **Members**, click the green **+** button to enter all of the IP addresses reserved for the Gorouters into this pool. If you reserved more addresses than you have Gorouters, enter the addresses anyway. The load balancer ignores the missing resources as "down".
-    <p class="note"><strong>Note:</strong> If your deployment matches the <a href="./vsphere_ref_arch.html">Reference Architecture for <%= vars.platform_name %> on vSphere</a>, these IP addresses are in the 192.168.20.0/22 address space.</p>
+    <p class="note"><strong>Note:</strong> If your deployment matches the <a href="./vsphere_ref_arch.html">vSphere Reference Architecture</a>, these IP addresses are in the 192.168.20.0/22 address space.</p>
 
 1. Enter the ports the Gorouters use:
   1. For **Port**, enter `80`.
@@ -349,7 +349,7 @@ To create a pool for `tcp-routers`:
 1. From the **Monitors** dropdown, select **tcp-routers**.
 
 1. Under **Members**, click the green **+** button to enter all of the IP addresses reserved for the TCP routers into this pool. If you reserved more addresses than you have Gorouters, enter the addresses anyway. The load balancer ignores the missing resources as "down".
-    <p class="note"><strong>Note:</strong> If your deployment matches the <a href="./vsphere_ref_arch.html">Reference Architecture for <%= vars.platform_name %> on vSphere</a>, these IP addresses are in the 192.168.20.0/22 address space.</p>
+    <p class="note"><strong>Note:</strong> If your deployment matches the <a href="./vsphere_ref_arch.html">vSphere Reference Architecture</a>, these IP addresses are in the 192.168.20.0/22 address space.</p>
 
 1. Enter the ports the TCP routers use:
   1. Leave **Port** empty.
@@ -382,7 +382,7 @@ To create a pool for `diego-brains`:
 
 ### <a id="create_virtual_servers"></a> Step 2.7: Create Virtual Servers
 
-A The Virtual Server is the Virtual IP (VIP) that the load balancer uses to represent the pool of Gorouters to the outside world. A The Virtual Server also links the Application Policy, Application Rules, and back end pools to provide <%= vars.platform_name %> load balancing services. The Virtual Server is the interface that the load balancer balances **from**. You create three Virtual Servers.
+A The Virtual Server is the Virtual IP (VIP) that the load balancer uses to represent the pool of Gorouters to the outside world. A The Virtual Server also links the Application Policy, Application Rules, and back end pools to provide Ops Manager load balancing services. The Virtual Server is the interface that the load balancer balances **from**. You create three Virtual Servers.
 
 To create the Virtual Servers:
 
@@ -395,7 +395,7 @@ To create the Virtual Servers:
 1. To create the `GoRtr-HTTP` Virtual Server:
   1. Click the green **+** button.
   1. Click the pencil icon to to edit the Virtual Server.
-  1. From the **Application Profile** dropdown, select **<%= vars.platform_code %>-HTTP**.
+  1. From the **Application Profile** dropdown, select **PCF-HTTP**.
   1. For **Name**, enter `GoRtr-HTTP`.
 	1. For **IP Address**, click **Select IP Address** to select the IP address to use as a VIP on the uplink interface.
 	1. From the **Protocol** dropdown, select **HTTP**.
@@ -410,7 +410,7 @@ To create the Virtual Servers:
 1. To create the `GoRtr-HTTPS` Virtual Server:
   1. Click the green **+** button.
   1. Click the pencil icon to to edit the Virtual Server.
-  1. From the **Application Profile** dropdown, select **<%= vars.platform_code %>-HTTPS**.
+  1. From the **Application Profile** dropdown, select **PCF-HTTPS**.
   1. For **Name**, enter `GoRtr-HTTPS`.
   1. For **IP Address**, click **Select IP Address** to select the IP address to use as a VIP on the uplink interface.
   1. From the **Protocol** dropdown, select **HTTPS**.
@@ -425,7 +425,7 @@ To create the Virtual Servers:
 1. To create the `TCPRtrs` Virtual Server:
   1. Click the green **+** button.
   1. Click the pencil icon to to edit the Virtual Server.
-  1. From the **Application Profile** dropdown, select **<%= vars.platform_code %>-TCP**.
+  1. From the **Application Profile** dropdown, select **PCF-TCP**.
   1. For **Name**, enter `TCPRtrs`.
   1. For **IP Address**, click **Select IP Address** to select the IP address to use as a VIP on the uplink interface.
   1. From the **Protocol** dropdown, select **TCP**.
@@ -438,7 +438,7 @@ To create the Virtual Servers:
 1. To create the `SSH-DiegoBrains` Virtual Server:
   1. Click the green **+** button.
   1. Click the pencil icon to to edit the Virtual Server.
-  1. From the **Application Profile** dropdown, select **<%= vars.platform_code %>-HTTPS**.
+  1. From the **Application Profile** dropdown, select **PCF-HTTPS**.
   1. For **Name**, enter `TCPRtrs`.
   1. For **IP Address**, click **Select IP Address**. If you want to use this IP address for SSH access to apps, select the same IP address to use as a VIP on the uplink interface. If not, select a different IP address to use as the VIP.
   1. From the **Protocol** dropdown, select **TCP**.
@@ -451,9 +451,9 @@ To create the Virtual Servers:
 
 ## <a id="nat_snat"></a> Step 3: Configure NAT/SNAT
 
-The ESG obfuscates the <%= vars.platform_name %> installation through network translation. The <%= vars.platform_name %> installation is placed entirely on non-routable RFC-1918 network address space, so you must translate routable IP addresses to non-routable IP addresses to make connections.
+The ESG obfuscates the Ops Manager installation through network translation. The Ops Manager installation is placed entirely on non-routable RFC-1918 network address space, so you must translate routable IP addresses to non-routable IP addresses to make connections.
 
-<p class="note"><strong>Note:</strong> Correct NAT/SNAT configuration is required for the <%= vars.platform_name %> installation to function as expected.</p>
+<p class="note"><strong>Note:</strong> Correct NAT/SNAT configuration is required for the Ops Manager installation to function as expected.</p>
 
 To translate routable IP addresses to non-routable IP addresses, see the table below:
 
@@ -505,7 +505,7 @@ To translate routable IP addresses to non-routable IP addresses, see the table b
   </tr>
 </table>
 
-<p class="note"><strong>Note:</strong> The NAT/SNAT on the <code>infra</code> network in this table is an example of an optional <strong>Hairpin NAT</strong> rule to allow VMs within the <strong>Infrastructure</strong> network to access the <%= vars.ops_manager %> API. This is because the <%= vars.ops_manager %> hostname and the API HTTPS endpoint are registered to the <%= vars.ops_manager %> external IP address. A pair of Hairpin NAT rules are necessary on <strong>each</strong> internal network interface that requires API access to <%= vars.ops_manager %>. You should create these rules only if the network must access the <%= vars.ops_manager %> API.</p>
+<p class="note"><strong>Note:</strong> The NAT/SNAT on the <code>infra</code> network in this table is an example of an optional <strong>Hairpin NAT</strong> rule to allow VMs within the <strong>Infrastructure</strong> network to access the Ops Manager API. This is because the Ops Manager hostname and the API HTTPS endpoint are registered to the Ops Manager external IP address. A pair of Hairpin NAT rules are necessary on <strong>each</strong> internal network interface that requires API access to Ops Manager. You should create these rules only if the network must access the Ops Manager API.</p>
 
 NAT/SNAT functionality is not required if routable IP address space is used on the Tenant Side of the ESG. At that point, the ESG simply performs routing between the address segments.
 
@@ -518,4 +518,4 @@ The ESG also supports scenarios where Private RFC subnets and NAT are not utiliz
 
 Additionally, the ESG supports up to 10 Interfaces allowing for more Uplink options if necessary.
 
-This topic describes using Private RFC-1918 subnets with deployment networks because they are commonly used. ESG devices are capable of leveraging ECMP, OSPF, BGP, and IS-IS to handle dynamic routing of customer and public L3 IP space. That design is out of scope for this topic, but is supported by VMware NSX and <%= vars.ops_manager %>.
+This topic describes using Private RFC-1918 subnets with deployment networks because they are commonly used. ESG devices are capable of leveraging ECMP, OSPF, BGP, and IS-IS to handle dynamic routing of customer and public L3 IP space. That design is out of scope for this topic, but is supported by VMware NSX and Ops Manager.

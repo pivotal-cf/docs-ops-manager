@@ -53,42 +53,42 @@ tiles:
   - name: VMware Tanzu Application Service for VMs [Windows]
     url: https://docs.pivotal.io/application-service/2-7/windows/index.html
   - name: Small Footprint TAS for VMs
-    url: https://docs.pivotal.io/application-service/2-11/operating/small-footprint.html
+    url: https://docs.pivotal.io/application-service/2-7/operating/small-footprint.html
 - name: Part 5&colon; Install Services
   desc: For more information about various services, see the documentation sets listed on the Tanzu Docs homepage.
-  links: 
+  links:
   - name: Runtimes and Add-Ons
     url: https://docs.pivotal.io/#add-ons
 ---
 
-This topic provides an overview of how to install and configure <%= vars.platform_name %>.
+This topic provides an overview of how to install and configure Ops Manager.
 
-## <a id="overview"></a> About <%= vars.ops_manager %> Installation
+## <a id="overview"></a> About Ops Manager Installation
 
-<%= vars.ops_manager %> installation is a process that involves choosing an IaaS, building the infrastructure, deploying <%= vars.ops_manager %> with a VM image, configuring <%= vars.ops_manager %> settings, and installing runtimes and services on <%= vars.ops_manager %>.
+Ops Manager installation is a process that involves choosing an IaaS, building the infrastructure, deploying Ops Manager with a VM image, configuring Ops Manager settings, and installing runtimes and services on Ops Manager.
 
-The <%= vars.ops_manager %> installation process takes place in the following parts:
+The Ops Manager installation process takes place in the following parts:
 
-- **Prepare Your <%= vars.ops_manager %> Deployment:** To prepare your deployment, you must create the required components within your IaaS, which can include load balancers, blobstores, databases, TCP routers, DNS records, and more.
+- **Prepare Your Ops Manager Deployment:** To prepare your deployment, you must create the required components within your IaaS, which can include load balancers, blobstores, databases, TCP routers, DNS records, and more.
 
-- **Deploy <%= vars.ops_manager %>:** To deploy <%= vars.ops_manager %>, you must download <%= vars.ops_manager %> from <%= vars.product_network %>, create a VM image, create a VM instance, and configure the VM instance to run <%= vars.ops_manager %>. 
+- **Deploy Ops Manager:** To deploy Ops Manager, you must download Ops Manager from <%= vars.product_network %>, create a VM image, create a VM instance, and configure the VM instance to run Ops Manager.
 
-- **Configure <%= vars.ops_manager %>:** To configure <%= vars.ops_manager %>, you must log into the <%= vars.ops_manager %> interface and configure settings.
+- **Configure Ops Manager:** To configure Ops Manager, you must log into the Ops Manager interface and configure settings.
 
 - **Install Runtimes:** To install runtime tiles, you must download the tile from <%= vars.product_network %> and follow that runtime's procedure to configure and deploy the tile.
 
 - **Install Services:** To install service tiles, you must download the tile from <%= vars.product_network %> and follow that service tile's procedure to configure and deploy the tile.
 
-After you successfully install and configure <%= vars.ops_manager %>, you can learn about how to run and operate <%= vars.ops_manager %> as an operator. For more information, see [Operator Guide](../opsguide/index.html).
+After you successfully install and configure Ops Manager, you can learn about how to run and operate Ops Manager as an operator. For more information, see [Operator Guide](../opsguide/index.html).
 
-## <a id='sequence'></a> Install <%= vars.ops_manager %>
+## <a id='sequence'></a> Install Ops Manager
 
-<%= vars.ops_manager %>, app runtimes, and associated products can run on multiple IaaSes.
+Ops Manager, app runtimes, and associated products can run on multiple IaaSes.
 
-Planning and installing <%= vars.ops_manager %> and app runtimes means building layers from the bottom up,
-starting with the details of your IaaS and progressing to configurations within the <%= vars.ops_manager %> interface.
+Planning and installing Ops Manager and app runtimes means building layers from the bottom up,
+starting with the details of your IaaS and progressing to configurations within the Ops Manager interface.
 
 
-The following sections list how to prepare, install, and deploy <%= vars.ops_manager %> by IaaS.
+The following sections list how to prepare, install, and deploy Ops Manager by IaaS.
 
 <%= partial "../common/tiles" %>

@@ -3,15 +3,15 @@ title: Preparing to Deploy Ops Manager on AWS
 owner: Ops Manager
 ---
 
-This topic describes how to manually configure the Amazon Web Services (AWS) components that you need to deploy <%= vars.ops_manager %> on AWS.
+This topic describes how to manually configure the Amazon Web Services (AWS) components that you need to deploy Ops Manager on AWS.
 
 ## <a id="overview"></a> Overview of Deploying on AWS
 
-To deploy <%= vars.ops_manager %> on AWS, you must perform the procedures in this topic to create objects in the AWS Management Console that <%= vars.ops_manager %> requires.
+To deploy Ops Manager on AWS, you must perform the procedures in this topic to create objects in the AWS Management Console that Ops Manager requires.
 
 To view the list of AWS objects created by the procedures in this topic, see [Required AWS Objects](required-objects.html).
 
-To prepare <%= vars.ops_manager %> for deployment with AWS:
+To prepare Ops Manager for deployment with AWS:
 
 1. [File a Ticket](#file-ticket)
 1. [Create S3 Buckets](#create-s3)
@@ -25,16 +25,16 @@ To prepare <%= vars.ops_manager %> for deployment with AWS:
 1. [Configure a Security Group for the Outbound NAT](#pcfaws-om-natsecgrp)
 1. [Configure a Security Group for MySQL](#pcfaws-om-mysqlsecgrp)
 
-After completing the procedures in this topic, proceed to [Deploying Ops Manager on AWS](deploy-manual.html) to continue deploying <%= vars.ops_manager %>.
+After completing the procedures in this topic, proceed to [Deploying Ops Manager on AWS](deploy-manual.html) to continue deploying Ops Manager.
 
 
 ## <a id='file-ticket'></a> File a Ticket
 
 Log in to the AWS Management Console, and file a ticket with Amazon to ensure that your account can launch more than the default 20 instances. In the ticket, ask for a limit of 50 `t3.micro` instances and 20 `c5.large` instances in the region you are using.
 
-<p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> to AWS GovCloud (US), log in to the <a href="https://console.amazonaws-us-gov.com/">AWS GovCloud (US) Console</a> instead of the standard AWS Management Console and select the <code>us-gov-west-1</code> region.</p>
+<p class="note"><strong>Note:</strong> To deploy Ops Manager to AWS GovCloud (US), log in to the <a href="https://console.amazonaws-us-gov.com/">AWS GovCloud (US) Console</a> instead of the standard AWS Management Console and select the <code>us-gov-west-1</code> region.</p>
 
-<p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> to AWS China,
+<p class="note"><strong>Note:</strong> To deploy Ops Manager to AWS China,
 set up an <a href="http://www.amazonaws.cn/en/products/">AWS China</a> account and
 contact the Platform Architect assigned for your account.</p>
 
@@ -58,9 +58,9 @@ You can check the limits on your account by visiting the EC2 Dashboard on the AW
 		1. `ID-STRING-pcf-droplets-bucket`
 
 
-## <a id='create-iam'></a> Create an IAM User or Role for <%= vars.ops_manager %>
+## <a id='create-iam'></a> Create an IAM User or Role for Ops Manager
 
-Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
+Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install Ops Manager:
 
 1. Click **IAM** to access the IAM Dashboard.
 
@@ -109,7 +109,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. On the **Create policy** page, define a policy:
 
-    1. Copy the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
+    1. Copy the policy document included in [Ops Manager for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
 
     1. Paste the policy document into the **JSON** tab on the **Create policy** page.
 
@@ -313,13 +313,13 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. For **Description**, enter a description to identify this security group.
 
-1. For **VPC**, select the VPC where you want to deploy the <%= vars.platform_name %> VMs.
+1. For **VPC**, select the VPC where you want to deploy the Ops Manager VMs.
 
 1. Click the **Inbound** tab and add rules for all traffic from your public and private subnets to your private subnet, as the table and image show.
     This rule configuration does the following:
-    * Enables BOSH to deploy <%= vars.app_runtime_abbr %> and other services.
+    * Enables BOSH to deploy PAS and other services.
     * Enables application VMs to communicate through the router.
-    * Allows the load balancer to send traffic to <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
+    * Allows the load balancer to send traffic to Pivotal Application Service (PAS).
 
     <table border="1" class="nice" >
 <tr>
@@ -352,7 +352,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click the **Inbound** tab and add rules to allow traffic to ports `80`, `443`, and `4443` from `0.0.0.0/0`, as the table and image show.
     <p class="note"><strong>Note</strong>: Allow traffic to port `4443` only if you are in an AWS cloud region that does not support AWS ALBs. For example, the GovCloud region. For more information about AWS regoins and availability zones, see <a href="https://aws.amazon.com/about-aws/global-infrastructure/">AWS Global Infrastructure</a>.</p>
 
-    <p class="note"><strong>Note:</strong> For finer control over what can reach <%= vars.app_runtime_abbr %>, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to <%= vars.app_runtime_abbr %> from apps such as the cf CLI and app URLs.</p>
+    <p class="note"><strong>Note:</strong> For finer control over what can reach PAS, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to PAS from apps such as the cf CLI and app URLs.</p>
 
     <table border="1" class="nice" >
 <tr>
