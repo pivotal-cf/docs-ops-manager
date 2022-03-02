@@ -336,9 +336,9 @@ To rotate a CredHub-set CA:
       - To verify the deployments manually:
           1. Use Maestro to get a list of all certificates by running:
 
-              ```
-              maestro ls
-              ```
+                ```
+                maestro ls
+                ```
           1. Locate the output entries whose name or `signed_by` field matches the CredHub path of the CA that was rotated. Certificates might be listed multiple times if they are associated with multiple deployments.
           1. For each output entry, look at the `deployment_name` key. This corresponds to a tile that you must re-deploy.
   1. Entries with a deployment name like `service-instance-*` are certificates associated with a service instance created by a service tile. You must re-deploy the corresponding service tile and enable its **Upgrade all service instances** errand.
