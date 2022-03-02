@@ -26,6 +26,7 @@ The following table lists network communication paths for BOSH DNS. For informat
 | Any VM running BOSH DNS | diego_database | 53 | TCP and UDP | DNS | Unencrypted. This communication happens inside the VM. |
 | Any VM running BOSH DNS | doppler | 53 | TCP and UDP | DNS | Unencrypted. This communication happens inside the VM. |
 | Any VM running BOSH DNS | ha_proxy | 53 | TCP and UDP | DNS | Unencrypted. This communication happens inside the VM. |
+| Any VM running BOSH DNS | log_cache | 53 | TCP and UDP | DNS | Unencrypted. This communication happens inside the VM. |
 | Any VM running BOSH DNS | loggregator_trafficcontroller | 53 | TCP and UDP | DNS | Unencrypted. This communication happens inside the VM. |
 | Any VM running BOSH DNS | mysql | 53 | TCP and UDP | DNS | Unencrypted. This communication happens inside the VM. |
 | Any VM running BOSH DNS | mysql_monitor<sup>&#42;</sup> | 53 | TCP and UDP | DNS | Unencrypted. This communication happens inside the VM. |
@@ -46,6 +47,7 @@ The following table lists network communication paths for BOSH DNS. For informat
 | Any VM running BOSH DNS | diego_database | 8853 | TCP | HTTPS | Mutual TLS |
 | Any VM running BOSH DNS | doppler | 8853 | TCP | HTTPS | Mutual TLS |
 | Any VM running BOSH DNS | ha_proxy | 8853 | TCP | HTTPS | Mutual TLS |
+| Any VM running BOSH DNS | log_cache | 8853 | TCP | HTTPS | Mutual TLS |
 | Any VM running BOSH DNS | loggregator_trafficcontroller | 8853 | TCP | HTTPS | Mutual TLS |
 | Any VM running BOSH DNS | mysql | 8853 | TCP | HTTPS | Mutual TLS |
 | Any VM running BOSH DNS | mysql_monitor<sup>&#42;</sup> | 8853 | TCP | HTTPS | Mutual TLS |
