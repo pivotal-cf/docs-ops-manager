@@ -26,6 +26,12 @@ on the Cloud Foundry website.
 
 <div class="note warning"><strong>Warning:</strong>
   This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
+  <br />
+  <br />
+  This version of BOSH DNS now requires that each of the BOSH DNS certificates have a Subject Alternative Name (SAN) associated. A migration was introduced in <%= vars.ops_manager %> v2.10.9 to add SAN to these certificates. Customers should upgrade to v2.10.9 or higher and do an Apply Changes on all VMs prior to upgrading to this patch.
+  <br />
+  <br />
+  To check whether the migration has been succesfully run on all VMs, see <a href="https://community.pivotal.io/s/article/How-to-Verify-Bosh-DNS-Certificates-Have-Correct-SAN-Fields?language=en_US">How to Verify Bosh DNS Certificates Have Correct SAN Fields</a>.
 </div>
 
 
