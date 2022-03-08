@@ -15,12 +15,14 @@ The following table lists network communication paths that are inbound to the Cl
 | Source VM | Destination VM | Port | Transport Layer Protocol | App Layer Protocol | Security and Authentication |
 | --------- | -------------- | ---- | ------------------------ | ------------------ | ---------------------------- |
 | cloud_controller | cloud_controller (Routing API) | 443 | TCP | HTTPS | OAuth 2.0 |
+| clock_global (Syslog Binding Cache) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
 | diego_brain | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
 | diego_brain (SSH Proxy) | cloud_controller | 9024 | TCP | HTTPS | OAuth 2.0 |
 | diego_cell (Rep) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
 | diego_database (BBS) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
-| doppler (Syslog Drain Binder) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
-| loggregator_trafficcontroller | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
+| log_cache (Log Cache CF Auth Proxy) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
+| loggregator_trafficcontroller (Traffic Controller) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
+| loggregator_trafficcontroller (Reverse Log Proxy) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
 | router | cloud_controller | 9024 | TCP | HTTPS | OAuth 2.0 |
 
 

@@ -15,15 +15,14 @@ The following table lists network communication paths for Loggregator:
 | Source VM | Destination VM | Port | Transport Layer Protocol | App Layer Protocol | Security and Authentication |
 | --------- | -------------- | ---- | ------------------------ | ------------------ | ---------------------------- |
 | Any&#42; | loggregator_trafficcontroller | 8081 | TCP | HTTP/WebSocket | OAuth |
-| Any VM running Metron | doppler | 8082 | TCP | gRPC over HTTP/2 | Mutual TLS |
+| Any VM running Loggregator Agent | doppler | 8082 | TCP | gRPC over HTTP/2 | Mutual TLS |
 | loggregator_trafficcontroller | doppler | 8082 | TCP | gRPC over HTTP/2 | Mutual TLS |
 | loggregator_trafficcontroller | uaa | 8443 | TCP | HTTPS | TLS |
 | loggregator_trafficcontroller | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
 | loggregator_trafficcontroller (Reverse Log Proxy) | doppler | 8082 | TCP | gRPC over HTTP/2 | Mutual TLS |
-| Any&#42; | loggregator_trafficcontroller (<%= vars.app_runtime_abbr %> authentication proxy) | 8083 | TCP | HTTP | OAuth |
 | loggregator_trafficcontroller (Route Registrar) | nats | 4222 | TCP | NATS | Basic authentication |
 | loggregator_trafficcontroller (Metrics Forwarder) | BOSH Director (Metrics Server) | 25555 and 8443 | TCP | gRPC over HTTP/2 | Mutual TLS |
-| loggregator_trafficcontroller | doppler (Log Cache) | 8080 | TCP | gRPC over HTTP/2 | Mutual TLS |
+| loggregator_trafficcontroller | log_cache | 8080 | TCP | gRPC over HTTP/2 | Mutual TLS |
 | loggregator_trafficcontroller (Reverse Log Proxy Gateway) | cloud_controller | 9023 | TCP | HTTPS | Mutual TLS |
 | Any&#42; | loggregator_trafficcontroller (Reverse Log Proxy Gateway) | 8088 | TCP | HTTP/Server Sent Events | OAuth |
 
@@ -42,12 +41,15 @@ The following table lists network communication paths for Log Cache:
 
 | Source VM | Destination VM | Port | Transport Layer Protocol | App Layer Protocol | Security and Authentication |
 | --------- | -------------- | ---- | ------------------------ | ------------------ | ---------------------------- |
-| loggregator_trafficcontroller (Reverse Log Proxy) | log-cache (Nozzle) | 8082 | TCP | gRPC over HTTP/2 | Mutual TLS |
-| Any&#42; | log-cache | 8080 | TCP | gRPC over HTTP/2 | Mutual TLS |
-| gorouter | log-cache (Auth Proxy) | 8083 | TCP | HTTP | OAuth |
-| log-cache (Auth Proxy) | uaa | 8443 | TCP | HTTPS | TLS |
-| log-cache (Auth Proxy) | cloud_controller | 9024 | TCP | HTTPS | TLS |
+| Any VM running Loggregator Syslog Agent&#42; | log_cache | 6667 | TCP | Syslog | TLS |
+| Any&#42;&#42; | log_cache | 8080 | TCP | gRPC over HTTP/2 | Mutual TLS |
+| log_cache (Nozzle)&#42;&#42;&#42; | loggregator_trafficcontroller (Reverse Log Proxy) | 8082 | TCP | gRPC over HTTP/2 | Mutual TLS |
+| gorouter | log_cache (Auth Proxy) | 8083 | TCP | HTTP | OAuth |
+| log_cache (Auth Proxy) | uaa | 8443 | TCP | HTTPS | TLS |
+| log_cache (Auth Proxy) | cloud_controller | 9024 | TCP | HTTPS | TLS |
 
-<sup>&#42;</sup>Any source VM can send requests to the specified destination within its subnet.
+<sup>&#42;</sup>When Log Cache is configured to use Syslog ingestion.
+<sup>&#42;&#42;</sup>Any source VM can send requests to the specified destination within its subnet.
+<sup>&#42;&#42;&#42;</sup>When Log Cache is configured to use Reverse Log Proxy ingestion.
 
 <%= partial "bosh-dns" %>
