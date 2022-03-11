@@ -42,11 +42,11 @@ an upgrade path for your product tiles, see the [Upgrade Planner](https://upgrad
 
 ## <a id="bosh-dns-migration"></a> BOSH DNS Certificates Regeneration
 
-In <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field.
+In <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. This migration process is required prior to upgrading to <%= vars.ops_manager %> v2.10.33 or later. Failure to complete this migration prior to upgrading to v2.10.33 or later may result in unexpected BOSH DNS resolution issues until the change is rolled out to all VMs.
 
 When you upgrade to v2.10.9 or later, the BOSH DNS leaf certificates are automatically regenerated to include the SAN field on the next **Apply Changes**.
 
-To allow DNS certificate regeneration and avoid communication issues between system commonents:
+To allow DNS certificate regeneration and avoid communication issues between system components:
 
 1. Run the **Upgrade service instances** errand on all service tiles.
 
@@ -80,7 +80,7 @@ v2.4 through v2.8 and how to address them before upgrading:
 		<th>Action Before Upgrading</th>
 	</tr>
 	<tr>
-		<td>Any</td>
+		<td>Any prior to v2.10.33</td>
 		<td>For <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. If you do not distribute the BOSH DNS leaf certificates to all VMs, you can experience downtime caused by communication issues between system components.</td>
 		<td>When upgrading to <%= vars.ops_manager %> v2.10.9 or later, run the <strong>Upgrade service instances</strong> errand on all service tiles and <strong>Apply Changes</strong> to all tiles. For more information, see <a href="#bosh-dns-migration">BOSH DNS Certificates Regeneration</a> above</td>
 	</tr>
