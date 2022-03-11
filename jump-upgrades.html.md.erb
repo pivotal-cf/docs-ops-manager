@@ -21,8 +21,8 @@ in _<%= vars.ops_manager %> v2.10 Release Notes_.
 
 Before you jump upgrade to <%= vars.ops_manager %> v2.10.2:
 
-* If you are on <%= vars.ops_manager %> v2.10.8 or earlier, you must complete any 
-in-progress CA rotation before you can jump upgrade. Failure to complete the CA 
+* If you are on <%= vars.ops_manager %> v2.10.8 or earlier, you must complete any
+in-progress CA rotation before you can jump upgrade. Failure to complete the CA
 rotation results in the inability to **Apply Changes** due to safety violations.
 
 * If you are on <%= vars.ops_manager %> v2.3 or earlier, you must upgrade to
@@ -42,7 +42,7 @@ an upgrade path for your product tiles, see the [Upgrade Planner](https://upgrad
 
 ## <a id="bosh-dns-migration"></a> BOSH DNS Certificates Regeneration
 
-In <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. This migration process is required prior to upgrading to <%= vars.ops_manager %> v2.10.33 or later. Failure to complete this migration prior to upgrading to v2.10.33 or later may result in unexpected BOSH DNS resolution issues until the change is rolled out to all VMs.
+In <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. This migration process is required before you upgrade to <%= vars.ops_manager %> v2.10.33 and later. If you do not complete this migration before upgrading to v2.10.33 or later, you might experience unexpected BOSH DNS resolution issues until the change is rolled out to all VMs.
 
 When you upgrade to v2.10.9 or later, the BOSH DNS leaf certificates are automatically regenerated to include the SAN field on the next **Apply Changes**.
 
@@ -171,16 +171,16 @@ v2.4 through v2.8 and how to address them before upgrading:
 	</tr>
 	<tr>
 		<td>v2.4, v2.5, v2.6, and v2.7</td>
-		<td> 
-			If TLS is not enabled before upgrade and Windows stemcells are in use, 
-			<strong>Apply Changes</strong> can fail. <%= vars.ops_manager %> enables 
+		<td>
+			If TLS is not enabled before upgrade and Windows stemcells are in use,
+			<strong>Apply Changes</strong> can fail. <%= vars.ops_manager %> enables
 			TLS by default when an internal blobstore is configured.
 		</td>
 		<td>Enable the internal blobstore TLS on the <strong>Director Config</strong> pane under the <strong>BOSH Director</strong>
 			tile. To re-create all Windows-based VMs, do one of the following:
 			<ul>
 				<li>Upload and deploy a newer Windows stemcell to all relevant tiles.</li>
-				<li>Enable the <strong>Recreate VMs deployed by the BOSH Director</strong> checkbox in the 
+				<li>Enable the <strong>Recreate VMs deployed by the BOSH Director</strong> checkbox in the
 					<strong>Director Config</strong> pane and deploy all relevant tiles.</li>
 			</ul>
 		</td>
