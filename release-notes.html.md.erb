@@ -20,13 +20,14 @@ on the Cloud Foundry website.
 <hr>
 
 ## <a id='releases'></a> Releases
+
 ### <a id="2-10-34"></a> v2.10.34
 
 **Release Date:** March 28, 2022
 
 
 <div class="note warning"><strong>Warning:</strong>
-  Please note: version 2.10.33 included a new version of BOSH DNS, which will cause all VMs to redeploy (please see notes for 2.10.33 for further details).
+  Ops Manager v2.10.33 included a new version of BOSH DNS that requires Ops Manager to redeploy all VMs. For important information, see <a href="#2-10-33">v2.10.33</a> below.
 </div>
 
 <table border="1" class="nice">
@@ -50,18 +51,18 @@ on the Cloud Foundry website.
 **Release Date:** March 07, 2022
 
 <div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
+  This release includes a new version of BOSH DNS that requires Ops Manager to redeploy all VMs.
   <br />
   <br />
-  This version of BOSH DNS now requires that each of the BOSH DNS certificates have a Subject Alternative Name (SAN) associated. A migration was introduced in <%= vars.ops_manager %> v2.10.9 to add SAN to these certificates. Customers should upgrade to v2.10.9 or higher and do an Apply Changes on all VMs prior to upgrading to this patch. Failure to complete this migration first may result in unexpected BOSH DNS resolution issues until the change is rolled out to all VMs.
+  This version of BOSH DNS requires every BOSH DNS certificate to have a Subject Alternative Name (SAN). A migration was introduced in <%= vars.ops_manager %> v2.10.9 to add SANs to these certificates. Upgrade to v2.10.9 or later and do an **Apply Changes** on all VMs before you upgrade to this patch. If you do not complete this migration first, you might experience BOSH DNS resolution issues until the change is rolled out to all VMs.
   <br />
   <br />
   To check whether the migration has been succesfully run on all VMs, see <a href="https://community.pivotal.io/s/article/How-to-Verify-Bosh-DNS-Certificates-Have-Correct-SAN-Fields?language=en_US">How to Verify Bosh DNS Certificates Have Correct SAN Fields</a>.
 </div>
 
 
-- **[Feature]** Certificate rotation procedures appear on the Certificates page and API endpoint
-- **[Feature]** The certificates page can be filtered by both expiration date and rotation procedure
+- **[Feature]** Certificate rotation procedures appear on the **Certificates** page and API endpoint
+- **[Feature]** The **Certificates** page can be filtered by both expiration date and rotation procedure
 
 <table border="1" class="nice">
   <thead>
@@ -84,7 +85,7 @@ on the Cloud Foundry website.
 
 **Release Date:** February 25, 2022
 
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a Tile used a BOSH release with source packages that shared some packages with a BOSH release already uploaded to the BOSH director. This was most commonly seen in BOSH releases for Windows components.
+- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director. This was most commonly seen in BOSH releases for Windows components.
 
 <table border="1" class="nice">
   <thead>
@@ -135,9 +136,9 @@ on the Cloud Foundry website.
 **Release Date:** February 16, 2022
 
 - **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a Tile used a compiled BOSH release that shared some packages with a BOSH release already uploaded to the BOSH director.
-- **[Bug Fix]** BOSH deployments failing when enabling Spot Instances via VM Extensions is resolved in this release.
-- **[Feature]** The BOSH Blobstore is now configured to only allow TLS communication. Communication was previously done via TLS, but non-TLS requests were still allowed.
+- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director.
+- **[Bug Fix]** BOSH deployments failing when enabling Spot Instances with VM Extensions is resolved in this release.
+- **[Feature]** The BOSH Blobstore is configured to allow TLS communication only. Communication was previously done via TLS, but non-TLS requests were still allowed.
 
 <table border="1" class="nice">
   <thead>
