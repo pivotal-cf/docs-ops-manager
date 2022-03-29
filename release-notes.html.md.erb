@@ -50,7 +50,7 @@ on the Cloud Foundry website.
 
 **Release Date:** February 25, 2022
 
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.9.28](#2-9-28) is resolved in this release. This issue caused deployment failures if a Tile used a BOSH release with source packages that shared some packages with a BOSH release already uploaded to the BOSH director. This was most commonly seen in BOSH releases for Windows components.
+- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.9.28](#2-9-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director. This was most commonly seen in BOSH releases for Windows components.
 
 <table border="1" class="nice">
   <thead>
@@ -100,7 +100,7 @@ on the Cloud Foundry website.
 
 **Release Date:** February 16, 2022
 
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.9.28](#2-9-28) is resolved in this release. This issue caused deployment failures if a Tile used a compiled BOSH release that shared some packages with a BOSH release already uploaded to the BOSH director.
+- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.9.28](#2-9-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director.
 
 
 <table border="1" class="nice">
@@ -152,7 +152,7 @@ on the Cloud Foundry website.
 
 **Release Date:** February 04, 2022
 
-- **[Known Issue]** UAA will fail to start on Air Gapped Ops Manager environments.
+- **[Known Issue]** UAA fails to start in air-gapped Ops Manager environments.
 
 - **[Bug Fix]** The BOSH CLI issue introduced in [v2.9.28](#2-9-28) is resolved in this release.
 
@@ -343,7 +343,7 @@ on the Cloud Foundry website.
 
 **Release Date:** September 29, 2021
 
-- **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs may not be correctly returned causing the wrong disk to be attached.
+- **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs might not be correctly returned, causing the wrong disk to be attached.
 
 <table border="1" class="nice">
   <thead>
@@ -368,7 +368,7 @@ on the Cloud Foundry website.
 
 **Release Date:** September 16, 2021
 
-- **[Known Issue]** TKGI customers are recommended to skip this version. Deployments using the `disk.enableUUID` vmx option and attaching additional SCSI devices (for example, TKGI clusters using persistent volumes) may experience data loss if the VM is powered off and powered on again. This is due to a functional regression causing the VM to mount the wrong disk at startup. This regression is fixed in version 2.9.22.
+- **[Known Issue]** TKGI customers are recommended to skip this version. Deployments using the `disk.enableUUID` vmx option and attaching additional SCSI devices, for example, TKGI clusters using persistent volumes, might experience data loss if the VM is powered off and powered on again. This is due to a functional regression causing the VM to mount the wrong disk at startup. This regression is fixed in [v2.9.22](#2-9-22).
 
 <table border="1" class="nice">
   <thead>
@@ -417,7 +417,7 @@ Ops Manager v2.9.20 uses the following component versions:
 
 **Release Date:** June 7, 2021
 
-- **[Known Issue Fix]** <%= vars.ops_manager %> does not overwrite UAAC. Known issue is introduced in <%= vars.ops_manager %> v2.9.18.
+- **[Bug Fix]** <%= vars.ops_manager %> does not overwrite UAAC. Known issue is introduced in <%= vars.ops_manager %> v2.9.18.
 
 
 Ops Manager v2.9.19 uses the following component versions:
@@ -444,8 +444,8 @@ Ops Manager v2.9.19 uses the following component versions:
 
 **Release Date:** March 31, 2021
 
-- **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN). On upgrade to v2.9.18 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles. Upgrading <%= vars.ops_manager %> while a CA rotation is in progress results in the inability to **Apply Changes** due to safety violations.
-- **[Known Issue]** Due to permission changes, running `uaac` as the `ubuntu` user results in the error `/home/tempest-web/tempest/web/vendor/uaac/Gemfile not found`. The current work around is to run `unalias uaac` as the `ubuntu` user before running `uaac`. <%= vars.ops_manager %> v2.9.19 and later fixes this issue.
+- **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a Subject Alternative Name (SAN). On upgrade to v2.9.18 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles. Upgrading <%= vars.ops_manager %> while a CA rotation is in progress results in the inability to **Apply Changes** due to safety violations.
+- **[Known Issue]** Due to permission changes, running `uaac` as the `ubuntu` user results in the error `/home/tempest-web/tempest/web/vendor/uaac/Gemfile not found`. The current workaround is to run `unalias uaac` as the `ubuntu` user before running `uaac`. <%= vars.ops_manager %> [v2.9.19](#2-9-19) and later fixes this issue.
 - **[Bug Fix]** Restrict permissions on the `/home/tempest-web` and `/home/ubuntu` directories to 750
 
 Ops Manager v2.9.18 uses the following component versions:
