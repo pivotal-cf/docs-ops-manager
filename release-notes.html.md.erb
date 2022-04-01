@@ -24,7 +24,7 @@ on the Cloud Foundry website.
 
 **Release Date:** April 01, 2022
 
-
+* **[Security Fix]** This release addresses [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965); note that this does not mean prior versions were actually vulnerable. Ops Manager contains a UAA which nominally satisfies the triage criteria for this CVE. However, the CVE's actual exploitation criteria are complex, and we have so far been unable to confirm or deny vulnerability. We do not currently consider this update necessary for secure operation. However, in the interest of avoiding false positives in security tools, and to enable maximum customer confidence, we have produced this maintenance release, which also updates the affected Spring libraries to alleviate any concern. If additional ways to exploit the CVE are found, or our efforts at penetration testing confirm a vulnerability, we will issue an update to this message and a VMware Security Advisory.
 
 <table border="1" class="nice">
   <thead>
