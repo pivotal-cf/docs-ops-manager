@@ -25,8 +25,9 @@ on the Cloud Foundry website.
 ## <a id='releases'></a> Releases
 ### <a id="2-9-36"></a> v2.9.36
 
-**Release Date:** April 07, 2022
+**Release Date:** April 06, 2022
 
+- **[Security Fix]** This release addresses [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). We now consider this update necessary for secure operation, and recommend installation ASAP. We previously believed this was fixed in 2.9.35 but further investigation found it was not.
 - **[Bug Fix]** Fix dependencies in systemd config for Ops Manager services
 
 <table border="1" class="nice">
@@ -49,8 +50,7 @@ on the Cloud Foundry website.
 
 **Release Date:** March 31, 2022
 
-* **[Security Fix]** This release addresses [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). We now consider this update necessary for secure operation, and recommend installation ASAP.
-
+- **[Known Issue]** This release originally addressed [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). After additional investigation we found this vulnerability still exists. Please upgrade to 2.9.36 or higher.
 
 <table border="1" class="nice">
   <thead>
