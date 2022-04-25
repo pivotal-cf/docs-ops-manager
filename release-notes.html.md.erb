@@ -31,8 +31,8 @@ on the Cloud Foundry website.
   This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
-
-
+- **[Bug Fix]** Changes to `/api/v0/installation_asset_collection` in 2.9.36 were inconsistent with Ops Manager RBAC documentation. The endpoint is now unavailable for users without access to view credentials.
+- **[Feature]** Allow users to downgrade stemcells for Tiles. This will make it easier to recover from a stemcell/Tile compatibility problem.
 
 <table border="1" class="nice">
   <thead>
