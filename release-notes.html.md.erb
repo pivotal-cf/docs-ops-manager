@@ -32,10 +32,8 @@ on the Cloud Foundry website.
 </div>
 
 
-- **[Feature]** Use New EULA in pipelines
-- **[Feature]** Allow users to downgrade stemcells
-- **[Bug Fix]** Tile properties that have been frozen due to a deploy should remain frozen after a tile upgrade
-- **[Feature]** Add Content-Security-Policy headers to Ops Manager
+- **[Feature]** Add Content-Security-Policy headers are returned when accessing Ops Manager. These headers replace the previously used X-XSS-Protection headers to protect against cross-site scripting attacks.
+- **[Bug Fix]** Tile properties that have been frozen due to a deploy now remain frozen after upgrading that tile.
 
 <table border="1" class="nice">
   <thead>
