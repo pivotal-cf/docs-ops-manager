@@ -29,16 +29,14 @@ on the Cloud Foundry website.
 </div>
 
 
-- **[Feature]** Allow users to downgrade stemcells
-- **[Feature]** Update Ops Manager api documentation to include bosh-dns recursor_selection for the director staged properties endpoints
-- **[Feature]** Discover Certs that are injected via the Opsman API and not under Opsman Control
-- **[Feature]** Configurable certs within the BOSH Director tile should show up in the certificates API endpoint - MAKE SURE TO ADD RELEASE NOTE RE: MORE CERTS (PROBABLY OPSMAN SSL CERT) WILL LIKELY CAUSE THE EXPIRY BANNER TO SHOW
-- **[Bug Fix]** BOSH Director should use configuration for selected CPI config
-- **[Bug Fix]** Deleting in-use custom vm types causes Ops Manager to 500 until you restart it
-- **[Bug Fix]** Tile properties that have been frozen due to a deploy should remain frozen after a tile upgrade
-- **[Feature]** OpsManager should not deploy bosh registry
-- **[Feature]** Add Content-Security-Policy headers to Ops Manager
-- **[Feature]** Allow users to select a stemcell for the BOSH Director tile
+- **[Feature]** The Certificates page and expiring certificates API endpoint now include configurable certificates that were not previously displayed. The new certificates include IaaS and trusted certificates within the BOSH Director tile, the Ops Manager SSL certificate, syslog certificates, and certificates in plain-text fields within other tiles. After upgrading to this patch, the expiring certificates warning banner may appear if any of these certificates are close to their expiration date.
+- **[Feature]** Allow users to select a stemcell for the BOSH Director tile. This allows you to redeploy the BOSH Director with newer stemcells without upgrading to a new Ops Manager patch. Users still need to upgrade to the latest Ops Manager patch to receive CVE fixes for the Ops Manager VM itself.
+- **[Feature]** Add Content-Security-Policy headers are returned when accessing Ops Manager. These headers replace the previously used X-XSS-Protection headers to protect against cross-site scripting attacks.
+- **[Feature]** Ops Manager no longer deploys the deprecated BOSH registry on the BOSH Director.
+- **[Bug Fix]** The BOSH Director on vSphere uses the selected CPI config instead of first CPI config.
+- **[Bug Fix]** Deleting in-use custom VM types no longer causes Ops Manager to return 500 status code errors until you restart it.
+- **[Bug Fix]** Tile properties that have been frozen due to a deploy now remain frozen after upgrading that tile.
+- **[Bug Fix]** Principal Identity (certificate-based) authentication for NSX-T works when Policy API mode is activated.
 
 <table border="1" class="nice">
   <thead>
