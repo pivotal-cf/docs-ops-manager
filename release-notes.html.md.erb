@@ -20,42 +20,6 @@ on the Cloud Foundry website.
 <hr>
 
 ## <a id='releases'></a> Releases
-### <a id="2-10-40"></a> v2.10.40
-
-**Release Date:** June 02, 2022
-
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
-</div>
-
-
-- **[Feature]** Allow users to downgrade stemcells
-- **[Feature]** Update Ops Manager api documentation to include bosh-dns recursor_selection for the director staged properties endpoints
-- **[Feature]** Discover Certs that are injected via the Opsman API and not under Opsman Control
-- **[Feature]** Configurable certs within the BOSH Director tile should show up in the certificates API endpoint - MAKE SURE TO ADD RELEASE NOTE RE: MORE CERTS (PROBABLY OPSMAN SSL CERT) WILL LIKELY CAUSE THE EXPIRY BANNER TO SHOW
-- **[Bug Fix]** BOSH Director should use configuration for selected CPI config
-- **[Bug Fix]** Deleting in-use custom vm types causes Ops Manager to 500 until you restart it
-- **[Bug Fix]** Tile properties that have been frozen due to a deploy should remain frozen after a tile upgrade
-- **[Feature]** Allow users to select a stemcell for the BOSH Director tile
-- **[Feature]** OpsManager should not deploy bosh registry
-- **[Feature]** Add Content-Security-Policy headers to Ops Manager
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.40-build.481*</td>
-  </tr>
-  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>621.244*</td></tr><tr><td>BBR SDK</td><td>1.18.42*</td></tr><tr><td>BOSH Director</td><td>272.4.0*</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.3</td></tr><tr><td>System Metrics</td><td>2.0.17*</td></tr><tr><td>CredHub</td><td>2.12.5*</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.10*</td></tr><tr><td>Windows Syslog</td><td>1.1.6*</td></tr><tr><td>UAA</td><td>74.5.41*</td></tr><tr><td>BPM</td><td>1.1.18*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>74*</td></tr><tr><td>BOSH CLI</td><td>7.0.1*</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.31*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
 ### <a id="2-10-39"></a> v2.10.39
 
 **Release Date:** April 25, 2022
