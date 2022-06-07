@@ -24,7 +24,7 @@ on the Cloud Foundry website.
 
 **Release Date:** June 07, 2022
 
-
+- **[Bug Fix]** The BOSH Director would fail to deploy if the persistent disk still contained the postgres 9 data directory. This data has not been in use since Ops Manager 2.4, but there was no automated cleanup process.
 
 <table border="1" class="nice">
   <thead>
@@ -47,7 +47,7 @@ on the Cloud Foundry website.
 **Release Date:** June 03, 2022
 <div class="note warning"><strong>Warning:</strong>
   <p>There is a known issue with the BOSH Director when upgrading from an Ops Manager installation that was created before March of 2019. If your Ops Manager installation was originally created before 2.5.0, even if you are now on a current patch, you should not upgrade to 2.10.40.</p>
-  <p>2.10.41 is expected to be released the week of June 6th.</p>
+  <p>This issue has been resolved in 2.10.41.</p>
 </div>
 
 <div class="note warning"><strong>Warning:</strong>
