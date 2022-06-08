@@ -25,7 +25,7 @@ on the Cloud Foundry website.
 **Release Date:** June 07, 2022
 
 - **[Bug Fix]** The BOSH Director would fail to deploy if the persistent disk still contained the postgres 9 data directory. This data has not been in use since Ops Manager 2.4, but there was no automated cleanup process.
-- **[Known Issue]** The expiring certificates API endpoint will return a 500 status error for customers that have the syslog feature configured without entering an SSL certificate.
+- **[Known Issue]** The expiring certificates API endpoint will return a 500 status error for customers that have the syslog feature configured without entering an SSL certificate. Additionally, attempting to generate a support bundle will return an error. To workaround this issue, see [Support bundle download gives error undefined method `strip` and Ops Manager certificate pane does not load](https://community.pivotal.io/s/article/Support-bundle-download-gives-error-undefined-method)
 - **[Known Issue]** Deleting custom VM types using the API always returns a 500 status error.
 
 <table border="1" class="nice">
@@ -66,7 +66,7 @@ on the Cloud Foundry website.
 - **[Bug Fix]** Tile properties that have been frozen due to a deploy now remain frozen after upgrading that tile.
 - **[Bug Fix]** Principal Identity (certificate-based) authentication for NSX-T works when Policy API mode is activated.
 - **[Bug Fix]** BOSH Health Monitor will no longer continue to report that a VM is unresponsive after it has been deleted.
-- **[Known Issue]** The expiring certificates API endpoint will return a 500 status error for customers that have the syslog feature configured without entering an SSL certificate.
+- **[Known Issue]** The expiring certificates API endpoint will return a 500 status error for customers that have the syslog feature configured without entering an SSL certificate. Additionally, attempting to generate a support bundle will return an error. To workaround this issue, see [Support bundle download gives error undefined method `strip` and Ops Manager certificate pane does not load](https://community.pivotal.io/s/article/Support-bundle-download-gives-error-undefined-method)
 - **[Known Issue]** Deleting custom VM types using the API always returns a 500 status error.
 
 <table border="1" class="nice">
