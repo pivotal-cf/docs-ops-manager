@@ -62,14 +62,14 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
     Configure NSX networking by entering the following information:
         * **NSX Mode**: Select either **NSX-V** or **NSX-T**.
         * **Use NSX-T Policy API**: Select whether to use the NSX-T Policy API instead of the Manager API when placing VMs in NSX-T groups and server pools. You can use NSX-T groups or server pools to designate VMs as load balancer back ends. This feature requires NSX-T Data Center v3.0 or later.
-        <p class="note"><strong>Note:</strong> The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. If you are using a version of <%= vars.ops_manager %> before v2.10.17, leave it deactivated, as this feature is still experimental.</p>
-        <p class="note"><strong>Note:</strong> **Certificate Authentication** for the **NSX-T Policy API** was added in <%= vars.ops_manager %> v2.10.40. If you are using a version of <%= vars.ops_manager %> before v2.10.40, you must use **Local User Authentication**.</p>
+        <p class="note"><strong>Note:</strong> The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. Do not select the <strong>NSX-T Policy API</strong> option if you are using an earlier <%= vars.ops_manager %> version.</p>
         * **NSX Address**: The address of the NSX Manager.
         * **NSX-T Authentication**: Select how BOSH Director authenticates to the NSX Manager:
             * **Local User Authentication** authenticates with a username and password.
                 * For this option, fill in the **NSX Username** and **NSX Password** fields. Specify an NSX user with `Enterprise Administrator` privileges.
             * **Certificate Authentication** authenticates with a certificate and private key.
                 * For this option, fill in the **NSX Manager Principal Identity Certificate** and **NSX Manager Principal Identity Private Key** fields.
+            <p class="note"><strong>Note:</strong> <strong>Certificate Authentication</strong> for the <strong>NSX-T Policy API</strong> was added in <%= vars.ops_manager %> v2.10.40. You must use <strong>Local User Authentication</strong> if you are using an earlier <%= vars.ops_manager %> version.</p>
         * **NSX CA Cert**: A CA certificate in PEM format that establishes a secure connection to the NSX server before the BOSH Director authenticates to the NSX Manager.
         If the NSX Manager generated a self-signed certificate, use the following command to retrieve the CA certificate using OpenSSL:
 
