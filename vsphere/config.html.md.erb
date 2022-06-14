@@ -63,6 +63,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
         * **NSX Mode**: Select either **NSX-V** or **NSX-T**.
         * **Use NSX-T Policy API**: Select whether to use the NSX-T Policy API instead of the Manager API when placing VMs in NSX-T groups and server pools. You can use NSX-T groups or server pools to designate VMs as load balancer back ends. This feature requires NSX-T Data Center v3.0 or later.
         <p class="note"><strong>Note:</strong> The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. If you are using a version of <%= vars.ops_manager %> before v2.10.17, leave it deactivated, as this feature is still experimental.</p>
+        <p class="note"><strong>Note:</strong> **Certificate Authentication** for the **NSX-T Policy API** was added in <%= vars.ops_manager %> v2.10.40. If you are using a version of <%= vars.ops_manager %> before v2.10.40, you must use **Local User Authentication**.</p>
         * **NSX Address**: The address of the NSX Manager.
         * **NSX-T Authentication**: Select how BOSH Director authenticates to the NSX Manager:
             * **Local User Authentication** authenticates with a username and password.
