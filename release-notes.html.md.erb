@@ -20,6 +20,33 @@ on the Cloud Foundry website.
 <hr>
 
 ## <a id='releases'></a> Releases
+### <a id="2-10-46"></a> v2.10.46
+
+**Release Date:** August 25, 2022
+
+- **[Feature]** Ops Manager generated leaf certificates should include the keyEncipherment extension
+- **[Bug Fix]** Expired certificates should not display negative values for "expires in"
+- **[Bug Fix]** Upgrading stemcell, then upgrading Ops Manager to version that does not include that stemcell should not fail
+- **[Bug Fix]** Radio buttons and checkboxes should not have a required asterisk next to them
+- **[Feature]** Make datastore clusters/datastore configuration in Ops Manager more clear
+- **[Feature]** Default new installs of OM on vSphere to use policy-api
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Ops Manager</td><td>2.10.46-build.541*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>621.265*</td></tr><tr><td>BBR SDK</td><td>1.18.50*</td></tr><tr><td>BOSH Director</td><td>273.1.0*</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.5*</td></tr><tr><td>System Metrics</td><td>2.0.18</td></tr><tr><td>CredHub</td><td>2.12.8*</td></tr><tr><td>CredHub Maestro</td><td>8.0.4*</td></tr><tr><td>Syslog</td><td>11.8.0</td></tr><tr><td>Windows Syslog</td><td>1.1.8*</td></tr><tr><td>UAA</td><td>74.5.48*</td></tr><tr><td>BPM</td><td>1.1.18</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>39.0.0*</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>48*</td></tr><tr><td>vSphere CPI</td><td>79*</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.37*</td></tr><tr><td>Telemetry</td><td>1.2.4*</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
 ### <a id="2-10-45"></a> v2.10.45
 
 **Release Date:** July 27, 2022
