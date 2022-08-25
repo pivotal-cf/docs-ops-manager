@@ -24,12 +24,13 @@ on the Cloud Foundry website.
 
 **Release Date:** August 25, 2022
 
-- **[Feature]** Ops Manager generated leaf certificates should include the keyEncipherment extension
-- **[Bug Fix]** Expired certificates should not display negative values for "expires in"
-- **[Bug Fix]** Upgrading stemcell, then upgrading Ops Manager to version that does not include that stemcell should not fail
-- **[Bug Fix]** Radio buttons and checkboxes should not have a required asterisk next to them
-- **[Feature]** Make datastore clusters/datastore configuration in Ops Manager more clear
-- **[Feature]** Default new installs of OM on vSphere to use policy-api
+- **[Feature]** Ops Manager generated leaf certificates includes the keyEncipherment extension
+- **[Change]** New installs of OM on vSphere default to use policy-api
+- **[Bug Fix]** Upgrading stemcell, then upgrading Ops Manager to version that does not include that stemcell does not fail
+- **[Bug Fix]** UI Fixes:
+  - Radio buttons and checkboxes do not have a required asterisk next to them.
+  - Datastore cluster/datastore configuration form fields have been adjusted for clarity.
+  - Expired certificates do not display negative values for "expires in"
 
 <table border="1" class="nice">
   <thead>
