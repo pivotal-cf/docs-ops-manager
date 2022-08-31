@@ -23,14 +23,65 @@ on the Cloud Foundry website.
 
 To upgrade to <%= vars.ops_manager_full %> v3.0, see [Upgrading <%= vars.ops_manager %>](./install/upgrading-pcf.html).
 
-
 ## <a id='major-features'></a> New Features in <%= vars.ops_manager %> v3.0
 
 <%= vars.ops_manager %> v3.0 includes the following major features:
 
-### <a id='section'></a> SECTION
+### <a id='ubuntu-jammy'></a> Ops Manager and BOSH Director Upgraded to Ubuntu 22.04 (Jammy Jellyfish)
 
-DESCRIPTION
+Ops Manager 3.0 uses a Jammy stemcell based on Ubuntu 22.04 (Jammy Jellyfish).
+
+The previously supported Xenial stemcells were based on Ubuntu 16.04 (Xenial Xersus). The stemcells based on this distribution will reach end of general support (EOGS) in April 2024 and will no longer receive security updates.
+
+The Xenial stemcells can continue to be used in conjunction with tiles installed in Ops Manager 3.0 until they reach EOGS.
+
+Using Jammy stemcells in v3.0 ensures that Ops Manager users continue to have access to secure stemcells based on an Ubuntu distribution maintained by Canonical.
+
+### <a id='applied-runtime-config'></a> Changes Page Includes Applied Runtime Configs
+
+The See Changes page for a tile now includes a list of runtime configs that will be applied to that tile.
+
+Runtime configs are a way tiles can add behavior to VMs deployed by other tiles. As an example, the "Enabled System Metrics" setting within the BOSH Director tile applies a runtime config to the TAS tile for additional monitoring capabilities.
+
+Changes to a runtime config can cause longer deploy times on the next Apply Changes. This feature allows users to see the changes that affect specific tiles so that they know a longer Apply Changes may occur.
+
+### <a id='aws-vm-catalog'></a> AWS Deployments Use 5th Generation AMD Instances
+
+Ops Manager now allows the use of 5th Generation AMD instances for AWS deployments. These instance types are more performant and more cost effective than the previous instance types.
+
+New installations of Ops Manager 3.0 will use the 5th Generation AMD instances by default. Customers that upgrade to Ops Manager v3.0 can opt-in to the new instance types on the AWS Config page within the BOSH Director tile. For more information, see [Configuring BOSH Director on AWS](/ops-manager/3-0/aws/config-manual.html#pcfaws-om-awsconfig).
+
+These instance types are supported by Jammy stemcells and Xenial stemcells.
+
+If you are using a custom instance type catalog, your VM types that are used and available do not change.
+
+For more information about AWS instance types, see AWS EC2 Instance Types in the AWS documentation.
+
+### <a id='aws-gp3'></a> AWS Deployments Use GP3 Disks By Default
+
+Starting in Ops Manager 3.0, gp3 disk types are the default for AWS deployments. gp3 disks are more performant and more cost effective when compared to gp2 disks. Ops Manager 2.10.19 introduced the ability to choose between gp2 and gp3 disk types.
+
+New installations of Ops Manager 3.0 will use gp3 by default. Customers that upgrade to Ops Manager 3.0 will retain their previous setting, but can opt-in to using gp3 disk types on the AWS Config page within the BOSH Director tile. For more information, see [Configuring BOSH Director on AWS](/ops-manager/3-0/aws/config-manual.html#pcfaws-om-awsconfig).
+
+### <a id='google-vm-catalog'></a> Google Deployments Use E2 Series Instances
+
+Ops Manager now allows the use of E2 Series instances for Google deployments. These instance types are more performant and more cost effective than the previous instance types.
+
+New installations of Ops Manager 3.0 will use the E2 Series instances by default. Customers that upgrade to Ops Manager v3.0 can opt-in to the new instance types on the Google Config page within the BOSH Director tile. For more information, see [Configuring BOSH Director on GCP](/ops-manager/3-0/gcp/config-manual.html#gcp-config).
+
+These instance types are supported by Jammy stemcells and Xenial stemcells.
+
+If you are using a custom instance type catalog, your VM types that are used and available do not change.
+
+For more information about Google instance types, see Google Instance Types in the Google Cloud documentation.
+
+### <a id='google-native-machine-types'></a> Google Deployments Allow Native Machine Type For Custom VM Type Catalog
+
+Ops Manager 3.0 allows machine type to be set when creating a custom VM type catalog on Google deployments. When a specific machine type is set for a VM type, then BOSH will create a VM using that machine type instead of creating a custom VM that matches the CPU and RAM specifications. This allows you to take advantage of specialized VM types not present in the default Ops Manager catalog.
+
+If you do not specify a machine type for the custom VM type, then BOSH will continue to create a VM that matches the CPU and RAM specifications as in prior versions of Ops Manager.
+
+For more information, see [Overriding defaults with custom VM types](/platform/3-0/opsman-api/#tag/VM-types/paths/~1api~1v0~1vm_types/put) in the API documentation.
 
 ## <a id='breaking-changes'></a> Breaking Changes in <%= vars.ops_manager %> v3.0
 
