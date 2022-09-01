@@ -87,9 +87,31 @@ For more information, see [Overriding defaults with custom VM types](/platform/3
 
 <%= vars.ops_manager %> v3.0 includes the following breaking changes:
 
-### <a id="section"></a> SECTION
+### <a id='bosh-metrics-removed'></a> Deprecated BOSH System Metrics Support Removed
 
-DESCRIPTION
+The BOSH System Metrics Server option was deprecated in Ops Manager 2.10.1 and has now been removed.
+
+If you were using the BOSH System Metrics option, you should switch to the recommended System Metrics option on the Director Config page of the BOSH Director tile prior to upgrading.
+
+### <a id='nsx-v-removed'></a> NSX-V Support Removed For vSphere Deployments
+
+NSX-V reached end of life in ???? and can no longer be configured in Ops Manager 3.0. You can still configure NSX-T when using a compatible vSphere environment.
+
+### <a id='openstack-keystone-v2-removed'></a> Keystone Version 2 Authentication Support Removed For OpenStack Deployments
+
+Version 2 of the Keystone authentication service used by OpenStack was removed in favor of Version 3 starting in OpenStack Queens.
+
+If you were using Keystone v2, you must switch to Keystone v3 prior to upgrading.
+
+### <a id='bosh-multihome-removed'></a> Multi-home BOSH Director Support Removed
+
+Older versions of Ops Manager contained an undocumented API endpoint that allowed you to configure a second network on the BOSH Director VM. This API endpoint and corresponding configuration has been removed in Ops Manager 3.0.
+
+### <a id=''></a> Azure Stack and Azure Germany Support Removed
+
+Microsoft ceased operation of the isolated Azure Germany cloud platform in 2021, and can no longer be configured as an environment in Ops Manager 3.0. You can still use Germany-based regions in the global Azure Commercial Cloud environment within Ops Manager 3.0.
+
+Support for Azure Stack environments has also been removed in Ops Manager 3.0.
 
 ## <a id='known-issues'></a> Known Issues
 
