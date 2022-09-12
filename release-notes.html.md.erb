@@ -113,6 +113,12 @@ Microsoft ceased operation of the isolated Azure Germany cloud platform in 2021,
 
 Support for Azure Stack environments has also been removed in Ops Manager 3.0.
 
+### <a id='syslog-custom-rules'></a> Invalid Custom Syslog Rules Now Cause Errors
+
+Invalid custom syslog rules will now cause deployments to fail with a relevant error message. Previously, those rules would not have caused deployments to fail, instead an error would have been logged and they would have been discarded.
+
+Operators should check for the presence of the error message `Custom rule configuration invalid` during syslog pre-start, indicating that at least some custom rules are invalid, and change their custom rules accordingly. `rsyslogd -N1` can also be used to manually validate the correctness of a syslog configuration in a local environment.
+
 ## <a id='known-issues'></a> Known Issues
 
 <%= vars.ops_manager %> v3.0 includes the following known issues:
