@@ -20,6 +20,7 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 
 | **Book Branch** | **Content Branch** | **Published URL** |
 |-----------------|--------------------|-------------------|
+|           `3.0` |              `3.0` | not yet published <strike>https://docs.pivotal.io/ops-manager/3-0/index.html</strike> |
 |          `2.10` |             `2.10` | https://docs.pivotal.io/ops-manager/2-10/index.html |
 |           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
 |           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
@@ -34,6 +35,8 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 | `om-previous-versions` | `2.1` | https://docs.pivotal.io/ops-manager/2-1/index.html |
 | `om-previous-versions` | `2.0` | https://docs.pivotal.io/ops-manager/2-0/index.html |
 
+**3.0**: The `3.0` branch is used to publish the v3.0 site. Create pull requests on `3.0` to contribute or
+correct technical inaccuracies in the Ops Manager v3.0 documentation.
 
 **2.10**: The `2.10` branch is used to publish the v2.10 site. Create pull requests on `2.10` to contribute or
 correct technical inaccuracies in the Ops Manager v2.10 documentation.

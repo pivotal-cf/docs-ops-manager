@@ -18,8 +18,6 @@ vSphere offers NSX-T and NSX-V to support SDN infrastructure.
 
 * <%= vars.app_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-T](#pas-nsx-t).
 
-* <%= vars.app_runtime_abbr %> on vSphere with NSX-V. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-V](#pas-nsx-v).
-
 * <%= vars.app_runtime_abbr %> on vSphere without NSX. For more information, see [<%= vars.app_runtime_abbr %> on vSphere without NSX](#pas-no-nsx).
 
 * <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere with NSX-T](#pks-nsx-t).
@@ -181,30 +179,6 @@ For information about security requirements and recommendations for <%= vars.app
 
 For more information about blobstore storage requirements and recommendations, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
-
-## <a id="pas-nsx-v"></a> <%= vars.app_runtime_abbr %> on vSphere with NSX-V
-
-These sections describe the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments. They also provide requirements and recommendations for deploying <%= vars.app_runtime_abbr %> on vSphere with NSX-V, such as network, load balancing, and storage capacity requirements and recommendations.
-
-<%= vars.app_runtime_abbr %> on vSphere with NSX-V enables services provided by NSX on the <%= vars.app_runtime_abbr %> platform, such as an Edge Services Gateway (ESG), load balancers, firewall services, and NAT/SNAT services.
-
-### <a id="pas-nsx-v-diagram"></a> Architecture
-
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
-
-![The diagram shows the architecture for a <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-V.png)
-
-[View a larger version of this diagram](../images/v2/export/PAS_vSphere_NSX-V.png).
-
-<%= vars.app_runtime_abbr %> deployments with NSX-V are deployed with three clusters and three AZs.
-
-<%= vars.app_runtime_abbr %> deployments with NSX-V also include an NSX-V Edge router on the front end. You can install the NSX-V Edge router as an ESG or as a distributed logical router (DLR).
-
-The Edge router is a central logical router into the <%= vars.app_runtime_abbr %> platform. You can configure VLAN routing from the routed backbone into NSX-V through the Edge router.
-
-Compared to NSX-T architecture, NSX-V architecture does not use Tier-1 routers to connect the central router to the various subnets for the <%= vars.app_runtime_abbr %> deployment.
-
-For more information about using ESG on vSphere, see [Using Edge Services Gateway on VMware NSX](./vsphere_nsx_cookbook.html).
 
 ### <a id="pas-nsx-t-networking"></a> Networking
 
