@@ -20,6 +20,7 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 
 | **Book Branch** | **Content Branch** | **Published URL** |
 |-----------------|--------------------|-------------------|
+|           `3.0` |              `3.0` | not yet published <strike>https://docs.pivotal.io/ops-manager/3-0/index.html</strike> |
 |          `2.10` |             `2.10` | https://docs.pivotal.io/ops-manager/2-10/index.html |
 |           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
 |           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
@@ -34,6 +35,8 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 | `om-previous-versions` | `2.1` | https://docs.pivotal.io/ops-manager/2-1/index.html |
 | `om-previous-versions` | `2.0` | https://docs.pivotal.io/ops-manager/2-0/index.html |
 
+**3.0**: The `3.0` branch is used to publish the v3.0 site. Create pull requests on `3.0` to contribute or
+correct technical inaccuracies in the Ops Manager v3.0 documentation.
 
 **2.10**: The `2.10` branch is used to publish the v2.10 site. Create pull requests on `2.10` to contribute or
 correct technical inaccuracies in the Ops Manager v2.10 documentation.
@@ -81,18 +84,27 @@ configuration and assets from [docs-layout-repo](https://github.com/pivotal-cf/d
 
 To use Bookbinder to view your documentation, perform the following steps:
 
-1. Clone this repository to the `~/workspace` directory on your local machine.
-1. Clone the following repositories to the `~/workspace` directory on your
-local machine:
-    * [docs-book-om](https://github.com/pivotal-cf/docs-book-om)
-    * [docs-layout-repo](https://github.com/pivotal-cf/docs-layout-repo)
-    * [docs-partials](https://github.com/pivotal-cf/docs-partials)
-1. Use the **Versions and Branching** table above to determine which branch of `docs-ops-manager` that you need to `git checkout` to build the version of the documentation that you want. If necessary, navigate to the `docs-ops-manager` directory and `git checkout BRANCH-NAME`. 
-1. Navigate in the `docs-book-om` directory.
-1. Run `bundle install` to install all of the necessary gems, including Bookbinder.
-1. Run `bundle exec bookbinder bind local` to build a Rack web-app of the book. After the bind has completed, navigate
-into the `final_app` directory and run `rackup`. Then navigate to `localhost:9292/platform/ops-manager/index.html` in a
-browser.
+```bash
+cd ~/workspace
+git clone git@github.com:pivotal-cf/docs-book-om.git
+git clone git@github.com:pivotal-cf/docs-layout-repo.git
+git clone git@github.com:pivotal-cf/docs-partials.git
+git clone git@github.com:pivotal-cf/docs-ops-manager.git
+chruby 2.6
+cd docs-ops-manager
+git switch 3.0 # if you're working on OM 3.0; 2.10 if you're working on OM 2.10, etc.
+cd ~/workspace/docs-book-om
+  # comment-out therubyracer -- it doesn't work on ARM-based Macs (M1 & M2):
+sed -i '' "s/^gem 'therubyracer'/# &/" Gemfile
+bundle
+pushd final_app
+bundle
+popd
+ # The following one-liner lets you re-render the website to see current changes
+bundle exec bookbinder bind local; cd final_app; bundle exec rackup; cd ..
+```
+
+Browse to <http://127.0.0.1:9292/ops-manager/3-0/index.html>. Replace "3-0" with whichever branch you're on, e.g. "2-10" for 2.10.
 
 ## Continuous Integration and Continuous Delivery
 
