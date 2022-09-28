@@ -24,8 +24,10 @@ on the Cloud Foundry website.
 
 **Release Date:** September 28, 2022
 
-- **[Bug Fix]** Ops Manager create export does not clean up tmp files
-- **[Bug Fix]** Fix Karl check for Azure Storage Account
+- **[Bug Fix]** OpsManager correctly removes temporary files created during an export
+- **[Known Issue Fix]** Fixes a bug preventing Azure configurations from being correctly saved/deployed when Storage Accounts are used for Cloud Storage (problem introduced in 2.10.44)
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+
 
 <table border="1" class="nice">
   <thead>
@@ -47,14 +49,14 @@ on the Cloud Foundry website.
 
 **Release Date:** August 25, 2022
 
-- **[Known Issue]** OpsManager v2.10.44 - 46 Azure IaaS configuration will error incorrectly (preventing "Apply Changes") if Storage Accounts are selected for Cloud Storage.
-- **[Known Issue]** The vSphere CPI introduced in 2.10.41 (and all following vSphere CPIs to v79) creates VMs much more slowly than previous versions if there are multiple datastores attached to the target AZs.
 - **[Feature]** Ops Manager generated leaf certificates includes the keyEncipherment extension
 - **[Change]** New installs of OM on vSphere default to use policy-api
 - **[Bug Fix]** Upgrading stemcell, then upgrading Ops Manager to version that does not include that stemcell does not fail
 - **[Bug Fix]** UI Fixes:
   - Datastore cluster/datastore configuration form fields have been adjusted for clarity.
   - Expired certificates do not display negative values for "expires in"
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.10.44)
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -82,8 +84,8 @@ on the Cloud Foundry website.
 
 
 - **[Fix]** BOSH task cleanup occurs daily (rather than weekly). This change may alleviate issues seen in deployments where the BOSH Director runs tasks frequently (e.g. for monitoring).
-- **[Known Issue]** OpsManager v2.10.44 - 46 Azure IaaS configuration will error incorrectly (preventing "Apply Changes") if Storage Accounts are selected for Cloud Storage.
-- **[Known Issue]** The vSphere CPI introduced in 2.10.41 (and all following vSphere CPIs to v79) creates VMs much more slowly than previous versions if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.10.44)
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -106,8 +108,8 @@ on the Cloud Foundry website.
 **Release Date:** July 14, 2022
 
 - **[Security Fix]** Remediated CVE-2022-23923 in the tile JavaScript migration process.
-- **[Known Issue]** OpsManager v2.10.44 - 46 Azure IaaS configuration will error incorrectly (preventing "Apply Changes") if Storage Accounts are selected for Cloud Storage.
-- **[Known Issue]** The vSphere CPI introduced in 2.10.41 (and all following vSphere CPIs to v79) creates VMs much more slowly than previous versions if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.10.44)
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -132,7 +134,7 @@ on the Cloud Foundry website.
 - **[Known Issue Fix]** Certificates endpoint no longer returns a 500 error due to "nested asn" error. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** Deleting VM types using the API endpoint is allowed even when VMs are deployed with those types. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** Content-Security-Policy header should not prevent users logging in with SAML. Issue is introduced in v2.10.40.
-- **[Known Issue]** The vSphere CPI introduced in 2.10.41 (and all following vSphere CPIs to v79) creates VMs much more slowly than previous versions if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -156,7 +158,7 @@ on the Cloud Foundry website.
 
 - **[Known Issue Fix]** The expiring certificates API should not return a 500 status error when syslog certificates are not configured. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** The VM type deletion API endpoint should not return a 500 status error. Issue is introduced in v2.10.40.
-- **[Known Issue]** The vSphere CPI introduced in 2.10.41 (and all following vSphere CPIs to v79) creates VMs much more slowly than previous versions if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -181,7 +183,7 @@ on the Cloud Foundry website.
 - **[Bug Fix]** The BOSH Director would fail to deploy if the persistent disk still contained the postgres 9 data directory. This data has not been in use since Ops Manager 2.4, but there was no automated cleanup process.
 - **[Known Issue]** The expiring certificates API endpoint will return a 500 status error for customers that have the syslog feature configured without entering an SSL certificate. Additionally, attempting to generate a support bundle will return an error. To workaround this issue, see [Support bundle download gives error undefined method `strip` and Ops Manager certificate pane does not load](https://community.pivotal.io/s/article/Support-bundle-download-gives-error-undefined-method)
 - **[Known Issue]** Deleting custom VM types using the API always returns a 500 status error.
-- **[Known Issue]** The vSphere CPI introduced in 2.10.41 (and all following vSphere CPIs to v79) creates VMs much more slowly than previous versions if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
