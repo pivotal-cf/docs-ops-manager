@@ -27,7 +27,8 @@ on the Cloud Foundry website.
 
 **Release Date:** September 27, 2022
 
-- **[Bug Fix]** Ops Manager create export does not clean up tmp files
+- **[Bug Fix]** OpsManager correctly removes temporary files created during an export
+- **[Known Issue Fix]** Fixes a bug preventing Azure configurations from being correctly saved/deployed when Storage Accounts are used for Cloud Storage (problem introduced in 2.10.44)
 
 <table border="1" class="nice">
   <thead>
@@ -48,8 +49,8 @@ on the Cloud Foundry website.
 ### <a id="2-9-42"></a> v2.9.42
 
 **Release Date:** August 18, 2022
--
-- **[Known Issue]** OpsManager v2.9.41 - 42 Azure IaaS configuration will error incorrectly (preventing "Apply Changes") if Storage Accounts are selected for Cloud Storage.
+
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.9.41)
 
 <div class="note warning"><strong>Warning:</strong>
   This release includes a new version of System Metrics, which will cause all VMs to redeploy.
@@ -76,7 +77,7 @@ on the Cloud Foundry website.
 **Release Date:** July 14, 2022
 
 - **[Security Fix]** Remediated CVE-2022-23923 in the tile JavaScript migration process.
-- **[Known Issue]** OpsManager v2.9.41 - 42: Azure IaaS configuration will error incorrectly (preventing "Apply Changes") if Storage Accounts are selected for Cloud Storage.
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.9.41)
 
 <table border="1" class="nice">
   <thead>
