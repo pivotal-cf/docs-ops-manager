@@ -5,119 +5,151 @@ owner: Ops Manager
 
 This topic contains release notes for <%= vars.ops_manager_full %> v3.0.
 
-You can jump upgrade directly from previous versions of Ops Manager to Ops Manager 3.0. For more information, see <a href="https://docs.pivotal.io/ops-manager/3-0/jump-upgrades.html">Jump Upgrading to Ops Manager v3.0</a>.
+You can jump upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> v3.0. For more information, see [Jump Upgrading to
+<%= vars.ops_manager %> v3.0](jump-upgrades.html).
 
-For the feature highlights of this release, see [New Features in <%= vars.ops_manager %> 3.0](#major-features).
+For the feature highlights of this release, see [New Features in <%= vars.ops_manager %> v3.0](#major-features) below.
 
 <%= vars.ops_manager %> is certified by the Cloud Foundry Foundation for <%= Date.today.year %>.
 
-For more information about the Cloud Foundry Certified Provider Program, see
-[How Do I Become a Certified Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/)
-on the Cloud Foundry website.
+For more information about the Cloud Foundry Certified Provider Program, see [How Do I Become a Certified
+Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Cloud Foundry website.
 
 <hr>
 
 ## <a id='releases'></a> Releases
 
+
 ## <a id='how-to-upgrade'></a> How to Upgrade
 
-To upgrade to <%= vars.ops_manager_full %> v3.0, see [Upgrading <%= vars.ops_manager %>](./install/upgrading-pcf.html).
+To upgrade to <%= vars.ops_manager_full %> v3.0, see [Upgrading <%= vars.ops_manager %>](install/upgrading-pcf.html).
+
 
 ## <a id='major-features'></a> New Features in <%= vars.ops_manager %> v3.0
 
 <%= vars.ops_manager %> v3.0 includes the following major features:
 
-### <a id='ubuntu-jammy'></a> Ops Manager and BOSH Director Upgraded to Ubuntu 22.04 (Jammy Jellyfish)
+### <a id='ubuntu-jammy'></a> Jammy Jellyfish Stemcell Support
 
-Ops Manager 3.0 uses a Jammy stemcell based on Ubuntu 22.04 (Jammy Jellyfish).
+<%= vars.ops_manager %> v3.0 uses Jammy Jellyfish, a Jammy stemcell based on Ubuntu 22.04.
 
-The previously supported Xenial stemcells were based on Ubuntu 16.04 (Xenial Xersus). The stemcells based on this distribution will reach end of general support (EOGS) in April 2024 and will no longer receive security updates.
+The previously-supported Xenial Xerus stemcells were based on Ubuntu 16.04. These stemcells are due to reach end of general support (EOGS) and stop receiving
+security updates in April 2024. You can still use Xenial stemcells in conjunction with tiles installed on <%= vars.ops_manager %> v3.0 until they reach EOGS.
 
-The Xenial stemcells can continue to be used in conjunction with tiles installed in Ops Manager 3.0 until they reach EOGS.
-
-Using Jammy stemcells in v3.0 ensures that Ops Manager users continue to have access to secure stemcells based on an Ubuntu distribution maintained by Canonical.
+<%= vars.ops_manager %> v3.0 allows tile authors to upgrade from Xenial stemcells to Jammy Jellyfish stemcells. This ensures that <%= vars.ops_manager %> v3.0
+users can maintain access to secure stemcells.
 
 ### <a id='applied-runtime-config'></a> Changes Page Includes Applied Runtime Configs
 
-The See Changes page for a tile now includes a list of runtime configs that will be applied to that tile.
+The **Review Changes** page for a tile includes a list of runtime configurations to be applied to that tile.
 
-Runtime configs are a way tiles can add behavior to VMs deployed by other tiles. As an example, the "Enabled System Metrics" setting within the BOSH Director tile applies a runtime config to the TAS tile for additional monitoring capabilities.
+Tiles can use runtime configurations to influence the behavior of VMs that other tiles deploy. For example, when you activate the **Enable additional System
+Metrics** checkbox in the **Director Config** pane of the BOSH Director tile, the BOSH Director applies a runtime configuration to the VMs that
+<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) deploys that allows the BOSH Director to collect detailed metrics from
+<%= vars.app_runtime_abbr %> VMs.
 
-Changes to a runtime config can cause longer deploy times on the next Apply Changes. This feature allows users to see the changes that affect specific tiles so that they know a longer Apply Changes may occur.
+Changes to a runtime configuration can cause longer deployment times when you re-deploy a tile. By reviewing the runtime configurations that are to be applied
+to tiles during re-deployment, you can determine in advance which tiles may take a longer time to re-deploy.
 
-### <a id='aws-vm-catalog'></a> AWS Deployments Use 5th Generation AMD Instances
+### <a id='aws-vm-catalog'></a> AWS Deployments Use 5th-Generation AMD Instances
 
-Ops Manager now allows the use of 5th Generation AMD instances for AWS deployments. These instance types are more performant and more cost effective than the previous instance types.
+<%= vars.ops_manager %> v3.0 uses 5th-generation AMD instances for AWS deployments. 5th-generation AMD instances are more performant and cost-effective than
+previous instance types. Both Jammy Jellyfish stemcells and Xenial stemcells support 5th-generation AMD instances.
 
-New installations of Ops Manager 3.0 will use the 5th Generation AMD instances by default. Customers that upgrade to Ops Manager v3.0 can opt-in to the new instance types on the AWS Config page within the BOSH Director tile. For more information, see [Configuring BOSH Director on AWS](/ops-manager/3-0/aws/config-manual.html#pcfaws-om-awsconfig).
+New installations of <%= vars.ops_manager %> v3.0 use 5th-generation AMD instances by default. If you upgrade to <%= vars.ops_manager %> v3.0 from
+<%= vars.ops_manager %> v2.10 or earlier, you can either keep your current VM types or convert your VMs to 5th-generation AMD instances in the **AWS Config**
+pane of the BOSH Director tile. For more information, see [Step 2: AWS Config Page](aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring BOSH Director
+on AWS_.
 
-These instance types are supported by Jammy stemcells and Xenial stemcells.
+If you are using a custom instance type catalog, the VM types that you can use do not change.
 
-If you are using a custom instance type catalog, your VM types that are used and available do not change.
+For more information about AWS Linux instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). For
+more information about AWS Windows instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html).
 
-For more information about AWS instance types, see AWS EC2 Instance Types in the AWS documentation.
+### <a id='aws-gp3'></a> AWS Deployments Use GP3 Disks
 
-### <a id='aws-gp3'></a> AWS Deployments Use GP3 Disks By Default
+<%= vars.ops_manager %> v3.0 uses gp3 disks for AWS deployments. gp3 disks are more performant and cost-effective than gp2 disks.
 
-Starting in Ops Manager 3.0, gp3 disk types are the default for AWS deployments. gp3 disks are more performant and more cost effective when compared to gp2 disks. Ops Manager 2.10.19 introduced the ability to choose between gp2 and gp3 disk types.
+New installations of <%= vars.ops_manager %> v3.0 use gp3 disks by default. If you upgrade to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.10
+or earlier, you can either keep your current disk types or convert your disks to gp3 in the **AWS Config** pane of the BOSH Director tile. For more
+information, see [Step 2: AWS Config Page](aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring BOSH Director on AWS_.
 
-New installations of Ops Manager 3.0 will use gp3 by default. Customers that upgrade to Ops Manager 3.0 will retain their previous setting, but can opt-in to using gp3 disk types on the AWS Config page within the BOSH Director tile. For more information, see [Configuring BOSH Director on AWS](/ops-manager/3-0/aws/config-manual.html#pcfaws-om-awsconfig).
+### <a id='google-vm-catalog'></a> GCP Deployments Use E2 Series Instances
 
-### <a id='google-vm-catalog'></a> Google Deployments Use E2 Series Instances
+<%= vars.ops_manager %> v3.0 uses E2 Series instances for GCP deployments. E2 Series instances are more performant and cost-effective than previous instance
+types. Both Jammy Jellyfish stemcells and Xenial stemcells support 5th-generation AMD instances.
 
-Ops Manager now allows the use of E2 Series instances for Google deployments. These instance types are more performant and more cost effective than the previous instance types.
+New installations of <%= vars.ops_manager %> v3.0 use E2 Series instances by default. If you upgrade to <%= vars.ops_manager %> v3.0 from
+<%= vars.ops_manager %> v2.10 or earlier, you can either keep your current VM types or convert your VMs to E2 Series instances in the **Google Config** pane
+of the BOSH Director tile. For more information, see [Step 2: Configure GCP Tile](gcp/config-manual.html#gcp-config) in _Configuring BOSH Director on GCP_.
 
-New installations of Ops Manager 3.0 will use the E2 Series instances by default. Customers that upgrade to Ops Manager v3.0 can opt-in to the new instance types on the Google Config page within the BOSH Director tile. For more information, see [Configuring BOSH Director on GCP](/ops-manager/3-0/gcp/config-manual.html#gcp-config).
+If you are using a custom instance type catalog, the VM types that you can use do not change.
 
-These instance types are supported by Jammy stemcells and Xenial stemcells.
+For more information about GCP instance types, see the [GCP documentation](https://cloud.google.com/compute/docs/machine-types).
 
-If you are using a custom instance type catalog, your VM types that are used and available do not change.
+### <a id='google-native-machine-types'></a> GCP Deployments Allow Machine Types in Custom VM Type Catalogs
 
-For more information about Google instance types, see Google Instance Types in the Google Cloud documentation.
+<%= vars.ops_manager %> v3.0 allows you to include machine types in your custom VM type catalogs for GCP deployments. When you configure VMs to use a specific
+machine type as their VM type, the BOSH Director creates VMs using that machine type, rather than creating a custom VM that matches the CPU and RAM
+specifications. This allows you to use specialized VM types that are not in the default <%= vars.ops_manager %> VM type catalog.
 
-### <a id='google-native-machine-types'></a> Google Deployments Allow Native Machine Type For Custom VM Type Catalog
+If you do not specify a machine type as a custom VM type, the BOSH Director continues to create VMs that match the CPU and RAM specifications.
 
-Ops Manager 3.0 allows machine type to be set when creating a custom VM type catalog on Google deployments. When a specific machine type is set for a VM type, then BOSH will create a VM using that machine type instead of creating a custom VM that matches the CPU and RAM specifications. This allows you to take advantage of specialized VM types not present in the default Ops Manager catalog.
+For more information, see the [<%= vars.ops_manager %> API
+documentation](https://docs.pivotal.io/ops-manager/3-0/opsman-api/#tag/VM-types/paths/~1api~1v0~1vm_types/put).
 
-If you do not specify a machine type for the custom VM type, then BOSH will continue to create a VM that matches the CPU and RAM specifications as in prior versions of Ops Manager.
-
-For more information, see [Overriding defaults with custom VM types](/platform/3-0/opsman-api/#tag/VM-types/paths/~1api~1v0~1vm_types/put) in the API documentation.
 
 ## <a id='breaking-changes'></a> Breaking Changes in <%= vars.ops_manager %> v3.0
 
 <%= vars.ops_manager %> v3.0 includes the following breaking changes:
 
-### <a id='bosh-metrics-removed'></a> Deprecated BOSH System Metrics Support Removed
+### <a id='bosh-metrics-server-removed'></a> BOSH System Metrics Server is Removed
 
-The BOSH System Metrics Server option was deprecated in Ops Manager 2.10.1 and has now been removed.
+The BOSH System Metrics Server is removed from <%= vars.ops_manager %> v3.0.
 
-If you were using the BOSH System Metrics option, you should switch to the recommended System Metrics option on the Director Config page of the BOSH Director tile prior to upgrading.
+If you upgrade to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.10 or earlier, and you had previously configured the BOSH Director to activate
+the BOSH System Metrics Server, you must deactivate the **Enable deprecated BOSH System Metrics Server** checkbox and activate the **Enable additional System
+Metrics** checkbox in the **Director Config** pane of the BOSH Director tile before you begin upgrading.
 
-### <a id='nsx-v-removed'></a> NSX-V Support Removed For vSphere Deployments
+### <a id='nsx-v-removed'></a> NSX-V Networking is Removed
 
-NSX-V reached end of support in January 2022 and can no longer be configured in Ops Manager 3.0. You can still configure NSX-T when using a compatible vSphere deployment.
+NSX-V networking reached EOGS in January 2022. Because of this, you cannot configure NSX-V networking in <%= vars.ops_manager %> v3.0.
 
-### <a id='openstack-keystone-v2-removed'></a> Keystone Version 2 Authentication Support Removed For OpenStack Deployments
+You can still configure NSX-T networking for compatible vSphere deployments. For more information, see [Resource Requirements](install/vsphere.html#runtimes)
+in _Installing <%= vars.ops_manager %> on vSphere_.
 
-Version 2 of the Keystone authentication service used by OpenStack was removed in favor of Version 3 starting in OpenStack Queens.
+### <a id='keystone-v2-removed'></a> Keystone v2 Authentication is Removed
 
-If you were using Keystone v2, you must switch to Keystone v3 prior to upgrading.
+In OpenStack deployments, Keystone v2 is removed and replaced by Keystone v3 for user authentication.
 
-### <a id='bosh-multihome-removed'></a> Multi-home BOSH Director Support Removed
+If you upgrade to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.10 or earlier, and you had previously used Keystone v2 to authenticate users,
+you must re-configure your OpenStack deployment to use Keystone v3 before you begin upgrading.
 
-Older versions of Ops Manager contained an undocumented API endpoint that allowed you to configure a second network on the BOSH Director VM. This API endpoint and corresponding configuration has been removed in Ops Manager 3.0.
+### <a id='bosh-multihome-removed'></a> Multi-Network Configuration for the BOSH Director VM is Removed
 
-### <a id=''></a> Azure Stack and Azure Germany Support Removed
+<%= vars.ops_manager %> v2.10 and earlier included an undocumented API endpoint that allowed you to configure a second network on the BOSH Director VM. In
+<%= vars.ops_manager %> v3.0, this API endpoint is removed, and you can no longer configure a second network on the BOSH Director VM.
 
-Microsoft ceased operation of the isolated Azure Germany cloud platform in 2021, and can no longer be configured as an environment in Ops Manager 3.0. You can still use Germany-based regions in the global Azure Commercial Cloud environment within Ops Manager 3.0.
+### <a id='azure'></a> Azure Germany and Azure Stack Support is Removed
 
-Support for Azure Stack environments has also been removed in Ops Manager 3.0.
+Microsoft ceased operating the Azure Germany cloud platform in 2021. Because of this, you cannot configure an Azure Germany environment in
+<%= vars.ops_manager %> v3.0. However, you can still use Germany-based regions in the global Azure Commercial Cloud environment.
 
-### <a id='syslog-custom-rules'></a> Invalid Custom Syslog Rules Now Cause Errors
+You also cannot configure an Azure Stack environment in <%= vars.ops_manager %> v3.0.
 
-Invalid custom syslog rules will now cause deployments to fail with a relevant error message. Previously, those rules would not have caused deployments to fail, instead an error would have been logged and they would have been discarded.
+### <a id='syslog-custom-rules'></a> Invalid Custom Syslog Rules Cause Errors
 
-Operators should check for the presence of the error message `Custom rule configuration invalid` during syslog pre-start, indicating that at least some custom rules are invalid, and change their custom rules accordingly. `rsyslogd -N1` can also be used to manually validate the correctness of a syslog configuration in a local environment.
+Iin <%= vars.ops_manager %> v3.0, invalid custom syslog rules cause <%= vars.ops_manager %> deployments to fail with a relevant error message. In
+<%= vars.ops_manager %> v2.10 and earlier, invalid custom syslog rules only cause <%= vars.ops_manager %> to log errors and discard the invalid rules.
+
+To avoid deployment failure, validate your custom syslog configuration in one of the following ways:
+
+* As your syslog server is pre-starting, look for a `Custom rule configuration invalid` error message. This error message indicates that one or more of your
+custom syslog rules are invalid. You can then edit these custom rules accordingly in the **Custom rsyslog Configuration** field in the **Syslog** pane of the
+BOSH Director tile.
+
+* In a terminal window, run `rsyslogd -N1` in a local environment.
+
 
 ## <a id='known-issues'></a> Known Issues
 
