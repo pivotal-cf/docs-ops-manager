@@ -61,7 +61,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
     Configure NSX-T networking by entering the following information:
         * **Use NSX-T Policy API**: Select whether to use the NSX-T Policy API instead of the Manager API when placing VMs in NSX-T groups and server pools. You can use NSX-T groups or server pools to designate VMs as load balancer back ends. This feature requires NSX-T Data Center v3.0 or later.
         <p class="note"><strong>Note:</strong> The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. Do not select the <strong>NSX-T Policy API</strong> option if you are using an earlier <%= vars.ops_manager %> version.</p>
-        * **Use NSX-T Policy API Migration Mode**: Select to enable Migration Mode on the CPI, to transition infrastructure created with the Management API, to the Policy API.
+        * **Use NSX-T Policy API Migration Mode**: Activate this checkbox to activate migration mode on the CPI. This allows you to transition infrastructure created with the Management API over to the Policy API.
         * **NSX Address**: The address of the NSX Manager.
         * **NSX-T Authentication**: Select how BOSH Director authenticates to the NSX Manager:
             * **Local User Authentication** authenticates with a username and password.
@@ -371,10 +371,9 @@ Multiple AZs allow you to provide high availability and load balancing to your a
     <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
     <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
-1. (Optional) If you are using NSX-T, as specified on the [**vCenter Config**](#vcenter-config) pane,
-and you want to configure security and load balancing for the BOSH Director job:
-  1. Select the icon next to the **BOSH Director** job name to reveal the **NSX-T Configuration** column.
-  2. Enter your NSX-T configuration values in these fields.
+1. (Optional) If you configured NSX-T networkig in the **vCenter Config** pane, and you want to configure security and load balancing for the BOSH Director job:
+  1. Click the menu expansion icon next to the **BOSH Director** job name. The **NSX-T Configuration** configuration fields appear.
+  1. Enter your NSX-T configuration values in these fields.
 
 1. Click **Save**.
 
