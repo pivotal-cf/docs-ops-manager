@@ -31,7 +31,7 @@ Before beginning this procedure, ensure that you have successfully completed all
     * **Key Pair Name**: Enter `pcf-ops-manager-key`.
     * **SSH Private Key**: Open the AWS key pair `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy Ops Manager on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
     * **Region**: Select the region where you deployed Ops Manager.
-    * **VM Type Catalog** Select the VM Catalog that you want to use for your BOSH Managed VMs.
+    * **VM Type Catalog** Select the VM catalog that you want to use for your BOSH-deployed VMs.
     * **AWS EBS disk type**: Select the type of EBS volume for BOSH-deployed VMs to use.
     <p class="note warning"><strong>Warning:</strong> If you change this value, BOSH re-creates all VMs when you apply changes.</p>
     * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and BOSH Director VM. For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for <%= vars.ops_manager %> on AWS](../install/cloudform-om-ebs-config.html).
