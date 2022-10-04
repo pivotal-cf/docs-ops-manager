@@ -12,13 +12,11 @@ For additional requirements and installation instructions for <%= vars.ops_manag
 ## <a id="overview"></a> Overview
 
 The vSphere reference architecture for the <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> runtime tiles is based on software-defined networking (SDN) infrastructure.
-vSphere offers NSX-T and NSX-V to support SDN infrastructure.
+vSphere offers NSX-T to support SDN infrastructure.
 
 <%= vars.ops_manager %> supports these configurations for vSphere deployments:
 
 * <%= vars.app_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-T](#pas-nsx-t).
-
-* <%= vars.app_runtime_abbr %> on vSphere with NSX-V. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-V](#pas-nsx-v).
 
 * <%= vars.app_runtime_abbr %> on vSphere without NSX. For more information, see [<%= vars.app_runtime_abbr %> on vSphere without NSX](#pas-no-nsx).
 
@@ -79,8 +77,6 @@ The Tier-0 router must have routable external IP address space to advertise on t
 * Routing incoming and outgoing traffic
 * DNATs and SNATs, load balancer VIPs, and other platform components
 
-<p class="note"><strong>Note:</strong> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
-
 #### <a id="pas-nsx-t-firewall"></a> Firewall
 
 <%= partial '../../common/vsphere-firewall-ports' %>
@@ -99,7 +95,6 @@ The load balancing requirements and recommendations for <%= vars.app_runtime_abb
   * The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer VIP.
   * You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
 
-* <%= vars.company_name %> recommends that you configure Layer 4 NSX-V load balancers for the Gorouters. With Layer 4 load balancers, traffic passes through the load balancers and SSL is terminated at the Gorouters. This approach reduces overhead processing.
   <p class='note'><strong>Note:</strong> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
 
 * Any TCP Gorouters and SSH Proxies within the platform also require NSX-T load balancers.
@@ -181,63 +176,9 @@ For information about security requirements and recommendations for <%= vars.app
 
 For more information about blobstore storage requirements and recommendations, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
-
-## <a id="pas-nsx-v"></a> <%= vars.app_runtime_abbr %> on vSphere with NSX-V
-
-These sections describe the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments. They also provide requirements and recommendations for deploying <%= vars.app_runtime_abbr %> on vSphere with NSX-V, such as network, load balancing, and storage capacity requirements and recommendations.
-
-<%= vars.app_runtime_abbr %> on vSphere with NSX-V enables services provided by NSX on the <%= vars.app_runtime_abbr %> platform, such as an Edge Services Gateway (ESG), load balancers, firewall services, and NAT/SNAT services.
-
-### <a id="pas-nsx-v-diagram"></a> Architecture
-
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
-
-![The diagram shows the architecture for a <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-V.png)
-
-[View a larger version of this diagram](../images/v2/export/PAS_vSphere_NSX-V.png).
-
-<%= vars.app_runtime_abbr %> deployments with NSX-V are deployed with three clusters and three AZs.
-
-<%= vars.app_runtime_abbr %> deployments with NSX-V also include an NSX-V Edge router on the front end. You can install the NSX-V Edge router as an ESG or as a distributed logical router (DLR).
-
-The Edge router is a central logical router into the <%= vars.app_runtime_abbr %> platform. You can configure VLAN routing from the routed backbone into NSX-V through the Edge router.
-
-Compared to NSX-T architecture, NSX-V architecture does not use Tier-1 routers to connect the central router to the various subnets for the <%= vars.app_runtime_abbr %> deployment.
-
-For more information about using ESG on vSphere, see [Using Edge Services Gateway on VMware NSX](./vsphere_nsx_cookbook.html).
-
 ### <a id="pas-nsx-t-networking"></a> Networking
 
-These sections describe networking requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
-
-#### <a id="pas-nsx-v-routable-ip"></a> Routable IPs
-
-You must assign routable external IPs on the server side, such as routable IPs for NATs and load balancers, to the Edge router.
-
-#### <a id="pas-nsx-v-firewall"></a> Firewall
-
-<%= partial '../../common/vsphere-firewall-ports' %>
-
-#### <a id="pas-nsx-v-dns"></a> DNS
-
-<%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
-
-For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
-
-#### <a id="pas-nsx-v-load-balancing"></a> Load Balancing
-
-The load balancing requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments are:
-
-* NSX-V includes an Edge router. The Edge router supports ESG. ESG provides load balancing and is configured to route to the <%= vars.app_runtime_abbr %> platform.
-
-* <%= vars.company_name %> recommends that you configure Layer 4 NSX-V load balancers for the Gorouters. With Layer 4 load balancers, traffic passes through the load balancers and SSL is terminated at the Gorouters. This approach reduces overhead processing.
-  <p class='note'><strong>Note:</strong> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
-
-* The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer. You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
-
-* Any TCP routers and SSH Proxies also require NSX-V load balancers.
-
-* <%= vars.company_name %> recommends that you configure external load balancers in front of the Edge router. For example, you can configure an F5 external load balancer.
+For information about installing TAS with NSX-T, see [Deploying TAS for VMs with NSX-T Networking](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/vsphere-nsx-t.html).
 
 #### <a id="pas-nsx-v-ip-spacing"></a> Networks, Subnets, and IP Address Spacing
 
@@ -401,7 +342,6 @@ The routable IP address requirements and recommendations for <%= vars.k8s_runtim
 	Select a network range for the Tier-0 router with enough space so that you can separate the network into these two jobs:
     * Routing incoming and outgoing traffic
     * DNATs and SNATs, load balancer WIPs, and other platform components
-	<p class="note"><strong>Note:</strong> Compared to vSphere deployments with NSX-V, <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T consumes much more address space for SNATs.</p>
 
 * **Deployments with several load balancers:** <%= vars.company_name %> recommends a `/23` network for deployments that use several load balancers. Deployments with several load balancers have much higher address space consumption for load balancer WIPs. This is because Kubernetes service types allocate IP addresses very frequently. To accommodate the higher address space, allow for four times the address space.
 

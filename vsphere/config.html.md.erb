@@ -54,11 +54,10 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
     * **Persistent Datastore Cluster Names (comma delimited)**: The names of the datastore clusters that store persistent VM disks deployed by <%= vars.ops_manager %>. If Datastore Names and Datastore Clusters are specified, both will be considered for disk placement. If you disable Storage DRS for a datastore cluster, the BOSH CPI ignores the cluster. For more information, see [Enable and Disable Storage DRS](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-827DBD6D-08B7-4411-9214-9E126671457F.html).
     <p class="note"><strong>Note:</strong> A datastore cluster is a collection of datastores with shared resources and a shared management interface.</p>
 1. To configure networking, complete the **vCenter Config** fields described below:
-    * **Standard vCenter Networking**: This is the default option when upgrading <%= vars.ops_manager %>. If you select this option, you need not configure the **NSX Networking** fields below.
-    <p class="note warning"><strong>Warning:</strong> If you intend to deploy <%= vars.k8s_runtime_abbr %> using Flannel as the CNI (as opposed to NSX-T), then select this option to configure the BOSH Director. Do not choose **NSX Networking**. When you configure the <%= vars.k8s_runtime_abbr %> tile later on, you will configure Flannel as the container network interface (CNI). <br/><br/>If you intend to deploy <%= vars.k8s_runtime_abbr %> with NSX-T, see <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-index.html">Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center</a>.</p>
-    <p class="note warning"><strong>Warning:</strong> When deploying on VMC (vSphere on AWS), you must select **Standard vCenter Networking**. **NSX Networking** does not work with VMC.</p>
-    * **NSX-T Networking**: Select this option to allow NSX-T network virtualization for non-<%= vars.k8s_runtime_abbr %> products such as <%= vars.app_runtime_abbr %>. This virtualization allows you to configure component load balancing and security in the **Resource Config** pane of the BOSH Director tile. For more information, see [Step 10: Resource Config Pane](#resource-config) below.
-    Configure NSX-T networking by entering the following information:
+    * **Standard vCenter Networking:** This is the default option when upgrading <%= vars.ops_manager %>. If you select this option, you do not need to configure the **NSX-T Networking** fields below.
+    <p class="note warning"><strong>Warning:</strong> If you intend to deploy <%= vars.k8s_runtime_abbr %> using Flannel as the CNI, select this option to configure the BOSH Director. Do not choose <strong>NSX-T Networking</strong>. When you configure the <%= vars.k8s_runtime_abbr %> tile later on, you configure Flannel as the container network interface (CNI).<br><br>If you intend to deploy <%= vars.k8s_runtime_abbr %> with NSX-T, see the <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-index.html"><%= vars.k8s_runtime_abbr %> documentation</a>.</p>
+    <p class="note warning"><strong>Warning:</strong> When deploying on VMC (vSphere on AWS), you must select <strong>Standard vCenter Networking</strong>. <strong>NSX-T Networking</strong> does not work with VMC.</p>
+    * **NSX-T Networking:** Select this option to allow NSX-T network virtualization for non-<%= vars.k8s_runtime_abbr %> products such as <%= vars.app_runtime_abbr %>. This virtualization allows you to configure component load balancing and security in the **Resource Config** pane of the BOSH Director tile. For more information, see [Step 10: Resource Config Pane](#resource-config) below.<br><br>Configure NSX networking by entering the following information:
         * **Use NSX-T Policy API**: Select whether to use the NSX-T Policy API instead of the Manager API when placing VMs in NSX-T groups and server pools. You can use NSX-T groups or server pools to designate VMs as load balancer back ends. This feature requires NSX-T Data Center v3.0 or later.
         <p class="note"><strong>Note:</strong> The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. Do not select the <strong>NSX-T Policy API</strong> option if you are using an earlier <%= vars.ops_manager %> version.</p>
         * **Use NSX-T Policy API Migration Mode**: Activate this checkbox to activate migration mode on the CPI. This allows you to transition infrastructure created with the Management API over to the Policy API.
@@ -76,6 +75,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
             openssl s_client -showcerts -connect NSX-MANAGER-ADDRESS:443 < /dev/null 2> /dev/null | openssl x509
             ```
             Where `NSX-MANAGER-ADDRESS` is the address of the NSX manager.
+        * **Use NSX-T Policy API Migration Mode**: This is a special mode to migrate an existing deployment from earlier NSX-T Manager API objects such as NS Groups to the newer NSX-T Policy API objects such as Groups, and should only be used in conjunction with NSX-T migration scripts. Leave unchecked if unsure.
 
 1. Configure the following folder names:
     * **VM Folder**: The vSphere datacenter folder where <%= vars.ops_manager %> places VMs. Enter `[YOUR-DEPLOYMENT]_vms` where `YOUR-DEPLOYMENT` corresponds to a descriptive name for your deployment. For example, `my_pcf_vms`.
@@ -371,7 +371,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
     <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
     <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
-1. (Optional) If you configured NSX-T networkig in the **vCenter Config** pane, and you want to configure security and load balancing for the BOSH Director job:
+1. (Optional) If you configured NSX-T networking in the **vCenter Config** pane, and you want to configure security and load balancing for the BOSH Director job:
   1. Click the menu expansion icon next to the **BOSH Director** job name. The **NSX-T Configuration** configuration fields appear.
   1. Enter your NSX-T configuration values in these fields.
 

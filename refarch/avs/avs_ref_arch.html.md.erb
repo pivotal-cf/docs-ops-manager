@@ -71,8 +71,6 @@ The Tier-0 router must have routable external IP address space to advertise on t
 * Routing incoming and outgoing traffic
 * DNATs and SNATs, load balancer VIPs, and other platform components
 
-<p class="note"><strong>Note:</strong> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
-
 #### <a id="pas-nsx-t-firewall"></a> Firewall
 
 <%= partial '../../common/vsphere-firewall-ports' %>
@@ -90,9 +88,6 @@ The load balancing requirements and recommendations for <%= vars.app_runtime_abb
 * You must configure NSX-T load balancers for the Gorouters.
   * The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer VIP.
   * You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
-
-* <%= vars.company_name %> recommends that you configure Layer 4 NSX-V load balancers for the Gorouters. With Layer 4 load balancers, traffic passes through the load balancers and SSL is terminated at the Gorouters. This approach reduces overhead processing.
-  <p class='note'><strong>Note:</strong> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
 
 * Any TCP Gorouters and SSH Proxies within the platform also require NSX-T load balancers.
 
