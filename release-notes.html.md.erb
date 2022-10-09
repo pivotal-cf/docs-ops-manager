@@ -49,6 +49,16 @@ on the Cloud Foundry website.
 
 **Release Date:** August 25, 2022
 
+<div class="note warning"><strong>Warning:</strong>
+This release includes an unintended breaking change. When upgrading from Ops Manager versions
+before 2.10.9 on vSphere, the NSX-T Policy API mode will be enabled by default. Customers that
+are not using the NSX-T Policy API will need to uncheck the "Use NSX-T Policy API" checkbox on the 
+vSphere Config page, or set the `nsx_t_use_policy_api` API field to false. 
+
+This issue will be fixed in a later patch.
+</div>
+
+
 - **[Feature]** Ops Manager generated leaf certificates includes the keyEncipherment extension
 - **[Change]** New installs of OM on vSphere default to use policy-api
 - **[Bug Fix]** Upgrading stemcell, then upgrading Ops Manager to version that does not include that stemcell does not fail
