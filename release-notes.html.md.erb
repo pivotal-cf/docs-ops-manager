@@ -67,6 +67,11 @@ on AWS_.
 
 If you are using a custom instance type catalog, the VM types that you can use do not change.
 
+The 5th-generation AMD instances are closer to the recommended default size for tiles. As such, you will see tiles select VM types that are smaller than the
+previous sizes for their jobs. A notable example of this is Diego Cells will now select an instance type with 2 CPUs and 16 GB of RAM. When switching to use
+5th-generation AMD instances, you may need to scale up the instance count for Diego Cells, or change the selected VM type of certain jobs to use a larger VM
+type. You can configure both instance counts and VM type on the *Resource Config* page of individual tiles.
+
 For more information about AWS Linux instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). For
 more information about AWS Windows instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html).
 
@@ -88,6 +93,11 @@ New installations of <%= vars.ops_manager %> v3.0 use E2 Series instances by def
 of the BOSH Director tile. For more information, see [Step 2: Configure GCP Tile](gcp/config-manual.html#gcp-config) in _Configuring BOSH Director on GCP_.
 
 If you are using a custom instance type catalog, the VM types that you can use do not change.
+
+The E2 Series instances are closer to the recommended default size for tiles. As such, you will see tiles select VM types that are smaller than the
+previous sizes for their jobs. A notable example of this is Diego Cells will now select an instance type with 2 CPUs and 16 GB of RAM. When switching to use
+E2 Series instances, you may need to scale up the instance count for Diego Cells, or change the selected VM type of certain jobs to use a larger VM
+type. You can configure both instance counts and VM type on the *Resource Config* page of individual tiles.
 
 For more information about GCP instance types, see the [GCP documentation](https://cloud.google.com/compute/docs/machine-types).
 
