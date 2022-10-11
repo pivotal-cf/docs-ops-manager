@@ -3,12 +3,12 @@ title: Ops Manager v3.0 Release Notes
 owner: Ops Manager
 ---
 
-This topic contains release notes for <%= vars.ops_manager_full %> v3.0.
+This topic contains release notes for <%= vars.ops_manager_full %> <%= vars.v_major_version %>.
 
-You can jump upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> v3.0. For more information, see [Jump Upgrading to
-<%= vars.ops_manager %> v3.0](jump-upgrades.html).
+You can jump upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> <%= vars.v_major_version %>. For more information,
+see [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](jump-upgrades.html).
 
-For the feature highlights of this release, see [New Features in <%= vars.ops_manager %> v3.0](#major-features) below.
+For the feature highlights of this release, see [New Features in <%= vars.ops_manager %> <%= vars.v_major_version %>](#major-features) below.
 
 <%= vars.ops_manager %> is certified by the Cloud Foundry Foundation for <%= Date.today.year %>.
 
@@ -26,22 +26,23 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 ## <a id='how-to-upgrade'></a> How to Upgrade
 
-To upgrade to <%= vars.ops_manager_full %> v3.0, see [Upgrading <%= vars.ops_manager %>](install/upgrading-pcf.html).
+To upgrade to <%= vars.ops_manager_full %> <%= vars.v_major_version %>, see [Upgrading <%= vars.ops_manager %>](install/upgrading-pcf.html).
 
 
-## <a id='major-features'></a> New Features in <%= vars.ops_manager %> v3.0
+## <a id='major-features'></a> New Features in <%= vars.ops_manager %> <%= vars.v_major_version %>
 
-<%= vars.ops_manager %> v3.0 includes the following major features:
+<%= vars.ops_manager %> <%= vars.v_major_version %> includes the following major features:
 
 ### <a id='ubuntu-jammy'></a> Jammy Jellyfish Stemcell Support
 
-<%= vars.ops_manager %> v3.0 uses Jammy Jellyfish, a Jammy stemcell based on Ubuntu 22.04.
+<%= vars.ops_manager %> <%= vars.v_major_version %> uses Jammy Jellyfish, a Jammy stemcell based on Ubuntu 22.04.
 
 The previously-supported Xenial Xerus stemcells were based on Ubuntu 16.04. These stemcells are due to reach end of general support (EOGS) and stop receiving
-security updates in April 2024. You can still use Xenial stemcells in conjunction with tiles installed on <%= vars.ops_manager %> v3.0 until they reach EOGS.
+security updates in April 2024. You can still use Xenial stemcells in conjunction with tiles installed on <%= vars.ops_manager %> <%= vars.v_major_version %>
+until they reach EOGS.
 
-<%= vars.ops_manager %> v3.0 allows tile authors to upgrade from Xenial stemcells to Jammy Jellyfish stemcells. This ensures that <%= vars.ops_manager %> v3.0
-users can maintain access to secure stemcells.
+<%= vars.ops_manager %> <%= vars.v_major_version %> allows tile authors to upgrade from Xenial stemcells to Jammy Jellyfish stemcells. This ensures that
+<%= vars.ops_manager %> <%= vars.v_major_version %> users can maintain access to secure stemcells.
 
 ### <a id='applied-runtime-config'></a> Review Pending Changes Page Includes Applied Runtime Configurations
 
@@ -49,63 +50,64 @@ The **Review Pending Changes** page for a tile includes a list of runtime config
 
 Tiles can use runtime configurations to influence the behavior of VMs that other tiles deploy. For example, when you activate the **Enable additional System
 Metrics** checkbox in the **Director Config** pane of the BOSH Director tile, the BOSH Director applies a runtime configuration to the VMs that
-<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) deploys that allows the BOSH Director to collect detailed metrics from
-<%= vars.app_runtime_abbr %> VMs.
+<%= vars.app_runtime_first %> deploys that allows the BOSH Director to collect detailed metrics from <%= vars.app_runtime_abbr %> VMs.
 
 Changes to a runtime configuration can cause longer deployment times when you re-deploy a tile. By reviewing the runtime configurations that are to be applied
 to tiles during re-deployment, you can determine in advance which tiles may take a longer time to re-deploy.
 
 ### <a id='aws-vm-catalog'></a> AWS Deployments Use 5th-Generation AMD Instances
 
-<%= vars.ops_manager %> v3.0 uses 5th-generation AMD instances for AWS deployments. 5th-generation AMD instances are more performant and cost-effective than
-previous instance types. Both Jammy Jellyfish stemcells and Xenial stemcells support 5th-generation AMD instances.
+<%= vars.ops_manager %> <%= vars.v_major_version %> uses 5th-generation AMD instances for AWS deployments. 5th-generation AMD instances are more performant
+and cost-effective than previous instance types. Both Jammy Jellyfish stemcells and Xenial stemcells support 5th-generation AMD instances.
 
-New installations of <%= vars.ops_manager %> v3.0 use 5th-generation AMD instances by default. If you upgrade to <%= vars.ops_manager %> v3.0 from
-<%= vars.ops_manager %> v2.10 or earlier, you can either keep your current VM types or convert your VMs to 5th-generation AMD instances in the **AWS Config**
-pane of the BOSH Director tile. For more information, see [Step 2: AWS Config Page](aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring BOSH Director
-on AWS_.
+New installations of <%= vars.ops_manager %> <%= vars.v_major_version %> use 5th-generation AMD instances by default. If you upgrade to
+<%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.10 or earlier, you can either keep your current VM types or convert your
+VMs to 5th-generation AMD instances in the **AWS Config** pane of the BOSH Director tile. For more information, see [Step 2: AWS Config
+Page](aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring BOSH Director on AWS_.
 
 If you are using a custom instance type catalog, the VM types that you can use do not change.
 
-The 5th-generation AMD instances are closer to the recommended default size for tiles. As such, you will see tiles select VM types that are smaller than the
-previous sizes for their jobs. A notable example of this is Diego Cells will now select an instance type with 2 CPUs and 16 GB of RAM. When switching to use
-5th-generation AMD instances, you may need to scale up the instance count for Diego Cells, or change the selected VM type of certain jobs to use a larger VM
-type. You can configure both instance counts and VM type on the *Resource Config* page of individual tiles.
+The 5th-generation AMD instances are closer to the recommended default size for tiles. Because of this, product tiles in <%= vars.ops_manager %> select VM
+types that are smaller than the previous sizes for their jobs. For example, Diego Cells select an instance type with 2 CPUs and 16&nbsp;GB of RAM. When you
+convert your VMs to 5th-generation AMD instances, you may need to either scale up the number of Diego Cell instances or change the selected VM type of certain
+jobs to a larger VM type. You can configure both the number of instances and VM type of each job in the **Resource Config** pane of a product tile.
 
 For more information about AWS Linux instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). For
 more information about AWS Windows instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html).
 
 ### <a id='aws-gp3'></a> AWS Deployments Use GP3 Disks
 
-<%= vars.ops_manager %> v3.0 uses gp3 disks for AWS deployments. gp3 disks are more performant and cost-effective than gp2 disks.
+<%= vars.ops_manager %> <%= vars.v_major_version %> uses gp3 disks for AWS deployments. gp3 disks are more performant and cost-effective than gp2 disks.
 
-New installations of <%= vars.ops_manager %> v3.0 use gp3 disks by default. If you upgrade to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.10
-or earlier, you can either keep your current disk types or convert your disks to gp3 in the **AWS Config** pane of the BOSH Director tile. For more
-information, see [Step 2: AWS Config Page](aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring BOSH Director on AWS_.
+New installations of <%= vars.ops_manager %> <%= vars.v_major_version %> use gp3 disks by default. If you upgrade to <%= vars.ops_manager %>
+<%= vars.v_major_version %> from <%= vars.ops_manager %> v2.10 or earlier, you can either keep your current disk types or convert your disks to gp3 in the
+**AWS Config** pane of the BOSH Director tile. For more information, see [Step 2: AWS Config Page](aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring
+BOSH Director on AWS_.
 
 ### <a id='google-vm-catalog'></a> GCP Deployments Use E2 Series Instances
 
-<%= vars.ops_manager %> v3.0 uses E2 Series instances for GCP deployments. E2 Series instances are more performant and cost-effective than previous instance
-types. Both Jammy Jellyfish stemcells and Xenial stemcells support 5th-generation AMD instances.
+<%= vars.ops_manager %> <%= vars.v_major_version %> uses E2 Series instances for GCP deployments. E2 Series instances are more performant and cost-effective
+than previous instance types. Both Jammy Jellyfish stemcells and Xenial stemcells support 5th-generation AMD instances.
 
-New installations of <%= vars.ops_manager %> v3.0 use E2 Series instances by default. If you upgrade to <%= vars.ops_manager %> v3.0 from
-<%= vars.ops_manager %> v2.10 or earlier, you can either keep your current VM types or convert your VMs to E2 Series instances in the **Google Config** pane
-of the BOSH Director tile. For more information, see [Step 2: Configure GCP Tile](gcp/config-manual.html#gcp-config) in _Configuring BOSH Director on GCP_.
+New installations of <%= vars.ops_manager %> <%= vars.v_major_version %> use E2 Series instances by default. If you upgrade to <%= vars.ops_manager %>
+<%= vars.v_major_version %> from <%= vars.ops_manager %> v2.10 or earlier, you can either keep your current VM types or convert your VMs to E2 Series
+instances in the **Google Config** pane of the BOSH Director tile. For more information, see [Step 2: Configure GCP Tile](gcp/config-manual.html#gcp-config)
+in _Configuring BOSH Director on GCP_.
 
 If you are using a custom instance type catalog, the VM types that you can use do not change.
 
-The E2 Series instances are closer to the recommended default size for tiles. As such, you will see tiles select VM types that are smaller than the
-previous sizes for their jobs. A notable example of this is Diego Cells will now select an instance type with 2 CPUs and 16 GB of RAM. When switching to use
-E2 Series instances, you may need to scale up the instance count for Diego Cells, or change the selected VM type of certain jobs to use a larger VM
-type. You can configure both instance counts and VM type on the *Resource Config* page of individual tiles.
+The E2 Series instances are closer to the recommended default size for tiles. Because of this, product tiles in <%= vars.ops_manager %> select VM types that
+are smaller than the previous sizes for their jobs. For example, Diego Cells select an instance type with 2 CPUs and 16&nbsp;GB of RAM. When you convert your
+VMs to E2 Series instances, you may need to either scale up the number of Diego Cell instances or change the selected VM type of certain jobs to a larger VM
+type. You can configure both the number of instances and VM type of each job in the **Resource Config** pane of a product tile.
 
 For more information about GCP instance types, see the [GCP documentation](https://cloud.google.com/compute/docs/machine-types).
 
 ### <a id='google-native-machine-types'></a> GCP Deployments Allow Machine Types in Custom VM Type Catalogs
 
-<%= vars.ops_manager %> v3.0 allows you to include machine types in your custom VM type catalogs for GCP deployments. When you configure VMs to use a specific
-machine type as their VM type, the BOSH Director creates VMs using that machine type, rather than creating a custom VM that matches the CPU and RAM
-specifications. This allows you to use specialized VM types that are not in the default <%= vars.ops_manager %> VM type catalog.
+<%= vars.ops_manager %> <%= vars.v_major_version %> allows you to include machine types in your custom VM type catalogs for GCP deployments. When you
+configure VMs to use a specific machine type as their VM type, the BOSH Director creates VMs using that machine type, rather than creating a custom VM that
+matches the CPU and RAM specifications. This allows you to use specialized VM types that are not in the default <%= vars.ops_manager %> VM type catalog.
 
 If you do not specify a machine type as a custom VM type, the BOSH Director continues to create VMs that match the CPU and RAM specifications.
 
@@ -113,22 +115,22 @@ For more information, see the [<%= vars.ops_manager %> API
 documentation](https://docs.pivotal.io/ops-manager/3-0/opsman-api/#tag/VM-types/paths/~1api~1v0~1vm_types/put).
 
 
-## <a id='breaking-changes'></a> Breaking Changes in <%= vars.ops_manager %> v3.0
+## <a id='breaking-changes'></a> Breaking Changes in <%= vars.ops_manager %> <%= vars.v_major_version %>
 
-<%= vars.ops_manager %> v3.0 includes the following breaking changes:
+<%= vars.ops_manager %> <%= vars.v_major_version %> includes the following breaking changes:
 
 ### <a id='bosh-metrics-server-removed'></a> BOSH System Metrics Server is Removed
 
-The BOSH System Metrics Server is removed from <%= vars.ops_manager %> v3.0.
+The BOSH System Metrics Server is removed from <%= vars.ops_manager %> <%= vars.v_major_version %>.
 
-If you upgrade to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.10 or earlier, and you had previously configured the BOSH Director to activate
-the BOSH System Metrics Server, you must deactivate the **Enable deprecated BOSH System Metrics Server** checkbox and activate the **Enable additional System
-Metrics** checkbox in the **Director Config** pane of the BOSH Director tile before you begin upgrading. The **Enable deprecated BOSH System Metrics Server**
-checkbox is removed from the BOSH Director tile.
+If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.10 or earlier, and you had previously configured the
+BOSH Director to activate the BOSH System Metrics Server, you must deactivate the **Enable deprecated BOSH System Metrics Server** checkbox and activate the
+**Enable additional System Metrics** checkbox in the **Director Config** pane of the BOSH Director tile before you begin upgrading. The **Enable deprecated
+BOSH System Metrics Server** checkbox is removed from the BOSH Director tile.
 
 ### <a id='nsx-v-removed'></a> NSX-V Networking is Removed
 
-NSX-V networking reached EOGS in January 2022. Because of this, you cannot configure NSX-V networking in <%= vars.ops_manager %> v3.0.
+NSX-V networking reached EOGS in January 2022. Because of this, you cannot configure NSX-V networking in <%= vars.ops_manager %> <%= vars.v_major_version %>.
 
 You can still configure NSX-T networking for compatible vSphere deployments. For more information, see [Resource Requirements](install/vsphere.html#runtimes)
 in _Installing <%= vars.ops_manager %> on vSphere_.
@@ -137,25 +139,26 @@ in _Installing <%= vars.ops_manager %> on vSphere_.
 
 In OpenStack deployments, Keystone v2 is removed and replaced by Keystone v3 for user authentication.
 
-If you upgrade to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.10 or earlier, and you had previously used Keystone v2 to authenticate users,
-you must re-configure your OpenStack deployment to use Keystone v3 before you begin upgrading.
+If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.10 or earlier, and you had previously used Keystone v2
+to authenticate users, you must re-configure your OpenStack deployment to use Keystone v3 before you begin upgrading.
 
 ### <a id='bosh-multihome-removed'></a> Multi-Network Configuration for the BOSH Director VM is Removed
 
 <%= vars.ops_manager %> v2.10 and earlier included an undocumented API endpoint that allowed you to configure a second network on the BOSH Director VM. In
-<%= vars.ops_manager %> v3.0, this API endpoint is removed, and you can no longer configure a second network on the BOSH Director VM.
+<%= vars.ops_manager %> <%= vars.v_major_version %>, this API endpoint is removed, and you can no longer configure a second network on the BOSH Director VM.
 
 ### <a id='azure'></a> Azure Germany and Azure Stack Support is Removed
 
 Microsoft ceased operating the Azure Germany cloud platform in 2021. Because of this, you cannot configure an Azure Germany environment in
-<%= vars.ops_manager %> v3.0. However, you can still use Germany-based regions in the global Azure Commercial Cloud environment.
+<%= vars.ops_manager %> <%= vars.v_major_version %>. However, you can still use Germany-based regions in the global Azure Commercial Cloud environment.
 
-You also cannot configure an Azure Stack environment in <%= vars.ops_manager %> v3.0.
+You also cannot configure an Azure Stack environment in <%= vars.ops_manager %> <%= vars.v_major_version %>.
 
 ### <a id='syslog-custom-rules'></a> Invalid Custom Syslog Rules Cause Errors
 
-Iin <%= vars.ops_manager %> v3.0, invalid custom syslog rules cause <%= vars.ops_manager %> deployments to fail with a relevant error message. In
-<%= vars.ops_manager %> v2.10 and earlier, invalid custom syslog rules only cause <%= vars.ops_manager %> to log errors and discard the invalid rules.
+Iin <%= vars.ops_manager %> <%= vars.v_major_version %>, invalid custom syslog rules cause <%= vars.ops_manager %> deployments to fail with a relevant error
+message. In <%= vars.ops_manager %> v2.10 and earlier, invalid custom syslog rules only cause <%= vars.ops_manager %> to log errors and discard the invalid
+rules.
 
 To avoid deployment failure, validate your custom syslog configuration in one of the following ways:
 
@@ -168,4 +171,4 @@ BOSH Director tile.
 
 ## <a id='known-issues'></a> Known Issues
 
-There are no known issues for <%= vars.ops_manager %> v3.0.
+There are no known issues for <%= vars.ops_manager %> <%= vars.v_major_version %>.
