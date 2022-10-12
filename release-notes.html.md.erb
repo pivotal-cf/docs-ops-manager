@@ -171,4 +171,9 @@ BOSH Director tile.
 
 ## <a id='known-issues'></a> Known Issues
 
-There are no known issues for <%= vars.ops_manager %> <%= vars.v_major_version %>.
+### <a id='vsphere-director-more-ram'></a> Increased Memory Requirements for BOSH Directors for vSphere
+
+BOSH Directors for vSphere require a larger memory footprint when deploying; consider increasing the RAM of your BOSH Director (Resource Config → VM Type),
+reducing the number of Director Workers (Director Config → Director Workers), or reducing the Max Threads (Director Config → Max Threads). For a default
+configuration of 5 Workers and 32 Threads, an increase from 8 GB to 10 GB should be adequate. For a more precise calculation, add 4 GiB base usage and
+and 35 MiB times each worker times each thread. For a Director with 10 workers and 32 threads, that would equal 4 GiB + 35 MiB * 10 * 32 = 14.5 GiB.
