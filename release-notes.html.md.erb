@@ -171,9 +171,25 @@ BOSH Director tile.
 
 ## <a id='known-issues'></a> Known Issues
 
-### <a id='vsphere-director-more-ram'></a> Increased Memory Requirements for BOSH Directors for vSphere
+### <a id='director-more-ram'></a> Increased Memory Usage for BOSH Directors
 
-BOSH Directors for vSphere require a larger memory footprint when deploying; consider increasing the RAM of your BOSH Director (Resource Config → VM Type),
-reducing the number of Director Workers (Director Config → Director Workers), or reducing the Max Threads (Director Config → Max Threads). For a default
-configuration of 5 Workers and 32 Threads, an increase from 8 GB to 10 GB should be adequate. For a more precise calculation, add 4 GiB base usage and
-and 35 MiB times each worker times each thread. For a Director with 10 workers and 32 threads, that would equal 4 GiB + 35 MiB * 10 * 32 = 14.5 GiB.
+An issue with the BOSH Director causes it to use more memory when deployed using a Jammy stemcell. Memory usage can spike during an Apply Changes that creates or
+deletes VMs, andother typical operations. This increase is proportional to the number of workers configured on the BOSH Director, as well as the configured value
+for max threads. This increase in usage can exhaust the memory on the BOSH Director, leading to slower deploys and using swap space on the VM.
+
+This issue affects all IaaSes, but most severely impacts vSphere, Azure, and AWS.
+
+Customers that encounter memory issues should consider increasing the RAM for your BOSH Director, reducing the number of Director Workers, or reducing the Max
+Threads setting. You will need to do an Apply Changes on the BOSH Director tile after any of these configuration updates for them to take effect.
+
+To increase the amount of RAM for your BOSH Director, go to the BOSH Director tile, click the Resource Config tab, choose a VM type with more memory, and click Save.
+For a default configuration of 5 workers and 32 threads on vSphere, an increase from 8 GB to 16 GB of RAM may be adequate. For a rough calculation, add 4 GB base
+usage and 50 MB times each worker times each thread. This recommendation may vary depending on how frequently the BOSH Director is running multiple tasks simultaneously.
+
+To reduce the number of workers, go to the BOSH Director tile, click the Director Config tab, edit the Director Workers field, and click save. Reducing the number of
+workers will decrease the number of simultaneous tasks the BOSH Director can process.
+
+To reduce the number of max threads, go to the BOSH Director tile, click the Director Config tab, edit the Max Threads field, and click save. If the field is blank,
+then the default value depends on your IaaS. AWS defaults to 6 threads, Azure defaults to 10 threads, Google defaults to 10 threads, OpenStack defaults to 1 thread,
+and vSphere defaults to 32 threads. Reducing the number of max threads will decrease the number of simultaneous IaaS operations such as creating or deleting VMs that
+the BOSH Director can process, which could slow down deployments.
