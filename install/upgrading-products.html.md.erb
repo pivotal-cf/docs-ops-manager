@@ -5,22 +5,17 @@ owner: RelEng
 
 <% current_page.data.title = "Upgrading " + vars.app_runtime_abbr + " and Other " + vars.platform_name + " Products" %>
 
-This topic describes how to upgrade to a point release of <%= vars.app_runtime_full %>
-(<%= vars.app_runtime_abbr %>) and other product tiles without upgrading <%= vars.ops_manager_full %>.
-For example, use this topic to upgrade from <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.0
-to <%= vars.v_major_version %>.1. You might need to perform this upgrade if a security update
-for <%= vars.app_runtime_abbr %> is released, or if new features are introduced in a point
-release of a product tile.
+This topic describes how to upgrade to a point release of <%= vars.app_runtime_first %> and other product tiles without upgrading <%= vars.ops_manager_first %>. For example, use this topic to upgrade from <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.0 to <%= vars.v_major_version %>.1. You might need to perform this upgrade if a security update for <%= vars.app_runtime_abbr %> is released, or if new features are introduced in a point release of a product tile.
 
 For <%= vars.app_runtime_abbr %> component and version information, see [<%= vars.app_runtime_full %>
 <%= vars.v_major_version %> Release Notes](http://docs.pivotal.io/application-service/release-notes/runtime-rn.html).
 
-<p class="note"><strong>Note:</strong> If you cannot download products from <%= vars.product_network %>
+<p class='note'><strong>Note:</strong> If you cannot download products from <%= vars.product_network %>
   due to restricted network connectivity, see <a href="offline_installation.html">Installing
   <%= vars.ops_manager %> in Air-Gapped Environments</a>.</p>
 
 
-## <a id="before-upgrade"></a> Prerequisites
+## <a id='before-upgrade'></a> Prerequisites
 
 Before you upgrade to point releases:
 
@@ -37,20 +32,19 @@ before starting. For all available product release notes, see:
   * [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html)
   in the <%= vars.app_runtime_abbr %> documentation
   * [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/windows/release-notes.html)
-  in the <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>) documentation
-  * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html) in the <%= vars.k8s_runtime_full %>
-  (<%= vars.k8s_runtime_abbr %>) documentation
+  in the <%= vars.windows_runtime_first %> documentation
+  * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html) in the <%= vars.k8s_runtime_first %> documentation
 
 
-## <a id="check-disk-space"></a> Check BOSH Director Disk Space
+## <a id='check-disk-space'></a> Check BOSH Director Disk Space
 
 <%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
 <%= partial "/pcf/core/2-10/check_disk_before_upgrade" %>
 
 
-## <a id="upgrade-er"></a> Upgrading <%= vars.app_runtime_abbr %>
+## <a id='upgrade-er'></a> Upgrading <%= vars.app_runtime_abbr %>
 
-<p class="note"><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
+<p class='note'><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
   the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
   Dashboard. For more information, see <a href="add-delete.html#pivnet-api">Using
   <%= vars.product_network %> API to Upgrade Products</a> in <em>Adding and Deleting Products</em>.</p>
@@ -71,9 +65,9 @@ staging area.
 1. Click **Apply Changes** to install the service.
 
 
-## <a id="other-products"></a> Upgrading <%= vars.ops_manager %> Products
+## <a id='other-products'></a> Upgrading <%= vars.ops_manager %> Products
 
-<p class="note"><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
+<p class='note'><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
   the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
   Dashboard. For more information, see <a href="add-delete.html#pivnet-api">Using
   <%= vars.product_network %> API to Upgrade Products</a> in <em>Adding and Deleting Products</em>.</p>
@@ -119,14 +113,14 @@ trust the self-signed certificate:
 1. Click **Apply Changes**.
 
 
-## <a id="replica-tiles"></a> Upgrading Replicated Tiles
+## <a id='replica-tiles'></a> Upgrading Replicated Tiles
 
 To upgrade a replicated tile, you must:
 
 * Generate a replica of the newer version of the tile using the Replicator
 * Give the new replica the same name as the existing replica.
 
-### <a id="replica-example"></a> Example Workflow
+### <a id='replica-example'></a> Example Workflow
 
 This example workflow assumes the following:
 

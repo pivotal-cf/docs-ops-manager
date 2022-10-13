@@ -10,13 +10,13 @@ For more information about setting up and using CredHub Maestro, see [Getting St
 
 ## <a id='when-to-use'></a> When to Use CredHub Maestro for Certificate Rotation
 
-<%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates. For more information, see [Overview of Certificate Rotation](api-cert-rotation.html).
+<%= vars.company_name %> recommends that you use the <%= vars.ops_manager_first %> API to perform bulk rotation of certificates. For more information, see [Overview of Certificate Rotation](api-cert-rotation.html).
 
 However, there are some cases when you cannot use the <%= vars.ops_manager %> API to do bulk certificate rotation. In these cases, you can use CredHub Maestro to rotate certificates.
 
 The following describes when to use CredHub Maestro instead of the <%= vars.ops_manager %> API for certificate rotation:
 
-* You have <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) installed and therefore cannot use the <%= vars.ops_manager %> API to rotate CredHub-managed certificates. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these include the cluster-specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
+* You have <%= vars.k8s_runtime_first %> installed and therefore cannot use the <%= vars.ops_manager %> API to rotate CredHub-managed certificates. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these include the cluster-specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
     <p class='note warning'><strong>Warning:</strong> In <%= vars.k8s_runtime_abbr %> v1.8 and earlier, you cannot use CredHub Maestro to rotate <%= vars.k8s_runtime_abbr %> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
 
 * You need to rotate one or more specific CredHub-managed certificates and do not want to rotate any other certificates managed by <%= vars.ops_manager %> or CredHub.
@@ -73,9 +73,9 @@ To rotate certificates, follow one of the following procedures:
 
 * To rotate CredHub-set leaf certificates, see [Rotate CredHub-set Leaf Certificates](#set-leaf-certificate-rotation) below.
 
-<p class="note"><strong>Note:</strong> All CredHub Maestro rotation commands have a dry-run flag that can be used to preview the certificates to be modified.</p>
+<p class='note'><strong>Note:</strong> All CredHub Maestro rotation commands have a dry-run flag that can be used to preview the certificates to be modified.</p>
 
-### <a id="safety-checks"></a> Safety Checks
+### <a id='safety-checks'></a> Safety Checks
 
 CredHub Maestro performs basic safety checks when rotating certificates to prevent unsafe operations.
 
@@ -189,7 +189,7 @@ To rotate a single CA and its leaf certificates:
     maestro regenerate ca --name "CA-NAME"
     ```
     Where `CA-NAME` is the name of the CA you want to rotate. The CA name you provide must
-    be the full path to the credential. <p class="note"><strong>Note:</strong>
+    be the full path to the credential. <p class='note'><strong>Note:</strong>
     For <%= vars.app_runtime_abbr %> v2.10 and later,
     <code>maestro update-transitional latest</code> is not supported. For more information, see
     [Breaking Changes](../../release-notes.html#credhub-regenerate).</p>
@@ -241,7 +241,7 @@ For a multi-site or WAN setup, you must perform the **Apply Changes** steps acro
 To rotate the Services TLS CA and its leaf certificates:
 
 1. Check the [CredHub Maestro Tile Compatibility](maestro-tile-compatibility.html) document to ensure that all service tile versions currently deployed are compatible with Maestro.
-    <p class="note warning"><strong>Warning:</strong> If you have any service tiles that are not compatible with CredHub Maestro, do not follow this procedure. If you do, you might experience extended downtime or data loss. Instead, follow the procedure in <a href="services_tls_ca_rotate.html">Rotating the Services TLS CA and Its Leaf Certificates</a>.</p>
+    <p class='note warning'><strong>Warning:</strong> If you have any service tiles that are not compatible with CredHub Maestro, do not follow this procedure. If you do, you might experience extended downtime or data loss. Instead, follow the procedure in <a href="services_tls_ca_rotate.html">Rotating the Services TLS CA and Its Leaf Certificates</a>.</p>
 
 1. Regenerate the Services TLS CA and mark the latest version of the CA as transitional. This creates a new version of the Services TLS CA and indicates that the latest version is inactive, so that all leaf certificates trust the new CA.
     1. On the Services TLS CA, see if your Services TLS CA was CredHub-set by running:
@@ -357,7 +357,7 @@ To rotate a CredHub-set CA:
     ```
     maestro regenerate leaf --signed-by "CA-NAME"
     ```
-    <p class="note"><strong>Note:</strong> You might need to use the <code>--force</code> flag when regenerating leaf certificates if they were set by CredHub. Otherwise, you must provide a new leaf certificate at the same path.</p>
+    <p class='note'><strong>Note:</strong> You might need to use the <code>--force</code> flag when regenerating leaf certificates if they were set by CredHub. Otherwise, you must provide a new leaf certificate at the same path.</p>
 
 1. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.

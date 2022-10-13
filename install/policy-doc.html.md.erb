@@ -5,16 +5,17 @@ owner: Ops Manager
 
 <% current_page.data.title = vars.platform_name + " for AWS Policy Document" %>
 
-Use this policy document to complete _Create an IAM User for <%= vars.ops_manager %>_ in [Preparing to Deploy Ops Manager on AWS](../aws/prepare-env-manual.html#create-iam).
+Use this policy document to complete the procedure in [Create an IAM User for <%= vars.ops_manager %>](../aws/prepare-env-manual.html#create-iam) in
+_Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 
-## <a id="policy-code"></a> The Policy Document Base Code
+## <a id='policy-code'></a> The Policy Document Base Code
 
 <p class='note'><strong>Note:</strong> For the S3 Bucket policy sections, make sure to update the generic bucket naming with your custom/unique bucket names.</p>
 
 From the AWS Management Console, copy and paste the following text in the **Policy Document** field.
 
-You may want to consider adding more policies to enable additional features. See [Add Additional AWS Policies](#add-policies) below.
+You may want to consider adding more policies to enable additional features. For more information, see [Add Additional AWS Policies](#add-policies) below.
 
 <pre class="code">
 
@@ -147,12 +148,10 @@ You may want to consider adding more policies to enable additional features. See
     }
 ]
 }
-
-
 </pre>
 
 
-## <a id="add-policies"></a> Add Additional AWS Policies
+## <a id='add-policies'></a> Add Additional AWS Policies
 
 To perform specific tasks, you may need to add additional policies to your **Policy Document** field in the AWS Management Console.
 
@@ -189,7 +188,7 @@ Consult the table below to determine what additional policies you may want to in
 <p>Where:</p>
 <ul>
     <li><code>IAM-INSTANCE-ARN-PROFILE</code> is the IAM instance ARN profile that you configure in AWS.</li>
-    <li><code>IAM-OPS-MANAGER-ARN-ROLE</code> is the IAM Ops Manager ARN role that you configure in AWS.</li>
+    <li><code>IAM-OPS-MANAGER-ARN-ROLE</code> is the IAM <%= vars.ops_manager %> ARN role that you configure in AWS.</li>
 </ul>
         </td>
     </tr>

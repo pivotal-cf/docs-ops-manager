@@ -5,21 +5,21 @@ owner: Ops Manager
 
 <%= partial "/pcf/warning-terraform" %>
 
-This guide describes the preparation steps required to deploy <%= vars.ops_manager %> on Amazon Web Services (AWS) using Terraform templates.
+This guide describes the preparation steps required to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS) using Terraform templates.
 
 The Terraform template for <%= vars.ops_manager %> on AWS describes a set of AWS resources and properties. For more information about how Terraform creates resources in AWS, see [AWS Provider](https://www.terraform.io/docs/providers/aws/index.html) in the Terraform documentation.
 
-If you are deploying <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>),
+If you are deploying <%= vars.app_runtime_first %>,
 review different deployment options in [AWS Reference Architecture](../refarch/aws/aws_ref_arch.html).
 
 
-## <a id="prereqs"></a> Prerequisites
+## <a id='prereqs'></a> Prerequisites
 
 Before you deploy <%= vars.ops_manager %> on AWS:
 
 * If you intend to install <%= vars.app_runtime_abbr %>, see [<%= vars.ops_manager %> on AWS Requirements](../install/aws.html).
 
-* If you intend to install <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
+* If you intend to install <%= vars.k8s_runtime_first %>, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
 
 In addition to reviewing the prerequisites for your runtime, ensure you have:
 
@@ -38,7 +38,7 @@ In addition to reviewing the prerequisites for your runtime, ensure you have:
       * kms:UpdateKeyDescription action allowed
 
 
-## <a id="download"></a> Step 1: Download Templates and Edit Variables File
+## <a id='download'></a> Step 1: Download Templates and Edit Variables File
 
 Before you can run Terraform commands to provision infrastructure resources, you must download the AWS Terraform templates and create a Terraform template variables file. To download the templates and create a template variables file:
 
@@ -93,7 +93,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
     <tr>
       <td><code>YOUR-ENVIRONMENT-NAME</code></td>
       <td>Enter a name to use to identify resources in AWS. Terraform prepends the names of the resources it creates with this environment name.
-      <p class="note"><strong>Note:</strong> You can only enter lowercase alphanumeric characters and hyphens. Examples include <code>pcf</code>, <code>pas</code>, and <code>pks</code>.</td>
+      <p class='note'><strong>Note:</strong> You can only enter lowercase alphanumeric characters and hyphens. Examples include <code>pcf</code>, <code>pas</code>, and <code>pks</code>.</td>
     </tr>
     <tr>
       <td><code>YOUR-ACCESS-KEY</code></td>
@@ -140,7 +140,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
   </table>
 
 
-## <a id="variables"></a> Step 2: Add Optional Variables
+## <a id='variables'></a> Step 2: Add Optional Variables
 
 Complete this step if you want to:
 
@@ -150,9 +150,9 @@ Complete this step if you want to:
 
 In your `terraform.tfvars` file, specify the appropriate variables from the sections below.
 
-<p class="note"><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
+<p class='note'><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
 
-### <a id="iso_seg"></a> Isolation Segments
+### <a id='iso_seg'></a> Isolation Segments
 
 If you plan to deploy the <%= vars.segment_runtime_full %> tile, add the variables below to your `terraform.tfvars` file, replacing `YOUR-CERTIFICATE` and `YOUR-PRIVATE-KEY` with a certificate and private key.
 
@@ -179,7 +179,7 @@ Where:
 
 This causes Terraform to create an additional HTTP load balancer across three availability zones to use for the <%= vars.segment_runtime_full %> tile.
 
-### <a id="cloudsql"></a> RDS
+### <a id='cloudsql'></a> RDS
 
 To use an AWS RDS for your deployment:
 
@@ -197,7 +197,7 @@ To use an AWS RDS for your deployment:
     Where `YOUR-DATABASE-NAME` is the name of your RDS.
 
 
-## <a id="resources"></a> Step 3: Create AWS Resources with Terraform
+## <a id='resources'></a> Step 3: Create AWS Resources with Terraform
 
 To use the Terraform CLI to create resources on AWS:
 
@@ -207,7 +207,7 @@ To use the Terraform CLI to create resources on AWS:
     terraform init
     ```
 
-    <p class="note"><strong>Note:</strong> If you see the error <code>heredoc not terminated</code>,
+    <p class='note'><strong>Note:</strong> If you see the error <code>heredoc not terminated</code>,
     then open the <code>terraform.tfvars</code> file and delete any trailing spaces that follow
     heredoc terminators such as EOF.
     Then, run the <code>terraform init</code> command again.
@@ -227,7 +227,7 @@ To use the Terraform CLI to create resources on AWS:
     It may take several minutes for Terraform to create all the resources in AWS.
 
 
-## <a id="dns"></a> Step 4: Create DNS Record
+## <a id='dns'></a> Step 4: Create DNS Record
 
 To create a DNS record for your deployment:
 
@@ -237,13 +237,13 @@ To create a DNS record for your deployment:
 
 1. In this record, enter the name servers included in `env_dns_zone_name_servers` from your Terraform output.
 
-<p class="note"><strong>Note:</strong> Terraform creates a <code>Route53</code> recordset
+<p class='note'><strong>Note:</strong> Terraform creates a <code>Route53</code> recordset
 for the domain prefixed with the environment name.
 If your base domain is registered with AWS,
 ensure that the NS record from the terraform-created recordset is copied in the domain recordset before proceeding.
 </p>
 
 
-## <a id="next"></a> Next Steps
+## <a id='next'></a> Next Steps
 
-Proceed to the next step in the deployment, [Configuring BOSH Director on AWS Using Terraform](./config-terraform.html).
+Proceed to the next step in the deployment, [Configuring BOSH Director on AWS Using Terraform](config-terraform.html).

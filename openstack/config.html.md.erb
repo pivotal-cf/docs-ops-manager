@@ -4,20 +4,21 @@ owner: Ops Manager
 iaas: OpenStack
 ---
 
-This topic describes how to configure BOSH Director after deploying [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) on OpenStack. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
+This topic describes how to configure BOSH Director after deploying <%= vars.ops_manager_first %> on OpenStack. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
 
-* Before beginning this procedure, ensure that you have successfully completed all steps in [Provisioning the OpenStack Infrastructure](./setup.html).
+* Before beginning this procedure, ensure that you have successfully completed all steps in [Provisioning the OpenStack Infrastructure](setup.html).
 
 * After you complete this procedure, follow the instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
 
-<p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+<p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
 
 ## <a id='log-in'></a> Step 1: Log Into <%= vars.ops_manager %>
 
-1. In a web browser, navigate to the fully qualified domain you created in the [Create a DNS Entry](./setup.html#dns-entry) step of _Provisioning the OpenStack Infrastructure_.
+1. In a web browser, navigate to the fully qualified domain you created in the [Create a DNS Entry](setup.html#dns-entry) step of _Provisioning the OpenStack Infrastructure_.
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+
 
 ## <a id='openstack-config'></a> Step 2: OpenStack Configs Page
 
@@ -45,10 +46,10 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
     <%= image_tag("../common/images/openstack/om-config-username.png", :alt => "Four text fields labeled, from top to bottom, 'Username', 'Password', 'Tenant', and 'Region', all with red asterisks to denote that they are required fields. The Username field contains the text 'admin'. The Password field contains eight asterisks and has the word 'Change' in blue letters underneath. The Tenant field contains the text 'loam'. The Region field contains the text 'RegionOne'.") %>
     * **Select OpenStack Network Type**: Select either **Nova**, the legacy OpenStack networking model, or **Neutron**, the newer networking model.
     * **Ignore Server Availability Zone**: Do not select the checkbox.
-    * **Security Group Name**: Enter `opsmanager`. You created this Security Group in the [Configure Security](./setup.html#security) step of _Provisioning the OpenStack Infrastructure_.
-    * **Key Pair Name**: Enter the name of the key pair that you created in the [Configure Security](./setup.html#security) step of _Provisioning the OpenStack Infrastructure_.
+    * **Security Group Name**: Enter `opsmanager`. You created this Security Group in the [Configure Security](setup.html#security) step of _Provisioning the OpenStack Infrastructure_.
+    * **Key Pair Name**: Enter the name of the key pair that you created in the [Configure Security](setup.html#security) step of _Provisioning the OpenStack Infrastructure_.
     <%= image_tag("../common/images/openstack/om-config-network.png", :alt => "At the top of the image is a dropdown labeled 'Select Openstack Network Type', with a red asterisk to denote that it is required and the 'Neutron' option selected. Below this is a checkbox labeled 'Ignore Server Availability Zone'. Below this are two text fields labeled, from top to bottom, 'Security Group Name' and 'Key Pair Name'. The Security Group Name field contains the text 'opsmanager'. The Key Pair Name field has a red asterisk and contains the text 'pcf'.") %>
-    * **SSH Private Key**: In a text editor, open the key pair file that you downloaded in the [Configure Security](./setup.html#security) step of _Provisioning the OpenStack Infrastructure_. Copy and paste the contents of the key pair file into the field.
+    * **SSH Private Key**: In a text editor, open the key pair file that you downloaded in the [Configure Security](setup.html#security) step of _Provisioning the OpenStack Infrastructure_. Copy and paste the contents of the key pair file into the field.
     * (Optional) **API SSL Certificate**: If you configured API SSL termination in your OpenStack Dashboard, enter your **API SSL Certificate**.
     * **Disable DHCP**: Do not select the checkbox unless your configuration requires it.
     * **Boot From Volume**: Enable to boot VMs from a Cinder volume.
@@ -66,7 +67,7 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
     <%= image_tag("../common/images/openstack/om-advanced-infra.png", :alt => "At the top of the image is the header 'Advanced Infrastructure Configuration' with a horizontal line underneath. Below the line is a text area labeled 'Connection Options'. Below this is a blue, rectangular button labeled 'Save'.") %>
 
 1. If your OpenStack environment requires specific connection options, enter them in the **Connection Options** field in JSON format. For example: `'connection_options' => { 'read_timeout' => 200 }`
-    <p class="note"><strong>Note: </strong> Your connection options apply to all of your OpenStack configs.</p>
+    <p class='note'><strong>Note:</strong> Your connection options apply to all of your OpenStack configs.</p>
 
 1.  Click **Save**.
 
@@ -81,7 +82,7 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
 
     <%= image_tag("../common/images/openstack/create-az.png", :alt => "At the top of the image is the header 'Availability Zones', to the far right of which is a gray, rectangular button labeled 'Add'. Below the header is the word 'nova' with a downward-pointing triangle to the left of it, indicating an expandable area. Across from this is a gray trashcan button. Below 'nova' is a text field labeled 'Name', with a red asterisk to denote that it is a required field, containing the text 'nova'. Below the Name text field is a dropdown labeled 'IaaS Configuration' with a red asterisk, with the 'second_iaas' option selected. Below the dropdown is a text field labeled 'Openstack Availability Zone' with a red asterisk, containing the text 'nova'. Next to this text field is the help text 'This is the name of the Availability Zone on Openstack. Many OpenStack environments use a default of 'nova' for this setting'. Below this text field is a horizonatal line. Below the line are the words '2nd az' with a right-pointing triangle to the left of it, indicating an expandable area. Across from this is a gray trashcan button. Below this is a horizontal line, underneath which is a blue, rectangular button labeled 'Save'.") %>
 
-1. Enter the name of the availability zone that you selected in the [Launch <%= vars.ops_manager %> VM](./setup.html#launch-om-vm) step of _Provisioning the OpenStack Infrastructure_.
+1. Enter the name of the availability zone that you selected in the [Launch <%= vars.ops_manager %> VM](setup.html#launch-om-vm) step of _Provisioning the OpenStack Infrastructure_.
 
 1. (Optional) Select an OpenStack config name from the **IaaS Configuration** dropdown. The default is set to your first OpenStack config.
 
@@ -112,7 +113,7 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
     * Click **Add Subnet** to create one or more subnets for the network.
     * For **Network ID**, use the **ID** from the OpenStack page.
     * For **CIDR**, use the **Network Address** from the OpenStack page.
-    * For **Reserved IP Ranges**, use the first 10 IP addresses of the **Network Address** range, and the private IP address of the <%= vars.ops_manager %> instance that you recorded in the [Associate a Floating IP Address](./setup.html#floating-ip) step of _Provisioning the OpenStack Infrastructure_.
+    * For **Reserved IP Ranges**, use the first 10 IP addresses of the **Network Address** range, and the private IP address of the <%= vars.ops_manager %> instance that you recorded in the [Associate a Floating IP Address](setup.html#floating-ip) step of _Provisioning the OpenStack Infrastructure_.
     * For **DNS**, enter one or more Domain Name Servers.
     * For **Gateway**, use the **Gateway IP** from the OpenStack page.
     * For **Availability Zones**, select which Availability Zones to use with the network.
@@ -136,7 +137,7 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
 
 <%= partial "../common/security-pane" %>
 
-## <a id="bosh-dns"></a> Step 9: BOSH DNS Config Page
+## <a id='bosh-dns'></a> Step 9: BOSH DNS Config Page
 
 <%= partial '../common/bosh-dns-config'  %>
 
@@ -150,8 +151,8 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
     <%= image_tag("../common/images/openstack/om-resource-config.png", :alt => "At the top of the image is the header 'Resource Config'. In the top right corner of the image is a blue, rectangular button labeled 'Save'. Below the header are four columns labeled, from left to right, 'Job', 'Instances', 'VM Type', and 'Persistent Disk Type'. Under 'Job' are rows labeled with the names of two VMs, 'BOSH Director' and 'Master Compilation Job'. The 'Master Compilation Job' row is expanded, which reveals a 'Floating IPs' field, with the values '1.1.1.1-1.1.1.2'. Under 'Instances' are two dropdowns, with 'Automatic: 1' for BOSH Director and '1' for Master Compilation Job selected. Under 'VM Type' are two dropdowns, with 'Automatic: m1.large (cpu: 4, ram...' selected for BOSH Director and 'm1.small (cpu: 1, ram: 2 GB...' selected for Master Compilation Job. Under 'Persistent Disk Type' is one dropdown with 'Automatic: 50 GB' selected for BOSH Director and the word 'None' for Master Compilation Job.") %>
 
 1. Adjust any values as necessary for your deployment, such as increasing the persistent disk size. Select **Automatic** from the dropdown to provision the amount of persistent disk predefined by the job. If the persistent disk field reads **None**, the job does not require persistent disk space.
-    <p class="note"><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
-    <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
+    <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
+    <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
 
 1. (Optional) To define floating IP addresses for the BOSH Director job:
   1. Select the icon next to the **BOSH Director** job name to see the **FLOATING IPs** field.
@@ -160,13 +161,13 @@ This topic describes how to configure BOSH Director after deploying [<%= vars.op
 1. Click **Save**.
 
 
-## <a id="custom-vm-extensions"></a> Step 12: (Optional) Add Custom VM Extensions
+## <a id='custom-vm-extensions'></a> Step 12: (Optional) Add Custom VM Extensions
 
 <%= partial "../common/vm-extension-config"  %>
 
 ## <a id='complete-ops'></a> Step 13: Complete BOSH Director Installation
 
-1. Click the **Installation Dashboard** link to return to the Installation Dashboard.
+1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, click **Ignore errors and start the install**.
 

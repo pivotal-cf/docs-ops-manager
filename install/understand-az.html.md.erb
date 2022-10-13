@@ -6,7 +6,7 @@ owner: Ops Manager
 This topic describes availability zones (AZs) in vSphere and an example of how an operator might scale an app across AZs.
 
 
-## <a id="overview"></a> Overview
+## <a id='overview'></a> Overview
 
 <%= vars.company_name %> defines an AZ as an operator-assigned, functionally-independent segment of network infrastructure. In cases of partial infrastructure failure, a tile distributes and balances all instances of running apps across remaining AZs. Strategic use of AZs contributes to the fault tolerance and high availability of a tile deployment.
 
@@ -15,7 +15,7 @@ vSphere supports distributing deployments across multiple AZs. For more informat
 <%= vars.company_name %> recommends that customers use three AZs to operate a highly available tile deployment.
 
 
-## <a id="example-case"></a> Balancing Across AZs During Failure: Example Scenario
+## <a id='example-case'></a> Balancing Across AZs During Failure: Example Scenario
 
 An operator scales an app to four instances in a tile environment distributed across three AZs: A1, A2, and A3. The environment allocates the instances according to the Diego Auction. For more information about the Diego Auction, see [How Diego Balances App Processes](https://docs.pivotal.io/application-service/concepts/diego/diego-auction.html).
 

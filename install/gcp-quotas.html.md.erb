@@ -3,97 +3,95 @@ title: Recommended GCP Quotas
 owner: Ops Manager
 ---
 
+Default quotas on a new GCP subscription do not have enough quota for a typical production-level <%= vars.ops_manager_first %> deployment.
 
-
-Default quotas on a new GCP subscription do not have enough quota for a typical production-level <%= vars.ops_manager %> deployment.
-
-The following table lists recommended resource quotas for a single <%= vars.ops_manager %> deployment.
+The following table lists recommended resource quotas for a single <%= vars.ops_manager %> deployment:
 
 <table class="nice">
-<tr>
- <th>Metric</th>
- <th>Resource</th>
- <th>Suggested Minimum Quota</th>
-</tr>
-<tr>
- <td>CPUs</td>
- <td>Regional</td>
- <td>150<sup>&#42;</sup> </td>
-</tr>
-<tr>
- <td>Firewall rules</td>
- <td>Global</td>
- <td>15</td>
-</tr>
-<tr>
- <td>Forwarding rules</td>
- <td>Global</td>
- <td>15</td>
-</tr>
-<tr>
- <td>Backend services</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Health checks</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Images</td>
- <td>Global</td>
- <td>10</td>
-</tr>
-<tr>
- <td>Static IP addresses<sup>&#42;</sup><sup>&#42;</sup></td>
- <td>Regional</td>
- <td>5</td>
-</tr>
-<tr>
- <td>In-use IP addresses</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>In-use IP addresses<sup>&#42;</sup><sup>&#42;</sup></td>
- <td>Regional</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Networks</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Subnetworks</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Routes</td>
- <td>Global</td>
- <td>20</td>
-</tr>
-<tr>
- <td>Target pools</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Target HTTP proxies</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Target HTTPS proxies</td>
- <td>Global</td>
- <td>5</td>
-</tr>
-<tr>
- <td>Persistent Disk Standard (GB)</td>
- <td>Regional</td>
- <td>15,000</td>
+  <tr>
+    <th>Metric</th>
+    <th>Resource</th>
+    <th>Suggested Minimum Quota</th>
+  </tr>
+  <tr>
+    <td>CPUs</td>
+    <td>Regional</td>
+    <td>150<sup>&#42;</sup> </td>
+  </tr>
+  <tr>
+    <td>Firewall rules</td>
+    <td>Global</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Forwarding rules</td>
+    <td>Global</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Backend services</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Health checks</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Images</td>
+    <td>Global</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Static IP addresses<sup>&#42;</sup><sup>&#42;</sup></td>
+    <td>Regional</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>In-use IP addresses</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>In-use IP addresses<sup>&#42;</sup><sup>&#42;</sup></td>
+    <td>Regional</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Networks</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Subnetworks</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Routes</td>
+    <td>Global</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>Target pools</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Target HTTP proxies</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Target HTTPS proxies</td>
+    <td>Global</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Persistent Disk Standard (GB)</td>
+    <td>Regional</td>
+    <td>15,000</td>
 </table>
 
 <sup>&#42;</sup> Assuming a deployment with 100 app instances.<br/>

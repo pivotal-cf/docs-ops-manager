@@ -13,7 +13,7 @@ To log in to the <%= vars.ops_manager %> VM with SSH in AWS, you need the key pa
 you created the <%= vars.ops_manager %> VM. To see the name of the key pair, click on the
 <%= vars.ops_manager %> VM and locate the `key pair name` in the properties.
 
-To log in to the <%= vars.ops_manager %> VM with SSH in AWS, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in AWS:
 
 1. Locate the <%= vars.ops_manager %> FQDN on the AWS **EC2 instances** page.
 
@@ -36,7 +36,7 @@ To log in to the <%= vars.ops_manager %> VM with SSH in Azure, you need the key 
 when creating the <%= vars.ops_manager %> VM. If you need to reset the SSH key, locate the
 <%= vars.ops_manager %> VM in the Azure portal and click **Reset Password**.
 
-To log in to the <%= vars.ops_manager %> VM with SSH in Azure, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in Azure:
 
 1. From the Azure portal, locate the <%= vars.ops_manager %> FQDN by selecting the VM.
 
@@ -58,7 +58,7 @@ To log in to the <%= vars.ops_manager %> VM with SSH in Azure, do the following:
 
 ### <a id='ssh-gcp'></a> GCP
 
-To log in to the <%= vars.ops_manager %> VM with SSH in GCP, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in GCP:
 
 1. Confirm that you have installed the
 [Google Cloud SDK and CLI](https://cloud.google.com/sdk/docs/quickstart-macos). For more
@@ -92,7 +92,7 @@ created in [Configure Security](../openstack/setup.html#security) in _Deploying 
 If you must reset the SSH key, locate the <%= vars.ops_manager %> VM in the OpenStack console and
 boot it in recovery mode to generate a new key pair.
 
-To log in to the <%= vars.ops_manager %> VM with SSH in OpenStack, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in OpenStack:
 
 1. Locate the <%= vars.ops_manager %> FQDN on the **Access & Security** page.
 
@@ -118,11 +118,11 @@ that imports the <%= vars.ops_manager %> `.ova` or `.ovf` file into your virtual
 You set the public SSH key in the **Public SSH Key** field of the **Customize template** screen
 when you deployed <%= vars.ops_manager %>. For more information, see [Deploy <%= vars.ops_manager %>](../vsphere/deploy.html#deploy) in _Deploying <%= vars.ops_manager %> on vSphere_.
 
-<p class="note"><strong>Note</strong>: If you lose your SSH key, you must shut down the
+<p class='note'><strong>Note:</strong> If you lose your SSH key, you must shut down the
   <%= vars.ops_manager %> VM in the vSphere UI and then reset the public SSH key. For more
   information, see <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-E05E8AF9-C8F2-4482-B3F0-733C85C6DD97.html">Edit vApp Settings</a> in the vSphere documentation.</p>
 
-To log in to the <%= vars.ops_manager %> VM with SSH in vSphere, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in vSphere:
 
 1. Run the following command:
 

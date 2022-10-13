@@ -5,7 +5,7 @@ owner: PCF Documentation
 
 <% current_page.data.title = "Planning Your " + vars.platform_name + " Deployment" %>
 
-This documentation provides an overview of how to plan an <%= vars.ops_manager %> installation.
+This documentation provides an overview of how to plan a <%= vars.ops_manager_first %> installation.
 
 
 ## <a id='overview'></a> Overview
@@ -32,38 +32,38 @@ For all of the above, the specifics depend on the IaaS that you are deploying <%
 
  - [Providing a Certificate for your SSL Termination Point](https://docs.pivotal.io/application-service/operating/security_config.html)
  - [Using Your Own Load Balancer](https://docs.pivotal.io/application-service/operating/custom-load-balancer.html)
- - [Preparing Your Firewall](./config_firewall.html)
- - [(Optional) Installing <%= vars.ops_manager %> in Air-Gapped Environments](./offline_installation.html)
+ - [Preparing Your Firewall](config_firewall.html)
+ - [(Optional) Installing <%= vars.ops_manager %> in Air-Gapped Environments](offline_installation.html)
 
 ### <a id='specific'></a> IaaS-Specific Planning
 
 * Amazon Web Services (AWS)
 
-  - [<%= vars.ops_manager %> on AWS Requirements](./aws.html)
+  - [<%= vars.ops_manager %> on AWS Requirements](aws.html)
   - [AWS Reference Architecture](../refarch/aws/aws_ref_arch.html)
-  - [<%= vars.ops_manager %> on AWS Permissions Guidelines](./aws-iaas-user-roles.html)
+  - [<%= vars.ops_manager %> on AWS Permissions Guidelines](aws-iaas-user-roles.html)
 
 * Microsoft Azure
 
-  - [<%= vars.ops_manager %> on Azure Requirements](./azure.html)
+  - [<%= vars.ops_manager %> on Azure Requirements](azure.html)
   - [Azure Reference Architecture](../refarch/azure/azure_ref_arch.html)
 
 * Google Cloud Platform (GCP)
 
-  - [<%= vars.ops_manager %> on GCP Requirements](./gcp.html)
+  - [<%= vars.ops_manager %> on GCP Requirements](gcp.html)
   - [GCP Reference Architecture](../refarch/gcp/gcp_ref_arch.html)
-  - [GCP Resource Quota Guidelines](./gcp-quotas.html)
+  - [GCP Resource Quota Guidelines](gcp-quotas.html)
 
 * OpenStack
 
-  - [<%= vars.ops_manager %> on OpenStack Requirements](./openstack.html)
+  - [<%= vars.ops_manager %> on OpenStack Requirements](openstack.html)
   - [OpenStack Reference Architecture](../refarch/openstack/openstack_ref_arch.html)
 
 * vSphere
 
-  - [<%= vars.ops_manager %> on vSphere Requirements](./vsphere.html)
+  - [<%= vars.ops_manager %> on vSphere Requirements](vsphere.html)
   - [vSphere Reference Architecture](../refarch/vsphere/vsphere_ref_arch.html)
   - [Configuring SSL Termination for vSphere Deployments](https://docs.pivotal.io/application-service/operating/ssl-term.html)
   - [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html)
   - [vSphere Permissions Guidelines](../vsphere/vsphere-service-account.html)
-  - [Availability Zones in vSphere](./understand-az.html)
+  - [Availability Zones in vSphere](understand-az.html)

@@ -4,9 +4,10 @@ owner: Ops Manager
 ---
 
 This guide provides help with diagnosing and resolving issues that are specific to
-<%= vars.ops_manager %> deployments on VMware vSphere.
+<%= vars.ops_manager_first %> deployments on VMware vSphere.
 
 For infrastructure-agnostic troubleshooting help, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
+
 
 ## <a id='common-issues'></a> Common Issues
 
@@ -31,7 +32,7 @@ and reset the vCenter Statistics Interval Duration setting to five minutes.
 
 ### <a id='bosh_install'></a> BOSH Automated Installation Fails
 
-Before starting an <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) deployment, you must
+Before starting an <%= vars.app_runtime_first %> deployment, you must
 set up and configure a vSphere cluster.
 
 If you enable vSphere DRS (Distributed Resource Scheduler) for the cluster, you must set the
@@ -93,7 +94,7 @@ these IP addresses during installation to compile and deploy VMs, install
 allocate at least 36 dynamic IP addresses when deploying <%= vars.ops_manager %> and
 <%= vars.app_runtime_abbr %>.
 
-### <a id="database-permissions"></a> Insufficient External Database Permissions
+### <a id='database-permissions'></a> Insufficient External Database Permissions
 
 Upgrade issues can be caused when the external database user used for the network policy database
 is given insufficient permissions. To avoid this upgrade issue, ensure that the networkpolicyserver

@@ -3,9 +3,10 @@ title: Required AWS Objects
 owner: Ops Manager
 ---
 
-This topic describes the objects you create in Amazon Web Services (AWS) in order to deploy <%= vars.ops_manager %>.
+This topic describes the objects you create in Amazon Web Services (AWS) in order to deploy <%= vars.ops_manager_first %>.
 
-## <a id='overview'></a>Overview
+
+## <a id='overview'></a> Overview
 
 Use this topic to determine the resource requirements of <%= vars.ops_manager %> on AWS, or to verify that you created the correct resources after completing the procedures in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html) and [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
 
@@ -136,7 +137,7 @@ You must create a NAT instance when creating a VPC. The NAT instance must have t
 
 See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-You must also assign the NAT instance to the `pcf-nat-security-group`. See [Step 6: Secure the NAT Instance](deploy-manual.html#pcfaws-nat) in _Deploying <%= vars.ops_manager %> on AWS_.
+You must also assign the NAT instance to the `pcf-nat-security-group`. For more information, see [Step 6: Secure the NAT Instance](deploy-manual.html#pcfaws-nat) in _Deploying <%= vars.ops_manager %> on AWS_.
 
 ## <a id='security-groups'></a> Security Groups
 

@@ -3,7 +3,7 @@ title: Deploying BOSH and Ops Manager to Azure with ARM
 owner: Ops Manager
 ---
 
-This topic describes how to deploy BOSH Director for <%= vars.ops_manager %> on Azure using an Azure Resource Manager (ARM) template.
+This topic describes how to deploy BOSH Director for <%= vars.ops_manager_first %> on Azure using an Azure Resource Manager (ARM) template.
 
 
 ## <a id='overview'></a> Overview
@@ -17,7 +17,7 @@ You can also deploy BOSH Director manually by following the procedure in [Deploy
 * Azure Government Cloud
 * Azure Stack (Beta)
 
-<p class="note"><strong>Note:</strong> Azure Stack is in beta for this release. <%= vars.company_name %> does not recommend using Azure Stack for a production deployment.</p>
+<p class='note'><strong>Note:</strong> Azure Stack is in beta for this release. <%= vars.company_name %> does not recommend using Azure Stack for a production deployment.</p>
 
 Before you perform the procedures in this topic, you must complete the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](../azure/config-manual.html).
 
@@ -45,7 +45,7 @@ To create a BOSH storage account:
     export RESOURCE_GROUP="RESOURCE-GROUP-NAME"
     ```
     Where `RESOURCE-GROUP-NAME` is the name you want to give your resource group.
-    <p class="note"><strong>Note:</strong> If you are on a Windows machine, you can use <code>set</code> instead of <code>export</code>.</p>
+    <p class='note'><strong>Note:</strong> If you are on a Windows machine, you can use <code>set</code> instead of <code>export</code>.</p>
 
 1. Export your location by running:
 
@@ -53,7 +53,7 @@ To create a BOSH storage account:
     export LOCATION="LOCATION"
     ```
     Where `LOCATION` is the code for your location. For example, `westus`.
-    <p class="note"><strong>Note:</strong> For a list of available locations, run <code>az account list-locations</code>.</p>
+    <p class='note'><strong>Note:</strong> For a list of available locations, run <code>az account list-locations</code>.</p>
 
 1. Create your resource group by running:
 
@@ -75,7 +75,7 @@ To create a BOSH storage account:
     --resource-group $RESOURCE_GROUP --sku Standard_LRS \
     --kind Storage --location $LOCATION
     ```
-    <p class="note"><strong>Note:</strong> <code>Standard_LRS</code> refers to a Standard Azure storage account. The BOSH Director requires table storage to store stemcell information. Azure Premium storage does not support table storage and cannot be used for the BOSH storage account.</p>
+    <p class='note'><strong>Note:</strong> <code>Standard_LRS</code> refers to a Standard Azure storage account. The BOSH Director requires table storage to store stemcell information. Azure Premium storage does not support table storage and cannot be used for the BOSH storage account.</p>
 
 1. Retrieve the connection string for your BOSH storage account by running:
 
@@ -246,6 +246,6 @@ To deploy the ARM template:
 To finish configuring the BOSH Director:
 
 1. Navigate to your DNS provider and create an entry that points a fully-qualified domain name (FQDN) in your domain to the IP address of the <%= vars.ops_manager %> VM.
-  <p class="note"><strong>Note:</strong> If the ARM template deployment does not return an IP address in the output of <code>opsMan-FQDN</code>, then visit the Azure Portal to retrieve the public IP address of the new <%= vars.ops_manager %> virtual machine.</p>
+  <p class='note'><strong>Note:</strong> If the ARM template deployment does not return an IP address in the output of <code>opsMan-FQDN</code>, then visit the Azure Portal to retrieve the public IP address of the new <%= vars.ops_manager %> virtual machine.</p>
 
 1. Continue to [Configuring BOSH Director on Azure](../azure/config-manual.html).

@@ -5,7 +5,7 @@ owner: Ops Manager
 
 <% current_page.data.title = "Upgrading " + vars.platform_name %>
 
-This topic describes upgrading <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) to <%= vars.v_major_version %>.
+This topic describes upgrading <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to <%= vars.v_major_version %>.
 
 <p class="note breaking"><strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, and <a href="https://docs.pivotal.io/application-service/windows/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections, before starting the upgrade process.</p>
 
@@ -23,7 +23,7 @@ For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> 
 
 ## <a id='jump-upgrade'></a> Jump Upgrade from <%= vars.ops_manager %> v2.4 Through v2.8
 
-Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the long-term support (LTS) version of <%= vars.ops_manager %>, which is v2.10. <%= vars.ops_manager %> v2.10 is supported through April 2024. For more information, see [Long-Term Support for Ops Manager v2.10](../release-notes.html#lts) in _<%= vars.ops_manager %> v2.10 Release Notes_.
+Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the long-term support (LTS) version of <%= vars.ops_manager %>, which is v2.10. <%= vars.ops_manager %> v2.10 is supported through April 2024. For more information, see [Long-Term Support for <%= vars.ops_manager %> v2.10](../release-notes.html#lts) in _<%= vars.ops_manager %> v2.10 Release Notes_.
 
 To jump upgrade to <%= vars.ops_manager %> v2.10:
 
@@ -42,73 +42,73 @@ If you are upgrading <%= vars.app_runtime_abbr %> to the next minor release:
 
 1. Locate the version of [Upgrade Preparation Checklist for <%= vars.ops_manager %>](../upgrade/checklist.html) that is specific to the minor release version to which you are upgrading and complete the steps that are specific to <%= vars.app_runtime_abbr %>.
 
-1. See the versions of [Configuring <%= vars.app_runtime_abbr %> for Upgrades](https://docs.pivotal.io/application-service/operating/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
+1. For more information, see the versions of [Configuring <%= vars.app_runtime_abbr %> for Upgrades](https://docs.pivotal.io/application-service/operating/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
 
 
-## <a id="prepare"></a> Task 1: Prepare to Upgrade
+## <a id='prepare'></a> Task 1: Prepare to Upgrade
 
 If you have not already, complete the steps in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html).
 
 
-## <a id="upgrade_ops"></a> Task 2: Upgrade Ops Manager and Installed Products to <%= vars.v_major_version %>
+## <a id='upgrade_ops'></a> Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>
 
-The following sections describe how to upgrade Ops Manager and installed products to <%= vars.ops_manager %> <%= vars.v_major_version %>:
+The following sections describe how to upgrade <%= vars.ops_manager %> and installed products to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-* [Import Installation to Ops Manager <%= vars.v_major_version %> VM](#upgrade)
+* [Import Installation to <%= vars.ops_manager %> <%= vars.v_major_version %> VM](#upgrade)
 * [Import New <%= vars.app_runtime_abbr %> and Product Tiles](#upgrade-products)
 * [Perform Your Upgrade](#perform-upgrade)
 * [Restage Apps](#restage-apps)
 
-### <a id="upgrade"></a> Import Installation to Ops Manager <%= vars.v_major_version %> VM
+### <a id='upgrade'></a> Import Installation to <%= vars.ops_manager %> <%= vars.v_major_version %> VM
 
-To import your Ops Manager installation to the Ops Manager <%= vars.v_major_version %> VM:
+To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager %> <%= vars.v_major_version %> VM:
 
-1. Download the Ops Manager VM Template <%= vars.v_major_version %> from the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) download page on VMware Tanzu Network.
+1. Download the <%= vars.ops_manager %> VM Template <%= vars.v_major_version %> from the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) download page on VMware Tanzu Network.
 
-1. Record the fully qualified domain name (FQDN) address of the existing Ops Manager VM.
+1. Record the fully qualified domain name (FQDN) address of the existing <%= vars.ops_manager %> VM.
 
-1. To avoid conflicts, power off the existing Ops Manager VM.
+1. To avoid conflicts, power off the existing <%= vars.ops_manager %> VM.
 
-1. Deploy the new Ops Manager VM by following the steps in one of these topics:
+1. Deploy the new <%= vars.ops_manager %> VM by following the steps in one of these topics:
     * **AWS:** [Upgrading BOSH Director on AWS](aws-om-upgrade.html)
     * **Azure:** [Upgrading BOSH Director on Azure](azure-om-upgrade.html)
     * **GCP:** [Upgrading BOSH Director on GCP](gcp-om-upgrade.html)
-    * **OpenStack:** [Deploying Ops Manager on OpenStack](../openstack/setup.html)
-    * **vSphere:** [Deploying Ops Manager on vSphere](../vsphere/deploy.html)
+    * **OpenStack:** [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html)
+    * **vSphere:** [Deploying <%= vars.ops_manager %> on vSphere](../vsphere/deploy.html)
 
-1. When redirected to the **Welcome to Ops Manager** page,
+1. When redirected to the **Welcome to <%= vars.ops_manager %>** page,
 select **Import Existing Installation**.
 
     <%= image_tag("./images/upgrading/welcome.png", alt: "Below the VMware logo is the text 'Welcome to Ops Manager'. Next is the text 'Select an Authentication System', below which are two rectangular blue buttons. The top button is labeled 'Use an Identity Provider' in white text; the bottom button is labeled 'Internal Authentication' in white text. Below these buttons is a horizontal line break. Below the line break is the text 'Upgrading Ops Manager?', below which is a rectangular blue button labeled 'Import Existing Installation' in white text.", :width => "400") %>
 
-1. When prompted, enter the **Decryption Passphrase** for this Ops Manager installation.
-You set this passphrase during your initial installation of Ops Manager.
-    <p class="note"><strong>Note:</strong> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
+1. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
+You set this passphrase during your initial installation of <%= vars.ops_manager %>.
+    <p class='note'><strong>Note:</strong> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
 
 1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
     <%= image_tag("./images/upgrading/decryption_passphrase.png", alt: "Below the VMware logo is a field labeled 'Decryption Passphrase' containing five hidden characters. Below this field is the text 'Enter file', below which is a small, rectangular gray button labeled 'Choose File'. To the right of the 'Choose File' button is the filename 'installation (4).zip'. Below this button and filename is a rectangular blue button labeled 'Import' in white text.", :width => "400") %>
 
 1. Click **Import**.
-    <p class="note"><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
+    <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
       and might appear to hang.</p>
 
 1. A **Successfully imported installation** message appears upon completion.
 
     <%= image_tag("./images/upgrading/success.png", alt: "The top half of the pop-up message contains a dark green background, a rectangular green logo with a capital P in white, and the text 'Ops Manager' in white. The bottom half of the pop-up message contains a lighter green background, a round, dark green icon containing a light green check, and the text 'Successfully imported installation.' in dark green text.") %>
 
-    <p class="note"><strong>Note:</strong> Ops Manager automatically imports the
-      Telemetry for Ops Manager tile.
+    <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> automatically imports the
+      Telemetry for <%= vars.ops_manager %> tile.
       This tile collects product usage data, which helps improve VMware products and services. <br><br>
-      Using Telemetry for Ops Manager is optional
+      Using Telemetry for <%= vars.ops_manager %> is optional
       and the tile does not share product usage data until you add and configure it.
       For more information, see the documentation for the
-      <a href="https://docs.pivotal.io/pivotal-telemetry/index.html">Telemetry for Ops Manager</a> tile.
+      <a href="https://docs.pivotal.io/pivotal-telemetry/index.html">Telemetry for <%= vars.ops_manager %></a> tile.
     </p>
 
-### <a id="upgrade-products"></a> Import New <%= vars.app_runtime_abbr %> and Product Tiles
+### <a id='upgrade-products'></a> Import New <%= vars.app_runtime_abbr %> and Product Tiles
 
-<a name="success"></a> After upgrading to Ops Manager <%= vars.v_major_version %>, you must upgrade your product versions.
+<a name='success'></a> After upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, you must upgrade your product versions.
 
 To upgrade your product versions:
 
@@ -120,22 +120,22 @@ To upgrade your product versions:
 
 1. (Optional) If you use other service tiles, you can upgrade them following the same procedure. For more information, see [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html).
 
-### <a id="perform-upgrade"></a> Perform Your Upgrade
+### <a id='perform-upgrade'></a> Perform Your Upgrade
 
-<p class="note warning"><strong>Warning:</strong> If the installation fails or returns errors, contact <%= vars.support_link %>. Do not attempt to roll back the upgrade by restarting the previous version's Ops Manager VM.</p>
+<p class='note warning'><strong>Warning:</strong> If the installation fails or returns errors, contact <%= vars.support_link %>. Do not attempt to roll back the upgrade by restarting the previous version's <%= vars.ops_manager %> VM.</p>
 
-To perform your upgrade to Ops Manager <%= vars.v_major_version %>:
+To perform your upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-1. Navigate to the **Installation Dashboard**.
+1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**, then **Apply Changes**. This immediately imports and applies upgrades to all tiles in a single transaction.
 
 1. Click each service tile, select the **Status** tab, and confirm that all VMs appear and are in good health.
 
-1. After confirming that the new installation functions correctly, remove the previous version's Ops Manager VM.
+1. After confirming that the new installation functions correctly, remove the previous version's <%= vars.ops_manager %> VM.
 
 
-## <a id="monitor"></a> (Optional) Task 3: Monitor Upgrade
+## <a id='monitor'></a> (Optional) Task 3: Monitor Upgrade
 
 The following sections describe how to monitor your <%= vars.ops_manager %> foundation during the upgrade and troubleshoot issues:
 
@@ -144,7 +144,7 @@ The following sections describe how to monitor your <%= vars.ops_manager %> foun
 * [Take Snapshots of Storage Metrics](#storage)
 * [Collect Logs](#collect-logs)
 
-### <a id="status"></a> Check Status and Performance
+### <a id='status'></a> Check Status and Performance
 
 You can monitor the progress of the upgrade by checking the status of the foundation at various locations.
 
@@ -165,7 +165,7 @@ If you are not using Healthwatch, you can do some or all of the following to mon
 
 * Run cf CLI commands.
 
-* Check the availability of the Ops Manager UI.
+* Check the availability of the <%= vars.ops_manager %> UI.
 
 * If using a network-attached storage (NAS) server, check the server's performance.
 
@@ -202,27 +202,27 @@ To check the status of an instance:
     ```
     Where `ALIAS` is your BOSH alias.
 
-### <a id="diego"></a> Check Diego State
+### <a id='diego'></a> Check Diego State
 
 You can use the CF Diego Operator Toolkit (cfdot) to check Diego component instance count by current state. For more information, see the [cfdot](https://github.com/cloudfoundry/cfdot) repository on GitHub.
 
-### <a id="storage"></a> Take Snapshots of Storage Metrics
+### <a id='storage'></a> Take Snapshots of Storage Metrics
 
 You can periodically take snapshots of storage metrics. VMware recommends this if you have a large foundation and have experienced storage issues in the past.
 
-###  <a id="collect-logs"></a> Collect Logs
+###  <a id='collect-logs'></a> Collect Logs
 
 If you encounter problems during upgrade:
 
 1. Collect the following information:
     * All job logs
     * Task debug logs for VM upgrade tasks
-    * The installation log from Ops Manager
+    * The installation log from <%= vars.ops_manager %>
 
 This information helps determine the cause of upgrade issues.
 
 
-## <a id="after"></a> Task 4: After Upgrade
+## <a id='after'></a> Task 4: After Upgrade
 
 The following sections describe how to prepare for use of your new environment, check its health status,
 and clean up after upgrading:
@@ -233,7 +233,7 @@ and clean up after upgrading:
 * [Check Resource Settings](#resource-settings)
 * [Run BOSH Clean-Up](#bosh-cleanup)
 
-### <a id="bosh-alias"></a> Re-Create BOSH Alias
+### <a id='bosh-alias'></a> Re-Create BOSH Alias
 
 To log in to BOSH after upgrading <%= vars.ops_manager %>, you must re-create your alias.
 
@@ -248,7 +248,7 @@ To re-create your alias using BOSH:
     * `ALIAS` is the BOSH alias you are re-creating.
     * `DIRECTOR-IP` is the IP address of your BOSH Director VM.
 
-### <a id="cf-cli"></a> Install New cf CLI
+### <a id='cf-cli'></a> Install New cf CLI
 
 To install the version of the Cloud Foundry Command Line Interface (cf CLI) packaged with the <%= vars.app_runtime_abbr %> tile on VMware Tanzu Network:
 
@@ -260,7 +260,7 @@ To install the version of the Cloud Foundry Command Line Interface (cf CLI) pack
 
 1. Follow the procedure in [Install the cf CLI Using a Compressed Binary](https://docs.pivotal.io/application-service/cf-cli/install-go-cli.html#bin) in _Installing the cf CLI_ in the <%= vars.app_runtime_abbr %> documentation.
 
-### <a id="health"></a> Check the Health of Your Deployment
+### <a id='health'></a> Check the Health of Your Deployment
 
 Check the health of your deployment to ensure that all jobs and processes are running as expected.
 
@@ -281,7 +281,7 @@ To check the health of your deployment:
 
 1. If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster. For more information, see the BOSH CLI v2 instructions in [Running mysql-diag](https://docs.pivotal.io/application-service/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
 
-### <a id="resource-settings"></a> Check Resource Settings
+### <a id='resource-settings'></a> Check Resource Settings
 
 If you added custom **VM Type** or **Persistent Disk Type** options, you must ensure that these values are correctly set and were not overwritten.
 
@@ -293,7 +293,7 @@ To check your custom resource settings:
 
 1. Ensure that the values for **VM Type** and **Persistent Disk Type** are correct.
 
-### <a id="bosh-cleanup"></a> Run BOSH Clean-Up
+### <a id='bosh-cleanup'></a> Run BOSH Clean-Up
 
 To clean up old stemcells, releases, orphaned disks, and other unused resources:
 
@@ -304,7 +304,7 @@ To clean up old stemcells, releases, orphaned disks, and other unused resources:
     ```
     Where `ALIAS` is the BOSH alias you are re-creating.
 
-### <a id="restage-apps"></a> Restage Apps
+### <a id='restage-apps'></a> Restage Apps
 
 VMware recommends telling developers to restage any apps that use buildpacks that were updated as a part of this upgrade.
 

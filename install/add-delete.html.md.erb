@@ -3,17 +3,17 @@ title: Adding and Deleting Products
 owner: Ops Manager
 ---
 
-This topic describes adding and deleting additional products from your <%= vars.ops_manager %>
+This topic describes adding and deleting additional products from your <%= vars.ops_manager_first %>
 installation, such as [VMware Tanzu™ RabbitMQ® for VMs](https://network.pivotal.io/products/p-rabbitmq).
 
-<p class="note"><strong>Note:</strong> In <%= vars.ops_manager %>, all product tiles use floating
+<p class='note'><strong>Note:</strong> In <%= vars.ops_manager %>, all product tiles use floating
   stemcells by default. This increases the security of your deployment by enabling tiles to
   automatically use the latest patched version of a stemcell, but it may significantly increase
   the amount of time required by a tile upgrade. For more information, see
   <a href="understanding-stemcells.html">Floating Stemcells</a>.</p>
 
 
-## <a id="add-import"></a> Add and Import Products
+## <a id='add-import'></a> Add and Import Products
 
 To add or import a product to your <%= vars.ops_manager %> installation:
 
@@ -47,7 +47,7 @@ automatically run after a product installs, before <%= vars.ops_manager %> makes
 available for use. For more information about post-install errands, see [Errands]
 (http://docs.pivotal.io/tiledev/tile-errands.html)
 in the <%= vars.ops_manager %> Tile Developer Guide.
-  <p class="note"><strong>Note:</strong> By default, <%= vars.ops_manager %> reruns errands
+  <p class='note'><strong>Note:</strong> By default, <%= vars.ops_manager %> reruns errands
     even if they are not necessary due to settings left from a previous install. Leaving errands
     checked at all times can cause updates and other processes to take longer. To prevent an
     errand from running, disable the checkbox for the errand in the <strong>Errands</strong>
@@ -74,7 +74,7 @@ Dashboard with <%= vars.product_network %> using a API token. Once you have uplo
 all subsequent product upgrades appear automatically in the <%= vars.ops_manager %> Installation
 Dashboard.
 
-<p class="note"><strong>Note:</strong> You can only use the <%= vars.product_network %> API
+<p class='note'><strong>Note:</strong> You can only use the <%= vars.product_network %> API
   if you have access to the Internet, since communication between <%= vars.ops_manager %> and
   <%= vars.product_network %> is necessary to import your products. If you are on an isolated
   network, do not save your API token.</p>

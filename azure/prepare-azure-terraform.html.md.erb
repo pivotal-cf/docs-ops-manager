@@ -7,10 +7,10 @@ owner: Ops Manager
 
 <%= partial "/pcf/warning-terraform" %>
 
-This topic describes how to prepare Azure to deploy Ops Manager. You must deploy Ops Manager in order to deploy <%= vars.app_runtime_full %> or <%=vars.k8s_runtime_full %>.
+This topic describes how to prepare Azure to deploy <%= vars.ops_manager_first %>. You must deploy <%= vars.ops_manager %> in order to deploy <%= vars.app_runtime_first %> or <%=vars.k8s_runtime_first %>.
 
 
-## <a id="install"></a> Step 1: Install and Configure the Azure CLI
+## <a id='install'></a> Step 1: Install and Configure the Azure CLI
 
 1. Install the Azure CLI 2.0 by following the instructions for your operating system in [Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) in the Microsoft Azure documentation.
 
@@ -19,7 +19,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     ```
     az cloud set --name CLOUD-NAME
     ```
-    Where `CLOUD-NAME` is one of the following values. Use the value that corresponds to the Azure environment on which you are installing Ops Manager:
+    Where `CLOUD-NAME` is one of the following values. Use the value that corresponds to the Azure environment on which you are installing <%= vars.ops_manager %>:
     - **Azure**: `AzureCloud`.
     - **Azure China**: `AzureChinaCloud`. If logging in to <code>AzureChinaCloud</code> fails with
       a `CERT_UNTRUSTED`, use the latest version of node, 4.x or later. For more information about this error, see [Failed to login AzureChinaCloud](https://github.com/Azure/azure-xplat-cli/issues/2725) in the Azure/azure-xplat-cli GitHub repository.
@@ -31,7 +31,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     $ az cloud set --name AzureCloud
     </pre>
 
-    <p class="note"><strong>Note:</strong> For more information about installing Ops Manager in the China
+    <p class='note'><strong>Note:</strong> For more information about installing <%= vars.ops_manager %> in the China
     Region, see <a href="../install/offline_installation.html#install_china">Install in the China Region</a> in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
 
 1. To log in, run:
@@ -43,7 +43,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     Authenticate by navigating to the URL in the output from the command, entering the provided code, and clicking your account.
 
 
-## <a id="default-subscription"></a> Step 2: Set Your Default Subscription
+## <a id='default-subscription'></a> Step 2: Set Your Default Subscription
 
 1. To list your Azure subscriptions, run:
 
@@ -84,7 +84,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     ]
     </pre>
 
-1. Identify your default subscription in the output of this command by locating the subscription listed that has `isDefault` set to `true`. To deploy Ops Manager to a different subscription, you must set the other subscription as the default. To set a new default subscription, run:
+1. Identify your default subscription in the output of this command by locating the subscription listed that has `isDefault` set to `true`. To deploy <%= vars.ops_manager %> to a different subscription, you must set the other subscription as the default. To set a new default subscription, run:
 
     ```
     az account set --subscription SUBSCRIPTION-ID
@@ -118,7 +118,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     --password "Swordfish" --homepage "http<span>:</span>//BOSHAzureCPI" \
     --identifier-uris "http<span>:</span>//BOSHAzureCPI"
     </pre>
-    <p class="note"><strong>Note</strong>: You can provide any string for the <code>homepage</code> and <code>identifier-uris</code> flags, but the value of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription. For the <code>homepage</code>, <%= vars.company_name %> recommends using <code><span>http:</span>//BOSHAzureCPI</code> as shown in the example above.</p>
+    <p class='note'><strong>Note:</strong> You can provide any string for the <code>homepage</code> and <code>identifier-uris</code> flags, but the value of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription. For the <code>homepage</code>, <%= vars.company_name %> recommends using <code><span>http:</span>//BOSHAzureCPI</code> as shown in the example above.</p>
 
 1. From the output of the `az ad app create` that you ran in the previous step, locate and record the value of `appId`. This is your `APP_ID` for creating a service principal.
 
@@ -140,7 +140,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     </pre>
 
 
-## <a id="create-configure"></a> Step 4: Create and Configure a Service Principal
+## <a id='create-configure'></a> Step 4: Create and Configure a Service Principal
 
 1. To create a service principal, run:
 
@@ -164,7 +164,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     }
     </pre>
 
-1. You must have the Owner role on your service principal to deploy Ops Manager to Azure. To assign the Owner role on your service principal, run:
+1. You must have the Owner role on your service principal to deploy <%= vars.ops_manager %> to Azure. To assign the Owner role on your service principal, run:
 
     ```
     az role assignment create --assignee "SERVICE-PRINCIPAL-NAME" \
@@ -181,7 +181,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     --role "Owner" \
     --scope /subscriptions/87654321-1234-5678-1234-567891234567
     </pre>
-    <p class="note"><strong>Note:</strong> If you need to use multiple resource groups for your deployment on Azure, you can define custom roles for your Service Principal. These roles allow BOSH to deploy to pre-existing network resources outside of the resource group.</p>
+    <p class='note'><strong>Note:</strong> If you need to use multiple resource groups for your deployment on Azure, you can define custom roles for your Service Principal. These roles allow BOSH to deploy to pre-existing network resources outside of the resource group.</p>
 
     For more information about Azure Role-Based Access Control, see [Built-in roles for Azure resource](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-built-in-roles/) the Microsoft Azure documentation.
 
@@ -212,7 +212,7 @@ This topic describes how to prepare Azure to deploy Ops Manager. You must deploy
     </pre>
 
 
-## <a id="verify-your-service-principal"></a> Step 5: Verify Your Service Principal
+## <a id='verify-your-service-principal'></a> Step 5: Verify Your Service Principal
 
 To verify your service principal, run the following command to log in to your service principal:
 
@@ -273,4 +273,4 @@ If you cannot log in, the service principal is invalid. Create a new service pri
 
 ## <a id='next'></a> Next Steps
 
-After you complete this procedure, follow the instructions in [Deploying Ops Manager on Azure Using Terraform](./prepare-env-terraform.html).
+After you complete this procedure, follow the instructions in [Deploying <%= vars.ops_manager %> on Azure Using Terraform](prepare-env-terraform.html).

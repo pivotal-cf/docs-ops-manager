@@ -5,34 +5,36 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.ops_manager + " on OpenStack"  %>
 
-This guide describes how to install <%= vars.ops_manager %> on OpenStack with <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
+This guide describes how to install <%= vars.ops_manager_first %> on OpenStack with <%= vars.app_runtime_first %>.
 
 
-## <a id="overview"></a> Overview
+## <a id='overview'></a> Overview
 
 OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter. For guidance on OpenStack service credential management, see [Open Stack Security Documents](#security) below.
 
 
-## <a id="security"></a> OpenStack Security Documents
+## <a id='security'></a> OpenStack Security Documents
 
 These documents provide a general reference for OpenStack service credential management.
 
 * [OpenStack credential configuration](https://docs.openstack.org/openstack-ansible/13.3.6/install-guide/configure-creds.html)
+
 * [OpenStack credential creation](http://docs.openstack.org/project-install-guide/ec2-api/draft/credentials-creation.html)
+
 * [OpenStack deployment configuration](http://docs.openstack.org/project-deploy-guide/openstack-ansible/newton/configure.html)
 
 
-## <a id="requirements"></a> Requirements
+## <a id='requirements'></a> Requirements
 
 This section describes the requirements for installing <%= vars.ops_manager %> on OpenStack, including general requirements for installing <%= vars.ops_manager %> with <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> as well as OpenStack requirements.
 
-<p class="note"><strong>Note:</strong> You can install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime. The <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime is not supported for OpenStack. For more information about <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/concepts/architecture/index.html"><%= vars.app_runtime_abbr %> Components</a>. For more information about <%= vars.k8s_runtime_abbr %>, see <a href="https://docs.pivotal.io/pks/index.html"><%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)</a>.</p>
+<p class='note'><strong>Note:</strong> You can install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime. The <%= vars.k8s_runtime_first %> runtime is not supported for OpenStack. For more information about <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/concepts/architecture/index.html"><%= vars.app_runtime_abbr %> Components</a>. For more information about <%= vars.k8s_runtime_abbr %>, see the <a href="https://docs.pivotal.io/pks/index.html"><%= vars.k8s_runtime_abbr %> documentation</a>.</p>
 
-### <a id="general"></a> General Resource Requirements
+### <a id='general'></a> General Resource Requirements
 
 For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-11/operating/requirements.html).
 
-### <a id="openstack"></a> OpenStack Requirements
+### <a id='openstack'></a> OpenStack Requirements
 
 The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
 
@@ -70,7 +72,7 @@ The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
   * 1&nbsp;TB of storage
   * Nova or Neutron networking with floating IP support
 
-      <p class="note"><strong>Note:</strong> By default, <%= vars.app_runtime_abbr %> deploys the number of VM instances required to run a highly available configuration of <%= vars.ops_manager %>. If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require HA, then you can scale down the number of instances in your deployment. For information about the number of instances required to run a minimal, non-HA <%= vars.ops_manager %> deployment, see [Scaling <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/scaling-ert-components.html).</p>
+      <p class='note'><strong>Note:</strong> By default, <%= vars.app_runtime_abbr %> deploys the number of VM instances required to run a highly available configuration of <%= vars.ops_manager %>. If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require HA, then you can scale down the number of instances in your deployment. For information about the number of instances required to run a minimal, non-HA <%= vars.ops_manager %> deployment, see [Scaling <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/scaling-ert-components.html).</p>
 
 * The following are requirements for the OpenStack Cinder back end:
   * <%= vars.ops_manager %> requires RAW root disk images. The Cinder back end for your OpenStack project must support RAW.
@@ -87,13 +89,13 @@ The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
 
 ## <a id='outputs'></a> Install <%= vars.ops_manager %> on OpenStack with <%= vars.app_runtime_abbr %>
 
-To install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime, do the following:
+To install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime:
 
-1. Deploy <%= vars.ops_manager %>. See [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html).
+1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html).
 
-1. Configure BOSH Director on OpenStack. See [Configuring BOSH Director on OpenStack](../openstack/config.html).
+1. Configure BOSH Director on OpenStack. For more information, see [Configuring BOSH Director on OpenStack](../openstack/config.html).
 
-## <a id="next"></a> Next Steps
+## <a id='next'></a> Next Steps
 
 After completing the procedures above, configure a runtime.
 

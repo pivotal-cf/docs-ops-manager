@@ -3,7 +3,7 @@ title: Upgrading BOSH Director on GCP
 owner: Ops Manager
 ---
 
-This topic describes how to upgrade BOSH Director for <%= vars.ops_manager %> on Google Cloud Platform (GCP).
+This topic describes how to upgrade BOSH Director for <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
 Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>](upgrading-pcf.html#upgrade_ops) in _Upgrading <%= vars.ops_manager %>.
 
@@ -46,7 +46,7 @@ To locate the <%= vars.ops_manager %> installation file:
 1. Copy the filepath string of the <%= vars.ops_manager %> image based on your existing deployment location.
 
 
-## <a id="create-image"></a> Create a Private VM Image
+## <a id='create-image'></a> Create a Private VM Image
 
 Create a private VM image to use when you create the new <%= vars.ops_manager %> VM.
 
@@ -68,7 +68,7 @@ To create a private VM image:
 1. Click **Create**. The file may take a few minutes to import.
 
 
-## <a id="start-vm"></a> Create the <%= vars.ops_manager %> VM Instance
+## <a id='start-vm'></a> Create the <%= vars.ops_manager %> VM Instance
 
 Create an <%= vars.ops_manager %> VM instance to host the new version of <%= vars.ops_manager %>.
 
@@ -114,11 +114,11 @@ To create an <%= vars.ops_manager %> VM instance:
 1. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This may take a few moments.
 
 1. Navigate to your DNS provider, and modify the entry that points a fully-qualified domain name (FQDN) to the <%= vars.ops_manager %> VM. Replace the original <%= vars.ops_manager %> static IP address with the public IP address of the new <%= vars.ops_manager %> VM you created in a previous step.
-  <p class="note warning"><strong>Warning:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using a FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access. If you are importing older <%= vars.ops_manager %> settings, you must use the FQDN.</p>
+  <p class='note warning'><strong>Warning:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using a FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access. If you are importing older <%= vars.ops_manager %> settings, you must use the FQDN.</p>
 
 
-## <a id="next"></a> Next Steps
+## <a id='next'></a> Next Steps
 
-After you complete this procedure, continue the upgrade instructions in [Upgrading <%= vars.ops_manager %>](./upgrading-pcf.html).
+After you complete this procedure, continue the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).
 
-Later on, if you need to SSH into the <%= vars.ops_manager %> VM to perform diagnostic troubleshooting, see [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
+Later on, if you need to SSH into the <%= vars.ops_manager %> VM to perform diagnostic troubleshooting, see [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).

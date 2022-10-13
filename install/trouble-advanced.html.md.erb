@@ -4,10 +4,11 @@ owner: Ops Manager
 ---
 
 This topic describes using the BOSH CLI to help diagnose and resolve issues with your
-<%= vars.ops_manager %> deployment. Before using the information and techniques in this topic,
+<%= vars.ops_manager_first %> deployment. Before using the information and techniques in this topic,
 review [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
 
-## <a id="overview"></a> Overview
+
+## <a id='overview'></a> Overview
 
 To follow the steps in this topic, you must log in to the BOSH Director VM. The BOSH Director runs
 on the virtual machine (VM) that <%= vars.ops_manager %> deploys on the first install of the BOSH
@@ -17,10 +18,11 @@ After authenticating into the BOSH Director, you can run specific commands using
 Line Interface (BOSH CLI). BOSH Director diagnostic commands have access to information about your
 entire <%= vars.ops_manager %> installation.
 
-<p class="note"><strong>Note:</strong> Before running any BOSH CLI commands, verify that no BOSH
+<p class='note'><strong>Note:</strong> Before running any BOSH CLI commands, verify that no BOSH
   Director tasks are running on the <%= vars.ops_manager %> VM. For more information, see
   <a href="https://bosh.io/docs/cli-v2#task-mgmt">Tasks</a> in <em>BOSH CLI commands</em>
   in the BOSH documentation.</p>
+
 
 ## <a id='gather'></a> Gather Credential and IP Address Information
 
@@ -34,22 +36,22 @@ fully qualified domain name (FQDN) in a web browser.
 1. Record the IP address for the Director job. This is the IP address of the VM where the BOSH
 Director runs.
 
-    <%= image_tag("ops-mgr-job-ip.png", :alt => "Screenshot of the Ops Manager Director for VMware vSphere dashboard. The image shows the 'Status' tab with the IPS value circled in red.") %>
+    <%= image_tag("ops-mgr-job-ip.png", :alt => "Screenshot of the <%= vars.ops_manager %> Director for VMware vSphere dashboard. The image shows the 'Status' tab with the IPS value circled in red.") %>
 
 1. Select the **Credentials** tab.
 
 1. Click **Link to Credential** to view the **Director Credentials**. Record these credentials.
 
-    <%= image_tag("bosh-creds.png", :alt => "Screenshot of the Ops Manager Director for VMware vSphere dashboard. The image shows the 'Credentials' tab with the Director Credentials circled in red.") %>
+    <%= image_tag("bosh-creds.png", :alt => "Screenshot of the <%= vars.ops_manager %> Director for VMware vSphere dashboard. The image shows the 'Credentials' tab with the Director Credentials circled in red.") %>
 
-1. Return to the **Installation Dashboard**.
+1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. **(Optional)** To prepare to troubleshoot the job VM for any other product, click the product
 tile and repeat the procedure above to record the IP address and VM credentials for that job VM.
 
 1. Log out of <%= vars.ops_manager %>.
 
-<p class="note"><strong>Note:</strong> Ensure that there are no <%= vars.ops_manager %>
+<p class='note'><strong>Note:</strong> Ensure that there are no <%= vars.ops_manager %>
   installations or updates in progress while using the BOSH CLI.</p>
 
 ## <a id='ssh'></a> Log in to the <%= vars.ops_manager %> VM with SSH
@@ -70,7 +72,7 @@ and do the following:
 
 1. Record the **Bosh Commandline Credentials** from the **Credentials** tab of the BOSH Director tile.
 
-1. SSH into the <%= vars.ops_manager %> VM. See [Log in to the <%= vars.ops_manager %> VM with SSH](#ssh) above.
+1. SSH into the <%= vars.ops_manager %> VM. For more information, see [Log in to the <%= vars.ops_manager %> VM with SSH](#ssh) above.
 
 1. Export all the environment variables by running the following command:
 
@@ -96,7 +98,7 @@ and do the following:
 
 ### <a id='bosh-alias'></a> Create a Local BOSH Director Alias
 
-To create a BOSH Director alias and log in to the BOSH Director VM, do the following:
+To create a BOSH Director alias and log in to the BOSH Director VM:
 
 1. Run the following command to create a local alias for the BOSH Director using the BOSH CLI:
 
@@ -150,7 +152,7 @@ your BOSH Director. For example:
     $ bosh -e gcp log-in
     </pre>
     Follow the BOSH CLI prompts and enter your SAML credentials to log in to the BOSH Director VM.
-    <p class="note"><strong>Note:</strong> Your browser must be able to reach the BOSH Director to
+    <p class='note'><strong>Note:</strong> Your browser must be able to reach the BOSH Director to
     log in with SAML.</p>
 
 1. Click **Log in with organization credentials (SAML)**.
@@ -200,11 +202,12 @@ troubleshooting.
 `bosh vms` supports the following arguments:
 
 * `--dns`: Report also includes the DNS A record for each VM
+
 * `--vitals`: Report also includes load, CPU, memory usage, swap usage, system disk usage,
   ephemeral disk usage, and persistent disk usage for each VM
 
-  <p class="note"><strong>Note:</strong> The <strong>Status</strong> tab of the
-  <%= vars.app_runtime_full %> product tile displays information similar to the
+  <p class='note'><strong>Note:</strong> The <strong>Status</strong> tab of the
+  <%= vars.app_runtime_abbr %> tile displays information similar to the
   <code>bosh vms</code> output.</p>
 
 ### <a id='cck'></a> BOSH Cloud Check
@@ -215,17 +218,14 @@ state of the VMs. For each difference detected, `bosh <%= vars.bosh_cloud_check 
 following repair options:
 
 * `Reboot VM`: Instructs BOSH to reboot a VM. Rebooting can resolve many transient errors.
-* `Ignore problem`: Instructs BOSH to do nothing. You may want to ignore a problem ands instead run
-  `bosh ssh` in an attempt to troubleshoot directly on the machine.
-* `Reassociate VM with corresponding instance`: Updates the BOSH Director state database. Use this
-  option if you believe that the BOSH Director state database is in error and that a VM is
-  correctly associated with a job.
-* `Recreate VM using last known apply spec`: Instructs BOSH to destroy the server and recreate it
-  from the deployment manifest that the installer provides. Use this option if a VM is corrupted.
-* `Delete VM reference`: Instructs BOSH to delete a VM reference in the Director state database. If
-  a VM reference exists in the state database, BOSH expects to find an agent running on the VM.
-  Select this option only if you know that this reference is in error.
-  Once you delete the VM reference, BOSH can no longer control the VM.
+
+* `Ignore problem`: Instructs BOSH to do nothing. You may want to ignore a problem ands instead run `bosh ssh` in an attempt to troubleshoot directly on the machine.
+
+* `Reassociate VM with corresponding instance`: Updates the BOSH Director state database. Use this option if you believe that the BOSH Director state database is in error and that a VM is correctly associated with a job.
+
+* `Recreate VM using last known apply spec`: Instructs BOSH to destroy the server and recreate it from the deployment manifest that the installer provides. Use this option if a VM is corrupted.
+
+* `Delete VM reference`: Instructs BOSH to delete a VM reference in the Director state database. If a VM reference exists in the state database, BOSH expects to find an agent running on the VM. Select this option only if you know that this reference is in error. Once you delete the VM reference, BOSH can no longer control the VM.
 
 To use this command, run `bosh -e MY-ENV -d MY-DEPLOYMENT <%= vars.bosh_cloud_check %>`, where `MY-ENV` is your environment, and `MY-DEPLOYMENT` is your deployment.
 
@@ -280,7 +280,7 @@ expected `cf-d7293430724a2c421061: ccdb/0', got `cf-d7293430724a2c421061: nats/0
 
 Use `bosh ssh` to log in to the VMs in your deployment with SSH.
 
-To use `bosh ssh`, do the following:
+To use `bosh ssh`:
 
 1. Identify a VM to log in to with SSH. Run `bosh -e MY-ENV -d MY-DEPLOYMENT vms` to list the VMs
 in the given deployment, where `MY-ENV` is your environment alias and `MY-DEPLOYMENT` is the

@@ -10,11 +10,11 @@ This topic describes how to prepare a Hardware Security Module (HSM) to store Cr
 
 SafeNet Luna HSM is the only HSM option that you can use as a CredHub encryption provider. The Amazon Web Services (AWS) [CloudHSM Classic](https://aws.amazon.com/cloudhsm/faqs-classic/) service uses SafeNet Luna HSMs. For more information about SafeNet Luna HSM, see the [SafeNet Luna Network HSMs](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) product page.
 
-When configuring <%= vars.ops_manager_full %>, BOSH CredHub uses a single HSM to store encryption keys. In <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), you can configure multiple HSMs for runtime CredHub to use as encryption providers.
+When configuring <%= vars.ops_manager_first %>, BOSH CredHub uses a single HSM to store encryption keys. In <%= vars.app_runtime_first %>, you can configure multiple HSMs for runtime CredHub to use as encryption providers.
 
 To configure BOSH CredHub, see _Step 3: Configure Director_ in the [BOSH Director configuration topic for your IaaS](deploy-bosh-om.html#contents).
 
-<p class="note"><strong>Note:</strong> You can configure multiple HSMs for BOSH CredHub using the <%= vars.ops_manager %> API. For more information, see the <a href="https://docs.pivotal.io/platform/opsman-api/#updating-director-and-iaas-properties-experimental"><%= vars.ops_manager %> API documentation</a>.</p>
+<p class='note'><strong>Note:</strong> You can configure multiple HSMs for BOSH CredHub using the <%= vars.ops_manager %> API. For more information, see the <a href="https://docs.pivotal.io/platform/opsman-api/#updating-director-and-iaas-properties-experimental"><%= vars.ops_manager %> API documentation</a>.</p>
 
 Configure runtime CredHub with one or more HSMs to securely manage service broker credentials. To configure runtime CredHub, see [Step 1: Configure the <%= vars.app_runtime_abbr %> Tile](https://docs.pivotal.io/application-service/operating/secure-si-creds.html#pas-config) in _Securing Service Instance Credentials with Runtime CredHub_.
 
@@ -34,7 +34,7 @@ As you follow these procedures, you should collect or create these resources:
 * Your HSM partition serial numbers
 
 
-## <a id="initialize-and-configure"></a> Initialize and Configure New HSMs
+## <a id='initialize-and-configure'></a> Initialize and Configure New HSMs
 
 The procedures in these sections describe how to initialize and configure new HSMs.
 
@@ -89,7 +89,7 @@ To initialize a new HSM and set its policies:
     lunash:> hsm changePolicy -policy 15 -value 1
     ```
 
-### <a id="retrieve-hsm-certificate"></a> Retrieve HSM Certificate
+### <a id='retrieve-hsm-certificate'></a> Retrieve HSM Certificate
 
 To retrieve your HSM certificate:
 
@@ -104,7 +104,7 @@ To retrieve your HSM certificate:
 
 BOSH CredHub uses this certificate to validate the identity of the HSM when connecting to it.
 
-### <a id="create-an-hsm-partition"></a> Create an HSM Partition
+### <a id='create-an-hsm-partition'></a> Create an HSM Partition
 
 To create an HSM partition to hold the encryption keys:
 
@@ -198,7 +198,7 @@ To register a client host and partitions for your HSM:
     * `PARTITION-NAME` is the name of the partition you created.
 
 
-## <a id="hsm-encryption-keys"></a> Set, Review, and Delete HSM Encryption Keys
+## <a id='hsm-encryption-keys'></a> Set, Review, and Delete HSM Encryption Keys
 
 You can set which key is used for encryption operations by defining the encryption key name in the **Director Config** pane of the BOSH Director tile for BOSH Credhub, the **CredHub** pane of the <%= vars.app_runtime_abbr %> tile for runtime CredHub, or the <%= vars.ops_manager %> API. If a key already exists on the HSM, CredHub uses it by default. If a key does not exist on the HSM, CredHub creates one automatically in the referenced partition.
 
@@ -252,7 +252,7 @@ To delete the currently active key:
           }'
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your Ops Manager instance.
+    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> instance.
     * `KEY-TO-DEACTIVATE` is the name of the encryption key you want to deactivate.
     * `OTHER-KEY` is any other key you may have stored in CredHub.
 
@@ -278,7 +278,7 @@ To delete the currently active key:
                   }'
             ```
             Where:
-            * `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager instance.
+            * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
             * `KEY-TO-UPLOAD` is the name of the encryption key you want to upload.
         1. Activate the key by running:
 
@@ -306,7 +306,7 @@ To delete the currently active key:
                   }'
             ```
             Where:
-            * `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager instance.
+            * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
             * `DEACTIVATED-KEY` is the key you deactivated.
             * `UPLOADED-KEY` is the name of the encryption key you uploaded in the previous step.
     * To activate an existing key, run:
@@ -335,7 +335,7 @@ To delete the currently active key:
               }'
         ```
         Where:
-        * `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager instance.
+        * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
         * `DEACTIVATED-KEY` is the key you want to deactivate.
         * `KEY-TO-ACTIVATE` is the name of the encryption key you want to activate.
 
@@ -360,7 +360,7 @@ To delete the currently active key:
           }'
     ```
     Where:
-    * `OPS-MANAGER-FQDN` is the FQDN of your Ops Manager instance.
+    * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
     * `ACTIVATED-KEY` is the name of the encryption key you activated in the previous step.
 
 For information about running commands with the <%= vars.ops_manager %> API, see [Run API Commands](ops-man-api.html#run-commands) in _Using the <%= vars.ops_manager %> API_.

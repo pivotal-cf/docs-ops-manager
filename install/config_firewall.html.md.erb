@@ -8,7 +8,7 @@ This topic describes how to configure your firewall and how to verify that compo
 
 ## <a id='firewall_configuration'></a> Configure Your Firewall
 
-<%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) require the following open TCP ports:
+<%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> require the following open TCP ports:
 
 * **25555:** Routes from <%= vars.ops_manager %> VM to the BOSH Director.
 * **443:** If configured, routes to your own load balancer.
@@ -109,7 +109,7 @@ When you install <%= vars.ops_manager %> in an environment that uses a strong fi
 To verify that component VMs can correctly resolve DNS entries:
 
 1. SSH into the <%= vars.ops_manager %> VM by following the procedure in [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas) in
-_Logging Into Ops Manager VMs with SSH_.
+_Logging Into <%= vars.ops_manager %> VMs with SSH_.
 
 1. Run any of the following network administration commands with the IP address of the VM:
   * `nslookup`

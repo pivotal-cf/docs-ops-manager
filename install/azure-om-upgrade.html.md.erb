@@ -3,7 +3,7 @@ title: Upgrading BOSH Director on Azure
 owner: Ops Manager
 ---
 
-This topic describes how to upgrade BOSH Director for <%= vars.ops_manager %> on Azure.
+This topic describes how to upgrade BOSH Director for <%= vars.ops_manager_first %> on Azure.
 
 Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html#upgrade_ops).
 
@@ -13,7 +13,7 @@ Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade 
 <%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
 <%= partial "/pcf/core/2-10/om_upgrade_overview" %>
 
-<p class="note"><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
+<p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 To create an <%= vars.ops_manager %> VM instance:
 
@@ -308,7 +308,7 @@ To create an <%= vars.ops_manager %> VM instance:
             * `PATH-TO-PUBLIC-KEY` is the path to your public key .pub file.
 
 1. If you have deployed more than one tile in this <%= vars.ops_manager %> installation, increase the size of the <%= vars.ops_manager %> VM disk. You can repeat this process and increase the disk again at a later time if necessary.
-    <p class="note"><strong>Note:</strong> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
+    <p class='note'><strong>Note:</strong> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
     1. Stop the VM and detach the disk by running:
 
         ```

@@ -43,14 +43,14 @@ To configure the **Director Config** pane:
     1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
 1. Leave the **Bosh HM Forwarder IP Address** field blank.
-    <p class="note"><strong>Note:</strong> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> field blank.</p>
+    <p class='note'><strong>Note:</strong> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> field blank.</p>
 
 1. Select the **Enable VM Resurrector Plugin** checkbox to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.pivotal.io/platform/customizing/resurrector.html) for more information about the Resurrector plugin.<% end %>
 
 1. If you want to collect detailed metrics from BOSH-managed VMs, activate the **Enable additional System Metrics** checkbox. For a list of metrics that the System Metrics Agent collects from BOSH-managed VMs, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md) on GitHub.
 
 1. Select **Enable Post Deploy Scripts** to run a post-deploy script after deployment. This script allows the job to execute additional commands against a deployment.
-    <p class="note"><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), you must enable post-deploy scripts.</p>
+    <p class='note'><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
 
 1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deploy. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
 

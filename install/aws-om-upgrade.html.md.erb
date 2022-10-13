@@ -3,7 +3,7 @@ title: Upgrading BOSH Director on AWS
 owner: Ops Manager
 ---
 
-This topic describes how to upgrade BOSH Director for <%= vars.ops_manager %> on Amazon Web Services (AWS).
+This topic describes how to upgrade BOSH Director for <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
 
 Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>](upgrading-pcf.html#upgrade_ops) in _Upgrading <%= vars.ops_manager %>_.
 
@@ -17,11 +17,11 @@ For <%= vars.ops_manager %> installations on AWS, the VM that hosts the new vers
 
 To create an <%= vars.ops_manager %> VM instance:
 
-1. Retrieve the <%= vars.ops_manager %> AMI ID. For more information, see [Retrieve <%= vars.ops_manager %> AMI ID](#pcfaws-om-ami).
+1. Retrieve the <%= vars.ops_manager %> AMI ID. For more information, see [Retrieve <%= vars.ops_manager %> AMI ID](#pcfaws-om-ami) below.
 
-1. Launch the AMI. For more information, see [Launch <%= vars.ops_manager %> AMI](#pcfaws-om-ami).
+1. Launch the AMI. For more information, see [Launch <%= vars.ops_manager %> AMI](#pcfaws-om-ami) below.
 
-1. Edit the <%= vars.ops_manager %> DNS A Record. For more information, see [Edit <%= vars.ops_manager %> DNS A Record](#dns).
+1. Edit the <%= vars.ops_manager %> DNS A Record. For more information, see [Edit <%= vars.ops_manager %> DNS A Record](#dns) below.
 
 
 ## <a id='prerequisites'></a> Prerequisites
@@ -57,7 +57,7 @@ To launch the AMI for <%= vars.ops_manager %>:
 1. Select **Public images** from the dropdown filter that says **Owned by me**.
 
 1. Paste the AMI ID for your region into the search bar and press enter.
-    <p class="note"><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
+    <p class='note'><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
 
     <%= image_tag("pcfaws/pcf_aws_ami.png", :alt => "AWS AMI interface") %>
 
@@ -80,7 +80,7 @@ To launch the AMI for <%= vars.ops_manager %>:
     * **Network:** Select the VPC that you created.
     * **Subnet:** Select `<%= vars.product_name_lc %>-public-subnet-az0`.
     * **Auto-assign for Public IP:** Select **Enable**.
-    * **IAM role:** Select the IAM role associated with your <%= vars.product_name_lc %>-user profile. If you have not created one, click **Create new IAM role** and follow the procedures in [AWS Permissions Guidelines](./aws-iaas-user-roles.html).
+    * **IAM role:** Select the IAM role associated with your <%= vars.product_name_lc %>-user profile. If you have not created one, click **Create new IAM role** and follow the procedures in [AWS Permissions Guidelines](aws-iaas-user-roles.html).
     * For all other fields, accept the default values.
 
     <%= image_tag("pcfaws/pcf_aws_configure_instance.png", :alt => "AWS Configure Instance Details UI") %>
@@ -125,4 +125,4 @@ To edit the <%= vars.ops_manager %> DNS A record:
 
 ## <a id='continue'></a> Next Steps
 
-After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](./upgrading-pcf.html)
+After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html)

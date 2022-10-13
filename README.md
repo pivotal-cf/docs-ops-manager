@@ -16,7 +16,7 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 
 [Bookbinder](https://github.com/pivotal-cf/bookbinder/) uses the contents of this repository and others as sources to assemble the documentation for Ops Manager.
 
-## <a name="version-branch"></a> Versions and Branches
+## <a name='version-branch'></a> Versions and Branches
 
 | **Book Branch** | **Content Branch** | **Published URL** |
 |-----------------|--------------------|-------------------|

@@ -3,11 +3,12 @@ title: Logging Into Ops Manager with Auth
 owner: Ops Manager
 ---
 
-This topic describes how to log into <%= vars.ops_manager %> for the first time after a new <%= vars.ops_manager %> deployment.
+This topic describes how to log into <%= vars.ops_manager_first %> for the first time after a new <%= vars.ops_manager %> deployment.
 
 This topic also describes how to configure the <%= vars.ops_manager %> default authentication with either SAML, LDAP, or internal authentication.
 
-## <a id="overview"></a> Overview
+
+## <a id='overview'></a> Overview
 
 When you have a new installation of <%= vars.ops_manager %>, you choose the default authentication and login method.
 
@@ -21,6 +22,7 @@ Your login method and authentication choices are:
 
 * **[LDAP Server](#ldap):** An external identity server maintains your user database.
 
+
 ## <a id='login-first-time'></a> Log In to <%= vars.ops_manager %> For the First Time
 
 To log in to <%= vars.ops_manager %> for the first time with a new <%= vars.ops_manager %> deployment:
@@ -32,14 +34,15 @@ To log in to <%= vars.ops_manager %> for the first time with a new <%= vars.ops_
     * [SAML Identity Provider](#saml)
     * [LDAP Server](#ldap)
 
+
 ## <a id='internal'></a> Log In to <%= vars.ops_manager %> with Internal Authentication
 
 To set up internal authentication that <%= vars.ops_manager %> maintains:
 
-1.  When redirected to the **Internal Authentication** page, do the following:
+1.  When redirected to the **Internal Authentication** page:
     * Enter a **Username**, **Password**, and **Password confirmation** to create an Admin user.
     * Enter a **Decryption passphrase** and the **Decryption passphrase confirmation**. This passphrase encrypts the <%= vars.ops_manager %> datastore and is not recoverable.
-    * If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](./install/pcf-director-proxy-settings.html).
+    * If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](install/pcf-director-proxy-settings.html).
     * Read the **End User License Agreement**, and select the checkbox to accept the terms.
     * Click **Setup Authentication**.
 

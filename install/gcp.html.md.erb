@@ -5,33 +5,35 @@ owner: Ops Manager
 
 <% current_page.data.title = "Installing " + vars.ops_manager + " on GCP"  %>
 
-This topic describes how to install [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) on Google Cloud Platform (GCP).
+This topic describes how to install <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
 It includes resource requirements, prerequisites, instructions for installing <%= vars.ops_manager %> on GCP, and additional resources.
 
 
-## <a id="overview"></a> Overview
+## <a id='overview'></a> Overview
 
-You can install <%= vars.ops_manager %> on GCP with either the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtime. There are resource requirements specific to each runtime. Ensure you meet the requirements for your runtime and the requirements specific to GCP before installing <%= vars.ops_manager %> on GCP.
+You can install <%= vars.ops_manager %> on GCP with either the <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %> runtime. There are resource requirements specific to each runtime. Ensure you meet the requirements for your runtime and the requirements specific to GCP before installing <%= vars.ops_manager %> on GCP.
 
 
-## <a id="requirements"></a> Requirements
+## <a id='requirements'></a> Requirements
 
 This section lists the following resource requirements for installing <%= vars.ops_manager %> on GCP:
 
-* General <%= vars.ops_manager %> resource requirements. See [<%= vars.ops_manager %> Resource Requirements](#general-requirements).
-* GCP-specific resource requirements. See [GCP Resource Requirements](#gcp-requirements).
+* General <%= vars.ops_manager %> resource requirements. For more information, see [<%= vars.ops_manager %> Resource Requirements](#general-requirements) below.
 
-### <a id="general-requirements"></a> <%= vars.ops_manager %> Resource Requirements
+* GCP-specific resource requirements. For more information, see [GCP Resource Requirements](#gcp-requirements) below.
+
+### <a id='general-requirements'></a> <%= vars.ops_manager %> Resource Requirements
 
 This section lists resource requirements for installing <%= vars.ops_manager %> on GCP. It includes links to general resource requirements for both the <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> runtimes.
 
 See one of the following topics, depending on the runtime you plan to install using <%= vars.ops_manager %>:
 
 * For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-11/operating/requirements.html).
+
 * For <%= vars.k8s_runtime_abbr %>-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
 
-### <a id="gcp-requirements"></a> GCP Resource Requirements
+### <a id='gcp-requirements'></a> GCP Resource Requirements
 
 The following are GCP-specific resource requirements for installing <%= vars.ops_manager %> on GCP:
 
@@ -69,7 +71,7 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
     <td>16</td>
   </tr>
 </table>
-<p class="note"><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+<p class='note'><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
 
   * **Small Footprint <%= vars.app_runtime_abbr %>:** At a minimum, a new GCP deployment requires the following VMs to run Small Footprint <%= vars.app_runtime_abbr %>:
 <table id='small-footprint' border="1" class="nice">
@@ -140,10 +142,10 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
 </table>
   * **<%= vars.k8s_runtime_abbr %>:** See [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/gcp-requirements.html).
 
-* (<%= vars.app_runtime_abbr %>-only) Your GCP project must have sufficient quota to deploy all the VMs needed to install <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>. For a list of suggested quotas, see [Recommended GCP Quotas](./gcp-quotas.html).
+* (<%= vars.app_runtime_abbr %>-only) Your GCP project must have sufficient quota to deploy all the VMs needed to install <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>. For a list of suggested quotas, see [Recommended GCP Quotas](gcp-quotas.html).
 
 
-## <a id="prerequisites"></a> Prerequisites
+## <a id='prerequisites'></a> Prerequisites
 
 To install <%= vars.ops_manager %> on GCP, you must do the following:
 
@@ -151,7 +153,7 @@ To install <%= vars.ops_manager %> on GCP, you must do the following:
 
 * Increase or remove the VM instance limits in your GCP account. For VM instance requirements, see [GCP Resource Requirements](#gcp-requirements).
 
-* <a name="#env_account"></a> Update your GCP account with the following required permissions:
+* <a name='#env_account'></a> Update your GCP account with the following required permissions:
    * The following permissions are required to create firewalls, networks, load balancers, and other resources:
      * **Compute Engine** > **Compute Instances Admin (beta)**
      * **Compute Engine** > **Compute Network Admin**
@@ -162,18 +164,18 @@ To install <%= vars.ops_manager %> on GCP, you must do the following:
      * **Project** > **Owner**
 
 * Create an SSL certificate for your <%= vars.ops_manager %> domain.
-  <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> to a production environment, you must obtain a certificate from a certificate authority. <%= vars.company_name %> recommends using a self-signed certificate generated by <%= vars.ops_manager %> for development and testing purposes only.</p>
+  <p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> to a production environment, you must obtain a certificate from a certificate authority. <%= vars.company_name %> recommends using a self-signed certificate generated by <%= vars.ops_manager %> for development and testing purposes only.</p>
 
 * Assign administrative rights to a domain for <%= vars.ops_manager %>. You need to be able to add wildcard records to this domain.
 
 * Create a wildcard DNS record that points to your router or load balancer. Alternatively, you can use a service such as xip.io. For example, `203.0.113.0.xip.io`. Then, create at least one wildcard TLS certificate that matches the DNS record you configured.
-  <p class="note"><strong>Note:</strong>  With a wildcard DNS record, every hostname in your domain resolves to the IP address of your router or load balancer. For example, if you create a DNS record `*.example.com` pointing to your router, every app deployed to the `example.com` domain resolves to the IP address of your router.</p>
+  <p class='note'><strong>Note:</strong>  With a wildcard DNS record, every hostname in your domain resolves to the IP address of your router or load balancer. For example, if you create a DNS record `*.example.com` pointing to your router, every app deployed to the `example.com` domain resolves to the IP address of your router.</p>
 
 * Create one or more NTP servers, if the NTP servers are not already provided by your GCP project.
 
 * Install the most recent version of one of the following CLIs, depending on your runtime:
-  * **<%= vars.app_runtime_abbr %>:** The Cloud Foundry Command Line Interface (cf CLI). See [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli#downloads) in GitHub.
-  * **<%= vars.k8s_runtime_abbr %>:** The <%= vars.k8s_runtime_abbr %> CLI. See [Installing the <%= vars.k8s_runtime_abbr %> CLI](https://docs.pivotal.io/tkgi/installing-cli.html).
+  * **<%= vars.app_runtime_abbr %>:** The Cloud Foundry Command Line Interface (cf CLI). For more information, see [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli#downloads) in GitHub.
+  * **<%= vars.k8s_runtime_abbr %>:** The <%= vars.k8s_runtime_abbr %> CLI. For more information, see [Installing the <%= vars.k8s_runtime_abbr %> CLI](https://docs.pivotal.io/tkgi/installing-cli.html).
 
 * **(<%= vars.app_runtime_abbr %>-only)** Request a quota increase for your GCP project. For GCP quota requirements, see [GCP Resource Requirements](#gcp-requirements). To request an increase, see [Quotas](https://console.cloud.google.com/iam-admin/quotas) in the GCP console.
 
@@ -186,14 +188,14 @@ To install <%= vars.ops_manager %> on GCP, you must do the following:
 * **(Optional)** **(<%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>-only)** Configure external user stores. When you deploy <%= vars.ops_manager %>, you can select a SAML user store for <%= vars.ops_manager %> or a SAML or LDAP user store for <%= vars.app_runtime_abbr %>, to integrate existing user accounts.
 
 
-## <a id="install"></a> Install <%= vars.ops_manager %> on GCP
+## <a id='install'></a> Install <%= vars.ops_manager %> on GCP
 
 You can install <%= vars.ops_manager %> on GCP.
 
 To install <%= vars.ops_manager %> on GCP, see [Installing <%= vars.ops_manager %> on GCP](gcp-manual.html)
 
 
-## <a id="resources"></a> Additional Resources
+## <a id='resources'></a> Additional Resources
 
 The following are additional resources related to installing <%= vars.ops_manager %> on GCP:
 

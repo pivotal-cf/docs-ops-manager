@@ -3,33 +3,34 @@ title: Using the Ops Manager API
 owner: Ops Manager
 ---
 
-This topic explains how to access the Ops Manager API,
-and gives examples of how to use the API to perform some common Ops Manager operations.
+This topic explains how to access the <%= vars.ops_manager %> API, and gives examples of how to use the API to perform some common <%= vars.ops_manager_first %> operations.
+
 
 ## <a id='overview'></a> Overview
 
-The Ops Manager API controls the Ops Manager VM directly, bypassing the Ops Manager UI.
+The <%= vars.ops_manager %> API controls the <%= vars.ops_manager %> VM directly, bypassing the <%= vars.ops_manager %> UI.
 
-Platform operators use the Ops Manager API to automate deployments, retrieve and manage credentials, and otherwise work with Ops Manager.
-Tile Developers use the Ops Manager API to test and debug <%= vars.ops_manager %> product tiles.
+Platform operators use the <%= vars.ops_manager %> API to automate deployments, retrieve and manage credentials, and otherwise work with <%= vars.ops_manager %>.
+Tile Developers use the <%= vars.ops_manager %> API to test and debug <%= vars.ops_manager %> product tiles.
 
-For more information about the Ops Manager API, see the [Ops Manager API](https://docs.pivotal.io/platform/2-10/opsman-api) documentation. Your Ops Manager serves a local copy of this documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
+For more information about the <%= vars.ops_manager %> API, see the [<%= vars.ops_manager %> API](https://docs.pivotal.io/platform/2-10/opsman-api) documentation. Your <%= vars.ops_manager %> serves a local copy of this documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
 
 ### <a id='related'></a> Related Tools
 
-For running Ops Manager operations from the command line or within shell scripts, the Ops Manager command-line interface (CLI) `om` is usually a better tool than the Ops Manager API.
+For running <%= vars.ops_manager %> operations from the command line or within shell scripts, the <%= vars.ops_manager %> command-line interface (CLI) `om` is usually a better tool than the <%= vars.ops_manager %> API.
 
 For more information about `om`, see the [`om` repository](https://github.com/pivotal-cf/om).
 
-For an overview of the Ops Manager API and the tools based on it, see [Using Ops Manager Programmatically and from the Command Line](./ops-man-api-cli.html).
+For an overview of the <%= vars.ops_manager %> API and the tools based on it, see [Using <%= vars.ops_manager %> Programmatically and from the Command Line](ops-man-api-cli.html).
 
-## <a id='access'></a> Access the Ops Manager API
 
-To access the Ops Manager API, you must authenticate to the Ops Manager User Account and Authentication (UAA) server and log in as described below.
+## <a id='access'></a> Access the <%= vars.ops_manager %> API
+
+To access the <%= vars.ops_manager %> API, you must authenticate to the <%= vars.ops_manager %> User Account and Authentication (UAA) server and log in as described below.
 
 For more information about UAA, see [UAA Overview](https://docs.pivotal.io/application-service/uaa/uaa-overview.html).
 
-### <a id='uaa'></a>Install the UAAC
+### <a id='uaa'></a> Install the UAAC
 
 If you haven't already, install the UAA Command Line Interface (UAAC) by running the following command from a terminal window:
 
@@ -37,29 +38,29 @@ If you haven't already, install the UAA Command Line Interface (UAAC) by running
 gem install cf-uaac
 ```
 
-### <a id='token'></a>Retrieve an Authorization Token
+### <a id='token'></a> Retrieve an Authorization Token
 
-Every call to the Ops Manager API must include an authorization token that is acceptable to the Ops Manager UAA.
+Every call to the <%= vars.ops_manager %> API must include an authorization token that is acceptable to the <%= vars.ops_manager %> UAA.
 
-How you retrieve this token depends on whether your Ops Manager user store is an internal IaaS component or an external server.  With an internal UAA, the procedure depends on which IaaS you are on.
+How you retrieve this token depends on whether your <%= vars.ops_manager %> user store is an internal IaaS component or an external server.  With an internal UAA, the procedure depends on which IaaS you are on.
 
 To retrieve your authorization token, perform the procedure below that corresponds to your Ops Man UAA location and IaaS.
 
 #### <a id='vsphere'></a> Internal UAA on vSphere
 
-To log in to the Ops Manager VM with SSH in vSphere, you need the public SSH key that imports the <%= vars.ops_manager %> `.ova` or `.ovf` file into your virtualization system.
+To log in to the <%= vars.ops_manager %> VM with SSH in vSphere, you need the public SSH key that imports the <%= vars.ops_manager %> `.ova` or `.ovf` file into your virtualization system.
 
-You set the public SSH key in the **Public SSH Key** field of the **Customize template** screen when you deployed Ops Manager. For more information, see [Deploy Ops Manager](../vsphere/deploy.html#deploy).
+You set the public SSH key in the **Public SSH Key** field of the **Customize template** screen when you deployed <%= vars.ops_manager %>. For more information, see [Deploy <%= vars.ops_manager %>](../vsphere/deploy.html#deploy).
 
-To retrieve the authorization token from internal UAA on vSphere, do the following:
+To retrieve the authorization token from internal UAA on vSphere:
 
-1. SSH onto the Ops Manager VM:
+1. SSH onto the <%= vars.ops_manager %> VM:
 
     ```
     ssh ubuntu@OPS-MANAGER-FQDN
     ```
 
-    Where `OPS-MANAGER-FQDN` is the fully qualified domain name of Ops Manager.
+    Where `OPS-MANAGER-FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
 
     For example:
 
@@ -69,37 +70,37 @@ To retrieve the authorization token from internal UAA on vSphere, do the followi
 
 1. When prompted, enter the public SSH key.
 
-1. Proceed to [Log in to Ops Manager](#opsman_login).
+1. Proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
 
 #### <a id='aws'></a> Internal UAA on AWS, Azure, or OpenStack
 
-1. Locate the Ops Manager FQDN on the AWS **EC2 instances** page, Azure **Virtual machines** page, or the OpenStack **Access & Security** page.
+1. Locate the <%= vars.ops_manager %> FQDN on the AWS **EC2 instances** page, Azure **Virtual machines** page, or the OpenStack **Access & Security** page.
 
 1. Run `chmod 600` to change the permissions on the `.pem` file to be more restrictive:
 
     ```
     chmod 600 OPS-MGR-PEM
     ```
-    Where `OPS-MGR-PEM` is the public key from the keypair used when creating the Ops Manager VM.
+    Where `OPS-MGR-PEM` is the public key from the keypair used when creating the <%= vars.ops_manager %> VM.
 
     For example:
 
     <pre class="terminal">$ chmod 600 ops_mgr.pem</pre>
 
-1. Run `ssh -i OPS-MGR-PEM ubuntu@OPS-MANAGER-FQDN` to SSH into the Ops Manager VM:
+1. Run `ssh -i OPS-MGR-PEM ubuntu@OPS-MANAGER-FQDN` to SSH into the <%= vars.ops_manager %> VM:
 
     ```
     ssh -i ops_mgr.pem ubuntu@OPS-MANAGER-FQDN
     ```
     Where:
-    * `OPS-MGR-PEM` is the public key from the keypair used when creating the Ops Manager VM.
-    * `OPS-MANAGER-FQDN` is the fully qualified domain name of your Ops Manager.
+    * `OPS-MGR-PEM` is the public key from the keypair used when creating the <%= vars.ops_manager %> VM.
+    * `OPS-MANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %>.
 
     For example:
 
     <pre class="terminal">$ ssh -i ops_mgr.pem ubuntu@my-opsmanager.example.com</pre>
 
-1. Proceed to [Log in to Ops Manager](#opsman_login).
+1. Proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
 
 #### <a id='gcp'></a> Internal UAA on GCP
 
@@ -133,8 +134,8 @@ To retrieve the authorization token from internal UAA on vSphere, do the followi
     gcloud compute ssh MY-INSTANCE --zone MY-ZONE
     ```
     Where:
-    * `MY-INSTANCE` is your Ops Manager VM instance.
-    * `MY-ZONE` is the zone where your Ops Manager VM is running.
+    * `MY-INSTANCE` is your <%= vars.ops_manager %> VM instance.
+    * `MY-ZONE` is the zone where your <%= vars.ops_manager %> VM is running.
 
     For example:
 
@@ -146,29 +147,29 @@ To retrieve the authorization token from internal UAA on vSphere, do the followi
     sudo su - ubuntu
     ```
 
-1. Proceed to [Log in to Ops Manager](#opsman_login).
+1. Proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
 
 #### <a id='external-idp'></a> External UAA
 
-If you configured your Ops Manager for an external Identity Provider with SAML or LDAP, you do not need any IaaS-specific setup. You can proceed to [Log in to Ops Manager](#opsman_login).
+If you configured your <%= vars.ops_manager %> for an external Identity Provider with SAML or LDAP, you do not need any IaaS-specific setup. You can proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
 
-### <a id='opsman_login'></a> Log in to Ops Manager
+### <a id='opsman_login'></a> Log in to <%= vars.ops_manager %>
 
-To log in to the Ops Manager VM and retrieve your token, do the following:
+To log in to the <%= vars.ops_manager %> VM and retrieve your token:
 
-1. Use the UAAC to target your Ops Manager UAA server:
+1. Use the UAAC to target your <%= vars.ops_manager %> UAA server:
 
     ```
     uaac target https://OPS-MAN-FQDN/uaa
     ```
 
-    Where `OPS-MANAGER-FQDN` is the fully qualified domain name of Ops Manager.
+    Where `OPS-MANAGER-FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
 
     For example:
 
     <pre class="terminal">$ uaac target https://my-opsmanager.example.com/uaa</pre>
 
-1. Depending on whether your Ops Manager UAA is internal or external, run a command to retrieve your UAA token and respond to the authentication prompts as follows:
+1. Depending on whether your <%= vars.ops_manager %> UAA is internal or external, run a command to retrieve your UAA token and respond to the authentication prompts as follows:
   * **Internal**
 
     	```
@@ -178,7 +179,7 @@ To log in to the Ops Manager VM and retrieve your token, do the following:
     	User name: OPS-MAN-USERNAME
     	Password: OPS-MAN-PASSWORD
     	```
-      Where `OPS-MAN-USERNAME` and `OPS-MAN-PASSWORD` are the credentials that you use to log in to the Ops Manager web interface.
+      Where `OPS-MAN-USERNAME` and `OPS-MAN-PASSWORD` are the credentials that you use to log in to the <%= vars.ops_manager %> web interface.
       For example:
       <pre class="terminal">
         $ uaac token owner get
@@ -206,25 +207,25 @@ To log in to the Ops Manager VM and retrieve your token, do the following:
 
 If authentication is successful, the UAAC displays the following message: `Successfully fetched token via owner password grant.`
 
-### <a id='run-commands'></a>Run API Commands
+### <a id='run-commands'></a> Run API Commands
 
-To run any Ops Manager API command, you pass your authorization token to the API command endpoint in a header that follows the format `Authorization: Bearer YOUR-ACCESS-TOKEN`.
+To run any <%= vars.ops_manager %> API command, you pass your authorization token to the API command endpoint in a header that follows the format `Authorization: Bearer YOUR-ACCESS-TOKEN`.
 
-If you are calling Ops Manager API commands from the command line, the machine that you can be logged into depends on the location of your Ops Manager UAA, as follows:
+If you are calling <%= vars.ops_manager %> API commands from the command line, the machine that you can be logged into depends on the location of your <%= vars.ops_manager %> UAA, as follows:
 
-  * **Internal:** You must run Ops Manager API commands from the Ops Manager VM.
+  * **Internal:** You must run <%= vars.ops_manager %> API commands from the <%= vars.ops_manager %> VM.
   * **External:** You may run commands from your local machine.
 
-#### <a id='test-command'></a>API Access Test
+#### <a id='test-command'></a> API Access Test
 
-The following procedure tests whether you can access the Ops Manager API from the command line by retrieving a list of deployed products:
+The following procedure tests whether you can access the <%= vars.ops_manager %> API from the command line by retrieving a list of deployed products:
 
 1. List your tokens by running the following command:
 
     ```
     uaac contexts
     ```
-    In the command output, locate the entry for your Ops Manager FQDN. Under `client_id: opsman`, record the value for `access_token`.
+    In the command output, locate the entry for your <%= vars.ops_manager %> FQDN. Under `client_id: opsman`, record the value for `access_token`.
 
 1. Use the `GET /api/v0/deployed/products` endpoint to retrieve a list of deployed products:
 
@@ -248,19 +249,19 @@ The following procedure tests whether you can access the Ops Manager API from th
   	0000000","type":"cf","product\_version":"1.10.0"}]
   	</pre>
 
-## <a id="api-procedures"></a>Example Ops Manager API Procedures
+## <a id='api-procedures'></a> Example <%= vars.ops_manager %> API Procedures
 
 The following procedures illustrate how to test API calls from the command line. If you are a developer writing deployment or test routines in programming languages, these procedures show how you might test the routines line-by-line while building them.
 
-The Ops Manager command-line interface (CLI) [`om`](./ops-man-api-cli.html#om) is usually a better tool than the Ops Manager API for running Ops Manager operations directly from the command-line or within shell scripts.
+The <%= vars.ops_manager %> command-line interface (CLI) [`om`](ops-man-api-cli.html#om) is usually a better tool than the <%= vars.ops_manager %> API for running <%= vars.ops_manager %> operations directly from the command-line or within shell scripts.
 
 These methods are intended for advanced <%= vars.ops_manager %> operators and administrators.
 
-### <a id="configure-bosh"></a>Configure the BOSH Director
+### <a id='configure-bosh'></a> Configure the BOSH Director
 
-The following procedure configures the BOSH Director for your IaaS using the Ops Manager API.
+The following procedure configures the BOSH Director for your IaaS using the <%= vars.ops_manager %> API.
 
-<%= vars.company_name %> recommends that beginning users configure the BOSH Director through the Ops Manager UI, which provides context and explanations for each option. For information about configuring the BOSH Director tile in the Ops Manager UI, see one of the following:
+<%= vars.company_name %> recommends that beginning users configure the BOSH Director through the <%= vars.ops_manager %> UI, which provides context and explanations for each option. For information about configuring the BOSH Director tile in the <%= vars.ops_manager %> UI, see one of the following:
 
 * [AWS](../aws/config-manual.html)
 * [Azure](../azure/config-manual.html)
@@ -268,9 +269,9 @@ The following procedure configures the BOSH Director for your IaaS using the Ops
 * [OpenStack](../openstack/config.html)
 * [vSphere](../vsphere/config.html)
 
-To configure the BOSH Director with the Ops Manager API, do the following:
+To configure the BOSH Director with the <%= vars.ops_manager %> API:
 
-1. Access the Ops Manager API by following the procedure in <a href="#access">Access the Ops Manager API</a> procedure above.</li>
+1. Access the <%= vars.ops_manager %> API by following the procedure in <a href="#access">Access the <%= vars.ops_manager %> API</a> procedure above.</li>
 
 1. To perform initial setup, enter a `POST` request to the Ops Man API `setup` endpoint, passing metadata to the `-d` flag:
 
@@ -294,8 +295,8 @@ To configure the BOSH Director with the Ops Manager API, do the following:
     * `PASSPHRASE` is your deployment's decryption passphrase
     * `EULA-STATUS` is your EULA status
     * `IDP-LOCATION` is your identity provider location, `internal` or `external`
-    * `ADMIN-USERNAME`is your Ops Manager admin username
-    * `ADMIN-PASSWORD`is your Ops Manager admin password
+    * `ADMIN-USERNAME`is your <%= vars.ops_manager %> admin username
+    * `ADMIN-PASSWORD`is your <%= vars.ops_manager %> admin password
     * `HTTP-PROXY` is your HTTP proxy, if applicable
     * `HTTPS-PROXY` is your HTTPS proxy, if applicable
 
@@ -317,40 +318,40 @@ To configure the BOSH Director with the Ops Manager API, do the following:
       "no\_proxy": "127.0.0.1"
     } }'
     </pre>
- 	<p class="note"><strong>Note</strong>: You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it completes successfully. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>
+ 	<p class='note'><strong>Note:</strong> You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it completes successfully. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>
 
 1. A <code>200 OK</code> response appears.</li>
 
-1. After the successful response, a UAA client with the metadata you specified is created and launched. Ops Manager users can authenticate with UAAC, and if they have a pre-created client they can target UAAC with the client name and password. For more information on pre-created clients, see <a href="./opsman-users.html">Creating and Managing Ops Manager User and Client Accounts</a>.
+1. After the successful response, a UAA client with the metadata you specified is created and launched. <%= vars.ops_manager %> users can authenticate with UAAC, and if they have a pre-created client they can target UAAC with the client name and password. For more information on pre-created clients, see <a href="./opsman-users.html">Creating and Managing <%= vars.ops_manager %> User and Client Accounts</a>.
 
 1. Send an HTTP `PUT` request to the `api/v0/staged/director/properties` endpoint to configure your IaaS and BOSH Director.
 There are many configuration parameters available to customize your BOSH Director. All the commands are IaaS-agnostic except the IaaS configuration key. Missing required fields should cause an error.
 For more information about configuring the BOSH Director, see <a href="http://docs.pivotal.io/pivotalcf/2-5/opsman-api/#fetching-director-iaas-and-security-properties-experimental">Fetching Director, IaaS, and Security Properties</a>.
 
 1. Send an HTTP `POST` request to the `api/v0/staged/director/availability_zones` endpoint to create Availability Zones (AZs) for your product.
-<p class="note"><strong>Note</strong>: The <code>create-azs</code> endpoint is optional for Azure-based deployments, because you cannot manually configure Azure AZs.</p>
+<p class='note'><strong>Note:</strong> The <code>create-azs</code> endpoint is optional for Azure-based deployments, because you cannot manually configure Azure AZs.</p>
 
 1. Send an HTTP `PUT` request to the `api/v0/staged/director/networks` endpoint to create networking rules for the deployment.
 Specify whether or not to use ICMP checks by setting the `icmp_checks_enabled` parameter to `true` or `false`.
 
 1. Send an HTTP `PUT` request to the `api/v0/staged/director/network_and_az` endpoint to assign a singleton AZ and a network where your BOSH Director will be located.
 
-1. You must update the BOSH Director's resource configuration settings before deploying BOSH. To update the resource config, do the following:
+1. You must update the BOSH Director's resource configuration settings before deploying BOSH. To update the resource config:
 
   1. Send a `GET` request to `api/v0/staged/products` to find your Director's GUID.
 	1. Use the following HTTP request to list all jobs on the Director: `GET api/v0/staged/products/:BOSH-DIRECTOR-GUID/jobs`.
 	1. Use the following HTTP request to update the resource config of each job on the BOSH Director: `PUT api/v0/staged/products/:BOSH-DIRECTOR-GUID/jobs/:JOB-GUID/resource_config`.
 
-### <a id="configure-product"></a>Configure a Product
+### <a id='configure-product'></a> Configure a Product
 
-The following procedure uploads, stages, and configures a product tile using the Ops Manager API:
+The following procedure uploads, stages, and configures a product tile using the <%= vars.ops_manager %> API:
 
-1. Upload or import the product into Ops Manager.
+1. Upload or import the product into <%= vars.ops_manager %>.
   1. Send an HTTP `POST` request to the `api/v0/available_products` endpoint to upload the product.
   1. Send an HTTP `GET` request to the `api/v0/available_products` endpoint to list the names of available products.
   1. In the output list from `available_products`, find the product you uploaded by referencing its name and version.
-  1. Send an HTTP `POST` request to the `/api/v0/staged/products` endpoint to add the uploaded product to Ops Manager.
-1. Send an HTTP `GET` request to the `api/v0/staged_products` endpoint to confirm that the product is staged for deployment in Ops Manager and display the product GUID.
+  1. Send an HTTP `POST` request to the `/api/v0/staged/products` endpoint to add the uploaded product to <%= vars.ops_manager %>.
+1. Send an HTTP `GET` request to the `api/v0/staged_products` endpoint to confirm that the product is staged for deployment in <%= vars.ops_manager %> and display the product GUID.
 1. Send an HTTP `PUT` request to the `PUT /api/v0/staged/products/:PRODUCT-GUID/networks_and_azs` to assign availability zones (AZs) and networks to the product.
     Where `PRODUCT-GUID` is the product GUID.
 1. Send an HTTP `PUT` request to the `/api/v0/staged/products/:PRODUCT-GUID/properties` endpoint to update the product's properties.
@@ -365,23 +366,23 @@ The following procedure uploads, stages, and configures a product tile using the
       * `PRODUCT-GUID` is the product GUID.
       * `JOB-GUID` is the job GUID.
 
-### <a id="upgrade-opsman"></a>Upgrade Ops Manager
+### <a id='upgrade-opsman'></a> Upgrade <%= vars.ops_manager %>
 
-The following procedure upgrades Ops Manager using the Ops Manager API:
+The following procedure upgrades <%= vars.ops_manager %> using the <%= vars.ops_manager %> API:
 
-#### <a id="prereqs"></a>Prerequisites
+#### <a id='prereqs'></a> Prerequisites
 
-Before you upgrade Ops Manager with the Ops Manager API, you must have the following:
+Before you upgrade <%= vars.ops_manager %> with the <%= vars.ops_manager %> API, you must have the following:
 
- * Two versions of Ops Manager: an existing deployment and a new deployment of a later version. The new deployment cannot be configured in any way.
- * DNS information for the existing deployment of Ops Manager
+ * Two versions of <%= vars.ops_manager %>: an existing deployment and a new deployment of a later version. The new deployment cannot be configured in any way.
+ * DNS information for the existing deployment of <%= vars.ops_manager %>
 
-#### <a id="upgrade"></a>Procedure
+#### <a id='upgrade'></a> Procedure
 
-Follow this procedure to upgrade your Ops Manager:
+Follow this procedure to upgrade your <%= vars.ops_manager %>:
 
-1. Send an HTTP `GET` request to the `/api/v0/installation_asset_collection` endpoint of your old Ops Manager to export your existing installation data.
-1. Send an HTTP `POST` request to the `/api/v0/installation_asset_collection` endpoint of your new Ops Manager to import your installation data to the new deployment.
-1. Send an HTTP `POST` request to the `/api/v0/installations` endpoint of your new Ops Manager to trigger a new installation process.
+1. Send an HTTP `GET` request to the `/api/v0/installation_asset_collection` endpoint of your old <%= vars.ops_manager %> to export your existing installation data.
+1. Send an HTTP `POST` request to the `/api/v0/installation_asset_collection` endpoint of your new <%= vars.ops_manager %> to import your installation data to the new deployment.
+1. Send an HTTP `POST` request to the `/api/v0/installations` endpoint of your new <%= vars.ops_manager %> to trigger a new installation process.
 1. Test the new deployment.
 1. (Optional) Delete the old deployment.

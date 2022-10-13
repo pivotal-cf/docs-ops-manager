@@ -3,20 +3,22 @@ title: Enabling External Blobstore Backups
 owner: BBR
 ---
 
-This topic describes enabling external blobstore backups in your <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) tile.
+This topic describes enabling external blobstore backups in your <%= vars.app_runtime_first %> tile.
 
 BOSH Backup and Restore (BBR) supports:
 
 * Versioned S3 or S3-compatible blobstores
+
 * Unversioned S3 or S3-compatible blobstores
+
 * Azure blobstores
 
 For more information, see [Backup and Restore for External Blobstores](https://docs.cloudfoundry.org/bbr/external-blobstores.html) in the Cloud Foundry documentation.
 
-<p class="note"><strong>Note:</strong> To enable external blobstore backups for <%= vars.app_runtime_abbr %>, you must enable <strong>Backup Restore Node</strong>. For more information, see <a href=backup-pcf-bbr.html#backup-restore-node>Enable Backup Restore Node</a> in <em>Backing Up Deployments with BBR</em>.</p>
+<p class='note'><strong>Note:</strong> To enable external blobstore backups for <%= vars.app_runtime_abbr %>, you must enable <strong>Backup Restore Node</strong>. For more information, see <a href=backup-pcf-bbr.html#backup-restore-node>Enable Backup Restore Node</a> in <em>Backing Up Deployments with BBR</em>.</p>
 
 
-## <a id="blobstore-support"></a> External Blobstore Support
+## <a id='blobstore-support'></a> External Blobstore Support
 
 External blobstore backup support varies based on which version of <%= vars.ops_manager %> you are running and what type of blobstore you are backing up.
 
@@ -27,7 +29,7 @@ To determine if external blobstore support is included in the version of <%= var
 <table>
   <tr>
     <th style="border-top-style: hidden; border-right-style: hidden; border-left-style: hidden; border-bottom-style: hidden; background-color: white;"></th>
-    <th colspan="7" style="border-top-style: hidden; text-align: center; background-color: white; color: black; padding: 10px;">Ops Manager Version</th>
+    <th colspan="7" style="border-top-style: hidden; text-align: center; background-color: white; color: black; padding: 10px;"><%= vars.ops_manager %> Version</th>
     <th style="border-top-style: hidden; border-right-style: hidden; border-left-style: hidden; border-bottom-style: hidden; background-color: white; "></th>
   <tr>
     <th class="rotate" rowspan="5" style="width: 5%; border-left-style: hidden; background-color: white; color: black;"><div>Blobstore Type</div></th>
@@ -77,7 +79,7 @@ To determine if external blobstore support is included in the version of <%= var
 </table>
 
 
-## <a id="s3"></a> S3 or S3-Compatible Blobstores
+## <a id='s3'></a> S3 or S3-Compatible Blobstores
 
 In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up and restoring versioned and unversioned S3 or S3-compatible blobstores by default. For more information about configuring an S3 or S3-compatible blobstore, see [AWS](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#aws) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
 
@@ -90,7 +92,7 @@ In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up 
 </div>
 
 
-## <a id="azure"></a> Azure Blobstores
+## <a id='azure'></a> Azure Blobstores
 
 To configure your Azure blobstore for backups, you must enable soft delete in your Azure Storage account. You can also enable soft delete for existing Azure storage accounts that were not initially created with soft delete enabled. For more information, see [Soft delete for Azure Storage blobs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-soft-delete#quickstart) in the Microsoft documentation.
 
@@ -99,6 +101,6 @@ After enabling soft delete, you can enable Azure blobstore backups in <%= vars.o
 To save storage space and cost, <%= vars.company_name %> recommends that you configure a retention.
 
 
-## <a id="gcs"></a> GCS Blobstores
+## <a id='gcs'></a> GCS Blobstores
 
 For more information about configuring a GCS blobstore, see [GCP](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.

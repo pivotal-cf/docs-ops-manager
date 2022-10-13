@@ -3,11 +3,11 @@ title: CredHub Maestro Tile Compatibility
 owner: CredHub Maestro
 ---
 
-This table describes which <%= vars.ops_manager %> tiles are compatible or not compatible with CredHub Maestro. A tile that is compatible with CredHub Maestro has certificates that you can rotate using CredHub Maestro.
+This table describes which <%= vars.ops_manager_first %> tiles are compatible or not compatible with CredHub Maestro. A tile that is compatible with CredHub Maestro has certificates that you can rotate using CredHub Maestro.
 
 For more information about CredHub Maestro, see [Getting Started with CredHub Maestro](getting-started-with-maestro-cli.html) and [Advanced Certificate Rotation with CredHub Maestro](advanced-certificate-rotation.html).
 
-<p class="note"><strong>Note:</strong> If you see out-of-date or incorrect information on this page, please contact the CredHub team or log a GitHub issue.</p>
+<p class='note'><strong>Note:</strong> If you see out-of-date or incorrect information on this page, please contact the CredHub team or log a GitHub issue.</p>
 
 <table border="1">
   <tr>
@@ -18,7 +18,7 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
     <th>Notes</th>
   </tr>
   <tr>
-    <td><%= vars.k8s_runtime_full %> v1.9 and later</td>
+    <td><%= vars.k8s_runtime_first %> v1.9 and later</td>
     <td>pivotal-container-service</td>
     <td><em>n/a</em></td>
     <td>Yes</td>
@@ -31,7 +31,7 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
     </td>
   </tr>
   <tr>
-    <td><%= vars.k8s_runtime_full %> v1.8 and earlier</td>
+    <td><%= vars.k8s_runtime_abbr %> v1.8 and earlier</td>
     <td>pivotal-container-service</td>
     <td><em>n/a</em></td>
     <td>No</td>
@@ -108,14 +108,14 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
     <td></td>
   </tr>
   <tr>
-    <td><%= vars.app_runtime_full %></td>
+    <td><%= vars.app_runtime_first %></td>
     <td>cf</td>
     <td>v2.7.21 and later are compatible, except for v2.8.0 and v2.8.1.</td>
     <td>Yes</td>
     <td></td>
   </tr>
   <tr>
-    <td><%= vars.windows_runtime_full %></td>
+    <td><%= vars.windows_runtime_first %></td>
     <td>pas-windows</td>
     <td>v2.7.17 and later are compatible, except for v2.8.0 and v2.8.1.</td>
     <td>Yes</td>
@@ -220,7 +220,7 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
     <td></td>
   </tr>
   <tr>
-    <td>Small Footprint <%= vars.app_runtime_full %></td>
+    <td>Small Footprint <%= vars.app_runtime_first %></td>
     <td>cf</td>
     <td>v2.7.21 and later are compatible, except for v2.8.0 and v2.8.1.</td>
     <td>Yes</td>
