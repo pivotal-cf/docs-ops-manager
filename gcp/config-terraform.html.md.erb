@@ -194,7 +194,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 ## <a id='custom-vm-extensions'></a> Step 10: (Optional) Add Custom VM Extensions
 
-<%= partial '../common/vm-extension-config'  %>
+<%= partial '../common/vm-extension-config' %>
 
 ## <a id='complete'></a> Step 11: Complete the BOSH Director Installation
 
@@ -202,7 +202,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the [Network Config](#network) screen, and make sure you have deselected the **Enable ICMP Checks** box. Click **Review Pending Changes**, then **Apply Changes** again.
 
-    <%= image_tag("../common/images/cloudform/install-error.png", :alt => "Screenshot of the <%= vars.ops_manager %> errors list. There are 'Ignore errors and start the install' and 'Stop and fix erros' buttons.") %>
+    <%= image_tag("../common/images/cloudform/install-error.png", :alt => "Screenshot of the Ops Manager errors list. There are 'Ignore errors and start the install' and 'Stop and fix errors' buttons.") %>
 
 1. BOSH Director installs. This may take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
 
