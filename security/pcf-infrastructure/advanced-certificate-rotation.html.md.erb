@@ -16,10 +16,10 @@ However, there are some cases when you cannot use the <%= vars.ops_manager %> AP
 
 The following describes when to use CredHub Maestro instead of the <%= vars.ops_manager %> API for certificate rotation:
 
+* You need to rotate one or more specific CredHub-managed certificates as part of a certificate rotation repair process due to errors returned by the standard procedure.
+
 * You have <%= vars.k8s_runtime_first %> installed and therefore cannot use the <%= vars.ops_manager %> API to rotate CredHub-managed certificates. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these include the cluster-specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
     <p class='note warning'><strong>Warning:</strong> In <%= vars.k8s_runtime_abbr %> v1.8 and earlier, you cannot use CredHub Maestro to rotate <%= vars.k8s_runtime_abbr %> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
-
-* You need to rotate one or more specific CredHub-managed certificates and do not want to rotate any other certificates managed by <%= vars.ops_manager %> or CredHub.
 
 
 ## <a id='prerequisites'></a> Prerequisites
@@ -88,8 +88,10 @@ For more information, see [Troubleshooting CredHub Maestro Safety Violations Dur
 This section describes the procedure for bulk rotating all CAs and leaf certificates using CredHub Maestro.
 
 <%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use).
-
-<div class="note"><strong>Note:</strong> If any of your deployments use a Services TLS CA:
+<div class="note"><strong>Note:</strong> If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option can damage your deployment. You should rotate individual CA certificates and their leaf certs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
+  <br />
+  <br />
+  If any of your deployments use the Services TLS CA:
   <ul>
     <li>Run all CredHub Maestro commands except <code>maestro regenerate leaf</code> with <code>--exclude /services/tls_ca</code>.</li>
     <li>Run <code>maestro regenerate leaf</code> with <code>--exclude-signed-by /services/tls_ca</code>.</li>
@@ -158,6 +160,10 @@ will be trusted by clients. Run:
 This section describes the procedure for bulk rotating all leaf certificates using CredHub Maestro.
 
 <%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use) above.
+
+<div class="note"><strong>Note:</strong>
+  If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option can damage your deployment. You should rotate leaf certs signed by individual CAs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
+</div>
 
 To rotate all leaf certificates in CredHub:
 
