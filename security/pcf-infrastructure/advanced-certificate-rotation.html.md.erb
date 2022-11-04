@@ -89,7 +89,10 @@ This section describes the procedure for bulk rotating all CAs and leaf certific
 
 <%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use).
 
-<div class="note"><strong>Note:</strong> If any of your deployments use a Services TLS CA:
+<div class="note"><strong>Note:</strong>
+  If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the `--all` option can damage your deployment. You should rotate individual CA certificates and their leaf certs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
+
+  If any of your deployments use the Services TLS CA:
   <ul>
     <li>Run all CredHub Maestro commands except <code>maestro regenerate leaf</code> with <code>--exclude /services/tls_ca</code>.</li>
     <li>Run <code>maestro regenerate leaf</code> with <code>--exclude-signed-by /services/tls_ca</code>.</li>
@@ -158,6 +161,10 @@ will be trusted by clients. Run:
 This section describes the procedure for bulk rotating all leaf certificates using CredHub Maestro.
 
 <%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use) above.
+
+<div class="note"><strong>Note:</strong>
+  If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the `--all` option can damage your deployment. You should rotate leaf certs signed by individual CAs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
+</div>
 
 To rotate all leaf certificates in CredHub:
 
