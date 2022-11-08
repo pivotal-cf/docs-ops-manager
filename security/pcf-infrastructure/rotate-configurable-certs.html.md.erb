@@ -29,7 +29,7 @@ To rotate configurable leaf certificates:
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. For each certificate you want to rotate:
-  1. Find the text field where the leaf certificate is configured within the <%= vars.ops_manager %> UI. You might need to look through multiple configuration panes to identify the location of the certificate configuration text field. Use the following fields to identify the location of the certificate configuration text field:
+  1. Find the text field where the leaf certificate is configured within the <%= vars.ops_manager %> UI. You might need to look through multiple configuration panes to identify the location of the certificate configuration text field. The tile may not expose the field via the UI, in that case the value will need to be updated via the <%= vars.ops_manager %> API. Use the following fields to identify the location of the certificate configuration text field:
       * The `product_guid` field in the <%= vars.ops_manager %> API output can help identify the tile in which the certificate is configured. For example, the prefix `p-bosh-` refers to the BOSH Director tile, and the prefix `cf-` refers to the <%= vars.app_runtime_abbr %> tile.
       * The `property_reference` field in the <%= vars.ops_manager %> API output can help identify the configuration pane in which the certificate is configured. For example, the `uaa.service_provider_key_credentials` property is configured in the **UAA** pane of the <%= vars.app_runtime_abbr %> tile.
   1. Copy a new value for the leaf certificate into the text field or generate a new leaf certificate using the **Generate RSA Certificate** button.
