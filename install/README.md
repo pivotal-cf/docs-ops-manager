@@ -17,6 +17,7 @@ Currently only the [docs-book-pivotalcf](https://github.com/pivotal-cf/docs-part
 | Branch name | Use for… |
 |-------------| -------|
 | master      | Not in use |
+| 3.0         | v3.0.x |
 | 2.10        | v2.10.x |
 | 2.9		      | v2.9.x |
 | 2.8         | v2.8.x |

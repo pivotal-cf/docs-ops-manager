@@ -35,7 +35,6 @@ GH12345678ABCDEFGH12345678ABCDEFGH12345678...
   <p class='note warning'><strong>Warning:</strong> If you are using <%= vars.ops_manager %> to generate certificates for either a load balancer or router, then you must select this checkbox.</p>
 
 1. To clear the default trusted certificates from all BOSH-deployed Linux VMs, select the **Clear the Default Trusted Certificates Store** checkbox. You must provide your own trusted certificates when selecting this checkbox as all TLS communication fails without trusted certificates available.
-  <p class='note'><strong>Note:</strong> This option is available in <%= vars.ops_manager %> v2.10.21 and later.</p>
 
 <% if current_page.data.title == "Setting Trusted Certificates" %>
 1. Click **Save**.

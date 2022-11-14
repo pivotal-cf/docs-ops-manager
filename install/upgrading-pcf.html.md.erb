@@ -18,18 +18,18 @@ The apps in your deployment continue to run during the upgrade. However, you can
 
 For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components, see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.pivotal.io/application-service/operating/understanding-pas.html).
 
-<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v2.10 from <%= vars.ops_manager %> v2.4 through v2.8. To upgrade <%= vars.ops_manager %> to v2.10 from <%= vars.ops_manager %> v2.4 through v2.8, see [Jump Upgrade to <%= vars.ops_manager %> v2.10](#jump-upgrade) below. To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> to v2.10 from v2.9, see [Task 1: Prepare to Upgrade](#prepare) below.
+<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade <%= vars.ops_manager %> to v3.0 from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> v3.0](#jump-upgrade) below. To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare) below.
 
 
-## <a id='jump-upgrade'></a> Jump Upgrade from <%= vars.ops_manager %> v2.4 Through v2.8
+## <a id='jump-upgrade'></a> Jump Upgrade from <%= vars.ops_manager %> v2.5 Through v2.9
 
-Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the long-term support (LTS) version of <%= vars.ops_manager %>, which is v2.10. <%= vars.ops_manager %> v2.10 is supported through April 2024. For more information, see [Long-Term Support for <%= vars.ops_manager %> v2.10](../release-notes.html#lts) in _<%= vars.ops_manager %> v2.10 Release Notes_.
+Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the latest version of <%= vars.ops_manager %>, which is v3.0. For more information, see [Jump Upgrading to <%= vars.ops_manager %> v3.0](../jump-upgrades.html).
 
-To jump upgrade to <%= vars.ops_manager %> v2.10:
+To jump upgrade to <%= vars.ops_manager %> v3.0:
 
-1. Review the prerequisites and breaking changes described in [Jump Upgrading to <%= vars.ops_manager %> v2.10](../jump-upgrades.html).
+1. Review the prerequisites and breaking changes described in [Jump Upgrading to <%= vars.ops_manager %> v3.0](../jump-upgrades.html).
 
-1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.ops_manager %> v2.10](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
+1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.ops_manager %> v3.0](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
 
 1. Follow the procedure in this topic to upgrade <%= vars.ops_manager %>, starting at [Task 1: Prepare to Upgrade](#prepare) below. Do not complete the steps to upgrade <%= vars.app_runtime_abbr %>.
 

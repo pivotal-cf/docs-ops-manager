@@ -137,5 +137,13 @@ For more information, see [Reviewing Pending Product Changes](review-pending-cha
 
 ## <a id='del-prod'></a> Delete Products
 
-<%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
-<%= partial "/pcf/core/2-10/delete-product" %>
+To delete a product from your Ops Manager installation:
+
+1. From the Installation Dashboard:
+		1. Click the trash icon on a product tile to remove that product.
+		1. In the **Delete Product** dialog box that appears, click **Confirm**.
+		<p class="note"><strong>Note</strong>: You cannot delete the BOSH Director product.</p>
+
+1. Click **Review Pending Changes**, then **Apply Changes**.
+
+After you delete a product, the product tile is removed from the installation and the Installation Dashboard. However, the product appears in the Available Products view.
