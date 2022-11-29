@@ -20,7 +20,8 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 
 | **Book Branch** | **Content Branch** | **Published URL** |
 |-----------------|--------------------|-------------------|
-|           `3.0` |              `3.0` | not yet published <strike>https://docs.pivotal.io/ops-manager/3-0/index.html</strike> |
+|           `3.0` |    `3.0-migration` | not published: https://docs.pivotal.io/ops-manager/3-0/index.html  |
+|           `3.0` |              `3.0` | https://docs.pivotal.io/ops-manager/3-0/index.html  |
 |          `2.10` |             `2.10` | https://docs.pivotal.io/ops-manager/2-10/index.html |
 |           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
 |           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
