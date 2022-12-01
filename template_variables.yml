@@ -13,7 +13,8 @@ template_variables:
   use_global_header: true
   global_header_product_href: https://network.pivotal.io/
   global_header_product_link_text: Downloads
-  current_major_version: <%= vars.local_product_version %>
+  current_major_version: 3-0
+  current_major_version_dot: 3.0
 
   gtm_account_id: GTM-MW4LZHR
 
