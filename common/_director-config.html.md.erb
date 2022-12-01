@@ -9,7 +9,7 @@ To configure the **Director Config** pane:
 
 1. Select **Director Config**.
 
-    <%= image_tag("../common/images/director-config.png", :width => "500", :alt => "At the top of the image is the header 'Director Config' with a horizonal line underneath. Below the line are three text fields labeled, from top to bottom, 'NTP Servers (comma delimited)', and 'Bosh HM Forwarder IP Address'. The NTP Servers (comma delimited) field has a red asterisk, to denote that it is a required field. Below these text fields are eight checkboxes. The first checkbox is labeled 'Enable VM Resurrector Plugin'. The second checkbox is labeled 'Enable deprecated BOSH System Metrics Server'. The third checkbox is labeled 'Enable additional System Metrics'. The fourth checkbox is labeled 'Enable Post Deploy Scripts'. The fifth checkbox is labeled 'Recreate VMs deployed by the BOSH Director', underneath which is the text 'This will force BOSH to recreate all Bosh Deployed VMs on the next deploy. Persistent disk will be preserved'. The sixth checkbox is labeled 'Recreate BOSH Director VM', underneath which is the text 'This will force BOSH to recreate the Bosh Director VM on the next deploy. Persistent disk will be preserved.' The seventh checkbox is labeled 'Recreate All Persistent Disks', underneath which is the text 'Checking this box will recreate all Persistent Disks for the Director and all other Tiles'. The eighth checkbox is labeled 'Enable bosh deploy retries', underneath which is the text 'This will attempt to re-deploy a failed deployment up to 5 times.'") %>
+    <%= image_tag("../common/images/director-config.png", :width => "500", :alt => "The Director Config form, which is used to set properties to configure the BOSH Director.") %>
 
 <%# **NTP Servers** field, differentiated by IaaS %>
 
@@ -47,12 +47,9 @@ To configure the **Director Config** pane:
 
 1. Select the **Enable VM Resurrector Plugin** checkbox to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.pivotal.io/platform/customizing/resurrector.html) for more information about the Resurrector plugin.<% end %>
 
-1. Keep the **Enable deprecated BOSH System Metrics Server** checkbox selected to collect basic metrics, including load, CPU, memory, swap, and disk metrics. View the output in the **Status** tab.
+1. The **Enable BOSH System Metrics Server** checkbox is deprecated, only keep it selected if your metrics system relies upon the format used. It is recommended that you switch away from this format as soon as possible, as this option is going away in future releases.
 
-1.  For more detailed metrics, keep the **Enable additional System Metrics** checkbox selected.
-If you do not need this level of detail, deselect the checkbox to reduce volume.
-For a list of metrics collected, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md) in GitHub.
-Increased logging could cause platform issues. For more information, see [Increased Logging Slows Platform Functions](../release-notes.html#increased-logging).
+1. Keep the **Enable System Metrics** checkbox selected to collect system metrics, including load, CPU, memory, swap, and disk metrics, and make them available for scraping from agents on each VM. This is recommended if you are using TAS, as it will scrape the agents automatically and insert the metrics into the regular logging and metrics egress stream. For a list of metrics collected, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md) in GitHub.
 
 1. Select **Enable Post Deploy Scripts** to run a post-deploy script after deployment. This script allows the job to execute additional commands against a deployment.
     <p class="note"><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), you must enable post-deploy scripts.</p>
