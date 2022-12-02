@@ -355,7 +355,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 <p class='note'><strong>Note:</strong> BOSH Director logs contain sensitive information that should be considered privileged. For example, these logs may contain cloud provider credentials. If you choose to forward logs to an external syslog endpoint, use TLS encryption to prevent information from being intercepted by a third party.</p>
 
-<%= partial(:"/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' }) %>
+<%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
 ## <a id='resource-config'></a> Step 10: Resource Config Pane
 
