@@ -13,30 +13,31 @@ template_variables:
   use_global_header: true
   global_header_product_href: https://network.pivotal.io/
   global_header_product_link_text: Downloads
-  current_major_version: 3-0
-  current_major_version_dot: 3.0
 
-  gtm_account_id: GTM-MW4LZHR
+  current_major_version: "3-0"
+  v_major_version: "v3.0"
+  dot_major_version: "3.0"
+
+  gtm_account_id: GTM-MM86KCJ
 
 # Tanzu product variables - v2.9 and later
-  platform_name: Ops Manager
-  platform_old: Pivotal Cloud Foundry
+  company_name: VMware
+  product_network: VMware Tanzu Network
   platform_code: PCF
-  product_name_lc: pcf
-  app_runtime_full: VMware Tanzu Application Service for VMs
+  ops_manager_first: VMware Tanzu Operations Manager (Ops Manager)
+  ops_manager: Ops Manager
+  platform_old: Pivotal Cloud Foundry
+  app_runtime_first: VMware Tanzu Application Service for VMs (TAS for VMs)
   app_runtime_abbr: TAS for VMs
   app_runtime_abbr_lc: tas
   segment_runtime_full: Isolation Segment
-  k8s_runtime_full: VMware Tanzu Kubernetes Grid Integrated Edition
-  k8s_runtime_abbr: TKGI
-  windows_runtime_full: VMware Tanzu Application Service for VMs &#91;Windows&#93;
+  windows_runtime_first: VMware Tanzu Application Service for VMs &#91;Windows&#93; (TAS for VMs &#91;Windows&#93;)
   windows_runtime_abbr: TAS for VMs &#91;Windows&#93;
-  ops_manager_full: Ops Manager
-  ops_manager: Ops Manager
-  company_name: VMware
-  product_network: VMware Tanzu Network
+  k8s_runtime_first: VMware Tanzu Kubernetes Grid Integrated Edition (TKGI)
+  k8s_runtime_abbr: TKGI
+  product_name_lc: pcf
 
-# Pivotal variables - v2.8 and earlier
+# Pivotal variables - v2.7 and v2.8
   platform_name_pivotal: Pivotal Platform
   platform_old_pivotal: Pivotal Cloud Foundry
   platform_code_pivotal: PCF
@@ -55,20 +56,25 @@ template_variables:
   ops_manager_pivotal: Ops Manager
 
 # Deprecated variables -- replace with current product variables when possible
+  platform_name: Ops Manager
   product_name: Pivotal Platform
   first_product_name: Pivotal Operations Manager
   product_full: Pivotal Application Service (PAS)
   product_runtime: Pivotal Application Service
   product_short: PAS
+  ops_manager_full: VMware Tanzu Operations Manager
+  app_runtime_full: VMware Tanzu Application Service for VMs
+  app_runtime: TAS for VMs
   runtime_abbr: (PAS)
+  windows_runtime_full: VMware Tanzu Application Service for VMs &#91;Windows&#93;
   product_windows_full: Pivotal Application Service for Windows
   product_windows: PASW
+  k8s_runtime_full: VMware Tanzu Kubernetes Grid Integrated Edition
   pks_product_full: Enterprise Pivotal Container Service
   pks_product_short: Enterprise PKS
   pks_product_tile: Enterprise PKS
 
 # Book content variables
-  company_name: VMware
   recommended_by: VMware
   expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="https://docs.pivotal.io/platform/customizing/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
 
@@ -196,8 +202,8 @@ template_variables:
   example_ip_2: 198.51.100.1
   example_ip_3: 203.0.113.1
   external_ips: external IP addresses
-  external_vol_smb_note: <p class="note"><strong>Note:</strong> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.pivotal.io/application-service-windows/2-11/smb-volumes-apps.html"> Using SMB Volumes in .NET Apps</a>.</p>
-  external_vol_win_note: <p class="note"><strong>Note:</strong> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.pivotal.io/application-service-windows/2-11/smb-volumes-apps.html"> Using SMB Volumes in .NET Apps</a>.<br>NFS is not available on Windows systems.</p>
+  external_vol_smb_note: <p class="note"><strong>Note:</strong> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.pivotal.io/application-service/windows/smb-volumes-apps.html">Using SMB Volumes in .NET Apps</a>.</p>
+  external_vol_win_note: <p class="note"><strong>Note:</strong> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.pivotal.io/application-service/windows/smb-volumes-apps.html">Using SMB Volumes in .NET Apps</a>.<br>NFS is not available on Windows systems.</p>
   gen_GSG:
   global_auditor_role:  "<ul><li><strong>Global Auditor</strong>: Read-only access to all Cloud Controller API resources except for secrets, such as environment variables. The Global Auditor role cannot access those values. Assigned the <code>cloud_controller.global_auditor</code> scope in UAA.</li></ul>"
   grant_devs_c2c: open the **App Developer Controls** pane in the TAS for VMs tile and enable the **Allow space developers to manage network policies** checkbox
@@ -212,7 +218,7 @@ template_variables:
   kb_link: <a href="https://support.pivotal.io/kb" target="_blank">Knowledge Base</a>
   keepalive: For more information, see [Gorouter Back End Keep-Alive Connections](../adminguide/routing-keepalive.html).
   keepalive_router: An operator can enable the feature by entering a non-zero value for the **Keep-alive connections for the Gorouter** field in the **Networking** pane of the TAS for VMs tile.
-  known_issues: <a href="https://docs.pivotal.io/ops-manager/2-10/release-notes.html#known-issues">Known Issues</a>
+  known_issues: <a href="https://docs.pivotal.io/ops-manager/3-0/release-notes.html#known-issues">Known Issues</a>
   lb_subnav: <li><a href="https://docs.pivotal.io/platform/2-11/customizing/custom-load-balancer.html" class="subnav">Using Your Own Load Balancer</a></li><p><li><a href="https://docs.pivotal.io/platform/2-11/customizing/elb-ssh-proxy.html">Creating a Proxy ELB for Diego SSH</a></li>
   lb_health_chk_healthy: Unhealthy Threshold
   lb_health_chk_unhealthy: Unhealthy Threshold
@@ -299,12 +305,13 @@ template_variables:
   ssh_service_plan: 100mb
   ssl:
   ssl_term_vsphere: <li><a href="../opsguide/ssl-term.html" class="subnav">Configuring Ops Manager SSL Termination for vSphere Deployments</a></li>
-  ssl_tls_subnav: <li><a href="https://docs.pivotal.io/application-service/operating/security_config.html">Providing a Certificate for Your TLS Termination Point</a></li>
+  ssl_tls_subnav: <li><a href="../opsguide/security_config.html">Providing a Certificate for Your TLS Termination Point</a></li>
   sso_plan_enabled: have the Single Sign-On service broker installed on your Ops Manager deployment. You must create a plan, grant any plan admins, and specify any orgs this plan should be the authentication authority for. For help configuring plans, see [Manage Service Plans](../manage-service-plans.html).
   suspended_roles_table: "../console/pcf_suspended_roles_table"
   syslog_forwarding_ref: Syslog forwarding. See <a href="https://docs.pivotal.io/platform/devguide/services/log-management.html">Streaming App Logs to Log Management Services</a>.
   tas_networking: To configure the names of the cookies, see [Configure Networking](../operating/configure-pas.html#networking) in _Configuring TAS for VMs_.
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for enabling TCP routing in the [Configure Networking](https://docs.pivotal.io/platform/2-11/customizing/configure-pas.html#networking) section of the _Configuring TAS for VMs_ topic.
+  tcp_mod_port_change: "../adminguide/tcp_empty_file"
   tcp_port: "/pcf/core/2-11/tcp_port_review"
   tiledev_link: <p class="note"><strong>Note</strong><span>:</span> To develop service brokers and service tiles for Ops Manager, see the <a href="https://docs.pivotal.io/tiledev">Ops Manager Tile Developer Guide</a>.</p>
   uaa: <a href="../adminguide/notifications.html">UAA</a>
@@ -316,9 +323,9 @@ template_variables:
   understanding_asg_individual_link: <a href="https://docs.pivotal.io/platform/concepts/asg.html#asg-individual">App Security Groups</a>
   v3_cli_versions: The experimental commands described in this topic require Pivotal Cloud Foundry (PCF) v1.12 or later and the cf CLI v6.30.0 or later.
   warden_garden: <p class="note"><strong>Note</strong><span>:</span> Pivotal Cloud Foundry (PCF) v1.6 and later no longer use Warden. The platform-independent Garden subsystem replaces its function. This topic is intended for users who are running older versions of PCF.</p>
-  ssl_gorouter_link: <a href="https://docs.pivotal.io/application-service/operating/security_config.html#gorouter_term">Terminating SSL/TLS at the Gorouter only</a>
-  ssl_lb_gorouter_link: <a href="https://docs.pivotal.io/application-service/operating/security_config.html#gorouter_lb">Terminating SSL/TLS at the Load Balancer and the Gorouter</a>
-  ssl_lb_link: <a href="https://docs.pivotal.io/application-service/operating/security_config.html#unencrypted">Terminating SSL/TLS at the Load Balancer Only</a>
+  ssl_gorouter_link: <a href="../opsguide/security_config.html#gorouter_term">Terminating SSL/TLS at the Gorouter only</a>
+  ssl_lb_gorouter_link: <a href="../opsguide/security_config.html#gorouter_lb">Terminating SSL/TLS at the Load Balancer and the Gorouter</a>
+  ssl_lb_link: <a href="../opsguide/security_config.html#unencrypted">Terminating SSL/TLS at the Load Balancer Only</a>
   ssl_haproxy: <tr><th>Optionally, if you are deploying HAProxy, and</th><th>Then in addition, terminate SSL/TLS at<span>:</span></th><th>Related topic and configuration procedure</th></tr><tr><td><ul><li>You would like to secure traffic to the HAProxy.</li></ul></td><td><strong>HAProxy</strong></td><td><a href="../opsguide/ssl-term-haproxy.html#haproxy">Terminating SSL/TLS at HAProxy</a></td></tr>
   ssl_haproxy_2: <p class="note"><strong>Note</strong><span>:</span> If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS Termination at HAProxy</a>.</p>
   zipkin_enable: "/pcf/core/2-11/zipkin-pcf-config"
@@ -351,7 +358,8 @@ template_variables:
   route_services_appsman1: <p class="note"><strong>Note</strong>&#58; The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.</p>
   route_services_appsman2: <p class="note"><strong>Note</strong>&#58; The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.</p>
   user_provided_apps_man: <p class="note"><strong>Note</strong>&#58 The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also create user-provided service instances in Apps Manager from the Marketplace. To update existing user-provided service instances, navigate to the service instance page and select the <strong>Configuration</strong> tab.</p>
-  ssl_cert_ert: <p class="note"><strong>Note</strong>&#58; Alternately, you can use the TAS for VMs Ops Manager interface to generate a certificate for you. Certificates generated in TAS for VMs are signed by the Ops Manager Certificate Authority. They are not technically self-signed, but they are sometimes referred to as "self-signed certificates" in the Ops Manager UI and throughout this documentation. For more information, see the <a href="https://docs.pivotal.io/application-service/operating/security_config.html#ert_certgen">Generating a RSA Certificate in TAS for VMs</a> section in the <em>Providing a Certificate for Your TLS Termination Point</em> topic.</p>
+  aws_lb_cipher_suites: "https://docs.pivotal.io/platform/2-11/customizing/pcf_aws_lb_cipher_suites"
+  ssl_cert_ert: <p class="note"><strong>Note</strong>&#58; Alternately, you can use the TAS for VMs Ops Manager interface to generate a certificate for you. Certificates generated in TAS for VMs are signed by the Ops Manager Certificate Authority. They are not technically self-signed, but they are sometimes referred to as "self-signed certificates" in the Ops Manager UI and throughout this documentation. For more information, see the <a href="../opsguide/security_config.html#ert_certgen">Generating a RSA Certificate in TAS for VMs</a> section in the <em>Providing a Certificate for Your TLS Termination Point</em> topic.</p>
   ssl_single_sans_wildcard: <li>You can use a single certificate with SANs in your deployment for your wildcard domains, and</li>
   ssl_gorouter_sans: <li>You can use a single SAN certificate on the Gorouter, and</li>
   ssl_single_san_restriction: <li>You cannot use a single SAN certificate for all system and app domains for your deployment, or</li>
@@ -400,7 +408,7 @@ template_variables:
   using_docker_link: For an explanation of how Docker works in TAS for VMs, see [Using Docker in TAS for VMs](../../adminguide/docker.html).
   zipkin_tracing_link: For more information about Zipkin tracing, see [Enabling Zipkin Tracing](../adminguide/zipkin_tracing.html).
   app_graceful_shutdown_config: If your apps require a longer period of time to finish in-flight jobs and gracefully shut down, you can increase the graceful shutdown period. For more information, see the [Configure Advanced Features](https://docs.pivotal.io/application-service/2-11/operating/configure-pas.html#advanced) section of the _Configuring TAS for VMs_ topic.
-  app_log_limit_config: For more information, see <a href="https://docs.pivotal.io/platform/2-10/release-notes/runtime-rn.html#app-log-limit">Configure App Log Rate Limit (Beta)</a> in the _TAS for VMs v2.10 Release Notes_.
+  app_log_limit_config: For more information, see <a href="https://docs.pivotal.io/platform/3-0/release-notes/runtime-rn.html#app-log-limit">Configure App Log Rate Limit (Beta)</a> in the _TAS for VMs v3.0 Release Notes_.
   isolation_segments_smoke_tests: <p class='note'><strong>Note:</strong> If you run smoke tests as a post-deploy errand in the Isolation Segment tile, the smoke tests check if your isolation segment is registered in the CCDB. If the isolation segment is not registered, the smoke tests register it in the CCDB. This eliminates the need to manually register an isolation segment with <code>cf create-isolation-segment</code>. For more information, see <a href="../operating/installing-pcf-is.html#smoke-tests">Smoke Tests</a> in <em>Installing Isolation Segment</em>.</p>
   on_demand_service_tiles: MySQL for VMware Tanzu, VMware Tanzu GemFire, Redis for VMware Tanzu, and RabbitMQ for VMware Tanzu [VMs]
   ca_trust_gorouter_haproxy_fields:  <b>Certificate Authorities trusted by the Gorouter</b> and <b>Certificate Authorities trusted by the HAProxy</b> fields
