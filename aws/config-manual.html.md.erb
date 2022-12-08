@@ -361,11 +361,11 @@ Before beginning this procedure, ensure that you have successfully completed all
 
 ## <a id='bosh-dns'></a> Step 8: BOSH DNS Config Page
 
-<%= partial '../common/bosh-dns-config' %>
+
 
 ## <a id='syslog'></a> Step 9: Syslog Page
 
-
+<%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %> 
 
 ## <a id='pcfaws-om-rscestem'></a> Step 10: Resource Config Page
 
