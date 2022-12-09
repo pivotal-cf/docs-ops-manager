@@ -109,7 +109,7 @@ To create an <%= vars.ops_manager %> VM instance:
      * For **Network tags**, enter any tags that you applied to your original <%= vars.ops_manager %>. For example, if you used the `<%= vars.product_name_lc %>-opsmanager` tag to apply the firewall rule you created in [Step 5: Create Firewall Rules for the Network](../gcp/prepare-env-manual.html#firewall_rules) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_, then apply the same tag to this <%= vars.ops_manager %> VM.
      * For **Internal IP**, select `Custom`. In the **Internal IP address** field, enter a spare address located within the reserved IP range you configured in your existing BOSH Director as part of [Step 5: Create Networks Page](../gcp/config-manual.html#network) in _Configuring BOSH Director on GCP_. Do not use `10.0.0.1`, which is configured for the Gateway.
      * For **External IP**, select **New static IP address...**. In the next form, enter a name for the static IP. For example, `om-public-ip`. Click **Reserve**. In the **External IP** dropdown, select the static IP address you just reserved.
-        <%= image_tag("gcp/instance_networking.png", :alt => "Screenshot of Ops Manager VM configuration 'Networking' tab. The fields show an example configuration.") %>
+        [Screenshot of Ops Manager VM configuration 'Networking' tab. The fields show an example configuration.](images/gcp/instance_networking.png)
 
 1. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This may take a few moments.
 
