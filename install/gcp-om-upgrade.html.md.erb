@@ -98,7 +98,7 @@ To create an <%= vars.ops_manager %> VM instance:
             |------------------|----------------------|
             |Boot disk|100&nbsp;GB|
      * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.<br>
-        <%= image_tag("gcp/boot_image.png", :alt => "Screenshot of the page titled 'Boot disk'. The Ops Manager image is selected.") %>
+        ![Screenshot of the page titled 'Boot disk'. The Ops Manager image is selected.](images/gcp/boot_image.png)
      * Click **Select** to save.
   * Under **Identity and API access**, choose the **Service account** you created when you initially installed <%= vars.ops_manager %>. For more information, see [Step 1: Set up IAM Service Accounts](../gcp/prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
   * **Allow HTTP traffic:** Only select this checkbox if you selected it in your original <%= vars.ops_manager %> VM configuration.
@@ -113,7 +113,7 @@ To create an <%= vars.ops_manager %> VM instance:
 
 1. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This may take a few moments.
 
-1. Navigate to your DNS provider, and modify the entry that points a fully-qualified domain name (FQDN) to the <%= vars.ops_manager %> VM. Replace the original <%= vars.ops_manager %> static IP address with the public IP address of the new <%= vars.ops_manager %> VM you created in a previous step.
+2. Navigate to your DNS provider, and modify the entry that points a fully-qualified domain name (FQDN) to the <%= vars.ops_manager %> VM. Replace the original <%= vars.ops_manager %> static IP address with the public IP address of the new <%= vars.ops_manager %> VM you created in a previous step.
   <p class='note warning'><strong>Warning:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using a FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access. If you are importing older <%= vars.ops_manager %> settings, you must use the FQDN.</p>
 
 
