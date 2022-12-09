@@ -47,21 +47,21 @@ To set up VPC network peering with the GCP console:
 
 1. From the GCP console, click **Networking**, then **VPC network peering**.
 
-    <%= image_tag("vpc-networks.png", :alt => "Screenshot of the GCP Console. The page is titled 'VPC Network Peering'. There is a 'Create connection' button at the bottom of the page.") %>
+<%= image_tag( "./images/vpc-networks.png", :alt => "Screenshot of the GCP Console showing VPC Network Peering." ) %>
 
 1. Click **Create Connection**.
 
-1. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
+2. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
 
-    <%= image_tag("om-to-vpc.png", :alt => "Screenshot of the GCP Console. The page is titled 'VPC Network Peering'. There is an example network connection shown.") %>
+<%= image_tag( "./images/om-to-vpc.png", :alt => "The GCP Console showing VPC Network Peering. An example network connection is shown." ) %>
 
-1. Click **Save**.
+2. Click **Save**.
 
-1. Click **Create Connection**.
+3. Click **Create Connection**.
 
-1. Enter a name for the network connection from the new shared network to the <%= vars.ops_manager %> project, such as `xpn-to-opsmanager`.
+4. Enter a name for the network connection from the new shared network to the <%= vars.ops_manager %> project, such as `xpn-to-opsmanager`.
 
-1. Click **Save**.
+5. Click **Save**.
 
 ### <a id='shared-cli'></a> Set Up VPC Network Peering with gcloud CLI
 
@@ -120,8 +120,8 @@ After configuring a shared VPC, use the following procedure to verify that the s
 
 1. Click **Networking**, then **VPC networks**.
 
-    <%= image_tag("vpc-networks.png", :alt => "Screenshot of the GCP Console. The page is titled 'VPC Network Peering'. There is a 'VPC Network Peering' option after the 'Routes' option in the VPC network menu.") %>
+<%= image_tag( "../images/vpc-networks.png", :alt => "The GCP Console showing VPC Network Peering." ) %>
 
 1. Confirm that the shared VPC network name appears in the **Subnets** list.
 
-1. Confirm that the shared VPC network **IP address ranges** match what you set for the new VPC project in [Step 2: Create a Shared VPC Network](#network).
+2. Confirm that the shared VPC network **IP address ranges** match what you set for the new VPC project in [Step 2: Create a Shared VPC Network](#network).

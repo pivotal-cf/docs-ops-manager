@@ -7,7 +7,6 @@ This topic describes how to log into <%= vars.ops_manager_first %> for the first
 
 This topic also describes how to configure the <%= vars.ops_manager %> default authentication with either SAML, LDAP, or internal authentication.
 
-
 ## <a id='overview'></a> Overview
 
 When you have a new installation of <%= vars.ops_manager %>, you choose the default authentication and login method.
@@ -18,7 +17,7 @@ Your login method and authentication choices are:
 
 * **[Internal Authentication](#internal):** <%= vars.ops_manager %> maintains and manages your user database.
 
-* **[SAML Identity Provider](#saml):** An external identity server maintains your user database.
+* **[SAML Identity Provider](#saml2):** An external identity server maintains your user database.
 
 * **[LDAP Server](#ldap):** An external identity server maintains your user database.
 
@@ -31,7 +30,7 @@ To log in to <%= vars.ops_manager %> for the first time with a new <%= vars.ops_
 
 1. When <%= vars.ops_manager %> starts for the first time, choose one of the following procedures below:
     * [Internal Authentication](#internal)
-    * [SAML Identity Provider](#saml)
+    * [SAML Identity Provider](#saml2)
     * [LDAP Server](#ldap)
 
 
@@ -42,13 +41,13 @@ To set up internal authentication that <%= vars.ops_manager %> maintains:
 1.  When redirected to the **Internal Authentication** page:
     * Enter a **Username**, **Password**, and **Password confirmation** to create an Admin user.
     * Enter a **Decryption passphrase** and the **Decryption passphrase confirmation**. This passphrase encrypts the <%= vars.ops_manager %> datastore and is not recoverable.
-    * If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](install/pcf-director-proxy-settings.html).
+    * If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](./install/pcf-director-proxy-settings.html.md.erb).
     * Read the **End User License Agreement**, and select the checkbox to accept the terms.
     * Click **Setup Authentication**.
 
 1. Log in to <%= vars.ops_manager %> with the Admin username and password you created in the previous step.
 
-## <a id='saml'></a> Log In to <%= vars.ops_manager %> with SAML Identity Provider
+## <a id='saml2'></a> Log In to <%= vars.ops_manager %> with SAML Identity Provider
 
 <%= partial './common/using_saml_idp_ops_manager' %>
 

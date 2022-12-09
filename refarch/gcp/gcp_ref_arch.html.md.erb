@@ -43,7 +43,7 @@ A single-project VPC lets the platform architect give <%= vars.ops_manager %> fu
 The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
 
 
-<%= image_tag('gcp-overview-shared-vpc.png', :alt => "Complex diagram showing many high-level system and routing components.") %>
+<%= image_tag('../images/gcp-overview-shared-vpc.png', :alt => "Complex Shared VPC GCP diagram showing many high-level system and routing components." ) %>
 
 <a href="../images/gcp-overview-shared-vpc.png" aria-hidden="true">View a larger version of this diagram</a>
 
@@ -51,7 +51,7 @@ The diagram below illustrates a reference architecture for a deployment of <%= v
 
 To expose a minimal number of public IP addresses, set up your NAT as shown in the diagram below:
 
-<%= image_tag('gcp-nat-flow.png', :alt => "Complex diagram. For more information, see other sections.") %>
+<%= image_tag( '../images/gcp-nat-flow.png', :alt => "Complex NAT network topology diagram showing many high-level system and routing components." ) %>
 
 <a href="../images/gcp-nat-flow.png" aria-hidden="true">View a larger version of this diagram</a>
 
@@ -59,7 +59,7 @@ To expose a minimal number of public IP addresses, set up your NAT as shown in t
 
 To speed communication between data centers, use Google Cloud Interconnect, as shown in the diagram below:
 
-<%= image_tag('gcp-cloud-interconnect.png', :alt => "Diagram described below.") %>
+<%= image_tag( '../images/gcp-cloud-interconnect.png', :alt => "The diagram is described in the following text." ) %>
 
 <a href="../images/gcp-cloud-interconnect.png" aria-hidden="true">View a larger version of this diagram</a>
 
@@ -113,7 +113,7 @@ The service project manages these resources:
 
 The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP.
 
-<%= image_tag('gcp-overview-single-vpc.png', :alt => "Diagram of GCP Reference Architecture. Components listed in the following section.") %>
+<%= image_tag( '../images/gcp-overview-single-vpc.png', :alt => "The GCP Reference Architecture components are listed in the following section." ) %>
 
 <a href="../images/gcp-overview-single-vpc.png" aria-hidden="true">View a larger version of this diagram</a>
 
