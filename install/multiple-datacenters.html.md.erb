@@ -16,7 +16,8 @@ When you have only one IaaS config, you do not see a list of IaaS configs when y
 To add a new IaaS config:
 
 1. Click **Add vCenter Config** or **Add OpenStack Config**.
-<%= image_tag( "./images/vcenters-buttons.png", :alt => "" ) %>
+
+    ![](images/vcenters-buttons.png)
 
 1. Enter a unique **Name** for your config.
 
@@ -38,7 +39,8 @@ To add a new IaaS config:
 To modify one of multiple IaaS configs:
 
 1. Go to the list of configs by selecting the IaaS config pane.
-<%= image_tag( "./images/vcenters-list.png", :alt => "The vCenter Config pane has a header labeled List of vCenter Configs, followed by the names of each vCenter next to a pencil icon. There is also an Add vCenter Config button." ) %>
+
+    ![The vCenter Config pane has a header labeled List of vCenter Configs, followed by the names of each vCenter next to a pencil icon. There is also an Add vCenter Config button.](images/vcenters-list.png)
 
 1. Click the pencil icon.
 
@@ -54,7 +56,8 @@ To delete your IaaS config:
 1. From the BOSH Director tile, go to the **Create Availability Zones** pane.
 
 1. Click the trashcan icon to disassociate each AZ with your IaaS config. To know which AZs are associated, expand each AZ and see **IaaS Configuration**.
-	<p class='note'><strong>Note:</strong> <%= vars.ops_manager %> does not allow you to delete your first AZ or your first IaaS config. Your first AZ is always associated with your first IaaS config.</p>
+
+    <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> does not allow you to delete your first AZ or your first IaaS config. Your first AZ is always associated with your first IaaS config.</p>
 
 1. Click **Save**
 

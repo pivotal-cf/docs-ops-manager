@@ -7,7 +7,6 @@ This topic describes the preparation steps required to configure and integrate a
 
 GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables you to assign GCP resources to individual projects within an organization but allows communication and shared services between projects. For more information about shared VPCs, see [Shared VPC Overview](https://cloud.google.com/compute/docs/shared-vpc/) in the GCP documentation.
 
-
 ## <a id='prerequisites'></a> Prerequisites
 
 To configure a shared VPC, you must assign your project to a Cloud Organization. Confirm that you have a Cloud Organization associated with your GCP account using one of these methods:
@@ -47,13 +46,13 @@ To set up VPC network peering with the GCP console:
 
 1. From the GCP console, click **Networking**, then **VPC network peering**.
 
-<%= image_tag( "./images/vpc-networks.png", :alt => "Screenshot of the GCP Console showing VPC Network Peering." ) %>
+    ![Screenshot of the GCP Console showing VPC Network Peering.](images/vpc-networks.png)
 
 1. Click **Create Connection**.
 
 2. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
 
-<%= image_tag( "./images/om-to-vpc.png", :alt => "The GCP Console showing VPC Network Peering. An example network connection is shown." ) %>
+    ![The GCP Console showing VPC Network Peering. An example network connection is shown.](images/om-to-vpc.png)
 
 2. Click **Save**.
 
@@ -120,7 +119,7 @@ After configuring a shared VPC, use the following procedure to verify that the s
 
 1. Click **Networking**, then **VPC networks**.
 
-<%= image_tag( "../images/vpc-networks.png", :alt => "The GCP Console showing VPC Network Peering." ) %>
+    ![The GCP Console showing VPC Network Peering.](images/vpc-networks.png)
 
 1. Confirm that the shared VPC network name appears in the **Subnets** list.
 
