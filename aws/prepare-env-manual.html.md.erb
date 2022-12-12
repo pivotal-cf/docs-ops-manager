@@ -79,9 +79,9 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
     1. Click **Users** and then click **Add user**.
 
-         <%= image_tag("../common/images/pcfaws/aws_iam_username.png", :alt => "Screenshot of IAM configuration page 1. The page is titled 'Add user'. It has two sections: 'Set User details' and 'Select AWS access type'.") %>
+         <%= image_tag( "../common/images/pcfaws/aws_iam_username.png", :alt => "The Add user page has two sections: Set user details and Select AWS access type." ) %>
 
-    1. Enter a username. For example, enter `pcf-user`.
+    1. In **User name**, enter a user name; for example, `pcf-user`.
 
     1. For AWS access type, select **Programmatic access**.
         <p class='note'><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon documentation</a>.</p>
@@ -96,7 +96,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
     1. Click **Roles** and then click **Create role**.
 
-        <%= image_tag("../common/images/aws/create-iam-role.png", :alt => "Screenshot of IAM configuration page 1, titled 'Create role'. It has the sections 'Select type of trusted entity' and 'Choose a use case'.") %>
+        <%= image_tag( "../common/images/aws/create-iam-role.png", :alt => "" ) %>
 
     1. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case.
 
@@ -116,19 +116,19 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Add inline policy**. You can review your existing inline policies by clicking the down arrow.
 
-     <%= image_tag("../common/images/pcfaws/aws_iam_json.png", :alt => "Screenshot of the user details page. The page is titled 'Create policy'. It has a 'Visual editor' and 'JSON'tab.") %>
+     <%= image_tag( "../common/images/pcfaws/aws_iam_json.png", :alt => "The Create policy pane shows two tabs, Visual editor and JSON." ) %>
 
-1. On the **Create policy** page, define a policy:
+2. On the **Create policy** page, define a policy:
 
     1. Copy the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
 
-    1. Paste the policy document into the **JSON** tab on the **Create policy** page.
+    2. Paste the policy document into the **JSON** tab on the **Create policy** page.
 
-1. Click **Review policy**.
+3. Click **Review policy**.
 
-1. In the **Name** field, enter `pcf-iam-policy`.
+4. In the **Name** field, enter `pcf-iam-policy`.
 
-1. Click **Create policy**. The **Summary** page displays a list of available policies and actions.
+5. Click **Create policy**. The **Summary** page displays a list of available policies and actions.
 
 ## <a id='pcfaws-vpc'></a> Create a VPC
 
@@ -326,7 +326,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. For **VPC**, select the VPC where you want to deploy the BOSH-deployed VMs.
 
-1. Click the **Inbound** tab and add rules for all traffic from your public and private subnets to your private subnet, as the table and image show.
+1. Click the **Inbound** tab and add rules for all traffic from your public and private subnets to your private subnet, as shown in the table.
     This rule configuration does the following:
 
     * Enables BOSH to deploy <%= vars.app_runtime_first %> and other services.
@@ -361,7 +361,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. For **VPC**, select the VPC where you want to deploy this Elastic Load Balancer (ELB).
 
-1. Click the **Inbound** tab and add rules to allow traffic to ports `80`, `443`, and `4443` from `0.0.0.0/0`, as the table and image show.
+1. Click the **Inbound** tab and add rules to allow traffic to ports `80`, `443`, and `4443` from `0.0.0.0/0`, as shown in the table.
     <p class='note'><strong>Note:</strong> Allow traffic to port `4443` only if you are in an AWS cloud region that does not support AWS ALBs. For example, the GovCloud region. For more information about AWS regoins and availability zones, see <a href="https://aws.amazon.com/about-aws/global-infrastructure/">AWS Global Infrastructure</a>.</p>
 
     <p class='note'><strong>Note:</strong> For finer control over what can reach <%= vars.app_runtime_abbr %>, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to <%= vars.app_runtime_abbr %> from apps such as the cf CLI and app URLs.</p>
@@ -398,18 +398,18 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Create**.
 
-    <%= image_tag("../common/images/pcfaws/configure-security-group.png", :alt => "Screenshot of the Create Security Group wizard. The wizard includes 'Inbound' and 'Outbound' security group rules.") %>
+    <%= image_tag( "../common/images/pcfaws/configure-security-group.png", :alt => "" ) %>
 
 
 ## <a id='pcfaws-om-sshelbsecgrp'></a> Step 8: Configure a Security Group for the SSH ELB
 
 1. From the **Security Groups** page, click **Create Security Group** to create another security group.
 
-1. For **Security group name**, enter `pcf-ssh-elb-security-group`.
+1. In **Security group name**, enter `pcf-ssh-elb-security-group`.
 
-1. For **Description**, enter a description to identify this security group.
+1. In **Description**, enter a description to identify this security group.
 
-1. For **VPC**, select the VPC where you want to deploy this ELB.
+1. In **VPC**, select the VPC where you want to deploy this ELB.
 
 1. Click the **Inbound** tab and add the following rule:
     <table border="1" class="nice" >
@@ -471,7 +471,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. For **VPC**, select the VPC where you want to deploy the Outbound NAT.
 
-1. Click the **Inbound** tab and add a rule to allow all traffic from your VPCs, as the table and image show.
+2. Click the **Inbound** tab and add a rule to allow all traffic from your VPCs, as shown in the table.
 
     <table border="1" class="nice" >
       <tr>
@@ -504,7 +504,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. For **VPC**, select the VPC where you want to deploy MySQL.
 
-1. Click the **Inbound** tab. Add a rule of type `MySQL` and specify the subnet of your VPC in **Source**, as the table and image show.
+2. Click the **Inbound** tab. Add a rule of type `MySQL` and specify the subnet of your VPC in **Source**, as shown in the table.
     <table border="1" class="nice" >
     <tr>
       <th><strong>Type </strong></th>
@@ -521,7 +521,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
     </tr>
     </table>
 
-1. Click the **Outbound** tab. Add a rule of type `All traffic` and specify the subnet of your VPC in **Destination**, as the table and image show.
+3. Click the **Outbound** tab. Add a rule of type `All traffic` and specify the subnet of your VPC in **Destination**, as shown in the table.
     <table border="1" class="nice" >
     <tr>
       <th><strong>Type </strong></th>
@@ -538,7 +538,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
     </tr>
     </table>
 
-1. Click **Create**.
+4. Click **Create**.
 
 ## <a id='next'></a> Next Step
 

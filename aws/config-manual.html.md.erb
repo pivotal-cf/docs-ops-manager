@@ -5,9 +5,9 @@ iaas: AWS
 install_type: manual
 ---
 
-This topic describes how to configure BOSH Director to deploy <%= vars.ops_manager_first %> on Amazon Web<!--฿ Capitalize only when you use the term |World Wide Web|. Do not use |WWW|. Do not capitalize |the web|. ฿--> Services (AWS).
+This topic describes how to configure BOSH Director to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
 
-Before beginning this procedure, ensure that you have successfully<!--฿ Redundant word? ฿--> completed all of the steps in [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
+Before beginning this procedure, ensure that you have completed all of the steps in [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
 
 
 ## <a id='pcfaws-om-access'></a> Step 1: Log Into <%= vars.ops_manager %>
@@ -17,22 +17,22 @@ Before beginning this procedure, ensure that you have successfully<!--฿ Redund
 1. Log in to <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
 
-## <a id='pcfaws-om-awsconfig'></a> Step 2: AWS Config<!--฿ |config| is preferred. ฿--> Page
+## <a id='pcfaws-om-awsconfig'></a> Step 2: AWS Config page
 
 1. Click the **BOSH Director** tile.
 
-1. Select<!--฿ Use |click| with arrows, buttons, files, hyperlinks, icons, menus, and menu items in a UI context that does not use a menu cascade, progressive disclosure controls, or spin boxes. ฿--> **AWS Config**.
+1. Click **AWS Config**. The **AWS Management Console Config** page is shown.
 
-   ![The 'AWS Management Console Config' page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/aws-config.png)
+   ![](../common/images/cloudform/aws-config.png)
 
-1. Select<!--฿ Use |click| with arrows, buttons, files, hyperlinks, icons, menus, and menu items in a UI context that does not use a menu cascade, progressive disclosure controls, or spin boxes. ฿--> **Use AWS Keys** or **Use AWS Instance Profile**.
+2. Select **Use AWS Keys** or **Use AWS Instance Profile**.
     * **Access Key ID** and **AWS Secret Key**: To retrieve your AWS key information, use the AWS Identity and Access Management (IAM) credentials that you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * **AWS IAM Instance Profile**: Enter the name of the IAM profile you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-1. Complete the rest of the **AWS Management Console Config** page:
+3. Complete the rest of the **AWS Management Console Config** page:
     * **Security Group ID**: Enter the **Group ID** of the `pcf-vms-security-group` you created for your <%= vars.ops_manager %> VMs in the [Step 6: Configure a Security Group for <%= vars.ops_manager %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Locate the Group ID in the **Security Groups** tab of your EC2 Dashboard.
     * **Key Pair Name**: Enter `pcf-ops-manager-key`.
-    * **SSH Private Key**: Open the AWS key pair<!--฿ |keypair| is preferred. ฿--> `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field<!--฿ If referring to a UI, |text box| is preferred. ฿-->.
+    * **SSH Private Key**: Open the AWS key pair `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** text box.
     * **Region**: Select the region where you deployed <%= vars.ops_manager %>.
     * **VM Type Catalog** Select the VM catalog that you want to use for your BOSH-deployed VMs.
     * **AWS EBS disk type**: Select the type of EBS volume for BOSH-deployed VMs to use.
@@ -41,36 +41,36 @@ Before beginning this procedure, ensure that you have successfully<!--฿ Redund
     * **Encrypt Linux EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the <%= vars.ops_manager %> VM and BOSH Director VM. For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for <%= vars.ops_manager %> on AWS](../install/cloudform-om-ebs-config.html).
         <p class='note'><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_first %> or <%= vars.windows_runtime_abbr %> 2012 R2 are not encrypted.</p>
 
-1. Click **Save**.
+4. Click **Save**.
 
 
-## <a id='pcfaws-om-dirconfig'></a> Step 3: Director Config<!--฿ |config| is preferred. ฿--> Page
+## <a id='pcfaws-om-dirconfig'></a> Step 3: Director Config page
 
 <%= partial "../common/director-config" %>
 
-## <a id='az'></a> Step 4: Create Availability Zones Page
+## <a id='az'></a> Step 4: Create Availability Zones page
 
 <p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends at least three availability zones (AZs) for a highly available installation of <%= vars.app_runtime_first %>. The procedures in <a href="prepare-env-manual.html">Preparing to Deploy <%= vars.ops_manager %> on AWS</a> use 3 AZs.</p>
 
 1. Select **Create Availability Zones**.
 
-    ![The 'Create Availability Zones' page in Ops Manager. For more information, see the following step for information about each field.](../common/images/cloudform/create-az.png)
+    ![The Create Availability Zones page in Ops Manager. See the following steps for information about each field.](../common/images/cloudform/create-az.png)
 
 1. To add the three AZs you specified in the [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) section of _Preparing to Deploy <%= vars.ops_manager %> on AWS_:
     1. Click **Add**.
-    1. For **Amazon Availability Zone**, enter the name of the AZ.
-    1. Repeat until you have entered<!--฿ |you verbed| is punchier than |you have verbed| and it fits in most cases. ฿--> all three AZs, in the format `REGION-#a`, `REGION-#b`, and `REGION-#c`. For example, `us-west-2a`, `us-west-2b`, and `us-west-2c`.
+    2. For **Amazon Availability Zone**, enter the name of the AZ.
+    3. Repeat until you have entered all three AZs, in the format `REGION-#a`, `REGION-#b`, and `REGION-#c`. For example, `us-west-2a`, `us-west-2b`, and `us-west-2c`.
 
-1. Click **Save**.
+2. Click **Save**.
 
 
 ## <a id='network'></a> Step 5: Create Networks Page
 
 1. Select **Create Networks**.
 
-    ![The 'Create Networks' page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/create-networks.png)
+    ![The Create Networks page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/create-networks.png)
 
-1. (Optional) Select<!--฿ Use |click| with arrows, buttons, files, hyperlinks, icons, menus, and menu items in a UI context that does not use a menu cascade, progressive disclosure controls, or spin boxes. ฿--> **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable.
+1. (Optional) Select **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable.
 
 1. Perform the following steps to add the network configuration that you created for your VPC in the [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Record your VPC CIDR if you set a CIDR other than the recommendation.
 
@@ -342,7 +342,7 @@ Before beginning this procedure, ensure that you have successfully<!--฿ Redund
         </table>
         <strong><sup>*</sup></strong> If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.
 
-1. Click **Save**.
+3. Click **Save**.
 
     <p class='note'><strong>Note:</strong> If you are deploying <%= vars.k8s_runtime_first %> with a <%= vars.k8s_runtime_abbr %>  workload load balancer,
     you must tag each AWS subnet with your <%= vars.k8s_runtime_abbr %> Kubernetes cluster unique identifier before you create the load balancer.
@@ -354,21 +354,21 @@ Before beginning this procedure, ensure that you have successfully<!--฿ Redund
 
 ## <a id='assign-azs'></a> Step 6: Assign AZs and Networks
 
-1. Select **Assign AZs and Networks**.
-![The 'Assign AZs and Networks' page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/assign-az.png)
+1. Click **Assign AZs and Networks**.
+![The Assign AZs and Networks page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/assign-az.png)
 
-1. Use the dropdown<!--฿ |drop-down menu| is preferred. ฿--> to select a **Singleton Availability Zone**. The BOSH Director is deployed into this AZ.
+1. Use the drop-down menu to select a **Singleton Availability Zone**. The BOSH Director is deployed into this AZ.
 
-1. Use the dropdown<!--฿ |drop-down menu| is preferred. ฿--> to select `management` under **Network**. The BOSH Director is deployed into this network.
+2. Use the drop-down menu to select `management` under **Network**. The BOSH Director is deployed into this network.
 
-1. Click **Save**.
+3. Click **Save**.
 
 
 ## <a id='security'></a> Step 7: Security Page
 
 <%= partial "../common/security-pane" %>
 
-## <a id='bosh-dns'></a> Step 8: BOSH DNS Config<!--฿ |config| is preferred. ฿--> Page
+## <a id='bosh-dns'></a> Step 8: BOSH DNS Config page
 
 <%= partial "../common/bosh-dns-config" %>
 
@@ -376,16 +376,16 @@ Before beginning this procedure, ensure that you have successfully<!--฿ Redund
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
-## <a id='pcfaws-om-rscestem'></a> Step 10: Resource Config<!--฿ |config| is preferred. ฿--> Page
+## <a id='pcfaws-om-rscestem'></a> Step 10: Resource Config page
 
 1. Select **Resource Config**.
-    ![The 'Resource Config' page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/resource-config.png)
+    ![The Resource Config page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/resource-config.png)
 
-1. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields<!--฿ If referring to a UI, |text boxes| is preferred. ฿-->,
-choose **<!--฿ |select| or |click| is preferred for interacting with UI elements. ฿-->Automatic** from the dropdown<!--฿ |drop-down menu| is preferred. ฿--> to allocate the recommended resources for the job. If the **Persistent Disk Type** field<!--฿ If referring to a UI, |text box| is preferred. ฿--> reads **None**, the job does not require persistent disk space.
+2. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields,
+select **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
-    <p class='note'><strong>Note:</strong> If you set a field<!--฿ If referring to a UI, |text box| is preferred. ฿--> to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
-    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Master<!--฿ Preferred alternatives: |Primary|, |Controller|. Other alternatives: |Main|, |Original|, |Reference|, |Control plane|, |Control plane node|. ฿--> Compilation Job</strong>
+    <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
+    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Master Compilation Job</strong>
     with at least 100&nbsp;GB of disk space.</p>
 
 1. (Optional) To configure an Application Load Balancer (ALB) for your BOSH Director, click the icon next to the **BOSH Director** job name to see more fields.
@@ -413,9 +413,9 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
 
 1. Click **Review Pending Changes**, then **Apply Changes**.
 
-1. BOSH Director begins to install. The **Changes Applied** window displays when the installation process<!--฿ Avoid nominalization: |while deleting| is better than |during the deletion process|. ฿--> successfully<!--฿ Redundant word? ฿--> completes.
+2. BOSH Director begins to install. The **Changes Applied** window displays when installation is complete.
 
-    ![A pop-up window with the text 'Changes Applied' is shown. A green circle that contains a white checkbox appears to the left of the text. A gray button on the bottom left of the pop-up reads 'Close', and a blue button on the bottom right reads 'Return to Installation Dashboard'.](../common/images/aws/vpc-step16.png)
+    ![](../common/images/aws/vpc-step16.png)
 
 ## <a id='next'></a> Next Steps
 

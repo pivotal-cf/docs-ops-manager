@@ -6,7 +6,7 @@ To configure the **Director Config** pane:
 
 1. Select **Director Config**.
 
-     ![At the top of the image is the header 'Director Config' with a horizonal line underneath. Below the line are three text fields labeled, from top to bottom, 'NTP Servers (comma delimited)', and 'Bosh HM Forwarder IP Address'. The NTP Servers (comma delimited) field has a red asterisk, to denote that it is a required field. Below these text fields are eight checkboxes. The first checkbox is labeled 'Enable VM Resurrector Plugin'. The second checkbox is labeled 'Enable deprecated BOSH System Metrics Server'. The third checkbox is labeled 'Enable additional System Metrics'. The fourth checkbox is labeled 'Enable Post Deploy Scripts'. The fifth checkbox is labeled 'Recreate VMs deployed by the BOSH Director', underneath which is the text 'This will force BOSH to recreate all Bosh Deployed VMs on the next deploy. Persistent disk will be preserved'. The sixth checkbox is labeled 'Recreate BOSH Director VM', underneath which is the text 'This will force BOSH to recreate the Bosh Director VM on the next deploy. Persistent disk will be preserved.' The seventh checkbox is labeled 'Recreate All Persistent Disks', underneath which is the text 'Checking this box will recreate all Persistent Disks for the Director and all other Tiles'. The eighth checkbox is labeled 'Enable bosh deploy retries', underneath which is the text 'This will attempt to re-deploy a failed deployment up to 5 times.](../common/images/director-config.png)
+     ![](../common/images/director-config.png)
 
 <%# **NTP Servers** field, differentiated by IaaS %>
 
@@ -71,24 +71,24 @@ To configure the **Director Config** pane:
 
 1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname**. You can also use this field to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
 
-    ![Three text fields labeled 'Director Workers', 'Max Threads', and 'Director Hostname'. The Director Workers field contains the text '5'. The Director Hostname field contains the text 'opsdirector.example.com'.](../common/images/director_workers.png)
+    ![There are three text fields, Director Workers, Max Threads, and Director Hostname.](../common/images/director_workers.png)
 
-1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
+2. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
 
-1. <%= partial "../common/identification-tags" %>
+3. <%= partial "../common/identification-tags" %>
 
-1. <%= partial "../common/certificates-config" %>
+4. <%= partial "../common/certificates-config" %>
 
 1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
 
-    ![At the top of the image is a selected checkbox labeled 'HM Pager Duty Plugin'. Below this checkbox are two text fields labeled, from top to bottom, 'Service Key' and 'HTTP Proxy'. The Service Key field has a red asterisk to denote that it is a required field, and contains the text 'YOUR-PAGERDUTY-SERVICE-KEY'. The HTTP Proxy field contains the text 'YOUR-HTTP-PROXY'.](../common/images/director_hm_pager.png)
+    ![There is a selected checkbox, HM Pager Duty Plugin, and two text fields, Service Key and HTTP Proxy.](../common/images/director_hm_pager.png)
 
     * **Service Key**: Enter your API service key from PagerDuty.
     * **HTTP Proxy**: Enter an HTTP proxy for use with PagerDuty.
 
 1. Select **HM Email Plugin** to enable Health Monitor integration with email.
 
-    ![At the top of the image is a selected checkbox labeled 'HM Email Plugin'. Below this checkbox are seven text fields labeled, from top to bottom, 'Host', 'Port', 'Domain', 'From', 'Recipients', 'Username', and 'Password'. The Host field has a red asterisk and contains the text 'smtp.example.com'. The Port field has a red asterisk and contains the text '25'. The Domain field has a red asterisk and contains the text 'cloudfoundry.example.com'. The From field has a red asterisk and contains the text 'user2@example.com'. The Recipients field has a red asterisk and contains the text 'user@example.com, user1@example.com'. The Username field contains the text 'user'. The Password field contains eight asterisks.](../common/images/director_hm_email.png)
+    ![There is a selected checkbox, HM Email Plugin, and seven text fields: Host, Port, Domain, From, Recipients, Username, and Password.](../common/images/director_hm_email.png)
 
     * **Host**: Enter your email hostname.
     * **Port**: Enter your email port number.
@@ -105,4 +105,4 @@ To configure the **Director Config** pane:
 
 <%= partial "../common/director-database-location" %>
 
-1. Click **Save**.
+1.  Click **Save**.

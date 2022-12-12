@@ -43,17 +43,17 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
     * **Source**: Choose **Cloud Storage file**.
     * **Cloud Storage file**: Paste in the Google Cloud Storage filepath you copied from the PDF file in the [previous step](#select-tgz).
 
-        <%= image_tag("../common/images/gcp/create_image.png", :alt => "Screenshot of the GCP Compute Engine console. The page is titled 'Create an image'. It shows an example of completed 'Create an image' fields.") %>
+        <%= image_tag( "../common/images/gcp/create_image.png", :alt => "" ) %>
 
 1. Click **Create**. The file might take a few minutes to import.
 
 ## <a id='start-vm'></a> Step 3: Create the <%= vars.ops_manager %> VM Instance
 
-1. Select the checkbox for the image that you created above.
+1. Select the check box for the image that you created above.
 
-    <%= image_tag("../common/images/gcp/create_instance.png", :alt => "Screenshot of an example image. The page is titled 'Images'.") %>
+    <%= image_tag( "../common/images/gcp/create_instance.png", :alt => "" ) %>
 
-1. Click **Create Instance**.
+2. Click **Create Instance**.
 
 1. In the **Create an instance form**, complete the following fields:
 
@@ -78,7 +78,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
         * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.<br>
 
-            <%= image_tag("../common/images/gcp/boot_image.png", :alt => "Screenshot of the VM instance dialog. The page is titled 'Boot disk'. It shows the example image selected.") %>
+            <%= image_tag("../common/images/gcp/boot_image.png", :alt => "") %>
 
         * Click **Select** to save.
 
