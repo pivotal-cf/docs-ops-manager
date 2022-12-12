@@ -11,14 +11,14 @@ The fields in the **BOSH DNS Config** pane are:
 To add excluded recursors, a recursor timeout, or handlers to the BOSH DNS release:
 
 1. Select **BOSH DNS Config**.
-	<%= image_tag("../common/images/bosh-dns-config.png", :alt => "At the top of the image is the header 'BOSH DNS Config', underneath which is a horizontal line. Below the line are two text fields labeled, from top to bottom, 'Excluded Recursors' and 'Recursor Timeout'. Below these fields is a text area labeled 'Handlers', containing the text '[]'. To the right of this text area is the help text 'Enter a JSON-formatted list of optional custom domain handlers'. At the bottom of the image is a blue, rectangular button labeled 'Save'.") %>
+	<%= image_tag( "../common/images/bosh-dns-config.png", :alt => "" ) %>
 
-1. (Optional) In **Excluded Recursors**, enter a list of prohibited recursor addresses.
+2. (Optional) In **Excluded Recursors**, enter a list of prohibited recursor addresses.
 
-1. (Optional) In **Recursor Timeout**, enter a time limit for contacting the connected recursors.
+3. (Optional) In **Recursor Timeout**, enter a time limit for contacting the connected recursors.
 	<p class='note'><strong>Note:</strong> This time limit must include one of the Go parse duration time units. For example, entering <code>5s</code> sets the timeout limit to five seconds. For more information about supported time units, see <a href="https://golang.org/pkg/time/#ParseDuration">func ParseDuration</a> in the Go Programming Language documentation.</p></li>
 
-1. (Optional) In **Handlers**, enter an array of custom domain handlers in JSON format. For example:
+4. (Optional) In **Handlers**, enter an array of custom domain handlers in JSON format. For example:
 
 	```
 	[
@@ -35,4 +35,4 @@ To add excluded recursors, a recursor timeout, or handlers to the BOSH DNS relea
 	]
 	```
 
-1. Click **Save**.
+5. Click **Save**.

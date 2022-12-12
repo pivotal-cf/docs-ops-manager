@@ -12,7 +12,7 @@ The Installation Dashboard is the central <%= vars.ops_manager %> interface for 
 
 The following screenshot shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a red letter. Click the image to see it at full size.
 
-<a target="_blank" href="images/interface.png"><%= image_tag("interface.png", :alt => "Screenshot of the Ops Manager Installation Dashboard. For a description of each labeled section, see the list below") %></a>
+<a target="_blank" href="images/interface.png"><%= image_tag( "interface.png", :alt => "The Ops Manager Installation Dashboard: For a description of each labeled section, see the following list." ) %></a>
 
 The following list describes each labeled section of the Installation Dashboard:
 
@@ -131,7 +131,7 @@ Navigate to the **Certificates** page by clicking the corresponding link in the 
 
 The following image shows the top section of the **Certificates** page:
 
-<%= image_tag("certificates.png", :alt => "The 'Certificates' menu page is indicated by a header that says 'Certificates' in large type at the top of the page. Below the header, there is one line of text that reads, 'The following certificates will be rotated using Ops Manager API. To view the certificates that will not be rotated, click here. To get started, please visit the documentation.' Below the text, there is a table with six columns. The columns are labeled, from left to right, 'Certificate name', 'Product GUID', 'Location', 'Type', 'Configurable', and 'Valid until'. Below the column headers are two rows that contain example values. Under 'Certificate name', the first example is '/p-bosh/example-product-864b7cc671f9590a0b6f/generated-certificate-migrated-to-credhub' and the second example is '/bosh_dns_health_client_tls'. Under 'Product GUID', both example values are 'example-product-864b7cc671f9590a0b6f'. Under 'Location', both example values are 'credhub'. Under 'Type', the first example is 'CA' and the second example is 'Leaf'. Under 'Configurable', both example values are 'No'. Under 'Valid until', the both example values are 'July 7, 2021' and in bold text on the next line, 'in 364 days'.") %>
+<%= image_tag( "certificates.png", :alt => "The Certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until." ) %>
 
 The top section of the **Certificates** page includes the certificates that the <%= vars.ops_manager %> API attempts to rotate. This section includes both certificates that the <%= vars.ops_manager %> API can rotate and certificates that you must rotate manually.
 
@@ -153,7 +153,7 @@ The following describes the information listed on the **Certificates** page:
 
 The following image shows the **Excluded certificates** section of the **Certificates** page:
 
-<%= image_tag("excluded-certificates.png", :alt => "The 'Excluded certificates' section has a header that says 'Excluded certificates' in large type at the top of the section. Below the header, there is one line of text that reads, 'The following certificates will not be rotated using Ops Manager API. Please follow the guidelines in our documentation.' Below the text, there is a table with six columns. The columns are labeled, from left to right, 'Certificate name', 'Product GUID', 'Location', 'Type', 'Configurable', and 'Valid until'. Below the column headers are two rows that contain example values. Under 'Certificate name', the first example is '/foo/service-instance_3/pxc_4' and the second example is '/bazz/service-instance_7/redis_certificate'. Under 'Product GUID', both example values are 'example-product-864b7cc671f9590a0b6f'. Under 'Location', both example values are 'credhub'. Under 'Type', both example values are 'CA'. Under 'Configurable', both example values are 'No'. Under 'Valid until', the both example values are 'July 7, 2021' and in bold text on the next line, 'in 364 days'.") %>
+<%= image_tag("excluded-certificates.png", :alt => "The Excluded certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until.") %>
 
 The **Excluded certificates** section includes the certificates that the <%= vars.ops_manager %> API does not attempt to rotate, because they either must be rotated using the CredHub Maestro CLI or cannot be rotated safely at all.
 
@@ -164,9 +164,9 @@ For all other certificates listed in **Excluded certificates**, see the document
 
 ## <a id='settings'></a> Settings Page
 
-Navigate to the **Settings** page by clicking on your user name located at the upper right corner of the screen and selecting **Settings**.
+Navigate to the **Settings** page by clicking on your user name, located at the upper right corner of the screen, and selecting **Settings**. On the screen that appears, select **Change Decryption Passprase**.
 
-<%= image_tag("user_account_menu.png", :width => "500", :alt => "The 'User account menu' page is indicated by a drop down arrow next to the logged in user account. The user account displays at the upper right corner of the Ops Manager screen. As the first option of this menu, you can select 'Settings' to access the Settings Page. Below 'Settings' you can access 'My Account' to view account information or 'Log out' to log out of the existing user account.") %>
+<%= image_tag( "user_account_menu.png", :width => "500", :alt => "" ) %>
 
 The following section describes each configuration pane:
 
@@ -174,9 +174,12 @@ The following section describes each configuration pane:
 
 ### <a id='change-decryption'></a> Change Decryption Passphrase
 
-You can use the **Change Decryption Passphrase** pane to reset your decryption passphrase.
+To reset your decryption passphrase, enter the details as follows, and click **Change Decryption Passphrase**.
+*  **Current Decryption Passphrase**
+*  **New Decryption Passphrase**
+*  **Confirm New Decryption Passphrase**
 
-<%= image_tag("settings_menu.png", :width => "500", :alt => "The 'Settings' page is indicated by a header that says 'Settings' in large type at the top of the page. Below the header, on the left-hand side, there is a tabular layout. From top to bottom, the tabs are 'Change Decryption Passphrase,' 'SAML Settings', 'LDAP Settings', 'SSL Certificate', 'VMware Tanzu Network Settings,' 'Proxy Settings', 'Custom Banner', 'Export Installation Settings', 'Syslog', and 'Advanced Options'. The top tab, 'Change Decryption Passphrase' is highlighted in gray to indicate that it is selected. To the right, the body shows fields that correspond to 'Change Decryption Passphrase.'") %>
+<%= image_tag( "settings_menu.png", :width => "500", :alt => "" ) %>
 
 ### <a id='internal-auth'></a> Internal Authentication Settings
 
@@ -227,14 +230,12 @@ For more information about changing your IdP to SAML or LDAP, view the following
 You can use the **SSL Certificate** pane to configure <%= vars.ops_manager %> to use a custom SSL certificate for all <%= vars.ops_manager %> traffic both through the UI and API.
 
 This pane includes the following fields:
-
 * **Certificate:** Enter a custom certificate.
-
 * **Private Key:** Enter the private key for the certificate.
 
 If you leave the fields blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. If you want to replace a custom certificate with a self-signed certificate, select **Revert to self-signed certificate**.
 
-<%= image_tag("settings-ssl-cert.png", :alt => "The 'Settings' page shows the 'SSL Certificate' pane highlighted on the left-hand tabular layout to indicate selection. The body shows a header titled 'SSL Certificate' with an option to 'Revert to self-signed certificate' followed by help text and two required fields: 'Certificate' and 'Private key'. The 'Add Certificate' button is at the bottom of the body.") %>
+<%= image_tag( "settings-ssl-cert.png", :alt => "" ) %>
 
 ### <a id='vmware-tanzu'></a> VMware Tanzu Network Settings
 
@@ -275,9 +276,13 @@ To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
 ## <a id='account_settings'></a> My Account Page
 
-To change your email and password, navigate to the **My Account** page by clicking on your user name located at the upper right corner of the screen and selecting **My Account**.
+To change your email and password, navigate to the **My Account** page by clicking on your user name located at the upper right corner of the screen and selecting **My Account**. The **Account Settings** page includes the following information and links:
+  * **Profile**: The current email address and obscured password are shown.
+  * **Third Party Access**: Any third-party applications authorized for use are listed here.
+  * **Change Email**
+  * **Change Password**
 
-<%= image_tag("account_settings.png", :alt=> "This example 'Account Settings' page shows two subheadings titled 'Profile' and 'Third Party Access'. Under 'Profile' is an email 'admin@test.org' and an obscured password using asterisks. The email and password have two corresponding links to the right: 'Change Email' and 'Change Password'. Under 'Third Party Access' is a paragraph that says 'You have not yet authorized any third party applications.'" ) %>
+<%= image_tag("account_settings.png", :alt=> "" ) %>
 
 
 ## <a id='support'></a> Support Page
