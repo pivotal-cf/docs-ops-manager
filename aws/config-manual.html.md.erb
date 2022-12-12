@@ -51,7 +51,8 @@ Before beginning this procedure, ensure that you have successfully completed all
 <p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends at least three availability zones (AZs) for a highly available installation of <%= vars.app_runtime_first %>. The procedures in <a href="prepare-env-manual.html">Preparing to Deploy <%= vars.ops_manager %> on AWS</a> use 3 AZs.</p>
 
 1. Select **Create Availability Zones**.
-![The 'Create Availability Zones' page in Ops Manager. For more information, see the following step for information about each field.](../common/images/cloudform/create-az.png)
+
+    ![The 'Create Availability Zones' page in Ops Manager. For more information, see the following step for information about each field.](../common/images/cloudform/create-az.png)
 
 1. To add the three AZs you specified in the [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) section of _Preparing to Deploy <%= vars.ops_manager %> on AWS_:
     1. Click **Add**.
@@ -64,7 +65,8 @@ Before beginning this procedure, ensure that you have successfully completed all
 ## <a id='network'></a> Step 5: Create Networks Page
 
 1. Select **Create Networks**.
-![The 'Create Availability Zones' page in Ops Manager. For more information, see the following step for information about each field.](../common/images/cloudform/create-az.png)
+
+    ![The 'Create Networks' page in Ops Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/create-networks.png)
 
 1. (Optional) Select **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable.
 
@@ -365,7 +367,7 @@ Before beginning this procedure, ensure that you have successfully completed all
 
 ## <a id='syslog'></a> Step 9: Syslog Page
 
-<%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %> 
+<%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
 ## <a id='pcfaws-om-rscestem'></a> Step 10: Resource Config Page
 
