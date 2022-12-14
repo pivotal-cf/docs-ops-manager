@@ -16,21 +16,22 @@ When you have only one IaaS config, you do not see a list of IaaS configs when y
 To add a new IaaS config:
 
 1. Click **Add vCenter Config** or **Add OpenStack Config**.
-  <%= image_tag("vcenters-buttons.png", :alt => "The 'Add vCenter Config' button is located to the right of the 'vCenter Config' header. The first field below is titled 'Name', indicated required with an asterisk. In the field, there is a unique name entered, 'first-vcenter'.") %>
+
+  <%= image_tag( "vcenters-buttons.png", :alt => "" ) %>
 
 1. Enter a unique **Name** for your config.
 
-1. Complete the rest of the form.
+2. Complete the rest of the form.
   - For more information about the fields in vSphere, see _Step 2: Configure vCenter_ in [Configuring BOSH Director on vSphere](../vsphere/config.html#vcenter-config).
   - For more information about the fields in OpenStack, see _Step 2: OpenStack Configs Page_ in [Configuring BOSH Director on OpenStack](../openstack/config.html#openstack-config).
 
 1. Click **Save**.
 
-1. Go to the **Create Availability Zones** pane.
+2. Go to the **Create Availability Zones** pane.
 
-1. Create one or more AZs and associate them to your IaaS config with the **IaaS Configuration** field.
+3. Create one or more AZs and associate them to your IaaS config with the **IaaS Configuration** field.
 
-1. Click **Save**.
+4. Click **Save**.
 
 
 ## <a id='modify-configs'></a> Modify an IaaS Config
@@ -38,13 +39,14 @@ To add a new IaaS config:
 To modify one of multiple IaaS configs:
 
 1. Go to the list of configs by selecting the IaaS config pane.
-  <%= image_tag("vcenters-list.png", :alt =>"The 'vCenter Config' pane a header called 'List of vCenter Configs' followed by the names of each vCenter next to a pencil icon. To the right of the main header is an 'Add vCenter Config' button." ) %>
 
-1. Click the pencil icon.
+  <%= image_tag( "vcenters-list.png", :alt =>"" ) %>
 
-1. Edit the fields you want to change.
+1. Click the pencil icon beside the vCenter Config you want to change.
 
-1. Click **Save**.
+2. Edit the fields you want to change.
+
+3. Click **Save**.
 
 
 ## <a id='delete-configs'></a> Delete an IaaS Config

@@ -27,37 +27,43 @@ To delete the resources associated with <%= vars.ops_manager %> from AWS:
 
 1. Log into the AWS Management Console.
 
-1. Navigate to the EC2 Dashboard.
-   <%= image_tag("images/aws/delete-install-step2.png", :alt => "The EC2 Dashboard. A menu on the left side provides links to configuration panes for your EC2 instances. The 'Resources' pane is active.") %>
+1. Navigate to the EC2 Dashboard. You should see the **Resources** pane.
 
-1. Select **Instances** from the menu on the left side.
-  1. Select **Actions** to open the dropdown menu.
-  1. Under **Instance State**, select **Terminate** to terminate all instances.
-  <%= image_tag("images/aws/delete-install-step3.png", :alt => "In the EC2 Dashboard, the 'Instances' pane is active. The 'Actions' menu is expanded, and 'Instance State' is selected. The 'Instance State' menu is expanded, and 'Terminate' is selected.") %>
+   <%= image_tag( "images/aws/delete-install-step2.png", :alt => "" ) %>
+
+2. Select **Instances** from the menu on the left side.
+  1. Click **Actions** to open the drop-down menu. Select **Instance State** > **Terminate** to terminate all instances.
+
+  <%= image_tag( "images/aws/delete-install-step3.png", :alt => "" ) %>
 
 1. Select **Load Balancers** from the menu on the left side.
-  1. Select **Actions** to open the dropdown menu.
-  1. To delete all load balancers, select **Delete**.
-  <%= image_tag("images/aws/delete-install-step4.png", :alt => "In the EC2 Dashboard, the 'Load Balancers' pane is active. The 'Actions' menu is expanded, and 'Delete' is selected.") %>
+  1. Click **Actions** to open the dropdown menu.
+  2. Select **Delete** to delete all load balancers.
+
+  <%= image_tag( "images/aws/delete-install-step4.png", :alt => "" ) %>
 
 1. From the AWS Console, select **RDS**.
 
-1. Select **Instances** from the menu on the left side.
-  1. Select **Instance Actions** to open the dropdown menu.
-  1. To delete all RDS instances, select **Delete**.
-  <%= image_tag("images/aws/delete-install-step6.png", :alt => "In the RDS Dashboard, the 'Instances' pane is active. The 'Instance Actions' menu is expanded, and 'Delete' is selected.") %>
+2. Select **Instances** from the menu on the left side.
+  1. Select **Instance Actions** to open the drop-down menu.
+  2. Click **Delete** to delete all RDS instances.
+
+  <%= image_tag( "images/aws/delete-install-step6.png", :alt => "" ) %>
 
 1. The **Delete DB Instance** pane appears.
   1. Select **Create final Snapshot** from the dropdown.
-  1. To delete the database instance, click **Delete**.
-  <%= image_tag("images/aws/delete-install-step7.png", :alt => "In the RDS Dashboard, the 'Instances' pane is active. The 'Delete DB Instance' confirmation screen is shown.") %>
+  2. Click **Delete** to delete the database instance.
+
+  <%= image_tag( "images/aws/delete-install-step7.png", :alt => "" ) %>
 
 1. From the AWS Console, select **VPC**.
 
-1. Select **Your VPCs** from the menu on the left side.
+2. Select **Your VPCs** from the menu on the left side.
   1. Select **Actions** to open the dropdown menu.
-  1. To delete the VPCs, select **Delete VPC**.
-  <%= image_tag("images/aws/delete-install-step9.png", :alt => "In the VPC Dashboard, the 'Your VPCs' pane is active. The 'Actions' menu is expanded, and 'Delete VPC' is selected.") %>
+  2. Click **Delete VPC** to delete the VPCs.
 
-1. Select the checkbox to acknowledge that you want to delete your default VPC. Click **Yes, Delete**.
-  <%= image_tag("images/aws/delete-install-step10.png", :alt => "The 'Delete VPC' confirmation dialog box is shown. At the bottom right, 'Cancel' appears in blue text, and 'Yes, Delete' appears in white text inside a blue box.") %>
+  <%= image_tag( "images/aws/delete-install-step9.png", :alt => "" ) %>
+
+1. Click the checkbox to acknowledge that you want to delete your default VPC. Click **Yes, Delete**.
+
+  <%= image_tag( "images/aws/delete-install-step10.png", :alt => "" ) %>

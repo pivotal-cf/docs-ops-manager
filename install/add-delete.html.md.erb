@@ -26,7 +26,7 @@ see [Installing <%= vars.ops_manager %> in Air-Gapped Environments](offline_inst
 1. Click **Import a Product**.
 
 1. Select the `.pivotal` file that you downloaded from <%= vars.product_network %> or received
-from your software distributor, then click **Open**. If the product is successfully added,
+from your software distributor, and click **Open**. If the product is successfully added,
 it appears in the product list beneath the **Import a Product** button. If the product that
 you selected is not the latest version, the most up-to-date version appears in your product
 list.
@@ -38,8 +38,7 @@ green **+** icon in the bottom-right corner of the product listing.
 requires configuration, the bar at the bottom of the tile appears orange. If necessary, configure
 the product.
 
-    <%= image_tag("new-orange-tile.png", :alt => "Screenshot of the Installation Dashboard.
-    The page has two sections: 'VMware BOSH Director for vSphere' and 'Redis for Pivotal CF'.") %>
+    <%= image_tag( "new-orange-tile.png", :alt => "" ) %>
 
 1. (Optional) In the product configuration view, select the **Errands** pane to configure
 post-install errands or review the default settings. Post-install errands are scripts that
@@ -47,14 +46,14 @@ automatically run after a product installs, before <%= vars.ops_manager %> makes
 available for use. For more information about post-install errands, see [Errands]
 (http://docs.pivotal.io/tiledev/tile-errands.html)
 in the <%= vars.ops_manager %> Tile Developer Guide.
+
   <p class='note'><strong>Note:</strong> By default, <%= vars.ops_manager %> reruns errands
     even if they are not necessary due to settings left from a previous install. Leaving errands
     checked at all times can cause updates and other processes to take longer. To prevent an
     errand from running, disable the checkbox for the errand in the <strong>Errands</strong>
     pane of the <strong>Settings</strong> tab in the product tile before installing the product.</p>
 
-    <%= image_tag("example-errand.png", :alt => "Screenshot of the Errands pane of the Settings
-    tab in the Installation Dashboard. The page is titled 'Redis for Pivotal CF'.") %>
+    <%= image_tag("example-errand.png", :alt => "" ) %>
 
     The **Broker Registrar** checkbox is an example of an errand available for a product. When
     you enable this checkbox, this errand registers service brokers with the Cloud Controller
@@ -62,7 +61,7 @@ in the <%= vars.ops_manager %> Tile Developer Guide.
 
 1. Click **Review Pending Changes**.
 
-1. Click **Apply Changes** to start installation and run post-install lifecycle errands for
+2. Click **Apply Changes** to start installation and run post-install lifecycle errands for
 the product.
 
 

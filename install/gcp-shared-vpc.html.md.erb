@@ -12,7 +12,7 @@ GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables
 
 To configure a shared VPC, you must assign your project to a Cloud Organization. Confirm that you have a Cloud Organization associated with your GCP account using one of these methods:
 
-* **GCP Console:** From the [GCP console](https://console.cloud.google.com/), click the **Organization** dropdown at the top of the page to display all organizations you belong to.
+* **GCP Console:** From the [GCP console](https://console.cloud.google.com/), click the **Organization** drop-down menu at the top of the page to display all organizations you belong to.
 
 * **gcloud Command Line Interface (CLI):** From the command line, run `gcloud organizations list` to display all organizations you belong to. To install the gcloud CLI, see [gcloud Overview](https://cloud.google.com/sdk/gcloud/) in the Google documentation.
 
@@ -47,21 +47,21 @@ To set up VPC network peering with the GCP console:
 
 1. From the GCP console, click **Networking**, then **VPC network peering**.
 
-    <%= image_tag("vpc-networks.png", :alt => "Screenshot of the GCP Console. The page is titled 'VPC Network Peering'. There is a 'Create connection' button at the bottom of the page.") %>
+    <%= image_tag( "vpc-networks.png", :alt => "" ) %>
 
-1. Click **Create Connection**.
+2. Click **Create Connection**.
 
-1. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
+3. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
 
-    <%= image_tag("om-to-vpc.png", :alt => "Screenshot of the GCP Console. The page is titled 'VPC Network Peering'. There is an example network connection shown.") %>
+    <%= image_tag( "om-to-vpc.png", :alt => "" ) %>
 
-1. Click **Save**.
+4. Click **Save**.
 
-1. Click **Create Connection**.
+5. Click **Create Connection**.
 
-1. Enter a name for the network connection from the new shared network to the <%= vars.ops_manager %> project, such as `xpn-to-opsmanager`.
+6. Enter a name for the network connection from the new shared network to the <%= vars.ops_manager %> project, such as `xpn-to-opsmanager`.
 
-1. Click **Save**.
+7. Click **Save**.
 
 ### <a id='shared-cli'></a> Set Up VPC Network Peering with gcloud CLI
 
@@ -116,12 +116,12 @@ To set up VPC network peering with the gcloud CLI:
 
 After configuring a shared VPC, use the following procedure to verify that the shared VPC host project VM appears in the <%= vars.ops_manager %> project.
 
-1. From the GCP console, select the <%= vars.ops_manager %> project from the dropdown at the top of the page.
+1. From the GCP console, select the <%= vars.ops_manager %> project from the drop-down menu at the top of the page.
 
 1. Click **Networking**, then **VPC networks**.
 
-    <%= image_tag("vpc-networks.png", :alt => "Screenshot of the GCP Console. The page is titled 'VPC Network Peering'. There is a 'VPC Network Peering' option after the 'Routes' option in the VPC network menu.") %>
+    <%= image_tag( "vpc-networks.png", :alt => "" ) %>
 
-1. Confirm that the shared VPC network name appears in the **Subnets** list.
+2. Confirm that the shared VPC network name appears in the **Subnets** list.
 
-1. Confirm that the shared VPC network **IP address ranges** match what you set for the new VPC project in [Step 2: Create a Shared VPC Network](#network).
+3. Confirm that the shared VPC network **IP address ranges** match what you set for the new VPC project in [Step 2: Create a Shared VPC Network](#network).
