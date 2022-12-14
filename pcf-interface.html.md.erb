@@ -12,7 +12,7 @@ The Installation Dashboard is the central <%= vars.ops_manager %> interface for 
 
 The following screenshot shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a red letter. Click the image to see it at full size.
 
-<a target="_blank" href="images/interface.png"><%= image_tag( "interface.png", :alt => "The Ops Manager Installation Dashboard: For a description of each labeled section, see the following list." ) %></a>
+<a target="_blank" href="images/interface.png"><%= image_tag( "images/interface.png", :alt => "The Ops Manager Installation Dashboard: For a description of each labeled section, see the following list." ) %></a>
 
 The following list describes each labeled section of the Installation Dashboard:
 
@@ -23,7 +23,7 @@ The following list describes each labeled section of the Installation Dashboard:
 
 * **C**---**Installation Dashboard:** Click this link to return to the <%= vars.ops_manager %> Installation Dashboard page from other <%= vars.ops_manager %> pages.
 
-* **D**---**Stemcell Library:** Click this link to open the **Stemcell Library**. In the **Stemcell Library** you can import stemcells, stage stemcells, and review your stemcell version numbers. For more information, see [Importing and Managing Stemcells](https://docs.pivotal.io/application-service/opsguide/managing-stemcells.html).
+* **D**---**Stemcell Library:** Click this link to open the **Stemcell Library**. In the **Stemcell Library** you can import stemcells, stage stemcells, and review your stemcell version numbers. For more information, see [Importing and Managing Stemcells](opsguide/managing-stemcells.html).
 
 * **E**---**Change Log:** Click this link to view and search a log of your previous installations. For more information, see the [Change Log Page](#changelog) section of this topic for details.
 
@@ -33,11 +33,11 @@ The following list describes each labeled section of the Installation Dashboard:
 
 * **H**---**Revert:** Click the revert button to return to the previous successful installation. Any pending changes you have made to the current installation settings will be lost.
 
-* **I**---**Review Pending Changes:** Click the button to go to the **Review Pending Changes** page, which organizes pending changes by tile. You are able to enable or disable each tile to selectively deploy individual tiles and their dependencies. For more information, see [Reviewing Pending Product Changes](../install/review-pending-changes.html).
+* **I**---**Review Pending Changes:** Click the button to go to the **Review Pending Changes** page, which organizes pending changes by tile. You are able to enable or disable each tile to selectively deploy individual tiles and their dependencies. For more information, see [Reviewing Pending Product Changes](install/review-pending-changes.html).
 
 * **J**---**Orange Bar:** Indicates that additional configuration for the product tile is required before deployment. Click the product tile to complete its configuration.
 
-* **K**---**Missing Stemcell Link:** If an imported product is missing a required stemcell, a **Missing Stemcell** link appears on the tile. Click this link to open the Stemcell Library. For more information, see [Importing and Managing Stemcells](../opsguide/managing-stemcells.html).
+* **K**---**Missing Stemcell Link:** If an imported product is missing a required stemcell, a **Missing Stemcell** link appears on the tile. Click this link to open the Stemcell Library. For more information, see [Importing and Managing Stemcells](opsguide/managing-stemcells.html).
 
 * **L**---**API Docs:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the user interface. For more information about the <%= vars.ops_manager %> API, see [Using the <%= vars.ops_manager %> API](install/ops-man-api.html).
 
@@ -131,7 +131,7 @@ Navigate to the **Certificates** page by clicking the corresponding link in the 
 
 The following image shows the top section of the **Certificates** page:
 
-<%= image_tag( "certificates.png", :alt => "The Certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until." ) %>
+<%= image_tag( "images/certificates.png", :alt => "The Certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until." ) %>
 
 The top section of the **Certificates** page includes the certificates that the <%= vars.ops_manager %> API attempts to rotate. This section includes both certificates that the <%= vars.ops_manager %> API can rotate and certificates that you must rotate manually.
 
@@ -153,7 +153,7 @@ The following describes the information listed on the **Certificates** page:
 
 The following image shows the **Excluded certificates** section of the **Certificates** page:
 
-<%= image_tag("excluded-certificates.png", :alt => "The Excluded certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until.") %>
+<%= image_tag("images/excluded-certificates.png", :alt => "The Excluded certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until.") %>
 
 The **Excluded certificates** section includes the certificates that the <%= vars.ops_manager %> API does not attempt to rotate, because they either must be rotated using the CredHub Maestro CLI or cannot be rotated safely at all.
 
@@ -166,7 +166,7 @@ For all other certificates listed in **Excluded certificates**, see the document
 
 Navigate to the **Settings** page by clicking on your user name, located at the upper right corner of the screen, and selecting **Settings**. On the screen that appears, select **Change Decryption Passprase**.
 
-<%= image_tag( "user_account_menu.png", :width => "500", :alt => "" ) %>
+<%= image_tag( "images/user_account_menu.png", :width => "500", :alt => "" ) %>
 
 The following section describes each configuration pane:
 
@@ -179,7 +179,7 @@ To reset your decryption passphrase, enter the details as follows, and click **C
 *  **New Decryption Passphrase**
 *  **Confirm New Decryption Passphrase**
 
-<%= image_tag( "settings_menu.png", :width => "500", :alt => "" ) %>
+<%= image_tag( "images/settings_menu.png", :width => "500", :alt => "" ) %>
 
 ### <a id='internal-auth'></a> Internal Authentication Settings
 
@@ -235,7 +235,7 @@ This pane includes the following fields:
 
 If you leave the fields blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. If you want to replace a custom certificate with a self-signed certificate, select **Revert to self-signed certificate**.
 
-<%= image_tag( "settings-ssl-cert.png", :alt => "" ) %>
+<%= image_tag( "images/settings-ssl-cert.png", :alt => "" ) %>
 
 ### <a id='vmware-tanzu'></a> VMware Tanzu Network Settings
 
@@ -261,7 +261,7 @@ Viewable by administrators only. Configure a custom Syslog server for <%= vars.o
 
 To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
-<%= partial(:"/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'Ops Manager' }) %>
+<%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'Ops Manager' } %>
 
 ### <a id='advanced'></a> Advanced Options
 
@@ -282,8 +282,7 @@ To change your email and password, navigate to the **My Account** page by clicki
   * **Change Email**
   * **Change Password**
 
-<%= image_tag("account_settings.png", :alt=> "" ) %>
-
+<%= image_tag("images/account_settings.png", :alt=> "" ) %>
 
 ## <a id='support'></a> Support Page
 

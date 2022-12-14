@@ -74,20 +74,23 @@ To configure the **Director Config** pane:
 
     <%= image_tag( "../common/images/director_workers.png", :alt => "There are three text fields, Director Workers, Max Threads, and Director Hostname." ) %>
 
-2. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
+1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
 
-3. <%= partial "../common/identification-tags" %>
+2. <%= partial "../common/identification-tags" %>
 
-4. <%= partial "../common/certificates-config" %>
+3. <%= partial "../common/certificates-config" %>
 
-5. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
+4. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
+
     <%= image_tag( "../common/images/director_hm_pager.png", :alt => "There is a selected checkbox, HM Pager Duty Plugin, and two text fields, Service Key and HTTP Proxy." ) %>
+
     * **Service Key**: Enter your API service key from PagerDuty.
     * **HTTP Proxy**: Enter an HTTP proxy for use with PagerDuty.
 
-6. Select **HM Email Plugin** to enable Health Monitor integration with email.
+1. Select **HM Email Plugin** to enable Health Monitor integration with email.
 
     <%= image_tag( "../common/images/director_hm_email.png", :alt => "There is a selected checkbox, HM Email Plugin, and seven text fields: Host, Port, Domain, From, Recipients, Username, and Password." ) %>
+
     * **Host**: Enter your email hostname.
     * **Port**: Enter your email port number.
     * **Domain**: Enter your domain.
@@ -96,10 +99,10 @@ To configure the **Director Config** pane:
     * **Username**: Enter the username for your email server.
     * **Password**: Enter the password for your email server.
     * **Enable TLS**: Select this checkbox to enable Transport Layer Security to the email host.
-7. <%= partial "../common/credhub-encryption" %>
+1. <%= partial "../common/credhub-encryption" %>
 
-8. <%= partial "../common/blobstore-location" %>
+2. <%= partial "../common/blobstore-location" %>
 
-9. <%= partial "../common/director-database-location" %>
+3. <%= partial "../common/director-database-location" %>
 
-10. Click **Save**.
+4.  Click **Save**.

@@ -64,7 +64,7 @@ To create a private VM image:
   * **Source:** Choose **Cloud Storage file**.
   * **Cloud Storage file:** Paste in the Google Cloud Storage filepath you copied from the PDF or YAML file in the previous task.
 
-      <%= image_tag( "gcp/create_image.png", :alt => "" ) %>
+      <%= image_tag( "images/gcp/create_image.png", :alt => "" ) %>
 
 1. Click **Create**. The file may take a few minutes to import.
 
@@ -77,7 +77,7 @@ To create an <%= vars.ops_manager %> VM instance:
 
 1. Select the check box for the image you created above.
 
-    <%= image_tag( "gcp/create_instance.png", :alt => "" ) %>
+    <%= image_tag( "images/gcp/create_instance.png", :alt => "" ) %>
 
 2. Click **Create Instance**.
 
@@ -101,14 +101,14 @@ To create an <%= vars.ops_manager %> VM instance:
             |Boot disk|100&nbsp;GB|
      * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.<br>
 
-        <%= image_tag( "gcp/boot_image.png", :alt => "" ) %>
+        <%= image_tag( "images/gcp/boot_image.png", :alt => "" ) %>
 
      * Click **Select** to save.
   * Under **Identity and API access**, choose the **Service account** you created when you initially installed <%= vars.ops_manager %>. For more information, see [Step 1: Set up IAM Service Accounts](../gcp/prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
   * **Allow HTTP traffic:** Select this checkbox _only_ if you selected it in your original <%= vars.ops_manager %> VM configuration.
   * **Allow HTTPS traffic:** Select this checkbox _only_ if you selected it in your original <%= vars.ops_manager %> VM configuration.<br/>
 
-        <%= image_tag( "gcp/om_instance_1.png", :alt => "" ) %>
+        <%= image_tag( "images/gcp/om_instance_1.png", :alt => "" ) %>
 
   * **Networking:** Select the **Networking** tab and do the following:
      * For **Network** and **Subnetwork**, select the network and subnetwork you created when you initially deployed <%= vars.ops_manager %>. For more information, see [Step 3: Create a GCP Network with Subnets](../gcp/prepare-env-manual.html#create_network) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
@@ -116,7 +116,7 @@ To create an <%= vars.ops_manager %> VM instance:
      * For **Internal IP**, select `Custom`. In the **Internal IP address** field, enter a spare address located within the reserved IP range you configured in your existing BOSH Director as part of [Step 5: Create Networks Page](../gcp/config-manual.html#network) in _Configuring BOSH Director on GCP_. Do not use `10.0.0.1`, which is configured for the Gateway.
      * For **External IP**, select **New static IP address...**. In the next form, enter a name for the static IP. For example, `om-public-ip`. Click **Reserve**. In the **External IP** drop-down menu, select the static IP address you just reserved.
 
-        <%= image_tag( "gcp/instance_networking.png", :alt => "" ) %>
+        <%= image_tag( "images/gcp/instance_networking.png", :alt => "" ) %>
 
 1. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This may take a few moments.
 
@@ -128,4 +128,4 @@ To create an <%= vars.ops_manager %> VM instance:
 
 After you complete this procedure, continue the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).
 
-Later on, if you need to SSH into the <%= vars.ops_manager %> VM to perform diagnostic troubleshooting, see [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
+Later, if you need to SSH into the <%= vars.ops_manager %> VM to perform diagnostic troubleshooting, see [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).

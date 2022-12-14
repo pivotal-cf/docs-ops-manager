@@ -13,13 +13,13 @@ First, configure <%= vars.ops_manager %> through Step 4 in [Configuring BOSH Dir
 
 2. Click the network name to configure the network settings. This name is **default** if you have not changed it.
 
-	<%= image_tag( "nexus_switch_config_default.png", :alt => "" )  %>
+	<%= image_tag( "images/nexus_switch_config_default.png", :alt => "" )  %>
 
 3. Find the folder name and port group name for the switch, as you configured them in vCenter. For the example vSphere environment used as example on this page, you might want to use the switch configured on the `beer-apple` port group, which is in the `drinks dc` folder.
 
 	<p class='note'><strong>Note:</strong> Folder names can be strings of multiple words separated by spaces, or strings of words separated by other punctuation, including dashes.</p>
 
-	<%= image_tag( "vSphere_web_client_port_groups.png", :alt => "" )  %>
+	<%= image_tag( "images/vSphere_web_client_port_groups.png", :alt => "" )  %>
 
 4. In the **vSphere Network Name** field, instead of entering your network name, enter the folder name and port group name for the switch, as you configured them in vCenter. For the example vSphere environment described here, you would enter `drinks dc/beer-apple` to use the switch configured on the `beer-apple` port group.
 
