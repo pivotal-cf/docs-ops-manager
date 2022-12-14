@@ -78,7 +78,7 @@
     ![alt-text="There are two radio buttons: Internal, and External MySQL Database. There are five text fields, Host, Port, Username, Password, and Database. All fields are required when External MySQL Database is selected."](../common/images/director_database.png)
 
     * From the AWS Console, navigate to the RDS Dashboard.
-    * Select **Instances**, then click the arrow to the left of your instance and select the second icon to display the **Details** information.
+    * Click **Databases**, then click the instance to display the **Connectivity &amp; security** information.
     * Refer to the following table to retrieve the values for the **Director Config** page:
 
         <table border="1" class="nice" >
@@ -94,17 +94,13 @@
             <td>Port</td>
             <td><strong>Port</strong>, which is <code>3306</code>.</td>
           </tr>
-          <tr>
-            <td>DB Name</td>
-            <td><strong>Database</strong>, which is <code>bosh</code>.</td>
-          </tr>
-          <tr>
-            <td>Username</td>
-            <td><strong>Username</strong></td>
-          </tr>
         </table><br />
 
-    * For **Password**, enter the password that you defined for your MySQL database when you created in the [Step 8: Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying <%= vars.ops_manager %> on AWS_.
+    * For **Username**, enter the username that you defined for your MySQL database when you created in the [Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying <%= vars.ops_manager %> on AWS_.
+
+    * For **Password**, enter the password that you defined for your MySQL database when you created in the [Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying <%= vars.ops_manager %> on AWS_.
+
+    * For **Database**, enter `bosh`.
 
     In addition, if you selected the **Enable TLS for Director Database** checkbox, you can fill out the following optional fields:
 
