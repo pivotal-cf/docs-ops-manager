@@ -33,7 +33,7 @@ To locate the <%= vars.ops_manager %> installation file:
 
 1. Log in to [VMware Tanzu Network](https://network.pivotal.io/products/pivotal-cf) and click on **<%= vars.ops_manager %>**.
 
-1. From the **Releases** dropdown, select the release for your upgrade.
+1. From the **Releases** drop-down menu, select the release for your upgrade.
 
 1. Select one of the following download files:
     * **<%= vars.ops_manager %> for GCP**
@@ -63,7 +63,7 @@ To create a private VM image:
     * **Source:** Choose **Cloud Storage file**.
     * **Cloud Storage file:** Paste in the Google Cloud Storage filepath you copied from the PDF or YAML file in the previous task.
 
-        <%= image_tag("images/gcp/create_image.png", :alt => "Screenshot of the GCP console page titled 'Create an image'. The fields are shown completed with example values.") %>
+        <%= image_tag( "images/gcp/create_image.png", :alt => "" ) %>
 
 1. Click **Create**. The file may take a few minutes to import.
 
@@ -74,9 +74,9 @@ Create an <%= vars.ops_manager %> VM instance to host the new version of <%= var
 
 To create an <%= vars.ops_manager %> VM instance:
 
-1. Select the checkbox for the image that you created above.
+1. Select the check box for the image you created above.
 
-    <%= image_tag("images/gcp/create_instance.png", :alt => "Screenshot of the GCP console. The page shows the image created in the previous step selected with the name, size, created by, and creation time fields populated.") %>
+    <%= image_tag( "images/gcp/create_instance.png", :alt => "" ) %>
 
 1. Click **Create Instance**.
 
@@ -102,7 +102,7 @@ To create an <%= vars.ops_manager %> VM instance:
 
         * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.
 
-            ![Screenshot of the page titled 'Boot disk'. The Ops Manager image is selected.](images/gcp/boot_image.png)
+            ![alt-text=""](images/gcp/boot_image.png)
 
         * Click **Select** to save.
 
@@ -110,7 +110,7 @@ To create an <%= vars.ops_manager %> VM instance:
     * **Allow HTTP traffic:** Only select this checkbox if you selected it in your original <%= vars.ops_manager %> VM configuration.
     * **Allow HTTPS traffic:** Only select this checkbox if you selected it in your original <%= vars.ops_manager %> VM configuration.
 
-        ![Screenshot of the Ops Manager VM configuration page. The fields show an example configuration.](images/gcp/om_instance_1.png)
+        ![alt-text=""](images/gcp/om_instance_1.png)
 
     * **Networking:** Select the **Networking** tab and do the following:
         * For **Network** and **Subnetwork**, select the network and subnetwork you created when you initially deployed <%= vars.ops_manager %>. For more information, see [Step 3: Create a GCP Network with Subnets](../gcp/prepare-env-manual.html#create_network) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
@@ -118,7 +118,7 @@ To create an <%= vars.ops_manager %> VM instance:
         * For **Internal IP**, select `Custom`. In the **Internal IP address** field, enter a spare address located within the reserved IP range you configured in your existing BOSH Director as part of [Step 5: Create Networks Page](../gcp/config-manual.html#network) in _Configuring BOSH Director on GCP_. Do not use `10.0.0.1`, which is configured for the Gateway.
         * For **External IP**, select **New static IP address...**. In the next form, enter a name for the static IP. For example, `om-public-ip`. Click **Reserve**. In the **External IP** dropdown, select the static IP address you just reserved.
 
-        ![Screenshot of Ops Manager VM configuration 'Networking' tab. The fields show an example configuration.](images/gcp/instance_networking.png)
+        ![alt-text=""](images/gcp/instance_networking.png)
 
 1. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This may take a few moments.
 

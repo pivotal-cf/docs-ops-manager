@@ -50,60 +50,61 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 1. Navigate to your EC2 Dashboard.
 
-1. Click **AMIs** from the **Images** menu.
+2. In  the **Images** menu, select **AMIs**.
 
-1. Select **Public images** from the dropdown filter that says **Owned by me**.
+3. In the **Owned by me** drop-down filter, select **Public images**.
 
-1. Paste the AMI ID for your region into the search bar and press enter.
+4. Paste the AMI ID for your region into the search bar and press enter.
+
     <p class='note'><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
 
-    <%= image_tag("images/pcfaws/pcf_aws_ami.png", :alt => "AWS AMI interface") %>
+    <%= image_tag( "images/pcfaws/pcf_aws_ami.png", :alt => "" ) %>
 
 1. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS):
   1. Right-click the row that lists your AMI and click **Copy AMI**.
-  1. Select your **Destination region**.
-  1. Enable **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) in _Copying an AMI_ in the AWS documentation.
-  1. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
-  1. Click **Copy AMI**. You can use the new AMI you copied for the next steps.
+  2. Select your **Destination region**.
+  3. Enable **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) in _Copying an AMI_ in the AWS documentation.
+  4. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
+  5. Click **Copy AMI**. You can use the new AMI you copied for the next steps.
 
-1. Select the row that lists your <%= vars.ops_manager %> AMI and click **Launch**.
+2. Select the row that lists your <%= vars.ops_manager %> AMI and click **Launch**.
 
-1. Choose **m5.large** for your instance type.
+3. Choose **m5.large** for your instance type.
 
-1. Click **Next: Configure Instance Details**.
+4. Click **Next: Configure Instance Details**.
 
-    <%= image_tag("images/pcfaws/aws_ami_m5large.png", :alt => "AWS instance type selection interface") %>
+    <%= image_tag( "images/pcfaws/aws_ami_m5large.png", :alt => "" ) %>
 
-1. Configure the following fields for your instance:
+1.  Configure the following fields for your instance:
     * **Network:** Select the VPC that you created.
     * **Subnet:** Select `<%= vars.product_name_lc %>-public-subnet-az0`.
     * **Auto-assign for Public IP:** Select **Enable**.
     * **IAM role:** Select the IAM role associated with your <%= vars.product_name_lc %>-user profile. If you have not created one, click **Create new IAM role** and follow the procedures in [AWS Permissions Guidelines](aws-iaas-user-roles.html).
     * For all other fields, accept the default values.
 
-    <%= image_tag("images/pcfaws/pcf_aws_configure_instance.png", :alt => "AWS Configure Instance Details UI") %>
+    <%= image_tag( "images/pcfaws/pcf_aws_configure_instance.png", :alt => "" ) %>
 
-1. Click **Next: Add Storage**.
+1.  Click **Next: Add Storage**.
 
-1. Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
+2.  Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
 
-    <%= image_tag("images/pcfaws/pcf_aws_add_storage.png", :alt => "AWS Storage Device settings UI") %>
+    <%= image_tag( "images/pcfaws/pcf_aws_add_storage.png", :alt => "" ) %>
 
-1. Click **Next: Tag Instance**
+1.  Click **Next: Tag Instance**
 
-1. On the **Add Tags** page, add a tag with the key `Name` and value `<%= vars.product_name_lc %>-ops-manager`.
+2.  On the **Add Tags** page, add a tag with the key `Name` and value `<%= vars.product_name_lc %>-ops-manager`.
 
-1. Click **Next: Configure Security Group**.
+3.  Click **Next: Configure Security Group**.
 
-1. Select the `<%= vars.product_name_lc %>-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](../aws/prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+4.  Select the `<%= vars.product_name_lc %>-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](../aws/prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-1. Click **Review and Launch** and confirm the instance launch details.
+5.  Click **Review and Launch** and confirm the instance launch details.
 
-1. Click **Launch**.
+6.  Click **Launch**.
 
-1. Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
+7.  Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
 
-    <%= image_tag("images/pcfaws/select_pcfpem_keypair.png", :alt => "AWS Key Pair Selection UI") %>
+    <%= image_tag( "images/pcfaws/select_pcfpem_keypair.png", :alt => "" ) %>
 
 
 ## <a id='dns'></a> Edit <%= vars.ops_manager %> DNS A Record

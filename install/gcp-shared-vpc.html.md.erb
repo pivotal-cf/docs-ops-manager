@@ -11,7 +11,7 @@ GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables
 
 To configure a shared VPC, you must assign your project to a Cloud Organization. Confirm that you have a Cloud Organization associated with your GCP account using one of these methods:
 
-* **GCP Console:** From the [GCP console](https://console.cloud.google.com/), click the **Organization** dropdown at the top of the page to display all organizations you belong to.
+* **GCP Console:** From the [GCP console](https://console.cloud.google.com/), click the **Organization** drop-down menu at the top of the page to display all organizations you belong to.
 
 * **gcloud Command Line Interface (CLI):** From the command line, run `gcloud organizations list` to display all organizations you belong to. To install the gcloud CLI, see [gcloud Overview](https://cloud.google.com/sdk/gcloud/) in the Google documentation.
 
@@ -46,13 +46,13 @@ To set up VPC network peering with the GCP console:
 
 1. From the GCP console, click **Networking**, then **VPC network peering**.
 
-    ![Screenshot of the GCP Console showing VPC Network Peering.](images/vpc-networks.png)
+    ![](images/vpc-networks.png)
 
-1. Click **Create Connection**.
+2. Click **Create Connection**.
 
 2. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
 
-    ![The GCP Console showing VPC Network Peering. An example network connection is shown.](images/om-to-vpc.png)
+    ![](images/om-to-vpc.png)
 
 2. Click **Save**.
 
@@ -110,7 +110,7 @@ To set up VPC network peering with the gcloud CLI:
     ```
 
     Where:
-    
+
     * `VPC-TO-OPSMANAGER` is a name you choose for the connection, such as `vpc-to-om`.
     * `VPC-NETWORK` is the name of the network you gave the shared VPC project in [Step 2: Create Shared VPC Networks](#network).
     * `OPSMANAGER-PROJECT` is the name of the project that contains your <%= vars.ops_manager %> installation.
@@ -121,12 +121,12 @@ To set up VPC network peering with the gcloud CLI:
 
 After configuring a shared VPC, use the following procedure to verify that the shared VPC host project VM appears in the <%= vars.ops_manager %> project.
 
-1. From the GCP console, select the <%= vars.ops_manager %> project from the dropdown at the top of the page.
+1. From the GCP console, select the <%= vars.ops_manager %> project from the drop-down menu at the top of the page.
 
 1. Click **Networking**, then **VPC networks**.
 
-    ![The GCP Console showing VPC Network Peering.](images/vpc-networks.png)
+    ![](images/vpc-networks.png)
 
-1. Confirm that the shared VPC network name appears in the **Subnets** list.
+2. Confirm that the shared VPC network name appears in the **Subnets** list.
 
 2. Confirm that the shared VPC network **IP address ranges** match what you set for the new VPC project in [Step 2: Create a Shared VPC Network](#network).

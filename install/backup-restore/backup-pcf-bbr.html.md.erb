@@ -183,7 +183,7 @@ where the operator can transfer them to storage and use them to restore the depl
 
 The diagram shows a sample backup flow. Details are described below:
 
-![](images/backup-flow.png)
+![alt-text=""](images/backup-flow.png)
 
 1. An operator runs `bbr backup pcf-deployment` on the jumpbox.
 
@@ -344,7 +344,7 @@ To check your BOSH Director:
 
     - `PRIVATE-KEY-FILE` is the path to the private key file that you created from **Bbr Ssh Credentials** in [Step 3: Retrieve BOSH Director Credentials](#retrieve-credentials).
     - `HOST` is the address of the BOSH Director. If the BOSH Director is public, HOST is a URL, such as `https://bosh.xxx.cf-app.com`. Otherwise, `HOST` is the `BOSH-DIRECTOR-IP` you retrieved in [Step 4: Retrieve BOSH Director Address](#retrieve-address).
-    
+
     <p class='note'><strong>Note:</strong> To enable debug logs, use the optional <code>--debug</code> flag. For more information, see <a href="#logging">Logging</a>.</p>
 
 1. After the pre-backup check succeeds, continue to [Step 6: Confirm Backup Restore Node is Deployed](#backup-restore-node). If the pre-backup check fails, the BOSH Director might not have the correct backup scripts or the connection to the BOSH Director might have failed.
@@ -387,7 +387,7 @@ To identify the name of the BOSH deployment:
     bosh -e BOSH-DIRECTOR-IP --ca-cert PATH-TO-BOSH-SERVER-CERTIFICATE deployments
     ```
     Where:
-    
+
     - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Step 4: Retrieve BOSH Director Address](#retrieve-address).
     - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director.
 
@@ -406,9 +406,9 @@ To check that your BOSH Director is reachable and has a deployment that can be b
     --ca-cert PATH-TO-BOSH-SERVER-CERTIFICATE \
     pre-backup-check
   	```
-    
+
     Where:
-    
+
     - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Step 4: Retrieve BOSH Director Address](#retrieve-address).
     - `BOSH-CLIENT`, `BOSH-PASSWORD` are the **Uaa Bbr Client Credentials**, identity and password, that you retrieved in [Step 3: Retrieve BOSH Director Credentials](#retrieve-credentials).
     - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Step 6: Identify Your Deployment](#identify-deployment).
@@ -468,7 +468,7 @@ To export your installation settings using the <%= vars.ops_manager %> API:
       -H "Authorization: Bearer UAA-ACCESS-TOKEN" > installation.zip
     ```
     Where:
-    
+
     - `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
     - `UAA-ACCESS-TOKEN` is your UAA access token. For more information, see [Access the API](../ops-man-api.html#access-api) in _Using the <%= vars.ops_manager %> API_.
 
@@ -492,7 +492,7 @@ To back up BOSH Director:
     --host HOST \
     backup
     ```
-    
+
     Where:
 
     * `PRIVATE-KEY-FILE` is the path to the private key file that you created from **Bbr Ssh Credentials** in [Step 3: Retrieve BOSH Director Credentials](#retrieve-credentials).
@@ -660,7 +660,7 @@ To cancel a backup:
         backup-cleanup
         ```
         Where:
-        
+
         * `PRIVATE-KEY-FILE` is the path to the private key file that you created from **Bbr Ssh Credentials** in [Step 3: Retrieve BOSH Director Credentials](#retrieve-credentials).
         * `HOST` is the address of the BOSH Director:
           * If the BOSH Director is public, `HOST` is a URL, such as `https://bosh.xxx.cf-app.com`.
