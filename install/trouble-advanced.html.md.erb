@@ -31,22 +31,22 @@ Before you begin troubleshooting with the BOSH CLI, follow the instructions belo
 1. Open the <%= vars.ops_manager %> interface by navigating to the <%= vars.ops_manager %>
 fully qualified domain name (FQDN) in a web browser.
 
-1. Click the **BOSH Director** tile and select the **Status** tab.
+1. Click the **BOSH Director** tile and click the **Status** tab.
 
 1. Record the IP address for the Director job. This is the IP address of the VM where the BOSH
 Director runs.
 
-    <%= image_tag("ops-mgr-job-ip.png", :alt => "Screenshot of the Ops Manager Director for VMware vSphere dashboard. The image shows the 'Status' tab with the IPS value circled in red.") %>
+    <%= image_tag( "ops-mgr-job-ip.png", :alt => "" ) %>
 
-1. Select the **Credentials** tab.
+1. Click the **Credentials** tab.
 
-1. Click **Link to Credential** to view the **Director Credentials**. Record these credentials.
+2. Next to **Director Credentials**, click **Link to Credential**. Record these credentials.
 
-    <%= image_tag("bosh-creds.png", :alt => "Screenshot of the Ops Manager Director for VMware vSphere dashboard. The image shows the 'Credentials' tab with the Director Credentials circled in red.") %>
+    <%= image_tag( "bosh-creds.png", :alt => "" ) %>
 
-1. Return to the <%= vars.ops_manager %> Installation Dashboard.
+3. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
-1. **(Optional)** To prepare to troubleshoot the job VM for any other product, click the product
+4. **(Optional)** To prepare to troubleshoot the job VM for any other product, click the product
 tile and repeat the procedure above to record the IP address and VM credentials for that job VM.
 
 1. Log out of <%= vars.ops_manager %>.
@@ -155,15 +155,15 @@ your BOSH Director. For example:
     <p class='note'><strong>Note:</strong> Your browser must be able to reach the BOSH Director to
     log in with SAML.</p>
 
-1. Click **Log in with organization credentials (SAML)**.
+1. Click **Log in with organization credentials (SAML)**. A temporary authentication code appears.
 
-    <%= image_tag("login-saml-credentials.png", :alt => "Screenshot of the Bosh CLI welcome page. The image shows the an arrow pointing to the 'Log in with organization credentials (SAML)' option.") %>
+    <%= image_tag( "login-saml-credentials.png", :alt => "" ) %>
 
-1. Copy the **Temporary Authentication Code** that appears in your browser.
+2. Copy the **Temporary Authentication Code**.
 
-    <%= image_tag("saml-login-temp-auth-code.png", :alt => "Screenshot of an example temporary Authentication code.") %>
+    <%= image_tag( "saml-login-temp-auth-code.png", :alt => "" ) %>
 
-1. You see a login confirmation. For example:
+3. You will now see a login confirmation. For example:
 
     <pre class='terminal'>
     Logged in as admin@example.org
