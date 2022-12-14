@@ -12,7 +12,7 @@ The instructions in this topic are based on vSphere 6.5 using the vSphere Client
 
 For security purposes, VMware requires a dedicated instance of <%= vars.ops_manager %> for use with <%= vars.k8s_runtime_first %>.
 
-<p class='note warning'><strong>Warning:</strong> If you are installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
+<p class='note caution'><strong>Caution:</strong> If you are installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
 integration, follow the instructions in
 <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-om-deploy.html">Deploying <%= vars.ops_manager %> with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the steps described in this topic.</p>
 
@@ -39,7 +39,7 @@ integration, follow the instructions in
     1. Select **Turn ON vSphere HA** to enable vSphere HA.
 
 1. If you created more than one vSphere cluster, configure shared storage for the clusters. You can allocate shared storage to the clusters using one of two common approaches: horizontal or vertical. For more information about configuring shared storage for clusters, see [Storage Design](../refarch/vsphere/vsphere_ref_arch.html#storage) in _vSphere Reference Architecture_.
-  <p class='note warning'><b>Warning:</b> Failure to properly configure shared storage for vSphere clusters could result in downtime and unrecoverable loss of data.</p>
+  <p class='note caution'><b>Caution:</b> Failure to properly configure shared storage for vSphere clusters could result in downtime and unrecoverable loss of data.</p>
 
 1. Create a resource pool for the management components in your deployment. Resource pools are
 vSphere objects used to organize resources.
@@ -109,7 +109,7 @@ vSphere objects used to organize resources.
         * If you use a dedicated disk, select the appropriate disk format for your deployment needs. The default type is **Thin Provision**, but you can choose to use a thick provisioned disk such as **Thick Provisioned Lazy Zeroed**. For more information, see [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html).
     1. Click **Next**.
 
-    <p class='note warning'><strong>Warning:</strong> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
+    <p class='note caution'><strong>Caution:</strong> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
 
     <%= image_tag("../common/images/vsphere/vsphere_om-deploy-04.png", :alt => "Virtual disk format and VM storage policy dropdowns have default settings. vsanDatastore is highlighted in grey and selected in the datastore list.") %>
 
@@ -124,7 +124,7 @@ vSphere objects used to organize resources.
    * **DNS**: One or more DNS servers for the <%= vars.ops_manager %> VM to use. For example, `10.20.20.1`.
    * **NTP Servers**: The IP address of one or more NTP servers for <%= vars.ops_manager %>. For example, `10.113.60.176`.
    * **Public SSH Key**: Enter pre-existing public SSH key value to allow SSH access to the <%= vars.ops_manager %> VM. Enter the full key in the `ssh-rsa AAA...` format.
-      <p class='note warning'><strong>Warning:</strong> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
+      <p class='note caution'><strong>Caution:</strong> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
    * **Custom hostname**: The hostname for the <%= vars.ops_manager %> VM. For example, `ops-manager`.
 
 1. At the **Ready to complete** screen, review the configuration settings and click **Finish**.

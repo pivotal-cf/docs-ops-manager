@@ -47,7 +47,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
       * **Type:** CA
 
 1. After you identify the list of certificates that expire soon, follow one of the procedures listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.
-    <p class='note warning'><strong>Warning:</strong> The <strong>Excluded certificates</strong> section lists certificates that you cannot safely rotate using the methods described in this topic. To rotate the Services TLS CA certificate and its leaf certificates, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>. For all other certificates listed in <strong>Excluded certificates</strong>, contact <a href="https://tanzu.vmware.com/support">Support</a> for guidance.</p>
+    <p class='note caution'><strong>Caution:</strong> The <strong>Excluded certificates</strong> section lists certificates that you cannot safely rotate using the methods described in this topic. To rotate the Services TLS CA certificate and its leaf certificates, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>. For all other certificates listed in <strong>Excluded certificates</strong>, contact <a href="https://tanzu.vmware.com/support">Support</a> for guidance.</p>
 
 
 ## <a id='check-api'></a> Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> API

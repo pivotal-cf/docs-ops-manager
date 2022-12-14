@@ -15,8 +15,8 @@ For BBR release notes, see [BOSH Backup and Restore Release Notes](https://docs.
 
 During the backup, BBR stops the Cloud Controller API and the Cloud Controller workers to create a consistent backup. API functionality is affected, such as when pushing apps or using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
 
-<div class="note warning">
-  <strong>Warning:</strong>
+<div class="note caution">
+  <strong>Caution:</strong>
     <ul>
       <li><strong>Security:</strong> Backup artifacts can contain secrets. Secure backup artifacts by using encryption or other means.</li>
       <li><strong>Compatibility:</strong> A BBR backup can only be restored to environments matching its source environment. To ensure that a restore environment is compatible with a backup, see <a href="./restore-pcf-bbr.html#compatibility">Compatibility of Restore</a>.</li>
@@ -148,12 +148,12 @@ If you configured an unsupported external blobstore or an unsupported external d
 | You configured an unsupported external database and a supported blobstore in <%= vars.app_runtime_abbr %>. | Follow the backup procedures and copy the external database by using the IaaS-specific tool. |
 | You configured both an unsupported external database and an unsupported external blobstore in <%= vars.app_runtime_abbr %>. | Follow the backup procedures but skip [Back Up Your <%= vars.app_runtime_abbr %> Deployment](#bbr-backup). Copy the external database and blobstore by using the IaaS-specific tool. |
 
-<p class='note warning'><strong>Warning:</strong> You might encounter inconsistencies between the blobstore and database. If apps do not appear during a restore, re-push those apps.</p>
+<p class='note caution'><strong>Caution:</strong> You might encounter inconsistencies between the blobstore and database. If apps do not appear during a restore, re-push those apps.</p>
 
 
 ## <a id='backup-services'></a> Backing Up Services
 
-<p class='note warning'><strong>Warning:</strong> BBR does not currently back up any service data.</p>
+<p class='note caution'><strong>Caution:</strong> BBR does not currently back up any service data.</p>
 
 When backing up services:
 
@@ -324,7 +324,7 @@ To establish the tunnel using the BOSH CLI:
       * `SOCKS-PORT` is the local SOCKS port.
       * `JUMPBOX-KEY-FILE` is the local SSH private key for accessing the jumpbox.
 
-    <p class='note warning'><strong>Warning:</strong> In BBR v1.5.0 and earlier, the tunnel created by the BOSH CLI does not include the <code>ServerAliveInterval</code> flag. This might cause your SSH connection to time out when transferring large artifacts. In BBR v1.5.1, the <code>ServerAliveInterval</code> flag is included. For more information, see <a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases/tag/v1.5.1">bosh-backup-and-restore</a> on GitHub.</p>
+    <p class='note caution'><strong>Caution:</strong> In BBR v1.5.0 and earlier, the tunnel created by the BOSH CLI does not include the <code>ServerAliveInterval</code> flag. This might cause your SSH connection to time out when transferring large artifacts. In BBR v1.5.1, the <code>ServerAliveInterval</code> flag is included. For more information, see <a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases/tag/v1.5.1">bosh-backup-and-restore</a> on GitHub.</p>
 
 #### <a id='check-bosh-director'></a> Check Your BOSH Director
 
@@ -591,7 +591,7 @@ After creating your backup successfully:
 
 After backing up <%= vars.ops_manager %>, consider validating your backup by restoring it and checking the apps. BBR is designed for disaster recovery and BBR backups are only compatible with environments matching their source environment's configuration.
 
-<div class="note warning"><strong>Warning:</strong>
+<div class="note caution"><strong>Caution:</strong>
   <ul>
     <li><strong>The VMs and disks from the backed-up BOSH Director must not be visible to the new BOSH Director</strong> when validating your backup. As a result, <%= vars.company_name %> recommends that you deploy the new BOSH Director to a different IaaS network and account than the VMs and disks of the backed-up BOSH Director.</li>
     <li><strong>Data services outside of <%= vars.ops_manager %> might produce unexpected side effects during restoration.</strong> Restored apps and services might attempt to connect to data services when you restore to a new environment. For example, consider an app that processes mail queues and connects to an external database. When you validate your backup in a test environment, the app might start processing the queue, and this work might be lost.</li>

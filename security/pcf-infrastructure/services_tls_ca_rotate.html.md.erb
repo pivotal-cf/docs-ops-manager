@@ -65,8 +65,8 @@ follow the procedure at [Rotating Certificates](https://docs.pivotal.io/p-cloud-
 * All certificates include Subject Alternate Name (SAN) and Common Name (CN) entries.
 * Your services are set for high availability to minimize potential app impact during certificate rotation. Rotating the Services TLS CA certificate requires an upgrade all on-demand service instances, which can cause service downtime.
 
-<div class="note warning">
-<strong>Warning:</strong>
+<div class="note caution">
+<strong>Caution:</strong>
 There is a potential for app downtime in the following specific cases:<br><br>
 	<ul>
 		<li>If you have non-Java apps that use <%= vars.mysql_product_name %> and rely on <code>VCAP_SERVICES</code> for TLS, you will experience app downtime if you perform
@@ -182,7 +182,7 @@ To add your new and current Services TLS CA certificate to <%= vars.ops_manager 
 
 ### <a id='applychanges1'></a> Apply Changes for the First Time
 
-<p class='note warning'><strong>Warning:</strong> This procedure involves redeploying
+<p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
 all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
 operation can take a long time to complete.</p>
 
@@ -236,7 +236,7 @@ To set the new Services TLS CA certificate:
 
 ### <a id='applychanges2'></a> Apply Changes for the Second Time
 
-<p class='note warning'><strong>Warning:</strong> This procedure involves redeploying
+<p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
   all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
   operation can take a long time to complete.</p>
 
@@ -287,7 +287,7 @@ service instance in a deployment that contains an expired Services TLS CA certif
 For more information, see this [Knowledgebase Article]
 (https://community.pivotal.io/s/article/Cloud-Controller-fails-to-create-service-instance-when-there-is-an-old-expired-cert-installed-on-the-system).
 
-<p class='note warning'><strong>Warning:</strong> This procedure involves redeploying
+<p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
   all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
   operation can take a long time to complete.</p>
 

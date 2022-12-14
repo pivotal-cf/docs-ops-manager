@@ -75,7 +75,7 @@ This procedure describes how to apply a duration override on a new <%= vars.ops_
 
 To apply a duration override:
 
-<p class='note warning'><strong>Warning:</strong> If you have run <strong>Apply Changes</strong> on the BOSH Director tile, you must use the procedure in <a href="#apply-existing">Apply a Duration Override on an Existing <%= vars.ops_manager %></a> above.</p>
+<p class='note caution'><strong>Caution:</strong> If you have run <strong>Apply Changes</strong> on the BOSH Director tile, you must use the procedure in <a href="#apply-existing">Apply a Duration Override on an Existing <%= vars.ops_manager %></a> above.</p>
 
 1. To apply duration overrides to leaf certificates, no action is required. Leaf certificates are created using the configured duration the first time you run **Apply Changes**.
 1. To apply duration overrides to CA certificates, you must regenerate the CA certificates. Follow the procedure in [Rotating CAs and Leaf Certificates](rotate-cas-and-leaf-certs.html) with the following modifications:

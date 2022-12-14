@@ -19,7 +19,7 @@ The following describes when to use CredHub Maestro instead of the <%= vars.ops_
 * You need to rotate one or more specific CredHub-managed certificates as part of a certificate rotation repair process due to errors returned by the standard procedure.
 
 * You have <%= vars.k8s_runtime_first %> installed and therefore cannot use the <%= vars.ops_manager %> API to rotate CredHub-managed certificates. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these include the cluster-specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
-    <p class='note warning'><strong>Warning:</strong> In <%= vars.k8s_runtime_abbr %> v1.8 and earlier, you cannot use CredHub Maestro to rotate <%= vars.k8s_runtime_abbr %> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
+    <p class='note caution'><strong>Caution:</strong> In <%= vars.k8s_runtime_abbr %> v1.8 and earlier, you cannot use CredHub Maestro to rotate <%= vars.k8s_runtime_abbr %> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
 
 
 ## <a id='prerequisites'></a> Prerequisites
@@ -244,7 +244,7 @@ For a multi-site or WAN setup, you must perform the **Apply Changes** steps acro
 To rotate the Services TLS CA and its leaf certificates:
 
 1. Check the [CredHub Maestro Tile Compatibility](maestro-tile-compatibility.html) document to ensure that all service tile versions currently deployed are compatible with Maestro.
-    <p class='note warning'><strong>Warning:</strong> If you have any service tiles that are not compatible with CredHub Maestro, do not follow this procedure. If you do, you might experience extended downtime or data loss. Instead, follow the procedure in <a href="services_tls_ca_rotate.html">Rotating the Services TLS CA and Its Leaf Certificates</a>.</p>
+    <p class='note caution'><strong>Caution:</strong> If you have any service tiles that are not compatible with CredHub Maestro, do not follow this procedure. If you do, you might experience extended downtime or data loss. Instead, follow the procedure in <a href="services_tls_ca_rotate.html">Rotating the Services TLS CA and Its Leaf Certificates</a>.</p>
 
 1. Regenerate the Services TLS CA and mark the latest version of the CA as transitional. This creates a new version of the Services TLS CA and indicates that the latest version is inactive, so that all leaf certificates trust the new CA.
     1. On the Services TLS CA, see if your Services TLS CA was CredHub-set by running:
@@ -437,7 +437,7 @@ To see if you need to run garbage collect, do one of the following:
 
 * SSH into the BOSH Director and run `df -h /var/vcap/store`.
 
-<p class='note warning'><strong>Warning:</strong> To enhance the safety of the garbage collect command, CredHub Maestro only deletes versions of a certificate older than the currently active version. To delete all inactive versions of CAs or leaf certificates, add the <code>--force</code> flag to the garbage collect command. <%= vars.company_name %> does not recommend using the <code>--force</code> flag during a rotation.</p>
+<p class='note caution'><strong>Caution:</strong> To enhance the safety of the garbage collect command, CredHub Maestro only deletes versions of a certificate older than the currently active version. To delete all inactive versions of CAs or leaf certificates, add the <code>--force</code> flag to the garbage collect command. <%= vars.company_name %> does not recommend using the <code>--force</code> flag during a rotation.</p>
 
 ### <a id='leaf-cert-cleanup'></a> Delete All Leaf Certificates
 
