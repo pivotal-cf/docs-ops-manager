@@ -280,7 +280,6 @@ template_variables:
   pws_metrics:
   python_cf245only:
   quota_resource: quota space
-  recommended_by: VMware
   resurrector: To enable the Resurrector, see the following pages for your particular IaaS&#58; [AWS](https://docs.pivotal.io/platform/customizing/pcf-aws-manual-om-config.html#pcfaws-om-dirconfig), [Azure](https://docs.pivotal.io/platform/customizing/azure-om-config.html#director-config), [GCP](https://docs.pivotal.io/platform/customizing/gcp-om-config.html#director-config), [OpenStack](https://docs.pivotal.io/platform/customizing/openstack-om-config.html#director-config), or [vSphere](https://docs.pivotal.io/platform/customizing/resurrector.html).
   roles_table: "../console/pcf_roles_table"
   open_service_broker_api: "../open-service-broker/spec"
