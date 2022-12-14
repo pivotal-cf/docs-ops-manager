@@ -29,7 +29,7 @@ Before beginning this procedure, ensure that you have successfully completed all
     * **AWS IAM Instance Profile**: Enter the name of the IAM profile you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 1. Complete the rest of the **AWS Management Console Config** page:
-    * **Security Group ID**: Enter the **Group ID** of the `pcf-vms-security-group` you created for your <%= vars.ops_manager %> VMs in the [Step 6: Configure a Security Group for <%= vars.ops_manager %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Locate the Group ID in the **Security Groups** tab of your EC2 Dashboard.
+    * **Security Group ID**: Enter the **Group ID** of the `pcf-vms-security-group` you created for your <%= vars.ops_manager %> VMs in the [Configure a Security Group for <%= vars.ops_manager %> VMs](prepare-env-manual.html#pcfaws-om-ersecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Locate the Group ID in the **Security Groups** tab of your EC2 Dashboard.
     * **Key Pair Name**: Enter `pcf-ops-manager-key`.
     * **SSH Private Key**: Open the AWS key pair `pcf-ops-manager-keys.pem` file you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
     * **Region**: Select the region where you deployed <%= vars.ops_manager %>.
@@ -53,7 +53,7 @@ Before beginning this procedure, ensure that you have successfully completed all
 1. Select **Create Availability Zones**.
 <%= image_tag("../common/images/cloudform/create-az.png", :alt => "The 'Create Availability Zones' page in Ops Manager. For more information, see the following step for information about each field." ) %>
 
-1. To add the three AZs you specified in the [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) section of _Preparing to Deploy <%= vars.ops_manager %> on AWS_:
+1. To add the three AZs you specified in the [Create a VPC](prepare-env-manual.html#pcfaws-vpc) section of _Preparing to Deploy <%= vars.ops_manager %> on AWS_:
     1. Click **Add**.
     1. For **Amazon Availability Zone**, enter the name of the AZ.
     1. Repeat until you have entered all three AZs, in the format `REGION-#a`, `REGION-#b`, and `REGION-#c`. For example, `us-west-2a`, `us-west-2b`, and `us-west-2c`.
@@ -71,14 +71,14 @@ Before beginning this procedure, ensure that you have successfully completed all
 1. Perform the following steps to add the network configuration that you created for your VPC in the [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. Record your VPC CIDR if you set a CIDR other than the recommendation!
     1. Click **Add Network**.
     1. For **Name**, enter `management`.
-    1. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the table below for the information required to create all three subnets:
+    1. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the table below for the information required to create all three subnets. When entering the **VPC Subnet ID** for each subnet, you must enter the corresponding Subnet ID associated with that subnet in the AWS VPC dashboard:
     <table>
       <tr>
         <th rowspan="7">First<br>Subnet</th>
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-management-subnet-az0</code></td>
+        <td>Subnet ID for <code>pcf-management-subnet-az0</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -105,7 +105,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-management-subnet-az1</code></td>
+        <td>Subnet ID for <code>pcf-management-subnet-az1</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -132,7 +132,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-management-subnet-az2</code></td>
+        <td>Subnet ID for <code>pcf-management-subnet-az2</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -166,7 +166,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-tas-subnet-az0</code> or <code>pcf-pks-subnet-az0</code></td>
+        <td>Subnet ID for <code>pcf-tas-subnet-az0</code> or <code>pcf-pks-subnet-az0</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -193,7 +193,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-tas-subnet-az1</code> or <code>pcf-pks-subnet-az1</code></td>
+        <td>Subnet ID for <code>pcf-tas-subnet-az1</code> or <code>pcf-pks-subnet-az1</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -220,7 +220,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-tas-subnet-az2</code> or <code>pcf-pks-subnet-az2</code></td>
+        <td>Subnet ID for <code>pcf-tas-subnet-az2</code> or <code>pcf-pks-subnet-az2</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -254,7 +254,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-services-subnet-az0</code></td>
+        <td>Subnet ID for <code>pcf-services-subnet-az0</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -281,7 +281,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-services-subnet-az1</code></td>
+        <td>Subnet ID for <code>pcf-services-subnet-az1</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
@@ -308,7 +308,7 @@ Before beginning this procedure, ensure that you have successfully completed all
       </tr>
       <tr>
         <th>VPC Subnet ID</th>
-        <td><code>pcf-services-subnet-az2</code></td>
+        <td>Subnet ID for <code>pcf-services-subnet-az2</code></td>
       </tr>
       <tr>
         <th>CIDR</th>
