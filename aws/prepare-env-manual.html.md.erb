@@ -15,7 +15,8 @@ To prepare <%= vars.ops_manager %> for deployment with AWS:
 
 1. [File a Ticket](#file-ticket)
 1. [Create S3 Buckets](#create-s3)
-1. [Create an IAM User or Role](#create-iam)
+1. [Create a Policy](#create-policy)
+1. [Create an IAM Role or User](#create-iam)
 1. [Create a VPC](#pcfaws-vpc)
 1. [Configure a Security Group for Ops Manager](#pcfaws-om-secgrp)
 1. [Configure a Security Group for BOSH-Deployed VMs](#pcfaws-om-ersecgrp)
@@ -58,60 +59,68 @@ You can check the limits on your account by visiting the EC2 Dashboard on the AW
 		1. `ID-STRING-pcf-droplets-bucket`
 
 
-## <a id='create-iam'></a> Create an IAM User or Role for <%= vars.ops_manager %>
+## <a id='create-policy'></a> Create a Policy for <%= vars.ops_manager %>
 
-Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
+Perform the following steps to create a Amazon Identity and Access Management (IAM) policy with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
 
 1. Click **IAM** to access the IAM Dashboard.
 
-1. If you are configuring AWS access using AWS keys, create an IAM user:
+1. Click **Policies** and then click **Create Policy**.
 
-    1. Click **Users** and then click **Add user**.
+1. Copy the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
 
-    1. Enter a username. For example, enter `pcf-user`.
+1. Paste the policy document into the **JSON** tab on the **Create policy** page.
 
-    1. For AWS access type, select **Programmatic access**.
-        <p class="note"><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the [Amazon documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).</p>
+1. Click **Next:Tags** and click **Next:Review**.
 
-    1. Click **Next: Permissions** and click **Next: Review**.
-        <p class="note"><strong>Note:</strong> On the <strong>Review</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
+1. In the **Name** field, enter `pcf-iam-policy`.
 
-    1. Click **Create user**.
+1. Click **Create policy**.
 
+
+## <a id='create-iam'></a> Create an IAM Role or User for <%= vars.ops_manager %>
+
+Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
+  <p class="note"><strong>Note:</strong> <%= vars.company_name %> recommends that you use IAM roles instead of users to improve security.</p>
+
+1. Click **IAM** to access the IAM Dashboard.
 
 1. If you are configuring AWS access using an AWS instance profile, create an IAM role:
 
     1. Click **Roles** and then click **Create role**.
 
-    1. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case.
+    1. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case. Click **Next**.
 
-    1. Click **Next: Permissions**, click **Next: Tags**, and click **Next: Review** to progress through the pages.
+    1. On the **Add permissions** page, enter the name of the policy you created in the **Permission policies** search box. Then check the checkbox next the policy in the search results. Click **Next**.
 
-    1. On the **Review** page, enter a role name. For example, enter `pcf-role`.
+    1. On the **Name, review, and create** page, enter a role name. For example, enter `pcf-role`.
 
     1. Click **Create role**.
 
-1. Click **Download .csv** to download the user security credentials.
-        <p class="note warning"><strong>WARNING:</strong> The <code>credentials.csv</code> contains the IDs for your user security access key and secret access key. Keep the <code>credentials.csv</code> file for your currently active key pairs in a secure directory. You cannot recover a lost key pair.</p>
+1. If you are configuring AWS access using AWS keys, create an IAM user:
 
-1. Click **Close**.
+    1. Click **Users** and then click **Add users**.
 
-1. On the **Users** page, click the user name to access the user details page.
-    <p class="note"><strong>Note:</strong> On the <strong>Users</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
+    1. Enter a username. For example, enter `pcf-user`.
 
-1. Click **Add inline policy**. You can review your existing inline policies by clicking the down arrow.
+    1. For AWS access type, check the **Access key - Programmatic access** checkbox.
+        <p class="note"><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the [Amazon documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).</p>
 
-1. On the **Create policy** page, define a policy:
+    1. Click **Next: Permissions**.
 
-    1. Copy the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
+    1. Click the **Attach existing policies directly** tab.
 
-    1. Paste the policy document into the **JSON** tab on the **Create policy** page.
+    1. In the **Filter policies** search box, enter the name of the policy you created. Then check the checkbox next to the policy in the search results.
 
-1. Click **Review policy**.
+    1. Click **Next: Tags**, and then click **Next: Review**.
 
-1. In the **Name** field, enter `pcf-iam-policy`.
+    1. Click **Create user**.
 
-1. Click **Create policy**. The **Summary** page displays a list of available policies and actions.
+    1. Click **Download .csv** to download the user security credentials.
+            <p class="note warning"><strong>WARNING:</strong> The <code>credentials.csv</code> contains the IDs for your user security access key and secret access key. Keep the <code>credentials.csv</code> file for your currently active key pairs in a secure directory. You cannot recover a lost key pair.</p>
+
+    1. Click **Close**.
+
 
 ## <a id='pcfaws-vpc'></a> Create a VPC
 
