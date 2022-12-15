@@ -99,9 +99,9 @@ When <%= vars.company_name %> discovers a potential security vulnerability in <%
 
 ## <a id='lifecycle'></a> Fix, Test, and Release Lifecycle
 
-The following flowchart details the steps that <%= vars.company_name %> performs on a typical high-priority CVE, to publish a patch release fix on [<%= vars.company_name %> Network](https://network.pivotal.io):
+The following flowchart details the steps that <%= vars.company_name %> performs on a typical high-priority CVE, to publish a patch release fix on [<%= vars.company_name %> Network](https://network.pivotal.io). A detailed description of the steps follow.
 
-<%= image_tag("triage-flowchart.png", :alt => "Triage flowchart. For more information, see description below.") %>
+<%= image_tag( "triage-flowchart.png", :alt => "" ) %>
 
 The triage flowchart shows the following steps:
 
@@ -125,11 +125,11 @@ The triage flowchart shows the following steps:
 
     1. Story detailing the issue and acceptance criteria for fix prioritized on Commercial backlog
 
-    1. Fix patched in all release lines under General Support
+    2. Fix patched in all release lines under General Support
 
-    1. **Check:** Have all tests passed each stage?
+    3. **Check:** Have all tests passed each stage?
 
-    1. If yes, patched builds kick off integration pipeline.
+    4. If yes, patched builds kick off integration pipeline.
 
 4. Release Engineering Integration Pipelines validate quality
 
@@ -138,12 +138,12 @@ The triage flowchart shows the following steps:
       - Upgrade scenario: Integration Tests pass
       - Additional customer scenarios: Integration Tests pass
 
-    1. **Check:** Have all pipelines passed on every supported IaaS?
+    2. **Check:** Have all pipelines passed on every supported IaaS?
 
-    1. If yes, ready for Publishing
+    3. If yes, ready for Publishing
 
 5. Release is published for distribution
 
     1. Post to <%= vars.company_name %> Network; with High CVE vulnerab ility release the fix with as fast a turnaround as possible
 
-    1. Customer receives announcements and downloads release for their IaaS
+    2. Customer receives announcements and downloads release for their IaaS

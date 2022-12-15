@@ -14,9 +14,17 @@ This section describes a reference architecture for a <%= vars.app_runtime_abbr 
 
 ### <a id='diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS.
+The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader internet into the VPC Network. Categories of elements in the VPC Network include:
 
-![This diagram illustrates <%= vars.app_runtime_abbr %> on AWS. For specific details about the components and communication represented by the diagram, see the base and AWS reference architectures.](PAS_AWS.png)
+* Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
+* 3 TAS subnets
+* 3 Services subnets
+* On-demand Services subnets
+* Isolation Segment subnets
+* 3 RDS subnets
+* Corporate subnet (with a NAT instance and an NLB interface)
+
+![This diagram illustrates <%= vars.app_runtime_abbr %> on AWS. For specific details about the components and communication represented by the diagram, see the base and AWS reference architectures.](../images/PAS_AWS.png)
 
 [View a larger version of this diagram](../images/PAS_AWS.png).
 
@@ -140,7 +148,15 @@ These sections describe a reference architecture for a <%= vars.k8s_runtime_abbr
 
 ### <a id='pks-diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS.
+The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader internet into the VPC Network. Categories of elements in the VPC Network include:
+
+* Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
+* 3 Services subnets
+* 3 PKS subnets
+* Kubernetes Pods subnet
+* Kubernetes Services subnet
+* 3 RDS subnets
+* Corporate subnet (with a NAT instance and an NLB interface)
 
 ![This diagram illustrates <%= vars.k8s_runtime_abbr %> on AWS. For specific details about the components and communication represented by the diagram, see the base and AWS reference architectures.](../images/v2/export/PKS_AWS.png)
 

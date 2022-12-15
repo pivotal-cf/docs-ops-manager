@@ -47,7 +47,7 @@ For a backup artifact to be restorable, these restrictions apply:
 
 The diagram below illustrates the flow of the restore process in a series of steps performed by the operator. These steps are described in more detail throughout this topic.
 
-![Flowchart of restore workflow taken by an Operator. Long description below.](images/pcf-restore.png)
+![Flowchart of restore workflow taken by an Operator. Full description below.](images/pcf-restore.png)
 
 [View a larger version of this diagram](images/pcf-restore.png).
 
@@ -99,22 +99,23 @@ If you re-create your IaaS resources, you must also add those resources to <%= v
         1. Access your new <%= vars.ops_manager %> deployment by navigating to the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment in a browser.
         1. On the **Welcome to <%= vars.ops_manager %>** page, click **Import Existing Installation**.
 
-            <%= image_tag("../images/upgrading/welcome.png", :width => "400", :alt => "Ops Manager Welcome Page showing Import Existing Installation button below 'Upgrading Ops Manager?'") %>
+            <%= image_tag( "../images/upgrading/welcome.png", :width => "400", :alt => "" ) %>
 
-        1. In the import panel:
+        2. In the import panel:
           * Enter the **Decryption Passphrase** in use when you exported the installation settings from <%= vars.ops_manager %>.
-          * Click **Browse...** and browse to the installation ZIP file that you exported in [Export Installation Settings](backup-pcf-bbr.html#export) in _Backing Up Deployments with BBR_.
+          * Click **Browse** and browse to the installation ZIP file that you exported in [Export Installation Settings](backup-pcf-bbr.html#export) in _Backing Up Deployments with BBR_.
 
-            <%= image_tag("../images/upgrading/decryption_passphrase.png", :width => "400", :alt => "Screenshot of the Import Existing Installation UI that shows the
-            Decryption Passphrase field, the 'Browse...' button, and the 'Import' button.") %>
+            <%= image_tag( "../images/upgrading/decryption_passphrase.png", :width => "400", :alt => "" ) %>
 
-        1. Click **Import**.
+        3. Click **Import**.
+
             <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process, and might appear to hang. The import process takes at least 10 minutes, and takes longer the more tiles that were present on the backed-up <%= vars.ops_manager %>.</p>
-        1. A **Successfully imported installation** message appears upon completion.
 
-            <%= image_tag("../images/upgrading/success.png", :alt => "Screenshot of the success message") %>
+        4. When the import is complete, a **Successfully imported installation** message appears.
 
-    1. Using the <%= vars.ops_manager %> API:
+            <%= image_tag( "../images/upgrading/success.png", :alt => "" ) %>
+
+    2. Using the <%= vars.ops_manager %> API:
         1. Run:
 
             ```
@@ -209,7 +210,6 @@ Use the <%= vars.ops_manager %> API or the checkbox on the **Review Pending Chan
 
 In the [Back Up Your <%= vars.app_runtime_abbr %> Deployment](backup-pcf-bbr.html#bbr-backup) step of _Backing Up Deployments with BBR_,
 you moved the TAR and metadata files of the backup artifacts off your jumpbox to your preferred storage space. Now you must transfer those files back to your jumpbox.
-
 
 ## <a id='restore'></a> Restore Your Backup
 
