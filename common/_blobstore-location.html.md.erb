@@ -26,6 +26,7 @@ Select a **Blobstore Location** to either configure the blobstore as an internal
             1. **If you are using a non-public S3-compatible endpoint:**
                 1. Enter the URL for the non-public endpoint.
                 1. Add the custom public CA certificate you used to sign the S3 endpoint to the **Trusted Certificates** field on the **Director Config** page.
+
         1. **Bucket Name:** Enter the name of the S3 bucket.
         1. **URL Style:** Select either path-style or domain-style to specify the URL style for the S3-compatible blobstore. By default, the blobstore uses domain-style URLs.
             <p class='note important'><strong>Important:</strong> AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.pivotal.io/platform/2-9/release-notes/opsmanager-rn.html#domain-style">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.</p>
@@ -46,9 +47,11 @@ Select a **Blobstore Location** to either configure the blobstore as an internal
             * **No backups**
             * **Use a versioned bucket:** This option uses blobstore bucket versioning to save backups. It requires an S3 blobstore that supports versioning.
             * **Copy into an additional bucket:** This option saves blobstore backups to a separate bucket, which is useful with blobstores that do not support versioning. This option requires you to configure the **Backup Bucket Region** and **Backup Bucket Name** fields.
+
     * **GCS Blobstore:** Select this option to use an external Google Cloud Storage (GCS) endpoint.
+
       <img src="../common/images/gcp/blobstore-gcp.png" style="width:500px" alt="At the top of the image, the 'GCP Blobstore' radio button is selected. Below this radio button is a text field labeled 'Bucket Name' with a red asterisk. Below this text field is a dropdown labeled 'Storage Class' with a red asterisk and the 'Regional' option selected. Below this dropdown is a text area labeled 'Service Account Key' with a red asterisk.">
-      <br>
+
       To create a GCS bucket, follow the procedures in [Creating Storage Buckets](https://cloud.google.com/storage/docs/creating-buckets) in the GCS documentation.
       <% if current_page.data.iaas != "GCP" %>
       To create a GCS bucket, you must have a GCS account.
