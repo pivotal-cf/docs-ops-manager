@@ -93,6 +93,7 @@ To retrieve the authorization token from internal UAA on vSphere:
     ssh -i ops_mgr.pem ubuntu@OPS-MANAGER-FQDN
     ```
     Where:
+
     * `OPS-MGR-PEM` is the public key from the keypair used when creating the <%= vars.ops_manager %> VM.
     * `OPS-MANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %>.
 
@@ -134,6 +135,7 @@ To retrieve the authorization token from internal UAA on vSphere:
     gcloud compute ssh MY-INSTANCE --zone MY-ZONE
     ```
     Where:
+
     * `MY-INSTANCE` is your <%= vars.ops_manager %> VM instance.
     * `MY-ZONE` is the zone where your <%= vars.ops_manager %> VM is running.
 
@@ -180,6 +182,7 @@ To log in to the <%= vars.ops_manager %> VM and retrieve your token:
     	Password: OPS-MAN-PASSWORD
     	```
       Where `OPS-MAN-USERNAME` and `OPS-MAN-PASSWORD` are the credentials that you use to log in to the <%= vars.ops_manager %> web interface.
+
       For example:
       <pre class="terminal">
         $ uaac token owner get
@@ -265,7 +268,7 @@ The following procedure configures the BOSH Director for your IaaS using the <%=
 
 * [AWS](../aws/config-manual.html)
 * [Azure](../azure/config-manual.html)
-* [GCP](../gcp/config-manual.html))
+* [GCP](../gcp/config-manual.html)
 * [OpenStack](../openstack/config.html)
 * [vSphere](../vsphere/config.html)
 
@@ -292,6 +295,7 @@ To configure the BOSH Director with the <%= vars.ops_manager %> API:
       "no_proxy": "127.0.0.1"
     ```
     Where:
+
     * `PASSPHRASE` is your deployment's decryption passphrase
     * `EULA-STATUS` is your EULA status
     * `IDP-LOCATION` is your identity provider location, `internal` or `external`
@@ -318,13 +322,13 @@ To configure the BOSH Director with the <%= vars.ops_manager %> API:
       "no\_proxy": "127.0.0.1"
     } }'
     </pre>
- 	<p class='note'><strong>Note:</strong> You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it completes successfully. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>
+ 	<p class='note'><strong>Note:</strong> You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it is complete. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>
 
-1. A <code>200 OK</code> response appears.</li>
+2. A <code>200 OK</code> response appears.</li>
 
-1. After the successful response, a UAA client with the metadata you specified is created and launched. <%= vars.ops_manager %> users can authenticate with UAAC, and if they have a pre-created client they can target UAAC with the client name and password. For more information on pre-created clients, see <a href="./opsman-users.html">Creating and Managing <%= vars.ops_manager %> User and Client Accounts</a>.
+3. After the successful response, a UAA client with the metadata you specified is created and launched. <%= vars.ops_manager %> users can authenticate with UAAC, and if they have a pre-created client they can target UAAC with the client name and password. For more information on pre-created clients, see <a href="./opsman-users.html">Creating and Managing <%= vars.ops_manager %> User and Client Accounts</a>.
 
-1. Send an HTTP `PUT` request to the `api/v0/staged/director/properties` endpoint to configure your IaaS and BOSH Director.
+4. Send an HTTP `PUT` request to the `api/v0/staged/director/properties` endpoint to configure your IaaS and BOSH Director.
 There are many configuration parameters available to customize your BOSH Director. All the commands are IaaS-agnostic except the IaaS configuration key. Missing required fields should cause an error.
 For more information about configuring the BOSH Director, see <a href="http://docs.pivotal.io/pivotalcf/2-5/opsman-api/#fetching-director-iaas-and-security-properties-experimental">Fetching Director, IaaS, and Security Properties</a>.
 
@@ -336,11 +340,11 @@ Specify whether or not to use ICMP checks by setting the `icmp_checks_enabled` p
 
 1. Send an HTTP `PUT` request to the `api/v0/staged/director/network_and_az` endpoint to assign a singleton AZ and a network where your BOSH Director will be located.
 
-1. You must update the BOSH Director's resource configuration settings before deploying BOSH. To update the resource config:
+2. You must update the BOSH Director's resource configuration settings before deploying BOSH. To update the resource config:
 
   1. Send a `GET` request to `api/v0/staged/products` to find your Director's GUID.
 	1. Use the following HTTP request to list all jobs on the Director: `GET api/v0/staged/products/:BOSH-DIRECTOR-GUID/jobs`.
-	1. Use the following HTTP request to update the resource config of each job on the BOSH Director: `PUT api/v0/staged/products/:BOSH-DIRECTOR-GUID/jobs/:JOB-GUID/resource_config`.
+	2. Use the following HTTP request to update the resource config of each job on the BOSH Director: `PUT api/v0/staged/products/:BOSH-DIRECTOR-GUID/jobs/:JOB-GUID/resource_config`.
 
 ### <a id='configure-product'></a> Configure a Product
 
