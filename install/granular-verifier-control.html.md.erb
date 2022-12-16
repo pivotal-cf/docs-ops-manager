@@ -64,7 +64,7 @@ To record the verifier type:
 1. Record the `type` in the verifier error message. For example,
 `WildcardDomainVerifier`.
 
-<%= image_tag("images/verifier-error.png", :alt=>"The Ops Manager screenshot shows the following error: The domain '*.apps.example.com' failed to resolve, type:WildcardDomainVerifier") %>
+    <%= image_tag("images/verifier-error.png", :alt=>"The Ops Manager screenshot shows the following error: The domain '*.apps.example.com' failed to resolve, type:WildcardDomainVerifier") %>
 
 ### <a id='api-put'></a> Step 2: Use the <%= vars.ops_manager %> API
 
@@ -112,38 +112,39 @@ To disable a verifier type for the BOSH Director:
 
     See that the <%= vars.ops_manager %> API shows `false` for the verifier type you disabled. In
     the following example, `DirectorConfigurationVerifer` is set to `false`:
-    <pre class="terminal" style="height: 300px; scroll: auto;">
-{
-  "verifiers": [
-    {
-      "type": "AllocatedIpAddressVerifier",
-      "enabled": true
-    },
-    {
-      "type": "AvailabilityZonesVerifier",
-      "enabled": true
-    },
-    {
-      "type": "DirectorConfigurationVerifier",
-      "enabled": false
-    },
-    {
-      "type": "IaasConfigurationVerifier",
-      "enabled": true
-    },
-    {
-      "type": "NetworksExistenceVerifier",
-      "enabled": true
-    },
-    {
-      "type": "NetworksPingableVerifier",
-      "enabled": true
-    },
-    {
-      "type": "PrivilegeVerifier",
-      "enabled": true
-    }]}
-</pre>
+
+   ```
+  {
+    "verifiers": [
+      {
+        "type": "AllocatedIpAddressVerifier",
+        "enabled": true
+      },
+      {
+        "type": "AvailabilityZonesVerifier",
+        "enabled": true
+      },
+      {
+        "type": "DirectorConfigurationVerifier",
+        "enabled": false
+      },
+      {
+        "type": "IaasConfigurationVerifier",
+        "enabled": true
+      },
+      {
+        "type": "NetworksExistenceVerifier",
+        "enabled": true
+      },
+      {
+        "type": "NetworksPingableVerifier",
+        "enabled": true
+      },
+      {
+        "type": "PrivilegeVerifier",
+        "enabled": true
+      }]}
+  ```
 
     For more information about this endpoint, see [Retrieving a list of install time
     verifiers for a specific
