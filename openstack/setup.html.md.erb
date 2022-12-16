@@ -23,7 +23,7 @@ After completing this procedure, complete all of the steps in [Configuring BOSH 
 
 ## <a id='security'></a> Step 2: Configure Security
 
-<p class='note caution'><strong>Caution:</strong> If you are using OpenStack Liberty or Mitaka, do not create the key pair with the OpenStack Horizon dashboard. Instead make sure that you generate the SSH key pair manually. For example, use the <code>ssh-keygen</code> command. Then follow the procedure below to import that key pair into OpenStack. This is due to an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.</p>
+<p class='note important'><strong>Important:</strong> If you are using OpenStack Liberty or Mitaka, do not create the key pair with the OpenStack Horizon dashboard. Instead make sure that you generate the SSH key pair manually. For example, use the <code>ssh-keygen</code> command. Then follow the procedure below to import that key pair into OpenStack. This is due to an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.</p>
 
 1. In the left navigation of your OpenStack Horizon dashboard, click **Project > Compute > Access & Security**.
 
@@ -141,6 +141,7 @@ After completing this procedure, complete all of the steps in [Configuring BOSH 
     </table>
 
 1. Leave the existing default egress access rules as shown in the screenshot below.
+
     <%= image_tag("../common/images/openstack/ingress-egress-rules.png", :alt => "The Egress and Ingress rules table shows its two first egress rules as 'IPv4' and 'IPv6' ether types with an IP protocol and port range of 'any'.") %>
 
 
