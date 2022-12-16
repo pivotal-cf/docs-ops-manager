@@ -88,45 +88,50 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 1. Under **Application Load Balancer**, click **Create**.
 
 1. For **Step 1: Configure Load Balancer**:
-  1. Under **Basic Configuration**:
-      * For **Name**, enter `pcf-web-elb`.
-      * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
-      * For **IP address type**, select the type of IP addresses that you want to allow.
-  1. Under **Listeners**, click **Add listener**. For **Load Balancer Protocol**, select **HTTPS**.
-  1. Under **Availability Zones**, select all availability zones.
-  1. Click **Next: Configure Security Settings**.
+    1. Under **Basic Configuration**:
+        * For **Name**, enter `pcf-web-elb`.
+        * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
+        * For **IP address type**, select the type of IP addresses that you want to allow.
+    1. Under **Listeners**, click **Add listener**. For **Load Balancer Protocol**, select **HTTPS**.
+    1. Under **Availability Zones**, select all availability zones.
+    1. Click **Next: Configure Security Settings**.
 
 1. For **Step 2: Configure Security Settings**:
-  1. Under **Select default certificate**, do one of the following:
-      - If you already have a certificate from AWS Certificate Manager (ACM), select **Choose a certificate from ACM**.
-      - If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
-        <p class='note'><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate.</p>
-  1. For **Certificate Name**, select the desired certificate.
-  1. For **Security Policy**, select the policy you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-  1. Click **Next: Configure Security Groups**.
+
+    1. Under **Select default certificate**, do one of the following:
+        - If you already have a certificate from AWS Certificate Manager (ACM), select **Choose a certificate from ACM**.
+        - If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
+
+            <p class='note'><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate.</p>
+
+    1. For **Certificate Name**, select the desired certificate.
+    1. For **Security Policy**, select the policy you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    1. Click **Next: Configure Security Groups**.
 
 1. For **Step 3: Configure Security Groups**:
-  1. Under **Assign a security group**, select **Select an existing security group**.
-  1. From the list of security groups, select the `pcf-web-elb-security-group` security group that you configured in [Step 7: Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-  1. Click **Next: Configure Routing**.
+
+    1. Under **Assign a security group**, select **Select an existing security group**.
+    1. From the list of security groups, select the `pcf-web-elb-security-group` security group that you configured in [Step 7: Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    1. Click **Next: Configure Routing**.
 
 1. For **Step 4: Configure Routing**:
-  1. Under **Target Group**, enter the following values:
-      - **Name**: Enter `pcf-web-elb-target-group`.
-      - **Target type**: Select **Instance**.
-      - **Protocol**: Select **HTTP**.
-      - **Port**: Enter `80`.
-  1. Under **Health checks**, senter the following values:
-      - **Protocol**: Select **HTTP**.
-      - **Path**: Enter `/health`.
-  1. Under **Advanced health check settings**, enter the following values:
-      - **Port**: Select **override** and enter `8080`.
-      - **Healthy threshold**: Enter `6`.
-      - **Unhealthy threshold**: Enter `3`.
-      - **Timeout**: Enter `3`.
-      - **Interval**: Enter `5`.
-      - **Success codes**: Enter `200`.
-  1. Click **Next: Register Targets**.
+
+    1. Under **Target Group**, enter the following values:
+        - **Name**: Enter `pcf-web-elb-target-group`.
+        - **Target type**: Select **Instance**.
+        - **Protocol**: Select **HTTP**.
+        - **Port**: Enter `80`.
+    1. Under **Health checks**, senter the following values:
+        - **Protocol**: Select **HTTP**.
+        - **Path**: Enter `/health`.
+    1. Under **Advanced health check settings**, enter the following values:
+        - **Port**: Select **override** and enter `8080`.
+        - **Healthy threshold**: Enter `6`.
+        - **Unhealthy threshold**: Enter `3`.
+        - **Timeout**: Enter `3`.
+        - **Interval**: Enter `5`.
+        - **Success codes**: Enter `200`.
+    1. Click **Next: Register Targets**.
 
 1. For **Step 5: Register Targets**, accept the default values and click **Next: Review**.
 
@@ -143,7 +148,8 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **Load Balancer name**: Enter `pcf-ssh-elb`.
     * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** checkbox is not selected. If you want to allow traffic only from private IP addresses, select this checkbox.
-    <%= image_tag("../common/images/pcfaws/config_elb.png") %>
+
+        <%= image_tag("../common/images/pcfaws/config_elb.png") %>
 
 1. Under **Listener Configuration**, add the following rules:
 
@@ -174,12 +180,12 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
     <%= image_tag("../common/images/pcfaws/lb_health_check.png", :alt => "Screenshot of the Load Balancer dialog. The page is titled 'Step 4: Configure Health Check'. The page has an 'Advanced Details' section.") %>
 
-  * **Ping Protocol**: Select `TCP`.
-  * **Ping Port**: Set to `2222`.
-  * **Response Timeout**: Set to `3` seconds.
-  * **Interval**: Set to `5` seconds.
-  * **Unhealthy threshold**: Set to `3`.
-  * **Health threshold**: Set to `6`.
+    * **Ping Protocol**: Select `TCP`.
+    * **Ping Port**: Set to `2222`.
+    * **Response Timeout**: Set to `3` seconds.
+    * **Interval**: Set to `5` seconds.
+    * **Unhealthy threshold**: Set to `3`.
+    * **Health threshold**: Set to `6`.
 
 1. Click **Next: Add EC2 Instances**.
 
@@ -197,6 +203,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 1. Select **Classic Load Balancer**.
 
 1. Configure the load balancer with the following information:
+
     * **Load Balancer name**: Enter `pcf-tcp-elb`.
     * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** checkbox is not selected. If you want to allow traffic only from private IP addresses, select this checkbox.
@@ -244,8 +251,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     </tr>
     </table>
 
-      <br>
-      The `...` entry above indicates that you must add listening rules for each port between 1026 and 1123.
+    The `...` entry above indicates that you must add listening rules for each port between 1026 and 1123.
 
 1. Under **Select Subnets**, select either the public or private subnets you configured in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Assign Security Groups**.
 
@@ -259,12 +265,12 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
     <%= image_tag("../common/images/pcfaws/lb_health_check.png", :alt => "Screenshot of the Load Balancer dialog. THe page is titled 'Step 4: Configure Health Check'. The page has an 'Advanced Details' section.") %>
 
-  * **Ping Protocol**: Select `TCP`.
-  * **Ping Port**: Set to `80`.
-  * **Response Timeout**: Set to `3` seconds.
-  * **Interval**: Set to `5` seconds.
-  * **Unhealthy threshold**: Set to `3`.
-  * **Health threshold**: Set to `6`.
+    * **Ping Protocol**: Select `TCP`.
+    * **Ping Port**: Set to `80`.
+    * **Response Timeout**: Set to `3` seconds.
+    * **Interval**: Set to `5` seconds.
+    * **Unhealthy threshold**: Set to `3`.
+    * **Health threshold**: Set to `6`.
 
 1. Click **Next: Add EC2 Instances**.
 
@@ -306,6 +312,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 1. From the **Actions** menu, select **Networking>Change Security Groups**.
 
 1. Change the NAT security group from the default group to the `pcf-nat-security-group` NAT security group that you created in [Step 10: Configure a Security Group for the Outbound NAT](prepare-env-manual.html#pcfaws-om-natsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+
     <%= image_tag("../common/images/pcfaws/pcf_aws_select_security_group.png", :alt => "Screenshot of the E2C Dashboard. The page is titled 'Change Security Groups'. The page has three sections: 'Security GroupID', 'Name', and 'Description'.") %>
 
 1. Click **Assign Security Groups**.
@@ -353,8 +360,10 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **Allocated Storage**: Enter **100&nbsp;GB**.
     * **DB Instance Identifier**: Enter `pcf-ops-manager-director`.
     * Enter a secure **Master Username** and **Master Password**.
-          <p class='note'><strong>Note:</strong> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
-  <%= image_tag("../common/images/pcfaws/db_details.png", :alt => "Screenshot of the RDS dashboard. The page is titled 'Specify DB Details'. The screenshot shows example completed database details.") %>
+
+        <p class='note'><strong>Note:</strong> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
+
+    <%= image_tag("../common/images/pcfaws/db_details.png", :alt => "Screenshot of the RDS dashboard. The page is titled 'Specify DB Details'. The screenshot shows example completed database details.") %>
 
 1. Click **Next Step**.
 
@@ -366,7 +375,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **Initial Database Name**: Enter `bosh`.
     * Accept the default values for the remaining fields.
 
-	<%= image_tag("../common/images/pcfaws/advanced_db_settings.png", :alt => "Screenshot of the RDS dashboard. The page is titled 'Configure Advanced Settings'. The screenshot shows the completed example values.") %>
+    <%= image_tag("../common/images/pcfaws/advanced_db_settings.png", :alt => "Screenshot of the RDS dashboard. The page is titled 'Configure Advanced Settings'. The screenshot shows the completed example values.") %>
 
 1. Click **Launch DB Instance**. Launching the instance may take several minutes.
 
