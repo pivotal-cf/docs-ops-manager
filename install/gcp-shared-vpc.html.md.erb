@@ -71,6 +71,7 @@ To set up VPC network peering with the gcloud CLI:
     ```
     gcloud config set project OPSMANAGER-PROJECT
     ```
+
     Where `OPSMANAGER-PROJECT` is the name of the project that contains your <%= vars.ops_manager %> installation.
 
 1. To create a connection from the <%= vars.ops_manager %> project to the new shared VPC project, run:
@@ -82,7 +83,9 @@ To set up VPC network peering with the gcloud CLI:
            --peer-network VPC-NETWORK \
            --auto-create-routes
     ```
+
     Where:
+
     * `OPSMANAGER-TO-VPC` is a name you choose for the connection, such as `om-to-vpc`.
     * `OPSMANAGER-NETWORK` is the name of the network assigned to the <%= vars.ops_manager %> project in GCP, such as `my-om-project`.
     * `VPC-HOST-PROJECT` is the name you gave the shared VPC project in [Step 1: Provision the Shared VPC](#provision).
@@ -93,6 +96,7 @@ To set up VPC network peering with the gcloud CLI:
     ```
     gcloud config set project VPC-HOST-PROJECT
     ```
+
     Where `VPC-HOST-PROJECT` is the new shared VPC project you created in [Step 1: Provision the Shared VPC](#provision).
 
 1. To create a connection from the new shared VPC project to the <%= vars.ops_manager %> project, run:
@@ -104,7 +108,9 @@ To set up VPC network peering with the gcloud CLI:
            --peer-network OPSMANAGER-NETWORK \
            --auto-create-routes
     ```
+
     Where:
+    
     * `VPC-TO-OPSMANAGER` is a name you choose for the connection, such as `vpc-to-om`.
     * `VPC-NETWORK` is the name of the network you gave the shared VPC project in [Step 2: Create Shared VPC Networks](#network).
     * `OPSMANAGER-PROJECT` is the name of the project that contains your <%= vars.ops_manager %> installation.
