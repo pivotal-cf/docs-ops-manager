@@ -81,7 +81,8 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
       * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
       * For **IP address type**, select the type of IP addresses that you want to allow.
   1. Under **Listeners**, click **Add listener**. For **Load Balancer Protocol**, select **HTTPS**.
-  1. Under **Availability Zones**, select all availability zones.
+  1. Under **Availability Zones**, select your VPC
+  1. Check all availability zones. For each availability zone, select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
   1. Click **Next: Configure Security Settings**.
 
 1. For **Step 2: Configure Security Settings**, do the following:
@@ -90,7 +91,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
       - If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
         <p class="note"><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate.</p>
   1. For **Certificate Name**, select the desired certificate.
-  1. For **Security Policy**, select the policy you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+  <%# 1. For **Security Policy**, select the policy you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. %>
   1. Click **Next: Configure Security Groups**.
 
 1. For **Step 3: Configure Security Groups**, do the following:
