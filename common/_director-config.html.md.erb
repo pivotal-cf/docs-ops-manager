@@ -22,7 +22,9 @@ To configure the **Director Config** pane:
 
 <%# For AWS: %>
 <% if current_page.data.iaas == "AWS" %>
-1. Enter at least two of the following NTP servers in the **NTP Servers (comma delimited)** field, separated by a comma: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org` If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
+1. In the **NTP Servers (comma delimited)** field, enter at least two of the following NTP servers separated by a comma: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+
+    If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
 <% end %>
 
 <%# For Azure: %>
@@ -78,13 +80,16 @@ To configure the **Director Config** pane:
 1. <%= partial "../common/certificates-config" %>
 
 1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
+
     ![At the top of the image is a selected checkbox labeled 'HM Pager Duty Plugin'. Below this checkbox are two text fields labeled, from top to bottom, 'Service Key' and 'HTTP Proxy'. The Service Key field has a red asterisk to denote that it is a required field, and contains the text 'YOUR-PAGERDUTY-SERVICE-KEY'. The HTTP Proxy field contains the text 'YOUR-HTTP-PROXY'.](../common/images/director_hm_pager.png)
+
     * **Service Key**: Enter your API service key from PagerDuty.
     * **HTTP Proxy**: Enter an HTTP proxy for use with PagerDuty.
 
 1. Select **HM Email Plugin** to enable Health Monitor integration with email.
 
     ![At the top of the image is a selected checkbox labeled 'HM Email Plugin'. Below this checkbox are seven text fields labeled, from top to bottom, 'Host', 'Port', 'Domain', 'From', 'Recipients', 'Username', and 'Password'. The Host field has a red asterisk and contains the text 'smtp.example.com'. The Port field has a red asterisk and contains the text '25'. The Domain field has a red asterisk and contains the text 'cloudfoundry.example.com'. The From field has a red asterisk and contains the text 'user2@example.com'. The Recipients field has a red asterisk and contains the text 'user@example.com, user1@example.com'. The Username field contains the text 'user'. The Password field contains eight asterisks.](../common/images/director_hm_email.png)
+    
     * **Host**: Enter your email hostname.
     * **Port**: Enter your email port number.
     * **Domain**: Enter your domain.

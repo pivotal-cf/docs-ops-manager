@@ -2,11 +2,11 @@ The **BOSH DNS Config** pane allows you to configure DNS for BOSH Director by ad
 
 The fields in the **BOSH DNS Config** pane are:
 
-* **Excluded Recursors**: Exclude recursor addresses, which are URL redirects, so that they are not contacted by the BOSH DNS server. For more information about how the BOSH DNS release selects recursors, see [Recursors](https://bosh.io/docs/dns/#recursors) in _Native DNS Support in the BOSH documentation.
+* **Excluded Recursors**: Exclude recursor addresses, which are URL redirects, so that they are not contacted by the BOSH DNS server. For more information about how the BOSH DNS release selects recursors, see [Recursors](https://bosh.io/docs/dns/#recursors) in _Native DNS Support_ in the BOSH documentation.
 
 * **Recursor Timeout**: Specify a timeout for the BOSH DNS server to contact any connected recursor addresses. The time limit includes dialing, writing, and reading from the recursor. If any of these actions exceeds the time limit, the action fails.
 
-* **Handlers**: Specify recursor addresses that apply to specific domains. For example, you can use handlers to forward all requests to a domain to a private DNS for resolution. For more information about using handlers, see [Additional Handlers](https://bosh.io/docs/dns/#additional-handlers) in _Native DNS Support in the BOSH documentation.
+* **Handlers**: Specify recursor addresses that apply to specific domains. For example, you can use handlers to forward all requests to a domain to a private DNS for resolution. For more information about using handlers, see [Additional Handlers](https://bosh.io/docs/dns/#additional-handlers) in _Native DNS Support_ in the BOSH documentation.
 
 To add excluded recursors, a recursor timeout, or handlers to the BOSH DNS release:
 
@@ -20,19 +20,19 @@ To add excluded recursors, a recursor timeout, or handlers to the BOSH DNS relea
 
 1. (Optional) In **Handlers**, enter an array of custom domain handlers in JSON format. For example:
 
-	```
-	[
-	  {
-	    "cache": {
-	      "enabled": true
-	    },
-	    "domain": "example.com",
-	    "source": {
-	      "type": "http",
-	      "url": "http://example.endpoint.local"
-	    }
-	  }
-	]
-	```
+    ```
+    [
+      {
+        "cache": {
+          "enabled": true
+        },
+        "domain": "example.com",
+        "source": {
+          "type": "http",
+          "url": "http://example.endpoint.local"
+        }
+      }
+    ]
+    ```
 
 1. Click **Save**.
