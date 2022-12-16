@@ -21,8 +21,10 @@ Microsoft Azure documentation.
     ```
     az cloud set --name CLOUD-NAME
     ```
+
     Where `CLOUD-NAME` is one of the following values. Use the value that corresponds to the Azure
     environment on which you are installing <%= vars.ops_manager %>:
+
     - **Azure**: `AzureCloud`.
     - **Azure China**: `AzureChinaCloud`. If logging in to <code>AzureChinaCloud</code> fails with
       a `CERT_UNTRUSTED`, use the latest version of node, 4.x or later. For more information about
@@ -33,6 +35,7 @@ Microsoft Azure documentation.
     - **Azure Germany**: `AzureGermanCloud`.
 
     For example:
+
     <pre class="terminal">
     $ az cloud set --name AzureCloud
     </pre>
@@ -55,6 +58,7 @@ Microsoft Azure documentation.
     ```
 
     For example:
+
     <pre class="terminal">
     $ az account list
     [
@@ -64,20 +68,20 @@ Microsoft Azure documentation.
       "user": {
         "name": "Sample Account",
         "type": "user"
-     },
+      },
       "tenantId": "11111111-1234-5678-1234-678912345678",
       "state": "Enabled",
       "isDefault": true,
       "registeredProviders": [],
       "environmentName": "AzureCloud"
-   },
-   {
+     },
+     {
       "id": "87654321-1234-5678-1234-678912345678",
       "name": "Sample Subscription1",
       "user": {
         "name": "Sample Account1",
         "type": "user"
-     },
+      },
       "tenantId": "22222222-1234-5678-1234-678912345678",
       "state": "Enabled",
       "isDefault": false,
@@ -94,11 +98,13 @@ the other subscription as the default. To set a new default subscription, run th
     ```
     az account set --subscription SUBSCRIPTION-ID
     ```
+
     Where `SUBSCRIPTION-ID` is the value of the `id` field of the subscription that you want to set
     as the default.
     <br><br>
     The following example sets the default to a subscription that has an `id` with the value of
     `"87654321-1234-5678-1234-567891234567"`.
+
     <pre class="terminal">
     $ az account set --subscription "87654321-1234-5678-1234-567891234567"
     </pre>
@@ -119,15 +125,18 @@ account to log in to your Azure subscription.
     --password "PASSWORD" --homepage "http://BOSHAzureCPI" \
     --identifier-uris "http://BOSHAzureCPI"
     ```
+
     Where `PASSWORD` is a password of your choice. This is your `CLIENT_SECRET` for creating a
     service principal.
 
     For example:
+
     <pre class="terminal">
     $ az ad app create --display-name "Service Principal for BOSH" \
     --password "Swordfish" --homepage "http<span>:</span>//BOSHAzureCPI" \
     --identifier-uris "http<span>:</span>//BOSHAzureCPI"
     </pre>
+
     <p class='note'><strong>Note:</strong> You can provide any string for the
     <code>homepage</code> and <code>identifier-uris</code> flags, but the value of
     <code>identifer-uris</code> must be unique within the organization associated with your Azure
@@ -140,6 +149,7 @@ the value of `appId`. This is your `APPLICATION_ID` for creating a service princ
 
     The following example output shows `"5c552e8f-b977-45f5-a50b-981cfe17cb9d"` as the value of
     `appId`.
+
     <pre class="terminal">
     {
       "appId": "5c552e8f-b977-45f5-a50b-981cfe17cb9d",
@@ -163,10 +173,12 @@ the value of `appId`. This is your `APPLICATION_ID` for creating a service princ
     ```
     az ad sp create --id YOUR-APPLICATION-ID
     ```
+
     Where `YOUR-APPLICATION-ID` is the `APPLICATION_ID` that you recorded in
     [Create an AAD Application](#create-aad).
 
     For example:
+
     <pre class="terminal">
     $ az ad sp create --id 5c552e8f-b977-45f5-a50b-981cfe17cb9d
     {
@@ -188,19 +200,23 @@ the Owner role on your service principal, run the following command:
     az role assignment create --assignee "SERVICE-PRINCIPAL-NAME" \
     --role "Owner" --scope /subscriptions/SUBSCRIPTION-ID
     ```
+
     Where:
+
     * `SERVICE-PRINCIPAL-NAME` is any value of `servicePrincipalNames` from the output above, such
       as `YOUR-APPLICATION-ID`.
     * `SUBSCRIPTION-ID` is the value of the `id` of the default subscription that you recorded in
       [Set Your Default Subscription](#default-subscription).
 
     For example:
+
     <pre class="terminal">
     $ az role assignment create \
     --assignee "5c552e8f-b977-45f5-a50b-981cfe17cb9d" \
     --role "Owner" \
     --scope /subscriptions/87654321-1234-5678-1234-567891234567
     </pre>
+
     <p class='note'><strong>Note:</strong> If you need to use multiple resource groups for your
     deployment on Azure, you can define custom roles for your Service Principal. These roles allow
     BOSH to deploy to pre-existing network resources outside of the resource group.
@@ -213,10 +229,12 @@ the Owner role on your service principal, run the following command:
     ```
     az role assignment list --assignee "SERVICE-PRINCIPAL-NAME"
     ```
+
     Where `"SERVICE-PRINCIPAL-NAME"` is any value of `servicePrincipalNames` from the output above,
     such as `YOUR-APPLICATION-ID`.
 
     For example:
+
     <pre class="terminal">
     $ az role assignment list --assignee "5c552e8f-b977-45f5-a50b-981cfe17cb9d"
     [
@@ -243,6 +261,7 @@ To verify your service principal, run the following command to log in to your se
 az login --username APPLICATION_ID --password CLIENT_SECRET \
 --service-principal --tenant TENANT_ID
 ```
+
 Where:
 
 * `APPLICATION_ID` is the `APPLICATION_ID` that you recorded in
@@ -252,6 +271,7 @@ Where:
   [Set Your Default Subscription](#default-subscription).
 
 For example:
+
 <pre class="terminal">
 $ az login --username 5c552e8f-b977-45f5-a50b-981cfe17cb9d \
 --password "Swordfish" \
