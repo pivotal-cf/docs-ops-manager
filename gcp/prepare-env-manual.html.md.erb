@@ -27,7 +27,7 @@ You can deploy <%= vars.ops_manager %> using one of two main configurations on a
   * A _single-project_ configuration that gives <%= vars.ops_manager %> full access to VPC resources
   * A _shared VPC_ configuration in which <%= vars.ops_manager %> shares VPC resources
 
-See [Shared vs Single-Project VPCs](../refarch/gcp/gcp_ref_arch.html#shared-vs-single) in _Reference Architecture for <%= vars.ops_manager %> on GCP for a full discussion and recommendations.
+See [Shared vs Single-Project VPCs](../refarch/gcp/gcp_ref_arch.html#shared-vs-single) in _Reference Architecture for <%= vars.ops_manager %> on GCP_ for a full discussion and recommendations.
 
 When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommends using the following GCP components:
 
@@ -63,7 +63,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
-<p class='note'><strong>Note:</strong> You can use this service account to configure file storage for <%= vars.app_runtime_abbr %>. For more information, see <a href="https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp">GCP</a> in<em>Configuring File Storage for <%= vars.app_runtime_abbr %></em>.</p>
+<p class='note'><strong>Note:</strong> You can use this service account to configure file storage for <%= vars.app_runtime_abbr %>. For more information, see <a href="https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp">GCP</a> in <em>Configuring File Storage for <%= vars.app_runtime_abbr %></em>.</p>
 
 
 ## <a id='enable_compute_resource_api'></a> Step 2: Enable Google Cloud APIs
@@ -92,14 +92,14 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
      $ gcloud auth activate-service-account --key-file JSON_KEY_FILENAME
      </pre>
 
-  1. List your projects:
-    <pre class="terminal">
-    $ gcloud projects list
-    PROJECT_ID              NAME                      PROJECT_NUMBER
-    my-host-project-id      my-host-project-name      ##############
-    my-service-project-id   my-service-project-name   ##############
-    </pre>
-    This command lists the projects where you enabled Google Cloud APIs.
+    1. List your projects:
+      <pre class="terminal">
+      $ gcloud projects list
+      PROJECT_ID              NAME                      PROJECT_NUMBER
+      my-host-project-id      my-host-project-name      ##############
+      my-service-project-id   my-service-project-name   ##############
+      </pre>
+      This command lists the projects where you enabled Google Cloud APIs.
 
 
 ## <a id='create_network'></a> Step 3: Create a GCP Network with Subnets
@@ -109,67 +109,78 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 1. Navigate to the GCP project where you want to install <%= vars.ops_manager %>. For a shared-VPC installation, navigate to the host project.
 
 1. Select **VPC network**, then **CREATE VPC NETWORK**.
-  ![Screenshot of the GCP console. The page is titled 'VPC Network'. It has two sections: 'VPC Networks' and 'External IP Addresses](../common/images/gcp/gcp-vpc-networks.png)
+
+    ![Screenshot of the GCP console. The page is titled 'VPC Network'. It has two sections: 'VPC Networks' and 'External IP Addresses](../common/images/gcp/gcp-vpc-networks.png)
 
 1. In the **Name** field, enter a name of your choice for the VPC network. This name helps you identify resources for this deployment in the GCP console. Network names must be lowercase. For example, `pcf-virt-net`.<br>
 
-  1. Under **Subnets**, complete the form as follows to create an infrastructure subnet for <%= vars.ops_manager %> and NAT instances:
-      <table>
-        <tr>
-          <th style="width:22%">Name</th>
-          <td><code>pcf-infrastructure-subnet-GCP-REGION</code><br>
-          Example: <code>pcf-infrastructure-subnet-us-west1</code></td>
-        </tr>
-        <tr>
-          <th>Region</th>
-          <td>A region that supports three availability zones. For help selecting the correct region for your deployment,
-            see the <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones">Google documentation about regions and zones</a>.</td>
-        </tr>
-        <tr>
-        <th>IP address range</th>
-        <td>A CIDR ending in <code>/26</code><br>
-        Example: <code>192.168.101.0/26</code></td>
-        </tr>
-      </table><br>
-      See the following image for an example:
-      ![Screenshot of the New subnet dialog. The page includes these sections: Name, Region, IP address range, Private Google access, and Flow logs.](../common/images/gcp/gcp-vpc-subnet.png)
-      <p class='note'><strong>Note:</strong> For deployments that do not use external IP addresses, enable <strong>Private Google access</strong> to allow your runtime to make API calls to Google services.</p>
+    1. Under **Subnets**, complete the form as follows to create an infrastructure subnet for <%= vars.ops_manager %> and NAT instances:
+
+        <table>
+          <tr>
+            <th style="width:22%">Name</th>
+            <td><code>pcf-infrastructure-subnet-GCP-REGION</code><br>
+            Example: <code>pcf-infrastructure-subnet-us-west1</code></td>
+          </tr>
+          <tr>
+            <th>Region</th>
+            <td>A region that supports three availability zones. For help selecting the correct region for your deployment,
+              see the <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones">Google documentation about regions and zones</a>.</td>
+          </tr>
+          <tr>
+          <th>IP address range</th>
+          <td>A CIDR ending in <code>/26</code><br>
+          Example: <code>192.168.101.0/26</code></td>
+          </tr>
+        </table>
+
+        See the following image for an example:
+
+        ![Screenshot of the New subnet dialog. The page includes these sections: Name, Region, IP address range, Private Google access, and Flow logs.](../common/images/gcp/gcp-vpc-subnet.png)
+
+        <p class='note'><strong>Note:</strong> For deployments that do not use external IP addresses, enable <strong>Private Google access</strong> to allow your runtime to make API calls to Google services.</p>
+
     1. Click **Add subnet** to add a second subnet for the BOSH Director and components specific to your runtime. Complete the form as follows:
-      <table>
-        <tr>
-          <th style="width:25%">Name</th>
-          <td><code>pcf-RUNTIME-subnet-GCP-REGION</code><br>
-          Example: <code>pcf-pas-subnet-us-west1</code></td>
-        </tr>
-        <tr>
-          <th>Region</th>
-          <td>The same region you selected for the infrastructure subnet</td>
-        </tr>
-        <tr>
-        <th>IP address range</th>
-        <td>A CIDR ending in <code>/22</code><br>
-            Example: <code>192.168.16.0/22</code></td>
-        </tr>
-      </table><br>
+
+        <table>
+          <tr>
+            <th style="width:25%">Name</th>
+            <td><code>pcf-RUNTIME-subnet-GCP-REGION</code><br>
+            Example: <code>pcf-pas-subnet-us-west1</code></td>
+          </tr>
+          <tr>
+            <th>Region</th>
+            <td>The same region you selected for the infrastructure subnet</td>
+          </tr>
+          <tr>
+          <th>IP address range</th>
+          <td>A CIDR ending in <code>/22</code><br>
+              Example: <code>192.168.16.0/22</code></td>
+          </tr>
+        </table>
+
     1. Click **Add subnet** to add a third **Subnet** with the following details:
-      <table>
-        <tr>
-          <th style="width:25%">Name</th>
-          <td><code>pcf-services-subnet-GCP-REGION</code><br>
-          Example: <code>pcf-services-subnet-us-west1</code></td>
-        </tr>
-        <tr>
-          <th>Region</th>
-          <td>The same region you selected for the previous subnets</td>
-        </tr>
-        <tr>
-        <th>IP address range</th>
-        <td>A CIDR in <code>/22</code><br>
-            Example: <code>192.168.20.0/22</code></td>
-        </tr>
-      </table><br>
-      See the following image for an example:
-      ![Screenshot of the VPC networks wizard with three example subnets.](../common/images/gcp/vpc_subnetworks.png)
+
+        <table>
+          <tr>
+            <th style="width:25%">Name</th>
+            <td><code>pcf-services-subnet-GCP-REGION</code><br>
+            Example: <code>pcf-services-subnet-us-west1</code></td>
+          </tr>
+          <tr>
+            <th>Region</th>
+            <td>The same region you selected for the previous subnets</td>
+          </tr>
+          <tr>
+          <th>IP address range</th>
+          <td>A CIDR in <code>/22</code><br>
+              Example: <code>192.168.20.0/22</code></td>
+          </tr>
+        </table>
+
+        See the following image for an example:
+
+        ![Screenshot of the VPC networks wizard with three example subnets.](../common/images/gcp/vpc_subnetworks.png)
 
 1. Under **Dynamic routing mode**, leave **Regional** selected.
 
@@ -186,48 +197,63 @@ You might, for example, need this internet access for pulling Docker images or e
 For more information, see [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html#common_network) and the [GCP documentation](https://cloud.google.com/solutions/connecting-securely#natgateway).
 
 1. In the GCP console, with your single project or shared-VPC host project selected, navigate to **Compute Engine** > **VM instances**.
-  ![Screenshot of the GCP Console Compute Engine menu. The Compute Engine menu expands to show the VM instaces option.](../common/images/gcp/gcp-vm-instances.png)
+
+    ![Screenshot of the GCP Console Compute Engine menu. The Compute Engine menu expands to show the VM instaces option.](../common/images/gcp/gcp-vm-instances.png)
 
 1. Click **CREATE INSTANCE**.
-  ![Screenshot of the GCP Console Compute Engine page. The page includes a Create Instance option.](../common/images/gcp/gcp-vm-create.png)
+
+    ![Screenshot of the GCP Console Compute Engine page. The page includes a Create Instance option.](../common/images/gcp/gcp-vm-create.png)
 
 1. Complete the following fields:
-  * **Name**: Enter `pcf-nat-gateway-pri`. <br>
-    This is the first, or primary, of three NAT instances you need.
-    If you use a single AZ, you need only one NAT instance.
-  * **Zone**: Select the first zone from your region.<br>
-    Example: For region `us-west1`, select zone `us-west1-a`.
-  * **Machine type**: Select `n1-standard-4`.
-  * **Boot disk**: Click **Change** and select `Ubuntu 14.04 LTS`.
-  <br>
-  ![Screenshot of the Create Instance dialog. The page includes these sections: Name, Zone, Machine Type, and Boot disk.](../common/images/gcp/gcp-primary-nat.png)
 
-1. Expand the additional configuration fields by clicking **Management, disks, networking, SSH keys**.<br>
-  ![Screenshot of the Management, disks, networking, SSH keys dropdown.](../common/images/gcp/gcp-nat-dropdown.png)
-  1. In the **Startup script** field under **Automation**, enter the following text:
-      <code>#! /bin/bash<br>
-      sudo sysctl -w net.ipv4.ip_forward=1<br>
-      sudo sh -c 'echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf'<br>
-      sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</code>
+    * **Name**: Enter `pcf-nat-gateway-pri`. <br>
+      This is the first, or primary, of three NAT instances you need.
+      If you use a single AZ, you need only one NAT instance.
+    * **Zone**: Select the first zone from your region.<br>
+      Example: For region `us-west1`, select zone `us-west1-a`.
+    * **Machine type**: Select `n1-standard-4`.
+    * **Boot disk**: Click **Change** and select `Ubuntu 14.04 LTS`.
+
+    ![Screenshot of the Create Instance dialog. The page includes these sections: Name, Zone, Machine Type, and Boot disk.](../common/images/gcp/gcp-primary-nat.png)
+
+1. Expand the additional configuration fields by clicking **Management, disks, networking, SSH keys**.
+
+    ![Screenshot of the Management, disks, networking, SSH keys dropdown.](../common/images/gcp/gcp-nat-dropdown.png)
+
+    1. In the **Startup script** field under **Automation**, enter the following text:
+
+        ```
+        #! /bin/bash
+        sudo sysctl -w net.ipv4.ip_forward=1
+        sudo sh -c 'echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf'
+        sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+        ```
 
 1. Click **Networking** to open additional network configuration fields:
-  ![Screenshot of the Networking tab of the Create an Instance page. The page includes these tabs: Management, Disks, Networking, and SSH Keys.](../common/images/gcp/gcp-nat-network.png)
+
+    ![Screenshot of the Networking tab of the Create an Instance page. The page includes these tabs: Management, Disks, Networking, and SSH Keys.](../common/images/gcp/gcp-nat-network.png)
+
     1. In the **Network tags** field, add the following: `nat-traverse` and `pcf-nat-instance`.
     1. Click on the **Networking** tab and the pencil icon to edit the **Network interface**.
     1. For **Network**, select `pcf-virt-net`. You created this network in [Step 1: Create a GCP Network with Subnets](#create-net).
     1. For **Subnetwork**, select `pcf-infrastructure-subnet-GCP-REGION`.
     1. For **Primary internal IP**, select `Ephemeral (Custom)`. Enter an IP address, for example, `192.168.101.2`, in the **Custom ephemeral IP address** field. The IP address must meet the following requirements:
-      - The IP address must exist in the CIDR range you set for the `pcf-infrastructure-subnet-GCP-REGION` subnet.
-      - The IP address must exist in a reserved IP range set later in BOSH Director. The reserved range is typically the first `.1` through `.9` addresses in the CIDR range you set for the `pcf-infrastructure-subnet-GCP-REGION` subnet.
-      - The IP address cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>. The Gateway IP address is typically the first `.1` address in the CIDR range you set for the `pcf-infrastructure-subnet-GCP-REGION` subnet.
+
+        - The IP address must exist in the CIDR range you set for the `pcf-infrastructure-subnet-GCP-REGION` subnet.
+        - The IP address must exist in a reserved IP range set later in BOSH Director. The reserved range is typically the first `.1` through `.9` addresses in the CIDR range you set for the `pcf-infrastructure-subnet-GCP-REGION` subnet.
+        - The IP address cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>. The Gateway IP address is typically the first `.1` address in the CIDR range you set for the `pcf-infrastructure-subnet-GCP-REGION` subnet.
+
     1. For **External IP**, select `Ephemeral`.
-    <p class='note'><strong>Note:</strong> If you select a static external IP address for the NAT instance, then you can use the static IP to further secure access to your CloudSQL instances.</p>
+
+        <p class='note'><strong>Note:</strong> If you select a static external IP address for the NAT instance, then you can use the static IP to further secure access to your CloudSQL instances.</p>
+
     1. Set **IP forwarding** to `On`.
     1. Click **Done**.
 
 1. Click **Create** to finish creating the NAT instance.
 
 1. Repeat steps 2&ndash;6 to create two additional NAT instances with the names and zones specified in the table below. The rest of the configuration remains the same.
+
     <table>
       <tr>
         <th rowspan="3" width="15%">Instance 2</th>
@@ -276,37 +302,40 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 ### <a id='nat-routes'></a> Create Routes for NAT Instances
 
 1. Navigate to **VPC Networks** > **Routes**.
-  ![Screenshot of the Networking menu. The menu includes these options: VPC network, Network Services, VPN.](../common/images/gcp/gcp-vpc-routes.png)
+
+    ![Screenshot of the Networking menu. The menu includes these options: VPC network, Network Services, VPN.](../common/images/gcp/gcp-vpc-routes.png)
 
 1. Click **CREATE ROUTE**.
 
 1. Complete the form as follows:
-  * **Name**: `pcf-nat-pri`
-  * **Network**: `pcf-virt-net`
-  * **Destination IP range**: `0.0.0.0/0`
-  * **Priority**: `800`
-  * **Instance tags**: `pcf`
-  * **Next hop**: `Specify an instance`
-  * **Next hop instance**: `pcf-nat-gateway-pri`
+
+    * **Name**: `pcf-nat-pri`
+    * **Network**: `pcf-virt-net`
+    * **Destination IP range**: `0.0.0.0/0`
+    * **Priority**: `800`
+    * **Instance tags**: `pcf`
+    * **Next hop**: `Specify an instance`
+    * **Next hop instance**: `pcf-nat-gateway-pri`
 
 1. Click **Create** to finish creating the route.
 
 1. Repeat steps 2&ndash;4 to create two additional routes with the names and next hop instances specified in the table below. The rest of the configuration remains the same.
-  <table>
-    <tr>
-      <th>Route 2</th>
-      <td>
-        <strong>Name</strong>: <code>pcf-nat-sec</code><br>
-        <strong>Next hop instance</strong>: <code>pcf-nat-gateway-sec</code>
-      </td>
-    </tr>
-    <tr>
-      <th>Route 3</th>
-      <td>
-        <strong>Name</strong>: <code>pcf-nat-ter</code><br>
-        <strong>Next hop instance</strong>: <code>pcf-nat-gateway-ter</code>
-      </td>
-    </tr>
+
+    <table>
+      <tr>
+        <th>Route 2</th>
+        <td>
+          <strong>Name</strong>: <code>pcf-nat-sec</code><br>
+          <strong>Next hop instance</strong>: <code>pcf-nat-gateway-sec</code>
+        </td>
+      </tr>
+      <tr>
+        <th>Route 3</th>
+        <td>
+          <strong>Name</strong>: <code>pcf-nat-ter</code><br>
+          <strong>Next hop instance</strong>: <code>pcf-nat-gateway-ter</code>
+        </td>
+      </tr>
     </table>
 
 
@@ -318,102 +347,105 @@ This step assigns tags and firewall rules to <%= vars.ops_manager %> components 
 1. With your single project or shared-VPC host project selected, navigate to the **Networking** > **VPC network** pane and select **Firewall rules**.
 
 1. Apply the firewall rules in the following table:
-       <table>
-        <tr><th colspan="2" style="text-align: center;">Firewall Rules</th></tr>
-          <tr>
-            <th>Rule 1</th>
-            <td>
-              This rule allows SSH from public networks.<br><br>
-              <strong>Name</strong>: <code>pcf-allow-ssh</code><br>
-              <strong>Network</strong>: <code>pcf-virt-net</code><br>
-              <strong>Allowed protocols and ports</strong>: <code>tcp:22</code><br>
-              <strong>Source filter</strong>: IP ranges<br>
-              <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-              <strong>Target tags</strong>: <code>allow-ssh</code>
-            </td>
-          </tr>
-          <tr>
-            <th>Rule 2</th>
-            <td>
-              This rule allows HTTP from public networks.<br><br>
-              <strong>Name</strong>: <code>pcf-allow-http</code><br>
-              <strong>Network</strong>: <code>pcf-virt-net</code><br>
-              <strong>Allowed protocols and ports</strong>: <code>tcp:80</code><br>
-              <strong>Source filter</strong>: IP ranges<br>
-              <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-              <strong>Target tags</strong>: <code>allow-http</code>, <code>router</code>
-            </td>
-          </tr>
-          <tr>
-            <th>Rule 3</th>
-            <td>
-              This rule allows HTTPS from public networks.<br><br>
-              <strong>Name</strong>: <code>pcf-allow-https</code><br>
-              <strong>Network</strong>: <code>pcf-virt-net</code><br>
-              <strong>Allowed protocols and ports</strong>: <code>tcp:443</code><br>
-              <strong>Source filter</strong>: IP ranges<br>
-              <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-              <strong>Target tags</strong>: <code>allow-https</code>, <code>router</code>
-            </td>
-          </tr>
-          <tr>
-            <th>Rule 4</th>
-            <td>
-              This rule allows Gorouter health checks.<br><br>
-              <strong>Name</strong>: <code>pcf-allow-http-8080</code><br>
-              <strong>Network</strong>: <code>pcf-virt-net</code><br>
-              <strong>Allowed protocols and ports</strong>: <code>tcp:8080</code><br>
-              <strong>Source filter</strong>: IP ranges<br>
-              <strong>Source IP Ranges</strong>: <code>0.0.0.0/0</code><br>
-              <strong>Target tags</strong>: <code>router</code>
-            </td>
-          </tr>
-          <tr>
-            <th>Rule 5</th>
-            <td>
-              This rule allows communication between BOSH-deployed jobs.<br><br>
-              <strong>Name</strong>: <code>pcf-allow-pas-all</code><br>
-              <strong>Network</strong>: <code>pcf-virt-net</code><br>
-              <strong>Allowed protocols and ports</strong>: <code>tcp;udp;icmp</code><br>
-              <strong>Source filter</strong>: Source tags<br>
-              <strong>Target tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code><br>
-              <strong>Source tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code>
-            </td>
-          </tr>
-          <tr>
-            <th>Rule 6 (Optional)</th>
-            <td>
-              This rule allows access to the TCP router.<br><br>
-              <strong>Name</strong>: <code>pcf-allow-cf-tcp</code><br>
-              <strong>Network</strong>: <code>pcf-virt-net</code><br>
-              <strong>Source filter</strong>: IP ranges<br>
-              <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-              <strong>Allowed protocols and ports</strong>: <code>tcp:1024-65535</code><br>
-              <strong>Target tags</strong>: <code>pcf-cf-tcp</code>
-            </td>
-          </tr>
-          <tr>
-            <th>Rule 7 (Optional)</th>
-            <td>
-              This rule allows access to the SSH proxy.<br><br>
-              <strong>Name</strong>: <code>pcf-allow-ssh-proxy</code><br>
-              <strong>Network</strong>: <code>pcf-virt-net</code><br>
-              <strong>Source filter</strong>: IP ranges<br>
-              <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-              <strong>Allowed protocols and ports</strong>: <code>tcp:2222</code><br>
-              <strong>Target tags</strong>: <code>pcf-ssh-proxy</code>, <code>diego-brain</code><br>
-            </td>
-          </tr>
-        </table>
+
+    <table>
+      <tr><th colspan="2" style="text-align: center;">Firewall Rules</th></tr>
+      <tr>
+        <th>Rule 1</th>
+        <td>
+          This rule allows SSH from public networks.<br><br>
+          <strong>Name</strong>: <code>pcf-allow-ssh</code><br>
+          <strong>Network</strong>: <code>pcf-virt-net</code><br>
+          <strong>Allowed protocols and ports</strong>: <code>tcp:22</code><br>
+          <strong>Source filter</strong>: IP ranges<br>
+          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+          <strong>Target tags</strong>: <code>allow-ssh</code>
+        </td>
+      </tr>
+      <tr>
+        <th>Rule 2</th>
+        <td>
+          This rule allows HTTP from public networks.<br><br>
+          <strong>Name</strong>: <code>pcf-allow-http</code><br>
+          <strong>Network</strong>: <code>pcf-virt-net</code><br>
+          <strong>Allowed protocols and ports</strong>: <code>tcp:80</code><br>
+          <strong>Source filter</strong>: IP ranges<br>
+          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+          <strong>Target tags</strong>: <code>allow-http</code>, <code>router</code>
+        </td>
+      </tr>
+      <tr>
+        <th>Rule 3</th>
+        <td>
+          This rule allows HTTPS from public networks.<br><br>
+          <strong>Name</strong>: <code>pcf-allow-https</code><br>
+          <strong>Network</strong>: <code>pcf-virt-net</code><br>
+          <strong>Allowed protocols and ports</strong>: <code>tcp:443</code><br>
+          <strong>Source filter</strong>: IP ranges<br>
+          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+          <strong>Target tags</strong>: <code>allow-https</code>, <code>router</code>
+        </td>
+      </tr>
+      <tr>
+        <th>Rule 4</th>
+        <td>
+          This rule allows Gorouter health checks.<br><br>
+          <strong>Name</strong>: <code>pcf-allow-http-8080</code><br>
+          <strong>Network</strong>: <code>pcf-virt-net</code><br>
+          <strong>Allowed protocols and ports</strong>: <code>tcp:8080</code><br>
+          <strong>Source filter</strong>: IP ranges<br>
+          <strong>Source IP Ranges</strong>: <code>0.0.0.0/0</code><br>
+          <strong>Target tags</strong>: <code>router</code>
+        </td>
+      </tr>
+      <tr>
+        <th>Rule 5</th>
+        <td>
+          This rule allows communication between BOSH-deployed jobs.<br><br>
+          <strong>Name</strong>: <code>pcf-allow-pas-all</code><br>
+          <strong>Network</strong>: <code>pcf-virt-net</code><br>
+          <strong>Allowed protocols and ports</strong>: <code>tcp;udp;icmp</code><br>
+          <strong>Source filter</strong>: Source tags<br>
+          <strong>Target tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code><br>
+          <strong>Source tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code>
+        </td>
+      </tr>
+      <tr>
+        <th>Rule 6 (Optional)</th>
+        <td>
+          This rule allows access to the TCP router.<br><br>
+          <strong>Name</strong>: <code>pcf-allow-cf-tcp</code><br>
+          <strong>Network</strong>: <code>pcf-virt-net</code><br>
+          <strong>Source filter</strong>: IP ranges<br>
+          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+          <strong>Allowed protocols and ports</strong>: <code>tcp:1024-65535</code><br>
+          <strong>Target tags</strong>: <code>pcf-cf-tcp</code>
+        </td>
+      </tr>
+      <tr>
+        <th>Rule 7 (Optional)</th>
+        <td>
+          This rule allows access to the SSH proxy.<br><br>
+          <strong>Name</strong>: <code>pcf-allow-ssh-proxy</code><br>
+          <strong>Network</strong>: <code>pcf-virt-net</code><br>
+          <strong>Source filter</strong>: IP ranges<br>
+          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+          <strong>Allowed protocols and ports</strong>: <code>tcp:2222</code><br>
+          <strong>Target tags</strong>: <code>pcf-ssh-proxy</code>, <code>diego-brain</code><br>
+        </td>
+      </tr>
+    </table>
+
    <p class='note'><strong>Note:</strong> If you want your firewall rules to only permit traffic within your private network, modify the <strong>Source IP Ranges</strong> from the table accordingly.</p>
 
 1. If you are only using your GCP project to deploy <%= vars.ops_manager %>, then you can delete the following default firewall rules:
-   * `default-allow-http`
-   * `default-allow-https`
-   * `default-allow-icmp`
-   * `default-allow-internal`
-   * `default-allow-rdp`
-   * `default-allow-ssh`
+
+    * `default-allow-http`
+    * `default-allow-https`
+    * `default-allow-icmp`
+    * `default-allow-internal`
+    * `default-allow-rdp`
+    * `default-allow-ssh`
 
 If you are deploying **<%= vars.k8s_runtime_abbr %> only**, continue to [Next Steps](#next-steps).
 
@@ -435,18 +467,20 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 1. Click **Configure MySQL** under your choice for instance type: Development, Staging, or Production.
 
 1. Configure the instance as follows:
-  * **Instance ID**: `pcf-pas-sql`
-  * **Root password**: Set a password for the root user.
-  * **Region**: Select the region you specified when creating networks.
-  * **Zone**: **Any**.
-  * **Configure machine type and storage**:
-     * Click **Change** and then select **db-n1-standard-2**.
-     * Ensure that **Enable automatic storage increases** is selected. This allows DB storage to grow automatically when space is required.
-  * **Enable auto backups and high availability**: Make the following selections:
-     * Leave **Automate backups** and **Enable binary logging** selected.
-     * Under **High availability**, select the **Create failover replica** checkbox.
-  * **Authorize Networks**: Click **Add network** and create a network named `all` that allows traffic from `0.0.0.0/0`.
-  <p class='note'><strong>Note:</strong> If you assigned static IP addresses to your NAT instances, you can instead limit access to the database instances by specifying the NAT IP addresses.</p>
+
+    * **Instance ID**: `pcf-pas-sql`
+    * **Root password**: Set a password for the root user.
+    * **Region**: Select the region you specified when creating networks.
+    * **Zone**: **Any**.
+    * **Configure machine type and storage**:
+       * Click **Change** and then select **db-n1-standard-2**.
+       * Ensure that **Enable automatic storage increases** is selected. This allows DB storage to grow automatically when space is required.
+    * **Enable auto backups and high availability**: Make the following selections:
+       * Leave **Automate backups** and **Enable binary logging** selected.
+       * Under **High availability**, select the **Create failover replica** checkbox.
+    * **Authorize Networks**: Click **Add network** and create a network named `all` that allows traffic from `0.0.0.0/0`.
+
+        <p class='note'><strong>Note:</strong> If you assigned static IP addresses to your NAT instances, you can instead limit access to the database instances by specifying the NAT IP addresses.</p>
 
 1. Click **Create**.
 
@@ -457,20 +491,21 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 1. Select the **Databases** tab.
 
 1. Click **Create database** to create the following databases:
-  * `account`
-  * `app_usage_service`
-  * `autoscale`
-  * `ccdb`
-  * `console`
-  * `diego`
-  * `locket`
-  * `networkpolicyserver`
-  * `nfsvolume`
-  * `notifications`
-  * `routing`
-  * `silk`
-  * `uaa`
-  * `credhub`
+
+    * `account`
+    * `app_usage_service`
+    * `autoscale`
+    * `ccdb`
+    * `console`
+    * `diego`
+    * `locket`
+    * `networkpolicyserver`
+    * `nfsvolume`
+    * `notifications`
+    * `routing`
+    * `silk`
+    * `uaa`
+    * `credhub`
 
 1. Select the **USERS** tab.
 
@@ -484,11 +519,12 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 1. With your single project or shared-VPC service project selected in the GCP console, select **Storage** > **Browser**.
 
 1. Using **CREATE BUCKET**, create buckets with the following names. For **Default storage class**, select **Multi-Regional**:
-  * `PREFIX-pcf-buildpacks`
-  * `PREFIX-pcf-droplets`
-  * `PREFIX-pcf-packages`
-  * `PREFIX-pcf-resources`
-  * `PREFIX-pcf-backup`
+
+    * `PREFIX-pcf-buildpacks`
+    * `PREFIX-pcf-droplets`
+    * `PREFIX-pcf-packages`
+    * `PREFIX-pcf-resources`
+    * `PREFIX-pcf-backup`
 
     Where `PREFIX` is a prefix of your choice, required to make the bucket name unique.
 
@@ -506,22 +542,24 @@ Shared-VPC installation typically use an internal TCP/UDP load balancer to minim
 To create an internal load balancer for <%= vars.ops_manager %> on GCP, do the following.
 
 1. Create an internal-facing TCP/UDP load balancer for each region of your <%= vars.ops_manager %> deployment.
-<p class='note'><strong>Note:</strong> GCP Internal Load Balancer (iLB) is a regional product. Within the same VPC/network, client VMs in a different region from the iLB cannot access the iLB. For more information, see the <a href="https://cloud.google.com/load-balancing/docs/internal/setting-up-internal#global_routing_issue">GCP documentation</a>.</p>
+
+    <p class='note'><strong>Note:</strong> GCP Internal Load Balancer (iLB) is a regional product. Within the same VPC/network, client VMs in a different region from the iLB cannot access the iLB. For more information, see the <a href="https://cloud.google.com/load-balancing/docs/internal/setting-up-internal#global_routing_issue">GCP documentation</a>.</p>
 
 1. Assign private IP addresses to the load balancers.
 
 1. After you have deployed <%= vars.ops_manager %>, follow instructions in [Create or Update a VM Extension](../install/custom-vm-extensions.html#create-vm-extension) to add a custom VM extension that applies internal load balancing to all VMs deployed by BOSH.
-  - For example, the following manifest code adds a VM extension `backend-pool` to <%= vars.ops_manager %> VMs:
 
-    ```
-vm_extensions:
-- name: backend-pool
-  cloud_properties:
-    ephemeral_external_ip: true
-    backend_service:
-      name: name-of-backend-service
-      scheme: INTERNAL
-    ```
+    - For example, the following manifest code adds a VM extension `backend-pool` to <%= vars.ops_manager %> VMs:
+
+        ```
+        vm_extensions:
+        - name: backend-pool
+          cloud_properties:
+            ephemeral_external_ip: true
+            backend_service:
+              name: name-of-backend-service
+              scheme: INTERNAL
+        ```
 
 ### <a id='http_loadbalancer'></a> Create HTTP Load Balancer
 
@@ -593,20 +631,22 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 1. For the **Name**, enter `pcf-global-pcf`.
 
-1. Select **Backend configuration**
-  1. From the dropdown, select **Backend services** > **Create a backend service**.
-  1. Complete the form as follows:
-    * **Name**: `pcf-http-lb-backend`.
-    * **Protocol**: `HTTP`.
-    * **Named port**: `http`.
-    * **Timeout**: `10 seconds`.
-    * Under **Backends** > **New backend**, select the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
-    * Click **Add backend**, select the **Instance group** that corresponds to the second zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-b)`. Click **Done**.
-    * Click **Add backend**, select the **Instance group** that corresponds to the third zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-c)`. Click **Done**.
-    * **Health check**: Select the `pcf-cf-public` health check that you created.
-    * **Cloud CDN**: Ensure Cloud CDN is disabled.
+1. Select **Backend configuration**:
 
- 1. Click **Create**.
+    1. From the dropdown, select **Backend services** > **Create a backend service**.
+    1. Complete the form as follows:
+
+        * **Name**: `pcf-http-lb-backend`.
+        * **Protocol**: `HTTP`.
+        * **Named port**: `http`.
+        * **Timeout**: `10 seconds`.
+        * Under **Backends** > **New backend**, select the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
+        * Click **Add backend**, select the **Instance group** that corresponds to the second zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-b)`. Click **Done**.
+        * Click **Add backend**, select the **Instance group** that corresponds to the third zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-c)`. Click **Done**.
+        * **Health check**: Select the `pcf-cf-public` health check that you created.
+        * **Cloud CDN**: Ensure Cloud CDN is disabled.
+
+1. Click **Create**.
 
 #### <a id='config-frontend'></a> Configure Front End
 
@@ -622,22 +662,26 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
    * **Port**: `80`
 
 1. Click **Add Frontend IP and port** and add the following:
-  <p class='note'><strong>Note:</strong> Skip this step if you do not have either a self-signed or trusted SSL certificate.
-     When you configure the tile for your chosen runtime, you are given the opportunity to create a new self-signed certificate.
-     Upon creating a certificate, you can complete the **Add Frontend IP and port** section. </p>
-  * **Name**: `pcf-cf-lb-https`
-  * **Protocol**: `HTTPS`
-  * **IP address**: Select the `pcf-global-pcf` address you create for the previous **Frontend IP and Port**.
-  * **Port**: `443`
-  * Select **Create a new certificate**. The **Create a New Certificate** dialog is displayed.
-  * In the **Name** field, enter a name for the certificate.
-     <%= image_tag "../common/images/gcp/lb_frontend_cert.png", :alt => "Screenshot of the Create a New Certificate dialog. The dialog has these sections: 'Name', 'Public key certificate', 'Certificate chain', and 'Private key'." %>
-  * In the **Public key certificate** field, copy in the contents of your public certificate, or upload your certificate as a .pem file.
-     If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Certificate field into the BOSH Director **Public key certificate** field.
-  * In the **Certificate chain** field, enter or upload your certificate chain in the .pem format.
-  If you are using a self-signed certificate, such as a <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>-generated certificate, do not enter a value in the **Certificate Chain** field.
-  * In the **Private key** field, copy in the contents or upload the .pem file of the private key for the certificate.
-  If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Private Key field into the BOSH Director **Private key** field.
+
+    <p class='note'><strong>Note:</strong> Skip this step if you do not have either a self-signed or trusted SSL certificate.
+       When you configure the tile for your chosen runtime, you are given the opportunity to create a new self-signed certificate.
+       Upon creating a certificate, you can complete the <strong>Add Frontend IP and port</strong> section. </p>
+
+    * **Name**: `pcf-cf-lb-https`
+    * **Protocol**: `HTTPS`
+    * **IP address**: Select the `pcf-global-pcf` address you create for the previous **Frontend IP and Port**.
+    * **Port**: `443`
+    * Select **Create a new certificate**. The **Create a New Certificate** dialog is displayed.
+    * In the **Name** field, enter a name for the certificate.
+
+        <%= image_tag "../common/images/gcp/lb_frontend_cert.png", :alt => "Screenshot of the Create a New Certificate dialog. The dialog has these sections: 'Name', 'Public key certificate', 'Certificate chain', and 'Private key'." %>
+
+    * In the **Public key certificate** field, copy in the contents of your public certificate, or upload your certificate as a .pem file.
+    If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Certificate field into the BOSH Director **Public key certificate** field.
+    * In the **Certificate chain** field, enter or upload your certificate chain in the .pem format.
+    If you are using a self-signed certificate, such as a <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>-generated certificate, do not enter a value in the **Certificate Chain** field.
+    * In the **Private key** field, copy in the contents or upload the .pem file of the private key for the certificate.
+    If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Private Key field into the BOSH Director **Private key** field.
 
 1. Review the completed frontend configuration.
 
@@ -653,39 +697,44 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 1. From the GCP console, select **Network services > Load balancing > Create load balancer**.
 
 1. Under **TCP Load Balancing**, click **Start configuration**.
-  <%= image_tag("../common/images/gcp/create_new_lb.png", :alt => "Screenshot of the Create a load balancer page. It has three sections: 'HTTP(S) Load Balancing', 'TCP Load Balancing', and 'UDP Load Balancing'.") %>
-Screenshot of IAM configuration page 1. The page is titled 'Add user'. It has two sections: 'Set User details' and 'Select AWS access type'.
+
+    <%= image_tag("../common/images/gcp/create_new_lb.png", :alt => "Screenshot of the Create a load balancer page. It has three sections: 'HTTP(S) Load Balancing', 'TCP Load Balancing', and 'UDP Load Balancing'.") %>
+
 1. In the **Create a load balancer** configuration screen, make the following selections:
-  * Under **Internet facing or internal only**, select **From Internet to my VMs**.
-  * Under **Multiple regions or single region**, select **Single region only**.
-  * Under **Connection termination**, select **No (TCP)**.
-    <%= image_tag("../common/images/gcp/lb_connection_termination.png", :alt => "Screenshot of the Create a load balancer configuration page. The page is titled 'Create a Load Balancer' and includes three configuration options.") %>
+
+    * Under **Internet facing or internal only**, select **From Internet to my VMs**.
+    * Under **Multiple regions or single region**, select **Single region only**.
+    * Under **Connection termination**, select **No (TCP)**.
+
+        <%= image_tag("../common/images/gcp/lb_connection_termination.png", :alt => "Screenshot of the Create a load balancer configuration page. The page is titled 'Create a Load Balancer' and includes three configuration options.") %>
 
 1. Click **Continue**.
 
 1. In the **New TCP load balancer** window, enter `pcf-wss-logs` in the **Name** field.
 
 1. Click **Backend configuration** to configure the **Backend service**:
-  <%= image_tag "../common/images/gcp/tcp_websockets_backend.png", :alt => " Screenshot of the TCP load balancer Backend Configuration dialog. The page includes 'Name', 'Region' and 'Backends' configuration options." %>
 
-  * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnets](#create_network).
-  * From the **Health check** dropdown, create a health check with the following details:
-      * **Name**: `pcf-gorouter`
-      * **Port**: `8080`
-      * **Request path**: `/health`
-      * **Check interval**: `30`
-      * **Timeout**: `5`
-      * **Healthy threshold**: `10`
-      * **Unhealthy threshold**: `2`
-  The **Backend configuration** section shows a green check mark.
+    <%= image_tag "../common/images/gcp/tcp_websockets_backend.png", :alt => " Screenshot of the TCP load balancer Backend Configuration dialog. The page includes 'Name', 'Region' and 'Backends' configuration options." %>
+
+    * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnets](#create_network).
+    * From the **Health check** dropdown, create a health check with the following details:
+        * **Name**: `pcf-gorouter`
+        * **Port**: `8080`
+        * **Request path**: `/health`
+        * **Check interval**: `30`
+        * **Timeout**: `5`
+        * **Healthy threshold**: `10`
+        * **Unhealthy threshold**: `2`
+    The **Backend configuration** section shows a green check mark.
 
 1. Click **Frontend configuration** to open its configuration window and complete the fields:
- * **Protocol**: `TCP`
- * **IP**: Perform the following steps:
-       1. Select **Create IP address**.
-       1. For name **Name** for the new static IP address and an optional description. For example, `pcf-gorouter-wss`.
-       1. Click **Reserve**.
- * **Port**: `443`
+    * **Protocol**: `TCP`
+    * **IP**: Perform the following steps:
+        1. Select **Create IP address**.
+        1. For name **Name** for the new static IP address and an optional description. For example, `pcf-gorouter-wss`.
+        1. Click **Reserve**.
+    * **Port**: `443`
+
 1. Click **Review and finalize** to verify your configuration.
 
 1. Click **Create**.
@@ -700,26 +749,30 @@ Screenshot of IAM configuration page 1. The page is titled 'Add user'. It has tw
 1. Under **Internet facing or internal only**, select **From Internet to my VMs**.
 
 1. Under **Connection termination**, select **No (TCP)**.
-  <%= image_tag("../common/images/gcp/lb_connection_termination.png", :alt => "Screenshot of the Create a load balancer page. The page is titled 'Create a Load balancer'. The page has a 'Connection Termination' option.") %>
+
+    <%= image_tag("../common/images/gcp/lb_connection_termination.png", :alt => "Screenshot of the Create a load balancer page. The page is titled 'Create a Load balancer'. The page has a 'Connection Termination' option.") %>
 
 1. Click **Continue**.
 
 1. In the **New TCP load balancer** window, enter `pcf-ssh-proxy` in the **Name** field.
 
 1. Select **Backend configuration**, and enter the following field values:
-   * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnet](#create_network).
-   * **Backup pool**: `None`
-   * **Failover ratio**: `10%`
-   * **Health check**: `No health check`
-<%= image_tag("../common/images/gcp/ssl_lb_backend_config_complete.png", :alt => "Screenshot of the Backend configuration page. The page has these fields: 'Name', 'Region', 'Backends', 'Backup pool', and 'Failover ratio'.") %>
+
+    * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnet](#create_network).
+    * **Backup pool**: `None`
+    * **Failover ratio**: `10%`
+    * **Health check**: `No health check`
+
+        <%= image_tag("../common/images/gcp/ssl_lb_backend_config_complete.png", :alt => "Screenshot of the Backend configuration page. The page has these fields: 'Name', 'Region', 'Backends', 'Backup pool', and 'Failover ratio'.") %>
 
 1. Select **Frontend configuration**, and add the following:
-   * **Protocol**: `TCP`
-   * **IP**: Perform the following steps:
-       1. Select **Create IP address**.
-       1. Enter a **Name** for the new static IP address and an optional description. For example, `pcf-ssh-proxy`.
-       1. Click **Reserve**.
-   * **Port**: `2222`
+
+    * **Protocol**: `TCP`
+    * **IP**: Perform the following steps:
+        1. Select **Create IP address**.
+        1. Enter a **Name** for the new static IP address and an optional description. For example, `pcf-ssh-proxy`.
+        1. Click **Reserve**.
+    * **Port**: `2222`
 
 1. (Optional) Review and finalize your load balancer.
 
@@ -741,27 +794,30 @@ To create a load balancer for TCP routing in GCP:
 1. On the **New TCP load balancer** screen, enter a unique name for the load balancer in the **Name** field. For example, `pcf-cf-tcp-lb`.
 
 1. Select **Backend configuration**, and enter the following field values:
-   * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnet](#create_network).
-   * From the **Health check** dropdown, create a health check with the following details:
-      * **Name**: `pcf-tcp-lb`
-      * **Port**: `80`
-      * **Request path**: `/health`
-      * **Check interval**: `30`
-      * **Timeout**: `5`
-      * **Healthy threshold**: `10`
-      * **Unhealthy threshold**: `2`
-      * Click **Save and continue**.
- <%= image_tag("../common/images/gcp/tcp_lb_backend.png", :alt => "Screenshot of the TCP load balancer Backend Configuration dialog") %>
+
+    * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnet](#create_network).
+    * From the **Health check** dropdown, create a health check with the following details:
+        * **Name**: `pcf-tcp-lb`
+        * **Port**: `80`
+        * **Request path**: `/health`
+        * **Check interval**: `30`
+        * **Timeout**: `5`
+        * **Healthy threshold**: `10`
+        * **Unhealthy threshold**: `2`
+        * Click **Save and continue**.
+
+    <%= image_tag("../common/images/gcp/tcp_lb_backend.png", :alt => "Screenshot of the TCP load balancer Backend Configuration dialog") %>
 
 1. Select **Frontend configuration**, and add the front end IP and port entry as follows:
-   * **Protocol**: `TCP`
-   * **IP**: Perform the following steps:
-       1. Select **Create IP address**.
-       1. Enter a **Name** for the new static IP address and an optional description. For example, `pcf-cf-tcp-lb`.
-       1. Click **Reserve**.
-   * **Port**: `1024-65535`
 
-	<%= image_tag("../common/images/gcp/tcp_lb_frontend.png", :alt => "Screenshot of the TCP load balancer Frontend Configuration dialog") %>
+    * **Protocol**: `TCP`
+    * **IP**: Perform the following steps:
+        1. Select **Create IP address**.
+        1. Enter a **Name** for the new static IP address and an optional description. For example, `pcf-cf-tcp-lb`.
+        1. Click **Reserve**.
+    * **Port**: `1024-65535`
+
+    <%= image_tag("../common/images/gcp/tcp_lb_frontend.png", :alt => "Screenshot of the TCP load balancer Frontend Configuration dialog") %>
 
 1. Click **Review and finalize** to verify your configuration.
 
@@ -773,6 +829,7 @@ To create a load balancer for TCP routing in GCP:
 In this step, you redirect queries for your domain to the IP addresses of your load balancers.
 
 1. Locate the static IP addresses of the load balancers you created in [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html):
+
     * An HTTP(S) load balancer named `pcf-global-pcf`
     * A TCP load balancer for WebSockets named `pcf-wss-logs`
     * A TCP load balancer named `pcf-ssh-proxy`
@@ -782,7 +839,8 @@ In this step, you redirect queries for your domain to the IP addresses of your l
 1. Log in to the DNS registrar that hosts your domain. Examples of DNS registrars include Network Solutions, GoDaddy, and Register.com.
 
 1. Create **A records** with your DNS registrar that map domain names to the public static IP addresses of the load balancers located above:
-  <table border="1" valign="top">
+
+    <table border="1" valign="top">
       <tr>
       <th>Create and map this record...</th><th>To the IP of this load balancer</th><th>Required</th>
       </tr>
@@ -831,14 +889,18 @@ In this step, you redirect queries for your domain to the IP addresses of your l
 
 1. In a terminal window, run the following `dig` command to confirm that you created your A record successfully:
 
-    <pre>dig SUBDOMAIN.EXAMPLE-URL.com</pre>
+    ```
+    dig SUBDOMAIN.EXAMPLE-URL.com
+    ```
 
-    Where `SUBDOMAIN.EXAMPLE-URL` is the subdomain for your load balancer. <br><br>
+    Where `SUBDOMAIN.EXAMPLE-URL` is the subdomain for your load balancer.
 
     You should see the A record that you just created:
+    
     <pre class='terminal'>
-;; ANSWER SECTION:
-xyz.EXAMPLE.COM.      1767    IN  A 203.0.113.1</pre>
+    ;; ANSWER SECTION:
+    xyz.EXAMPLE.COM.      1767    IN  A 203.0.113.1
+    </pre>
 
 
 ## <a id='next-steps'></a> Next Steps
