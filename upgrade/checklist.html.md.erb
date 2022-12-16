@@ -16,7 +16,11 @@ After completing the steps in this topic, you can continue to [Upgrading <%= var
 
 <p class='note caution'><strong>Caution:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.ops_manager %></em>.</p>
 
+<<<<<<< HEAD
 <p class='note caution'><strong>Caution:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
+=======
+<p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to <strong>Apply Changes</strong> due to safety violations.</p>
+>>>>>>> a9728ada9 (migration checks and updates)
 
 
 ## <a id='back-up-your-pcf-deployment'></a> Back Up Your <%= vars.ops_manager %> Deployment
@@ -60,7 +64,7 @@ The specific version of NSX-T required for your deployment depends on which runt
 
 * For <%= vars.k8s_runtime_first %> deployments, see the [VMware Product Interoperability Matrices](https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&549=&175=).
 
-* For <%= vars.app_runtime_abbr %> deployments, see the [Support Matrix: <%= vars.app_runtime_abbr %>, VMware NSX-T, and VMware NSX-T Container Plug-in](http://pas-nsx-t.cfapps.io/).
+* For <%= vars.app_runtime_abbr %> deployments, see the [Support Matrix: <%= vars.app_runtime_abbr %>, VMware NSX-T Container Plug-in](https://network.pivotal.io/products/vmware-nsx-t/).
 
 
 ## <a id='tiles-addons'></a> Update Tiles and Add-Ons
@@ -278,6 +282,7 @@ If you are not using Healthwatch, you can do some or all of the following to col
 		bosh -e ALIAS -d DEPLOYMENT-NAME instances --ps
 		```
 		Where:
+
 		* `ALIAS` is your BOSH deployment alias.
 		* `DEPLOYMENT-NAME` is the name of the BOSH deployment with the instances you want to check.
 		<br>
@@ -298,6 +303,7 @@ If you are not using Healthwatch, you can do some or all of the following to col
 		bosh -e ALIAS -d DEPLOYMENT-NAME cck --report
 		```
 		Where:
+
 		* `ALIAS` is your BOSH deployment alias.
 		* `DEPLOYMENT-NAME` is the name of the BOSH deployment with the cloud config you want to check.
 

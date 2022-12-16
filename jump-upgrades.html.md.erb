@@ -39,7 +39,7 @@ To allow DNS certificate regeneration and avoid communication issues between sys
 
 ## <a id='jump-upgrade'></a> Jump Upgrade
 
-After you ensure your deployment meets the requirements described in [Prerequisites](#prequisites) above, you can upgrade to <%= vars.ops_manager %> to v3.0 or later.
+After you ensure your deployment meets the requirements described in [Prerequisites](#prerequisites) above, you can upgrade to <%= vars.ops_manager %> to v3.0 or later.
 
 To jump upgrade to <%= vars.ops_manager %> to v3.0 or later:
 
@@ -84,8 +84,7 @@ The table below describes the breaking changes that affect <%= vars.ops_manager 
 			renamed. This could cause an error when retrieving <%= vars.ops_manager %>
 			API pending changes.</td>
 		<td>Update your automation scripts that use the <code>stemcell</code> information
-			in the <code>/api/v0/pending_changes</code> endpoint. For more information, see
-			<a href="https://docs.pivotal.io/pivotalcf/2-6/opsman-api/#view-a-list-of-pending-changes">View a list of pending changes</a> in the <%= vars.ops_manager %> API documentation.</td>
+			in the <code>/api/v0/pending_changes</code> endpoint.</td>
 	</tr>
 	<tr>
 		<td>v2.5</td>
@@ -151,7 +150,7 @@ The table below describes the breaking changes that affect <%= vars.ops_manager 
 	<tr>
 		<td>v2.5, v2.6, v2.7, and v2.8</td>
 		<td><%= vars.ops_manager %> v2.9 is incompatible with vSphere Data Center NSX-T v2.2 and earlier.</td>
-		<td>Upgrade to NSX-T v2.3 or later. For more information, see <a href="https://docs.pivotal.io/ops-manager/2-9/release-notes/breaking-changes.html#nsx-t-2-2">Ops Manager v2.9 Incompatible with vSphere Data Center NSX-T v2.2 and Earlier</a> in <em><%= vars.ops_manager %> v2.9 Release Notes</em>.</td>
+		<td>Upgrade to NSX-T v2.3 or later. For more information, see <a href="https://docs.pivotal.io/ops-manager/2-9/release-notes.html#breaking-changes">Ops Manager v2.9 Incompatible with vSphere Data Center NSX-T v2.2 and Earlier</a> in <em><%= vars.ops_manager %> v2.9 Release Notes</em>.</td>
 	</tr>
 	<tr>
 		<td>v2.8 and v2.9</td>

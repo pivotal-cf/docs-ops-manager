@@ -5,7 +5,7 @@ owner: Ops Manager
 
 This topic describes upgrading <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to <%= vars.v_major_version %>.
 
-<p class="note breaking"><strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, and <a href="https://docs.pivotal.io/application-service/windows/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections, before starting the upgrade process.</p>
+<p class="note important"><strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, and <a href="https://docs.pivotal.io/application-service/windows/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections, before starting the upgrade process.</p>
 
 
 ## <a id='overview'></a> Overview
@@ -178,6 +178,7 @@ To check the status of a task:
     bosh -e ALIAS task TASK-NUMBER
     ```
     Where:
+
     * `ALIAS` is your BOSH alias.
     * `TASK-NUMBER` is the number of the upgrade task you want to check.
 
@@ -242,6 +243,7 @@ To re-create your alias using BOSH:
     bosh alias-env ALIAS -e DIRECTOR-IP
     ```
     Where:
+
     * `ALIAS` is the BOSH alias you are re-creating.
     * `DIRECTOR-IP` is the IP address of your BOSH Director VM.
 
