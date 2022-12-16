@@ -128,7 +128,7 @@ vSphere objects used to organize resources.
    * **DNS**: One or more DNS servers for the <%= vars.ops_manager %> VM to use. For example, `10.20.20.1`.
    * **NTP Servers**: The IP address of one or more NTP servers for <%= vars.ops_manager %>. For example, `10.113.60.176`.
    * **Public SSH Key**: Enter pre-existing public SSH key value to allow SSH access to the <%= vars.ops_manager %> VM. Enter the full key in the `ssh-rsa AAA...` format.
-      <p class='note caution'><strong>Caution:</strong> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
+      <p class='note important'><strong>Important:</strong> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
    * **Custom hostname**: The hostname for the <%= vars.ops_manager %> VM. For example, `ops-manager`.
 
 1. At the **Ready to complete** screen, review the configuration settings and click **Finish**.
