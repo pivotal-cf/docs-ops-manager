@@ -84,7 +84,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
     1. Enter a username. For example, enter `pcf-user`.
 
     1. For AWS access type, select **Programmatic access**.
-        <p class='note'><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the [Amazon documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).</p>
+        <p class='note'><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon documentation</a>.</p>
 
     1. Click **Next: Permissions** and click **Next: Review**.
         <p class='note'><strong>Note:</strong> On the <strong>Review</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
@@ -275,43 +275,43 @@ Perform the following steps to create an Amazon Identity and Access Management (
     <p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends limiting access to <%= vars.ops_manager %> to IP ranges within your organization, but you may relax the IP restrictions after configuring authentication for <%= vars.ops_manager %>.</p>
 
     <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>HTTP</td>
-  <td>TCP</td>
-  <td>80</td>
-  <td>My IP</td>
-</tr>
-<tr>
-  <td>HTTPS</td>
-  <td>TCP</td>
-  <td>443</td>
-  <td>My IP</td>
-</tr>
-<tr>
-  <td>SSH</td>
-  <td>TCP</td>
-  <td>22</td>
-  <td>My IP</td>
-</tr>
-<tr>
-  <td>BOSH Agent</td>
-  <td>TCP</td>
-  <td>6868</td>
-  <td>10.0.0.0/16</td>
-</tr>
-<tr>
-  <td>BOSH Director</td>
-  <td>TCP</td>
-  <td>25555</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th><strong>Source</strong></th>
+      </tr>
+      <tr>
+        <td>HTTP</td>
+        <td>TCP</td>
+        <td>80</td>
+        <td>My IP</td>
+      </tr>
+      <tr>
+        <td>HTTPS</td>
+        <td>TCP</td>
+        <td>443</td>
+        <td>My IP</td>
+      </tr>
+      <tr>
+        <td>SSH</td>
+        <td>TCP</td>
+        <td>22</td>
+        <td>My IP</td>
+      </tr>
+      <tr>
+        <td>BOSH Agent</td>
+        <td>TCP</td>
+        <td>6868</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+      <tr>
+        <td>BOSH Director</td>
+        <td>TCP</td>
+        <td>25555</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+    </table>
 
 1. Click **Create**.
 
@@ -328,25 +328,26 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click the **Inbound** tab and add rules for all traffic from your public and private subnets to your private subnet, as the table and image show.
     This rule configuration does the following:
+
     * Enables BOSH to deploy <%= vars.app_runtime_first %> and other services.
     * Enables app VMs to communicate through the router.
     * Allows the load balancer to send traffic to <%= vars.app_runtime_abbr %>.
 
     <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>All</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      <tr>
+        <td>All traffic</td>
+        <td>All</td>
+        <td>All</td>
+        <td>All</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+    </table>
 
 1. Click **Create**.
 
@@ -366,34 +367,34 @@ Perform the following steps to create an Amazon Identity and Access Management (
     <p class='note'><strong>Note:</strong> For finer control over what can reach <%= vars.app_runtime_abbr %>, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to <%= vars.app_runtime_abbr %> from apps such as the cf CLI and app URLs.</p>
 
     <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>Custom TCP rule</td>
-  <td>TCP</td>
-  <td>4443</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-<tr>
-  <td>HTTP</td>
-  <td>TCP</td>
-  <td>80</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-<tr>
-  <td>HTTPS</td>
-  <td>TCP</td>
-  <td>443</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      <tr>
+        <td>Custom TCP rule</td>
+        <td>TCP</td>
+        <td>4443</td>
+        <td>Anywhere</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+        <td>HTTP</td>
+        <td>TCP</td>
+        <td>80</td>
+        <td>Anywhere</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+        <td>HTTPS</td>
+        <td>TCP</td>
+        <td>443</td>
+        <td>Anywhere</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+    </table>
 
 1. Click **Create**.
 
@@ -473,20 +474,20 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click the **Inbound** tab and add a rule to allow all traffic from your VPCs, as the table and image show.
 
     <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Custom IP</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      <tr>
+        <td>All traffic</td>
+        <td>All</td>
+        <td>All</td>
+        <td>Custom IP</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+    </table>
 
 1. Click **Create**.
 
