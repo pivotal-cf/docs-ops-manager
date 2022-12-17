@@ -41,14 +41,14 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
        1. Click the **Credentials** tab, and record the entries for **Uaa Login Client Credentials** and **Uaa Admin User Credentials**.
        1. For each entry, click **Link to Credential** to obtain the password.
 
-       ```console
-       $ uaac token owner get login -s UAA-LOGIN-CLIENT-PASSWORD
-       User name:  admin
-       Password:  UAA-ADMIN-CLIENT-PASSWORD<br/>
-       Successfully fetched token via owner password grant.
-       Target: http<span>s</span>://10.85.16.4:8443
-       Context: admin, from client login
-       ```
+            ```console
+            $ uaac token owner get login -s UAA-LOGIN-CLIENT-PASSWORD
+            User name:  admin
+            Password:  UAA-ADMIN-CLIENT-PASSWORD<br/>
+            Successfully fetched token via owner password grant.
+            Target: http<span>s</span>://10.85.16.4:8443
+            Context: admin, from client login
+            ```
 
     <div class="note"><strong>Note:</strong> To obtain the password for the UAA login and admin clients, you can also curl or point your browser to the following endpoints: <code>http<span>s</span>://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_login_client_credentials</code>
     and <code>http<span>s</span>://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_admin_user_credentials</code>
