@@ -147,16 +147,19 @@ To use the UAAC to configure roles:
     User name: USERNAME
     Password: PASSWORD
     ```
-    Where:
-    * `USERNAME` is your username.
-    * `PASSWORD` is your password.
 
-1. To assign a role to a user, run one of these commands:
+    Where:
+
+       * `USERNAME` is your username.
+       * `PASSWORD` is your password.
+
+2. To assign a role to a user, run one of these commands:
     * **<%= vars.ops_manager %> Administrator:**
 
         ```
         uaac member add opsman.admin USERNAME
         ```
+
         Where `USERNAME` is the user to which you want to assign the role.
     * **Full Control:**
 
@@ -210,10 +213,11 @@ If you configured <%= vars.ops_manager %> with SAML authentication, you can assi
     uaac group map SAML-GROUP --name 'OPS-MANAGER-SCOPE' --origin 'saml'
     ```
     Where:
-    * `SAML-GROUP` is the name of the SAML group to which the user belongs.
-    * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
 
-1. Add new and existing users to the appropriate SAML groups in the SAML provider dashboard. Users must log out of both <%= vars.ops_manager %> and the SAML provider for role changes to take effect.
+       * `SAML-GROUP` is the name of the SAML group to which the user belongs.
+       * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
+
+2. Add new and existing users to the appropriate SAML groups in the SAML provider dashboard. Users must log out of both <%= vars.ops_manager %> and the SAML provider for role changes to take effect.
 
 ### <a id='write-ldap'></a> Manage Roles with LDAP Authentication
 
@@ -242,7 +246,8 @@ If you configured <%= vars.ops_manager %> with LDAP authentication, you can assi
     uaac group map LDAP-GROUP --name 'OPS-MANAGER-SCOPE'
     ```
     Where:
-    * `LDAP-GROUP` is the name of the LDAP group to which the user belongs.
-    * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
 
-1. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard. Users must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.
+       * `LDAP-GROUP` is the name of the LDAP group to which the user belongs.
+       * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
+
+2. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard. Users must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.
