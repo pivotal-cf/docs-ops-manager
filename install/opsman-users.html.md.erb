@@ -29,58 +29,88 @@ This section describes how to add or remove users with UAAC. If you do not alrea
 To add <%= vars.ops_manager %> users:
 
 1. Target your <%= vars.ops_manager %> UAA:
-<pre>uaac target <span>https</span>://YOUR-OPSMANAGER-FQDN/uaa/</pre>
- Where:
- * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
-1. Get your token:
-<pre class='terminal'>uaac token owner get
-  Client ID: opsman
-  Client Secret:
-  Username: OPSMANAGER-ADMIN-USERNAME
-  Password: OPSMANAGER-ADMIN-PASSWORD
-  &nbsp;
-  Successfully fetched token via client credentials grant.
-  Target <span>https</span>://YOUR-OPSMANAGER-FQDN/uaa/
-</pre>
- Where:
- * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
- * `OPSMANAGER-ADMIN-USERNAME` and `OPSMANAGER-ADMIN-PASSWORD` are the username and password for the <%= vars.ops_manager %> admin user.
-  <p class='note'><strong>Note:</strong> The <code>Client Secret</code> field does not require a value.</p>
 
-1. Add a user.
-<pre>uaac user add USER-NAME -p USER-PASSWORD --emails USER-EMAIL<span>@</span>EXAMPLE.COM</pre>
- Where:
- * `USER-NAME` is the username of the user you are adding.
- * `USER-PASSWORD` is the password with which this user authenticates.
- * `USER-EMAIL` is the email address associated with this user.
-1. (Optional) Set the Role-Based Access Control (RBAC) permissions for your user. For more information, see [Configuring Role-Based Access Control (RBAC) in <%= vars.ops_manager %>](../opsguide/config-rbac.html).
+    ```console
+    uaac target <span>https</span>://YOUR-OPSMANAGER-FQDN/uaa/
+    ```
+
+    Where:
+
+       * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
+
+2. Get your token:
+
+    ```console
+      class='terminal'>uaac token owner get
+      Client ID: opsman
+      Client Secret:
+      Username: OPSMANAGER-ADMIN-USERNAME
+      Password: OPSMANAGER-ADMIN-PASSWORD
+      &nbsp;
+      Successfully fetched token via client credentials grant.
+      Target <span>https</span>://YOUR-OPSMANAGER-FQDN/uaa/
+    ```
+
+    Where:
+
+       * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
+       * `OPSMANAGER-ADMIN-USERNAME` and `OPSMANAGER-ADMIN-PASSWORD` are the username and password for the <%= vars.ops_manager %> admin user.
+
+        <p class='note'><strong>Note:</strong> The <code>Client Secret</code> field does not require a value.</p>
+
+3. Add a user.
+
+    ```console
+      uaac user add USER-NAME -p USER-PASSWORD --emails USER-EMAIL<span>@</span>EXAMPLE.COM
+    ```
+
+    Where:
+
+       * `USER-NAME` is the username of the user you are adding.
+       * `USER-PASSWORD` is the password with which this user authenticates.
+       * `USER-EMAIL` is the email address associated with this user.
+
+4. (Optional) Set the Role-Based Access Control (RBAC) permissions for your user. For more information, see [Configuring Role-Based Access Control (RBAC) in <%= vars.ops_manager %>](../opsguide/config-rbac.html).
 
 ## <a id='remove-user'></a> Remove <%= vars.ops_manager %> Users
 
 To remove <%= vars.ops_manager %> users:
 
 1. Target your <%= vars.ops_manager %> UAA:
-<pre> uaac target <span>https</span>://YOUR-OPSMANAGER-FQDN/uaa/</pre>
+
+    ```console
+       uaac target <span>https</span>://YOUR-OPSMANAGER-FQDN/uaa/
+    ```
+
 1. Get your token:
-<pre class='terminal'>
-  uaac token owner get
-  Client ID: opsman
-  Client Secret:
-  Username: OPSMANAGER-ADMIN-USERNAME
-  Password: OPSMANAGER-ADMIN-PASSWORD
-  &nbsp;
-  Successfully fetched token via client credentials grant.
-  Target <span>https</span>://YOUR-OPSMAN-FQDN/uaa/
-</pre>
- Where:
- * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
- * `OPSMANAGER-ADMIN-USERNAME` and `OPSMANAGER-ADMIN-PASSWORD` are the username and password for the <%= vars.ops_manager %> admin user.
+
+    ```console
+    uaac token owner get
+    Client ID: opsman
+    Client Secret:
+    Username: OPSMANAGER-ADMIN-USERNAME
+    Password: OPSMANAGER-ADMIN-PASSWORD
+    &nbsp;
+    Successfully fetched token via client credentials grant.
+    Target <span>https</span>://YOUR-OPSMAN-FQDN/uaa/
+    ```
+
+    Where:
+
+       * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
+       * `OPSMANAGER-ADMIN-USERNAME` and `OPSMANAGER-ADMIN-PASSWORD` are the username and password for the <%= vars.ops_manager %> admin user.
+
     <p class='note'><strong>Note:</strong> The <code>Client Secret</code> field does not require a value.</p>
 
-1. Delete a user:
-<pre>uaac user delete USER-NAME</pre>
- Where:
- * `USER-NAME` is the username of the user you wish to delete.
+2. Delete a user:
+
+    ```console
+    uaac user delete USER-NAME
+    ```
+
+    Where:
+
+       * `USER-NAME` is the username of the user you wish to delete.
 
 ## <a id='clients'></a> Add <%= vars.ops_manager %> Client Accounts
 
@@ -102,19 +132,31 @@ If you're using SAML or SSO, authenticate to UAAC as an admin before creating a 
 To authenticate to UAAC:
 
 1. Target your UAA server.
- <pre>uaac target http<span>s</span>://YOUR-OPSMANAGER-FQDN/uaa</pre>
- Where:
- * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
-1. Log in as an admin.
- <pre>uaac token sso get</pre>
-1. When prompted, type the Client ID and passcode. Leave the client secret blank.
- <pre class='terminal'>Client ID: opsman
- Client secret:
- Passcode (from <span>http</span>://YOUR-OPSMANAGER-FQDN/uaa/passcode): YOUR-UAA-PASSCODE</pre>
+
+    ```console
+    uaac target http<span>s</span>://YOUR-OPSMANAGER-FQDN/uaa
+    ```
 
     Where:
-    * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
-    * `YOUR-UAA-PASSCODE` is the passcode with which you authenticate to UAA.
+        * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
+
+1. Log in as an admin.
+
+    ```uaac token sso get
+    ```
+
+1. When prompted, type the Client ID and passcode. Leave the client secret blank.
+
+    ```console
+    Client ID: opsman
+    Client secret:
+    Passcode (from <span>http</span>://YOUR-OPSMANAGER-FQDN/uaa/passcode): YOUR-UAA-PASSCODE</pre>
+    ```
+
+    Where:
+
+       * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
+       * `YOUR-UAA-PASSCODE` is the passcode with which you authenticate to UAA.
 
 ### <a name='ldap'></a> Authenticate Using LDAP
 
@@ -123,17 +165,30 @@ If you're not using SAML or SSO, authenticate to UAAC as an admin before creatin
 To authenticate to UAAC:
 
 1. Target your UAA server.
- <pre>uaac target http<span>s</span>://YOUR-OPSMANAGER-FQDN/uaa</pre>
- Where:
- * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
-1. Log in as an admin.
- <pre>uaac token owner get</pre>
+
+    ```console
+    uaac target http<span>s</span>://YOUR-OPSMANAGER-FQDN/uaa
+    ```
+
+    Where:
+
+       * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
+
+2. Log in as an admin.
+
+    ```console
+    uaac token owner get
+    ```
+
 1. When prompted, type the Client ID, your username, and your password. Leave the client secret blank.
- <pre class='terminal'>Client ID: opsman
- Client secret:
- User name:  admin
- Password:  *****
-  </pre>
+
+    ```console
+    Client ID: opsman
+    Client secret:
+    User name:  admin
+    Password:  *****
+    ```
+
 1. A message appears confirming that UAAC has `Successfully fetched token`.
 
 
@@ -144,10 +199,15 @@ After you authenticate to UAAC, create a client to manage automated components a
 To create a client:
 
 1. Create a client with role-based permissions, an ID, and an authentication secret using UAAC:
- <pre>uaac client add CLIENT-ID --authorized_grant_types client_credentials --authorities opsman.admin --secret CLIENT-SECRET</pre>
- Where:
-   * `CLIENT-ID` is the name of your client.
-   * `CLIENT-SECRET` is the secret you use to authenticate to your client.
+
+    ```console
+    uaac client add CLIENT-ID --authorized_grant_types client_credentials --authorities opsman.admin --secret CLIENT-SECRET
+    ```
+
+    Where:
+
+      * `CLIENT-ID` is the name of your client.
+      * `CLIENT-SECRET` is the secret you use to authenticate to your client.
 
 The `opsman.admin` authority referenced in the example above grant specific permissions to the client. You can choose which permissions you wish the client to have by assigning a different role.
 
@@ -168,21 +228,27 @@ If you do not already have the UAAC installed, run `gem install cf-uaac` on the 
 
 To add a pre-created client before you deploy <%= vars.ops_manager %>:
 
-<ol>
-<li>Authenticate to and access the <%= vars.ops_manager %> API by following the steps in <a href="./ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</li>
-<li>Pass the following command:
- <pre>POST /api/v0/setup</pre>
- Include any configuration details your deployment requires. For more information about configuring <%= vars.ops_manager %> with the API, see the <a href="http://docs.pivotal.io/pivotalcf/2-5/opsman-api/#setting-up-with-saml">Setting Up with SAML</a> in the <%= vars.ops_manager %> API documentation.</li>
-<li>In the configuration details, specify this parameter:
- <pre>"precreated_client_secret": "YOUR-SECRET"</pre>
- Where:
-  <ul>
-  <li><code>YOUR-SECRET</code> is the authentication secret you use to access the pre-created client.</li>
-  </ul>
- <p class='note'><strong>Note:</strong> The authentication secret for the pre-created client must be between 1 and 255 ASCII characters.</p></li>
-</ol>
+1. Authenticate to and access the <%= vars.ops_manager %> API by following the steps in <a href="./ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.
+1. Pass the following command:
 
-When <code>precreated_client_secret</code> is passed, a UAA client is created called <code>precreated-client</code>. To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
+    ```console
+    POST /api/v0/setup
+    ```
+
+    Include any configuration details your deployment requires. For more information about configuring <%= vars.ops_manager %> with the API, see the <a href="http://docs.pivotal.io/pivotalcf/2-5/opsman-api/#setting-up-with-saml">Setting Up with SAML</a> in the <%= vars.ops_manager %> API documentation.
+1. In the configuration details, specify this parameter:
+
+    ```console
+    "precreated_client_secret": "YOUR-SECRET"
+    ```
+
+    Where:
+     * `YOUR-SECRET` is the authentication secret you use to access the pre-created client.
+
+    <p class='note'><strong>Note:</strong> The authentication secret for the pre-created client must be between 1 and 255 ASCII characters.</p>
+
+
+When `precreated_client_secret` is passed, a UAA client is created called `precreated-client`. To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
 
 
 ### <a id='pcc-existing-deployment'></a> Add or Modify a Pre-Created Client for an Existing Deployment
@@ -193,12 +259,17 @@ To add a pre-created client to an <%= vars.ops_manager %> that has already been 
 
 1. Authenticate to and access the <%= vars.ops_manager %> API by following the steps in [Using the <%= vars.ops_manager %> API](ops-man-api.html).
 1. Pass the following command:
-<pre>PUT /api/v0/uaa/precreated_client
-<br/>
- "precreated_client_secret": "NEW-SECRET"</pre><br/>
- Where:
- * `NEW-SECRET` is the authentication secret you use to access the pre-created client. This secret must differ from the previous secret you used. The secret cannot be blank.
-  <p class='note'><strong>Note:</strong> The authentication secret for the pre-created client must be between one and 255 ASCII characters.</p>
+
+    ```console
+    PUT /api/v0/uaa/precreated_client
+
+    "precreated_client_secret": "NEW-SECRET"
+    ```
+
+    Where:
+
+        * `NEW-SECRET` is the authentication secret you use to access the pre-created client. This secret must differ from the previous secret you used. The secret cannot be blank.
+          <p class='note'><strong>Note:</strong> The authentication secret for the pre-created client must be between one and 255 ASCII characters.</p>
 
 To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
 
@@ -207,11 +278,20 @@ To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
 To authenticate to UAAC as the pre-created client:
 
 1. Target your UAA server.
- <pre>uaac target http<span>s</span>://YOUR-OPSMANAGER-FQDN/uaa</pre>
- Where:
- * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
-1. Log in as a client.
- <pre>uaac token client get precreated-client -s "PRECREATED-CLIENT-SECRET"</pre>
+
+    ```console
+    uaac target https://YOUR-OPSMANAGER-FQDN/uaa
+    ```
+
+    Where:
+
+       * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
+2. Log in as a client.
+
+    ```console
+    uaac token client get precreated-client -s "PRECREATED-CLIENT-SECRET"
+    ```
+
 1. A message appears confirming that UAAC has `Successfully fetched token`.
 
 You have authenticated to UAAC as the pre-created client. Use this client to perform any automation tasks you wish.
