@@ -67,6 +67,7 @@ To login and access the CredHub API:
     credhub login --client-name=CREDHUB-CLIENT-NAME --client-secret=CREDHUB-CLIENT-SECRET
     ```
     Where:
+
     * `CREDHUB-CLIENT-NAME` is the value you recorded for `BOSH_CLIENT` in [Find BOSH Client Credentials and BOSH Director IP Address](#credhub-creds).
     * `CREDHUB-CLIENT-SECRET` is the value you recorded for `BOSH_CLIENT_SECRET` in [Find BOSH Client Credentials and BOSH Director IP Address](#credhub-creds).
 
@@ -131,5 +132,6 @@ To reset a certificate in CredHub:
         credhub set -n SET-CERTIFICATE -t certificate -c /tmp/certificate.yml -p /tmp/private_key.yml -m SIGNING-CA
         ```
         Where:
+
         * `SET-CERTIFICATE` is the name of the manually set certificate you want to reset.
         * `SIGNING-CA` is the name of the signing root CA certificate.

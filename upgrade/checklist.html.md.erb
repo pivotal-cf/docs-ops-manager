@@ -16,11 +16,7 @@ After completing the steps in this topic, you can continue to [Upgrading <%= var
 
 <p class='note caution'><strong>Caution:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.ops_manager %></em>.</p>
 
-<<<<<<< HEAD
 <p class='note caution'><strong>Caution:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
-=======
-<p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to <strong>Apply Changes</strong> due to safety violations.</p>
->>>>>>> a9728ada9 (migration checks and updates)
 
 
 ## <a id='back-up-your-pcf-deployment'></a> Back Up Your <%= vars.ops_manager %> Deployment
@@ -147,7 +143,7 @@ To disable hostname validation:
 
 1. After you stage <%= vars.app_runtime_abbr %> <%= vars.v_major_version %> for upgrade, go to the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
 
-1. Deselect the **Enable hostname verification** check box. This check box is selected by default.
+1. Deselect the **Enable hostname verification** checkbox. This checkbox is selected by default.
 
 For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see [Configure Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
 
