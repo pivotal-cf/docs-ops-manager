@@ -147,7 +147,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
     * For <%= vars.app_runtime_abbr %>, click **Add Network** and create the following networks:
         * `infrastructure`: This network is for <%= vars.ops_manager %> and the BOSH Director.
         * `pas`: This network is for all the <%= vars.app_runtime_abbr %> VMs including Gorouter, Diego cells, and Cloud Controller.
-        * `services`: This network is for any service tiles to be deployed alongside <%= vars.app_runtime_abbr %>.<br/><br/> Use the values from the following table as a guide when you create each network, replacing the IP addresses with ranges that are available in your vSphere environment:
+        * `services`: This network is for any service tiles to be deployed alongside <%= vars.app_runtime_abbr %>.<br><br> Use the values from the following table as a guide when you create each network, replacing the IP addresses with ranges that are available in your vSphere environment:
 
             <table>
                <tr>
@@ -237,9 +237,9 @@ Multiple AZs allow you to provide high availability and load balancing to your a
                 <td>Gateway</td>
                 <td><code>192.168.20.1</code></td>
               </tr>
-            </table><br/>
+            </table>
 
-            <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br/>
+            <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br>
 
             <sup id="note2">&#8224;</sup> For **Reserved IP Ranges**, enter any IP addresses from the **CIDR**
                 that you do not want BOSH to use in your installation. <%= vars.ops_manager %> will not deploy VMs to any address in this range.
@@ -343,7 +343,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
               </tr>
             </table>
 
-            <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br/>
+            <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br>
 
             <sup id="note2">&#8224;</sup> For **Reserved IP Ranges**, enter any IP addresses from the **CIDR** that you do not want BOSH to use in your installation. <%= vars.ops_manager %> will not deploy VMs to any address in this range.
 
