@@ -64,7 +64,9 @@ To add new CAs:
             -d '{"cert_pem": "-----BEGIN CERTIFICATE-----CUSTOM-CERTIFICATE", "private_key_pem": "-----BEGIN RSA PRIVATE KEY-----RSA-KEY"}' \
             -i
         ```
+
         Where:
+
         * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> deployment.
         * `CUSTOM-CERTIFICATE` is your custom CA.
         * `RSA-KEY` is your RSA key.
@@ -97,7 +99,9 @@ To add new CAs:
               -d '{}' \
               -i
         ```
+
         Where:
+
         * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
         * `UAA-ACCESS-TOKEN` is your UAA access token.
         <br>
@@ -140,7 +144,9 @@ To add new CAs:
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
     <br>
@@ -201,8 +207,9 @@ To add new CAs:
       ```
       bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
       ```
-     Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
-     <%= partial 'skip_recreate_step' %>
+
+      Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
+      <%= partial 'skip_recreate_step' %>
 
 1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Activate the CAs](#activate-new-ca).
 
@@ -220,7 +227,9 @@ To activate the CAs that you added in [Add New CAs](#add-new-ca) above:
       -d '{}' \
       -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `CERTIFICATE-GUID` is the GUID of your CA that you retrieved in the previous section.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
@@ -237,7 +246,9 @@ To activate the CAs that you added in [Add New CAs](#add-new-ca) above:
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
 
@@ -275,7 +286,9 @@ To rotate non-configurable leaf certificates:
           -d '{}' \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
     <br>
@@ -310,7 +323,8 @@ To rotate non-configurable leaf certificates:
       ```
       bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
       ```
-     Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
+
+      Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
 1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete).
 
@@ -339,7 +353,9 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
 
@@ -351,7 +367,9 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `OLD-CERTIFICATE-GUID` is the GUID of the old <%= vars.ops_manager %> root CA.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
@@ -386,7 +404,8 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
       ```
       bosh -d SERVICE-INSTANCE-DEPLOYMENT re-create
       ```
-     Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
+
+      Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
 ## <a id='specialized-procedures'></a> Certificates with Specialized Procedures
 

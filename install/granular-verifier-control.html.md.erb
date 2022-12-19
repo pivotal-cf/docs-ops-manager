@@ -92,6 +92,7 @@ To disable a verifier type for the BOSH Director:
      ```
 
     Where:
+
     - `OPS-MAN-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
     - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier Type
 ](#verifier-type).
@@ -166,7 +167,9 @@ To disable a verifier type for tiles other than the BOSH Director:
     -X GET \
     -H "Authorization: Bearer UAA_ACCESS_TOKEN"
     ```
+
     Where:
+
     - `OPS-MAN-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
     - `UAA_ACCESS_TOKEN` is your UAA access token. For more information, see [Access the
     API](ops-man-api.html#access-api).
@@ -199,6 +202,7 @@ To disable a verifier type for tiles other than the BOSH Director:
     ```
 
     Where:
+
     - `OPS-MAN-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
     - `PRODUCT-GUID` is the GUID you recorded in the previous step.
     - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier Type
@@ -218,24 +222,27 @@ To disable a verifier type for tiles other than the BOSH Director:
 
     See that the <%= vars.ops_manager %> API shows `false` for the verifier type you disabled. In
     the following example, `MysqlDatabaseVerifier` is set to `false`:
-    <pre class="terminal" style="height: 300px; scroll: auto;">{
+
+    <pre class="terminal">
+    {
       "verifiers":[
       {
-	  "type":"BlobstoreVerifier",
-	  "enabled":true
-	},
-	{
-	  "type":"MysqlDatabaseVerifier",
-	  "enabled":false
-	},
-	{
-	  "type":"SsoUrlVerifier",
-	  "enabled":true
-	},
-	{
-	  "type":"WildcardDomainVerifier",
-	  "enabled":true
-	}]}</pre>
+      "type":"BlobstoreVerifier",
+      "enabled":true
+    },
+    {
+      "type":"MysqlDatabaseVerifier",
+      "enabled":false
+    },
+    {
+      "type":"SsoUrlVerifier",
+      "enabled":true
+    },
+    {
+      "type":"WildcardDomainVerifier",
+      "enabled":true
+    }]}
+    </pre>
 
     For more information about this endpoint, see [Retrieving a list of install time
     verifiers for a specific
