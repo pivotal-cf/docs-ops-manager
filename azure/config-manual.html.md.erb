@@ -135,7 +135,8 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
    * **If you are upgrading from v2.4**: You must use **Availability Sets**.
     <p class='note'><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
 
-1. <%= partial "../common/azure-environment" %>
+<%= partial "../common/azure-environment" %>
+
     <p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS) refer to <a href="https://docs.pivotal.io/platform/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
 
 1. (Optional) If you selected `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
