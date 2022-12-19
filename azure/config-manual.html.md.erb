@@ -112,7 +112,8 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 	* For SSD-based storage, select **Premium_LRS**.
 
 1. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** checkbox. This overrides the default behavior, which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
-        <%= image_tag("../common/images/azure/azure-storage-tier.png", :alt => "A dropdown labeled 'Storage Tier ephemeral / persistent disks' with 'Premium_LRS' selected. Below which is a checkbox labeled 'Use the same Storage Tier for root / OS disks which is unchecked.'") %>
+
+    <%= image_tag("../common/images/azure/azure-storage-tier.png", :alt => "A dropdown labeled 'Storage Tier ephemeral / persistent disks' with 'Premium_LRS' selected. Below which is a checkbox labeled 'Use the same Storage Tier for root / OS disks which is unchecked.'") %>
 
 1. For **Cloud Storage Type**, select one of the following options based on your Azure VM storage settings.
 	* **Use Managed Disks**: Select this option if you use Azure Managed Disks. For more information, see [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documentation for more information.
