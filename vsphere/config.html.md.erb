@@ -90,6 +90,14 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
 <%= partial "../common/director-config" %>
 
+1. <%= partial "../common/credhub-encryption" %>
+
+1. <%= partial "../common/blobstore-location" %>
+
+1. <%= partial "../common/director-database-location" %>
+
+1. Click **Save**.
+
 ## <a id='create-az'></a> Step 4: Create Availability Zones Pane
 
 <%= vars.ops_manager %> Availability Zones (AZs) correspond to your vCenter clusters, resource pools or host groups.

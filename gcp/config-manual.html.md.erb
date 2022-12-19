@@ -43,6 +43,14 @@ To configure the **Director Config** pane in the BOSH Director tile, you must ha
 
 <%= partial "../common/director-config" %>
 
+1. <%= partial "../common/credhub-encryption" %>
+
+1. <%= partial "../common/blobstore-location" %>
+
+1. <%= partial "../common/director-database-location" %>
+
+1. Click **Save**.
+
 ## <a id='az'></a> Step 4: Configure Create Availability Zones
 
 <div class="note"><strong>Note:</strong> <%= vars.company_name %> recommends at least three availability zones (AZs) for a highly available installation.
