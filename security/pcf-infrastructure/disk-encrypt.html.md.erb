@@ -88,17 +88,18 @@ To initiate or rotate disk encryption for BOSH-deployed VMs on vSphere v6.5 or l
 
 1. If you are configuring volume encryption for <%= vars.k8s_runtime_abbr %>:
     1. Delete the BOSH Director stemcell used for the <%= vars.k8s_runtime_abbr %> foundation from the disk using vSphere WebClient. For more information on how to delete the BOSH Director stemcell, see [How to recreate BOSH Director VM when the Stemcell is deleted from vSphere](https://community.pivotal.io/s/article/How-to-recreate-BOSH-Director-VM-when-the-Stemcell-is-deleted-from-vSphere?language=en_US).
+
     1. Reupload the stemcell used by <%= vars.k8s_runtime_abbr %>:
 
-    	```
-        sudo cp /var/tempest/stemcells/STEMCELL-NAME.tgz /home/ubuntu/.
-        sudo chown ubuntu:ubuntu STEMCELL-NAME.tgz
-        bosh upload-stemcell STEMCELL-NAME.tgz --fix
-    	```
-        Where `STEMCELL-NAME` is the name of the stemcell you want to reupload.
-    	For example:
-        
-	<pre class=terminal>
+      	```
+          sudo cp /var/tempest/stemcells/STEMCELL-NAME.tgz /home/ubuntu/.
+          sudo chown ubuntu:ubuntu STEMCELL-NAME.tgz
+          bosh upload-stemcell STEMCELL-NAME.tgz --fix
+      	```
+          Where `STEMCELL-NAME` is the name of the stemcell you want to reupload.
+      	For example:
+
+	      <pre class="terminal">
         sudo cp /var/tempest/stemcells/bosh-stemcell-621.84-vsphere-esxi-ubuntu-xenial-go_agent.tgz /home/ubuntu/.
         sudo chown ubuntu:ubuntu bosh-stemcell-621.84-vsphere-esxi-ubuntu-xenial-go_agent.tgz
         bosh upload-stemcell bosh-stemcell-621.84-vsphere-esxi-ubuntu-xenial-go_agent.tgz --fix

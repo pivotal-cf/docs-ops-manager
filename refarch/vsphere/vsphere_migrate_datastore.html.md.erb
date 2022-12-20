@@ -35,14 +35,18 @@ To obtain this information:
 
 1. Run one of these commands:
     * If you use BOSH CLI v2, run:
-      <pre>
-      bosh -e BOSH-ENVIRONMENT instances --details > instances.txt
-      </pre>
-      Where `BOSH-ENVIRONMENT` is the alias you assigned to your BOSH Director.
+
+        ```
+        bosh -e BOSH-ENVIRONMENT instances --details > instances.txt
+        ```
+
+        Where `BOSH-ENVIRONMENT` is the alias you assigned to your BOSH Director.
+
     * If you use the original version of the BOSH CLI, run:
-      <pre>
-      bosh-old instances --details > instances.txt
-      </pre>
+
+        ```
+        bosh-old instances --details > instances.txt
+        ```
 
 1. Save the resulting `instances.txt` file to a safe location.
 
@@ -80,7 +84,7 @@ To migrate your <%= vars.ops_manager %> deployment to a new datastore:
 1. Select **vCenter Config**.
 
 1. Update the **Ephemeral Datastore Names** and **Persistent Datastore Names** fields to reflect the new datastore names.
-    <p class='note'><strong>Note:</strong> If you use the datastore clustering feature in vSphere, provide only the datastore cluster name in the **Persistent Datastore Cluster Names** // **Ephemeral Datastore Cluster Names** fields.</p>
+    <p class='note'><strong>Note:</strong> If you use the datastore clustering feature in vSphere, provide only the datastore cluster name in the <strong>Persistent Datastore Cluster Names</strong> // <strong>Ephemeral Datastore Cluster Names</strong> fields.</p>
 
 1. Click **Save**.
 

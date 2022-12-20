@@ -125,8 +125,8 @@ If you re-create your IaaS resources, you must also add those resources to <%= v
               -F 'installation[file]=@installation.zip' \
               -F 'passphrase=DECRYPTION-PASSPHRASE'
             ```
+
             Where:
-            <br>
 
             -  `OPS-MANAGER-FQDN` is the FQDN for your <%= vars.ops_manager %> deployment.
             -  `UAA-ACCESS-TOKEN` is your UAA access token. For more information about how to retrieve this token, see [Using the <%= vars.ops_manager %> API](../ops-man-api.html).
@@ -251,20 +251,19 @@ To restore BOSH Director:
     restore \
     --artifact-path PATH-TO-BOSH-DIRECTOR-BACKUP
     ```
+
     Where:
-    <br>
 
-   - `PRIVATE-KEY-FILE` is the path to the private key file you created in [Retrieve BOSH Director Credentials](#retrieve-credentials).
+    - `PRIVATE-KEY-FILE` is the path to the private key file you created in [Retrieve BOSH Director Credentials](#retrieve-credentials).
     - `HOST` is the address of the BOSH Director.
-      -  If the BOSH Director is public, `HOST` is a URL, such as `https://bosh-director.xxx.cf-app.com`.
-      -  If the BOSH Director is not public, `HOST` is the `BOSH-DIRECTOR-IP` you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+        -  If the BOSH Director is public, `HOST` is a URL, such as `https://bosh-director.xxx.cf-app.com`.
+        -  If the BOSH Director is not public, `HOST` is the `BOSH-DIRECTOR-IP` you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
     - `PATH-TO-BOSH-DIRECTOR-BACKUP` is the path to the BOSH Director backup you want to restore.
-    - (Optional) To enable debug logs, use the `--debug` flag. For more information,
-      see [Logging](backup-pcf-bbr.html#logging) in _Backing Up Deployments with BBR_.
+        - (Optional) To enable debug logs, use the `--debug` flag. For more information,
+        see [Logging](backup-pcf-bbr.html#logging) in _Backing Up Deployments with BBR_.
 
-1. After the command succeeds, continue to [Identify Your Deployment](#identify-deployment).
-<br>
-If the command fails:
+1. After the command succeeds, continue to [Identify Your Deployment](#identify-deployment). If the command fails:
+
     1. Run:
 
         ```
@@ -274,12 +273,16 @@ If the command fails:
         --host HOST \
         restore-cleanup
         ```
+
         Where:
+
         * `PRIVATE-KEY-FILE`is the path to the private key file you created in [ Retrieve BOSH Credentials](#retrieve-credentials).
         * `HOST` is the address of the BOSH Director.
         * If the BOSH Director is public, `HOST` is a URL, such as `https://bosh-director.xxx.cf-app.com`.
         * If the BOSH Director is not public, `HOST` is the `BOSH-DIRECTOR-IP` you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+
     1. Run the BBR restore command again after ensuring that:
+
         * All the parameters in the command are set.
         * The BOSH Director credentials are valid.
         * The specified deployment exists.
@@ -297,8 +300,9 @@ To identify the name of the BOSH deployment that contains <%= vars.ops_manager %
     ```
     bosh -e BOSH-DIRECTOR-IP --ca-cert PATH-TO-BOSH-SERVER-CERTIFICATE deployments
     ```
+
     Where:
-    <br>
+
     * `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
     * `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the certificate authority (CA) for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
 
@@ -319,12 +323,11 @@ To remove stale cloud IDs for all deployments:
     ```
 
     Where:
-    <br>
 
-      -`BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
-      - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
-      - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
-    <br>
+    -`BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+    - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
+    - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
+
     Run this command for each deployment.
 
 ### <a id='redeploy-ert'></a> Step 12: Redeploy <%= vars.app_runtime_abbr %>
@@ -345,6 +348,7 @@ To determine which stemcell is used by <%= vars.app_runtime_abbr %>, either:
         ```
         bosh -e BOSH-DIRECTOR-IP deployments
         ```
+
         Where `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
 
 For more information about stemcells in <%= vars.ops_manager %>, see [Importing and Managing Stemcells](../../opsguide/managing-stemcells.html).
@@ -364,13 +368,13 @@ To upload the required stemcell:
     <%= vars.bosh_upload_stemcell %> \
     --fix PATH-TO-STEMCELL
     ```
+
     Where:
-    <br>
-    
-      - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
-      - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
-      - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA certificate for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
-      - `PATH-TO-STEMCELL` is the path to your tile's stemcell.
+
+    - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+    - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
+    - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA certificate for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
+    - `PATH-TO-STEMCELL` is the path to your tile's stemcell.
 
 1. To ensure the stemcells for all of your other installed tiles have been uploaded, repeat the previous step, running `bosh <%= vars.bosh_upload_stemcell %> --fix PATH-TO-STEMCELL`, for each stemcell that is different from the already uploaded <%= vars.app_runtime_abbr %> stemcell.
 
@@ -457,14 +461,14 @@ To restore your <%= vars.app_runtime_abbr %> backup:
     restore \
     --artifact-path PATH-TO-<%= vars.app_runtime_abbr %>-BACKUP
     ```
-    Where:
-    <br>
 
-      - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
-      - `BOSH-CLIENT` and `BOSH-PASSWORD` are the **Uaa Bbr Client Credentials**, identity and password that you retrieved in [Retrieve BOSH Director Credentials](#retrieve-credentials).
-      - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
-      - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
-      - `PATH-TO-<%= vars.app_runtime_abbr %>-BACKUP` is the path to the <%= vars.app_runtime_abbr %> backup you want to restore.
+    Where:
+
+    - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+    - `BOSH-CLIENT` and `BOSH-PASSWORD` are the **Uaa Bbr Client Credentials**, identity and password that you retrieved in [Retrieve BOSH Director Credentials](#retrieve-credentials).
+    - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
+    - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
+    - `PATH-TO-<%= vars.app_runtime_abbr %>-BACKUP` is the path to the <%= vars.app_runtime_abbr %> backup you want to restore.
 
 1. (Optional) To scale the MySQL Server job back up to its previous number of instances:
   1. Navigate to the Installation Dashboard
@@ -478,7 +482,6 @@ To restore your <%= vars.app_runtime_abbr %> backup:
 1. Review your changes. For more information, see [Reviewing Pending Product Changes](../review-pending-changes.html).
 
 1. Click **Apply Changes** to deploy.
-
 
 1. (Optional) Run `cf apps` to view the status of apps.
    By observing which apps are running
@@ -495,6 +498,7 @@ To return apps to a running state:
     ```
     cf restage APP-NAME
     ```
+
     Where `APP-NAME` is the name of the app you want to restage.
 
 * If you excluded both droplets and packages from your backup, re-push each app by running:
@@ -502,11 +506,11 @@ To return apps to a running state:
     ```
     cf push APP-NAME OPTIONAL-FLAGS
     ```
+
     Where:
-    <br>
-    
-      - `APP-NAME` is the name of the app you want to re-push.
-      - `OPTIONAL-FLAGS` are any flags you want to use while re-pushing your app.
+
+    - `APP-NAME` is the name of the app you want to re-push.
+    - `OPTIONAL-FLAGS` are any flags you want to use while re-pushing your app.
 
 ### <a id='odb'></a> Step 16: (Optional) Restore On-Demand Service Instances
 
@@ -554,8 +558,9 @@ To restore the VMs:
     --ca-cert PATH-TO-BOSH-SERVER-CERTIFICATE \
     deployments
     ```
+
     Where:
-    <br>
+
     * `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
     * `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA certificate for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
 
@@ -569,12 +574,12 @@ To restore the VMs:
     -d DEPLOYMENT-NAME \
     cck --resolution=recreate_vm
     ```
+
     Where:
-    <br>
-    
-      - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
-      - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
-      - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
+
+    - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+    - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
+    - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
 
 1. To verify the status of the VMs in each deployment, run:
 
@@ -584,12 +589,12 @@ To restore the VMs:
     -d DEPLOYMENT-NAME \
     vms
     ```
-    Where:
-    <br>
 
-      - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
-      - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
-      - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
+    Where:
+
+    - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+    - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
+    - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
 
 The process state for all VMs should show as `running`.
 
@@ -628,20 +633,18 @@ To delete the remaining disks, follow one of these procedures:
         bosh -e BOSH-DIRECTOR-IP \
         --ca-cert PATH-TO-BOSH-SERVER-CERTIFICATE deployments
         ```
+
         Where:
-        <br>
 
         - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
         - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
+
   1. Delete each deployment by running:
 
         ```
         bosh -d DEPLOYMENT-NAME <%= vars.bosh_delete_deployment %>
         ```
-        Where:
-        <br>
-         
-         -`DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
+        Where `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
 
 * Log in to your IaaS account and delete the disks manually.
     1. To retrieve a list of disk IDs, run:
@@ -650,10 +653,10 @@ To delete the remaining disks, follow one of these procedures:
         bosh -e BOSH-DIRECTOR-IP \
         --ca-cert PATH-TO-BOSH-SERVER-CERTIFICATE instances -i
         ```
-        Where:
-        <br>
 
-         - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
-         - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
+        Where:
+
+        - `BOSH-DIRECTOR-IP` is the BOSH Director IP you retrieved in [Retrieve BOSH Director Address](#retrieve-address).
+        - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
 
 After the disks are deleted, continue with [Remove Stale Cloud IDs for All Deployments](#bosh-cck).
