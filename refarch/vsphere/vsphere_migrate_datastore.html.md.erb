@@ -88,16 +88,18 @@ To migrate your <%= vars.ops_manager %> deployment to a new datastore:
 
 1. Confirm that the BOSH Director VM has persistent disk on the new datastore.
    1. Select **vCenter Resource Pools** and select the **Resource Pool** that contains your <%= vars.ops_manager %> deployment VMs and new datastore.
-   1. Click the **Related Objects** and **Virtual Machines**.
+   1. Click the **Related Objects** tab.
+   1. Click **Virtual Machines**.
    1. Locate the <%= vars.ops_manager %> VM and verify that the VM has an expected value in the **Provisioned Space** column.
-    <%= image_tag('../images/vsphere-web-client.png', :alt => "Screenshot shows 'Virtual Machines' button enabled in 'Production' resource pool and a table row 'Provisioned Space' value of '22.09 GB'.") %>
 
-1. In the BOSH Director tile, select **Director Config**.
+    <%= image_tag( '../images/vsphere-web-client.png', :alt => "" ) %>
 
-1. Select the **Recreate VMs deployed by the BOSH Director** option.
+2. In the BOSH Director tile, select **Director Config**.
 
-1. Click **Review Pending Changes**.
+3. Select the **Recreate VMs deployed by the BOSH Director** option.
 
-1. If you are using any service tiles, select the **Recreate All On-Demand Service Instances** errand for each of the tiles you migrate.
+4. Click **Review Pending Changes**.
 
-1. Click **Apply Changes**.
+5. If you are using any service tiles, select the **Recreate All On-Demand Service Instances** errand for each of the tiles you migrate.
+
+6. Click **Apply Changes**.

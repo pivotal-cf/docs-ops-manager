@@ -27,14 +27,14 @@ To import and stage a stemcell:
 		For more information about light stemcells, see <a href="https://bosh.io/docs/build-stemcell/#light-stemcells">Light Stemcells</a> in the BOSH documentation.
 	</p>
 
-1. Click **Import Stemcell** to permanently import a stemcell into <%= vars.ops_manager %>.
+1. Click **Import Stemcell** to permanently import a stemcell into <%= vars.ops_manager %>. The **IMPORT STEMCELL** dialog box appears.
+2. Select the products you want to stage.
 
-1. A pop-up appears for you to select which products to stage with the imported stemcell. Select the checkboxes of the products you want to stage.
-  ![A pop-up that appears after importing a stemcell. At the top of the pop-up is the header 'Import Stemcell' in gray letters. Under the header is the text "Select the products you want to stage with light-bosh-stemcell-3541.5-google-kvm-ubuntu-trusty". Below is a row containing a selected checkbox with the text "Product" in bold letters to the right of the checkbox. Below this row is another row containing another selected checkbox and the text "Ops Manager: Example Product v2.1-committed.20180209.125552-stemcell.3541.4". In the bottom-right corner of the pop-up are two buttons: one labeled "Dismiss" in gray letters, and one blue, rectangular button labeled "Apply Stemcell to Products" in white letters.](images/staging-modal.png)
+  ![IMPORT STEMCELL dialog box.](images/staging-modal.png)
 
- 1. Click **Apply Stemcell to Products**.
+ 1. Click **APPLY STEMCELL TO PRODUCTS**.
 
- 1. Click **Dismiss** to close the **Import Stemcell** pop-up.
+ 2. Click **Dismiss** to close the dialog box.
 
 
 ## <a id='version'></a> Choose a Stemcell Version
@@ -43,8 +43,8 @@ If you have uploaded multiple versions of a stemcell, you can use the dropdown i
 
 You can choose a different version until you deploy. After deployment, older stemcell versions are no longer available. If you want to use a stemcell that you uploaded before upgrading, you must re-upload it after upgrading <%= vars.ops_manager %>.
 
-![The dropdown for a stemcell is displayed in the Staged column. Three versions are available.](images/opsman-view-available-stemcells.png)
+![The dropdown for a stemcell is displayed in the Staged column. In this example, three versions are available.](images/opsman-view-available-stemcells.png)
 
-If the stemcell displays with a green checkmark and the words **Latest stemcell** below the **Staged** dropdown, the stemcell is the latest available version on your host. An outdated stemcell displays **Stemcell out-of-date**.
+If the stemcell is displayed with a green checkmark and the words **Latest stemcell** below the **Staged** dropdown, the stemcell is the latest available version on your host. An outdated stemcell displays **Stemcell out-of-date**.
 
-![Beneath the **Staged** version dropdown, a green checkmark next to the words **Latest stemcell** appears. The stemcell in this image is the latest available version.](images/opsman-latest-stemcell.png)
+![The example shows the green check mark and the text, Latest stemcell.](images/opsman-latest-stemcell.png)

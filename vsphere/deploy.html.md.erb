@@ -83,27 +83,27 @@ vSphere objects used to organize resources.
 
 1. Right-click the management resource pool that you created and select **Deploy OVF Template**. Alternatively, from the vCenter menu, select **Actions** > **Deploy OVF Template**.
 
-1. At the **Select an OVF template** screen, click **Browse**.
+1. On the **Select an OVF template** screen, click **Browse**.
 
 1. Select the <%= vars.ops_manager %> OVA file that you downloaded and click **Open**.
 
-1. Review template selection and click **Next**.
+1. Review the template selection and click **Next**.
 
-1. At the **Select a name and folder** screen:
+1. On the **Select a name and folder** screen:
     * Enter a name for the <%= vars.ops_manager %> virtual machine, or use the default name.
-    * Select the **Datacenter** object.
+    * Select the object labeled **Datacenter**.
     * Click **Next**.
 
-    <%= image_tag("../common/images/vsphere/vsphere_om-deploy-01.png", :alt => "Ops-manager typed in the virtual machine name field. Datacenter is selected and highlighted in light blue in the location list.") %>
+    <%= image_tag( "../common/images/vsphere/vsphere_om-deploy-01.png", :alt => "" ) %>
 
-1. At the **Select a compute resource** screen, select the compute resource where the <%= vars.ops_manager %> VM will run and click **Next**. Select the Resource Pool for the management components.
+2. On the **Select a compute resource** screen, select the compute resource where the <%= vars.ops_manager %> VM will run, and click **Next**. Select the Resource Pool for the management components.
 
-    <%= image_tag("../common/images/vsphere/vsphere_om-deploy-10.png", :alt => "Under 'select a compute resource,' pas-az1 is highlighted in light blue in the resource list.") %>
+    <%= image_tag( "../common/images/vsphere/vsphere_om-deploy-10.png", :alt => "" ) %>
 
     <p class='note'><strong>Note:</strong> Hardware virtualization must be turned off if your
     vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.ops_manager %> on vSphere Requirements</em> for more information.</p>
 
-1. At the **Review Details** screen, confirm the configuration up to this point and click **Next**.
+3. On the **Review Details** screen, confirm the configuration up to this point, and click **Next**.
 
 1. At the **Select Storage** screen, select the virtual disk format.
 
@@ -115,13 +115,13 @@ vSphere objects used to organize resources.
 
         <p class='note caution'><strong>Caution:</strong> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
 
-        <%= image_tag("../common/images/vsphere/vsphere_om-deploy-04.png", :alt => "Virtual disk format and VM storage policy dropdowns have default settings. vsanDatastore is highlighted in grey and selected in the datastore list.") %>
+    <%= image_tag( "../common/images/vsphere/vsphere_om-deploy-04.png", :alt => "" ) %>
 
-1. At the **Select Networks** screen, either select the default **VM Network** or ideally create an **Infrastructure** Network, and click **Next**.
+5. On the **Select Networks** screen, either select the default **VM Network**, or ideally, create an **Infrastructure** Network, and click **Next**.
 
-    <%= image_tag("../common/images/vsphere/vsphere_om-deploy-12.png", :alt => "Under Destination Network, PAS-infrastructure is selected for Network 1.") %>
+    <%= image_tag( "../common/images/vsphere/vsphere_om-deploy-12.png", :alt => "" ) %>
 
-1. At the **Customize template** screen, enter the following information, and click **Next**.
+6. On the **Customize template** screen, enter the following information, and click **Next**.
    * **IP Address**: The IP address of the <%= vars.ops_manager %> network interface. For example, `10.0.0.2`.
    * **Netmask**: The network mask for <%= vars.ops_manager %>. For example, `255.255.255.0`.
    * **Default Gateway**: The default gateway for <%= vars.ops_manager %> to use. For example, `10.0.0.1`.
@@ -131,11 +131,11 @@ vSphere objects used to organize resources.
       <p class='note important'><strong>Important:</strong> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
    * **Custom hostname**: The hostname for the <%= vars.ops_manager %> VM. For example, `ops-manager`.
 
-1. At the **Ready to complete** screen, review the configuration settings and click **Finish**.
+7. On the **Ready to complete** screen, review the configuration settings and click **Finish**.
 
     This action begins the OVA import and deployment process.
 
-1. Use the **Recent Tasks** panel at the bottom of the vCenter dashboard to check the progress of the OVA import and deployment.
+8. Use the **Recent Tasks** panel at the bottom of the vCenter dashboard to check the progress of the OVA import and deployment.
    <br/><br/>
    If the import or deployment is unsuccessful, check the configuration for errors. Fix any errors and restart the deployment process.
 
