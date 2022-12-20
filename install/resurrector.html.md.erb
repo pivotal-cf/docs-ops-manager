@@ -52,13 +52,13 @@ To enable the BOSH Resurrector:
 
 1. On the Product Dashboard, select **BOSH Director**.
 
-    <%= image_tag("images/director-tile-vmware.png", :alt => "Screenshot of the VMware Bosh Director for vSphere tile of the dashboard. There is a white background, black text, and a green rectancle at the bottom.") %>
+    <%= image_tag( "images/director-tile-vmware.png", :alt => "" ) %>
 
 1. In the left navigation menu, select **Director Config**.
 
-    <%= image_tag("images/resurrector/resurrector.png", :alt => "Screenshot of the Ops Manager Director dashboard. The image shows the 'Settings' tab with the 'Director Config' dialog shown.") %>
+    <%= image_tag( "images/resurrector/resurrector.png", :alt => "" ) %>
 
-1. Select **Enable VM Resurrector Plugin** and click **Save**.
+2. Select **Enable VM Resurrector Plugin** and click **Save**.
 
 
 ## <a id='vsphere-ha'></a> vSphere HA
@@ -77,10 +77,10 @@ To enable vSphere High Availability:
 
 1. Launch the vSphere Management Console.
 
-1. Right-click the cluster that contains the [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) deployment and select **Edit Settings**.
+1. In the left side panel, right-click the cluster that contains the [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) deployment and select **Edit Settings**.
 
-1. Select the **Turn on vSphere High Availability** checkbox.
+1. Select the **Turn on vSphere High Availability** check box.
 
-    <%= image_tag("images/resurrector/enable-ha.jpg", :alt => "Screenshot of the 'example-cluster Settings' dialog with the 'Turn on vSphere HA' checkbox selected.") %>
+    <%= image_tag( "images/resurrector/enable-ha.jpg", :alt => "" ) %>
 
-1. Click **OK** to enable vSphere High Availability on the cluster.
+2. Click **OK** to enable vSphere High Availability on the cluster.
