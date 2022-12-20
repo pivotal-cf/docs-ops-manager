@@ -74,26 +74,25 @@ To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager 
     * **OpenStack:** [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html)
     * **vSphere:** [Deploying <%= vars.ops_manager %> on vSphere](../vsphere/deploy.html)
 
-1. When redirected to the **Welcome to <%= vars.ops_manager %>** page,
-select **Import Existing Installation**.
+1. When redirected to the **Welcome to <%= vars.ops_manager %>** page, select **Import Existing Installation**.
 
-    <%= image_tag("./images/upgrading/welcome.png", alt: "Below the VMware logo is the text 'Welcome to Ops Manager'. Next is the text 'Select an Authentication System', below which are two rectangular blue buttons. The top button is labeled 'Use an Identity Provider' in white text; the bottom button is labeled 'Internal Authentication' in white text. Below these buttons is a horizontal line break. Below the line break is the text 'Upgrading Ops Manager?', below which is a rectangular blue button labeled 'Import Existing Installation' in white text.", :width => "400") %>
+    <%= image_tag( "./images/upgrading/welcome.png", alt: "", :width => "400" ) %>
 
-1. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
+2. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
 You set this passphrase during your initial installation of <%= vars.ops_manager %>.
     <p class='note'><strong>Note:</strong> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
 
 1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
-    <%= image_tag("./images/upgrading/decryption_passphrase.png", alt: "Below the VMware logo is a field labeled 'Decryption Passphrase' containing five hidden characters. Below this field is the text 'Enter file', below which is a small, rectangular gray button labeled 'Choose File'. To the right of the 'Choose File' button is the filename 'installation (4).zip'. Below this button and filename is a rectangular blue button labeled 'Import' in white text.", :width => "400") %>
+    <%= image_tag( "./images/upgrading/decryption_passphrase.png", alt: "", :width => "400" ) %>
 
-1. Click **Import**.
+2. Click **Import**.
     <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
       and might appear to hang.</p>
 
-1. A **Successfully imported installation** message appears upon completion.
+3. A **Successfully imported installation** message appears upon completion.
 
-    <%= image_tag("./images/upgrading/success.png", alt: "The top half of the pop-up message contains a dark green background, a rectangular green logo with a capital P in white, and the text 'Ops Manager' in white. The bottom half of the pop-up message contains a lighter green background, a round, dark green icon containing a light green check, and the text 'Successfully imported installation.' in dark green text.") %>
+    <%= image_tag( "./images/upgrading/success.png", alt: "" ) %>
 
     <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> automatically imports the
       Telemetry for <%= vars.ops_manager %> tile.
