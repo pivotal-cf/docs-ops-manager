@@ -38,7 +38,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
 2. Select **vCenter Config**. Configure the one or more vCenters that host your <%= vars.ops_manager %> foundation, as described in the following steps.
 
-    <%= image_tag( "../common/images/vcenter-config.png", :alt => "" ) %>
+    <%= image("../common/images/vcenter-config.png", :alt => "") %>
 
 3. Complete the following fields on the **vCenter Config** pane:
     * **Name**: A name that you provide for your vCenter configuration. This field is used to identify the datacenter configuration in <%= vars.ops_manager %> if you are configuring multiple datacenters.
@@ -114,7 +114,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Select **Create Availability Zones**.
 
-    <%= image_tag( "../common/images/create-az.png", :alt => "" ) %>
+    <%= image("../common/images/create-az.png", :alt => "") %>
 
 2. Use the following steps to create the first AZ.
     * Click **Add**.
@@ -357,7 +357,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Select **Assign AZs and Networks**.
 
-<%= image_tag( "../common/images/assign-az.png", :alt => "" ) %>
+<%= image("../common/images/assign-az.png", :alt => "") %>
 
 1. Use the **Singleton Availability Zone** drop-down menu to select a singleton AZ. The BOSH Director is installed as a single instance in this Availability Zone.
 
@@ -384,7 +384,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Click **Resource Config**.
 
-    <%= image_tag( "../common/images/vsphere-om-resources.png", :alt => "" ) %>
+    <%= image("../common/images/vsphere-om-resources.png", :alt => "") %>
 
 2. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the drop-down menus to allocate the recommended resources for the job.
 

@@ -27,7 +27,7 @@ To enable EBS encryption:
 
 1. Select **AWS Config** to open the **AWS Management Console Config** pane.
 
-	<%= image_tag( "images/cloudform/aws-config.png", :alt => "" ) %>
+	<%= image("images/cloudform/aws-config.png", :alt => "") %>
 
 1. Select the **Encrypt Linux EBS Volumes** check box.
 	<p class='note'><strong>Note:</strong> <strong>Encrypt Linux EBS Volumes</strong> is a global setting. When enabled, the <strong>Encrypt Linux EBS Volumes</strong> checkbox enables encryption on all Linux VMs deployed by BOSH for all product tiles. Windows VMs are not encrypted.</p>
@@ -69,7 +69,7 @@ key/12345678-9012-3456-7890-123456789012
 
 1. Click **Apply Changes** and review any reported errors. The following example error message lists jobs that cannot be encrypted due to unsupported instance types.
 
-	<%= image_tag( "images/cloudform/encrypt-ebs-errors.png", :alt => "Example list of Ops Manager Amazon EBS Encryption errors" ) %>
+	<%= image("images/cloudform/encrypt-ebs-errors.png", :alt => "Example list of Ops Manager Amazon EBS Encryption errors" ) %>
 
 	If you find a job that should be encrypted in the error list, modify the instance type for that job in the **Resource Config** page of the <%= vars.app_runtime_abbr %> tile. Select an instance type that supports encryption. <%= vars.company_name %> recommends using `t3.large`.
 

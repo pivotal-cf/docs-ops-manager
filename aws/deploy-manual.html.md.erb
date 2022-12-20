@@ -31,7 +31,7 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 1. Paste the AMI ID for your region into the search bar and press enter.
     <p class='note'><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the <a href="https://network.pivotal.io">VMware Tanzu Network</a> and file a support ticket.</p>
 
-    <%= image_tag( "../common/images/pcfaws/pcf_aws_ami.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/pcf_aws_ami.png", :alt => "") %>
 
 1. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS), perform the following additional steps:
   1. Right click the row that lists your AMI and click **Copy AMI**.
@@ -44,7 +44,7 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
 1. Choose **m4.large** for your instance type and click **Next: Configure Instance Details**.
 
-    <%= image_tag( "../common/images/pcfaws/aws_ami_m3large.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/aws_ami_m3large.png", :alt => "") %>
 
 1. Configure the following for your instance:
     * **Network**: Select the VPC that you created.
@@ -53,12 +53,12 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
     * **IAM role**: Select the IAM role associated with your pcf-user profile. If you have not created one, click **Create new IAM role** and follow the [Guidelines for Creating User Roles on AWS](../install/aws-iaas-user-roles.html).
     * For all other fields, accept the default values.
 
-    <%= image_tag( "../common/images/pcfaws/pcf_aws_configure_instance.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/pcf_aws_configure_instance.png", :alt => "") %>
 
 1. Click **Next: Add Storage** and adjust the **Size (GiB)** value.
 The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
 
-    <%= image_tag( "../common/images/pcfaws/pcf_aws_add_storage.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/pcf_aws_add_storage.png", :alt => "") %>
 
 1. Click **Next: Tag Instance**.
 
@@ -74,7 +74,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Select the `pcf-ops-manager-key` keypair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
 
-    <%= image_tag( "../common/images/pcfaws/select_pcfpem_keypair.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/select_pcfpem_keypair.png", :alt => "") %>
 
 1. Click **View Instances** to access the **Instances** page on the EC2 Dashboard.
 
@@ -149,7 +149,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** check box is not selected. If you want to allow traffic only from private IP addresses, select this check box.
 
-    <%= image_tag( "../common/images/pcfaws/config_elb.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/config_elb.png", :alt => "") %>
 
 2. Under **Listener Configuration**, add the following rules:
 
@@ -172,7 +172,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 4. On the **Assign Security Groups** page, select the security group `pcf-ssh-elb-security-group` you configured in [Step 8: Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Configure Security Settings**.
 
-    <%= image_tag( "../common/images/pcfaws/lb_assign_sec_groups.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/lb_assign_sec_groups.png", :alt => "") %>
 
 5. On the **Configure Security Settings** page, ignore the **Improve your load balancer's security** error message and click **Next: Configure Health Check**.
 
@@ -207,7 +207,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** check box is not selected. If you want to allow traffic only from private IP addresses, select this check box.
 
-    <%= image_tag( "../common/images/pcfaws/config_elb.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/config_elb.png", :alt => "") %>
 
 1. Under **Listener Configuration**, add the following rules:
 
@@ -256,13 +256,13 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. On the **Assign Security Groups** page, select the security group `pcf-tcp-elb-security-group` you configured in [Step 9: Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Configure Security Settings**.
 
-    <%= image_tag( "../common/images/pcfaws/lb_assign_sec_groups.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/lb_assign_sec_groups.png", :alt => "") %>
 
 1. On the **Configure Security Settings** page, ignore the **Improve you load balancer's security** error message and click **Next: Configure Health Check**.
 
 1. On the **Configure Health Check** page, enter the following values:
 
-    <%= image_tag( "../common/images/pcfaws/lb_health_check.png", :alt => "") %>
+    <%= image("../common/images/pcfaws/lb_health_check.png", :alt => "") %>
 
     * **Ping Protocol**: Select `TCP`.
     * **Ping Port**: Set to `80`.
@@ -312,7 +312,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Change the NAT security group from the default group to the `pcf-nat-security-group` NAT security group that you created in [Step 10: Configure a Security Group for the Outbound NAT](prepare-env-manual.html#pcfaws-om-natsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-    <%= image_tag( "../common/images/pcfaws/pcf_aws_select_security_group.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/pcf_aws_select_security_group.png", :alt => "") %>
 
 2. Click **Assign Security Groups**.
 
@@ -331,7 +331,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     1. Repeat the steps above to add `pcf-rds-subnet-az1` and `pcf-rds-subnet-az2` to the group.
     1. Click **Create**.
 
-    <%= image_tag( "../common/images/pcfaws/rds_pcf_subnet_group.png", :alt => "" ) %>
+    <%= image("../common/images/pcfaws/rds_pcf_subnet_group.png", :alt => "") %>
 
     <p class='note'><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
 
@@ -359,7 +359,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * Enter a secure **Master Username** and **Master Password**.
           <p class='note'><strong>Note:</strong> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
 
-  <%= image_tag( "../common/images/pcfaws/db_details.png", :alt => "" ) %>
+  <%= image("../common/images/pcfaws/db_details.png", :alt => "") %>
 
 1. Click **Next Step**.
 
@@ -371,7 +371,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **Initial Database Name**: Enter `bosh`.
     * Accept the default values for the remaining fields.
 
-	<%= image_tag( "../common/images/pcfaws/advanced_db_settings.png", :alt => "" ) %>
+	<%= image("../common/images/pcfaws/advanced_db_settings.png", :alt => "") %>
 
 3. Click **Launch DB Instance**. Launching the instance may take several minutes.
 

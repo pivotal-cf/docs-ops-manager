@@ -27,18 +27,18 @@ To delete the resources associated with <%= vars.ops_manager %> from AWS:
 
 1. Navigate to the EC2 Dashboard. You should see the **Resources** pane.
 
-   <%= image_tag( "images/aws/delete-install-step2.png", :alt => "" ) %>
+   <%= image("images/aws/delete-install-step2.png", :alt => "") %>
 
 2. Select **Instances** from the menu on the left side.
   1. Click **Actions** to open the drop-down menu. Select **Instance State** > **Terminate** to terminate all instances.
 
-  <%= image_tag( "images/aws/delete-install-step3.png", :alt => "" ) %>
+  <%= image("images/aws/delete-install-step3.png", :alt => "") %>
 
 1. Select **Load Balancers** from the menu on the left side.
   1. Click **Actions** to open the dropdown menu.
   2. Select **Delete** to delete all load balancers.
 
-  <%= image_tag( "images/aws/delete-install-step4.png", :alt => "" ) %>
+  <%= image("images/aws/delete-install-step4.png", :alt => "") %>
 
 1. From the AWS Console, select **RDS**.
 
@@ -46,13 +46,13 @@ To delete the resources associated with <%= vars.ops_manager %> from AWS:
   1. Select **Instance Actions** to open the drop-down menu.
   2. Click **Delete** to delete all RDS instances.
 
-  <%= image_tag( "images/aws/delete-install-step6.png", :alt => "" ) %>
+  <%= image("images/aws/delete-install-step6.png", :alt => "") %>
 
 1. The **Delete DB Instance** pane appears.
   1. Select **Create final Snapshot** from the dropdown.
   2. Click **Delete** to delete the database instance.
 
-  <%= image_tag( "images/aws/delete-install-step7.png", :alt => "" ) %>
+  <%= image("images/aws/delete-install-step7.png", :alt => "") %>
 
 1. From the AWS Console, select **VPC**.
 
@@ -60,8 +60,8 @@ To delete the resources associated with <%= vars.ops_manager %> from AWS:
   1. Select **Actions** to open the dropdown menu.
   2. Click **Delete VPC** to delete the VPCs.
 
-  <%= image_tag( "images/aws/delete-install-step9.png", :alt => "" ) %>
+  <%= image("images/aws/delete-install-step9.png", :alt => "") %>
 
 1. Click the checkbox to acknowledge that you want to delete your default VPC. Click **Yes, Delete**.
 
-  <%= image_tag( "images/aws/delete-install-step10.png", :alt => "" ) %>
+  <%= image("images/aws/delete-install-step10.png", :alt => "") %>
