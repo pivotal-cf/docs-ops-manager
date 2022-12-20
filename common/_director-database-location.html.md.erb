@@ -1,6 +1,7 @@
 <%# OVERVIEW This partial separates by IaaS the config documentation for the **Database Locations** field in the Ops Manager **Director Config** pane. PARTIAL REFERENCES This partial is called from `_director-config.html.md.erb`. `_director-config.html.md.erb` is called in all IaaS-specific BOSH Director configuration topics. %>
 <%# For GCP Terraform config topic only: %>
 <% if current_page.data.iaas == "GCP" && current_page.data.install_type == "terraform" %>
+
 1. For **Database Location**, if you configured your `terraform.tfvars` file to create an external database for <%= vars.ops_manager %>, select **External MySQL Database** and complete the fields below. Otherwise, select **Internal**.
 
     <p class='note'><strong>Note:</strong> The external MySQL database only applies to the BOSH Director. UAA and CredHub does not use these settings and continues to use the Postgres database colocated with the BOSH Director.</p>
