@@ -76,23 +76,24 @@ To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager 
 
 1. When redirected to the **Welcome to <%= vars.ops_manager %>** page, select **Import Existing Installation**.
 
-    <%= image_tag("./images/upgrading/welcome.png", alt: "", :width => "400") %>
+![alt-text=""](images/upgrading/welcome.png)
 
-2. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
+1. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
 You set this passphrase during your initial installation of <%= vars.ops_manager %>.
     <p class='note'><strong>Note:</strong> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
 
 1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
-    <%= image_tag("./images/upgrading/decryption_passphrase.png", alt: "", :width => "400") %>
+![alt-text=""](images/upgrading/decryption_passphrase.png)
 
-2. Click **Import**.
+1. Click **Import**.
     <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
       and might appear to hang.</p>
 
-3. A **Successfully imported installation** message appears upon completion.
+2. A **Successfully imported installation** message appears upon completion.
 
-    <%= image_tag("./images/upgrading/success.png", alt: "") %>
+    <%= image_tag("", alt: "") %>
+![alt-text=""](./images/upgrading/success.png)
 
     <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> automatically imports the
       Telemetry for <%= vars.ops_manager %> tile.

@@ -45,29 +45,29 @@ For a backup artifact to be restorable, these restrictions apply:
 
 ## <a id='restore-diagram'></a> Restore Workflow
 
-The diagram below illustrates the flow of the restore process in a series of steps performed by the operator. These steps are described in more detail throughout this topic.
+The diagram illustrates the flow of the restore process in a series of steps performed by the operator. These steps are described in more detail throughout this topic.
 
-![Flowchart of restore workflow taken by an Operator. Full description below.](images/pcf-restore.png)
+![alt-text="Flowchart of restore workflow taken by an Operator. Full description below."](images/pcf-restore.png)
 
-[View a larger version of this diagram](images/pcf-restore.png).
+[View a larger version of this diagram.](images/pcf-restore.png).
 
 Steps performed by the operator:
 
 1. **Launch new <%= vars.ops_manager %>:** Follow the procedures for your IaaS to deploy <%= vars.ops_manager %>. For more information, see step 1 of [Deploy <%= vars.ops_manager %> and Import Installation Settings](#deploy-import).
 
-1. **Import settings:** You can import settings either with the <%= vars.ops_manager %> UI or API. For more information, see step 2 of [Deploy <%= vars.ops_manager %> and Import Installation Settings](#deploy-import).
+2. **Import settings:** You can import settings either with the <%= vars.ops_manager %> UI or API. For more information, see step 2 of [Deploy <%= vars.ops_manager %> and Import Installation Settings](#deploy-import).
 
-1. **Remove bosh-state.json:** SSH into your <%= vars.ops_manager %> VM and delete the `bosh-state.json` file. For more information, see [Remove BOSH State File](#bosh-state).
+3. **Remove bosh-state.json:** SSH into your <%= vars.ops_manager %> VM and delete the `bosh-state.json` file. For more information, see [Remove BOSH State File](#bosh-state).
 
-1. **Apply Changes (BOSH Director only):** Use the <%= vars.ops_manager %> API to only deploy the BOSH Director. For more information, see [Deploy the BOSH Director](#bosh-only-deploy).
+4. **Apply Changes (BOSH Director only):** Use the <%= vars.ops_manager %> API to only deploy the BOSH Director. For more information, see [Deploy the BOSH Director](#bosh-only-deploy).
 
-1. **bbr restore &lt;director&gt;:** Run the BBR restore command from your jumpbox to restore the BOSH Director. For more information, see [Restore the BOSH Director](#restore-bosh).
+5. **bbr restore &lt;director&gt;:** Run the BBR restore command from your jumpbox to restore the BOSH Director. For more information, see [Restore the BOSH Director](#restore-bosh).
 
-1. **Use BOSH cck to fix the stale cloud ID references in the BOSH database:** For each deployment in the BOSH Director, you must run a `bosh cloud-check` command. For more information, see [Remove Stale Cloud IDs for All Deployments](#bosh-cck).
+6. **Use BOSH cck to fix the stale cloud ID references in the BOSH database:** For each deployment in the BOSH Director, you must run a `bosh cloud-check` command. For more information, see [Remove Stale Cloud IDs for All Deployments](#bosh-cck).
 
-1. **Apply Changes:** In the <%= vars.ops_manager %> Installation Dashboard, click **Review Pending Changes**, review your changes, and click **Apply Changes**. For more information, see [Reviewing Pending Product Changes](../review-pending-changes.html).
+7. **Apply Changes:** In the <%= vars.ops_manager %> Installation Dashboard, click **Review Pending Changes**, review your changes, and click **Apply Changes**. For more information, see [Reviewing Pending Product Changes](../review-pending-changes.html).
 
-1. **bbr restore &lt;<%= vars.app_runtime_abbr %>&gt;:** Run the BBR restore command from your jumpbox to restore <%= vars.app_runtime_abbr %>. For more information, see [Restore <%= vars.app_runtime_abbr %>](#restore-ert).
+8. **bbr restore &lt;<%= vars.app_runtime_abbr %>&gt;:** Run the BBR restore command from your jumpbox to restore <%= vars.app_runtime_abbr %>. For more information, see [Restore <%= vars.app_runtime_abbr %>](#restore-ert).
 
 
 ## <a id='prepare-restore'></a> Prepare to Restore
@@ -99,23 +99,24 @@ If you re-create your IaaS resources, you must also add those resources to <%= v
         1. Access your new <%= vars.ops_manager %> deployment by navigating to the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment in a browser.
         1. On the **Welcome to <%= vars.ops_manager %>** page, click **Import Existing Installation**.
 
-            <%= image_tag("../images/upgrading/welcome.png", :width => "400", :alt => "") %>
+            <%= image_tag("", :width => "400", :alt => "") %>
+![alt-text=""](../images/upgrading/welcome.png)
 
         2. In the import panel:
           * Enter the **Decryption Passphrase** in use when you exported the installation settings from <%= vars.ops_manager %>.
           * Click **Browse** and browse to the installation ZIP file that you exported in [Export Installation Settings](backup-pcf-bbr.html#export) in _Backing Up Deployments with BBR_.
 
-            <%= image_tag("../images/upgrading/decryption_passphrase.png", :width => "400", :alt => "") %>
+![alt-text=""](../images/upgrading/decryption_passphrase.png)
 
-        3. Click **Import**.
+        1. Click **Import**.
 
             <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process, and might appear to hang. The import process takes at least 10 minutes, and takes longer the more tiles that were present on the backed-up <%= vars.ops_manager %>.</p>
 
-        4. When the import is complete, a **Successfully imported installation** message appears.
+        2. When the import is complete, a **Successfully imported installation** message appears.
 
-            <%= image_tag("../images/upgrading/success.png", :alt => "") %>
+![alt-text=""](../images/upgrading/success.png)
 
-    2. Using the <%= vars.ops_manager %> API:
+    1. Using the <%= vars.ops_manager %> API:
         1. Run:
 
             ```
