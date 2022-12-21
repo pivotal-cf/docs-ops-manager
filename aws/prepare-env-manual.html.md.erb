@@ -79,56 +79,56 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
     1. Click **Users** and then click **Add user**.
 
-         <%= image_tag("../common/images/pcfaws/aws_iam_username.png", :alt => "The Add user page has two sections: Set user details and Select AWS access type.") %>
+    ![alt-text="The Add user page has two sections: Set user details and Select AWS access type."](../common/images/pcfaws/aws_iam_username.png)
 
-    1. In **User name**, enter a user name; for example, `pcf-user`.
+    2. In **User name**, enter a user name; for example, `pcf-user`.
 
-    1. For AWS access type, select **Programmatic access**.
+    3. For AWS access type, select **Programmatic access**.
         <p class='note'><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon documentation</a>.</p>
 
-    1. Click **Next: Permissions** and click **Next: Review**.
+    4. Click **Next: Permissions** and click **Next: Review**.
         <p class='note'><strong>Note:</strong> On the <strong>Review</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
 
-    1. Click **Create user**.
+    5. Click **Create user**.
 
 
 1. If you are configuring AWS access using an AWS instance profile, create an IAM role:
 
     1. Click **Roles** and then click **Create role**.
 
-        <%= image_tag("../common/images/aws/create-iam-role.png", :alt => "") %>
+    ![alt-text=""](../common/images/aws/create-iam-role.png)
 
-    1. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case.
+    2. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case.
 
-    1. Click **Next: Permissions**, click **Next: Tags**, and click **Next: Review** to progress through the pages.
+    3. Click **Next: Permissions**, click **Next: Tags**, and click **Next: Review** to progress through the pages.
 
-    1. On the **Review** page, enter a role name. For example, enter `pcf-role`.
+    4. On the **Review** page, enter a role name. For example, enter `pcf-role`.
 
-    1. Click **Create role**.
+    5. Click **Create role**.
 
-1. Click **Download .csv** to download the user security credentials.
+2. Click **Download .csv** to download the user security credentials.
         <p class='note caution'><strong>Caution:</strong> The <code>credentials.csv</code> contains the IDs for your user security access key and secret access key. Keep the <code>credentials.csv</code> file for your currently active key pairs in a secure directory. You cannot recover a lost key pair.</p>
 
-1. Click **Close**.
+3. Click **Close**.
 
-1. On the **Users** page, click the user name to access the user details page.
+4. On the **Users** page, click the user name to access the user details page.
     <p class='note'><strong>Note:</strong> On the <strong>Users</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
 
-1. Click **Add inline policy**. You can review your existing inline policies by clicking the down arrow.
+5. Click **Add inline policy**. You can review your existing inline policies by clicking the down arrow.
 
-     <%= image_tag("../common/images/pcfaws/aws_iam_json.png", :alt => "The Create policy pane shows two tabs, Visual editor and JSON.") %>
+![alt-text="The Create policy pane shows two tabs, Visual editor and JSON."](../common/images/pcfaws/aws_iam_json.png)
 
-2. On the **Create policy** page, define a policy:
+6. On the **Create policy** page, define a policy:
 
     1. Copy the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
 
     2. Paste the policy document into the **JSON** tab on the **Create policy** page.
 
-3. Click **Review policy**.
+7. Click **Review policy**.
 
-4. In the **Name** field, enter `pcf-iam-policy`.
+8. In the **Name** field, enter `pcf-iam-policy`.
 
-5. Click **Create policy**. The **Summary** page displays a list of available policies and actions.
+9. Click **Create policy**. The **Summary** page displays a list of available policies and actions.
 
 ## <a id='pcfaws-vpc'></a> Create a VPC
 
@@ -398,8 +398,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Create**.
 
-    <%= image_tag("../common/images/pcfaws/configure-security-group.png", :alt => "") %>
-
+![alt-text=""](../common/images/pcfaws/configure-security-group.png)
 
 ## <a id='pcfaws-om-sshelbsecgrp'></a> Step 8: Configure a Security Group for the SSH ELB
 

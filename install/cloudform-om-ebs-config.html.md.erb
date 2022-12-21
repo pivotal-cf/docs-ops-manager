@@ -27,12 +27,12 @@ To enable EBS encryption:
 
 1. Select **AWS Config** to open the **AWS Management Console Config** pane.
 
-	<%= image_tag("images/cloudform/aws-config.png", :alt => "") %>
+![alt-text=""](images/cloudform/aws-config.png)
 
-1. Select the **Encrypt Linux EBS Volumes** check box.
+2. Select the **Encrypt Linux EBS Volumes** check box.
 	<p class='note'><strong>Note:</strong> <strong>Encrypt Linux EBS Volumes</strong> is a global setting. When enabled, the <strong>Encrypt Linux EBS Volumes</strong> checkbox enables encryption on all Linux VMs deployed by BOSH for all product tiles. Windows VMs are not encrypted.</p>
 
-1. (Optional) Enter a **Custom Encryption Key**. You can create an encryption key in the **IAM** section of your **AWS Management Console**. Look for the Amazon Resource Name (ARN) and copy that value. The ARN should look similar to the following:
+3. (Optional) Enter a **Custom Encryption Key**. You can create an encryption key in the **IAM** section of your **AWS Management Console**. Look for the Amazon Resource Name (ARN) and copy that value. The ARN should look similar to the following:
 
 	```
 	arn:aws:kms:us-east-1:123456789012:
@@ -44,40 +44,40 @@ key/12345678-9012-3456-7890-123456789012
 
 1. Click **Save**.
 
-1. (Optional) Ignore this series of steps if you are making your first deployment. Otherwise, you need to reset your VMs so that they can encrypt Linux EBS volumes. To encrypt all current BOSH and BOSH-deployed VMs:
+2. (Optional) Ignore this series of steps if you are making your first deployment. Otherwise, you need to reset your VMs so that they can encrypt Linux EBS volumes. To encrypt all current BOSH and BOSH-deployed VMs:
   <p class='note'><strong>Note:</strong> If you need help with the following advanced steps, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
 	1. Encrypt the BOSH Director VM:
 		1. SSH into the <%= vars.ops_manager %> VM with the BOSH CLI. For more information about SSHing with BOSH, see [BOSH SSH](trouble-advanced.html#bosh-ssh) in _Advanced Troubleshooting with the BOSH CLI_.
-		1. Go to the `/var/tempest/workspaces/default/deployments` directory in the SSHed <%= vars.ops_manager %> VM.
-		1. Back up your `bosh-state.json` file elsewhere in case you want to restore the file.
-		1. Edit `bosh-state.json` to remove `current_stemcell_id` and `stemcells` values. For example, enter `"current_stemcell_id": ""` and `"stemcells": []`.
-	1. Encrypt BOSH-created VMs:
+		2. Go to the `/var/tempest/workspaces/default/deployments` directory in the SSHed <%= vars.ops_manager %> VM.
+		3. Back up your `bosh-state.json` file elsewhere in case you want to restore the file.
+		4. Edit `bosh-state.json` to remove `current_stemcell_id` and `stemcells` values. For example, enter `"current_stemcell_id": ""` and `"stemcells": []`.
+	2. Encrypt BOSH-created VMs:
 		1. Enter the `bosh stemcells` and `bosh deployments` commands into the command line. Record the stemcell names that BOSH-deployed VMs are using.
 		**Encrypt BOSH-deployed VMs**
-		1. Go to the folder `var/tempest/stemcells` in the SSHed <%= vars.ops_manager %> VM.
-		1. Enter the `bosh upload-stemcell STEMCELL_NAME --fix` command into the command line for each stemcell to enforce the BOSH Director, encrypt the stemcells, and re-upload them.
-	1. Reset Persistent Disks and Recreate VMs:
+		2. Go to the folder `var/tempest/stemcells` in the SSHed <%= vars.ops_manager %> VM.
+		3. Enter the `bosh upload-stemcell STEMCELL_NAME --fix` command into the command line for each stemcell to enforce the BOSH Director, encrypt the stemcells, and re-upload them.
+	3. Reset Persistent Disks and Recreate VMs:
 		1. Select **Director Config**.
-		1. Enable **Recreate VMs deployed by the BOSH Director**.
-		1. Enable **Recreate BOSH Director VM**.
-		1. Enable **Recreate All Persistent Disks**.
-		1. Click **Save**.
+		2. Enable **Recreate VMs deployed by the BOSH Director**.
+		3. Enable **Recreate BOSH Director VM**.
+		4. Enable **Recreate All Persistent Disks**.
+		5. Click **Save**.
 
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
-1. Click **Review Pending Changes**.
+2. Click **Review Pending Changes**.
 
-1. Click **Apply Changes** and review any reported errors. The following example error message lists jobs that cannot be encrypted due to unsupported instance types.
+3. Click **Apply Changes** and review any reported errors. The following example error message lists jobs that cannot be encrypted due to unsupported instance types.
 
-	<%= image_tag("images/cloudform/encrypt-ebs-errors.png", :alt => "Example list of Ops Manager Amazon EBS Encryption errors") %>
+![alt-text="Example list of Ops Manager Amazon EBS Encryption errors."](images/cloudform/encrypt-ebs-errors.png)
 
 	If you find a job that should be encrypted in the error list, modify the instance type for that job in the **Resource Config** page of the <%= vars.app_runtime_abbr %> tile. Select an instance type that supports encryption. <%= vars.company_name %> recommends using `t3.large`.
 
 1. After you make your changes in <%= vars.app_runtime_abbr %>, return to the <%= vars.ops_manager %> Installation Dashboard.
 
-1. Click **Review Pending Changes**.
+2. Click **Review Pending Changes**.
 
-1. Click **Apply Changes**.
+3. Click **Apply Changes**.
 
 <p class='note caution'><strong>Caution:</strong> After you enable or disable the <strong>Encrypt Linux EBS Volumes</strong> checkbox, click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
 

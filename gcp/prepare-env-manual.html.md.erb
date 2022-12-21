@@ -62,7 +62,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
   * **Service account ID**: The field automatically generates a unique ID based on the username.
   * **Furnish a new private key**: Select this checkbox and JSON as the **Key type**.
 
-    <%= image_tag("../common/images/gcp/iam_account_2.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/iam_account_2.png)
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
@@ -113,7 +113,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
 1. Select **VPC network**, then **CREATE VPC NETWORK**.
 
-    ![On the GCP console, the VPC Network page has two sections: VPC Networks and External IP Addresses.](../common/images/gcp/gcp-vpc-networks.png)
+![alt-text="On the GCP console, the VPC Network page has two sections: VPC Networks and External IP Addresses."](../common/images/gcp/gcp-vpc-networks.png)
 
 1. In the **Name** field, enter a name of your choice for the VPC network. This name helps you identify resources for this deployment in the GCP console. Network names must be lowercase. For example, `pcf-virt-net`.<br>
 
@@ -139,7 +139,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
         See the following image for an example:
 
-        ![The New subnet dialog box includes these sections: Name, Region, IP address range, Private Google access, and Flow logs.](../common/images/gcp/gcp-vpc-subnet.png)
+![alt-text="The New subnet dialog box includes these sections: Name, Region, IP address range, Private Google access, and Flow logs."](../common/images/gcp/gcp-vpc-subnet.png)
 
         <p class='note'><strong>Note:</strong> For deployments that do not use external IP addresses, enable <strong>Private Google access</strong> to allow your runtime to make API calls to Google services.</p>
 
@@ -183,8 +183,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
         See the following image for an example:
 
-
-      ![The VPC networks wizard shows three example subnets.](../common/images/gcp/vpc_subnetworks.png)
+![alt-text="The VPC networks wizard shows three example subnets."](../common/images/gcp/vpc_subnetworks.png)
 
 1. Under **Dynamic routing mode**, leave **Regional** selected.
 
@@ -202,11 +201,11 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 1. In the GCP console, with your single project or shared-VPC host project selected, navigate to **Compute Engine** > **VM instances**.
 
-    ![alt-text=""](../common/images/gcp/gcp-vm-instances.png)
+![alt-text=""](../common/images/gcp/gcp-vm-instances.png)
 
 1. Click **CREATE INSTANCE**.
 
-    ![The GCP Console Compute Engine page shows the Create Instance button.](../common/images/gcp/gcp-vm-create.png)
+![alt-text="The GCP Console Compute Engine page shows the Create Instance button."](../common/images/gcp/gcp-vm-create.png)
 
 2. Complete the following fields:
 
@@ -218,11 +217,11 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
     * **Machine type**: Select `n1-standard-4`.
     * **Boot disk**: Click **Change** and select `Ubuntu 14.04 LTS`.
 
-    ![The Create Instance dialog box showing the sections: Name, Zone, Machine Type, and Boot disk.](../common/images/gcp/gcp-primary-nat.png)
+![alt-text="The Create Instance dialog box showing the sections: Name, Zone, Machine Type, and Boot disk."](../common/images/gcp/gcp-primary-nat.png)
 
 3. Expand the additional configuration fields by clicking **Management, disks, networking, SSH keys**.
 
-    ![The Management, disks, networking, SSH keys drop-down menu.](../common/images/gcp/gcp-nat-dropdown.png)
+![alt-text="The Management, disks, networking, SSH keys drop-down menu."](../common/images/gcp/gcp-nat-dropdown.png)
 
     1. In the **Startup script** field under **Automation**, enter the following text:
 
@@ -235,7 +234,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 4. Click **Networking** to open additional network configuration fields:
 
-    ![The page includes the tabs: Management, Disks, Networking, and SSH Keys.](../common/images/gcp/gcp-nat-network.png)
+![alt-text="The page includes the tabs: Management, Disks, Networking, and SSH Keys."](../common/images/gcp/gcp-nat-network.png)
 
     1. In the **Network tags** field, add the following: `nat-traverse` and `pcf-nat-instance`.
     2. Click on the **Networking** tab and the pencil icon to edit the **Network interface**.
@@ -307,7 +306,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 1. Navigate to **VPC Networks** > **Routes**.
 
-    ![The Networking menu includes these options: VPC network, Network Services, VPN.](../common/images/gcp/gcp-vpc-routes.png)
+![alt-text="The Networking menu includes these options: VPC network, Network Services, VPN."](../common/images/gcp/gcp-vpc-routes.png)
 
 1. Click **CREATE ROUTE**.
 
@@ -689,7 +688,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
     * Select **Create a new certificate**. The **Create a New Certificate** dialog is displayed.
     * In the **Name** field, enter a name for the certificate.
 
-        <%= image_tag("../common/images/gcp/lb_frontend_cert.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/lb_frontend_cert.png)
 
     * In the **Public key certificate** field, copy in the contents of your public certificate, or upload your certificate as a .pem file.
     If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Certificate field into the BOSH Director **Public key certificate** field.
@@ -713,7 +712,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 1. Under **TCP Load Balancing**, click **Start configuration**.
 
-    <%= image_tag("../common/images/gcp/create_new_lb.png", :alt => "The Create a load balancer page has three sections: HTTP(S) Load Balancing, TCP Load Balancing, and UDP Load Balancing.") %>
+![alt-text="The Create a load balancer page has three sections: HTTP(S) Load Balancing, TCP Load Balancing, and UDP Load Balancing."](../common/images/gcp/create_new_lb.png)
 
 1. In the **Create a load balancer** configuration screen, make the following selections:
 
@@ -721,15 +720,15 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
     * Under **Multiple regions or single region**, select **Single region only**.
     * Under **Connection termination**, select **No (TCP)**.
 
-        <%= image_tag("../common/images/gcp/lb_connection_termination.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/lb_connection_termination.png)
 
 1. Click **Continue**.
 
 2. In the **New TCP load balancer** window, enter `pcf-wss-logs` in the **Name** field.
 
-1. Click **Backend configuration** to configure the **Backend service**:
+3. Click **Backend configuration** to configure the **Backend service**:
 
-    <%= image_tag("../common/images/gcp/tcp_websockets_backend.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/tcp_websockets_backend.png)
 
     * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnets](#create_network).
     * From the **Health check** dropdown, create a health check with the following details:
@@ -742,7 +741,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
         * **Unhealthy threshold**: `2`
     The **Backend configuration** section shows a green check mark.
 
-2. Click **Frontend configuration** to open its configuration window and complete the fields:
+1. Click **Frontend configuration** to open its configuration window and complete the fields:
     * **Protocol**: `TCP`
     * **IP**: Perform the following steps:
         1. Select **Create IP address**.
@@ -750,9 +749,9 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
         3. Click **Reserve**.
     * **Port**: `443`
 
-1. Click **Review and finalize** to verify your configuration.
+2. Click **Review and finalize** to verify your configuration.
 
-2. Click **Create**.
+3. Click **Create**.
 
 
 ## <a id='ssh_lb'></a> Step 10: Create SSH Proxy Load Balancer
@@ -765,22 +764,22 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 1. Under **Connection termination**, select **No (TCP)**.
 
-    <%= image_tag("../common/images/gcp/lb_connection_termination.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/lb_connection_termination.png)
 
 1. Click **Continue**.
 
 2. In the **New TCP load balancer** window, enter `pcf-ssh-proxy` in the **Name** field.
 
-1. Select **Backend configuration**, and enter the following field values:
+3. Select **Backend configuration**, and enter the following field values:
 
     * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnet](#create_network).
     * **Backup pool**: `None`
     * **Failover ratio**: `10%`
     * **Health check**: `No health check`
 
-        <%= image_tag("../common/images/gcp/ssl_lb_backend_config_complete.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/ssl_lb_backend_config_complete.png)
 
-2. Select **Frontend configuration**, and add the following:
+1. Select **Frontend configuration**, and add the following:
 
     * **Protocol**: `TCP`
     * **IP**: Perform the following steps:
@@ -821,7 +820,7 @@ To create a load balancer for TCP routing in GCP:
         * **Unhealthy threshold**: `2`
         * Click **Save and continue**.
 
-    <%= image_tag("../common/images/gcp/tcp_lb_backend.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/tcp_lb_backend.png)
 
 1. Select **Frontend configuration**, and add the front end IP and port entry as follows:
 
@@ -832,7 +831,7 @@ To create a load balancer for TCP routing in GCP:
         3. Click **Reserve**.
     * **Port**: `1024-65535`
 
-    <%= image_tag("../common/images/gcp/tcp_lb_frontend.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/tcp_lb_frontend.png)
 
 1. Click **Review and finalize** to verify your configuration.
 

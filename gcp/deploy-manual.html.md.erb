@@ -43,7 +43,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
     * **Source**: Choose **Cloud Storage file**.
     * **Cloud Storage file**: Paste in the Google Cloud Storage filepath you copied from the PDF file in the [previous step](#select-tgz).
 
-        <%= image_tag("../common/images/gcp/create_image.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/create_image.png)
 
 1. Click **Create**. The file might take a few minutes to import.
 
@@ -51,11 +51,11 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 1. Select the check box for the image that you created above.
 
-    <%= image_tag("../common/images/gcp/create_instance.png", :alt => "") %>
+![alt-text=""](../common/images/gcp/create_instance.png)
 
-2. Click **Create Instance**.
+1. Click **Create Instance**.
 
-1. In the **Create an instance form**, complete the following fields:
+2. In the **Create an instance form**, complete the following fields:
 
     * **Name**: Enter a name that matches the naming conventions of your deployment.
     * **Zone**: Choose a zone from the region in which you created your network.
@@ -78,7 +78,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
         * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.<br>
 
-            <%= image_tag("../common/images/gcp/boot_image.png", :alt => "") %>
+        ![alt-text=""](../common/images/gcp/boot_image.png)
 
         * Click **Select** to save.
 
@@ -94,9 +94,9 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
             * For **External IP**, select **Create IP address**. In the next form, enter a name for the static IP. For example, `om-public-ip`. Click **Reserve**. In the **External IP** dropdown, select the static IP address you just reserved.
         * For **Network tags**, enter `pcf-opsman` and `allow-https`. These tags apply the firewall rules you created in [Create Firewall Rules for the Network](prepare-env-manual.html#firewall_rules) to the <%= vars.ops_manager %> VM.
 
-1. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This might take a few moments.
+3. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This might take a few moments.
 
-1. Navigate to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) `opsman.MY-DOMAIN` to the `pcf-opsman` static IP address of <%= vars.ops_manager %> that you created in a previous step.
+4. Navigate to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) `opsman.MY-DOMAIN` to the `pcf-opsman` static IP address of <%= vars.ops_manager %> that you created in a previous step.
 
     <p class='note'><strong>Note:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
 

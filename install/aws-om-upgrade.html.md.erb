@@ -58,7 +58,7 @@ To launch the AMI for <%= vars.ops_manager %>:
 
     <p class='note'><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
 
-    <%= image_tag("images/pcfaws/pcf_aws_ami.png", :alt => "") %>
+![alt-text=""](images/pcfaws/pcf_aws_ami.png)
 
 1. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS):
   1. Right-click the row that lists your AMI and click **Copy AMI**.
@@ -73,7 +73,7 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 4. Click **Next: Configure Instance Details**.
 
-    <%= image_tag("images/pcfaws/aws_ami_m5large.png", :alt => "") %>
+![alt-text=""](images/pcfaws/aws_ami_m5large.png)
 
 1.  Configure the following fields for your instance:
     * **Network:** Select the VPC that you created.
@@ -84,11 +84,11 @@ To launch the AMI for <%= vars.ops_manager %>:
 
     <%= image_tag("images/pcfaws/pcf_aws_configure_instance.png", :alt => "") %>
 
-1.  Click **Next: Add Storage**.
+2.  Click **Next: Add Storage**.
 
-2.  Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
+3.  Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
 
-    <%= image_tag("images/pcfaws/pcf_aws_add_storage.png", :alt => "") %>
+![alt-text=""](images/pcfaws/pcf_aws_add_storage.png)
 
 1.  Click **Next: Tag Instance**
 
@@ -104,7 +104,7 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 7.  Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
 
-    <%= image_tag("images/pcfaws/select_pcfpem_keypair.png", :alt => "") %>
+![alt-text=""](images/pcfaws/select_pcfpem_keypair.png)
 
 
 ## <a id='dns'></a> Edit <%= vars.ops_manager %> DNS A Record
