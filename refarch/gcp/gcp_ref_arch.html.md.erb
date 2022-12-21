@@ -42,25 +42,25 @@ A single-project VPC lets the platform architect give <%= vars.ops_manager %> fu
 
 The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
 
-![Complex diagram showing many high-level system and routing components. The large goupings in the Organization are Host Project, Service Project (Foundation), and Region.](../images/gcp-overview-shared-vpc.png)
+![alt-text="Complex diagram showing many high-level system and routing components. The large groupings in the Organization are Host Project, Service Project (Foundation), and Region."](../images/gcp-overview-shared-vpc.png)
 
-<a href="../images/gcp-overview-shared-vpc.png" aria-hidden="true">View a larger version of this diagram</a>
+[View a larger version of this diagram.](../images/gcp-overview-shared-vpc.png)
 
 ### <a id='shared-vpc-nat'></a> NAT Network Topology
 
 To expose a minimal number of public IP addresses, set up your NAT as shown in the diagram below.
 
-![Complex NAT network topology diagram. For more information, see other sections. Detailed routing for the Region block is shown.](../images/gcp-nat-flow.png)
+![alt-text="Complex NAT network topology diagram. Detailed routing for the Region block is shown."](../images/gcp-nat-flow.png)
 
-<a href="../images/gcp-nat-flow.png" aria-hidden="true">View a larger version of this diagram</a>
+[View a larger version of this diagram.](../images/gcp-nat-flow.png)
 
 ### <a id='shared-vpc-interconnect'></a> Cloud Interconnect
 
 To speed communication between data centers, use Google Cloud Interconnect, as shown in the diagram below.
 
-![This diagram is described in the following text.](../images/gcp-cloud-interconnect.png)
+![alt-text="This cloud interconnect diagram is described in the following text."](../images/gcp-cloud-interconnect.png)
 
-<a href="../images/gcp-cloud-interconnect.png" aria-hidden="true">View a larger version of this diagram</a>
+[View a larger version of this diagram.](../images/gcp-cloud-interconnect.png)
 
 The diagram shows two customer networks in GCP. One shows the traditional setup of linking to the VPN Gateway through the Customer Gateway. The other shows Customer Gateway connecting to Cloud Interconnect instead of VPN Gateway. The gateway then connects to the Cloud Router, which goes to each of the three subnetworks.
 
@@ -112,9 +112,9 @@ The service project manages these resources:
 
 The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP.
 
-![The GCP Reference Architecture components are listed in the following section.](../images/gcp-overview-single-vpc.png)
+![alt-text="The GCP Reference Architecture components are listed in the following section."](../images/gcp-overview-single-vpc.png)
 
-<a href="../images/gcp-overview-single-vpc.png" aria-hidden="true">View a larger version of this diagram</a>
+[View a larger version of this diagram.](../images/gcp-overview-single-vpc.png)
 
 ### <a id='base_components'></a> Base Reference Architecture Components
 
