@@ -79,7 +79,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
     1. Click **Users** and then click **Add user**.
 
-         <%= image("../common/images/pcfaws/aws_iam_username.png", :alt => "The Add user page has two sections: Set user details and Select AWS access type." ) %>
+         <%= image_tag("../common/images/pcfaws/aws_iam_username.png", :alt => "The Add user page has two sections: Set user details and Select AWS access type.") %>
 
     1. In **User name**, enter a user name; for example, `pcf-user`.
 
@@ -96,7 +96,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
     1. Click **Roles** and then click **Create role**.
 
-        <%= image("../common/images/aws/create-iam-role.png", :alt => "") %>
+        <%= image_tag("../common/images/aws/create-iam-role.png", :alt => "") %>
 
     1. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case.
 
@@ -116,7 +116,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Add inline policy**. You can review your existing inline policies by clicking the down arrow.
 
-     <%= image("../common/images/pcfaws/aws_iam_json.png", :alt => "The Create policy pane shows two tabs, Visual editor and JSON." ) %>
+     <%= image_tag("../common/images/pcfaws/aws_iam_json.png", :alt => "The Create policy pane shows two tabs, Visual editor and JSON.") %>
 
 2. On the **Create policy** page, define a policy:
 
@@ -398,7 +398,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Create**.
 
-    <%= image("../common/images/pcfaws/configure-security-group.png", :alt => "") %>
+    <%= image_tag("../common/images/pcfaws/configure-security-group.png", :alt => "") %>
 
 
 ## <a id='pcfaws-om-sshelbsecgrp'></a> Step 8: Configure a Security Group for the SSH ELB

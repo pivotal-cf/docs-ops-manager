@@ -62,7 +62,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
   * **Service account ID**: The field automatically generates a unique ID based on the username.
   * **Furnish a new private key**: Select this checkbox and JSON as the **Key type**.
 
-    <%= image("../common/images/gcp/iam_account_2.png", :alt => "") %>
+    <%= image_tag("../common/images/gcp/iam_account_2.png", :alt => "") %>
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
@@ -689,7 +689,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
     * Select **Create a new certificate**. The **Create a New Certificate** dialog is displayed.
     * In the **Name** field, enter a name for the certificate.
 
-        <%= image("../common/images/gcp/lb_frontend_cert.png", :alt => "") %>
+        <%= image_tag("../common/images/gcp/lb_frontend_cert.png", :alt => "") %>
 
     * In the **Public key certificate** field, copy in the contents of your public certificate, or upload your certificate as a .pem file.
     If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Certificate field into the BOSH Director **Public key certificate** field.
@@ -713,7 +713,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 1. Under **TCP Load Balancing**, click **Start configuration**.
 
-    <%= image("../common/images/gcp/create_new_lb.png", :alt => "The Create a load balancer page has three sections: HTTP(S) Load Balancing, TCP Load Balancing, and UDP Load Balancing." ) %>
+    <%= image_tag("../common/images/gcp/create_new_lb.png", :alt => "The Create a load balancer page has three sections: HTTP(S) Load Balancing, TCP Load Balancing, and UDP Load Balancing.") %>
 
 1. In the **Create a load balancer** configuration screen, make the following selections:
 
@@ -765,7 +765,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 1. Under **Connection termination**, select **No (TCP)**.
 
-    <%= image("../common/images/gcp/lb_connection_termination.png", :alt => "") %>
+    <%= image_tag("../common/images/gcp/lb_connection_termination.png", :alt => "") %>
 
 1. Click **Continue**.
 
@@ -778,7 +778,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
     * **Failover ratio**: `10%`
     * **Health check**: `No health check`
 
-        <%= image("../common/images/gcp/ssl_lb_backend_config_complete.png", :alt => "") %>
+        <%= image_tag("../common/images/gcp/ssl_lb_backend_config_complete.png", :alt => "") %>
 
 2. Select **Frontend configuration**, and add the following:
 
@@ -821,7 +821,7 @@ To create a load balancer for TCP routing in GCP:
         * **Unhealthy threshold**: `2`
         * Click **Save and continue**.
 
-    <%= image("../common/images/gcp/tcp_lb_backend.png", :alt => "") %>
+    <%= image_tag("../common/images/gcp/tcp_lb_backend.png", :alt => "") %>
 
 1. Select **Frontend configuration**, and add the front end IP and port entry as follows:
 
@@ -832,7 +832,7 @@ To create a load balancer for TCP routing in GCP:
         3. Click **Reserve**.
     * **Port**: `1024-65535`
 
-    <%= image("../common/images/gcp/tcp_lb_frontend.png", :alt => "") %>
+    <%= image_tag("../common/images/gcp/tcp_lb_frontend.png", :alt => "") %>
 
 1. Click **Review and finalize** to verify your configuration.
 

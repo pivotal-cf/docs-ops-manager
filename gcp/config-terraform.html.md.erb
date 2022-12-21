@@ -36,7 +36,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
     * Select **AuthJSON** and in the field below enter the contents of the JSON file for you service account key.
         <p class='note'><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account automatically created by GCP for the <%= vars.ops_manager %> VM.</p>
 
-       <%= image("../common/images/gcp/google_config.png", :alt => "") %>
+       <%= image_tag("../common/images/gcp/google_config.png", :alt => "") %>
 
 2. Click **Save**.
 
@@ -188,7 +188,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Select **Resource Config**.
 
-    <%= image("../common/images/gcp/om_resource_config.png", :alt => "The Resource Config dialog contains the following fields: Job, Instances, VM Type, and Persistent Disk Type." ) %>
+    <%= image_tag("../common/images/gcp/om_resource_config.png", :alt => "The Resource Config dialog contains the following fields: Job, Instances, VM Type, and Persistent Disk Type.") %>
 
 2. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** check box. Ensure that the **Internet Connected** checkbox is not selected for any job. The Terraform templates do not provision a Network Address Translation (NAT) box for internet connectivity to your VMs, so instead VMs are provided with ephemeral public IP addresses to allow the jobs to reach the internet.
 
@@ -206,11 +206,11 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the [Network Config](#network) screen, and make sure you have deselected the **Enable ICMP Checks** box. Click **Review Pending Changes**, then **Apply Changes** again.
 
-    <%= image("../common/images/cloudform/install-error.png", :alt => "The Ops Manager errors list. There are 2 buttons: Ignore errors and start the install and Stop and fix errors." ) %>
+    <%= image_tag("../common/images/cloudform/install-error.png", :alt => "The Ops Manager errors list. There are 2 buttons: Ignore errors and start the install and Stop and fix errors.") %>
 
 2. BOSH Director installs. This may take a few moments. When the installation process is complete, the **Changes Applied** window appears.
 
-    <%= image("../common/images/cloudform/ops-manager-complete.png", :alt => "The Changes Applied dialog box has 2 buttons: Close and Return to Installation Dashboard." ) %>
+    <%= image_tag("../common/images/cloudform/ops-manager-complete.png", :alt => "The Changes Applied dialog box has 2 buttons: Close and Return to Installation Dashboard.") %>
 
 
 ## <a id='next'></a> Next Steps

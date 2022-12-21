@@ -30,7 +30,7 @@ To complete the procedures in this topic, you must have access to the output fro
 
 1. Select **AWS Config** to open the **AWS Management Console Config** page.
 
-    <%= image("../common/images/cloudform/aws-config.png", :alt => "The AWS Management Console Config pane. See the following steps for more information." ) %>
+    <%= image_tag("../common/images/cloudform/aws-config.png", :alt => "The AWS Management Console Config pane. See the following steps for more information.") %>
 
 2. Select **Use AWS Keys** or **Use AWS Instance Profile**.
     * If you choose to use AWS keys, complete the following fields:
@@ -63,7 +63,7 @@ To complete the procedures in this topic, you must have access to the output fro
 ## <a id='az'></a> Step 4: Create Availability Zones page
 
 1. Select **Create Availability Zones**.
-    <%= image("../common/images/cloudform/create-az.png", :alt => "The Create Availability Zones pane. See the following steps for more information." ) %>
+    <%= image_tag("../common/images/cloudform/create-az.png", :alt => "The Create Availability Zones pane. See the following steps for more information.") %>
 
 2. To create three Availability Zones for your apps to use:
     1. Click **Add** three times.
@@ -74,7 +74,7 @@ To complete the procedures in this topic, you must have access to the output fro
 ## <a id='network'></a> Step 5: Create Networks Page
 
 1. Select **Create Networks**.
-<%= image("../common/images/cloudform/create-networks.png", :alt => "The Create Networks pane. See the following steps for more information.") %>
+<%= image_tag("../common/images/cloudform/create-networks.png", :alt => "The Create Networks pane. See the following steps for more information.") %>
 
 1. (Optional) Select **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable.
 
@@ -353,7 +353,7 @@ To complete the procedures in this topic, you must have access to the output fro
 ## <a id='assign-azs'></a> Step 6: Assign AZs and Networks page
 
 1. Select **Assign AZs and Networks**.
-<%= image("../common/images/assign-az.png", :alt => "The Assign AZs and Networks pane. See the following steps for information about the details." ) %>
+<%= image_tag("../common/images/assign-az.png", :alt => "The Assign AZs and Networks pane. See the following steps for information about the details.") %>
 
 1. Use the **Singleton Availability Zone** drop-down menu to select an AZ . The BOSH Director installs in this availability zone (AZ).
 
@@ -377,7 +377,7 @@ To complete the procedures in this topic, you must have access to the output fro
 ## <a id='pcfaws-om-rscestem'></a> Step 10: Resource Config page
 
 1. Select **Resource Config**.
-    <%= image("../common/images/cloudform/resource-config.png", :alt => "The 'Resource Config' pane. See the following steps for detailed information." ) %>
+    <%= image_tag("../common/images/cloudform/resource-config.png", :alt => "The 'Resource Config' pane. See the following steps for detailed information.") %>
 
 1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, select **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
@@ -441,11 +441,11 @@ To assign your load balancer VMs to the correct target groups and security group
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, click **Ignore errors and start the install**.
 
-    <%= image("../common/images/cloudform/install-error.png", :alt => "Error messages read 'Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is disabled)' and 'Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is disabled)'." ) %>
+    <%= image_tag("../common/images/cloudform/install-error.png", :alt => "Error messages read 'Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is disabled)' and 'Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is disabled)'.") %>
 
 2. BOSH Director installation begins. This may take a few moments. When the installation process is complete, the **Changes Applied** window appears.
 
-    <%= image("../common/images/cloudform/ops-manager-complete.png", :alt => "") %>
+    <%= image_tag("../common/images/cloudform/ops-manager-complete.png", :alt => "") %>
 
 3. After you complete this procedure, continue to the topic for the runtime you are installing:
   * **<%= vars.app_runtime_abbr %>**: [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html)

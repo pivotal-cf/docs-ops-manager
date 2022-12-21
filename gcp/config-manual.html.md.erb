@@ -34,7 +34,7 @@ To configure your GCP tile:
         <p class='note'><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
     * **VM Type Catalog**. Select the VM catalog that you want to use for your BOSH-deployed VMs.
 
-       <%= image("../common/images/gcp/google_config.png", :alt => "") %>
+       <%= image_tag("../common/images/gcp/google_config.png", :alt => "") %>
 
 2. Click **Save**.
 
@@ -65,7 +65,7 @@ To configure the **Create Availability Zones** pane:
     * Click **Add**.
     * Repeat the above step for all the AZs that you associated to instance groups in [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html#create-http-and-instance-group).
 
-    <%= image("../common/images/gcp/availability_zones_multiple.png", :alt => "") %>
+    <%= image_tag("../common/images/gcp/availability_zones_multiple.png", :alt => "") %>
 
     * Click **Save**.
 

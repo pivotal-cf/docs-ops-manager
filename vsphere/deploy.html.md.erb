@@ -94,11 +94,11 @@ vSphere objects used to organize resources.
     * Select the object labeled **Datacenter**.
     * Click **Next**.
 
-    <%= image("../common/images/vsphere/vsphere_om-deploy-01.png", :alt => "") %>
+    <%= image_tag("../common/images/vsphere/vsphere_om-deploy-01.png", :alt => "") %>
 
 2. On the **Select a compute resource** screen, select the compute resource where the <%= vars.ops_manager %> VM will run, and click **Next**. Select the Resource Pool for the management components.
 
-    <%= image("../common/images/vsphere/vsphere_om-deploy-10.png", :alt => "") %>
+    <%= image_tag("../common/images/vsphere/vsphere_om-deploy-10.png", :alt => "") %>
 
     <p class='note'><strong>Note:</strong> Hardware virtualization must be turned off if your
     vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.ops_manager %> on vSphere Requirements</em> for more information.</p>
@@ -115,11 +115,11 @@ vSphere objects used to organize resources.
 
         <p class='note caution'><strong>Caution:</strong> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
 
-    <%= image("../common/images/vsphere/vsphere_om-deploy-04.png", :alt => "") %>
+    <%= image_tag("../common/images/vsphere/vsphere_om-deploy-04.png", :alt => "") %>
 
 5. On the **Select Networks** screen, either select the default **VM Network**, or ideally, create an **Infrastructure** Network, and click **Next**.
 
-    <%= image("../common/images/vsphere/vsphere_om-deploy-12.png", :alt => "") %>
+    <%= image_tag("../common/images/vsphere/vsphere_om-deploy-12.png", :alt => "") %>
 
 6. On the **Customize template** screen, enter the following information, and click **Next**.
    * **IP Address**: The IP address of the <%= vars.ops_manager %> network interface. For example, `10.0.0.2`.
