@@ -84,7 +84,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
             Where `NSX-MANAGER-ADDRESS` is the address of the NSX manager.
 
-        * **Use NSX-T Policy API Migration Mode**: This is a special mode to migrate an existing deployment from earlier NSX-T Manager API objects such as NS Groups to the newer NSX-T Policy API objects such as Groups, and should only be used in conjunction with NSX-T migration scripts. Leave unchecked if unsure.
+        * **Use NSX-T Policy API Migration Mode**: This is a special mode to migrate an existing deployment from earlier NSX-T Manager API objects such as NS Groups to the newer NSX-T Policy API objects such as Groups, and should only be used with NSX-T migration scripts. Leave unchecked if unsure.
 
 3. Configure the following folder names:
     * **VM Folder**: The vSphere datacenter folder where <%= vars.ops_manager %> places VMs. Enter `[YOUR-DEPLOYMENT]_vms` where `YOUR-DEPLOYMENT` corresponds to a descriptive name for your deployment. For example, `my_pcf_vms`.
@@ -147,7 +147,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
     * For <%= vars.app_runtime_abbr %>, click **Add Network** and create the following networks:
         * `infrastructure`: This network is for <%= vars.ops_manager %> and the BOSH Director.
-        * `pas`: This network is for all the <%= vars.app_runtime_abbr %> VMs including Gorouter, Diego cells, and Cloud Controller.
+        * `pas`: This network is for all the <%= vars.app_runtime_abbr %> VMs including GoRouter, Diego cells, and Cloud Controller.
         * `services`: This network is for any service tiles to be deployed alongside <%= vars.app_runtime_abbr %>.<br><br> Use the values from the following table as a guide when you create each network, replacing the IP addresses with ranges that are available in your vSphere environment:
 
             <table>

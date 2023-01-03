@@ -122,8 +122,8 @@ Before installing <%= vars.ops_manager %> on Azure, you must:
 
 * Assign administrative rights to a domain for <%= vars.ops_manager %>. You must be able to add wildcard records to this domain.
 
-* Create a wildcard DNS record that points to your Gorouter or load balancer. Alternatively, you can use a service such as xip.io. For example, `203.0.113.0.xip.io`. Then, create at least one wildcard TLS certificate that matches the DNS record you configured.
-  <p class='note'><strong>Note:</strong> With a wildcard DNS record, every hostname in your domain resolves to the IP address of your Gorouter or load balancer. For example, if you create a DNS record <code>*.example.com</code> pointing to your Gorouter, every app deployed to the <code>example.com</code> domain resolves to the IP address of your Gorouter.</p>
+* Create a wildcard DNS record that points to your GoRouter or load balancer. Alternatively, you can use a service such as xip.io. For example, `203.0.113.0.xip.io`. Then, create at least one wildcard TLS certificate that matches the DNS record you configured.
+  <p class='note'><strong>Note:</strong> With a wildcard DNS record, every hostname in your domain resolves to the IP address of your GoRouter or load balancer. For example, if you create a DNS record <code>*.example.com</code> pointing to your GoRouter, every app deployed to the <code>example.com</code> domain resolves to the IP address of your GoRouter.</p>
 
 * Create one or more NTP servers, if the NTP servers are not already provided by your Azure project.
 

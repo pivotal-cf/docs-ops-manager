@@ -92,13 +92,13 @@ For more information about DNS requirements for <%= vars.app_runtime_abbr %>, se
 
 The load balancing requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments are:
 
-* You must configure NSX-T load balancers for the Gorouters.
+* You must configure NSX-T load balancers for the GoRouters.
   * The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer VIP.
   * You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
 
   <p class='note'><strong>Note:</strong> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
 
-* Any TCP Gorouters and SSH Proxies within the platform also require NSX-T load balancers.
+* Any TCP GoRouters and SSH Proxies within the platform also require NSX-T load balancers.
 
 * Layer 4 and Layer 7 NSX-T load balancers are created automatically during app deployment.
 
@@ -156,9 +156,7 @@ For more information about general storage requirements and recommendations for 
 
 ### <a id='pas-nsx-t-sql'></a> SQL Server
 
-An internal MySQL database is sufficient for use in production environments.
-
-However, an external database provides more control over database management for large environments that require multiple data centers.
+An internal MySQL database is sufficient for use in production environments. However, an external database provides more control over database management for large environments that require multiple data centers.
 
 For information about configuring system databases on <%= vars.app_runtime_abbr %>, see [Configure System Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
 
@@ -256,7 +254,7 @@ Below is a best-guess layout for IP address space utilization in a single <%= va
 
 ### <a id='pas-routed-iso-seg'></a> Isolation Segments
 
-Isolation segments can help with satisfying IP address space needs in a routed network design. You can build smaller groups of Gorouters and Diego Cells aligned to a particular service. Smaller groups use less IP address space.
+Isolation segments can help with satisfying IP address space needs in a routed network design. You can build smaller groups of GoRouters and Diego Cells aligned to a particular service. Smaller groups use less IP address space.
 
 ## <a id='pks-nsx-t'></a> <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
 
@@ -270,7 +268,7 @@ The diagram below illustrates the reference architecture for <%= vars.k8s_runtim
 
 ![alt-text="Architecture on vSphere with NSX-T deployment. For detailed information about the components and networking shown, see the following description."](../images/v2/export/PKS_vSphere_NSX-T.png)
 
-[View a larger version of this diagram.](../images/v2/export/PKS_vSphere_NSX-T.png).
+[View a larger version of this diagram.](../images/v2/export/PKS_vSphere_NSX-T.png)
 
 <%= vars.k8s_runtime_abbr %> deployments with NSX-T are deployed with three clusters and three AZs.
 

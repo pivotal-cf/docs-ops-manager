@@ -8,15 +8,15 @@ This topic introduces <%= vars.ops_manager_first %> (previously Pivotal <%= vars
 
 ## <a id='overview'></a> About <%= vars.ops_manager %>
 
-<%= vars.ops_manager %> is a software tool to help you expand and manage products you can install on your deployment. These products are represented as a _tile_ in the UI.
+<%= vars.ops_manager %> is a software tool to help you expand and manage products you can install on your deployment. Each of these products is represented as a _tile_ in the UI.
 
 <%= vars.ops_manager %> deploys with the BOSH Director tile by default, which is a single point of control for VMs. The BOSH Director supports various IaaSes, including AWS, Azure, GCP, OpenStack, and vSphere.
 
 With <%= vars.ops_manager %>, you can install two types of tiles:
 
-* **Runtime Tiles:** You can install VM- or Kubernetes-based runtimes, which dynamically runs apps and other processes to balance demand throughout app lifecycles. Example runtimes managed though <%= vars.ops_manager %> include <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>.
+* **Runtime Tiles:** You can install VM-based or Kubernetes-based runtimes. These dynamically run apps and other processes to balance demand throughout app lifecycles. Example runtimes managed though <%= vars.ops_manager %> include <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>.
 
-* **Service Tiles:** You can install various services that help support your deployment. Example types of services managed through <%= vars.ops_manager %> include MySQL, Redis, and Gemfire.
+* **Service Tiles:** You can install various services that help support your deployment. Example services you can manage through <%= vars.ops_manager %> include MySQL, Redis, and Gemfire.
 
 For more information about the tiles you can install, see [<%= vars.product_network %>](https://network.pivotal.io/).
 
@@ -43,11 +43,11 @@ The <%= vars.ops_manager %> operator is responsible for:
 
 * Managing <%= vars.app_runtime_abbr %> users, resources, and infrastructure
 
-* Installing software services and otherwise enabling developers
+* Installing software services and otherwise assisting developers
 
 * Creating and managing <%= vars.ops_manager %> user and client accounts
 
-### <a id='limited-access-operator'></a> Limited-Access Operator Responsibilities
+### <a id='limited-access-operator'></a> Limited-access Operator Responsibilities
 
 Operators can give limited-access view or write <%= vars.ops_manager %> responsibilites to others within an organization.
 
@@ -60,14 +60,14 @@ The following sections describe where to get started in the <%= vars.ops_manager
 
 ### <a id='release-notes-upgrade'></a> Release Notes and Upgrading
 
-For information on new features, security patches, and upgrading Ops Manager, see the following topics.
+For information on new features, security patches, and upgrading Ops Manager, see the following topics:
 
 - [Ops Manager Release Notes](./release-notes.html)
 - [Upgrading Ops Manager](./install/upgrading-pcf.html)
 
 ### <a id='administering'></a> Installing and Configuring by IaaS
 
-For information about managing each IaaS on Ops Manager, see the following documentation sets.
+For information about managing each IaaS on Ops Manager, see the following documentation sets:
 
 - [AWS](./aws/index.html)
 - [Azure](./azure/index.html)
@@ -77,7 +77,7 @@ For information about managing each IaaS on Ops Manager, see the following docum
 
 ### <a id='using-ui'></a> Using the UI
 
-For information about how to fulfill common operator duties with the UI, see the following topics.
+For information about how to fulfill common operator duties with the UI, see the following topics:
 
 - [Using the Ops Manager Interface](./pcf-interface.html)
 - [Adding and Deleting Products](./install/add-delete.html)
@@ -86,7 +86,7 @@ For information about how to fulfill common operator duties with the UI, see the
 
 ### <a id='using-api-cli'></a> Using the API or CLI
 
-For information about how to use the Ops Manager API or CLI and to configure deployments programmatically, see the following topics.
+For information about how to use the Ops Manager API or CLI and to configure deployments programmatically, see the following topics:
 
 - [Using the Ops Manager CLI](./install/cli.html)
 - [Using the Ops Manager API](./install/ops-man-api.html)
@@ -95,14 +95,14 @@ For information about how to use the Ops Manager API or CLI and to configure dep
 ### <a id='backup-troubleshoot'></a> Backing Up and Troubleshooting
 
 
-For information about how to back up, restore, and troubleshoot Ops Manager deployments, see the following topics.
+For information about how to back up, restore, and troubleshoot Ops Manager deployments, see the following topics:
 
 - [Backing Up and Restoring Deployments](./install/backup-restore/index.html)
 - [Troubleshooting Deployment Problems](./install/troubleshooting.html)
 
 ### <a id='monitoring-logging'></a> Monitoring and Logging
 
-For information about accessing logs and metrics for VMs and app containers, see the following topics.
+For information about accessing logs and metrics for VMs and app containers, see the following topics:
 
 - [Accessing Logs and Metrics](./install/viewing-logs-and-metrics.html)
 - [Monitoring VMs in Ops Manager](./install/monitoring.html)
