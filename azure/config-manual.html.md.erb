@@ -95,7 +95,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 
 1. Select **Azure Config**.
 
-![alt-text=""](../common/images/azure/azure-config.png)
+    ![alt-text=""](../common/images/azure/azure-config.png)
 
 2. Complete the following fields with information you obtained in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html).
 	* **Subscription ID**: Enter the ID of your Azure subscription.
@@ -113,16 +113,16 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 
 5. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** checkbox. This overrides the default behavior, which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
 
-![alt-text=""](../common/images/azure/azure-storage-tier.png)
+    ![alt-text=""](../common/images/azure/azure-storage-tier.png)
 
 1. For **Cloud Storage Type**, select one of the following options based on your Azure VM storage settings.
 	* **Use Managed Disks**: Select this option if you use Azure Managed Disks. For more information, see [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documentation for more information.
 
-![alt-text=""](../common/images/azure/azure-managed-disk.png)
+    ![alt-text=""](../common/images/azure/azure-managed-disk.png)
 
 	* **Use Storage Accounts**: Select this option if you use storage accounts to store your Azure VMs. Enter the base storage name that you used to create your deployment storage accounts, prepended and appended with the wildcard character `*`. For example, if you created accounts named  `xyzdeploymentstorage1`, `xyzdeploymentstorage2`, and `xyzdeploymentstorage3`, enter `*deploymentstorage*`. <%= vars.ops_manager %> requires that you specify an asterisk at both the beginning and the end of the base storage account name.
 
-![alt-text=""](../common/images/azure/storage-accounts.png)
+    ![alt-text=""](../common/images/azure/storage-accounts.png)
 
     <p class='note caution'><strong>Caution:</strong> You can update your deployment from using storage accounts to using managed disks. However, after you select <strong>Use Managed Disks</strong> and deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.</p>
 
@@ -212,7 +212,7 @@ To create the infrastructure network:
       </tr>
     </table>
 
-![alt-text=""](../common/images/azure/create-networks-management.png)
+    ![alt-text=""](../common/images/azure/create-networks-management.png)
 
 2. Click **Save**.<%= vars.expand_network_azs %>
 
@@ -340,7 +340,7 @@ To create the services network:
 
 1. Select **Resource Config**.
 
-![alt-text=""](../common/images/azure/om-resource-config.png)
+    ![alt-text=""](../common/images/azure/om-resource-config.png)
 
 1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>

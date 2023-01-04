@@ -10,7 +10,7 @@ A clear and concise description of the bug. For example: "The PCF v2.0 Release N
 **To Reproduce**
 Steps to reproduce the behavior:
 1. Go to '...'
-2. Click on '....'
+2. Click '....'
 3. Scroll down to '....'
 4. See error
 

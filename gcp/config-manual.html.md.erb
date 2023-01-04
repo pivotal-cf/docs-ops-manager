@@ -34,7 +34,7 @@ To configure your GCP tile:
         <p class='note'><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
     * **VM Type Catalog**. Select the VM catalog that you want to use for your BOSH-deployed VMs.
 
-![alt-text=""](../common/images/gcp/google_config.png)
+    ![alt-text=""](../common/images/gcp/google_config.png)
 
 2. Click **Save**.
 
@@ -65,7 +65,7 @@ To configure the **Create Availability Zones** pane:
     * Click **Add**.
     * Repeat the above step for all the AZs that you associated to instance groups in [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html#create-http-and-instance-group).
 
-![alt-text=""](../common/images/gcp/availability_zones_multiple.png)
+      ![alt-text=""](../common/images/gcp/availability_zones_multiple.png)
 
     * Click **Save**.
 
@@ -186,7 +186,7 @@ To configure the **Assign AZs and Networks** pane:
 
 1. Select **Assign AZs and Networks**.
 
-![alt-text=""](../common/images/assign-az.png)
+    ![alt-text=""](../common/images/assign-az.png)
 
 2. Use the drop-down menu to select a **Singleton Availability Zone**. The BOSH Director installs in this AZ.
 
@@ -217,7 +217,7 @@ To configure the **Resource Config** pane:
 
 1. Select **Resource Config**.
 
-![alt-text=""](../common/images/gcp/om_resource_config.png)
+    ![alt-text=""](../common/images/gcp/om_resource_config.png)
 
 1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The checkbox gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
 
@@ -236,11 +236,11 @@ To complete your BOSH Director installation:
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the **Network Config** pane, and ensure you have deselected the **Enable ICMP Checks** checkbox. Click **Review Pending Changes**, then **Apply Changes** again.
 
-![alt-text="Please review the errors below: Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is disabled) and Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is disabled)."](../common/images/cloudform/install-error.png)
+    ![alt-text="Please review the errors below: Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is disabled) and Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is disabled)."](../common/images/cloudform/install-error.png)
 
 1. BOSH Director installs. This might take a few moments. When the installation process is complete, the **Changes Applied** window appears.
 
-![alt-text=""](../common/images/cloudform/ops-manager-complete.png)
+    ![alt-text=""](../common/images/cloudform/ops-manager-complete.png)
 
 ## <a id='next'></a> Next Steps
 
