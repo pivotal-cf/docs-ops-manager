@@ -39,52 +39,54 @@ To regenerate and rotate SAML SP certificates without disrupting <%= vars.app_ru
 
 1. For <%= vars.app_runtime_abbr %>, follow the procedure in the table below that corresponds to your use case.
 This includes downloading and importing a new certificate and updated SAML metadata in your IDP.
-  <table border="1">
-  <tr>
-    <th>Solution Name</th>
-    <th>Procedure</th>
-  </tr>
-  <tr>
-    <td><a href='https://www.broadcom.com/products/identity/siteminder'>CA Single Sign-On aka Symantec SiteMinder</a></td>
-    <td><a href="https://techdocs.broadcom.com/us/en/symantec-security-software/identity-security/siteminder/12-8/configuring/legacy-federation/configure-a-saml-2-0-identity-provider.html">Configure a SAML 2.0 Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td><a href='https://www.pingidentity.com/en/products/pingfederate.html'>PingFederate</a></td>
-    <td><a href="https://docs.pivotal.io/application-service/operating/ping-federate-sso-configuration.html">Configuring PingFederate as an Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td><a href='https://technet.microsoft.com/en-us/windowsserver/dd448613.aspx'>Active Directory Federation Services (AD FS)</a></td>
-    <td><a href="../../opsguide/adfs-sso-configuration.html">Configuring AD FS as an Identity Provider</a></td>
-  </tr>
-</table>
+
+    <table border="1">
+      <tr>
+        <th>Solution Name</th>
+        <th>Procedure</th>
+      </tr>
+      <tr>
+        <td><a href='https://www.broadcom.com/products/identity/siteminder'>CA Single Sign-On aka Symantec SiteMinder</a></td>
+        <td><a href="https://techdocs.broadcom.com/us/en/symantec-security-software/identity-security/siteminder/12-8/configuring/legacy-federation/configure-a-saml-2-0-identity-provider.html">Configure a SAML 2.0 Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td><a href='https://www.pingidentity.com/en/products/pingfederate.html'>PingFederate</a></td>
+        <td><a href="https://docs.pivotal.io/application-service/operating/ping-federate-sso-configuration.html">Configuring PingFederate as an Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td><a href='https://technet.microsoft.com/en-us/windowsserver/dd448613.aspx'>Active Directory Federation Services (AD FS)</a></td>
+        <td><a href="../../opsguide/adfs-sso-configuration.html">Configuring AD FS as an Identity Provider</a></td>
+      </tr>
+    </table>
 
 1. For the Single Sign-On for VMware Tanzu service, follow the procedure in the table below that corresponds to your use case.
 This includes downloading the SAML SP metadata for each SAML IDP integration, such as trust, partnership, or federation, and importing the updated SAML SP metadata in your IDP.
-  <table border="1">
-  <tr>
-    <th>Solution Name</th>
-    <th>Procedure</th>
-  </tr>
-  <tr>
-    <td>AD FS</td>
-    <td><a href="https://docs.pivotal.io/p-identity/adfs/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
-  </tr>
-  <tr>
-    <td>CA Single Sign-On for VMware Tanzu</td>
-    <td><a href="https://docs.pivotal.io/p-identity/ca-sso/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
-  </tr>
-  <tr>
-    <td>Okta</td>
-    <td><a href="https://docs.pivotal.io/p-identity/okta/config-sso.html">Configure Okta as an Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td>PingFederate</td>
-    <td><a href="https://docs.pivotal.io/p-identity/pingfederate/config-sso.html">Configure PingFederate as an Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td>Additional Documentation</td>
-    <td><a href="https://docs.pivotal.io/p-identity/index.html#guides">Integration Guides</a></td>
-  </tr>
-  </table>
+
+    <table border="1">
+      <tr>
+        <th>Solution Name</th>
+        <th>Procedure</th>
+      </tr>
+      <tr>
+        <td>AD FS</td>
+        <td><a href="https://docs.pivotal.io/p-identity/adfs/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
+      </tr>
+      <tr>
+        <td>CA Single Sign-On for VMware Tanzu</td>
+        <td><a href="https://docs.pivotal.io/p-identity/ca-sso/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
+      </tr>
+      <tr>
+        <td>Okta</td>
+        <td><a href="https://docs.pivotal.io/p-identity/okta/config-sso.html">Configure Okta as an Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td>PingFederate</td>
+        <td><a href="https://docs.pivotal.io/p-identity/pingfederate/config-sso.html">Configure PingFederate as an Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td>Additional Documentation</td>
+        <td><a href="https://docs.pivotal.io/p-identity/index.html#guides">Integration Guides</a></td>
+      </tr>
+    </table>
 
 1. Re-enable certificate validation in your IDP.

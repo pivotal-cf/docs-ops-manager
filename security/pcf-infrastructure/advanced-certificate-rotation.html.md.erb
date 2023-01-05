@@ -150,16 +150,18 @@ will be trusted by clients. Run:
     ```
 
 6. Re-deploy:
-  1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-  2. Click **Review Pending Changes**.
-  3. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-  4. For each service tile you have deployed:
-    1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
-    2. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
 
-    <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+    1. Return to the <%= vars.ops_manager %> Installation Dashboard.
+    2. Click **Review Pending Changes**.
+    3. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    4. For each service tile you have deployed:
 
-  5. Click **Apply Changes**.
+        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        2. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
+        <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
+    5. Click **Apply Changes**.
 
 ### <a id='leaf-rotation'></a> Rotating All Leaf Certificates
 
@@ -268,33 +270,34 @@ To rotate the Services TLS CA and its leaf certificates:
         ```
 
 1. Re-deploy:
-  1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-  1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-  1. For each service tile, enable the **Upgrade all service instances** errand.
+    1. Return to the <%= vars.ops_manager %> Installation Dashboard.
+    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    1. For each service tile, enable the **Upgrade all service instances** errand.
 
-       <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+         <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
 
-  2. Click **Apply Changes**.
+    1. Click **Apply Changes**.
 
-2. Rebind and restage the following apps:
-	* For Tanzu GemFire for VMs apps, rebind and restage the apps.
-	* For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
+1. Rebind and restage the following apps:
+
+    * For Tanzu GemFire for VMs apps, rebind and restage the apps.
+    * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
     <p class='note'><strong>Note:</strong> The bg-restage plugin enables zero-downtime blue-green restaging without access to the app source code. For more information, see <a href="https://github.com/orange-cloudfoundry/cf-plugin-bg-restage">bg-restage</a> on GitHub.</p>
 
-3. Mark the signing version of the Services TLS CA as transitional by running:
+1. Mark the signing version of the Services TLS CA as transitional by running:
 
     ```
     maestro update-transitional signing --name "/services/tls_ca"
     ```
 
-4. Regenerate all service instance certificates signed by the Services TLS CA by running:
+1. Regenerate all service instance certificates signed by the Services TLS CA by running:
 
     ```
     maestro regenerate leaf --signed-by "/services/tls_ca"
     ```
 
-5. Re-deploy:
+1. Re-deploy:
   1. Return to the <%= vars.ops_manager %> Installation Dashboard.
   2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
   3. For each service tile, enable the **Upgrade all service instances** errand.
@@ -303,26 +306,27 @@ To rotate the Services TLS CA and its leaf certificates:
 
   4. Click **Apply Changes**.
 
-6. Rebind and restage the following apps:
+1. Rebind and restage the following apps:
 	* For Tanzu GemFire for VMs apps, rebind and restage the apps.
 	* For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
-7. Remove the transitional flag from the Services TLS CA. This removes the old, inactive version of the Services TLS CA on the next deployment. Run:
+1. Remove the transitional flag from the Services TLS CA. This removes the old, inactive version of the Services TLS CA on the next deployment. Run:
 
     ```
     maestro update-transitional remove --name "/services/tls_ca"
     ```
 
-8. Re-deploy:
-  1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-  2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-  3. For each service tile, enable the **Upgrade all service instances** errand.
+1. Re-deploy:
 
-  <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+    1. Return to the <%= vars.ops_manager %> Installation Dashboard.
+    2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    3. For each service tile, enable the **Upgrade all service instances** errand.
 
-  4. Click **Apply Changes**.
+        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
 
-9.  Rebind and restage the following apps:
+    4. Click **Apply Changes**.
+
+1.  Rebind and restage the following apps:
 	* For Tanzu GemFire for VMs apps, rebind and restage the apps.
 	* For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 

@@ -28,27 +28,27 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
     $ uaac target https://BOSH-DIRECTOR-IP:8443 --ca-cert \
     /var/tempest/workspaces/default/root_ca_certificate
 
-    Target: http<span>s</span>://10.85.16.4:8443
+    Target: https://10.85.16.4:8443
     ```
 
-    Where:
-    - `BOSH-DIRECTOR-IP` is the IP you recorded in the **Status** tab of the BOSH Director.
+    Where `BOSH-DIRECTOR-IP` is the IP you recorded in the **Status** tab of the BOSH Director.
 
     <p class='note'><strong>Note:</strong> You can also curl or point your browser to the following endpoint to obtain the root certificate: <code>https://OPS-MANAGER-FQDN/api/v0/security/root_ca_certificate</code></p>
 
 1. Log in to the BOSH Director UAA and retrieve the owner token. Perform the following step to obtain the values for `UAA-LOGIN-CLIENT-PASSWORD` and `UAA-ADMIN-CLIENT-PASSWORD`:
-       1. Select the **BOSH Director** tile from the <%= vars.ops_manager %> **Installation Dashboard**.
-       1. Click the **Credentials** tab, and record the entries for **Uaa Login Client Credentials** and **Uaa Admin User Credentials**.
-       1. For each entry, click **Link to Credential** to obtain the password.
 
-            ```console
-            $ uaac token owner get login -s UAA-LOGIN-CLIENT-PASSWORD
-            User name:  admin
-            Password:  UAA-ADMIN-CLIENT-PASSWORD<br/>
-            Successfully fetched token via owner password grant.
-            Target: http<span>s</span>://10.85.16.4:8443
-            Context: admin, from client login
-            ```
+    1. Select the **BOSH Director** tile from the <%= vars.ops_manager %> **Installation Dashboard**.
+    1. Click the **Credentials** tab, and record the entries for **Uaa Login Client Credentials** and **Uaa Admin User Credentials**.
+    1. For each entry, click **Link to Credential** to obtain the password.
+
+        ```console
+        $ uaac token owner get login -s UAA-LOGIN-CLIENT-PASSWORD
+        User name:  admin
+        Password:  UAA-ADMIN-CLIENT-PASSWORD
+        Successfully fetched token via owner password grant.
+        Target: https://10.85.16.4:8443
+        Context: admin, from client login
+        ```
 
     <div class="note"><strong>Note:</strong> To obtain the password for the UAA login and admin clients, you can also curl or point your browser to the following endpoints: <code>http<span>s</span>://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_login_client_credentials</code>
     and <code>http<span>s</span>://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_admin_user_credentials</code>
@@ -74,15 +74,15 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
 
 3. Set the client and secret as environment variables on the VM.
 
-	```console
-   	$ ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT=ci
-  	$ ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT_SECRET=CI-SECRET
-	```
+    ```console
+    ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT=ci
+    ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT_SECRET=CI-SECRET
+    ```
 
 4. Set an alias for the BOSH Director environment.
 
     ```
-    $ bosh alias-env MY-ENVIRONMENT-NAME -e BOSH-DIRECTOR-IP \
+    bosh alias-env MY-ENVIRONMENT-NAME -e BOSH-DIRECTOR-IP \
     --ca-cert /var/tempest/workspaces/default/root_ca_certificate
     ```
 
@@ -106,26 +106,25 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
 6. Set the client and secret as environment variables on the <%= vars.ops_manager %> VM.
 7.
    ```console
-     export BOSH_CLIENT=bosh_admin_client
-     export BOSH_CLIENT_SECRET=UAA-BOSH-CLIENT-SECRET
+   export BOSH_CLIENT=bosh_admin_client
+   export BOSH_CLIENT_SECRET=UAA-BOSH-CLIENT-SECRET
    ```
 
-   Where:
-   - `UAA-BOSH-CLIENT-SECRET` is the client secret you recorded in Step 4.
+   Where `UAA-BOSH-CLIENT-SECRET` is the client secret you recorded in Step 4.
+
    For example:
 
-   ```console
-    $ ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT=bosh_admin_client
-    $ ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT_SECRET=aBcDeFGhijKabdsadfdfdf
-   ```
+   <pre class="terminal">
+   $ ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT=bosh_admin_client
+   $ ubuntu@ip-10-0-0-12:~$ export BOSH_CLIENT_SECRET=aBcDeFGhijKabdsadfdfdf
+   </pre>
 
 
 8. Set an alias for the BOSH Director environment.
 
     ```console
-    $ bosh alias-env MY-ENVIRONMENT-NAME -e BOSH-DIRECTOR-IP \
+    bosh alias-env MY-ENVIRONMENT-NAME -e BOSH-DIRECTOR-IP \
     --ca-cert /var/tempest/workspaces/default/root_ca_certificate
     ```
 
-    Where:
-    - `BOSH-DIRECTOR-IP` is the IP you recorded in the **Status** tab of the BOSH Director.
+    Where `BOSH-DIRECTOR-IP` is the IP you recorded in the **Status** tab of the BOSH Director.
