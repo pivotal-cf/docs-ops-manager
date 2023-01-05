@@ -133,15 +133,15 @@ account to log in to your Azure subscription.
 
     <pre class="terminal">
     $ az ad app create --display-name "Service Principal for BOSH" \
-    --password "Swordfish" --homepage "http<span>:</span>//BOSHAzureCPI" \
-    --identifier-uris "http<span>:</span>//BOSHAzureCPI"
+    --password "Swordfish" --homepage "http://BOSHAzureCPI" \
+    --identifier-uris "http://BOSHAzureCPI"
     </pre>
 
     <p class='note'><strong>Note:</strong> You can provide any string for the
     <code>homepage</code> and <code>identifier-uris</code> flags, but the value of
     <code>identifer-uris</code> must be unique within the organization associated with your Azure
     subscription. For the <code>homepage</code>, <%= vars.company_name %> recommends using
-    <code><span>http:</span>//BOSHAzureCPI</code> as shown in the example above.
+    <code>http://BOSHAzureCPI</code> as shown in the example above.
     </p>
 
 1. From the output of the `az ad app create` that you ran in the previous step, locate and record
@@ -156,9 +156,9 @@ the value of `appId`. This is your `APPLICATION_ID` for creating a service princ
       "appPermissions": null,
       "availableToOtherTenants": false,
       "displayName": "Service Principal for BOSH",
-      "homepage": "http<span>://</span>BOSHAzureCIP",
+      "homepage": "http://BOSHAzureCIP",
       "identifierUris": [
-        "http<span>://</span>BOSHAzureCPI"
+        "http://BOSHAzureCPI"
       ],
       "objectId": "f3884df4-7d1d-4894-a78c-c1fe75750436",
       "objectType": "Application",
@@ -188,7 +188,7 @@ the value of `appId`. This is your `APPLICATION_ID` for creating a service princ
       "objectType": "ServicePrincipal",
       "servicePrincipalNames": [
         "5c552e8f-b977-45f5-a50b-981cfe17cb9d",
-        "http<span>:</span>//BOSHAzureCPI"
+        "http://BOSHAzureCPI"
       ]
     }
     </pre>
@@ -243,7 +243,7 @@ the Owner role on your service principal, run the following command:
         "name": "32e644cf-ba1a-4f43-bf7c-68bf4583e463",
         "properties": {
           "principalId": "cc13c685-4c3b-461e-ae96-7a0563960b83",
-          "principalName": "http<span>:</span>//BOSHAzureCPI",
+          "principalName": "http://BOSHAzureCPI",
           "roleDefinitionId": "/subscriptions/995b7eed-77ef-45ff-a5c9-1a405ffb8243/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
           "roleDefinitionName": "Owner",
           "scope": "/subscriptions/995b7eed-77ef-45ff-a5c9-1a405ffb8243"

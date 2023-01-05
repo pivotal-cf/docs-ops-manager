@@ -64,8 +64,8 @@ To retrieve the authorization token from internal UAA on vSphere:
 
     For example:
 
-    <pre class='terminal'>
-    $ ssh ubuntu@my-opsmanager<span>.</span>example.com
+    <pre class="terminal">
+    $ ssh ubuntu@my-opsmanager.example.com
     </pre>
 
 1. When prompted, enter the public SSH key.
@@ -127,7 +127,7 @@ To retrieve the authorization token from internal UAA on vSphere:
 
     For example:
 
-    <pre class="terminal">$ gcloud auth login user<span>@</span>example.com</pre>
+    <pre class="terminal">$ gcloud auth login user@example.com</pre>
 
 1. Run the following command:
 
@@ -237,20 +237,22 @@ The following procedure tests whether you can access the <%= vars.ops_manager %>
   	    -X GET \
   	    -H "Authorization: Bearer UAA-ACCESS-TOKEN
     ```
+
     Where `UAA-ACCESS-TOKEN` is the access token recorded in the previous step.
 
     The command output should look like the following:
-  	<pre class="terminal">
-  	$ curl "http<span>s:</span>my-opsmanager.example.com/api/v0/deployed/products" \
-  	    -X GET \
-  	    -H "Authorization: Bearer my-access-token"
-  	[{"installation\_name":"p-bosh","guid":"p-bosh
-  	-00000000000000000000","type":"p-
-  	bosh","product\_version":"1.10.0.
-  	0"},{"installation\_name":"cf-
-  	00000000000000000000","guid":"cf-0000000000000
-  	0000000","type":"cf","product\_version":"1.10.0"}]
-  	</pre>
+
+    <pre class="terminal">
+    $ curl "https:my-opsmanager.example.com/api/v0/deployed/products" \
+        -X GET \
+        -H "Authorization: Bearer my-access-token"
+    [{"installation_name":"p-bosh","guid":"p-bosh
+    -00000000000000000000","type":"p-
+    bosh","product_version":"1.10.0.
+    0"},{"installation_name":"cf-
+    00000000000000000000","guid":"cf-0000000000000
+    0000000","type":"cf","product_version":"1.10.0"}]
+    </pre>
 
 ## <a id='api-procedures'></a> Example <%= vars.ops_manager %> API Procedures
 
@@ -299,27 +301,27 @@ To configure the BOSH Director with the <%= vars.ops_manager %> API:
     * `PASSPHRASE` is your deployment's decryption passphrase
     * `EULA-STATUS` is your EULA status
     * `IDP-LOCATION` is your identity provider location, `internal` or `external`
-    * `ADMIN-USERNAME`is your <%= vars.ops_manager %> admin username
-    * `ADMIN-PASSWORD`is your <%= vars.ops_manager %> admin password
+    * `ADMIN-USERNAME` is your <%= vars.ops_manager %> admin username
+    * `ADMIN-PASSWORD` is your <%= vars.ops_manager %> admin password
     * `HTTP-PROXY` is your HTTP proxy, if applicable
     * `HTTPS-PROXY` is your HTTPS proxy, if applicable
 
     For example:
     <pre class="terminal">
-    $ curl "http<span>s:</span>//my-opsman.example.com/api/v0/setup" \
+    $ curl "https://my-opsman.example.com/api/v0/setup" \
       -X POST \
       -H "Content-Type: application/json" \
       -d '{ "setup": {
-      "decryption\_passphrase": "my-passphrase",
-      "decryption\_passphrase\_confirmation":"my-passphrase",
-      "eula\_accepted": "true",
-      "identity\_provider": "internal",
-      "admin\_user\_name": "my-username",
-      "admin\_password": "my-password",
-      "admin\_password\_confirmation": "my-password",
-      "http\_proxy": "htt<span>p:</span>//myproxy.example.com",
-      "https\_proxy": "http<span>s:</span>//myproxy.example.com",
-      "no\_proxy": "127.0.0.1"
+      "decryption_passphrase": "my-passphrase",
+      "decryption_passphrase_confirmation":"my-passphrase",
+      "eula_accepted": "true",
+      "identity_provider": "internal",
+      "admin_user_name": "my-username",
+      "admin_password": "my-password",
+      "admin_password_confirmation": "my-password",
+      "http_proxy": "http://myproxy.example.com",
+      "https_proxy": "https://myproxy.example.com",
+      "no_proxy": "127.0.0.1"
     } }'
     </pre>
  	<p class='note'><strong>Note:</strong> You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it is complete. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>

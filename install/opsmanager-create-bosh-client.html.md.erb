@@ -50,8 +50,8 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
         Context: admin, from client login
         ```
 
-    <div class="note"><strong>Note:</strong> To obtain the password for the UAA login and admin clients, you can also curl or point your browser to the following endpoints: <code>http<span>s</span>://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_login_client_credentials</code>
-    and <code>http<span>s</span>://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_admin_user_credentials</code>
+    <div class="note"><strong>Note:</strong> To obtain the password for the UAA login and admin clients, you can also curl or point your browser to the following endpoints: <code>https://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_login_client_credentials</code>
+    and <code>https://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_admin_user_credentials</code>
     </div>
 
 2. Create a new UAA Client with `bosh.admin` privileges.
