@@ -47,7 +47,6 @@ If you are upgrading <%= vars.app_runtime_abbr %> to the next minor release:
 
 If you have not already, complete the steps in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html).
 
-
 ## <a id='upgrade_ops'></a> Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>
 
 The following sections describe how to upgrade <%= vars.ops_manager %> and installed products to <%= vars.ops_manager %> <%= vars.v_major_version %>:
@@ -76,7 +75,7 @@ To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager 
 
 1. When redirected to the **Welcome to <%= vars.ops_manager %>** page, select **Import Existing Installation**.
 
-![alt-text=""](images/upgrading/welcome.png)
+    ![alt-text=""](images/upgrading/welcome.png)
 
 1. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
 You set this passphrase during your initial installation of <%= vars.ops_manager %>.
@@ -84,7 +83,7 @@ You set this passphrase during your initial installation of <%= vars.ops_manager
 
 1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
-![alt-text=""](images/upgrading/decryption_passphrase.png)
+    ![alt-text=""](images/upgrading/decryption_passphrase.png)
 
 1. Click **Import**.
     <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
@@ -92,7 +91,7 @@ You set this passphrase during your initial installation of <%= vars.ops_manager
 
 2. A **Successfully imported installation** message appears upon completion.
 
-![alt-text=""](./images/upgrading/success.png)
+    ![alt-text=""](./images/upgrading/success.png)
 
     <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> automatically imports the
       Telemetry for <%= vars.ops_manager %> tile.
@@ -177,6 +176,7 @@ To check the status of a task:
     ```
     bosh -e ALIAS task TASK-NUMBER
     ```
+
     Where:
 
     * `ALIAS` is your BOSH alias.
@@ -272,7 +272,9 @@ To check the health of your deployment:
     bosh -e ALIAS vms --vitals
     bosh -e ALIAS -d DEPLOYMENT-NAME cck --report
     ```
+
     Where:
+
     * `ALIAS` is your BOSH alias.
     * `DEPLOYMENT-NAME` is the name of your BOSH deployment.
 
