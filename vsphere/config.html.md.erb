@@ -36,9 +36,9 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
 1. Click the **BOSH Director for vSphere** tile.
 
-2. Select **vCenter Config**. Configure the one or more vCenters that host your <%= vars.ops_manager %> foundation, as described in the following steps.
+1. Select **vCenter Config**. Configure the one or more vCenters that host your <%= vars.ops_manager %> foundation, as described in the following steps.
 
-![alt-text=""](../common/images/vcenter-config.png)
+    ![alt-text=""](../common/images/vcenter-config.png)
 
 1. Complete the following fields on the **vCenter Config** pane:
     * **Name**: A name that you provide for your vCenter configuration. This field is used to identify the datacenter configuration in <%= vars.ops_manager %> if you are configuring multiple datacenters.
@@ -57,7 +57,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
         <p class='note'><strong>Note:</strong> A datastore cluster is a collection of datastores with shared resources and a shared management interface.</p>
 
-2. To configure networking, complete the **vCenter Config** fields described below:
+1. To configure networking, complete the **vCenter Config** fields described below:
 
     * **Standard vCenter Networking:** This is the default option when upgrading <%= vars.ops_manager %>. If you select this option, you do not need to configure the **NSX-T Networking** fields below.
 
@@ -86,16 +86,16 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
         * **Use NSX-T Policy API Migration Mode**: This is a special mode to migrate an existing deployment from earlier NSX-T Manager API objects such as NS Groups to the newer NSX-T Policy API objects such as Groups, and should only be used with NSX-T migration scripts. Leave unchecked if unsure.
 
-3. Configure the following folder names:
+1. Configure the following folder names:
     * **VM Folder**: The vSphere datacenter folder where <%= vars.ops_manager %> places VMs. Enter `[YOUR-DEPLOYMENT]_vms` where `YOUR-DEPLOYMENT` corresponds to a descriptive name for your deployment. For example, `my_pcf_vms`.
     * **Template Folder**: The vSphere datacenter folder where <%= vars.ops_manager %> places templates. Enter `[YOUR-DEPLOYMENT]_templates`. For example, `my_pcf_templates`.
     * **Disk path Folder**: The vSphere datastore folder where <%= vars.ops_manager %> creates attached disk images. You must not nest this folder. Enter `[YOUR-DEPLOYMENT]_disk`. For example, `my_pcf_disk`.
 
     <p class='note'><strong>Note:</strong> After initial deployment, you cannot edit folder names.</p>
 
-4. Click **Save**.
+1. Click **Save**.
 
-5. (Optional) Click **Add vCenter Config** toward the top of the form to configure additional vCenters. Once you click **Save**, your multiple vCenter Configs are listed in the **vCenter Configs** pane. For more information about multiple vCenter configs, see [Managing Multiple Data Centers](../install/multiple-datacenters.html).
+1. (Optional) Click **Add vCenter Config** toward the top of the form to configure additional vCenters. Once you click **Save**, your multiple vCenter Configs are listed in the **vCenter Configs** pane. For more information about multiple vCenter configs, see [Managing Multiple Data Centers](../install/multiple-datacenters.html).
 
 
 ## <a id='dir-config'></a> Step 3: Director Config Pane
@@ -114,7 +114,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Select **Create Availability Zones**.
 
-![alt-text=""](../common/images/create-az.png)
+    ![alt-text=""](../common/images/create-az.png)
 
 1. Use the following steps to create the first AZ.
     * Click **Add**.
@@ -129,12 +129,12 @@ Multiple AZs allow you to provide high availability and load balancing to your a
       <p class='note'><strong>Note:</strong> The value for <strong>VM-Host Affinity Rule</strong> only applies if you are using Host Groups. If you do not specify a <strong>Host Group</strong> for the cluster, then any changes you make to <strong>VM-Host Affinity Rule</strong> are ignored.</p></p>
     * (Optional) Click **Add Cluster** to add more clusters to the AZ as required by your installation size and high availability requirements.
 
-2. (Optional) Use the following steps to create additional AZs.
+1. (Optional) Use the following steps to create additional AZs.
     * Click **Add**.
     * Specify **Cluster** and optionally, a **Resource Pool** or a **Host Group** with a **VM-Host Affinity Rule**. Typically you specify either a resource pool or a host group for an AZ, but not both. For more information about the difference between host groups and resource pools, see [Host Groups in vSphere](host-groups.html).
     * Click **Add Cluster** to assign more clusters to the AZ as necessary for high availability. Click the trash icon to delete a cluster. The first cluster cannot be deleted.
 
-3. Click **Save**.
+1. Click **Save**.
 
 
 ## <a id='create-networks'></a> Step 5: Create Networks Pane
@@ -357,13 +357,13 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Select **Assign AZs and Networks**.
 
-![alt-text=""](../common/images/assign-az.png)
+    ![alt-text=""](../common/images/assign-az.png)
 
 1. Use the **Singleton Availability Zone** drop-down menu to select a singleton AZ. The BOSH Director is installed as a single instance in this Availability Zone.
 
-2. Use the **Network** drop-down menu to select a network for your BOSH Director.
+1. Use the **Network** drop-down menu to select a network for your BOSH Director.
 
-3. Click **Save**.
+1. Click **Save**.
 
 
 ## <a id='security'></a> Step 7: Security Pane
@@ -384,21 +384,21 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Click **Resource Config**.
 
-![alt-text=""](../common/images/vsphere-om-resources.png)
+    ![alt-text=""](../common/images/vsphere-om-resources.png)
 
-2. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the drop-down menus to allocate the recommended resources for the job.
+1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the drop-down menus to allocate the recommended resources for the job.
 
-3. If the **Persistent Disk Type** field displays the value **None**, the job does not require persistent disk space.
+1. If the **Persistent Disk Type** field displays the value **None**, the job does not require persistent disk space.
 
     <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
     <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
-4. (Optional) If you configured NSX-T networking in the **vCenter Config** pane, and you want to configure security and load balancing for the BOSH Director job:
+1. (Optional) If you configured NSX-T networking in the **vCenter Config** pane, and you want to configure security and load balancing for the BOSH Director job:
   1. Click the menu expansion icon next to the **BOSH Director** job name. The **NSX-T Configuration** configuration fields appear.
   2. Enter your NSX-T configuration values in these fields.
 
-5. Click **Save**.
+1. Click **Save**.
 
 
 ## <a id='custom-vm-extensions'></a> Step 11: (Optional) Add Custom VM Extensions

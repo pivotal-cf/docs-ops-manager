@@ -94,18 +94,18 @@ vSphere objects used to organize resources.
     * Select the object labeled **Datacenter**.
     * Click **Next**.
 
-![alt-text=""](../common/images/vsphere/vsphere_om-deploy-01.png)
+    ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-01.png)
 
 1. On the **Select a compute resource** screen, select the compute resource where the <%= vars.ops_manager %> VM will run, and click **Next**. Select the Resource Pool for the management components.
 
-![alt-text=""](../common/images/vsphere/vsphere_om-deploy-10.png)
+    ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-10.png)
 
     <p class='note'><strong>Note:</strong> Hardware virtualization must be turned off if your
     vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.ops_manager %> on vSphere Requirements</em> for more information.</p>
 
 1. On the **Review Details** screen, confirm the configuration up to this point, and click **Next**.
 
-2. At the **Select Storage** screen, select the virtual disk format.
+1. At the **Select Storage** screen, select the virtual disk format.
 
     1. Choose a Datastore.
         * If you use vSAN, select the vSAN datastore and apply the default storage policy.
@@ -115,11 +115,11 @@ vSphere objects used to organize resources.
 
         <p class='note caution'><strong>Caution:</strong> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
 
-![alt-text=""](../common/images/vsphere/vsphere_om-deploy-04.png)
+        ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-04.png)
 
 1. On the **Select Networks** screen, either select the default **VM Network**, or ideally, create an **Infrastructure** Network, and click **Next**.
 
-![alt-text=""](../common/images/vsphere/vsphere_om-deploy-12.png)
+    ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-12.png)
 
 1. On the **Customize template** screen, enter the following information, and click **Next**.
    * **IP Address**: The IP address of the <%= vars.ops_manager %> network interface. For example, `10.0.0.2`.

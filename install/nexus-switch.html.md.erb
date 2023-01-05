@@ -11,20 +11,20 @@ First, configure <%= vars.ops_manager %> through Step 4 in [Configuring BOSH Dir
 
 1. Select **Create Networks**.
 
-2. Click the network name to configure the network settings. This name is **default** if you have not changed it.
+1. Click the network name to configure the network settings. This name is **default** if you have not changed it.
 
-![alt-text=""](images/nexus_switch_config_default.png)
+    ![alt-text=""](images/nexus_switch_config_default.png)
 
 1. Find the folder name and port group name for the switch, as you configured them in vCenter. For the example vSphere environment used as example on this page, you might want to use the switch configured on the `beer-apple` port group, which is in the `drinks dc` folder.
 
-	<p class='note'><strong>Note:</strong> Folder names can be strings of multiple words separated by spaces, or strings of words separated by other punctuation, including dashes.</p>
+    <p class='note'><strong>Note:</strong> Folder names can be strings of multiple words separated by spaces, or strings of words separated by other punctuation, including dashes.</p>
 
-![alt-text=""](images/vSphere_web_client_port_groups.png)
+    ![alt-text=""](images/vSphere_web_client_port_groups.png)
 
 1. In the **vSphere Network Name** field, instead of entering your network name, enter the folder name and port group name for the switch, as you configured them in vCenter. For the example vSphere environment described here, you would enter `drinks dc/beer-apple` to use the switch configured on the `beer-apple` port group.
 
-![alt-text=""](images/nexus_switch_config.png)
+    ![alt-text=""](images/nexus_switch_config.png)
 
 1. Click **Save**.
 
-2. Return to [Configuring BOSH Director on vSphere](../vsphere/config.html#resource-config) to complete the <%= vars.ops_manager %> installation.
+1. Return to [Configuring BOSH Director on vSphere](../vsphere/config.html#resource-config) to complete the <%= vars.ops_manager %> installation.
