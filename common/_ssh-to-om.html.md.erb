@@ -19,15 +19,23 @@ To log in to the <%= vars.ops_manager %> VM with SSH in AWS:
 
 1. Run `chmod 600 ops_mgr.pem` to change the permissions on the `.pem` file to be more restrictive. For example:
 
-    <pre class="terminal">
-    $ chmod 600 ops_mgr.pem
-    </pre>
+    ```console
+    chmod 600 ops_mgr.pem
+    ```
 
-1. Run `ssh -i ops_mgr.pem ubuntu@FQDN` to log in to the <%= vars.ops_manager %> VM with SSH.
-Replace `FQDN` with the fully qualified domain name of <%= vars.ops_manager %>. For example:
+1. Log in to the <%= vars.ops_manager %> VM with SSH.
+
+
+    ```
+    ssh -i ops_mgr.pem ubuntu@FQDN
+    ```
+
+    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
+
+    For example:
 
     <pre class="terminal">
-    $ ssh -i ops_mgr.pem ubuntu@my-opsmanager-fqdn.example.com
+    ssh -i ops_mgr.pem ubuntu@my-opsmanager-fqdn.example.com
     </pre>
 
 ### <a id='ssh-azure'></a> Azure
@@ -42,17 +50,20 @@ To log in to the <%= vars.ops_manager %> VM with SSH in Azure:
 
 1. Change the permissions for your SSH private key by running the following command:
 
-    <pre class="terminal">
-    $ chmod 600 PRIVATE-KEY
-    </pre>
+    ```console
+    chmod 600 PRIVATE-KEY
+    ```
+
     Where `PRIVATE-KEY` is the name of your SSH private key.
 
 1. SSH into the <%= vars.ops_manager %> VM by running the following command:
 
-    <pre class="terminal">
-    $ ssh -i PRIVATE-KEY ubuntu@FQDN
-    </pre>
+    ```console
+    ssh -i PRIVATE-KEY ubuntu@FQDN
+    ```
+
     Where:
+
     * `FQDN` is the FQDN for your <%= vars.ops_manager %> deployment.
     * `PRIVATE-KEY` is the name of your SSH private key.
 
@@ -80,7 +91,7 @@ command `gcloud auth login`.
 1. Paste the command into your terminal window to SSH to the VM. For example:
 
     <pre class="terminal">
-    $ gcloud compute ssh "YOUR-VM" --zone "YOUR-ZONE-ID"
+    gcloud compute ssh "YOUR-VM" --zone "YOUR-ZONE-ID"
     </pre>
 
 1. Run `sudo su - ubuntu` to switch to the `ubuntu` user.
@@ -99,15 +110,21 @@ To log in to the <%= vars.ops_manager %> VM with SSH in OpenStack:
 1. Run `chmod 600 ops_mgr.pem` to change the permissions on the `.pem` file to be more restrictive.
 For example:
 
-    <pre class="terminal">
-    $ chmod 600 ops_mgr.pem
-    </pre>
+    ```console
+    chmod 600 ops_mgr.pem
+    ```
 
-1. Run `ssh -i ops_mgr.pem ubuntu@FQDN` to log in to the <%= vars.ops_manager %> VM with SSH.
-Replace `FQDN` with the fully qualified domain name of <%= vars.ops_manager %>. For example:
+1. Log in to the <%= vars.ops_manager %> VM with SSH.
+
+    ```console
+    ssh -i ops_mgr.pem ubuntu@FQDN
+    ```
+    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
+
+    For example:
 
     <pre class="terminal">
-    $ ssh -i ops_mgr.pem ubuntu<span>@</span>my-fqdn.example.com
+    ssh -i ops_mgr.pem ubuntu@my-fqdn.example.com
     </pre>
 
 ### <a id='ssh-vsphere'></a> vSphere
@@ -126,11 +143,13 @@ To log in to the <%= vars.ops_manager %> VM with SSH in vSphere:
 
 1. Run the following command:
 
-    ```
+    ```console
     ssh ubuntu@FQDN
     ```
 
-    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>. For example:
+    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
+
+    For example:
 
     <pre class="terminal">
     $ ssh ubuntu@my-fqdn<span>.</span>example.com
