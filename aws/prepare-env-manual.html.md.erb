@@ -296,7 +296,49 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Under the **Routes** section, click **Edit routes**.
 
+1. Click **Add route**.
 
+1. For **Destination**, enter `0.0.0.0/0`.
+
+1. For **Target**, select **Internet Gateway**, then select the internet gateway that includes `(pcf-internet-gateway)`.
+
+1. Click **Save changes**.
+
+1. Click the **Subnet associations** tab.
+
+1. Under the **Explicit subnet associations** section, click **Edit subnet associations**.
+
+1. Select `pcf-public-subnet-az0`, `pcf-public-subnet-az1`, and `pcf-public-subnet-az2`.
+
+1. Click **Save associations**.
+
+1. On the VPC dashboard, click **Route tables**.
+
+1. Click **Create route table**.
+
+1. For **Name**, enter `pcf-management-route-table`.
+
+1. For **VPC**, select the VPC that includes `(pcf-vpc)`.
+
+1. Click **Create route table**.
+
+1. Under the **Routes** section, click **Edit routes**.
+
+1. Click **Add route**.
+
+1. For **Destination**, enter `0.0.0.0/0`.
+
+1. For **Target**, select **NAT Gateway**, then select the NAT gateway that includes `(pcf-nat-gateway)`.
+
+1. Click **Save changes**.
+
+1. Click the **Subnet associations** tab.
+
+1. Under the **Explicit subnet associations** section, click **Edit subnet associations**.
+
+1. Select `pcf-management-subnet-az0`, `pcf-management-subnet-az1`, `pcf-management-subnet-az2`, `pcf-tas-subnet-az0`, `pcf-tas-subnet-az1`, `pcf-tas-subnet-az2`, `pcf-services-subnet-az0`, `pcf-services-subnet-az1`, and `pcf-services-subnet-az2`.
+
+1. Click **Save associations**.
 
 ## <a id='pcfaws-om-secgrp'></a> Configure a Security Group for Ops Manager
 
