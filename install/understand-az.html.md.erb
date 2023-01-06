@@ -21,16 +21,16 @@ An operator scales an app to four instances in a tile environment distributed ac
 
 For a visual representation of this scenario, see the following diagram:
 
-![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 contains two App Instances, while A2 and A3 contain one App Instance each."](images/az_er_1.png)
+![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 contains two App Instances, while A2 and A3 contain one App Instance each."](./images/az_er_1.png)
 
 If A1 experiences a power outage or hardware failure, the two app instances running in A1 terminate while the app instances in zones A2 and A3 continue to run.
 
 For a visual representation of this scenario, see the following diagram:
 
-![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 contains two App Instances,and both are inactive, while A2 and A3 contain one available App Instance each."](images/az_er_2.png)
+![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 contains two App Instances,and both are inactive, while A2 and A3 contain one available App Instance each."](./images/az_er_2.png)
 
 If A1 remains unavailable, the tile balances new instances of the app across the remaining AZs.
 
 For a visual representation of this scenario, see the following diagram:
 
-![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 is still shown as inactive, and it no longer contains App Instances. A2 and A3 contain one available App Instance each."](images/az_er_3.png)
+![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 is still shown as inactive, and it no longer contains App Instances. A2 and A3 contain one available App Instance each."](./images/az_er_3.png)
