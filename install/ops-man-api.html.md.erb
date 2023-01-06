@@ -87,10 +87,10 @@ To retrieve the authorization token from internal UAA on vSphere:
 
     <pre class="terminal">$ chmod 600 ops_mgr.pem</pre>
 
-1. Run `ssh -i OPS-MGR-PEM ubuntu@OPS-MANAGER-FQDN` to SSH into the <%= vars.ops_manager %> VM:
+1. SSH into the <%= vars.ops_manager %> VM:
 
     ```
-    ssh -i ops_mgr.pem ubuntu@OPS-MANAGER-FQDN
+    ssh -i OPS-MGR-PEM ubuntu@OPS-MANAGER-FQDN
     ```
     Where:
 
@@ -110,7 +110,7 @@ To retrieve the authorization token from internal UAA on vSphere:
 1. To configure your Google Cloud Platform project, run the following command:
 
     ```
-    $ gcloud config set project MY-PROJECT
+    gcloud config set project MY-PROJECT
     ```
     Where `PROJECT` is the name of your GCP project.
 
@@ -326,16 +326,17 @@ To configure the BOSH Director with the <%= vars.ops_manager %> API:
     </pre>
  	<p class='note'><strong>Note:</strong> You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it is complete. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>
 
-2. A <code>200 OK</code> response appears.</li>
+1. A <code>200 OK</code> response appears.</li>
 
-3. After the successful response, a UAA client with the metadata you specified is created and launched. <%= vars.ops_manager %> users can authenticate with UAAC, and if they have a pre-created client they can target UAAC with the client name and password. For more information on pre-created clients, see <a href="./opsman-users.html">Creating and Managing <%= vars.ops_manager %> User and Client Accounts</a>.
+1. After the successful response, a UAA client with the metadata you specified is created and launched. <%= vars.ops_manager %> users can authenticate with UAAC, and if they have a pre-created client they can target UAAC with the client name and password. For more information on pre-created clients, see <a href="./opsman-users.html">Creating and Managing <%= vars.ops_manager %> User and Client Accounts</a>.
 
-4. Send an HTTP `PUT` request to the `api/v0/staged/director/properties` endpoint to configure your IaaS and BOSH Director.
+1. Send an HTTP `PUT` request to the `api/v0/staged/director/properties` endpoint to configure your IaaS and BOSH Director.
 There are many configuration parameters available to customize your BOSH Director. All the commands are IaaS-agnostic except the IaaS configuration key. Missing required fields should cause an error.
 For more information about configuring the BOSH Director, see <a href="http://docs.pivotal.io/pivotalcf/2-5/opsman-api/#fetching-director-iaas-and-security-properties-experimental">Fetching Director, IaaS, and Security Properties</a>.
 
 1. Send an HTTP `POST` request to the `api/v0/staged/director/availability_zones` endpoint to create Availability Zones (AZs) for your product.
-<p class='note'><strong>Note:</strong> The <code>create-azs</code> endpoint is optional for Azure-based deployments, because you cannot manually configure Azure AZs.</p>
+
+    <p class='note'><strong>Note:</strong> The <code>create-azs</code> endpoint is optional for Azure-based deployments, because you cannot manually configure Azure AZs.</p>
 
 1. Send an HTTP `PUT` request to the `api/v0/staged/director/networks` endpoint to create networking rules for the deployment.
 Specify whether or not to use ICMP checks by setting the `icmp_checks_enabled` parameter to `true` or `false`.

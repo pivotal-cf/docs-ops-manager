@@ -93,8 +93,7 @@ To disable a verifier type for the BOSH Director:
     Where:
 
     - `OPS-MAN-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
-    - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier Type
-](#verifier-type).
+    - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier Type](#verifier-type).
     - `UAA_ACCESS_TOKEN` is your UAA access token. For more information, see [Access the
     API](ops-man-api.html#access-api).
 
@@ -113,38 +112,38 @@ To disable a verifier type for the BOSH Director:
     See that the <%= vars.ops_manager %> API shows `false` for the verifier type you disabled. In
     the following example, `DirectorConfigurationVerifer` is set to `false`:
 
-   ```
-  {
-    "verifiers": [
-      {
-        "type": "AllocatedIpAddressVerifier",
-        "enabled": true
-      },
-      {
-        "type": "AvailabilityZonesVerifier",
-        "enabled": true
-      },
-      {
-        "type": "DirectorConfigurationVerifier",
-        "enabled": false
-      },
-      {
-        "type": "IaasConfigurationVerifier",
-        "enabled": true
-      },
-      {
-        "type": "NetworksExistenceVerifier",
-        "enabled": true
-      },
-      {
-        "type": "NetworksPingableVerifier",
-        "enabled": true
-      },
-      {
-        "type": "PrivilegeVerifier",
-        "enabled": true
-      }]}
-  ```
+    ```
+    {
+      "verifiers": [
+        {
+          "type": "AllocatedIpAddressVerifier",
+          "enabled": true
+        },
+        {
+          "type": "AvailabilityZonesVerifier",
+          "enabled": true
+        },
+        {
+          "type": "DirectorConfigurationVerifier",
+          "enabled": false
+        },
+        {
+          "type": "IaasConfigurationVerifier",
+          "enabled": true
+        },
+        {
+          "type": "NetworksExistenceVerifier",
+          "enabled": true
+        },
+        {
+          "type": "NetworksPingableVerifier",
+          "enabled": true
+        },
+        {
+          "type": "PrivilegeVerifier",
+          "enabled": true
+        }]}
+    ```
 
     For more information about this endpoint, see [Retrieving a list of install time
     verifiers for a specific
@@ -173,21 +172,22 @@ To disable a verifier type for tiles other than the BOSH Director:
     - `UAA_ACCESS_TOKEN` is your UAA access token. For more information, see [Access the
     API](ops-man-api.html#access-api).
 
-
-
     See the following example output:
-    <pre class="terminal">{[{
+
+    <pre class="terminal">
+    {[{
       "installation_name": "component-type1-installation-name",
       "guid": "component-type1-guid",
       "type": "component-type1"
-  },
-  {
+    },
+    {
       "installation_name": "p-bosh-installation-name",
       "guid": "p-bosh-guid",
       "type": "p-bosh"
-    }]}</pre>
-    For more information about this endpoint, see [Listing all staged
-    products](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#listing-all-staged-products)
+    }]}
+    </pre>
+
+    For more information about this endpoint, see [Listing all staged products](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#listing-all-staged-products)
     in the <%= vars.ops_manager %> API documentation.
 
 1. To disable your verifier by type, run the following command.
@@ -204,8 +204,7 @@ To disable a verifier type for tiles other than the BOSH Director:
 
     - `OPS-MAN-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
     - `PRODUCT-GUID` is the GUID you recorded in the previous step.
-    - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier Type
-](#verifier-type).
+    - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier Type](#verifier-type).
 
     For more information about this endpoint, see [Turning off a verifier for a specific
     product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#turning-off-a-verifier-for-a-specific-product)
@@ -243,9 +242,8 @@ To disable a verifier type for tiles other than the BOSH Director:
     }]}
     </pre>
 
-    For more information about this endpoint, see [Retrieving a list of install time
-    verifiers for a specific
-    product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product100)
+    For more information about this endpoint, see
+    [Retrieving a list of install time verifiers for a specific product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product100)
     in the <%= vars.ops_manager %> API documentation.
 
 1. Record the product and the verifier type that you disabled in a secure location.
