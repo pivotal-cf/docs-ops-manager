@@ -132,53 +132,55 @@ Perform the following steps to create an Amazon Identity and Access Management (
 	  <th>Instructions</th>
 	</tr>
 	<tr>
+	  <td><b>Resources to create</b></td>
+	  <td>Select <code>VPC and more</code></td>
+	</tr>
+	<tr>
+	  <td><b>Name tag</b></td>
+	  <td>Enter <code>pcf-vpc</code></td>
+	</tr>
+	<tr>
 	  <td><b>IPv4 CIDR block</b></td>
+	  <td>Select <code>IPv4 CIDR manual input</code></td>
+	</tr>
+	<tr>
+	  <td><b>IPv4 CIDR</b></td>
 	  <td>Enter <code>10.0.0.0/16</code></td>
 	</tr>
 	<tr>
 	  <td><b>IPv6 CIDR block</b></td>
-	  <td>Select <b>No IPv6 CIDR Block</b></td>
+	  <td>Select <b>No IPv6 CIDR block</b></td>
 	</tr>
 	<tr>
-	  <td><b>VPC name</b></td>
-	  <td><code>pcf-vpc</code></td>
+	  <td><b>Number of public subnets</b></td>
+	  <td>Select <b>0</b></td>
 	</tr>
 	<tr>
-	  <td><b>Public subnet's IPv4 CIDR</b></td>
-	  <td>Enter <code>10.0.0.0/24</code></td>
+	  <td><b>Number of private subnets</b></td>
+	  <td>Select <b>0</b></td>
 	</tr>
-	<tr>
-	  <td><br>Availability Zone</br></td>
-	  <td>Set both subnets to <code>REGION-#a</code>. For example, <code>us-west-2a</code></td>
-	</tr>
-	<tr>
-	  <td><b>Public subnet name</b></td>
-	  <td>Enter <code>pcf-public-subnet-az0</code></td>
-	</tr>
-	<tr>
-	  <td><b>Private subnet's IPv4 CIDR</b></td>
-	  <td>Enter <code>10.0.16.0/28</code></td>
-	</tr>
-	<tr>
-	  <td><b>Private subnet name</b></td>
-	  <td>Enter <code>pcf-management-subnet-az0</code></td>
-	</tr>
-	<tr>
-	  <td><b>Enable DNS hostnames</b></td>
-	  <td>Click <b>Yes</b></td>
-	<tr>
-	  <td><b>Hardware tenancy</b></td>
-	  <td>Select <b>Default</b></td>
-	</tr>
-	</table>
-</br>
-	 Add the following subnets to the VPC that includes `(pcf-vpc)`:
+  </table>
+  <br />
+  For all other fields, accept the defaults.
+
+1. Click **Create VPC**.
+
+1. From the VPC dashboard, click **Subnets**, and click **Create subnet**.
+
+1. For **VPC ID**, select the VPC that includes `(pcf-vpc)`.
+
+1. Add the following subnets. For each subnet, enter the **Subnet name**, **Availability Zone**, and **IPv4 CIDR block**. Then click **Add new subnet** to add the next subnet in the table:
 
 	 <table>
 	 <tr>
-	   <th>Name</th>
-	   <th>AZ</th>
+	   <th>Subnet name</th>
+	   <th>Availability Zone</th>
 	   <th>IPv4 CIDR block</th>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-public-subnet-az0</code></td>
+	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+	   <td><code>10.0.0.0/24</code></td>
 	 </tr>
 	 <tr>
 	   <td><code>pcf-public-subnet-az1</code></td>
@@ -189,6 +191,11 @@ Perform the following steps to create an Amazon Identity and Access Management (
 	   <td><code>pcf-public-subnet-az2</code></td>
 	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
 	   <td><code>10.0.2.0/24</code></td>
+	 </tr>
+	 <tr>
+	   <td><code>pcf-management-subnet-az0<code></td>
+	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+	   <td><code>10.0.16.0/28</code></td>
 	 </tr>
 	 <tr>
 	   <td><code>pcf-management-subnet-az1<code></td>
@@ -246,6 +253,49 @@ Perform the following steps to create an Amazon Identity and Access Management (
 	   <td><code>10.0.14.0/24</code></td>
 	 </tr>
 	 </table>
+
+1. Click **Create subnet**
+
+## <a id='pcfaws-om-igw'></a> Create Gateways and Routing Tables for Ops Manager
+
+1. On the VPC dashboard, click **Internet gateways**.
+
+1. Click **Create internet gateway**.
+
+1. For **Name tag**, enter `pcf-internet-gateway`.
+
+1. Click **Create internet gateway**.
+
+1. Under **Actions**, click **Attach to VPC**.
+
+1. For **Available VPCs**, select the VPC that includes `pcf-vpc`.
+
+1. Click **Attach internet gateway**.
+
+1. On the VPC dashboard, click **NAT gateways**.
+
+1. Click **Create NAT gateway**.
+
+1. For **Name**, enter `pcf-nat-gateway`.
+
+1. For **Subnet**, select the subnet that includes `(pcf-management-subnet-az0)`.
+
+1. Click **Allocate Elastic IP**.
+
+1. Click **Create NAT gateway**.
+
+1. On the VPC dashboard, click **Route tables**.
+
+1. Click **Create route table**.
+
+1. For **Name**, enter `pcf-public-route-table`.
+
+1. For **VPC**, select the VPC that includes `(pcf-vpc)`.
+
+1. Click **Create route table**.
+
+1. Under the **Routes** section, click **Edit routes**.
+
 
 
 ## <a id='pcfaws-om-secgrp'></a> Configure a Security Group for Ops Manager
