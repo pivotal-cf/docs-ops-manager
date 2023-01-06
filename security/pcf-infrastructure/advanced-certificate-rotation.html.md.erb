@@ -298,13 +298,14 @@ To rotate the Services TLS CA and its leaf certificates:
     ```
 
 1. Re-deploy:
-  1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-  2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-  3. For each service tile, enable the **Upgrade all service instances** errand.
 
-    <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+    1. Return to the <%= vars.ops_manager %> Installation Dashboard.
+    2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    3. For each service tile, enable the **Upgrade all service instances** errand.
 
-  4. Click **Apply Changes**.
+        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+
+    4. Click **Apply Changes**.
 
 1. Rebind and restage the following apps:
 	* For Tanzu GemFire for VMs apps, rebind and restage the apps.
