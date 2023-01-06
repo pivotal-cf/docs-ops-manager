@@ -89,9 +89,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
   1. Under **Select default certificate**, do one of the following:
       - If you already have a certificate from AWS Certificate Manager (ACM), select **Choose a certificate from ACM**.
       - If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
-        <p class="note"><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate.</p>
-  1. For **Certificate Name**, select the desired certificate.
-  <%# 1. For **Security Policy**, select the policy you created in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_. %>
+        <p class="note"><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate, leaving the **Certificate chain** entry blank.</p>
   1. Click **Next: Configure Security Groups**.
 
 1. For **Step 3: Configure Security Groups**, do the following:
@@ -126,52 +124,36 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. From the **Load Balancers** page, click **Create Load Balancer**.
 
-1. Select **Classic Load Balancer**.
+1. Select **Network Load Balancer**.
 
-1. Configure the load balancer with the following information:
-    * **Load Balancer name**: Enter `pcf-ssh-elb`.
-    * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-    * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** checkbox is not selected. If you want to allow traffic only from private IP addresses, select this checkbox.
+1. For **Step 1: Configure Load Balancer**, do the following:
+  1. Under **Basic Configuration**, do the following:
+      * For **Name**, enter `pcf-ssh-elb`.
+      * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
+      * For **IP address type**, select the type of IP addresses that you want to allow.
+  1. Under **Listeners**, edit the existing listener. For **Load Balancer Protocol**, select **TCP**, for **Load Balancer Port**, enter `2222`.
+  1. Under **Availability Zones**, select your VPC
+  1. Check all availability zones. For each availability zone, select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
+  1. Click **Next: Configure Security Settings**.
+1. On the **Configure Security Settings** page, ignore the **Improve your load balancer's security** error message and click **Next: Configure Routing**.
 
-1. Under **Listener Configuration**, add the following rules:
+1. For **Step 3: Configure Routing**, do the following:
+  1. Under **Target Group**, enter the following values:
+      - **Name**: Enter `pcf-ssh-elb-target-group`.
+      - **Target type**: Select **Instance**.
+      - **Protocol**: Select **TCP**.
+      - **Port**: Enter `2222`.
+  1. Under **Health checks**, senter the following values:
+      - **Protocol**: Select **TCP**.
+  1. Under **Advanced health check settings**, enter the following values:
+      - **Port**: Select **traffic port**.
+      - **Healthy threshold**: Enter `6`.
+      - **Interval**: Select `10 seconds`.
+  1. Click **Next: Register Targets**.
 
-    <table border="1" class="nice" >
-    <tr>
-      <th><strong>Load Balancer Protocol</strong></th>
-      <th><strong>Load Balancer Port</strong></th>
-      <th><strong>Instance Protocol</strong></th>
-      <th><strong>Instance Port</strong></th>
-    </tr>
-    <tr>
-      <td>TCP</td>
-      <td>2222</td>
-      <td>TCP</td>
-      <td>2222</td>
-    </tr>
-    </table>
+1. For **Step 4: Register Targets**, accept the default values and click **Next: Review**.
 
-1. Under **Select Subnets**, select either the public or private subnets you configured in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Assign Security Groups**.
-
-1. On the **Assign Security Groups** page, select the security group `pcf-ssh-elb-security-group` you configured in [Step 8: Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Configure Security Settings**.
-
-1. On the **Configure Security Settings** page, ignore the **Improve your load balancer's security** error message and click **Next: Configure Health Check**.
-
-1. On the **Configure Health Check** page, enter the following values:
-
-  * **Ping Protocol**: Select `TCP`.
-  * **Ping Port**: Set to `2222`.
-  * **Response Timeout**: Set to `3` seconds.
-  * **Interval**: Set to `5` seconds.
-  * **Unhealthy threshold**: Set to `3`.
-  * **Health threshold**: Set to `6`.
-
-1. Click **Next: Add EC2 Instances**.
-
-1. Accept the defaults on the **Add EC2 Instances** page and click **Next: Add Tags**.
-
-1. Accept the defaults on the **Add Tags** page and click **Review and Create**.
-
-1. Review and confirm the load balancer details, and click **Create**.
+1. For **Step 5: Review**, review the load balancer details and then click **Create**. A message appears to confirm AWS successfully created the load balancer.
 
 
 ## <a id='pcfaws-tcp-lb'></a> Step 4: Create TCP Load Balancer
@@ -273,19 +255,6 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
   </br>
   </br>
   Where `DOMAIN` is a domain name. <%= vars.company_name %> recommends that you use the same domain name for each record.
-
-
-## <a id='pcfaws-nat'></a> Step 6: Secure the NAT Instance
-
-1. On the EC2 Dashboard, click **Instances**.
-
-1. Select the NAT instance, which has an instance type of **t3.medium**.
-
-1. From the **Actions** menu, select **Networking>Change Security Groups**.
-
-1. Change the NAT security group from the default group to the `pcf-nat-security-group` NAT security group that you created in [Step 10: Configure a Security Group for the Outbound NAT](prepare-env-manual.html#pcfaws-om-natsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-
-1. Click **Assign Security Groups**.
 
 
 ## <a id='pcfaws-rds-subnet-group'></a> Step 7: Create RDS Subnet Group

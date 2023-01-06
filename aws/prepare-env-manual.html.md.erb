@@ -23,7 +23,6 @@ To prepare <%= vars.ops_manager %> for deployment with AWS:
 1. [Configure a Security Group for the Web ELB](#pcfaws-om-elbsecgrp)
 1. [Configure a Security Group for the SSH ELB](#pcfaws-om-sshelbsecgrp)
 1. [Configure a Security Group for the TCP ELB](#pcfaws-om-tcpelbsecgrp)
-1. [Configure a Security Group for the Outbound NAT](#pcfaws-om-natsecgrp)
 1. [Configure a Security Group for MySQL](#pcfaws-om-mysqlsecgrp)
 
 After completing the procedures in this topic, proceed to [Deploying Ops Manager on AWS](deploy-manual.html) to continue deploying <%= vars.ops_manager %>.
@@ -544,37 +543,6 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Create security group**.
 
 
-## <a id='pcfaws-om-natsecgrp'></a> Configure a Security Group for the Outbound NAT
-
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
-
-1. For **Security group name**, enter `pcf-nat-security-group`.
-
-1. For **Description**, enter a description to identify this security group.
-
-1. For **VPC**, select the VPC where you want to deploy the Outbound NAT.
-
-1. In the **Inbound rules** section, add a rule to allow all traffic from your VPCs, as the table shows.
-
-    <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Custom</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
-
-1. Click **Create security group**.
-
-
 ## <a id='pcfaws-om-mysqlsecgrp'></a> Configure a Security Group for MySQL
 
 <p class="note"><strong>Note:</strong> If you plan to use an internal database, skip this step. If you are using RDS, you must configure a security group that enables the Ops Manager VM and BOSH Director VM to access the database.</p>
@@ -596,7 +564,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
       <th colspan='2'><strong>Source</strong></th>
     </tr>
     <tr>
-      <td>MySQL</td>
+      <td>MYSQL/Aurora</td>
       <td>TCP</td>
       <td>3306</td>
       <td>Custom</td>

@@ -125,18 +125,11 @@ The following table lists the subnets in CIDR block `10.0.0.0/16`.
 
 See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-## <a id='nat-instance'></a> NAT Instance
+## <a id='nat-instance'></a> NAT Gateway
 
-You must create a NAT instance when creating a VPC. The NAT instance must have the following configuration:
+You must create a NAT Gateway when creating a VPC.
 
-* **Instance type**: `t3.medium`
-* **Key pair name**: `pcf-ops-manager-key`
-* **Enable DNS hostnames**: Yes
-* **Hardware tenancy**: Default
-
-See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-
-You must also assign the NAT instance to the `pcf-nat-security-group`. See [Step 6: Secure the NAT Instance](deploy-manual.html#pcfaws-nat) in _Deploying <%= vars.ops_manager %> on AWS_.
+See [Create Gateways and Route Tables for Ops Manager](prepare-env-manual.html#pcfaws-om-igw) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='security-groups'></a> Security Groups
 
@@ -324,28 +317,6 @@ The TCP ELB Security Group must have the following outbound rule:
 </table>
 
 See [Step 9: Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-
-### Outbound NAT
-
-The Outbound NAT Security Group must be named `pcf-nat-security-group` and have the following inbound rule:
-
-<table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Custom IP</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
-
-See [Step 10: Configure a Security Group for the Outbound NAT](prepare-env-manual.html#pcfaws-om-natsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### MySQL
 
