@@ -9,7 +9,7 @@ This topic describes how to disable and re-enable verifiers for fields in the BO
 purposes. For example, your deployment may have a unique configuration that the
 verifier cannot detect. In this case, you can unblock your deployment by disabling the verifier.
 
-<p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends contacting support before you
+<p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends contacting Support before you
 disable <%= vars.ops_manager %> verifiers.</p>
 
 <p class="note caution"><strong>Caution:</strong> <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you disable.
@@ -155,7 +155,7 @@ To disable a verifier type for the BOSH Director:
 <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you disable.
 
 
-#### <a id='tile-disable'></a> Disable Verifiers for Other Tiles
+#### <a id='tile-disable'></a> Disable Verifiers for other Tiles
 
 To disable a verifier type for tiles other than the BOSH Director:
 
@@ -186,8 +186,7 @@ To disable a verifier type for tiles other than the BOSH Director:
       "guid": "p-bosh-guid",
       "type": "p-bosh"
     }]}</pre>
-    For more information about this endpoint, see [Listing all staged
-    products](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#listing-all-staged-products)
+    For more information about this endpoint, see [Listing all staged products](http://docs.pivotal.io/pivotalcf/3-0/opsman-api/#listing-all-staged-products)
     in the <%= vars.ops_manager %> API documentation.
 
 1. To disable your verifier by type, run the following command.
