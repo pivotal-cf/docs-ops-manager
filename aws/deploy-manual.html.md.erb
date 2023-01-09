@@ -257,7 +257,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
   Where `DOMAIN` is a domain name. <%= vars.company_name %> recommends that you use the same domain name for each record.
 
 
-## <a id='pcfaws-rds-subnet-group'></a> Step 7: Create RDS Subnet Group
+## <a id='pcfaws-rds-subnet-group'></a> Step 6: Create RDS Subnet Group
 
 1. Navigate to the RDS Dashboard.
 
@@ -274,7 +274,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     <p class="note"><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
 
 
-## <a id='pcfaws-mysql-rds'></a> Step 8: Create a MySQL Database Using AWS RDS
+## <a id='pcfaws-mysql-rds'></a> Step 7: Create a MySQL Database Using AWS RDS
 
 <p class="note"><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.ops_manager %> on AWS.</p>
 
@@ -297,7 +297,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. In the **Connectivity** section, enter the following values:
     * **VPC**: Select `pcf-vpc`.
-    * **Subnet Group**: Select the `pcf-rds-subnet-group` you created in [Step 7: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
+    * **Subnet Group**: Select the `pcf-rds-subnet-group` you created in [Step 6: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
     * **Publicly Accessible**: Select **No**.
     * **VPC Security Groups**: Select the `pcf-mysql-security-group` that you created in [Step 11: Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * Accept the default values for the remaining fields.
