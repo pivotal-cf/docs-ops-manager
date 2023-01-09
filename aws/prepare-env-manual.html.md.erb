@@ -254,7 +254,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Create subnet**
 
-## <a id='pcfaws-om-igw'></a> Create Gateways and Route Tables for Ops Manager
+## <a id='pcfaws-om-igw'></a> Create an Internet Gateway
 
 1. On the VPC dashboard, click **Internet gateways**.
 
@@ -270,6 +270,8 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Attach internet gateway**.
 
+## <a id='pcfaws-nat-gateway'></a> Create a NAT Gateway
+
 1. On the VPC dashboard, click **NAT gateways**.
 
 1. Click **Create NAT gateway**.
@@ -281,6 +283,8 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Allocate Elastic IP**.
 
 1. Click **Create NAT gateway**.
+
+## <a id='pcfaws-public-routes'></a> Create Route Table for Public Subnets
 
 1. On the VPC dashboard, click **Route tables**.
 
@@ -309,6 +313,8 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Select `pcf-public-subnet-az0`, `pcf-public-subnet-az1`, and `pcf-public-subnet-az2`.
 
 1. Click **Save associations**.
+
+## <a id='pcfaws-remaining-routes'></a> Create Route Table for Remaining Subnets
 
 1. On the VPC dashboard, click **Route tables**.
 

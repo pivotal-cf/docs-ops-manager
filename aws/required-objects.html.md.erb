@@ -23,11 +23,11 @@ These buckets must be empty when you install or reinstall <%= vars.ops_manager %
 
 See [Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-## <a id='iam-user-pcf'></a> IAM User for <%= vars.ops_manager %>
+## <a id='iam-user-pcf'></a> IAM Role or User for <%= vars.ops_manager %>
 
-You must create an IAM user for <%= vars.ops_manager %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html).
+You must create either an IAM role or an IAM user for <%= vars.ops_manager %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html).
 
-See [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Step 3: Create an IAM Role or User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='key-pair'></a> Key Pair
 
@@ -129,7 +129,7 @@ See [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <
 
 You must create a NAT Gateway when creating a VPC.
 
-See [Create Gateways and Route Tables for Ops Manager](prepare-env-manual.html#pcfaws-om-igw) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Create a NAT Gateway](prepare-env-manual.html#pcfaws-nat-gateway) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='security-groups'></a> Security Groups
 
