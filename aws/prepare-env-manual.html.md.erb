@@ -21,7 +21,6 @@ To prepare <%= vars.ops_manager %> for deployment with AWS:
 1. [Configure a Security Group for Ops Manager](#pcfaws-om-secgrp)
 1. [Configure a Security Group for BOSH-Deployed VMs](#pcfaws-om-ersecgrp)
 1. [Configure a Security Group for the Web ELB](#pcfaws-om-elbsecgrp)
-1. [Configure a Security Group for the SSH ELB](#pcfaws-om-sshelbsecgrp)
 1. [Configure a Security Group for the TCP ELB](#pcfaws-om-tcpelbsecgrp)
 1. [Configure a Security Group for MySQL](#pcfaws-om-mysqlsecgrp)
 
@@ -431,6 +430,13 @@ Perform the following steps to create an Amazon Identity and Access Management (
   <td>Custom</td>
   <td>10.0.0.0/16</td>
 </tr>
+<tr>
+  <td>Custom TCP rule</td>
+  <td>TCP</td>
+  <td>2222</td>
+  <td>Anywhere-IPv4</td>
+  <td>0.0.0.0/0</td>
+</tr>
 </table>
 
 1. Click **Create security group**.
@@ -479,36 +485,6 @@ Perform the following steps to create an Amazon Identity and Access Management (
   <td>0.0.0.0/0</td>
 </tr>
 </table>
-
-1. Click **Create security group**.
-
-
-## <a id='pcfaws-om-sshelbsecgrp'></a> Configure a Security Group for the SSH ELB
-
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
-
-1. For **Security group name**, enter `pcf-ssh-elb-security-group`.
-
-1. For **Description**, enter a description to identify this security group.
-
-1. For **VPC**, select the VPC where you want to deploy this ELB.
-
-1. In the **Inbound rules** section, add the following rule:
-    <table border="1" class="nice" >
-    <tr>
-      <th><strong>Type </strong></th>
-      <th><strong>Protocol</strong></th>
-      <th><strong>Port Range</strong></th>
-      <th colspan='2'><strong>Source</strong></th>
-    </tr>
-    <tr>
-      <td>Custom TCP rule</td>
-      <td>TCP</td>
-      <td>2222</td>
-      <td>Anywhere-IPv4</td>
-      <td>0.0.0.0/0</td>
-    </tr>
-    </table>
 
 1. Click **Create security group**.
 

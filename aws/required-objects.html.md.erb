@@ -198,6 +198,13 @@ The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and 
   <td>Custom IP</td>
   <td>10.0.0.0/16</td>
 </tr>
+<tr>
+  <td>Custom TCP rule</td>
+  <td>TCP</td>
+  <td>2222</td>
+  <td>Anywhere</td>
+  <td>0.0.0.0/0</td>
+</tr>
 </table>
 
 See [Configure a Security Group for BOSH-Deployed VMs](prepare-env-manual.html#pcfaws-om-ersecgrp)
@@ -238,46 +245,6 @@ The Web ELB Security Group must be named `pcf-web-elb-security-group` and have t
 </table>
 
 See [Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-
-### SSH ELB
-
-The SSH ELB Security Group must be named `pcf-ssh-elb-security-group` and have the following inbound rule:
-
-<table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>Custom TCP rule</td>
-  <td>TCP</td>
-  <td>2222</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
-
-The SSH ELB Security Group must have the following outbound rule:
-
-<table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
-
-See [Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### TCP ELB
 
