@@ -249,8 +249,8 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Navigate to your DNS provider and create the following CNAME and A records:
   * CNAME: `*.apps.DOMAIN.com` and `*.system.DOMAIN.com` points to the DNS name of the `pcf-web-elb` load balancer.
-  * CNAME: `ssh.DOMAIN.com` points to the DNS name of the `pcf-ssh-elb` load balancer.
-  * CNAME: `tcp.DOMAIN.com` points to the DNS name of the `pcf-tcp-elb` load balancer.
+  * CNAME: `ssh.system.DOMAIN.com` points to the DNS name of the `pcf-ssh-elb` load balancer.
+  * CNAME: `tcp.system.DOMAIN.com` points to the DNS name of the `pcf-tcp-elb` load balancer.
   * A: `pcf.DOMAIN.com` points to the public IP address of the `pcf-ops-manager` EC2 instance.
   </br>
   </br>
