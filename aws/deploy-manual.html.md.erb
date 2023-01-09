@@ -49,7 +49,7 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>, do the foll
     * **Network**: Select the VPC that you created.
     * **Subnet**: Select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
     * **Auto-assign for Public IP**: Select **Enable** to allow traffic from public IP addresses, or **Disable** to allow traffic only from private IP addresses.
-    * **Firewall (security groups)**: Click **Select an existing security group** and select the `pcf-ops-manager-security-group` that you created in [Step 5: Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * **Firewall (security groups)**: Click **Select an existing security group** and select the `pcf-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * For all other fields, accept the default values.
 
 1. In the **Configure storage** section, adjust the **Size (GiB)** value.
@@ -94,7 +94,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. For **Step 3: Configure Security Groups**, do the following:
   1. Under **Assign a security group**, select **Select an existing security group**.
-  1. From the list of security groups, select the `pcf-web-elb-security-group` security group that you configured in [Step 7: Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+  1. From the list of security groups, select the `pcf-web-elb-security-group` security group that you configured in [Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
   1. Click **Next: Configure Routing**.
 
 1. For **Step 4: Configure Routing**, do the following:
@@ -164,7 +164,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Configure the load balancer with the following information:
     * **Load Balancer name**: Enter `pcf-tcp-elb`.
-    * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** checkbox is not selected. If you want to allow traffic only from private IP addresses, select this checkbox.
 
 1. Under **Listener Configuration**, add the following rules:
@@ -211,9 +211,9 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
       <br>
       The `...` entry above indicates that you must add listening rules for each port between 1026 and 1123.
 
-1. Under **Select Subnets**, select either the public or private subnets you configured in [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Assign Security Groups**.
+1. Under **Select Subnets**, select either the public or private subnets you configured in [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Assign Security Groups**.
 
-1. On the **Assign Security Groups** page, select the security group `pcf-tcp-elb-security-group` you configured in [Step 9: Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Configure Security Settings**.
+1. On the **Assign Security Groups** page, select the security group `pcf-tcp-elb-security-group` you configured in [Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Configure Security Settings**.
 
 1. On the **Configure Security Settings** page, ignore the **Improve you load balancer's security** error message and click **Next: Configure Health Check**.
 
@@ -299,7 +299,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **VPC**: Select `pcf-vpc`.
     * **Subnet Group**: Select the `pcf-rds-subnet-group` you created in [Step 6: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
     * **Publicly Accessible**: Select **No**.
-    * **VPC Security Groups**: Select the `pcf-mysql-security-group` that you created in [Step 11: Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * **VPC Security Groups**: Select the `pcf-mysql-security-group` that you created in [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * Accept the default values for the remaining fields.
 
 1. In the **Additional configuration** section, enter the following values:

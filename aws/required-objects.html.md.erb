@@ -21,7 +21,7 @@ As part of the preparing to deploy process, you must create the following S3 buc
 
 These buckets must be empty when you install or reinstall <%= vars.ops_manager %>.
 
-See [Step 2: Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='iam-user-pcf'></a> IAM User for <%= vars.ops_manager %>
 
@@ -123,7 +123,7 @@ The following table lists the subnets in CIDR block `10.0.0.0/16`.
  </tr>
  </table>
 
-See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='nat-instance'></a> NAT Gateway
 
@@ -178,7 +178,7 @@ The <%= vars.ops_manager %> Security Group must be named `pcf-ops-manager-securi
 </tr>
 </table>
 
-See [Step 5: Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### BOSH-Deployed VMs
 
@@ -200,7 +200,7 @@ The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and 
 </tr>
 </table>
 
-See [Step 6: Configure a Security Group for BOSH-Deployed VMs](prepare-env-manual.html#pcfaws-om-ersecgrp)
+See [Configure a Security Group for BOSH-Deployed VMs](prepare-env-manual.html#pcfaws-om-ersecgrp)
 in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### Web ELB
@@ -237,7 +237,7 @@ The Web ELB Security Group must be named `pcf-web-elb-security-group` and have t
 </tr>
 </table>
 
-See [Step 7: Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### SSH ELB
 
@@ -277,7 +277,7 @@ The SSH ELB Security Group must have the following outbound rule:
 </tr>
 </table>
 
-See [Step 8: Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### TCP ELB
 
@@ -316,7 +316,7 @@ The TCP ELB Security Group must have the following outbound rule:
 </tr>
 </table>
 
-See [Step 9: Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### MySQL
 
@@ -356,7 +356,7 @@ The MySQL Security Group must have the following outbound rules:
 </tr>
 </table>
 
-See [Step 11: Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='ops-manager-ami'></a> <%= vars.ops_manager %> AMI
 
