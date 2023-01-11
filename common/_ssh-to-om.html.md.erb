@@ -35,7 +35,7 @@ To log in to the <%= vars.ops_manager %> VM with SSH in AWS:
     For example:
 
     <pre class="terminal">
-    ssh -i ops_mgr.pem ubuntu@my-opsmanager-fqdn.example.com
+    $ ssh -i ops_mgr.pem ubuntu@my-opsmanager-fqdn.example.com
     </pre>
 
 ### <a id='ssh-azure'></a> Azure
@@ -91,7 +91,7 @@ command `gcloud auth login`.
 1. Paste the command into your terminal window to SSH to the VM. For example:
 
     <pre class="terminal">
-    gcloud compute ssh "YOUR-VM" --zone "YOUR-ZONE-ID"
+    $ gcloud compute ssh "YOUR-VM" --zone "YOUR-ZONE-ID"
     </pre>
 
 1. Run `sudo su - ubuntu` to switch to the `ubuntu` user.
@@ -119,12 +119,13 @@ For example:
     ```console
     ssh -i ops_mgr.pem ubuntu@FQDN
     ```
+
     Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
 
     For example:
 
     <pre class="terminal">
-    ssh -i ops_mgr.pem ubuntu@my-fqdn.example.com
+    $ ssh -i ops_mgr.pem ubuntu@my-fqdn.example.com
     </pre>
 
 ### <a id='ssh-vsphere'></a> vSphere
