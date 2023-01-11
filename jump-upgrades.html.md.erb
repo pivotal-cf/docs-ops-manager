@@ -1,24 +1,24 @@
 ---
-title: Jump Upgrading to Ops Manager v3.0
+title: Jump Upgrading to Ops Manager v2.10
 owner: Ops Manager
 ---
 
-This topic describes upgrading to <%= vars.ops_manager_first %> v3.0 or later directly from <%= vars.ops_manager %> v2.5 and later.
+This topic describes upgrading to <%= vars.ops_manager_first %> <%= vars.v_major_version %> or later directly from <%= vars.ops_manager %> v2.5 and later.
 
 
 ## <a id='overview'></a> Overview
 
-Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the latest version of <%= vars.ops_manager %>, which is v3.0.
+Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the latest version of <%= vars.ops_manager %>, which is <%= vars.v_major_version %>.
 
 ## <a id='prerequisites'></a> Prerequisites
 
-Before you jump upgrade to <%= vars.ops_manager %> v3.0 or later:
+Before you jump upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %> or later:
 
 * If you are using <%= vars.ops_manager %> v2.10.8 or earlier, you must complete any in-progress CA rotation before you can jump upgrade. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.
 
-* If you are on <%= vars.ops_manager %> v2.4 or earlier, you must do standard upgrades for each version up to v2.5 before you can jump upgrade to v3.0.
+* If you are on <%= vars.ops_manager %> v2.4 or earlier, you must do standard upgrades for each version up to v2.5 before you can jump upgrade to <%= vars.v_major_version %>.
 
-* To upgrade to <%= vars.ops_manager %> v3.0, you must ensure that the products you have installed are compatible with <%= vars.ops_manager %> v3.0. To create an upgrade path for your product tiles, see the [Upgrade Planner](https://upgrade-planner.pivotal.io/).
+* To upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>, you must ensure that the products you have installed are compatible with <%= vars.ops_manager %> <%= vars.v_major_version %> To create an upgrade path for your product tiles, see the [Upgrade Planner](https://upgrade-planner.pivotal.io/).
 
 * You must have no changes to any product tile or service instance currently staged.
 
@@ -39,9 +39,9 @@ To allow DNS certificate regeneration and avoid communication issues between sys
 
 ## <a id='jump-upgrade'></a> Jump Upgrade
 
-After you ensure your deployment meets the requirements described in [Prerequisites](#prerequisites) above, you can upgrade to <%= vars.ops_manager %> to v3.0 or later.
+After you ensure your deployment meets the requirements described in [Prerequisites](#prerequisites) above, you can upgrade to <%= vars.ops_manager %> to <%= vars.v_major_version %> or later.
 
-To jump upgrade to <%= vars.ops_manager %> to v3.0 or later:
+To jump upgrade to <%= vars.ops_manager %> to <%= vars.v_major_version %> or later:
 
 1. Review the table in [Breaking Changes](#breaking-changes) below and address any breaking changes that apply to your current <%= vars.ops_manager %> version.
 
@@ -157,10 +157,10 @@ The table below describes the breaking changes that affect <%= vars.ops_manager 
 		<td>
 			<%= vars.ops_manager %> v2.10 includes CredHub Maestro v8.0. In this version of CredHub Maestro, the `maestro update-transitional latest` command is removed.
 		</td>
-		<td>If you have scripts that rely on the `maestro update-transitional latest` command, remove references to the command before you upgrade to <%= vars.ops_manager %> v3.0.
+		<td>If you have scripts that rely on the `maestro update-transitional latest` command, remove references to the command before you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.
 			In CredHub Maestro v8.0, you run `maestro regenerate ca` to regenerate a certificate authority (CA) and mark the latest version of the CA as transitional. This command performs both actions, while previous versions of CredHub Maestro use a separate command for each task.
 		</td>
 	</tr>
 </table>
 
-For breaking changes between <%= vars.ops_manager %> v2.10 and v3.0, see [Breaking Changes in <%= vars.ops_manager %> v3.0](release-notes.html#breaking-changes).
+For breaking changes between <%= vars.ops_manager %> v2.10 and <%= vars.v_major_version %>, see [Breaking Changes in <%= vars.ops_manager %> <%= vars.v_major_version %>](release-notes.html#breaking-changes).
