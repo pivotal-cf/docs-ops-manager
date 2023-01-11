@@ -3,12 +3,17 @@ title: Required AWS Objects
 owner: Ops Manager
 ---
 
+<<<<<<< HEAD
 This topic describes the objects you create in Amazon Web Services (AWS) in order to deploy <%= vars.ops_manager_first %>.
+=======
+This topic describes the objects you create in Amazon Web Services (AWS) so that you can deploy <%= vars.ops_manager %>.
+>>>>>>> b22201c0 (editing for PR #231)
 
 
 ## <a id='overview'></a> Overview
 
-Use this topic to determine the resource requirements of <%= vars.ops_manager %> on AWS, or to verify that you created the correct resources after completing the procedures in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html) and [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
+Use the information in this topic to determine the resource requirements of <%= vars.ops_manager %> on AWS, or to verify that you have created the correct resources after completing the procedures in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html) and [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
+
 
 ## <a id='s3-buckets-om-pas'></a> S3 Buckets
 
@@ -24,6 +29,7 @@ These buckets must be empty when you install or reinstall <%= vars.ops_manager %
 
 See [Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
+
 ## <a id='iam-user-pcf'></a> IAM Role or User for <%= vars.ops_manager %>
 
 You must create either an IAM role or an IAM user for <%= vars.ops_manager %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html).
@@ -34,6 +40,7 @@ See [Create an IAM Role or User for <%= vars.ops_manager %>](prepare-env-manual.
 
 You must generate a key pair named `pcf-ops-manager-key`. For more information about setting up a key pair, see [Amazon EC2 Key
 Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the AWS documentation.
+
 
 ## <a id='vpc'></a> VPC (Public and Private Subnets)
 
@@ -126,11 +133,13 @@ The following table lists the subnets in CIDR block `10.0.0.0/16`.
 
 See [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
+
 ## <a id='nat-instance'></a> NAT Gateway
 
 You must create a NAT Gateway when creating a VPC.
 
 See [Create a NAT Gateway](prepare-env-manual.html#pcfaws-nat-gateway) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+
 
 ## <a id='security-groups'></a> Security Groups
 
@@ -183,7 +192,7 @@ See [Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.
 
 ### BOSH-Deployed VMs
 
-The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and have the following inbound rule:
+The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and have the following inbound rules:
 
 <table border="1" class="nice" >
 <tr>
@@ -288,7 +297,7 @@ See [Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-
 
 ### MySQL
 
-The MySQL Security Group must be named `pcf-mysql-security-group` and have the following inbound rules:
+The MySQL Security Group must be named `pcf-mysql-security-group` and have the following inbound rule:
 
 <table border="1" class="nice" >
 <tr>
@@ -306,7 +315,7 @@ The MySQL Security Group must be named `pcf-mysql-security-group` and have the f
 </tr>
 </table>
 
-The MySQL Security Group must have the following outbound rules:
+The MySQL Security Group must have the following outbound rule:
 
 <table border="1" class="nice" >
 <tr>
@@ -326,11 +335,13 @@ The MySQL Security Group must have the following outbound rules:
 
 See [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
+
 ## <a id='ops-manager-ami'></a> <%= vars.ops_manager %> AMI
 
 You must locate the public <%= vars.ops_manager %> AMI using the AMI ID provided by the PDF downloaded when clicking **<%= vars.ops_manager %> for AWS** on VMware Tanzu Network.
 
 See [Step 1: Launch an <%= vars.ops_manager %> AMI](deploy-manual.html#pcfaws-om-ami) in _Deploying <%= vars.ops_manager %> on AWS_.
+
 
 ## <a id='elbs'></a> ELBs
 
@@ -368,17 +379,20 @@ See [Step 3: Create SSH Load Balancer](deploy-manual.html#pcfaws-ssh-lb) in _Dep
 
 See [Step 4: Create TCP Load Balancer](deploy-manual.html#pcfaws-tcp-lb) in _Deploying <%= vars.ops_manager %> on AWS_.
 
+
 ## <a id='dns-config'></a> DNS Configuration
 
 You must navigate to your DNS provider and create CNAME and A records for all three of your load balancers.
 
 See [Step 5: Configure DNS Records](deploy-manual.html#pcfaws-dns) in _Deploying <%= vars.ops_manager %> on AWS_.
 
+
 ## <a id='rds-subnet-group'></a> RDS Subnet Group
 
 You must create a subnet group for RDS named `pcf-rds-subnet-group` from the RDS Dashboard.
 
 See [Step 6: Create RDS Subnet Group](deploy-manual.html#pcfaws-rds-subnet-group) in _Deploying <%= vars.ops_manager %> on AWS_.
+
 
 ## <a id='mysql-db'></a> MySQL Database
 
