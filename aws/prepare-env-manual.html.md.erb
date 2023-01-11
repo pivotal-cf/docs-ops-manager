@@ -20,9 +20,9 @@ To prepare <%= vars.ops_manager %> for deployment with AWS:
 1. [Create a Policy](#create-policy)
 1. [Create an IAM Role or User](#create-iam)
 1. [Create a VPC](#pcfaws-vpc)
-
-1. [Configure a Security Group for <%= vars.ops_manager %>](#pcfaws-om-secgrp)
-
+1. [Create an Internet Gateway](#pcfaws-om-igw)
+1. [Create a NAT Gateway](#pcfaws-nat-gateway)
+1. [Configure a Security Group for Ops Manager](#pcfaws-om-secgrp)
 1. [Configure a Security Group for BOSH-Deployed VMs](#pcfaws-om-ersecgrp)
 
 1. [Configure a Security Group for the Web ELB](#pcfaws-om-elbsecgrp)
