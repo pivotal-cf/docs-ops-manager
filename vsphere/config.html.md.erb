@@ -2,44 +2,44 @@
 title: Configuring BOSH Director on vSphere
 owner: Ops Manager
 iaas: vSphere
+install_type: manual
 ---
 
 This topic describes how to configure the BOSH Director tile for VMware vSphere.
 
 You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see [Using the <%= vars.ops_manager %> API](../install/ops-man-api.html).
 
-<p class="note warning"><strong>WARNING:</strong> If you are installing <%= vars.k8s_runtime_full %>
-(<%= vars.k8s_runtime_abbr %>) on vSphere with NSX-T integration, follow the instructions in <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-om-config.html">Configuring BOSH Director with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the procedure described in this topic.</p>
+<p class='note caution'><strong>Caution:</strong> If you are installing <%= vars.k8s_runtime_first %> on vSphere with NSX-T integration, follow the instructions in <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-om-config.html">Configuring BOSH Director with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the procedure described in this topic.</p>
 
-After you complete this procedure, follow the configuration instructions for the runtime that you choose to install.
-</br>
-</br>
-For example:
-<ul>
-  <li> To install <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), see <a href="https://docs.pivotal.io/application-service/operating/configure-pas.html">Configuring <%= vars.app_runtime_abbr %></a>.</li>
-  <li> To install <%= vars.k8s_runtime_abbr %>, see [Installing <%= vars.k8s_runtime_abbr %> on vSphere](https://docs.pivotal.io/pks/installing-pks-vsphere.html).</li>
-</ul>
+After you complete this procedure, follow the configuration instructions for the runtime that you choose to install:
 
-See [Installing Runtimes](../install/runtimes.html) for more information about <%= vars.ops_manager %> runtimes.
+* To install <%= vars.app_runtime_first %>, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/configure-pas.html).
+
+* To install <%= vars.k8s_runtime_abbr %>, see the [<%= vars.k8s_runtime_abbr %> documentation](https://docs.pivotal.io/pks/installing-pks-vsphere.html).
+
+For more information about <%= vars.ops_manager_first %> runtimes, see [Installing Runtimes](../install/runtimes.html).
 
 
 ## <a id='prerequisites'></a> Prerequisite
 
-Before you begin this procedure, you must complete all steps in [Deploying <%= vars.ops_manager %> to vSphere](./deploy.html).
+Before you begin this procedure, you must complete all steps in [Deploying <%= vars.ops_manager %> to vSphere](deploy.html).
 
 
-## <a id="set-up"></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='set-up'></a> Step 1: Log Into <%= vars.ops_manager %>
 
 1. In a web browser, navigate to the fully qualified domain of your <%= vars.ops_manager %>.
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
+
 ## <a id='vcenter-config'></a> Step 2: Configure vCenter
 
 1. Click the **BOSH Director for vSphere** tile.
 
-1. Select **vCenter Config**. Configure the one or more vCenters that host your <%= vars.ops_manager %> foundation. The following image shows the top of the **vCenter Config** pane.
-    <%= image_tag("../common/images/vcenter-config.png", :alt => "The vCenter config pane") %>
+1. Select **vCenter Config**. Configure the one or more vCenters that host your <%= vars.ops_manager %> foundation, as described in the following steps.
+
+    ![alt-text=""](../common/images/vcenter-config.png)
+
 1. Complete the following fields on the **vCenter Config** pane:
     * **Name**: A name that you provide for your vCenter configuration. This field is used to identify the datacenter configuration in <%= vars.ops_manager %> if you are configuring multiple datacenters.
     * **vCenter Host**: The hostname of the vCenter that manages ESXi/vSphere.
@@ -47,41 +47,51 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
     * **vCenter Password**: The password for the vCenter user specified above.
     * **Datacenter Name**: The name of the datacenter as it appears in vCenter.
     * **Virtual Disk Type**: The Virtual Disk Type to provision for all VMs. For guidance on selecting a virtual disk type, see [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html).
-    <p class="note"><strong>Note:</strong> Datastores do not support whitespace characters in their names. Including whitespace characters in datastore names causes an error.</p>
+
+        <p class='note'><strong>Note:</strong> Datastores do not support whitespace characters in their names. Including whitespace characters in datastore names causes an error.</p>
+
     * **Ephemeral Datastore Names (comma delimited)**: The names of the datastores that store ephemeral VM disks deployed by <%= vars.ops_manager %>.
     * **Ephemeral Datastore Cluster Names (comma delimited)**: The names of the datastore clusters that store ephemeral VM disks deployed by <%= vars.ops_manager %>. If Datastore Names and Datastore Clusters are specified, both will be considered for disk placement. If you disable Storage DRS for a datastore cluster, the BOSH CPI ignores the cluster. For more information, see [Enable and Disable Storage DRS](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-827DBD6D-08B7-4411-9214-9E126671457F.html).
     * **Persistent Datastore Names (comma delimited)**: The names of the datastores that store persistent VM disks deployed by <%= vars.ops_manager %>.
     * **Persistent Datastore Cluster Names (comma delimited)**: The names of the datastore clusters that store persistent VM disks deployed by <%= vars.ops_manager %>. If Datastore Names and Datastore Clusters are specified, both will be considered for disk placement. If you disable Storage DRS for a datastore cluster, the BOSH CPI ignores the cluster. For more information, see [Enable and Disable Storage DRS](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.resmgmt.doc/GUID-827DBD6D-08B7-4411-9214-9E126671457F.html).
-    <p class="note"><strong>Note:</strong> A datastore cluster is a collection of datastores with shared resources and a shared management interface.</p>
+
+        <p class='note'><strong>Note:</strong> A datastore cluster is a collection of datastores with shared resources and a shared management interface.</p>
+
 1. To configure networking, complete the **vCenter Config** fields described below:
-    * **Standard vCenter Networking**: This is the default option when upgrading <%= vars.ops_manager %>. If you select this option, you need not configure the **NSX Networking** fields below.
-    <p class="note warning"><strong>Warning:</strong> If you intend to deploy <%= vars.k8s_runtime_abbr %> using Flannel as the CNI (as opposed to NSX-T), then select this option to configure the BOSH Director. Do not choose **NSX Networking**. When you configure the <%= vars.k8s_runtime_abbr %> tile later on, you will configure Flannel as the container network interface (CNI). <br/><br/>If you intend to deploy <%= vars.k8s_runtime_abbr %> with NSX-T, see <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-index.html">Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center</a>.</p>
-    <p class="note warning"><strong>Warning:</strong> When deploying on VMC (vSphere on AWS), you must select **Standard vCenter Networking**. **NSX Networking** does not work with VMC.</p>
-    * **NSX Networking**: Select this option to enable NSX network virtualization for non-<%= vars.k8s_runtime_abbr %> products such as <%= vars.app_runtime_abbr %>. This virtualization lets you configure component load balancing and security in the product tile [**Resource Config**](#resource-config) pane.
-    Configure NSX networking by entering the following information:
-        * **NSX Mode**: Select either **NSX-V** or **NSX-T**.
+
+    * **Standard vCenter Networking:** This is the default option when upgrading <%= vars.ops_manager %>. If you select this option, you do not need to configure the **NSX-T Networking** fields below.
+
+        <p class='note caution'><strong>Caution:</strong> If you intend to deploy <%= vars.k8s_runtime_abbr %> using Flannel as the CNI, select this option to configure the BOSH Director. Do not choose <strong>NSX-T Networking</strong>. When you configure the <%= vars.k8s_runtime_abbr %> tile later on, you configure Flannel as the container network interface (CNI).<br><br>If you intend to deploy <%= vars.k8s_runtime_abbr %> with NSX-T, see the <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-index.html"><%= vars.k8s_runtime_abbr %> documentation</a>.</p>
+
+        <p class='note caution'><strong>Caution:</strong> When deploying on VMC (vSphere on AWS), you must select <strong>Standard vCenter Networking</strong>. <strong>NSX-T Networking</strong> does not work with VMC.</p>
+
+    * **NSX-T Networking:** Select this option to allow NSX-T network virtualization for non-<%= vars.k8s_runtime_abbr %> products such as <%= vars.app_runtime_abbr %>. This virtualization allows you to configure component load balancing and security in the **Resource Config** pane of the BOSH Director tile. For more information, see [Step 10: Resource Config Pane](#resource-config) below.<br><br>Configure NSX networking by entering the following information:
+
         * **Use NSX-T Policy API**: Select whether to use the NSX-T Policy API instead of the Manager API when placing VMs in NSX-T groups and server pools. You can use NSX-T groups or server pools to designate VMs as load balancer back ends. This feature requires NSX-T Data Center v3.0 or later.
-        <p class="note"><strong>Note:</strong> The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. Do not select the <strong>NSX-T Policy API</strong> option if you are using an earlier <%= vars.ops_manager %> version.</p>
+        * **Use NSX-T Policy API Migration Mode**: Activate this checkbox to activate migration mode on the CPI. This allows you to transition infrastructure created with the Management API over to the Policy API.
         * **NSX Address**: The address of the NSX Manager.
         * **NSX-T Authentication**: Select how BOSH Director authenticates to the NSX Manager:
             * **Local User Authentication** authenticates with a username and password.
                 * For this option, fill in the **NSX Username** and **NSX Password** fields. Specify an NSX user with `Enterprise Administrator` privileges.
             * **Certificate Authentication** authenticates with a certificate and private key.
                 * For this option, fill in the **NSX Manager Principal Identity Certificate** and **NSX Manager Principal Identity Private Key** fields.
-            <p class="note"><strong>Note:</strong> <strong>Certificate Authentication</strong> for the <strong>NSX-T Policy API</strong> was added in <%= vars.ops_manager %> v2.10.40. You must use <strong>Local User Authentication</strong> if you are using an earlier <%= vars.ops_manager %> version.</p>
         * **NSX CA Cert**: A CA certificate in PEM format that establishes a secure connection to the NSX server before the BOSH Director authenticates to the NSX Manager.
         If the NSX Manager generated a self-signed certificate, use the following command to retrieve the CA certificate using OpenSSL:
 
             ```
             openssl s_client -showcerts -connect NSX-MANAGER-ADDRESS:443 < /dev/null 2> /dev/null | openssl x509
             ```
+
             Where `NSX-MANAGER-ADDRESS` is the address of the NSX manager.
+
+        * **Use NSX-T Policy API Migration Mode**: This is a special mode to migrate an existing deployment from earlier NSX-T Manager API objects such as NS Groups to the newer NSX-T Policy API objects such as Groups, and should only be used with NSX-T migration scripts. Leave unchecked if unsure.
 
 1. Configure the following folder names:
     * **VM Folder**: The vSphere datacenter folder where <%= vars.ops_manager %> places VMs. Enter `[YOUR-DEPLOYMENT]_vms` where `YOUR-DEPLOYMENT` corresponds to a descriptive name for your deployment. For example, `my_pcf_vms`.
     * **Template Folder**: The vSphere datacenter folder where <%= vars.ops_manager %> places templates. Enter `[YOUR-DEPLOYMENT]_templates`. For example, `my_pcf_templates`.
     * **Disk path Folder**: The vSphere datastore folder where <%= vars.ops_manager %> creates attached disk images. You must not nest this folder. Enter `[YOUR-DEPLOYMENT]_disk`. For example, `my_pcf_disk`.
-    <p class="note"><strong>Note:</strong> After initial deployment, you cannot edit folder names.</p>
+
+    <p class='note'><strong>Note:</strong> After initial deployment, you cannot edit folder names.</p>
 
 1. Click **Save**.
 
@@ -100,22 +110,23 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 <%= vars.company_name %> recommends that you use at least three AZs for a highly available installation of your chosen runtime.
 
-<p class="note"><strong>Note:</strong> For more information about AZs and high availability in vSphere, see <a href="https://docs.pivotal.io/platform/refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> in <em>vSphere Reference Architecture</em>.</p>
+<p class='note'><strong>Note:</strong> For more information about AZs and high availability in vSphere, see <a href="https://docs.pivotal.io/platform/refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> in <em>vSphere Reference Architecture</em>.</p>
 
-1. Select **Create Availability Zones** to navigate to the pane.
-    <%= image_tag("../common/images/create-az.png", :alt => "The 'Create Availability Zones' pane shows a list of two availability zones: 'first-az' and 'second-az' with a button to the right to 'Add'. The 'first-az' is expanded and shows the fields 'Name' and 'IaaS Configuration'. Below that, still in the expanded 'first-az', a subhead called 'Clusters' lists a group of two fields, 'Cluster' and 'Resource Pool' with a button to the right to 'Add Cluster'.") %>
+1. Select **Create Availability Zones**.
+
+    ![alt-text=""](../common/images/create-az.png)
 
 1. Use the following steps to create the first AZ.
     * Click **Add**.
     * Enter a unique **Name** for the AZ.
     * Select a vCenter config name from the **IaaS Configuration** dropdown to associate your AZ with a vCenter. If you have only one vCenter config, or if you are creating your first AZ, IaaS Configuration defaults to the first vCenter and cannot be configured.
-    * Enter the name of the vCenter **Cluster** where you deployed <%= vars.ops_manager %>. You created this cluster in the [Prepare vSphere](./deploy.html#prepare-vsphere) step of _Deploying <%= vars.ops_manager %> to vSphere_. For example, `Cluster1`.
-    * Enter the name of the **Resource Pool** that you created in the [Prepare vSphere](./deploy.html#prepare-vsphere) step of _Deploying <%= vars.ops_manager %> to vSphere_ to organize management components like BOSH Director.
+    * Enter the name of the vCenter **Cluster** where you deployed <%= vars.ops_manager %>. You created this cluster in the [Prepare vSphere](deploy.html#prepare-vsphere) step of _Deploying <%= vars.ops_manager %> to vSphere_. For example, `Cluster1`.
+    * Enter the name of the **Resource Pool** that you created in the [Prepare vSphere](deploy.html#prepare-vsphere) step of _Deploying <%= vars.ops_manager %> to vSphere_ to organize management components like BOSH Director.
     For example, `RP-MGMT`. The jobs running in this AZ share the CPU and memory resources defined by the pool.
     You only need to specify this resource group in one AZ.
-    * (Optional) Enter the name of a **Host Group** for the AZ to use. The host group must be within the cluster you designated in the **Clusters** field. You created host groups in the [Prepare vSphere](./deploy.html#prepare-vsphere) step of _Deploying <%= vars.ops_manager %> to vSphere_. For more information about using host groups, see [Host Groups in vSphere](host-groups.html).
+    * (Optional) Enter the name of a **Host Group** for the AZ to use. The host group must be within the cluster you designated in the **Clusters** field. You created host groups in the [Prepare vSphere](deploy.html#prepare-vsphere) step of _Deploying <%= vars.ops_manager %> to vSphere_. For more information about using host groups, see [Host Groups in vSphere](host-groups.html).
     * (Optional) In the **VM-Host Affinity Rule** dropdown, select **SHOULD**. Selecting **SHOULD** allows vSphere to restart VMs in another host group in the event of an AZ failure. For more information, see [DRS Host-Affinity Rules and Stretched Clusters](host-groups.html#host-affinity-rule) in _Host Groups in vSphere_.
-      <p class="note"><strong>Note:</strong> The value for <strong>VM-Host Affinity Rule</strong> only applies if you are using Host Groups. If you do not specify a <strong>Host Group</strong> for the cluster, then any changes you make to <strong>VM-Host Affinity Rule</strong> are ignored.</p></p>
+      <p class='note'><strong>Note:</strong> The value for <strong>VM-Host Affinity Rule</strong> only applies if you are using Host Groups. If you do not specify a <strong>Host Group</strong> for the cluster, then any changes you make to <strong>VM-Host Affinity Rule</strong> are ignored.</p></p>
     * (Optional) Click **Add Cluster** to add more clusters to the AZ as required by your installation size and high availability requirements.
 
 1. (Optional) Use the following steps to create additional AZs.
@@ -133,215 +144,224 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 1. Select **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable.
 
 1. Depending on the runtime that you are deploying, do one of the following:
-  * For <%= vars.app_runtime_abbr %>, click **Add Network** and create the following networks:
-      * `infrastructure`: This network is for <%= vars.ops_manager %> and the BOSH Director.
-      * `pas`: This network is for all the <%= vars.app_runtime_abbr %> VMs including Gorouter, Diego cells, and Cloud Controller.
-      * `services`: This network is for any service tiles to be deployed alongside <%= vars.app_runtime_abbr %>.   <br/><br/>
-    Use the values from the following table as a guide when you create each network, replacing the IP addresses with ranges that are available in your vSphere environment:
-     <table>
-     <tr>
-      <th rowspan="7">Infrastructure<br> Network</th>
-      <th>Field</th>
-      <th>Configuration Example</th>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td><code>infrastructure</code></td>
-    </tr>
-    <tr>
-      <td>vSphere Network Name <sup>&#42;</sup></td>
-      <td><code>pcf-virt-net/infrastructure</code></td>
-    </tr>
-    <tr>
-      <td>CIDR</td>
-      <td><code>192.168.101.0/24</code></td>
-    </tr>
-    <tr>
-      <td>Reserved IP Ranges <sup id="note2">&#8224;</sup></td>
-      <td><code>192.168.101.1-192.168.101.9</code></td>
-    </tr>
-    <tr>
-      <td>DNS</td>
-      <td><code>192.168.101.2</code></td>
-    </tr>
-    <tr>
-      <td>Gateway</td>
-      <td><code>192.168.101.1</code></td>
-    </tr>
-      <tr>
-      <th rowspan="7">Deployment Network</th>
-      <th>Field</th>
-      <th>Configuration Example</th>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td><code>pas</code></td>
-    </tr>
-    <tr>
-      <td>vSphere Network Name  <sup>&#42;</sup></td>
-      <td><code>pcf-virt-net/pcf-pas-subnet</code></td>
-    </tr>
-    <tr>
-      <td>CIDR</td>
-      <td><code>192.168.16.0/24</code></td>
-    </tr>
-    <tr>
-      <td>Reserved IP Ranges <sup id="note2">&#8224;</sup></td>
-      <td><code>192.168.16.1-192.168.16.9</code></td>
-    </tr>
-    <tr>
-      <td>DNS</td>
-      <td><code>192.168.16.2</code></td>
-    </tr>
-    <tr>
-      <td>Gateway</td>
-      <td><code>192.168.16.1</code></td>
-    </tr>
-    <tr>
-      <th rowspan="7">Services Network</th>
-      <th>Field</th>
-      <th>Configuration Example</th>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td><code>services</code></td>
-    </tr>
-    <tr>
-      <td>vSphere Network Name <sup>&#42;</sup></td>
-      <td><code>pcf-virt-net/pcf-services-subnet</code></td>
-    </tr>
-    <tr>
-      <td>CIDR</td>
-      <td><code>192.168.20.0/24</code></td>
-    </tr>
-    <tr>
-      <td>Reserved IP Ranges <sup id="note2">&#8224;</sup></td>
-      <td><code>192.168.20.1-192.168.20.9</code></td>
-    </tr>
-    <tr>
-      <td>DNS</td>
-      <td><code>192.168.20.2</code></td>
-    </tr>
-    <tr>
-      <td>Gateway</td>
-      <td><code>192.168.20.1</code></td>
-    </tr>
-  </table><br/>
-  <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br/>
-  <sup id="note2">&#8224;</sup> For **Reserved IP Ranges**, enter any IP addresses from the **CIDR**
-      that you do not want BOSH to use in your installation. <%= vars.ops_manager %> will not deploy VMs to any address in this range.
 
-  1. For <%= vars.k8s_runtime_abbr %>, click **Add Network** and create the following networks:
-      * `infrastructure`: This network is for <%= vars.ops_manager %>, the BOSH Director, the <%= vars.k8s_runtime_abbr %> broker, and the <%= vars.k8s_runtime_abbr %> API.
-      * `pks`: If you have a large deployment with multiple tiles, you can choose to deploy the <%= vars.k8s_runtime_abbr %> broker and <%= vars.k8s_runtime_abbr %> API to a separate network named `pks`. See the table below for more information.
-      * `services`: Network for creating the master and worker VMs for Kubernetes clusters. The CIDR should not conflict with the pod overlay network `10.200.0.0/16` or the reserved Kubernetes services CIDR of `10.100.200.0/24`.
-      <p class="note"><strong>Note:</strong> Multiple networks allow you to place vCenter on a private network and the rest of your deployment on a public network. Isolating vCenter in this manner denies access to it from outside sources and reduces possible security vulnerabilities.</p>
-  Use the values from the following table as a guide when you create each network, replacing the IP addresses with ranges that are available in your vSphere environment:
-  <table>
-    <tr>
-      <th rowspan="7">Infrastructure<br> Network</th>
-      <th>Field</th>
-      <th>Configuration Example</th>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td><code>infrastructure</code></td>
-    </tr>
-    <tr>
-      <td>vSphere Network Name <sup>&#42;</sup></td>
-      <td><code>pcf-virt-net/pks-infrastructure-subnet</code></td>
-    </tr>
-    <tr>
-      <td>CIDR</td>
-      <td><code>192.168.101.0/26</code></td>
-    </tr>
-    <tr>
-      <td>Reserved IP Ranges <sup>&#8224;</sup></td>
-      <td><code>192.168.101.1-192.168.101.9</code></td>
-    </tr>
-    <tr>
-      <td>DNS</td>
-      <td><code>192.168.101.2</code></td>
-    </tr>
-    <tr>
-      <td>Gateway</td>
-      <td><code>192.168.101.1</code></td>
-    </tr>
-      <tr>
-      <th rowspan="7">Main Network (Optional)</th>
-      <th>Field</th>
-      <th>Configuration Example</th>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td><code>pks</code></td>
-    </tr>
-    <tr>
-      <td>vSphere Network Name <sup>&#42;</sup></td>
-      <td><code>pcf-virt-net/pks-subnet</code></td>
-    </tr>
-    <tr>
-      <td>CIDR</td>
-      <td><code>192.168.16.0/26</code></td>
-    </tr>
-    <tr>
-      <td>Reserved IP Ranges <sup>&#8224;</sup></td>
-      <td><code>192.168.16.1-192.168.16.9</code></td>
-    </tr>
-    <tr>
-      <td>DNS</td>
-      <td><code>192.168.16.2</code></td>
-    </tr>
-    <tr>
-      <td>Gateway</td>
-      <td><code>192.168.16.1</code></td>
-    </tr>
-    <tr>
-      <th rowspan="7">Service Network</th>
-      <th>Field</th>
-      <th>Configuration Example</th>
-    </tr>
-    <tr>
-      <td>Name</td>
-      <td><code>services</code></td>
-    </tr>
-    <tr>
-      <td>vSphere Network Name <sup>&#42;</sup></td>
-      <td><code>pcf-virt-net/pks-service-subnet</code></td>
-    </tr>
-    <tr>
-      <td>CIDR</td>
-      <td><code>192.168.20.0/22</code></td>
-    </tr>
-    <tr>
-      <td>Reserved IP Ranges <sup>&#8224;</sup></td>
-      <td><code>192.168.20.1-192.168.20.9</code></td>
-    </tr>
-    <tr>
-      <td>DNS</td>
-      <td><code>192.168.20.2</code></td>
-    </tr>
-    <tr>
-      <td>Gateway</td>
-      <td><code>192.168.20.1</code></td>
-    </tr>
-  </table><br/>
-  <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br/>
-  <sup id="note2">&#8224;</sup> For **Reserved IP Ranges**, enter any IP addresses from the **CIDR** that you do not want BOSH to use in your installation. <%= vars.ops_manager %> will not deploy VMs to any address in this range.
+    * For <%= vars.app_runtime_abbr %>, click **Add Network** and create the following networks:
+        * `infrastructure`: This network is for <%= vars.ops_manager %> and the BOSH Director.
+        * `pas`: This network is for all the <%= vars.app_runtime_abbr %> VMs including GoRouter, Diego cells, and Cloud Controller.
+        * `services`: This network is for any service tiles to be deployed alongside <%= vars.app_runtime_abbr %>.<br><br> Use the values from the following table as a guide when you create each network, replacing the IP addresses with ranges that are available in your vSphere environment:
+
+            <table>
+               <tr>
+                <th rowspan="7">Infrastructure<br> Network</th>
+                <th>Field</th>
+                <th>Configuration Example</th>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td><code>infrastructure</code></td>
+              </tr>
+              <tr>
+                <td>vSphere Network Name <sup>&#42;</sup></td>
+                <td><code>pcf-virt-net/infrastructure</code></td>
+              </tr>
+              <tr>
+                <td>CIDR</td>
+                <td><code>192.168.101.0/24</code></td>
+              </tr>
+              <tr>
+                <td>Reserved IP Ranges <sup id="note2">&#8224;</sup></td>
+                <td><code>192.168.101.1-192.168.101.9</code></td>
+              </tr>
+              <tr>
+                <td>DNS</td>
+                <td><code>192.168.101.2</code></td>
+              </tr>
+              <tr>
+                <td>Gateway</td>
+                <td><code>192.168.101.1</code></td>
+              </tr>
+                <tr>
+                <th rowspan="7">Deployment Network</th>
+                <th>Field</th>
+                <th>Configuration Example</th>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td><code>pas</code></td>
+              </tr>
+              <tr>
+                <td>vSphere Network Name  <sup>&#42;</sup></td>
+                <td><code>pcf-virt-net/pcf-pas-subnet</code></td>
+              </tr>
+              <tr>
+                <td>CIDR</td>
+                <td><code>192.168.16.0/24</code></td>
+              </tr>
+              <tr>
+                <td>Reserved IP Ranges <sup id="note2">&#8224;</sup></td>
+                <td><code>192.168.16.1-192.168.16.9</code></td>
+              </tr>
+              <tr>
+                <td>DNS</td>
+                <td><code>192.168.16.2</code></td>
+              </tr>
+              <tr>
+                <td>Gateway</td>
+                <td><code>192.168.16.1</code></td>
+              </tr>
+              <tr>
+                <th rowspan="7">Services Network</th>
+                <th>Field</th>
+                <th>Configuration Example</th>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td><code>services</code></td>
+              </tr>
+              <tr>
+                <td>vSphere Network Name <sup>&#42;</sup></td>
+                <td><code>pcf-virt-net/pcf-services-subnet</code></td>
+              </tr>
+              <tr>
+                <td>CIDR</td>
+                <td><code>192.168.20.0/24</code></td>
+              </tr>
+              <tr>
+                <td>Reserved IP Ranges <sup id="note2">&#8224;</sup></td>
+                <td><code>192.168.20.1-192.168.20.9</code></td>
+              </tr>
+              <tr>
+                <td>DNS</td>
+                <td><code>192.168.20.2</code></td>
+              </tr>
+              <tr>
+                <td>Gateway</td>
+                <td><code>192.168.20.1</code></td>
+              </tr>
+            </table>
+
+            <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br>
+
+            <sup id="note2">&#8224;</sup> For **Reserved IP Ranges**, enter any IP addresses from the **CIDR**
+                that you do not want BOSH to use in your installation. <%= vars.ops_manager %> will not deploy VMs to any address in this range.
+
+    * For <%= vars.k8s_runtime_abbr %>, click **Add Network** and create the following networks:
+        * `infrastructure`: This network is for <%= vars.ops_manager %>, the BOSH Director, the <%= vars.k8s_runtime_abbr %> broker, and the <%= vars.k8s_runtime_abbr %> API.
+        * `pks`: If you have a large deployment with multiple tiles, you can choose to deploy the <%= vars.k8s_runtime_abbr %> broker and <%= vars.k8s_runtime_abbr %> API to a separate network named `pks`. For more information, see the table below for more information.
+        * `services`: Network for creating the master and worker VMs for Kubernetes clusters. The CIDR should not conflict with the pod overlay network `10.200.0.0/16` or the reserved Kubernetes services CIDR of `10.100.200.0/24`.
+
+            <p class='note'><strong>Note:</strong> Multiple networks allow you to place vCenter on a private network and the rest of your deployment on a public network. Isolating vCenter in this manner denies access to it from outside sources and reduces possible security vulnerabilities.</p>
+
+            Use the values from the following table as a guide when you create each network, replacing the IP addresses with ranges that are available in your vSphere environment:
+
+            <table>
+              <tr>
+                <th rowspan="7">Infrastructure<br> Network</th>
+                <th>Field</th>
+                <th>Configuration Example</th>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td><code>infrastructure</code></td>
+              </tr>
+              <tr>
+                <td>vSphere Network Name <sup>&#42;</sup></td>
+                <td><code>pcf-virt-net/pks-infrastructure-subnet</code></td>
+              </tr>
+              <tr>
+                <td>CIDR</td>
+                <td><code>192.168.101.0/26</code></td>
+              </tr>
+              <tr>
+                <td>Reserved IP Ranges <sup>&#8224;</sup></td>
+                <td><code>192.168.101.1-192.168.101.9</code></td>
+              </tr>
+              <tr>
+                <td>DNS</td>
+                <td><code>192.168.101.2</code></td>
+              </tr>
+              <tr>
+                <td>Gateway</td>
+                <td><code>192.168.101.1</code></td>
+              </tr>
+                <tr>
+                <th rowspan="7">Main Network (Optional)</th>
+                <th>Field</th>
+                <th>Configuration Example</th>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td><code>pks</code></td>
+              </tr>
+              <tr>
+                <td>vSphere Network Name <sup>&#42;</sup></td>
+                <td><code>pcf-virt-net/pks-subnet</code></td>
+              </tr>
+              <tr>
+                <td>CIDR</td>
+                <td><code>192.168.16.0/26</code></td>
+              </tr>
+              <tr>
+                <td>Reserved IP Ranges <sup>&#8224;</sup></td>
+                <td><code>192.168.16.1-192.168.16.9</code></td>
+              </tr>
+              <tr>
+                <td>DNS</td>
+                <td><code>192.168.16.2</code></td>
+              </tr>
+              <tr>
+                <td>Gateway</td>
+                <td><code>192.168.16.1</code></td>
+              </tr>
+              <tr>
+                <th rowspan="7">Service Network</th>
+                <th>Field</th>
+                <th>Configuration Example</th>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td><code>services</code></td>
+              </tr>
+              <tr>
+                <td>vSphere Network Name <sup>&#42;</sup></td>
+                <td><code>pcf-virt-net/pks-service-subnet</code></td>
+              </tr>
+              <tr>
+                <td>CIDR</td>
+                <td><code>192.168.20.0/22</code></td>
+              </tr>
+              <tr>
+                <td>Reserved IP Ranges <sup>&#8224;</sup></td>
+                <td><code>192.168.20.1-192.168.20.9</code></td>
+              </tr>
+              <tr>
+                <td>DNS</td>
+                <td><code>192.168.20.2</code></td>
+              </tr>
+              <tr>
+                <td>Gateway</td>
+                <td><code>192.168.20.1</code></td>
+              </tr>
+            </table>
+
+            <sup id="note1">&#42;</sup> In **vSphere Network Name**, enter the full path of the network as it displays in vCenter. For example, enter `YOUR-DIRECTORY-NAME/YOUR-NETWORK-NAME`. If your vSphere Network Name contains a forward slash character, replace the forward slash with the URL-encoded forward slash character `%2f`.<br>
+
+            <sup id="note2">&#8224;</sup> For **Reserved IP Ranges**, enter any IP addresses from the **CIDR** that you do not want BOSH to use in your installation. <%= vars.ops_manager %> will not deploy VMs to any address in this range.
 
 1. For each network that you create, select the **Availability Zones** to use with the network. Assign as many AZs to your network as needed by your deployment. For more information, see <a href="..//refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> and <a href="../refarch/vsphere/vsphere_ref_arch.html#scaling">Scaling and Capacity Managment</a> sections of the vSphere Reference Architecture.
 
 1. Click **Save**.
 
 
-## <a id='assign-azs'></a>Step 6: Assign AZs and Networks
+## <a id='assign-azs'></a> Step 6: Assign AZs and Networks
 
 1. Select **Assign AZs and Networks**.
-<%= image_tag("../common/images/assign-az.png", :alt => "At the top of the image is the header 'Create Availability Zones' with a horizontal line underneath. Below the line is the header 'Availability Zones' with a gray button directly across from them labeled 'Add'. Below Availability Zones are the words 'us-west-1c' with a small, downward-pointing triangle to the left of them, indicating an expandable area. Below that is a text field labeled 'Amazon Availability Zone' with a red asterisk to denote that it is a mandatory field, filled with the text 'us-west-1c'. The help text beside the text field says 'The Amazon availability Zone name (ex: 'us-east-1b')'. There is a button with the image of a gray trashcan in the upper right corner of the 'us-west-1c' area, directly underneath the gray Add button. At the bottom-left of the image is a blue rectangular button labeled 'Save'.") %>
 
-1. Use the dropdown to select a **Singleton Availability Zone**. The BOSH Director installs as a single instance in this Availability Zone.
+    ![alt-text=""](../common/images/assign-az.png)
 
-1. Use the dropdown to select a **Network** for your BOSH Director.
+1. Use the **Singleton Availability Zone** drop-down menu to select a singleton AZ. The BOSH Director is installed as a single instance in this Availability Zone.
+
+1. Use the **Network** drop-down menu to select a network for your BOSH Director.
 
 1. Click **Save**.
 
@@ -350,53 +370,54 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 <%= partial "../common/security-pane" %>
 
-## <a id="bosh-dns"></a> Step 8: BOSH DNS Config Pane
+## <a id='bosh-dns'></a> Step 8: BOSH DNS Config Pane
 
 <%= partial '../common/bosh-dns-config'  %>
 
 ## <a id='syslog'></a> Step 9: Syslog Pane
 
-<p class="note"><strong>Note:</strong> BOSH Director logs contain sensitive information that should be considered privileged. For example, these logs may contain cloud provider credentials. If you choose to forward logs to an external syslog endpoint, use TLS encryption to prevent information from being intercepted by a third party.</p>
+<p class='note'><strong>Note:</strong> BOSH Director logs contain sensitive information that should be considered privileged. For example, these logs may contain cloud provider credentials. If you choose to forward logs to an external syslog endpoint, use TLS encryption to prevent information from being intercepted by a third party.</p>
 
-<%= partial(:"/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' }) %>
+<%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
 ## <a id='resource-config'></a> Step 10: Resource Config Pane
 
-1. Select **Resource Config**.
+1. Click **Resource Config**.
 
-    <%= image_tag("../common/images/vsphere-om-resources.png", :alt => "At the top of the image is the header 'Resource Config'. In the top right corner of the image is a blue, rectangular button labeled 'Save'. Below the header are four columns labeled, from left to right, 'Job', 'Instances', 'VM Type', and 'Persistent Disk Type'. Under 'Job' are rows labeled with the names of two VMs, 'BOSH Director' and 'Master Compilation Job'. The 'Master Compilation Job' row is expanded, which reveals two columns labeled, from left to right, 'NSX-T Configuration' and 'NSX-V Configuration'. In the 'NSX-T Configuration' column are three fields labeled, from top to bottom, 'NS Groups', 'VIF Type', and 'Logical Load Balancer'. The 'NS Groups' field contains the text 'group1, group2'. The 'VIF Type' field contains the text 'PARENT or null'. The 'Logical Load Balancer' field contains the text 'server pools' in JSON formatting. In the 'NSX-V Configuration' column are two fields labeled, from top to bottom, 'Security Groups' and 'Edge Load Balancers'. The 'Security Groups' field contains the text 'group1, group2'. The 'Edge Load Balancers' field contains a set of square brackets. Under 'Instances' are two dropdowns, with 'Automatic: 1' for BOSH Director and '1' for Master Compilation Job selected. Under 'VM Type' are two dropdowns, with 'Automatic: large.disk (cpu: 2, ram...' selected for BOSH Director and 'small (cpu: 1, ram: 2 GB, disk...' selected for Master Compilation Job. Under 'Persistent Disk Type' is one dropdown with 'Automatic: 50 GB' selected for BOSH Director and the word 'None' for Master Compilation Job.") %>
+    ![alt-text=""](../common/images/vsphere-om-resources.png)
 
-1. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
-    <p class="note"><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
-    <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
-    <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the drop-down menus to allocate the recommended resources for the job.
 
-1. (Optional) If you are using NSX-T or NSX-V networking, as specified on the [**vCenter Config**](#vcenter-config) pane,
-and you want to configure security and load balancing for the BOSH Director job:
-  1. Select the icon next to the **BOSH Director** job name to reveal the **NSX-T Configuration** and **NSX-V Configuration** columns.
-  2. Enter your NSX-T or NSX-V configuration values in these fields.
+1. If the **Persistent Disk Type** field displays the value **None**, the job does not require persistent disk space.
+
+    <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
+    <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
+    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+
+1. (Optional) If you configured NSX-T networking in the **vCenter Config** pane, and you want to configure security and load balancing for the BOSH Director job:
+  1. Click the menu expansion icon next to the **BOSH Director** job name. The **NSX-T Configuration** configuration fields appear.
+  2. Enter your NSX-T configuration values in these fields.
 
 1. Click **Save**.
 
 
-## <a id="custom-vm-extensions"></a> Step 11: (Optional) Add Custom VM Extensions
+## <a id='custom-vm-extensions'></a> Step 11: (Optional) Add Custom VM Extensions
 
 <%= partial "../common/vm-extension-config"  %>
 
 ## <a id='complete-installation'></a> Step 12: Complete the BOSH Director Installation
 
-1. Click the **Installation Dashboard** link to return to the Installation Dashboard.
+1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
 1. Click **Review Pending Changes**. Select the product that you intend to deploy and review the changes. For more information, see [Reviewing Pending Product Changes](../install/review-pending-changes.html).
 
 
-## <a id="next"></a> Next Steps
+## <a id='next'></a> Next Steps
 
-After you complete this procedure, follow the instructions for the runtime that you intend to install.
+After you complete this procedure, follow the instructions for the runtime that you intend to install:
 
-<ul>
-  <li>To install <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-serviceoperating/configure-pas.html">Configuring <%= vars.app_runtime_abbr %></a>.</li>
-  <li>To install <%= vars.k8s_runtime_abbr %>, see <a href="https://docs.pivotal.io/tkgi/installing-vsphere.html">Installing <%= vars.k8s_runtime_abbr %> on vSphere</a>.</li>
-</ul>
+* To install <%= vars.app_runtime_abbr %>, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/configure-pas.html).
+
+* To install <%= vars.k8s_runtime_abbr %>, see the [<%= vars.k8s_runtime_abbr %> documentation](https://docs.pivotal.io/pks/installing-pks-vsphere.html).
 
 For more information about <%= vars.ops_manager %> runtimes, see [Installing Runtimes](../install/runtimes.html).

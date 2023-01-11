@@ -3,20 +3,29 @@ title: Installing Ops Manager in Air-Gapped Environments
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Installing " + vars.platform_name + " in Air-Gapped Environments" %>
+This topic provides an overview of the components and resources needed to install <%= vars.ops_manager_first %> in air-gapped environments, including the typical corresponding automation resources.
 
-This topic provides an overview of the components and resources needed to install <%= vars.ops_manager %> in air-gapped environments, including the typical corresponding automation resources.
 
-##<a id="offline-components"></a> Offline Components
+## <a id='offline-components'></a> Offline Components
 
 To run offline, you must obtain resources from the internet and move them into offline components that store and use them.
 The method you use to move a resource from VMware Tanzu Network or GitHub
 into an offline environment can vary from setting up a designated proxy to burning a DVD.
 
-The following image displays types of resources and the components you must move them to in your offline environment. It also includes a jumpbox. The jumpbox is a Linux host for running commands such as `bosh`, `uaac`, and `fly`. You could use the <%= vars.ops_manager %> VM for this purpose.
+The following image displays types of resources and the components you must move them to in your offline environment. It also includes a jumpbox. The jumpbox is a Linux host for running commands such as `bosh`, `uaac`, and `fly`. You could use the <%= vars.ops_manager %> VM for this purpose. Blocks shown in this configuration are:
 
-<%= image_tag("offline-components.png", :class => "no-border") %>
-[//]:https://docs.google.com/drawings/d/1SeyhGSoohmRmgxO41WTlWS03NU6iCnz0AGVkuLl2P7A/edit?usp=sharing
+  * Ops Manager Network Resources, feeding into:
+    * S3
+    * Artifact Store
+  * Automation Resources, feeding into:
+    * Artifact Store
+    * Docker Registry
+    * Git
+    * Runway /Concourse
+
+      ![alt-text=""](images/offline-components.png)
+
+<%# https://docs.google.com/drawings/d/1FB7ppD2MJna8LOiyU1OhLmHxlqcXamkkeiR4P6D5d6U/edit?usp=sharing %>
 
 The following table provides more detail about resources and the component you must move them to:
 
@@ -52,19 +61,30 @@ The following table provides more detail about resources and the component you m
 </table>
 
 
-##<a id="architectural-patterns"></a> Architectural Patterns
+## <a id='architectural-patterns'></a> Architectural Patterns
 
 The following sections describe three architectural patterns for running in air-gapped environments.
 The pattern you use depends on how your environment is set up.
 
-###<a id="pattern-one"></a> Pattern One: Artifact Store with Internet Access
+### <a id='pattern-one'></a> Pattern One: Artifact Store with Internet Access
 
 It is common for organizations to deploy an artifact store such as Artifactory or Nexus  as a gateway to the Internet. In this configuration, the artifact store is typically configured as a Docker mirror.
 
 This pattern includes an S3 component that is used only for backups of the installation.
+Blocks in this configuration are:
 
-<%= image_tag("internet-artifact-store.png", :class => "no-border") %>
-[//]:https://docs.google.com/drawings/d/14_35uZLsBxCM6ebbj85uqWv1o2QWv00bw52H6H94HX0/edit?usp=sharing
+  * Jumpbox
+  * S3
+  * Git
+  * Runway / Concourse, feeing into:
+    * Ops Manager Network Resources
+    * Artifact Store
+  * Automation Resources, feeding into:
+    * Artifact Store
+
+![alt-text=""](images/internet-artifact-store.png)
+
+<%# https://docs.google.com/drawings/d/1T-nfzsXZCtQL7vcQhso8AGun7CZGFdkO7yQ309a_l8k/edit?usp=sharing %>
 
 The following table provides an example of how you might handle resources in this scenario:
 
@@ -100,12 +120,26 @@ The following table provides an example of how you might handle resources in thi
 </table>
 
 
-###<a id="pattern-two"></a> Pattern Two: Completely Offline
+### <a id='pattern-two'></a> Pattern Two: Completely Offline
 
 In completely offline environments, you must bring in all resources manually and store them in the available local components.
+Blocks shown in this configuration are:
 
-<%= image_tag("completely-offline.png", :class => "no-border") %>
-[//]:https://docs.google.com/drawings/d/1eVQcGOu6U0QFRghkAm4W5JjoWUdXs_dYIuxsMMjmfjU/edit?usp=sharing
+  * Jumpbox
+  * Ops Manager Network Resources, feeding into:
+    * Operator and media
+  * Automation Resources, feeding into:
+    * Operator and media
+  * Operator and media, feeding into:
+    * S3
+    * Artifact Store
+    * Docker Registry
+    * Git
+    * Runway / Concourse
+
+![alt-text=""](images/completely-offline.png)
+
+<%# https://docs.google.com/drawings/d/1eo0rE2n1j1OqoHgwvKrHvyPKBF1PgKPdh8Dfs1hQgpk/edit?usp=sharing %>
 
 In this architectural pattern, you must configure pipelines to watch components for changes and apply updates when available. The following table provides an example of how you might handle resources in this scenario:
 
@@ -140,12 +174,22 @@ In this architectural pattern, you must configure pipelines to watch components 
   </tr>
 </table>
 
-###<a id="pattern-three"></a> Pattern Three: TLS Intercepting Proxy
+### <a id='pattern-three'></a> Pattern Three: TLS Intercepting Proxy
 
 This pattern allows Internet access, but only through a proxy that decrypts and rewrites  TLS certificates. In general, this resembles an online install, however it requires that you add your corporate certificate to all BOSH-deployed VMs.
+Blocks shown in this configuration are:
 
-<%= image_tag("tls-intercepting-proxy.png", :class => "no-border") %>
-[//]:https://docs.google.com/drawings/d/1xDiLcmQdXQunFR03bhegMhQ4zHmuQzX4QHOpMyZkPac/edit?usp=sharing
+  * Jumpbox
+  * Ops Manager Network Resources block and Automation Resources block, feed (through a proxy) into:
+    * S3
+    * Artifact Store
+    * Docker Registry
+    * Git
+    * Runway / Concourse
+
+![alt-text=""](images/tls-intercepting-proxy.png)
+
+<%# https://docs.google.com/drawings/d/1kq55um8ZBnYbvCrJE0dpuo3T8iM2MoKNhdDEShabNM8/edit?usp=sharing %>
 
 Some of the challenges in this pattern include the following:
 

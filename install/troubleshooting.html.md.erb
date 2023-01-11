@@ -3,7 +3,8 @@ title: Troubleshooting Deployment Problems
 owner: Ops Manager
 ---
 
-This guide is intended to provides assistance with resolving issues encountered when deploying products with <%= vars.ops_manager %>.
+This guide is intended to provides assistance with resolving issues encountered when deploying products with <%= vars.ops_manager_first %>.
+
 
 ## <a id='retry'></a> Retrying the Deployment
 
@@ -17,15 +18,16 @@ Some failures only produce generic errors like `Exited with 1`. In cases like th
 is not accompanied by useful information, click **Install** or **Review Pending Changes**, then
 **Apply Changes** to retry.
 
-When the system does provide informative evidence, review the [Common Issues](#common_issues)
+When the system does provide informative evidence, see [Common Issues](#common_issues)
 section below to see if your problem is covered.
 
-## <a id='common_issues'></a>Common Issues ##
+
+## <a id='common_issues'></a> Common Issues
 
 Compare evidence that you have gathered to the descriptions below. If your issue is covered, try
 the recommended remediation procedures.
 
-### <a id='reinstall_bosh'></a>BOSH Does Not Reinstall ###
+### <a id='reinstall_bosh'></a> BOSH Does Not Reinstall
 
 You might want to reinstall BOSH for troubleshooting purposes.
 However, if <%= vars.ops_manager %> does not detect any changes, BOSH does not reinstall.
@@ -33,7 +35,7 @@ To force a reinstall of BOSH, select **BOSH Director > Resource Sizes**
 and change a resource value.
 For example, you could increase the amount of RAM by 4&nbsp;MB.
 
-### <a id='time_out'></a>Creating Bound Missing VMs Times Out ###
+### <a id='time_out'></a> Creating Bound Missing VMs Times Out
 
 This task happens immediately following package compilation, but before job assignment to agents.
 For example:
@@ -54,7 +56,7 @@ To diagnose:
 1. Access the VM using your virtualization console and log in.
 
 1. Navigate to the **Credentials** tab of the
-<%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) tile and locate the VM in question to
+<%= vars.app_runtime_first %> tile and locate the VM in question to
 find the **VM credentials**.
 
 1. Become root.
@@ -67,11 +69,9 @@ find the **VM credentials**.
 completed a handshake, represented in the logs as a "ping-pong":
 
     <pre class="terminal">
-    2013-10-03_14:35:48.58456 #[608] INFO: Message: {"method"=>"ping", "arguments"=>[],
-"reply_to"=>"director.f4b7df14-cb8f.19719508-e0dd-4f53-b755-58b6336058ab"}
+    2013-10-03_14:35:48.58456 #[608] INFO: Message: {"method"=>"ping", "arguments"=>[], "reply_to"=>"director.f4b7df14-cb8f.19719508-e0dd-4f53-b755-58b6336058ab"}
 
-    2013-10-03_14:35:48.60182 #[608] INFO: reply_to:   director.f4b7df14-cb8f.19719508-e0dd-4f53-b755-58b6336058ab:
-payload: {:value=>"pong"}
+    2013-10-03_14:35:48.60182 #[608] INFO: reply_to:   director.f4b7df14-cb8f.19719508-e0dd-4f53-b755-58b6336058ab: payload: {:value=>"pong"}
     </pre>
 
     This handshake must complete for the agent to receive instructions from the director.
@@ -82,20 +82,20 @@ For example:
 
     <pre class="terminal">
     2013-10-03_14:35:21.83222 #[608] INFO: loaded new infrastructure settings:
-{"vm"=>{"name"=>"vm-4d80ede4-b0a5-4992-aea6a0386e18e", "id"=>"vm-360"},
-"agent_id"=>"56aea4ef-6aa9-4c39-8019-7024ccfdde4",
-"networks"=>{"default"=>{"ip"=>"192.0.2.19",
-"netmask"=>"255.255.255.0", "cloud_properties"=>{"name"=>"VMNetwork"},
-"default"=>["dns", "gateway"],
-"dns"=>["192.0.2.2", "192.0.2.17"], "gateway"=>"192.0.2.2",
-"dns_record_name"=>"0.nats.default.cf-d729343071061.microbosh",
-"mac"=>"00:50:56:9b:71:67"}}, "disks"=>{"system"=>0, "ephemeral"=>1,
-"persistent"=>{}}, "ntp"=>[], "blobstore"=>{"provider"=>"dav",
-"options"=>{"endpoint"=>"http://192.0.2.17:25250",
-"user"=>"agent", "password"=>"agent"}},
-"mbus"=>"nats://nats:nats@192.0.2.17:4222",
-"env"=>{"bosh"=>{"password"=>"$6$40ftQ9K4rvvC/8ADZHW0"}}}
-     </pre>
+    {"vm"=>{"name"=>"vm-4d80ede4-b0a5-4992-aea6a0386e18e", "id"=>"vm-360"},
+    "agent_id"=>"56aea4ef-6aa9-4c39-8019-7024ccfdde4",
+    "networks"=>{"default"=>{"ip"=>"192.0.2.19",
+    "netmask"=>"255.255.255.0", "cloud_properties"=>{"name"=>"VMNetwork"},
+    "default"=>["dns", "gateway"],
+    "dns"=>["192.0.2.2", "192.0.2.17"], "gateway"=>"192.0.2.2",
+    "dns_record_name"=>"0.nats.default.cf-d729343071061.microbosh",
+    "mac"=>"00:50:56:9b:71:67"}}, "disks"=>{"system"=>0, "ephemeral"=>1,
+    "persistent"=>{}}, "ntp"=>[], "blobstore"=>{"provider"=>"dav",
+    "options"=>{"endpoint"=>"http://192.0.2.17:25250",
+    "user"=>"agent", "password"=>"agent"}},
+    "mbus"=>"nats://nats:nats@192.0.2.17:4222",
+    "env"=>{"bosh"=>{"password"=>"$6$40ftQ9K4rvvC/8ADZHW0"}}}
+    </pre>
 
 This is a JSON blob of key-value pairs representing the expected infrastructure
 for the BOSH agent.
@@ -107,34 +107,34 @@ This key-value pair represents where the agent expects the NATS server to be.
 One diagnostic tactic is to try pinging this NATS IP address from the VM to
 determine whether you are experiencing routing issues.
 
-### <a id='RSA-cert'></a>Install Exits With a Creates/Updates/Deletes App Failure or With a 403 Error###
+### <a id='RSA-cert'></a> Install Exits With a Creates/Updates/Deletes App Failure or With a 403 Error###
 
 **Scenario 1:**
 Your <%= vars.ops_manager %> install exits with the following 403 error when you attempt to
 log in to the Apps Manager:
 
-<pre>
+```
 {"type": "step_finished", "id": "apps-manager.deploy"}
 
 /home/tempest-web/tempest/web/vendor/bundle/ruby/1.9.1/gems/mechanize-2.7.2/lib/mechanize/http/agent.rb:306:in
 `fetch': 403 => Net::HTTPForbidden for https://login.api.example.net/oauth/authorizeresponse_type=code&client_id=portal&redirect_uri=https%3...
 -- unhandled response (Mechanize::ResponseCodeError)
-</pre>
+```
 
 **Scenario 2:**
 Your <%= vars.ops_manager %> install exits with a `creates/updates/deletes an app (FAILED - 1)` error message with the following stack trace:
 
-<pre>
+```
 1) App CRUD creates/updates/deletes an app
    Failure/Error: Unable to find matching line from backtrace
    CFoundry::TargetRefused:
      Connection refused - connect(2)
-</pre>
+```
 
 In either of the above scenarios, ensure that you have correctly entered your
 domains in wildcard format:
 
-1. Browse to the fully qualified domain name (FQDN) of Ops Manager.
+1. Browse to the fully qualified domain name (FQDN) of <%= vars.ops_manager %>.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
@@ -145,9 +145,9 @@ any custom domains, and click **Save**.
 Refer to <%= vars.app_runtime_abbr %> **Cloud Controller** for explanations of these
 domain values.
 
- <%= image_tag("rsa_cert.png", :alt => "Screenshot of the Generate Self-Signed RSA Certificate page. The 'Domans' field is populated with example system and app domains in wildcard format.") %>
+![alt-text=""](images/rsa_cert.png)
 
-### <a id='runtime_depend'></a>Install Fails When Gateway Instances Exceed Zero ###
+### <a id='runtime_depend'></a> Install Fails When Gateway Instances Exceed Zero
 
 If you configure the number of Gateway instances to be greater than zero for a
 given product, you create a dependency on <%= vars.app_runtime_abbr %> for that product
@@ -161,7 +161,7 @@ value next to the product Gateway job.
 
 To remove the <%= vars.app_runtime_abbr %> dependency, change the value of this field to `0`.
 
-### <a id='out_of_disk_space'></a>Out of Disk Space Error ###
+### <a id='out_of_disk_space'></a> Out of Disk Space Error
 
 <%= vars.ops_manager %> displays an `Out of Disk Space` error if log files expand to fill
 all available disk space.
@@ -174,7 +174,7 @@ Diego cells may be running out of disk space capacity.
 To perform a detailed analysis of disk usage by containers and host VMs in your <%= vars.ops_manager %> deployment,
 see [Examining GrootFS Disk Usage](https://docs.pivotal.io/application-service/adminguide/examining_grootfs_disk.html).
 
-### <a id='vsphere_fails'></a>Installing BOSH Director Fails in vSphere ###
+### <a id='vsphere_fails'></a> Installing BOSH Director Fails in vSphere
 
 If the DNS information for the <%= vars.ops_manager %> VM is incorrectly specified when
 deploying the <%= vars.ops_manager %> .ova file, installing BOSH Director fails at the "Installing Micro BOSH" step.
@@ -182,23 +182,24 @@ deploying the <%= vars.ops_manager %> .ova file, installing BOSH Director fails 
 To resolve this issue, correct the DNS settings in the <%= vars.ops_manager %> Virtual
 Machine properties.
 
-### <a id='delete_om_fails'></a>Deleting a Deployment Fails ###
+### <a id='delete_om_fails'></a> Deleting a Deployment Fails
 
 <%= vars.ops_manager %> displays an error message when it cannot delete your installation. This
 scenario might happen if the BOSH Director cannot access the VMs or is experiencing other issues.
 To manually delete your installation and all VMs, you must do the following:
 
 1. Use your IaaS dashboard to manually delete the VMs for all installed products, with the exception of the <%= vars.ops_manager %> VM.
+
 1. SSH into your <%= vars.ops_manager %> VM and remove the `installation.yml` file from
    `/var/tempest/workspaces/default/`.
-    <p class="note"><strong>Note</strong>: Deleting the <code>installation.yml</code> file does not
+    <p class='note'><strong>Note:</strong> Deleting the <code>installation.yml</code> file does not
       prevent you from reinstalling a deployment. For future deploys,
       <%= vars.ops_manager %> regenerates this file when you click <strong>Save</strong> on any
       page in the BOSH Director tile.</p>
 
 Your installation is now deleted.
 
-### <a id='elastic_runtime_fails'></a>Installing <%= vars.app_runtime_abbr %> Fails ###
+### <a id='elastic_runtime_fails'></a> Installing <%= vars.app_runtime_abbr %> Fails
 
 The following sections describe errors that may occur when installing <%= vars.app_runtime_abbr %>
 and how to resolve them.
@@ -214,18 +215,21 @@ Machine properties.
 #### MySQL Monitor Not Running After Update
 
 When MySQL cannot communicate with UAA, <%= vars.ops_manager %> shows the following error:
-> **Error: 'mysql_monitor/12a3b456-cd7e-8fgh-9012-345678b90ijk (0)' is not running after update. Review logs for failed jobs: replication-canary.**
+
+<pre class="terminal">
+Error: 'mysql_monitor/12a3b456-cd7e-8fgh-9012-345678b90ijk (0)' is not running after update. Review logs for failed jobs: replication-canary.
+</pre>
 
 If you see this error, create firewall rules that allow MySQL to reach UAA, using
-[MySQL Network Communications](../security/networking/mysql-network-paths.html) as a
+[MySQL Network Communications](https://docs.pivotal.io/application-service/3-0/operating/networking/mysql-network-paths.html) as a
 reference.
 
-### <a id='ip_address_taken'></a><%= vars.ops_manager %> Hangs During MicroBOSH Install or HAProxy States "IP Address Already Taken" ###
+### <a id='ip_address_taken'></a><%= vars.ops_manager %> Hangs During MicroBOSH Install or HAProxy States "IP Address Already Taken"
 
 During a <%= vars.app_runtime_abbr %> installation, you might receive the following errors:
 
-* The <%= vars.ops_manager %> GUI shows that the installation stops at the "Setting MicroBOSH
-  deployment manifest" task.
+* The <%= vars.ops_manager %> GUI shows that the installation stops at the "Setting MicroBOSH deployment manifest" task.
+
 * When you set the IP address for the HAProxy, the "IP Address Already Taken" message appears.
 
 When you install the BOSH Director, you assign it an IP address. <%= vars.ops_manager %>
@@ -241,40 +245,44 @@ second. For example:
 To resolve this issue, ensure that the next two subsequent IP addresses from the manually assigned
 address are unassigned.
 
-### <a id='pcf_slow'></a>Poor Performance ###
+### <a id='pcf_slow'></a> Poor Performance
 
 If you notice poor network performance by your deployment and your
 deployment uses a Network Address Translation (NAT) gateway,
 your NAT gateway may be
 under-resourced.
 
-####<a id='troubleshoot-slow'></a>Troubleshoot
+#### <a id='troubleshoot-slow'></a> Troubleshoot
 
 To troubleshoot the issue, set a custom firewall rule in your IaaS console to route traffic
 originating from your private network directly to an S3-compatible object store. If you see
 decreased average latency and improved network performance, perform the solution below to scale up
 your NAT gateway.
 
-####<a id='solution-slow'></a>Scale Up Your NAT Gateway
+#### <a id='solution-slow'></a> Scale Up Your NAT Gateway
 
 Perform the following steps to scale up your NAT gateway:
 
 1. Navigate to your IaaS console.
+
 1. Spin up a new NAT gateway of a larger VM size than your previous NAT gateway.
+
 1. Change the routes to direct traffic through the new NAT gateway.
+
 1. Spin down the old NAT gateway.
 
 The specific procedures will vary depending on your IaaS. Consult your IaaS documentation for more
 information.
 
-## <a id='common_problems_firewalls'></a>Common Issues Caused by Firewalls ##
+
+## <a id='common_problems_firewalls'></a> Common Issues Caused by Firewalls
 
 This section describes various issues you might encounter when installing
 <%= vars.ops_manager %> in an environment that uses a strong firewall.
 
-### <a id='DNS_res_fails'></a>DNS Resolution Fails ###
+### <a id='DNS_res_fails'></a> DNS Resolution Fails
 
 When you install <%= vars.ops_manager %> in an environment that uses a strong firewall, the
 firewall might block DNS resolution. To resolve this issue, see
-[Verify Ops Manager Resolves DNS Entries Behind a Firewall](config_firewall.html#DNS_fails) in
+[Verify <%= vars.ops_manager %> Resolves DNS Entries Behind a Firewall](config_firewall.html#DNS_fails) in
 _Preparing Your Firewall_.

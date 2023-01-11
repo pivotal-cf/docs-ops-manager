@@ -10,7 +10,7 @@ credential structure.
 1. Copy the `RSA PRIVATE KEY` and paste it into a file named `bbr.pem`. Include
 `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----`.
 
-     <p class="note warning"><strong>Warning:</strong> Keep the key secure. The key provides full
+    <p class='note caution'><strong>Caution:</strong> Keep the key secure. The key provides full
     access to the entire <%= vars.ops_manager %> environment.</p>
 
 1. Replace all `\n` characters in `bbr.pem` with a line break.
@@ -24,7 +24,8 @@ credential structure.
     ```
     ssh bbr@BOSH-DIRECTOR-IP -i ~/.ssh/bbr.pem
     ```
-    <p class="note"><strong>Note:</strong> If you use GCP, ensure SSH port <code>22</code> is open
+
+    <p class='note'><strong>Note:</strong> If you use GCP, ensure SSH port <code>22</code> is open
     for the BOSH Director VM in your GCP console. If the SSH port is not open, open it by creating
     a firewall rule.</p>
 

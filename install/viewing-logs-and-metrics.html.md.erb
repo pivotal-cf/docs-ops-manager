@@ -3,28 +3,28 @@ title: Accessing Logs and Metrics
 owner: Oratos, Log Egress, Loggregator
 ---
 
-This topic describes how to access logs and metrics for VMs and app containers on your <%= vars.ops_manager %> deployment. It includes information about the available logs and metrics for the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>) runtimes.
+This topic describes how to access logs and metrics for VMs and app containers on your <%= vars.ops_manager_first %> deployment. It includes information about the available logs and metrics for the <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %> runtimes.
 
 
-## <a id="overview"></a> Overview
+## <a id='overview'></a> Overview
 
 There are different methods for accessing logs and metrics for VMs and app containers depending on if you use the <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %> app runtime for your deployment.
 
 There are also different permissions required to access logs and metrics on <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %>. The sections in this topic explain how to access logs and metrics on your <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %> deployment based on your user role permissions.
 
 
-## <a id="director-vm-logs"></a> Access Platform Director VM Logs
+## <a id='director-vm-logs'></a> Access Platform Director VM Logs
 
-Platform Director logs include logs from the Ops Manager and BOSH Director VMs.
+Platform Director logs include logs from the <%= vars.ops_manager %> and BOSH Director VMs.
 
-For both <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %>, operators can access platform director VM logs by configuring a syslog drain in the Ops Manager tile. For more information, see [Settings Page](../pcf-interface.html#settings) in _Using the <%= vars.ops_manager %> Interface_.
+For both <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %>, operators can access platform director VM logs by configuring a syslog drain in the <%= vars.ops_manager %> tile. For more information, see [Settings Page](../pcf-interface.html#settings) in _Using the <%= vars.ops_manager %> Interface_.
 
 The format for the BOSH Director VM logs is Syslog RFC 5424. For more information, see [RFC 5424 - The Syslog Protocol](https://tools.ietf.org/html/rfc5424) in the Internet Engineering Task Force (IETF) documentation.
 
-The format for the Ops Manager VM logs is Syslog RFC 3164. For more information, see [The BSD Syslog Protocol](https://tools.ietf.org/html/rfc3164) in the IETF documentation.
+The format for the <%= vars.ops_manager %> VM logs is Syslog RFC 3164. For more information, see [The BSD Syslog Protocol](https://tools.ietf.org/html/rfc3164) in the IETF documentation.
 
 
-## <a id="vm-logs"></a> Access VM Logs
+## <a id='vm-logs'></a> Access VM Logs
 
 This section describes how to access logs for <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> VMs.
 
@@ -32,10 +32,11 @@ The format for VM logs is Syslog RFC 5424. For more information, see [RFC 5424 -
 
 See one of the following sections below:
 
-* [Access VM Logs on <%= vars.app_runtime_abbr %>](#vm-logs-<%= vars.app_runtime_abbr %>)
-* [Access VM Logs on <%= vars.k8s_runtime_abbr %>](#vm-logs-<%= vars.k8s_runtime_abbr %>)
+* [Access VM Logs on <%= vars.app_runtime_abbr %>](#vm-logs-tas)
 
-### <a id="vm-logs-pas"></a> Access VM Logs on <%= vars.app_runtime_abbr %>
+* [Access VM Logs on <%= vars.k8s_runtime_abbr %>](#vm-logs-tkgi)
+
+### <a id='vm-logs-tas'></a> Access VM Logs on <%= vars.app_runtime_abbr %>
 
 <%= vars.app_runtime_abbr %> VM logs include logs for runtime component VMs and service tile VMs.
 
@@ -62,7 +63,7 @@ The following table describes how to access VM logs on foundations with <%= vars
 	</tr>
 </table>
 
-### <a id="vm-logs-pks"></a> Access VM Logs on <%= vars.k8s_runtime_abbr %>
+### <a id='vm-logs-tkgi'></a> Access VM Logs on <%= vars.k8s_runtime_abbr %>
 
 The following table describes how to access VM logs on foundations with <%= vars.k8s_runtime_abbr %> based on user role and permissions:
 
@@ -78,11 +79,11 @@ The following table describes how to access VM logs on foundations with <%= vars
 		<td><code>Admin</code></td>
 		<td>Enable system logging in <%= vars.k8s_runtime_abbr %>. For more information, see <em>Host Monitoring</em> in the <%= vars.k8s_runtime_abbr %> installation topic for your IaaS:
 			<ul>
-				<li><a href="https://docs.pivotal.io/tkgi/installing-aws.html#syslog">Installing <%= vars.k8s_runtime_full %> on AWS</a></li>
-				<li><a href="https://docs.pivotal.io/tkgi/installing-azure.html#syslog">Installing <%= vars.k8s_runtime_full %> on Azure</a></li>
-				<li><a href="https://docs.pivotal.io/tkgi/installing-gcp.html#syslog">Installing <%= vars.k8s_runtime_full %> on GCP</a></li>
-				<li><a href="https://docs.pivotal.io/tkgi/installing-vsphere.html#syslog">Installing <%= vars.k8s_runtime_full %> on vSphere</a></li>
-				<li><a href="https://docs.pivotal.io/tkgi/installing-nsx-t.html#syslog">Installing <%= vars.k8s_runtime_full %> on vSphere with NSX-T</a></li>
+				<li><a href="https://docs.pivotal.io/tkgi/installing-aws.html#syslog">Installing <%= vars.k8s_runtime_abbr %> on AWS</a></li>
+				<li><a href="https://docs.pivotal.io/tkgi/installing-azure.html#syslog">Installing <%= vars.k8s_runtime_abbr %> on Azure</a></li>
+				<li><a href="https://docs.pivotal.io/tkgi/installing-gcp.html#syslog">Installing <%= vars.k8s_runtime_abbr %> on GCP</a></li>
+				<li><a href="https://docs.pivotal.io/tkgi/installing-vsphere.html#syslog">Installing <%= vars.k8s_runtime_abbr %> on vSphere</a></li>
+				<li><a href="https://docs.pivotal.io/tkgi/installing-nsx-t.html#syslog">Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T</a></li>
 			</ul>
 		</td>
 		<td></td>
@@ -96,16 +97,17 @@ The following table describes how to access VM logs on foundations with <%= vars
 </table>
 
 
-## <a id="vm-metrics"></a> Access VM Metrics
+## <a id='vm-metrics'></a> Access VM Metrics
 
 This section describes how to access metrics for <%= vars.app_runtime_abbr %> VMs and <%= vars.k8s_runtime_abbr %> VMs.
 
 See one of the following sections below:
 
-* [Access VM Metrics on <%= vars.app_runtime_abbr %>](#vm-metrics-<%= vars.app_runtime_abbr %>)
-* [Access VM Metrics on <%= vars.k8s_runtime_abbr %>](#vm-metrics-<%= vars.k8s_runtime_abbr %>)
+* [Access VM Metrics on <%= vars.app_runtime_abbr %>](#vm-metrics-tas)
 
-### <a id="vm-metrics-pas"></a> Access VM Metrics on <%= vars.app_runtime_abbr %>
+* [Access VM Metrics on <%= vars.k8s_runtime_abbr %>](#vm-metrics-tkgi)
+
+### <a id='vm-metrics-tas'></a> Access VM Metrics on <%= vars.app_runtime_abbr %>
 
 For <%= vars.app_runtime_abbr %> deployments, VM metrics include <%= vars.app_runtime_abbr %> component and service tile VM metrics.
 
@@ -132,11 +134,11 @@ The following table describes how to access VM metrics on foundations with <%= v
 	</tr>
 </table>
 
-### <a id="vm-metrics-pks"></a> Access VM Metrics on <%= vars.k8s_runtime_abbr %>
+### <a id='vm-metrics-tkgi'></a> Access VM Metrics on <%= vars.k8s_runtime_abbr %>
 
 For <%= vars.k8s_runtime_abbr %> deployments, VM metrics include metrics for the master and worker nodes.
 
-<p class="note"><strong>Note:</strong> VM metrics are available on <%= vars.k8s_runtime_abbr %> v1.5 and later.</p>
+<p class='note'><strong>Note:</strong> VM metrics are available on <%= vars.k8s_runtime_abbr %> v1.5 and later.</p>
 
 The following table describes how to access VM metrics on foundations with <%= vars.k8s_runtime_abbr %> based on user role and permissions.
 
@@ -173,16 +175,17 @@ The following table describes how to access VM metrics on foundations with <%= v
 </table>
 
 
-## <a id="app-logs"></a> Access App Container Logs
+## <a id='app-logs'></a> Access App Container Logs
 
 This section describes how to access app logs on <%= vars.ops_manager %>.
 
 See one of the following sections below:
 
-* [Access App Container Logs on <%= vars.app_runtime_abbr %>](#app-logs-<%= vars.app_runtime_abbr %>)
-* [Access App Container Logs on <%= vars.k8s_runtime_abbr %>](#app-logs-<%= vars.k8s_runtime_abbr %>)
+* [Access App Container Logs on <%= vars.app_runtime_abbr %>](#app-logs-tas)
 
-### <a id="app-logs-pas"></a> Access App Container Logs on <%= vars.app_runtime_abbr %>
+* [Access App Container Logs on <%= vars.k8s_runtime_abbr %>](#app-logs-tkgi)
+
+### <a id='app-logs-tas'></a> Access App Container Logs on <%= vars.app_runtime_abbr %>
 
 App container logs for <%= vars.app_runtime_abbr %> deployments include logs for apps and service instances.
 
@@ -230,7 +233,7 @@ The following table describes how to access app logs on foundations with <%= var
 	</tr>
 </table>
 
-### <a id="app-logs-pks"></a> Access App Container Logs on <%= vars.k8s_runtime_abbr %>
+### <a id='app-logs-tkgi'></a> Access App Container Logs on <%= vars.k8s_runtime_abbr %>
 
 The following table describes how to access app container logs on foundations with <%= vars.k8s_runtime_abbr %> based on user role and permissions:
 
@@ -279,16 +282,17 @@ The following table describes how to access app container logs on foundations wi
 </table>
 
 
-## <a id="app-metrics"></a> Access App Container Metrics
+## <a id='app-metrics'></a> Access App Container Metrics
 
 This section describes how to access app container metrics on <%= vars.ops_manager %>.
 
 See one of the following sections below:
 
-* [Access App Container Metrics on <%= vars.app_runtime_abbr %>](#app-metrics-pas)
-* [Access App Container Metrics on <%= vars.k8s_runtime_abbr %>](#app-metrics-pks)
+* [Access App Container Metrics on <%= vars.app_runtime_abbr %>](#app-metrics-tas)
 
-### <a id="app-metrics-pas"></a> Access App Container Metrics on <%= vars.app_runtime_abbr %>
+* [Access App Container Metrics on <%= vars.k8s_runtime_abbr %>](#app-metrics-tkgi)
+
+### <a id='app-metrics-tas'></a> Access App Container Metrics on <%= vars.app_runtime_abbr %>
 
 App container metrics on <%= vars.app_runtime_abbr %> include app metrics and service instance metrics. App container metrics on <%= vars.app_runtime_abbr %> do not include task metrics. This is because Diego does not emit task metrics.
 
@@ -331,7 +335,7 @@ The following table describes how to access app container metrics on foundations
 	</tr>
 </table>
 
-### <a id="app-metrics-pks"></a> Access App Container Metrics on <%= vars.k8s_runtime_abbr %>
+### <a id='app-metrics-tkgi'></a> Access App Container Metrics on <%= vars.k8s_runtime_abbr %>
 
 The following table describes how to access app container metrics on foundations with <%= vars.k8s_runtime_abbr %> based on user role and permissions:
 

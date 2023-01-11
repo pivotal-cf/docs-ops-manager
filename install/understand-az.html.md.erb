@@ -6,31 +6,31 @@ owner: Ops Manager
 This topic describes availability zones (AZs) in vSphere and an example of how an operator might scale an app across AZs.
 
 
-## <a id="overview"></a> Overview
+## <a id='overview'></a> Overview
 
 <%= vars.company_name %> defines an AZ as an operator-assigned, functionally-independent segment of network infrastructure. In cases of partial infrastructure failure, a tile distributes and balances all instances of running apps across remaining AZs. Strategic use of AZs contributes to the fault tolerance and high availability of a tile deployment.
 
-vSphere supports distributing deployments across multiple AZs. For more information, see _Step 4: Create Availability Zones_ in [Configuring BOSH Director on vSphere](../vsphere/config.html#create-az).
+vSphere supports distributing deployments across multiple AZs. For more information, see _Step 4: Create Availability Zones_ in [Configuring BOSH Director on vSphere](../vsphere/config.html.md.erb#create-az).
 
 <%= vars.company_name %> recommends that customers use three AZs to operate a highly available tile deployment.
 
 
-## <a id="example-case"></a> Balancing Across AZs During Failure: Example Scenario
+## <a id='example-case'></a> Balancing Across AZs During Failure: Example Scenario
 
 An operator scales an app to four instances in a tile environment distributed across three AZs: A1, A2, and A3. The environment allocates the instances according to the Diego Auction. For more information about the Diego Auction, see [How Diego Balances App Processes](https://docs.pivotal.io/application-service/concepts/diego/diego-auction.html).
 
 For a visual representation of this scenario, see the following diagram:
 
-  <%= image_tag("az_er_1.png", :alt => "A teal box at the top of the diagram labeled 'Your Runtime' spans the width of the diagram. Three boxes are in a row underneath, labeled A1, A2, and A3. A1 contains two boxes labeled 'App Instance,' while A2 and A3 contain only one.") %>
+![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 contains two App Instances, while A2 and A3 contain one App Instance each."](./images/az_er_1.png)
 
 If A1 experiences a power outage or hardware failure, the two app instances running in A1 terminate while the app instances in zones A2 and A3 continue to run.
 
 For a visual representation of this scenario, see the following diagram:
 
-  <%= image_tag("az_er_2.png", :alt => "This diagram is the same as the diagram as above but with the following differences: The A1 box is depicted as terminated with a red 'X' covering the box. Two arrows each connect from the 'Your Runtime' box to the 'A2' box and the 'A3' box to show that A2 and A3 continue to run.") %>
+![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 contains two App Instances,and both are inactive, while A2 and A3 contain one available App Instance each."](./images/az_er_2.png)
 
 If A1 remains unavailable, the tile balances new instances of the app across the remaining AZs.
 
 For a visual representation of this scenario, see the following diagram:
 
-  <%= image_tag("az_er_3.png", :alt => "This diagram is the same as the diagram as above but with the following differences: The A1 box, which originally had two app instances, has no app instances. A2 and A3 have each have one additional app instance.") %>
+![alt-text="A box labeled Your Runtime at the top, and three boxes in a row underneath, labeled A1, A2, and A3. A1 is still shown as inactive, and it no longer contains App Instances. A2 and A3 contain one available App Instance each."](./images/az_er_3.png)

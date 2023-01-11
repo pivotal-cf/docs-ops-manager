@@ -3,7 +3,7 @@ title: Security Guidelines for Your IaaS Provider
 owner: Security
 ---
 
-This topic provides security guidelines for the Infrastructure as a Service (IaaS) providers supported by <%= vars.ops_manager %>.
+This topic provides security guidelines for the Infrastructure as a Service (IaaS) providers supported by <%= vars.ops_manager_first %>.
 
 
 ## <a id='overview'></a> Overview
@@ -31,17 +31,17 @@ These topics in the AWS documentation provide a general reference for AWS' Ident
 
 ### <a id='aws-imds-v2'></a> Enable IMDSv2 in <%= vars.ops_manager %>
 
-<%= vars.ops_manager %> v2.10.23 and later includes a feature that allows you to require the usage of IMDSv2. This security feature requires users to send a signed token header with any request to the instance metadata endpoint provided on AWS VMs. By default, IMDSv2 is not required when using the AWS metadata endpoint on a BOSH-deployed VM. You can configure <%= vars.ops_manager %> to require IMDSv2 using the <%= vars.ops_manager %> API. After enabling IMDSv2, you must re-create all VMs for the new configuration to take effect.
+<%= vars.ops_manager %> includes a feature that allows you to require the usage of IMDSv2. This security feature requires users to send a signed token header with any request to the instance metadata endpoint provided on AWS VMs. By default, IMDSv2 is not required when using the AWS metadata endpoint on a BOSH-deployed VM. You can configure <%= vars.ops_manager %> to require IMDSv2 using the <%= vars.ops_manager %> API. After enabling IMDSv2, you must re-create all VMs for the new configuration to take effect.
 
-<%= vars.app_runtime_full %> v2.13.0 and later are compatible with IMDSv2. For all versions of <%= vars.k8s_runtime_full %>, it might be necessary to set the hop limit using the `metadata_options` key. For more information, see [VM Types / VM Extensions](https://bosh.io/docs/aws-cpi/#resource-pools) in the BOSH documentation.
+<%= vars.app_runtime_first %> v2.13.0 and later are compatible with IMDSv2. For all versions of <%= vars.k8s_runtime_first %>, it might be necessary to set the hop limit using the `metadata_options` key. For more information, see [VM Types / VM Extensions](https://bosh.io/docs/aws-cpi/#resource-pools) in the BOSH documentation.
 
-<div class="note warning"><strong>Warning:</strong> All tiles and service instances must be using stemcell Xenial v621.183 or later in order to require IMDSv2. Requiring IMDSv2 while using an older stemcell causes Apply Changes to fail due to an unresponsive BOSH agent.</div>
+<div class="note caution"><strong>Caution:</strong> All tiles and service instances must be using stemcell Xenial v621.183 or later in order to require IMDSv2. Requiring IMDSv2 while using an older stemcell causes Apply Changes to fail due to an unresponsive BOSH agent.</div>
 
 To require IMDSv2 on all BOSH-deployed VMs:
 
 1. Ensure all tiles are using stemcell Xenial v621.183 or later.
 
-1. Use the Ops Manager API to set the `require_imds_v2` property to `true`. See [Updating a staged director's properties API endpoint](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Properties/paths/~1api~1v0~1staged~1director~1properties/put).
+1. Use the <%= vars.ops_manager %> API to set the `require_imds_v2` property to `true`. See [Updating a staged director's properties API endpoint](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Properties/paths/~1api~1v0~1staged~1director~1properties/put).
 
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 

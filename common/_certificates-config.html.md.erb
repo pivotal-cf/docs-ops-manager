@@ -1,7 +1,11 @@
-For **Certificate Duration Overrides**, you can choose whether certificates generated within Ops Manager and CredHub use the default duration specified for the certificate or a custom duration value that you specify.
-  <%= image_tag("../common/images/duration-overrides.png", :alt => "Three fields including the On-Off option for the feature, CA Certificate Duration (days) text field with 1460 as value, Leaf Certificate Duration (days) with 730 as value, and a link to the documentation for the feature.") %>
-  * **Off:** Select this option to use default duration for certificates created by all products.
-  * **On:** Select this option to set a value to override the duration for certificates created by all products. If a product creates a certificate with a longer duration than the value you set, then the longer duration is used.
+For **Certificate Duration Overrides**, you can choose whether certificates generated within <%= vars.ops_manager %> and CredHub use the default duration specified for the certificate or a custom duration value that you specify.
+
+    ![alt-text="Three fields: the On-Off option for the feature, CA Certificate Duration (days) text field, Leaf Certificate Duration (days), and a link to the documentation for the feature."](../common/images/duration-overrides.png)
+
+    * **Off:** Select this option to use default duration for certificates created by all products.
+    * **On:** Select this option to set a value to override the duration for certificates created by all products. If a product creates a certificate with a longer duration than the value you set, then the longer duration is used.
+
         1. **CA Certificate Duration (days):** Enter the number of days for which CA certificates are valid.
-        1. **Leaf Certificate Duration (days):** Enter the number of days for which leaf certificates are valid. This value must be less than or equal to the CA certificate duration.
-  <p class="note"><strong>Note:</strong> After you set a certificate duration override, you must take additional steps to apply the setting to all certificates. For more information, see <a href="../security/pcf-infrastructure/configure-certificate-duration-overrides.html">Overriding Duration for Certificates</a>.</p>
+        2. **Leaf Certificate Duration (days):** Enter the number of days for which leaf certificates are valid. This value must be less than or equal to the CA certificate duration.
+
+        <p class='note'><strong>Note:</strong> After you set a certificate duration override, you must take additional steps to apply the setting to all certificates. For more information, see <a href="../security/pcf-infrastructure/configure-certificate-duration-overrides.html">Overriding Duration for Certificates</a>.</p>

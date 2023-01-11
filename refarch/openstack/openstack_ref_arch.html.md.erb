@@ -3,27 +3,29 @@ title: OpenStack Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) on OpenStack.
-<%= vars.app_runtime_abbr %> runs on <%= vars.ops_manager %>,
+This topic describes a reference architecture for <%= vars.app_runtime_first %> on OpenStack.
+<%= vars.app_runtime_abbr %> runs on <%= vars.ops_manager_first %>,
 and this architecture is valid for most production-grade <%= vars.ops_manager %> deployments in a single project using three availability zones (AZs).
 
 For general requirements for running <%= vars.ops_manager %> and specific requirements for running <%= vars.ops_manager %> on OpenStack, see [OpenStack on <%= vars.ops_manager %> Requirements](../../install/openstack.html).
 
 
-## <a id="refarchs"></a><%= vars.ops_manager %> Reference Architectures
+## <a id='refarchs'></a><%= vars.ops_manager %> Reference Architectures
 
 An <%= vars.ops_manager %> reference architecture describes a proven approach for deploying <%= vars.ops_manager %> on a specific IaaS, such as OpenStack, that meets these requirements:
 
 * Secure
+
 * Publicly-accessible
-* Includes common <%= vars.ops_manager %>-managed runtimes and services,
-such as  for <%= vars.app_runtime_abbr %>, VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
+
+* Includes common <%= vars.ops_manager %>-managed runtimes and services, such as  for <%= vars.app_runtime_abbr %>, VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
+
 * Can host at least 100 app instances
 
 <%= vars.company_name %> provides reference architectures to help you determine the best configuration for your <%= vars.ops_manager %> deployment.
 
 
-## <a id="base_components"></a> Base Reference Architecture Components
+## <a id='base_components'></a> Base Reference Architecture Components
 
 The table below lists the components that are part of a base reference architecture deployment on OpenStack with three AZs.
 
@@ -53,15 +55,15 @@ The table below lists the components that are part of a base reference architect
   </tr>
   <tr>
     <td><strong>Application Load Balancer</strong></td>
-    <td>Required. Load balancer that handles incoming HTTP, HTTPS, TCP, and SSL traffic and forwards them to the Gorouters. Load balancers are outside the scope of this topic.</td>
+    <td>Required. Load balancer that handles incoming HTTP, HTTPS, TCP, and SSL traffic and forwards them to the GoRouters. Load balancers are outside the scope of this topic.</td>
   </tr>
   <tr>
     <td><strong>SSH Load Balancer</strong></td>
     <td>Optional. Load balancer that provides SSH access to app containers for developers. Load balancers are outside the scope of this topic.</td>
   </tr>
   <tr>
-    <td><strong>Gorouters</strong></td>
-    <td>Accessed through the Application Load Balancer. Deployed on the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) network, one per AZ.</td>
+    <td><strong>GoRouters</strong></td>
+    <td>Accessed through the Application Load Balancer. Deployed on the <%= vars.app_runtime_abbr %> network, one per AZ.</td>
   </tr>
   <tr>
     <td><strong>Diego Brains</strong></td>
@@ -98,7 +100,7 @@ The table below lists the components that are part of a base reference architect
   </tr>
 </table>
 
-## <a id="openstack_components"></a> OpenStack Objects
+## <a id='openstack_components'></a> OpenStack Objects
 
 The table below lists the network objects in this reference architecture.
 
@@ -121,7 +123,7 @@ The table below lists the network objects in this reference architecture.
     <td>The reference architecture requires these Tenant Networks:
       <ul>
         <li>1 x (/24) <strong>Infrastructure</strong> (<%= vars.ops_manager %>, BOSH Director, Jumpbox).</li>
-        <li>1 x (/20) <strong><%= vars.app_runtime_abbr %></strong> (Gorouters, Diego Cells, Cloud Controllers, etc.).</li>
+        <li>1 x (/20) <strong><%= vars.app_runtime_abbr %></strong> (GoRouters, Diego Cells, Cloud Controllers, etc.).</li>
         <li>1 x (/20) <strong>Services</strong> (VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu, etc.)</li>
         <li>1 x (/24) <strong>On-demand services</strong> (various)</li>
       </ul>
@@ -129,7 +131,7 @@ The table below lists the network objects in this reference architecture.
       <ul>
         <li>One <strong>Public</strong> network.<br/>
       </ul>
-      <p class="note"><strong>Note:</strong> In many cases, the public network is an "under the cloud" network that is shared across projects.</p>
+      <p class='note'><strong>Note:</strong> In many cases, the public network is an "under the cloud" network that is shared across projects.</p>
     </td>
     <td>5</td>
   </tr>
@@ -181,7 +183,7 @@ The table below lists the network objects in this reference architecture.
   </tr>
   <tr>
     <td><strong>Load Balancers</strong></td>
-    <td><%= vars.ops_manager %> on OpenStack requires a load balancer, which can be configured with multiple listeners to forward HTTP, HTTPS, and TCP traffic. <%= vars.company_name %> recommends two load balancers: one to forward the traffic to the Gorouters, <code>AppsLB</code>; and the other to forward the traffic to the Diego Brain SSH proxy, <code>SSHLB</code>.
+    <td><%= vars.ops_manager %> on OpenStack requires a load balancer, which can be configured with multiple listeners to forward HTTP, HTTPS, and TCP traffic. <%= vars.company_name %> recommends two load balancers: one to forward the traffic to the GoRouters, <code>AppsLB</code>; and the other to forward the traffic to the Diego Brain SSH proxy, <code>SSHLB</code>.
     <br><br>
     The table below describes the required listeners for each load balancer:
       <table>
@@ -197,14 +199,14 @@ The table below lists the network objects in this reference architecture.
     			<td>gorouter/80</td>
     			<td>80</td>
     			<td>HTTP</td>
-    			<td>Forward traffic to Gorouters
+    			<td>Forward traffic to GoRouters
     		</tr>
     		<tr>
     			<td>AppsLB</td>
     			<td>gorouter/80</td>
     			<td>443</td>
     			<td>HTTPS</td>
-    			<td>SSL termination and forward traffic to Gorouters</td>
+    			<td>SSL termination and forward traffic to GoRouters</td>
     		</tr>
     		<tr>
     			<td>SSHLB</td>
@@ -216,10 +218,10 @@ The table below lists the network objects in this reference architecture.
     	</table>
     Each load balancer needs a check to validate the health of the back end instances:
       <ul>
-    	   <li><code>AppsLB</code> checks the health on Gorouter port 80 with TCP.</li>
+    	   <li><code>AppsLB</code> checks the health on GoRouter port 80 with TCP.</li>
     	   <li><code>SSHLB</code> checks the health on Diego Brain port 2222 with TCP.</li>
       </ul>
-      <p class="note"><strong>Note:</strong> In many cases, the load balancers are provided as an "under the cloud" service that is shared across projects.</p>
+      <p class='note'><strong>Note:</strong> In many cases, the load balancers are provided as an "under the cloud" service that is shared across projects.</p>
     </td>
     <td>2</td>
   </tr>

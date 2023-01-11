@@ -3,25 +3,30 @@ title: Monitoring VMs in vSphere
 owner: Ops Manager
 ---
 
-This topic describes how to use the vSphere client to perform ongoing monitoring and alerting of VMs deployed by <%= vars.ops_manager %>.
+This topic describes how to use the vSphere client to perform ongoing monitoring and alerting of VMs deployed by <%= vars.ops_manager_first %>.
 
-For a complete guide to monitoring <%= vars.ops_manager %>, see [Monitoring <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/operating/monitoring/index.html).
+For a complete guide to monitoring <%= vars.ops_manager %>, see the [<%= vars.app_runtime_first %>
+documentation](https://docs.pivotal.io/application-service/operating/monitoring/index.html).
 
-## <a id="vsphere"></a>Monitoring in vSphere ##
+
+## <a id='vsphere'></a> Monitoring in vSphere
 
 To monitor VMs using the vSphere client:
 
 1. Connect to a vCenter Server instance using the vSphere client.
+
 1. Navigate to the **Hosts And Clusters** or **VMs And Templates** inventory view.
+
 1. In the inventory tree, select a virtual machine.
+
 1. Select the **Performance** tab from the content pane on the right.
 
-VMware vSphere Server provides alarms that monitor VMs, as well as clusters,
-hosts, data centers, datastores, networks, and licensing.
-To view pre-configured alarms, including disk usage alarms, related to a
-particular VM:
+VMware vSphere Server provides alarms that monitor VMs, as well as clusters, hosts, data centers, datastores, networks, and licensing.
+
+To view pre-configured alarms, including disk usage alarms, related to a particular VM:
 
 1. In the vSphere client, select the VM you want to monitor.
+
 1. At the bottom left of the client window, click **Alarms**.
-1. If a VM starts to run out of disk space, an alarm appears in the bottom
-panel.
+
+1. If a VM starts to run out of disk space, an alarm appears in the bottom panel.

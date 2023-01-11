@@ -1,27 +1,28 @@
 ---
-breadcrumb: <%= vars.ops_manager %> Documentation
+breadcrumb: Ops Manager Documentation
 title: Deploying BOSH and Ops Manager
 owner: PCF Documentation
 ---
 
-This topic explains how to deploy BOSH and Ops Manager.
+This topic explains how to deploy BOSH and <%= vars.ops_manager_first %>.
 
-## <a id='overview'></a>Overview
 
-[BOSH](http://bosh.io) and [Ops Manager](../index.html) provide the foundation for <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and its associated products. When you install <%= vars.app_runtime_abbr %>, you install the following components first.
+## <a id='overview'></a> Overview
+
+[BOSH](http://bosh.io) and [<%= vars.ops_manager %>](../index.html) provide the foundation for <%= vars.app_runtime_first %> and its associated products. When you install <%= vars.app_runtime_abbr %>, you install the following components first.
 
 * **BOSH** is an open-source tool that lets you run software systems in the cloud.
-  - BOSH and its IaaS-specific Cloud Provider Interfaces (CPIs) are what let <%= vars.app_runtime_abbr %> run on multiple IaaSes.
-  - See [Deploying Software with BOSH](#bosh) for a mini overview of how you use BOSH to run software in the cloud.
+  * BOSH and its IaaS-specific Cloud Provider Interfaces (CPIs) are what let <%= vars.app_runtime_abbr %> run on multiple IaaSes.
+  * See [Deploying Software with BOSH](#bosh) for a mini overview of how you use BOSH to run software in the cloud.
 
-* **Ops Manager** is a GUI application that streamlines deploying subsequent software to the cloud via BOSH. Ops Manager features are also accessible by API endpoints. For more information, see [Using the Ops Manager API](./ops-man-api.html).
-  - For routine tasks, you can use the Ops Manager interface instead of the BOSH command-line interface (CLI), Ops Manager API, or BOSH API.
-  - Ops Manager represents products as _tiles_ with multiple configuration panes that let you input or select configuration values needed for the product.
-  - Ops Manager generates BOSH manifests containing the user-supplied configuration values, and sends them to the Director.
-  - After you install Ops Manager and BOSH, you use Ops Manager to deploy almost all products.
+* **<%= vars.ops_manager %>** is a GUI application that streamlines deploying subsequent software to the cloud via BOSH. <%= vars.ops_manager %> features are also accessible by API endpoints. For more information, see [Using the <%= vars.ops_manager %> API](ops-man-api.html).
+  * For routine tasks, you can use the <%= vars.ops_manager %> interface instead of the BOSH command-line interface (CLI), <%= vars.ops_manager %> API, or BOSH API.
+  * <%= vars.ops_manager %> represents products as _tiles_ with multiple configuration panes that let you input or select configuration values needed for the product.
+  * <%= vars.ops_manager %> generates BOSH manifests containing the user-supplied configuration values, and sends them to the Director.
+  * After you install <%= vars.ops_manager %> and BOSH, you use <%= vars.ops_manager %> to deploy almost all products.
 
-* Deploying Ops Manager deploys both BOSH and Ops Manager with a single procedure.
-  - You deploy BOSH and Ops Manager by logging into your IaaS and allocating the network addresses, VMs, user accounts, and other resources needed to support <%= vars.app_runtime_abbr %> and other products.
+* Deploying <%= vars.ops_manager %> deploys both BOSH and <%= vars.ops_manager %> with a single procedure.
+  * You deploy BOSH and <%= vars.ops_manager %> by logging into your IaaS and allocating the network addresses, VMs, user accounts, and other resources needed to support <%= vars.app_runtime_abbr %> and other products.
 
 For all of the above, the specifics depend on the IaaS on which you are deploying <%= vars.ops_manager %>. The contents of this documentation are organized by IaaS.
 
@@ -30,13 +31,13 @@ For all of the above, the specifics depend on the IaaS on which you are deployin
 
 For information on deploying <%= vars.ops_manager %> to your IaaS, choose one of the following:
 
-* **Deploying to AWS:** [Installing <%= vars.ops_manager %> on AWS](./aws-manual.html)
+* **Deploying to AWS:** [Installing <%= vars.ops_manager %> on AWS](aws-manual.html)
 
-* **Deploying to GCP:** [Installing <%= vars.ops_manager %> on GCP](./gcp-manual.html)
+* **Deploying to GCP:** [Installing <%= vars.ops_manager %> on GCP](gcp-manual.html)
 
-* **Deploying to OpenStack:** [Installing <%= vars.ops_manager %> on OpenStack](./openstack.html)
+* **Deploying to OpenStack:** [Installing <%= vars.ops_manager %> on OpenStack](openstack.html)
 
-* **Deploying to vSphere:** [Installing <%= vars.ops_manager %> on vSphere](./vsphere.html)
+* **Deploying to vSphere:** [Installing <%= vars.ops_manager %> on vSphere](vsphere.html)
 
 
 ## <a id='bosh'></a> Deploying Software with BOSH
@@ -53,15 +54,15 @@ The following describes how you can use BOSH to run software in the cloud:
 
 1. BOSH CLI and API commands let you control BOSH-managed processes and allocate or release IaaS resources.
 
-## <a id="multiple-releases"></a> Including Multiple BOSH Releases in a Deployment
+## <a id='multiple-releases'></a> Including Multiple BOSH Releases in a Deployment
 
 You can include additional features in the BOSH Director through targeted customization of the manifest.yml. The only software you can include in the BOSH Director is additional BOSH releases.
-All additional releases must be available at an HTTP address that Ops Manager can reach. You cannot host or store additional BOSH releases on Ops Manager or the BOSH Director.
+All additional releases must be available at an HTTP address that <%= vars.ops_manager %> can reach. You cannot host or store additional BOSH releases on <%= vars.ops_manager %> or the BOSH Director.
 
-To include custom BOSH releases in the BOSH Director, create as many BOSH releases as you need and use the Ops Manager API to  the location and necessary configuration properties each release.
+To include custom BOSH releases in the BOSH Director, create as many BOSH releases as you need and use the <%= vars.ops_manager %> API to the location and necessary configuration properties each release.
 
-For more information, see [Adding a job to the Director](https://docs.pivotal.io/platform/opsman-api/#adding-a-job-to-the-director-vm) in the Ops Manager API documentation.
+For more information, see [Adding a job to the Director](https://docs.pivotal.io/platform/opsman-api/#adding-a-job-to-the-director-vm) in the <%= vars.ops_manager %> API documentation.
 
-<p class="note warning"><strong>WARNING</strong>: Customizing the Director manifest incorrectly can cause deployment downtime or failure. Ops Manager does not perform any validations on software introduced to a deployment through manifest customizations. This feature is for advanced <%= vars.ops_manager %> operators only.</p>
+<p class='note caution'><strong>Caution:</strong> Customizing the Director manifest incorrectly can cause deployment downtime or failure. <%= vars.ops_manager %> does not perform any validations on software introduced to a deployment through manifest customizations. This feature is for advanced <%= vars.ops_manager %> operators only.</p>
 
 For more information about writing the `manifest.yml` file, see the [BOSH documentation](https://bosh.io/docs/manifest-v2/#instance-groups).

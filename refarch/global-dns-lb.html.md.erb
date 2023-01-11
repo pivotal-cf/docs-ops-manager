@@ -4,21 +4,21 @@ title: Global DNS Load Balancers for Multi-Foundation Environments
 
 This topic describes global DNS load balancers (GLBs) for multi-foundation environments. This topic also describes concepts such as foundation affinity and healthchecks.
 
-<p class="note"><strong>Note:</strong> If you want to configure a load balancer dedicated to one foundation and you are using an F5 LTM, see <a href="https://docs.pivotal.io/application-service/operating/f5-lb.html">Configuring an F5 Load Balancer for <%= vars.app_runtime_abbr %></a>.</p>
+<p class='note'><strong>Note:</strong> If you want to configure a load balancer dedicated to one foundation and you are using an F5 LTM, see <a href="https://docs.pivotal.io/application-service/operating/f5-lb.html">Configuring an F5 Load Balancer for <%= vars.app_runtime_abbr %></a>.</p>
 
 
-## <a id="multi-foundation"></a> About Multi-Foundation Environments
+## <a id='multi-foundation'></a> Overview of Multi-Foundation Environments
 
-Multi-foundation environments are multiple instances of <%= vars.ops_manager %> and
-runtime products such as <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) or
-<%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>)
+Multi-foundation environments are multiple instances of <%= vars.ops_manager_first %> and
+runtime products such as <%= vars.app_runtime_first %> or
+<%= vars.k8s_runtime_first %>
 that can communicate with each other in some ways.
 Each foundation can use different infrastructures to fit your preferences.
 
 Multi-foundation environments are commonly deployed in an active-active or active-passive pattern. An _active-active pattern_ is when instances of apps run on two foundations and they are both in use. An _active-passive pattern_ is when instances of apps run on two foundations, but the instances may only be active on one foundation, and the other foundation becomes active only in the event of a failover.
 
 
-## <a id="configure-glb"></a> Configure Your GLB
+## <a id='configure-glb'></a> Configure Your GLB
 
 The typical setup for foundation failover requires the GLB be authoritative for a wildcard app domain. The wildcard app domain is not the same domain as the foundation-default app domain.
 
@@ -31,11 +31,11 @@ To configure your GLB:
 1. To support failover, set the time-to-live (TTL) in the wildcard DNS record to about 30 to 180 seconds. When determining your TTL, consider the tradeoff between the app performance impact and the resulting time for failover to occur.
 
 
-## <a id="foundation-affinity"></a> About Foundation Affinity
+## <a id='foundation-affinity'></a> About Foundation Affinity
 
 _Foundation affinity_ occurs when the GLB favors one foundation over another during a route request. For example, users experience less latency if they are routed to a foundation that is geographically closer, so the GLB may favor that foundation.
 
-Different GLBs have their own mechanisms to achieve this. See the following table for common concepts:
+Different GLBs have their own mechanisms to achieve this. For more information, see the following table for common concepts:
 
 <table>
 <tr><th colspan="2">Foundation Affinity Concepts</th><tr>
@@ -58,16 +58,16 @@ Different GLBs have their own mechanisms to achieve this. See the following tabl
 <tr>
   <td><strong>Microservice-to-microservice affinity</strong></td>
   <td>For microservice apps, you typically use a Services Registry to manage traffic between microservices. There are two ways to do this:
-    <ul>
-      <li style="margin:0"> If the microservices are using the domain which maps to the GLB, their traffic is routed through the GLB.</li>
-      <li>If the microservices are communicating using IP address or internal domains, such as when using an Envoy proxy, the traffic does not pass through the GLB.</li>
-    </ul>
+      <ul>
+        <li>If the microservices are using the domain which maps to the GLB, their traffic is routed through the GLB.</li>
+        <li>If the microservices are communicating using IP address or internal domains, such as when using an Envoy proxy, the traffic does not pass through the GLB.</li>
+      </ul>
   </td>
 </tr>
 </table>
 
 
-## <a id="healthchecks"></a> About Health Checks
+## <a id='healthchecks'></a> About Health Checks
 
 In <%= vars.app_runtime_abbr %>, _health checks_ determine whether a foundation for an app is healthy or not.
 
@@ -80,7 +80,7 @@ For the levels at which you can check the health of your foundation, see the tab
 </tr>
 <tr>
   <td>Foundation</td>
-  <td>The GLB relies on a local load balancer in front of the Gorouters to determine the overall health of the foundation. The GLB can perform health checks on TCP port 443 or 80 or on the local load balancer. The local load balancer checks the health of the back end pool of Gorouters on port 8080.</td>
+  <td>The GLB relies on a local load balancer in front of the GoRouters to determine the overall health of the foundation. The GLB can perform health checks on TCP port 443 or 80 or on the local load balancer. The local load balancer checks the health of the back end pool of GoRouters on port 8080.</td>
 </tr>
 <tr>
   <td>App</td>
@@ -88,4 +88,4 @@ For the levels at which you can check the health of your foundation, see the tab
 </tr>
 </table>
 
-<p class="note warning"><strong>Warning:</strong> <%= vars.company_name %> does not recommend setting health checks at the app level. Configuring health checks in this way can cause more frequent failover and delays while pushing apps. Complete failover of a foundation affects all apps on the platform. Health checks on a per-app basis can require additional overhead beyond the control of an app developer.</p>
+<p class='note caution'><strong>Caution:</strong> <%= vars.company_name %> does not recommend setting health checks at the app level. Configuring health checks in this way can cause more frequent failover and delays while pushing apps. Complete failover of a foundation affects all apps on the platform. Health checks on a per-app basis can require additional overhead beyond the control of an app developer.</p>

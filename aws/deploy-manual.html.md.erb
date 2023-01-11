@@ -3,19 +3,20 @@ title: Deploying Ops Manager on AWS
 owner: Ops Manager
 ---
 
-This topic describes how to deploy <%= vars.ops_manager %> on Amazon Web Services (AWS).
+This topic describes how to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
 
 Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html).
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on AWS](config-manual.html).
 
+
 ## <a id='pcfaws-om-ami'></a> Step 1: Launch an <%= vars.ops_manager %> AMI
 
-To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>, do the following:
+To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
 1. Navigate to the **<%= vars.ops_manager %>** section of [VMware Tanzu Network](https://network.pivotal.io/products/ops-manager).
 
-1. Select the version of <%= vars.ops_manager %> you want to install from the **Releases** dropdown.
+1. Select the version of <%= vars.ops_manager %> you want to install from the **Releases** drop-down menu.
 
 1. In the **Release Download Files**, click the file named **<%= vars.ops_manager %> for AWS** to download a PDF.
 
@@ -25,7 +26,7 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>, do the foll
 
 1. Click **AMIs** from the **Images** menu.
 
-1. Select **Public images** from the dropdown filter that says **Owned by me**.
+1. Using the **Owned by me** drop-down filter, select **Public images** .
 
 1. Paste the AMI ID for your region into the search bar and press enter.
 
@@ -70,7 +71,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 4. Click **View all instances** to access the **Instances** page on the EC2 Dashboard.
 
 
-##<a id='pcfaws-web-lb'></a> Step 2: Create Web Load Balancer
+## <a id='pcfaws-web-lb'></a> Step 2: Create Web Load Balancer
 
 1. On the EC2 Dashboard, click **Load Balancers**.
 
@@ -190,7 +191,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
   * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
   * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** check box is not selected. If you want to allow traffic only from private IP addresses, select this check box.
 
-1. Under **Listener Configuration**, add the following rules:
+2. Under **Listener Configuration**, add the following rules:
 
     <table border="1" class="nice" >
     <tr>
@@ -231,8 +232,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     </tr>
     </table>
 
-      <br>
-      The `...` entry above indicates that you must add listening rules for each port between 1026 and 1123.
+    The `...` entry above indicates that you must add listening rules for each port between 1026 and 1123.
 
 2. Under **Select Subnets**, select either the public or private subnets you configured in [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Assign Security Groups**.
 
@@ -242,20 +242,20 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 5. On the **Configure Health Check** page, enter the following values:
 
-  * **Ping Protocol**: Select `TCP`.
-  * **Ping Port**: Set to `80`.
-  * **Response Timeout**: Set to `3` seconds.
-  * **Interval**: Set to `5` seconds.
-  * **Unhealthy threshold**: Set to `3`.
-  * **Health threshold**: Set to `6`.
+    * **Ping Protocol**: Select `TCP`.
+    * **Ping Port**: Set to `80`.
+    * **Response Timeout**: Set to `3` seconds.
+    * **Interval**: Set to `5` seconds.
+    * **Unhealthy threshold**: Set to `3`.
+    * **Health threshold**: Set to `6`.
 
-1. Click **Next: Add EC2 Instances**.
+7. Click **Next: Add EC2 Instances**.
 
-1. Accept the defaults on the **Add EC2 Instances** page and click **Next: Add Tags**.
+8. Accept the defaults on the **Add EC2 Instances** page and click **Next: Add Tags**.
 
-1. Accept the defaults on the **Add Tags** page and click **Review and Create**.
+9. Accept the defaults on the **Add Tags** page and click **Review and Create**.
 
-1. Review and confirm the load balancer details, and click **Create**.
+10. Review and confirm the load balancer details, and click **Create**.
 
 
 ## <a id='pcfaws-dns'></a> Step 5: Configure DNS Records
@@ -279,6 +279,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
   Where `DOMAIN` is a domain name. <%= vars.company_name %> recommends that you use the same domain name for each record.
 
+2. Click **Assign Security Groups**.
 
 ## <a id='pcfaws-rds-subnet-group'></a> Step 6: Create RDS Subnet Group
 
@@ -298,10 +299,11 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
     <p class="note"><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
 
+    <p class='note'><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
 
 ## <a id='pcfaws-mysql-rds'></a> Step 7: Create a MySQL Database Using AWS RDS
 
-<p class="note"><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.ops_manager %> on AWS.</p>
+<p class='note'><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.ops_manager %> on AWS.</p>
 
 1. Navigate to the RDS Dashboard.
 
@@ -338,7 +340,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Click **Launch DB Instance**. Launching the instance may take several minutes.
 
-## <a id="next"></a>Next Steps
+## <a id='next'></a> Next Steps
 
 When the instance has launched, you the following:
 

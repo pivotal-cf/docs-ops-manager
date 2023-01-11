@@ -3,18 +3,18 @@ title: Rotating Certificates with Customer-Provided CAs
 owner: Ops Manager
 ---
 
-This topic describes how to handle customer-provided certificate authorities (CAs) during an <%= vars.ops_manager %> certificate rotation.
+This topic describes how to handle customer-provided certificate authorities (CAs) during a <%= vars.ops_manager_first %> certificate rotation.
 
 
 ## <a id='overview'></a> Overview of Customer-Provided CAs
 
-If you have customer-provided CAs, CredHub Maestro requires that you perform manual steps at the beginning of the certificate rotation process to correctly handle those customer-provided CAs. 
+If you have customer-provided CAs, CredHub Maestro requires that you perform manual steps at the beginning of the certificate rotation process to correctly handle those customer-provided CAs.
 
 If you are unsure whether customer-provided CAs are installed, see [Check for Customer-Provided CAs](#ca-check) below.
 
 To handle customer-provided CAs, you can use one of two methods:
 
-- **Method One:** If the certificate rotation process is unstarted, see [Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs](#method-one) below. 
+- **Method One:** If the certificate rotation process is unstarted, see [Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs](#method-one) below.
 
 - **Method Two:** If you are already in the process of rotating certificates, see [Method Two: Manually Replace the Customer-Provided CAs](#method-two) below. You can use this procedure after encountering the following Maestro error:
    <pre>certificate authorities latest version is not transitional</pre>
@@ -37,7 +37,7 @@ You can identify customer-provided CAs in one of the following ways:
   1. Record the **Certificate name**. That is your customer-provided CA CredHub path.
 
 - **From the <%= vars.ops_manager %> API**
-  1. Make a call to `GET` the `api/v0/deployed/certificates` endpoint. For more information about the endpoint, see [Getting Information About Certificates from Products](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Certificates/paths/~1api~1v0~1deployed~1certificates/get) in the <%= vars.ops_manager %> API documentation.
+  1. Make a call to `GET` the `api/v0/deployed/certificates` endpoint. For more information about the endpoint, see [Getting Information About Certificates from Products](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Certificates/paths/~1api~1v0~1deployed~1certificates/get) in the <%= vars.ops_manager %> API documentation.
   1. Find customer-provided CAs with the following properties:
       - `"configurable: : true`<br/>
       - `"location" : "credhub"`<br/>
@@ -67,9 +67,9 @@ The payload that must be provided to the request has the following structure:
 }
 ```
 
-<p class="note"><strong>Note:</strong> You will need to get the CredHub paths to the customer-provided CAs. The procedure to do this is detailed in the "Prerequisites" section of this document.</p>
+<p class='note'><strong>Note:</strong> You will need to get the CredHub paths to the customer-provided CAs. The procedure to do this is detailed in the "Prerequisites" section of this document.</p>
 
-<p class="note warning"><strong>Warning:</strong> the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption during the certificate rotation process.</p>
+<p class='note caution'><strong>Caution:</strong> the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption during the certificate rotation process.</p>
 
 ## <a id='method-two'></a> Method Two: Manually Replace the Customer-Provided CAs
 
@@ -125,4 +125,3 @@ topology:
 Given this output, you will use the `update_transitional_version` endpoint on the certificate with the id `75b9f5a6-f3c6-42f8-a834-3cfa6098c73a` and the version with the id `7e172086-a08d-4e62-98ba-308942a52e8a`.
 
 After performing this operation on each customer-provided CA, you can continue with the normal Certificate Rotation process.
-

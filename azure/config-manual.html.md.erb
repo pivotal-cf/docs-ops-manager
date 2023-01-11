@@ -2,25 +2,26 @@
 title: Configuring BOSH Director on Azure
 owner: Ops Manager
 iaas: Azure
+install_type: manual
 ---
 
-This topic describes how to configure the BOSH Director tile within <%= vars.ops_manager %> on Azure after [Deploying <%= vars.ops_manager %> on Azure](./deploy-manual.html).
+This topic describes how to configure the BOSH Director tile within <%= vars.ops_manager_first %> on Azure after [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
 
 
-## <a id="prerequisites"></a> Prerequisites
+## <a id='prerequisites'></a> Prerequisites
 
 See the following sections to prepare for configuring BOSH Director on Azure.
 
-### <a id="general-prereqs"></a> General Prerequisites
+### <a id='general-prereqs'></a> General Prerequisites
 
 Before you perform the procedures in this topic, you must have completed the procedures in the following topics:
 
 * [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html)
 * [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html)
 
-<p class="note"><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+<p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
-### <a id="stack-gov-prereqs"></a> Prerequisites for Azure Stack or Azure Government Cloud
+### <a id='stack-gov-prereqs'></a> Prerequisites for Azure Government Cloud
 
 If you use Azure Government Cloud, you must set custom VM types for a successful deployment. You can set custom VM types with the <%= vars.ops_manager %> API. For more information, see [Using the <%= vars.ops_manager %> API](../install/ops-man-api.html).
 
@@ -50,8 +51,8 @@ Manager API endpoint.
 
 #### <a id='azure-vm-types'></a> Azure Generation 2 VM Types
 
-You can use Generation 2 Azure VM types as the default VM type.
-For more information, see the <a href="../release-notes.html#2-10-3">Ops Manager v2.10.3 Release Notes</a>.
+Azure Government Cloud uses Azure Generation 2 VM types by default. If necessary, you can re-configure the VMs in your
+deployment to use Azure Generation 1 VM types.
 
 The following table shows the mapping between Generation 1 and Generation 2 Azure VM types:
 
@@ -94,48 +95,64 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 
 1. Select **Azure Config**.
 
-    <%= image_tag("../common/images/azure/azure-config.png", :alt => "At the top of the image is the header 'BOSH Director for Azure', below which are three tabs in a horizontal row labeled 'Settings', 'Status', and 'Credentials'. The Settings tab is highlighted in light gray to show that it is selected, while the others are dark gray. Below the Settings tab is a list of panes on the left labeled, from top to bottom: 'Azure Config', 'Director Config', 'Create Networks', 'Assign AZs and Networks', 'Security', 'BOSH DNS Config', 'Syslog', and 'Resource Config'. Each pane has a green circle with a checkmark inside to the left of its label. Azure Config is highlighted in dark gray to show that it is selected. To the right of the image is the header 'Azure Config', below which are text fields labeled, from top to bottom: 'Subscription ID', 'Tenant ID', 'Application ID', 'Client Secret', 'Resource Group Name', and 'BOSH Storage Account Name'. All of these fields are marked with red asterisks to denote that they are mandatory fields. The 'Client Secret' field contains eight asterisks, while the word 'Change' in blue letters is underneath the text field. Below 'BOSH Storage Account Name' are the words 'Cloud Storage Type' with two options underneath: a selected radio button labeled 'Use Managed Disks', below which is a dropdown labeled 'Storage Account Type' with 'Premium_LRS' selected; and a radio button labeled 'Use Storage Accounts', below which is a grayed-out text field labeled 'Deployments Storage Account Name'. Below this are more text fields, labeled 'Default Security Group' and 'SSH Public Key', the latter of which has a red asterisk. Next is a text area labeled 'SSH Private Key' with a red asterisk. Below the text area are the words 'Availability Mode' with two options underneath: a radio button labeled 'Availability Sets' and a selected radio button labeled 'Availability Zones'. Below these are the words 'Azure Environment' with five options underneath: a selected radio button labeled 'Azure Commercial Cloud', and four more radio buttons labeled, from top to bottom, 'Azure US Gov Cloud', 'Azure Germany Cloud', 'Azure China Cloud', and 'Azure Stack'. Below 'Azure Stack' are several grayed-out text fields and one text area, labeled, from top to bottom: 'Tenant Management Resource Endpoint', 'Domain', 'Authentication', 'Azure Stack Endpoint Prefix', and 'Azure Stack CA Certificate'. All of these have red asterisks to denote they are mandatory fields when the 'Azure Stack' option is selected. Below the 'Azure Stack CA Certificate' text area is a blue, rectangular button labeled 'Save'.") %>
+    ![alt-text=""](../common/images/azure/azure-config.png)
 
-1. Complete the following fields with information you obtained in [Preparing to Deploy <%= vars.ops_manager %> on Azure](./prepare-env-manual.html).
+2. Complete the following fields with information you obtained in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html).
 	* **Subscription ID**: Enter the ID of your Azure subscription.
 	* **Tenant ID**: Enter your `TENANT_ID`.
-	* **Application ID**: Enter the `APPLICATION_ID` that you created in the [Create an AAD Application](./prepare-env-manual.html#create-aad) step of _Preparing to Deploy <%= vars.ops_manager %> on Azure_.
+	* **Application ID**: Enter the `APPLICATION_ID` that you created in the [Create an AAD Application](prepare-env-manual.html#create-aad) step of _Preparing to Deploy <%= vars.ops_manager %> on Azure_.
 	* **Client Secret**: Enter your `CLIENT_SECRET`.
 
-1. Complete the following fields:
+3. Complete the following fields:
 	* **Resource Group Name**: Enter the name of your resource group, which you exported as the `$RESOURCE_GROUP` environment variable.
 	* **BOSH Storage Account Name**: Enter the name of your storage account, which you exported as the `$STORAGE_NAME` environment variable.
 
+4. From the **Storage Tier ephemeral / persistent disks** dropdown, select the storage option that corresponds with your Azure subscription:
+	* For HDD-based storage, select **Standard_LRS**.
+	* For SSD-based storage, select **Premium_LRS**.
+
+5. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** checkbox. This overrides the default behavior, which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
+
+    ![alt-text=""](../common/images/azure/azure-storage-tier.png)
+
 1. For **Cloud Storage Type**, select one of the following options based on your Azure VM storage settings.
-	* **Use Managed Disks**: Select this option if you use Azure Managed Disks. See [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documentation for more information. For **Storage Account Type**, select the storage option that corresponds with your Azure subscription. Select **Standard_LRS** for HDD-based storage or **Premium_LRS** for SSD-based storage.
-        <%= image_tag("../common/images/azure/azure-managed-disk.png", :alt => "The words 'Cloud Storage Type' with two options underneath. The first option is a selected radio button labeled 'Use Managed Disks', below which is a dropdown labeled 'Storage Account Type' with 'Premium_LRS' selected. To the right of the dropdown is the help text 'Storage Account Type to use with managed disks'. The second option is a radio button labeled 'Use Storage Accounts', below which is a grayed-out text field labeled 'Deployments Storage Account Name'.") %>
-	* **Use Storage Accounts**: Select this option if you use storage accounts to store your Azure VMs. Enter the base storage name that you used to create your deployment storage accounts, prepended and appended with the wildcard character `*`. For example, if you created accounts named  `xyzdeploymentstorage1`, `xyzdeploymentstorage2`, and `xyzdeploymentstorage3`, enter `*deploymentstorage*`. <%= vars.ops_manager %> requires that you specify an asterisk at both the beginning and the end of the base storage account name.
-        <%= image_tag("../common/images/azure/storage-accounts.png", :alt => "The selected radio button 'Use Storage Accounts', below which is a text field labeled 'Deployments Storage Account Name'. To the right of the text field is the help text 'A Storage Account into which Ops Manager will deploy other VMs. Name must contain only lower-case letters and numbers, may start AND end with an asterisk. Required if Cloud Storage Type is set to 'Storage Accounts'.'") %>
-    <p class="note warning"><strong>Warning:</strong> You can update your deployment from using storage accounts to using managed disks. However, after you select <strong>Use Managed Disks</strong> and deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.</p>
+
+    * **Use Managed Disks**: Select this option if you use Azure Managed Disks. For more information, see [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documentation for more information.
+
+        ![alt-text=""](../common/images/azure/azure-managed-disk.png)
+
+    * **Use Storage Accounts**: Select this option if you use storage accounts to store your Azure VMs. Enter the base storage name that you used to create your deployment storage accounts, prepended and appended with the wildcard character `*`. For example, if you created accounts named  `xyzdeploymentstorage1`, `xyzdeploymentstorage2`, and `xyzdeploymentstorage3`, enter `*deploymentstorage*`. <%= vars.ops_manager %> requires that you specify an asterisk at both the beginning and the end of the base storage account name.
+
+        ![alt-text=""](../common/images/azure/storage-accounts.png)
+
+    <p class='note caution'><strong>Caution:</strong> You can update your deployment from using storage accounts to using managed disks. However, after you select <strong>Use Managed Disks</strong> and deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.</p>
 
 1. (Optional) Enter your **Default Security Group**. For more information about Network Security Groups, see [Filter network traffic with network security groups](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg) in Microsoft Azure's documentation.
-    <p class="note"><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
+    <p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
-1. For **SSH Public Key**, copy and paste the contents of your public key in the `opsman.pub` file. You created this file in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
+2. For **SSH Public Key**, copy and paste the contents of your public key in the `opsman.pub` file. You created this file in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
 
-1. For **SSH Private Key**, copy and paste the contents of your private key in the `opsman` file.
+3.  For **SSH Private Key**, copy and paste the contents of your private key in the `opsman` file.
 
-1. For **Availability Mode**, choose whether to use **Availability Sets** or **Availability Zones**. You can further configure this option in the **Assign AZs and Networks** pane. For more information, see [Assign AZs and Networks](#assign-networks).
+4.  For **VM Type Catalog**, Select the VM Catalog that you want to use for your BOSH Managed VMs.
+
+5.  For **Availability Mode**, choose whether to use **Availability Sets** or **Availability Zones**. You can further configure this option in the **Assign AZs and Networks** pane. For more information, see [Assign AZs and Networks](#assign-networks).
    * **For new installations of <%= vars.ops_manager %>**: **Availability Zones** are selected by default, but you can choose **Availability Sets**.
    * **If you are upgrading from v2.4**: You must use **Availability Sets**.
-    <p class="note"><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
+    <p class='note'><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
 
-1. <%= partial "../common/azure-environment" %>
-    <p class="note"><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS), select <strong>Azure Stack</strong>. For more information about ADFS for Azure, see <a href="https://docs.pivotal.io/platform/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
+<%= partial "../common/azure-environment" %>
 
-1. (Optional) If you selected `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
-  1. For **Domain**, enter the domain for your Azure Stack deployment. For example, `local.azurestack.external`.
-  1. Enter the **Tenant Management Resource Endpoint** from your AzureRM Environment Context. This URL changes with every ASDK installation.
-  1. Enter `AzureAD` for **Authentication**. If you want to use Azure China Cloud Active Directory for your authentication type, enter `AzureChinaCloudAD`.
-  1. Enter your **Azure Stack Endpoint Prefix**. For example `management`.
-  1. Enter your **Azure Stack CA Certificate**. Azure Stack requires a custom CA certificate. Copy the certificate from your Azure Stack environment.
+    <p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS) refer to <a href="https://docs.pivotal.io/platform/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
 
-1. Click **Save**.
+13. (Optional) If you selected `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
+  14. For **Domain**, enter the domain for your Azure Stack deployment. For example, `local.azurestack.external`.
+  15. Enter the **Tenant Management Resource Endpoint** from your AzureRM Environment Context. This URL changes with every ASDK installation.
+  16. Enter `AzureAD` for **Authentication**. If you want to use Azure China Cloud Active Directory for your authentication type, enter `AzureChinaCloudAD`.
+  17. Enter your **Azure Stack Endpoint Prefix**. For example `management`.
+  18. Enter your **Azure Stack CA Certificate**. Azure Stack requires a custom CA certificate. Copy the certificate from your Azure Stack environment.
+
+14. Click **Save**.
 
 
 ## <a id='director-config'></a> Step 3: Director Config Page
@@ -150,11 +167,11 @@ Create the following three networks:
 * [Runtime Network](#runtime-network)
 * [Services Network](#services-network)
 
-<p class="note"><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
+<p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 ### <a id='infrastructure-network'></a> Infrastructure Network
 
-To create the infrastructure network, do the following:
+To create the infrastructure network:
 
 1. Select **Create Networks**.
 
@@ -166,7 +183,7 @@ To create the infrastructure network, do the following:
 
     <table>
       <tr>
-        <th>Network Name</th>
+        <th>Name</th>
         <td><code>infrastructure</code></td>
       </tr>
       <tr>
@@ -195,13 +212,14 @@ To create the infrastructure network, do the following:
         <td>Enter the first IP address of the subnet. For example, <code>10.0.4.1</code>.</td>
       </tr>
     </table>
-    <%= image_tag("../common/images/azure/create-networks-management.png", :alt => "At the top of the image is the header 'Create Networks' with a horizontal line underneath. Below the line are the words 'Warning: Pivotal recommends keeping the IP settings throughout the life of your installation. Ops Manager may prevent you from changing them in the future. Contact Pivotal support for help completing such a change.' Below this text is the header 'Verification Settings', below which is a checkbox labeled 'Enable ICMP checks'. After this checkbox is the header 'Networks', across from which is a gray, rectangular button labeled 'Add Network'. Below 'Networks' are the words 'One or many IP ranges upon which your products will be deployed'. Below this is a gray, rectangular button labeled 'infrastructure' with a small, downward-pointing triangle to the left of it, indicating an expandable area. The image of a gray trashcan is directly across from the 'infrastructure' button. Below the 'infrastructure' button is a text field labeled 'Name' with a red asterisk to denote that it is a mandatory field, filled with the text 'infrastructure'. Below this text field is subheader 'Subnets', across from which is a gray, rectangular button labeled 'Add Subnet'. Below the Subnets subheader are text fields labeled, from top to bottom, 'Azure Network Name' with a red asterisk, 'CIDR' with a red asterisk, 'Reserved IP Ranges', 'DNS' with a red asterisk, and 'Gateway' with a red asterisk. The Azure Network Name field contains the text 'pcf-virtual-network/pcf-infrastructure-subnet'. The CIDR field contains the text '10.0.4.0/26'. The Reserved IP Ranges field contains the text '10.0.4.1-10.0.4.9'. The DNS field contains the text '168.63.129.16'. The Gateway field contains the text '10.0.4.1'.") %>
 
-1. Click **Save**.<%= vars.expand_network_azs %>
+    ![alt-text=""](../common/images/azure/create-networks-management.png)
+
+2. Click **Save**.<%= vars.expand_network_azs %>
 
 ### <a id='runtime-network'></a> Runtime Network
 
-To create the runtime network, do the following:
+To create the runtime network:
 
 1. Click **Add Network**. For **Name**, enter the name of the runtime that you intend to deploy in this environment. For example, `pas` or `pks`.
 
@@ -209,7 +227,7 @@ To create the runtime network, do the following:
 
     <table>
       <tr>
-        <th>Network Name</th>
+        <th>Name</th>
         <td><code>pas</code> or <code>pks</code></td>
       </tr>
       <tr>
@@ -239,13 +257,14 @@ To create the runtime network, do the following:
         <td>Enter the first IP address of the subnet. For example, <code>10.0.12.1</code>.</td>
       </tr>
     </table>
-    <%= image_tag("../common/images/azure/create-networks-deployment.png", :alt => "At the top of the image is a gray, rectangular button labeled 'pas' with a small, downward-pointing triangle to the left of it, indicating an expandable area. The image of a gray trashcan is directly across from the 'pas' button. Below the 'pas' button is a text field labeled 'Name' with a red asterisk to denote that it is a mandatory field, filled with the text 'pas'. Below this text field is the subheader 'Subnets', across from which is a gray, rectangular button labeled 'Add Subnet'. Below the Subnets subheader are text fields labeled, from top to bottom, 'Azure Network Name' with a red asterisk, 'CIDR' with a red asterisk, 'Reserved IP Ranges', 'DNS' with a red asterisk, and 'Gateway' with a red asterisk. The Azure Network Name field contains the text 'pcf-virtual-network/pcf-pas-subnet'. The CIDR field contains the text '10.0.12.0/22'. The Reserved IP Ranges field contains the text '10.0.12.1-10.0.12.9'. The DNS field contains the text '168.63.129.16'. The Gateway field contains the text '10.0.12.1'.") %>
 
-1. Click **Save**.
+    ![alt-text=""](../common/images/azure/create-networks-deployment.png)
+
+2. Click **Save**.
 
 ### <a id='services-network'></a> Services Network
 
-To create the services network, do the following:
+To create the services network:
 
 1. Click **Add Network**. For **Name**, enter `services`.
 
@@ -253,7 +272,7 @@ To create the services network, do the following:
 
     <table>
       <tr>
-        <th>Network Name</th>
+        <th>Name</th>
         <td><code>services</code></td>
       </tr>
       <tr>
@@ -282,11 +301,12 @@ To create the services network, do the following:
         <td>Enter the first IP address of the subnet. For example, <code>10.0.8.1</code>.</td>
       </tr>
     </table>
-    <%= image_tag("../common/images/azure/create-networks-services.png", :alt => "At the top of the image is a gray, rectangular button labeled 'services' with a small, downward-pointing triangle to the left of it, indicating an expandable area. The image of a gray trashcan is directly across from the 'services' button. Below the 'services' button is a text field labeled 'Name' with a red asterisk to denote that it is a mandatory field, filled with the text 'services'. Below this text field is the subheader 'Subnets', across from which is a gray, rectangular button labeled 'Add Subnet'. Below the Subnets subheader are text fields labeled, from top to bottom, 'Azure Network Name' with a red asterisk, 'CIDR' with a red asterisk, 'Reserved IP Ranges', 'DNS' with a red asterisk, and 'Gateway' with a red asterisk. The Azure Network Name field contains the text 'pcf-virtual-network/pcf-services-subnet'. The CIDR field contains the text '10.0.8.0/22'. The Reserved IP Ranges field contains the text '10.0.8.1-10.0.8.9'. The DNS field contains the text '168.63.129.16'. The Gateway field contains the text '10.0.8.1'.") %>
 
-1. Click **Save**.
+    ![alt-text=""](../common/images/azure/create-networks-services.png)
 
-1. You might see red warnings.
+2. Click **Save**.
+
+3. You might see red warnings.
    Ignore them only if **Enable ICMP checks** is not selected.
 
 
@@ -294,7 +314,7 @@ To create the services network, do the following:
 
 <ol>
 <li>Select <strong>Assign AZs and Networks</strong>.<br/>
-  <p class="note"><strong>Note</strong>: The appearance of this page changes based on whether you are using Availability Zones or Availability Sets. For more information, see <a href="#azure-config">Azure Config Page</a>.</p>
+  <p class='note'><strong>Note:</strong> The appearance of this page changes based on whether you are using Availability Zones or Availability Sets. For more information, see <a href="#azure-config">Azure Config Page</a>.</p>
     <ul>
     <li>If you use Availability Zones, select one of the three available zones from the <strong>Singleton Availability Zone</strong> dropdown, then select a network from the <strong>Networks</strong> dropdown. The networks that appear in this list are networks that you created earlier in this procedure.
     </li>
@@ -305,39 +325,39 @@ To create the services network, do the following:
 </ol>
 
 
-## <a id='security'></a> Step 6: Security Page
+## <a id='security'></a> Step 6: Security page
 
 <%= partial "../common/security-pane" %>
 
-## <a id="bosh-dns"></a> Step 7: BOSH DNS Config Page
+## <a id='bosh-dns'></a> Step 7: BOSH DNS Config page
 
 <%= partial '../common/bosh-dns-config'  %>
 
 ## <a id='syslog'></a> Step 8: Syslog Page
 
-<%= partial(:"/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' }) %>
+<%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
-## <a id='resource-config'></a> Step 9: Resource Config Page
+## <a id='resource-config'></a> Step 9: Resource Config page
 
 1. Select **Resource Config**.
 
-    <%= image_tag("../common/images/azure/om-resource-config.png", :alt => "At the top of the image is the header 'Resource Config'. In the top right corner of the image is a blue, rectangular button labeled 'Save'. Below the header are four columns labeled, from left to right, 'Job', 'Instances', 'VM Type', and 'Persistent Disk Type'. Under 'Job' are rows labeled with the names of two VMs, 'BOSH Director' and 'Master Compilation Job'. The 'Master Compilation Job' row is expanded, which reveals a 'Load Balancers' field and an 'Internet Connected' checkbox. The 'Load Balancers' field is blank and the 'Internet Connected' checkbox is not selected. Under 'Instances' are two dropdowns, with 'Automatic: 1' for BOSH Director and '1' for Master Compilation Job selected. Under 'VM Type' are two dropdowns, with 'Automatic: Standard_DS2_v2...' selected for BOSH Director and 'Standard_F2s (cpu: 2, ram: 4 GB...' selected for Master Compilation Job. Under 'Persistent Disk Type' is one dropdown with 'Automatic: 50 GB' selected for BOSH Director and the word 'None' for Master Compilation Job.") %>
+    ![alt-text=""](../common/images/azure/om-resource-config.png)
 
-1. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
-    <p class="note"><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
-    <p class="note"><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
-    <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>),
+1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
+    <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
+    <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
+    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>,
     provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
-1. (Optional) To add a load balancer to the BOSH Director:
+2. (Optional) To add a load balancer to the BOSH Director:
   1. Select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox.
-  1. Ensure that the **Internet Connected** checkbox is not selected.
-  1. For **Load Balancers**, enter your Azure application gateway name for each associated job. To create an application gateway, follow the procedures in [Configure an application gateway for SSL offload by using Azure Resource Manager](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-arm) from the Azure documentation. When you create the application gateway, associate the gateway's IP address with your system domain.
-    <p class="note warning"><strong>Warning:</strong> This feature is not recommended for production use. The Azure load balancer does not support an override port in the healthcheck configuration.</p>
+  2. Ensure that the **Internet Connected** check box is not selected.
+  3. For **Load Balancers**, enter your Azure application gateway name for each associated job. To create an application gateway, follow the procedures in [Configure an application gateway for SSL offload by using Azure Resource Manager](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-arm) from the Azure documentation. When you create the application gateway, associate the gateway's IP address with your system domain.
+    <p class='note caution'><strong>Caution:</strong> This feature is not recommended for production use. The Azure load balancer does not support an override port in the healthcheck configuration.</p>
 
-1. Click **Save**.
+3. Click **Save**.
 
-## <a id="custom-vm-extensions"></a> Step 10: (Optional) Add Custom VM Extensions
+## <a id='custom-vm-extensions'></a> Step 10: (Optional) Add Custom VM Extensions
 
 <%= partial "../common/vm-extension-config"  %>
 
@@ -347,10 +367,10 @@ To create the services network, do the following:
 
 1. BOSH Director installs. This may take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
 
-1. Click the **Installation Dashboard** link to return to the Installation Dashboard.
+1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
 
-## <a id="next"></a> Next Steps
+## <a id='next'></a> Next Steps
 
 * (Optional) When <%= vars.ops_manager %> finishes deploying, deploy BOSH Add-ons to your system. For more information, see [Deploying BOSH Add-Ons](../install/add-ons.html).
 

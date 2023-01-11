@@ -3,19 +3,18 @@ title: Reviewing Pending Product Changes
 owner: Ops Manager
 ---
 
-This topic describes the **Review Pending Changes** page and how to selectively deploy
-individual or multiple tiles in Ops Manager. Deploying tiles selectively can drastically
-reduce deployment time.
+This topic describes the **Review Pending Changes** page and how to selectively deploy individual or multiple tiles in <%= vars.ops_manager_first %>.
+Deploying tiles selectively can dramatically reduce deployment time.
 
-## <a id="review-pending-changes"></a> Review Pending Changes Page
 
-The following screenshot shows the **Review Pending Changes** page. Features called out with
+## <a id='review-pending-changes'></a> Review Pending Changes Page
+
+The following screenshot shows the **Review Pending Changes** page. The features called out with
 red letters are described below.
 
 <%# Screenshot written in Omnigraffle. Edit in ./images/omnigraffle/review-pending-changes.graffle %>
-<a href="./images/review-pending-changes.png" target="_blank"> <%= image_tag("review-pending-changes.png", :alt => "Screenshot of the 'Review Pending
-	    Changes' page. For a description of each labeled section, see the list
-	    below.") %></a>
+
+![alt-text=""](images/review-pending-changes.png)
 
 Each labeled section of the **Review Pending Changes** page works as follows:
 
@@ -58,7 +57,7 @@ You might see some of the following warnings:
     - **Configuration is invalid**---You must resolve your tile's invalid configurations.
 
 
-- **F**---**Changes:** This section lists high-level pending changes to the product that Ops Manager has not yet attempted to deploy. When Ops Manager tries to deploy a product but the deployment fails, it clears this list and the pending changes are retained for the next deployment. To see if your product deployed successfully, see
+- **F**---**Changes:** This section lists high-level pending changes to the product that <%= vars.ops_manager %> has not yet attempted to deploy. When <%= vars.ops_manager %> tries to deploy a product but the deployment fails, it clears this list and the pending changes are retained for the next deployment. To see if your product deployed successfully, see
 [Change Log Page](../pcf-interface.html#changelog).<br><br>
     Listed changes include:
 
@@ -72,7 +71,7 @@ You might see some of the following warnings:
 
 - **G**---**Errands:** If you expand this section, you can enable or disable errands that trigger when that tile
 deploys. For example, you may enable an errand to log properties. For more information,
-see [Managing Errands in Ops Manager](./managing_errands.html).
+see [Managing Errands in <%= vars.ops_manager %>](managing_errands.html).
 
 - **H**---**Staged:** This section indicates the status of the tile.
 
@@ -80,7 +79,8 @@ see [Managing Errands in Ops Manager](./managing_errands.html).
 
 - **J**---**Apply Changes:** Clicking this button deploys all enabled tiles.
 
-## <a id="pending-changes"></a> About Pending Changes for a Specific Tile
+
+## <a id='pending-changes'></a> About Pending Changes for a Specific Tile
 
 If you have changed the configuration of a tile in your deployment, use the **Pending Changes** page to review the changes to the existing manifest or configs line-by-line.
 
@@ -88,27 +88,33 @@ This page summarizes staged changes to the existing tile's configuration. The ch
 
 This page allows operators to verify changes to the manifest and configs so they can approve any staged changes before applying changes to their deployment.
 
-## <a id="pending-changes-ui"></a> Use the Pending Changes Page
 
-The change summary fields display features that have been enabled or disabled using the Ops Manager UI or API. These changes are staged, but have not been implemented yet. You must click **Apply Changes** to put these changes into effect.
+## <a id='pending-changes-ui'></a> Use the Pending Changes Page
 
-If you want to see changes for a specific tile, do the following:
+The change summary fields display features that have been enabled or disabled using the <%= vars.ops_manager %> UI or API. These changes are staged, but have not been implemented yet. You must click **Apply Changes** to put these changes into effect.
+
+To see changes for a specific tile:
 
 1. On the Review Pending Changes page, click **See Changes** on the tile you wish to review. A new tab opens.
-2. Review the changes displayed. Settings that have been **disabled** are displayed in red with a minus sign (**-**). Settings that have been **enabled** are displayed in green with a plus sign (**+**).
-3. Close the tab and return to the Review Pending Changes page to apply the changes or review other tiles.
+
+1. Review the changes displayed. Settings that have been **disabled** are displayed in red with a minus sign (**-**). Settings that have been **enabled** are displayed in green with a plus sign (**+**).
+
+1. Close the tab and return to the Review Pending Changes page to apply the changes or review other tiles.
 
 The screenshot below shows changes to the BOSH Director's manifest.
 
-<a href="./images/pending-tile-changes.png" target="_blank"> <%= image_tag("pending-tile-changes.png", :alt => "Main header displays 'Pending Changes for BOSH Director'. Below, under the 'Manifest' header, text from the manifest is displayed. Some lines are highlighted in green and others are highlighted in red to indicate when fields have been enabled or disabled. Below the Manifest, other categories are displayed such as 'Runtime Configs'. The other categories are all labeled as having 'No changes'.") %></a>
+![alt-text=""](images/pending-tile-changes.png)
 
-When you make changes to a tile, change summaries display for the following tile areas:
+When you make changes to a tile, change summaries are displayed for the following tile areas:
 
 * Manifest
+
 * Runtime configs
+
 * CPI configs
+
 * Cloud configs
 
 If an aspect of the tile has not changed, the change summary displays `No changes`.
 
-<p class="note"><strong>Note</strong>: Changes to errands do not display in the page UI.</p>
+<p class='note'><strong>Note:</strong> Changes to errands do not display in the page UI.</p>

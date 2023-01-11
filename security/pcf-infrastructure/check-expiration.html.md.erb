@@ -3,10 +3,10 @@ title: Checking Expiration Dates and Certificate Types
 owner: Ops Manager
 ---
 
-This topic describes how to check the expiration dates and types of the certificate authorities (CAs) and leaf certificates that the <%= vars.ops_manager %> API manages. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
+This topic describes how to check the expiration dates and types of the certificate authorities (CAs) and leaf certificates that the <%= vars.ops_manager_first %> API manages. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
 
 
-## <a id="overview"></a> Overview
+## <a id='overview'></a> Overview
 
 There are two ways to manually check the expiration dates and types of the certificates that the <%= vars.ops_manager %> API manages:
 
@@ -36,18 +36,18 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
 1. For any certificates expiring soon, use the following rules to identify their types:
     * **Non-rotatable certificates:** Non-rotatable certificates are included in the **Excluded certificates** section at the bottom of the **Certificates** page.
     * **Non-configurable certificates:** The rows for non-configurable leaf certificates contain the following information:
-      * **Location:** Ops Manager or CredHub
+      * **Location:** <%= vars.ops_manager %> or CredHub
       * **Type:** Leaf
       * **Configurable:** No
     * **Configurable certificates:** The rows for configurable leaf certificates contain the following information:
       * **Type:** Leaf
       * **Configurable:** Yes
     * **CAs:** The rows for CAs contain the following information:
-      * **Location:** Ops Manager or CredHub
+      * **Location:** <%= vars.ops_manager %> or CredHub
       * **Type:** CA
 
 1. After you identify the list of certificates that expire soon, follow one of the procedures listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.
-    <p class='note warning'><strong>Warning:</strong> The <strong>Excluded certificates</strong> section lists certificates that you cannot safely rotate using the methods described in this topic. To rotate the Services TLS CA certificate and its leaf certificates, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>. For all other certificates listed in <strong>Excluded certificates</strong>, contact <a href="https://tanzu.vmware.com/support">Support</a> for guidance.</p>
+    <p class='note caution'><strong>Caution:</strong> The <strong>Excluded certificates</strong> section lists certificates that you cannot safely rotate using the methods described in this topic. To rotate the Services TLS CA certificate and its leaf certificates, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>. For all other certificates listed in <strong>Excluded certificates</strong>, contact <a href="https://tanzu.vmware.com/support">Support</a> for guidance.</p>
 
 
 ## <a id='check-api'></a> Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> API
@@ -55,7 +55,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
 To check certificate expiration dates and types through the <%= vars.ops_manager %> API:
 
 1. Follow the procedure in [Using <%= vars.ops_manager %> API](../../install/ops-man-api.html) to target and authenticate with the <%= vars.ops_manager %> User Account and Authentication (UAA) server. Record your <%= vars.ops_manager %> access token, and use it for `UAA-ACCESS-TOKEN` in the steps below.
-  <p class="note"><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
+  <p class='note'><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
 
 1. To retrieve the certificates, call the `/deployed/certificates` endpoint of the <%= vars.ops_manager %> API by running:
 
@@ -65,43 +65,47 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
           -i
     ```
     Where:
+
     * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is the `access_token` value you recorded in the previous step.
-    <br>
-    <br>
+
     More options:
-      * To limit command output to certificates that expire within a given time interval, append `?expires_within=TIME` to the endpoint, replacing `TIME` with an integer-letter code.<br>
-          * Valid letter codes are `d` for days, `w` for weeks, `m` for months, and `y` for years. For example, querying to `https://OPS-MANAGER-FQDN/api/v0/deployed/certificates?expires_within=6m` searches for certificates expiring within six months.
+
+      * To limit command output to certificates that expire within a given time interval, append `?expires_within=TIME` to the endpoint, replacing `TIME` with an integer-letter code.
+        * Valid letter codes are `d` for days, `w` for weeks, `m` for months, and `y` for years. For example, querying to `https://OPS-MANAGER-FQDN/api/v0/deployed/certificates?expires_within=6m` searches for certificates expiring within six months.
       * To make the JSON output more readable, you can pipe your `curl` command to [jq](https://stedolan.github.io/jq/) or another text editor with JSON formatting.
 
 1. The `deployed/certificates` output lists all CAs and leaf certificates visible to the <%= vars.ops_manager %> API, whether they are stored in <%= vars.ops_manager %> directly or stored in CredHub. To determine the expiration date and type for each certificate listed:
-  1. Determine the expiration date from the `valid_until` value. For example, the root CA listed below expires on August 12, 2020:
-    <pre class='terminal'>
-    {
-          "configurable": true,
-          "is\_ca": true,
-          "property\_reference": ".properties.root\_ca.fb10484dd5541a273c9d",
-          "property\_type": "rsa\_cert\_credentials",
-          "product\_guid": "ops\_manager",
-          "location": "ops\_manager",
-          "variable\_path": null,
-          "issuer": "/CN=ToolsmithsCA",
-          "valid\_from": "2019-08-13T15:30:22Z",
-          "valid\_until": "2020-08-12T15:30:22Z"
-    }
-    </pre>
-  1. For any certificates expiring soon, use the following rules to identify their types:
-      * **Non-rotatable certificates:** Non-rotatable certificates have the following property value:
-          * `variable_path` matches `/p-bosh/service-instance_*/pxc_*`, `/p-bosh/service-instance_*/tls_certificate`, or `/p-bosh/service-instance_*/redis_certificate`
-      * **Non-configurable certificates:** Non-configurable leaf certificates have the following property values:
-          * `configurable` is `false`
-          * `location` is either `ops_manager` or `credhub`
-          * `is_ca` is `false`
-      * **Configurable certificates:** Configurable leaf certificates have the following property values:
-          * `configurable` is `true`
-          * `is_ca` is `false`
-      * **CAs:** CAs have the following property values:
-          * `is_ca` is `true`
-          * `location` is `ops_manager` or `credhub`
 
-1. After you identify the list of certificates that expire soon, follow one of the procedures listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.
+    1. Determine the expiration date from the `valid_until` value. For example, the root CA listed below expires on August 12, 2020:
+
+        ```
+        {
+              "configurable": true,
+              "is_ca": true,
+              "property_reference": ".properties.root_ca.fb10484dd5541a273c9d",
+              "property_type": "rsa_cert_credentials",
+              "product_guid": "ops_manager",
+              "location": "ops_manager",
+              "variable_path": null,
+              "issuer": "/CN=ToolsmithsCA",
+              "valid_from": "2019-08-13T15:30:22Z",
+              "valid_until": "2020-08-12T15:30:22Z"
+        }
+        ```
+
+    2. For any certificates expiring soon, use the following rules to identify their types:
+        * **Non-rotatable certificates:** Non-rotatable certificates have the following property value:
+            * `variable_path` matches `/p-bosh/service-instance_*/pxc_*`, `/p-bosh/service-instance_*/tls_certificate`, or `/p-bosh/service-instance_*/redis_certificate`
+        * **Non-configurable certificates:** Non-configurable leaf certificates have the following property values:
+            * `configurable` is `false`
+            * `location` is either `ops_manager` or `credhub`
+            * `is_ca` is `false`
+        * **Configurable certificates:** Configurable leaf certificates have the following property values:
+            * `configurable` is `true`
+            * `is_ca` is `false`
+        * **CAs:** CAs have the following property values:
+            * `is_ca` is `true`
+            * `location` is `ops_manager` or `credhub`
+
+2. After you identify the list of certificates that expire soon, follow one of the procedures listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.

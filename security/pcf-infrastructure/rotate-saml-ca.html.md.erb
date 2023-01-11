@@ -3,18 +3,14 @@ title: Rotating Identity Provider SAML Certificates
 owner: Ops Manager
 ---
 
-This topic describes how to rotate SAML service provider (SP) credentials in <%= vars.ops_manager %>.
+This topic describes how to rotate SAML service provider (SP) credentials in <%= vars.ops_manager_first %>.
 
-## <a id="overview"></a>Overview
 
-SAML SP credentials are one example of configurable certificates in <%= vars.app_runtime_abbr %>.
-When <%= vars.app_runtime_abbr %> is configured to use SAML as an IDP, it uses a configurable certificate authority (CA) certificate to authenticate to an external SAML server.
-The CA generates ephemeral certificates that <%= vars.app_runtime_abbr %> includes in its outbound request message headers.
-This CA has a two-year expiration period.
+## <a id='overview'></a> Overview
 
-In addition, the Single Sign-On for VMware Tanzu service shares the use of <%= vars.app_runtime_abbr %> SAML certificates for every SAML external IDP integration, such as trust, partnership, or federation.
-You must rotate these in lockstep with <%= vars.app_runtime_abbr %>.
-For more information about Single Sign-On for VMware Tanzu, see the [Single Sign-On for VMware Tanzu documentation](https://docs.pivotal.io/p-identity/index.html).
+SAML SP credentials are one example of configurable certificates in <%= vars.app_runtime_first %>. When <%= vars.app_runtime_abbr %> is configured to use SAML as an IDP, it uses a configurable certificate authority (CA) certificate to authenticate to an external SAML server. The CA generates ephemeral certificates that <%= vars.app_runtime_abbr %> includes in its outbound request message headers. This CA has a two-year expiration period.
+
+In addition, the Single Sign-On for VMware Tanzu service shares the use of <%= vars.app_runtime_abbr %> SAML certificates for every SAML external IDP integration, such as trust, partnership, or federation. You must rotate these in lockstep with <%= vars.app_runtime_abbr %>. For more information about Single Sign-On for VMware Tanzu, see the [Single Sign-On for VMware Tanzu documentation](https://docs.pivotal.io/p-identity/index.html).
 
 This topic provides an example of how to rotate certificates for each IDP, including temporarily disabling certificate validation on the IDP side during the rotation.
 
@@ -22,7 +18,8 @@ For more information about rotating SAML certificates in <%= vars.app_runtime_ab
 
 For more information about rotating SAML certificates in <%= vars.ops_manager %>, see [How to check and rotate Ops Manager SAML Certificate before it expires](https://community.pivotal.io/s/article/how-to-check-and-rotate-ops-manager-saml-certificate-before-it-expires) in the VMware Tanzu Knowledge Base.
 
-## <a id="prerequisites"></a>Prerequisites
+
+## <a id='prerequisites'></a> Prerequisites
 
 SAML SP credentials are only required for your <%= vars.app_runtime_abbr %> deployment if all of these conditions are met:
 
@@ -34,7 +31,7 @@ SAML SP credentials are only required for your <%= vars.app_runtime_abbr %> depl
 
 * You are validating the signature of SAML authentication request with your IDP.
 
-## <a id="rotate-certs"></a>Rotate SAML Certificates
+## <a id='rotate-certs'></a> Rotate SAML Certificates
 
 To regenerate and rotate SAML SP certificates without disrupting <%= vars.app_runtime_abbr %> or your apps using the Single Sign-On for VMware Tanzu service:
 
@@ -42,52 +39,54 @@ To regenerate and rotate SAML SP certificates without disrupting <%= vars.app_ru
 
 1. For <%= vars.app_runtime_abbr %>, follow the procedure in the table below that corresponds to your use case.
 This includes downloading and importing a new certificate and updated SAML metadata in your IDP.
-  <table border="1">
-  <tr>
-    <th>Solution Name</th>
-    <th>Procedure</th>
-  </tr>
-  <tr>
-    <td><a href='https://www.ca.com/us/securecenter/ca-single-sign-on.aspx'>CA Single Sign-On aka CA SiteMinder</a></td>
-    <td><a href="https://docs.pivotal.io/application-service/operating/ca-sso-config.html">Configuring CA as an Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td><a href='https://www.pingidentity.com/en/products/pingfederate.html'>PingFederate</a></td>
-    <td><a href="https://docs.pivotal.io/application-service/operating/ping-federate-sso-configuration.html">Configuring PingFederate as an Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td><a href='https://technet.microsoft.com/en-us/windowsserver/dd448613.aspx'>Active Directory Federation Services (AD FS)</a></td>
-    <td><a href="../../opsguide/adfs-sso-configuration.html">Configuring AD FS as an Identity Provider</a></td>
-  </tr>
-</table>
+
+    <table border="1">
+      <tr>
+        <th>Solution Name</th>
+        <th>Procedure</th>
+      </tr>
+      <tr>
+        <td><a href='https://www.broadcom.com/products/identity/siteminder'>CA Single Sign-On aka Symantec SiteMinder</a></td>
+        <td><a href="https://techdocs.broadcom.com/us/en/symantec-security-software/identity-security/siteminder/12-8/configuring/legacy-federation/configure-a-saml-2-0-identity-provider.html">Configure a SAML 2.0 Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td><a href='https://www.pingidentity.com/en/products/pingfederate.html'>PingFederate</a></td>
+        <td><a href="https://docs.pivotal.io/application-service/operating/ping-federate-sso-configuration.html">Configuring PingFederate as an Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td><a href='https://technet.microsoft.com/en-us/windowsserver/dd448613.aspx'>Active Directory Federation Services (AD FS)</a></td>
+        <td><a href="../../opsguide/adfs-sso-configuration.html">Configuring AD FS as an Identity Provider</a></td>
+      </tr>
+    </table>
 
 1. For the Single Sign-On for VMware Tanzu service, follow the procedure in the table below that corresponds to your use case.
 This includes downloading the SAML SP metadata for each SAML IDP integration, such as trust, partnership, or federation, and importing the updated SAML SP metadata in your IDP.
-  <table border="1">
-  <tr>
-    <th>Solution Name</th>
-    <th>Procedure</th>
-  </tr>
-  <tr>
-    <td>AD FS</td>
-    <td><a href="https://docs.pivotal.io/p-identity/adfs/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
-  </tr>
-  <tr>
-    <td>CA Single Sign-On for VMware Tanzu</td>
-    <td><a href="https://docs.pivotal.io/p-identity/ca-sso/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
-  </tr>
-  <tr>
-    <td>Okta</td>
-    <td><a href="https://docs.pivotal.io/p-identity/okta/config-sso.html">Configure Okta as an Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td>PingFederate</td>
-    <td><a href="https://docs.pivotal.io/p-identity/pingfederate/config-sso.html">Configure PingFederate as an Identity Provider</a></td>
-  </tr>
-  <tr>
-    <td>Additional Documentation</td>
-    <td><a href="https://docs.pivotal.io/p-identity/index.html#guides">Integration Guides</a></td>
-  </tr>
-  </table>
+
+    <table border="1">
+      <tr>
+        <th>Solution Name</th>
+        <th>Procedure</th>
+      </tr>
+      <tr>
+        <td>AD FS</td>
+        <td><a href="https://docs.pivotal.io/p-identity/adfs/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
+      </tr>
+      <tr>
+        <td>CA Single Sign-On for VMware Tanzu</td>
+        <td><a href="https://docs.pivotal.io/p-identity/ca-sso/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
+      </tr>
+      <tr>
+        <td>Okta</td>
+        <td><a href="https://docs.pivotal.io/p-identity/okta/config-sso.html">Configure Okta as an Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td>PingFederate</td>
+        <td><a href="https://docs.pivotal.io/p-identity/pingfederate/config-sso.html">Configure PingFederate as an Identity Provider</a></td>
+      </tr>
+      <tr>
+        <td>Additional Documentation</td>
+        <td><a href="https://docs.pivotal.io/p-identity/index.html#guides">Integration Guides</a></td>
+      </tr>
+    </table>
 
 1. Re-enable certificate validation in your IDP.

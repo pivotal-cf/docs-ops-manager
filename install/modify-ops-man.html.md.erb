@@ -3,8 +3,6 @@ title: Modifying Your Ops Manager Installation and Product Template Files
 owner: Ops Manager
 ---
 
-
-
 <style>
     .note.warning {
        background-color: #fdd;
@@ -16,37 +14,42 @@ owner: Ops Manager
 		         }
 </style>
 
-This topic describes how to modify your Ops Manager installation by decrypting and editing the YAML files that Ops Manager uses to store configuration data.
-Operators can use these procedures to view and change values that they cannot access through the Ops Manager web interface. They can also modify the product templates that Ops Manager uses to create forms and obtain user input.
+This topic describes how to modify your <%= vars.ops_manager_first %> installation by decrypting and editing the YAML files that <%= vars.ops_manager %> uses to store
+configuration data.
 
-Operators might want to modify the Ops Manager installation and product template files for a number of reasons, including the following:
+Operators can use these procedures to view and change values that they cannot access through the <%= vars.ops_manager %> web interface. They can also modify the product templates that <%= vars.ops_manager %> uses to create forms and obtain user input.
+
+Operators might want to modify the <%= vars.ops_manager %> installation and product template files for a number of reasons, including the following:
 
 * To change the User Account and Authentication (UAA) admin password of their deployment
+
 * To retrieve key values
+
 * To migrate content across different <%= vars.ops_manager %> releases
 
-<p class="note warning"><strong>WARNING: </strong> Be careful when making changes to your Ops Manager installation and product template files. Use spaces instead of tabs, and remember that YAML files use whitespace as a delimiter. Finally, <%= vars.company_name %> does not officially support these procedures, so use them at your own risk.</p>
+<p class='note caution'><strong>Caution:</strong> Be careful when making changes to your <%= vars.ops_manager %> installation and product template files. Use spaces instead of tabs, and remember that YAML files use whitespace as a delimiter. Finally, <%= vars.company_name %> does not officially support these procedures, so use them at your own risk.</p>
 
-##<a id='understand-files'></a> Understand Installation and Product Template Files ##
+## <a id='understand-files'></a> Understand Installation and Product Template Files
 
-During the installation process, Ops Manager combines information from the installation and product template files to generate the manifests that define your deployment.
+During the installation process, <%= vars.ops_manager %> combines information from the installation and product template files to generate the manifests that define your deployment.
 
-* **Installation files:** <%= vars.ops_manager %> stores user-entered data and automatically generated values for Ops Manager in installation YAML files on the Ops Manager VM. <%= vars.ops_manager %> encrypts and stores these files in the directory `/var/tempest/workspaces/default`. You must decrypt the files to view their contents, edit them as necessary, then re-encrypt them.
+* **Installation files:** <%= vars.ops_manager %> stores user-entered data and automatically generated values for <%= vars.ops_manager %> in installation YAML files on the <%= vars.ops_manager %> VM. <%= vars.ops_manager %> encrypts and stores these files in the directory `/var/tempest/workspaces/default`. You must decrypt the files to view their contents, edit them as necessary, then re-encrypt them.
 
-* **Product templates:** Ops Manager uses product templates to create forms and obtain user input. The `job_types` and `property_blueprint` key-value pairs in a product template determine how the `jobs` and `properties` sections display in the installation file. Ops Manager stores product templates as YAML files in the directory `/var/tempest/workspaces/default/metadata` on the Ops Manager VM. These files are not encrypted, so you can edit them without decrypting. User input does not alter these files.
+* **Product templates:** <%= vars.ops_manager %> uses product templates to create forms and obtain user input. The `job_types` and `property_blueprint` key-value pairs in a product template determine how the `jobs` and `properties` sections display in the installation file. <%= vars.ops_manager %> stores product templates as YAML files in the directory `/var/tempest/workspaces/default/metadata` on the <%= vars.ops_manager %> VM. These files are not encrypted, so you can edit them without decrypting. User input does not alter these files.
 
-<p class="note"><strong>Note</strong>: Upgrading Ops Manager might eliminate your changes to the installation and product template files.</p>
+<p class='note'><strong>Note:</strong> Upgrading <%= vars.ops_manager %> might eliminate your changes to the installation and product template files.</p>
 
-##<a id='installation'></a> Modify the Installation Files
 
-Perform the following steps to locate, decrypt, and edit the Ops Manager installation files `installation.yml` and `actual-installation.yml`.
+## <a id='installation'></a> Modify the Installation Files
 
-1. SSH into the Ops Manager VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
+Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manager %> installation files `installation.yml` and `actual-installation.yml`.
+
+1. SSH into the <%= vars.ops_manager %> VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
 1. On the command line, navigate to the scripts directory:
     <pre class="terminal">
     $ cd /home/tempest-web/tempest/web/scripts/
     </pre>
-1. Run the following command to decrypt the installation YAML file and make a temporary copy of the decrypted file. When prompted for a passphrase, enter the decryption passphrase you created when you launched Ops Manager for the first time:
+1. Run the following command to decrypt the installation YAML file and make a temporary copy of the decrypted file. When prompted for a passphrase, enter the decryption passphrase you created when you launched <%= vars.ops_manager %> for the first time:
     <pre class="terminal">
     $ sudo -u tempest-web SECRET_KEY_BASE="s" ./decrypt /var/tempest/workspaces/default/installation.yml /tmp/installation.yml
     </pre>
@@ -68,21 +71,21 @@ Perform the following steps to locate, decrypt, and edit the Ops Manager install
     <pre class="terminal">
     $ sudo -u tempest-web SECRET_KEY_BASE="s" ./decrypt /var/tempest/workspaces/default/actual-installation.yml /tmp/actual-installation.yml
     </pre>
-1. Restart the Ops Manager web interface:
+1. Restart the <%= vars.ops_manager %> web interface:
     <pre class="terminal">
     $ sudo service tempest-web stop && sudo service tempest-web start
     </pre>
-1. Navigate to Ops Manager in a browser and enter your decryption passphrase.
-1. Log in to Ops Manager.
+1. Navigate to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
+1. Log in to <%= vars.ops_manager %>.
 1. Click **Review Pending Changes**, then **Apply Changes**.
-1. If Ops Manager cannot load your changes, see the [Revert To Your Backup](#revert) section of this topic to restore your previous settings.
+1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this topic to restore your previous settings.
 
-##<a id='templates'></a> Modify Product Template Files
+## <a id='templates'></a> Modify Product Template Files
 
-Perform the following steps to locate and edit your Ops Manager product template files:
+Perform the following steps to locate and edit your <%= vars.ops_manager %> product template files:
 
-1. SSH into the Ops Manager VM by following the steps in the [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
-1. On the Ops Manager VM, navigate to the `/var/tempest/workspaces/default/metadata` directory.
+1. SSH into the <%= vars.ops_manager %> VM by following the steps in the [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
+1. On the <%= vars.ops_manager %> VM, navigate to the `/var/tempest/workspaces/default/metadata` directory.
     <pre class="terminal">
     $ cd /var/tempest/workspaces/default/metadata
     </pre>
@@ -91,23 +94,23 @@ Perform the following steps to locate and edit your Ops Manager product template
     $ cp /var/tempest/workspace/default/metadata/YOUR-PRODUCT-TEMPLATE.yml ~/YOUR-PRODUCT-TEMPLATE-orig.yml
     </pre>
 1. Open and edit the product template YAML file as necessary. For more information about product templates, see [Product Template Reference](https://docs.pivotal.io/tiledev/product-template-reference.html).
-1. Navigate to Ops Manager to see your changes.
-1. If Ops Manager cannot load your changes, see the [Revert To Your Backup](#revert) section of this to restore your previous settings.
+1. Navigate to <%= vars.ops_manager %> to see your changes.
+1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this to restore your previous settings.
 
-##<a id='revert'></a> Revert to Your Backup
+## <a id='revert'></a> Revert to Your Backup
 
 Perform the following steps to revert to your backup of an installation or product template file:
 
-1. SSH into the Ops Manager VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](./ssh-login.html#ssh-by-iaas).
+1. SSH into the <%= vars.ops_manager %> VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
 1. Overwrite the modified file with the backup:
     * For the installation file, run the following command:
-    <pre class="terminal">$ cp ~/installation-orig.yml /var/tempest/workspaces/default/installation.yml</pre>
+        <pre class="terminal">$ cp ~/installation-orig.yml /var/tempest/workspaces/default/installation.yml</pre>
     * For a product template file, run the following command:
-    <pre class="terminal">$ cp ~/YOUR-PRODUCT-TEMPLATE-orig.yml /var/tempest/workspaces/default/metadata/YOUR-PRODUCT-TEMPLATE.yml</pre>
-1. Restart the Ops Manager web interface:
+        <pre class="terminal">$ cp ~/YOUR-PRODUCT-TEMPLATE-orig.yml /var/tempest/workspaces/default/metadata/YOUR-PRODUCT-TEMPLATE.yml</pre>
+1. Restart the <%= vars.ops_manager %> web interface:
     <pre class="terminal">
     $ sudo service tempest-web stop && sudo service tempest-web start
     </pre>
-1. Navigate to Ops Manager in a browser and enter your decryption passphrase.
-1. Log in to Ops Manager.
+1. Navigate to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
+1. Log in to <%= vars.ops_manager %>.
 1. Click **Review Pending Changes**, then **Apply Changes**.

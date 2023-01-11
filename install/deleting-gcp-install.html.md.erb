@@ -3,18 +3,18 @@ title: Deleting Ops Manager from GCP
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Deleting " + vars.platform_name + " from GCP" %>
-
-When you deploy <%= vars.ops_manager %> to Google Cloud Platform (GCP), you provision a set of resources. This topic describes how to delete the resources associated with an <%= vars.ops_manager %> deployment.
+When you deploy <%= vars.ops_manager_first %> to Google Cloud Platform (GCP), you provision a set of resources. This topic describes how to delete the resources associated with an <%= vars.ops_manager %> deployment.
 
 You can delete the resources in one of two ways:
 
-  * If you created a separate project for your <%= vars.ops_manager %> deployment, perform the procedure in [Delete the Project](#delete-project).
-  * If the project that contains your <%= vars.ops_manager %> deployment also contains other resources that you want to preserve, perform the procedure in the [Delete <%= vars.ops_manager %> Resources](#delete-resources) section.
+* If you created a separate project for your <%= vars.ops_manager %> deployment, follow the procedure in [Delete the Project](#delete-project) below.
 
-##<a id='delete-project'></a> Delete the Project
+* If the project that contains your <%= vars.ops_manager %> deployment also contains other resources that you want to preserve, follow the procedure in [Delete <%= vars.ops_manager %> Resources](#delete-resources) below.
 
-Perform the following steps to delete the project for your <%= vars.ops_manager %> deployment:
+
+## <a id='delete-project'></a> Delete the Project
+
+To delete the project for your <%= vars.ops_manager %> deployment:
 
 1. Navigate to the GCP Console Dashboard.
 
@@ -24,9 +24,10 @@ Perform the following steps to delete the project for your <%= vars.ops_manager 
 
 1. Enter your project ID and click **SHUT DOWN** to confirm.
 
-##<a id='delete-resources'></a> Delete <%= vars.ops_manager %> Resources
 
-Perform the following steps to delete the resources associated with your <%= vars.ops_manager %> deployment:
+## <a id='delete-resources'></a> Delete <%= vars.ops_manager %> Resources
+
+To delete the resources associated with your <%= vars.ops_manager %> deployment:
 
 1. Navigate to the GCP Console Dashboard.
 
@@ -52,7 +53,7 @@ Perform the following steps to delete the resources associated with your <%= var
 
 1. Select all external IP addresses associated with your <%= vars.ops_manager %> deployment, and click **RELEASE STATIC ADDRESS**.
 
-1. Click on **Networks**, and perform the following steps for any networks you created for <%= vars.ops_manager %>:
+1. Click **Networks**, and perform the following steps for any networks you created for <%= vars.ops_manager %>:
 	1. Click the name of the network.
 	1. Click **DELETE NETWORK**.
 	1. Click **DELETE** to confirm.

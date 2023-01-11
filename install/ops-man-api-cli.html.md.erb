@@ -3,43 +3,51 @@ title: Using Ops Manager Programmatically and from the Command Line
 owner: Ops Manager
 ---
 
-This topic introduces three tools for running Ops Manager operations programmatically and from the command line, rather than from the Ops Manager GUI: The Ops Manager API, the `om` command-line interface (CLI), and Platform Automation tasks.
+This topic introduces three tools for running <%= vars.ops_manager_first %> operations programmatically and from the command line, rather than from the <%= vars.ops_manager %> UI: the <%= vars.ops_manager %> API, the `om` command-line interface (CLI), and Platform Automation tasks.
+
 
 ## <a id='overview'></a> Overview
 
-<%= vars.ops_manager %> includes three related tools that let you run Ops Manager operations programmatically and from the command line, rather than from the Ops Manager GUI:
+<%= vars.ops_manager %> includes three related tools that let you run <%= vars.ops_manager %> operations programmatically and from the command line, rather than from the <%= vars.ops_manager %> UI:
 
-* The Ops Manager API. For more information, see the [Ops Manager API](https://docs.pivotal.io/platform/2-10/opsman-api/) documentation.
+* The <%= vars.ops_manager %> API. For more information, see the [<%= vars.ops_manager %> API](https://docs.pivotal.io/platform/2-10/opsman-api/) documentation.
+
 * The `om` command-line interface (CLI).  For more information about `om`, see the [`om` repository](https://github.com/pivotal-cf/om).
+
 * Platform Automation tasks. For more information, see the [Platform Automation](http://docs.pivotal.io/platform-automation) documentation.
 
-These three tools control the Ops Manager VM at different levels of abstraction. Platform operators and tile developers use them as described below.
+These three tools control the <%= vars.ops_manager %> VM at different levels of abstraction. Platform operators and tile developers use them as described below.
 
 For more information about tile development, see the [<%= vars.ops_manager %> Tile Developer Guide](http://docs.pivotal.io/tiledev/index.html).
 
-## <a id='api'></a> Ops Manager API
 
-The Ops Manager API offers the most granular control of the Ops Manager VM, The API enables users to do the following:
+## <a id='api'></a> <%= vars.ops_manager %> API
 
-- Automate component-level testing of <%= vars.ops_manager %> product tiles
-- Manage Ops Manager user accounts
-- Develop and debug product tiles
-- Access product property values that are not exposed in a product tile GUI
-- Otherwise control the Ops Manager VM directly, programmatically or manually, bypassing the Ops Manager UI. For more information about the Ops Manager interface, see [Using the Ops Manager interface](../pcf-interface.html)
+The <%= vars.ops_manager %> API offers the most granular control of the <%= vars.ops_manager %> VM, The API enables users to do the following:
 
-For information about getting started with the Ops Manager API, see [Access the Ops Manager API](ops-man-api.html#access) in _Using the Ops Manager API.
+* Automate component-level testing of <%= vars.ops_manager %> product tiles
 
-Your Ops Manager serves a local copy of the complete Ops Manager API documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
+* Manage <%= vars.ops_manager %> user accounts
 
-## <a id='om'></a> Ops Manager CLI (om)
+* Develop and debug product tiles
 
-The Ops Manager CLI, `om`, calls the Ops Manager API to do the following:
+* Access product property values that are not exposed in a product tile GUI
 
-- Perform Ops Manager operations from the command line or scripts
+* Otherwise control the <%= vars.ops_manager %> VM directly, programmatically or manually, bypassing the <%= vars.ops_manager %> UI. For more information about the <%= vars.ops_manager %> interface, see [Using the <%= vars.ops_manager %> interface](../pcf-interface.html)
+
+For information about getting started with the <%= vars.ops_manager %> API, see [Access the <%= vars.ops_manager %> API](ops-man-api.html#access) in _Using the <%= vars.ops_manager %> API_.
+
+Your <%= vars.ops_manager %> serves a local copy of the complete <%= vars.ops_manager %> API documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
+
+## <a id='om'></a> <%= vars.ops_manager %> CLI (om)
+
+The <%= vars.ops_manager %> CLI, `om`, calls the <%= vars.ops_manager %> API to do the following:
+
+- Perform <%= vars.ops_manager %> operations from the command line or scripts
 - Manage credentials from the command line or scripts
 - Generate configuration files from, and apply saved configurations to, staged product tiles.
 
-For information, including how to install `om` and a usage example, see [Using the <%= vars.ops_manager %> CLI](./cli.html).
+For information, including how to install `om` and a usage example, see [Using the <%= vars.ops_manager %> CLI](cli.html).
 
 ## <a id='platform-automation'></a> Platform Automation (Beta)
 
@@ -52,9 +60,9 @@ For a complete list of Platform Automation tasks, see [Concourse Tasks](https://
 
 ## <a id='example-ops'></a> Examples of Equivalent Operations
 
-The following table lists some common operations using the Ops Manager UI, Ops Manager API, `om` CLI, and Platform Automation tasks, as examples of how different Ops Manager interfaces relate to one another.
+The following table lists some common operations using the <%= vars.ops_manager %> UI, <%= vars.ops_manager %> API, `om` CLI, and Platform Automation tasks, as examples of how different <%= vars.ops_manager %> interfaces relate to one another.
 
-For complete lists of operations, consult the references in above.
+For complete lists of operations, consult the references in the sections above.
 
 <table id='example-ops' border="1" class="nice" >
   <tr>
@@ -64,7 +72,7 @@ For complete lists of operations, consult the references in above.
     <th>Platform Automation (Beta) Task</th>
   </tr><tr>
     <td>Manually configure the BOSH Director tile</td>
-    <td>Multiple commands; see <a href="./ops-man-api.html#configure-bosh">Configure the BOSH Director</a> in <em>Using the Ops Manager API</em>.</td>
+    <td>Multiple commands; see <a href="./ops-man-api.html#configure-bosh">Configure the BOSH Director</a> in <em>Using the <%= vars.ops_manager %> API</em>.</td>
     <td><code>om configure-director</code></td>
     <td><code>configure-director</code></td>
   </tr><tr>
@@ -79,7 +87,7 @@ For complete lists of operations, consult the references in above.
     <td><code>stage-product</code></td>
   </tr><tr>
     <td>Manually configure a product tile</td>
-    <td>Multiple commands; see <a href="./ops-man-api.html#configure-product">Configure a Product</a> in <em>Using the Ops Manager API</em>.</td>
+    <td>Multiple commands; see <a href="./ops-man-api.html#configure-product">Configure a Product</a> in <em>Using the <%= vars.ops_manager %> API</em>.</td>
     <td><code>om configure-product</code></td>
     <td><code>configure-product</code></td>  </tr><tr>
     <td>Click <strong>STEMCELL LIBRARY</strong> > <strong>IMPORT STEMCELL</strong></td>

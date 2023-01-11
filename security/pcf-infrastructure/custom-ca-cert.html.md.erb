@@ -3,19 +3,16 @@ title: Custom Certificate Authorities
 owner: OpsMan
 ---
 
-This topic provides an overview of using custom certificate authorities (CAs) in an <%= vars.ops_manager %> deployment.
+This topic provides an overview of using custom certificate authorities (CAs) in a <%= vars.ops_manager_first %> deployment.
 
 
 ## <a id='overview'></a> Overview
 
-To secure traffic in your <%= vars.ops_manager %> deployment, you must provide a CA to issue digital certificates.
-This can be either an <%= vars.ops_manager %>-generated or custom CA.
-When you add and activate a new CA, a digital certificate is issued to BOSH Director.
-BOSH Director then passes the certificate to other components in your <%= vars.ops_manager %> deployment.
+To secure traffic in your <%= vars.ops_manager %> deployment, you must provide a CA to issue digital certificates. This can be either an <%= vars.ops_manager %>-generated or custom CA. When you add and activate a new CA, a digital certificate is issued to BOSH Director. BOSH Director then passes the certificate to other components in your <%= vars.ops_manager %> deployment.
 
 <%= vars.company_name %> recommends you supply a CA from a trusted provider when using a production environment. While you can create your own custom CAs if necessary, a trusted CA is more secure because it has been authenticated by the trusted entities permitted to issue them.
 
-<p class ="note"><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
+<p class='note'><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
 
 
 ## <a id='add-custom-ca'></a> Add a Custom CA

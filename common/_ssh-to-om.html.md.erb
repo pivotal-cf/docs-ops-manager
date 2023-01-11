@@ -10,24 +10,32 @@ Use SSH to connect to the <%= vars.ops_manager %> VM. To log into the <%= vars.o
 ### <a id='ssh-aws'></a> AWS
 
 To log in to the <%= vars.ops_manager %> VM with SSH in AWS, you need the key pair you used when
-you created the <%= vars.ops_manager %> VM. To see the name of the key pair, click on the
+you created the <%= vars.ops_manager %> VM. To see the name of the key pair, click the
 <%= vars.ops_manager %> VM and locate the `key pair name` in the properties.
 
-To log in to the <%= vars.ops_manager %> VM with SSH in AWS, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in AWS:
 
 1. Locate the <%= vars.ops_manager %> FQDN on the AWS **EC2 instances** page.
 
 1. Run `chmod 600 ops_mgr.pem` to change the permissions on the `.pem` file to be more restrictive. For example:
 
-    <pre class="terminal">
-    $ chmod 600 ops_mgr.pem
-    </pre>
+    ```console
+    chmod 600 ops_mgr.pem
+    ```
 
-1. Run `ssh -i ops_mgr.pem ubuntu@FQDN` to log in to the <%= vars.ops_manager %> VM with SSH.
-Replace `FQDN` with the fully qualified domain name of <%= vars.ops_manager %>. For example:
+1. Log in to the <%= vars.ops_manager %> VM with SSH.
+
+
+    ```
+    ssh -i ops_mgr.pem ubuntu@FQDN
+    ```
+
+    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
+
+    For example:
 
     <pre class="terminal">
-    $ ssh -i ops_mgr.pem ubuntu@my-opsmanager-fqdn.example.com
+    ssh -i ops_mgr.pem ubuntu@my-opsmanager-fqdn.example.com
     </pre>
 
 ### <a id='ssh-azure'></a> Azure
@@ -36,29 +44,32 @@ To log in to the <%= vars.ops_manager %> VM with SSH in Azure, you need the key 
 when creating the <%= vars.ops_manager %> VM. If you need to reset the SSH key, locate the
 <%= vars.ops_manager %> VM in the Azure portal and click **Reset Password**.
 
-To log in to the <%= vars.ops_manager %> VM with SSH in Azure, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in Azure:
 
 1. From the Azure portal, locate the <%= vars.ops_manager %> FQDN by selecting the VM.
 
 1. Change the permissions for your SSH private key by running the following command:
 
-    <pre class="terminal">
-    $ chmod 600 PRIVATE-KEY
-    </pre>
+    ```console
+    chmod 600 PRIVATE-KEY
+    ```
+
     Where `PRIVATE-KEY` is the name of your SSH private key.
 
 1. SSH into the <%= vars.ops_manager %> VM by running the following command:
 
-    <pre class="terminal">
-    $ ssh -i PRIVATE-KEY ubuntu@FQDN
-    </pre>
+    ```console
+    ssh -i PRIVATE-KEY ubuntu@FQDN
+    ```
+
     Where:
+
     * `FQDN` is the FQDN for your <%= vars.ops_manager %> deployment.
     * `PRIVATE-KEY` is the name of your SSH private key.
 
 ### <a id='ssh-gcp'></a> GCP
 
-To log in to the <%= vars.ops_manager %> VM with SSH in GCP, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in GCP:
 
 1. Confirm that you have installed the
 [Google Cloud SDK and CLI](https://cloud.google.com/sdk/docs/quickstart-macos). For more
@@ -80,7 +91,7 @@ command `gcloud auth login`.
 1. Paste the command into your terminal window to SSH to the VM. For example:
 
     <pre class="terminal">
-    $ gcloud compute ssh "YOUR-VM" --zone "YOUR-ZONE-ID"
+    gcloud compute ssh "YOUR-VM" --zone "YOUR-ZONE-ID"
     </pre>
 
 1. Run `sudo su - ubuntu` to switch to the `ubuntu` user.
@@ -92,22 +103,28 @@ created in [Configure Security](../openstack/setup.html#security) in _Deploying 
 If you must reset the SSH key, locate the <%= vars.ops_manager %> VM in the OpenStack console and
 boot it in recovery mode to generate a new key pair.
 
-To log in to the <%= vars.ops_manager %> VM with SSH in OpenStack, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in OpenStack:
 
 1. Locate the <%= vars.ops_manager %> FQDN on the **Access & Security** page.
 
 1. Run `chmod 600 ops_mgr.pem` to change the permissions on the `.pem` file to be more restrictive.
 For example:
 
-    <pre class="terminal">
-    $ chmod 600 ops_mgr.pem
-    </pre>
+    ```console
+    chmod 600 ops_mgr.pem
+    ```
 
-1. Run `ssh -i ops_mgr.pem ubuntu@FQDN` to log in to the <%= vars.ops_manager %> VM with SSH.
-Replace `FQDN` with the fully qualified domain name of <%= vars.ops_manager %>. For example:
+1. Log in to the <%= vars.ops_manager %> VM with SSH.
+
+    ```console
+    ssh -i ops_mgr.pem ubuntu@FQDN
+    ```
+    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
+
+    For example:
 
     <pre class="terminal">
-    $ ssh -i ops_mgr.pem ubuntu<span>@</span>my-fqdn.example.com
+    ssh -i ops_mgr.pem ubuntu@my-fqdn.example.com
     </pre>
 
 ### <a id='ssh-vsphere'></a> vSphere
@@ -118,20 +135,24 @@ that imports the <%= vars.ops_manager %> `.ova` or `.ovf` file into your virtual
 You set the public SSH key in the **Public SSH Key** field of the **Customize template** screen
 when you deployed <%= vars.ops_manager %>. For more information, see [Deploy <%= vars.ops_manager %>](../vsphere/deploy.html#deploy) in _Deploying <%= vars.ops_manager %> on vSphere_.
 
-<p class="note"><strong>Note</strong>: If you lose your SSH key, you must shut down the
+<p class='note'><strong>Note:</strong> If you lose your SSH key, you must shut down the
   <%= vars.ops_manager %> VM in the vSphere UI and then reset the public SSH key. For more
   information, see <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-E05E8AF9-C8F2-4482-B3F0-733C85C6DD97.html">Edit vApp Settings</a> in the vSphere documentation.</p>
 
-To log in to the <%= vars.ops_manager %> VM with SSH in vSphere, do the following:
+To log in to the <%= vars.ops_manager %> VM with SSH in vSphere:
 
 1. Run the following command:
 
-    ```
+    ```console
     ssh ubuntu@FQDN
     ```
-    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>. For example:
-    <pre class='terminal'>
-    $ ssh ubuntu@my-fqdn<span>.</span>example.com
+
+    Where `FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
+
+    For example:
+
+    <pre class="terminal">
+    $ ssh ubuntu@my-fqdn.example.com
     </pre>
 
 1. When prompted, enter the public SSH key.

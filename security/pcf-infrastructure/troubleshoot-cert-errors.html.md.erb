@@ -3,38 +3,38 @@ title: Troubleshooting CredHub Maestro Safety Violations During Certificate Rota
 owner: CredHub
 ---
 
-This topic provides operators with information on how to troubleshoot safety violation errors that are returned when rotating certificates with either the Ops Manager API or CredHub Maestro CLI.
+This topic provides operators with information on how to troubleshoot safety violation errors that are returned when rotating certificates with either the <%= vars.ops_manager %> API or CredHub Maestro CLI.
 
 
-## <a id="overview"></a> Overview of CredHub Maestro Safety Checks
+## <a id='overview'></a> Overview of CredHub Maestro Safety Checks
 
 CredHub Maestro performs basic safety checks when rotating certificates to prevent unsafe operations.
 
-The Ops Manager API invokes CredHub Maestro when rotating certificates. If a certificate rotation API command is unsafe, CredHub Maestro stops the command and returns one or more safety violations.
+The <%= vars.ops_manager %> API invokes CredHub Maestro when rotating certificates. If a certificate rotation API command is unsafe, CredHub Maestro stops the command and returns one or more safety violations.
 
-The Ops Manager API does not invoke CredHub Maestro and subsequently CredHub Maestro-related safety checks during certificate rotation if it detects an installation of <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.8.2 or earlier, any version of <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), or any version of <%= vars.k8s_runtime_abbr_pivotal %> (<%= vars.k8s_runtime_abbr_pivotal %>).
+The <%= vars.ops_manager %> API does not invoke CredHub Maestro and subsequently CredHub Maestro-related safety checks during certificate rotation if it detects an installation of <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.8.2 or earlier, any version of <%= vars.k8s_runtime_first %>, or any version of <%= vars.k8s_runtime_abbr_pivotal %> (<%= vars.k8s_runtime_abbr_pivotal %>).
 
 CredHub Maestro returns safety violations if a rotation step is run out of order. For example, you generate a new root certificate authority (CA) but attempt to activate it before clicking **Apply Changes**. Performing steps out of the correct order during certificate rotations can make your deployment unstable or risk downtime.
 
-For information about certificate rotation using the Ops Manager API, see [Overview of Certificate Rotation](api-cert-rotation.html).
+For information about certificate rotation using the <%= vars.ops_manager %> API, see [Overview of Certificate Rotation](api-cert-rotation.html).
 
 For information about using the CredHub Maestro CLI, see [Getting Started with CredHub Maestro](getting-started-with-maestro-cli.html).
 
 
-## <a id="skip-checks"></a> Skip Safety Checks
+## <a id='skip-checks'></a> Skip Safety Checks
 
-To skip CredHub Maestro safety checks in Ops Manager API calls, you can pass `skip_safety_check=true` as a parameter to certificate rotation API endpoints.
+To skip CredHub Maestro safety checks in <%= vars.ops_manager %> API calls, you can pass `skip_safety_check=true` as a parameter to certificate rotation API endpoints.
 
 To skip CredHub Maestro safety checks in the CredHub Maestro CLI, specify the `--skip-safety-check` flag when running certificate rotation commands.
 
-<p class="note warning"><strong>Warning:</strong> Skipping safety checks is strongly discouraged. Use the option only if absolutely necessary. For example, you might want to skip safety checks if your CA has already expired and your apps are experiencing downtime. Skipping safety checks can help bring your apps back online faster. If certificates have expired, contact <%= vars.support_link %> for guidance.</p>
+<p class='note caution'><strong>Caution:</strong> Skipping safety checks is strongly discouraged. Use the option only if absolutely necessary. For example, you might want to skip safety checks if your CA has already expired and your apps are experiencing downtime. Skipping safety checks can help bring your apps back online faster. If certificates have expired, contact <%= vars.support_link %> for guidance.</p>
 
 
-## <a id="error_ref"></a> Troubleshoot Certificate Rotation Safety Violations
+## <a id='error_ref'></a> Troubleshoot Certificate Rotation Safety Violations
 
-This section lists known safety violations that may occur when using the Ops Manager API or CredHub Maestro CLI to rotate certificates. Each table includes the literal safety violation message, describes the safety violation, and presents possible solutions to resolve the underlying cause.
+This section lists known safety violations that may occur when using the <%= vars.ops_manager %> API or CredHub Maestro CLI to rotate certificates. Each table includes the literal safety violation message, describes the safety violation, and presents possible solutions to resolve the underlying cause.
 
-### <a id="multiple-signing-cas"></a> Multiple Signing Versions of a CA
+### <a id='multiple-signing-cas'></a> Multiple Signing Versions of a CA
 
 <div>
 <table class="nice">
@@ -56,7 +56,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the following Ops Manager API endpoints:
+    <td>This safety violation may appear after calling the following <%= vars.ops_manager %> API endpoints:
       <ul>
         <li><code>POST /api/v0/certificate_authorities/generate</code></li>
         <li><code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code></li>
@@ -85,7 +85,7 @@ This section lists known safety violations that may occur when using the Ops Man
           <ul>
             <li>If the <code>signs</code> field contains a child certificate that has two versions set to <code>active: true</code> with different product tile deployment names:
               <ol>
-                <li>Navigate to the <strong>Ops Manager Installation Dashboard</strong>.</li>
+                <li>Navigate to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
                 <li>Click <strong>Review Pending Changes</strong>.</li>
                 <li>Select the product tile that is associated with the older certificate version.</li>
                 <li>Click <strong>Apply Changes</strong>.</li>
@@ -94,7 +94,7 @@ This section lists known safety violations that may occur when using the Ops Man
             <li>If there are multiple child certificates and their active versions have different signed-by versions:
               <ol>
                 <li>Run <code>maestro regenerate leaf --signed-by PARENT-CA-NAME</code>, where <code>PARENT-CA-NAME</code> is the name of the signing CA.</li>
-                <li>Navigate to the <strong>Ops Manager Installation Dashboard</strong>.</li>
+                <li>Navigate to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
                 <li>Click <strong>Review Pending Changes</strong>.</li>
                 <li>Select all products.</li>
                 <li>Click <strong>Apply Changes</strong>.</li>
@@ -107,7 +107,7 @@ This section lists known safety violations that may occur when using the Ops Man
 </table>
 </div>
 
-### <a id="transitional-ca-detected"></a> Transitional Version of CA Detected
+### <a id='transitional-ca-detected'></a> Transitional Version of CA Detected
 
 <div>
 <table class="nice">
@@ -129,7 +129,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/generate</code> Ops Manager API endpoint or after running the <code>maestro regenerate ca</code> command.</td>
+    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/generate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate ca</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -137,12 +137,12 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th style="vertical-align: top; padding-top: 1em;">Solution</th>
-    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the Ops Manager Installation Dashboard. Do not run earlier commands after the rotation process has started.</td>
+    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the <%= vars.ops_manager %> Installation Dashboard. Do not run earlier commands after the rotation process has started.</td>
   </tr>
 </table>
 </div>
 
-### <a id="multiple-active-child-certs"></a> Multiple Active Child Certificates
+### <a id='multiple-active-child-certs'></a> Multiple Active Child Certificates
 
 <div>
 <table class="nice">
@@ -164,7 +164,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the following Ops Manager API endpoints:
+    <td>This safety violation may appear after calling the following <%= vars.ops_manager %> API endpoints:
       <ul>
         <li><code>POST /api/v0/certificate_authorities/generate</code></li>
         <li><code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code></li>
@@ -186,7 +186,7 @@ This section lists known safety violations that may occur when using the Ops Man
       <br>
       <br>
       <ol>
-        <li>Navigate to the <strong>Ops Manager Installation Dashboard</strong>.</li>
+        <li>Navigate to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
         <li>Click <strong>Review Pending Changes</strong>.</li>
         <li>Select all products.</li>
         <li>Click <strong>Apply Changes</strong>.</li>
@@ -197,7 +197,7 @@ This section lists known safety violations that may occur when using the Ops Man
 </table>
 </div>
 
-### <a id="ca-not-transitional"></a> Latest CA is Not Transitional
+### <a id='ca-not-transitional'></a> Latest CA is Not Transitional
 
 <div>
 <table class="nice">
@@ -219,7 +219,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code> Ops Manager API endpoint or after running the <code>maestro update-transitional signing</code> command.</td>
+    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional signing</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -227,7 +227,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th style="vertical-align: top; padding-top: 1em;">Solution</th>
-    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the Ops Manager Installation Dashboard. Do not run earlier commands after the rotation process has started.
+    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the <%= vars.ops_manager %> Installation Dashboard. Do not run earlier commands after the rotation process has started.
     <br>
     <br>
     If you believe you are running the steps in the correct order, it is possible that a new CA has been created in CredHub after the rotation process has begun.
@@ -243,7 +243,7 @@ This section lists known safety violations that may occur when using the Ops Man
 </table>
 </div>
 
-### <a id="signing-version-transitional-req"></a> Signing Version Must Be Transitional
+### <a id='signing-version-transitional-req'></a> Signing Version Must Be Transitional
 
 <div>
 <table class="nice">
@@ -265,7 +265,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -274,7 +274,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th style="vertical-align: top; padding-top: 1em;">Solution</th>
-    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the Ops Manager Installation Dashboard. Do not run earlier commands after the rotation process has started.
+    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the <%= vars.ops_manager %> Installation Dashboard. Do not run earlier commands after the rotation process has started.
     <br>
     <br>
     If you believe you are running the steps in the correct order, it is possible that a new leaf was issued while the rotation process was in progress. You may also receive the <code>there is more than one signing version</code></a> error described in <a href="#multiple-signing-cas">Multiple Signing Versions of a CA</a> above. If this safety violation error appears, follow the mitigation steps for that error.
@@ -283,7 +283,7 @@ This section lists known safety violations that may occur when using the Ops Man
 </table>
 </div>
 
-### <a id="active-not-latest"></a> Active Certificates Not Signed By Latest CA Detected
+### <a id='active-not-latest'></a> Active Certificates Not Signed By Latest CA Detected
 
 <div>
 <table class="nice">
@@ -305,7 +305,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> Ops Manager API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
+    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -313,12 +313,12 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th style="vertical-align: top; padding-top: 1em;">Solution</th>
-    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the Ops Manager Installation Dashboard. Do not run earlier commands after the rotation process has started.</td>
+    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the <%= vars.ops_manager %> Installation Dashboard. Do not run earlier commands after the rotation process has started.</td>
   </tr>
 </table>
 </div>
 
-### <a id="active-not-latest"></a> Stale Leaf Certificates Detected
+### <a id='active-not-latest'></a> Stale Leaf Certificates Detected
 
 <div>
 <table class="nice">
@@ -340,7 +340,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> Ops Manager API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
+    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -348,12 +348,12 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th style="vertical-align: top; padding-top: 1em;">Solution</th>
-    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the Ops Manager Installation Dashboard. Do not run earlier commands after the rotation process has started.</td>
+    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the <%= vars.ops_manager %> Installation Dashboard. Do not run earlier commands after the rotation process has started.</td>
   </tr>
 </table>
 </div>
 
-### <a id="transitional-ca-latest"></a> Transitional CA Detected as Latest CA
+### <a id='transitional-ca-latest'></a> Transitional CA Detected as Latest CA
 
 <div>
 <table class="nice">
@@ -375,7 +375,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> Ops Manager API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
+    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -383,7 +383,7 @@ This section lists known safety violations that may occur when using the Ops Man
   </tr>
   <tr>
     <th style="vertical-align: top; padding-top: 1em;">Solution</th>
-    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the Ops Manager Installation Dashboard. Do not run earlier commands after the rotation process has started.
+    <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the <%= vars.ops_manager %> Installation Dashboard. Do not run earlier commands after the rotation process has started.
     <br>
     <br>
     It is possible that you are attempting to halt a rotation in the early stages, likely after new transitional CAs have been issued but not yet used. Continue with the rotation at this point. If continuing with the rotation is impossible due to other deployment needs, reach out to <a href="https://tanzu.vmware.com/support">Support</a> for guidance.

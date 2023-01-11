@@ -3,22 +3,22 @@ title: AVS Reference Architecture
 owner: TAS Journey Platform Provider Experience
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>), on Azure VMware Solution (AVS).
+This topic describes a reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %>, on Azure VMware Solution (AVS).
 It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
 
 For additional requirements and installation instructions for <%= vars.ops_manager %> on AVS, see [Deploying <%= vars.app_runtime_abbr %> to AVS](https://docs.pivotal.io/application-service/operating/avs.html).
 
 
-## <a id="overview"></a> Overview
+## <a id='overview'></a> Overview
 
-The AVS reference architecture for the <%= vars.app_runtime_abbr %> runtime tiles is based on software-defined networking (SDN) infrastructure.
-AVS offers NSX-T to support SDN infrastructure.
+The AVS reference architecture for the <%= vars.app_runtime_abbr %> runtime tiles is based on a software-defined networking (SDN) infrastructure. AVS offers NSX-T to support SDN infrastructure.
 
 <%= vars.ops_manager %> supports these configurations for AVS deployments:
 
 * <%= vars.app_runtime_abbr %> on AVS with NSX-T. For more information, see [<%= vars.app_runtime_abbr %> on AVS with NSX-T](#pas-nsx-t).
 
-## <a id="pas-nsx-t"></a> <%= vars.app_runtime_abbr %> on AVS with NSX-T
+
+## <a id='pas-nsx-t'></a> <%= vars.app_runtime_abbr %> on AVS with NSX-T
 
 These sections describe the reference architecture for <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments.
 They also provide requirements and recommendations for deploying <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on AVS with NSX-T,
@@ -38,13 +38,13 @@ such as network, load balancing, and storage capacity requirements and recommend
 
 * Virtual, distributed routing and firewall services native to the hypervisor
 
-### <a id="pas-nsx-t-diagram"></a> Architecture
+### <a id='pas-nsx-t-diagram'></a> Architecture
 
-The diagram below illustrates reference architecture for <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments:
+The following diagram illustrates reference architecture for <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments:
 
-![The diagram shows the architecture for a <%= vars.app_runtime_abbr %> on AVS with NSX-T deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-T.png)
+![alt-text="Architecture on AVS with NSX-T deployment. For more information about the components and networking demonstrated by the diagram, see the description that follows."](../images/v2/export/PAS_vSphere_NSX-T.png)
 
-[View a larger version of this diagram](../images/v2/export/PAS_vSphere_NSX-T.png).
+[View a larger version of this diagram.](../images/v2/export/PAS_vSphere_NSX-T.png).
 
 <%= vars.app_runtime_abbr %> deployments with NSX-T are deployed with three clusters and three availability zones (AZs).
 
@@ -52,53 +52,48 @@ An NSX-T Tier-0 router is on the front end of the <%= vars.app_runtime_abbr %> d
 
 Several Tier-1 routers, such as the router for the <%= vars.app_runtime_abbr %> and infrastructure subnets, connect to the Tier-0 router.
 
-### <a id="pas-nsx-t-pas"></a> NSX-T Container Plugin Requirement
+### <a id='pas-nsx-t-pas'></a> NSX-T Container Plugin Requirement
 
 <%= vars.app_runtime_abbr %> deployments require the VMware NSX-T Container Plugin to enable the SDN features available through NSX-T.
 
 The NSX-T Container Plugin enables a container networking stack and integrates with NSX-T.
 
-<p class="note"><strong>Note:</strong> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plugin, go to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
+<p class='note'><strong>Note:</strong> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plugin, go to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
 
-### <a id="pas-nsx-t-networking"></a> Networking
+### <a id='pas-nsx-t-networking'></a> Networking
 
 These sections describe networking requirements and recommendations for <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments.
 
-#### <a id="pas-nsx-t-routable-ip"></a> Routable IPs
+#### <a id='pas-nsx-t-routable-ip'></a> Routable IPs
 
 The Tier-0 router must have routable external IP address space to advertise on the BGP network with its peers. Select a network range for the Tier-0 router with enough space so that you can separate the network into these two jobs:
 
 * Routing incoming and outgoing traffic
 * DNATs and SNATs, load balancer VIPs, and other platform components
 
-<p class="note"><strong>Note:</strong> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
-
-#### <a id="pas-nsx-t-firewall"></a> Firewall
+#### <a id='pas-nsx-t-firewall'></a> Firewall
 
 <%= partial '../../common/vsphere-firewall-ports' %>
 
-#### <a id="pas-nsx-t-dns"></a> DNS
+#### <a id='pas-nsx-t-dns'></a> DNS
 
 <%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
 
 For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
 
-#### <a id="pas-nsx-t-load-balancing"></a> Load Balancing
+#### <a id='pas-nsx-t-load-balancing'></a> Load Balancing
 
 The load balancing requirements and recommendations for <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments are:
 
-* You must configure NSX-T load balancers for the Gorouters.
+* You must configure NSX-T load balancers for the GoRouters.
   * The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer VIP.
   * You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
 
-* <%= vars.company_name %> recommends that you configure Layer 4 NSX-V load balancers for the Gorouters. With Layer 4 load balancers, traffic passes through the load balancers and SSL is terminated at the Gorouters. This approach reduces overhead processing.
-  <p class='note'><strong>Note:</strong> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
-
-* Any TCP Gorouters and SSH Proxies within the platform also require NSX-T load balancers.
+* Any TCP GoRouters and SSH Proxies within the platform also require NSX-T load balancers.
 
 * Layer 4 and Layer 7 NSX-T load balancers are created automatically during app deployment.
 
-#### <a id="pas-nsx-t-networking-subnets-ip"></a> Networking, Subnets, and IP Address Spacing
+#### <a id='pas-nsx-t-networking-subnets-ip'></a> Networking, Subnets, and IP Address Spacing
 
 The requirements and recommendations related to networks, subnets, and IP address spacing for <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments are:
 
@@ -112,19 +107,19 @@ The requirements and recommendations related to networks, subnets, and IP addres
 
 For more information about <%= vars.app_runtime_abbr %> subnets, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
-### <a id="pas-nsx-t-ha"></a> High Availability
+### <a id='pas-nsx-t-ha'></a> High Availability
 
 AVS deploys a NSX-T with Active/Active HA.
 
 For information about high availability (HA) requirements and recommendations for <%= vars.app_runtime_abbr %> on AVS, see [High Availability](../index.html#pas-ha) in _Platform Architecture and Planning Overview_.
 
-### <a id="pas-nsx-t-shared-storage"></a> Shared Storage
+### <a id='pas-nsx-t-shared-storage'></a> Shared Storage
 
 <%= vars.app_runtime_abbr %> requires shared storage.  By default, AVS deploys with vSAN configured.
 
 For information about storage on AVS, see [Hosts](https://docs.microsoft.com/en-us/azure/azure-vmware/concepts-private-clouds-clusters#hosts) in the Microsoft AVS documentation.
 
-### <a id="pas-nsx-t-sql"></a> SQL Server
+### <a id='pas-nsx-t-sql'></a> SQL Server
 
 An internal MySQL database is sufficient for use in production environments.
 
@@ -132,11 +127,11 @@ However, an external database provides more control over database management for
 
 For information about configuring system databases on <%= vars.app_runtime_abbr %>, see [Configure System Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
 
-### <a id="pas-nsx-t-securty"></a> Security
+### <a id='pas-nsx-t-securty'></a> Security
 
 For information about security requirements and recommendations for <%= vars.app_runtime_abbr %> deployments, see [Security](../index.html#pas-security) in _Platform Architecture and Planning Overview_.
 
-### <a id="pas-nsx-t-blobstore"></a> Blobstore Storage
+### <a id='pas-nsx-t-blobstore'></a> Blobstore Storage
 
 Use Azure Blob Storage as the external file storage option for <%= vars.ops_manager %>. This provides redundancy for
 high-availability deployments of <%= vars.ops_manager %> and unlimited scaling. Azure Blob Storage provides
@@ -156,6 +151,6 @@ fully-redundant hot, cold, or archival storage in either local, regional, or glo
 
 These buckets require an associated role for read/write access.
 
-### <a id="pas-hcx-migration"></a> HCX Migrations
+### <a id='pas-hcx-migration'></a> HCX Migrations
 
 HCX Migration of <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_abbr %>, on AVS is not supported at this time.

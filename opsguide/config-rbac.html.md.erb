@@ -3,7 +3,7 @@ title: Configuring Role-Based Access Control (RBAC) in Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes how to customize role-based access control (RBAC) in <%= vars.ops_manager_full %>.
+This topic describes how to customize role-based access control (RBAC) in <%= vars.ops_manager_first %>.
 
 
 ## <a id='overview'></a> Overview
@@ -23,11 +23,11 @@ For information about configuring <%= vars.ops_manager %> to use internal authen
 * [Configuring BOSH Director on vSphere](../vsphere/config.html#set-up)
 
 
-## <a id="about"></a> Roles in <%= vars.ops_manager %>
+## <a id='about'></a> Roles in <%= vars.ops_manager %>
 
-The diagram below illustrates the roles you can assign to determine which operators in your organization make deployment changes, view credentials, and manage user roles in <%= vars.ops_manager %>:
+The diagram below illustrates the roles you can assign to determine which operators in your organization make deployment changes, view credentials, and manage user roles in <%= vars.ops_manager %>. Full details are also shown in the following table.
 
-<img class="no-border" src="images/roles-diagram.png" alt="Ops Manager roles diagram">
+![alt-text="Ops Manager roles diagram"](images/roles-diagram.png)
 
 <%= vars.ops_manager %> admins can use these roles to meet the security needs of their organization. The roles provide a range of privileges that are appropriate for different types of users. For example, assign either **Restricted Control** or **Restricted View** to an operator to prevent access to all <%= vars.ops_manager %> credentials.
 
@@ -46,13 +46,13 @@ To assign one of the above roles to an operator, see [Manage Roles with Internal
 When you install a new <%= vars.ops_manager %> instance, all existing users have the <%= vars.ops_manager %> Administrator role by default.
 
 
-## <a id="multiple-write-users"></a> Simultaneous <%= vars.ops_manager %> Admins
+## <a id='multiple-write-users'></a> Simultaneous <%= vars.ops_manager %> Admins
 
 <%= vars.ops_manager %> allows multiple admins to log in to <%= vars.ops_manager %> simultaneously and make changes.
 
 The interface does not provide visibility to other admins that are logged in. <%= vars.recommended_by %> recommends that admins communicate with each other and coordinate their changes.
 
-### <a id="write-user-precedence"></a> Precedence for Apply Changes
+### <a id='write-user-precedence'></a> Precedence for Apply Changes
 
 Only one deployment takes precedence when two admins try to deploy around the same time.
 
@@ -60,10 +60,10 @@ If two admins are working at the same time, the admin who first clicks **Apply C
 
 <%= vars.recommended_by %> recommends coordinating changes between admins to avoid overwriting configurations.
 
-<p class="note"><strong>Note:</strong> If you are having deployment issues or changes to your <%= vars.ops_manager %> are not persisting correctly, confirm that your work is not conflicting with an automated admin.</p>
+<p class='note'><strong>Note:</strong> If you are having deployment issues or changes to your <%= vars.ops_manager %> are not persisting correctly, confirm that your work is not conflicting with an automated admin.</p>
 
 
-## <a id="enable"></a> Enable RBAC in <%= vars.ops_manager %> After Upgrade
+## <a id='enable'></a> Enable RBAC in <%= vars.ops_manager %> After Upgrade
 
 When you install a new instance of <%= vars.ops_manager %>, RBAC is permanently enabled by default.
 
@@ -71,9 +71,9 @@ If your organization has operators who are devoted to managing certain services 
 
 If you upgrade from an older <%= vars.ops_manager %> instance, you must enable RBAC and assign roles to users before they can access <%= vars.ops_manager %>. If you do not assign any roles to a user, they cannot log in to <%= vars.ops_manager %>.
 
-<p class="note warning"><strong>Warning:</strong> Do not assign roles before you enable RBAC. Changing UAA authentication settings causes the roles to delete.</p>
+<p class='note caution'><strong>Caution:</strong> Do not assign roles before you enable RBAC. Changing UAA authentication settings causes the roles to delete.</p>
 
-### <a id="enable-internal"></a> Enable RBAC with Internal Authentication
+### <a id='enable-internal'></a> Enable RBAC with Internal Authentication
 
 If you are upgrading from an older version of <%= vars.ops_manager %> and use internal authentication:
 
@@ -91,11 +91,11 @@ If you are upgrading from an older version of <%= vars.ops_manager %> and use in
     </li>
   </div>
 
-### <a id="enable-saml"></a> Enable RBAC with SAML Authentication
+### <a id='enable-saml'></a> Enable RBAC with SAML Authentication
 
 If you are upgrading from an older version of <%= vars.ops_manager %> and use SAML authentication, follow the procedures in these sections to enable RBAC. To enable RBAC in <%= vars.ops_manager %> when using SAML authentication, you must configure groups in SAML for admins and non-admins and then map the admin group to <%= vars.ops_manager %>.
 
-#### <a id="admin-saml"></a> Step 1: Configure SAML Groups
+#### <a id='admin-saml'></a> Step 1: Configure SAML Groups
 
 To gather information from your SAML dashboard:
 
@@ -105,14 +105,14 @@ To gather information from your SAML dashboard:
 
 1. Identify the groups attribute tag you configured for your SAML server.
 
-#### <a id="enable-om-saml"></a> Step 2: Enable RBAC in <%= vars.ops_manager %>
+#### <a id='enable-om-saml'></a> Step 2: Enable RBAC in <%= vars.ops_manager %>
 
 Follow the procedure in [Enable RBAC with Internal Authentication](#enable-internal) to configure <%= vars.ops_manager %> to recognize your SAML admin user group.
 
-<p class="note"><strong>Note:</strong> When RBAC is enabled, only users with the <%= vars.ops_manager %> Administrator role can edit SAML configuration.</p>
+<p class='note'><strong>Note:</strong> When RBAC is enabled, only users with the <%= vars.ops_manager %> Administrator role can edit SAML configuration.</p>
 
 
-## <a id="create-users"></a> Create User Accounts in <%= vars.ops_manager %>
+## <a id='create-users'></a> Create User Accounts in <%= vars.ops_manager %>
 
 To assign RBAC roles to operators, you must first create user accounts for them. For more information about creating user accounts in <%= vars.ops_manager %> with the User Account and Authentication (UAA) module, see [Creating and Managing <%= vars.ops_manager %> User Accounts](https://docs.pivotal.io/platform/customizing/opsman-users.html).
 
@@ -121,11 +121,11 @@ In addition to user accounts, you can create a client account to add to <%= vars
 For more information about client accounts, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](https://docs.pivotal.io/platform/customizing/opsman-users.html).
 
 
-## <a id="manage-roles"></a> Manage RBAC Roles in <%= vars.ops_manager %>
+## <a id='manage-roles'></a> Manage RBAC Roles in <%= vars.ops_manager %>
 
 You can assign the roles defined in [Roles in <%= vars.ops_manager %>](#about) to determine which operators in your organization make deployment changes, view credentials, and manage user roles in <%= vars.ops_manager %>.
 
-### <a id="write-internal"></a> Manage Roles with Internal Authentication
+### <a id='write-internal'></a> Manage Roles with Internal Authentication
 
 If you configured <%= vars.ops_manager %> to use internal authentication, you can configure roles using the UAA Command Line Interface (UAAC). For more information, see [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.pivotal.io/platform/uaa/uaa-user-management.html).
 
@@ -147,16 +147,19 @@ To use the UAAC to configure roles:
     User name: USERNAME
     Password: PASSWORD
     ```
-    Where:
-    * `USERNAME` is your username.
-    * `PASSWORD` is your password.
 
-1. To assign a role to a user, run one of these commands:
+    Where:
+
+       * `USERNAME` is your username.
+       * `PASSWORD` is your password.
+
+2. To assign a role to a user, run one of these commands:
     * **<%= vars.ops_manager %> Administrator:**
 
         ```
         uaac member add opsman.admin USERNAME
         ```
+
         Where `USERNAME` is the user to which you want to assign the role.
     * **Full Control:**
 
@@ -183,7 +186,7 @@ To use the UAAC to configure roles:
         ```
         Where `USERNAME` is the user to which you want to assign the role.
 
-### <a id="write-saml"></a> Manage Roles with SAML Authentication
+### <a id='write-saml'></a> Manage Roles with SAML Authentication
 
 If you configured <%= vars.ops_manager %> with SAML authentication, you can assign non-admin user roles using UAAC. To assign non-admin user roles:
 
@@ -210,12 +213,13 @@ If you configured <%= vars.ops_manager %> with SAML authentication, you can assi
     uaac group map SAML-GROUP --name 'OPS-MANAGER-SCOPE' --origin 'saml'
     ```
     Where:
-    * `SAML-GROUP` is the name of the SAML group to which the user belongs.
-    * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
 
-1. Add new and existing users to the appropriate SAML groups in the SAML provider dashboard. Users must log out of both <%= vars.ops_manager %> and the SAML provider for role changes to take effect.
+       * `SAML-GROUP` is the name of the SAML group to which the user belongs.
+       * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
 
-### <a id="write-ldap"></a> Manage Roles with LDAP Authentication
+2. Add new and existing users to the appropriate SAML groups in the SAML provider dashboard. Users must log out of both <%= vars.ops_manager %> and the SAML provider for role changes to take effect.
+
+### <a id='write-ldap'></a> Manage Roles with LDAP Authentication
 
 If you configured <%= vars.ops_manager %> with LDAP authentication, you can assign non-admin user roles using UAAC. To assign non-admin user roles:
 
@@ -242,7 +246,8 @@ If you configured <%= vars.ops_manager %> with LDAP authentication, you can assi
     uaac group map LDAP-GROUP --name 'OPS-MANAGER-SCOPE'
     ```
     Where:
-    * `LDAP-GROUP` is the name of the LDAP group to which the user belongs.
-    * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
 
-1. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard. Users must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.
+       * `LDAP-GROUP` is the name of the LDAP group to which the user belongs.
+       * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
+
+2. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard. Users must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.

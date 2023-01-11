@@ -3,7 +3,7 @@ title: Overview of Certificate Rotation
 owner: Ops Manager
 ---
 
-This topic provides an overview of rotating certificate authorities (CAs) and leaf certificates in <%= vars.ops_manager %>.
+This topic provides an overview of rotating certificate authorities (CAs) and leaf certificates in <%= vars.ops_manager_first %>.
 
 
 ## <a id='overview'></a> Overview
@@ -14,7 +14,7 @@ For more information about the CAs and leaf certificates visible to the <%= vars
 
 Rotate CAs and leaf certificates before they expire to avoid downtime for your deployment. To rotate certificates in <%= vars.ops_manager %>, first check the expiration dates of all certificates. Then, based on the types of certificates that expire soon, follow a certificate rotation procedure to replace expiring certificates and deploy BOSH to apply changes.
 
-When possible, the Ops Manager API invokes CredHub Maestro to rotate certificates. You may encounter CredHub Maestro safety violation errors if you attempt to perform an unsafe operation, such as running a rotation step out of order. For more information about troubleshooting these errors, see [Troubleshooting CredHub Maestro Safety Violations During Certificate Rotation](troubleshoot-cert-errors.html).
+When possible, the <%= vars.ops_manager %> API invokes CredHub Maestro to rotate certificates. You may encounter CredHub Maestro safety violation errors if you attempt to perform an unsafe operation, such as running a rotation step out of order. For more information about troubleshooting these errors, see [Troubleshooting CredHub Maestro Safety Violations During Certificate Rotation](troubleshoot-cert-errors.html).
 
 <%= partial 'minimum-duration' %>
 
@@ -28,13 +28,13 @@ Before determining which certificate rotation procedure to follow, you must dete
 
 To check the types and expiration dates of your certificates, see [Checking Expiration Dates and Certificate Types](check-expiration.html).
 
-<p class="note warning"><strong>Warning:</strong> If customer-provided CAs exist in your deployment, you must do an additional procedure to successfully rotate. To see if you have customer-provided CAs and rotate them successfully, see <a href="rotate-customer-provided-cas.html">Rotating Certificates with Customer-Provided CAs</a>.</p>
+<p class='note caution'><strong>Caution:</strong> If customer-provided CAs exist in your deployment, you must do an additional procedure to successfully rotate. To see if you have customer-provided CAs and rotate them successfully, see <a href="rotate-customer-provided-cas.html">Rotating Certificates with Customer-Provided CAs</a>.</p>
 
 ## <a id='procedures'></a> Certificate Rotation Procedures
 
 The topics listed in this section explain how to rotate certificates in <%= vars.ops_manager %>, including the <%= vars.ops_manager %> root CA, BOSH NATS CA, CAs stored in CredHub, and leaf certificates. There are different rotation procedures for each type of certificate that requires rotation.
 
-<p class='note warning'><strong>Warning:</strong> The rotation procedures described in the topics below do not work if the certificates have already expired. If the certificates have expired, contact <%= vars.support_link %> for guidance.</p>
+<p class='note caution'><strong>Caution:</strong> The rotation procedures described in the topics below do not work if the certificates have already expired. If the certificates have expired, contact <%= vars.support_link %> for guidance.</p>
 
 To rotate certificates, follow one of these procedures:
 

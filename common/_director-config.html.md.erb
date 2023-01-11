@@ -1,15 +1,12 @@
-<%# OVERVIEW
-This partial is the procedure for the **Director Config** pane in the BOSH Director. IaaS-specific information is separated with `if` statements.
+<%# OVERVIEW This partial is the procedure for the **Director Config** pane in the BOSH Director. IaaS-specific information is separated with `if` statements. %>
 
-PARTIAL REFERENCES
-This partial is called in all IaaS-specific BOSH Director configuration topics.
-%>
+<%# PARTIAL REFERENCES This partial is called in all IaaS-specific BOSH Director configuration topics. %>
 
 To configure the **Director Config** pane:
 
 1. Select **Director Config**.
 
-    <%= image_tag("../common/images/director-config.png", :width => "500", :alt => "The Director Config form, which is used to set properties to configure the BOSH Director.") %>
+    ![alt-text=""](../common/images/director-config.png)
 
 <%# **NTP Servers** field, differentiated by IaaS %>
 
@@ -25,7 +22,9 @@ To configure the **Director Config** pane:
 
 <%# For AWS: %>
 <% if current_page.data.iaas == "AWS" %>
-1. Enter at least two of the following NTP servers in the **NTP Servers (comma delimited)** field, separated by a comma: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org` If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
+1. In the **NTP Servers (comma delimited)** field, enter at least two of the following NTP servers separated by a comma: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+
+    If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
 <% end %>
 
 <%# For Azure: %>
@@ -34,7 +33,7 @@ To configure the **Director Config** pane:
 <% end %>
 
 <%# For other IaaSes such as vSphere: %>
-<% if current_page.data.iaas != "Azure" || current_page.data.iaas != "OpenStack" || current_page.data.iaas != "AWS" || current_page.data.iaas != "GCP" %>
+<% if current_page.data.iaas != "Azure" && current_page.data.iaas != "OpenStack" && current_page.data.iaas != "AWS" && current_page.data.iaas != "GCP" %>
 1. In the **NTP Servers (comma delimited)** field:
     1. (Optional) If your AWS environment is air-gapped, consider using Amazon’s Time Sync Service, consider using [Amazon's Time Sync   Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
     1. If you do not use Amazon’s Time Sync Service, enter at least two of the following NTP servers, separated by a comma:
@@ -43,7 +42,7 @@ To configure the **Director Config** pane:
     1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
 1. Leave the **Bosh HM Forwarder IP Address** field blank.
-    <p class="note"><strong>Note:</strong> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> field blank.</p>
+    <p class='note'><strong>Note:</strong> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> field blank.</p>
 
 1. Select the **Enable VM Resurrector Plugin** checkbox to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.pivotal.io/platform/customizing/resurrector.html) for more information about the Resurrector plugin.<% end %>
 
@@ -52,19 +51,13 @@ To configure the **Director Config** pane:
 1. Keep the **Enable System Metrics** checkbox selected to collect system metrics, including load, CPU, memory, swap, and disk metrics, and make them available for scraping from agents on each VM. This is recommended if you are using TAS, as it will scrape the agents automatically and insert the metrics into the regular logging and metrics egress stream. For a list of metrics collected, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md) in GitHub.
 
 1. Select **Enable Post Deploy Scripts** to run a post-deploy script after deployment. This script allows the job to execute additional commands against a deployment.
-    <p class="note"><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), you must enable post-deploy scripts.</p>
+    <p class='note'><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
 
-1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deploy.
-   This process does not re-create the BOSH Director VM or destroy any persistent disk data.
-   This checkbox is cleared automatically after Apply Changes succeeds.
+1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deploy. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
 
-1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be re-created on the next deploy.
-   This process does not destroy any persistent disk data.
-   This checkbox is cleared automatically after Apply Changes succeeds.
+1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be re-created on the next deploy. This process does not destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
 
-1. Select **Recreate All Persistent Disks** to force BOSH to migrate and re-create persistent disks for the BOSH Director and all tiles.
-   This process does not destroy any persistent disk data.
-   This checkbox is cleared automatically after Apply Changes succeeds.
+1. Select **Recreate All Persistent Disks** to force BOSH to migrate and re-create persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
 
 1. Select **Enable bosh deploy retries** to instruct <%= vars.ops_manager %> to retry failed BOSH operations up to five times.
 
@@ -80,22 +73,27 @@ To configure the **Director Config** pane:
 
 1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname**. You can also use this field to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
 
-    <%= image_tag("../common/images/director_workers.png", :alt => "Three text fields labeled 'Director Workers', 'Max Threads', and 'Director Hostname'. The Director Workers field contains the text '5'. The Director Hostname field contains the text 'opsdirector.example.com'.") %>
+    ![alt-text="There are three text fields, Director Workers, Max Threads, and Director Hostname."](../common/images/director_workers.png)
 
 1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
 
-1. <%= partial "../common/identification-tags" %>
+2. <%= partial "../common/identification-tags" %>
 
-1. <%= partial "../common/certificates-config" %>
+3. <%= partial "../common/certificates-config" %>
+
+4. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
 
 1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
-    <%= image_tag("../common/images/director_hm_pager.png", :alt => "At the top of the image is a selected checkbox labeled 'HM Pager Duty Plugin'. Below this checkbox are two text fields labeled, from top to bottom, 'Service Key' and 'HTTP Proxy'. The Service Key field has a red asterisk to denote that it is a required field, and contains the text 'YOUR-PAGERDUTY-SERVICE-KEY'. The HTTP Proxy field contains the text 'YOUR-HTTP-PROXY'.") %>
+
+    ![alt-text="There is a selected check box, HM Pager Duty Plugin, and two text fields, Service Key and HTTP Proxy."](../common/images/director_hm_pager.png)
+
     * **Service Key**: Enter your API service key from PagerDuty.
     * **HTTP Proxy**: Enter an HTTP proxy for use with PagerDuty.
 
 1. Select **HM Email Plugin** to enable Health Monitor integration with email.
 
-    <%= image_tag("../common/images/director_hm_email.png", :alt => "At the top of the image is a selected checkbox labeled 'HM Email Plugin'. Below this checkbox are seven text fields labeled, from top to bottom, 'Host', 'Port', 'Domain', 'From', 'Recipients', 'Username', and 'Password'. The Host field has a red asterisk and contains the text 'smtp.example.com'. The Port field has a red asterisk and contains the text '25'. The Domain field has a red asterisk and contains the text 'cloudfoundry.example.com'. The From field has a red asterisk and contains the text 'user2@example.com'. The Recipients field has a red asterisk and contains the text 'user@example.com, user1@example.com'. The Username field contains the text 'user'. The Password field contains eight asterisks. ") %>
+    ![alt-text="There is a selected check box, HM Email Plugin, and seven text fields: Host, Port, Domain, From, Recipients, Username, and Password."](../common/images/director_hm_email.png)
+
     * **Host**: Enter your email hostname.
     * **Port**: Enter your email port number.
     * **Domain**: Enter your domain.
@@ -104,10 +102,11 @@ To configure the **Director Config** pane:
     * **Username**: Enter the username for your email server.
     * **Password**: Enter the password for your email server.
     * **Enable TLS**: Select this checkbox to enable Transport Layer Security to the email host.
-1. <%= partial "../common/credhub-encryption" %>
 
-1. <%= partial "../common/blobstore-location" %>
+<%= partial "../common/credhub-encryption" %>
 
-1. <%= partial "../common/director-database-location" %>
+<%= partial "../common/blobstore-location" %>
 
-1. Click **Save**.
+<%= partial "../common/director-database-location" %>
+
+1.  Click **Save**.

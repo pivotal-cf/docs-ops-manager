@@ -7,24 +7,24 @@ This topic provides an overview of the options and considerations for disaster r
 
 Operators have a range of approaches for ensuring they can recover their deployment, apps, and data in case of a disaster. The approaches fall into the following two categories:
 
-* Using data from a backup to restore the data in the deployment. For more information, see [Back Up and Restore Using BOSH Backup and Restore (BBR)](#bbr).
+* Using data from a backup to restore the data in the deployment. For more information, see [Back Up and Restore Using BOSH Backup and Restore (BBR)](#bbr) below.
 
-* Re-creating the data in the deployment by automating the creation of state. For more information, see [Disaster Recovery by Recreating the Deployment](#recreation).
+* Re-creating the data in the deployment by automating the creation of state. For more information, see [Disaster Recovery by Recreating the Deployment](#recreation) below.
 
 
-## <a id="bbr"></a> Back Up and Restore Using BOSH Backup and Restore (BBR)
+## <a id='bbr'></a> Back up and restore using BOSH Backup and Restore (BBR)
 
-### <a id="what-is-bbr"></a> What is BBR?
+### <a id='what-is-bbr'></a> What is BBR?
 
 BOSH Backup and Restore (BBR) is a CLI for orchestrating backing up and restoring BOSH deployments and BOSH Directors. BBR triggers the backup or restore process on the deployment or BOSH Director, and transfers the backup artifact to and from the deployment or BOSH Director.
 
-Use BBR to reliably create backups of core components of your deployment and their data. These core components include CredHub, UAA, BOSH Director, and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
+Use BBR to reliably create backups of core components of your deployment and their data. These core components include CredHub, UAA, BOSH Director, and <%= vars.app_runtime_first %>.
 
 Each component includes its own backup scripts. This decentralized structure helps keep scripts synchronized with the components. At the same time, _locking_ features ensure data integrity and consistent, distributed backups across your deployment.
 
 For more information about the BBR framework, see [BOSH Backup and Restore](https://docs.cloudfoundry.org/bbr/index.html) in the open-source Cloud Foundry documentation.
 
-### <a id="bbr-backup"></a> Backing Up Your Deployment
+### <a id='bbr-backup'></a> Backing up your deployment
 
 Backing up your deployment requires backing up the following components:
 
@@ -36,14 +36,14 @@ Backing up your deployment requires backing up the following components:
 For more information, see [Backing Up Deployments with BBR](backup-pcf-bbr.html).
 With these backup artifacts, operators can re-create their deployment exactly as it was when the backup was taken.
 
-### <a id="bbr-restore"></a> Restoring Your Deployment
+### <a id='bbr-restore'></a> Restoring your deployment
 
 The restore process involves creating a new deployment starting with the <%= vars.ops_manager %> VM.
 For more information, see [Restoring Deployments from Backup with BBR](restore-pcf-bbr.html).
 
 The time required to restore the data is proportionate to the size of the data because the restore process includes copying data. For example, restoring a 1&nbsp;TB blobstore takes 1,000 times as long as restoring a 1&nbsp;GB blobstore.
 
-### <a id="benefits"></a> Benefits
+### <a id='benefits'></a> Benefits
 
 Unlike other backup solutions, using BBR to back up your deployment enables:
 
@@ -53,13 +53,13 @@ Unlike other backup solutions, using BBR to back up your deployment enables:
 
 * **Correctness:** Using the BBR restore flow addresses container-to-container networking and routing issues that can occur during restore.
 
-### <a id="api-downtime"></a> API Downtime During Backups
+### <a id='api-downtime'></a> API Downtime during backups
 
 Apps are not affected during backups, but certain APIs are unavailable. The downtime occurs only while the backup is being taken, not while the backup is being copied to the jumpbox.
 
 In a consistent backup, the blobs in the blobstore match the blobs in the Cloud Controller database. To take a consistent backup, changes to the data are prevented during the backup. This means that the Cloud Foundry API (CAPI), Routing API, Usage service, Autoscaler, Notification Service, Network Policy Server, and CredHub are unavailable while the backup is being taken. UAA is in read-only mode during the backup.
 
-### <a id="backup-timings"></a> Backup Timings
+### <a id='backup-timings'></a> Backup timings
 
 The first three phases of the backup are lock, backup, and unlock. During this time, the API is unavailable. The drain and checksum phase starts after the backup scripts finish. BBR downloads the backup artifacts from the instances to the BBR VM, and performs a checksum to ensure the artifacts are not corrupt. The size of the blobstore significantly influences backup time.
 
@@ -67,7 +67,7 @@ The table below gives an indication of the downtime that you can expect. Actual 
 
 <table>
   <tr>
-    <th colspan="5"><strong>Backup Timings</strong></th>
+    <th colspan="5"><strong>Backup timings</strong></th>
   </tr>
   <tr>
    <td><strong>API State</strong></td>
@@ -104,11 +104,11 @@ The table below gives an indication of the downtime that you can expect. Actual 
   </tr>
 </table>
 
-#### <a id="blobstore-bbr"></a> Blobstore Backup and Restore
+#### <a id='blobstore-bbr'></a> Blobstore Backup and Restore
 
 Blobstores can be very large. To minimize downtime, BBR only takes blob metadata during the backup. For example, in the case of internal blobstores such as WebDav and NFS, BBR takes a list of hard links that point to the blobs. After the API becomes available, BBR makes copies of the blobs.
 
-### <a id="not-supported"></a> Unsupported Products
+### <a id='not-supported'></a> Unsupported products
 
 * **Data services:** The data services listed below do not support BBR. Operators of these services should use the automatic backups feature of each tile, available within <%= vars.ops_manager %>.
   * VMware Tanzu SQL [MySQL]
@@ -122,26 +122,26 @@ Blobstores can be very large. To minimize downtime, BBR only takes blob metadata
     [External Storage Support Across <%= vars.ops_manager %> Versions](backup-pcf-bbr.html#version-compatibility)
     in _Backing Up Deployments with BBR_.
 
-### <a id="best-practices"></a> Best Practices
+### <a id='best-practices'></a> Best practices
 
 This section describes best practices for backing up your deployment.
 
-#### <a id="backup-frequency"></a> Frequency of Backups
+#### <a id='backup-frequency'></a> Frequency of backups
 
 <%= vars.company_name %> recommends that you take backups in proportion to the rate of change of the data in your deployment to minimize the number of changes lost if a restore is required. <%= vars.company_name %> recommends starting with backing up every 24 hours. If app developers make frequent changes, you should increase the frequency of backups.
 
-#### <a id="artifact-retention"></a> Retention of Backup Artifacts
+#### <a id='artifact-retention'></a> Retention of backup artifacts
 
 Operators should retain backup artifacts based on the timeframe they need to be able to restore to. For example, if backups are taken every 24 hours and the deployment must be able to be restored to three days prior, three sets of backup artifacts should be retained.
 
 Artifacts should be stored in two data centers other than the data center. When deciding the restore timeframe, you should take other factors such as compliance and audit-ability into account.
 
-#### <a id="security"></a> Security
+#### <a id='security'></a> Security
 
 <%= vars.company_name %> recommends that you encrypt artifacts and store them securely.
 
 
-## <a id="recreation"></a> Disaster Recovery by Re-Creating the Deployment
+## <a id='recreation'></a> Disaster Recovery by re-creating the deployment
 
 An alternative strategy for recovering your deployment after a disaster is to have automation in place so that all the data can be re-created. This requires that every modification to settings and state is automated, typically through the use of a pipeline.
 
@@ -150,11 +150,11 @@ Recovery steps include creating a new deployment, re-creating orgs, spaces, user
 For more information about this approach, see the Cloud Foundry Summit presentation [Multi-DC Cloud Foundry: What, Why and How?](https://www.youtube.com/watch?v=t61r8THmtsc) on YouTube.
 
 
-## <a id="different-topologies"></a> Disaster Recovery for Different Topologies
+## <a id='different-topologies'></a> Disaster Recovery for different topologies
 
 This section describes disaster recovery strategies for different deployment topologies.
 
-### <a id="active-active"></a> Active-Active
+### <a id='active-active'></a> Active-Active
 
 To prevent app downtime, some customers run an active-active deployment, where they run two or more identical deployments in different data centers. If one deployment becomes unavailable, traffic is seamlessly routed to the other deployment. To achieve identical deployments, all operations are automated so they can be applied to both deployments in parallel.
 
@@ -172,7 +172,7 @@ This option requires discipline to automate all changes to the deployment. Some 
 
 Human-initiated changes always make their way into the system. These changes can include quotas being raised, new settings being enabled, and incident responses. For this reason, <%= vars.company_name %> recommends taking backups even when using an automated disaster recovery strategy.
 
-#### <a id="bbr-aa-comparison"></a> Using BBR Backup and Restore Versus Recreating a Failed Deployment in Active-Active
+#### <a id='bbr-aa-comparison'></a> Using BBR Backup and Restore versus recreating a failed deployment in active-active
 
 The following table compares backing up and restoring using BBR to recreating a failed deployment in active-active:
 
@@ -235,7 +235,7 @@ The following table compares backing up and restoring using BBR to recreating a 
 </tr>
 </table>
 
-### <a id="active-passive"></a> Active-Passive
+### <a id='active-passive'></a> Active-Passive
 
 Instead of having a true active-active deployment across all layers, some customers prefer to install a deployment on a backup site. The backup site resides on-premises, in a co-location facility, or the public cloud. The backup site includes an operational deployment, with only the most critical apps ready to accept traffic should a failure occur in the primary data center. Disaster recovery in this scenario involves:
 
@@ -246,7 +246,7 @@ Instead of having a true active-active deployment across all layers, some custom
 The RTO and RPO for re-creating the active deployment are the same as outlined in the table above.
 
 
-## <a id="reducing-rto"></a> Reducing RTO
+## <a id='reducing-rto'></a> Reducing RTO
 
 Both the restore and re-create data disaster recovery options require standing up a new deployment, which can take hours. If you require shorter RTO, several options involving a pre-created standby hardware are available. The following table outlines these options:
 
@@ -274,19 +274,19 @@ Both the restore and re-create data disaster recovery options require standing u
 There is a trade-off between cost and RTO: the less the replacement deployment needs to be deployed and scaled, the faster the restore.
 
 
-## <a id="automating-backups"></a> Automating Backups
+## <a id='automating-backups'></a> Automating backups
 
 BBR generates the required backup artifacts, but does not handle scheduling, artifact management, or encryption. You can use the starter Concourse pipeline from the [BBR PCF Pipeline Tasks](https://github.com/pivotal-cf/bbr-pcf-pipeline-tasks) repository on GitHub to automate backups with BBR.
 
 You can also use Stark & Wayne's Shield as a front end management tool using the BBR plugin.
 
 
-## <a id="validating-backups"></a> Validating Backups
+## <a id='validating-backups'></a> Validating backups
 
 To ensure that backup artifacts are valid, the BBR tool creates checksums of the generated backup artifacts, and ensures that the checksums match the artifacts on the jumpbox.
 
 However, the only way to be sure that the backup artifact can be used to successfully re-create
 the deployment is to test it in the restore process.
 This is a cumbersome, dangerous process that should be done with care.
-For instructions, see [Step 11: (Optional) Validate Your Backup](./backup-pcf-bbr.html#validate-backup)
+For instructions, see [Step 11: (Optional) Validate Your Backup](backup-pcf-bbr.html#validate-backup)
 in _Backing Up Deployments with BBR_.

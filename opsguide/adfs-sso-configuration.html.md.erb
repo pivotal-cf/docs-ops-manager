@@ -3,12 +3,12 @@ title: Configuring AD FS as an Identity Provider
 owner: Identity
 ---
 
-This topic describes configuring Active Directory Federation Services (AD FS) as your identity provider (IDP) in <%= vars.ops_manager %> and AD FS.
+This topic describes configuring Active Directory Federation Services (AD FS) as your identity provider (IDP) in <%= vars.ops_manager_first %> and AD FS.
 
 
 ## <a id='idp'></a> Configure SAML Integration in <%= vars.ops_manager %>
 
-You can use AD FS as your SAML IDP for <%= vars.ops_manager_full %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
+You can use AD FS as your SAML IDP for <%= vars.ops_manager %> and <%= vars.app_runtime_first %>.
 
 * To use AD FS as your SAML IDP for <%= vars.ops_manager %>, follow these procedures:
   * [Configure SAML Integration in <%= vars.ops_manager %>](#ops-man)
@@ -31,7 +31,7 @@ To configure <%= vars.ops_manager %> to use AD FS as your SAML IDP:
   * [Configuring BOSH Director on OpenStack](../openstack/config.html#idp)
   * [Configuring BOSH Director on vSphere](../vsphere/config.html#idp)
 
-<p class="note"><strong>Note:</strong> You can set up SAML access for <%= vars.ops_manager %> during the initial <%= vars.ops_manager %> installation or later by navigating to <strong>Settings</strong> in the user menu in the <%= vars.ops_manager %> Installation Dashboard, configuring the <strong>Authentication Method</strong> pane, and then clicking <strong>Review Pending Changes</strong> and <strong>Apply Changes</strong>.</p>
+<p class='note'><strong>Note:</strong> You can set up SAML access for <%= vars.ops_manager %> during the initial <%= vars.ops_manager %> installation or later by navigating to <strong>Settings</strong> in the user menu in the <%= vars.ops_manager %> Installation Dashboard, configuring the <strong>Authentication Method</strong> pane, and then clicking <strong>Review Pending Changes</strong> and <strong>Apply Changes</strong>.</p>
 
 ### <a id='pas'></a> Configure SAML Integration in <%= vars.app_runtime_abbr %>
 

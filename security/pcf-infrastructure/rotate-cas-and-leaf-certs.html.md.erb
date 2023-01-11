@@ -8,12 +8,10 @@ This topic describes how to rotate certificate authorities (CAs) and leaf certif
 
 ## <a id='overview'></a> Overview
 
-This procedure uses the <%= vars.ops_manager %> API to rotate the <%= vars.ops_manager %> root CA and leaf certificates. When you rotate the <%= vars.ops_manager %> root CA, the <%= vars.ops_manager %> API automatically rotates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
+This procedure uses the <%= vars.ops_manager %> API to rotate the <%= vars.ops_manager_first %> root CA and leaf certificates. When you rotate the <%= vars.ops_manager %> root CA, the <%= vars.ops_manager %> API automatically rotates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
 
-This procedure includes three redeploys. The first deploy adds the new CA certificates to
-<%= vars.ops_manager %> components. The second deploy replaces the old leaf certificates
-with the new leaf certificates. The third deploy removes the old CA certificates, leaving
-only the new CA certificates.
+This procedure includes three redeploys. The first deploy adds the new CA certificates to <%= vars.ops_manager %> components. The second deploy replaces the old leaf certificates with the new leaf certificates. The third deploy removes the old CA certificates, leaving only the new CA certificates.
+
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -26,7 +24,7 @@ only the new CA certificates.
 
 To rotate CAs, configurable leaf certificates, and non-configurable leaf certificates:
 
-<p class="note warning"><strong>Warning:</strong> You must complete these steps in the exact order specified. Otherwise, you may damage your deployment.</p>
+<p class='note caution'><strong>Caution:</strong> You must complete these steps in the exact order specified. Otherwise, you may damage your deployment.</p>
 
 1. Add a new <%= vars.ops_manager %> root CA. This step also automatically adds new CAs for all CAs visible to the <%= vars.ops_manager %> API. For more information, see [Add New CAs](#add-new-ca) below.
 
@@ -38,7 +36,7 @@ To rotate CAs, configurable leaf certificates, and non-configurable leaf certifi
 
 1. Delete the old root CA and mark the old CAs in CredHub as inactive. For more information, see [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete) below.
 
-<p class="note warning"><strong>Warning:</strong> The Services TLS CA, <code>/services/tls_ca</code>,
+<p class='note caution'><strong>Caution:</strong> The Services TLS CA, <code>/services/tls_ca</code>,
 cannot be rotated using this procedure. For information about how to rotate the Services TLS CA, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
 
 ### <a id='add-new-ca'></a> Step 1: Add New CAs
@@ -47,16 +45,18 @@ This section describes how to add a new root CA for <%= vars.ops_manager %>. The
 
 This procedure also automatically regenerates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
 
-<p class="note warning"><strong>Warning:</strong> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
+<p class='note caution'><strong>Caution:</strong> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
 
 To add new CAs:
 
 1. If you have not already done so, follow the procedure in [Using <%= vars.ops_manager %> API](../../install/ops-man-api.html) to target and authenticate with the <%= vars.ops_manager %> UAA server. Record your <%= vars.ops_manager %> access token, and use it for `UAA-ACCESS-TOKEN` in the following steps.
-  <p class="note"><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
+  <p class='note'><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
 
 1. Use <%= vars.ops_manager %> to generate a new CA, or add your own custom CA:
-  <p class ="note"><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
-  * **To use your own custom CA:** Call the <%= vars.ops_manager %> API `certificate_authorities` endpoint by running:
+
+    <p class ="note"><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
+
+    * **To use your own custom CA:** Call the <%= vars.ops_manager %> API `certificate_authorities` endpoint by running:
 
         ```
         curl "https://OPS-MANAGER-FQDN/api/v0/certificate_authorities" \
@@ -66,30 +66,33 @@ To add new CAs:
             -d '{"cert_pem": "-----BEGIN CERTIFICATE-----CUSTOM-CERTIFICATE", "private_key_pem": "-----BEGIN RSA PRIVATE KEY-----RSA-KEY"}' \
             -i
         ```
+
         Where:
+
         * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> deployment.
         * `CUSTOM-CERTIFICATE` is your custom CA.
         * `RSA-KEY` is your RSA key.
         * `UAA-ACCESS-TOKEN` is your UAA access token.
-        <br>
-        <br>
+
         If the command succeeds, the API returns a response that includes the new CA. For example:
+
         <pre class="terminal">
         HTTP/1.1 200 OK
         {
-              "certificate\_authorities": [
+              "certificate_authorities": [
                 {
                   "guid": "f7bc18f34f2a7a9403c3",
                   "issuer": "CUSTOM-CERTIFICATE",
-                  "created\_on": "2017-01-09",
-                  "expires\_on": "2021-01-09",
+                  "created_on": "2017-01-09",
+                  "expires_on": "2021-01-09",
                   "active": true,
-                  "cert\_pem": "\-\-\-\-\-BEGIN CERTIFICATE\-\-\-\-\-\nMIIC+zCCAeOgAwIBAgI....etc"
+                  "cert_pem": "-----BEGIN CERTIFICATE-----\nMIIC+zCCAeOgAwIBAgI....etc"
                 }
               ]
         }
         </pre>
-  * **To use an <%= vars.ops_manager %>-generated CA:** Call the <%= vars.ops_manager %> API `generate` endpoint by running:
+
+    * **To use an <%= vars.ops_manager %>-generated CA:** Call the <%= vars.ops_manager %> API `generate` endpoint by running:
 
         ```
         curl "https://OPS-MANAGER-FQDN/api/v0/certificate_authorities/generate" \
@@ -99,21 +102,23 @@ To add new CAs:
               -d '{}' \
               -i
         ```
+
         Where:
+
         * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
         * `UAA-ACCESS-TOKEN` is your UAA access token.
-        <br>
-        <br>
+
         If the command succeeds, the API returns a response that includes the new CA. For example:
+
         <pre class="terminal">
         HTTP/1.1 200 OK
         {
               "guid": "f7bc18f34f2a7a9403c3",
               "issuer": "VMware",
-              "created\_on": "2017-01-19",
-              "expires\_on": "2021-01-19",
+              "created_on": "2017-01-19",
+              "expires_on": "2021-01-19",
               "active": false,
-              "cert\_pem": "\-\-\-\-\-BEGIN EXAMPLE CERTIFICATE\-\-\-\-\-
+              "cert_pem": "-----BEGIN EXAMPLE CERTIFICATE-----
               MIIC+zCCAeOgAwIBAgIBADANBgkqhkiG9w0BAQsFADAfMQswCQYDVQQGEwJVUzEQ
               EXAMPLEoCgwHUGl2b3RhbDAeFw0xNDarthgyMTQyMjVaFw0yMTAxMTkyMTQyMjVa
               EXAMPLEoBgNVBAYTAlVTMRAwDgYDVVaderdQaXZvdGFsMIIBIjANBgkqhkiG9w0B
@@ -130,7 +135,7 @@ To add new CAs:
               EXAMPLEoCynMNz7FgHyFbd9D9X5YW8fWGSeVBPPikcONdRvjw9aEeAtbGEh8eZCP
               EXAMPLEob33RuR+CTNqThXY9k8d7/7ba4KVdd4gP8ynFgwvnDQOjcJZ6Go5QY5HA
               EXAMPLEoPFW8pAYcvWrXKR0rE8fL5o9qgTyjmO+5yyyvWIYrKPqqIUIvMCdNr84=
-              \-\-\-\-\-END EXAMPLE CERTIFICATE\-\-\-\-\-"
+              -----END EXAMPLE CERTIFICATE-----"
         }
         </pre>
 
@@ -142,31 +147,33 @@ To add new CAs:
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
-    <br>
-    <br>
+
     The API call returns the GUID of the newly added CA. For example:
+
     <pre class="terminal">
     HTTP/1.1 200 OK
     {
-          "certificate\_authorities": [
+          "certificate_authorities": [
             {
               "guid": "f7bc18f34f2a7a9403c3",
               "issuer": "VMware",
-              "created\_on": "2017-01-09",
-              "expires\_on": "2021-01-09",
+              "created_on": "2017-01-09",
+              "expires_on": "2021-01-09",
               "active": true,
-              "cert\_pem": "\-\-\-\-\-BEGIN CERTIFICATE\-\-\-\-\-\nMIIC+zCCAeOgAwIBAgI....etc"
+              "cert_pem": "-----BEGIN CERTIFICATE-----\nMIIC+zCCAeOgAwIBAgI....etc"
             }
             {
               "guid": "a8ee01e33e3e3e3303e3",
               "issuer": "VMware",
-              "created\_on": "2017-04-09",
-              "expires\_on": "2021-04-09",
+              "created_on": "2017-04-09",
+              "expires_on": "2021-04-09",
               "active": false,
-              "cert\_pem": "\-\-\-\-\-BEGIN CERTIFICATE\-\-\-\-\-\nzBBBC+eAAAe1gAwAAAeZ....etc"
+              "cert_pem": "-----BEGIN CERTIFICATE-----\nzBBBC+eAAAe1gAwAAAeZ....etc"
             }
           ]
     }
@@ -200,13 +207,15 @@ To add new CAs:
 1. Click **Apply Changes**.
 1. If you have service tiles installed and the service tile does not have the **Recreate all service instances** errand, manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
-      ```
-      bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
-      ```
-     Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
-     <%= partial 'skip_recreate_step' %>
+    ```
+    bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
+    ```
 
-1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Activate the CAs](#activate-new-ca).
+    Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
+
+    <%= partial 'skip_recreate_step' %>
+
+When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Activate the CAs](#activate-new-ca).
 
 ### <a id='activate-new-ca'></a> Step 2: Activate the CAs
 
@@ -222,13 +231,15 @@ To activate the CAs that you added in [Add New CAs](#add-new-ca) above:
       -d '{}' \
       -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `CERTIFICATE-GUID` is the GUID of your CA that you retrieved in the previous section.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
-    <br>
-    <br>
+
     The API returns a successful response:
+
     <pre class="terminal">HTTP/1.1 200 OK</pre>
 
 1. List your CAs to confirm that the new <%= vars.ops_manager %> root CA is active. Run:
@@ -239,7 +250,9 @@ To activate the CAs that you added in [Add New CAs](#add-new-ca) above:
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
 
@@ -252,6 +265,7 @@ Any configurable leaf certificates generated from the <%= vars.ops_manager %> ro
 To regenerate and rotate each configurable leaf certificate that expires soon:
 
 1. Find the text field where the leaf certificate is configured within the <%= vars.ops_manager %> UI. You might need to look through multiple configuration panes to identify the location of the certificate configuration text field. Use the following fields to identify the location of the certificate configuration text field:
+
     * The `product_guid` field in the <%= vars.ops_manager %> API output can help identify the tile in which the certificate is configured. For example, the prefix `p-bosh-` refers to the BOSH Director tile, and the prefix `cf-` refers to the <%= vars.app_runtime_abbr %> tile.
     * The `property_reference` field in the <%= vars.ops_manager %> API output can help identify the configuration pane in which the certificate is configured. For example, the `uaa.service_provider_key_credentials` property is configured in the **UAA** pane of the <%= vars.app_runtime_abbr %> tile.
 
@@ -263,7 +277,7 @@ To regenerate and rotate each configurable leaf certificate that expires soon:
 
 After activating the new <%= vars.ops_manager %> root CA and other CAs, you must rotate non-configurable leaf certificates from the new CAs.
 
-<p class="note warning"><strong>Warning:</strong> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
+<p class='note caution'><strong>Caution:</strong> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
 
 To rotate non-configurable leaf certificates:
 
@@ -277,12 +291,14 @@ To rotate non-configurable leaf certificates:
           -d '{}' \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
-    <br>
-    <br>
+
     The API returns a successful response:
+
     <pre class="terminal">HTTP/1.1 200 OK</pre>
 
 1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
@@ -297,22 +313,25 @@ To rotate non-configurable leaf certificates:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
+
     <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
+
     1. Click the tile.
     1. Click the **Errands** tab.
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
     1. If the service tile has the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-        1. Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
+      * Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
 
 1. Click **Review Pending Changes**.
 1. Click **Apply Changes**
 1. If you have service tiles installed and the service tile does not have the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-  1. Manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
+  * Manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
       ```
       bosh -d SERVICE-INSTANCE-DEPLOYMENT recreate
       ```
-     Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
+
+      Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
 1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete).
 
@@ -327,9 +346,9 @@ Within CredHub, the leaf certificates that are generated when you rotate your de
 
 The <%= vars.ops_manager %> API call you use to delete your deployment's old root CA also marks the old versions of all CAs stored in CredHub as inactive, including those not generated by the old root CA.
 
-<p class="note"><strong>Note:</strong> This procedure does not delete leaf certificates stored in CredHub. It marks CredHub leaf certificates as transitional, which indicates that the leaf certificate is inactive. To delete CredHub leaf certificates, use the CredHub Maestro garbage collection feature. For information about CredHub Maestro certificate garbage collection, see <a href="advanced-certificate-rotation.html#garbage-collection">Delete Inactive Certificate Versions</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
+<p class='note'><strong>Note:</strong> This procedure does not delete leaf certificates stored in CredHub. It marks CredHub leaf certificates as transitional, which indicates that the leaf certificate is inactive. To delete CredHub leaf certificates, use the CredHub Maestro garbage collection feature. For information about CredHub Maestro certificate garbage collection, see <a href="advanced-certificate-rotation.html#garbage-collection">Delete Inactive Certificate Versions</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
 
-<p class="note warning"><strong>Warning:</strong> Before you delete the old CA, ensure that you reviewed the <strong>Review Pending Changes</strong> page and clicked <strong>Apply Changes</strong> as part of <a href="#regenerate-from-new-root">Rotate Non-Configurable Leaf Certificates from the New CAs</a> above.</p>
+<p class='note caution'><strong>Caution:</strong> Before you delete the old CA, ensure that you reviewed the <strong>Review Pending Changes</strong> page and clicked <strong>Apply Changes</strong> as part of <a href="#regenerate-from-new-root">Rotate Non-Configurable Leaf Certificates from the New CAs</a> above.</p>
 
 To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs as inactive:
 
@@ -341,7 +360,9 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
 
@@ -353,14 +374,17 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
           -H "Authorization: Bearer UAA-ACCESS-TOKEN" \
           -i
     ```
+
     Where:
+
     * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     * `OLD-CERTIFICATE-GUID` is the GUID of the old <%= vars.ops_manager %> root CA.
     * `UAA-ACCESS-TOKEN` is your UAA access token.
-    <br>
-    <br>
+
     The API returns a successful response:
+
     <pre class="terminal">HTTP/1.1 200 OK</pre>
+
 1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
     1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -373,22 +397,26 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
+
     <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
+
     1. Click the tile.
     1. Click the **Errands** tab.
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
     1. If the service tile has the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-        1. Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
+        * Enable the **Recreate all service instances** errand. Running this errand pushes BOSH Agent certificate updates to service instances.
 
 1. Click **Review Pending Changes**.
 1. Click **Apply Changes**.
 1. If you have service tiles installed and the service tile does not have the **Recreate all service instances** errand: <%= partial 'skip_recreate_step' %>
-  1. Manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
 
-      ```
-      bosh -d SERVICE-INSTANCE-DEPLOYMENT re-create
-      ```
-     Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
+    * Manually push BOSH Agent certificate updates to each service instance. For each service instance, run:
+
+        ```
+        bosh -d SERVICE-INSTANCE-DEPLOYMENT re-create
+        ```
+
+        Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
 ## <a id='specialized-procedures'></a> Certificates with Specialized Procedures
 
@@ -403,4 +431,4 @@ Some certificates are not rotated when using the standard rotation procedure. Th
 
 ## <a id='troubleshooting'></a> Troubleshooting
 
-<%= partial "/pcf/certs/troubleshooting-maestro-violations.html.md.erb" %>
+<%= partial "/pcf/certs/troubleshooting-maestro-violations" %>
