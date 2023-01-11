@@ -24,7 +24,8 @@ on the Cloud Foundry website.
 
 **Release Date:** January 09, 2023
 
-<div class="note warning"><strong>Warning:</strong>
+<div class="note caution">
+  <strong>Caution:</strong>
   This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
 </div>
 
@@ -50,8 +51,8 @@ on the Cloud Foundry website.
 
 **Release Date:** December 19, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
 
@@ -79,8 +80,8 @@ on the Cloud Foundry website.
 
 **Release Date:** November 19, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
 
@@ -129,12 +130,12 @@ on the Cloud Foundry website.
 
 **Release Date:** October 27, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
 </div>
 
-<div class="note warning"><strong>Warning:</strong>
-  This release contains a new end-user license agreement which must be manually accepted when downloading the release binaries from Tanzu Network.
+<div class="note caution">
+  <strong>Caution:</strong> This release contains a new end-user license agreement which must be manually accepted when downloading the release binaries from Tanzu Network.
 </div>
 
 -  **[Feature]** Improve accessibility within Ops Manager UI
@@ -186,13 +187,15 @@ on the Cloud Foundry website.
 
 **Release Date:** August 25, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-This release includes an unintended breaking change. When upgrading from Ops Manager versions
-before 2.10.9 on vSphere, the NSX-T Policy API mode will be enabled by default. Customers that
-are not using the NSX-T Policy API will need to uncheck the "Use NSX-T Policy API" checkbox on the
-vSphere Config page, or set the `nsx_t_use_policy_api` API field to false.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes an unintended breaking change.
+  When upgrading from Ops Manager versions before 2.10.9 on vSphere, the NSX-T Policy API
+  mode will be enabled by default.
+  Customers that are not using the NSX-T Policy API will need to uncheck the
+  <strong>Use NSX-T Policy API</strong> checkbox on the
+  vSphere Config page, or set the `nsx_t_use_policy_api` API field to false.
 
-This issue will be fixed in a later patch.
+  This issue will be fixed in a later patch.
 </div>
 
 
@@ -225,8 +228,8 @@ This issue will be fixed in a later patch.
 
 **Release Date:** July 27, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
 
@@ -351,13 +354,14 @@ This issue will be fixed in a later patch.
 ### <a id="2-10-40"></a> v2.10.40
 
 **Release Date:** June 03, 2022
-<div class="note warning"><strong>Warning:</strong>
+<div class="note caution">
+  <strong>Caution:</strong>
   <p>There is a known issue with the BOSH Director when upgrading from an Ops Manager installation that was created before March of 2019. If your Ops Manager installation was originally created before 2.5.0, even if you are now on a current patch, you should not upgrade to 2.10.40.</p>
   <p>This issue has been resolved in 2.10.41.</p>
 </div>
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
 
@@ -393,8 +397,8 @@ This issue will be fixed in a later patch.
 
 **Release Date:** April 25, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
 - **[Bug Fix]** Changes to `/api/v0/installation_asset_collection` in 2.10.37 were inconsistent with Ops Manager RBAC documentation. The endpoint is now unavailable for users without access to view credentials.
@@ -420,8 +424,8 @@ This issue will be fixed in a later patch.
 
 **Release Date:** April 09, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-  <p>This release has been removed from VMware Tanzu Network because it included an unpublished stemcell. This stemcell is testing new security enhancements and we have had reports of issues with Tanzu Application Service diego cell VMs becoming unresponsive. If you are experiencing problems caused by the 621.230 stemcell, please upgrade to Ops Manager 2.10.39.</p>
+<div class="note caution">
+  <p><strong>Caution:</strong> This release has been removed from VMware Tanzu Network because it included an unpublished stemcell. This stemcell is testing new security enhancements and we have had reports of issues with Tanzu Application Service diego cell VMs becoming unresponsive. If you are experiencing problems caused by the 621.230 stemcell, please upgrade to Ops Manager 2.10.39.</p>
 </div>
 
 This release is primarily intended for OpenStack users as images are not available for 2.10.37. There are no major functionality changes in this release.
@@ -521,8 +525,8 @@ This release is primarily intended for OpenStack users as images are not availab
 **Release Date:** March 28, 2022
 
 
-<div class="note warning"><strong>Warning:</strong>
-  Ops Manager v2.10.33 included a new version of BOSH DNS that requires Ops Manager to redeploy all VMs. For important information, see <a href="#2-10-33">v2.10.33</a> below.
+<div class="note caution">
+  <strong>Caution:</strong> <%= vars.ops_manager %> v2.10.33 included a new version of BOSH DNS that requires Ops Manager to redeploy all VMs. For important information, see <a href="#2-10-33">v2.10.33</a> below.
 </div>
 
 <table border="1" class="nice">
@@ -545,8 +549,8 @@ This release is primarily intended for OpenStack users as images are not availab
 
 **Release Date:** March 07, 2022
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of BOSH DNS that requires Ops Manager to redeploy all VMs.
+<div class="note caution">
+  <strong>Caution:</strong> This release includes a new version of BOSH DNS that requires Ops Manager to redeploy all VMs.
   <br />
   <br />
   This version of BOSH DNS requires every BOSH DNS certificate to have a Subject Alternative Name (SAN). A migration was introduced in <%= vars.ops_manager %> v2.10.9 to add SANs to these certificates. Upgrade to v2.10.9 or later and do an **Apply Changes** on all VMs before you upgrade to this patch. If you do not complete this migration first, you might experience BOSH DNS resolution issues until the change is rolled out to all VMs.
@@ -804,14 +808,14 @@ This release is primarily intended for OpenStack users as images are not availab
 
 **Release Date:** December 16, 2021
 
-<div class="note warning"><strong>Warning:</strong>
-  <p>See the following warnings:</p>
+<div class="note caution">
+  <p><strong>Caution:</strong> See the following warnings:</p>
   <ul>
     <li>VMware recommends upgrading to this Ops Manager patch as soon as possible to address
     <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.</li>
     <li>This vulnerability also affects <%= vars.app_runtime_abbr %>. VMware recommends upgrading to <%= vars.app_runtime_abbr %> v2.12.5 as soon as possible. For more information, see the <a href="https://docs.pivotal.io/application-service/2-12/release-notes/runtime-rn.html#2.12.5"><%= vars.app_runtime_abbr %> v2.12.5 release notes</a>.</li>
-    </ul>
-  </div>
+  </ul>
+</div>
 
 - **[Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
 
@@ -838,7 +842,9 @@ This release is primarily intended for OpenStack users as images are not availab
 
 **Release Date:** December 12, 2021
 
-<p class="note warning"><strong>Warning:</strong> This patch upgrades components using Log4j to version 2.15 in order to mitigate <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. VMware recommends upgrading to Ops Manager v2.10.24, which uses Log4j version 2.16 instead. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.</p>
+<p class="note caution">
+  <strong>Caution:</strong> This patch upgrades components using Log4j to version 2.15 in order to mitigate <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. VMware recommends upgrading to Ops Manager v2.10.24, which uses Log4j version 2.16 instead. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.
+</p>
 
 - **[Incomplete Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
 - **[Feature]** Allow configuration of OM UAA's password policies
@@ -1059,7 +1065,7 @@ This release is primarily intended for OpenStack users as images are not availab
 
 **Release Date:** June 30, 2021
 
-<p class="note warning"><strong> Warning:</strong> This release shipped with a change that affects vSphere users. This change causes unintended recreation of all VMs and disks on the next Apply Changes. This issue is fixed in v2.10.16. However, if you have already re-created all VMs and disks, they are re-created again when you click <strong>Apply Changes</strong> on v2.10.16.</p>
+<p class="note caution"><strong> Caution:</strong> This release shipped with a change that affects vSphere users. This change causes unintended recreation of all VMs and disks on the next Apply Changes. This issue is fixed in v2.10.16. However, if you have already re-created all VMs and disks, they are re-created again when you click <strong>Apply Changes</strong> on v2.10.16.</p>
 
 - **[Known Issue]** Foundations that use multiple vCenter Configs might encounter failures when applying changes with the message `No valid placement found for VM compute and storage requirement`. A bug was introduced in <%= vars.ops_manager %> v2.10.15 that requires the following workaround: the datastores listed in the **Ephemeral and/or Persistent Datastore Names** field of the first vCenter Config must be the union of all **Ephemeral or Persistent Datastore Names** across all vCenter Configs.
 
