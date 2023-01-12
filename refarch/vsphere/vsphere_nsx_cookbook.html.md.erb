@@ -66,19 +66,19 @@ The ESGs have an interface in each port group used by the foundation as well as 
 
 The diagram below illustrates an example of port groups used with an ESG:
 
-<%= image_tag('vsphere-port-groups.png', :alt => "Complex diagram. For more information, see other sections.") %>
+<%= image_tag('../images/vsphere-port-groups.png', :alt => "Complex diagram. For more information, see other sections.") %>
 
 [View a larger version of this diagram](../images/vsphere-port-groups.png).
 
 The diagram below illustrates an example of a network architecture deployment.
 
-<%= image_tag('vsphere-overview-arch.png', :alt => "Complex diagram. For more information, see other sections.") %>
+<%= image_tag('../images/vsphere-overview-arch.png', :alt => "Complex diagram. For more information, see other sections.") %>
 
 [View a larger version of this diagram](../images/vsphere-overview-arch.png).
 
 The diagram below illustrates container-to-container networking. The overlay addresses are wrapped and transported using the underlay deployment subnet.
 
-<%= image_tag('vsphere-pcf-c2c-networking.png', :alt => "Complex diagram. For more information, see other sections.") %>
+<%= image_tag('../images/vsphere-pcf-c2c-networking.png', :alt => "Complex diagram. For more information, see other sections.") %>
 
 [View a larger version of this diagram](../images/vsphere-pcf-c2c-networking.png).
 
@@ -221,7 +221,7 @@ The Application Profiles allow advanced `X-Forwarded` options as well as linking
   1. In the **Name** field, enter `<%= vars.platform_code %>-HTTP`.
   1. Enable the **Insert X-Forwarded-For HTTP header** checkbox.
 
-    <%= image_tag('vsphere-app-profile-pcf-http.png', :alt => "'Edit Profile' screen  shows several fields, including 'Name' and 'Insert X-Forwarded-For HTTP header' enabled.") %>
+    <%= image_tag('../images/vsphere-app-profile-pcf-http.png', :alt => "'Edit Profile' screen  shows several fields, including 'Name' and 'Insert X-Forwarded-For HTTP header' enabled.") %>
 
 1. To create the `<%= vars.platform_code %>-HTTPS` rule:
   1. Click the green **+** button.
@@ -231,7 +231,7 @@ The Application Profiles allow advanced `X-Forwarded` options as well as linking
   1. Enter the service certificate you inserted previously
   1. If encrypting TLS traffic to the Gorouters, select the **Enable Pool Side SSL** checkbox. Otherwise, leave the checkbox deselected.
 
-    <%= image_tag('vsphere-app-profile-pcf-https.png', :alt => "'Edit Profile' screen has table filtered by 'Service Certificates' and a cert in a table.") %>
+    <%= image_tag('../images/vsphere-app-profile-pcf-https.png', :alt => "'Edit Profile' screen has table filtered by 'Service Certificates' and a cert in a table.") %>
 
 1. To create the `<%= vars.platform_code %>-TCP` rule:
   1. Click the green **+** button.
@@ -239,7 +239,7 @@ The Application Profiles allow advanced `X-Forwarded` options as well as linking
   1. In the **Name** field, enter `<%= vars.platform_code %>-TCP`.
   1. From the **Type** dropdown, select **TCP**.
 
-    <%= image_tag('vsphere-app-profile-pcf-tcp.png', :alt => "'Edit Profile' screen has 'Type' dropdown set to TCP.") %>
+    <%= image_tag('../images/vsphere-app-profile-pcf-tcp.png', :alt => "'Edit Profile' screen has 'Type' dropdown set to TCP.") %>
 
 ### <a id="create_app_rules"></a> Step 2.4: Create Application Rules
 
@@ -266,7 +266,7 @@ To create the Application Rules:
   1. For **Name**, enter `reqadd X-Forwarded-Proto:\ http`.
   1. For **Script**, enter `reqadd X-Forwarded-Proto:\ http`.
 
-<%= image_tag('vsphere-lb-app-rules.png', :alt => "'Add Application Rule' modal shows 'Name' and 'Script' text fields filled with the script described in the steps above.") %>
+<%= image_tag('../images/vsphere-lb-app-rules.png', :alt => "'Add Application Rule' modal shows 'Name' and 'Script' text fields filled with the script described in the steps above.") %>
 
 ### <a id="create_monitors"></a> Step 2.5: Create Monitors For Pools
 
@@ -329,7 +329,7 @@ To create a pool for `http-routers`:
       <p class='note'><strong>Note:</strong> ESG assumes that internal traffic from the ESG load balancer to the Gorouters is trusted because it is on a VXLAN secured within NSX. If using encrypted TLS traffic to the Gorouter inside the VXLAN, enter <code>443</code> for <strong>Port</strong>.</p>
   1. For **Monitor Port**, enter `8080`.
 
-<%= image_tag('vsphere-edit-pool-bordered.png', :alt => "'Edit Pool' screen shows Name with 'http-routers'. Members table has several rows with Monitor port of 8080.") %>
+<%= image_tag('../images/vsphere-edit-pool-bordered.png', :alt => "'Edit Pool' screen shows Name with 'http-routers'. Members table has several rows with Monitor port of 8080.") %>
 
 #### <a id="tcp_router_pools"></a> Step 2.6b: Create Pool for `tcp-routers`
 
@@ -434,7 +434,7 @@ To create the Virtual Servers:
   1. From the **Default Pool** dropdown, select **tcp-routers**. This connects this VIP to the pool of resources being load-balanced to.
   1. (Optional)	If you want to configure a connection limit, enter an integer in **Connection Limit**.
   1. (Optional)	If you want to configure a connection rate limit, enter an integer in **Connection Rate Limit**.
-    <%= image_tag('vsphere-tcprouter-vip.png', :alt => "Modal 'Edit Virtual Server' on 'General' tab. Includes several fields. 'Connection Rate Limit' is a text field.") %>
+    <%= image_tag('../images/vsphere-tcprouter-vip.png', :alt => "Modal 'Edit Virtual Server' on 'General' tab. Includes several fields. 'Connection Rate Limit' is a text field.") %>
 
 1. To create the `SSH-DiegoBrains` Virtual Server:
   1. Click the green **+** button.
@@ -447,7 +447,7 @@ To create the Virtual Servers:
   1. From the **Default Pool** dropdown, select **diego-brains**. This connects this VIP to the pool of resources being load-balanced to.
   1. (Optional)	If you want to configure a connection limit, enter an integer in **Connection Limit**.
   1. (Optional)	If you want to configure a connection rate limit, enter an integer in **Connection Rate Limit**.
-    <%= image_tag('vsphere-vip-3.png', :alt => "Modal 'New Virtual Server' has same fields as 'Edit Virtual Server' modal.") %>
+    <%= image_tag('../images/vsphere-vip-3.png', :alt => "Modal 'New Virtual Server' has same fields as 'Edit Virtual Server' modal.") %>
 
 
 ## <a id="nat_snat"></a> Step 3: Configure NAT/SNAT
