@@ -123,6 +123,9 @@ With each release of a new <%= vars.ops_manager %> version, BOSH Director may re
 
 Check the required machine specifications for <%= vars.ops_manager %> <%= vars.v_major_version %>. These specifications are specific to your IaaS. If these specifications do not match your existing <%= vars.ops_manager %> deployment, modify the values of your <%= vars.ops_manager %> VM instance. For example, if the boot disk of your existing <%= vars.ops_manager %> deployment is 50&nbsp;GB and the new <%= vars.ops_manager %> deployment requires 100&nbsp;GB, increase the size of your <%= vars.ops_manager %> boot disk to 100&nbsp;GB.
 
+If you use Azure, review your VM type setting. You can use either Generation 1
+or Generation 2 as your default VM type. For more information, see [Azure Generation 2 VM Types](../azure/config-manual.html#azure-vm-types) in _Configuring BOSH Director on Azure Manually_.
+
 ### <a id='patch'></a> Configure <%= vars.app_runtime_abbr %>
 
 With each release of a new <%= vars.ops_manager %> version, <%= vars.app_runtime_abbr %> may require specific updates before upgrading to the new version. For more information, see the following sections for what action to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>:
@@ -178,9 +181,24 @@ To update an add-on manifest:
 
 If you use any other BOSH-managed add-ons in your deployment, you should verify OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Addons Block](https://bosh.io/docs/runtime-config.html#addons) in _Director Runtime Config_ in the BOSH documentation.
 
+### <a id="azure-blobstore-addon"></a> Check Backup and Restore External Blobstore Add-On
+
+If you have enabled external blobstore backups for an Azure Blobstore using the blobstore add-on, you must update your runtime configuration to remove the `sdk-preview` add-on before upgrading. If you do not remove this job, upgrading <%= vars.app_runtime_abbr %> fails with the error below:
+
+```
+Preparing deployment: Preparing deployment (00:00:01)
+  L Error: Colocated job 'azure-blobstore-backup-restorer' is already added to the instance group 'backup-restore'.
+```
+
+After removing this job from your runtime configuration, ensure that the **Enable backup and restore** checkbox is enabled in the **File Storage** pane of the <%= vars.app_runtime_abbr %> tile.
+
+For more information, see [Azure Blobstores](../install/backup-restore/enabling-external-blobstore-backups.html#azure) in _Enabling External Blobstore Backups_.
+
 ## <a id='cert-expiry'></a> Check Certificate Authority Expiration Dates
 
 Depending on the requirements of your deployment, you may need to rotate your certificate authority (CA) certificates. The non-configurable certificates in your deployment expire every two years. You must regenerate and rotate them so that critical components do not face a complete outage.
+
+<p class="note"><strong>Note:</strong> <%= vars.ops_manager %> uses SHA-2 certificates and hashes by default. You can convert existing SHA-1 hashes into SHA-2 hashes by rotating your <%= vars.ops_manager %> certificates using the procedure described in <a href="../security/pcf-infrastructure/rotate-saml-ca.html">Rotating Identity Provider SAML Certificates</a>.</p>
 
 To retrieve information about all the RSA and CA certificates for the BOSH Director and other products in your deployment, you can run `GET /api/v0/deployed/certificates?expires_within=TIME` using the <%= vars.ops_manager %> API.
 
@@ -308,6 +326,10 @@ If you are not using Healthwatch, you can do some or all of the following to col
 * Check that <%= vars.ops_manager %> persistent disk usage is below 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk) above.
 
 * (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see [Viewing Logs in the Command Line Interface](https://docs.pivotal.io/application-service/devguide/deploy-apps/streaming-logs.html#view) in _App Logging in <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
+
+### <a id="push-test-app"></a> Push and Scale a Test App
+
+Check that a test app can be pushed and scaled horizontally, manually, or through automated testing. This check ensures that the platform supports apps as expected before the upgrade.
 
 ### <a id='validate-mysql-cluster-health'></a> Validate MySQL Cluster Health
 
