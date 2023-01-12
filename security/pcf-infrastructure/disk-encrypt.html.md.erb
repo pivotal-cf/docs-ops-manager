@@ -91,15 +91,17 @@ To initiate or rotate disk encryption for BOSH-deployed VMs on vSphere v6.5 or l
 
     1. Reupload the stemcell used by <%= vars.k8s_runtime_abbr %>:
 
-      	```
-          sudo cp /var/tempest/stemcells/STEMCELL-NAME.tgz /home/ubuntu/.
-          sudo chown ubuntu:ubuntu STEMCELL-NAME.tgz
-          bosh upload-stemcell STEMCELL-NAME.tgz --fix
-      	```
-          Where `STEMCELL-NAME` is the name of the stemcell you want to reupload.
-      	For example:
+        ```
+        sudo cp /var/tempest/stemcells/STEMCELL-NAME.tgz /home/ubuntu/.
+        sudo chown ubuntu:ubuntu STEMCELL-NAME.tgz
+        bosh upload-stemcell STEMCELL-NAME.tgz --fix
+        ```
+        
+        Where `STEMCELL-NAME` is the name of the stemcell you want to reupload.
+      	
+        For example:
 
-	      <pre class="terminal">
+	<pre class="terminal">
         sudo cp /var/tempest/stemcells/bosh-stemcell-621.84-vsphere-esxi-ubuntu-xenial-go_agent.tgz /home/ubuntu/.
         sudo chown ubuntu:ubuntu bosh-stemcell-621.84-vsphere-esxi-ubuntu-xenial-go_agent.tgz
         bosh upload-stemcell bosh-stemcell-621.84-vsphere-esxi-ubuntu-xenial-go_agent.tgz --fix
@@ -123,13 +125,13 @@ For more information about how BOSH integrates with IaaS-level disk encryption o
 Unless you are using Azure managed disks, you must manually recreate disks on BOSH-deployed VMs after you have added or rotated disk encryption keys. To manually recreate disks:
 
 1. Configure <%= vars.ops_manager %> to encrypt VM root, ephemeral disk, and persistent disk on next deploy:
-	* **Root File System:** To recreate the root file system for VMs, you must upload a new stemcell. If you are already running the latest stemcell, you can:
-    	* Wait until a new stemcell comes out. This typically takes less than two weeks.
-    	* If propagating disk encryption is urgent, contact [Support](https://support.pivotal.io).
-	* **Ephemeral Disks:** In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate VMs deployed by the BOSH Director** checkbox.
-	* **Persistent Disks**
-    	* <%= vars.platform_old_pivotal %> (<%= vars.platform_code_pivotal %>) v2.3 and later: In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate All Persistent Disks** checkbox.
-    	* <%= vars.platform_code_pivotal %> v2.2 and earlier: In the **Resource Config** pane of all tiles, change the disk or VM sizes of all VMs that you need to encrypt.
+    * **Root File System:** To recreate the root file system for VMs, you must upload a new stemcell. If you are already running the latest stemcell, you can:
+        * Wait until a new stemcell comes out. This typically takes less than two weeks.
+        * If propagating disk encryption is urgent, contact [Support](https://support.pivotal.io).
+    * **Ephemeral Disks:** In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate VMs deployed by the BOSH Director** checkbox.
+    * **Persistent Disks**
+        * <%= vars.platform_old_pivotal %> (<%= vars.platform_code_pivotal %>) v2.3 and later: In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate All Persistent Disks** checkbox.
+        * <%= vars.platform_code_pivotal %> v2.2 and earlier: In the **Resource Config** pane of all tiles, change the disk or VM sizes of all VMs that you need to encrypt.
 
 1. Click **Review Pending Changes**.
 
