@@ -11,8 +11,8 @@ This topic describes how to configure your firewall and how to verify that compo
 <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> require the following open TCP ports:
 
 * **25555:** Routes from <%= vars.ops_manager %> VM to the BOSH Director.
-* **443:** If configured, routes to your own load balancer.
-* **80:** If configured, routes to your own load balancer.
+* **443:** Routes to HAProxy or, if configured, your own load balancer.
+* **80:** Routes to HAProxy or, if configured, your own load balancer.
 * **8844:** Routes from <%= vars.ops_manager %> VM to BOSH CredHub.
 * **8443:** Routes from <%= vars.ops_manager %> VM to BOSH Director UAA.
 * **6868:** Routes to the BOSH Agent.
@@ -24,7 +24,7 @@ documentation](https://docs.pivotal.io/application-service/concepts/#diagram).
 If you want to use an external NTP server, UDP port `123` must be open.
 
 For more information about required ports for additional installed products, see
-[Routing Network Communications](https://docs.pivotal.io/application-service/3-0/operating/networking/routing-network-paths.html).
+[Routing Network Communications](https://docs.pivotal.io/application-service/2-10/operating/networking/routing-network-paths.html).
 
 ### <a id='example'></a> Example: Configure Firewall with iptables
 
@@ -54,7 +54,7 @@ The following example procedure uses `iptables` commands to configure a firewall
     export GATEWAY_INTERNAL_IP=10.0.0.1
     export GATEWAY_EXTERNAL_IP=203.0.113.242
     export VMWARETANZU_IP=10.0.0.2
-    export LOAD_BALANCER_IP=10.0.0.254
+    export HA_PROXY_IP=10.0.0.254
     ```
 
 1. To configure IP rules for the specified chains, run:
@@ -68,9 +68,9 @@ The following example procedure uses `iptables` commands to configure a firewall
 
       ```
       iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-      iptables -t nat -A POSTROUTING -d $LOAD_BALANCER_IP -s $INTERNAL_NETWORK_RANGE \
+      iptables -t nat -A POSTROUTING -d $HA_PROXY_IP -s $INTERNAL_NETWORK_RANGE \
               -p tcp --dport 80 -j SNAT --to $GATEWAY_INTERNAL_IP
-      iptables -t nat -A POSTROUTING -d $LOAD_BALANCER_IP -s $INTERNAL_NETWORK_RANGE \
+      iptables -t nat -A POSTROUTING -d $HA_PROXY_IP -s $INTERNAL_NETWORK_RANGE \
               -p tcp --dport 443 -j SNAT --to $GATEWAY_INTERNAL_IP
   	  ```
   * **PREROUTING:**
@@ -79,13 +79,13 @@ The following example procedure uses `iptables` commands to configure a firewall
       iptables -t nat -A PREROUTING -d $GATEWAY_EXTERNAL_IP -p tcp --dport \
                25555 -j DNAT --to $VMWARETANZU_IP
       iptables -t nat -A PREROUTING -d $GATEWAY_EXTERNAL_IP -p tcp --dport \
-               443 -j DNAT --to $LOAD_BALANCER_IP
+               443 -j DNAT --to $HA_PROXY_IP
       iptables -t nat -A PREROUTING -d $GATEWAY_EXTERNAL_IP -p tcp --dport \
-               80 -j DNAT --to $LOAD_BALANCER_IP
+               80 -j DNAT --to $HA_PROXY_IP
       iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8443 -j DNAT \
             --to $VMWARETANZU_IP:443
       iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT \
-            --to $LOAD_BALANCER_IP:80
+            --to $HA_PROXY_IP:80
       iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8022 -j DNAT \
             --to $VMWARETANZU_IP:22
       iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8080 -j DNAT \
@@ -120,4 +120,4 @@ _Logging Into <%= vars.ops_manager %> VMs with SSH_.
 1. Review the output of the command and fix any blocked routes. If the output displays an error message, review the firewall logs to determine which blocked
 route or routes you need to clear.
 
-1. Repeat steps 1-3 with the BOSH Director VM.
+1. Repeat steps 1-3 with the BOSH Director VM and the HAProxy VM.

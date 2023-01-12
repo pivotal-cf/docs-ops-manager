@@ -37,7 +37,7 @@ or the <%= vars.ops_manager %> API, use the UI or API to change the property.
 You can also use the <%= vars.ops_manager %> API to view the BOSH Director manifest,
 view the list of overrides for the BOSH Director and runtime configs,
 and delete the overrides.
-For more information, see [Advanced Manifest Configuration](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Manifest-Configuration)
+For more information, see [Advanced Manifest Configuration](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration)
 in the <%= vars.ops_manager %> API documentation.
 
 
@@ -109,7 +109,7 @@ To override properties in the BOSH Director manifest:
 [How to Enable Advanced Mode in the <%= vars.ops_manager %>](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 For more information about Advanced Mode,
-see [Advanced Mode](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Mode)
+see [Advanced Mode](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Mode)
 in the <%= vars.ops_manager %> API documentation.
 
   <div class="note caution"><strong>Caution:</strong>
@@ -122,7 +122,7 @@ in the <%= vars.ops_manager %> API documentation.
   </div>
 
 1. Use the `/api/v0/staged/director/overrides` endpoint. For more information, see
-[Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1overrides/put)
+[Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1overrides/put)
 in the <%= vars.ops_manager %> API documentation.
 
 1. After you have completed your changes, disable Advanced Mode by following the procedure in
@@ -137,7 +137,7 @@ To override properties in the tile manifest:
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 For more information about Advanced Mode,
-see [Advanced Mode](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Mode)
+see [Advanced Mode](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Mode)
 in the <%= vars.ops_manager %> API documentation.
   <div class="note caution"><strong>Caution:</strong>
     <ul>
@@ -148,10 +148,10 @@ in the <%= vars.ops_manager %> API documentation.
     </ul>
   </div>
 
-1. Use the `/api/v0/staged/products` endpoint to get and record the product GUID from the output of the command. For more information, see [All staged products](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Products/paths/~1api~1v0~1staged~1products/get) in the Ops Manager API documentation.
+1. Use the `/api/v0/staged/products` endpoint to get and record the product GUID from the output of the command. For more information, see [All staged products](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Products/paths/~1api~1v0~1staged~1products/get) in the Ops Manager API documentation.
 
 1. Use the `/api/v0/staged/products/PRODUCT-GUID/overrides` endpoint. Where `PRODUCT-GUID` is the GUID you recorded in the previous step. For more information, see
-[Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1products~1{product_guid}~1overrides/put)
+[Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1products~1{product_guid}~1overrides/put)
 in the Ops Manager API documentation.
 
 1. After you have completed your changes, disable Advanced Mode by following the procedure in
@@ -166,7 +166,7 @@ To override properties in the runtime configs:
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 For more information about Advanced Mode,
-see [Advanced Mode](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Mode)
+see [Advanced Mode](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Mode)
 in the <%= vars.ops_manager %> API documentation.
   <div class="note caution"><strong>Caution:</strong>
     <ul>
@@ -181,7 +181,7 @@ in the <%= vars.ops_manager %> API documentation.
   * [BOSH DNS job spec](https://github.com/cloudfoundry/bosh-dns-release/blob/master/jobs/bosh-dns/spec) in GitHub.
 This file shows the properties and defaults for the `bosh_dns` add-on in the `ops_manager_dns_runtime`.
   * [Provide a new list of runtime config overrides for the BOSH
-Director](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1runtime_configs~1overrides/put)
+Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1runtime_configs~1overrides/put)
 in the <%= vars.ops_manager %> API documentation.
 
 1. After you have completed your changes, disable Advanced Mode by following the procedure in

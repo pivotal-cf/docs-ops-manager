@@ -51,8 +51,8 @@ Manager API endpoint.
 
 #### <a id='azure-vm-types'></a> Azure Generation 2 VM Types
 
-Azure Government Cloud uses Azure Generation 2 VM types by default. If necessary, you can re-configure the VMs in your
-deployment to use Azure Generation 1 VM types.
+You can use Generation 2 Azure VM types as the default VM type.
+For more information, see the <a href="../release-notes.html#2-10-3">Ops Manager v2.10.3 Release Notes</a>.
 
 The following table shows the mapping between Generation 1 and Generation 2 Azure VM types:
 
@@ -107,17 +107,10 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 	* **Resource Group Name**: Enter the name of your resource group, which you exported as the `$RESOURCE_GROUP` environment variable.
 	* **BOSH Storage Account Name**: Enter the name of your storage account, which you exported as the `$STORAGE_NAME` environment variable.
 
-4. From the **Storage Tier ephemeral / persistent disks** dropdown, select the storage option that corresponds with your Azure subscription:
-	* For HDD-based storage, select **Standard_LRS**.
-	* For SSD-based storage, select **Premium_LRS**.
-
-5. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** checkbox. This overrides the default behavior, which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
-
-    ![alt-text=""](../common/images/azure/azure-storage-tier.png)
-
 1. For **Cloud Storage Type**, select one of the following options based on your Azure VM storage settings.
 
-    * **Use Managed Disks**: Select this option if you use Azure Managed Disks. For more information, see [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documentation for more information.
+    * **Use Managed Disks**: Select this option if you use Azure Managed Disks. For more information, see [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documention.
+    For **Storage Account Type**, select the storage option that corresponds with your Azure subscription. Select **Standard_LRS** for HDD-based storage or **Premium_LRS** for SSD-based storage.
 
         ![alt-text=""](../common/images/azure/azure-managed-disk.png)
 

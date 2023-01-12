@@ -127,7 +127,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
           </tr>
           <tr>
             <th>Region</th>
-            <td>A region that supports three availability zones. For help selecting th correct region for your deployment,
+            <td>A region that supports three availability zones. For help selecting the correct region for your deployment,
               see the <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones">Google documentation about regions and zones</a>.</td>
           </tr>
           <tr>
@@ -635,18 +635,6 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 1. For the **Name**, enter `pcf-global-pcf`.
 
 1. Select **Backend configuration**
-  1. From the drop-down menu, select **Backend services** > **Create a backend service**.
-  1. Complete the form as follows:
-    * **Name**: `pcf-http-lb-backend`.
-    * **Protocol**: `HTTP`.
-    * **Named port**: `http`.
-    * **Timeout**: `10 seconds`.
-    * Under **Backends** > **New backend**, select the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
-    * Click **Add backend**, select the **Instance group** that corresponds to the second zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-b)`. Click **Done**.
-    * Click **Add backend**, select the **Instance group** that corresponds to the third zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-c)`. Click **Done**.
-    * **Health check**: Select the `pcf-cf-public` health check that you created.
-    * **Cloud CDN**: Ensure Cloud CDN is disabled.
-
     1. From the dropdown, select **Backend services** > **Create a backend service**.
     1. Complete the form as follows:
 

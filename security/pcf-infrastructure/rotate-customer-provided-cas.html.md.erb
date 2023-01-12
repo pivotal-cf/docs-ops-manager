@@ -37,7 +37,7 @@ You can identify customer-provided CAs in one of the following ways:
   1. Record the **Certificate name**. That is your customer-provided CA CredHub path.
 
 - **From the <%= vars.ops_manager %> API**
-  1. Make a call to `GET` the `api/v0/deployed/certificates` endpoint. For more information about the endpoint, see [Getting Information About Certificates from Products](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Certificates/paths/~1api~1v0~1deployed~1certificates/get) in the <%= vars.ops_manager %> API documentation.
+  1. Make a call to `GET` the `api/v0/deployed/certificates` endpoint. For more information about the endpoint, see [Getting Information About Certificates from Products](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Certificates/paths/~1api~1v0~1deployed~1certificates/get) in the <%= vars.ops_manager %> API documentation.
   1. Find customer-provided CAs with the following properties:
       - `"configurable: : true`<br/>
       - `"location" : "credhub"`<br/>
