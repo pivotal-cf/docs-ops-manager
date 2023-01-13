@@ -77,9 +77,14 @@ The columns display the following information:
 </tr>
 </table>
 
-As of Ops Manager 2.10.52, it is possible to directly download logs for instances and instance groups from the Status page for a product tile. The logs column for each instance group contains two links (see image below): the first link retrieves logs for the instance, the second retrieves logs for the entire instance group. Clicking either link will show a loading icon as logs are queued for download. When logs are ready for download, the icon changes to a download link. As in prior Ops Manager versions, log files may also be downloaded from the **Logs** tab.
+As of <%= vars.ops_manager %> v2.10.52, you can directly download logs for instances and instance groups from the **Status** page for a product tile.
+The logs column for each instance group contains two links. The first link retrieves logs for the instance.
+The second retrieves logs for the entire instance group. Clicking either link shows a loading icon as logs are queued for download.
+When the logs are ready for download, the icon changes to a download link.
 
-![alt="The Pivotal Elastic Runtime Installation Dashboard. The image shows the 'Status' tab selected with an example of the log download links appearing in versions Ops Manager 2.10.52 and above."](images/status-tab-direct-download.png)
+As in previous <%= vars.ops_manager %> versions, you can also download log files from the **Logs** tab.
+
+![alt-text="The downloaded log links appear on the Status tab."](images/status-tab-direct-download.png)
 
 ### <a id="ops-manager"></a> <%= vars.ops_manager %> VM Disk Space
 
