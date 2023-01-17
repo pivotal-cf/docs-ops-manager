@@ -353,11 +353,11 @@ The routable IP address requirements and recommendations for <%= vars.k8s_runtim
 These considerations and recommendations apply to networks, subnets, and IP address spacing for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments:
 
 * Allocate a large network block for <%= vars.k8s_runtime_abbr %> clusters and Pods:
-	* **<%= vars.k8s_runtime_abbr %> clusters:** Configure a `172.24.0.0/14` network block.
-	* **<%= vars.k8s_runtime_abbr %> pods:** Configure a `172.28.0.0/14` network block.
-  <br>
-  <br>
-	NSX-T creates IP address blocks of `/24` from these `/14` networks by default each time a new cluster or Pod is created. You can configure this CIDR range for <%= vars.k8s_runtime_abbr %> in <%= vars.ops_manager %>.
+
+    * **<%= vars.k8s_runtime_abbr %> clusters:** Configure a `172.24.0.0/14` network block.
+    * **<%= vars.k8s_runtime_abbr %> pods:** Configure a `172.28.0.0/14` network block.
+
+    NSX-T creates IP address blocks of `/24` from these `/14` networks by default each time a new cluster or Pod is created. You can configure this CIDR range for <%= vars.k8s_runtime_abbr %> in <%= vars.ops_manager %>.
 
 * When deploying <%= vars.k8s_runtime_abbr %> with <%= vars.ops_manager %>, you must allow for a block of address space for dynamic networks that <%= vars.k8s_runtime_abbr %> deploys for each namespace. The recommended address space allows you to view a queue of which jobs relate to each service.
 
