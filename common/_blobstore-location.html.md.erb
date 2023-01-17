@@ -17,24 +17,6 @@
                 1. Construct a URL using your region's endpoint. For example, if you are using the `us-west-2` region, the URL you create would be <code>https://s3.us-west-2.amazonaws.com</code>. Enter this URL into the **S3 Endpoint** field.
             1. **If you are using a non-public S3-compatible endpoint:**
                 1. Enter the URL for the non-public endpoint.
-                1. SSH into the <%= vars.ops_manager %> VM by running:
-
-                    ```console
-                    ssh ubuntu@OPS-MANAGER-FQDN
-                    ```
-
-                    Where `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> deployment.
-
-                1. Copy the custom public CA certificate you used to sign the S3 endpoint into the `/etc/ssl/certs` directory on the <%= vars.ops_manager %> VM.
-                1. On the <%= vars.ops_manager %> VM, import the custom CA certificate into the <%= vars.ops_manager %> VM truststore by running:
-
-                    ```console
-                    sudo update-ca-certificates -f -v
-                    ```
-
-                1. Add this custom CA certificate into the **Trusted Certificates** field in the **Security** page. For instructions, see [Security Page](#security).
-            1. **If you are using a non-public S3-compatible endpoint:**
-                1. Enter the URL for the non-public endpoint.
                 1. Add the custom public CA certificate you used to sign the S3 endpoint to the **Trusted Certificates** field on the **Director Config** page.
 
         1. **Bucket Name:** Enter the name of the S3 bucket.
