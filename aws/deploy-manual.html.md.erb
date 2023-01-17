@@ -9,7 +9,6 @@ Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Prepari
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on AWS](config-manual.html).
 
-
 ## <a id='pcfaws-om-ami'></a> Step 1: Launch an <%= vars.ops_manager %> AMI
 
 To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
@@ -30,15 +29,15 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
 1. Paste the AMI ID for your region into the search bar and press enter.
 
-  <p class="note"><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the <a href="https://network.pivotal.io">VMware Tanzu Network</a> and file a Support ticket.</p>
+    <p class="note"><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the <a href="https://network.pivotal.io">VMware Tanzu Network</a> and file a Support ticket.</p>
 
 2. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS), perform the following additional steps:
 
-  1. Right click the row that lists your AMI and click **Copy AMI**.
-  2. Select your **Destination region**.
-  3. Select **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) from the _Copying an AMI_ topic in the AWS documentation.
-  4. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
-  5. Click **Copy AMI**. You can use the new AMI you copied for the following steps.
+    1. Right click the row that lists your AMI and click **Copy AMI**.
+    2. Select your **Destination region**.
+    3. Select **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) from the _Copying an AMI_ topic in the AWS documentation.
+    4. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
+    5. Click **Copy AMI**. You can use the new AMI you copied for the following steps.
 
 3. Select the row that lists your <%= vars.ops_manager %> AMI and click **Launch instance from AMI**.
 
@@ -50,19 +49,20 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
 7. In the **Network settings** section, click **Edit** and configure the following for your instance:
 
-  * **Network**: Select the VPC that you created.
-  * **Subnet**: Select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
-  * **Auto-assign for Public IP**: Select **Enable** to allow traffic from public IP addresses, or **Disable** to allow traffic only from private IP addresses.
-  * **Firewall (security groups)**: Click **Select an existing security group** and select the `pcf-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-  * For all other fields, accept the default values.
+    * **Network**: Select the VPC that you created.
+    * **Subnet**: Select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
+    * **Auto-assign for Public IP**: Select **Enable** to allow traffic from public IP addresses, or **Disable** to allow traffic only from private IP addresses.
+    * **Firewall (security groups)**: Click **Select an existing security group** and select the `pcf-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * For all other fields, accept the default values.
 
 8. In the **Configure storage** section, adjust the **Size (GiB)** value.
 The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
 
 1. (Optional) If you are using IAM roles, perform the following additional steps:
-  1. Click **Advanced details** to expand the section.
-  2. Select the IAM role associated with the role created in [Create an IAM Role or User for <%= vars.ops_manager%>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %>_.
-  3. For all other fields, accept the default values.
+
+    1. Click **Advanced details** to expand the section.
+    2. Select the IAM role associated with the role created in [Create an IAM Role or User for <%= vars.ops_manager%>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %>_.
+    3. For all other fields, accept the default values.
 
 2. In the **Summary** section, ensure that the number of instances is 1.
 
@@ -80,54 +80,54 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 1. Under **Application Load Balancer**, click **Create**.
 
 1. For **Step 1: Configure Load Balancer**, do the following:
-  1. Under **Basic Configuration**, do the following:
+    1. Under **Basic Configuration**, do the following:
 
-    * For **Name**, enter `pcf-web-elb`.
-    * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
-    * For **IP address type**, select the type of IP addresses that you want to allow.
-  2. Under **Listeners**, click **Add listener**. For **Load Balancer Protocol**, select **HTTPS**.
-  3. Under **Availability Zones**, select your VPC.
-  4. Check all availability zones. For each availability zone, select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
-  5. Click **Next: Configure Security Settings**.
+        * For **Name**, enter `pcf-web-elb`.
+        * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
+        * For **IP address type**, select the type of IP addresses that you want to allow.
+    2. Under **Listeners**, click **Add listener**. For **Load Balancer Protocol**, select **HTTPS**.
+    3. Under **Availability Zones**, select your VPC.
+    4. Check all availability zones. For each availability zone, select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
+    5. Click **Next: Configure Security Settings**.
 
 2. For **Step 2: Configure Security Settings**, do the following:
-  1. Under **Select default certificate**, do one of the following:
+    1. Under **Select default certificate**, do one of the following:
 
-    * If you already have a certificate from AWS Certificate Manager (ACM), select **Choose a certificate from ACM**.
-    * If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
+        * If you already have a certificate from AWS Certificate Manager (ACM), select **Choose a certificate from ACM**.
+        * If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
 
-    <p class="note"><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate, leaving the **Certificate chain** entry blank.</p>
+        <p class="note"><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate, leaving the <strong>Certificate chain</strong> entry blank.</p>
 
-  2. Click **Next: Configure Security Groups**.
+    2. Click **Next: Configure Security Groups**.
 
 3. For **Step 3: Configure Security Groups**, do the following:
-  1. Under **Assign a security group**, select **Select an existing security group**.
-  2. From the list of security groups, select the `pcf-web-elb-security-group` security group that you configured in [Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-  3. Click **Next: Configure Routing**.
+    1. Under **Assign a security group**, select **Select an existing security group**.
+    2. From the list of security groups, select the `pcf-web-elb-security-group` security group that you configured in [Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    3. Click **Next: Configure Routing**.
 
 4. For **Step 4: Configure Routing**, do the following:
-  1. Under **Target Group**, enter the following values:
+    1. Under **Target Group**, enter the following values:
 
-    * **Name**: Enter `pcf-web-elb-target-group`.
-    * **Target type**: Select **Instance**.
-    * **Protocol**: Select **HTTP**.
-    * **Port**: Enter `80`.
+        * **Name**: Enter `pcf-web-elb-target-group`.
+        * **Target type**: Select **Instance**.
+        * **Protocol**: Select **HTTP**.
+        * **Port**: Enter `80`.
 
-  2. Under **Health checks**, enter the following values:
+    2. Under **Health checks**, enter the following values:
 
-    * **Protocol**: Select **HTTP**.
-    * **Path**: Enter `/health`.
+        * **Protocol**: Select **HTTP**.
+        * **Path**: Enter `/health`.
 
-  3. Under **Advanced health check settings**, enter the following values:
+    3. Under **Advanced health check settings**, enter the following values:
 
-    * **Port**: Select **override** and enter `8080`.
-    * **Healthy threshold**: Enter `6`.
-    * **Unhealthy threshold**: Enter `3`.
-    * **Timeout**: Enter `3`.
-    * **Interval**: Enter `5`.
-    * **Success codes**: Enter `200`.
+        * **Port**: Select **override** and enter `8080`.
+        * **Healthy threshold**: Enter `6`.
+        * **Unhealthy threshold**: Enter `3`.
+        * **Timeout**: Enter `3`.
+        * **Interval**: Enter `5`.
+        * **Success codes**: Enter `200`.
 
-  4. Click **Next: Register Targets**.
+    4. Click **Next: Register Targets**.
 
 5. For **Step 5: Register Targets**, accept the default values and click **Next: Review**.
 
@@ -141,38 +141,38 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 1. Select **Network Load Balancer**.
 
 1. For **Step 1: Configure Load Balancer**, do the following:
-  1. Under **Basic Configuration**, do the following:
+    1. Under **Basic Configuration**, do the following:
 
-    * For **Name**, enter `pcf-ssh-elb`.
-    * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
-    * For **IP address type**, select the type of IP addresses that you want to allow.
+        * For **Name**, enter `pcf-ssh-elb`.
+        * For **Scheme**, select **internet-facing** to allow traffic from public IP addresses, or **internal** to allow traffic only from private IP addresses.
+        * For **IP address type**, select the type of IP addresses that you want to allow.
 
-  2. Under **Listeners**, edit the existing listener. For **Load Balancer Protocol**, select **TCP**, for **Load Balancer Port**, enter `2222`.
-  3. Under **Availability Zones**, select your VPC.
-  4. Check all availability zones. For each availability zone, select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
-  5. Click **Next: Configure Security Settings**.
+    2. Under **Listeners**, edit the existing listener. For **Load Balancer Protocol**, select **TCP**, for **Load Balancer Port**, enter `2222`.
+    3. Under **Availability Zones**, select your VPC.
+    4. Check all availability zones. For each availability zone, select `pcf-public-subnet-az0` to allow traffic from public IP addresses, or `pcf-management-subnet-az0` to allow traffic only from private IP addresses.
+    5. Click **Next: Configure Security Settings**.
 
 2. On the **Configure Security Settings** page, ignore the **Improve your load balancer's security** error message and click **Next: Configure Routing**.
 
 3. For **Step 3: Configure Routing**, do the following:
-  1. Under **Target Group**, enter the following values:
+    1. Under **Target Group**, enter the following values:
 
-    * **Name**: Enter `pcf-ssh-elb-target-group`.
-    * **Target type**: Select **Instance**.
-    * **Protocol**: Select **TCP**.
-    * **Port**: Enter `2222`.
+        * **Name**: Enter `pcf-ssh-elb-target-group`.
+        * **Target type**: Select **Instance**.
+        * **Protocol**: Select **TCP**.
+        * **Port**: Enter `2222`.
 
-  2. Under **Health checks**, enter the following values:
+    2. Under **Health checks**, enter the following values:
 
-    * **Protocol**: Select **TCP**.
+        * **Protocol**: Select **TCP**.
 
-  3. Under **Advanced health check settings**, enter the following values:
+    3. Under **Advanced health check settings**, enter the following values:
 
-    * **Port**: Select **traffic port**.
-    * **Healthy threshold**: Enter `6`.
-    * **Interval**: Select `10 seconds`.
+        * **Port**: Select **traffic port**.
+        * **Healthy threshold**: Enter `6`.
+        * **Interval**: Select `10 seconds`.
 
-  4. Click **Next: Register Targets**.
+    4. Click **Next: Register Targets**.
 
 4. For **Step 4: Register Targets**, accept the default values and click **Next: Review**.
 
@@ -187,9 +187,9 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Configure the load balancer with the following information:
 
-  * **Load Balancer name**: Enter `pcf-tcp-elb`.
-  * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-  * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** check box is not selected. If you want to allow traffic only from private IP addresses, select this check box.
+    * **Load Balancer name**: Enter `pcf-tcp-elb`.
+    * **Create LB Inside**: Select the `pcf-vpc` VPC that you created in [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * If you want to allow traffic from public IP addresses, ensure that the **Create an internal load balancer** check box is not selected. If you want to allow traffic only from private IP addresses, select this check box.
 
 2. Under **Listener Configuration**, add the following rules:
 
@@ -261,8 +261,9 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 ## <a id='pcfaws-dns'></a> Step 5: Configure DNS Records
 
 1. Perform the following steps for all three of the load balancers you created in previous steps, named `pcf-web-elb`, `pcf-ssh-elb`, and `pcf-tcp-elb`:
-  1. From the **Load Balancers** page, select the load balancer.
-  1. On the **Description** tab, locate the **Basic Configuration** section and record the **DNS name** of the load balancer.
+
+    1. From the **Load Balancers** page, select the load balancer.
+    1. On the **Description** tab, locate the **Basic Configuration** section and record the **DNS name** of the load balancer.
 
 1. Click **Instances** on the left navigation menu to view your EC2 instances.
 
@@ -272,10 +273,10 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Navigate to your DNS provider and create the following CNAME and A records:
 
-  * CNAME: `*.apps.DOMAIN.com` and `*.system.DOMAIN.com` points to the DNS name of the `pcf-web-elb` load balancer.
-  * CNAME: `ssh.system.DOMAIN.com` points to the DNS name of the `pcf-ssh-elb` load balancer.
-  * CNAME: `tcp.system.DOMAIN.com` points to the DNS name of the `pcf-tcp-elb` load balancer.
-  * A: `pcf.DOMAIN.com` points to the public IP address of the `pcf-ops-manager` EC2 instance.
+    * CNAME: `*.apps.DOMAIN.com` and `*.system.DOMAIN.com` points to the DNS name of the `pcf-web-elb` load balancer.
+    * CNAME: `ssh.system.DOMAIN.com` points to the DNS name of the `pcf-ssh-elb` load balancer.
+    * CNAME: `tcp.system.DOMAIN.com` points to the DNS name of the `pcf-tcp-elb` load balancer.
+    * A: `pcf.DOMAIN.com` points to the public IP address of the `pcf-ops-manager` EC2 instance.
 
   Where `DOMAIN` is a domain name. <%= vars.company_name %> recommends that you use the same domain name for each record.
 
@@ -289,10 +290,10 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     1. Click **Subnet Groups>Create DB Subnet Group**.
     1. Enter the following values:
 
-      * **Name**: Enter `pcf-rds-subnet-group`.
-      * **Description**: Enter a description to identify this subnet group.
-      * **VPC ID**: Select `pcf-vpc`.
-      * **Availability Zone** and **Subnet ID**: Choose the AZ and subnet for `pcf-rds-subnet-az0` and click **Add**.
+        * **Name**: Enter `pcf-rds-subnet-group`.
+        * **Description**: Enter a description to identify this subnet group.
+        * **VPC ID**: Select `pcf-vpc`.
+        * **Availability Zone** and **Subnet ID**: Choose the AZ and subnet for `pcf-rds-subnet-az0` and click **Add**.
 
     2. Repeat the steps above to add `pcf-rds-subnet-az1` and `pcf-rds-subnet-az2` to the group.
     3. Click **Create**.
@@ -315,28 +316,28 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 4. Specify the following database details:
 
-  * **DB Instance Identifier**: Enter `pcf-ops-manager-director`.
-  * Enter a secure **Master Username** and **Master Password**.
+    * **DB Instance Identifier**: Enter `pcf-ops-manager-director`.
+    * Enter a secure **Master Username** and **Master Password**.
 
-      <p class="note"><strong>Note:</strong> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
+        <p class="note"><strong>Note:</strong> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
 
-  * **DB Instance Class**: Select **db.m5.large - 2 vCPU, 7.5 GiB RAM**.
-  * **Storage Type**: Select `Provisioned IOPS SSD`.
-  * **Allocated Storage**: Enter **100&nbsp;GB**.
-  * **Multi-AZ Deployment**: Select **Create a standby instance**.
+    * **DB Instance Class**: Select **db.m5.large - 2 vCPU, 7.5 GiB RAM**.
+    * **Storage Type**: Select `Provisioned IOPS SSD`.
+    * **Allocated Storage**: Enter **100&nbsp;GB**.
+    * **Multi-AZ Deployment**: Select **Create a standby instance**.
 
 1. In the **Connectivity** section, enter the following values:
 
-  * **VPC**: Select `pcf-vpc`.
-  * **Subnet Group**: Select the `pcf-rds-subnet-group` you created in [Step 6: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
-  * **Publicly Accessible**: Select **No**.
-  * **VPC Security Groups**: Select the `pcf-mysql-security-group` that you created in [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-  * Accept the default values for the remaining fields.
+    * **VPC**: Select `pcf-vpc`.
+    * **Subnet Group**: Select the `pcf-rds-subnet-group` you created in [Step 6: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
+    * **Publicly Accessible**: Select **No**.
+    * **VPC Security Groups**: Select the `pcf-mysql-security-group` that you created in [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * Accept the default values for the remaining fields.
 
 1. In the **Additional configuration** section, enter the following values:
 
-  * **Initial Database Name**: Enter `bosh`.
-  * Accept the default values for the remaining fields.
+    * **Initial Database Name**: Enter `bosh`.
+    * Accept the default values for the remaining fields.
 
 1. Click **Launch DB Instance**. Launching the instance may take several minutes.
 
