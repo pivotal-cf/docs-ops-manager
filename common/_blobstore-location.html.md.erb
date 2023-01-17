@@ -15,7 +15,7 @@
             1. **If you are using a public S3 endpoint:**
                 1. Locate the endpoint for your region. To find the endpoint, see the **Amazon Simple Storage Service (S3)** table in [Regions and Endpoints](http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in the AWS documentation.
                 1. Construct a URL using your region's endpoint. For example, if you are using the `us-west-2` region, the URL you create would be <code>https://s3.us-west-2.amazonaws.com</code>. Enter this URL into the **S3 Endpoint** field.
-            1. **If you are using a non-public S3-compatible endpoint:**
+            1. **If you are using a non-public S3-compatible endpoint (<%= vars.ops_manager %> v2.10.19 or earlier):**
                 1. Enter the URL for the non-public endpoint.
                 1. SSH into the <%= vars.ops_manager %> VM by running:
 
@@ -33,7 +33,7 @@
                     ```
 
                 1. Add this custom CA certificate into the **Trusted Certificates** field in the **Security** page. For instructions, see [Security Page](#security).
-            1. **If you are using a non-public S3-compatible endpoint:**
+            1. **If you are using a non-public S3-compatible endpoint (<%= vars.ops_manager %> v2.10.20 or later:**
                 1. Enter the URL for the non-public endpoint.
                 1. Add the custom public CA certificate you used to sign the S3 endpoint to the **Trusted Certificates** field on the **Director Config** page.
 
@@ -44,8 +44,8 @@
         1. **Credentials Source:**
         Input your credentials from the following sources.
             - **Static Credentials:** In **Access Key** and **Secret Key**, enter the keys you generated when creating your S3 bucket.
-            - **IAM Profile:** Use the IAM profile associated with the BOSH Director.<br />
-              **NOTE**: You must check the **Enable Signed URLs** checkbox to use IAM Profile credentials to access blobstores.
+            - **IAM Profile:** Use the IAM profile associated with the BOSH Director.<br>
+              You must select the **Enable Signed URLs** checkbox to use IAM Profile credentials to access blobstores.
         <% else %>
         1. **Access Key** and **Secret Key:** Enter the keys you generated when creating your S3 bucket.
         <% end %>
