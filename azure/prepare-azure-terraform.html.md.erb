@@ -107,18 +107,16 @@ This topic describes how to prepare Azure to deploy <%= vars.ops_manager_first %
 
     ```
     az ad app create --display-name "Service Principal for BOSH" \
-    --password "PASSWORD" --homepage "http://BOSHAzureCPI" \
     --identifier-uris "http://BOSHAzureCPI"
     ```
-    Where `PASSWORD` is a password of your choice. This is your `CLIENT_SECRET` for creating a service principal.
 
     For example:
     <pre class="terminal">
     $ az ad app create --display-name "Service Principal for BOSH" \
-    --password "Swordfish" --homepage "http<span>:</span>//BOSHAzureCPI" \
     --identifier-uris "http<span>:</span>//BOSHAzureCPI"
     </pre>
-    <p class='note'><strong>Note:</strong> You can provide any string for the <code>homepage</code> and <code>identifier-uris</code> flags, but the value of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription. For the <code>homepage</code>, <%= vars.company_name %> recommends using <code><span>http:</span>//BOSHAzureCPI</code> as shown in the example above.</p>
+    <p class='note'><strong>Note:</strong> You can provide any string for the <code>identifier-uris</code> flag, but the value of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription.</p>
+
 
 1. From the output of the `az ad app create` that you ran in the previous step, locate and record the value of `appId`. This is your `APP_ID` for creating a service principal.
 
@@ -140,7 +138,28 @@ This topic describes how to prepare Azure to deploy <%= vars.ops_manager_first %
     </pre>
 
 
-## <a id='create-configure'></a> Step 4: Create and Configure a Service Principal
+## <a id='create-credential'></a> Step 4: Create a credential for the ADD App
+
+1. To create a credential associated with the app, run:
+    ```
+    az ad app credential reset --id YOUR-APP-ID
+    ```
+    Where `YOUR-APP-ID` is the `APP_ID` that you recorded in [Create an AAD App](#create-aad).
+
+    For example:
+    <pre class="terminal">
+    $ az ad app credential reset --id 5c552e8f-b977-45f5-a50b-981cfe17cb9d
+    The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+    {
+      "appId": "5c552e8f-b977-45f5-a50b-981cfe17cb9d",
+      "password": "RFy8Q~~Bs.pCVsoKhDNDUIdAveJ2Ig5SkuW4NdhP",
+      "tenant": "22222222-1234-5678-1234-678912345678"
+    }
+    </pre>
+
+1. From the output of `az ad app credential reset` that you ran in the previous step, locate and record the value of `password`. This is your `CLIENT_SECRET` for creating a service principal.
+
+## <a id='create-configure'></a> Step 5: Create and Configure a Service Principal
 
 1. To create a service principal, run:
 
@@ -212,7 +231,7 @@ This topic describes how to prepare Azure to deploy <%= vars.ops_manager_first %
     </pre>
 
 
-## <a id='verify-your-service-principal'></a> Step 5: Verify Your Service Principal
+## <a id='verify-your-service-principal'></a> Step 6: Verify Your Service Principal
 
 To verify your service principal, run the following command to log in to your service principal:
 
@@ -223,7 +242,7 @@ az login --username APP_ID --password CLIENT_SECRET \
 Where:
 
 * `APP_ID` is the `APP_ID` that you recorded in [Create an AAD App](#create-aad).
-* `CLIENT_SECRET` is the password that you provided in [Create an AAD App](#create-aad).
+* `CLIENT_SECRET` is the password that you recoded in [Create a credential for the ADD App](#create-credential).
 * `TENANT_ID` is the value of `tenantID` of the default subscription that you recorded in [Set Your Default Subscription](#default-subscription).
 
 For example:
@@ -250,7 +269,7 @@ $ az login --username 5c552e8f-b977-45f5-a50b-981cfe17cb9d \
 If you cannot log in, the service principal is invalid. Create a new service principal and try again.
 
 
-## <a id='register'></a> Step 6: Perform Registrations
+## <a id='register'></a> Step 7: Perform Registrations
 
 1. To register your subscription with Microsoft.Storage, run:
 
