@@ -69,7 +69,7 @@ For **Database Location**, select **External MySQL Database** and complete the f
     <p class='note warning'><strong>Warning:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
     <%= image_tag("../common/images/director_database.png", :alt=> "At the top of the image are the words 'Database Location', underneath which are two options: one selected radio button labeled 'Internal', and one radio button labeled 'External MySQL Database'. Below these are five text fields labeled, from top to bottom, 'Host', 'Port', 'Username', 'Password', and 'Database'. All have red asterisks, to denote that they are required fields when 'External MySQL Database' is selected.") %>
     * From the AWS Console, navigate to the RDS Dashboard.
-    * Select **Instances**, then click the arrow to the left of your instance and select the second icon to display the **Details** information.
+    * Click **Databases**, then click the instance to display the **Connectivity &amp; security** information.
     * Refer to the following table to retrieve the values for the **Director Config** page:
     <table border="1" class="nice" >
       <tr>
@@ -84,16 +84,10 @@ For **Database Location**, select **External MySQL Database** and complete the f
         <td>Port</td>
         <td><strong>Port</strong>, which is <code>3306</code>.</td>
       </tr>
-      <tr>
-        <td>DB Name</td>
-        <td><strong>Database</strong>, which is <code>bosh</code>.</td>
-      </tr>
-      <tr>
-        <td>Username</td>
-        <td><strong>Username</strong></td>
-      </tr>
     </table><br />
-    * For **Password**, enter the password that you defined for your MySQL database when you created in the [Step 8: Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying <%= vars.ops_manager %> on AWS_.
+    * For **Username**, enter the username that you defined for your MySQL database when you created in the [Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying
+    * For **Password**, enter the password that you defined for your MySQL database when you created in the [Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying <%= vars.ops_manager %> on AWS_.
+    * For **Database**, enter `bosh`.
   In addition, if you selected the **Enable TLS for Director Database** checkbox, you can fill out the following optional fields:
     * **Enable TLS:** Selecting this checkbox enables TLS communication between the BOSH Director and the database.
     * **TLS CA:** Enter the Certificate Authority for the TLS Certificate.
@@ -108,7 +102,7 @@ For **Database Location**, select **Internal**.
 <% end %>
 
 <%# For all other IaaSes such as OpenStack, vSphere and manual Azure: %>
-<% if current_page.data.iaas != "GCP" || current_page.data.iaas != "AWS" || current_page.data.install_type != "terraform" %>
+<% if current_page.data.iaas != "GCP" && current_page.data.iaas != "AWS" && current_page.data.install_type != "terraform" %>
 Select a **Database Location**. By default, <%= vars.ops_manager %> deploys and manages an **Internal** database for you. If you choose to use an **External MySQL Database**, complete the associated fields with information obtained from your external MySQL Database provider: **Host**, **Port**, **Username**, **Password**, and **Database**.
 <p class='note'><strong>Note:</strong> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub will not use these settings and will continue to use the Postgres database colocated with the BOSH Director.</p>
 <p class='note warning'><strong>Warning:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>

@@ -59,8 +59,6 @@ To launch the AMI for <%= vars.ops_manager %>:
 1. Paste the AMI ID for your region into the search bar and press enter.
     <p class='note'><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
 
-    <%= image_tag("pcfaws/pcf_aws_ami.png", :alt => "AWS AMI interface") %>
-
 1. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS):
   1. Right-click the row that lists your AMI and click **Copy AMI**.
   1. Select your **Destination region**.
@@ -74,8 +72,6 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 1. Click **Next: Configure Instance Details**.
 
-    <%= image_tag("pcfaws/aws_ami_m5large.png", :alt => "AWS instance type selection interface") %>
-
 1. Configure the following fields for your instance:
     * **Network:** Select the VPC that you created.
     * **Subnet:** Select `<%= vars.product_name_lc %>-public-subnet-az0`.
@@ -83,13 +79,9 @@ To launch the AMI for <%= vars.ops_manager %>:
     * **IAM role:** Select the IAM role associated with your <%= vars.product_name_lc %>-user profile. If you have not created one, click **Create new IAM role** and follow the procedures in [AWS Permissions Guidelines](aws-iaas-user-roles.html).
     * For all other fields, accept the default values.
 
-    <%= image_tag("pcfaws/pcf_aws_configure_instance.png", :alt => "AWS Configure Instance Details UI") %>
-
 1. Click **Next: Add Storage**.
 
 1. Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
-
-    <%= image_tag("pcfaws/pcf_aws_add_storage.png", :alt => "AWS Storage Device settings UI") %>
 
 1. Click **Next: Tag Instance**
 
@@ -104,8 +96,6 @@ To launch the AMI for <%= vars.ops_manager %>:
 1. Click **Launch**.
 
 1. Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
-
-    <%= image_tag("pcfaws/select_pcfpem_keypair.png", :alt => "AWS Key Pair Selection UI") %>
 
 
 ## <a id='dns'></a> Edit <%= vars.ops_manager %> DNS A Record

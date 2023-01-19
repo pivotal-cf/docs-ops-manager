@@ -18,6 +18,87 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <hr>
 
 ## <a id='releases'></a> Releases
+### <a id="3-0-3"></a> v3.0.3
+
+**Release Date:** January 06, 2023
+
+- **[Feature]** Increase the ephemeral disk size of e2-highmem-4 and e2-highmem-8 VM types
+- **[Feature]** Logs can be downloaded directly from the OpsManager Status page.
+- **[Feature]** Added additional logging to track when Tile Migrations are applied. This will allow us to better use logs to debug issues with Tile upgrade failures.
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Ops Manager</td><td>3.0.3-build.203*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.75*</td></tr><tr><td>BBR SDK</td><td>1.18.60*</td></tr><tr><td>BOSH Director</td><td>276.1.1</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>System Metrics</td><td>2.2.4</td></tr><tr><td>CredHub</td><td>2.12.18</td></tr><tr><td>CredHub Maestro</td><td>8.0.8</td></tr><tr><td>Syslog</td><td>12.1.1</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.61</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.0*</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>88*</td></tr><tr><td>BOSH CLI</td><td>7.1.0</td></tr><tr><td>Credhub CLI</td><td>2.9.9</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>2.0.2</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
+### <a id="3-0-2"></a> v3.0.2
+
+**Release Date:** December 16, 2022
+
+<div class="note warning"><strong>Warning:</strong>
+  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+</div>
+
+
+
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Ops Manager</td><td>3.0.2-build.192*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.71*</td></tr><tr><td>BBR SDK</td><td>1.18.59</td></tr><tr><td>BOSH Director</td><td>276.1.1</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>System Metrics</td><td>2.2.4*</td></tr><tr><td>CredHub</td><td>2.12.18*</td></tr><tr><td>CredHub Maestro</td><td>8.0.8</td></tr><tr><td>Syslog</td><td>12.1.1</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.61*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>87</td></tr><tr><td>BOSH CLI</td><td>7.1.0</td></tr><tr><td>Credhub CLI</td><td>2.9.9*</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>2.0.2</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
+### <a id="3-0-1"></a> v3.0.1
+
+**Release Date:** December 09, 2022
+
+<div class="note warning"><strong>Warning:</strong>
+  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+</div>
+
+
+- **[Feature]** Deploy the BOSH Director using Postgres 13
+- **[Feature]** Improve accessibility when navigating the Ops Manager UI using a keyboard
+- **[Bug Fix]** Fix cleanup of files on disk when exporting installation settings
+- **[Bug Fix]** Fix error when deploying the BOSH Director in an airgapped environment
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Ops Manager</td><td>3.0.1-build.184*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.64*</td></tr><tr><td>BBR SDK</td><td>1.18.59*</td></tr><tr><td>BOSH Director</td><td>276.1.1*</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>System Metrics</td><td>2.2.3*</td></tr><tr><td>CredHub</td><td>2.12.16*</td></tr><tr><td>CredHub Maestro</td><td>8.0.8*</td></tr><tr><td>Syslog</td><td>12.1.1*</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.60*</td></tr><tr><td>BPM</td><td>1.1.21*</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96*</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>87</td></tr><tr><td>BOSH CLI</td><td>7.1.0*</td></tr><tr><td>Credhub CLI</td><td>2.9.8</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>2.0.2*</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
 
 ### <a id='3-0-0'></a> v3.0.0
 
