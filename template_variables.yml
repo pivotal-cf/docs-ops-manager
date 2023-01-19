@@ -14,12 +14,12 @@ template_variables:
   global_header_product_href: https://network.pivotal.io/
   global_header_product_link_text: Downloads
 
-  # current version of Ops Manager
+  # Ops Manager version
   current_major_version: "2-10"
   v_major_version: "v2.10"
   dot_major_version: "2.10"
 
-  # current version of Tanzu Application Service for VMs
+  # Associated Tanzu Application Service for VMs version
   current_tas_version: "2.10"
 
   gtm_account_id: GTM-MM86KCJ
