@@ -131,7 +131,7 @@ the Terraform files for your runtime.
       <td>
         Enter the source URL of the <%= vars.ops_manager %> image you want to boot. You can find this URL in the PDF included with the <%= vars.ops_manager %> release on <a href="https://network.pivotal.io/">VMware Tanzu Network</a>.
         <br><br>
-        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disable the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see <a href="https://docs.pivotal.io/platform-automation">Platform Automation</a>.
+        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disallow the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see <a href="https://docs.pivotal.io/platform-automation">Platform Automation</a>.
       </td>
     </tr>
     <tr>
@@ -177,7 +177,7 @@ Complete this step if you want to do any of the following:
 - Deploy the <%= vars.segment_runtime_full %> tile
 - Use an external Google Cloud SQL database
 - Use external Google Storage buckets
-- Disable generated GCP service account key for blobstore
+- Deactivate generated GCP service account key for blobstore
 
 In your `terraform.tfvars` file, specify the appropriate variables from the sections below.
 

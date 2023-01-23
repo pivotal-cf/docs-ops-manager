@@ -3,7 +3,7 @@ title: Updating Availaibility Zones in existing installations
 owner: Ops Manager
 ---
 
-This topic explains advanced details in regards to updating the configuration of Availaibility Zones in Ops Manager for existing deployments. 
+This topic explains advanced details in regards to updating the configuration of Availaibility Zones in Ops Manager for existing deployments.
 
 ## <a id='overview'></a> Overview
 
@@ -30,6 +30,6 @@ The rough outline of steps to update the AZ Config of existing installations con
   Edit az.json as required
   `om curl -p "/api/v0/staged/director/availability_zones" -x PUT -H "Content-Type: application/json" -d@az.json`
 - Check that the Ops Manager UI reflects your desired changes
-- Disable Advanced Mode
-- Follow Tile specific instructions (refer to [KB](https://community.pivotal.io/s/article/How-to-add-or-modify-my-availability-zones-without-the-need-to-reinstall-Tanzu-Application-Services?language=en_US)) or Bosh AZ migration docs to identify best approach. 
+- Deactivate Advanced Mode
+- Follow Tile specific instructions (refer to [KB](https://community.pivotal.io/s/article/How-to-add-or-modify-my-availability-zones-without-the-need-to-reinstall-Tanzu-Application-Services?language=en_US)) or Bosh AZ migration docs to identify best approach.
 - Apply Changes

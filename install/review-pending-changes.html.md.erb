@@ -20,7 +20,7 @@ red letters are described below.
 Each labeled section of the **Review Pending Changes** page works as follows:
 
 - **A**---**Select All Products:** When enabled, the checkbox selects all available
-products. When disabled, the checkbox deselects all available products.
+products. When deactivated, the checkbox deselects all available products.
 
 - **B**---**Select Product:** The checkboxes next to each product listing allow you to select the tiles you want to deploy.
 The BOSH Director is always selected.
@@ -70,7 +70,7 @@ You might see some of the following warnings:
 
     - Stemcell is updated.
 
-- **G**---**Errands:** If you expand this section, you can enable or disable errands that trigger when that tile
+- **G**---**Errands:** If you expand this section, you can activate or deactivate errands that trigger when that tile
 deploys. For example, you may enable an errand to log properties. For more information,
 see [Managing Errands in Ops Manager](./managing_errands.html).
 
@@ -90,7 +90,7 @@ This page allows operators to verify changes to the manifest and configs so they
 
 ## <a id="pending-changes-ui"></a> Use the Pending Changes Page
 
-The change summary fields display features that have been enabled or disabled using the Ops Manager UI or API. These changes are staged, but have not been implemented yet. You must click **Apply Changes** to put these changes into effect.
+The change summary fields display features that have been activated or deactivated using the Ops Manager UI or API. These changes are staged, but have not been implemented yet. You must click **Apply Changes** to put these changes into effect.
 
 If you want to see changes for a specific tile, do the following:
 
@@ -100,7 +100,7 @@ If you want to see changes for a specific tile, do the following:
 
 The screenshot below shows changes to the BOSH Director's manifest.
 
-<a href="./images/pending-tile-changes.png" target="_blank"> <%= image_tag("pending-tile-changes.png", :alt => "Main header displays 'Pending Changes for BOSH Director'. Below, under the 'Manifest' header, text from the manifest is displayed. Some lines are highlighted in green and others are highlighted in red to indicate when fields have been enabled or disabled. Below the Manifest, other categories are displayed such as 'Runtime Configs'. The other categories are all labeled as having 'No changes'.") %></a>
+<a href="./images/pending-tile-changes.png" target="_blank"> <%= image_tag("pending-tile-changes.png", :alt => "Main header displays 'Pending Changes for BOSH Director'. Below, under the 'Manifest' header, text from the manifest is displayed. Some lines are highlighted in green and others are highlighted in red to indicate when fields have been activated or deactivated. Below the Manifest, other categories are displayed such as 'Runtime Configs'. The other categories are all labeled as having 'No changes'.") %></a>
 
 When you make changes to a tile, change summaries display for the following tile areas:
 

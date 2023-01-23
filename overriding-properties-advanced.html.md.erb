@@ -69,10 +69,10 @@ For an example, see [Change the Network Type to Dynamic](#example1) below.
 In the tile manifest, you can override properties in the following sections:
 
 * `features`
-* `update` 
+* `update`
 
 For an example, see [Change Number of Canary Instances](#example3) or
-[Enable Returning DNS Addresses in Links](#example4) below. 
+[Enable Returning DNS Addresses in Links](#example4) below.
 
 ### <a id='runtime-configs'></a> Runtime Configs
 
@@ -118,7 +118,7 @@ in the Ops Manager API documentation.
   <div class="note warning"><strong>Warning:</strong>
     <ul>
       <li><%= vars.company_name %> recommends that only skilled operators use Advanced Mode in Ops Manager.
-        If you use Advanced Mode incorrectly, you can disable or destroy your deployment.</li>
+        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.</li>
       <li>Ops Manager does not validate the properties that you change using Advanced Mode.
         For example, if you enter a string where an integer is required, you do not receive an error.</li>
     </ul>
@@ -128,7 +128,7 @@ in the Ops Manager API documentation.
 [Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1overrides/put)
 in the Ops Manager API documentation.
 
-1. After you have completed your changes, disable Advanced Mode by following the procedure in
+1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 
@@ -145,7 +145,7 @@ in the Ops Manager API documentation.
   <div class="note warning"><strong>Warning:</strong>
     <ul>
       <li><%= vars.company_name %> recommends that only skilled operators use Advanced Mode in Ops Manager.
-        If you use Advanced Mode incorrectly, you can disable or destroy your deployment.</li>
+        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.</li>
       <li>Ops Manager does not validate the properties that you change using Advanced Mode.
         For example, if you enter a string where an integer is required, you do not receive an error.</li>
     </ul>
@@ -157,7 +157,7 @@ in the Ops Manager API documentation.
 [Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1products~1{product_guid}~1overrides/put)
 in the Ops Manager API documentation.
 
-1. After you have completed your changes, disable Advanced Mode by following the procedure in
+1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 
@@ -174,7 +174,7 @@ in the Ops Manager API documentation.
   <div class="note warning"><strong>Warning:</strong>
     <ul>
       <li><%= vars.company_name %> recommends that only skilled operators use Advanced Mode in Ops Manager.
-        If you use Advanced Mode incorrectly, you can disable or destroy your deployment.</li>
+        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.</li>
       <li>Ops Manager does not validate the properties that you change using Advanced Mode.
         For example, if you enter a string where an integer is required, you do not receive an error.</li>
     </ul>
@@ -187,7 +187,7 @@ This file shows the properties and defaults for the `bosh_dns` add-on in the `op
 Director](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1runtime_configs~1overrides/put)
 in the Ops Manager API documentation.
 
-1. After you have completed your changes, disable Advanced Mode by following the procedure in
+1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 
@@ -213,8 +213,8 @@ You cannot change this property through the Ops Manager UI or API.
 You can override this default by changing the number of canary instances
 in the `update` section of the tile manifest.
 
-For a list of all the properties you can change in the `update` section, 
-see [Update Block](https://bosh.io/docs/manifest-v2/#update) in the BOSH documentation. 
+For a list of all the properties you can change in the `update` section,
+see [Update Block](https://bosh.io/docs/manifest-v2/#update) in the BOSH documentation.
 
 ### <a id='example4'></a> Tile Manifest Example: Enable Returning DNS Addresses in Links
 
@@ -224,7 +224,7 @@ You cannot change this property through the Ops Manager UI or API.
 You can override this default by changing the value to `true`
 in the `features` section of the tile manifest.
 
-For a list of all the properties you can change in the `features` section, 
+For a list of all the properties you can change in the `features` section,
 see [Features Block](https://bosh.io/docs/manifest-v2/#features) in the BOSH documentation.
 
 ### <a id='example2'></a> Runtime Config Example: Change the Timeout for the BOSH DNS Network Health Check
