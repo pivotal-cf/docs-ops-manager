@@ -100,9 +100,9 @@ tests)_**
 
         15. Users cannot delete or rename files in world-writable directories such as /tmp that are owned by other users.
 
-        16. Supplementary and exotic Linux file systems that are unused in CF have been disabled.
+        16. Supplementary and exotic Linux file systems that are unused in CF have been deactivated.
 
-        17. Additional supplementary and exotic Linux file systems that are unused in CF have been disabled.
+        17. Additional supplementary and exotic Linux file systems that are unused in CF have been deactivated.
 
         18. Automount of USB drives or disks is not permitted.
 
@@ -120,17 +120,17 @@ tests)_**
 
         23. Randomized virtual memory region placement is enabled.
 
-        24. Prelinking of shared libraries is disabled.
+        24. Prelinking of shared libraries is deactivated.
 
     9. **Minimization of Attack Surface**
 
         25. The Network Information Service ("NIS") is not used in CF and is not installed.
 
-        26. The Berkeley rsh-server package is not used in CF and is disabled.
+        26. The Berkeley rsh-server package is not used in CF and is deactivated.
 
         27. Classic rsh-related tools are not used in CF and are not installed.
 
-        28. The following servers are not used on CF stemcells and are disabled:
+        28. The following servers are not used on CF stemcells and are deactivated:
             + talk server
             + telnet server
             + tftp-server
@@ -146,9 +146,9 @@ tests)_**
 
         29. The talk client is not used in CF and is not installed.
 
-        30. The eXtended InterNET Daemon (xinetd) is not used in CF and is disabled.
+        30. The eXtended InterNET Daemon (xinetd) is not used in CF and is deactivated.
 
-        31. The following network services are not used in CF and are disabled:
+        31. The following network services are not used in CF and are deactivated:
             + chargen
             + daytime
             + echo
@@ -159,17 +159,17 @@ tests)_**
 
         33. NTP time setting is synchronized on the stemcell via the ntpdate utility.
 
-        34. The Samba daemon is not used in CF and is disabled.
+        34. The Samba daemon is not used in CF and is deactivated.
 
         35. The Mail Transfer Agents (MTA) process only local mail.
 
-        36. The rsync service is not used in CF and is disabled.
+        36. The rsync service is not used in CF and is deactivated.
 
-        37. The biosdevname tool is disabled.
+        37. The biosdevname tool is deactivated.
 
     10. **Network Security**
 
-        38. IPv4 networking is configured such that IP forwarding is disabled.
+        38. IPv4 networking is configured such that IP forwarding is deactivated.
 
         39. The IPv4 networking has been configured such that the host cannot send ICMP redirects.
 
@@ -193,16 +193,16 @@ tests)_**
 
         49. The /etc/hosts.deny file exists and is empty.
 
-        50. The following protocols are not used in CF and are disabled:
+        50. The following protocols are not used in CF and are deactivated:
             + SCTP
             + DCCP
             + TIPC
             + LDAP
             + RDS
 
-        51. Wireless interfaces are disabled.
+        51. Wireless interfaces are deactivated.
 
-        52. IPv6 is not used in CF deployments and the IPv6 protocol is disabled.
+        52. IPv6 is not used in CF deployments and the IPv6 protocol is deactivated.
 
     11. **Auditing**
 
@@ -232,7 +232,7 @@ tests)_**
 
         67. User authorization to schedule cron jobs is limited.
 
-        68. Only the vcap user is whitelisted to use the cron and at utilities.
+        68. Only the vcap user is allowlisted to use the cron and at utilities.
 
         69. Password requirements follow industry best practice guidance and enforce a minimum length of 14 characters, with at least one each of: digit, uppercase, lowercase and special characters.
 
@@ -244,7 +244,7 @@ tests)_**
 
         73. Minimum permissions are set on /etc/ssh/sshd_config.
 
-        74. SSH X11 forwarding is disabled.
+        74. SSH X11 forwarding is deactivated.
 
         75. The MaxAuthTries parameter for SSH is set to 3 attempts per connection.
 
@@ -295,7 +295,7 @@ tests)_**
 
         94. Users are notified 7 days before their passwords expire.
 
-        95. Interactive logins are disabled for system accounts.
+        95. Interactive logins are deactivated for system accounts.
 
         96. The GID for the root account is 0.
 
