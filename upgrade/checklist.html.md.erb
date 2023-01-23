@@ -127,7 +127,7 @@ Check the required machine specifications for <%= vars.ops_manager %> <%= vars.v
 
 With each release of a new <%= vars.ops_manager %> version, <%= vars.app_runtime_abbr %> may require specific updates before upgrading to the new version. For more information, see the following sections for what action to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-#### <a id='disable-hostname-validation'></a> Disable Hostname Validation for External Databases on GCP and Azure
+#### <a id='disable-hostname-validation'></a> Deactivate Hostname Validation for External Databases on GCP and Azure
 
 This pre-upgrade step applies only to existing <%= vars.app_runtime_abbr %> v2.9 deployments where both of these conditions are met:
 
@@ -137,9 +137,9 @@ This pre-upgrade step applies only to existing <%= vars.app_runtime_abbr %> v2.9
 
 * You enabled TLS communication for the GCP or Azure external database by adding a certificate authority (CA) certificate to the **Database CA certificate** field in the **Databases** pane.
 
-If you meet these conditions, you must disable hostname validation before you upgrade to <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>. Failure to disable hostname validation can cause the upgrade to fail for deployments that use external databases on GCP or Azure.
+If you meet these conditions, you must deactivate hostname validation before you upgrade to <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>. Failure to deactivate hostname validation can cause the upgrade to fail for deployments that use external databases on GCP or Azure.
 
-To disable hostname validation:
+To deactivate hostname validation:
 
 1. After you stage <%= vars.app_runtime_abbr %> <%= vars.v_major_version %> for upgrade, go to the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
 
@@ -147,11 +147,11 @@ To disable hostname validation:
 
 For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see [Configure Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
 
-#### <a id='disable-unused-errands'></a> (Optional) Disable Unused Errands
+#### <a id='disable-unused-errands'></a> (Optional) Deactivate Unused Errands
 
-To save upgrade time, you can disable unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
+To save upgrade time, you can deactivate unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Only deactivate these errands if your environment does not need them.
 
-In some cases, if you have previously disabled lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
+In some cases, if you have previously deactivated lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
 ### <a id='stemcell-compat'></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 

@@ -3,17 +3,17 @@ title: Managing Ops Manager Verifiers
 owner: Ops Manager
 ---
 
-This topic describes how to disable and re-enable verifiers for fields in the BOSH Director and other product tiles in <%= vars.ops_manager_first %>.
+This topic describes how to deactivate and re-activate verifiers for fields in the BOSH Director and other product tiles in <%= vars.ops_manager_first %>.
 
 <%= vars.ops_manager %> provides this option for troubleshooting
 purposes. For example, your deployment may have a unique configuration that the
 verifier cannot detect. In this case, you can unblock your deployment by disabling the verifier.
 
-<p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends contacting support before you
-disable <%= vars.ops_manager %> verifiers.</p>
+<p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends contacting Support before you
+deactivate <%= vars.ops_manager %> verifiers.</p>
 
-<p class="warning note"><strong>Warning:</strong> <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you disable.
-The <%= vars.ops_manager %> UI does not indicate which verifiers you disable. Disabled verifiers
+<p class="warning note"><strong>Warning:</strong> <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
+The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivate. Deactivated verifiers
 persist through upgrades.</p>
 
 
@@ -47,10 +47,10 @@ Verifiers run on two occasions:
 </table>
 
 
-## <a id='disable'></a> Disable Verifiers by Type
+## <a id='disable'></a> Deactivate Verifiers by type
 
-You can disable verifiers by verifier type. For example, you can disable all MySQL
-verifiers for a tile. To disable a verifier type for a tile, you
+You can deactivate verifiers by verifier type. For example, you can deactivate all MySQL
+verifiers for a tile. To deactivate a verifier type for a tile, you
 must find and record the type, then use the <%= vars.ops_manager %> API.
 
 ### <a id='record-type'></a> Step 1: Record the Verifier Type
@@ -68,18 +68,18 @@ To record the verifier type:
 
 ### <a id='api-put'></a> Step 2: Use the <%= vars.ops_manager %> API
 
-To disable verifiers, you must use the <%= vars.ops_manager %> API. To get started with
+To deactivate verifiers, you must use the <%= vars.ops_manager %> API. To get started with
 the <%= vars.ops_manager %> API, follow the procedures in [Using the <%= vars.ops_manager %> API](ops-man-api.html).
 
 The API endpoint varies by tile. Go to one of the procedures below:
 
-- [Disable Verifiers for the Bosh Director Tile](#bosh-director-disable)
+- [Deactivate Verifiers for the Bosh Director Tile](#bosh-director-disable)
 
-- [Disable Verifiers for Other Tiles](#tile-disable)
+- [Deactivate Verifiers for Other Tiles](#tile-disable)
 
-#### <a id='bosh-director-disable'></a> Disable Verifiers for the BOSH Director Tile
+#### <a id='bosh-director-disable'></a> Deactivate Verifiers for the BOSH Director Tile
 
-To disable a verifier type for the BOSH Director:
+To deactivate a verifier type for the BOSH Director:
 
 1. Run the following API command:
 
@@ -102,7 +102,7 @@ To disable a verifier type for the BOSH Director:
     director](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#turning-off-a-verifier-for-the-director)
     in the <%= vars.ops_manager %> API documentation.
 
-1. To confirm your verifier type is disabled, run the following command:
+1. To confirm your verifier type is deactivate, run the following command:
 
     ```
     curl "https://OPS-MAN-FQDN/api/v0/staged/director/verifiers/install_time" \
@@ -110,7 +110,7 @@ To disable a verifier type for the BOSH Director:
      -H "Authorization: Bearer UAA-ACCESS-TOKEN"
     ```
 
-    See that the <%= vars.ops_manager %> API shows `false` for the verifier type you disabled. In
+    See that the <%= vars.ops_manager %> API shows `false` for the verifier type you deactivated. In
     the following example, `DirectorConfigurationVerifer` is set to `false`:
     <pre class="terminal" style="height: 300px; scroll: auto;">
 {
@@ -150,13 +150,13 @@ To disable a verifier type for the BOSH Director:
     product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product)
     in the <%= vars.ops_manager %> API documentation.
 
-1. Record the product and the verifier type that you disabled in a secure location.
-<%= vars.company_name %> recommends recording and routinely revisiting which verifiers you disable.
+1. Record the product and the verifier type that you deactivated in a secure location.
+<%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
 
 
-#### <a id='tile-disable'></a> Disable Verifiers for Other Tiles
+#### <a id='tile-disable'></a> Deactivate Verifiers for other tiles
 
-To disable a verifier type for tiles other than the BOSH Director:
+To deactivate a verifier type for tiles other than the BOSH Director:
 
 1. Run the following command and record the `guid` corresponding to your product.
 
@@ -187,7 +187,7 @@ To disable a verifier type for tiles other than the BOSH Director:
     products](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#listing-all-staged-products)
     in the <%= vars.ops_manager %> API documentation.
 
-1. To disable your verifier by type, run the following command.
+1. To deactivate your verifier by type, run the following command.
 
     ```
     curl "https://OPS-MAN-FQDN/api/v0/staged/products/PRODUCT-GUID/verifiers/install_time/VERIFIER-TYPE" \
@@ -207,7 +207,7 @@ To disable a verifier type for tiles other than the BOSH Director:
     product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#turning-off-a-verifier-for-a-specific-product)
     in the <%= vars.ops_manager %> API documentation.
 
-1. To confirm your verifier type is disabled, run the following command.
+1. To confirm your verifier type is deactivated, run the following command.
 
     ```
     curl "https://OPS-MAN-FQDN/api/v0/staged/products/PRODUCT-GUID/verifiers/install_time" \
@@ -215,7 +215,7 @@ To disable a verifier type for tiles other than the BOSH Director:
     -H "Authorization: Bearer UAA_ACCESS_TOKEN"
     ```
 
-    See that the <%= vars.ops_manager %> API shows `false` for the verifier type you disabled. In
+    See that the <%= vars.ops_manager %> API shows `false` for the verifier type you deactivated. In
     the following example, `MysqlDatabaseVerifier` is set to `false`:
     <pre class="terminal" style="height: 300px; scroll: auto;">{
       "verifiers":[
@@ -241,19 +241,19 @@ To disable a verifier type for tiles other than the BOSH Director:
     product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product100)
     in the <%= vars.ops_manager %> API documentation.
 
-1. Record the product and the verifier type that you disabled in a secure location.
-<%= vars.company_name %> recommends recording and routinely revisiting which verifiers you disable.
+1. Record the product and the verifier type that you deactivated in a secure location.
+<%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
 
 ## <a id='re-enable'></a> Re-enable Verifiers by Type
 
-<%= vars.company_name %> recommends recording and routinely revisiting which verifiers you disable.
-The <%= vars.ops_manager %> UI does not indicate which verifiers you disable. Disabled verifiers
+<%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
+The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivate. Deactivated verifiers
 persist through upgrades.
 
 To re-enable verifiers, follow the steps detailed in [Use the <%= vars.ops_manager %> API](#api-put)
 above. Instead of setting `enabled` to `false`, set it to `true`.
 
-If you do not know what verifiers are disabled, `curl` the `verifiers` endpoint for each
+If you do not know what verifiers are deactivated, `curl` the `verifiers` endpoint for each
 installed product. For more information, see [Retrieving a list of install time verifiers
 for a specific
 product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product100)
