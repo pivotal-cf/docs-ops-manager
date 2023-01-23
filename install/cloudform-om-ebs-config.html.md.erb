@@ -40,7 +40,7 @@ key/12345678-9012-3456-7890-123456789012
 	```
 	If you leave the field empty, the encryption key defaults to the Amazon account key. For more information about creating your own encryption key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) and [Viewing Keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html) in the AWS documentation.
 
-	<p class='note'><strong>Note:</strong> AWS rotates your KMS automatically each year. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html">Rotating Customer Master Keys</a> in the AWS Documentation.</p>
+	<p class='note'><strong>Note:</strong> AWS rotates your KMS automatically each year. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html">Rotating AWS KMS Keys</a> in the AWS Documentation.</p>
 
 1. Click **Save**.
 
@@ -79,7 +79,7 @@ key/12345678-9012-3456-7890-123456789012
 
 3. Click **Apply Changes**.
 
-<p class='note caution'><strong>Caution:</strong> After you enable or disable the <strong>Encrypt Linux EBS Volumes</strong> checkbox, click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
+<p class='note caution'><strong>Caution:</strong> After you activate or deactivate the <strong>Encrypt Linux EBS Volumes</strong> checkbox, click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
 
 ## <a id='enable-om'></a> Enable Encryption for <%= vars.ops_manager %>
 
