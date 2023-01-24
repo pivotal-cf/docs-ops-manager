@@ -118,7 +118,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
         <br><br>
         If you want to encrypt your <%= vars.ops_manager %> VM, create an encrypted AMI copy from the AWS EC2 dashboard and enter the source code for the copied <%= vars.ops_manager %> image instead. For more information about copying an AMI, see [Launch an <%= vars.ops_manager %> AMI](deploy-manual.html#pcfaws-om-ami) in _Deploying <%= vars.ops_manager %> on AWS_.
         <br><br>
-        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disable the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see [Platform Automation](https://docs.pivotal.io/platform-automation).
+        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disallow the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see [Platform Automation](https://docs.pivotal.io/platform-automation).
       </td>
     </tr>
     <tr>
