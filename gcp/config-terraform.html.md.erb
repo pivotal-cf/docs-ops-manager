@@ -190,7 +190,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The Terraform templates do not provision a Network Address Translation (NAT) box for internet connectivity to your VMs, so instead VMs are provided with ephemeral public IP addresses to allow the jobs to reach the internet.
   <p class="note"><strong>Note:</strong> If you want to provision a Network Address Translation (NAT) box to provide internet connectivity to your VMs instead of providing them with public IP addresses, deselect the <strong>Internet Connected</strong> checkboxes. For more information about using NAT in GCP, see the <a href="https://cloud.google.com/compute/docs/networking">GCP documentation</a>.</p>
-  <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+  <p class="note"><strong>Note:</strong> If you install <%= vars.windows_runtime_full %> (<%= vars.windows_runtime_abbr %>), provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 ## <a id='custom-vm-extensions'></a> Step 10: (Optional) Add Custom VM Extensions
 
