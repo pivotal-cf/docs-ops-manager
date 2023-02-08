@@ -385,7 +385,7 @@ To complete the procedures in this topic, you must have access to the output fro
 1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, select **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
     <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
-    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_abbr %>, provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_abbr %>, provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 2. (Optional) To configure an Application Load Balancer (ALB) for your BOSH Director, click the icon next to the **BOSH Director** job name to see more fields.
 Enter your AWS target group name in the **Load Balancers** field for the **BOSH Director** job. Prepend the name with `alb:`. For example, enter `alb:target-group-name`.<br><br>
@@ -444,7 +444,7 @@ To assign your load balancer VMs to the correct target groups and security group
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, click **Ignore errors and start the install**.
 
-    ![alt-text="Error messages read 'Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is disabled)' and 'Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is disabled)'."](../common/images/cloudform/install-error.png)
+    ![alt-text="Error messages read 'Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is deactivated)' and 'Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is deactivated)'."](../common/images/cloudform/install-error.png)
 
 2. BOSH Director installation begins. This may take a few moments. When the installation process is complete, the **Changes Applied** window appears.
 

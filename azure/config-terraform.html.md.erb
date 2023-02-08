@@ -434,7 +434,7 @@ To create the infrastructure network:
     <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
     <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>,
-    provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+    provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 2. (Optional) To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox.
 For **Load Balancers**, enter your Azure application gateway name under the **BOSH Director** job.
@@ -450,7 +450,7 @@ To create an application gateway, follow the procedures in [Create an applicatio
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
-1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error messages appear ("Cannot reach gateway with IP x.x.x.x (ignorable if CMP is disabled) and Cannot reach DNS with IP x.x.x.x (ignorable if CMP is disabled)), click **Ignore errors and start the install**.
+1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error messages appear ("Cannot reach gateway with IP x.x.x.x (ignorable if CMP is deactivated) and Cannot reach DNS with IP x.x.x.x (ignorable if CMP is deactivated)), click **Ignore errors and start the install**.
 
     ![alt-text=""](../common/images/cloudform/install-error.png)
 
