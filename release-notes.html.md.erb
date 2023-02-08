@@ -209,6 +209,12 @@ If you do not specify a machine type as a custom VM type, the BOSH Director cont
 For more information, see the [<%= vars.ops_manager %> API
 documentation](https://docs.pivotal.io/ops-manager/3-0/opsman-api/#tag/VM-types/paths/~1api~1v0~1vm_types/put).
 
+### <a id='rotate-leafs-during-apply-changes'></a> Operators Can Choose To Rotate Certificates During Apply Changes
+
+<%= vars.ops_manager %> <%= vars.v_major_version %> adds a checkbox to the Review Pending Changes page to allow operators to rotate non-configurable leaf certificates during Apply Changes. This feature provides a simpler way to rotate expiring certificates through the <%= vars.ops_manager %> web user interface without interacting with the API.
+
+For more information, see [Reviewing Pending Product Changes](./install/review-pending-changes.html).
+
 
 ## <a id='breaking-changes'></a> Breaking Changes in <%= vars.ops_manager %> <%= vars.v_major_version %>
 
