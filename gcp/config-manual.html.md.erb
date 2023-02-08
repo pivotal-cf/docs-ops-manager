@@ -220,7 +220,7 @@ To configure the **Resource Config** pane:
 
 1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The checkbox gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
 
-  <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Master Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+  <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 
 ## <a id='custom-vm-extensions'></a> Step 11: (Optional) Add Custom VM Extensions
@@ -235,7 +235,7 @@ To complete your BOSH Director installation:
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the **Network Config** pane, and ensure you have deselected the **Enable ICMP Checks** checkbox. Click **Review Pending Changes**, then **Apply Changes** again.
 
-    ![alt-text="Please review the errors below: Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is disabled) and Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is disabled)."](../common/images/cloudform/install-error.png)
+    ![alt-text="Please review the errors below: Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is deactivated) and Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is deactivated)."](../common/images/cloudform/install-error.png)
 
 1. BOSH Director installs. This might take a few moments. When the installation process is complete, the **Changes Applied** window appears.
 
