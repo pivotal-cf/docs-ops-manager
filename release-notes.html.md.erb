@@ -18,6 +18,35 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <hr>
 
 ## <a id='releases'></a> Releases
+### <a id="3-0-4"></a> v3.0.4
+
+**Release Date:** February 09, 2023
+
+<div class="note warning"><strong>Warning:</strong>
+  This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
+</div>
+
+
+- **[Feature]** Upgrade Opsman to use PG15
+- **[Bug Fix]** [BOSH-191] SEE CHANGES on Review Pending Changes page logs secrets into the Ops Manager production log
+- **[Feature]** Run _woke_ inclusive language CLI on opsmanager in CI without false positives and remove non-inclusive language in the UI
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Ops Manager</td><td>3.0.4-build.227*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.83*</td></tr><tr><td>BBR SDK</td><td>1.18.61*</td></tr><tr><td>BOSH Director</td><td>276.1.1</td></tr><tr><td>BOSH DNS</td><td>1.36.0*</td></tr><tr><td>System Metrics</td><td>2.2.5*</td></tr><tr><td>CredHub</td><td>2.12.19*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9*</td></tr><tr><td>Syslog</td><td>12.1.1</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.63*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.1*</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>89*</td></tr><tr><td>BOSH CLI</td><td>7.1.2*</td></tr><tr><td>Credhub CLI</td><td>2.9.10*</td></tr><tr><td>BBR CLI</td><td>1.9.39*</td></tr><tr><td>Telemetry</td><td>2.0.5*</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
 ### <a id="3-0-3"></a> v3.0.3
 
 **Release Date:** January 06, 2023
