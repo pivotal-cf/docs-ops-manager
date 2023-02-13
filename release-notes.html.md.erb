@@ -24,12 +24,16 @@ on the Cloud Foundry website.
 
 **Release Date:** February 08, 2023
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes new versions of BOSH DNS and System Metrics, which will cause all VMs to redeploy.
+<div class="note caution">
+  <strong>Caution:</strong>
+  This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
+</div>
+
+<div class="note caution">
+  This release upgrades the BOSH Director to use NATS 2.0
 </div>
 
 - **[Bug Fix]** Secrets correctly redacted from Ops Manager production logs when "See Changes" is clicked.
-- **[Feature]** Ops Manager 2.10 now uses NATS 2.0
 - **[Feature]** Remove non-inclusive language from the Ops Manager UI
 
 <table border="1" class="nice">
