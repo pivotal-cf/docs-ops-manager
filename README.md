@@ -1,7 +1,7 @@
 # Ops Manager Documentation
 
 This repository contains content for the Ops Manager documentation. We publish the Ops Manager documentation at
-https://docs.pivotal.io/ops-manager/index.html.
+https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/index.html.
 
 In this README:
 
