@@ -6,7 +6,7 @@ https://docs.pivotal.io/ops-manager/index.html.
 In this README:
 
 - [How To Contribute](#how-to-contribute)
-- [Versions and Branches](#versions-and-branches)
+- [Versions and Branches](#version-branch)
 - [Publishing Docs (2.10 and later)](#publishing-docs-210-and-later)
 - [Publishing Docs (2.9 and earlier)](#publishing-docs-29-and-earlier)
 
