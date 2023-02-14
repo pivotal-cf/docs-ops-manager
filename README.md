@@ -20,7 +20,7 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 
 | **Book Branch** | **Content Branch** | **Published URL** |
 |-----------------|--------------------|-------------------|
-|            N/A  |              `3.0` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html |
+|            N/A  |              `3.0` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html  |
 |            N/A  |             `2.10` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/index.html |
 |           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
 |           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
@@ -89,7 +89,8 @@ This repo contains the following files:
 
 ### In DocWorks
 
-Run a build of the "VMware Tanzu Ops Manager" project to upload the docs to Docs Dash.
+1. Run a build of the "VMware Tanzu Ops Manager" project to upload the docs to Docs Dash.
+2. Review your changes on the staging site https://docs-staging.vmware.com/...
 
 ### In Docsdash
 
