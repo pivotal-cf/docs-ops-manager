@@ -127,7 +127,7 @@ Unless you are using Azure managed disks, you must manually recreate disks on BO
 1. Configure <%= vars.ops_manager %> to encrypt VM root, ephemeral disk, and persistent disk on next deploy:
     * **Root File System:** To recreate the root file system for VMs, you must upload a new stemcell. If you are already running the latest stemcell, you can:
         * Wait until a new stemcell comes out. This typically takes less than two weeks.
-        * If propagating disk encryption is urgent, contact [Support](https://support.pivotal.io).
+        * If propagating disk encryption is urgent, contact [Support](https://tanzu.vmware.com/support).
     * **Ephemeral Disks:** In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate VMs deployed by the BOSH Director** checkbox.
     * **Persistent Disks**
         * <%= vars.platform_old_pivotal %> (<%= vars.platform_code_pivotal %>) v2.3 and later: In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate All Persistent Disks** checkbox.
