@@ -9,7 +9,7 @@ template_variables:
   product_url: https://network.pivotal.io/products/pivotal-cf
   support_link: <a href="https://pivotal.io/support" target="_blank">Support</a>
   support_call_to_action: <a href="https://pivotal.io/support" target="_blank">Need Support?</a>
-  support_url: http://support.pivotal.io
+  support_url: https://tanzu.vmware.com/support
   use_global_header: true
   global_header_product_href: https://network.pivotal.io/
   global_header_product_link_text: Downloads
@@ -162,7 +162,7 @@ template_variables:
   console_links: For more information, see [Getting Started with Apps Manager](https://docs.pivotal.io/platform/console/dev-console.html) and [Managing User Accounts and Permissions Using Apps Manager](https://docs.pivotal.io/platform/console/console-roles.html).
   console_org: images/pcf/console-org.png
   console_pcf_pws: <a href="https://docs.pivotal.io/platform/2-11/customizing/console-login.html">Logging In to Apps Manager</a>
-  contact_support: Contact [Support](https://support.pivotal.io) if you need assistance.
+  contact_support: Contact [Support](https://tanzu.vmware.com/support) if you need assistance.
   container_network_link: For information about administering container-to-container network policies, see [Administering Container-to-Container Networking](../devguide/deploy-apps/cf-networking.html).
   cookies_shared_domain_1:
   cookies_shared_domain_2: For an app using a shared domain such as `example.com`, a cookie set to use the highest domain has a `Domain` attribute of `.example.com` in its HTTP response header.
@@ -219,7 +219,7 @@ template_variables:
   info_loc: In Ops Manager
   invite_members: images/pcf/invite-members.png
   ipsec_note: <li>Use the <a href="https://docs.pivotal.io/addon-ipsec/index.html">IPsec add-on</a> to encrypt IP data traffic within your deployment.</li>
-  kb_link: <a href="https://support.pivotal.io/kb" target="_blank">Knowledge Base</a>
+  kb_link: <a href="https://kb.vmware.com/" target="_blank">Knowledge Base</a>
   keepalive: For more information, see [Gorouter Back End Keep-Alive Connections](../adminguide/routing-keepalive.html).
   keepalive_router: An operator can enable the feature by entering a non-zero value for the **Keep-alive connections for the Gorouter** field in the **Networking** pane of the TAS for VMs tile.
   known_issues: <a href="https://docs.pivotal.io/ops-manager/2-10/release-notes.html#known-issues">Known Issues</a>
