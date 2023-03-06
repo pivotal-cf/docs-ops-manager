@@ -52,7 +52,7 @@ To configure the **Director Config** pane:
     <p class='note'><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
 
 2. Select **Enable Short Lived NATS Bootstrap Credentials** to rotate the bootstrap NATS credentials. This feature increases security by [rotating the bootstrap credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html) that are used when starting the VMs.
-    <p class='note'><strong>Note:</strong> This feature will make the BOSH Agent restart when creating a VM, and will make the creation of a VM moderately slower.</p>
+    <p class='note'><strong>Note:</strong> This feature moderately slows the creation of a VM since it restarts the BOSH Agent.</p>
 
 1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deploy. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
 
