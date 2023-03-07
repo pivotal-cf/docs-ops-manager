@@ -52,7 +52,7 @@ The general requirements for deploying and managing a <%= vars.platform_name %> 
 * One or more NTP servers if not already provided by your IaaS.
 
 * (**Recommended**) A network without DHCP available for deploying the <%= vars.app_runtime_abbr %> VMs.
-  <p class="note"><strong>Note:</strong> If you have DHCP, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/install-troubleshooting.html">Troubleshooting Deployment Problems</a> for guidance on avoiding issues with your installation.</p>
+  <p class="note"><strong>Note:</strong> If you have DHCP, see <a href="troubleshooting.html">Troubleshooting Deployment Problems</a> for guidance on avoiding issues with your installation.</p>
 
 * (**Optional**) External storage. When you deploy <%= vars.app_runtime_abbr %>, you can select internal file storage or external file storage, either network-accessible or IaaS-provided, as an option in the <%= vars.app_runtime_abbr %> tile. <%= vars.company_name %> recommends using external storage whenever possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2-10/tanzu-application-service-for-vms/configuring.html) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
