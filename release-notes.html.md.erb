@@ -161,6 +161,17 @@ To upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>, see [Upgradin
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> includes the following major features:
 
+### <a id='lts'></a> Long-Term Support for <%= vars.ops_manager %> <%= vars.v_major_version %>
+
+<%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version of <%= vars.ops_manager %>. <%= vars.ops_manager %> <%= vars.v_major_version %> is to be supported through November 2025.
+
+Over the lifecycle of <%= vars.ops_manager %> <%= vars.v_major_version %>, VMware will release security patches that occasionally include feature enhancements and maintenance updates.
+
+Versions and filenames for <%= vars.ops_manager %> <%= vars.v_major_version %> releases on Tanzu Network will now include a <code>+LTS-T</code> suffix to indicate its long-term support status. Customers using automation to deploy <%= vars.ops_manager %> may need to update their version and filename patterns to use <%= vars.ops_manager %> <%= vars.v_major_version %>.
+
+You can jump upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> <%= vars.v_major_version %>. For more information,
+see [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](jump-upgrades.html).
+
 ### <a id='ubuntu-jammy'></a> Jammy Jellyfish Stemcell Support
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> uses Jammy Jellyfish, a Jammy stemcell based on Ubuntu 22.04.
