@@ -1,30 +1,59 @@
 ---
-title: NATS Short Lived Bootstrap Credentials
+title: Using Short-Lived NATS Bootstrap Credentials
 owner: Ops Manager
 ---
 
-## <a id='overview'></a> Overview
+This topic describes using short-lived NATS bootstrap credentials in your <%= vars.ops_manager_full %> deployment.
 
-The BOSH NATS is a service that enables communication between the BOSH Director and the BOSH Agent in the deployed VMs. It is used to send messages to the BOSH Agent so it can execute tasks or return information of the current state of the VM. The authentication mechanism for the BOSH NATS is based on TLS certificates. Each VM deployed by BOSH is given a certificate at startup so the Agent can communicate safely with NATS. This certificate is delivered using each IAAS metadata service (e.g. [AWS user-data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-add-user-data.html)).
 
-## <a id='problem'></a> Problem
+## <a id='overview'></a> Overview of Short-Lived NATS Bootstrap Credentials
 
-The delivery mechanism used by BOSH to pass the certificate to the VMs is based on the IAAS metadata services. This mechanism is not secure because in the IaaSes the VM metadata is accessible by any process running in the VM or by a user with non root access to the VM. This creates the risk of a malicious user or process getting the certificate and using it to communicate with the BOSH NATS.
+BOSH NATS is a service that allows the BOSH Director and BOSH Agents in deployed VMs to communicate with each other. The BOSH Director uses BOSH NATS to send
+commands and information to the BOSH Agent, so that the BOSH Agent can execute tasks or return information about the current state of the VM.
 
-## <a id='solution'></a> Solution
+BOSH NATS uses TLS certificates to authenticate communication between the BOSH Director and the BOSH Agent. When VMs are created during a new deployment of
+<%= vars.ops_manager %>, BOSH gives each VM a TLS certificate through the metadata service for your IaaS, such as AWS instance user data.
 
-The solution is to use a short lived certificate in each VM for BOSH NATS access. The certificate that is given to the VM when it's created will be valid just for the bootstrap process. Before the bootstrap process is completed, the Agent will receive a new certificate using a different mechanism: a message from the Director to the Agent with the updated configuration. The previous certificate stored in the metadata service will be rejected from that point on by the BOSH NATS. No process or user will be able to access the initial certificate before the bootstrap process is completed.
+However, any user with non-root access to a VM or process running in a VM can access VM metadata within your IaaS. This could allow a malicious user or
+process to obtain the TLS certificate for the VM and use it to communicate with the BOSH Director through BOSH NATS.
 
-## <a id='enable'></a> Enable the Short lived NATS bootstrap credentials
+To increase the security of your <%= vars.ops_manager %> deployment, you can configure your VMs to use short-lived bootstrap credentials when communicating
+through BOSH NATS. When you configure your VMs to use short-lived bootstrap credentials, the TLS certificate that BOSH gives to a VM through the metadata
+service for your IaaS contains credentials that are only to be used during the bootstrap process. Before the bootstrap process finishes, the BOSH Director
+sends the BOSH Agent a new TLS certificate. From that point forward, BOSH NATS rejects the previous TLS certificate that is stored in the metadata service.
+Because no user or process can access VMs during the bootstrap process, and apps are installed after the bootstrap process is complete, using short-lived
+bootstrap credentials ensures that any malicious user or process that obtains the TLS certificate stored in the metadata service cannot use it to access your
+VMs or apps.
 
-To enable the short lived NATS bootstrap credentials feature:
+
+## <a id='configure'></a> Configure Short-Lived NATS Bootstrap Credentials
+
+To configure your VMs to use short-lived bootstrap credentials when communicating through BOSH NATS:
+
+1. In a browser window, navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the **BOSH Director** tile.
+
 1. Select **Director Config**.
-1. Scroll down to the **Enable Short Lived NATS Bootstrap Credentials** checkbox and check it.
+
+1. Activate the **Enable Short Lived NATS Bootstrap Credentials** checkbox.
+
 1. Click **Save**.
-1. Click **Apply Changes** on the BOSH Director.
 
-This will affect all new deployments. Existing deployments will not be affected. If you want to enable the feature for existing VMs, you will need to recreate them.
+1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
-<p class='note important'><strong>Important:</strong><br>This feature is available for the following Stemcells: <br>Windows 2019 - 2019.41 and newer<br>Ubuntu Xenial - 621.171 and newer<br>Ubuntu Bionic - 1.36 and newer<br>Ubuntu Jammy - All versions are supported.<br><br> Using this feature with unsupported stemcells will result in unresponsive VMs</p>
+1. Click **Review Pending Changes**.
+
+1. Click **Apply Changes**.
+
+This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %> deployments to use
+short-lived bootstrap credentials, you must re-create them.
+
+<div class='note important'><strong>Important:</strong> You can configure short-lived bootstrap credentials for VMs using the following stemcells:
+  <ul>
+    <li>Windows 2019.41 and later</li>
+    <li>Xenial 621.171 and later</li>
+    <li>Bionic 1.36 and later</li>
+    <li>All versions of Jammy</li>
+  </ul>
+  If you configure short-lived bootstrap credentials for VMs using unsupported stemcells, the VMs become unresponsive.</div>

@@ -24,7 +24,7 @@ To configure the **Director Config** pane:
 <% if current_page.data.iaas == "AWS" %>
 1. In the **NTP Servers (comma delimited)** field, enter at least two of the following NTP servers separated by a comma: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
 
-    If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
+    If your AWS environment is air-gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
 <% end %>
 
 <%# For Azure: %>
@@ -35,7 +35,7 @@ To configure the **Director Config** pane:
 <%# For other IaaSes such as vSphere: %>
 <% if current_page.data.iaas != "Azure" && current_page.data.iaas != "OpenStack" && current_page.data.iaas != "AWS" && current_page.data.iaas != "GCP" %>
 1. In the **NTP Servers (comma delimited)** field:
-    1. (Optional) If your AWS environment is air-gapped, consider using Amazon’s Time Sync Service, consider using [Amazon's Time Sync   Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
+    1. (Optional) If your AWS environment is air-gapped, consider using Amazon’s Time Sync Service, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
     1. If you do not use Amazon’s Time Sync Service, enter at least two of the following NTP servers, separated by a comma:
     `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
 <% end %>
@@ -51,8 +51,18 @@ To configure the **Director Config** pane:
 1. Select **Enable Post Deploy Scripts** to run a post-deploy script after deployment. This script allows the job to execute additional commands against a deployment.
     <p class='note'><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
 
-2. Select **Enable Short Lived NATS Bootstrap Credentials** to rotate the bootstrap NATS credentials. This feature increases security by [rotating the bootstrap credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html) that are used when starting the VMs.
-    <p class='note'><strong>Note:</strong> This feature moderately slows the creation of a VM since it restarts the BOSH Agent.</p>
+1. To configure your VMs to use short-lived NATS credentials during the bootstrap process, activate the **Enable Short Lived NATS Bootstrap Credentials**
+checkbox. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
+communicate with the BOSH Director through BOSH NATS. For more information, see [Using Short-Lived NATS Bootstrap
+Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
+    <div class='note'><strong>Notes:</strong>
+      <ul>
+        <li>Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
+          are created somewhat more slowly.</li>
+        <li>This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %>
+          deployments to use short-lived bootstrap credentials, you must re-create them.</li>
+      </ul>
+    </div>
 
 1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deploy. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
 
@@ -78,11 +88,11 @@ To configure the **Director Config** pane:
 
 1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
 
-2. <%= partial "../common/identification-tags" %>
+1. <%= partial "../common/identification-tags" %>
 
-3. <%= partial "../common/certificates-config" %>
+1. <%= partial "../common/certificates-config" %>
 
-4. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
+1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
 
 1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
 
