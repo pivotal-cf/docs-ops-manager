@@ -20,19 +20,21 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 ## <a id='releases'></a> Releases
 ### <a id="3-0-5"></a> v3.0.5+LTS-T
 
-**Release Date:** March 09, 2023
+**Release Date:** March 10, 2023
 
 <div class="note warning"><strong>Warning:</strong>
   This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
-
-- **[Bug Fix]** Ops Manager compares stemcell versions inconsistently
-- **[Feature]** Allow non-configurable certs to be rotated during Apply Changes
-- **[Bug Fix]** OM-159 Ops Man UI performance degrades over time in large foundations
-- **[Bug Fix]** Temporary verifier failures should be properly exposed and not cause a 500 status code error
+- **[Feature]** <%= vars.ops_manager %> <%= vars.v_major_version %> is now a long-term support (LTS) version. Customers may need to make updates to their automation to consume new patches. See [Long-Term Support for <%= vars.ops_manager %> <%= vars.v_major_version %>](#lts) for more information.
+- **[Feature]** Certificates can now be rotated during Apply Changes. See [Rotate Certificates During Re-Deployment](#rotate-certs-redeploy) for more information.
+- **[Feature]** BOSH can be configured to use temporary bootstrap NATS credentials. See [NATS Short Lived Bootstrap Credentials](security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html) for more information.
 - **[Feature]** Upgrade to Rails 7.0
-- **[Feature]** Bump Node in OM 3.0
+- **[Feature]** Upgrade to Node 18
+- **[Known Issue Fix]** Fix issue where upgrading from previous versions of <%= vars.ops_manager %> could corrupt the BOSH Director Postgres database indexes.
+- **[Bug Fix]** Temporary verifier failures are now properly exposed and no longer cause a 500 status code error
+- **[Bug Fix]** Improve the performance of the Stemcell Library page
+- **[Bug Fix]** The Review Pending Changes page no longer improperly displays "Stemcell Out of Date" when using latest stemcells.
 
 <table border="1" class="nice">
   <thead>
@@ -504,6 +506,8 @@ issues with tile upgrade failures.
 
 * See [Breaking Changes in <%= vars.ops_manager %> v3.0](#breaking-changes).
 
+* See [Known Issues in <%= vars.ops_manager %> v3.0](#known-issues).
+
 <%= vars.ops_manager %> v3.0.0 uses the following component versions:
 
 <table border="1" class="nice">
@@ -624,7 +628,8 @@ and maintenance updates.
 
 Versions and filenames for <%= vars.ops_manager %> <%= vars.v_major_version %> releases on VMware Tanzu Network include a `+LTS-T` suffix to indicate its LTS
 status. If you use automation scripts to deploy <%= vars.ops_manager %> <%= vars.v_major_version %>, you may need to update your version and filename patterns
-to include this suffix.
+to include this suffix. For example, for <%= vars.ops_manager %> 3.0.4, the filename for Azure was <code>ops-manager-azure-3.0.4-build.227.yml</code>, while
+on 3.0.5+LTS-T, it is now <code>ops-manager-azure-3.0.5+LTS-T.yml</code>.
 
 You can jump upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> <%= vars.v_major_version %>. For more information,
 see [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](jump-upgrades.html).
@@ -779,4 +784,8 @@ BOSH Director tile.
 
 ## <a id='known-issues'></a> Known Issues
 
-There are no known issues for <%= vars.ops_manager %> <%= vars.v_major_version %>.
+### <a id='postgres-db-index'> BOSH Director Postgres Database Indexes Corrupted On Upgrade
+
+The BOSH Director for <%= vars.ops_manager %> 3.0 is deployed using a Jammy stemcell. The BOSH Director for <%= vars.ops_manager %> 2.10 and earlier were deployed using a Xenial stemcell, which uses a different version of <code>glibc</code>. When upgrading from earlier versions to <%= vars.ops_manager %> 3.0, this difference in <code>glibc</code>'s string collation can cause the indexes of the BOSH Director's Postgres database to become corrupt. This can result in failures in the BOSH Director after upgrading.
+
+This issue is fixed in <%= vars.ops_manager %> 3.0.5+LTS-T. Customers that have previously upgraded from earlier versions of <%= vars.ops_manager %> to 3.0 where this corruption has occurred may encounter a failure when upgrading to 3.0.5+LTS-T. If this happens, please contact support for assistance.
