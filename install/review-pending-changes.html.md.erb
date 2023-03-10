@@ -1,7 +1,7 @@
----
+ ---
 title: Reviewing Pending Product Changes
 owner: Ops Manager
----
+ ---
 
 This topic describes the **Review Pending Changes** page and how to selectively deploy individual or multiple tiles in <%= vars.ops_manager_first %>.
 Deploying tiles selectively can dramatically reduce deployment time.
@@ -9,8 +9,7 @@ Deploying tiles selectively can dramatically reduce deployment time.
 
 ## <a id='review-pending-changes'></a> Review Pending Changes Page
 
-The following screenshot shows the **Review Pending Changes** page. The features called out with
-red letters are described below.
+The following screenshot shows the **Review Pending Changes** page. The features called out with red letters are described below.
 
 <%# Screenshot written in Omnigraffle. Edit in ./images/omnigraffle/review-pending-changes.graffle %>
 
@@ -18,47 +17,46 @@ red letters are described below.
 
 Each labeled section of the **Review Pending Changes** page works as follows:
 
-- **A**---**Select All Products:** When enabled, the checkbox selects all available
-products. When deselected, the checkbox deselects all available products.
+* **A** --- **Select All Products:** When activated, the checkbox selects all available products. When deactivated, the checkbox deselects all available
+products.
 
-- **B**---**Select Product:** The checkboxes next to each product listing allow you to select the tiles you want to deploy.
-The BOSH Director is always selected.
+* **B** --- **Select Product:** The checkboxes next to each product listing allow you to select the tiles you want to deploy. The BOSH Director is always
+selected.
 
-- **C**---**Product Listing:** Each product listing displays the version of the product
-staged for deployment. The top of each listing shows one of the following three colors:
+* **C** --- **Product Listing:** Each product listing displays the version of the product staged for deployment. The top of each listing shows one of the
+following three colors:
 
-  - **Green**---Tile is configured and ready for deployment.
+  * **Green** --- Tile is configured and ready for deployment.
 
-  - **Orange**---Tile is not fully configured and cannot be deployed yet.
+  * **Orange** --- Tile is not fully configured and cannot be deployed yet.
 
-  - **Red**---Tile is pending deletion.
+  * **Red** --- Tile is pending deletion.
 
-- **D**---**Depends on:** This section lists tile dependencies and versions. If you choose
-to deploy a tile that has dependencies, you must also deploy all of that tile's
-dependencies in the same deployment. Dependencies are shown in the following colors:
+* **D** --- **Depends on:** This section lists tile dependencies and versions. If you choose to deploy a tile that has dependencies, you must also deploy all
+of that tile's dependencies in the same deployment. Dependencies are shown in the following colors:
 
-  - **Green**---The correct version of the dependency is installed.
+  * **Green** --- The correct version of the dependency is installed.
 
-	- **Red**---An incompatible version of the dependency is installed. If the red text includes **(optional)**, you can still apply changes.
+	* **Red** --- An incompatible version of the dependency is installed. If the red text includes **(optional)**, you can still apply changes.
 
-	- **Gray**---The dependency is not installed, but it is optional.
+	* **Gray** --- The dependency is not installed, but it is optional.
 
-- **E**---**Warnings:**---Red text in orange product listings indicates changes you need to make before you deploy the tile.
-You might see some of the following warnings:
+* **E** --- **Warnings:** Red text in orange product listings indicates changes you need to make before you deploy the tile. You might see some of the
+following warnings:
 
-    - **Missing stemcell(s)**---You must import and stage one or more stemcells with Stemcell Library. The warning
-    links to the Stemcell Library.
+    * **Missing stemcell(s)** --- You must import and stage one or more stemcells with Stemcell Library. The warning links to the Stemcell Library.
 
-    - **Stemcell(s) out of date**---You must update one or more stemcells for your tile in Stemcell
-    Library. For more information, see [Importing and Managing Stemcells](../opsguide/managing-stemcells.html).
+    * **Stemcell(s) out of date** --- You must update one or more stemcells for your tile in Stemcell Library. For more information, see [Importing and
+    Managing Stemcells](../opsguide/managing-stemcells.html).
 
-    - **Configuration is incomplete**---You must complete the configuration of your tile.
+    * **Configuration is incomplete** --- You must complete the configuration of your tile.
 
-    - **Configuration is invalid**---You must resolve your tile's invalid configurations.
+    * **Configuration is invalid** --- You must resolve your tile's invalid configurations.
 
 
-- **F**---**Changes:** This section lists high-level pending changes to the product that <%= vars.ops_manager %> has not yet attempted to deploy. When <%= vars.ops_manager %> tries to deploy a product but the deployment fails, it clears this list and the pending changes are retained for the next deployment. To see if your product deployed successfully, see
-[Change Log Page](../pcf-interface.html#changelog).<br><br>
+* **F** --- **Changes:** This section lists high-level pending changes to the product that <%= vars.ops_manager %> has not yet attempted to deploy. When
+<%= vars.ops_manager %> tries to deploy a product but the deployment fails, it clears this list and the pending changes are retained for the next deployment.
+To see if your product deployed successfully, see [Change Log Page](../pcf-interface.html#changelog) in _Using the <%= vars.ops_manager %> Interface_.<br><br>
     Listed changes include:
 
     - Tile deletion is staged.
@@ -69,39 +67,47 @@ You might see some of the following warnings:
 
     - Stemcell is updated.
 
-- **G**---**Errands:** If you expand this section, you can activate or deactivate errands that trigger when that tile
-deploys. For example, you may enable an errand to log properties. For more information,
-see [Managing Errands in <%= vars.ops_manager %>](managing_errands.html).
+* **G** --- **Errands:** If you expand this section, you can activate or deactivate errands that trigger when that tile deploys. For example, you may activate
+an errand to log properties. For more information, see [Managing Errands in <%= vars.ops_manager %>](managing_errands.html).
 
-- **H**---**Staged:** This section indicates the status of the tile.
+* **H** --- **Staged:** This section indicates the status of the tile.
 
-- **I**---**See Changes:** Clicking this button takes you to the [Pending Changes](#pending-changes) page for that tile.
+* **I** --- **See Changes:** Clicking this button takes you to the [Pending Changes](#pending-changes) page for that tile.
 
-- **J**---**Apply Changes:** Clicking this button deploys all enabled tiles.
+* **J** --- **Apply Changes:** Clicking this button deploys all selected tiles.
 
-- **K**---**Rotate All Non-Configurable Leaf Certificates:** When this checkbox is activated, all non-configurable leaf certificates will be rotated as the first step of the Apply Changes. The page displays when the next non-configurable leaf certificate will expire, allowing you to make a decision to activate the checkbox without looking at the Certificates page.<br><br>
+* **K** --- **Rotate All Non-Configurable Leaf Certificates:** When this checkbox is activated, all non-configurable leaf certificates will be rotated as the
+first step of the Apply Changes. The page displays when the next non-configurable leaf certificate will expire, allowing you to make a decision to activate the checkbox without looking at the
+Certificates page.<br><br>
 
-    You must redeploy all tiles when using this feature in order to ensure all VMs receive the latest version of the certificates. You must also activate the **Upgrade All Service instances** errand for any tiles that have that errand. The errand is required to redeploy VMs associated with service instances to ensure they receive the latest version of the certificates. See [Rotating Non-Configurable Leaf Certificates](../security/pcf-infrastructure/rotate-non-configurable-certs.html#procedure) for more information.
+    You must redeploy all tiles when using this feature in order to ensure all VMs receive the latest version of the certificates. You must also activate the
+    **Upgrade All Service instances** errand for any tiles that have that errand. The errand is required to redeploy VMs associated with service instances to ensure they receive
+    the latest version of the certificates. See [Rotating Non-Configurable Leaf Certificates](../security/pcf-infrastructure/rotate-non-configurable-certs.html#procedure) for more
+    information.
 
 
 ## <a id='pending-changes'></a> About Pending Changes for a Specific Tile
 
-If you have changed the configuration of a tile in your deployment, use the **Pending Changes** page to review the changes to the existing manifest or configs line-by-line.
+If you have changed the configuration of a tile in your deployment, use the **Pending Changes** page to review the changes to the existing manifest or
+configurations line-by-line.
 
 This page summarizes staged changes to the existing tile's configuration. The changes displayed in this page have not yet been applied to the deployment.
 
-This page allows operators to verify changes to the manifest and configs so they can approve any staged changes before applying changes to their deployment.
+This page allows operators to verify changes to the manifest and configurations so they can approve any staged changes before applying changes to their
+deployment.
 
 
 ## <a id='pending-changes-ui'></a> Use the Pending Changes Page
 
-The change summary fields display features that have been activated or deactivated using the <%= vars.ops_manager %> UI or API. These changes are staged, but have not been implemented yet. You must click **Apply Changes** to put these changes into effect.
+The change summary fields display features that have been activated or deactivated using the <%= vars.ops_manager %> UI or API. These changes are staged, but
+have not been implemented yet. You must click **Apply Changes** to put these changes into effect.
 
 To see changes for a specific tile:
 
 1. On the Review Pending Changes page, click **See Changes** on the tile you wish to review. A new tab opens.
 
-1. Review the changes displayed. Settings that have been **disabled** are displayed in red with a minus sign (**-**). Settings that have been **enabled** are displayed in green with a plus sign (**+**).
+1. Review the changes displayed. Settings that have been **deactivated** are displayed in red with a minus sign (**-**). Settings that have been **activated**
+are displayed in green with a plus sign (**+**).
 
 1. Close the tab and return to the Review Pending Changes page to apply the changes or review other tiles.
 
@@ -113,11 +119,11 @@ When you make changes to a tile, change summaries are displayed for the followin
 
 * Manifest
 
-* Runtime configs
+* Runtime configurations
 
-* CPI configs
+* CPI configurations
 
-* Cloud configs
+* Cloud configurations
 
 If an aspect of the tile has not changed, the change summary displays `No changes`.
 
