@@ -44,28 +44,29 @@ of that tile's dependencies in the same deployment. Dependencies are shown in th
 * **E** --- **Warnings:** Red text in orange product listings indicates changes you need to make before you deploy the tile. You might see some of the
 following warnings:
 
-    * **Missing stemcell(s)** --- You must import and stage one or more stemcells with Stemcell Library. The warning links to the Stemcell Library.
+  * **Missing stemcell(s)** --- You must import and stage one or more stemcells with Stemcell Library. The warning links to the Stemcell Library.
 
-    * **Stemcell(s) out of date** --- You must update one or more stemcells for your tile in Stemcell Library. For more information, see [Importing and
+  * **Stemcell(s) out of date** --- You must update one or more stemcells for your tile in Stemcell Library. For more information, see [Importing and
     Managing Stemcells](../opsguide/managing-stemcells.html).
 
-    * **Configuration is incomplete** --- You must complete the configuration of your tile.
+  * **Configuration is incomplete** --- You must complete the configuration of your tile.
 
-    * **Configuration is invalid** --- You must resolve your tile's invalid configurations.
-
+  * **Configuration is invalid** --- You must resolve your tile's invalid configurations.
 
 * **F** --- **Changes:** This section lists high-level pending changes to the product that <%= vars.ops_manager %> has not yet attempted to deploy. When
 <%= vars.ops_manager %> tries to deploy a product but the deployment fails, it clears this list and the pending changes are retained for the next deployment.
-To see if your product deployed successfully, see [Change Log Page](../pcf-interface.html#changelog) in _Using the <%= vars.ops_manager %> Interface_.<br><br>
-    Listed changes include:
+To see if your product deployed successfully, see [Change Log Page](../pcf-interface.html#changelog) in _Using the <%= vars.ops_manager %> Interface_.
+  <br>
+  <br>
+  Listed changes include:
 
-    - Tile deletion is staged.
+  * Tile deletion is staged.
 
-    - Tile version is updated.
+  * Tile version is updated.
 
-    - Stemcell is added.
+  * Stemcell is added.
 
-    - Stemcell is updated.
+  * Stemcell is updated.
 
 * **G** --- **Errands:** If you expand this section, you can activate or deactivate errands that trigger when that tile deploys. For example, you may activate
 an errand to log properties. For more information, see [Managing Errands in <%= vars.ops_manager %>](managing_errands.html).
@@ -76,14 +77,14 @@ an errand to log properties. For more information, see [Managing Errands in <%= 
 
 * **J** --- **Apply Changes:** Clicking this button deploys all selected tiles.
 
-* **K** --- **Rotate All Non-Configurable Leaf Certificates:** When this checkbox is activated, all non-configurable leaf certificates will be rotated as the
-first step of the Apply Changes. The page displays when the next non-configurable leaf certificate will expire, allowing you to make a decision to activate the checkbox without looking at the
-Certificates page.<br><br>
-
-    You must redeploy all tiles when using this feature in order to ensure all VMs receive the latest version of the certificates. You must also activate the
-    **Upgrade All Service instances** errand for any tiles that have that errand. The errand is required to redeploy VMs associated with service instances to ensure they receive
-    the latest version of the certificates. See [Rotating Non-Configurable Leaf Certificates](../security/pcf-infrastructure/rotate-non-configurable-certs.html#procedure) for more
-    information.
+* **K** --- **Rotate All Non-Configurable Leaf Certificates:** When this checkbox is activated, all non-configurable leaf certificates are rotated as the
+first step of re-deployment. The page displays when the next non-configurable leaf certificate is to expire, allowing you to decide whether to activate the
+checkbox without needing to look at the **Certificates** page.
+  <p class='note important'><strong>Important:</strong> When you activate the <strong>Rotate All Non-Configurable Leaf Certificates</strong> checkbox, you
+    must re-deploy all tiles to ensure that all VMs receive the latest version of the certificates. You must also activate the <strong>Upgrade All Service
+    instances</strong> errand for any tiles that have that errand. This errand re-deploys VMs associated with service instances, ensuring that they also
+    receive the latest version of the certificates. For more information, see
+    <a href="security/pcf-infrastructure/rotate-non-configurable-certs.html">RotatingNon-Configurable Leaf Certificates</a>.</p>
 
 
 ## <a id='pending-changes'></a> About Pending Changes for a Specific Tile

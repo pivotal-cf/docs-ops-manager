@@ -31,7 +31,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Feature]** Allow non-configurable certs to be rotated during Apply Changes
 - **[Bug Fix]** OM-159 Ops Man UI performance degrades over time in large foundations
 - **[Bug Fix]** Temporary verifier failures should be properly exposed and not cause a 500 status code error
-- **[Feature]** Upgrade to Rails 7.0 
+- **[Feature]** Upgrade to Rails 7.0
 - **[Feature]** Bump Node in OM 3.0
 
 <table border="1" class="nice">
@@ -714,11 +714,13 @@ If you do not specify a machine type as a custom VM type, the BOSH Director cont
 For more information, see the [<%= vars.ops_manager %> API
 documentation](https://docs.pivotal.io/ops-manager/3-0/opsman-api/#tag/VM-types/paths/~1api~1v0~1vm_types/put).
 
-### <a id='rotate-leafs-during-apply-changes'></a> Operators Can Choose To Rotate Certificates During Apply Changes
+### <a id='rotate-certs-redeploy'></a> Rotate Certificates During Re-Deployment
 
-<%= vars.ops_manager %> <%= vars.v_major_version %> adds a checkbox to the Review Pending Changes page to allow operators to rotate non-configurable leaf certificates during Apply Changes. This feature provides a simpler way to rotate expiring certificates through the <%= vars.ops_manager %> web user interface without interacting with the API.
+In <%= vars.ops_manager %> <%= vars.v_major_version %>, the **Review Pending Changes** page in the <%= vars.ops_manager %> Installation Dashboard includes the
+**Rotate All Non-Configurable Leaf Certificates** checkbox. Activating this checkbox allows you to rotate non-configurable leaf certificates when you
+re-deploy your tiles through the <%= vars.ops_manager %> Installation Dashboard, instead of having to rotate them through the <%= vars.ops_manager %> API.
 
-For more information, see [Reviewing Pending Product Changes](./install/review-pending-changes.html).
+For more information, see [Review Pending Changes Page](install/review-pending-changes.html#review-pending-changes) in _Reviewing Pending Product Changes_.
 
 
 ## <a id='breaking-changes'></a> Breaking Changes in <%= vars.ops_manager %> <%= vars.v_major_version %>
