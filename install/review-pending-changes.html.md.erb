@@ -79,6 +79,10 @@ see [Managing Errands in <%= vars.ops_manager %>](managing_errands.html).
 
 - **J**---**Apply Changes:** Clicking this button deploys all enabled tiles.
 
+- **K**---**Rotate All Non-Configurable Leaf Certificates:** When this checkbox is activated, all non-configurable leaf certificates will be rotated as the first step of the Apply Changes. The page displays when the next non-configurable leaf certificate will expire, allowing you to make a decision to activate the checkbox without looking at the Certificates page.<br><br>
+
+    You must redeploy all tiles when using this feature in order to ensure all VMs receive the latest version of the certificates. You must also activate the **Upgrade All Service instances** errand for any tiles that have that errand. The errand is required to redeploy VMs associated with service instances to ensure they receive the latest version of the certificates. See [Rotating Non-Configurable Leaf Certificates](../security/pcf-infrastructure/rotate-non-configurable-certs.html#procedure) for more information.
+
 
 ## <a id='pending-changes'></a> About Pending Changes for a Specific Tile
 
