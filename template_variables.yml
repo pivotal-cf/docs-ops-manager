@@ -147,7 +147,7 @@ template_variables:
   concepts_product_model_link: <li><a href="#commercial-model">How TAS for VMs Differs from Open Source Cloud Foundry</a></li>
   concepts_product_model_header: <h2><a id='commercial-model'></a>How TAS for VMs Differs from Open Source Cloud Foundry</h2>
   concepts_product_model_image: The following diagram shows open source Cloud Foundry components in blue and commercial features available with TAS for VMs in green&#58;<br><br><img src="../overview/images/pcf-commercialization.png" alt=""><br><br><a href="https://github.com/pivotal-cf/docs-pas/blob/master/images/pcf-commercialization.png?raw=true">View a larger version of this diagram.</a>.
-  concepts_product_model_text: "/pcf/core/2-11/pcf_overview_model"
+  concepts_product_model_text: "/pcf/core/2-10/pcf_overview_model"
   configure_system_logging_link: For more information, see <a href="../operating/configure-pas.html#sys-logging">Configure System Logging</a> in <em>Configuring TAS for VMs</em>.
   configuring_logging_ref: <a href="https://docs.pivotal.io/platform/2-11/opsguide/logging-config-opsman.html">Configuring Logging in TAS for VMs</a>
   configuring_registrar_ref: <a href="../metric-registrar/index.html">Configuring the Metric Registrar</a>
@@ -290,14 +290,14 @@ template_variables:
   open_service_broker_rn: "../open-service-broker/release-notes"
   route_services_config: <h2><a id='enabling-route-services'></a>Enabling Route Services in TAS for VMs</h2>You configure Route Services for your deployment in the TAS for VMs tile, in the **Networking** pane. For more information, see [Configuring TAS for VMs](https://docs.pivotal.io/platform/2-11/customizing/configure-pas.html).
   saml_provider: Retrieve the name of your SAML provider by navigating to the TAS for VMs tile on the Ops Manager Installation Dashboard, selecting **Authentication and Enterprise SSO**, and recording the value under **Provider name**. For more information about configuring TAS for VMs for a SAML identity provider, see the [Configure TAS for VMs to Use a SAML Identity Provider](../opsguide/auth-sso.html#configure-saml) section of the _Configuring Authentication and Enterprise SSO for TAS for VMs_ topic.
-  scale_table: "/pcf/core/2-11/pcf_scale_table"
+  scale_table: "/pcf/core/2-10/pcf_scale_table"
   scaling_ert: For more information regarding rolling app deployments, see [Scaling Instances in TAS for VMs](./../opsguide/scaling-ert-components.html).
   scaling_ert_db: For more information about scaling internal database components, see [Scaling Instances in TAS for VMs](./../opsguide/scaling-ert-components.html).
   select_org: images/pcf/select-org.png
   self_signed: Before following the procedure below, the developer must obtain either the self-signed certificate or the intermediate and CA certificate(s) used to sign the deployment's certificate. The developer can obtain these certificates from the Ops Manager operator.
   services: <a href="https://docs.pivotal.io/platform/services/">services</a>
   services_link: <a href="https://docs.pivotal.io/platform/services/overview.html">services</a>
-  sharding: "/pcf/core/2-11/pcf_sharding"
+  sharding: "/pcf/core/2-10/pcf_sharding"
   spring_trace: images/pcf/trace.png
   spring_trace_label: <strong>Hide Apps Manager Requests</strong>
   ssh_marketplace_output: p-mysql  100mb MySQL databases on demand
@@ -315,7 +315,7 @@ template_variables:
   tas_networking: To configure the names of the cookies, see [Configure Networking](../operating/configure-pas.html#networking) in _Configuring TAS for VMs_.
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for enabling TCP routing in the [Configure Networking](https://docs.pivotal.io/platform/2-11/customizing/configure-pas.html#networking) section of the _Configuring TAS for VMs_ topic.
   tcp_mod_port_change: "../adminguide/tcp_empty_file"
-  tcp_port: "/pcf/core/2-11/tcp_port_review"
+  tcp_port: "/pcf/core/2-10/tcp_port_review"
   tiledev_link: <p class="note"><strong>Note</strong><span>:</span> To develop service brokers and service tiles for Ops Manager, see the <a href="https://docs.pivotal.io/tiledev">Ops Manager Tile Developer Guide</a>.</p>
   uaa: <a href="../adminguide/notifications.html">UAA</a>
   uaa_cli: For more information, see [Creating and Managing Users with the UAA CLI (UAAC)](../../uaa/uaa-user-management.html) and [Orgs, Spaces, Roles, and Permissions](../../concepts/roles.html).
@@ -331,7 +331,7 @@ template_variables:
   ssl_lb_link: <a href="../opsguide/security_config.html#unencrypted">Terminating SSL/TLS at the Load Balancer Only</a>
   ssl_haproxy: <tr><th>Optionally, if you are deploying HAProxy, and</th><th>Then in addition, terminate SSL/TLS at<span>:</span></th><th>Related topic and configuration procedure</th></tr><tr><td><ul><li>You would like to secure traffic to the HAProxy.</li></ul></td><td><strong>HAProxy</strong></td><td><a href="../opsguide/ssl-term-haproxy.html#haproxy">Terminating SSL/TLS at HAProxy</a></td></tr>
   ssl_haproxy_2: <p class="note"><strong>Note</strong><span>:</span> If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS Termination at HAProxy</a>.</p>
-  zipkin_enable: "/pcf/core/2-11/zipkin-pcf-config"
+  zipkin_enable: "/pcf/core/2-10/zipkin-pcf-config"
   zipkin_enable_link: <p>When Zipkin tracing is enabled in TAS for VMs, the Gorouter examines the HTTP request headers and performs the following:</p>
   starting_container_count_maximum: For information about how to configure this setting, see the [Set a Maximum Number of Starting Containers](../upgrading/configuring.html#container-starts) section of the _Configuring TAS for VMs for Upgrades_ topic.
   garden_runc: <p class="note"><strong>Note</strong><span>:</span> PAS v1.8.8 and later use Garden-runC instead of Garden-Linux.</p>
@@ -384,10 +384,10 @@ template_variables:
   mutual_tls_tcp: <p class='note'><strong>Note:</strong> If you have mutual TLS app identity verification enabled, app containers accept incoming communication only from the Gorouter. This disables TCP routing.</p>
   support_note: <p>This buildpack is currently not supported in Ops Manager.</p>
   router_tls_recommend: <p class='note'><strong>Note:</strong> To ensure traffic is sent to the platform securely, VMware recommends as a minimum that you terminate TLS at the Gorouter. You can optionally terminate TLS at the load balancer.</p>
-  gorouter_client_cert: "/pcf/core/2-11/gorouter_client_cert_pcf"
-  ssl_termin_gorouter: "/pcf/core/2-11/ssl_termin_gorouter_pcf"
-  ssl_termin_lb_only: "/pcf/core/2-11/ssl_termin_lb_only_pcf"
-  ssl_termin_gorouter_lb: "/pcf/core/2-11/ssl_termin_gorouter_lb_pcf"
+  gorouter_client_cert: "/pcf/core/2-10/gorouter_client_cert_pcf"
+  ssl_termin_gorouter: "/pcf/core/2-10/ssl_termin_gorouter_pcf"
+  ssl_termin_lb_only: "/pcf/core/2-10/ssl_termin_lb_only_pcf"
+  ssl_termin_gorouter_lb: "/pcf/core/2-10/ssl_termin_gorouter_lb_pcf"
   grootfs_reserved_space: Alternatively, you can configure a lower threshold for Diego Cell disk cleanup in TAS for VMs. For more information, see [Configuring Diego Cell Disk Cleanup Scheduling](../operating/config-cell-cleanup.html).
   grootfs_disk_usage_link: For more information on how to calculate GrootFS disk usage in your deployment, see [Examining GrootFS Disk Usage](../adminguide/examining_grootfs_disk.html).
   zdt_enable: Ensure that the **Disable rolling app deployments** checkbox is not enabled in the **Advanced Features** pane of the VMware Tanzu Application Service for VMs (TAS for VMs) tile.
