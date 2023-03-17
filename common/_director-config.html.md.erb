@@ -32,12 +32,9 @@ To configure the **Director Config** pane:
 1. Enter any valid value for **NTP Servers (comma delimited)**. A value is required but is ignored. For example, you can enter `us.pool.ntp.org`. By default, Azure VMs use a Precision Time Protocol (PTP) clock source. For more information, see [Time sync for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/time-sync) in the Azure documentation.
 <% end %>
 
-<%# For other IaaSes such as vSphere: %>
-<% if current_page.data.iaas != "Azure" && current_page.data.iaas != "OpenStack" && current_page.data.iaas != "AWS" && current_page.data.iaas != "GCP" %>
-1. In the **NTP Servers (comma delimited)** field:
-    1. (Optional) If your AWS environment is air-gapped, consider using Amazon’s Time Sync Service, consider using [Amazon's Time Sync   Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
-    1. If you do not use Amazon’s Time Sync Service, enter at least two of the following NTP servers, separated by a comma:
-    `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+<%# For vSphere: %>
+<% if current_page.data.iaas == "vSphere" %>
+1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** field. For example, `us.pool.ntp.org`.
 <% end %>
     1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
