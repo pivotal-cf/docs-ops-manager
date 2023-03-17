@@ -22,7 +22,7 @@ To configure the **Director Config** pane:
 
 <%# For AWS: %>
 <% if current_page.data.iaas == "AWS" %>
-1. In the **NTP Servers (comma delimited)** field, enter at least two of the following NTP servers separated by a comma: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+1. In the **NTP Servers (comma delimited)** field, enter at least three reachable NTP servers separated by a comma. For example: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
 
     If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
 <% end %>
