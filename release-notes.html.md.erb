@@ -26,6 +26,8 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <p class='note caution'><strong>Caution:</strong> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.5+LTS-T causes all VMs to re-deploy.</p>
 
+* **[Known Issue]** After upgrading to 3.0.5+LTS-T, Apply Changes can fail due to unexpected encoded data in the Ops Manager database. For more information, see [Apply Changes Fails Due To Missing Classes](#apply-changes-fails-missing-classes).
+
 * **[Feature]** <%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version. If you use automation scripts to deploy
 <%= vars.ops_manager %>, you may need to update them in order to install new patch versions. For more information, see [Long-Term Support for
 <%= vars.ops_manager %> <%= vars.v_major_version %>](#lts) below.
@@ -907,3 +909,13 @@ This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.5+
 <%= vars.v_major_version %> from an earlier version and have already encountered this issue, upgrading to <%= vars.ops_manager %>
 <%= vars.v_major_version %>.5+LTS-T may cause your <%= vars.ops_manager %> deployment to fail. If this happens, contact
 [Support](https://tanzu.vmware.com/support) for assistance.
+
+### <a id='apply-changes-fails-missing-classes'></a> Apply Changes Fails Due To Missing Classes
+
+Users that have improperly encoded data in their <%= vars.ops_manager %> database can receive errors similar to the following during Apply Changes, which will cause Apply Changes to fail:
+
+```
+Error in step runner run method (will show -1 as exit code): Tried to load unspecified class: ActiveSupport::HashWithIndifferentAccess
+```
+
+To check if this improperly encoded data exists, you can visit the `https://OPS-MANAGER-FQDN/debug/files` page for your <%= vars.ops_manager %>. On this page, enter "HashWithIndifferentAccess" into your browser's Find menu. If that string appears on the page, your Ops Manager will likely be affected and Apply Changes will fail.
