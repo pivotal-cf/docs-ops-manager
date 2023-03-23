@@ -30,15 +30,35 @@ VMs or apps.
 
 To configure your VMs to use short-lived bootstrap credentials when communicating through BOSH NATS:
 
-1. In a browser window, navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Set <%= vars.ops_manager %> to Advanced Mode by following the procedure in
+[How to Enable Advanced Mode in the <%= vars.ops_manager %>](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
+in the Knowledge Base.
+For more information about Advanced Mode,
+see [Advanced Mode](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Mode)
+in the <%= vars.ops_manager %> API documentation.
 
-1. Click the **BOSH Director** tile.
+  <div class="note caution"><strong>Caution:</strong>
+    <ul>
+      <li><%= vars.company_name %> recommends that only skilled operators use Advanced Mode in <%= vars.ops_manager %>.
+        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.</li>
+      <li><%= vars.ops_manager %> does not validate the properties that you change using Advanced Mode.
+        For example, if you enter a string where an integer is required, you do not receive an error.</li>
+    </ul>
+  </div>
 
-1. Select **Director Config**.
+1. Use the `/api/v0/staged/director/overrides` endpoint to override the flag `enable_short_lived_nats_bootstrap_credentials`
+value to `true`.
+The following uaac curl command is an example on how to override the flag to `true`:
+```bash
+uaac curl "http://YOUR-OPS-MAN-FQDN/api/v0/staged/director/overrides" -X PUT --data '{"overrides" : [{"section": "instance_groups", "data": {"director": {"enable_short_lived_nats_bootstrap_credentials": true }}}]}'
+```
+For more information, see
+[Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1overrides/put)
+in the <%= vars.ops_manager %> API documentation.
 
-1. Activate the **Enable Short Lived NATS Bootstrap Credentials** checkbox.
-
-1. Click **Save**.
+1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
+[How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
+in the Knowledge Base.
 
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -48,6 +68,9 @@ To configure your VMs to use short-lived bootstrap credentials when communicatin
 
 This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %> deployments to use
 short-lived bootstrap credentials, you must re-create them.
+
+<div class='note important'><strong>Important:</strong> You can use short-lived NATS bootstrap credentials for <%= vars.ops_manager %> v2.10.54 and above.
+</div>
 
 <div class='note important'><strong>Important:</strong> You can configure short-lived bootstrap credentials for VMs using the following stemcells:
   <ul>
