@@ -27,9 +27,11 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
-- **[Bug Fix]** Apply Changes can fail due to class loading problems after Rails 7 upgrade
-- **[Feature]** OpsManager allows users to download /var/log logs from deployed instances 
-- **[Bug Fix]** The deploy manifest endpoint returns an invalid string instead of the manifest hash
+* **[Feature]** Logs downloaded from Bosh deployed VMs via <%= vars.ops_manager %> now also contain logs from the `/var/log` directory.
+
+* **[Known Issue Fix]** The [Missing Classes Cause Re-Deployment Failures](#re-deploy-fail) issue identified in v3.0.5+LTS-T has been resolved.
+
+* **[Bug Fix]** The API endpoint for retrieving the manifest for a deployed product no longer returns an invalid manifest.
 
 <table border="1" class="nice">
   <thead>
