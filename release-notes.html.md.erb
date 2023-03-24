@@ -18,20 +18,22 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <hr>
 
 ## <a id='releases'></a> Releases
-### <a id="3-0-6"></a> v3.0.6+LTS-T
+
+### <a id='3-0-6'></a> v3.0.6+LTS-T
 
 **Release Date:** March 24, 2023
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
-</div>
+<p class='note caution'><strong>Caution:</strong> This release includes a new version of BOSH DNS. Upgrading to <%= vars.ops_manager %>
+  <%= vars.v_major_version %>.6+LTS-T causes all VMs to re-deploy.</p>
 
+* **[Feature]** Logs downloaded from BOSH-deployed VMs through <%= vars.ops_manager %> also contain logs from the `/var/log` directory.
 
-* **[Feature]** Logs downloaded from Bosh deployed VMs via <%= vars.ops_manager %> now also contain logs from the `/var/log` directory.
+* **[Known Issue Fix]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T, improperly encoded data in the
+<%= vars.ops_manager %> database does not cause re-deployments to fail. For more information about this known issue, see [Missing Classes Cause Re-Deployment
+Failures](#re-deploy-fail) below.
 
-* **[Known Issue Fix]** The [Missing Classes Cause Re-Deployment Failures](#re-deploy-fail) issue identified in v3.0.5+LTS-T has been resolved.
-
-* **[Bug Fix]** The API endpoint for retrieving the manifest for a deployed product no longer returns an invalid manifest.
+* **[Bug Fix]** When you retrieve the manifest for a deployed product through the <%= vars.ops_manager %> API, the API endpoint no longer returns an invalid
+manifest.
 
 <table border="1" class="nice">
   <thead>
@@ -961,3 +963,5 @@ To see whether improperly encoded data exists in your <%= vars.ops_manager %> da
 1. After you have reached the page described in the previous step, search the page for `HashWithIndifferentAccess`. If the `HashWithIndifferentAccess` string
 appears on the page, the database for your <%= vars.ops_manager %> deployment contains the improperly encoded data that causes <%= vars.ops_manager %>
 re-deployments to fail.
+
+This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T.
