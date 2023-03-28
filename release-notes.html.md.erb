@@ -32,6 +32,9 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <%= vars.ops_manager %> database does not cause re-deployments to fail. For more information about this known issue, see [Missing Classes Cause Re-Deployment
 Failures](#re-deploy-fail) below.
 
+* **[Known Issue]** The import process may take a long time if the export contains a large number of records on the Change Log page.
+This is a one time data migration related to fixes for the improperly encoded data in the Known Issue Fix above.
+
 * **[Bug Fix]** When you retrieve the manifest for a deployed product through the <%= vars.ops_manager %> API, the API endpoint no longer returns an invalid
 manifest.
 
