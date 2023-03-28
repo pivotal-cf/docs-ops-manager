@@ -25,6 +25,29 @@ Because no user or process can access VMs during the bootstrap process, and apps
 bootstrap credentials ensures that any malicious user or process that obtains the TLS certificate stored in the metadata service cannot use it to access your
 VMs or apps.
 
+To learn about the stemcells that are compatible with short-lived bootstrap credentials, see [Stemcell Compatibility](#stemcells) below.
+
+To configure your VMs to use short-lived bootstrap credentials when communicating through BOSH NATS, see [Configure Short-Lived NATS Bootstrap
+Credentials](#configure) below.
+
+
+## <a id='stemcells'></a> Stemcell Compatibility
+
+You can configure short-lived bootstrap credentials for VMs using the following stemcells:
+
+* Windows 2019.41 and later
+
+* Xenial 621.171 and later
+
+* Bionic 1.36 and later
+
+* Jammy 1.95 and later
+  <p class='note important'><strong>Important:</strong> All Jammy stemcell versions are compatible with short-lived bootstrap credentials. However, if you use
+    Jammy 1.94 or earlier, using short-lived bootstrap credentials causes VMs with re-sized disk allocations to fail when they are re-created. To fix this
+    issue, upgrade your stemcell to Jammy 1.95 or later.</p>
+
+If you configure short-lived bootstrap credentials for VMs using unsupported stemcells, the VMs become unresponsive.
+
 
 ## <a id='configure'></a> Configure Short-Lived NATS Bootstrap Credentials
 
@@ -48,15 +71,3 @@ To configure your VMs to use short-lived bootstrap credentials when communicatin
 
 This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %> deployments to use
 short-lived bootstrap credentials, you must re-create them.
-
-<div class='note important'><strong>Important:</strong> You can configure short-lived bootstrap credentials for VMs using the following stemcells:
-  <ul>
-    <li>Windows 2019.41 and later</li>
-    <li>Xenial 621.171 and later</li>
-    <li>Bionic 1.36 and later</li>
-    <li>Jammy 1.95 and later</li>
-  </ul>
-
-  Please note: All Jammy versions are compatible with the short-lived NATS credentials feature; however, Jammy versions prior to 1.95 contain a known issue when this feature is active that causes failures if a VM is recreated while a disk resize occurs.
-
-  If you configure short-lived bootstrap credentials for VMs using unsupported stemcells, the VMs become unresponsive.</div>
