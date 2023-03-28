@@ -54,6 +54,9 @@ short-lived bootstrap credentials, you must re-create them.
     <li>Windows 2019.41 and later</li>
     <li>Xenial 621.171 and later</li>
     <li>Bionic 1.36 and later</li>
-    <li>All versions of Jammy</li>
+    <li>Jammy 1.95 and later</li>
   </ul>
+
+  Please note: All Jammy versions are compatible with the short-lived NATS credentials feature; however, Jammy versions prior to 1.95 contain a known issue when this feature is active that causes failures if a VM is recreated while a disk resize occurs.
+
   If you configure short-lived bootstrap credentials for VMs using unsupported stemcells, the VMs become unresponsive.</div>

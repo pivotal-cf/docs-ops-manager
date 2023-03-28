@@ -69,6 +69,8 @@ Dashboard. For more information, see [Rotate Non-Configurable Leaf Certificates 
 * **[Feature]** You can configure your VMs to use short-lived NATS credentials during the bootstrap process. For more information, see [Short-Lived NATS
 Bootstrap Credentials](#short-lived-nats-creds) below.
 
+<p class='note caution'><strong>Caution:</strong> Before turning on short-lived NATS credentials, you should ensure all VMs (including those deployed by service tiles) are using stemcells that support this feature, otherwise you risk encountering unresponsive VMs. Please reference the [documentation for NATS short-lived credentials](security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html) for more information on supported stemcells.</p>
+
 * **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> uses Rails 7.0.
 
 * **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> uses Node 18.
