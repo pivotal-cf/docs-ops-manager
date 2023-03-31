@@ -5,7 +5,8 @@ owner: Ops Manager
 
 This topic describes how to check and monitor current VM status in <%= vars.ops_manager_first %>.
 
-For a complete guide to monitoring <%= vars.app_runtime_first %>, see [Monitoring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/monitoring/index.html).
+For a complete guide to monitoring <%= vars.app_runtime_first %>, see the [TAS for VMs
+documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/monitoring-index.html).
 
 
 ## <a id='interface'></a> Monitoring VMs Using the <%= vars.ops_manager %> Interface
@@ -23,66 +24,71 @@ To view monitoring information:
 The columns display the following information:
 
 <table border="1" class="nice" >
-<tr>
-	<th>VM Data Point</th>
-  <th>Details</th>
-</tr>
-<tr>
-  <td><strong>Job</strong></td>
-  <td>Each job represents a component running on one or more VMs that <%= vars.ops_manager %> deployed.</td>
-</tr>
-<tr>
-  <td><strong>Index</strong></td>
-  <td>For jobs that run across multiple VMs, the <strong>index</strong> value indicates the order in which the job VMs were deployed. For jobs that run on only one VM, the VM has an <strong>index</strong> value of <code>0</code>.</td>
-</tr>
-<tr>
-  <td><strong>IPs</strong></td>
-  <td>IP address of the job VM.</td>
-</tr>
-<tr>
-  <td><strong>CID</strong></td>
-  <td>Uniquely identifies the VM.</td>
-</tr>
-<tr>
-  <td><strong>Load Avg15</strong></td>
-  <td>CPU load average over 15 minutes.</td>
-</tr>
-<tr>
-  <td><strong>CPU</strong></td>
-  <td>Current CPU usage.</td>
-</tr>
-<tr>
-  <td><strong>Memory</strong></td>
-  <td>Current memory usage.</td>
-</tr>
-<tr>
-  <td><strong>Swap</strong></td>
-  <td>Swap file percentage.</td>
-</tr>
-<tr>
-  <td><strong>System Disk</strong></td>
-  <td>System disk space usage.</td>
-</tr>
-<tr>
-  <td><strong>Ephem. Disk</strong></td>
-  <td>Ephemeral disk space usage.</td>
-</tr>
-<tr>
-	<td><strong>Pers. Disk</strong></td>
-  <td>Persistent disk space usage.</td>
-</tr>
-<tr>
-	<td><strong>Logs</strong></td>
-  <td>Download link for the most recent log files.</td>
-</tr>
+	<tr>
+		<th>VM Data Point</th>
+	  <th>Details</th>
+	</tr>
+	<tr>
+	  <td><strong>Job</strong></td>
+	  <td>Each job represents a component running on one or more VMs that <%= vars.ops_manager %> deployed.</td>
+	</tr>
+	<tr>
+	  <td><strong>Index</strong></td>
+	  <td>For jobs that run across multiple VMs, the <strong>index</strong> value indicates the order in which the job VMs were deployed. For jobs that run on
+			only one VM, the VM has an <strong>index</strong> value of <code>0</code>.</td>
+	</tr>
+	<tr>
+	  <td><strong>IPs</strong></td>
+	  <td>IP address of the job VM.</td>
+	</tr>
+	<tr>
+	  <td><strong>CID</strong></td>
+	  <td>Uniquely identifies the VM.</td>
+	</tr>
+	<tr>
+	  <td><strong>Load Avg15</strong></td>
+	  <td>CPU load average over 15 minutes.</td>
+	</tr>
+	<tr>
+	  <td><strong>CPU</strong></td>
+	  <td>Current CPU usage.</td>
+	</tr>
+	<tr>
+	  <td><strong>Memory</strong></td>
+	  <td>Current memory usage.</td>
+	</tr>
+	<tr>
+	  <td><strong>Swap</strong></td>
+	  <td>Swap file percentage.</td>
+	</tr>
+	<tr>
+	  <td><strong>System Disk</strong></td>
+	  <td>System disk space usage.</td>
+	</tr>
+	<tr>
+	  <td><strong>Ephem. Disk</strong></td>
+	  <td>Ephemeral disk space usage.</td>
+	</tr>
+	<tr>
+		<td><strong>Pers. Disk</strong></td>
+	  <td>Persistent disk space usage.</td>
+	</tr>
+	<tr>
+		<td><strong>Logs</strong></td>
+	  <td>Download link for the most recent log files.</td>
+	</tr>
 </table>
 
-As of <%= vars.ops_manager %> v3.0.3, you can directly download logs for instances and instance groups from the **Status** page for a product tile.
-The logs column for each instance group contains two links. The first link retrieves logs for the instance.
-The second retrieves logs for the entire instance group. Clicking either link shows a loading icon as logs are queued for download.
-When the logs are ready for download, the icon changes to a download link.
+As of <%= vars.ops_manager %> v3.0.3, you can directly download logs for instances and instance groups from the **Status** page in a product tile. The logs
+column for each instance group contains two links:
 
-As in previous <%= vars.ops_manager %> versions, you can also download log files from the **Logs** tab.
+* The first link retrieves logs for the instance.
+
+* The second link retrieves logs for the entire instance group.
+
+Clicking either link shows a loading icon as logs are queued for download. When the logs are ready for download, the icon changes to a download link.
+
+As in previous <%= vars.ops_manager %> versions, you can also download log files from the **Logs** tab in a product tile.
 
 ![alt-text="The downloaded log links appear on the Status tab."](images/status-tab-direct-download.png)
 
@@ -90,4 +96,5 @@ As in previous <%= vars.ops_manager %> versions, you can also download log files
 
 <%= vars.ops_manager %> stores its logs on the <%= vars.ops_manager %> VM in the `/tmp` directory.
 
-<p class='note'><strong>Note:</strong> The logs collect over time and do not self-delete. To prevent the VM from running out of disk space, clear the log entries from <code>/tmp</code> by restarting the VM.</p>
+<p class='note'><strong>Note:</strong> The logs collect over time and do not self-delete. To prevent the VM from running out of disk space, clear the log
+	entries from <code>/tmp</code> by restarting the VM.</p>
