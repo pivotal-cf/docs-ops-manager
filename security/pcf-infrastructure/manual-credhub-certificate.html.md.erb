@@ -28,8 +28,10 @@ To find the BOSH CredHub client name and client secret:
 
 1. Select the **Credentials** tab.
 
-1. In the **BOSH Director** section, click the link next to the BOSH Commandline Credentials.
-  <%= image_tag("bosh-client-creds.png", :alt => "The 'Credentials' page includes several rows of credentials that are used in BOSH Director's configuration. The table row called out in this screenshot is the BOSH Commandline Credentials. Next to BOSH Commandline Credentials is a hyperlink entitled 'Link to Credential'.") %>
+1. In the **BOSH Director** section, navigate to the **BOSH Commandline Credentials** row, and click the corresponding link, **Link to Credential**.
+
+    ![alt-text=""](../images/bosh-client-creds.png)
+
 
 1. Record the values for `BOSH_CLIENT` and `BOSH_CLIENT_SECRET`. Below is an example of the credentials page:
 
@@ -66,6 +68,7 @@ To login and access the CredHub API:
     credhub login --client-name=CREDHUB-CLIENT-NAME --client-secret=CREDHUB-CLIENT-SECRET
     ```
     Where:
+
     * `CREDHUB-CLIENT-NAME` is the value you recorded for `BOSH_CLIENT` in [Find BOSH Client Credentials and BOSH Director IP Address](#credhub-creds).
     * `CREDHUB-CLIENT-SECRET` is the value you recorded for `BOSH_CLIENT_SECRET` in [Find BOSH Client Credentials and BOSH Director IP Address](#credhub-creds).
 
@@ -130,5 +133,6 @@ To reset a certificate in CredHub:
         credhub set -n SET-CERTIFICATE -t certificate -c /tmp/certificate.yml -p /tmp/private_key.yml -m SIGNING-CA
         ```
         Where:
+
         * `SET-CERTIFICATE` is the name of the manually set certificate you want to reset.
         * `SIGNING-CA` is the name of the signing root CA certificate.

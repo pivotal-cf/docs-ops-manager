@@ -19,7 +19,7 @@ The following describes when to use CredHub Maestro instead of the <%= vars.ops_
 * You need to rotate one or more specific CredHub-managed certificates as part of a certificate rotation repair process due to errors returned by the standard procedure.
 
 * You have <%= vars.k8s_runtime_first %> installed and therefore cannot use the <%= vars.ops_manager %> API to rotate CredHub-managed certificates. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these include the cluster-specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
-    <p class='note warning'><strong>Warning:</strong> In <%= vars.k8s_runtime_abbr %> v1.8 and earlier, you cannot use CredHub Maestro to rotate <%= vars.k8s_runtime_abbr %> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
+    <p class='note caution'><strong>Caution:</strong> In <%= vars.k8s_runtime_abbr %> v1.8 and earlier, you cannot use CredHub Maestro to rotate <%= vars.k8s_runtime_abbr %> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
 
 
 ## <a id='prerequisites'></a> Prerequisites
@@ -112,48 +112,56 @@ will be trusted by clients. Run:
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
     1. For each service tile you have deployed:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
-1. Mark the signing version of each CA as transitional by running:
+2. Mark the signing version of each CA as transitional by running:
 
     ```
     maestro update-transitional signing --all
     ```
 
-1. Regenerate all leaf certificates by running:
+3. Regenerate all leaf certificates by running:
 
     ```
     maestro regenerate leaf --all
     ```
 
-1. Re-deploy:
+4. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
     1. For each service tile you have deployed:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
-1. Remove the transitional flag on all certificate versions. This removes the old, inactive CA versions on the next deploy. Run:
+5. Remove the transitional flag on all certificate versions. This removes the old, inactive CA versions on the next deploy. Run:
 
     ```
     maestro update-transitional remove --all
     ```
 
-1. Re-deploy:
+6. Re-deploy:
+
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-    1. Click **Review Pending Changes**.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-    1. For each service tile you have deployed:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
-        1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+    2. Click **Review Pending Changes**.
+    3. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    4. For each service tile you have deployed:
+
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        2. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
-    1. Click **Apply Changes**.
+
+    5. Click **Apply Changes**.
 
 ### <a id='leaf-rotation'></a> Rotating All Leaf Certificates
 
@@ -178,9 +186,11 @@ To rotate all leaf certificates in CredHub:
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
     1. For each service tile you have deployed:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
 ### <a id='single-rotation'></a> Rotate a Single CA and Its Leaf Certificates
@@ -244,7 +254,7 @@ For a multi-site or WAN setup, you must perform the **Apply Changes** steps acro
 To rotate the Services TLS CA and its leaf certificates:
 
 1. Check the [CredHub Maestro Tile Compatibility](maestro-tile-compatibility.html) document to ensure that all service tile versions currently deployed are compatible with Maestro.
-    <p class='note warning'><strong>Warning:</strong> If you have any service tiles that are not compatible with CredHub Maestro, do not follow this procedure. If you do, you might experience extended downtime or data loss. Instead, follow the procedure in <a href="services_tls_ca_rotate.html">Rotating the Services TLS CA and Its Leaf Certificates</a>.</p>
+    <p class='note caution'><strong>Caution:</strong> If you have any service tiles that are not compatible with CredHub Maestro, do not follow this procedure. If you do, you might experience extended downtime or data loss. Instead, follow the procedure in <a href="services_tls_ca_rotate.html">Rotating the Services TLS CA and Its Leaf Certificates</a>.</p>
 
 1. Regenerate the Services TLS CA and mark the latest version of the CA as transitional. This creates a new version of the Services TLS CA and indicates that the latest version is inactive, so that all leaf certificates trust the new CA.
     1. On the Services TLS CA, see if your Services TLS CA was CredHub-set by running:
@@ -263,12 +273,15 @@ To rotate the Services TLS CA and its leaf certificates:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
     1. For each service tile, enable the **Upgrade all service instances** errand.
-       <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+
+         <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
 1. Rebind and restage the following apps:
-	* For Tanzu GemFire for VMs apps, rebind and restage the apps.
-	* For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
+
+    * For Tanzu GemFire for VMs apps, rebind and restage the apps.
+    * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
     <p class='note'><strong>Note:</strong> The bg-restage plugin enables zero-downtime blue-green restaging without access to the app source code. For more information, see <a href="https://github.com/orange-cloudfoundry/cf-plugin-bg-restage">bg-restage</a> on GitHub.</p>
 
@@ -285,15 +298,18 @@ To rotate the Services TLS CA and its leaf certificates:
     ```
 
 1. Re-deploy:
+
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-    1. For each service tile, enable the **Upgrade all service instances** errand.
-    <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
-    1. Click **Apply Changes**.
+    2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    3. For each service tile, enable the **Upgrade all service instances** errand.
+
+        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+
+    4. Click **Apply Changes**.
 
 1. Rebind and restage the following apps:
-	* For Tanzu GemFire for VMs apps, rebind and restage the apps.
-	* For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
+    * For Tanzu GemFire for VMs apps, rebind and restage the apps.
+    * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
 1. Remove the transitional flag from the Services TLS CA. This removes the old, inactive version of the Services TLS CA on the next deployment. Run:
 
@@ -302,15 +318,18 @@ To rotate the Services TLS CA and its leaf certificates:
     ```
 
 1. Re-deploy:
+
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
-    1. For each service tile, enable the **Upgrade all service instances** errand.
-    <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
-    1. Click **Apply Changes**.
+    2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    3. For each service tile, enable the **Upgrade all service instances** errand.
+
+        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+
+    4. Click **Apply Changes**.
 
 1. Rebind and restage the following apps:
-	* For Tanzu GemFire for VMs apps, rebind and restage the apps.
-	* For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
+    * For Tanzu GemFire for VMs apps, rebind and restage the apps.
+    * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
 ### <a id='set-certificate-rotation'></a> Rotate CredHub-set CAs
 
@@ -344,48 +363,54 @@ To rotate a CredHub-set CA:
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificates. If unsure, enable the **Select All Products** checkbox.
     1. For each service tile you are deploying:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
-1. Mark the signing version of the single CA as transitional by running:
+2. Mark the signing version of the single CA as transitional by running:
 
     ```
     maestro update-transitional signing --name "CA-NAME"
     ```
 
-1. Regenerate all leaf certificates that are signed by the CA you are rotating. Run:
+3. Regenerate all leaf certificates that are signed by the CA you are rotating. Run:
 
     ```
     maestro regenerate leaf --signed-by "CA-NAME"
     ```
     <p class='note'><strong>Note:</strong> You might need to use the <code>--force</code> flag when regenerating leaf certificates if they were set by CredHub. Otherwise, you must provide a new leaf certificate at the same path.</p>
 
-1. Re-deploy:
+4. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificates. If unsure, enable the **Select All Products** checkbox.
     1. For each service tile you are deploying:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
-1. Remove the transitional flag from the single CA. This removes the old, inactive CA version on the next deploy. Run:
+5. Remove the transitional flag from the single CA. This removes the old, inactive CA version on the next deploy. Run:
 
     ```
     maestro update-transitional remove --name "CA-NAME"
     ```
 
-1. Re-deploy:
+6. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificates. If unsure, enable the **Select All Products** checkbox.
     1. For each service tile you are deploying:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
 ### <a id='set-leaf-certificate-rotation'></a> Rotate CredHub-set Leaf Certificates
@@ -419,9 +444,11 @@ To rotate a CredHub-set leaf certificate:
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, enable the checkbox for all products using the rotated certificate. If unsure, enable the **Select All Products** checkbox.
     1. For each service tile you are deploying:
-        1. Verify that the **Recreate all service instances** errand is disabled. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
+        1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
+
         <p class='note'><strong>Note:</strong> The names of the <strong>Recreate all service instances</strong> and the <strong>Upgrade all service instances</strong> errands might be slightly different between services.</p>
+
     1. Click **Apply Changes**.
 
 
@@ -437,7 +464,7 @@ To see if you need to run garbage collect, do one of the following:
 
 * SSH into the BOSH Director and run `df -h /var/vcap/store`.
 
-<p class='note warning'><strong>Warning:</strong> To enhance the safety of the garbage collect command, CredHub Maestro only deletes versions of a certificate older than the currently active version. To delete all inactive versions of CAs or leaf certificates, add the <code>--force</code> flag to the garbage collect command. <%= vars.company_name %> does not recommend using the <code>--force</code> flag during a rotation.</p>
+<p class='note caution'><strong>Caution:</strong> To enhance the safety of the garbage collect command, CredHub Maestro only deletes versions of a certificate older than the currently active version. To delete all inactive versions of CAs or leaf certificates, add the <code>--force</code> flag to the garbage collect command. <%= vars.company_name %> does not recommend using the <code>--force</code> flag during a rotation.</p>
 
 ### <a id='leaf-cert-cleanup'></a> Delete All Leaf Certificates
 

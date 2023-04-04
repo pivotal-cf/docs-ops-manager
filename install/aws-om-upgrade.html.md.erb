@@ -10,7 +10,6 @@ Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade 
 
 ## <a id='overview'></a> Overview
 
-<%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
 <%= partial "./om_upgrade_overview" %>
 
 For <%= vars.ops_manager %> installations on AWS, the VM that hosts the new version of <%= vars.ops_manager %> uses an Amazon Machine Image (AMI) specific to your region.
@@ -26,7 +25,6 @@ To create an <%= vars.ops_manager %> VM instance:
 
 ## <a id='prerequisites'></a> Prerequisites
 
-<%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
 <%= partial "./om_upgrade_prerequisite" %>
 
 ## <a id='pcfaws-om-ami'></a> Retrieve <%= vars.ops_manager %> AMI ID
@@ -52,29 +50,26 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 1. Navigate to your EC2 Dashboard.
 
-1. Click **AMIs** from the **Images** menu.
+1. In  the **Images** menu, select **AMIs**.
 
-1. Select **Public images** from the dropdown filter that says **Owned by me**.
+1. In the **Owned by me** drop-down filter, select **Public images**.
 
 1. Paste the AMI ID for your region into the search bar and press enter.
-    <p class='note'><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
 
-    <%= image_tag("pcfaws/pcf_aws_ami.png", :alt => "AWS AMI interface") %>
+    <p class='note'><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
 
 1. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS):
   1. Right-click the row that lists your AMI and click **Copy AMI**.
-  1. Select your **Destination region**.
-  1. Enable **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) in _Copying an AMI_ in the AWS documentation.
-  1. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
-  1. Click **Copy AMI**. You can use the new AMI you copied for the next steps.
+  2. Select your **Destination region**.
+  3. Enable **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) in _Copying an AMI_ in the AWS documentation.
+  4. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
+  5. Click **Copy AMI**. You can use the new AMI you copied for the next steps.
 
 1. Select the row that lists your <%= vars.ops_manager %> AMI and click **Launch**.
 
 1. Choose **m5.large** for your instance type.
 
 1. Click **Next: Configure Instance Details**.
-
-    <%= image_tag("pcfaws/aws_ami_m5large.png", :alt => "AWS instance type selection interface") %>
 
 1. Configure the following fields for your instance:
     * **Network:** Select the VPC that you created.
@@ -83,29 +78,23 @@ To launch the AMI for <%= vars.ops_manager %>:
     * **IAM role:** Select the IAM role associated with your <%= vars.product_name_lc %>-user profile. If you have not created one, click **Create new IAM role** and follow the procedures in [AWS Permissions Guidelines](aws-iaas-user-roles.html).
     * For all other fields, accept the default values.
 
-    <%= image_tag("pcfaws/pcf_aws_configure_instance.png", :alt => "AWS Configure Instance Details UI") %>
-
 1. Click **Next: Add Storage**.
 
-1. Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
-
-    <%= image_tag("pcfaws/pcf_aws_add_storage.png", :alt => "AWS Storage Device settings UI") %>
+1.  Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
 
 1. Click **Next: Tag Instance**
 
-1. On the **Add Tags** page, add a tag with the key `Name` and value `<%= vars.product_name_lc %>-ops-manager`.
+1.  On the **Add Tags** page, add a tag with the key `Name` and value `<%= vars.product_name_lc %>-ops-manager`.
 
-1. Click **Next: Configure Security Group**.
+1.  Click **Next: Configure Security Group**.
 
-1. Select the `<%= vars.product_name_lc %>-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](../aws/prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+1.  Select the `<%= vars.product_name_lc %>-ops-manager-security-group` that you created in [Configure a Security Group for <%= vars.ops_manager %>](../aws/prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-1. Click **Review and Launch** and confirm the instance launch details.
+1.  Click **Review and Launch** and confirm the instance launch details.
 
-1. Click **Launch**.
+1.  Click **Launch**.
 
-1. Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
-
-    <%= image_tag("pcfaws/select_pcfpem_keypair.png", :alt => "AWS Key Pair Selection UI") %>
+1.  Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
 
 
 ## <a id='dns'></a> Edit <%= vars.ops_manager %> DNS A Record
@@ -125,4 +114,4 @@ To edit the <%= vars.ops_manager %> DNS A record:
 
 ## <a id='continue'></a> Next Steps
 
-After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html)
+After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).

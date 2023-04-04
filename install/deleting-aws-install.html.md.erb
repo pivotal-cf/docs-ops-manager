@@ -3,8 +3,6 @@ title: Deleting Ops Manager from AWS
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Deleting " + vars.platform_name + " from AWS" %>
-
 This topic describes how to delete the AWS resources associated with a <%= vars.ops_manager_first %> deployment.
 
 
@@ -27,37 +25,40 @@ To delete the resources associated with <%= vars.ops_manager %> from AWS:
 
 1. Log into the AWS Management Console.
 
-1. Navigate to the EC2 Dashboard.
-   <%= image_tag("images/aws/delete-install-step2.png", :alt => "The EC2 Dashboard. A menu on the left side provides links to configuration panes for your EC2 instances. The 'Resources' pane is active.") %>
+2. Navigate to the EC2 Dashboard.
+    1. Select **Instances** from the left navigation menu.
+        1. Select the Ops Manager instance from the list.
+        2. Click **Actions** to open the drop down menu.
+        3. In **Instance State**, select **Terminate**.
+        4. A dialog box will appear prompting you to confirm the termination of the instances. Click **Yes, Terminate** to confirm.
+    2. Select **Load Balancers** from the left navigation menu.
+        1. Select the web, SSH, and TCP load balancers from the list.
+        2. Select **Actions** to open the drop down menu.
+        3. To delete all load balancers, select **Delete**.
+        4. A dialog box will appear prompting you to confirm the deletion of the load balancers. Click **Yes, Delete** to confirm.
 
-1. Select **Instances** from the menu on the left side.
-  1. Select **Actions** to open the dropdown menu.
-  1. Under **Instance State**, select **Terminate** to terminate all instances.
-  <%= image_tag("images/aws/delete-install-step3.png", :alt => "In the EC2 Dashboard, the 'Instances' pane is active. The 'Actions' menu is expanded, and 'Instance State' is selected. The 'Instance State' menu is expanded, and 'Terminate' is selected.") %>
+3. From the AWS Console, select **RDS**.
+    1. Select **Instances** from the left navigation menu.
+        1. Select **Instance Actions** to open the drop down menu.
+        2. To delete all RDS instances, select **Delete**. The **Delete DB Instance** pane appears.
+        3. Select **Create final Snapshot** from the drop down menu.
+        4. To delete the database instance, click **Delete**.
 
-1. Select **Load Balancers** from the menu on the left side.
-  1. Select **Actions** to open the dropdown menu.
-  1. To delete all load balancers, select **Delete**.
-  <%= image_tag("images/aws/delete-install-step4.png", :alt => "In the EC2 Dashboard, the 'Load Balancers' pane is active. The 'Actions' menu is expanded, and 'Delete' is selected.") %>
+4. On the AWS Console, select **S3**.
+    1. Select **Buckets** from the left navigation menu.
+    2. For each bucket created, do the following:
+        1. Select the bucket.
+        2. Click **Delete**.
+        3. On the page that appears, enter the name of the bucket into the confirmation text field, then click **Delete bucket**.
 
-1. From the AWS Console, select **RDS**.
-
-1. Select **Instances** from the menu on the left side.
-  1. Select **Instance Actions** to open the dropdown menu.
-  1. To delete all RDS instances, select **Delete**.
-  <%= image_tag("images/aws/delete-install-step6.png", :alt => "In the RDS Dashboard, the 'Instances' pane is active. The 'Instance Actions' menu is expanded, and 'Delete' is selected.") %>
-
-1. The **Delete DB Instance** pane appears.
-  1. Select **Create final Snapshot** from the dropdown.
-  1. To delete the database instance, click **Delete**.
-  <%= image_tag("images/aws/delete-install-step7.png", :alt => "In the RDS Dashboard, the 'Instances' pane is active. The 'Delete DB Instance' confirmation screen is shown.") %>
-
-1. From the AWS Console, select **VPC**.
-
-1. Select **Your VPCs** from the menu on the left side.
-  1. Select **Actions** to open the dropdown menu.
-  1. To delete the VPCs, select **Delete VPC**.
-  <%= image_tag("images/aws/delete-install-step9.png", :alt => "In the VPC Dashboard, the 'Your VPCs' pane is active. The 'Actions' menu is expanded, and 'Delete VPC' is selected.") %>
-
-1. Select the checkbox to acknowledge that you want to delete your default VPC. Click **Yes, Delete**.
-  <%= image_tag("images/aws/delete-install-step10.png", :alt => "The 'Delete VPC' confirmation dialog box is shown. At the bottom right, 'Cancel' appears in blue text, and 'Yes, Delete' appears in white text inside a blue box.") %>
+5. On the AWS Console, select **VPC**.
+    1. Select **NAT gateways** from the left navigation menu.
+        1. Select the NAT gateway you created for your installation.
+        2. Select **Actions** to open the drop down menu.
+        3. To delete the NAT gateway, select **Delete NAT gateway**.
+        4. A dialog box will appear prompting you to confirm the deletion of the NAT gateway. Enter `delete` into the confirmation text field, then click **Delete**.
+    2. Select **Your VPCs** from the left navigation menu.
+        1. Select the VPC you created for your installation.
+        2. Select **Actions** to open the drop down menu.
+        3. To delete the VPCs, select **Delete VPC**.
+        4. A dialog box will appear prompting you to confirm the deletion of the VPC. Enter `delete` into the confirmation text field, then click **Delete**.

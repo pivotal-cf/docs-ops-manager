@@ -39,7 +39,7 @@ For any errand, the tile developer can override these <%= vars.ops_manager %> de
 
 ## <a id='modify'></a> Configure Run Rules in <%= vars.ops_manager %>
 
-You can configure the run rules for errands in two places in <%= vars.ops_manager %>. The [Errands](#errands_pane) pane saves your configuration and applies the configuration to future installations. The [Pending Changes](#changes-view) view applies the rules only to the next time you run an <%= vars.ops_manager %> install, without saving them.
+You can configure the run rules for errands in two places in <%= vars.ops_manager %>. The [Errands](#errands-pane) pane saves your configuration and applies the configuration to future installations. The [Pending Changes](#changes-view) view applies the rules only to the next time you run an <%= vars.ops_manager %> install, without saving them.
 
 ### <a id='errands-pane'></a> Errands Pane: Persistent Rules
 
@@ -47,19 +47,19 @@ Product tiles for <%= vars.app_runtime_abbr %> and other <%= vars.ops_manager %>
 
 The **Errands** pane lists all errands for the product and lets you select **On** or **Off**. The [default](#defaults) option differs depending on the errand, and reflects the default setting used by <%= vars.ops_manager %> for the errand or any tile-specific default that overrides it.
 
-  <%= image_tag("errands-on.png", :alt => "Screenshot of the Errands pane. The image shows all 'Post-Deploy Errands'.") %>
+![alt-text=""](images/errands-on.png)
 
 To configure the run rules for a tile:
 
 1. Navigate to <%= vars.ops_manager %> and click the tile to open it.
 
-1. Under the **Settings** tab, open the **Errands** pane.
+2. Under the **Settings** tab, open the **Errands** pane.
 
-1. Use the dropdowns to configure the run rule choice for each errand: **On** or **Off**.
+3. Use the drop-down menus to configure the run rule choice for each errand: **On** or **Off**.
 
-1. Click **Save** to save the configuration values and return to the Installation Dashboard.
+4. Click **Save** to save the configuration values and return to the Installation Dashboard.
 
-1. Click **Review Pending Changes**, then **Apply Changes** to redeploy the tile with the new settings.
+5. Click **Review Pending Changes**, then **Apply Changes** to redeploy the tile with the new settings.
 
 ### <a id='changes-view'></a> Pending Changes: One-Time Rules
 
@@ -68,11 +68,12 @@ To configure the run rules for a tile:
 1. Navigate to <%= vars.ops_manager %>. The **Pending Changes** section at top right shows products that <%= vars.ops_manager %> has yet to install or update.
 
 1. Under **Pending Changes**, click the product you wish to configure. A list of errands associated with the product appears.
-  <%= image_tag("pending_view_errands.png", :alt => "Screenshot of the Ops Manager Pending Changes section. The image shows example errands associated with each product.") %>
 
-1. Use the dropdowns to configure the [run rule](#rules) choice for each errand: **On** or **Off**. <%= vars.ops_manager %> applies these settings once you click **Review Pending Changes**, then **Apply Changes** to install the product, but does not save the settings for future installations.
+    ![alt-text=""](images/pending_view_errands.png)
 
-1. Click **Review Pending Changes**, then **Apply Changes** to redeploy the tile.
+1. Use the drop-down menus to configure the [run rule](#rules) choice for each errand: **On** or **Off**. <%= vars.ops_manager %> applies these settings after you click **Review Pending Changes**, then **Apply Changes** to install the product, but does not save the settings for future installations.
+
+2. Click **Review Pending Changes**, then **Apply Changes** to redeploy the tile.
 
 ## <a id='related'></a> Related Links
 

@@ -4,22 +4,18 @@ title: Platform Architecture and Planning Overview
 owner: Customer0
 ---
 
-This topic describes reference architectures and other plans for installing <%= vars.ops_manager_first %> on any infrastructure to support the <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %> runtime environments.
+This topic describes reference architectures for installing <%= vars.ops_manager_first %> on any infrastructure to support the <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %> runtime environments.
 
 
 ## <a id='overview'></a> Overview
 
-The reference architectures in this section describe a proven approach for deploying <%= vars.ops_manager %> and runtimes, such as <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>, on a specific IaaS, such as AWS, Azure, GCP, OpenStack, or vSphere. These reference architectures meet the following requirements:
+The reference architectures in this section describe proven approaches for deploying <%= vars.ops_manager %> and Runtimes, such as <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>, on a specific IaaS, such as AWS, Azure, GCP, OpenStack, or vSphere. These reference architectures meet the following requirements:
 
-* Secure
-
-* Publicly accessible
-
-* Includes common <%= vars.ops_manager %>-managed services such as VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu
-
-* Can host at least 100 app instances
-
-* Have been deployed and validated by VMware to support <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %>, and <%= vars.k8s_runtime_abbr %>
+* They are secure.
+* They are publicly accessible.
+* They include common <%= vars.ops_manager %>-managed services such as VMware Tanzu SQL, VMware Tanzu RabbitMQ, and Spring Cloud Services for VMware Tanzu.
+* They can host at least 100 app instances.
+* They have been deployed and validated by VMware to support <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %>, and <%= vars.k8s_runtime_abbr %>
 
 You can use <%= vars.ops_manager %> reference architectures to help plan the best configuration for your <%= vars.ops_manager %> deployment on your IaaS.
 
@@ -50,29 +46,28 @@ These topics address aspects of platform architecture and planning that the <%= 
 
 The diagram below illustrates a base architecture for <%= vars.app_runtime_abbr %> and how its network topology places and replicates <%= vars.app_runtime_abbr %> components across subnets and availability zones (AZs).
 
-<%# Image from PAS_Base canvas of /images/v2/PCF_Reference_Architecture_2019.graffle %>
-![<%= vars.app_runtime_abbr %> Base Deployment Topology](images/v2/export/PAS_Base.png)
+![alt-text="TAS for VMs Base Deployment Topology. Categories of elements included in each AZ are Infrastructure subnet, PAS Subnet, Services subnet, On-demand services subnet, and Isolation Segment subnet."](images/v2/export/PAS_Base.png)
 
-[View a larger version of this diagram](images/v2/export/PAS_Base.png)
+[View a larger version of this diagram.](images/v2/export/PAS_Base.png)
 
 ### <a id='pas-components'></a> Internal Components
 
 The table below describes the internal component placements shown in the diagram above:
 
-| Component | Placement and Access Notes |
+| Component | Placement and access notes |
 | ------------- | ------------------------------ |
 | <%= vars.ops_manager %> VM | Deployed on one of the three public subnets. Accessible by fully-qualified domain name (FQDN) or through an optional jumpbox. |
 | BOSH Director | Deployed on the infrastructure subnet. |
 | Jumpbox | Optional. Deployed on the infrastructure subnet for accessing <%= vars.app_runtime_abbr %> management components such as <%= vars.ops_manager %> and the Cloud Foundry Command Line Interface (cf CLI). |
-| Gorouters (HTTP routers in <%= vars.ops_manager %>) | Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ. Accessed through the HTTP, HTTPS, and SSL load balancers. |
+| GoRouters (HTTP routers in <%= vars.ops_manager %>) | Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ. Accessed through the HTTP, HTTPS, and SSL load balancers. |
 | Diego Brain | Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ. The Diego Brain component is required, but SSH container access support through the Diego Brain is optional, and enabled through the SSH load balancers. |
 | TCP routers | Optional. Deployed on all three <%= vars.app_runtime_abbr %> subnets, one per AZ, to support TCP routing. |
 | Service tiles | Service brokers and shared services instances are deployed to the Services subnet. Dedicated on-demand service instances are deployed to an on-demand services subnet. |
-| Isolation segments | Deployed on an isolation segment subnet. Includes Diego Cells and Gorouters for running and accessing apps hosted within isolation segments. |
+| Isolation segments | Deployed on an isolation segment subnet. Includes Diego Cells and GoRouters for running and accessing apps hosted within isolation segments. |
 
 ### <a id='pas-network'></a> Networks
 
-These sections describe <%= vars.app_runtime_abbr %>'s recommendations for defining your networks and load-balancing their incoming requests:
+These sections describe <%= vars.app_runtime_abbr %>'s recommendations for defining your networks and load-balancing their incoming requests.
 
 #### <a id='pas-subnets'></a> Required Subnets
 
@@ -94,13 +89,13 @@ These sections describe <%= vars.app_runtime_abbr %>'s recommendations for defin
 
 #### <a id='pas-lb'></a> Load Balancing
 
-Any <%= vars.app_runtime_abbr %> installation needs a suitable load balancer to send incoming HTTP, HTTPS, SSH, and SSL traffic to its Gorouters and app containers. All installations approaching production-level use rely on external load balancing from hardware appliance vendors or other network-layer solutions.
+Any <%= vars.app_runtime_abbr %> installation needs a suitable load balancer to send incoming HTTP, HTTPS, SSH, and SSL traffic to its GoRouters and app containers. All installations approaching production-level use rely on external load balancing from hardware appliance vendors or other network-layer solutions.
 
 The load balancer can also perform Layer 4 or Layer 7 load balancing functions. SSL can be terminated at the load balancer or used as a pass-through to the Gorouter.
 
 Common deployments of load balancing in <%= vars.app_runtime_abbr %> are:
 
-* HTTP/HTTPS traffic to and from Gorouters
+* HTTP/HTTPS traffic to and from GoRouters
 
 * TCP traffic to and from TCP routers
 
@@ -114,7 +109,7 @@ For more information, see [Global DNS Load Balancers for Multi-Foundation Enviro
 
 <%= vars.app_runtime_abbr %> is not considered high availability (HA) until it runs across at least two AZs. <%= vars.company_name %> recommends defining three AZs.
 
-On an IaaS with its own HA capabilities, using the IaaS HA in conjunction with a <%= vars.app_runtime_abbr %> HA
+On an IaaS with its own HA capabilities, using the IaaS HA with a <%= vars.app_runtime_abbr %> HA
 topology provides two benefits. Multiple AZs give <%= vars.app_runtime_abbr %> redundancy, so that losing an AZ is not
 catastrophic. The BOSH Resurrector can then replace lost VMs as needed to repair a foundation.
 
@@ -136,7 +131,7 @@ For information about how <%= vars.app_runtime_abbr %> implements security, see:
 
 * [Certificates and TLS in <%= vars.ops_manager %>](../security/pcf-infrastructure/certificates-index.html)
 
-* [Network Communication Paths in <%= vars.ops_manager %>](../security/networking/#net_commpaths) in _Network Security_
+* [Network Communication Paths in <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/operating/) in _Network Security_
 
 ### <a id='pas-domains'></a> Domain Names
 
@@ -164,10 +159,9 @@ For recommendations on scaling <%= vars.app_runtime_abbr %> for different deploy
 
 The diagram below illustrates a base architecture for <%= vars.k8s_runtime_abbr %> and how its network topology places and replicates <%= vars.k8s_runtime_abbr %> components across subnets and AZs:
 
-<%# Image from PKS_Base canvas of /images/v2/PCF_Reference_Architecture_2019.graffle %>
-![<%= vars.k8s_runtime_abbr %> Base Deployment Topology](images/v2/export/PKS_Base.png)
+![alt-text="TKGI Base Deployment Topology. Categories of elements included in each AZ are Infrastructure subnet, Services subnet, and PKS Cluster Subnets, which are dynamically generated."](images/v2/export/PKS_Base.png)
 
-[View a larger version of this diagram](images/v2/export/PKS_Base.png)
+[View a larger version of this diagram.](images/v2/export/PKS_Base.png)
 
 ### <a id='pks-components'></a> Internal Components
 
@@ -188,7 +182,7 @@ These sections describe <%= vars.company_name %>'s recommendations for defining 
 
 #### <a id='pks-subnets'></a> Subnets Requirements
 
-<%= vars.k8s_runtime_abbr %> requires two defined networks to host the main elements that compose it:
+<%= vars.k8s_runtime_abbr %> requires two defined networks to host the main elements:
 
 * Infrastructure subnet - `/24`<br>This subnet contains VMs that require access only for Platform Administrators, such as the <%= vars.ops_manager %> VM, the BOSH Director VM, and an optional jumpbox.
 

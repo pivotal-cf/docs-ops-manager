@@ -30,11 +30,11 @@ security policies.
 ### <a id='diagram'></a> Diagram
 
 The diagram below illustrates the reference architecture for <%= vars.ops_manager %> on Azure using the hub and spoke
-model described above:
+model described above.
 
-![This diagram illustrates <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on Azure using Availability Sets. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures.](../images/PAS_Azure.png)
+![alt-text="Architecture on Azure using Availability Sets. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures."](../images/PAS_Azure.png)
 
-[View a larger version of this diagram](../images/PAS_Azure.png).
+[View a larger version of this diagram.](../images/PAS_Azure.png).
 
 The sections below provide guidance about the resources that you use for running <%= vars.ops_manager %> on Azure.
 
@@ -77,7 +77,7 @@ Azure DNS does not support recursion. To properly configure Azure DNS:
 1. Create an `NS` record with your registrar that points to the four name servers supplied by your Azure DNS Zone
 configuration.
 
-1. Create the required wildcard `A` records for the <%= vars.app_runtime_abbr %> app and system domains, as well as any
+1. Create the required wildcard `A` records for the <%= vars.app_runtime_abbr %> app and system domains, and any
 other records desired for your <%= vars.ops_manager %> deployments.
 
 You do not need to make any configuration changes in <%= vars.ops_manager %> to support Azure DNS.
@@ -86,7 +86,7 @@ You do not need to make any configuration changes in <%= vars.ops_manager %> to 
 
 Use Standard Azure Load Balancers (ALBs). To allow Internet ingress, you must create the ALBs with elastic IP addresses.
 
-During installation, you configure ALBs for <%= vars.app_runtime_abbr %> Gorouters. For more information, see
+During installation, you configure ALBs for <%= vars.app_runtime_abbr %> GoRouters. For more information, see
 [Create Load Balancers](../../azure/deploy-manual.html#lb)
 in _Deploying <%= vars.ops_manager %> on Azure_. When applicable, TCP routers and SSH Proxies also require load balancers.
 
@@ -153,13 +153,13 @@ in the Microsoft Azure documentation.
 ### <a id='AZ'></a> Availability Zones
 
 AZs are an Azure primitive that supports HA within a region. They are physically separate data centers in the same
-region, each with of separate power, cooling, and network.
+region, each with separate power, cooling, and network.
 
-The diagram below illustrates <%= vars.app_runtime_abbr %> deployed on Azure using AZs:
+The diagram below illustrates <%= vars.app_runtime_abbr %> deployed on Azure using AZs.
 
-![This diagram illustrates <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on Azure using AZs. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures.](../images/PAS_Azure_with_AZs.png)
+![alt-text="Architecture on Azure using Availability Zones. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures."](../images/PAS_Azure_with_AZs.png)
 
-[View a larger version of this diagram](../images/PAS_Azure_with_AZs.png).
+[View a larger version of this diagram.](../images/PAS_Azure_with_AZs.png).
 
 AZs have the following advantages:
 
@@ -176,7 +176,7 @@ provides.
 
 Availability Sets were the first Azure primitive to support high availability within a region.
 
-<p class='note warning'><strong>Warning:</strong> Availability Sets are implemented at the hardware rack level, which
+<p class='note caution'><strong>Caution:</strong> Availability Sets are implemented at the hardware rack level, which
 can cause issues when deploying <%= vars.ops_manager %> on Azure. For more information, see
 <a href="#placement-group-pinning">Placement Group Pinning Issues</a> below.</p>
 
@@ -214,7 +214,7 @@ For storage, <%= vars.company_name %> recommends:
   <p class='note'><strong>Note:</strong> In non-AZ enabled regions, locally Redundant Storage (LRS) is sufficient.</p>
 
 * Configure VMs to use managed disks instead of manually-managed VHDs on storage accounts. Managed disks are an Azure
-feature that handles the correct distribution of VHDs over storage accounts to maintain high IOPS as well as high
+feature that handles the correct distribution of VHDs over storage accounts to maintain high IOPS and high
 availability for the VMs.
 
 * Use five storage accounts. Each foundation on Azure requires five storage accounts: one for BOSH, one for
@@ -255,5 +255,5 @@ Use unique managed identities to deploy <%= vars.ops_manager %>, BOSH Director, 
 necessary to operate.
 
 Azure uses managed identities to handle service authorization. For more information, see
-[What is managed identities for Azure resources?](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
+[What are managed identities for Azure resources?](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
 in the Microsoft Azure documentation.

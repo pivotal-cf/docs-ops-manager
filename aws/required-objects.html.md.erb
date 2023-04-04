@@ -8,7 +8,8 @@ This topic describes the objects you create in Amazon Web Services (AWS) in orde
 
 ## <a id='overview'></a> Overview
 
-Use this topic to determine the resource requirements of <%= vars.ops_manager %> on AWS, or to verify that you created the correct resources after completing the procedures in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html) and [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
+Use the information in this topic to determine the resource requirements of <%= vars.ops_manager %> on AWS, or to verify that you have created the correct resources after completing the procedures in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html) and [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
+
 
 ## <a id='s3-buckets-om-pas'></a> S3 Buckets
 
@@ -22,18 +23,20 @@ As part of the preparing to deploy process, you must create the following S3 buc
 
 These buckets must be empty when you install or reinstall <%= vars.ops_manager %>.
 
-See [Step 2: Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Create S3 Buckets](prepare-env-manual.html#create-s3) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-## <a id='iam-user-pcf'></a> IAM User for <%= vars.ops_manager %>
 
-You must create an IAM user for <%= vars.ops_manager %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html).
+## <a id='iam-user-pcf'></a> IAM Role or User for <%= vars.ops_manager %>
 
-See [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+You must create either an IAM role or an IAM user for <%= vars.ops_manager %> named `pcf-user` from the Identity and Access Management Dashboard, using the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html).
+
+See [Create an IAM Role or User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ## <a id='key-pair'></a> Key Pair
 
 You must generate a key pair named `pcf-ops-manager-key`. For more information about setting up a key pair, see [Amazon EC2 Key
 Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the AWS documentation.
+
 
 ## <a id='vpc'></a> VPC (Public and Private Subnets)
 
@@ -48,96 +51,91 @@ The following table lists the subnets in CIDR block `10.0.0.0/16`.
    <th>IPv4 CIDR block</th>
  </tr>
  <tr>
-   <td>`pcf-public-subnet-az0`</td>
-   <td>`REGION-#a` (for example, `us-west-2a`)</td>
-   <td>`10.0.0.0/24`</td>
+   <td><code>pcf-public-subnet-az0</code></td>
+   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+   <td><code>10.0.0.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-public-subnet-az1`</td>
-   <td>`REGION-#b` (for example, `us-west-2b`)</td>
-   <td>`10.0.1.0/24`</td>
+   <td><code>pcf-public-subnet-az1</code></td>
+   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+   <td><code>10.0.1.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-public-subnet-az2`</td>
-   <td>`REGION-#c` (for example, `us-west-2c`)</td>
-   <td>`10.0.2.0/24`</td>
+   <td><code>pcf-public-subnet-az2</code></td>
+   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+   <td><code>10.0.2.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-management-subnet-az0`</td>
-   <td>`REGION-#a` (for example, `us-west-2a`)</td>
-   <td>`10.0.16.0/28`</td>
+   <td><code>pcf-management-subnet-az0</code></td>
+   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+   <td><code>10.0.16.0/28</code></td>
  </tr>
  <tr>
-   <td>`pcf-management-subnet-az1`</td>
-   <td>`REGION-#b` (for example, `us-west-2b`)</td>
-   <td>`10.0.16.16/28`</td>
+   <td><code>pcf-management-subnet-az1</code></td>
+   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+   <td><code>10.0.16.16/28</code></td>
  </tr>
  <tr>
-   <td>`pcf-management-subnet-az2`</td>
-   <td>`REGION-#c` (for example, `us-west-2c`)</td>
-   <td>`10.0.16.32/28`</td>
+   <td><code>pcf-management-subnet-az2</code></td>
+   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+   <td><code>10.0.16.32/28</code></td>
  </tr>
  <tr>
-   <td>`pcf-ert-subnet-az0`</td>
-   <td>`REGION-#a` (for example, `us-west-2a`)</td>
-   <td>`10.0.4.0/24`</td>
+   <td><code>pcf-ert-subnet-az0</code></td>
+   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+   <td><code>10.0.4.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-ert-subnet-az1`</td>
-   <td>`REGION-#b` (for example, `us-west-2b`)</td>
-   <td>`10.0.5.0/24`</td>
+   <td><code>pcf-ert-subnet-az1</code></td>
+   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+   <td><code>10.0.5.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-ert-subnet-az2`</td>
-   <td>`REGION-#c` (for example, `us-west-2c`)</td>
-   <td>`10.0.6.0/24`</td>
+   <td><code>pcf-ert-subnet-az2</code></td>
+   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+   <td><code>10.0.6.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-services-subnet-az0`</td>
-   <td>`REGION-#a` (for example, `us-west-2a`)</td>
-   <td>`10.0.8.0/24`</td>
+   <td><code>pcf-services-subnet-az0</code></td>
+   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+   <td><code>10.0.8.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-services-subnet-az1`</td>
-   <td>`REGION-#b` (for example, `us-west-2b`)</td>
-   <td>`10.0.9.0/24`</td>
+   <td><code>pcf-services-subnet-az1</code></td>
+   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+   <td><code>10.0.9.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-services-subnet-az2`</td>
-   <td>`REGION-#c` (for example, `us-west-2c`)</td>
-   <td>`10.0.10.0/24`</td>
+   <td><code>pcf-services-subnet-az2</code></td>
+   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+   <td><code>10.0.10.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-rds-subnet-az0`</td>
-   <td>`REGION-#a` (for example, `us-west-2a`)</td>
-   <td>`10.0.12.0/24`</td>
+   <td><code>pcf-rds-subnet-az0</code></td>
+   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+   <td><code>10.0.12.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-rds-subnet-az1`</td>
-   <td>`REGION-#b` (for example, `us-west-2b`)</td>
-   <td>`10.0.13.0/24`</td>
+   <td><code>pcf-rds-subnet-az1</code></td>
+   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+   <td><code>10.0.13.0/24</code></td>
  </tr>
  <tr>
-   <td>`pcf-rds-subnet-az2`</td>
-   <td>`REGION-#c` (for example, `us-west-2c`)</td>
-   <td>`10.0.14.0/24`</td>
+   <td><code>pcf-rds-subnet-az2</code></td>
+   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+   <td><code>10.0.14.0/24</code></td>
  </tr>
  </table>
 
-See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-## <a id='nat-instance'></a> NAT Instance
 
-You must create a NAT instance when creating a VPC. The NAT instance must have the following configuration:
+## <a id='nat-instance'></a> NAT Gateway
 
-* **Instance type**: `t3.medium`
-* **Key pair name**: `pcf-ops-manager-key`
-* **Enable DNS hostnames**: Yes
-* **Hardware tenancy**: Default
+You must create a NAT Gateway when creating a VPC.
 
-See [Step 4: Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Create a NAT Gateway](prepare-env-manual.html#pcfaws-nat-gateway) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-You must also assign the NAT instance to the `pcf-nat-security-group`. For more information, see [Step 6: Secure the NAT Instance](deploy-manual.html#pcfaws-nat) in _Deploying <%= vars.ops_manager %> on AWS_.
 
 ## <a id='security-groups'></a> Security Groups
 
@@ -186,11 +184,11 @@ The <%= vars.ops_manager %> Security Group must be named `pcf-ops-manager-securi
 </tr>
 </table>
 
-See [Step 5: Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.html#pcfaws-om-secgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### BOSH-Deployed VMs
 
-The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and have the following inbound rule:
+The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and have the following inbound rules:
 
 <table border="1" class="nice" >
 <tr>
@@ -206,9 +204,16 @@ The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and 
   <td>Custom IP</td>
   <td>10.0.0.0/16</td>
 </tr>
+<tr>
+  <td>Custom TCP rule</td>
+  <td>TCP</td>
+  <td>2222</td>
+  <td>Anywhere</td>
+  <td>0.0.0.0/0</td>
+</tr>
 </table>
 
-See [Step 6: Configure a Security Group for BOSH-Deployed VMs](prepare-env-manual.html#pcfaws-om-ersecgrp)
+See [Configure a Security Group for BOSH-Deployed VMs](prepare-env-manual.html#pcfaws-om-ersecgrp)
 in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### Web ELB
@@ -245,47 +250,7 @@ The Web ELB Security Group must be named `pcf-web-elb-security-group` and have t
 </tr>
 </table>
 
-See [Step 7: Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-
-### SSH ELB
-
-The SSH ELB Security Group must be named `pcf-ssh-elb-security-group` and have the following inbound rule:
-
-<table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>Custom TCP rule</td>
-  <td>TCP</td>
-  <td>2222</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
-
-The SSH ELB Security Group must have the following outbound rule:
-
-<table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
-
-See [Step 8: Configure a Security Group for the SSH ELB](prepare-env-manual.html#pcfaws-om-sshelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-om-elbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### TCP ELB
 
@@ -324,33 +289,11 @@ The TCP ELB Security Group must have the following outbound rule:
 </tr>
 </table>
 
-See [Step 9: Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
-
-### Outbound NAT
-
-The Outbound NAT Security Group must be named `pcf-nat-security-group` and have the following inbound rule:
-
-<table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Custom IP</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
-
-See [Step 10: Configure a Security Group for the Outbound NAT](prepare-env-manual.html#pcfaws-om-natsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-om-tcpelbsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 ### MySQL
 
-The MySQL Security Group must be named `pcf-mysql-security-group` and have the following inbound rules:
+The MySQL Security Group must be named `pcf-mysql-security-group` and have the following inbound rule:
 
 <table border="1" class="nice" >
 <tr>
@@ -368,7 +311,7 @@ The MySQL Security Group must be named `pcf-mysql-security-group` and have the f
 </tr>
 </table>
 
-The MySQL Security Group must have the following outbound rules:
+The MySQL Security Group must have the following outbound rule:
 
 <table border="1" class="nice" >
 <tr>
@@ -386,13 +329,15 @@ The MySQL Security Group must have the following outbound rules:
 </tr>
 </table>
 
-See [Step 11: Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+See [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+
 
 ## <a id='ops-manager-ami'></a> <%= vars.ops_manager %> AMI
 
 You must locate the public <%= vars.ops_manager %> AMI using the AMI ID provided by the PDF downloaded when clicking **<%= vars.ops_manager %> for AWS** on VMware Tanzu Network.
 
 See [Step 1: Launch an <%= vars.ops_manager %> AMI](deploy-manual.html#pcfaws-om-ami) in _Deploying <%= vars.ops_manager %> on AWS_.
+
 
 ## <a id='elbs'></a> ELBs
 
@@ -430,20 +375,23 @@ See [Step 3: Create SSH Load Balancer](deploy-manual.html#pcfaws-ssh-lb) in _Dep
 
 See [Step 4: Create TCP Load Balancer](deploy-manual.html#pcfaws-tcp-lb) in _Deploying <%= vars.ops_manager %> on AWS_.
 
+
 ## <a id='dns-config'></a> DNS Configuration
 
 You must navigate to your DNS provider and create CNAME and A records for all three of your load balancers.
 
 See [Step 5: Configure DNS Records](deploy-manual.html#pcfaws-dns) in _Deploying <%= vars.ops_manager %> on AWS_.
 
+
 ## <a id='rds-subnet-group'></a> RDS Subnet Group
 
 You must create a subnet group for RDS named `pcf-rds-subnet-group` from the RDS Dashboard.
 
-See [Step 7: Create RDS Subnet Group](deploy-manual.html#pcfaws-rds-subnet-group) in _Deploying <%= vars.ops_manager %> on AWS_.
+See [Step 6: Create RDS Subnet Group](deploy-manual.html#pcfaws-rds-subnet-group) in _Deploying <%= vars.ops_manager %> on AWS_.
+
 
 ## <a id='mysql-db'></a> MySQL Database
 
 You must create a MySQL database from the RDS Dashboard.
 
-See [Step 8: Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying <%= vars.ops_manager %> on AWS_.
+See [Step 7: Create a MySQL Database using AWS RDS](deploy-manual.html#pcfaws-mysql-rds) in _Deploying <%= vars.ops_manager %> on AWS_.

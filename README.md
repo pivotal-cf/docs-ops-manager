@@ -1,7 +1,14 @@
 # Ops Manager Documentation
 
 This repository contains content for the Ops Manager documentation. We publish the Ops Manager documentation at
-https://docs.pivotal.io/ops-manager/index.html.
+https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/index.html.
+
+In this README:
+
+- [How To Contribute](#how-to-contribute)
+- [Versions and Branches](#version-branch)
+- [Publishing Docs (2.10 and later)](#publishing-docs-210-and-later)
+- [Publishing Docs (2.9 and earlier)](#publishing-docs-29-and-earlier)
 
 ## How To Contribute
 
@@ -20,9 +27,8 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 
 | **Book Branch** | **Content Branch** | **Published URL** |
 |-----------------|--------------------|-------------------|
-|           `3.0` |    `3.0-migration` | not published. Should be kept up to date with `3.0` |
-|           `3.0` |              `3.0` | https://docs.pivotal.io/ops-manager/3-0/index.html  |
-|          `2.10` |             `2.10` | https://docs.pivotal.io/ops-manager/2-10/index.html |
+|            N/A  |              `3.0` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html  |
+|            N/A  |             `2.10` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/index.html |
 |           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
 |           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
 |           `2.7` |              `2.7` | https://docs.pivotal.io/ops-manager/2-7/index.html  |
@@ -72,7 +78,62 @@ no longer being updated.
 **2.0**: The `2.0` branch is used to publish the v2.0 site. The `2.0` branch has reached End of General Support and is
 no longer being updated.
 
-## How To Use Bookbinder To View Your Documentation
+
+## Publishing Docs (2.10 and later)
+
+The 2.10 and later docs have been migrated to docs.vmware.com and are now published using the following tools:
+
+- [docworks](https://docworks.vmware.com/) is the main tool for managing docs used by writers.
+- [docsdash](https://docsdash.vmware.com/) is a deployment UI which manages the promotion from
+staging to pre-prod to production. The process below describes how to upload our docs to staging,
+replacing the publication with the same version.
+
+### Prepare Markdown Files
+
+This repo contains the following files:
+
+- Markdown files live in this repo.
+- The table of contents is now in this repo in the [toc.md](toc.md) file. Each page requires an entry in the TOC.
+- Variables also live in this repo in the [template_variables.yml](template_variables.yml).
+
+### In DocWorks
+
+1. Run a build of the "VMware Tanzu Ops Manager" project to upload the docs to Docs Dash.
+2. Review your changes on the staging site https://docs-staging.vmware.com/...
+
+### In Docsdash
+
+1. Wait about 1 minute for processing to complete after uploading.
+2. Go to https://docsdash.vmware.com/deployment-stage.
+
+### Promoting to Pre-Prod and Prod
+
+**Prerequisite** Needs additional privileges - reach out to a manager on the docs team [#tanzu-docs](https://vmware.slack.com/archives/C055V2M0H) or ask a writer to do this step for you.
+
+1. Go to Staging publications in docsdash  
+  https://docsdash.vmware.com/deployment-stage
+
+2. Select a publication (make sure it's the latest version)
+
+3. Click "Deploy selected to Pre-Prod" and wait for the pop to turn green (refresh if necessary after about 10s)
+
+4. Go to Pre-Prod list  
+  https://docsdash.vmware.com/deployment-pre-prod
+
+5. Select a publication
+
+6. Click "Sign off for Release"
+
+7. Wait for your username to show up in the "Signed off by" column
+
+8. Select the publication again
+
+9. Click "Deploy selected to Prod"
+
+
+## Publishing Docs (2.9 and earlier)
+
+### How To Use Bookbinder To View Your Documentation
 
 [Bookbinder](https://github.com/pivotal-cf/bookbinder/blob/master/README.md) is a command-line
 utility for stitching Markdown documents into a hostable web app. The documentation team uses
@@ -107,7 +168,7 @@ bundle exec bookbinder bind local; cd final_app; bundle exec rackup; cd ..
 
 Browse to <http://127.0.0.1:9292/ops-manager/3-0/index.html>. Replace "3-0" with whichever branch you're on, e.g. "2-10" for 2.10.
 
-## Continuous Integration and Continuous Delivery
+### Continuous Integration and Continuous Delivery
 
 We use Concourse pipelines to provide continuous integration and continuous delivery. Any change made to this repository
 or the [https://github.com/pivotal-cf/docs-book-om](https://github.com/pivotal-cf/docs-book-om) Book repository trigger a

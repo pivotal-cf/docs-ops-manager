@@ -35,7 +35,7 @@ These topics in the AWS documentation provide a general reference for AWS' Ident
 
 <%= vars.app_runtime_first %> v2.13.0 and later are compatible with IMDSv2. For all versions of <%= vars.k8s_runtime_first %>, it might be necessary to set the hop limit using the `metadata_options` key. For more information, see [VM Types / VM Extensions](https://bosh.io/docs/aws-cpi/#resource-pools) in the BOSH documentation.
 
-<div class="note warning"><strong>Warning:</strong> All tiles and service instances must be using stemcell Xenial v621.183 or later in order to require IMDSv2. Requiring IMDSv2 while using an older stemcell causes Apply Changes to fail due to an unresponsive BOSH agent.</div>
+<div class="note caution"><strong>Caution:</strong> All tiles and service instances must be using stemcell Xenial v621.183 or later in order to require IMDSv2. Requiring IMDSv2 while using an older stemcell causes Apply Changes to fail due to an unresponsive BOSH agent.</div>
 
 To require IMDSv2 on all BOSH-deployed VMs:
 

@@ -69,7 +69,7 @@ The payload that must be provided to the request has the following structure:
 
 <p class='note'><strong>Note:</strong> You will need to get the CredHub paths to the customer-provided CAs. The procedure to do this is detailed in the "Prerequisites" section of this document.</p>
 
-<p class='note warning'><strong>Warning:</strong> the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption during the certificate rotation process.</p>
+<p class='note caution'><strong>Caution:</strong> the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption during the certificate rotation process.</p>
 
 ## <a id='method-two'></a> Method Two: Manually Replace the Customer-Provided CAs
 

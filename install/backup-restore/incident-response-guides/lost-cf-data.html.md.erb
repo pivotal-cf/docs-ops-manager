@@ -3,8 +3,6 @@ title: Restoring Lost TAS Data
 owner: Platform Recovery
 ---
 
-<% current_page.data.title = "Restoring Lost " + vars.app_runtime_abbr + " Data" %>
-
 This topic explains how to use BOSH Backup and Restore (BBR) to restore a piece of
 <%= vars.app_runtime_first %> data, such as a user or space, which has been lost.
 
@@ -162,7 +160,7 @@ Where:
 
 ## <a id='perform-restore'></a> Perform the Restore
 
-<p class='note warning'><strong>Warning:</strong> BBR restore is a destructive process which removes any current data in your deployment. Performing a restore overwrites all new data since you created your most recent backup artifact.</p>
+<p class='note caution'><strong>Caution:</strong> BBR restore is a destructive process which removes any current data in your deployment. Performing a restore overwrites all new data since you created your most recent backup artifact.</p>
 
 <%= vars.company_name %> recommends that you verify the compatibility of your backup artifact by attempting the restore on an environment that is identical to the target environment. If this is not possible, see [Compatibility of Restore](../restore-pcf-bbr.html#compatibility) in _Restoring Deployments from Backup with BBR_ to confirm that your backup is compatible with your restore environment.
 

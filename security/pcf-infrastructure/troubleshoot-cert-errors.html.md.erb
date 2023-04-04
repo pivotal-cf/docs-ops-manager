@@ -27,7 +27,7 @@ To skip CredHub Maestro safety checks in <%= vars.ops_manager %> API calls, you 
 
 To skip CredHub Maestro safety checks in the CredHub Maestro CLI, specify the `--skip-safety-check` flag when running certificate rotation commands.
 
-<p class='note warning'><strong>Warning:</strong> Skipping safety checks is strongly discouraged. Use the option only if absolutely necessary. For example, you might want to skip safety checks if your CA has already expired and your apps are experiencing downtime. Skipping safety checks can help bring your apps back online faster. If certificates have expired, contact <%= vars.support_link %> for guidance.</p>
+<p class='note caution'><strong>Caution:</strong> Skipping safety checks is strongly discouraged. Use the option only if absolutely necessary. For example, you might want to skip safety checks if your CA has already expired and your apps are experiencing downtime. Skipping safety checks can help bring your apps back online faster. If certificates have expired, contact <%= vars.support_link %> for guidance.</p>
 
 
 ## <a id='error_ref'></a> Troubleshoot Certificate Rotation Safety Violations
@@ -278,6 +278,141 @@ This section lists known safety violations that may occur when using the <%= var
     <br>
     <br>
     If you believe you are running the steps in the correct order, it is possible that a new leaf was issued while the rotation process was in progress. You may also receive the <code>there is more than one signing version</code></a> error described in <a href="#multiple-signing-cas">Multiple Signing Versions of a CA</a> above. If this safety violation error appears, follow the mitigation steps for that error.
+    </td>
+  </tr>
+</table>
+</div>
+
+
+### <a id='active-child-must-trust-signing-ca'></a> Active Child Must Trust Signing CA
+
+<div>
+<table class="nice">
+  <style>
+    main table {
+      table-layout: fixed;
+    }
+  </style>
+  <col width="20%">
+  <col width="80%">
+  <tr>
+    <th>Safety Violation</th>
+    <th style="text-align: left;">
+      <br>
+      <code>active child certificate does not trust the certificate authority that will regenerate it</code>
+      <br>
+      <br>
+    </th>
+  </tr>
+  <tr>
+    <th>Related Commands</th>
+    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+  </tr>
+  <tr>
+    <th>Cause</th>
+    <td>This safety violation occurs when the active leaf certificate is neither signed by the CA version that would sign new leaf certificates, nor the leaf includes that CA in the list of trusted CAs. This situation can occur after running <code>maestro regenerate ca</code> or <code>maestro update-transitional</code> while skipping safety checks, or using the <code>credhub</code> CLI or API to manually generate a new version of the CA.
+    <br>
+    <br>
+    During a CA rotation, if the active version of the leaf certificate does not trust the signing version of the CA, then trust will be broken when deploying a regenerated leaf certificate.
+    </td>
+  </tr>
+  <tr>
+    <th style="vertical-align: top; padding-top: 1em;">Solution</th>
+    <td>The repair procedure for this safety violation can vary depending on the exact state of the CA and leaf certificates. Please reach out to <a href="https://tanzu.vmware.com/support">Support</a> for guidance.
+    </td>
+  </tr>
+</table>
+</div>
+
+### <a id='ca-must-have-nontransitional-version'></a> CA Must Have a Non-Transitional Version
+
+<div>
+<table class="nice">
+  <style>
+    main table {
+      table-layout: fixed;
+    }
+  </style>
+  <col width="20%">
+  <col width="80%">
+  <tr>
+    <th>Safety Violation</th>
+    <th style="text-align: left;">
+      <br>
+      <code>certificate authorities must have a non-transitional version</code>
+      <br>
+      <br>
+    </th>
+  </tr>
+  <tr>
+    <th>Related Commands</th>
+    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+  </tr>
+  <tr>
+    <th>Cause</th>
+    <td>This safety violation occurs when the CA that would sign the leaf certificate has a single version, and that version is marked as transitional. This situation can occur after running <code>maestro garbage-collect ca --force</code>, or using the <code>credhub</code> CLI or API to delete CA versions.
+    <br>
+    <br>
+    When regenerating leaf certificates, if there is only a transitional version of the CA, then regenerating leaf certificates will fail.
+    </td>
+  </tr>
+  <tr>
+    <th style="vertical-align: top; padding-top: 1em;">Solution</th>
+    <td>Remove the transitional flag from the CA certificate using the <a href="https://docs.cloudfoundry.org/api/credhub/version/main/#_update_transitional_version">Update Transitional Version</a> CredHub API endpoint and setting the version to <code>null</code>.
+    <br>
+    <br>
+    <code>credhub curl -X PUT -p /api/v1/certificates/CA_CERTIFICATE_ID/update_transitional_version -d '{ "version": null }'</code>
+    <br>
+    <br>
+    </td>
+  </tr>
+</table>
+</div>
+
+### <a id='non-latest-version-is-signing'></a> Signed By Non-Latest CA Version
+
+<div>
+<table class="nice">
+  <style>
+    main table {
+      table-layout: fixed;
+    }
+  </style>
+  <col width="20%">
+  <col width="80%">
+  <tr>
+    <th>Safety Violation</th>
+    <th style="text-align: left;">
+      <br>
+      <code>active child certificate is signed by a certificate authority that is not the latest version</code>
+      <br>
+      <br>
+    </th>
+  </tr>
+  <tr>
+    <th>Related Commands</th>
+    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+  </tr>
+  <tr>
+    <th>Cause</th>
+    <td>This safety violation occurs when the existing leaf certificates are neither by signed by the CA version that will sign the new leaf certificate versions, nor signed by the current CA version that is marked as <strong>transitional</strong> (if one exists). This situation can occur after running <code>maestro regenerate ca</code> or <code>maestro update-transitional</code> while skipping safety checks, or using the <code>credhub</code> CLI or API to generate new CA versions or change the transitional flag of existing CAs.
+    <br>
+    <br>
+    During a CA rotation, if the leaf certificate does not trust both the old and new versions of the CA, then trust will be broken when deploying a regenerated leaf certificate..
+    </td>
+  </tr>
+  <tr>
+    <th style="vertical-align: top; padding-top: 1em;">Solution</th>
+    <td>If the active leaf certificate is signed by one of the two most recent versions of the CA, the leaf certificate trusts both CA versions, and neither CA version is marked transitional, then use the <a href="https://docs.cloudfoundry.org/api/credhub/version/main/#_update_transitional_version">Update Transitional Version</a> CredHub API endpoint to set the older CA version as <strong>transitional</strong>.
+    <br>
+    <br>
+    <code>credhub curl -X PUT -p /api/v1/certificates/CA_CERTIFICATE_ID/update_transitional_version -d '{ "version": "OLDER_CA_VERSION_ID" }'</code>
+    <br>
+    <br>
+    Then continue the CA rotation starting on the <code>maestro regenerate leaf</code> step of the rotation procedure.
+    <br>
+    <br>
+    For other scenarios, please reach out to <a href="https://tanzu.vmware.com/support">Support</a> for guidance.
     </td>
   </tr>
 </table>

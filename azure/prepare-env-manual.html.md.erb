@@ -10,7 +10,7 @@ This topic describes how to prepare Azure to deploy <%= vars.ops_manager_first %
 <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %>.
 
 
-## <a id='install'></a> Step 1: Install and Configure the Azure CLI
+## <a id='install'></a> Step 1: Install and configure the Azure CLI
 
 1. Install the Azure CLI 2.0 by following the instructions for your operating system in
 [Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) in the
@@ -21,8 +21,10 @@ Microsoft Azure documentation.
     ```
     az cloud set --name CLOUD-NAME
     ```
+
     Where `CLOUD-NAME` is one of the following values. Use the value that corresponds to the Azure
     environment on which you are installing <%= vars.ops_manager %>:
+
     - **Azure**: `AzureCloud`.
     - **Azure China**: `AzureChinaCloud`. If logging in to <code>AzureChinaCloud</code> fails with
       a `CERT_UNTRUSTED`, use the latest version of node, 4.x or later. For more information about
@@ -33,6 +35,7 @@ Microsoft Azure documentation.
     - **Azure Germany**: `AzureGermanCloud`.
 
     For example:
+
     <pre class="terminal">
     $ az cloud set --name AzureCloud
     </pre>
@@ -46,7 +49,7 @@ Microsoft Azure documentation.
     Authenticate by navigating to the URL in the output from the command, entering the provided
     code, and clicking your account.
 
-## <a id='default-subscription'></a> Step 2: Set Your Default Subscription
+## <a id='default-subscription'></a> Step 2: Set your default subscription
 
 1. To list your Azure subscriptions,  run the following command:
 
@@ -55,6 +58,7 @@ Microsoft Azure documentation.
     ```
 
     For example:
+
     <pre class="terminal">
     $ az account list
     [
@@ -64,20 +68,20 @@ Microsoft Azure documentation.
       "user": {
         "name": "Sample Account",
         "type": "user"
-     },
+      },
       "tenantId": "11111111-1234-5678-1234-678912345678",
       "state": "Enabled",
       "isDefault": true,
       "registeredProviders": [],
       "environmentName": "AzureCloud"
-   },
-   {
+     },
+     {
       "id": "87654321-1234-5678-1234-678912345678",
       "name": "Sample Subscription1",
       "user": {
         "name": "Sample Account1",
         "type": "user"
-     },
+      },
       "tenantId": "22222222-1234-5678-1234-678912345678",
       "state": "Enabled",
       "isDefault": false,
@@ -94,11 +98,13 @@ the other subscription as the default. To set a new default subscription, run th
     ```
     az account set --subscription SUBSCRIPTION-ID
     ```
+
     Where `SUBSCRIPTION-ID` is the value of the `id` field of the subscription that you want to set
     as the default.
     <br><br>
     The following example sets the default to a subscription that has an `id` with the value of
     `"87654321-1234-5678-1234-567891234567"`.
+
     <pre class="terminal">
     $ az account set --subscription "87654321-1234-5678-1234-567891234567"
     </pre>
@@ -110,7 +116,7 @@ configuration steps.
 creating a service principal. If your `tenantID` value is not defined, you may be using a personal
 account to log in to your Azure subscription.
 
-## <a id='create-aad'></a> Step 3: Create an AAD Application
+## <a id='create-aad'></a> Step 3: Create an AAD application
 
 1. To create an Azure Active Directory (AAD) application, run the following command:
 
@@ -119,20 +125,23 @@ account to log in to your Azure subscription.
     --password "PASSWORD" --homepage "http://BOSHAzureCPI" \
     --identifier-uris "http://BOSHAzureCPI"
     ```
+
     Where `PASSWORD` is a password of your choice. This is your `CLIENT_SECRET` for creating a
     service principal.
 
     For example:
+
     <pre class="terminal">
     $ az ad app create --display-name "Service Principal for BOSH" \
-    --password "Swordfish" --homepage "http<span>:</span>//BOSHAzureCPI" \
-    --identifier-uris "http<span>:</span>//BOSHAzureCPI"
+    --password "Swordfish" --homepage "http://BOSHAzureCPI" \
+    --identifier-uris "http://BOSHAzureCPI"
     </pre>
+
     <p class='note'><strong>Note:</strong> You can provide any string for the
     <code>homepage</code> and <code>identifier-uris</code> flags, but the value of
     <code>identifer-uris</code> must be unique within the organization associated with your Azure
     subscription. For the <code>homepage</code>, <%= vars.company_name %> recommends using
-    <code><span>http:</span>//BOSHAzureCPI</code> as shown in the example above.
+    <code>http://BOSHAzureCPI</code> as shown in the example above.
     </p>
 
 1. From the output of the `az ad app create` that you ran in the previous step, locate and record
@@ -140,15 +149,16 @@ the value of `appId`. This is your `APPLICATION_ID` for creating a service princ
 
     The following example output shows `"5c552e8f-b977-45f5-a50b-981cfe17cb9d"` as the value of
     `appId`.
+
     <pre class="terminal">
     {
       "appId": "5c552e8f-b977-45f5-a50b-981cfe17cb9d",
       "appPermissions": null,
       "availableToOtherTenants": false,
       "displayName": "Service Principal for BOSH",
-      "homepage": "http<span>://</span>BOSHAzureCIP",
+      "homepage": "http://BOSHAzureCIP",
       "identifierUris": [
-        "http<span>://</span>BOSHAzureCPI"
+        "http://BOSHAzureCPI"
       ],
       "objectId": "f3884df4-7d1d-4894-a78c-c1fe75750436",
       "objectType": "Application",
@@ -156,17 +166,19 @@ the value of `appId`. This is your `APPLICATION_ID` for creating a service princ
     }
     </pre>
 
-## <a id='create-configure'></a> Step 4: Create and Configure a Service Principal
+## <a id='create-configure'></a> Step 4: Create and configure a service principal
 
 1. To create a service principal, run the following command:
 
     ```
     az ad sp create --id YOUR-APPLICATION-ID
     ```
+
     Where `YOUR-APPLICATION-ID` is the `APPLICATION_ID` that you recorded in
     [Create an AAD Application](#create-aad).
 
     For example:
+
     <pre class="terminal">
     $ az ad sp create --id 5c552e8f-b977-45f5-a50b-981cfe17cb9d
     {
@@ -176,7 +188,7 @@ the value of `appId`. This is your `APPLICATION_ID` for creating a service princ
       "objectType": "ServicePrincipal",
       "servicePrincipalNames": [
         "5c552e8f-b977-45f5-a50b-981cfe17cb9d",
-        "http<span>:</span>//BOSHAzureCPI"
+        "http://BOSHAzureCPI"
       ]
     }
     </pre>
@@ -188,21 +200,25 @@ the Owner role on your service principal, run the following command:
     az role assignment create --assignee "SERVICE-PRINCIPAL-NAME" \
     --role "Owner" --scope /subscriptions/SUBSCRIPTION-ID
     ```
+
     Where:
+
     * `SERVICE-PRINCIPAL-NAME` is any value of `servicePrincipalNames` from the output above, such
       as `YOUR-APPLICATION-ID`.
     * `SUBSCRIPTION-ID` is the value of the `id` of the default subscription that you recorded in
       [Set Your Default Subscription](#default-subscription).
 
     For example:
+
     <pre class="terminal">
     $ az role assignment create \
     --assignee "5c552e8f-b977-45f5-a50b-981cfe17cb9d" \
     --role "Owner" \
     --scope /subscriptions/87654321-1234-5678-1234-567891234567
     </pre>
+
     <p class='note'><strong>Note:</strong> If you need to use multiple resource groups for your
-    deployment on Azure, you can define custom roles for your Service Principal. These roles allow
+    deployment on Azure, you can define custom roles for your service principal. These roles allow
     BOSH to deploy to pre-existing network resources outside of the resource group.
     </p>
 
@@ -213,10 +229,12 @@ the Owner role on your service principal, run the following command:
     ```
     az role assignment list --assignee "SERVICE-PRINCIPAL-NAME"
     ```
+
     Where `"SERVICE-PRINCIPAL-NAME"` is any value of `servicePrincipalNames` from the output above,
     such as `YOUR-APPLICATION-ID`.
 
     For example:
+
     <pre class="terminal">
     $ az role assignment list --assignee "5c552e8f-b977-45f5-a50b-981cfe17cb9d"
     [
@@ -225,7 +243,7 @@ the Owner role on your service principal, run the following command:
         "name": "32e644cf-ba1a-4f43-bf7c-68bf4583e463",
         "properties": {
           "principalId": "cc13c685-4c3b-461e-ae96-7a0563960b83",
-          "principalName": "http<span>:</span>//BOSHAzureCPI",
+          "principalName": "http://BOSHAzureCPI",
           "roleDefinitionId": "/subscriptions/995b7eed-77ef-45ff-a5c9-1a405ffb8243/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
           "roleDefinitionName": "Owner",
           "scope": "/subscriptions/995b7eed-77ef-45ff-a5c9-1a405ffb8243"
@@ -235,7 +253,7 @@ the Owner role on your service principal, run the following command:
     ]
     </pre>
 
-## <a id='verify-your-service-principal'></a> Step 5: Verify Your Service Principal
+## <a id='verify-your-service-principal'></a> Step 5: Verify your service principal
 
 To verify your service principal, run the following command to log in to your service principal:
 
@@ -243,6 +261,7 @@ To verify your service principal, run the following command to log in to your se
 az login --username APPLICATION_ID --password CLIENT_SECRET \
 --service-principal --tenant TENANT_ID
 ```
+
 Where:
 
 * `APPLICATION_ID` is the `APPLICATION_ID` that you recorded in
@@ -252,6 +271,7 @@ Where:
   [Set Your Default Subscription](#default-subscription).
 
 For example:
+
 <pre class="terminal">
 $ az login --username 5c552e8f-b977-45f5-a50b-981cfe17cb9d \
 --password "Swordfish" \
@@ -275,7 +295,7 @@ $ az login --username 5c552e8f-b977-45f5-a50b-981cfe17cb9d \
 If you cannot log in, the service principal is invalid. Create a new service principal and try
 again.
 
-## <a id='register'></a> Step 6: Perform Registrations
+## <a id='register'></a> Step 6: Perform registrations
 
 1. To register your subscription with Microsoft.Storage, run the following command:
 

@@ -63,6 +63,6 @@ To include custom BOSH releases in the BOSH Director, create as many BOSH releas
 
 For more information, see [Adding a job to the Director](https://docs.pivotal.io/platform/opsman-api/#adding-a-job-to-the-director-vm) in the <%= vars.ops_manager %> API documentation.
 
-<p class='note warning'><strong>Warning:</strong> Customizing the Director manifest incorrectly can cause deployment downtime or failure. <%= vars.ops_manager %> does not perform any validations on software introduced to a deployment through manifest customizations. This feature is for advanced <%= vars.ops_manager %> operators only.</p>
+<p class='note caution'><strong>Caution:</strong> Customizing the Director manifest incorrectly can cause deployment downtime or failure. <%= vars.ops_manager %> does not perform any validations on software introduced to a deployment through manifest customizations. This feature is for advanced <%= vars.ops_manager %> operators only.</p>
 
 For more information about writing the `manifest.yml` file, see the [BOSH documentation](https://bosh.io/docs/manifest-v2/#instance-groups).

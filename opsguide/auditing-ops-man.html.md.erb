@@ -10,7 +10,7 @@ This topic describes how operators can audit the activity of <%= vars.ops_manage
 
 You can audit <%= vars.ops_manager %> user activity to help improve security practices in your environment. Auditing user activity also helps you ensure that your environment is compliant with existing security standards.
 
-For example, you can view the timestamp of any requests made in the <%= vars.ops_manager %> UI as well as the username of the user that made the request.
+For example, you can view the timestamp of any requests made in the <%= vars.ops_manager %> UI and the username of the user that made the request.
 
 You can find relevant information for auditing user activity in <%= vars.ops_manager %> in the following <%= vars.ops_manager %> logs:
 
@@ -38,7 +38,7 @@ To access logs for auditing user activity:
 
 ## <a id='logs'></a> Logs for Auditing User Activity
 
-The table below describes the types of user actions that you can audit with logs and the location of the logs.
+The table below describes the types of user actions that you can audit with logs, and the location of the logs.
 
 For information about how to access the logs in this table, see [Access Logs on the <%= vars.ops_manager %> VM](#access-logs).
 
@@ -97,7 +97,7 @@ For information about how to access the logs in this table, see [Access Logs on 
 
 The <%= vars.ops_manager %> `audit_log.txt` file includes metadata about actions taken by users in the <%= vars.ops_manager %> app in JSON format.
 
-Below is an example of the content in the `audit_log.txt` file:
+The following shows an example of the content in the `audit_log.txt` file:
 
 ```
 {
@@ -210,7 +210,7 @@ The table below describes the properties in the `audit_log.txt` file and provide
 </table>
 
 
-## <a id='forward-syslog'></a> Forward Logs
+## <a id='forward-syslog'></a> Forwarding Logs
 
 You can forward some <%= vars.ops_manager %> logs using syslog forwarding. This allows you to forward logs to a syslog server or other third-party destination for storage and analysis.
 

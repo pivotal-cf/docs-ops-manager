@@ -1,11 +1,9 @@
 ---
-title: Installing Ops Manager on AWS
+title: Requirements and Prerequisites for Ops Manager on AWS
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Installing " + vars.ops_manager + " on AWS"  %>
-
-This guide describes how to install <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
+This guide describes the requirements and prerequisites for installing [<%= vars.ops_manager_first %>](https://network.pivotal.io/products/ops-manager) on Amazon Web Services (AWS).
 
 
 ## <a id='overview'></a> Overview
@@ -27,8 +25,7 @@ This section lists resource requirements for installing <%= vars.ops_manager %> 
 
 See one of the following topics, depending on the runtime you plan to install using <%= vars.ops_manager %>:
 
-* For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-11/operating/requirements.html).
-
+* For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/operating/requirements.html).
 * For <%= vars.k8s_runtime_abbr %>-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
 
 ### <a id='aws-requirements'></a> AWS Resource Requirements
@@ -36,239 +33,245 @@ See one of the following topics, depending on the runtime you plan to install us
 The following are AWS-specific resource requirements for installing <%= vars.ops_manager %> on AWS with an external database and external file storage:
 
 * Installing <%= vars.ops_manager %> on AWS requires a minimum of the following VM instance limits in your AWS account. The number of VMs required depends on the number of tiles and availability zones (AZs) you plan to deploy. The following VM guidelines apply to the <%= vars.app_runtime_abbr %>, Small Footprint <%= vars.app_runtime_abbr %>, and <%= vars.k8s_runtime_abbr %> runtimes:
-  * **<%= vars.app_runtime_abbr %>:** At a minimum, a new AWS deployment requires the following VMs for <%= vars.app_runtime_abbr %>:
-    <table border="1" class="nice">
-      <tr>
-        <th>AWS Requirements</th>
-        <th>VM Name</th>
-        <th>VM Type</th>
-        <th>Default VM Count</th>
-        <th>Required or Optional VM</th>
-      </tr><tr>
-        <th rowspan=22><%= vars.app_runtime_abbr %></th>
-          <td>NATS</td>
-          <td>t3.micro</td>
-          <td>2</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>File Storage</td>
-          <td>m5.large</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>MySQL Proxy</td>
-          <td>t3.micro</td>
-          <td>2</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>MySQL Server</td>
-          <td>r5.large</td>
-          <td>3</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Backup Restore Node</td>
-          <td>t3.micro</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Diego BBS</td>
-          <td>t3.micro</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>UAA</td>
-          <td>m5.large</td>
-          <td>2</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Cloud Controller</td>
-          <td>m5.large</td>
-          <td>2</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>HAProxy</td>
-          <td>t3.micro</td>
-          <td>0</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Router</td>
-          <td>t3.micro</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>MySQL Monitor</td>
-          <td>t3.micro</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Clock Global</td>
-          <td>t3.medium</td>
-          <td>2</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Cloud Controller Worker</td>
-          <td>t3.micro</td>
-          <td>2</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Diego Brain</td>
-          <td>t3.small</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Diego Cell</td>
-          <td>r5.xlarge</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Loggregator Traffic Controller</td>
-          <td>t3.micro</td>
-          <td>2</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Doppler Server</td>
-          <td>m5.large</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>TCP Router</td>
-          <td>t3.micro</td>
-          <td>0</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>CredHub</td>
-          <td>r5.large</td>
-          <td>2</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Istio Router</td>
-          <td>r5.large</td>
-          <td>0</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Istio Control</td>
-          <td>r5.large</td>
-          <td>0</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Route Syncer</td>
-          <td>r5.large</td>
-          <td>0</td>
-          <td>Optional</td>
-      </tr><tr>
-        <th rowspan=2><%= vars.ops_manager %></th>
-          <td>BOSH Director</td>
-          <td>m5.large</td>
-          <td>1</td>
-          <td>Required</td>
-      </tr>
-    </table>
-    <p class='note'><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
-  * **Small Footprint <%= vars.app_runtime_abbr %>:** To run Small Footprint <%= vars.app_runtime_abbr %>, a new AWS deployment requires:
-    <table id='aws-requirements' border="1" class="nice">
-      <tr>
-      	<th>AWS Requirements</th>
-        <th>VM Name</th>
-        <th>VM Type</th>
-        <th>Default VM Count</th>
-        <th>Minimum HA VM Count</th>
-        <th>Required or Optional VM</th>
-      </tr><tr>
-        <th rowspan=12>Small Footprint <%= vars.app_runtime_abbr %></th>
-          <td>Compute</td>
-          <td>r5.xlarge</td>
-          <td>1</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Control</td>
-          <td>r5.xlarge</td>
-          <td>1</td>
-          <td>2</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Database</td>
-          <td>r5.large</td>
-          <td>1</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>Router</td>
-          <td>t3.micro</td>
-          <td>1</td>
-          <td>3</td>
-          <td>Required</td>
-      </tr><tr>
-          <td>File Storage</td>
-          <td>m5.large</td>
-          <td>1</td>
-          <td>N/A</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Backup Restore Node</td>
-          <td>t3.micro</td>
-          <td>1</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>MySQL Monitor</td>
-          <td>t3.micro</td>
-          <td>1</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>HAProxy</td>
-          <td>t3.micro</td>
-          <td>0</td>
-          <td>2</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>TCP Router</td>
-          <td>t3.micro</td>
-          <td>0</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Istio Router</td>
-          <td>r5.large</td>
-          <td>0</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Istio Control</td>
-          <td>r5.large</td>
-          <td>0</td>
-          <td>2</td>
-          <td>Optional</td>
-      </tr><tr>
-          <td>Route Syncer</td>
-          <td>r5.large</td>
-          <td>0</td>
-          <td>1</td>
-          <td>Optional</td>
-      </tr><tr>
-        <th rowspan=2><%= vars.ops_manager %></th>
-          <td>BOSH Director</td>
-          <td>m5.large</td>
-          <td>1</td>
-          <td>N/A</td>
-          <td>Required</td>
-      </tr>
-    </table>
-<br />
-  * **<%= vars.k8s_runtime_abbr %>:** See [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
+
+    * **<%= vars.app_runtime_abbr %>:** At a minimum, a new AWS deployment requires the following VMs for <%= vars.app_runtime_abbr %>:
+
+        <table border="1" class="nice">
+          <tr>
+            <th>AWS Requirements</th>
+            <th>VM Name</th>
+            <th>VM Type</th>
+            <th>Default VM Count</th>
+            <th>Required or Optional VM</th>
+          </tr><tr>
+            <th rowspan=22><%= vars.app_runtime_abbr %></th>
+              <td>NATS</td>
+              <td>t3.micro</td>
+              <td>2</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>File Storage</td>
+              <td>m5.large</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>MySQL Proxy</td>
+              <td>t3.micro</td>
+              <td>2</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>MySQL Server</td>
+              <td>r5.large</td>
+              <td>3</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Backup Restore Node</td>
+              <td>t3.micro</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Diego BBS</td>
+              <td>t3.micro</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>UAA</td>
+              <td>m5.large</td>
+              <td>2</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Cloud Controller</td>
+              <td>m5.large</td>
+              <td>2</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>HAProxy</td>
+              <td>t3.micro</td>
+              <td>0</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Router</td>
+              <td>t3.micro</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>MySQL Monitor</td>
+              <td>t3.micro</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Clock Global</td>
+              <td>t3.medium</td>
+              <td>2</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Cloud Controller Worker</td>
+              <td>t3.micro</td>
+              <td>2</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Diego Brain</td>
+              <td>t3.small</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Diego Cell</td>
+              <td>r5.xlarge</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Loggregator Traffic Controller</td>
+              <td>t3.micro</td>
+              <td>2</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Doppler Server</td>
+              <td>m5.large</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>TCP Router</td>
+              <td>t3.micro</td>
+              <td>0</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>CredHub</td>
+              <td>r5.large</td>
+              <td>2</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Istio Router</td>
+              <td>r5.large</td>
+              <td>0</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Istio Control</td>
+              <td>r5.large</td>
+              <td>0</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Route Syncer</td>
+              <td>r5.large</td>
+              <td>0</td>
+              <td>Optional</td>
+          </tr><tr>
+            <th rowspan=2><%= vars.ops_manager %></th>
+              <td>BOSH Director</td>
+              <td>m5.large</td>
+              <td>1</td>
+              <td>Required</td>
+          </tr>
+        </table>
+
+        <p class='note'><strong>Note:</strong> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+
+    * **Small Footprint <%= vars.app_runtime_abbr %>:** To run Small Footprint <%= vars.app_runtime_abbr %>, a new AWS deployment requires:
+
+        <table id='aws-requirements' border="1" class="nice">
+          <tr>
+          	<th>AWS Requirements</th>
+            <th>VM Name</th>
+            <th>VM Type</th>
+            <th>Default VM Count</th>
+            <th>Minimum HA VM Count</th>
+            <th>Required or Optional VM</th>
+          </tr><tr>
+            <th rowspan=12>Small Footprint <%= vars.app_runtime_abbr %></th>
+              <td>Compute</td>
+              <td>r5.xlarge</td>
+              <td>1</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Control</td>
+              <td>r5.xlarge</td>
+              <td>1</td>
+              <td>2</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Database</td>
+              <td>r5.large</td>
+              <td>1</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>Router</td>
+              <td>t3.micro</td>
+              <td>1</td>
+              <td>3</td>
+              <td>Required</td>
+          </tr><tr>
+              <td>File Storage</td>
+              <td>m5.large</td>
+              <td>1</td>
+              <td>N/A</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Backup Restore Node</td>
+              <td>t3.micro</td>
+              <td>1</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>MySQL Monitor</td>
+              <td>t3.micro</td>
+              <td>1</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>HAProxy</td>
+              <td>t3.micro</td>
+              <td>0</td>
+              <td>2</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>TCP Router</td>
+              <td>t3.micro</td>
+              <td>0</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Istio Router</td>
+              <td>r5.large</td>
+              <td>0</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Istio Control</td>
+              <td>r5.large</td>
+              <td>0</td>
+              <td>2</td>
+              <td>Optional</td>
+          </tr><tr>
+              <td>Route Syncer</td>
+              <td>r5.large</td>
+              <td>0</td>
+              <td>1</td>
+              <td>Optional</td>
+          </tr><tr>
+            <th rowspan=2><%= vars.ops_manager %></th>
+              <td>BOSH Director</td>
+              <td>m5.large</td>
+              <td>1</td>
+              <td>N/A</td>
+              <td>Required</td>
+          </tr>
+        </table>
+
+    * **<%= vars.k8s_runtime_abbr %>:** See [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
 
 * The following AWS resources are required for installing <%= vars.ops_manager %> on AWS with <%= vars.app_runtime_abbr %>:
-  * Three Elastic Load Balancers (ELBs)
-  * One Relational Database Service. As a minimum, <%= vars.company_name %> recommends using a db.m5.xlarge instance with at least 100&nbsp;GB of allocated storage.
-  * Five S3 buckets
+
+    * Three Elastic Load Balancers (ELBs)
+    * One Relational Database Service. As a minimum, <%= vars.company_name %> recommends using a db.m5.xlarge instance with at least 100&nbsp;GB of allocated storage.
+    * Five S3 buckets
 
 
 ## <a id='prerequisites'></a> Prerequisites
 
 To install <%= vars.ops_manager %> on AWS, you must:
 
-* Increase or remove the VM instance limits in your AWS account. Installing <%= vars.ops_manager %> requires more than the default 20 concurrent instances. For more information about VM resource requirements, see [Requirements](#requirements).
+* Increase or remove the VM instance limits in your AWS account. Installing <%= vars.ops_manager %> requires more than the default 20 concurrent instances. For more information about VM resource requirements, see [Requirements](#requirements), above.
 
 * Configure your AWS account with the appropriate AWS region. For more information about selecting the correct region for your deployment, see [Region and Availability Zone Concepts](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions-availability-zones) in the AWS documentation.
 
@@ -276,14 +279,14 @@ To install <%= vars.ops_manager %> on AWS, you must:
 
 * Configure an AWS EC2 key pair to use with your <%= vars.ops_manager %> deployment. For more information, see [Creating an EC2 Key Pair](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-keypair.html) in the AWS documentation.
 
-* Register a wildcard domain for your <%= vars.ops_manager %> installation. For more information, see [SSL/TLS Certificates for Classic Load Balancers](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ssl-server-cert.html#create-cert) in the AWS documentation.
+* Register a wildcard domain for your <%= vars.ops_manager %> installation. For more information, see [Create an HTTPS listener for your Application Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates) in the AWS documentation.
 
-* Create an SSL certificate for your <%= vars.ops_manager %> domain. For more information, see the [AWS documentation about SSL certificates](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ssl-server-cert.html).
+* Create an SSL certificate for your <%= vars.ops_manager %> domain. For more information, see the [AWS documentation about SSL certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates).
   <p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> to a production environment, you must obtain a certificate from a certificate authority. <%= vars.company_name %> recommends using a self-signed certificate generated by <%= vars.ops_manager %> for development and testing purposes only.</p>
 
-* **(<%= vars.app_runtime_abbr %> only)** Configure sufficient IP allocation. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pas) above.
+* **(<%= vars.app_runtime_abbr %> only)** Configure sufficient IP allocation. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/operating/requirements.html#general) above.
 
-* (Optional) **(<%= vars.app_runtime_abbr %> only)** Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+* (Optional) **(<%= vars.app_runtime_abbr %> only)** Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 * (Optional) **(<%= vars.app_runtime_abbr %> and <%= vars.ops_manager %> only)** Configure external databases. <%= vars.company_name %> recommends using external databases in production deployments for BOSH Director and <%= vars.app_runtime_abbr %>. An external database must be configured to use the UTC timezone.
 
@@ -291,7 +294,6 @@ To install <%= vars.ops_manager %> on AWS, you must:
 
 
 ## <a id='install'></a> Install <%= vars.ops_manager %> on AWS
-
 
 To install <%= vars.ops_manager %> on AWS, see [Installing <%= vars.ops_manager %> on AWS](aws-manual.html).
 

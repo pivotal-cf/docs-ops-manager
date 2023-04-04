@@ -14,11 +14,19 @@ This section describes a reference architecture for a <%= vars.app_runtime_abbr 
 
 ### <a id='diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS.
+The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader internet into the VPC Network. Categories of elements in the VPC Network include:
 
-![This diagram illustrates <%= vars.app_runtime_abbr %> on AWS. For specific details about the components and communication represented by the diagram, see the base and AWS reference architectures.](PAS_AWS.png)
+* Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
+* 3 TAS subnets
+* 3 Services subnets
+* On-demand Services subnets
+* Isolation Segment subnets
+* 3 RDS subnets
+* Corporate subnet (with a NAT instance and an NLB interface)
 
-[View a larger version of this diagram](../images/PAS_AWS.png).
+![alt-text="Architecture on AWS. For specific details about the components and communication represented by the diagram, see the base and AWS reference architectures."](../images/PAS_AWS.png)
+
+[View a larger version of this diagram.](../images/PAS_AWS.png).
 
 ### <a id='networking'></a> Networking
 
@@ -30,13 +38,13 @@ You can use AWS Route 53 for DNS resolution to host your <%= vars.app_runtime_ab
 
 #### <a id='lb'></a> Load Balancing
 
-AWS offer Application Load Balancers (ALBs) and Network Load Balancers (NLBs). <%= vars.company_name %> recommends using NLBs because of the simplicity and security of leaving all encrypted traffic in place until it reaches the Gorouters. If you require Amazon Certificate Management or more complex Layer 7 routing rules, you can front or replace the NLB with an ALB.
+AWS offer Application Load Balancers (ALBs) and Network Load Balancers (NLBs). <%= vars.company_name %> recommends using NLBs because of the simplicity and security of leaving all encrypted traffic in place until it reaches the GoRouters. If you require Amazon Certificate Management or more complex Layer 7 routing rules, you can front or replace the NLB with an ALB.
 
 #### <a id='subnets'></a> Networks, Subnets, and IP Spacing Planning
 
 When planning networks, subnets, and IP spacing, some things to consider are:
 
-* In AWS, each availability zone (AZ) requires its own subnet of which the first five IPs are reserved.
+* In AWS, each availability zone (AZ) requires its own subnet; the first five IPs must be reserved.
 
 * Your organization might not have the IP space necessary to deploy <%= vars.app_runtime_abbr %> in a consistent manner. To alleviate this, <%= vars.company_name %> recommends using the `100.64` address space to deploy a NAT instance and router so that the <%= vars.ops_manager %> deployment can use few IP addresses.
 
@@ -44,7 +52,7 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 
 * If you want a VPC that is only public-facing, no special consideration is necessary for the use of IPs.
 
-* To understand the action required depending on the type of traffic you want to allow for your <%= vars.ops_manager %> deployment, see the table below:
+* To understand the action required, depending on the type of traffic you want to allow for your <%= vars.ops_manager %> deployment, see the table below:
 	<table>
 		<tr>
 			<th>If you want...</th>
@@ -56,7 +64,7 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 		</tr>
 		<tr>
 			<td>Internet egress</td>
-			<td>Create the NAT Gateway toward the Internet.</td>
+			<td>Create the NAT Gateway toward the internet.</td>
 		</tr>
 		<tr>
 			<td>Corporate ingress</td>
@@ -64,7 +72,7 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 		</tr>
 		<tr>
 			<td>Corporate egress (for accessing corporate resources)</td>
-			<td>Create the NAT instance on your corporate subnet or if business requirements dictate, make the entire VPC corporate-routable.</td>
+			<td>Create the NAT instance on your corporate subnet, or if business requirements dictate, make the entire VPC corporate-routable.</td>
 		</tr>
 	</table>
 
@@ -82,23 +90,23 @@ These options are available for choosing your network topology:
 	<tr>
 		<td>Internet ingress</td>
 		<td><ul>
-				<li>Allow Internet ingress by associating load balancers with elastic IPs.</li>
-				<li>Do not allow Internet ingress.</li>
+				<li>Allow internet ingress by associating load balancers with Elastic IPs.</li>
+				<li>Do not allow internet ingress.</li>
 			</ul></td>
 	</tr>
 	<tr>
 		<td>Internet egress</td>
 		<td>
 			<ul>
-				<li>Allow <%= vars.app_runtime_abbr %> to access the Internet through a NAT gateway.</li>
-				<li>Do not allow <%= vars.app_runtime_abbr %> to access the Internet. Use only a corporate network.</li>
+				<li>Allow <%= vars.app_runtime_abbr %> to access the internet through a NAT gateway.</li>
+				<li>Do not allow <%= vars.app_runtime_abbr %> to access the internet. Use only a corporate network.</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td>Peering</td>
 		<td><ul>
-				<li>Isolated. This is normally Internet-only facing.</li>
+				<li>Isolated. This is normally internet-only facing.</li>
 				<li>Peered with corporate or other VPCs through Transit Gateway.</li>
 				<li>Peered directly with other VPCs and corporate connections.</li>
 			</ul></td>
@@ -140,11 +148,19 @@ These sections describe a reference architecture for a <%= vars.k8s_runtime_abbr
 
 ### <a id='pks-diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS.
+The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader internet into the VPC Network. Categories of elements in the VPC Network include:
 
-![This diagram illustrates <%= vars.k8s_runtime_abbr %> on AWS. For specific details about the components and communication represented by the diagram, see the base and AWS reference architectures.](../images/v2/export/PKS_AWS.png)
+* Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
+* 3 Services subnets
+* 3 PKS subnets
+* Kubernetes Pods subnet
+* Kubernetes Services subnet
+* 3 RDS subnets
+* Corporate subnet (with a NAT instance and an NLB interface)
 
-[View a larger version of this diagram](../images/v2/export/PKS_AWS.png).
+![alt-text="Architecture on AWS. For specific details about the components and communication represented by the diagram, see the base and AWS reference architectures."](../images/v2/export/PKS_AWS.png)
+
+[View a larger version of this diagram.](../images/v2/export/PKS_AWS.png).
 
 ### <a id='pks-networking'></a> Networking
 
@@ -158,7 +174,7 @@ You can use AWS Route 53 for DNS resolution to host your <%= vars.k8s_runtime_ab
 
 You can configure a front end load balancer to enable public access to the <%= vars.k8s_runtime_abbr %> API VM.
 
-For each <%= vars.k8s_runtime_abbr %> cluster, <%= vars.company_name %> recommends creating a load balancer for the corresponding master node or nodes. For more information, see [Creating and Configuring an AWS Load Balancer for Enterprise <%= vars.k8s_runtime_abbr %> Clusters](https://docs.pivotal.io/tkgi/aws-cluster-load-balancer.html).
+For each <%= vars.k8s_runtime_abbr %> cluster, <%= vars.company_name %> recommends creating a load balancer for the corresponding primary node or nodes. For more information, see [Creating and Configuring an AWS Load Balancer for <%= vars.k8s_runtime_abbr %> Clusters](https://docs.pivotal.io/tkgi/aws-cluster-load-balancer.html).
 
 For deployed workloads, Kubernetes can automatically create load balancers when applying the service definition to the app instances. For more information, see [Deploying and Exposing Basic Workloads](https://docs.pivotal.io/tkgi/deploy-workloads.html).
 
@@ -166,7 +182,7 @@ For deployed workloads, Kubernetes can automatically create load balancers when 
 
 When planning networks, subnets, and IP spacing, some things to consider are:
 
-* In AWS, each AZ requires its own subnet of which the first five IPs are reserved.
+* In AWS, each AZ requires its own subnet; the first five IPs must be reserved.
 
 * If you want the front end of <%= vars.k8s_runtime_abbr %> to be accessible from your corporate network or the services running on <%= vars.k8s_runtime_abbr %> to be able to access corporate resources, you must either provide routable IPs to your VPC or use NAT.
 
@@ -184,16 +200,16 @@ These options are available for choosing your network topology:
   <tr>
     <td>Internet Ingress</td>
     <td><ul>
-        <li>Allow Internet ingress by associating load balancers with elastic IPs.</li>
-        <li>Do not allow Internet ingress.</li>
+        <li>Allow internet ingress by associating load balancers with Elastic IPs.</li>
+        <li>Do not allow internet ingress.</li>
       </ul></td>
   </tr>
   <tr>
     <td>Internet Egress</td>
     <td>
       <ul>
-        <li>Allow nodes and pods to access the Internet through a NAT gateway.</li>
-        <li>Do not allow nodes or pods to access the Internet. Use only a corporate network.</li>
+        <li>Allow nodes and pods to access the internet through a NAT gateway.</li>
+        <li>Do not allow nodes or pods to access the internet. Use only a corporate network.</li>
       </ul>
     </td>
   </tr>

@@ -12,7 +12,7 @@ Restoring a BOSH Director persistent disk with BBR is only possible if you have 
 
 This command produces a backup artifact in the format `DIRECTOR_IP_TIMESTAMP/`.
 
-<p class='note warning'><strong>Warning:</strong> BOSH Director backups require identical references to all BOSH-deployed VMs. If BOSH re-creates your deployment VMs for any reason, such as changes to stemcells, networks, or availability zones (AZs), your BBR backup artifact is no longer compatible for performing a restore.</p>
+<p class='note caution'><strong>Caution:</strong> BOSH Director backups require identical references to all BOSH-deployed VMs. If BOSH re-creates your deployment VMs for any reason, such as changes to stemcells, networks, or availability zones (AZs), your BBR backup artifact is no longer compatible for performing a restore.</p>
 
 
 ## <a id='prepare-environment'></a> Prepare Your Environment
@@ -38,7 +38,7 @@ To create a new persistent disk for the BOSH Director:
 
 ## <a id='perform-restore'></a> Perform the Restore
 
-<p class='note warning'><strong>Warning:</strong> BBR restore is a destructive process which removes any current data in your deployment. Performing a restore overwrites all new data since you created your most recent backup artifact.</p>
+<p class='note caution'><strong>Caution:</strong> BBR restore is a destructive process which removes any current data in your deployment. Performing a restore overwrites all new data since you created your most recent backup artifact.</p>
 
 Perform a BOSH Director restore by following the BBR instructions in [Step 8: Restore the BOSH Director](../restore-pcf-bbr.html#restore-bosh) in _Restoring Deployments From Backup with BBR_.
 

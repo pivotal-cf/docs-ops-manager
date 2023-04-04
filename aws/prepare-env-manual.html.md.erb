@@ -8,255 +8,339 @@ This topic describes how to manually configure the Amazon Web Services (AWS) com
 
 ## <a id='overview'></a> Overview of Deploying on AWS
 
-To deploy <%= vars.ops_manager %> on AWS, you must perform the procedures in this topic to create objects in the AWS Management Console that <%= vars.ops_manager %> requires.
+To deploy <%= vars.ops_manager %> on AWS, you must perform the procedures in this topic to create the objects in the AWS Management Console that <%= vars.ops_manager %> requires.
 
 To view the list of AWS objects created by the procedures in this topic, see [Required AWS Objects](required-objects.html).
 
 To prepare <%= vars.ops_manager %> for deployment with AWS:
 
-1. [File a Ticket](#file-ticket)
+1. [File an AWS Ticket/Request](#file-ticket)
 
 1. [Create S3 Buckets](#create-s3)
 
-1. [Create an IAM User or Role](#create-iam)
+1. [Create a Policy](#create-policy)
+
+1. [Create an IAM Role or User](#create-iam)
 
 1. [Create a VPC](#pcfaws-vpc)
 
-1. [Configure a Security Group for <%= vars.ops_manager %>](#pcfaws-om-secgrp)
+1. [Create an Internet Gateway](#pcfaws-om-igw)
+
+1. [Create a NAT Gateway](#pcfaws-nat-gateway)
+
+1. [Configure a Security Group for Ops Manager](#pcfaws-om-secgrp)
 
 1. [Configure a Security Group for BOSH-Deployed VMs](#pcfaws-om-ersecgrp)
 
 1. [Configure a Security Group for the Web ELB](#pcfaws-om-elbsecgrp)
 
-1. [Configure a Security Group for the SSH ELB](#pcfaws-om-sshelbsecgrp)
-
 1. [Configure a Security Group for the TCP ELB](#pcfaws-om-tcpelbsecgrp)
-
-1. [Configure a Security Group for the Outbound NAT](#pcfaws-om-natsecgrp)
 
 1. [Configure a Security Group for MySQL](#pcfaws-om-mysqlsecgrp)
 
 After completing the procedures in this topic, proceed to [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html) to continue deploying <%= vars.ops_manager %>.
 
 
-## <a id='file-ticket'></a> File a Ticket
+## <a id='file-ticket'></a> File an AWS Ticket/Request
 
 Log in to the AWS Management Console, and file a ticket with Amazon to ensure that your account can launch more than the default 20 instances. In the ticket, ask for a limit of 50 `t3.micro` instances and 20 `c5.large` instances in the region you are using.
 
-<p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> to AWS GovCloud (US), log in to the <a href="https://console.amazonaws-us-gov.com/">AWS GovCloud (US) Console</a> instead of the standard AWS Management Console and select the <code>us-gov-west-1</code> region.</p>
+<p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> to AWS GovCloud (US), log in to the <a href="https://console.amazonaws-us-gov.com/">AWS GovCloud (US) Console</a> instead of the standard AWS Management Console.</p>
 
 <p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> to AWS China,
 set up an <a href="http://www.amazonaws.cn/en/products/">AWS China</a> account and
 contact the Platform Architect assigned for your account.</p>
 
-You can check the limits on your account by visiting the EC2 Dashboard on the AWS Management Console and clicking **Limits** on the left navigation.
+You can check the limits on your account by visiting the EC2 Dashboard on the AWS Management Console and clicking **Limits** on the left navigation menu.
 
 
 ## <a id='create-s3'></a> Create S3 Buckets
 
-1. Navigate to the S3 Dashboard.
-	<p class='note'><strong>Note:</strong>S3 bucket names must be globally unique. When naming buckets, <%= vars.recommends_by %> recommends that you prefix the generic names below with an unique and helpfully identifiable string (i.e. ID-STRING-pcf-ops-manager-bucket, MY-IDENTIFIER-pcf-buildpacks-bucket, and so on). Then you should use the same prefix when naming other associated resources, such as IAM policies.</p>
+<p class='note'><strong>Note:</strong>S3 bucket names must be globally unique. When naming buckets, <%= vars.company_name %> recommends that you prefix the generic names below with an unique and helpfully identifiable string (i.e. ID-STRING-pcf-ops-manager-bucket, MY-IDENTIFIER-pcf-buildpacks-bucket, and so on). Then you should use the same prefix when naming other associated resources, such as IAM policies.</p>
 
-1. Perform the following steps to create five S3 buckets:
-  * Click **Create Bucket**.
-  * For **Bucket name**, enter `ID-STRING-pcf-ops-manager-bucket`.
-  * For **Region**, select your region.
-  * Click **Create bucket**.
-  * Repeat the above steps to create four more S3 buckets:
-	  1. `ID-STRING-pcf-buildpacks-bucket`
-		1. `ID-STRING-pcf-packages-bucket`
-		1. `ID-STRING-pcf-resources-bucket`
-		1. `ID-STRING-pcf-droplets-bucket`
+Perform the following steps to create five S3 buckets:
+
+1. On the S3 Dashboard, click **Create Bucket**.
+
+2. In **Bucket name**, enter `ID-STRING-pcf-ops-manager-bucket`.
+
+3. In **AWS Region**, select your region.
+
+4. Click **Create bucket**.
+
+5. Repeat these steps to create four more S3 buckets:
+    * `ID-STRING-pcf-buildpacks-bucket`
+    * `ID-STRING-pcf-packages-bucket`
+    * `ID-STRING-pcf-resources-bucket`
+    * `ID-STRING-pcf-droplets-bucket`
 
 
-## <a id='create-iam'></a> Create an IAM User or Role for <%= vars.ops_manager %>
+## <a id='create-policy'></a> Create a Policy for <%= vars.ops_manager %>
 
-Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
+Perform the following steps to create a Amazon Identity and Access Management (IAM) policy with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
 
 1. Click **IAM** to access the IAM Dashboard.
 
-1. If you are configuring AWS access using AWS keys, create an IAM user:
+1. Click **Policies** and then click **Create Policy**.
 
-    1. Click **Users** and then click **Add user**.
+1. Copy the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
 
-         <%= image_tag("../common/images/pcfaws/aws_iam_username.png", :alt => "Screenshot of IAM configuration page 1. The page is titled 'Add user'. It has two sections: 'Set User details' and 'Select AWS access type'.") %>
+1. Paste the policy document into the **JSON** tab on the **Create policy** page.
 
-    1. Enter a username. For example, enter `pcf-user`.
-
-    1. For AWS access type, select **Programmatic access**.
-        <p class='note'><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the [Amazon documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).</p>
-
-    1. Click **Next: Permissions** and click **Next: Review**.
-        <p class='note'><strong>Note:</strong> On the <strong>Review</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
-
-    1. Click **Create user**.
-
-
-1. If you are configuring AWS access using an AWS instance profile, create an IAM role:
-
-    1. Click **Roles** and then click **Create role**.
-
-        <%= image_tag("../common/images/aws/create-iam-role.png", :alt => "Screenshot of IAM configuration page 1, titled 'Create role'. It has the sections 'Select type of trusted entity' and 'Choose a use case'.") %>
-
-    1. On the **Create role** page, select **AWS service** as the role type and select **EC2** as the use case.
-
-    1. Click **Next: Permissions**, click **Next: Tags**, and click **Next: Review** to progress through the pages.
-
-    1. On the **Review** page, enter a role name. For example, enter `pcf-role`.
-
-    1. Click **Create role**.
-
-1. Click **Download .csv** to download the user security credentials.
-        <p class='note warning'><strong>Warning:</strong> The <code>credentials.csv</code> contains the IDs for your user security access key and secret access key. Keep the <code>credentials.csv</code> file for your currently active key pairs in a secure directory. You cannot recover a lost key pair.</p>
-
-1. Click **Close**.
-
-1. On the **Users** page, click the user name to access the user details page.
-    <p class='note'><strong>Note:</strong> On the <strong>Users</strong> page you may see a warning that the user has no permissions. You can disregard this message. You do not need to set user permissions.</p>
-
-1. Click **Add inline policy**. You can review your existing inline policies by clicking the down arrow.
-
-     <%= image_tag("../common/images/pcfaws/aws_iam_json.png", :alt => "Screenshot of the user details page. The page is titled 'Create policy'. It has a 'Visual editor' and 'JSON'tab.") %>
-
-1. On the **Create policy** page, define a policy:
-
-    1. Copy the policy document included in [<%= vars.ops_manager %> for AWS Policy Document](../install/policy-doc.html). You must edit the policy document so the names of the S3 buckets match the ones you created in [Create S3 Buckets](#create-s3) above.
-
-    1. Paste the policy document into the **JSON** tab on the **Create policy** page.
-
-1. Click **Review policy**.
+1. Click **Next:Tags** and click **Next:Review**.
 
 1. In the **Name** field, enter `pcf-iam-policy`.
 
-1. Click **Create policy**. The **Summary** page displays a list of available policies and actions.
+1. Click **Create policy**.
+
+
+## <a id='create-iam'></a> Create an IAM Role or User for <%= vars.ops_manager %>
+
+Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
+
+  <p class="note"><strong>Note:</strong> <%= vars.company_name %> recommends that you use IAM roles instead of users to improve security.</p>
+
+1. Click **IAM** to access the IAM Dashboard.
+
+1. If you are configuring AWS access using an AWS instance profile, create an IAM role:
+    1. Click **Roles** and then click **Create role**.
+    1. On the **Create role** page, set:
+        * **Role type**: **AWS service**
+        * **Use case**: **EC2**
+    2. Click **Next**.
+    3. On the **Add permissions** page, enter the name of the policy you created in the **Permission policies** search box. Select the check box next to the policy in the search results.
+    4. Click **Next**.
+    5. On the **Name, review, and create** page, enter a role name. For example, enter `pcf-role`.
+    6. Click **Create role**.
+
+2. If you are configuring AWS access using AWS keys, create an IAM user:
+    1. Click **Users** and then click **Add users**.
+    2. Enter a username. For example, enter `pcf-user`.
+    3. In AWS access type, check the **Access key - Programmatic access** check box.
+
+        <p class="note"><strong>Note:</strong> If you prefer to create your keys locally and import them into AWS, see the [Amazon documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).</p>
+
+    4. Click **Next: Permissions**.
+    5. Click the **Attach existing policies directly** tab.
+    6. In the **Filter policies** search box, enter the name of the policy you created. Then check the check box next to the policy in the search results.
+    7. Click **Next: Tags**, and then click **Next: Review**.
+    8. Click **Create user**.
+    9.  Click **Download .csv** to download the user security credentials.
+
+        <p class="note caution"><strong>Caution:</strong> The <code>credentials.csv</code> contains the IDs for your user security access key and secret access key. Keep the <code>credentials.csv</code> file for your currently active key pairs in a secure directory. You cannot recover a lost key pair.</p>
+
+    10. Click **Close**.
+
 
 ## <a id='pcfaws-vpc'></a> Create a VPC
 
-1. Follow the AWS tutorial to create an elastic IP address, a VPC, and additional subnets. To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/batch/latest/userguide/create-public-private-vpc.html). Reference the following tables when configuring the VPC wizard fields and subnets.
+1. Follow the AWS tutorial to create an elastic IP address, a VPC, and additional subnets. To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/batch/latest/userguide/create-public-private-vpc.html). Refer to the following table when configuring the VPC wizard fields and subnets.
 
-	<table>
-	<tr>
-	  <th>VPC Wizard Field</th>
-	  <th>Instructions</th>
-	</tr>
-	<tr>
-	  <td><b>IPv4 CIDR block</b></td>
-	  <td>Enter <code>10.0.0.0/16</code></td>
-	</tr>
-	<tr>
-	  <td><b>IPv6 CIDR block</b></td>
-	  <td>Select <b>No IPv6 CIDR Block</b></td>
-	</tr>
-	<tr>
-	  <td><b>VPC name</b></td>
-	  <td><code>pcf-vpc</code></td>
-	</tr>
-	<tr>
-	  <td><b>Public subnet's IPv4 CIDR</b></td>
-	  <td>Enter <code>10.0.0.0/24</code></td>
-	</tr>
-	<tr>
-	  <td><br>Availability Zone</br></td>
-	  <td>Set both subnets to <code>REGION-#a</code>. For example, <code>us-west-2a</code></td>
-	</tr>
-	<tr>
-	  <td><b>Public subnet name</b></td>
-	  <td>Enter <code>pcf-public-subnet-az0</code></td>
-	</tr>
-	<tr>
-	  <td><b>Private subnet's IPv4 CIDR</b></td>
-	  <td>Enter <code>10.0.16.0/28</code></td>
-	</tr>
-	<tr>
-	  <td><b>Private subnet name</b></td>
-	  <td>Enter <code>pcf-management-subnet-az0</code></td>
-	</tr>
-	<tr>
-	  <td><b>Elastic IP Allocation ID</b></td>
-	  <td>Enter the ID of the Elastic IP address you created at the beginning of the AWS tutorial.</td>
-	<tr>
-	  <td><b>Enable DNS hostnames</b></td>
-	  <td>Click <b>Yes</b></td>
-	<tr>
-	  <td><b>Hardware tenancy</b></td>
-	  <td>Select <b>Default</b></td>
-	</tr>
-	</table>
-</br>
-	 Add the following subnets to the VPC that includes `(pcf-vpc)`:
+    <table>
+    <tr>
+      <th>VPC Wizard Field</th>
+      <th>Instructions</th>
+    </tr>
+    <tr>
+      <td><b>Resources to create</b></td>
+      <td>Select <code>VPC and more</code></td>
+    </tr>
+    <tr>
+      <td><b>Name tag</b></td>
+      <td>Enter <code>pcf-vpc</code></td>
+    </tr>
+    <tr>
+      <td><b>IPv4 CIDR block</b></td>
+      <td>Select <code>IPv4 CIDR manual input</code></td>
+    </tr>
+    <tr>
+      <td><b>IPv4 CIDR</b></td>
+      <td>Enter <code>10.0.0.0/16</code></td>
+    </tr>
+    <tr>
+      <td><b>IPv6 CIDR block</b></td>
+      <td>Select <b>No IPv6 CIDR block</b></td>
+    </tr>
+    <tr>
+      <td><b>Number of public subnets</b></td>
+      <td>Select <b>0</b></td>
+    </tr>
+    <tr>
+      <td><b>Number of private subnets</b></td>
+      <td>Select <b>0</b></td>
+    </tr>
+    </table>
 
-	 <table>
-	 <tr>
-	   <th>Name</th>
-	   <th>AZ</th>
-	   <th>IPv4 CIDR block</th>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-public-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.1.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-public-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.2.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-management-subnet-az1<code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.16.16/28</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-management-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.16.32/28</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az0</code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.4.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.5.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.6.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-services-subnet-az0</code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.8.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-services-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.9.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-services-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.10.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-rds-subnet-az0</code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.12.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-rds-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.13.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-rds-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.14.0/24</code></td>
-	 </tr>
-	 </table>
+    For all other fields, accept the defaults.
+
+1. Click **Create VPC**.
+
+1. On the VPC dashboard, click **Subnets**, and then **Create subnet**.
+
+1. In **VPC ID**, select the VPC that includes `(pcf-vpc)`.
+
+1. Add the following subnets. For each subnet, enter the **Subnet name**, **Availability Zone**, and **IPv4 CIDR block**. Then click **Add new subnet** to add the next subnet in the table:
+
+    <table>
+    <tr>
+       <th>Subnet name</th>
+       <th>Availability Zone</th>
+       <th>IPv4 CIDR block</th>
+    </tr>
+    <tr>
+       <td><code>pcf-public-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.0.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-public-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.1.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-public-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.2.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-management-subnet-az0<code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.16.0/28</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-management-subnet-az1<code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.16.16/28</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-management-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.16.32/28</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.4.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.5.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.6.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-services-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.8.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-services-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.9.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-services-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.10.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-rds-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.12.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-rds-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.13.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-rds-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.14.0/24</code></td>
+    </tr>
+    </table>
+
+1. Click **Add new subnet**.
+
+## <a id='pcfaws-om-igw'></a> Create an Internet Gateway
+
+1. On the VPC dashboard, click **Internet gateways**.
+
+1. Click **Create internet gateway**.
+
+1. In **Name tag**, enter `pcf-internet-gateway`.
+
+1. Click **Create internet gateway**.
+
+1. In **Actions**, click **Attach to VPC**.
+
+1. In **Available VPCs**, select the VPC that includes `pcf-vpc`.
+
+1. Click **Attach internet gateway**.
+
+
+## <a id='pcfaws-nat-gateway'></a> Create a NAT Gateway
+
+1. On the VPC dashboard, click **NAT gateways**.
+
+1. Click **Create NAT gateway**.
+
+1. In **Name**, enter `pcf-nat-gateway`.
+
+1. In **Subnet**, select the subnet that includes `(pcf-public-subnet-az0)`.
+
+1. Click **Allocate Elastic IP**.
+
+1. Click **Create NAT gateway**.
+
+
+## <a id='pcfaws-public-routes'></a> Create Route Table for Public Subnets
+
+1. On the VPC dashboard, click **Route tables**.
+
+1. Click **Create route table**.
+
+1. In **Name**, enter `pcf-public-route-table`.
+
+1. In **VPC**, select the VPC that includes `(pcf-vpc)`.
+
+1. Click **Create route table**.
+
+  1. In the **Routes** section, click **Edit routes**.
+  2. Click **Add route**.
+  3. In **Destination**, enter `0.0.0.0/0`.
+  4. In **Target**, select **Internet Gateway**, then select the internet gateway that includes `(pcf-internet-gateway)`.\
+  5. Click **Save changes**.
+
+2. Click the **Subnet associations** tab.
+  1. In the **Explicit subnet associations** section, click **Edit subnet associations**.
+  2. Select `pcf-public-subnet-az0`, `pcf-public-subnet-az1`, and `pcf-public-subnet-az2`.
+  3. Click **Save associations**.
+
+
+## <a id='pcfaws-remaining-routes'></a> Create Route Table for Remaining Subnets
+
+1. On the VPC dashboard, click **Route tables**.
+
+1. Click **Create route table**.
+
+1. In **Name**, enter `pcf-management-route-table`.
+  1. In **VPC**, select the VPC that includes `(pcf-vpc)`.
+  2. Click **Create route table**.
+
+2. In the **Routes** section, click **Edit routes**.
+   1. Click **Add route**.n **Destination**, enter `0.0.0.0/0`.
+   2. In **Target**, select **NAT Gateway**, then select the NAT gateway that includes `(pcf-nat-gateway)`.
+   3. Click **Save changes**.
+
+3. Click the **Subnet associations** tab.
+  1. In the **Explicit subnet associations** section, click **Edit subnet associations**.
+  2. Select `pcf-management-subnet-az0`, `pcf-management-subnet-az1`, `pcf-management-subnet-az2`, `pcf-tas-subnet-az0`, `pcf-tas-subnet-az1`, `pcf-tas-subnet-az2`, `pcf-services-subnet-az0`, `pcf-services-subnet-az1`, and `pcf-services-subnet-az2`.
+  3. Click **Save associations**.
 
 
 ## <a id='pcfaws-om-secgrp'></a> Configure a Security Group for <%= vars.ops_manager %>
@@ -265,182 +349,167 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Select **Security Groups>Create Security Group**.
 
-1. For **Security group name**, enter `pcf-ops-manager-security-group`.
+1. In **Security group name**, enter `pcf-ops-manager-security-group`.
 
-1. For **Description**, enter a description to identify this security group.
+1. In **Description**, enter a description to identify this security group.
 
-1. For **VPC**, select the VPC where you want to deploy <%= vars.ops_manager %>.
+1. In **VPC**, select the VPC in which you want to deploy <%= vars.ops_manager %>.
 
-1. Click the **Inbound** tab and add rules according to the table below.
+1. In the **Inbound rules** section, add rules using the information in the table below.
+
     <p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends limiting access to <%= vars.ops_manager %> to IP ranges within your organization, but you may relax the IP restrictions after configuring authentication for <%= vars.ops_manager %>.</p>
 
     <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>HTTP</td>
-  <td>TCP</td>
-  <td>80</td>
-  <td>My IP</td>
-</tr>
-<tr>
-  <td>HTTPS</td>
-  <td>TCP</td>
-  <td>443</td>
-  <td>My IP</td>
-</tr>
-<tr>
-  <td>SSH</td>
-  <td>TCP</td>
-  <td>22</td>
-  <td>My IP</td>
-</tr>
-<tr>
-  <td>BOSH Agent</td>
-  <td>TCP</td>
-  <td>6868</td>
-  <td>10.0.0.0/16</td>
-</tr>
-<tr>
-  <td>BOSH Director</td>
-  <td>TCP</td>
-  <td>25555</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      <tr>
+        <td>HTTP</td>
+        <td>TCP</td>
+        <td>80</td>
+        <td>My IP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>HTTPS</td>
+        <td>TCP</td>
+        <td>443</td>
+        <td>My IP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SSH</td>
+        <td>TCP</td>
+        <td>22</td>
+        <td>My IP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Custom TCP (BOSH Agent)</td>
+        <td>TCP</td>
+        <td>6868</td>
+        <td>Custom</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+      <tr>
+        <td>Custom TCP (BOSH Director)</td>
+        <td>TCP</td>
+        <td>25555</td>
+        <td>Custom</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+    </table>
 
-1. Click **Create**.
+1. Click **Create security group**.
 
 
 ## <a id='pcfaws-om-ersecgrp'></a> Configure a Security Group for BOSH-Deployed VMs
 
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
+1. On the **Security Groups** page, click **Create Security Group** to create another security group.
 
-1. For **Security group name**, enter `pcf-vms-security-group`.
+1. In **Security group name**, enter `pcf-vms-security-group`.
 
-1. For **Description**, enter a description to identify this security group.
+1. In **Description**, enter a description to identify this security group.
 
-1. For **VPC**, select the VPC where you want to deploy the BOSH-deployed VMs.
+1. In **VPC**, select the VPC where you want to deploy the BOSH-deployed VMs.
 
-1. Click the **Inbound** tab and add rules for all traffic from your public and private subnets to your private subnet, as the table and image show.
+1. In the **Inbound rules** section, add rules for all traffic from your public and private subnets to your private subnet, as shown in the table.
     This rule configuration does the following:
+
     * Enables BOSH to deploy <%= vars.app_runtime_first %> and other services.
     * Enables app VMs to communicate through the router.
     * Allows the load balancer to send traffic to <%= vars.app_runtime_abbr %>.
 
     <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>All</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      <tr>
+        <td>All traffic</td>
+        <td>All</td>
+        <td>All</td>
+        <td>Custom</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+      <tr>
+        <td>Custom TCP rule</td>
+        <td>TCP</td>
+        <td>2222</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+    </table>
 
-1. Click **Create**.
+1. Click **Create security group**.
+
 
 ## <a id='pcfaws-om-elbsecgrp'></a> Configure a Security Group for the Web ELB
 
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
+1. On the **Security Groups** page, click **Create Security Group** to create another security group.
 
-1. For **Security group name**, enter `pcf-web-elb-security-group`.
+1. In **Security group name**, enter `pcf-web-elb-security-group`.
 
-1. For **Description**, enter a description to identify this security group.
+1. In **Description**, enter a description to identify this security group.
 
-1. For **VPC**, select the VPC where you want to deploy this Elastic Load Balancer (ELB).
+1. In **VPC**, select the VPC where you want to deploy this Elastic Load Balancer (ELB).
 
-1. Click the **Inbound** tab and add rules to allow traffic to ports `80`, `443`, and `4443` from `0.0.0.0/0`, as the table and image show.
-    <p class='note'><strong>Note:</strong> Allow traffic to port `4443` only if you are in an AWS cloud region that does not support AWS ALBs. For example, the GovCloud region. For more information about AWS regoins and availability zones, see <a href="https://aws.amazon.com/about-aws/global-infrastructure/">AWS Global Infrastructure</a>.</p>
+2. In the **Inbound rules** section, add rules to allow traffic to ports `80`, `443`, and `4443` from `0.0.0.0/0`, as shown in the table.
+
+    <p class='note'><strong>Note</strong>: Allow traffic to port `4443` only if you are in an AWS cloud region that does not support AWS ALBs. For example, the GovCloud region. For more information about AWS regoins and availability zones, see <a href="https://aws.amazon.com/about-aws/global-infrastructure/">AWS Global Infrastructure</a>.</p>
 
     <p class='note'><strong>Note:</strong> For finer control over what can reach <%= vars.app_runtime_abbr %>, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to <%= vars.app_runtime_abbr %> from apps such as the cf CLI and app URLs.</p>
 
     <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>Custom TCP rule</td>
-  <td>TCP</td>
-  <td>4443</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-<tr>
-  <td>HTTP</td>
-  <td>TCP</td>
-  <td>80</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-<tr>
-  <td>HTTPS</td>
-  <td>TCP</td>
-  <td>443</td>
-  <td>Anywhere</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
-
-1. Click **Create**.
-
-    <%= image_tag("../common/images/pcfaws/configure-security-group.png", :alt => "Screenshot of the Create Security Group wizard. The wizard includes 'Inbound' and 'Outbound' security group rules.") %>
-
-
-## <a id='pcfaws-om-sshelbsecgrp'></a> Step 8: Configure a Security Group for the SSH ELB
-
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
-
-1. For **Security group name**, enter `pcf-ssh-elb-security-group`.
-
-1. For **Description**, enter a description to identify this security group.
-
-1. For **VPC**, select the VPC where you want to deploy this ELB.
-
-1. Click the **Inbound** tab and add the following rule:
-    <table border="1" class="nice" >
-    <tr>
-      <th><strong>Type </strong></th>
-      <th><strong>Protocol</strong></th>
-      <th><strong>Port Range</strong></th>
-      <th colspan='2'><strong>Source</strong></th>
-    </tr>
-    <tr>
-      <td>Custom TCP rule</td>
-      <td>TCP</td>
-      <td>2222</td>
-      <td>Anywhere</td>
-      <td>0.0.0.0/0</td>
-    </tr>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      <tr>
+        <td>Custom TCP</td>
+        <td>TCP</td>
+        <td>4443</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+        <td>HTTP</td>
+        <td>TCP</td>
+        <td>80</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+        <td>HTTPS</td>
+        <td>TCP</td>
+        <td>443</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
     </table>
 
-1. Click **Create**.
+1. Click **Create security group**.
 
 
 ## <a id='pcfaws-om-tcpelbsecgrp'></a> Configure a Security Group for the TCP ELB
 
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
+1. On the **Security Groups** page, click **Create Security Group** to create another security group.
 
-1. For **Security group name**, enter `pcf-tcp-elb-security-group`.
+1. In **Security group name**, enter `pcf-tcp-elb-security-group`.
 
-1. For **Description**, enter a description to identify this security group.
+1. In **Description**, enter a description to identify this security group.
 
-1. For **VPC**, select the VPC where you want to deploy this ELB.
+1. In **VPC**, select the VPC in which you want to deploy this ELB.
 
-1. Click the **Inbound** tab and add the following rule:
+1. In the **Inbound rules** section, add the following rule:
+
     <table border="1" class="nice" >
     <tr>
       <th><strong>Type </strong></th>
@@ -452,58 +521,28 @@ Perform the following steps to create an Amazon Identity and Access Management (
       <td>Custom TCP rule</td>
       <td>TCP</td>
       <td>1024 - 1123</td>
-      <td>Anywhere</td>
+      <td>Anywhere-IPv4</td>
       <td>0.0.0.0/0</td>
     </tr>
     </table>
 
-1. Click **Create**.
-
-
-## <a id='pcfaws-om-natsecgrp'></a> Configure a Security Group for the Outbound NAT
-
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
-
-1. For **Security group name**, enter `pcf-nat-security-group`.
-
-1. For **Description**, enter a description to identify this security group.
-
-1. For **VPC**, select the VPC where you want to deploy the Outbound NAT.
-
-1. Click the **Inbound** tab and add a rule to allow all traffic from your VPCs, as the table and image show.
-
-    <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Custom IP</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
-
-1. Click **Create**.
+1. Click **Create security group**.
 
 
 ## <a id='pcfaws-om-mysqlsecgrp'></a> Configure a Security Group for MySQL
 
 <p class='note'><strong>Note:</strong> If you plan to use an internal database, skip this step. If you are using RDS, you must configure a security group that enables the <%= vars.ops_manager %> VM and BOSH Director VM to access the database.</p>
 
-1. From the **Security Groups** page, click **Create Security Group** to create another security group.
+1. On the **Security Groups** page, click **Create Security Group** to create another security group.
 
-1. For **Security group name**, enter `pcf-mysql-security-group`.
+1. In **Security group name**, enter `pcf-mysql-security-group`.
 
-1. For **Description**, enter a description to identify this security group.
+1. In **Description**, enter a description to identify this security group.
 
-1. For **VPC**, select the VPC where you want to deploy MySQL.
+1. In **VPC**, select the VPC where you want to deploy MySQL.
 
-1. Click the **Inbound** tab. Add a rule of type `MySQL` and specify the subnet of your VPC in **Source**, as the table and image show.
+2. In the **Inbound rules** section, add a rule of type `MySQL` and specify the subnet of your VPC in **Source**, as shown in the table.
+
     <table border="1" class="nice" >
     <tr>
       <th><strong>Type </strong></th>
@@ -512,15 +551,16 @@ Perform the following steps to create an Amazon Identity and Access Management (
       <th colspan='2'><strong>Source</strong></th>
     </tr>
     <tr>
-      <td>MySQL</td>
+      <td>MYSQL/Aurora</td>
       <td>TCP</td>
       <td>3306</td>
-      <td>Custom IP</td>
+      <td>Custom</td>
       <td>10.0.0.0/16</td>
     </tr>
     </table>
 
-1. Click the **Outbound** tab. Add a rule of type `All traffic` and specify the subnet of your VPC in **Destination**, as the table and image show.
+3. In the **Outbound rules** section, add a rule of type `All traffic` and specify the subnet of your VPC in **Destination**, as shown in the table.
+
     <table border="1" class="nice" >
     <tr>
       <th><strong>Type </strong></th>
@@ -532,12 +572,12 @@ Perform the following steps to create an Amazon Identity and Access Management (
       <td>All traffic</td>
       <td>All</td>
       <td>All</td>
-      <td>Custom IP</td>
+      <td>Custom</td>
       <td>10.0.0.0/16</td>
     </tr>
     </table>
 
-1. Click **Create**.
+4. Click **Create security group**.
 
 ## <a id='next'></a> Next Step
 

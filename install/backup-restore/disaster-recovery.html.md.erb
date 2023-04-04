@@ -12,7 +12,7 @@ Operators have a range of approaches for ensuring they can recover their deploym
 * Re-creating the data in the deployment by automating the creation of state. For more information, see [Disaster Recovery by Recreating the Deployment](#recreation) below.
 
 
-## <a id='bbr'></a> Back Up and Restore Using BOSH Backup and Restore (BBR)
+## <a id='bbr'></a> Back up and restore using BOSH Backup and Restore (BBR)
 
 ### <a id='what-is-bbr'></a> What is BBR?
 
@@ -24,7 +24,7 @@ Each component includes its own backup scripts. This decentralized structure hel
 
 For more information about the BBR framework, see [BOSH Backup and Restore](https://docs.cloudfoundry.org/bbr/index.html) in the open-source Cloud Foundry documentation.
 
-### <a id='bbr-backup'></a> Backing Up Your Deployment
+### <a id='bbr-backup'></a> Backing up your deployment
 
 Backing up your deployment requires backing up the following components:
 
@@ -36,7 +36,7 @@ Backing up your deployment requires backing up the following components:
 For more information, see [Backing Up Deployments with BBR](backup-pcf-bbr.html).
 With these backup artifacts, operators can re-create their deployment exactly as it was when the backup was taken.
 
-### <a id='bbr-restore'></a> Restoring Your Deployment
+### <a id='bbr-restore'></a> Restoring your deployment
 
 The restore process involves creating a new deployment starting with the <%= vars.ops_manager %> VM.
 For more information, see [Restoring Deployments from Backup with BBR](restore-pcf-bbr.html).
@@ -53,13 +53,13 @@ Unlike other backup solutions, using BBR to back up your deployment enables:
 
 * **Correctness:** Using the BBR restore flow addresses container-to-container networking and routing issues that can occur during restore.
 
-### <a id='api-downtime'></a> API Downtime During Backups
+### <a id='api-downtime'></a> API Downtime during backups
 
 Apps are not affected during backups, but certain APIs are unavailable. The downtime occurs only while the backup is being taken, not while the backup is being copied to the jumpbox.
 
 In a consistent backup, the blobs in the blobstore match the blobs in the Cloud Controller database. To take a consistent backup, changes to the data are prevented during the backup. This means that the Cloud Foundry API (CAPI), Routing API, Usage service, Autoscaler, Notification Service, Network Policy Server, and CredHub are unavailable while the backup is being taken. UAA is in read-only mode during the backup.
 
-### <a id='backup-timings'></a> Backup Timings
+### <a id='backup-timings'></a> Backup timings
 
 The first three phases of the backup are lock, backup, and unlock. During this time, the API is unavailable. The drain and checksum phase starts after the backup scripts finish. BBR downloads the backup artifacts from the instances to the BBR VM, and performs a checksum to ensure the artifacts are not corrupt. The size of the blobstore significantly influences backup time.
 
@@ -67,7 +67,7 @@ The table below gives an indication of the downtime that you can expect. Actual 
 
 <table>
   <tr>
-    <th colspan="5"><strong>Backup Timings</strong></th>
+    <th colspan="5"><strong>Backup timings</strong></th>
   </tr>
   <tr>
    <td><strong>API State</strong></td>
@@ -108,7 +108,7 @@ The table below gives an indication of the downtime that you can expect. Actual 
 
 Blobstores can be very large. To minimize downtime, BBR only takes blob metadata during the backup. For example, in the case of internal blobstores such as WebDav and NFS, BBR takes a list of hard links that point to the blobs. After the API becomes available, BBR makes copies of the blobs.
 
-### <a id='not-supported'></a> Unsupported Products
+### <a id='not-supported'></a> Unsupported products
 
 * **Data services:** The data services listed below do not support BBR. Operators of these services should use the automatic backups feature of each tile, available within <%= vars.ops_manager %>.
   * VMware Tanzu SQL [MySQL]
@@ -122,15 +122,15 @@ Blobstores can be very large. To minimize downtime, BBR only takes blob metadata
     [External Storage Support Across <%= vars.ops_manager %> Versions](backup-pcf-bbr.html#version-compatibility)
     in _Backing Up Deployments with BBR_.
 
-### <a id='best-practices'></a> Best Practices
+### <a id='best-practices'></a> Best practices
 
 This section describes best practices for backing up your deployment.
 
-#### <a id='backup-frequency'></a> Frequency of Backups
+#### <a id='backup-frequency'></a> Frequency of backups
 
 <%= vars.company_name %> recommends that you take backups in proportion to the rate of change of the data in your deployment to minimize the number of changes lost if a restore is required. <%= vars.company_name %> recommends starting with backing up every 24 hours. If app developers make frequent changes, you should increase the frequency of backups.
 
-#### <a id='artifact-retention'></a> Retention of Backup Artifacts
+#### <a id='artifact-retention'></a> Retention of backup artifacts
 
 Operators should retain backup artifacts based on the timeframe they need to be able to restore to. For example, if backups are taken every 24 hours and the deployment must be able to be restored to three days prior, three sets of backup artifacts should be retained.
 
@@ -141,7 +141,7 @@ Artifacts should be stored in two data centers other than the data center. When 
 <%= vars.company_name %> recommends that you encrypt artifacts and store them securely.
 
 
-## <a id='recreation'></a> Disaster Recovery by Re-Creating the Deployment
+## <a id='recreation'></a> Disaster Recovery by re-creating the deployment
 
 An alternative strategy for recovering your deployment after a disaster is to have automation in place so that all the data can be re-created. This requires that every modification to settings and state is automated, typically through the use of a pipeline.
 
@@ -150,7 +150,7 @@ Recovery steps include creating a new deployment, re-creating orgs, spaces, user
 For more information about this approach, see the Cloud Foundry Summit presentation [Multi-DC Cloud Foundry: What, Why and How?](https://www.youtube.com/watch?v=t61r8THmtsc) on YouTube.
 
 
-## <a id='different-topologies'></a> Disaster Recovery for Different Topologies
+## <a id='different-topologies'></a> Disaster Recovery for different topologies
 
 This section describes disaster recovery strategies for different deployment topologies.
 
@@ -172,7 +172,7 @@ This option requires discipline to automate all changes to the deployment. Some 
 
 Human-initiated changes always make their way into the system. These changes can include quotas being raised, new settings being enabled, and incident responses. For this reason, <%= vars.company_name %> recommends taking backups even when using an automated disaster recovery strategy.
 
-#### <a id='bbr-aa-comparison'></a> Using BBR Backup and Restore Versus Recreating a Failed Deployment in Active-Active
+#### <a id='bbr-aa-comparison'></a> Using BBR Backup and Restore versus recreating a failed deployment in active-active
 
 The following table compares backing up and restoring using BBR to recreating a failed deployment in active-active:
 
@@ -274,14 +274,14 @@ Both the restore and re-create data disaster recovery options require standing u
 There is a trade-off between cost and RTO: the less the replacement deployment needs to be deployed and scaled, the faster the restore.
 
 
-## <a id='automating-backups'></a> Automating Backups
+## <a id='automating-backups'></a> Automating backups
 
 BBR generates the required backup artifacts, but does not handle scheduling, artifact management, or encryption. You can use the starter Concourse pipeline from the [BBR PCF Pipeline Tasks](https://github.com/pivotal-cf/bbr-pcf-pipeline-tasks) repository on GitHub to automate backups with BBR.
 
 You can also use Stark & Wayne's Shield as a front end management tool using the BBR plugin.
 
 
-## <a id='validating-backups'></a> Validating Backups
+## <a id='validating-backups'></a> Validating backups
 
 To ensure that backup artifacts are valid, the BBR tool creates checksums of the generated backup artifacts, and ensures that the checksums match the artifacts on the jumpbox.
 

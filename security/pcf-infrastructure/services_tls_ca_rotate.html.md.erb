@@ -1,40 +1,15 @@
 ---
-title: Rotating the Services TLS CA and Its Leaf Certificates
+title: Rotating the Services TLS CA and its Leaf Certificates
 owner: Ops Manager
 ---
 
 <p class='note'><strong>Note:</strong> The preferred method for rotating the Services TLS CA and its leaf certificates in <%= vars.ops_manager %> v2.9 and later is to use CredHub Maestro. If all of the service tiles in your deployment are compatible with Maestro</a>, then use the procedure documented in <a href="advanced-certificate-rotation.html#services-rotation">Advanced Certificate Rotation with CredHub Maestro</a> instead of this procedure. To determine whether your tiles are compatible with Maestro, see <a href="maestro-tile-compatibility.html">CredHub Maestro Tile Compatibility</a>.</p>
 
-<div class="quick-links">
-<ul>
-  <li>
-    <a href="#services-tls-ca-overview">Services TLS CA Overview</a>
-  </li>
-  <li>
-    <a href="#prerequisites">Prerequisites for Rotating the Services TLS CA</a>
-  </li>
-  <li>
-    <a href="#tls">Procedure for Rotating the Services TLS CA</a>
-  </li>
-  <ul>
-    <li><a href="#checkexpdate">Check Certificate Expiration Dates</a></li>
-    <li><a href="#obtainorgenerate">Obtain or Generate a New Services TLS CA Certificate</a></li>
-    <li><a href="#addnewandold">Add Certificates to <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %></a>
-    <li><a href="#applychanges1">Apply Changes for the First Time</a>
-    </li>
-    <li><a href="#setnew">Set New Services TLS CA Certificate</a>
-    </li>
-    <li><a href="#applychanges2">Apply Changes for the Second Time</a></li>
-    <li><a href="#remove">Remove the Old Services TLS CA Certificate</a></li>
-    <li><a href="#applychanges3">Apply Changes for the Third Time</a>
-    </li>
-  </ul>
-</ul>
-</div>
-
+* Services TLS CA Overview
+* Prerequisites for Rotating the Services TLS CA
+* Procedure for Rotating the Services TLS CA
 
 This topic provides an overview of the Services TLS Certificate Authority (CA) and a procedure for rotating the Services TLS CA certificate and its leaf certificates.
-
 
 ## <a id='services-tls-ca-overview'></a> Services TLS CA Overview
 
@@ -61,12 +36,12 @@ Before you begin this rotation procedure, ensure that you have the following:
 For a multi-site or WAN setup, you must perform the <bold>Apply Changes</bold> steps across all your sites or WAN.
 To rotate the certificates for Tanzu GemFire for VMs WAN-connected clusters,
 where the Tanzu GemFire clusters reside on distinct foundations,
-follow the procedure at [Rotating Certificates](https://docs.pivotal.io/p-cloud-cache/rotating-ca.html).
+follow the procedure at [Rotating Certificates](https://docs.vmware.com/en/VMware-Tanzu-GemFire-for-VMs/1.14/tgf-vms/GUID-content-rotating-ca.html).
 * All certificates include Subject Alternate Name (SAN) and Common Name (CN) entries.
 * Your services are set for high availability to minimize potential app impact during certificate rotation. Rotating the Services TLS CA certificate requires an upgrade all on-demand service instances, which can cause service downtime.
 
-<div class="note warning">
-<strong>Warning:</strong>
+<div class="note caution">
+<strong>Caution:</strong>
 There is a potential for app downtime in the following specific cases:<br><br>
 	<ul>
 		<li>If you have non-Java apps that use <%= vars.mysql_product_name %> and rely on <code>VCAP_SERVICES</code> for TLS, you will experience app downtime if you perform
@@ -136,6 +111,7 @@ To obtain or generate a new Services TLS CA certificate:
         --common-name="opsmgr-services-tls-ca"
         ```
         Where:
+
         - `name` is the CredHub path or name of the new certificate. You can use `/services/new_ca` or substitute a different name as long as you use the value consistently in the rest of the procedure.
         - `common-name` is the common name of the generated certificate. You can use `opsmgr-services-tls-ca` or substitute a different common name as long as you use the value consistently in the rest of the procedure.
         - `duration` is set to `1825`, which is a recommended value of five years. If you do not specify a duration, the default value is `365` or one year.
@@ -153,6 +129,7 @@ To obtain or generate a new Services TLS CA certificate:
         ```
 
         Where:
+
         - `name` is the CredHub path or name of the new certificate. You can use `/services/new_ca` or substitute a different name as long as you use the value consistently in the rest of the procedure.
         - `common-name` is the common name of the generated certificate. You can use `opsmgr-services-tls-ca` or substitute a different common name as long as you use the value consistently in the rest of the procedure.
         - `duration` is set to `1825`, which is a recommended value of five years. If you do not specify a duration, the default value is `365` or one year.
@@ -182,7 +159,7 @@ To add your new and current Services TLS CA certificate to <%= vars.ops_manager 
 
 ### <a id='applychanges1'></a> Apply Changes for the First Time
 
-<p class='note warning'><strong>Warning:</strong> This procedure involves redeploying
+<p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
 all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
 operation can take a long time to complete.</p>
 
@@ -219,6 +196,7 @@ To set the new Services TLS CA certificate:
         --private=CERT-KEY
         ```
         Where:
+
         - `certificate` is the location of the `root.pem` file for the certificate. Replace `PEM-PATH` with the path of your certificate's `root.pem` file.
         - `private` is the private key for the new certificate. Replace `CERT-KEY` with the value of the private key for your certificate.
   * **If you have created a new self-signed or intermediary certificate:** Set the `/services/new_ca` that you generated in the previous step as the Services TLS CA certificate:
@@ -236,7 +214,7 @@ To set the new Services TLS CA certificate:
 
 ### <a id='applychanges2'></a> Apply Changes for the Second Time
 
-<p class='note warning'><strong>Warning:</strong> This procedure involves redeploying
+<p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
   all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
   operation can take a long time to complete.</p>
 
@@ -284,10 +262,9 @@ will not lose any functionality if you do not perform this step immediately.
 
 For some deployments, you may encounter an error if you create a
 service instance in a deployment that contains an expired Services TLS CA certificate.
-For more information, see this [Knowledgebase Article]
-(https://community.pivotal.io/s/article/Cloud-Controller-fails-to-create-service-instance-when-there-is-an-old-expired-cert-installed-on-the-system).
+For more information, see this [Knowledgebase Article](https://community.pivotal.io/s/article/Cloud-Controller-fails-to-create-service-instance-when-there-is-an-old-expired-cert-installed-on-the-system).
 
-<p class='note warning'><strong>Warning:</strong> This procedure involves redeploying
+<p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
   all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
   operation can take a long time to complete.</p>
 

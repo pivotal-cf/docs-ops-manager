@@ -20,7 +20,7 @@ In summary, there are three types of configurable fields in <%= vars.ops_manager
 
 * **Permanently locked fields**, which lock on deployment and cannot be unlocked.
 
-<p class='note warning'><strong>Warning:</strong> <%= vars.company_name %> recommends that only skilled operators use <%= vars.ops_manager %>'s Advanced Mode. If you use Advanced Mode incorrectly, you could disable or destroy your deployment.</p>
+<p class='note caution'><strong>Caution:</strong> <%= vars.company_name %> recommends that only skilled operators use <%= vars.ops_manager %>'s Advanced Mode. If you use Advanced Mode incorrectly, you could deactivate or destroy your deployment.</p>
 
 
 ## <a id='unlock'></a> Unlockable Fields
@@ -29,7 +29,7 @@ This section describes the fields that lock during deployment and can be unlocke
 
 After you have enabled Advanced Mode, you can use the API or <%= vars.ops_manager %> UI to reconfigure some fields that were locked previously. Those fields are listed in the sections below.
 
-<p class='note warning'><strong>Warning:</strong> <%= vars.company_name %> recommends that only skilled operators use <%= vars.ops_manager %>'s Advanced Mode. If you use Advanced Mode incorrectly, you could disable or destroy your deployment.</p>
+<p class='note caution'><strong>Caution:</strong> <%= vars.company_name %> recommends that only skilled operators use <%= vars.ops_manager %>'s Advanced Mode. If you use Advanced Mode incorrectly, you could deactivate or destroy your deployment.</p>
 
 ### <a id='director-tile'></a> Unlockable Fields in the Director Tile
 
@@ -90,4 +90,4 @@ In the **Create Availability Zones** pane, the following field locks permanently
 
 No fields other than the ones listed above lock in third-party product tiles. However, tile authors can specify which additional fields should lock on deploy by passing the `freeze-on-deploy` flag.
 
-For more information about this flag, see [Common Property Blueprint Attributes](https://docs.pivotal.io/tiledev/3-0/property-template-references.html#common-attributes) in _Property and Template References in the <%= vars.ops_manager %> Tile Developer Guide.
+For more information about this flag, see [Common Property Blueprint Attributes](https://docs.pivotal.io/tiledev/3-0/property-template-references.html#common-attributes) in _Property and Template References_ in the <%= vars.ops_manager %> Tile Developer Guide.

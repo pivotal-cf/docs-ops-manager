@@ -4,8 +4,6 @@ owner: Ops Manager
 iaas: vSphere
 ---
 
-<% current_page.data.title = "Installing " + vars.ops_manager + " on vSphere"  %>
-
 This guide describes how to install <%= vars.ops_manager_first %> on vSphere.
 
 If you experience a problem while following the steps below, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html) or the _Known Issues_ sections of the following topics:
@@ -16,7 +14,7 @@ If you experience a problem while following the steps below, see [Diagnosing Dep
 
 * [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
 
- [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/windows/release-notes.html#known-issues) in the <%= vars.windows_runtime_abbr %> documentation
+* [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/windows/release-notes.html#known-issues) in the <%= vars.windows_runtime_abbr %> documentation
 
 * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html#known-issues) in the <%= vars.k8s_runtime_abbr %> documentation
 
@@ -28,6 +26,26 @@ This section describes the resource requirements for installing <%= vars.ops_man
 <p class='note'><strong>Note:</strong> If you are using the Cisco Nexus 1000v Switch, see the <a href="nexus-switch.html">Using the Cisco Nexus 1000v Switch with <%= vars.ops_manager %></a> for more information.</p>
 
 <p class='note'><strong>Note:</strong> When installing <%= vars.ops_manager %> on a vSphere environment with multiple ESXi hosts, you must use network-attached or shared storage devices. Local storage devices do not support sharing across multiple ESXi hosts.</p>
+
+### <a id='version'></a> Version Requirements
+
+<%= vars.ops_manager %> can be installed on and the BOSH Director tile within <%= vars.ops_manager %> can be configured with the following versions of vSphere:
+
+* vSphere v8.0
+
+* vSphere v7.0
+
+* vSphere v6.7
+
+* vSphere v6.5
+
+The BOSH Director tile within <%= vars.ops_manager %> can optionally be configured with the following versions of NSX-T:
+
+* NSX-T v4.0
+
+* NSX-T v3.1
+
+* NSX-T v3.0
 
 ### <a id='runtimes'></a> Resource Requirements
 

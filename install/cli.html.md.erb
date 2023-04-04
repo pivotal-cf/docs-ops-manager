@@ -29,7 +29,7 @@ You can install the om CLI in one of the following ways:
 
 * **Mac or Linux Users:** [Install om CLI Using Homebrew](#homebrew)
 
-* **Windows, Mac, or Linux Users:** [Install om CLI from Direct Download](#apt-get)
+* **Windows, Mac, or Linux Users:** [Install om CLI from Direct Download](#download)
 
 ### <a id='homebrew'></a> Install om CLI Using Homebrew
 
@@ -93,6 +93,7 @@ To authenticate with the om CLI:
     ```
 
     Where:
+
     - `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
     - `OPS-MANAGER-USERNAME` is the username that you use when you log into the <%= vars.ops_manager %> UI.
     - `OPS-MANAGER-PASSWORD` is the password that you use when you log into the <%= vars.ops_manager %> UI.
@@ -110,14 +111,16 @@ To authenticate with the om CLI:
     ```
 
     If successful, see product output. For example:
+
     <pre class="terminal">
-+----------------------+---------------+------------------+------------------+
-|         NAME         |   AVAILABLE   |      STAGED      |     DEPLOYED     |
-+----------------------+---------------+------------------+------------------+
-| cf                   | 2.10.12       | 2.10.12          | 2.10.12          |
-| p-bosh               |               | 2.10.8-build.168 | 2.10.8-build.168 |
-| pivotal-telemetry-om | 1.1.2-build.2 |                  |                  |
-+----------------------+---------------+------------------+------------------+</pre>
+    +----------------------+---------------+------------------+------------------+
+    |         NAME         |   AVAILABLE   |      STAGED      |     DEPLOYED     |
+    +----------------------+---------------+------------------+------------------+
+    | cf                   | 2.10.12       | 2.10.12          | 2.10.12          |
+    | p-bosh               |               | 2.10.8-build.168 | 2.10.8-build.168 |
+    | pivotal-telemetry-om | 1.1.2-build.2 |                  |                  |
+    +----------------------+---------------+------------------+------------------+
+    </pre>
 
 ## <a id='om-cli-commands'></a> om CLI Commands
 

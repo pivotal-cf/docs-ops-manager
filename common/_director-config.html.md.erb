@@ -1,15 +1,12 @@
-<%# OVERVIEW
-This partial is the procedure for the **Director Config** pane in the BOSH Director. IaaS-specific information is separated with `if` statements.
+<%# OVERVIEW This partial is the procedure for the **Director Config** pane in the BOSH Director. IaaS-specific information is separated with `if` statements. %>
 
-PARTIAL REFERENCES
-This partial is called in all IaaS-specific BOSH Director configuration topics.
-%>
+<%# PARTIAL REFERENCES This partial is called in all IaaS-specific BOSH Director configuration topics. %>
 
 To configure the **Director Config** pane:
 
 1. Select **Director Config**.
 
-    <%= image_tag("../common/images/director-config.png", :width => "500", :alt => "At the top of the image is the header 'Director Config' with a horizonal line underneath. Below the line are three text fields labeled, from top to bottom, 'NTP Servers (comma delimited)', and 'Bosh HM Forwarder IP Address'. The NTP Servers (comma delimited) field has a red asterisk, to denote that it is a required field. Below these text fields are eight checkboxes. The first checkbox is labeled 'Enable VM Resurrector Plugin'. The second checkbox is labeled 'Enable deprecated BOSH System Metrics Server'. The third checkbox is labeled 'Enable additional System Metrics'. The fourth checkbox is labeled 'Enable Post Deploy Scripts'. The fifth checkbox is labeled 'Recreate VMs deployed by the BOSH Director', underneath which is the text 'This will force BOSH to recreate all Bosh Deployed VMs on the next deploy. Persistent disk will be preserved'. The sixth checkbox is labeled 'Recreate BOSH Director VM', underneath which is the text 'This will force BOSH to recreate the Bosh Director VM on the next deploy. Persistent disk will be preserved.' The seventh checkbox is labeled 'Recreate All Persistent Disks', underneath which is the text 'Checking this box will recreate all Persistent Disks for the Director and all other Tiles'. The eighth checkbox is labeled 'Enable bosh deploy retries', underneath which is the text 'This will attempt to re-deploy a failed deployment up to 5 times.'") %>
+    ![alt-text=""](../common/images/director-config.png)
 
 <%# **NTP Servers** field, differentiated by IaaS %>
 
@@ -25,7 +22,9 @@ To configure the **Director Config** pane:
 
 <%# For AWS: %>
 <% if current_page.data.iaas == "AWS" %>
-1. Enter at least two of the following NTP servers in the **NTP Servers (comma delimited)** field, separated by a comma: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org` If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
+1. In the **NTP Servers (comma delimited)** field, enter at least three reachable NTP servers separated by a comma. For example: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+
+    If your AWS environment is air-gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
 <% end %>
 
 <%# For Azure: %>
@@ -33,12 +32,9 @@ To configure the **Director Config** pane:
 1. Enter any valid value for **NTP Servers (comma delimited)**. A value is required but is ignored. For example, you can enter `us.pool.ntp.org`. By default, Azure VMs use a Precision Time Protocol (PTP) clock source. For more information, see [Time sync for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/time-sync) in the Azure documentation.
 <% end %>
 
-<%# For other IaaSes such as vSphere: %>
-<% if current_page.data.iaas != "Azure" || current_page.data.iaas != "OpenStack" || current_page.data.iaas != "AWS" || current_page.data.iaas != "GCP" %>
-1. In the **NTP Servers (comma delimited)** field:
-    1. (Optional) If your AWS environment is air-gapped, consider using Amazon’s Time Sync Service, consider using [Amazon's Time Sync   Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
-    1. If you do not use Amazon’s Time Sync Service, enter at least two of the following NTP servers, separated by a comma:
-    `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+<%# For vSphere: %>
+<% if current_page.data.iaas == "vSphere" %>
+1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** field. For example, `us.pool.ntp.org`.
 <% end %>
     1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
@@ -51,6 +47,19 @@ To configure the **Director Config** pane:
 
 1. Select **Enable Post Deploy Scripts** to run a post-deploy script after deployment. This script allows the job to execute additional commands against a deployment.
     <p class='note'><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
+
+1. To configure your VMs to use short-lived NATS credentials during the bootstrap process, activate the **Enable Short Lived NATS Bootstrap Credentials**
+checkbox. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
+communicate with the BOSH Director through BOSH NATS. For more information, see [Using Short-Lived NATS Bootstrap
+Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
+    <div class='note'><strong>Notes:</strong>
+      <ul>
+        <li>Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
+          are created somewhat more slowly.</li>
+        <li>This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %>
+          deployments to use short-lived bootstrap credentials, you must re-create them.</li>
+      </ul>
+    </div>
 
 1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deploy. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
 
@@ -72,7 +81,7 @@ To configure the **Director Config** pane:
 
 1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname**. You can also use this field to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
 
-    <%= image_tag("../common/images/director_workers.png", :alt => "Three text fields labeled 'Director Workers', 'Max Threads', and 'Director Hostname'. The Director Workers field contains the text '5'. The Director Hostname field contains the text 'opsdirector.example.com'.") %>
+    ![alt-text="There are three text fields, Director Workers, Max Threads, and Director Hostname."](../common/images/director_workers.png)
 
 1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
 
@@ -81,13 +90,18 @@ To configure the **Director Config** pane:
 1. <%= partial "../common/certificates-config" %>
 
 1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
-    <%= image_tag("../common/images/director_hm_pager.png", :alt => "At the top of the image is a selected checkbox labeled 'HM Pager Duty Plugin'. Below this checkbox are two text fields labeled, from top to bottom, 'Service Key' and 'HTTP Proxy'. The Service Key field has a red asterisk to denote that it is a required field, and contains the text 'YOUR-PAGERDUTY-SERVICE-KEY'. The HTTP Proxy field contains the text 'YOUR-HTTP-PROXY'.") %>
+
+1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
+
+    ![alt-text="There is a selected check box, HM Pager Duty Plugin, and two text fields, Service Key and HTTP Proxy."](../common/images/director_hm_pager.png)
+
     * **Service Key**: Enter your API service key from PagerDuty.
     * **HTTP Proxy**: Enter an HTTP proxy for use with PagerDuty.
 
 1. Select **HM Email Plugin** to enable Health Monitor integration with email.
 
-    <%= image_tag("../common/images/director_hm_email.png", :alt => "At the top of the image is a selected checkbox labeled 'HM Email Plugin'. Below this checkbox are seven text fields labeled, from top to bottom, 'Host', 'Port', 'Domain', 'From', 'Recipients', 'Username', and 'Password'. The Host field has a red asterisk and contains the text 'smtp.example.com'. The Port field has a red asterisk and contains the text '25'. The Domain field has a red asterisk and contains the text 'cloudfoundry.example.com'. The From field has a red asterisk and contains the text 'user2@example.com'. The Recipients field has a red asterisk and contains the text 'user@example.com, user1@example.com'. The Username field contains the text 'user'. The Password field contains eight asterisks. ") %>
+    ![alt-text="There is a selected check box, HM Email Plugin, and seven text fields: Host, Port, Domain, From, Recipients, Username, and Password."](../common/images/director_hm_email.png)
+
     * **Host**: Enter your email hostname.
     * **Port**: Enter your email port number.
     * **Domain**: Enter your domain.
@@ -96,10 +110,11 @@ To configure the **Director Config** pane:
     * **Username**: Enter the username for your email server.
     * **Password**: Enter the password for your email server.
     * **Enable TLS**: Select this checkbox to enable Transport Layer Security to the email host.
-1. <%= partial "../common/credhub-encryption" %>
 
-1. <%= partial "../common/blobstore-location" %>
+<%= partial "../common/credhub-encryption" %>
 
-1. <%= partial "../common/director-database-location" %>
+<%= partial "../common/blobstore-location" %>
 
-1. Click **Save**.
+<%= partial "../common/director-database-location" %>
+
+1.  Click **Save**.

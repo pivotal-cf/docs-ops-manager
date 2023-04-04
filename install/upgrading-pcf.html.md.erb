@@ -3,11 +3,9 @@ title: Upgrading Ops Manager
 owner: Ops Manager
 ---
 
-<% current_page.data.title = "Upgrading " + vars.platform_name %>
-
 This topic describes upgrading <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to <%= vars.v_major_version %>.
 
-<p class="note breaking"><strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, and <a href="https://docs.pivotal.io/application-service/windows/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections, before starting the upgrade process.</p>
+<p class="note important"><strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, and <a href="https://docs.pivotal.io/application-service/windows/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections, before starting the upgrade process.</p>
 
 
 ## <a id='overview'></a> Overview
@@ -18,18 +16,18 @@ The apps in your deployment continue to run during the upgrade. However, you can
 
 For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components, see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.pivotal.io/application-service/operating/understanding-pas.html).
 
-<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade <%= vars.ops_manager %> to v3.0 from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> v3.0](#jump-upgrade) below. To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare) below.
+<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade <%= vars.ops_manager %> to <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>](#jump-upgrade) below. To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare) below.
 
 
 ## <a id='jump-upgrade'></a> Jump Upgrade from <%= vars.ops_manager %> v2.5 Through v2.9
 
-Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the latest version of <%= vars.ops_manager %>, which is v3.0. For more information, see [Jump Upgrading to <%= vars.ops_manager %> v3.0](../jump-upgrades.html).
+Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the latest version of <%= vars.ops_manager %>, which is <%= vars.v_major_version %>. For more information, see [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](../jump-upgrades.html).
 
-To jump upgrade to <%= vars.ops_manager %> v3.0:
+To jump upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-1. Review the prerequisites and breaking changes described in [Jump Upgrading to <%= vars.ops_manager %> v3.0](../jump-upgrades.html).
+1. Review the prerequisites and breaking changes described in [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](../jump-upgrades.html).
 
-1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.ops_manager %> v3.0](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
+1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
 
 1. Follow the procedure in this topic to upgrade <%= vars.ops_manager %>, starting at [Task 1: Prepare to Upgrade](#prepare) below. Do not complete the steps to upgrade <%= vars.app_runtime_abbr %>.
 
@@ -48,7 +46,6 @@ If you are upgrading <%= vars.app_runtime_abbr %> to the next minor release:
 ## <a id='prepare'></a> Task 1: Prepare to Upgrade
 
 If you have not already, complete the steps in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html).
-
 
 ## <a id='upgrade_ops'></a> Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>
 
@@ -76,10 +73,9 @@ To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager 
     * **OpenStack:** [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html)
     * **vSphere:** [Deploying <%= vars.ops_manager %> on vSphere](../vsphere/deploy.html)
 
-1. When redirected to the **Welcome to <%= vars.ops_manager %>** page,
-select **Import Existing Installation**.
+1. When redirected to the **Welcome to <%= vars.ops_manager %>** page, select **Import Existing Installation**.
 
-    <%= image_tag("./images/upgrading/welcome.png", alt: "Below the VMware logo is the text 'Welcome to Ops Manager'. Next is the text 'Select an Authentication System', below which are two rectangular blue buttons. The top button is labeled 'Use an Identity Provider' in white text; the bottom button is labeled 'Internal Authentication' in white text. Below these buttons is a horizontal line break. Below the line break is the text 'Upgrading Ops Manager?', below which is a rectangular blue button labeled 'Import Existing Installation' in white text.", :width => "400") %>
+    ![alt-text=""](images/upgrading/welcome.png)
 
 1. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
 You set this passphrase during your initial installation of <%= vars.ops_manager %>.
@@ -87,15 +83,15 @@ You set this passphrase during your initial installation of <%= vars.ops_manager
 
 1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
-    <%= image_tag("./images/upgrading/decryption_passphrase.png", alt: "Below the VMware logo is a field labeled 'Decryption Passphrase' containing five hidden characters. Below this field is the text 'Enter file', below which is a small, rectangular gray button labeled 'Choose File'. To the right of the 'Choose File' button is the filename 'installation (4).zip'. Below this button and filename is a rectangular blue button labeled 'Import' in white text.", :width => "400") %>
+    ![alt-text=""](images/upgrading/decryption_passphrase.png)
 
 1. Click **Import**.
     <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
       and might appear to hang.</p>
 
-1. A **Successfully imported installation** message appears upon completion.
+2. A **Successfully imported installation** message appears upon completion.
 
-    <%= image_tag("./images/upgrading/success.png", alt: "The top half of the pop-up message contains a dark green background, a rectangular green logo with a capital P in white, and the text 'Ops Manager' in white. The bottom half of the pop-up message contains a lighter green background, a round, dark green icon containing a light green check, and the text 'Successfully imported installation.' in dark green text.") %>
+    ![alt-text=""](./images/upgrading/success.png)
 
     <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> automatically imports the
       Telemetry for <%= vars.ops_manager %> tile.
@@ -122,7 +118,7 @@ To upgrade your product versions:
 
 ### <a id='perform-upgrade'></a> Perform Your Upgrade
 
-<p class='note warning'><strong>Warning:</strong> If the installation fails or returns errors, contact <%= vars.support_link %>. Do not attempt to roll back the upgrade by restarting the previous version's <%= vars.ops_manager %> VM.</p>
+<p class='note caution'><strong>Caution:</strong> If the installation fails or returns errors, contact <%= vars.support_link %>. Do not attempt to roll back the upgrade by restarting the previous version's <%= vars.ops_manager %> VM.</p>
 
 To perform your upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
@@ -180,7 +176,9 @@ To check the status of a task:
     ```
     bosh -e ALIAS task TASK-NUMBER
     ```
+
     Where:
+
     * `ALIAS` is your BOSH alias.
     * `TASK-NUMBER` is the number of the upgrade task you want to check.
 
@@ -245,6 +243,7 @@ To re-create your alias using BOSH:
     bosh alias-env ALIAS -e DIRECTOR-IP
     ```
     Where:
+
     * `ALIAS` is the BOSH alias you are re-creating.
     * `DIRECTOR-IP` is the IP address of your BOSH Director VM.
 
@@ -273,7 +272,9 @@ To check the health of your deployment:
     bosh -e ALIAS vms --vitals
     bosh -e ALIAS -d DEPLOYMENT-NAME cck --report
     ```
+
     Where:
+
     * `ALIAS` is your BOSH alias.
     * `DEPLOYMENT-NAME` is the name of your BOSH deployment.
 

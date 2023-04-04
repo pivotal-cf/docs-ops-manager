@@ -68,8 +68,6 @@ With every software change, automated build pipelines trigger these tests for th
 
 In addition to its automated unit and integration testing, <%= vars.company_name %> deploys all upgrades slated for upcoming <%= vars.ops_manager %> releases on at-scale test environments. Prior to each major or minor commercial release, <%= vars.company_name %> runs the entire <%= vars.ops_manager %> suite of services on several internally-managed large integration environments that run customer-like data and workloads.
 
-<%= vars.company_name %> also pushes upcoming <%= vars.ops_manager %> feature upgrades and patches to its [Pivotal Web Services](http://run.pivotal.io/) (PWS) platform, where customers continually deploy and host hundreds of mission-critical apps at scale, 24/7. The PWS environment gives <%= vars.company_name %> a continuous source of real-world usage and performance metrics that inform product development teams.
-
 All <%= vars.ops_manager %> product teams participate in go-to-market steps for each release, as is often required for shipping a legally compliant product. Examples include [Open Source License File](https://network.pivotal.io/open-source) attribution and an Export Compliance classification.
 
 
@@ -99,9 +97,9 @@ When <%= vars.company_name %> discovers a potential security vulnerability in <%
 
 ## <a id='lifecycle'></a> Fix, Test, and Release Lifecycle
 
-The following flowchart details the steps that <%= vars.company_name %> performs on a typical high-priority CVE, to publish a patch release fix on [<%= vars.company_name %> Network](https://network.pivotal.io):
+The following flowchart details the steps that <%= vars.company_name %> performs on a typical high-priority CVE, to publish a patch release fix on [<%= vars.company_name %> Network](https://network.pivotal.io). A detailed description of the steps follow.
 
-<%= image_tag("triage-flowchart.png", :alt => "Triage flowchart. For more information, see description below.") %>
+![alt-text=""](../images/triage-flowchart.png)
 
 The triage flowchart shows the following steps:
 
@@ -125,11 +123,11 @@ The triage flowchart shows the following steps:
 
     1. Story detailing the issue and acceptance criteria for fix prioritized on Commercial backlog
 
-    1. Fix patched in all release lines under General Support
+    2. Fix patched in all release lines under General Support
 
-    1. **Check:** Have all tests passed each stage?
+    3. **Check:** Have all tests passed each stage?
 
-    1. If yes, patched builds kick off integration pipeline.
+    4. If yes, patched builds kick off integration pipeline.
 
 4. Release Engineering Integration Pipelines validate quality
 
@@ -138,12 +136,12 @@ The triage flowchart shows the following steps:
       - Upgrade scenario: Integration Tests pass
       - Additional customer scenarios: Integration Tests pass
 
-    1. **Check:** Have all pipelines passed on every supported IaaS?
+    2. **Check:** Have all pipelines passed on every supported IaaS?
 
-    1. If yes, ready for Publishing
+    3. If yes, ready for Publishing
 
 5. Release is published for distribution
 
     1. Post to <%= vars.company_name %> Network; with High CVE vulnerab ility release the fix with as fast a turnaround as possible
 
-    1. Customer receives announcements and downloads release for their IaaS
+    2. Customer receives announcements and downloads release for their IaaS

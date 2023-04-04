@@ -28,13 +28,13 @@ Before determining which certificate rotation procedure to follow, you must dete
 
 To check the types and expiration dates of your certificates, see [Checking Expiration Dates and Certificate Types](check-expiration.html).
 
-<p class='note warning'><strong>Warning:</strong> If customer-provided CAs exist in your deployment, you must do an additional procedure to successfully rotate. To see if you have customer-provided CAs and rotate them successfully, see <a href="rotate-customer-provided-cas.html">Rotating Certificates with Customer-Provided CAs</a>.</p>
+<p class='note caution'><strong>Caution:</strong> If customer-provided CAs exist in your deployment, you must do an additional procedure to successfully rotate. To see if you have customer-provided CAs and rotate them successfully, see <a href="rotate-customer-provided-cas.html">Rotating Certificates with Customer-Provided CAs</a>.</p>
 
 ## <a id='procedures'></a> Certificate Rotation Procedures
 
 The topics listed in this section explain how to rotate certificates in <%= vars.ops_manager %>, including the <%= vars.ops_manager %> root CA, BOSH NATS CA, CAs stored in CredHub, and leaf certificates. There are different rotation procedures for each type of certificate that requires rotation.
 
-<p class='note warning'><strong>Warning:</strong> The rotation procedures described in the topics below do not work if the certificates have already expired. If the certificates have expired, contact <%= vars.support_link %> for guidance.</p>
+<p class='note caution'><strong>Caution:</strong> The rotation procedures described in the topics below do not work if the certificates have already expired. If the certificates have expired, contact <%= vars.support_link %> for guidance.</p>
 
 To rotate certificates, follow one of these procedures:
 

@@ -12,11 +12,11 @@ This topic contains important preparation steps that you must follow before begi
 
 After completing the steps in this topic, you can continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).
 
-<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade directly to <%= vars.ops_manager %> v3.0 from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade from <%= vars.ops_manager %> v2.5 Through v2.9](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading <%= vars.ops_manager %>_.
+<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade from <%= vars.ops_manager %> v2.5 Through v2.9](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading <%= vars.ops_manager %>_.
 
-<p class='note warning'><strong>Warning:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.ops_manager %></em>.</p>
+<p class='note caution'><strong>Caution:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.ops_manager %></em>.</p>
 
-<p class='note warning'><strong>Warning:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to **Apply Changes** due to safety violations.</p>
+<p class='note caution'><strong>Caution:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to <strong>Apply Changes</strong> due to safety violations.</p>
 
 
 ## <a id='back-up-your-pcf-deployment'></a> Back Up Your <%= vars.ops_manager %> Deployment
@@ -49,7 +49,7 @@ Review each of the following links to understand the changes in the new release,
 	* [KPI Changes](https://docs.pivotal.io/application-service/operating/monitoring/index.html#new)
 
 * **Diego Network Communications**
-	* [Diego Network Communications](../security/networking/diego-network-paths.html)
+	* [Diego Network Communications](https://docs.pivotal.io/application-service/3-0/operating/networking/diego-network-paths.html)
 
 
 ## <a id='nsx-t'></a> Check VMware NSX-T Data Center Version
@@ -60,7 +60,7 @@ The specific version of NSX-T required for your deployment depends on which runt
 
 * For <%= vars.k8s_runtime_first %> deployments, see the [VMware Product Interoperability Matrices](https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&549=&175=).
 
-* For <%= vars.app_runtime_abbr %> deployments, see the [Support Matrix: <%= vars.app_runtime_abbr %>, VMware NSX-T, and VMware NSX-T Container Plug-in](http://pas-nsx-t.cfapps.io/).
+* For <%= vars.app_runtime_abbr %> deployments, see the [Support Matrix: <%= vars.app_runtime_abbr %>, VMware NSX-T Container Plug-in](https://network.pivotal.io/products/vmware-nsx-t/).
 
 
 ## <a id='tiles-addons'></a> Update Tiles and Add-Ons
@@ -127,7 +127,7 @@ Check the required machine specifications for <%= vars.ops_manager %> <%= vars.v
 
 With each release of a new <%= vars.ops_manager %> version, <%= vars.app_runtime_abbr %> may require specific updates before upgrading to the new version. For more information, see the following sections for what action to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-#### <a id='disable-hostname-validation'></a> Disable Hostname Validation for External Databases on GCP and Azure
+#### <a id='disable-hostname-validation'></a> Deactivate Hostname Validation for External Databases on GCP and Azure
 
 This pre-upgrade step applies only to existing <%= vars.app_runtime_abbr %> v2.9 deployments where both of these conditions are met:
 
@@ -137,9 +137,9 @@ This pre-upgrade step applies only to existing <%= vars.app_runtime_abbr %> v2.9
 
 * You enabled TLS communication for the GCP or Azure external database by adding a certificate authority (CA) certificate to the **Database CA certificate** field in the **Databases** pane.
 
-If you meet these conditions, you must disable hostname validation before you upgrade to <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>. Failure to disable hostname validation can cause the upgrade to fail for deployments that use external databases on GCP or Azure.
+If you meet these conditions, you must deactivate hostname validation before you upgrade to <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>. Failure to deactivate hostname validation can cause the upgrade to fail for deployments that use external databases on GCP or Azure.
 
-To disable hostname validation:
+To deactivate hostname validation:
 
 1. After you stage <%= vars.app_runtime_abbr %> <%= vars.v_major_version %> for upgrade, go to the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
 
@@ -147,11 +147,11 @@ To disable hostname validation:
 
 For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see [Configure Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
 
-#### <a id='disable-unused-errands'></a> (Optional) Disable Unused Errands
+#### <a id='disable-unused-errands'></a> (Optional) Deactivate Unused Errands
 
-To save upgrade time, you can disable unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Only disable these errands if your environment does not need them.
+To save upgrade time, you can deactivate unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Only deactivate these errands if your environment does not need them.
 
-In some cases, if you have previously disabled lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
+In some cases, if you have previously deactivated lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
 ### <a id='stemcell-compat'></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 
@@ -278,6 +278,7 @@ If you are not using Healthwatch, you can do some or all of the following to col
 		bosh -e ALIAS -d DEPLOYMENT-NAME instances --ps
 		```
 		Where:
+
 		* `ALIAS` is your BOSH deployment alias.
 		* `DEPLOYMENT-NAME` is the name of the BOSH deployment with the instances you want to check.
 		<br>
@@ -298,6 +299,7 @@ If you are not using Healthwatch, you can do some or all of the following to col
 		bosh -e ALIAS -d DEPLOYMENT-NAME cck --report
 		```
 		Where:
+
 		* `ALIAS` is your BOSH deployment alias.
 		* `DEPLOYMENT-NAME` is the name of the BOSH deployment with the cloud config you want to check.
 
@@ -345,7 +347,7 @@ When you export an installation, the export contains the base VM images, necessa
 * Some browsers do not provide feedback on the status of the export process and might appear to hang.
 
 <p class='note'><strong>Note:</strong> Some operating systems automatically unzip the exported installation. If this occurs, create a ZIP file of the unzipped export. Do not start compressing at the "installation" folder level. Instead, start compressing at the level containing the <code>rails_database_dump.postgres</code> file.
-
+</p>
 
 ## <a id='next-steps'></a> Next Steps
 

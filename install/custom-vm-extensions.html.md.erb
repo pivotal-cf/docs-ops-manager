@@ -11,7 +11,7 @@ VM extensions allow you to specify IaaS-specific configurations for your VMs suc
 
 The **Resource Config** pane in a product tile lets you configure some IaaS-specific load balancing and security properties, and creates VM extensions to support them.  For examples from the <%= vars.ops_manager_first %> product, see [Configuring Load Balancing for <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/operating/configure-lb.html).
 
-<p class='note warning'><strong>Warning:</strong> If you use custom VM extensions, you may override other settings. For example, if you use a custom VM extension to add tags, the default tags are removed from all instance groups. To use default tags with custom VM extensions, apply the tags manually.</p>
+<p class='note caution'><strong>Caution:</strong> If you use custom VM extensions, you may override other settings. For example, if you use a custom VM extension to add tags, the default tags are removed from all instance groups. To use default tags with custom VM extensions, apply the tags manually.</p>
 
 
 ## <a id='prerequisites'></a> Prerequisites
@@ -34,15 +34,15 @@ Enter the following properties:
 * `name`: Enter a memorable string value as the name of your new VM extension. You later associate this name to a job.
 
 * `cloud_properties`: Enter your IaaS-specific VM extension properties.
-  <p class='note'><strong>Note:</strong> If you are updating a custom VM extension rather than creating a new one, enter the name of the VM extension you want to override.</strong></p>
+  <p class='note'><strong>Note:</strong> If you are updating a custom VM extension rather than creating a new one, enter the name of the VM extension you want to override.</p>
 
 See the following AWS example:
 <pre class="terminal">
-curl "http<span>s</span>://example.com/api/v0/staged/vm_extensions/example_vm_extension_name" \
+curl "https://example.com/api/v0/staged/vm_extensions/example_vm_extension_name" \
     -X PUT \
-    -H "Authorization: Bearer UAA\_ACCESS\_TOKEN" \
+    -H "Authorization: Bearer UAA_ACCESS_TOKEN" \
     -H "Content-Type: application/json" \
-    -d '{"name": "example\_vm\_extension\_name", "cloud\_properties": { "source\_dest_check": false }}'
+    -d '{"name": "example_vm_extension_name", "cloud_properties": { "source_dest_check": false }}'
 </pre>
 
 For more information about this command, see [Creating a new vm extension](https://docs.pivotal.io/ops-manager/3-0/api/#tag/VM-Extensions) in the <%= vars.ops_manager %> API documentation.
