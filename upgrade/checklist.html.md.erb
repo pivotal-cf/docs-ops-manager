@@ -143,15 +143,15 @@ To deactivate hostname validation:
 
 1. After you stage <%= vars.app_runtime_abbr %> <%= vars.v_major_version %> for upgrade, go to the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
 
-1. Deselect the **Enable hostname verification** checkbox. This checkbox is selected by default.
+1. Deactivate the **Require hostname verification** checkbox. This checkbox is activated by default.
 
-For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see [Configure Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db).
 
 #### <a id='disable-unused-errands'></a> (Optional) Deactivate Unused Errands
 
 To save upgrade time, you can deactivate unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Only deactivate these errands if your environment does not need them.
 
-In some cases, if you have previously deactivated lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
+In some cases, if you have previously deactivated lifecycle errands for any installed product to reduce deployment time, you may want to re-activate these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
 ### <a id='stemcell-compat'></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 
@@ -307,13 +307,13 @@ If you are not using Healthwatch, you can do some or all of the following to col
 
 * Check that <%= vars.ops_manager %> persistent disk usage is below 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk) above.
 
-* (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see [Viewing Logs in the Command Line Interface](https://docs.pivotal.io/application-service/devguide/deploy-apps/streaming-logs.html#view) in _App Logging in <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
+* (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/devguide/deploy-apps/streaming-logs.html#view).
 
 ### <a id='validate-mysql-cluster-health'></a> Validate MySQL Cluster Health
 
 If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster.
 
-For BOSH CLI v2 instructions, see [Running mysql-diag](https://docs.pivotal.io/application-service/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
+For BOSH CLI v2 instructions, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/mysql/mysql-diag.html).
 
 ### <a id='check-health'></a> Review Pending and Recent Changes
 

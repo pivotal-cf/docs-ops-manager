@@ -81,9 +81,9 @@ The Azure Load Balancer (ALB) disconnects active TCP connections lying idle for 
 
 #### Solution
 
-To mitigate slow performance or timeouts, the default value of the **GoRouter timeout to back ends** field is set to `900` seconds. This default value is set high to mitigate performance issues but operators should tune this parameter to fit their infrastructure.
+To mitigate slow performance or timeouts, the default value of the **Back end request and idle timeout** field is set to `900` seconds. This default value is set high to mitigate performance issues but operators should tune this parameter to fit their infrastructure.
 
-To edit the **Gorouter timeout to back ends** field:
+To edit the **Back end request and idle timeout** field:
 
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -91,7 +91,7 @@ To edit the **Gorouter timeout to back ends** field:
 
 1. Select **Networking**.
 
-1. Enter your desired time, in seconds, in the **GoRouter timeout to back ends** field.
+1. Enter your desired time, in seconds, in the **Back end request and idle timeout** field.
 
 1. Click **Save**.
 
@@ -107,6 +107,6 @@ HTTP libraries for Java and Go, running with default settings, prune connections
 
 #### Solution
 
-In the **Networking** pane of the <%= vars.app_runtime_abbr %> tile, set **Front end idle timeout** to `240` seconds or less, so that <%= vars.ops_manager %> regenerates the front end connection before it times out.
+In the **Networking** pane of the <%= vars.app_runtime_abbr %> tile, enter a value of `240` or less in the the **Front end idle timeout** field, so that <%= vars.ops_manager %> regenerates the front end connection before it times out.
 
 For more information, see [Azure Networking Connection Idle for more than Four minutes](https://community.pivotal.io/s/article/Azure-Networking-Connection-Idle-for-more-than-Four-minutes) in the Knowledge Base.

@@ -49,8 +49,7 @@ The following are general requirements and recommendations related to networking
 on Azure:
 
 * You must enable virtual network peering between hub and spoke resource groups. For more information, see
-[Virtual network peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) in
-the Microsoft Azure documentation.
+the [Microsoft Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview).
 
 * You must have separate subscriptions for each resource group. This includes:
   * The central network resource group. This is the hub.
@@ -147,8 +146,7 @@ For more information about availability modes in Azure, see the following:
 
 * [Availability Sets](#AS)
 
-* [Manage the availability of Windows virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-manage-availability)
-in the Microsoft Azure documentation.
+* The [Microsoft Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-manage-availability)
 
 ### <a id='AZ'></a> Availability Zones
 
@@ -254,6 +252,5 @@ These buckets require an associated role for read/write access.
 Use unique managed identities to deploy <%= vars.ops_manager %>, BOSH Director, Microsoft Azure Service Broker for VMware Tanzu, and any other tiles that require independent credentials. Ensure that each managed identity is scoped to the least privilege
 necessary to operate.
 
-Azure uses managed identities to handle service authorization. For more information, see
-[What are managed identities for Azure resources?](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
-in the Microsoft Azure documentation.
+Azure uses managed identities to handle service authorization. For more information, see the
+[Microsoft Azure documentation](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview).

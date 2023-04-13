@@ -24,9 +24,9 @@ The typical setup for foundation failover requires the GLB be authoritative for 
 
 To configure your GLB:
 
-1. Find and record your wildcard app domain. For <%= vars.app_runtime_abbr %>, your wildcard app domain is typically the **Apps domain** you configure in the **Domains** pane of the <%= vars.app_runtime_abbr %> tile. For more information, see [Configure Domains](https://docs.pivotal.io/application-service/operating/configure-pas.html#domains) in _Configuring <%= vars.app_runtime_abbr %>_.
+1. Find and record your wildcard app domain. For <%= vars.app_runtime_abbr %>, your wildcard app domain is typically the **Apps domain** you configure in the **Domains** pane of the <%= vars.app_runtime_abbr %> tile. For more information, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/configure-pas.html#domains).
 
-1. Add the domain you recorded to both <%= vars.app_runtime_abbr %> foundations using a shared domain. You can create a shared domain using the Cloud Foundry Command Line Interface (cf CLI). For more information about the cf CLI command to create shared domains, see [create-shared-domain](https://cli.cloudfoundry.org/en-US/cf/create-shared-domain.html) in the Cloud Foundry CLI reference guide.
+1. Add the domain you recorded to both <%= vars.app_runtime_abbr %> foundations using a shared domain. You can create a shared domain using the Cloud Foundry Command Line Interface (cf CLI). For more information about the cf CLI command to create shared domains, see the [Cloud Foundry CLI Reference Guide](https://cli.cloudfoundry.org/en-US/cf/create-shared-domain.html).
 
 1. To support failover, set the time-to-live (TTL) in the wildcard DNS record to about 30 to 180 seconds. When determining your TTL, consider the tradeoff between the app performance impact and the resulting time for failover to occur.
 

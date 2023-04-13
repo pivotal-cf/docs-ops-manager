@@ -6,7 +6,7 @@ owner: TAS Journey Platform Provider Experience
 This topic describes a reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %>, on Azure VMware Solution (AVS).
 It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
 
-For additional requirements and installation instructions for <%= vars.ops_manager %> on AVS, see [Deploying <%= vars.app_runtime_abbr %> to AVS](https://docs.pivotal.io/application-service/operating/avs.html).
+For additional requirements and installation instructions for <%= vars.ops_manager %> on AVS, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/avs.html).
 
 
 ## <a id='overview'></a> Overview
@@ -117,7 +117,7 @@ For information about high availability (HA) requirements and recommendations fo
 
 <%= vars.app_runtime_abbr %> requires shared storage.  By default, AVS deploys with vSAN configured.
 
-For information about storage on AVS, see [Hosts](https://docs.microsoft.com/en-us/azure/azure-vmware/concepts-private-clouds-clusters#hosts) in the Microsoft AVS documentation.
+For information about storage on AVS, see the [Microsoft AVS documentation](https://docs.microsoft.com/en-us/azure/azure-vmware/concepts-private-clouds-clusters#hosts).
 
 ### <a id='pas-nsx-t-sql'></a> SQL Server
 
@@ -125,7 +125,7 @@ An internal MySQL database is sufficient for use in production environments.
 
 However, an external database provides more control over database management for large environments that require multiple data centers.
 
-For information about configuring system databases on <%= vars.app_runtime_abbr %>, see [Configure System Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
+For information about configuring system databases on <%= vars.app_runtime_abbr %>, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db).
 
 ### <a id='pas-nsx-t-securty'></a> Security
 
