@@ -7,7 +7,7 @@ This topic describes how you can use Advanced Mode to override some manifest pro
 the <%= vars.ops_manager_first %> UI or the <%= vars.ops_manager %> API.
 
 
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview on Overriding Manifest Properties in Advanced Mode
 
 <%= vars.ops_manager %> is an interface to the BOSH Director manifest and the runtime configs
 that underlie VMware Tanzu.
@@ -30,9 +30,9 @@ To override manifest properties:
 or the <%= vars.ops_manager %> API, use the UI or API to change the property.
 
 1. If the property cannot be modified through the <%= vars.ops_manager %> UI or the <%= vars.ops_manager %> API:
-    1. Determine if the property can be overridden. See [Overridable Properties](#properties) below.
-    1. If the property is in the BOSH Director Manifest, see [Override BOSH Director Manifest Properties](#bosh-overrides) below.
-    1. If the property is in one of the runtime configs, see [Override Runtime Config Properties](#runtime-config-overrides) below.
+    1. Determine if the property can be overridden. See [Overridable Properties](#properties).
+    1. If the property is in the BOSH Director Manifest, see [Override BOSH Director Manifest Properties](#bosh-overrides).
+    1. If the property is in one of the runtime configs, see [Override Runtime Config Properties](#runtime-config-overrides).
 
 You can also use the <%= vars.ops_manager %> API to view the BOSH Director manifest,
 view the list of overrides for the BOSH Director and runtime configs,
@@ -58,7 +58,7 @@ You cannot:
 * Add or delete a network
 * Add or delete an instance group
 
-For an example, see [Change the Network Type to Dynamic](#example1) below.
+For an example, see [Change the Network Type to Dynamic](#example1).
 
 ### <a id='tile-manifest'></a> Tile Manifest
 
@@ -68,12 +68,12 @@ In the tile manifest, you can override properties in the following sections:
 * `update`
 
 For an example, see [Change Number of Canary Instances](#example3) or
-[Enable Returning DNS Addresses in Links](#example4) below.
+[Enable Returning DNS Addresses in Links](#example4).
 
 ### <a id='runtime-configs'></a> Runtime Configs
 
 You can edit properties in two add-ons in each of two of the runtime configs files.
-The table below lists these properties:
+The following table lists these properties:
 
 <table>
   <tr>
@@ -184,11 +184,11 @@ This file shows the properties and defaults for the `bosh_dns` add-on in the `op
 Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1runtime_configs~1overrides/put)
 in the <%= vars.ops_manager %> API documentation.
 
-1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
+1. After you have complete your changes, deactivate Advanced Mode by following the procedure in
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 
-For an example, see [Change the Timeout for the BOSH DNS Network Health Check](#example2) below.
+For an example, see [Change the Timeout for the BOSH DNS Network Health Check](#example2).
 
 ## <a id='examples'></a> Examples of Overridable Properties
 

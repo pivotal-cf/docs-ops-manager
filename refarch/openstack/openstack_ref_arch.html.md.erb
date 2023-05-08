@@ -3,7 +3,7 @@ title: OpenStack Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.app_runtime_first %> on OpenStack.
+This topic describes the reference architecture for <%= vars.app_runtime_first %> on OpenStack.
 <%= vars.app_runtime_abbr %> runs on <%= vars.ops_manager_first %>,
 and this architecture is valid for most production-grade <%= vars.ops_manager %> deployments in a single project using three availability zones (AZs).
 
@@ -27,7 +27,7 @@ An <%= vars.ops_manager %> reference architecture describes a proven approach fo
 
 ## <a id='base_components'></a> Base Reference Architecture Components
 
-The table below lists the components that are part of a base reference architecture deployment on OpenStack with three AZs.
+The following table lists the components that are part of a base reference architecture deployment on OpenStack with three AZs.
 
 <table class="nice">
 <th><strong>Component</strong></th>
@@ -96,13 +96,13 @@ The table below lists the components that are part of a base reference architect
   </tr>
   <tr>
   	 <td><strong>OpenStack Quota</strong></td>
-  	 <td>The default compute quota on a new OpenStack subscription is typically not enough to host a multi-AZ deployment. <%= vars.company_name %> recommends a quota of 100 for instances. Your OpenStack network quotas may also need to be increased.</td>
+  	 <td>The default compute quota on a new OpenStack subscription is typically not enough to host a multi-AZ deployment. <%= vars.company_name %> recommends a quota of 100 for instances. Your OpenStack network quotas might also need to be increased.</td>
   </tr>
 </table>
 
 ## <a id='openstack_components'></a> OpenStack Objects
 
-The table below lists the network objects in this reference architecture.
+The following table lists the network objects in this reference architecture.
 
 <table class="nice">
 <th><strong>Network Object</strong></th>
@@ -115,7 +115,7 @@ The table below lists the network objects in this reference architecture.
   </tr>
   <tr>
     <td><strong>Project</strong></td>
-    <td>One per deployment. A deployment exists within a single project and a single OpenStack region, but should distribute <%= vars.app_runtime_abbr %> jobs and service instances across three OpenStack AZs to ensure high availability.</td>
+    <td>One per deployment. A deployment exists within a single project and a single OpenStack region, but can distribute <%= vars.app_runtime_abbr %> jobs and service instances across three OpenStack AZs to ensure high availability.</td>
     <td>1</td>
   </tr>
   <tr>
@@ -146,7 +146,7 @@ The table below lists the network objects in this reference architecture.
   </tr>
   <tr>
     <td><strong>Security Groups</strong></td>
-    <td>The reference architecture requires one Security Groups. The table below describes the Security Group ingress rules:
+    <td>The reference architecture requires one Security Groups. The following table describes the Security Group ingress rules:
     	<table>
     	<tr>
     		<th>Security Group</th>
@@ -177,7 +177,7 @@ The table below lists the network objects in this reference architecture.
     		<td>Open up connections among BOSH-deployed VMs</td>
     	</tr>
     </table>
-    Additional security groups may be needed which are specific to your chosen load balancing solution.
+    Additional security groups might be needed which are specific to your chosen load balancing solution.
     </td>
     <td>5</td>
   </tr>
@@ -185,7 +185,7 @@ The table below lists the network objects in this reference architecture.
     <td><strong>Load Balancers</strong></td>
     <td><%= vars.ops_manager %> on OpenStack requires a load balancer, which can be configured with multiple listeners to forward HTTP, HTTPS, and TCP traffic. <%= vars.company_name %> recommends two load balancers: one to forward the traffic to the GoRouters, <code>AppsLB</code>; and the other to forward the traffic to the Diego Brain SSH proxy, <code>SSHLB</code>.
     <br><br>
-    The table below describes the required listeners for each load balancer:
+    The following table describes the required listeners for each load balancer:
       <table>
     		<tr>
     			<th>Name</th>

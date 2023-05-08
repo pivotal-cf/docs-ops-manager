@@ -10,9 +10,9 @@ This topic describes how to check the expiration dates and types of the certific
 
 There are two ways to manually check the expiration dates and types of the certificates that the <%= vars.ops_manager %> API manages:
 
-* Through the <%= vars.ops_manager %> UI. For more information, see [Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> UI](#check-ui) below.
+* Through the <%= vars.ops_manager %> UI. For more information, see [Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> UI](#check-ui).
 
-* Through the <%= vars.ops_manager %> API. For more information, see [Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> API](#check-api) below.
+* Through the <%= vars.ops_manager %> API. For more information, see [Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> API](#check-api).
 
 To configure Concourse to automatically monitor expiring certificates, you can use Platform Automation. For more information, see [expiring-certificates](https://docs.pivotal.io/platform-automation/v4.1/tasks.html#expiring-certificates) in the Platform Automation documentation.
 
@@ -31,7 +31,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
 
 1. In the top menu, select **Certificates**.
 
-1. In the **Certificates** and **Excluded certificates** sections, check the **Valid until** column for the expiration dates of each certificate and the number of days before expiration.
+1. In the **Certificates** and **Excluded certificates** sections, verify that the **Valid until** column for the expiration dates of each certificate and the number of days before expiration.
 
 1. For any certificates expiring soon, use the following rules to identify their types:
     * **Non-rotatable certificates:** Non-rotatable certificates are included in the **Excluded certificates** section at the bottom of the **Certificates** page.
@@ -54,7 +54,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
 
 To check certificate expiration dates and types through the <%= vars.ops_manager %> API:
 
-1. Follow the procedure in [Using <%= vars.ops_manager %> API](../../install/ops-man-api.html) to target and authenticate with the <%= vars.ops_manager %> User Account and Authentication (UAA) server. Record your <%= vars.ops_manager %> access token, and use it for `UAA-ACCESS-TOKEN` in the steps below.
+1. Follow the procedure in [Using <%= vars.ops_manager %> API](../../install/ops-man-api.html) to target and authenticate with the <%= vars.ops_manager %> User Account and Authentication (UAA) server. Record your <%= vars.ops_manager %> access token, and use it for `UAA-ACCESS-TOKEN` in the following steps.
   <p class='note'><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
 
 1. To retrieve the certificates, call the `/deployed/certificates` endpoint of the <%= vars.ops_manager %> API by running:
@@ -77,7 +77,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
 
 1. The `deployed/certificates` output lists all CAs and leaf certificates visible to the <%= vars.ops_manager %> API, whether they are stored in <%= vars.ops_manager %> directly or stored in CredHub. To determine the expiration date and type for each certificate listed:
 
-    1. Determine the expiration date from the `valid_until` value. For example, the root CA listed below expires on August 12, 2020:
+    1. Determine the expiration date from the `valid_until` value. For example, the root CA listed in the following example expires on August 12, 2020:
 
         <pre class="terminal">
         {

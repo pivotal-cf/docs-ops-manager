@@ -13,7 +13,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
-1. Navigate to the **<%= vars.ops_manager %>** section of [VMware Tanzu Network](https://network.pivotal.io/products/ops-manager).
+1. Go to the **<%= vars.ops_manager %>** section of [VMware Tanzu Network](https://network.pivotal.io/products/ops-manager).
 
 1. Select the version of <%= vars.ops_manager %> you want to install from the **Releases** drop-down menu.
 
@@ -33,7 +33,7 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
 2. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS), perform the following additional steps:
 
-    1. Right click the row that lists your AMI and click **Copy AMI**.
+    1. Right-click the row that lists your AMI and click **Copy AMI**.
     2. Select your **Destination region**.
     3. Select **Encryption**. For more information about AMI encryption, see [Encryption and AMI Copy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html#ami-copy-encryption) from the _Copying an AMI_ topic in the AWS documentation.
     4. Select your **Master Key**. To create a new custom key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) in the AWS documentation.
@@ -232,7 +232,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     </tr>
     </table>
 
-    The `...` entry above indicates that you must add listening rules for each port between 1026 and 1123.
+    The `...` entry indicates that you must add listening rules for each port between 1026 and 1123.
 
 2. Under **Select Subnets**, select either the public or private subnets you configured in [Create a VPC](prepare-env-manual.html#pcfaws-vpc) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_, and click **Next: Assign Security Groups**.
 
@@ -271,8 +271,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. On the **Description** tab, record the value for **IPv4 Public IP**.
 
-1. Navigate to your DNS provider and create the following CNAME and A records:
-
+1. Go to your DNS provider and create the following CNAME and A records:
     * CNAME: `*.apps.DOMAIN.com` and `*.system.DOMAIN.com` points to the DNS name of the `pcf-web-elb` load balancer.
     * CNAME: `ssh.system.DOMAIN.com` points to the DNS name of the `pcf-ssh-elb` load balancer.
     * CNAME: `tcp.system.DOMAIN.com` points to the DNS name of the `pcf-tcp-elb` load balancer.
@@ -284,7 +283,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 ## <a id='pcfaws-rds-subnet-group'></a> Step 6: Create RDS Subnet Group
 
-1. Navigate to the RDS Dashboard.
+1. Go to the RDS Dashboard.
 
 1. Perform the following steps to create a RDS Subnet Group for the two RDS subnets:
     1. Click **Subnet Groups>Create DB Subnet Group**.
@@ -295,10 +294,10 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
         * **VPC ID**: Select `pcf-vpc`.
         * **Availability Zone** and **Subnet ID**: Choose the AZ and subnet for `pcf-rds-subnet-az0` and click **Add**.
 
-    2. Repeat the steps above to add `pcf-rds-subnet-az1` and `pcf-rds-subnet-az2` to the group.
+    2. Repeat the preceding steps to add `pcf-rds-subnet-az1` and `pcf-rds-subnet-az2` to the group.
     3. Click **Create**.
 
-    <p class="note"><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
+        <p class='note'><strong>Note:</strong> On the Subnet Group page, you might need to refresh the page to view the new group.</p>
 
     <p class='note'><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
 
@@ -306,7 +305,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 <p class='note'><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.ops_manager %> on AWS.</p>
 
-1. Navigate to the RDS Dashboard.
+1. Go to the RDS Dashboard.
 
 1. Click **Create database** to launch the wizard.
 
@@ -339,11 +338,11 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     * **Initial Database Name**: Enter `bosh`.
     * Accept the default values for the remaining fields.
 
-1. Click **Launch DB Instance**. Launching the instance may take several minutes.
+1. Click **Launch DB Instance**. Launching the instance might take several minutes.
 
 ## <a id='next'></a> Next Steps
 
-When the instance has launched, you the following:
+When the instance has run, do the following:
 
 * Review [Required AWS Objects](required-objects.html) to verify that you created the correct resources in AWS.
 * Proceed to [Configuring BOSH Director on AWS](config-manual.html) to continue deploying <%= vars.ops_manager %>.

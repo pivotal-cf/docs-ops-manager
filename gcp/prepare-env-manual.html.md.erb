@@ -75,7 +75,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
 1. Log in to the Google Developers Console at [https://console.developers.google.com](https://console.developers.google.com).
 
-1. In the console, navigate to the GCP projects where you want to install <%= vars.ops_manager %>.
+1. In the console, go to the GCP projects where you want to install <%= vars.ops_manager %>.
   - For a single-project installation, complete the following steps for the <%= vars.ops_manager %> project.
   - For a shared-VPC installation, complete the following steps for both host and service projects, to enable them to access the Google Cloud API.
 
@@ -109,7 +109,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
 1. Log in to the [GCP console](https://console.cloud.google.com/).
 
-1. Navigate to the GCP project where you want to install <%= vars.ops_manager %>. For a shared-VPC installation, navigate to the host project.
+1. Go to the GCP project where you want to install <%= vars.ops_manager %>. For a shared-VPC installation, go to the host project.
 
 1. Select **VPC network**, then **CREATE VPC NETWORK**.
 
@@ -199,7 +199,7 @@ You might, for example, need this internet access for pulling Docker images or e
 
 For more information, see [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html#common_network) and the [GCP documentation](https://cloud.google.com/solutions/connecting-securely#natgateway).
 
-1. In the GCP console, with your single project or shared-VPC host project selected, navigate to **Compute Engine** > **VM instances**.
+1. In the GCP console, with your single project or shared-VPC host project selected, go to **Compute Engine** > **VM instances**.
 
     ![alt-text=""](../common/images/gcp/gcp-vm-instances.png)
 
@@ -255,7 +255,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 5. Click **Create** to finish creating the NAT instance.
 
-6. Repeat steps 2&ndash;6 to create two additional NAT instances with the names and zones specified in the table below. The rest of the configuration remains the same.
+6. Repeat steps 2&ndash;6 to create two additional NAT instances with the names and zones specified in the following table. The rest of the configuration remains the same.
 
     <table>
       <tr>
@@ -276,7 +276,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
         <td><strong>Internal IP</strong></td>
         <td>
           Select <code>Custom</code> and enter an IP address in the <strong>Internal IP address</strong> field. Example: <code>192.168.101.3</code>.
-          <br><br>As described above, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
+          <br><br>As described previously, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
         </td>
       </tr>
       <tr>
@@ -297,14 +297,14 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
         <td><strong>Internal IP</strong></td>
         <td>
           Select <code>Custom</code> and enter an IP address in the <strong>Internal IP address</strong> field. Example: <code>192.168.101.4</code>.
-          <br><br>As described above, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
+          <br><br>As previously described, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
         </td>
       </tr>
     </table>
 
 ### <a id='nat-routes'></a> Create Routes for NAT Instances
 
-1. Navigate to **VPC Networks** > **Routes**.
+1. Go to **VPC Networks** > **Routes**.
 
     ![alt-text="The Networking menu includes these options: VPC network, Network Services, VPN."](../common/images/gcp/gcp-vpc-routes.png)
 
@@ -322,7 +322,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 1. Click **Create** to finish creating the route.
 
-1. Repeat steps 2&ndash;4 to create two additional routes with the names and next hop instances specified in the table below. The rest of the configuration remains the same.
+1. Repeat steps 2&ndash;4 to create two additional routes with the names and next hop instances specified in the following table. The rest of the configuration remains the same.
 
     <table>
       <tr>
@@ -347,7 +347,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 GCP lets you assign tags to VM instances and create firewall rules that apply to VMs based on their tags. For more information about tags, see [Labeling Resources](https://cloud.google.com/compute/docs/labeling-resources) in the GCP documentation.
 This step assigns tags and firewall rules to <%= vars.ops_manager %> components and VMs that handle incoming traffic.
 
-1. With your single project or shared-VPC host project selected, navigate to the **Networking** > **VPC network** pane and select **Firewall rules**.
+1. With your single project or shared-VPC host project selected, go to the **Networking** > **VPC network** pane and select **Firewall rules**.
 
 1. Apply the firewall rules in the following table:
 
@@ -489,7 +489,7 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 
 ### <a id='create-dbs'></a> Create Databases
 
-1. Navigate to the **Instances** page and select the database instance you just created.
+1. Go to the **Instances** page and select the database instance you just created.
 
 1. Select the **Databases** tab.
 
@@ -512,7 +512,7 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 
 1. Select the **USERS** tab.
 
-1. Click **Create user account** to create a unique username and password for each database you created above. For **Host name**, select **Allow any host**. You must create a total of fourteen user accounts.
+1. Click **Create user account** to create a unique username and password for each database you previously created. For **Host name**, select **Allow any host**. You must create a total of fourteen user accounts.
 
 <p class='note'><strong>Note:</strong> Ensure that the networkpolicyserver database user has the <code>ALL PRIVILEGES</code> permission.</p>
 
@@ -536,9 +536,9 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 
 For load balancing, you can use a global HTTP load balancer or an internal, regional load balancer with a private IP address.
 
-Single-project, standalone installations typically use a global HTTP load balancer. For more information, see [Create HTTP Load Balancer](#http_loadbalancer) below for how to set this up.
+Single-project, standalone installations typically use a global HTTP load balancer. For more information, see [Create HTTP Load Balancer](#http_loadbalancer) on how to set this up.
 
-Shared-VPC installation typically use an internal TCP/UDP load balancer to minimize public IP addresses. For more information, see [Create Internal Load Balancer](#internal_loadbalancer) below for how to set this up.
+Shared-VPC installation typically use an internal TCP/UDP load balancer to minimize public IP addresses. For more information, see [Create Internal Load Balancer](#internal_loadbalancer) on how to set this up.
 
 ### <a id='internal_loadbalancer'></a> Create Internal Load Balancer
 
@@ -575,7 +575,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='create-instance-group'></a> Create Instance Group
 
-1. Navigate to **Compute Engine** > **Instance groups**.
+1. Go to **Compute Engine** > **Instance groups**.
 
 1. Click **CREATE INSTANCE GROUP**.
 
@@ -609,7 +609,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='create-health-check'></a> Create Health Check
 
-1. Navigate to **Compute Engine** > **Health checks**.
+1. Go to **Compute Engine** > **Health checks**.
 
 1. Click **CREATE HEALTH CHECK**.
 
@@ -626,7 +626,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='config-backend'></a> Configure Back End
 
-1. Navigate to **Network services** > **Load balancing**.
+1. Go to **Network services** > **Load balancing**.
 
 1. Click **CREATE LOAD BALANCER**.
 
@@ -635,7 +635,19 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 1. For the **Name**, enter `pcf-global-pcf`.
 
 1. Select **Backend configuration**
-    1. From the dropdown, select **Backend services** > **Create a backend service**.
+  1. From the drop-down menu, select **Backend services** > **Create a backend service**.
+  1. Complete the form as follows:
+    * **Name**: `pcf-http-lb-backend`.
+    * **Protocol**: `HTTP`.
+    * **Named port**: `http`.
+    * **Timeout**: `10 seconds`.
+    * Under **Backends** > **New backend**, select the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
+    * Click **Add backend**, select the **Instance group** that corresponds to the second zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-b)`. Click **Done**.
+    * Click **Add backend**, select the **Instance group** that corresponds to the third zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-c)`. Click **Done**.
+    * **Health check**: Select the `pcf-cf-public` health check that you created.
+    * **Cloud CDN**: Ensure Cloud CDN is deactivated.
+
+    1. From the drop-down menu, select **Backend services** > **Create a backend service**.
     1. Complete the form as follows:
 
         * **Name**: `pcf-http-lb-backend`.
@@ -646,7 +658,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
         * Click **Add backend**, select the **Instance group** that corresponds to the second zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-b)`. Click **Done**.
         * Click **Add backend**, select the **Instance group** that corresponds to the third zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-c)`. Click **Done**.
         * **Health check**: Select the `pcf-cf-public` health check that you created.
-        * **Cloud CDN**: Ensure Cloud CDN is disabled.
+        * **Cloud CDN**: Make sure Cloud CDN is inactive.
 
 1. Click **Create**.
 
@@ -719,7 +731,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
     ![alt-text=""](../common/images/gcp/tcp_websockets_backend.png)
 
     * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnets](#create_network).
-    * From the **Health check** dropdown, create a health check with the following details:
+    * From the **Health check** drop-down menu, create a health check with the following details:
         * **Name**: `pcf-gorouter`
         * **Port**: `8080`
         * **Request path**: `/health`
@@ -798,7 +810,7 @@ To create a load balancer for TCP routing in GCP:
 1. Select **Backend configuration**, and enter the following field values:
 
     * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnet](#create_network).
-    * From the **Health check** dropdown, create a health check with the following details:
+    * From the **Health check** drop down menu, create a health check with the following details:
         * **Name**: `pcf-tcp-lb`
         * **Port**: `80`
         * **Request path**: `/health`
@@ -840,7 +852,7 @@ In this step, you redirect queries for your domain to the IP addresses of your l
 
 1. Log in to the DNS registrar that hosts your domain. Examples of DNS registrars include Network Solutions, GoDaddy, and Register.com.
 
-1. Create **A records** with your DNS registrar that map domain names to the public static IP addresses of the load balancers located above:
+1. Create **A records** with your DNS registrar that map domain names to the public static IP addresses of the load balancers located previously:
 
     <table border="1" valign="top">
       <tr>
@@ -897,7 +909,7 @@ In this step, you redirect queries for your domain to the IP addresses of your l
 
     Where `SUBDOMAIN.EXAMPLE-URL` is the subdomain for your load balancer.
 
-    You should see the A record that you just created:
+    You see the A record that you just created:
 
     <pre class="terminal">
     ;; ANSWER SECTION:

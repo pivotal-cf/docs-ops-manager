@@ -16,7 +16,7 @@ Disk encryption for VMs works at the IaaS level. An IaaS encrypts disks when it 
 
 1. Trigger BOSH to re-create the existing VMs that use the disks, and create encrypted disks from now on for new VMs.
 
-The procedures below describe how to do this for each IaaS.
+The following procedures describe how to do this for each IaaS.
 
 ### <a id='disks'></a> Disks You Can Encrypt on an <%= vars.ops_manager %> VM
 
@@ -41,7 +41,7 @@ For each IaaS, there are two disk encryption procedures, which encrypt different
 
 You can use the same procedure to either encrypt disks for the first time or rotate encryption keys.
 
-For BOSH-deployed VMs, some IaaSes let you associate a policy with the BOSH process that automatically encrypts all disks BOSH creates. On AWS, BOSH must explicitly tell the IaaS to encrypt each disk that it creates, and passes in an encryption key. The table below summarizes these differences:
+For BOSH-deployed VMs, some IaaSes let you associate a policy with the BOSH process that automatically encrypts all disks BOSH creates. On AWS, BOSH must explicitly tell the IaaS to encrypt each disk that it creates, and passes in an encryption key. The following table summarizes these differences:
 
 | IaaS | How configured | How encrypted | User can supply key | BOSH stores key ID |
 | ---- | -------------- | ------------- | ------------------- | ------------------ |
@@ -86,7 +86,7 @@ To initiate or rotate disk encryption for BOSH-deployed VMs on vSphere v6.5 or l
 
 1. Follow the procedure in [Recreate BOSH-Deployed Disks](#re-create) procedure to propagate the change to existing VMs.
 
-1. If you are configuring volume encryption for <%= vars.k8s_runtime_abbr %>:
+1. If you configure volume encryption for <%= vars.k8s_runtime_abbr %>:
     1. Delete the BOSH Director stemcell used for the <%= vars.k8s_runtime_abbr %> foundation from the disk using vSphere WebClient. For more information on how to delete the BOSH Director stemcell, see [How to recreate BOSH Director VM when the Stemcell is deleted from vSphere](https://community.pivotal.io/s/article/How-to-recreate-BOSH-Director-VM-when-the-Stemcell-is-deleted-from-vSphere?language=en_US).
 
     1. Reupload the stemcell used by <%= vars.k8s_runtime_abbr %>:

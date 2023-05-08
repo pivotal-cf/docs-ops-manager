@@ -10,11 +10,11 @@ This topic describes key features of the <%= vars.ops_manager_first %> interface
 
 The Installation Dashboard is the central <%= vars.ops_manager %> interface for managing your deployment. It displays the BOSH Director configuration for your IaaS and product tiles for your deployment.
 
-The following screenshot shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a red letter. Click the image to see it at full size.
+The following image shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a red letter. Click the image to see it at full size.
 
 ![alt-text="The Ops Manager Installation Dashboard: For a description of each labeled section, see the following list."](images/interface.png)
 
-The following list describes each labeled section of the Installation Dashboard:
+The following list describes each section that is labeled for the Installation Dashboard:
 
 * **A**---**Import a Product:** Click this button to add a new product to <%= vars.ops_manager %>. You can download <%= vars.ops_manager %>-compatible product files from [VMware Tanzu Network](https://network.pivotal.io).
   * If you have configured a [VMware Tanzu Network API](install/add-delete.html) token in the **Settings** section of <%= vars.ops_manager %>, a list of the latest versions of already imported products appears automatically.
@@ -29,9 +29,9 @@ The following list describes each labeled section of the Installation Dashboard:
 
 * **F**---**Certificates:** Click this link to view certificates in your installation. For more information, see the [Certificates Page](#certificates) section of this topic for details.
 
-* **G**---**User Account Menu:** Click the arrow next to your username to view the menu. Use this menu to navigate to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more information, see [My Account](#account_settings) of this topic for details on account information. For more information, see the [Settings Page](#settings) section of this topic for details on available <%= vars.ops_manager %> settings.
+* **G**---**User Account Menu:** Click the arrow next to your username to view the menu. Use this menu to go to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more information, see [My Account](#account_settings) of this topic for details on account information. For more information, see the [Settings Page](#settings) section of this topic for details on available <%= vars.ops_manager %> settings.
 
-* **H**---**Revert:** Click the revert button to return to the previous successful installation. Any pending changes you have made to the current installation settings will be lost.
+* **H**---**Revert:** Click the revert button to return to the previous successful installation. Any pending changes you have made to the current installation settings are lost.
 
 - **I**---**Review Pending Changes**: Click the button to go to the **Review Pending
 Changes** page, which organizes pending changes by tile. You are able to activate or deactivate
@@ -47,7 +47,7 @@ information, see For more information, see [Reviewing Pending Product Changes](i
 
 ## <a id='changelog'></a> Change Log Page
 
-Navigate to the **Change Log** page by clicking the corresponding link in the dashboard header. This page shows<%= vars.ops_manager %>'s deployment history, a record of all of its **Apply Changes** actions.
+Go to the **Change Log** page by clicking the corresponding link in the dashboard header. This page shows<%= vars.ops_manager %>'s deployment history, a record of all of its **Apply Changes** actions.
 
 The following table lists the following top-level attributes for each deployment:
 
@@ -113,7 +113,7 @@ The details listed for each product are as follows:
   </tr>
 </table>
 
-A **Total** row, below the individual product rows, lists all-product totals for the **STARTED**, **FINISHED**, AND **DURATION** fields.
+A **Total** row, lists all-product totals for the **STARTED**, **FINISHED**, AND **DURATION** fields.
 
 ### <a id='changelog-using'></a> Using the Change Log Page
 
@@ -121,7 +121,7 @@ Configure the **Change Log** page by modifying the following fields:
 
 * **Installation Dashboard**---Click **Installation Dashboard** to return to the <%= vars.ops_manager %> Installation Dashboard. Alternatively, click the **Back** button in your web browser.
 
-* **Show X entries**---Click the number displayed in the **Show X entries** dropdown to choose between 10, 25, 50, and 100 entries.
+* **Show X entries**---Click the number displayed in the **Show X entries** drop-down menu to choose between 10, 25, 50, and 100 entries.
 
 * **Search**---Type in the search box to sort the Change Log page by text or integer matches. As you type, matching entries appear on the screen.
 
@@ -130,7 +130,7 @@ Configure the **Change Log** page by modifying the following fields:
 
 ## <a id='certificates'></a> Certificates Page
 
-Navigate to the **Certificates** page by clicking the corresponding link in the dashboard header. This page shows the certificates in your <%= vars.ops_manager %> installation.
+Go to the **Certificates** page by clicking the corresponding link in the dashboard header. This page shows the certificates in your <%= vars.ops_manager %> installation.
 
 The following image shows the top section of the **Certificates** page:
 
@@ -167,7 +167,7 @@ For all other certificates listed in **Excluded certificates**, see the document
 
 ## <a id='settings'></a> Settings Page
 
-Navigate to the **Settings** page by clicking on your user name, located at the upper right corner of the screen, and selecting **Settings**. On the screen that appears, select **Change Decryption Passprase**.
+Go to the **Settings** page by clicking on your user name, located at the upper right corner of the screen, and selecting **Settings**. On the screen that appears, select **Change Decryption Passprase**.
 
 ![alt-text=""](images/user_account_menu.png)
 
@@ -205,7 +205,7 @@ To change your Identity Provider (IdP) to SAML, configure the following fields:
 
 * **SAML IDP Metadata:** Enter the full URL or XML SAML IdP metadata.
 
-* **BOSH IDP Metadata:** (Optional) Enter the full URL or XML BOSH IdP metadata. If left blank, the default is the same metadata as the field above.
+* **BOSH IDP Metadata:** (Optional) Enter the full URL or XML BOSH IdP metadata. If left blank, the default is the same metadata as the preceding field.
 
 * **SAML Admin Group:** Enter the name of the SAML group that contains all of the <%= vars.ops_manager %> administrators. This field is case-sensitive.
 
@@ -281,7 +281,7 @@ To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
 ## <a id='account_settings'></a> My Account Page
 
-To change your email and password, navigate to the **My Account** page by clicking on your user name located at the upper right corner of the screen and selecting **My Account**. The **Account Settings** page includes the following information and links:
+To change your email and password, go to the **My Account** page by clicking on your user name located at the upper right corner of the screen and selecting **My Account**. The **Account Settings** page includes the following information and links:
 
 * **Profile**: The current email address and obscured password are shown.
 * **Third Party Access**: Any third-party applications authorized for use are listed here.

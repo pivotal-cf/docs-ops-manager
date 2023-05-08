@@ -6,7 +6,7 @@ owner: Ops Manager
 This topic describes how to customize role-based access control (RBAC) in <%= vars.ops_manager_first %>.
 
 
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview on Configuring RBAC in Ops Manager
 
 You can use RBAC to manage which operators in your organization can make deployment changes, view credentials, and manage user roles in <%= vars.ops_manager %>.
 
@@ -25,13 +25,13 @@ For information about configuring <%= vars.ops_manager %> to use internal authen
 
 ## <a id='about'></a> Roles in <%= vars.ops_manager %>
 
-The diagram below illustrates the roles you can assign to determine which operators in your organization make deployment changes, view credentials, and manage user roles in <%= vars.ops_manager %>. Full details are also shown in the following table.
+The folllowing diagram illustrates the roles you can assign to determine which operators in your organization make deployment changes, view credentials, and manage user roles in <%= vars.ops_manager %>. Full details are also shown in the following table.
 
 ![alt-text="Ops Manager roles diagram"](images/roles-diagram.png)
 
 <%= vars.ops_manager %> admins can use these roles to meet the security needs of their organization. The roles provide a range of privileges that are appropriate for different types of users. For example, assign either **Restricted Control** or **Restricted View** to an operator to prevent access to all <%= vars.ops_manager %> credentials.
 
-For more information about each role, see the table below:
+For more information about each role, see the following table:
 
 | <%= vars.ops_manager %> Role | Role Definition | UAA Scope |
 | ---------------------------- | --------------- | --------- |
@@ -41,7 +41,7 @@ For more information about each role, see the table below:
 | **Full View** | Operators can view <%= vars.ops_manager %> configuration settings and view credentials in the **Credentials** tab and <%= vars.ops_manager %> API endpoints. They cannot make configuration changes or click **Apply Changes**. | `opsman.full_view` |
 | **Restricted View** | Operators can view <%= vars.ops_manager %> configuration settings. They cannot make configuration changes or view credentials in the **Credentials** tab or <%= vars.ops_manager %> API endpoints. | `opsman.restricted_view` |
 
-To assign one of the above roles to an operator, see [Manage Roles with Internal Authentication](#write-internal) or [Manage Roles with SAML Authentication](#write-saml).
+To assign one of the pfreceding roles to an operator, see [Manage Roles with Internal Authentication](#write-internal) or [Manage Roles with SAML Authentication](#write-saml).
 
 When you install a new <%= vars.ops_manager %> instance, all existing users have the <%= vars.ops_manager %> Administrator role by default.
 
@@ -87,7 +87,7 @@ If you are upgrading from an older version of <%= vars.ops_manager %> and use in
   <div class="note"><strong>Notes:</strong>
     <ul>
       <li>Enabling RBAC is permanent. You cannot undo this action. When you upgrade <%= vars.ops_manager %>, your RBAC settings remain configured.</li>
-      <li>This dialog box does not appear if RBAC is already configured. With new instances of <%= vars.ops_manager %>, RBAC is permanently configured by default.</li>
+      <li>This dialog does not appear if RBAC is already configured. With new instances of <%= vars.ops_manager %>, RBAC is permanently configured by default.</li>
     </li>
   </div>
 

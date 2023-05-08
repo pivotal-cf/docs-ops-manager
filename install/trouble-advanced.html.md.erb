@@ -8,7 +8,7 @@ This topic describes using the BOSH CLI to help diagnose and resolve issues with
 review [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
 
 
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview on Advanced Troubleshooting with the BOSH CLI
 
 To follow the steps in this topic, you must log in to the BOSH Director VM. The BOSH Director runs
 on the virtual machine (VM) that <%= vars.ops_manager %> deploys on the first install of the BOSH
@@ -26,7 +26,7 @@ entire <%= vars.ops_manager %> installation.
 
 ## <a id='gather'></a> Gather Credential and IP Address Information
 
-Before you begin troubleshooting with the BOSH CLI, follow the instructions below to collect the information you need from the <%= vars.ops_manager %> interface.
+Before you begin troubleshooting with the BOSH CLI, follow the instructions to collect the information you need from the <%= vars.ops_manager %> interface.
 
 1. Open the <%= vars.ops_manager %> interface by navigating to the <%= vars.ops_manager %>
 fully qualified domain name (FQDN) in a web browser.
@@ -40,14 +40,14 @@ Director runs.
 
 1. Click the **Credentials** tab.
 
-2. Next to **Director Credentials**, click **Link to Credential**. Record these credentials.
+2. Go to **Director Credentials** and click **Link to Credential**. Record these credentials.
 
     ![alt-text=""](images/bosh-creds.png)
 
 3. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 4. **(Optional)** To prepare to troubleshoot the job VM for any other product, click the product
-tile and repeat the procedure above to record the IP address and VM credentials for that job VM.
+tile and repeat the previous procedure to record the IP address and VM credentials for that job VM.
 
 1. Log out of <%= vars.ops_manager %>.
 
@@ -72,7 +72,7 @@ and do the following:
 
 1. Record the **Bosh Commandline Credentials** from the **Credentials** tab of the BOSH Director tile.
 
-1. SSH into the <%= vars.ops_manager %> VM. For more information, see [Log in to the <%= vars.ops_manager %> VM with SSH](#ssh) above.
+1. SSH into the <%= vars.ops_manager %> VM. For more information, see [Log in to the <%= vars.ops_manager %> VM with SSH](#ssh).
 
 1. Export all the environment variables by running the following command:
 
@@ -215,7 +215,7 @@ BOSH, or `bosh -e MY-ENV -d MY-DEPLOYMENT vms` to see only the virtual machines 
 particular deployment. Replace `MY-ENV` with your environment, and, if using the `-d` flag, also
 replace `MY-DEPLOYMENT` with the name of a deployment.
 
-When troubleshooting an issue with your deployment, `bosh vms` may show a VM in
+When troubleshooting an issue with your deployment, `bosh vms` might show a VM in
 an **unknown** state.
 Run [bosh <%= vars.bosh_cloud_check %>](#cck) on a VM in an **unknown** state to instruct BOSH to
 diagnose problems with the VM.
@@ -244,7 +244,7 @@ following repair options:
 
 * `Reboot VM`: Instructs BOSH to reboot a VM. Rebooting can resolve many transient errors.
 
-* `Ignore problem`: Instructs BOSH to do nothing. You may want to ignore a problem ands instead run `bosh ssh` in an attempt to troubleshoot directly on the machine.
+* `Ignore problem`: Instructs BOSH to do nothing. You might want to ignore a problem ands instead run `bosh ssh` in an attempt to troubleshoot directly on the machine.
 
 * `Reassociate VM with corresponding instance`: Updates the BOSH Director state database. Use this option if you believe that the BOSH Director state database is in error and that a VM is correctly associated with a job.
 

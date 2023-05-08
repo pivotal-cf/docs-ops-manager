@@ -62,17 +62,17 @@ You can determine which rotation procedure to follow based on the types of certi
 
 To rotate certificates, follow one of the following procedures:
 
-* If multiple CAs are expiring soon, see [Rotate All CAs and Leaf Certificates](#bulk-rotation) below.
+* If multiple CAs are expiring soon, see [Rotate All CAs and Leaf Certificates](#bulk-rotation).
 
-* If the only certificates expiring are leaf certificates, see [Rotate All Leaf Certificates](#leaf-rotation) below.
+* If the only certificates expiring are leaf certificates, see [Rotate All Leaf Certificates](#leaf-rotation).
 
-* To only rotate a subset of CAs, see [Rotate a Single CA and Its Leaf Certificates](#single-rotation) below.
+* To only rotate a subset of CAs, see [Rotate a Single CA and Its Leaf Certificates](#single-rotation).
 
-* To rotate the Services TLS CA, see [Rotate the Services TLS CA and Its Leaf Certificates](#services-rotation) below.
+* To rotate the Services TLS CA, see [Rotate the Services TLS CA and Its Leaf Certificates](#services-rotation).
 
-* To rotate CredHub-set CAs, see [Rotate CredHub-set CAs](#set-certificate-rotation) below.
+* To rotate CredHub-set CAs, see [Rotate CredHub-set CAs](#set-certificate-rotation).
 
-* To rotate CredHub-set leaf certificates, see [Rotate CredHub-set Leaf Certificates](#set-leaf-certificate-rotation) below.
+* To rotate CredHub-set leaf certificates, see [Rotate CredHub-set Leaf Certificates](#set-leaf-certificate-rotation).
 
 <p class='note'><strong>Note:</strong> All CredHub Maestro rotation commands have a dry-run flag that can be used to preview the certificates to be modified.</p>
 
@@ -89,7 +89,7 @@ For more information, see [Troubleshooting CredHub Maestro Safety Violations Dur
 This section describes the procedure for bulk rotating all CAs and leaf certificates using CredHub Maestro.
 
 <%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use).
-<div class="note"><strong>Note:</strong> If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option can damage your deployment. You should rotate individual CA certificates and their leaf certs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
+<div class="note"><strong>Note:</strong> If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option can damage your deployment. You can rotate individual CA certificates and their leaf certs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
   <br />
   <br />
   If any of your deployments use the Services TLS CA:
@@ -97,7 +97,7 @@ This section describes the procedure for bulk rotating all CAs and leaf certific
     <li>Run all CredHub Maestro commands except <code>maestro regenerate leaf</code> with <code>--exclude /services/tls_ca</code>.</li>
     <li>Run <code>maestro regenerate leaf</code> with <code>--exclude-signed-by /services/tls_ca</code>.</li>
   </ul>
-The process for rotating the Services TLS CA requires additional steps to ensure that there is no downtime. To rotate the Services TLS CA, see <a href="#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> below.</div>
+The process for rotating the Services TLS CA requires additional steps to ensure that there is no downtime. To rotate the Services TLS CA, see <a href="#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a>.</div>
 
 To rotate all CAs and leaf certificates in CredHub:
 
@@ -168,10 +168,10 @@ will be trusted by clients. Run:
 
 This section describes the procedure for bulk rotating all leaf certificates using CredHub Maestro.
 
-<%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use) above.
+<%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use).
 
 <div class="note"><strong>Note:</strong>
-  If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option can damage your deployment. You should rotate leaf certs signed by individual CAs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
+  If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option can damage your deployment. You can rotate leaf certs signed by individual CAs instead. For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
 </div>
 
 To rotate all leaf certificates in CredHub:
@@ -278,10 +278,10 @@ To rotate the Services TLS CA and its leaf certificates:
 
 1. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
-    1. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
+    1. On the **Review Pending Changes** page, select **Select All Products** check box.
     1. For each service tile, enable the **Upgrade all service instances** errand.
 
-         <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+         <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand might be slightly different between services.</p>
 
     1. Click **Apply Changes**.
 
@@ -290,7 +290,7 @@ To rotate the Services TLS CA and its leaf certificates:
     * For Tanzu GemFire for VMs apps, rebind and restage the apps.
     * For deployments that use MySQL for VMware Tanzu, rebind and restage all non-Java MySQL apps that rely on `VCAP_SERVICES` for TLS.
 
-    <p class='note'><strong>Note:</strong> The bg-restage plugin enables zero-downtime blue-green restaging without access to the app source code. For more information, see <a href="https://github.com/orange-cloudfoundry/cf-plugin-bg-restage">bg-restage</a> on GitHub.</p>
+    <p class='note'><strong>Note:</strong> The bg-restage plug-in enables zero-downtime blue-green restaging without access to the app source code. For more information, see <a href="https://github.com/orange-cloudfoundry/cf-plugin-bg-restage">bg-restage</a> on GitHub.</p>
 
 1. Mark the signing version of the Services TLS CA as transitional by running:
 
@@ -310,7 +310,7 @@ To rotate the Services TLS CA and its leaf certificates:
     2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
     3. For each service tile, enable the **Upgrade all service instances** errand.
 
-        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand might be slightly different between services.</p>
 
     4. Click **Apply Changes**.
 
@@ -330,7 +330,7 @@ To rotate the Services TLS CA and its leaf certificates:
     2. On the **Review Pending Changes** page, enable the **Select All Products** checkbox.
     3. For each service tile, enable the **Upgrade all service instances** errand.
 
-        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand may be slightly different between services.</p>
+        <p class='note'><strong>Note:</strong> The name of the <strong>Upgrade all service instances</strong> errand might be slightly different between services.</p>
 
     4. Click **Apply Changes**.
 
@@ -443,7 +443,7 @@ To rotate a CredHub-set leaf certificate:
                 ```
                 maestro ls
                 ```
-          1. Locate the output entries whose name matches the CredHub path of the certificate that was rotated. Note that a certificate may be listed multiple times if it is associated with multiple deployments.
+          1. Locate the output entries whose name matches the CredHub path of the certificate that was rotated. Note that a certificate might be listed multiple times if it is associated with multiple deployments.
   1. For each output entry, look at the `deployment_name` key. This corresponds to a tile that you must re-deploy. Entries with a deployment name like `service-instance-*` are certificates associated with a service instance created by a service tile. You must re-deploy the corresponding service tile and enable its **Upgrade all service instances** errand.
 
 1. Re-deploy:
@@ -467,7 +467,7 @@ You can run garbage collect on leaf certificates and CAs. Generally, deleting le
 
 To see if you need to run garbage collect, do one of the following:
 
-* Manually check the BOSH Director's VM vitals through your IaaS provider.
+* Manually verify the BOSH Director's VM vitals through your IaaS provider.
 
 * SSH into the BOSH Director and run `df -h /var/vcap/store`.
 

@@ -6,15 +6,15 @@ owner: Security
 This topic describes how you can identify and update certificates that either you or another operator have set manually in BOSH CredHub.
 
 
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview on how to Identify and Update Certificates
 
 A manually set certificate is a certificate that an operator has added directly to BOSH CredHub through the CredHub CLI instead of using a CredHub-generated certificate.
 
-For example, you or another operator may have provided an existing certificate to BOSH CredHub as described in [Preparing for TLS](https://docs.pivotal.io/p-mysql/2-5/prepare-tls.html) in the MySQL for Pivotal Platform documentation.
+For example, you or another operator might have provided an existing certificate to BOSH CredHub as described in [Preparing for TLS](https://docs.pivotal.io/p-mysql/2-5/prepare-tls.html) in the MySQL for Pivotal Platform documentation.
 
 To ensure that <%= vars.ops_manager_first %> does not rotate these certificates alongside CredHub-generated certificates, you must ensure that the `generated` field of all manually set certificates is set to `false` in CredHub.
 
-In this procedure, you use the CredHub CLI to review existing certificates and then check for manually set certificates. If you find any manually set certificates that require updates, you can use the CredHub CLI to reset the certificate.
+In this procedure, use the CredHub CLI to review existing certificates and then check for manually set certificates. If you find any manually set certificates that require updates, you can use the CredHub CLI to reset the certificate.
 
 ### <a id='credhub-creds'></a> Find BOSH Client Credentials and BOSH Director IP Address
 
@@ -22,7 +22,7 @@ You need the BOSH client name and client secret to use the CredHub CLI.
 
 To find the BOSH CredHub client name and client secret:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
@@ -51,7 +51,7 @@ To find the BOSH CredHub client name and client secret:
 
 You can run CredHub CLI commands on the <%= vars.ops_manager %> VM.
 
-To login and access the CredHub API:
+To log in to and access the CredHub API:
 
 1. SSH into the <%= vars.ops_manager %> VM. For IaaS-specific instructions on how to SSH, see [Log Into the <%= vars.ops_manager %> VM with SSH](../../install/ssh-login.html#ssh-by-iaas).
 
@@ -75,7 +75,7 @@ To login and access the CredHub API:
 
 ## <a id='check-credhub-certs'></a> Check Certificates in CredHub
 
-After logging in to CredHub, you can query the CredHub API on the command line.
+After you log in to CredHub, you can query the CredHub API on the command line.
 
 To retrieve a list of CredHub certificates:
 

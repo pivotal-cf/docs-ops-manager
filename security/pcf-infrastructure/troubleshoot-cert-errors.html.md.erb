@@ -10,7 +10,7 @@ This topic provides operators with information on how to troubleshoot safety vio
 
 CredHub Maestro performs basic safety checks when rotating certificates to prevent unsafe operations.
 
-The <%= vars.ops_manager %> API invokes CredHub Maestro when rotating certificates. If a certificate rotation API command is unsafe, CredHub Maestro stops the command and returns one or more safety violations.
+The <%= vars.ops_manager %> API runs CredHub Maestro when rotating certificates. If a certificate rotation API command is unsafe, CredHub Maestro stops the command and returns one or more safety violations.
 
 The <%= vars.ops_manager %> API does not invoke CredHub Maestro and subsequently CredHub Maestro-related safety checks during certificate rotation if it detects an installation of <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.8.2 or earlier, any version of <%= vars.k8s_runtime_first %>, or any version of <%= vars.k8s_runtime_abbr_pivotal %> (<%= vars.k8s_runtime_abbr_pivotal %>).
 
@@ -32,7 +32,7 @@ To skip CredHub Maestro safety checks in the CredHub Maestro CLI, specify the `-
 
 ## <a id='error_ref'></a> Troubleshoot Certificate Rotation Safety Violations
 
-This section lists known safety violations that may occur when using the <%= vars.ops_manager %> API or CredHub Maestro CLI to rotate certificates. Each table includes the literal safety violation message, describes the safety violation, and presents possible solutions to resolve the underlying cause.
+This section lists known safety violations that might occur when using the <%= vars.ops_manager %> API or CredHub Maestro CLI to rotate certificates. Each table includes the literal safety violation message, describes the safety violation, and presents possible solutions to resolve the underlying cause.
 
 ### <a id='multiple-signing-cas'></a> Multiple Signing Versions of a CA
 
@@ -56,7 +56,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the following <%= vars.ops_manager %> API endpoints:
+    <td>This safety violation might appear after calling the following <%= vars.ops_manager %> API endpoints:
       <ul>
         <li><code>POST /api/v0/certificate_authorities/generate</code></li>
         <li><code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code></li>
@@ -85,7 +85,7 @@ This section lists known safety violations that may occur when using the <%= var
           <ul>
             <li>If the <code>signs</code> field contains a child certificate that has two versions set to <code>active: true</code> with different product tile deployment names:
               <ol>
-                <li>Navigate to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
+                <li>Go to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
                 <li>Click <strong>Review Pending Changes</strong>.</li>
                 <li>Select the product tile that is associated with the older certificate version.</li>
                 <li>Click <strong>Apply Changes</strong>.</li>
@@ -94,7 +94,7 @@ This section lists known safety violations that may occur when using the <%= var
             <li>If there are multiple child certificates and their active versions have different signed-by versions:
               <ol>
                 <li>Run <code>maestro regenerate leaf --signed-by PARENT-CA-NAME</code>, where <code>PARENT-CA-NAME</code> is the name of the signing CA.</li>
-                <li>Navigate to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
+                <li>Go to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
                 <li>Click <strong>Review Pending Changes</strong>.</li>
                 <li>Select all products.</li>
                 <li>Click <strong>Apply Changes</strong>.</li>
@@ -129,7 +129,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/generate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate ca</code> command.</td>
+    <td>This safety violation might appear after calling the <code>POST /api/v0/certificate_authorities/generate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate ca</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -164,7 +164,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the following <%= vars.ops_manager %> API endpoints:
+    <td>This safety violation might appear after calling the following <%= vars.ops_manager %> API endpoints:
       <ul>
         <li><code>POST /api/v0/certificate_authorities/generate</code></li>
         <li><code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code></li>
@@ -186,7 +186,7 @@ This section lists known safety violations that may occur when using the <%= var
       <br>
       <br>
       <ol>
-        <li>Navigate to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
+        <li>Go to the <strong><%= vars.ops_manager %> Installation Dashboard</strong>.</li>
         <li>Click <strong>Review Pending Changes</strong>.</li>
         <li>Select all products.</li>
         <li>Click <strong>Apply Changes</strong>.</li>
@@ -219,7 +219,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional signing</code> command.</td>
+    <td>This safety violation might appear after calling the <code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional signing</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -265,7 +265,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+    <td>This safety violation might appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -277,7 +277,7 @@ This section lists known safety violations that may occur when using the <%= var
     <td>Continue with the certificate rotation procedure. In most cases, this means clicking <strong>Apply Changes</strong> in the <%= vars.ops_manager %> Installation Dashboard. Do not run earlier commands after the rotation process has started.
     <br>
     <br>
-    If you believe you are running the steps in the correct order, it is possible that a new leaf was issued while the rotation process was in progress. You may also receive the <code>there is more than one signing version</code></a> error described in <a href="#multiple-signing-cas">Multiple Signing Versions of a CA</a> above. If this safety violation error appears, follow the mitigation steps for that error.
+    If you believe you are running the steps in the correct order, it is possible that a new leaf was issued while the rotation process was in progress. You can also receive the <code>there is more than one signing version</code></a> error described in <a href="#multiple-signing-cas">Multiple Signing Versions of a CA</a>. If this safety violation error appears, follow the mitigation steps for that error.
     </td>
   </tr>
 </table>
@@ -306,7 +306,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+    <td>This safety violation might appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -346,7 +346,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+    <td>This safety violation might appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -391,7 +391,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
+    <td>This safety violation might appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -440,7 +440,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
+    <td>This safety violation might appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -475,7 +475,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
+    <td>This safety violation might appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>
@@ -510,7 +510,7 @@ This section lists known safety violations that may occur when using the <%= var
   </tr>
   <tr>
     <th>Related Commands</th>
-    <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
+    <td>This safety violation might appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
   </tr>
   <tr>
     <th>Cause</th>

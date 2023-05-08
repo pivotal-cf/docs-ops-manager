@@ -15,12 +15,12 @@ Amazon Web Services (AWS) after [Deploying <%= vars.ops_manager %> on AWS Using 
 
 ## <a id='prereq'></a> Prerequisites
 
-To complete the procedures in this topic, you must have access to the output from when you ran `terraform apply` to create resources for this deployment. You can view this output at any time by running `terraform output`. You use the values in your Terraform output to configure the BOSH Director tile.
+To complete the procedures in this topic, you must have access to the output from when you ran `terraform apply` to create resources for this deployment. You can view this output at any time by running `terraform output`. Use the values in your Terraform output to configure the BOSH Director tile.
 
 
 ## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
 
-1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %>. Use the `ops_manager_dns` value from running `terraform output`.
+1. In a web browser, go to the fully qualified domain name (FQDN) of <%= vars.ops_manager %>. Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
@@ -82,7 +82,7 @@ To complete the procedures in this topic, you must have access to the output fro
 2. To add the network configuration you created for your VPC:
   1. Click **Add Network**.
   2. For **Name**, enter `infrastructure`.
-  3. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the table below for the information required to create all three subnets:
+  3. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the following table for the information required to create all three subnets:
     <table>
       <tr>
         <th rowspan="7">First<br>Subnet</th>
@@ -170,7 +170,7 @@ To complete the procedures in this topic, you must have access to the output fro
   <br><br>
   1. Click **Add Network**.
   2. For **Name**, enter the name of your runtime. For example, `pas` or `pks`.
-  3. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the table below for the information required to create all three subnets:
+  3. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the following table for the information required to create all three subnets:
     <table>
       <tr>
         <th rowspan="7">First<br>Subnet</th>
@@ -258,7 +258,7 @@ To complete the procedures in this topic, you must have access to the output fro
   <br><br>
   1. Click **Add Network**.
   2. For **Name**, enter `services`.
-  3. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the table below for the information required to create all three subnets:
+  3. Create a subnet for each availability zone by clicking **Add Subnet**. Refer to the following table for the information required to create all three subnets:
     <table>
       <tr>
         <th rowspan="7">First<br>Subnet</th>

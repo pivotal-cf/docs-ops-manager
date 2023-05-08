@@ -3,7 +3,7 @@ title: vSphere Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on vSphere.
+This topic describes the reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>, on vSphere.
 It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
 
 For additional requirements and installation instructions for <%= vars.ops_manager %> on vSphere, see [Installing <%= vars.ops_manager %> on vSphere](../../install/vsphere.html).
@@ -18,11 +18,11 @@ vSphere offers NSX-T and NSX-V to support SDN infrastructure.
 
 * <%= vars.app_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-T](#pas-nsx-t).
 
-* <%= vars.app_runtime_abbr %> on vSphere with NSX-V. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-V](#pas-nsx-v).
-
 * <%= vars.app_runtime_abbr %> on vSphere without NSX. For more information, see [<%= vars.app_runtime_abbr %> on vSphere without NSX](#pas-no-nsx).
 
 * <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere with NSX-T](#pks-nsx-t).
+
+* <%= vars.k8s_runtime_abbr %> on vSphere without NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere without NSX-T](#pks-without-nsx-t).
 
 * <%= vars.k8s_runtime_abbr %> on vSphere without NSX-T. For more information, see [<%= vars.k8s_runtime_abbr %> on vSphere without NSX-T](#pks-without-nsx-t).
 
@@ -34,21 +34,21 @@ such as network, load balancing, and storage capacity requirements and recommend
 
 <%= vars.app_runtime_abbr %> on vSphere with NSX-T supports these following SDN features:
 
-* Virtualized, encapsulated networks and encapsulated broadcast domains
+* Virtualized, encapsulated networks and encapsulated broadcast domains.
 
-* VLAN exhaustion avoidance with the use of virtualized Logical Networks
+* VLAN exhaustion avoidance with the use of virtualized Logical Networks.
 
-* DNAT/SNAT services to create separate, non-routable network spaces for the <%= vars.app_runtime_abbr %> installation
+* DNAT/SNAT services to create separate, non-routable network spaces for the <%= vars.app_runtime_abbr %> installation.
 
-* Load balancing services to pass traffic through Layer 4 to pools of platform routers at Layer 7
+* Load balancing services to pass traffic through Layer 4 to pools of platform routers at Layer 7.
 
-* SSL termination at the load balancer at Layer 7 with the option to forward on at Layer 4 or 7 with unique certificates
+* SSL stoppage at the load balancer at Layer 7 with the option to forward on at Layer 4 or 7 with unique certificates.
 
-* Virtual, distributed routing and firewall services native to the hypervisor
+* Virtual, distributed routing and firewall services native to the hypervisor.
 
 ### <a id='pas-nsx-t-diagram'></a> Architecture
 
-The diagram below illustrates reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments:
+The following diagram illustrates reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments:
 
 ![alt-text="Architecture on vSphere with NSX-T deployment. For detailed information about the components and networking shown, see the following description."](../images/v2/export/PAS_vSphere_NSX-T.png)
 
@@ -153,7 +153,7 @@ With this arrangement, all VMs in the same installation and cluster share a dedi
 
 * **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
 
-<p class='note'><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
+<p class='note'><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores can be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
 <p class='note'><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must deactivate the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">Migrating <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
 
@@ -261,7 +261,7 @@ For information about horizontal and vertical shared storage, see [Shared Storag
 
 * **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
 
-<p class='note'><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
+<p class='note'><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores can be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
 <p class='note'><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must deactivate the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
 
@@ -304,7 +304,7 @@ However, it has not been validated for <%= vars.app_runtime_abbr %> <%= vars.v_m
 
 Without an SDN, IP address allocations all come from routed network space. Discussions and planning within your organization are essential to acquiring the necessary amount of IP address space for a <%= vars.app_runtime_abbr %> deployment with future growth considerations. This is because routed IP address space is a premium resource, and adding more later is difficult, costly, and time-consuming.
 
-Below is a best-guess layout for IP address space utilization in a single <%= vars.app_runtime_abbr %> deployment:
+This is a best-guess layout for IP address space utilization in a single <%= vars.app_runtime_abbr %> deployment:
 
 * Infrastructure - `/28`
 
@@ -324,7 +324,7 @@ These sections describe the reference architecture for <%= vars.k8s_runtime_abbr
 
 ### <a id='pks-nsx-t-diagram'></a> Architecture
 
-The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments.
+The following diagram illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments.
 
 ![alt-text="Architecture on vSphere with NSX-T deployment. For detailed information about the components and networking shown, see the following description."](../images/v2/export/PKS_vSphere_NSX-T.png)
 
@@ -437,13 +437,13 @@ For <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments, networks are
 
 To accommodate these dynamically-created networks, <%= vars.company_name %> recommends that you use multiple clusters, rather than a single cluster with multiple namespaces.
 
-Multiple clusters provide additional features such as security, customization on a per-cluster basis, privileged containers, failure domains, and version choice. Namespaces should be used as a naming construct and not as a tenancy construct.
+Multiple clusters provide additional features such as security, customization on a per-cluster basis, privileged containers, failure domains, and version choice. Namespaces can be used as a naming construct and not as a tenancy construct.
 
 ### <a id='pks-nsx-t-master-nodes'></a> Master Nodes
 
 The <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T architecture supports multiple master nodes for <%= vars.k8s_runtime_abbr %> v1.2 and later.
 
-You can define the number of master nodes per plan in the <%= vars.k8s_runtime_abbr %> tile in <%= vars.ops_manager %>. The number of master nodes should be an odd number to allow `etcd` to form a quorum.
+You can define the number of master nodes per plan in the <%= vars.k8s_runtime_abbr %> tile in <%= vars.ops_manager %>. The number of master nodes can be an odd number to allow `etcd` to form a quorum.
 
 <%= vars.company_name %> recommends that you have at least one master node per AZ for HA and disaster recovery.
 

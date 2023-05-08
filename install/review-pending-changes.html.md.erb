@@ -9,8 +9,7 @@ Deploying tiles selectively can dramatically reduce deployment time.
 
 ## <a id='review-pending-changes'></a> Review Pending Changes Page
 
-The following screenshot shows the **Review Pending Changes** page. The features called out with
-red letters are described below.
+The following image shows the **Review Pending Changes** page. The features called out with red letters are described in the following sections.
 
 <%# Screenshot written in Omnigraffle. Edit in ./images/omnigraffle/review-pending-changes.graffle %>
 
@@ -70,12 +69,12 @@ You might see some of the following warnings:
     - Stemcell is updated.
 
 - **G**---**Errands:** If you expand this section, you can activate or deactivate errands that trigger when that tile
-deploys. For example, you may enable an errand to log properties. For more information,
+deploys. For example, you might enable an errand to log properties. For more information,
 see [Managing Errands in <%= vars.ops_manager %>](managing_errands.html).
 
 - **H**---**Staged:** This section indicates the status of the tile.
-
-- **I**---**See Changes:** Clicking this button takes you to the [Pending Changes](#pending-changes) page for that tile.
+* **I** --- **See Changes:** When you click this button, it takes you to the **Pending Changes** page for that tile. For more information, see [About Pending Changes
+for a Specific Tile](#pending-changes).
 
 - **J**---**Apply Changes:** Clicking this button deploys all enabled tiles.
 
@@ -97,11 +96,12 @@ To see changes for a specific tile:
 
 1. On the Review Pending Changes page, click **See Changes** on the tile you wish to review. A new tab opens.
 
-1. Review the changes displayed. Settings that have been **disabled** are displayed in red with a minus sign (**-**). Settings that have been **enabled** are displayed in green with a plus sign (**+**).
+1. Review the changes that appear. Settings that have been _activated_ are displayed in green with a **+** sign. Settings that have been _deactivated_ are
+displayed in red with a **-** sign.
 
 1. Close the tab and return to the Review Pending Changes page to apply the changes or review other tiles.
 
-The screenshot below shows changes to the BOSH Director's manifest.
+The following image shows changes to the BOSH Director's manifest.
 
 ![alt-text=""](images/pending-tile-changes.png)
 
