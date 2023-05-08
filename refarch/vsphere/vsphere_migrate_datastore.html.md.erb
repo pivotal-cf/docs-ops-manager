@@ -8,16 +8,16 @@ This topic describes how to migrate your <%= vars.ops_manager_first %> installat
 
 ## <a id='prereqs'></a> Prerequisites
 
-Both the new and existing vSphere datastores must reside in the same datacenter.
+Both the new and existing vSphere datastores must reside in the same data center.
 
 To avoid service disruption, <%= vars.company_name %> recommends that you configure your overall <%= vars.ops_manager %> deployment for high availability (HA). In addition, check for configurations necessary to achieve HA in each of your installed product tiles.
 
-If your environment has any single points of failure, service may be disrupted as a result of the migration.
+If your environment has any single points of failure, service might be disrupted as a result of the migration.
 
 
 ## <a id='prep'></a> Before You Begin
 
-These sections describe the steps you should perform prior to the migration.
+The following sections describe the steps you can do prior to the migration.
 
 ### <a id='backup'></a> Step 1: Back Up Your Environment
 
@@ -27,7 +27,7 @@ For more information about how to back up <%= vars.ops_manager %>, see [Backing 
 
 ### <a id='doc'></a> Step 2: Document Current Environment Settings
 
-Document your current environment settings before proceeding with the datastore migration. Record which VMs are running
+Document your current environment settings before you proceed with the datastore migration. Record which VMs are running
 and in which datastore they reside. If you experience any issues during or after the migration, you must have this
 information to restore your environment.
 
@@ -65,7 +65,7 @@ In each tile installed in your <%= vars.ops_manager %> deployment, check the **S
 
 To check the status of your BOSH Director:
 
-1. Check that there are no pending changes and that the status of all tiles is green.
+1. Verify that there are no pending changes and that the status of all tiles is green.
 
 1. Make sure the last Installation Log does not contain any errors.
 
@@ -76,7 +76,7 @@ To check the status of your BOSH Director:
 
 To migrate your <%= vars.ops_manager %> deployment to a new datastore:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
@@ -103,6 +103,6 @@ To migrate your <%= vars.ops_manager %> deployment to a new datastore:
 
 3. Click **Review Pending Changes**.
 
-4. If you are using any service tiles, select the **Recreate All On-Demand Service Instances** errand for each of the tiles you migrate.
+4. If you use any service tiles, select the **Recreate All On-Demand Service Instances** errand for each of the tiles you migrate.
 
 5. Click **Apply Changes**.

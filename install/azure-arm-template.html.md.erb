@@ -6,7 +6,7 @@ owner: Ops Manager
 This topic describes how to deploy BOSH Director for <%= vars.ops_manager_first %> on Azure using an Azure Resource Manager (ARM) template.
 
 
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview on Deploying BOSH and Ops Manager to Azure with ARM
 
 An ARM template is a JSON file that describes one or more resources to deploy to a resource group.
 
@@ -83,14 +83,14 @@ To create a BOSH storage account:
     az storage account show-connection-string \
     --name $STORAGE_NAME --resource-group $RESOURCE_GROUP
     ```
-    The command returns output similar to the example below:
+    The command returns output similar to the following example:
     <pre class="terminal">
     {
       "connectionString": "DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=cfdocsdeploystorage1;AccountKey=EXAMPLEaaabbbcccMf8wEwdeJMvvonrbmNk27bfkSL8ZFzAhs3Kb78si5CTPHhjHHiK4qPcYzn/8OmFg=="
     }
     </pre>
 
-1. Record the full value of `connectionString` from the output above, starting with and including `DefaultEndpointsProtocol=`.
+1. Record the full value of `connectionString` from the preceding output, starting with and including `DefaultEndpointsProtocol=`.
 
 1. Export the connection string by running:
 
@@ -146,7 +146,7 @@ To create a BOSH storage account:
 
 To copy your <%= vars.ops_manager %> image:
 
-1. Navigate to the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network and download the latest release of **<%= vars.ops_manager %> for Azure**. You can download either a PDF or a YAML file.
+1. Go to the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network and download the latest release of **<%= vars.ops_manager %> for Azure**. You can download either a PDF or a YAML file.
 
 1. View the downloaded file and locate the <%= vars.ops_manager %> image URL appropriate for your region.
 
@@ -195,7 +195,7 @@ To copy your <%= vars.ops_manager %> image:
     ssh-keygen -t rsa -f opsman -C ubuntu
     ```
     <br>
-    When prompted for a passphrase, follow the prompts to provide an empty passphrase.
+    When you are prompted for a passphrase, follow the prompts to provide an empty passphrase.
 
 1. Download the latest release of the <%= vars.ops_manager %> Azure ARM Templates. For <%= vars.platform_name_pivotal %> v1.11 and later, download [1.11](https://github.com/pivotal-cf/pcf-azure-arm-templates/releases/tag/1.11%2B) from the <%= vars.platform_code_pivotal %> Azure Resource Manager (ARM) Templates repository on GitHub.
 
@@ -206,7 +206,7 @@ To copy your <%= vars.ops_manager %> image:
         * For Azure China, use `blob.core.chinacloudapi.cn`. For more information, see [Azure China developer guide](https://docs.microsoft.com/en-us/azure/china/china-get-started-developer-guide) in the Microsoft Azure documentation.
         * For Azure Government Cloud, use `blob.core.usgovcloudapi.net`. For more information, see [Azure Government storage](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-storage) in the Microsoft Azure documentation.
         * For Azure Germany, use `blob.core.cloudapi.de`. For more information, see [Azure Germany developer guide](https://docs.microsoft.com/en-us/azure/germany/germany-developer-guide) in the Microsoft Azure documentation.
-    * **AdminSSHKey:** The contents of the `opsman.pub` public key file that you created above.
+    * **AdminSSHKey:** The contents of the `opsman.pub` public key file that you created previously.
     * **Location:** The location to install the <%= vars.ops_manager %> VM. For example, `westus`.
     * **Environment:** Tag template-created resources for assisting with resource management.
 
@@ -245,7 +245,7 @@ To deploy the ARM template:
 
 To finish configuring the BOSH Director:
 
-1. Navigate to your DNS provider and create an entry that points a fully-qualified domain name (FQDN) in your domain to the IP address of the <%= vars.ops_manager %> VM.
+1. Go to your DNS provider and create an entry that points a fully-qualified domain name (FQDN) in your domain to the IP address of the <%= vars.ops_manager %> VM.
   <p class='note'><strong>Note:</strong> If the ARM template deployment does not return an IP address in the output of <code>opsMan-FQDN</code>, then visit the Azure Portal to retrieve the public IP address of the new <%= vars.ops_manager %> virtual machine.</p>
 
 1. Continue to [Configuring BOSH Director on Azure](../azure/config-manual.html).

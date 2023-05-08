@@ -32,7 +32,7 @@ To verify that your backup artifact contains the org you need to restore:
     ```
     Where `ORG-TO-RESTORE` is the org you need to restore.
 
-If you see the following line in the output of the above command, then you can restore this org:
+If you see the following line in the output of the receding command, then you can restore this org:
 
 ```
 INSERT INTO `organizations` VALUES (..., ,'ORG-TO-RESTORE', ...);
@@ -52,7 +52,7 @@ To verify that your backup artifact contains the space you need to restore:
     ```
     Where `SPACE-TO-RESTORE` is the space you need to restore.
 
-If you see the following line in the output of the above command, then you can restore this space:
+If you see the following line in the output of the preceding command, then you can restore this space:
 
 ```
 INSERT INTO `spaces` VALUES (..., ,'SPACE-TO-RESTORE', ...);
@@ -72,7 +72,7 @@ To verify that your backup artifact contains the user you need to restore:
     ```
     Where `USER-TO-RESTORE` is the user you need to restore.
 
-If you see the following line in the output of the above command, then you can restore this user:
+If you see the following line in the output of the preceding command, then you can restore this user:
 
 ```
 INSERT INTO `users` VALUES (..., ,'USER-TO-RESTORE', ...);
@@ -92,7 +92,7 @@ To verify that your backup artifact contains the route you need to restore:
     ```
     Where `ROUTE-TO-RESTORE` is the route you need to restore.
 
-If you see the following line in the output of the above command, then you can restore this user:
+If you see the following line in the output of the preceding command, then you can restore this user:
 
 ```
 INSERT INTO `routes` VALUES (..., ,'ROUTE-TO-RESTORE', ...);
@@ -112,7 +112,7 @@ To verify that your backup artifact contains the domain you need to restore:
     ```
     Where `DOMAIN-TO-RESTORE` is the domain you need to restore.
 
-If you see the following line in the output of the above command, then you can restore this domain:
+If you see the following line in the output of the preceding command, then you can restore this domain:
 
 ```
 INSERT INTO `domains` VALUES (..., ,'DOMAIN-TO-RESTORE', ...);
@@ -143,7 +143,7 @@ you need to restore:
     ```
     Where `APP-DROPLET` is the droplet for the app that you need to restore.
 
-If you see the following line in the output of the above command, then you can
+If you see the following line in the output of the preceding command, then you can
 restore this app:
 
 ```
@@ -155,7 +155,7 @@ Where:
 * `APP-TO-RESTORE` is the app you need to restore.
 * `APP-DROPLET` is the droplet for the app that you need to restore.
 
-<p class='note'><strong>Note:</strong> If you use an external blobstore, go to your IaaS console and check the backup bucket to verify that the droplet is present.</p>
+<p class='note'><strong>Note:</strong> If you use an external blobstore, go to your IaaS console and verify that the backup bucket for the droplet is present.</p>
 
 
 ## <a id='perform-restore'></a> Perform the Restore
@@ -166,7 +166,7 @@ Where:
 
 To run a <%= vars.app_runtime_abbr %> restore, follow the BBR instructions in [Step 14: Restore <%= vars.app_runtime_abbr %>](../restore-pcf-bbr.html#restore-ert) in _Restoring Deployments from Backup with BBR_.
 
-After a restore, <%= vars.app_runtime_abbr %> should roll back to its state at the time when the backup was taken, and contain the data that you had previously lost.
+After a restore, <%= vars.app_runtime_abbr %> rolls back to its state at the time when the backup was taken, and contain the data that you had previously lost.
 
 
 ## <a id='consolidating-environment'></a> Consolidate Your Environment

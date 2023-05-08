@@ -3,7 +3,7 @@ title: VMC Reference Architecture
 owner: TAS-Anycloud
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager_first %>, including <%= vars.app_runtime_first %>, on VMware Managed Cloud for AWS (VMC). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
+This topic describes the reference architecture for <%= vars.ops_manager_first %>, including <%= vars.app_runtime_first %>, on VMware Managed Cloud for AWS (VMC). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
 
 For specific installation instructions for running <%= vars.app_runtime_abbr %> on VMC, see [Deploying <%= vars.app_runtime_abbr %> to VMC](https://docs.pivotal.io/application-service/operating/vmc.html).
 
@@ -54,7 +54,7 @@ For better security, use a gateway endpoint so that only requests from your SDDC
 
 1. Create a gateway endpoint for S3. Follow Step 1 in [Access an S3 Bucket Using an S3 Endpoint](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws-operations/GUID-B501FA3C-EAF9-4005-AC72-155C3F592281.html).
 1. Create the S3 buckets required by <%= vars.app_runtime_abbr %>.
-1. Add a security rule that disallows requests to the S3 bucket unless they come through the VPC endpoint. For more information, see [How can I restrict access to my Amazon S3 bucket using specific VPC endpoints or IP addresses?](https://aws.amazon.com/premiumsupport/knowledge-center/block-s3-traffic-vpc-ip/) in the AWS documentation. This should look like the following:
+1. Add a security rule that disallows requests to the S3 bucket unless they come through the VPC endpoint. For more information, see [How can I restrict access to my Amazon S3 bucket using specific VPC endpoints or IP addresses?](https://aws.amazon.com/premiumsupport/knowledge-center/block-s3-traffic-vpc-ip/) in the AWS documentation. This can look like the following:
 
 	  ```
 	  {

@@ -46,8 +46,8 @@ API documentation.
   * **BOSH DNS CAs:** The BOSH DNS CAs are managed by CredHub and applied automatically.
 
 * **Other CredHub-managed certificates:** You can also manage CAs and leaf certificates stored
-in CredHub, such as the Diego root CA. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these
-include the cluster-specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
+in CredHub. For example, the Diego root CA. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these
+include the cluster specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
 
 * **Non-configurable certificates:** Non-configurable certificates are leaf certificates either
 created by a CA stored in <%= vars.ops_manager %>, or created and stored by CredHub and managed

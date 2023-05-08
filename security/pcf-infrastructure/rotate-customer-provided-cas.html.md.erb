@@ -10,13 +10,13 @@ This topic describes how to handle customer-provided certificate authorities (CA
 
 If you have customer-provided CAs, CredHub Maestro requires that you perform manual steps at the beginning of the certificate rotation process to correctly handle those customer-provided CAs.
 
-If you are unsure whether customer-provided CAs are installed, see [Check for Customer-Provided CAs](#ca-check) below.
+If you are unsure whether customer-provided CAs are installed, see [Check for Customer-Provided CAs](#ca-check).
 
 To handle customer-provided CAs, you can use one of two methods:
 
-- **Method One:** If the certificate rotation process is unstarted, see [Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs](#method-one) below.
+- **Method One:** If the certificate rotation process is unstarted, see [Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs](#method-one).
 
-- **Method Two:** If you are already in the process of rotating certificates, see [Method Two: Manually Replace the Customer-Provided CAs](#method-two) below. You can use this procedure after encountering the following Maestro error:
+- **Method Two:** If you are already in the process of rotating certificates, see [Method Two: Manually Replace the Customer-Provided CAs](#method-two). You can use this procedure after encountering the following Maestro error:
    <pre>certificate authorities latest version is not transitional</pre>
 
 
@@ -73,7 +73,7 @@ The payload that must be provided to the request has the following structure:
 
 ## <a id='method-two'></a> Method Two: Manually Replace the Customer-Provided CAs
 
-This method must be performed after rotation has been started; it cannot be performed before rotation has started. It should be performed immediately after rotation has been started, but can be performed after Maestro emits the `certificate authorities latest version is not transitional` error.
+This method must be performed after rotation has been started; it cannot be performed before rotation has started. It must be performed immediately after rotation has been started, but can be performed after Maestro emits the `certificate authorities latest version is not transitional` error.
 
 The steps in this method are as follows:
 
@@ -89,7 +89,7 @@ The structure of the `credhub curl` invocation to set the `transitional` flag on
 credhub curl -i -X PUT -p api/v1/certificates/$CERTIFICATE_ID/update_transitional_version -d '{"version": "$VERSION_ID"}'
 ```
 
-So, in order to set the `transitional` flag, you must gather the certificate ID of each certificate and the version ID of the latest version of each certificate.
+To set the `transitional` flag, you must gather the certificate ID of each certificate and the version ID of the latest version of each certificate.
 
 To retrieve the certificate ID of each certificate that must be updated, consult the output of `maestro topology`. Search the `versions` array associated with the certificate for an item that has a `valid_until` date that matches the expiry date of the certificate that was loaded with `credhub set`.
 
@@ -122,6 +122,6 @@ topology:
               valid_until: 2022-04-09T23:30:45Z
 ```
 
-Given this output, you will use the `update_transitional_version` endpoint on the certificate with the id `75b9f5a6-f3c6-42f8-a834-3cfa6098c73a` and the version with the id `7e172086-a08d-4e62-98ba-308942a52e8a`.
+Given this output, use the `update_transitional_version` endpoint on the certificate with the id `75b9f5a6-f3c6-42f8-a834-3cfa6098c73a` and the version with the id `7e172086-a08d-4e62-98ba-308942a52e8a`.
 
-After performing this operation on each customer-provided CA, you can continue with the normal Certificate Rotation process.
+After you complete this operation on each customer-provided CA, you can continue with the normal Certificate Rotation process.

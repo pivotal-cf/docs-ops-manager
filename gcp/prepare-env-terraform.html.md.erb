@@ -11,7 +11,7 @@ This guide describes the preparation steps required to install <%= vars.ops_mana
 
 The Terraform template for <%= vars.ops_manager %> on GCP describes a set of GCP resources and properties. For more information about how Terraform creates resources in GCP, see [Google Cloud Provider](https://www.terraform.io/docs/providers/google/index.html) on the Terraform site.
 
-You may also find it helpful to review different deployment options in [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
+You might find it helpful to review different deployment options in [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
 
 
 ## <a id='prereqs'></a> Prerequisites
@@ -35,12 +35,12 @@ In addition to fulfilling the prerequisites listed in [Installing <%= vars.ops_m
 To use the Terraform templates to create the necessary infrastructure
 resources for <%= vars.ops_manager %>, you need a service account key file.
 <br><br>
-To create an account key file, follow the procedure below corresponding to your own use case.
+To create an account key file, follow the procedure that goes with your own use case.
 
   <ul>
     <li>**I already have a service account I want to use:**</li>
     <ol>
-      <li>Navigate to the GCP console.</li>
+      <li>Go to the GCP console.</li>
       <li>Select **IAM** and locate your service account.</li>
       <li>From the **Options** column, open the dropdown and click **Create Key**.</li>
     </ol>
@@ -67,9 +67,9 @@ To create an account key file, follow the procedure below corresponding to your 
 
 Before you can run Terraform commands to provision infrastructure resources,
 you must download the GCP Terraform Templates and create a Terraform template variables
-file as described below:
+file:
 
-1. On [VMware Tanzu Network](https://network.pivotal.io), navigate to the <%= vars.app_runtime_first %> release.
+1. On [VMware Tanzu Network](https://network.pivotal.io), go to the <%= vars.app_runtime_first %> release.
 
 1. Download the GCP Terraform ZIP file.
 
@@ -77,13 +77,13 @@ file as described below:
 
 1. Move the extracted folder to the `workspace` directory on your local machine.
 
-1. On the command line, navigate to the directory. For example:
+1. On the command line, go to the directory. For example:
 
     <pre class="terminal">
     $ cd ~/workspace/pivotal-cf-terraforming-gcp
     </pre>
 
-1. Navigate to the `terraforming-pas` or `terraforming-pks` directory that contains
+1. Go to the `terraforming-pas` or `terraforming-pks` directory that contains
 the Terraform files for your runtime.
 
 1. In the runtime directory, create a text file named `terraform.tfvars`.
@@ -118,7 +118,7 @@ the Terraform files for your runtime.
 
     ```
 
-1. Edit the values in the file according to the table below.
+1. Edit the values in the file according to the following table:
   <table>
     <tr>
       <th style="width: 35%">Value to replace</th>
@@ -185,7 +185,7 @@ Complete this step if you want to do any of the following:
 
 * Deactivate generated GCP service account key for blobstore
 
-In your `terraform.tfvars` file, specify the appropriate variables from the sections below.
+In your `terraform.tfvars` file, specify the appropriate variables from the following sections.
 
 <p class='note'><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
 
@@ -261,14 +261,14 @@ Follow these steps to use the Terraform CLI to create resources on GCP:
 1. Run the following command to create the execution plan for Terraform.
     <pre>terraform plan -out=plan</pre>
 
-1. To execute the plan from the previous step, run the following command:
+1. To do the plan from the previous step, run the following command:
     <pre>terraform apply plan</pre>
-    <p class='note'><strong>Note:</strong> It may take several minutes for Terraform to create all the resources in GCP.
+    <p class='note'><strong>Note:</strong> It might take several minutes for Terraform to create all the resources in GCP.
 
 
 ## <a id='dns'></a> Step 5: Create DNS Record
 
-1. In a browser, navigate to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
+1. In a browser, go to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
 
 1. Create a new NS (Name server) record for your <%= vars.ops_manager %> system domain. Your system domain is `YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX`.
   1. In this record, enter the name servers included in `env_dns_zone_name_servers` from your Terraform output.

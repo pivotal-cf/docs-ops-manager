@@ -14,14 +14,14 @@ By following the procedures in this topic, you can use full disk encryption for 
 
 There is no performance penalty for using encrypted EBS volumes. <%= vars.company_name %> recommends that all users of <%= vars.ops_manager %> on AWS enable encryption.
 
-<p class='note'><strong>Note:</strong> Before you enable EBS encryption with KMS, you may need to update your AWS policy. For more information, see <a href="policy-doc.html#add-policies">Add Additional AWS Policies</a>.</p>
+<p class='note'><strong>Note:</strong> Before you enable EBS encryption with KMS, you might need to update your AWS policy. For more information, see <a href="policy-doc.html#add-policies">Add Additional AWS Policies</a>.</p>
 
 
 ## <a id='enable-bosh'></a> Enable Encryption for BOSH
 
 To enable EBS encryption:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
@@ -30,15 +30,15 @@ To enable EBS encryption:
     ![alt-text=""](images/cloudform/aws-config.png)
 
 2. Select the **Encrypt Linux EBS Volumes** check box.
-	<p class='note'><strong>Note:</strong> <strong>Encrypt Linux EBS Volumes</strong> is a global setting. When enabled, the <strong>Encrypt Linux EBS Volumes</strong> checkbox enables encryption on all Linux VMs deployed by BOSH for all product tiles. Windows VMs are not encrypted.</p>
+	<p class='note'><strong>Note:</strong> <strong>Encrypt Linux EBS Volumes</strong> is a global setting. When enabled, the <strong>Encrypt Linux EBS Volumes</strong> check box enables encryption on all Linux VMs deployed by BOSH for all product tiles. Windows VMs are not encrypted.</p>
 
-3. (Optional) Enter a **Custom Encryption Key**. You can create an encryption key in the **IAM** section of your **AWS Management Console**. Look for the Amazon Resource Name (ARN) and copy that value. The ARN should look similar to the following:
+3. (Optional) Enter a **Custom Encryption Key**. You can create an encryption key in the **IAM** section of your **AWS Management Console**. Look for the Amazon Resource Name (ARN) and copy that value. The ARN must look similar to the following:
 
 	```
 	arn:aws:kms:us-east-1:123456789012:
 key/12345678-9012-3456-7890-123456789012
 	```
-	If you leave the field empty, the encryption key defaults to the Amazon account key. For more information about creating your own encryption key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) and [Viewing Keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html) in the AWS documentation.
+	If you leave the field blank, the encryption key defaults to the Amazon account key. For more information about creating your own encryption key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) and [Viewing Keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html) in the AWS documentation.
 
 	<p class='note'><strong>Note:</strong> AWS rotates your KMS automatically each year. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html">Rotating AWS KMS Keys</a> in the AWS Documentation.</p>
 
@@ -71,7 +71,7 @@ key/12345678-9012-3456-7890-123456789012
 
     ![alt-text="Example list of Ops Manager Amazon EBS Encryption errors."](images/cloudform/encrypt-ebs-errors.png)
 
-	If you find a job that should be encrypted in the error list, modify the instance type for that job in the **Resource Config** page of the <%= vars.app_runtime_abbr %> tile. Select an instance type that supports encryption. <%= vars.company_name %> recommends using `t3.large`.
+	If you find a job that can be encrypted in the error list, modify the instance type for that job in the **Resource Config** page of the <%= vars.app_runtime_abbr %> tile. Select an instance type that supports encryption. <%= vars.company_name %> recommends using `t3.large`.
 
 1. After you make your changes in <%= vars.app_runtime_abbr %>, return to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -79,7 +79,7 @@ key/12345678-9012-3456-7890-123456789012
 
 3. Click **Apply Changes**.
 
-<p class='note caution'><strong>Caution:</strong> After you activate or deactivate the <strong>Encrypt Linux EBS Volumes</strong> checkbox, click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
+<p class='note caution'><strong>Caution:</strong> After you activate or deactivate the <strong>Encrypt Linux EBS Volumes</strong> check box, click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
 
 ## <a id='enable-om'></a> Enable Encryption for <%= vars.ops_manager %>
 

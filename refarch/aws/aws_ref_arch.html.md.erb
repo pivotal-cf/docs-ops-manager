@@ -3,18 +3,18 @@ title: AWS Reference Architecture
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager_first %>, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>, on Amazon Web Services (AWS). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
+This topic describes the reference architecture for <%= vars.ops_manager_first %>, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>, on Amazon Web Services (AWS). It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
 
 For general requirements for running <%= vars.ops_manager %> and specific requirements for running <%= vars.ops_manager %> on AWS, see [<%= vars.ops_manager %> on AWS Requirements](../../install/aws.html).
 
 
 ## <a id='pas'></a> <%= vars.app_runtime_abbr %>
 
-This section describes a reference architecture for a <%= vars.app_runtime_abbr %> installation on AWS.
+This section describes the reference architecture for a <%= vars.app_runtime_abbr %> installation on AWS.
 
 ### <a id='diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader internet into the VPC Network. Categories of elements in the VPC Network include:
+The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
 
 * Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
 * 3 TAS subnets
@@ -44,7 +44,7 @@ AWS offer Application Load Balancers (ALBs) and Network Load Balancers (NLBs). <
 
 When planning networks, subnets, and IP spacing, some things to consider are:
 
-* In AWS, each availability zone (AZ) requires its own subnet; the first five IPs must be reserved.
+* In AWS, each availability zone (AZ) requires its' own subnet; the first five IPs must be reserved.
 
 * Your organization might not have the IP space necessary to deploy <%= vars.app_runtime_abbr %> in a consistent manner. To alleviate this, <%= vars.company_name %> recommends using the `100.64` address space to deploy a NAT instance and router so that the <%= vars.ops_manager %> deployment can use few IP addresses.
 
@@ -64,7 +64,7 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 		</tr>
 		<tr>
 			<td>Internet egress</td>
-			<td>Create the NAT Gateway toward the internet.</td>
+			<td>Create the NAT Gateway toward the Internet.</td>
 		</tr>
 		<tr>
 			<td>Corporate ingress</td>
@@ -90,23 +90,23 @@ These options are available for choosing your network topology:
 	<tr>
 		<td>Internet ingress</td>
 		<td><ul>
-				<li>Allow internet ingress by associating load balancers with Elastic IPs.</li>
-				<li>Do not allow internet ingress.</li>
+				<li>Allow Internet ingress by associating load balancers with Elastic IPs.</li>
+				<li>Do not allow Internet ingress.</li>
 			</ul></td>
 	</tr>
 	<tr>
 		<td>Internet egress</td>
 		<td>
 			<ul>
-				<li>Allow <%= vars.app_runtime_abbr %> to access the internet through a NAT gateway.</li>
-				<li>Do not allow <%= vars.app_runtime_abbr %> to access the internet. Use only a corporate network.</li>
+				<li>Allow <%= vars.app_runtime_abbr %> to access the Internet through a NAT gateway.</li>
+				<li>Do not allow <%= vars.app_runtime_abbr %> to access the Internet. Use only a corporate network.</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td>Peering</td>
 		<td><ul>
-				<li>Isolated. This is normally internet-only facing.</li>
+				<li>Isolated. This is normally Internet-only facing.</li>
 				<li>Peered with corporate or other VPCs through Transit Gateway.</li>
 				<li>Peered directly with other VPCs and corporate connections.</li>
 			</ul></td>
@@ -144,11 +144,11 @@ For identity management, use Instance Profiles whenever possible. For example, t
 
 ## <a id='pks'></a> <%= vars.k8s_runtime_abbr %>
 
-These sections describe a reference architecture for a <%= vars.k8s_runtime_abbr %> installation on AWS.
+The following sections describe the reference architecture for a <%= vars.k8s_runtime_abbr %> installation on AWS.
 
 ### <a id='pks-diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader internet into the VPC Network. Categories of elements in the VPC Network include:
+The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
 
 * Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
 * 3 Services subnets
@@ -200,23 +200,23 @@ These options are available for choosing your network topology:
   <tr>
     <td>Internet Ingress</td>
     <td><ul>
-        <li>Allow internet ingress by associating load balancers with Elastic IPs.</li>
-        <li>Do not allow internet ingress.</li>
+        <li>Allow Internet ingress by associating load balancers with Elastic IPs.</li>
+        <li>Do not allow Internet ingress.</li>
       </ul></td>
   </tr>
   <tr>
     <td>Internet Egress</td>
     <td>
       <ul>
-        <li>Allow nodes and pods to access the internet through a NAT gateway.</li>
-        <li>Do not allow nodes or pods to access the internet. Use only a corporate network.</li>
+        <li>Allow nodes and pods to access the Internet through a NAT gateway.</li>
+        <li>Do not allow nodes or pods to access the Internet. Use only a corporate network.</li>
       </ul>
     </td>
   </tr>
   <tr>
     <td>Peering</td>
     <td><ul>
-        <li>Isolated. This is normally internet-only facing.</li>
+        <li>Isolated. This is normally Internet-only facing.</li>
         <li>Peered with corporate or other VPCs through Transit Gateway.</li>
         <li>Peered directly with other VPCs and corporate connections.</li>
       </ul></td>

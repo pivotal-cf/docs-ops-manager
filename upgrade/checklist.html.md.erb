@@ -6,15 +6,15 @@ owner: Ops Manager
 This topic serves as a checklist for preparing to upgrade <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> from v2.9 to <%= vars.v_major_version %>.
 
 
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview on Upgrade Preparation
 
-This topic contains important preparation steps that you must follow before beginning your upgrade. Failure to follow these instructions may jeopardize your existing deployment data and cause the upgrade to fail.
+This topic contains important preparation steps that you must follow before beginning your upgrade. Failure to follow these instructions can jeopardize your existing deployment data and cause the upgrade to fail.
 
 After completing the steps in this topic, you can continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).
 
 <%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade from <%= vars.ops_manager %> v2.5 Through v2.9](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading <%= vars.ops_manager %>_.
 
-<p class='note caution'><strong>Caution:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.ops_manager %></em>.</p>
+<p class='note caution'><strong>Caution:</strong> Although you can skip minor versions when upgrading <%= vars.ops_manager %>, do not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> might result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>. For more information, see <a href="../install/upgrading-pcf.html#upgrade-tas">Upgrade <%= vars.app_runtime_abbr %></a> in <em>Upgrading <%= vars.ops_manager %></em>.</p>
 
 <p class='note caution'><strong>Caution:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to <strong>Apply Changes</strong> due to safety violations.</p>
 
@@ -77,21 +77,21 @@ For information about how to use Upgrade Planner, see the [Upgrade Planner docum
 
 Alternatively, you can do the following:
 
-1. Navigate to the tile's download page on [VMware Tanzu Network](https://network.pivotal.io).
+1. Go to the tile's download page on [VMware Tanzu Network](https://network.pivotal.io).
 
-1. Select the tile version in the **Releases** dropdown.
+1. Select the tile version in the **Releases** drop-down menu.
 
 1. For more information, see the **Depends On** section under **Release Details**. For more information, see the tile's release notes.
 
 If the currently-deployed version of a tile is not compatible with <%= vars.ops_manager %> <%= vars.v_major_version %>, you must upgrade the tile to a compatible version before you upgrade <%= vars.ops_manager %>. You do not need to upgrade tiles that are compatible with both <%= vars.ops_manager %> v2.9 and <%= vars.v_major_version %>.
 
-Some partner service tiles may be incompatible with <%= vars.ops_manager %> <%= vars.v_major_version %>.
+Some partner service tiles might be incompatible with <%= vars.ops_manager %> <%= vars.v_major_version %>.
 For information about partner service tile compatibility,
 review the **Depends On** section on your partner tile download page, see the tile release documentation in the [VMware Tanzu documentation](https://docs.pivotal.io), or contact the partner organization that produces the service tile.
 
 #### <a id='env'></a> Environment Details
 
-You can use the empty table below as a template for recording and tracking the tile versions that you have deployed in all of your environments.
+You can use the followingn empty table as a template for recording and tracking the tile versions that you have deployed in all of your environments.
 
 |        |        | **Sandbox** | **Non-Prod** | **Prod** | **Other...** |
 | ------ | ------ | ----------- | ------------ | -------- | ------------ |
@@ -117,7 +117,7 @@ To verify version compatibility, see [Upgrade Planner](https://upgrade-planner.p
 
 ### <a id='bosh-director'></a> Configure BOSH Director
 
-With each release of a new <%= vars.ops_manager %> version, BOSH Director may require specific updates before upgrading to the new version. For actions to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, see the sections below.
+With each release of a new <%= vars.ops_manager %> version, BOSH Director might require specific updates before upgrading to the new version. For actions to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, see the following sections.
 
 #### <a id='check-specs'></a> Check Required Machine Specifications
 
@@ -125,7 +125,7 @@ Check the required machine specifications for <%= vars.ops_manager %> <%= vars.v
 
 ### <a id='patch'></a> Configure <%= vars.app_runtime_abbr %>
 
-With each release of a new <%= vars.ops_manager %> version, <%= vars.app_runtime_abbr %> may require specific updates before upgrading to the new version. For more information, see the following sections for what action to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>:
+With each release of a new <%= vars.ops_manager %> version, <%= vars.app_runtime_abbr %> might require specific updates before upgrading to the new version. For more information, see the following sections for what action to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
 #### <a id='disable-hostname-validation'></a> Deactivate Hostname Validation for External Databases on GCP and Azure
 
@@ -151,7 +151,7 @@ For more information about database configuration in <%= vars.app_runtime_abbr %
 
 To save upgrade time, you can deactivate unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Only deactivate these errands if your environment does not need them.
 
-In some cases, if you have previously deactivated lifecycle errands for any installed product to reduce deployment time, you may want to re-activate these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
+In some cases, if you have previously deactivated lifecycle errands for any installed product to reduce deployment time, you might want to activate these errands again before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
 ### <a id='stemcell-compat'></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
 
@@ -176,11 +176,11 @@ To update an add-on manifest:
 
 1. Upload the modified manifest file to your <%= vars.ops_manager %> deployment. For example instructions, see [Installing File Integrity Monitoring on BOSH Director](https://docs.pivotal.io/addon-fim/2-0/installing-bosh.html) in the File Integrity Monitoring documentation.
 
-If you use any other BOSH-managed add-ons in your deployment, you should verify OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Addons Block](https://bosh.io/docs/runtime-config.html#addons) in _Director Runtime Config_ in the BOSH documentation.
+If you use any other BOSH-managed add-ons in your deployment, verify that OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Addons Block](https://bosh.io/docs/runtime-config.html#addons) in _Director Runtime Config_ in the BOSH documentation.
 
 ## <a id='cert-expiry'></a> Check Certificate Authority Expiration Dates
 
-Depending on the requirements of your deployment, you may need to rotate your certificate authority (CA) certificates. The non-configurable certificates in your deployment expire every two years. You must regenerate and rotate them so that critical components do not face a complete outage.
+Depending on the requirements of your deployment, you might need to rotate your certificate authority (CA) certificates. The non-configurable certificates in your deployment expire every two years. You must regenerate and rotate them so that critical components do not face a complete outage.
 
 To retrieve information about all the RSA and CA certificates for the BOSH Director and other products in your deployment, you can run `GET /api/v0/deployed/certificates?expires_within=TIME` using the <%= vars.ops_manager %> API.
 
@@ -305,7 +305,7 @@ If you are not using Healthwatch, you can do some or all of the following to col
 
 * Check the **Status** tab of each <%= vars.app_runtime_abbr %> tile for VM CPU, RAM, and disk use levels.
 
-* Check that <%= vars.ops_manager %> persistent disk usage is below 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk) above.
+* Check that <%= vars.ops_manager %> persistent disk usage is less than 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk).
 
 * (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/devguide/deploy-apps/streaming-logs.html#view).
 
@@ -319,9 +319,9 @@ For BOSH CLI v2 instructions, see the [<%= vars.app_runtime_abbr %> documentatio
 
 To review pending and recent changes:
 
-1. Confirm there are no outstanding changes in <%= vars.ops_manager %> or any other tile. All tiles should be green. If all tiles are not green, click **Review Pending Changes**, then click **Apply Changes**.
+1. Confirm there are no outstanding changes in <%= vars.ops_manager %> or any other tile. All tiles must be green. If all tiles are not green, click **Review Pending Changes**, then click **Apply Changes**.
 
-1. After applying changes, click **Recent Install Logs** to confirm that the changes completed cleanly. You should see the following output:
+1. After applying changes, click **Recent Install Logs** to confirm that the changes completed cleanly. You must see the following output:
 
     ```
     Cleanup complete
@@ -334,9 +334,9 @@ To review pending and recent changes:
 
 To export your installation:
 
-1. In the <%= vars.ops_manager %> Installation Dashboard, click the account dropdown and select **Settings**.
+1. In the <%= vars.ops_manager %> Installation Dashboard, click the account drop-down and menu and select **Settings**.
 
-1. On the **Settings** page, select **Export Installation Settings** from the left menu, then click **Export Installation Settings**.
+1. On the **Settings** page, select **Export Installation Settings**, then click **Export Installation Settings**.
 
 This exports the current <%= vars.ops_manager %> installation with all of its assets.
 

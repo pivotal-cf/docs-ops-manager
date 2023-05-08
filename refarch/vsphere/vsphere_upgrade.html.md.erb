@@ -13,7 +13,7 @@ At minimum, vSphere contains a vCenter Server and one or more ESXi hosts.
 You cannot perform an in-place upgrade of vSphere without at least two ESXi hosts in your cluster.
 
 If you do not meet this requirement, you have insufficient resources to evacuate an entire
-host. Because of this, you may experience runtime downtime during the upgrade.
+host. Because of this, you can experience runtime downtime during the upgrade.
 
 To upgrade vSphere with only one ESXi host or without sufficient headroom capacity, you must
 reduce your runtime deployment size. In other words, you can either reduce the number of Diego
@@ -66,7 +66,7 @@ of a single ESXi host to the two remaining hosts.
 vMotion places the VMs on the other hosts based on available capacity. For more information,
 see [Migration with vMotion](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-D19EA1CB-5222-49F9-A002-4F8692B92D63.html?hWord=N4IghgNiBcILIEsDmAnMAXBB7AdgAgHcF0ALPANzi01xAF8g) in the vSphere documentation.
 
-1. Upgrade the evacuated ESXi host. For example, you may be upgrading from ESXi v6.0 to ESX
+1. Upgrade the evacuated ESXi host. For example, you might be upgrading from ESXi v6.0 to ESX
 v6.5. For more information, see [Upgrading ESXi Hosts](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-122035F6-8433-463E-A0F7-B4FC71A05B04.html?hWord=N4IghgNiBcIKoAcDmAnMATAlgOyQAgFEBlADUzwAkB7AZwBcaQBfIA) in the vSphere
 documentation.
 

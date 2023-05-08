@@ -85,7 +85,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 
 ## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
 
-1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you created in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
+1. In a web browser, go to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you created in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
@@ -111,7 +111,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 	* For HDD-based storage, select **Standard_LRS**.
 	* For SSD-based storage, select **Premium_LRS**.
 
-5. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** checkbox. This overrides the default behavior, which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
+5. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** check box. This overrides the default behavior, which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
 
     ![alt-text=""](../common/images/azure/azure-storage-tier.png)
 
@@ -161,7 +161,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 
 ## <a id='network'></a> Step 4: Create Networks Page
 
-Create the following three networks:
+Create the following networks:
 
 * [Infrastructure Network](#infrastructure-network)
 * [Runtime Network](#runtime-network)
@@ -266,7 +266,7 @@ To create the runtime network:
 
 To create the services network:
 
-1. Click **Add Network**. For **Name**, enter `services`.
+1. Click **Add Network** and for **Name**, enter `services`.
 
 1. Under **Subnets**, create a subnet using the information in the following table:
 
@@ -350,7 +350,7 @@ To create the services network:
     provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 2. (Optional) To add a load balancer to the BOSH Director:
-  1. Select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox.
+  1. Select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** check box.
   2. Ensure that the **Internet Connected** check box is not selected.
   3. For **Load Balancers**, enter your Azure application gateway name for each associated job. To create an application gateway, follow the procedures in [Configure an application gateway for SSL offload by using Azure Resource Manager](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-arm) from the Azure documentation. When you create the application gateway, associate the gateway's IP address with your system domain.
     <p class='note caution'><strong>Caution:</strong> This feature is not recommended for production use. The Azure load balancer does not support an override port in the healthcheck configuration.</p>
@@ -365,7 +365,7 @@ To create the services network:
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If a red ICMP error message appears and you have deactivated ICMP, click **Ignore errors and start the install**.
 
-1. BOSH Director installs. This may take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
+1. BOSH Director installs. This might take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 

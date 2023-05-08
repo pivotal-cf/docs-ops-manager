@@ -193,5 +193,5 @@ Blocks shown in this configuration are:
 
 Some of the challenges in this pattern include the following:
 
-* Any automation that calls to the Internet will fail if it does not have the corporate certificate in its trust store.
+* Any automation that calls to the Internet fails if it does not have the corporate certificate in its trust store.
 * Concourse tasks that do not use resources do not receive updated BOSH root certificates. This means you must configure tasks to ignore TLS errors or update the root certificates as part of the tasks.

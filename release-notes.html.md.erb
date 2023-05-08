@@ -5,10 +5,10 @@ owner: Ops Manager
 
 This topic contains release notes for <%= vars.ops_manager_first %> <%= vars.v_major_version %>.
 
-You can jump upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> <%= vars.v_major_version %>. For more information,
+You can upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> <%= vars.v_major_version %>. For more information,
 see [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](jump-upgrades.html).
 
-For the feature highlights of this release, see [New Features in <%= vars.ops_manager %> <%= vars.v_major_version %>](#major-features) below.
+For the feature highlights of this release, see [New Features in <%= vars.ops_manager %> <%= vars.v_major_version %>](#major-features).
 
 <%= vars.ops_manager %> is certified by the Cloud Foundry Foundation for 2023.
 
@@ -22,11 +22,11 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 01, 2023
 
-- **[Feature]** Allow both gp3 and throughput (IOPS) to be set via API when creating custom disk types
+- **[Feature]** Allow both gp3 and throughput (IOPS) to be set through API when creating custom disk types
 - **[Feature]** Use clang to compile ruby in Opsmanager
 - **[Bug Fix]** Default ldap "Group Max Search Depth" to 1
 - **[Bug Fix]** Blobstore credentials do not appear in IaaS metadata when signed URLs are used
-- **[Bug Fix]** The "label" of Ops Manager tile form fields should be read out by a screen reader, and a screen reader should announce that a field is "required" when it is required
+- **[Bug Fix]** The "label" of Ops Manager tile form fields can be read out loud by a screen reader, and a screen reader announces that a field is "required" when it is required
 
 <table border="1" class="nice">
   <thead>
@@ -88,10 +88,10 @@ readers.
 
 * **[Known Issue Fix]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T, improperly encoded data in the
 <%= vars.ops_manager %> database does not cause re-deployments to fail. For more information about this known issue, see [Missing Classes Cause Re-Deployment
-Failures](#re-deploy-fail) below.
+Failures](#re-deploy-fail).
   <p class='note'><strong>Note:</strong> If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
     <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
-    the <%= vars.ops_manager %> Installation Dashboard may take a long time to import.</p>
+    the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>
 
 * **[Bug Fix]** When you retrieve the manifest for a deployed product through the <%= vars.ops_manager %> API, the API endpoint no longer returns an invalid
 manifest.
@@ -120,14 +120,14 @@ manifest.
   <%= vars.v_major_version %>.5+LTS-T causes all VMs to re-deploy.</p>
 
 * **[Feature]** <%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version. If you use automation scripts to deploy
-<%= vars.ops_manager %>, you may need to update them in order to install new patch versions. For more information, see [Long-Term Support for
-<%= vars.ops_manager %> <%= vars.v_major_version %>](#lts) below.
+<%= vars.ops_manager %>, you might need to update them in order to install new patch versions. For more information, see [Long-Term Support for
+<%= vars.ops_manager %> <%= vars.v_major_version %>](#lts).
 
 * **[Feature]** You can rotate non-configurable leaf certificates through the **Review Pending Changes** page in the <%= vars.ops_manager %> Installation
-Dashboard. For more information, see [Rotate Non-Configurable Leaf Certificates During Re-Deployment](#rotate-certs-redeploy) below.
+Dashboard. For more information, see [Rotate Non-Configurable Leaf Certificates During Re-Deployment](#rotate-certs-redeploy).
 
 * **[Feature]** You can configure your VMs to use short-lived NATS credentials during the bootstrap process. For more information, see [Short-Lived NATS
-Bootstrap Credentials](#short-lived-nats-creds) below.
+Bootstrap Credentials](#short-lived-nats-creds).
 
 * **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> uses Rails 7.0.
 
@@ -136,10 +136,10 @@ Bootstrap Credentials](#short-lived-nats-creds) below.
 * **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, load times and caching for the **Stemcell Library** page are improved.
 
 * **[Known Issue Fix]** Upgrading from previous versions of <%= vars.ops_manager %> does not corrupt the PostgreSQL database indexes in the BOSH Director. For
-more information about this known issue, see [Upgrading <%= vars.ops_manager %> Corrupts BOSH Director PostgreSQL Database Indexes](#postgres-db-index) below.
+more information about this known issue, see [Upgrading <%= vars.ops_manager %> Corrupts BOSH Director PostgreSQL Database Indexes](#postgres-db-index).
 
 * **[Known Issue]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T, improperly encoded data in the <%= vars.ops_manager %>
-database can cause re-deployments to fail. For more information, see [Missing Classes Cause Re-Deployment Failures](#re-deploy-fail) below.
+database can cause re-deployments to fail. For more information, see [Missing Classes Cause Re-Deployment Failures](#re-deploy-fail).
 
 * **[Bug Fix]** Temporary verifier failures are properly exposed and do not cause a `500` error.
 
@@ -314,11 +314,11 @@ To upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>, see [Upgradin
 <%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version of <%= vars.ops_manager %>. <%= vars.ops_manager %>
 <%= vars.v_major_version %> is to be supported through March 2025.
 
-Over the lifecycle of <%= vars.ops_manager %> <%= vars.v_major_version %>, VMware will release security patches that occasionally include feature improvements
+Over the lifecycle of <%= vars.ops_manager %> <%= vars.v_major_version %>, VMware releases security patches that occasionally include feature improvements
 and maintenance updates.
 
 Versions and filenames for <%= vars.ops_manager %> <%= vars.v_major_version %> releases on VMware Tanzu Network include a `+LTS-T` suffix to indicate its LTS
-status. If you use automation scripts to deploy <%= vars.ops_manager %>, you may need to update them to include this suffix in your version and filename
+status. If you use automation scripts to deploy <%= vars.ops_manager %>, you might need to update them to include this suffix in your version and filename
 patterns. For example, the filename for the Azure version of <%= vars.ops_manager %> <%= vars.v_major_version %>.4 is `ops-manager-azure-3.0.4-build.227.yml`,
 while the filename for the Azure version of <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T is `ops-manager-azure-3.0.5+LTS-T.yml`.
 
@@ -342,12 +342,12 @@ In the <%= vars.ops_manager %> Installation Dashboard, the **Review Pending Chan
 to that tile.
 
 Tiles can use runtime configurations to influence the behavior of VMs that other tiles deploy. For example, when you activate the **Enable additional System
-Metrics** checkbox in the **Director Config** pane of the BOSH Director tile, the BOSH Director applies a runtime configuration to the VMs that
+Metrics** check box in the **Director Config** pane of the BOSH Director tile, the BOSH Director applies a runtime configuration to the VMs that
 <%= vars.app_runtime_first %> deploys. This configuration allows the BOSH Director to collect detailed metrics from VMs managed by
 <%= vars.app_runtime_abbr %>.
 
 Changes to a runtime configuration can cause longer deployment times when you re-deploy a tile. By reviewing the runtime configurations that are to be applied
-to tiles during re-deployment, you can determine in advance which tiles may take a longer time to re-deploy.
+to tiles during re-deployment, you can determine in advance which tiles might take a longer time to re-deploy.
 
 ### <a id='aws-vm-catalog'></a> AWS Deployments Use 5th-Generation AMD Instances
 
@@ -364,7 +364,7 @@ If you are using a custom instance type catalog, the VM types that you can use d
 
 The 5th-generation AMD instances are closer to the recommended default size for tiles. Because of this, product tiles in <%= vars.ops_manager %> select VM
 types that are smaller than the previous sizes for their jobs. For example, Diego Cells select an instance type with 2 CPUs and 16&nbsp;GB of RAM. When you
-convert your VMs to 5th-generation AMD instances, you may need to either scale up the number of Diego Cell instances or change the selected VM type of certain
+convert your VMs to 5th-generation AMD instances, you might need to either scale up the number of Diego Cell instances or change the selected VM type of certain
 jobs to a larger VM type. You can configure both the number of instances and VM type of each job in the **Resource Config** pane of a product tile.
 
 For more information about AWS Linux instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). For
@@ -394,7 +394,7 @@ If you are using a custom instance type catalog, the VM types you can use do not
 
 The E2 Series instances are closer to the recommended default size for tiles. Because of this, product tiles in <%= vars.ops_manager %> select VM types that
 are smaller than the previous sizes for their jobs. For example, Diego Cells select an instance type with 2 CPUs and 16&nbsp;GB of RAM. When you convert your
-VMs to E2 Series instances, you may need to either scale up the number of Diego Cell instances or change the selected VM type of certain jobs to a larger VM
+VMs to E2 Series instances, you might need to either scale up the number of Diego Cell instances or change the selected VM type of certain jobs to a larger VM
 type. You can configure both the number of instances and VM type of each job in the **Resource Config** pane of a product tile.
 
 For more information about GCP instance types, see the [GCP documentation](https://cloud.google.com/compute/docs/machine-types).
@@ -412,24 +412,24 @@ documentation](https://docs.pivotal.io/ops-manager/3-0/opsman-api/#tag/VM-types/
 
 ### <a id='short-lived-nats-creds'></a> Short-Lived NATS Bootstrap Credentials
 
-In <%= vars.ops_manager %> <%= vars.v_major_version %>, the **Director Config** pane includes the **Enable Short Lived NATS Bootstrap Credentials** checkbox.
-Activating this checkbox configures your VMs to use short-lived NATS credentials during the bootstrap process. This increases the security of your
+In <%= vars.ops_manager %> <%= vars.v_major_version %>, the **Director Config** pane includes the **Enable Short Lived NATS Bootstrap Credentials** check box.
+Activating this check box configures your VMs to use short-lived NATS credentials during the bootstrap process. This increases the security of your
 <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to communicate with the BOSH Director through BOSH
 NATS.
 
 For more information about short-lived NATS bootstrap credentials, see [Using Short-Lived NATS Bootstrap
 Credentials](security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
 
-<p class='note caution'><strong>Caution:</strong> Before configuring your VMs to use short-lived NATS bootstrap credentials, you should ensure that all VMs in
+<p class='note caution'><strong>Caution:</strong> Before configuring your VMs to use short-lived NATS bootstrap credentials, you must ensure that all VMs in
   your <%= vars.ops_manager %> deployment are using stemcells that support them, including VMs deployed by service tiles. VMs that do not use stemcells that
-  support short-lived NATS bootstrap credentials may become unresponsive. For more information, see
+  support short-lived NATS bootstrap credentials might become unresponsive. For more information, see
   <a href="security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html#stemcells">Stemcell Compatibility</a> in <em>Using Short-Lived NATS Bootstrap
   Credentials</em>.</p>
 
 ### <a id='rotate-certs-redeploy'></a> Rotate Non-Configurable Leaf Certificates During Re-Deployment
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %>, the **Review Pending Changes** page in the <%= vars.ops_manager %> Installation Dashboard includes the
-**Rotate All Non-Configurable Leaf Certificates** checkbox. Activating this checkbox allows you to rotate non-configurable leaf certificates when you
+**Rotate All Non-Configurable Leaf Certificates** check box. Activating this check box allows you to rotate non-configurable leaf certificates when you
 re-deploy your tiles through the <%= vars.ops_manager %> Installation Dashboard, instead of having to rotate them through the <%= vars.ops_manager %> API.
 
 For more information about rotating non-configurable leaf certificates through the <%= vars.ops_manager %> Installation Dashboard, see [Review Pending Changes
@@ -445,9 +445,9 @@ Page](install/review-pending-changes.html#review-pending-changes) in _Reviewing 
 The BOSH System Metrics Server is removed from <%= vars.ops_manager %> <%= vars.v_major_version %>.
 
 If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.10 or earlier, and you previously configured the BOSH
-Director to deploy the BOSH System Metrics Server, you must deactivate the **Enable deprecated BOSH System Metrics Server** checkbox and activate the
-**Enable additional System Metrics** checkbox in the **Director Config** pane of the BOSH Director tile before you begin upgrading. In <%= vars.ops_manager %>
-<%= vars.v_major_version %>, the **Enable BOSH System Metrics Server** checkbox is removed from the BOSH Director tile.
+Director to deploy the BOSH System Metrics Server, you must deactivate the **Enable deprecated BOSH System Metrics Server** check box and activate the
+**Enable additional System Metrics** check box in the **Director Config** pane of the BOSH Director tile before you begin upgrading. In <%= vars.ops_manager %>
+<%= vars.v_major_version %>, the **Enable BOSH System Metrics Server** check box is removed from the BOSH Director tile.
 
 ### <a id='nsx-v-removed'></a> NSX-V Networking is Removed
 
@@ -507,7 +507,7 @@ the BOSH Director to become corrupt. As a result, upgrading to <%= vars.ops_mana
 
 This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T. If you previously upgraded to <%= vars.ops_manager %>
 <%= vars.v_major_version %> from an earlier version and have already encountered this issue, upgrading to <%= vars.ops_manager %>
-<%= vars.v_major_version %>.5+LTS-T may cause your <%= vars.ops_manager %> deployment to fail. If this happens, contact
+<%= vars.v_major_version %>.5+LTS-T might cause your <%= vars.ops_manager %> deployment to fail. If this happens, contact
 [Support](https://tanzu.vmware.com/support) for assistance.
 
 ### <a id='re-deploy-fail'></a> Missing Classes Cause Re-Deployment Failures
@@ -516,14 +516,14 @@ After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T
 errors similar to the following example when you re-deploy <%= vars.ops_manager %>:
 
 ```
-Error in step runner run method (will show -1 as exit code): Tried to load unspecified class: ActiveSupport::HashWithIndifferentAccess
+Error in step runner run method (show -1 as exit code): Tried to load unspecified class: ActiveSupport::HashWithIndifferentAccess
 ```
 
-As a result, <%= vars.ops_manager %> fails to re-deploy.
+As a result, <%= vars.ops_manager %> fails to deploy again.
 
 To see whether improperly encoded data exists in your <%= vars.ops_manager %> database:
 
-1. In a browser window, navigate to `https://OPS-MANAGER-FQDN/debug/files`, where `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) for your
+1. In a browser window, go to `https://OPS-MANAGER-FQDN/debug/files`, where `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) for your
 <%= vars.ops_manager %> deployment.
 
 1. After you have reached the page described in the previous step, search the page for `HashWithIndifferentAccess`. If the `HashWithIndifferentAccess` string
@@ -534,4 +534,4 @@ This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.6+
 
 <p class='note'><strong>Note:</strong> If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
   <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
-  the <%= vars.ops_manager %> Installation Dashboard may take a long time to import.</p>
+  the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>

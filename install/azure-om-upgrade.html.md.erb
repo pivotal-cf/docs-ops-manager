@@ -8,7 +8,7 @@ This topic describes how to upgrade BOSH Director for <%= vars.ops_manager_first
 Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html#upgrade_ops).
 
 
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview on Upgrading BOSH Director on Azure
 
 <%= partial "./om_upgrade_overview" %>
 
@@ -58,19 +58,19 @@ To export environment variables:
     Authenticate by navigating to the URL in the output, entering the provided code, and clicking your account.
 
 1. Ensure that the following environment variables are set to the names of the resources you created when deploying <%= vars.ops_manager %> as part of the procedures in [Deploying <%= vars.ops_manager %> on Azure](../azure/deploy-manual.html):
-  * `$RESOURCE_GROUP`: This should be set to the name of your resource group. To list the resource groups for your subscription, run:
+  * `$RESOURCE_GROUP`: This must be set to the name of your resource group. To list the resource groups for your subscription, run:
 
       ```
       az group list
       ```
 
-  * `$LOCATION`: This should be set to your location, such as `westus`. To view a list of available locations, run:
+  * `$LOCATION`: This must be set to your location, such as `westus`. To view a list of available locations, run:
 
       ```
       az account list-locations
       ```
 
-  * `$STORAGE_NAME`: This should be set to your BOSH storage account name. To list your storage accounts, run:
+  * `$STORAGE_NAME`: This must be set to your BOSH storage account name. To list your storage accounts, run:
 
       ```
       az storage account list
@@ -91,7 +91,7 @@ To export environment variables:
     }
     </pre>
 
-1. From the `data:` field in the output above, record the full value of `connectionString` from the output above, starting with and including `DefaultEndpointsProtocol=`.
+1. From the `data:` field in the preceding output, record the full value of `connectionString` from the preceding output, starting with and including `DefaultEndpointsProtocol=`.
 
 1. Export the value of `connectionString` as the environment variable `$AZURE_STORAGE_CONNECTION_STRING` by running:
 
@@ -108,7 +108,7 @@ Copy the <%= vars.ops_manager %> image into your storage account. You use the <%
 
 To copy the <%= vars.ops_manager %> image into your storage account:
 
-1. Navigate to the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network and download the release of **<%= vars.ops_manager %> for Azure** to which you want to upgrade.
+1. Go to the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network and download the release of **<%= vars.ops_manager %> for Azure** to which you want to upgrade.
 
 1. View the downloaded PDF and locate the <%= vars.ops_manager %> image URL appropriate for your region.
 
@@ -131,7 +131,7 @@ To copy the <%= vars.ops_manager %> image into your storage account:
     --destination-blob opsman-image-version.vhd
     ```
 
-1. Copying the image may take several minutes. Run:
+1. Copying the image might take several minutes. Run:
 
     ```
     az storage blob show --name opsman-image-version.vhd \
@@ -139,7 +139,7 @@ To copy the <%= vars.ops_manager %> image into your storage account:
     --account-name $STORAGE_NAME
     ```
 
-    Examine the output under `"copy"`, as in the example below:
+    Examine the output under `"copy"`, as in the following example:
 
     <pre class="terminal">
     "copy": {
@@ -220,7 +220,7 @@ To use a new dynamic public IP address:
     }
     ```
 
-1. Record the value for `ipAddress` from the output above. This is the public IP address of <%= vars.ops_manager %>.
+1. Record the value for `ipAddress` from the preceding output. This is the public IP address of <%= vars.ops_manager %>.
 
 1. Create a network interface for <%= vars.ops_manager %>  by running:
 

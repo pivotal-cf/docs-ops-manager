@@ -11,7 +11,7 @@ This guide describes the preparation steps required to deploy <%= vars.ops_manag
 
 The Azure Terraform templates describe a set of Azure resources and properties. For more information about how Terraform creates resources in Azure, see [Azure Provider](https://www.terraform.io/docs/providers/azurerm/index.html) on the Terraform site.
 
-You may also find it helpful to review different deployment options in
+You can find it helpful to review different deployment options in
 [Azure Reference Architecture](../refarch/azure/azure_ref_arch.html).
 
 
@@ -26,9 +26,9 @@ In addition to fulfilling the prerequisites listed in [Installing <%= vars.ops_m
 
 ## <a id='download'></a> Step 1: Download Templates and Edit Variables File
 
-Before you can run Terraform commands to provision infrastructure resources, you must download the Azure Terraform Templates and create a Terraform template variables file. To download the templates and create the template variables file:
+Before you run the Terraform commands to provision infrastructure resources, you must download the Azure Terraform Templates and create a Terraform template variables file. To download the templates and create the template variables file:
 
-1. On [VMware Tanzu Network](https://network.pivotal.io), navigate to the <%= vars.app_runtime_first %> release.
+1. On [VMware Tanzu Network](https://network.pivotal.io), go to the <%= vars.app_runtime_first %> release.
 
 1. Download the Azure Terraform Templates ZIP file. You can use the templates to deploy <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_first %>.
 
@@ -36,13 +36,13 @@ Before you can run Terraform commands to provision infrastructure resources, you
 
 1. Move the extracted folder to the `workspace` directory on your local machine.
 
-1. On the command line, navigate to the directory. For example:
+1. On the command line, go to the directory. For example:
 
     <pre class="terminal">
     $ cd ~/workspace/pivotal-cf-terraforming-azure
     </pre>
 
-1. Navigate to the `terraforming-pas` or `terraforming-pks` directory that contains the Terraform files for your runtime.
+1. Go to the `terraforming-pas` or `terraforming-pks` directory that contains the Terraform files for your runtime.
 
 1. In the runtime directory, create a text file named `terraform.tfvars`.
 
@@ -62,7 +62,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
     vm_admin_username     = "YOUR-ADMIN-USERNAME"
     ```
 
-1. Edit the values in the file according to the table below. For information about locating your Azure service principal values, see [Preparing to Deploy <%= vars.ops_manager %> on Azure Using Terraform](prepare-azure-terraform.html).
+1. Edit the values in the file according to the following table. For information about locating your Azure service principal values, see [Preparing to Deploy <%= vars.ops_manager %> on Azure Using Terraform](prepare-azure-terraform.html).
   <table>
     <tr>
       <th style="width: 35%">Value to replace</th>
@@ -117,7 +117,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
 
 ## <a id='variables'></a> Step 2: (Optional) Add Variables for <%= vars.segment_runtime_full %>
 
-Complete this section if you plan to deploy the <%= vars.segment_runtime_full %> tile.
+Complete this section if are deploying the <%= vars.segment_runtime_full %> tile.
 
 <p class='note'><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
 
@@ -135,16 +135,16 @@ Follow these steps to use the Terraform CLI to create resources on Azure:
 1. From the directory that contains the Terraform files, run `terraform init` to initialize the directory based on the information you specified in the `terraform.tfvars` file.
   <pre class="terminal">$ terraform init</pre>
 
-1. Run the following command to create the execution plan for Terraform.
+1. Run the following command to create the execution plan for Terraform:
   <pre class="terminal">$ terraform plan -out=plan</pre>
 
-1. Run the following command to execute the plan from the previous step. It may take several minutes for Terraform to create all the resources in Azure.
+1. Run the following command to execute the plan from the previous step. It might take several minutes for Terraform to create all the resources in Azure.
   <pre class="terminal">$ terraform apply plan</pre>
 
 
 ## <a id='dns'></a> Step 4: Create DNS Record
 
-1. In a browser, navigate to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
+1. In a browser, go to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
 
 1. Create a new name server (NS) record for your system domain. Your system domain is `YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX`.
 
@@ -153,4 +153,4 @@ Follow these steps to use the Terraform CLI to create resources on Azure:
 
 ## <a id='next'></a> Next Steps
 
-Proceed to the next step in the deployment, [Configuring BOSH Director on Azure Using Terraform](config-terraform.html).
+Go to the next step in the deployment, [Configuring BOSH Director on Azure Using Terraform](config-terraform.html).

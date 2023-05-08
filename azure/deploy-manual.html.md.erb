@@ -7,20 +7,20 @@ owner: Ops Manager
 
 This topic describes how to deploy BOSH and <%= vars.ops_manager_first %> on Azure by using individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
 
-Before you perform the procedures in this topic, you must have completed the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
+Before you perform the procedures in this topic, you must complete the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
 
 <p class='note'><strong>Note:</strong> If you are deploying BOSH and <%= vars.ops_manager %> on Azure Stack, complete the procedures in <a href="https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-connect-cli">Install and configure CLI for use with Azure Stack</a> in the Microsoft documentation before following the procedures in this topic.</p>
 
-<p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
+<p class='note'><strong>Note:</strong> Sometimes Azure portal displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 
 ## <a id='network'></a> Step 1: Create Network Resources
 
 To create network resources for your deployment:
 
-1. Navigate to the Azure portal, click **Resource groups**, and click **Add** to create a new resource group for your deployment.
+1. Go to the Azure portal, click **Resource groups**, and click **Add** to create a new resource group for your deployment.
 
-1. Enter a **Resource group name**, select your **Subscription**, and select a **Resource group location**. Click **Create**.
+1. Enter a **Resource group name**, select your **Subscription**, select a **Resource group location**, and click **Create**.
 
 1. Export the name of your resource group as the environment variable `$RESOURCE_GROUP`.
 
@@ -46,7 +46,7 @@ To create network resources for your deployment:
     --location $LOCATION
     ```
 
-1. Add network security group rules to the `pcf-nsg` group to allow traffic to known ports from the public Internet.
+1. Add network security group rules to the `pcf-nsg` group to enable traffic to known ports from the public Internet.
 
     ```console
     az network nsg rule create --name ssh \
@@ -76,8 +76,8 @@ To create network resources for your deployment:
     --destination-port-range '2222'
     ```
 
-     * To block traffic from the public Internet, append `--source-address-prefixes AzureLoadBalancer` to allow traffic from only the Azure load balancer or `--source-address-prefixes VirtualNetwork` to only allow traffic from the virtual network.
-     * To allow traffic from both the Azure load balancer and the virtual network, create duplicates of each rule, one specifying `--source-address-prefixes AzureLoadBalancer` and one specifying `--source-address-prefixes VirtualNetwork`.
+     * To block traffic from the public Internet, append `--source-address-prefixes AzureLoadBalancer` to enable traffic from only the Azure load balancer or `--source-address-prefixes VirtualNetwork` to only enable traffic from the virtual network.
+     * To enable traffic from both the Azure load balancer and the virtual network, to create duplicates of each rule, one specifying `--source-address-prefixes AzureLoadBalancer` and one specifying `--source-address-prefixes VirtualNetwork`.
 
 1. Create a network security group named `opsmgr-nsg`.
 
@@ -87,7 +87,7 @@ To create network resources for your deployment:
     --location $LOCATION
     ```
 
-1. Add a network security group rule to the `opsmgr-nsg` group to allow HTTP traffic to the <%= vars.ops_manager %> VM.
+1. Add a network security group rule to the `opsmgr-nsg` group to enable HTTP traffic to the <%= vars.ops_manager %> VM.
 
     ```console
     az network nsg rule create --name http \
@@ -96,7 +96,7 @@ To create network resources for your deployment:
     --destination-port-range 80
     ```
 
-1. Add a network security group rule to the `opsmgr-nsg` group to allow HTTPS traffic to the <%= vars.ops_manager %> VM.
+1. Add a network security group rule to the `opsmgr-nsg` group to enable HTTPS traffic to the <%= vars.ops_manager %> VM.
 
     ```console
     az network nsg rule create --name https \
@@ -105,7 +105,7 @@ To create network resources for your deployment:
     --destination-port-range 443
     ```
 
-1. Add a network security group rule to the `opsmgr-nsg` group to allow SSH traffic to the <%= vars.ops_manager %> VM.
+1. Add a network security group rule to the `opsmgr-nsg` group to enable SSH traffic to the <%= vars.ops_manager %> VM.
 
     ```console
     az network nsg rule create --name ssh \
@@ -114,9 +114,9 @@ To create network resources for your deployment:
     --destination-port-range 22
     ```
 
-    * To block traffic from the public Internet, append `--source-address-prefixes AzureLoadBalancer` to allow traffic from only the Azure load balancer or `--source-address-prefixes VirtualNetwork` to only allow traffic from the virtual network.
-    * To allow traffic from both the Azure load balancer and the virtual network, create duplicates of each rule, one specifying `--source-address-prefixes AzureLoadBalancer` and one specifying `--source-address-prefixes VirtualNetwork`.
-    * Optionally, if you want to use private IP ranges with <%= vars.ops_manager %> and allow all internal traffic, you can create the Network Security Groups to allow all internal traffic.
+    * To block traffic from the public Internet, append `--source-address-prefixes AzureLoadBalancer` to enable traffic from only the Azure load balancer or `--source-address-prefixes VirtualNetwork` to only enable traffic from the virtual network.
+    * You can enable traffic from both the Azure load balancer and the virtual network, create duplicates of each rule, one specifying `--source-address-prefixes AzureLoadBalancer` and one specifying `--source-address-prefixes VirtualNetwork`.
+    * Optionally, if you want to use private IP ranges with <%= vars.ops_manager %> and enable all internal traffic, you can create the Network Security Groups to enable all internal traffic.
 
         ```console
         az network nsg rule create --name internal-virtual-network \
@@ -172,7 +172,7 @@ To create storage accounts for BOSH and your deployment:
     export STORAGE_NAME="YOUR-BOSH-STORAGE-ACCOUNT-NAME"
     ```
 
-1. Create a Standard storage account for BOSH with the following command. This account will be used for BOSH bookkeeping and running the <%= vars.ops_manager %> VM itself, but does not have to be used for running any other VMs.
+1. Create a Standard storage account for BOSH with the following command. This account is used for BOSH bookkeeping and running the <%= vars.ops_manager %> VM itself, but does not have to be used for running any other VMs.
 
     ```console
     az storage account create --name $STORAGE_NAME \
@@ -182,9 +182,9 @@ To create storage accounts for BOSH and your deployment:
     ```
 
     <p class='note'><strong>Note:</strong> <code>Standard_LRS</code> refers to a Standard Azure storage account. The BOSH Director requires table storage to store stemcell information. Azure Premium storage does not support table storage and cannot be used for the BOSH storage account.</p>
-    If the command fails, ensure you have followed the rules for naming your storage account. Export another new storage account name if necessary.
+    If the command fails, make sure you followed the rules for naming your storage account. Export another new storage account name if necessary.
 
-1. Configure the Azure CLI to use the BOSH storage account as its default.
+1. Configure the Azure CLI to use the BOSH storage account as the default setting.
 
     1. Retrieve the connection string for the account.
 
@@ -201,7 +201,7 @@ To create storage accounts for BOSH and your deployment:
         }
         </pre>
 
-    1. Record the full value of `connectionString` from the output above, starting with and including `DefaultEndpointsProtocol=`.
+    1. Record the full value of `connectionString` from the preceding output, starting with and including `DefaultEndpointsProtocol=`.
 
     1. Export the value of `connectionString` as the environment variable `$CONNECTION_STRING`.
 
@@ -227,9 +227,9 @@ To create storage accounts for BOSH and your deployment:
     --connection-string $CONNECTION_STRING
     ```
 
-1. Choose a set of unique names for five or more deployment storage accounts. As with the BOSH storage account above, the names must be unique, alphanumeric, lowercase, and 3-24 characters long. The account names must also be sequential or otherwise identical except for the last character. For example: `xyzdeploystorage1`, `xyzdeploystorage2`, `xyzdeploystorage3`, `xyzdeploystorage4`, and `xyzdeploystorage5`.
+1. Choose a set of unique names for five or more deployment storage accounts. As with the preceding BOSH storage account, the names must be unique, alphanumeric, lowercase, and 3-24 characters long. The account names must also be sequential or otherwise identical except for the last character. For example: `xyzdeploystorage1`, `xyzdeploystorage2`, `xyzdeploystorage3`, `xyzdeploystorage4`, and `xyzdeploystorage5`.
 
-1. Decide which type of storage to use and run the corresponding command below.
+1. Decide which type of storage to use and run the following corresponding command.
 
     <p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends five Premium storage accounts, which provides a reasonable amount of initial storage capacity. You can use either Premium or Standard storage accounts, but they have very different scalability metrics. <%= vars.company_name %> recommends creating 1 Standard storage account for every 30 VMs, or 1 Premium storage account for every 150 VMs. You can increase the number of storage accounts later by provisioning more and following the naming sequence.</p>
 
@@ -271,7 +271,7 @@ To create storage accounts for BOSH and your deployment:
         }
         </pre>
 
-    1. Record the full value of `connectionString` from the output above, starting with and including `DefaultEndpointsProtocol=`.
+    1. Record the full value of `connectionString` from the preceding output, starting with and including `DefaultEndpointsProtocol=`.
 
     1. Create two blob containers named `bosh` and `stemcell` in the account.
 
@@ -292,7 +292,7 @@ Your load balancer configuration depends on whether you want apps to be availabl
 To create load balancers:
 
 1. **Required:** <%= vars.app_runtime_abbr %> Load Balancer
-    1. Create a load balancer named `pcf-lb`. A static IP address will be automatically created for Standard SKU load balancers unless specified otherwise with `--public-ip-address-allocation Dynamic`.
+    1. Create a load balancer named `pcf-lb`. A static IP address is automatically created for Standard SKU load balancers unless specified otherwise with `--public-ip-address-allocation Dynamic`.
 
         ```console
         az network lb create --name pcf-lb \
@@ -381,7 +381,7 @@ To create load balancers:
 
             This back end pool is empty when you create it.
 
-    1.  Navigate to your DNS provider and create an entry that points `*.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-lb-ip --resource-group $RESOURCE_GROUP`.
+    1.  Go to your DNS provider and create an entry that points `*.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-lb-ip --resource-group $RESOURCE_GROUP`.
 
 1. **Optional:** Diego SSH Load Balancer
     1. Create a load balancer named `pcf-ssh-lb`.
@@ -433,14 +433,14 @@ To create load balancers:
         --probe-name tcp2222
         ```
 
-    1.  Navigate to your DNS provider, and create an entry that points `ssh.sys.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-ssh-lb-ip --resource-group $RESOURCE_GROUP`.
+    1.  Go to your DNS provider, and create an entry that points `ssh.sys.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-ssh-lb-ip --resource-group $RESOURCE_GROUP`.
 
 
 ## <a id='boot'></a> Step 4: Boot <%= vars.ops_manager %>
 
 To boot <%= vars.ops_manager %>:
 
-1. Navigate to [VMware Tanzu Network](https://network.pivotal.io/products/ops-manager) and download the latest release of **<%= vars.ops_manager %> for Azure**.
+1. Go to [VMware Tanzu Network](https://network.pivotal.io/products/ops-manager) and download the latest release of **<%= vars.ops_manager %> for Azure**.
 
 1. View the downloaded PDF and locate the <%= vars.ops_manager %> image URL appropriate for your region.
 
@@ -462,7 +462,7 @@ To boot <%= vars.ops_manager %>:
             wget $OPS_MAN_IMAGE_URL -O opsman-image-2.6.x.vhd
             ```
 
-        1. Upload the image to your storage account using the Azure CLI.
+        1. Upload the image to your storage account using the Azure CLI:
 
             ```console
             az storage blob upload --name opsman-image-2.6.x.vhd \
@@ -474,7 +474,7 @@ To boot <%= vars.ops_manager %>:
 
     * If you use managed disks:
 
-        1. Copy the <%= vars.ops_manager %> image into your storage account using the Azure CLI.
+        1. Copy the <%= vars.ops_manager %> image into your storage account using the Azure CLI:
 
             ```console
             az storage blob copy start --source-uri $OPS_MAN_IMAGE_URL \
@@ -483,7 +483,7 @@ To boot <%= vars.ops_manager %>:
             --destination-blob opsman-image-2.6.x.vhd
             ```
 
-        1. Copying the image may take several minutes. Run the following command and examine the output under `"copy"`:
+        1. Copying the image might take several minutes. Run the following command and examine the output under `"copy"`:
 
             ```console
             az storage blob show --name opsman-image-2.6.x.vhd \
@@ -500,7 +500,7 @@ To boot <%= vars.ops_manager %>:
             },
             ```
 
-        1. Wait a few moments and re-run the command above if `status` is `pending`. When `status` reads `success`, continue to the next step.
+        1. Wait a few moments and run the preceding command again if `status` is `pending`. When `status` reads `success`, continue to the next step.
 
 1. Create a public IP address named `ops-manager-ip`.
 
@@ -531,7 +531,7 @@ To boot <%= vars.ops_manager %>:
 
     If you do not want to use a public IP for <%= vars.ops_manager %>, skip this step.
 
-1. Record the `ipAddress` from the output above. This is the public IP address of <%= vars.ops_manager %>.
+1. Record the `ipAddress` from the preceding output. This is the public IP address of <%= vars.ops_manager %>.
 
 1. Create a network interface for <%= vars.ops_manager %>.
 
@@ -637,6 +637,6 @@ To boot <%= vars.ops_manager %>:
 
 To finish configuring BOSH Director:
 
-1. Navigate to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) to the public IP address of <%= vars.ops_manager %>. As a best practice, always use the FQDN to access <%= vars.ops_manager %>.
+1. Go to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) to the public IP address of <%= vars.ops_manager %>. As a best practice, always use the FQDN to access <%= vars.ops_manager %>.
 
 1. Continue to [Configuring BOSH Director on Azure](config-manual.html).

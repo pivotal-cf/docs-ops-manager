@@ -36,20 +36,20 @@ To configure the **Director Config** pane:
 <% if current_page.data.iaas == "vSphere" %>
 1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** field. For example, `us.pool.ntp.org`.
 <% end %>
-    1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
+    1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director check box to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
 1. Leave the **Bosh HM Forwarder IP Address** field blank.
     <p class='note'><strong>Note:</strong> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> field blank.</p>
 
-1. Select the **Enable VM Resurrector Plugin** checkbox to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.pivotal.io/platform/customizing/resurrector.html) for more information about the Resurrector plugin.<% end %>
+1. Select the **Enable VM Resurrector Plugin** check box to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.pivotal.io/platform/customizing/resurrector.html) for more information about the Resurrector plugin.<% end %>
 
-1. If you want to collect detailed metrics from BOSH-managed VMs, activate the **Enable additional System Metrics** checkbox. For a list of metrics that the System Metrics Agent collects from BOSH-managed VMs, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md) on GitHub.
+1. If you want to collect detailed metrics from BOSH-managed VMs, activate the **Enable additional System Metrics** check box. For a list of metrics that the System Metrics Agent collects from BOSH-managed VMs, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md) on GitHub.
 
-1. Select **Enable Post Deploy Scripts** to run a post-deploy script after deployment. This script allows the job to execute additional commands against a deployment.
+1. Select **Enable Post Deploy Scripts** to run a post deployment script after deployment. This script allows the job to execute additional commands against a deployment.
     <p class='note'><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
 
-1. To configure your VMs to use short-lived NATS credentials during the bootstrap process, activate the **Enable Short Lived NATS Bootstrap Credentials**
-checkbox. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
+1. To configure your VMs to use short lived NATS credentials during the bootstrap process, activate the **Enable Short Lived NATS Bootstrap Credentials**
+check box. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
 communicate with the BOSH Director through BOSH NATS. For more information, see [Using Short-Lived NATS Bootstrap
 Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
     <div class='note'><strong>Notes:</strong>
@@ -61,11 +61,11 @@ Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats
       </ul>
     </div>
 
-1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deploy. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
+1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deployment. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful re-deployment.
 
-1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be re-created on the next deploy. This process does not destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
+1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be re-created on the next deploy. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful re-deployment.
 
-1. Select **Recreate All Persistent Disks** to force BOSH to migrate and re-create persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. This checkbox is cleared automatically after a successful re-deployment.
+1. Select **Recreate All Persistent Disks** to force BOSH to migrate and re-create persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful re-deployment.
 
 1. Select **Enable bosh deploy retries** to instruct <%= vars.ops_manager %> to retry failed BOSH operations up to five times.
 
@@ -100,7 +100,7 @@ Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats
 
 1. Select **HM Email Plugin** to enable Health Monitor integration with email.
 
-    ![alt-text="There is a selected check box, HM Email Plugin, and seven text fields: Host, Port, Domain, From, Recipients, Username, and Password."](../common/images/director_hm_email.png)
+    ![alt-text="There is a selected check box, HM Email Plug-in, and seven text fields: Host, Port, Domain, From, Recipients, Username, and Password."](../common/images/director_hm_email.png)
 
     * **Host**: Enter your email hostname.
     * **Port**: Enter your email port number.
@@ -109,7 +109,7 @@ Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats
     * **Recipients**: Enter comma-separated addresses of intended recipients.
     * **Username**: Enter the username for your email server.
     * **Password**: Enter the password for your email server.
-    * **Enable TLS**: Select this checkbox to enable Transport Layer Security to the email host.
+    * **Enable TLS**: Select this chec kbox to enable Transport Layer Security to the email host.
 
 <%= partial "../common/credhub-encryption" %>
 

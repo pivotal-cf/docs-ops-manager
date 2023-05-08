@@ -15,7 +15,7 @@ This topic provides an overview of the Services TLS Certificate Authority (CA) a
 
 In a <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> deployment, the Services TLS CA signs the certificate that service brokers use to sign leaf certificates for TLS-enabled service instances.
 
-Service instances include instances created by on-demand services such as <%= vars.on_demand_service_tiles %>. You may have one or more of these service tiles installed in your deployment. All deployed service tiles in a foundation use the same Services TLS CA certificate, which is stored in BOSH CredHub with the name `/services/tls_ca`.
+Service instances include instances created by on-demand services such as <%= vars.on_demand_service_tiles %>. You can have one or more of these service tiles installed in your deployment. All deployed service tiles in a foundation use the same Services TLS CA certificate, which is stored in BOSH CredHub with the name `/services/tls_ca`.
 
 When an operator creates an on-demand TLS enabled service instance or updates an existing non-TLS on-demand service instance to use TLS, the following takes place:
 
@@ -54,10 +54,10 @@ There is a potential for app downtime in the following specific cases:<br><br>
       apps use <code>jdbcURL</code>
       or consume CA certificates from <code>/etc/ssl/certs/ca-certificate.crt</code>.
     </li>
-    <li>If you are using Redis for Pivotal Platform v2.2 or v2.3 and use this procedure to rotate the Services TLS CA certificate, you may experience downtime for apps that bind to Redis service instances. To workaround the issue in v2.2 or 2.3, see this <a href="https://community.pivotal.io/s/article/Redis-On-Demand-Services-do-not-rotated-services-tls-ca-leaf-certs">Knowledge Base article</a>. This issue is fixed in Redis for <%= vars.app_runtime_abbr %> v2.4.1.</li>
+    <li>If you are using Redis for Pivotal Platform v2.2 or v2.3 and use this procedure to rotate the Services TLS CA certificate, you can experience downtime for apps that bind to Redis service instances. To workaround the issue in v2.2 or 2.3, see this <a href="https://community.pivotal.io/s/article/Redis-On-Demand-Services-do-not-rotated-services-tls-ca-leaf-certs">Knowledge Base article</a>. This issue is fixed in Redis for <%= vars.app_runtime_abbr %> v2.4.1.</li>
     </ul></div>
 
-## <a id='tls'></a> Procedure for Rotating the Services TLS CA Certificate
+## <a id='tls'></a> Rotate the Services TLS CA Certificate
 
 This section provides the procedure to rotate the Services TLS CA certificate
 and update all its leaf certificates.
@@ -83,7 +83,7 @@ To check the expiration date:
               Not After : Jan 23 19:04:58 2020 GMT
     </pre>
 
-    The above command retrieves the certificate from CredHub, decrypts it, parses its JSON structure,
+    The preceding command retrieves the certificate from CredHub, decrypts it, parses its JSON structure,
     and finds its `Validity` properties.
     The expiration date for the certificate is the value of `Not After`.
 
@@ -173,7 +173,7 @@ operation can take a long time to complete.</p>
 
 To apply these changes:
 
-1. Navigate back to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go back to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**.
 
@@ -189,7 +189,7 @@ To apply these changes:
 1. For each on-demand service tile that uses TLS:
     1. Expand the errands.
     1. Enable the errand to upgrade all service instances.
-        <p class='note'><strong>Note:</strong> The name of the upgrade all service instances errand may differ slightly between services.</p>
+        <p class='note'><strong>Note:</strong> The name of the upgrade all service instances errand might differ slightly between services.</p>
 
 1. Click **Apply Changes**.
 
@@ -235,7 +235,7 @@ In this step, you apply changes to ensure that all on-demand service instances g
 
 To apply these changes:
 
-1. Navigate back to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go back to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**.
 
@@ -246,7 +246,7 @@ To apply these changes:
 1. For each on-demand service tile that uses TLS:
     1. Expand the errands.
     1. Enable the errand to upgrade all service instances.
-        <p class='note'><strong>Note:</strong> The name of the upgrade all service instances errand may differ slightly between services.</p>
+        <p class='note'><strong>Note:</strong> The name of the upgrade all service instances errand might differ slightly between services.</p>
 
 1. Click **Apply Changes**.
 
@@ -255,7 +255,7 @@ To apply these changes:
 After your apps have reconnected to service instances with new certificates,
 remove the old CA certificate:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the **BOSH Director** tile.
 
@@ -265,7 +265,7 @@ remove the old CA certificate:
 
 1. Click **Save**.
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the **<%= vars.app_runtime_abbr %>** tile.
 
@@ -277,11 +277,11 @@ remove the old CA certificate:
 
 ### <a id='applychanges3'></a> Apply Changes for the Third Time
 
-As a security best practice, you should remove outdated certificates as soon as possible from your deployment.
+As a security best practice, you must remove outdated certificates as soon as possible from your deployment.
 You can schedule this step at a convenient time. Most deployments
-will not lose any functionality if you do not perform this step immediately.
+do not lose any capability if you do not perform this step immediately.
 
-For some deployments, you may encounter an error if you create a
+For some deployments, you might encounter an error if you create a
 service instance in a deployment that contains an expired Services TLS CA certificate.
 For more information, see this [Knowledgebase Article](https://community.pivotal.io/s/article/Cloud-Controller-fails-to-create-service-instance-when-there-is-an-old-expired-cert-installed-on-the-system).
 
@@ -291,7 +291,7 @@ For more information, see this [Knowledgebase Article](https://community.pivotal
 
 To apply these changes:
 
-1. Navigate back to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go back to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**.
 
@@ -300,6 +300,6 @@ To apply these changes:
 1. For each on-demand service tile that uses TLS:
     1. Expand the errands.
     1. Enable the errand to upgrade all service instances.
-        <p class='note'><strong>Note:</strong> The names of upgrade all service instances errand may differ slightly between services.</p>
+        <p class='note'><strong>Note:</strong> The names of upgrade all service instances errand might differ slightly between services.</p>
 
 1. Click **Apply Changes**.

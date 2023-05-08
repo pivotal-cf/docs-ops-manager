@@ -11,7 +11,7 @@ GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables
 
 To configure a shared VPC, you must assign your project to a Cloud Organization. Confirm that you have a Cloud Organization associated with your GCP account using one of these methods:
 
-* **GCP Console:** From the [GCP console](https://console.cloud.google.com/), click the **Organization** drop-down menu at the top of the page to display all organizations you belong to.
+* **GCP Console:** From the [GCP console](https://console.cloud.google.com/), click the **Organization** drop-down menu to display all organizations you belong to.
 
 * **gcloud Command Line Interface (CLI):** From the command line, run `gcloud organizations list` to display all organizations you belong to. To install the gcloud CLI, see [gcloud Overview](https://cloud.google.com/sdk/gcloud/) in the Google documentation.
 
@@ -119,7 +119,7 @@ To set up VPC network peering with the gcloud CLI:
 
 ## <a id='verify'></a> Step 4: Verify the Shared VPC Configuration
 
-After configuring a shared VPC, use the following procedure to verify that the shared VPC host project VM appears in the <%= vars.ops_manager %> project.
+After you configure a shared VPC, use the following procedure to verify that the shared VPC host project VM appears in the <%= vars.ops_manager %> project.
 
 1. From the GCP console, select the <%= vars.ops_manager %> project from the drop-down menu at the top of the page.
 

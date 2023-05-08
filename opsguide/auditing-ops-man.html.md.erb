@@ -6,7 +6,7 @@ owner: Ops Man
 This topic describes how operators can audit the activity of <%= vars.ops_manager_first %> users. The sections in this topic define the relevant logs for auditing user activity and describe how to access and forward the logs.
 
 
-## <a id ='overview'></a> Overview
+## <a id ='overview'></a> Overview on Auditing Ops Manager User Activity
 
 You can audit <%= vars.ops_manager %> user activity to help improve security practices in your environment. Auditing user activity also helps you ensure that your environment is compliant with existing security standards.
 
@@ -29,7 +29,7 @@ To access logs for auditing user activity:
 
 1. SSH onto the <%= vars.ops_manager %> VM using your private SSH key. For more information, see [Log Into the <%= vars.ops_manager %> VM](../install/ssh-login.html#ssh-by-iaas).
 
-1. Navigate to the location of the logs and open or preview the log file. For example, to view the `audit_log.txt` file, run:
+1. Go to the location of the logs and open or preview the log file. For example, to view the `audit_log.txt` file, run:
 
     ```
     cat /var/log/opsmanager/audit_log.txt
@@ -38,7 +38,7 @@ To access logs for auditing user activity:
 
 ## <a id='logs'></a> Logs for Auditing User Activity
 
-The table below describes the types of user actions that you can audit with logs, and the location of the logs.
+The following table describes the types of user actions that you can audit with logs, and the location of the logs.
 
 For information about how to access the logs in this table, see [Access Logs on the <%= vars.ops_manager %> VM](#access-logs).
 
@@ -123,7 +123,7 @@ The following shows an example of the content in the `audit_log.txt` file:
 }
 ```
 
-The table below describes the properties in the `audit_log.txt` file and provides example values for each property:
+The following table describes the properties in the `audit_log.txt` file and provides example values for each property:
 
 <table>
 	<tr>
