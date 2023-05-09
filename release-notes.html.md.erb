@@ -22,9 +22,9 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 08, 2023
 
-- **[Feature]** Allow both gp3 and throughput (IOPS) to be set through API when creating custom disk types
-- **[Feature]** Use clang to compile ruby in Opsmanager
-- **[Bug Fix]** Default ldap "Group Max Search Depth" to 1
+- **[Feature]** Ops Manager allows users to download logs for the BOSH Director
+- **[Feature]** Upgrade to Ruby 3.1
+- **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
 - **[Bug Fix]** Blobstore credentials do not appear in IaaS metadata when signed URLs are used
 - **[Bug Fix]** The "label" of Ops Manager tile form fields can be read out loud by a screen reader, and a screen reader announces that a field is "required" when it is required
 
@@ -53,9 +53,9 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
-- **[Feature]** OpsManager allows users to download /var/log logs from deployed instances
+- **[Feature]** Ops Manager allows users to download /var/log logs from deployed instances
 - **[Bug Fix]** Add descriptive 'aria-label's to buttons in Ops Manager "Delete Product" modal
-- **[Feature]** OpsManager allows users to download logs for the BOSH Director
+- **[Feature]** Ops Manager allows users to download logs for the BOSH Director
 - **[Feature]** Improve internal Rails log by enabling log_tags
 - **[Feature]** Allow both gp3 and throughput (IOPS) to be set via API when creating custom disk types
 
@@ -339,7 +339,7 @@ you are using the most recent stemcell versions.
 
 - **[Bug Fix]** Ops Manager correctly removes temporary files created during an export
 - **[Known Issue Fix]** Fixes a bug preventing Azure configurations from being correctly saved/deployed when Storage Accounts are used for Cloud Storage (problem introduced in 2.10.44)
-- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 
 <table border="1" class="nice">
@@ -373,8 +373,8 @@ you are using the most recent stemcell versions.
 - **[Bug Fix]** UI Fixes:
   - Datastore cluster/datastore configuration form fields have been adjusted for clarity.
   - Expired certificates do not display negative values for "expires in"
-- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.10.44)
-- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Ops Manager 2.10.44)
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -400,8 +400,8 @@ you are using the most recent stemcell versions.
   <%= vars.v_major_version %>.45 causes all VMs to re-deploy.</p>
 
 - **[Fix]** BOSH task cleanup occurs daily (rather than weekly). This change may alleviate issues seen in deployments where the BOSH Director runs tasks frequently (e.g. for monitoring).
-- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.10.44)
-- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Ops Manager 2.10.44)
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -424,8 +424,8 @@ you are using the most recent stemcell versions.
 **Release Date:** July 14, 2022
 
 - **[Security Fix]** Remediated CVE-2022-23923 in the tile JavaScript migration process.
-- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in OpsManager 2.10.44)
-- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Ops Manager 2.10.44)
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -450,7 +450,7 @@ you are using the most recent stemcell versions.
 - **[Known Issue Fix]** Certificates endpoint no longer returns a 500 error due to "nested asn" error. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** Deleting VM types using the API endpoint is allowed even when VMs are deployed with those types. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** Content-Security-Policy header should not prevent users logging in with SAML. Issue is introduced in v2.10.40.
-- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -474,7 +474,7 @@ you are using the most recent stemcell versions.
 
 - **[Known Issue Fix]** The expiring certificates API should not return a 500 status error when syslog certificates are not configured. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** The VM type deletion API endpoint should not return a 500 status error. Issue is introduced in v2.10.40.
-- **[Known Issue]** vSphere deployments may create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** vSphere deployments may create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -499,7 +499,7 @@ you are using the most recent stemcell versions.
 - **[Bug Fix]** The BOSH Director would fail to deploy if the persistent disk still contained the postgres 9 data directory. This data has not been in use since Ops Manager 2.4, but there was no automated cleanup process.
 - **[Known Issue]** The expiring certificates API endpoint will return a 500 status error for customers that have the syslog feature configured without entering an SSL certificate. Additionally, attempting to generate a support bundle will return an error. To workaround this issue, see [Support bundle download gives error undefined method `strip` and Ops Manager certificate pane does not load](https://community.pivotal.io/s/article/Support-bundle-download-gives-error-undefined-method)
 - **[Known Issue]** Deleting custom VM types using the API always returns a 500 status error.
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than OpsManager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
+- **[Known Issue]** vSphere deployments might create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
 
 <table border="1" class="nice">
   <thead>
@@ -1996,3 +1996,9 @@ You can ignore this error. The certificate cannot be deleted.
 <p class='note'><strong>Note:</strong> If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
   <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
   the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>
+
+### <a id='bosh-reuses-packages'></a> BOSH Inappropriately Reuses Compiled Packages
+
+The BOSH Director attempts to match packages from an uploaded release to "similar" packages that have been previously uploaded. The match is made using the fingerprint on the uncompiled package contents. However, recently the packages in <code>golang-release</code> were modified to be templated. This led to packages that shared the same fingerprint to be used interchangeably even though they represented different versions of Golang. Reusing these packages could cause Apply Changes to fail if a tile expected one version of Golang but got another.
+
+This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.57.
