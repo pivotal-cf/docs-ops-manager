@@ -22,6 +22,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 08, 2023
 
+- **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
 - **[Bug Fix]** The See Changes page should not return an error after upgrading from Ops Manager 2.10 to 3.0
 
 <table border="1" class="nice">
@@ -45,7 +46,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 **Release Date:** May 01, 2023
 
 - **[Feature]** Allow both gp3 and throughput (IOPS) to be set through API when creating custom disk types
-- **[Feature]** Use clang to compile ruby in Opsmanager
+- **[Feature]** Use clang to compile Ruby in Ops Manager
 - **[Bug Fix]** Default ldap "Group Max Search Depth" to 1
 - **[Bug Fix]** Blobstore credentials do not appear in IaaS metadata when signed URLs are used
 - **[Bug Fix]** The "label" of Ops Manager tile form fields can be read out loud by a screen reader, and a screen reader announces that a field is "required" when it is required
@@ -557,3 +558,9 @@ This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.6+
 <p class='note'><strong>Note:</strong> If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
   <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
   the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>
+
+### <a id='bosh-reuses-packages'></a> BOSH Inappropriately Reuses Compiled Packages
+
+The BOSH Director attempts to match packages from an uploaded release to "similar" packages that have been previously uploaded. The match is made using the fingerprint on the uncompiled package contents. However, recently the packages in <code>golang-release</code> were modified to be templated. This led to packages that shared the same fingerprint to be used interchangeably even though they represented different versions of Golang. Reusing these packages could cause Apply Changes to fail if a tile expected one version of Golang but got another.
+
+This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.9+LTS-T.
