@@ -5,7 +5,7 @@ owner: Ops Manager
 
 <%= partial "/pcf/warning-terraform" %>
 
-This topic describes the preparation steps required to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS) using Terraform templates.
+This guide describes the preparation steps required to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS) using Terraform templates.
 
 The Terraform template for <%= vars.ops_manager %> on AWS describes a set of AWS resources and properties. For more information about how Terraform creates resources in AWS, see [AWS Provider](https://www.terraform.io/docs/providers/aws/index.html) in the Terraform documentation.
 
@@ -42,7 +42,7 @@ In addition to reviewing the prerequisites for your runtime, ensure you have:
 
 Before you can run Terraform commands to provision infrastructure resources, you must download the AWS Terraform templates and create a Terraform template variables file. To download the templates and create a template variables file:
 
-1. On [VMware Tanzu Network](https://network.pivotal.io), go to the **<%= vars.app_runtime_full %>** release.
+1. On [VMware Tanzu Network](https://network.pivotal.io), navigate to the **<%= vars.app_runtime_full %>** release.
 
 1. Download the AWS Terraform templates ZIP file.
 
@@ -50,13 +50,13 @@ Before you can run Terraform commands to provision infrastructure resources, you
 
 1. Move the extracted folder to the `workspace` directory on your local machine.
 
-1. On the command line, go to the extracted folder. For example:
+1. On the command line, navigate to the extracted folder. For example:
 
     ```
     cd ~/workspace/pivotal-cf-terraforming-aws
     ```
 
-1. Go to the `terraforming-pas` or `terraforming-pks` directory that contains the Terraform files for your runtime.
+1. Navigate to the `terraforming-pas` or `terraforming-pks` directory that contains the Terraform files for your runtime.
 
 1. In the runtime directory, create a text file named `terraform.tfvars`.
 
@@ -84,7 +84,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
     SSL_KEY
     ```
 
-1. Edit the values in the file according to the following table:
+1. Edit the values in the file according to the table below:
   <table>
     <tr>
       <th style="width: 35%">Value to replace</th>
@@ -148,13 +148,13 @@ Complete this step if you want to:
 
 * Deploy the <%= vars.segment_runtime_full %> tile.
 
-In your `terraform.tfvars` file, specify the appropriate variables from the following sections.
+In your `terraform.tfvars` file, specify the appropriate variables from the sections below.
 
 <p class='note'><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
 
 ### <a id='iso_seg'></a> Isolation Segments
 
-If you plan to deploy the <%= vars.segment_runtime_full %> tile, add the following variables to your `terraform.tfvars` file, replacing `YOUR-CERTIFICATE` and `YOUR-PRIVATE-KEY` with a certificate and private key.
+If you plan to deploy the <%= vars.segment_runtime_full %> tile, add the variables below to your `terraform.tfvars` file, replacing `YOUR-CERTIFICATE` and `YOUR-PRIVATE-KEY` with a certificate and private key.
 
 ```
 create_isoseg_resources = 1
@@ -231,7 +231,7 @@ To use the Terraform CLI to create resources on AWS:
 
 To create a DNS record for your deployment:
 
-1. In a browser, go to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
+1. In a browser, navigate to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
 
 1. Create a new NS record for your system domain. Your system domain is `YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX`.
 

@@ -6,15 +6,15 @@ owner: CredHub Maestro
 This topic describes setting up and using CredHub Maestro for CredHub.
 
 
-## <a id='overview'></a> Overview of Setting up and Using CredHub Maestro
+## <a id='overview'></a> Overview
 
 CredHub Maestro is a command-line interface (CLI) that facilitates rotations of certificates in CredHub. Using CredHub Maestro, you can:
 
-* Determine if any of your CredHub certificates are expiring soon.
+* Determine if any of your CredHub certificates are expiring soon
 
-* Rotate CredHub certificates.
+* Rotate CredHub certificates
 
-* Clean up inactive certificate versions so that CredHub does not run out of disk space.
+* Clean up inactive certificate versions so that CredHub does not run out of disk space
 
 
 ## <a id='setup-usage'></a> Set Up Environment Variables
@@ -23,7 +23,7 @@ This section describes setting up the environment variables you need to use Cred
 
 ### <a id='required-env-vars'></a> Required Environment Variables
 
-To set the CredHub environment variables you need to set up CredHub Maestro, follow the guidance in the following table:
+To set the CredHub environment variables you need to set up CredHub Maestro, follow the guidance in the table below.
 
 To set BOSH environment variables, see [Advanced Troubleshooting with the BOSH CLI](../../install/trouble-advanced.html).
 
@@ -33,7 +33,7 @@ To set BOSH environment variables, see [Advanced Troubleshooting with the BOSH C
 | BOSH_CLIENT | Name of BOSH client. |
 | BOSH_CLIENT_SECRET | BOSH client secret. |
 | BOSH_CA_CERT | Path or value of BOSH Director trusted certificate authority (CA). |
-| CREDHUB_SERVER | URL of BOSH Director CredHub server. This must be `BOSH_ENVIRONMENT:8844`. |
+| CREDHUB_SERVER | URL of BOSH Director CredHub server. This should be `BOSH_ENVIRONMENT:8844`. |
 | CREDHUB_CLIENT | Name of CredHub client. This is the same as `BOSH_CLIENT`. |
 | CREDHUB_SECRET | CredHub client secret. This is the same as `BOSH_CLIENT_SECRET`. |
 | CREDHUB_CA_CERT | Path or value of CredHub trusted CA certificate. This is the same as `BOSH_CA_CERT`. |

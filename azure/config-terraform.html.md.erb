@@ -19,7 +19,7 @@ To complete the procedures in this topic, you must have access to the output gen
 
 ## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
 
-1. In a web browser, go to the fully qualified domain name (FQDN) of <%= vars.ops_manager %>. Use the `ops_manager_dns` value from running `terraform output`.
+1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %>. Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
@@ -54,7 +54,7 @@ To complete the procedures in this topic, you must have access to the output gen
 3. For **SSH Private Key**, enter the `ops_manager_ssh_private_key` output from Terraform.
 
 4. For **Availability Mode**, choose whether to use **Availability Sets** or **Availability Zones**. You can further configure this option in the [**Assign AZs and Networks Page**](#assign-networks).
-   * **For new installations of <%= vars.ops_manager %>**: **Availability Zones** are selected by default, but you can select **Availability Sets**.
+   * **For new installations of <%= vars.ops_manager %>**: **Availability Zones** are selected by default, but you can choose **Availability Sets**.
    * **If you are upgrading from v2.4**: You must use **Availability Sets**.
     <p class='note'><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
 
@@ -76,7 +76,7 @@ Select **Create Networks** and follow the procedures in this section to add the 
 
 ### <a id='pas-network'></a> Create Network for <%= vars.app_runtime_abbr %>
 
-Create the following networks:
+Create the following three networks:
 
 * [<%= vars.app_runtime_abbr %> Infrastructure Network](#pas-infrastructure-network)
 * [<%= vars.app_runtime_abbr %> Runtime Network](#pas-runtime-network)
@@ -228,13 +228,13 @@ To create the infrastructure network:
       </tr>
     </table>
 
-    ![alt-text="Create a subnet."](../common/images/azure/create-networks-services.png)
+    ![alt-text=""](../common/images/azure/create-networks-services.png)
 
 1. Click **Save**.
 
 2. You might see red warnings. Ignore them only if **Enable ICMP checks** is not selected.
 
-If you complete this step for <%= vars.app_runtime_abbr %>, go to [Assign AZs and Networks Page](#assign-networks).
+If you complete this step for <%= vars.app_runtime_abbr %>, proceed to [Assign AZs and Networks Page](#assign-networks).
 
 ### <a id='pks-network'></a> Create Network for <%= vars.k8s_runtime_abbr %>
 
@@ -404,7 +404,7 @@ To create the infrastructure network:
     <ul>
     <li>If you use Availability Zones, select one of the three available zones from the <strong>Singleton Availability Zone</strong> dropdown, then select a network from the <strong>Networks</strong> dropdown. The networks that appear in this list are networks that you created earlier in this procedure.
     </li>
-    <li>If you use Availability Sets, select a network from the <strong>Networks</strong> drop-down menu. The networks that appear in this list are networks you created earlier in this procedure.</li>
+    <li>If you use Availability Sets, choose a network from the <strong>Networks</strong> dropdown. The networks that appear in this list are networks you created earlier in this procedure.</li>
     </ul>
   </li>
   <li>Click <strong>Save</strong>.</li>
@@ -429,14 +429,14 @@ To create the infrastructure network:
 
     ![alt-text="The BOSH DNS Config page has three fields: Excluded Recursors, Recursor Timeout, and Handlers."](../common/images/azure/om-resource-config.png)
 
-1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, select **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
+1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
 
     <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
     <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>,
     provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
-2. (Optional) To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** check box.
+2. (Optional) To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox.
 For **Load Balancers**, enter your Azure application gateway name under the **BOSH Director** job.
 To create an application gateway, follow the procedures in [Create an application gateway with SSL termination using Azure PowerShell](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-arm) from the Azure documentation. When you create the application gateway, associate the gateway's IP with your system domain.
 
@@ -454,9 +454,9 @@ To create an application gateway, follow the procedures in [Create an applicatio
 
     ![alt-text=""](../common/images/cloudform/install-error.png)
 
-1. BOSH Director begins the installation. This might take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
+1. BOSH Director installs. This may take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
 
-    ![alt-text="BOSH Director installation begins."](../common/images/cloudform/ops-manager-complete.png)
+    ![alt-text=""](../common/images/cloudform/ops-manager-complete.png)
 
 
 ## <a id='next'></a> Next Steps

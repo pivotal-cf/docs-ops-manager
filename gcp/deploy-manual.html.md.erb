@@ -17,7 +17,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 1. Log in to the [VMware Tanzu Network](https://network.pivotal.io/products/pivotal-cf), and click **<%= vars.ops_manager %>**.
 
-1. From the **Releases** drop down menu, select the release to install.
+1. From the **Releases** dropdown, select the release to install.
 
 1. Select one of the following download files:
     * **<%= vars.ops_manager %> for GCP**
@@ -49,7 +49,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 ## <a id='start-vm'></a> Step 3: Create the <%= vars.ops_manager %> VM Instance
 
-1. Select the check box for the image that you previously created.
+1. Select the check box for the image that you created above.
 
     ![alt-text=""](../common/images/gcp/create_instance.png)
 
@@ -83,20 +83,20 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
         * Click **Select** to save.
 
     * Under **Identity and API access**, select the **Service account** you created when preparing your environment during the step [Set up IAM Service Accounts](prepare-env-manual.html#iam_account).
-    * **Allow HTTP traffic**: Leave this check box deselected.
-    * **Allow HTTPS traffic**: Leave this check box deselected.
+    * **Allow HTTP traffic**: Leave this checkbox unselected.
+    * **Allow HTTPS traffic**: Leave this checkbox unselected.
     * **Networking**: Select the **Networking** tab, and perform the following steps:
         * Under **Network interfaces**, perform the following steps:
             * Remove the `default` network interface if this interface still exists.
             * Select the network you created when preparing your environment in [Create a GCP Network with Subnet](prepare-env-manual.html#create_network) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_. For example, `pcf-virt-net`.
             * Under **Subnetwork**, select the `pcf-infrastructure-subnet-GCP-REGION` subnet that you created when preparing your environment in [Create a GCP Network with Subnet](prepare-env-manual.html#create_network) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
             * For **Primary internal IP**, select **Ephemeral (Custom)**. Enter an IP address (for example, `192.168.101.5`) in the **Custom ephemeral IP address** field. Specify the next available internal IP address located within the reserved IP range that you [configure later in BOSH Director](config-manual.html#network). Do not use the **Gateway IP**, for example `192.168.101.1`.
-            * For **External IP**, select **Create IP address**. In the next form, enter a name for the static IP. For example, `om-public-ip`. Click **Reserve**. In the **External IP** drop-down menu, select the static IP address you just reserved.
+            * For **External IP**, select **Create IP address**. In the next form, enter a name for the static IP. For example, `om-public-ip`. Click **Reserve**. In the **External IP** dropdown, select the static IP address you just reserved.
         * For **Network tags**, enter `pcf-opsman` and `allow-https`. These tags apply the firewall rules you created in [Create Firewall Rules for the Network](prepare-env-manual.html#firewall_rules) to the <%= vars.ops_manager %> VM.
 
 3. Click **Create** to deploy the new <%= vars.ops_manager %> VM. This might take a few moments.
 
-4. Go to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) `opsman.MY-DOMAIN` to the `pcf-opsman` static IP address of <%= vars.ops_manager %> that you created in a previous step.
+4. Navigate to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) `opsman.MY-DOMAIN` to the `pcf-opsman` static IP address of <%= vars.ops_manager %> that you created in a previous step.
 
     <p class='note'><strong>Note:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
 

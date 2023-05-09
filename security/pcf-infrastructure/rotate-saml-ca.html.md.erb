@@ -6,7 +6,7 @@ owner: Ops Manager
 This topic describes how to rotate SAML service provider (SP) credentials in <%= vars.ops_manager_first %>.
 
 
-## <a id='overview'></a> Overview of Rotating SP Credentials
+## <a id='overview'></a> Overview
 
 SAML SP credentials are one example of configurable certificates in <%= vars.app_runtime_first %>. When <%= vars.app_runtime_abbr %> is configured to use SAML as an IDP, it uses a configurable certificate authority (CA) certificate to authenticate to an external SAML server. The CA generates ephemeral certificates that <%= vars.app_runtime_abbr %> includes in its outbound request message headers. This CA has a two-year expiration period.
 
@@ -60,7 +60,7 @@ This includes downloading and importing a new certificate and updated SAML metad
     </table>
 
 1. For the Single Sign-On for VMware Tanzu service, follow the procedure in the table below that corresponds to your use case.
-This includes downloading the SAML SP metadata for each SAML IDP integration. For example, trust, partnership, or federation, and importing the updated SAML SP metadata in your IDP.
+This includes downloading the SAML SP metadata for each SAML IDP integration, such as trust, partnership, or federation, and importing the updated SAML SP metadata in your IDP.
 
     <table border="1">
       <tr>
@@ -89,4 +89,4 @@ This includes downloading the SAML SP metadata for each SAML IDP integration. Fo
       </tr>
     </table>
 
-1. Enable certificate validation again in your IDP.
+1. Re-enable certificate validation in your IDP.

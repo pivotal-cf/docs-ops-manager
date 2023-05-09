@@ -21,11 +21,11 @@ Operators can use these procedures to view and change values that they cannot ac
 
 Operators might want to modify the <%= vars.ops_manager %> installation and product template files for a number of reasons, including the following:
 
-* To change the User Account and Authentication (UAA) admin password of their deployment.
+* To change the User Account and Authentication (UAA) admin password of their deployment
 
-* To retrieve key values.
+* To retrieve key values
 
-* To migrate content across different <%= vars.ops_manager %> releases.
+* To migrate content across different <%= vars.ops_manager %> releases
 
 <p class='note caution'><strong>Caution:</strong> Be careful when making changes to your <%= vars.ops_manager %> installation and product template files. Use spaces instead of tabs, and remember that YAML files use whitespace as a delimiter. Finally, <%= vars.company_name %> does not officially support these procedures, so use them at your own risk.</p>
 
@@ -45,7 +45,7 @@ During the installation process, <%= vars.ops_manager %> combines information fr
 Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manager %> installation files `installation.yml` and `actual-installation.yml`.
 
 1. SSH into the <%= vars.ops_manager %> VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
-1. On the command line, go to the scripts directory:
+1. On the command line, navigate to the scripts directory:
     <pre class="terminal">
     $ cd /home/tempest-web/tempest/web/scripts/
     </pre>
@@ -75,7 +75,7 @@ Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manage
     <pre class="terminal">
     $ sudo service tempest-web stop && sudo service tempest-web start
     </pre>
-1. Go to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
+1. Navigate to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
 1. Log in to <%= vars.ops_manager %>.
 1. Click **Review Pending Changes**, then **Apply Changes**.
 1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this topic to restore your previous settings.
@@ -85,7 +85,7 @@ Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manage
 Perform the following steps to locate and edit your <%= vars.ops_manager %> product template files:
 
 1. SSH into the <%= vars.ops_manager %> VM by following the steps in the [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
-1. On the <%= vars.ops_manager %> VM, go to the `/var/tempest/workspaces/default/metadata` directory.
+1. On the <%= vars.ops_manager %> VM, navigate to the `/var/tempest/workspaces/default/metadata` directory.
     <pre class="terminal">
     $ cd /var/tempest/workspaces/default/metadata
     </pre>
@@ -94,7 +94,7 @@ Perform the following steps to locate and edit your <%= vars.ops_manager %> prod
     $ cp /var/tempest/workspace/default/metadata/YOUR-PRODUCT-TEMPLATE.yml ~/YOUR-PRODUCT-TEMPLATE-orig.yml
     </pre>
 1. Open and edit the product template YAML file as necessary. For more information about product templates, see [Product Template Reference](https://docs.pivotal.io/tiledev/product-template-reference.html).
-1. Go to <%= vars.ops_manager %> to see your changes.
+1. Navigate to <%= vars.ops_manager %> to see your changes.
 1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this to restore your previous settings.
 
 ## <a id='revert'></a> Revert to Your Backup
@@ -111,6 +111,6 @@ Perform the following steps to revert to your backup of an installation or produ
     <pre class="terminal">
     $ sudo service tempest-web stop && sudo service tempest-web start
     </pre>
-1. Go to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
+1. Navigate to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
 1. Log in to <%= vars.ops_manager %>.
 1. Click **Review Pending Changes**, then **Apply Changes**.

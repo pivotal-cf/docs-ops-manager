@@ -6,11 +6,11 @@ To configure <%= vars.ops_manager %> to log in by default using a SAML identity 
     - **For the same identity provider:** Copy the identity provider metadata XML or URL to the <%= vars.ops_manager %> **SAML Identity Provider** login page.<br><br>
     - **For a separate identity provider:** Copy the metadata XML or URL from that identity provider and enter it into the BOSH identity provider metadata text field in the <%= vars.ops_manager %> login page.
 
-1. Enter values for the following fields. Failure to provide values in these fields results in a `500` error.
+1. Enter values for the fields listed below. Failure to provide values in these fields results in a `500` error.
     * **SAML admin group**: Enter the name of the SAML group that contains all <%= vars.ops_manager %> administrators. This field is case-sensitive.
     * **SAML groups attribute**: Enter the groups attribute tag name with which you configured the SAML server. This field is case-sensitive.
 
-1. Enter your **Decryption passphrase**. Read the **End User License Agreement**, and select the check box to accept the terms.
+1. Enter your **Decryption passphrase**. Read the **End User License Agreement**, and select the checkbox to accept the terms.
 
 1. Your <%= vars.ops_manager %> login page appears. Enter your username and password and click **Login**.
 
@@ -18,13 +18,13 @@ To configure <%= vars.ops_manager %> to log in by default using a SAML identity 
     * <%= vars.ops_manager %> SAML service provider metadata: `https://OPS-MAN-FQDN:443/uaa/saml/metadata`
     * BOSH Director SAML service provider metadata: `https://BOSH-IP-ADDRESS:8443/saml/metadata`.<br>Where `BOSH-IP-ADDRESS` is in the **Status** pane of the BOSH Director tile.
 
-1. Import the <%= vars.ops_manager %> SAML provider metadata to your identity provider. If your identity provider does not support importing, provide the following values:
+1. Import the <%= vars.ops_manager %> SAML provider metadata to your identity provider. If your identity provider does not support importing, provide the values below.
     * **Single sign on** URL: `https://OPS-MAN-FQDN:443/uaa/saml/SSO/alias/OPS-MAN-FQDN`
     * **Audience URI** (SP Entity ID): `https://OP-MAN-FQDN:443/uaa`
     * **Name ID**: Email Address
     * SAML authentication requests are always signed
 
-1. Import the BOSH Director SAML provider metadata to your identity provider. If the identity provider does not support an import, provide the following values:
+1. Import the BOSH Director SAML provider metadata to your identity provider. If the identity provider does not support an import, provide the values below.
     * **Single sign on** URL: `https://BOSH-IP:8443/saml/SSO/alias/BOSH-IP`
     * **Audience URI** (SP Entity ID): `https://BOSH-IP:8443`
     * **Name ID**: Email Address

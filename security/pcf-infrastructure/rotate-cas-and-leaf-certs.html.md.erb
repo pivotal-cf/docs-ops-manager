@@ -6,7 +6,7 @@ owner: Ops Manager
 This topic describes how to rotate certificate authorities (CAs) and leaf certificates using the <%= vars.ops_manager %> API. To rotate only leaf certificates, see one of the leaf certificate rotation topics listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.
 
 
-## <a id='overview'></a> Overview on Rotating Certificate Authorities and Leaf Certificates
+## <a id='overview'></a> Overview
 
 This procedure uses the <%= vars.ops_manager %> API to rotate the <%= vars.ops_manager_first %> root CA and leaf certificates. When you rotate the <%= vars.ops_manager %> root CA, the <%= vars.ops_manager %> API automatically rotates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
 
@@ -24,17 +24,17 @@ This procedure includes three redeploys. The first deploy adds the new CA certif
 
 To rotate CAs, configurable leaf certificates, and non-configurable leaf certificates:
 
-<p class='note caution'><strong>Caution:</strong> You must complete these steps in the exact order specified. Otherwise, you can damage your deployment.</p>
+<p class='note caution'><strong>Caution:</strong> You must complete these steps in the exact order specified. Otherwise, you may damage your deployment.</p>
 
-1. Add a new <%= vars.ops_manager %> root CA. This step also automatically adds new CAs for all CAs visible to the <%= vars.ops_manager %> API. For more information, see [Add New CAs](#add-new-ca).
+1. Add a new <%= vars.ops_manager %> root CA. This step also automatically adds new CAs for all CAs visible to the <%= vars.ops_manager %> API. For more information, see [Add New CAs](#add-new-ca) below.
 
-1. Activate the <%= vars.ops_manager %> root CA. This step also automatically activates any other new CAs added in the previous step. For more information, see [Activate the CAs](#activate-new-ca).
+1. Activate the <%= vars.ops_manager %> root CA. This step also automatically activates any other new CAs added in the previous step. For more information, see [Activate the CAs](#activate-new-ca) below.
 
-1. Rotate configurable leaf certificates. For more information, see [Rotate Configurable Leaf Certificates](#rotate-config-after-new-root).
+1. Rotate configurable leaf certificates. For more information, see [Rotate Configurable Leaf Certificates](#rotate-config-after-new-root) below.
 
-1. Rotate non-configurable leaf certificates. For more information, see [Rotate Non-Configurable Leaf Certificates from the New CAs](#regenerate-from-new-root).
+1. Rotate non-configurable leaf certificates. For more information, see [Rotate Non-Configurable Leaf Certificates from the New CAs](#regenerate-from-new-root) below.
 
-1. Delete the old root CA and mark the old CAs in CredHub as inactive. For more information, see [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete).
+1. Delete the old root CA and mark the old CAs in CredHub as inactive. For more information, see [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete) below.
 
 <p class='note caution'><strong>Caution:</strong> The Services TLS CA, <code>/services/tls_ca</code>,
 cannot be rotated using this procedure. For information about how to rotate the Services TLS CA, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
@@ -182,7 +182,7 @@ To add new CAs:
 1. Identify the newly added CA, which has `active` set to `false`. Record its GUID.
 
 1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
-    1. Go to `https://OPS-MANAGER-FQDN` in a browser, where `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
+    1. Navigate to `https://OPS-MANAGER-FQDN` in a browser, where `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> deployment.
 
     1. Log in to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -190,14 +190,14 @@ To add new CAs:
 
     1. Select **Director Config**.
 
-    1. Select the **Recreate VMs deployed by the BOSH Director** check box.
+    1. Enable the **Recreate VMs deployed by the BOSH Director** checkbox.
     This propagates the new CA to the BOSH Agent on each VM deployed by the BOSH Director,
     which enables the new leaf certificates to trust the new CA.
 
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
-    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands might be slightly different between services.</p>
+    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
     1. Click the tile.
     1. Click the **Errands** tab.
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
@@ -215,11 +215,11 @@ To add new CAs:
 
     <%= partial 'skip_recreate_step' %>
 
-When the deployment finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Activate the CAs](#activate-new-ca).
+When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Activate the CAs](#activate-new-ca).
 
 ### <a id='activate-new-ca'></a> Step 2: Activate the CAs
 
-To activate the CAs that you added in [Add New CAs](#add-new-ca):
+To activate the CAs that you added in [Add New CAs](#add-new-ca) above:
 
 1. Call the <%= vars.ops_manager %> API `activate` endpoint by running:
 
@@ -302,19 +302,19 @@ To rotate non-configurable leaf certificates:
     <pre class="terminal">HTTP/1.1 200 OK</pre>
 
 1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
-    1. Go to the <%= vars.ops_manager %> Installation Dashboard.
+    1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
     1. Click the **BOSH Director** tile.
 
     1. Select **Director Config**.
 
-    1. Select the **Recreate VMs deployed by the BOSH Director** check box. This propagates the new CAs to all VMs deployed by the BOSH Director to prevent downtime.
+    1. Enable the **Recreate VMs deployed by the BOSH Director** checkbox. This propagates the new CAs to all VMs deployed by the BOSH Director to prevent downtime.
 
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
 
-    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands might be slightly different between services.</p>
+    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
 
     1. Click the tile.
     1. Click the **Errands** tab.
@@ -337,7 +337,7 @@ To rotate non-configurable leaf certificates:
 
 ### <a id='delete'></a> Step 5: Delete the Old Root CA and Mark Old CAs in CredHub as Inactive
 
-After you activate the new CAs and rotate leaf certificates from the new CAs, you must:
+After activating new CAs and rotating leaf certificates from the new CAs, you must:
 
 * Delete the old <%= vars.ops_manager %> root CA from your deployment.
 * Mark the old CAs stored in CredHub as inactive.
@@ -348,7 +348,7 @@ The <%= vars.ops_manager %> API call you use to delete your deployment's old roo
 
 <p class='note'><strong>Note:</strong> This procedure does not delete leaf certificates stored in CredHub. It marks CredHub leaf certificates as transitional, which indicates that the leaf certificate is inactive. To delete CredHub leaf certificates, use the CredHub Maestro garbage collection feature. For information about CredHub Maestro certificate garbage collection, see <a href="advanced-certificate-rotation.html#garbage-collection">Delete Inactive Certificate Versions</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
 
-<p class='note caution'><strong>Caution:</strong> Before you delete the old CA, ensure that you reviewed the <strong>Review Pending Changes</strong> page and clicked <strong>Apply Changes</strong> as part of <a href="#regenerate-from-new-root">Rotate Non-Configurable Leaf Certificates from the New CAs</a>.</p>
+<p class='note caution'><strong>Caution:</strong> Before you delete the old CA, ensure that you reviewed the <strong>Review Pending Changes</strong> page and clicked <strong>Apply Changes</strong> as part of <a href="#regenerate-from-new-root">Rotate Non-Configurable Leaf Certificates from the New CAs</a> above.</p>
 
 To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs as inactive:
 
@@ -386,19 +386,19 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
     <pre class="terminal">HTTP/1.1 200 OK</pre>
 
 1. Configure the BOSH Director to re-create VMs: <%= partial 'skip_recreate_step' %>
-    1. Go to the <%= vars.ops_manager %> Installation Dashboard.
+    1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
     1. Click the **BOSH Director** tile.
 
     1. Select **Director Config**.
 
-    1. Select the **Recreate VMs deployed by the BOSH Director** check box.
+    1. Enable the **Recreate VMs deployed by the BOSH Director** checkbox.
 
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
 
-    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands might be slightly different between services.</p>
+    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
 
     1. Click the tile.
     1. Click the **Errands** tab.

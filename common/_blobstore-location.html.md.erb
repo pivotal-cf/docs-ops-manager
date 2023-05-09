@@ -45,11 +45,11 @@
         Input your credentials from the following sources.
             - **Static Credentials:** In **Access Key** and **Secret Key**, enter the keys you generated when creating your S3 bucket.
             - **IAM Profile:** Use the IAM profile associated with the BOSH Director.<br>
-              You must select the **Enable Signed URLs** check box to use IAM Profile credentials to access blobstores.
+              You must select the **Enable Signed URLs** checkbox to use IAM Profile credentials to access blobstores.
         <% else %>
         1. **Access Key** and **Secret Key:** Enter the keys you generated when creating your S3 bucket.
         <% end %>
-        1. **Enable signed URLs:** Select this check box to configure BOSH VMs to generate short lived, pre-signed URLs for communication between the BOSH Agent and blobstore. If you enable this feature, BOSH Agents do not use credentials to communicate with the blobstore, and VM disks do not store blobstore credentials.
+        1. **Enable signed URLs:** Select this checkbox to configure BOSH VMs to generate short-lived, pre-signed URLs for communication between the BOSH Agent and blobstore. If you enable this feature, BOSH Agents do not use credentials to communicate with the blobstore, and VM disks do not store blobstore credentials.
             <p class='note'><strong>Note:</strong> This feature is only available for BOSH VMs that use Xenial stemcell line 621 or later.</p>
         1. Select **V2 Signature** or **V4 Signature**. If you select **V4 Signature**, enter your **Region**.
             <p class='note'><strong>Note:</strong> AWS recommends using Signature Version 4. For more information about AWS S3 Signatures, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating Requests</a> in the AWS documentation.</p>

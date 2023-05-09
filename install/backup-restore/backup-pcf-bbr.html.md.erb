@@ -9,7 +9,7 @@ restoring BOSH deployments. To restore your backup, see [Restoring Deployments f
 For BBR release notes, see [BOSH Backup and Restore Release Notes](https://docs.cloudfoundry.org/bbr/bbr-rn.html) in the Cloud Foundry documentation.
 
 
-## <a id='overview'></a> Overview on Deployment Backups with BBR
+## <a id='overview'></a> Overview
 
 During the backup, BBR stops the Cloud Controller API and the Cloud Controller workers to create a consistent backup. API functionality is affected, such as when pushing apps or using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
 
@@ -220,7 +220,7 @@ As an alternative to using the <%= vars.ops_manager %> VM as your jumpbox, you c
 
 To retrieve the Cloud Controller database encryption credentials from the <%= vars.app_runtime_abbr %> tile:
 
-1. Go to the <%= vars.ops_manager %> Installation Dashboard.
+1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
@@ -352,7 +352,7 @@ When BBR backs up <%= vars.app_runtime_abbr %>, it needs a Backup Restore node.
 
 To confirm that the Backup Restore node is deployed:
 
-1. Go to the <%= vars.ops_manager %> Installation Dashboard.
+1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
@@ -365,7 +365,7 @@ To confirm that the Backup Restore node is deployed:
 1. If the **Instances** dropdown is not set to `1`:
   1. Set the **Instances** dropdown to `1`.
   2. Click **Save**.
-  3. Go to the <%= vars.ops_manager %> Installation Dashboard.
+  3. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
   4. Click **Review Pending Changes**.
   5. Review your changes. For more information, see [Reviewing Pending Product Changes](../review-pending-changes.html).
   6. Click **Apply Changes**.
@@ -410,7 +410,7 @@ To check that your BOSH Director is reachable and has a deployment that can be b
     - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Step 6: Identify Your Deployment](#identify-deployment).
     - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the root CA for the BOSH Director. If you are using the <%= vars.ops_manager %> VM as your jumpbox, the path is `/var/tempest/workspaces/default/root_ca_certificate`.
 
-1. After the pre-backup verification succeeds, continue to [Create Your Backup](#procedure). If the pre-backup check fails, the deployment you selected might not have the correct backup scripts, or the connection to the BOSH Director might have failed.
+1. After the pre-backup check succeeds, continue to [Create Your Backup](#procedure). If the pre-backup check fails, the deployment you selected might not have the correct backup scripts, or the connection to the BOSH Director might have failed.
 
 
 ## <a id='procedure'></a> Create Your Backup
@@ -499,7 +499,7 @@ To back up BOSH Director:
 
     <p class='note'><strong>Note:</strong> To enable debug logs, use the optional <code>--debug</code> flag. For more information, see <a href="#logging">Logging</a>.</p>
 
-If your backup ends early or fails, you must perform a cleanup.
+If your backup terminates early or fails, you must perform a cleanup.
 
 To clean up:
 
@@ -524,7 +524,7 @@ To clean up:
 <div class="note"><strong>Notes:</strong>
   <ul>
     <li>Backing up <%= vars.app_runtime_abbr %> can take a considerable amount of time, and varies depending on network and hardware infrastructure. In controlled conditions, backup durations have been observed ranging from a few minutes to several hours. To reduce your backup lock times, consider using selective backups. For more information, see <a href="file-storage-backup-level.html">File Storage Backup Level</a>. Part of the backup process causes downtime for Cloud Controller, during which you cannot push, scale, or delete apps. Your apps are not affected.</li>
-    <li>Because the BBR <code>backup</code> command can take a long time to complete, <%= vars.company_name %> recommends you run it independently of the SSH session, so that the process can continue running even if your connection to the jumpbox fails. The prededing command uses <code>nohup</code>, but you could also run the command in a <code>screen</code> or <code>tmux</code> session.</li>
+    <li>Because the BBR <code>backup</code> command can take a long time to complete, <%= vars.company_name %> recommends you run it independently of the SSH session, so that the process can continue running even if your connection to the jumpbox fails. The command above uses <code>nohup</code>, but you could also run the command in a <code>screen</code> or <code>tmux</code> session.</li>
   </ul>
 </div>
 

@@ -5,7 +5,7 @@ iaas: GCP
 install_type: manual
 ---
 
-This topic describes how to configure BOSH Director in <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
+This topic describes how to configure the BOSH Director in <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
 <p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
@@ -16,7 +16,7 @@ To configure BOSH Director, you must first access your <%= vars.ops_manager %> i
 
 To access <%= vars.ops_manager %>:
 
-1. In a web browser, go to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you set up in [Deploying <%= vars.ops_manager %> on GCP](deploy-manual.html).
+1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you set up in [Deploying <%= vars.ops_manager %> on GCP](deploy-manual.html).
   <p class='note'><strong>Note:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
@@ -30,7 +30,7 @@ To configure your GCP tile:
 1. Select **Google Config** and complete the following fields:
     * **Project ID**: Enter your GCP project ID in lowercase, such as: `your-gcp-project-id`.
     * **Default Deployment Tag**: Enter the prefix that you used when creating the GCP resources for this <%= vars.ops_manager %> installation.
-    * Select **AuthJSON**. In the following field, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
+    * Select **AuthJSON**. In the field below, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
         <p class='note'><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
 
         ![alt-text=""](../common/images/gcp/google_config.png)
@@ -62,13 +62,13 @@ To configure the **Create Availability Zones** pane:
 1. For **Google Availability Zone**:
     * Enter one of the zones that you associated to the back end service instance groups of the HTTP(S) load balancer. For example, if you are using the `us-central1` region and selected `us-central1-a` as one of the zones for your HTTP(S) load balancer instance groups, enter `us-central1-a`.
     * Click **Add**.
-    * Repeat the preceding step for all the AZs that you associated to instance groups in [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html#create-http-and-instance-group).
+    * Repeat the above step for all the AZs that you associated to instance groups in [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html#create-http-and-instance-group).
 
       ![alt-text=""](../common/images/gcp/availability_zones_multiple.png)
 
     * Click **Save**.
 
-2. Repeat the preceding step for all the AZs you are using in your deployment. When you are done, click **Save**.
+2. Repeat the above step for all the AZs you are using in your deployment. When you are done, click **Save**.
 
 
 ## <a id='network'></a> Step 5: Configure Create Networks
@@ -77,9 +77,9 @@ To configure the **Create Networks** pane:
 
 1. Select **Create Networks**.
 
-1. Verify that **Enable ICMP checks** is not selected. GCP routers do not respond to ICMP pings.
+1. Make sure **Enable ICMP checks** is not selected. GCP routers do not respond to ICMP pings.
 
-1. Click **Add Network**. Create the three networks described in the following tables.
+1. Click **Add Network**. Create the three networks described in the tables below.
     <p class='note'><strong>Note:</strong> To use a shared VPC network, enter the shared VPC host project name before the network name in the format <code>VPC-PROJECT-NAME/NETWORK-NAME/SUBNET-NAME/REGION-NAME</code>. For example, <code>vpc-project/opsmgr/central/us-central1</code>. For more information, see <a href="../install/gcp-shared-vpc.html">Configuring a Shared VPC on GCP</a>.</p>
     <h3>Infrastructure Network</h3>
     <table>
@@ -218,7 +218,7 @@ To configure the **Resource Config** pane:
 
     ![alt-text=""](../common/images/gcp/om_resource_config.png)
 
-1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** check box. Ensure that the **Internet Connected** check box is not selected for any job. The check box gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
+1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The checkbox gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
 
   <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
@@ -233,9 +233,9 @@ To complete your BOSH Director installation:
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
-1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the **Network Config** pane, and ensure you have deselected the **Enable ICMP Checks** check box. Click **Review Pending Changes**, then **Apply Changes** again.
+1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the **Network Config** pane, and ensure you have deselected the **Enable ICMP Checks** checkbox. Click **Review Pending Changes**, then **Apply Changes** again.
 
-    ![alt-text="Please review the following errors: Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is deactivated) and Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is deactivated)."](../common/images/cloudform/install-error.png)
+    ![alt-text="Please review the errors below: Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is deactivated) and Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is deactivated)."](../common/images/cloudform/install-error.png)
 
 1. BOSH Director installs. This might take a few moments. When the installation process is complete, the **Changes Applied** window appears.
 

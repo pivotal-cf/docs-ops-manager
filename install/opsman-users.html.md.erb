@@ -17,7 +17,7 @@ Users are not the only type of account you can create for <%= vars.ops_manager %
 
 Client accounts are not bound to the same authentication protocols as user accounts. A user account that controls automated components can cause those components to fail if the account experiences inconsistent availability due to permission or authentication issues.
 
-You can create client accounts after deploying <%= vars.ops_manager %>, or during configuration for an initial deployment. For more information about adding clients during initial configuration or after deployment, see [Add Pre-Created Client](#pre-created-clients).
+You can create client accounts after deploying <%= vars.ops_manager %>, or during configuration for an initial deployment. For more information about adding clients during initial configuration or after deployment, see [Add Pre-Created Client](#pre-created-clients) below.
 
 
 ## <a id='add-user'></a> Add <%= vars.ops_manager %> Users
@@ -202,7 +202,7 @@ To create a client:
     * `CLIENT-ID` is the name of your client.
     * `CLIENT-SECRET` is the secret you use to authenticate to your client.
 
-The `opsman.admin` authority referenced in the previous example grant specific permissions to the client. You can choose which permissions you wish the client to have by assigning a different role.
+The `opsman.admin` authority referenced in the example above grant specific permissions to the client. You can choose which permissions you wish the client to have by assigning a different role.
 
 For more information about <%= vars.ops_manager %> roles and what they do, see [Understanding Roles in <%= vars.ops_manager %>](../opsguide/config-rbac.html#about).
 
@@ -246,7 +246,7 @@ When `precreated_client_secret` is passed, a UAA client is created called `precr
 
 ### <a id='pcc-existing-deployment'></a> Add or Modify a Pre-Created Client for an Existing Deployment
 
-This section describes how to add a pre-created client after you have already deployed <%= vars.ops_manager %>. You might only have one pre-created client at a time. If you have an existing pre-created client, you might also use this procedure to change its authentication secret.
+This section describes how to add a pre-created client after you have already deployed <%= vars.ops_manager %>. You may only have one pre-created client at a time. If you have an existing pre-created client, you may also use this procedure to change its authentication secret.
 
 To add a pre-created client to an <%= vars.ops_manager %> that has already been deployed, or change the secret of an existing pre-created client:
 

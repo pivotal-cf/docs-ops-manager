@@ -5,8 +5,8 @@ owner: Security CONSULT LEGAL BEFORE MAKING ANY CHANGES TO THIS DOC
 
 <p class='note'><strong>Note:</strong> This document applies to stemcell v3263 and later.</p>
 
-Customers and prospects often ask for details on stemcell hardening. For example, the process by which
- <%= vars.ops_manager %> is secured by reducing its vulnerability surface from outside access.
+Customers and prospects often ask for details on stemcell hardening, i.e., the process by which
+we secure <%= vars.ops_manager %> by reducing its vulnerability surface from outside access.
 This document provides responses to some commonly-asked questions regarding the security configuration enhancements
 and hardening tests that Pivotal applies to the Cloud Foundry ("CF") stemcell.
 This information will be helpful to customer accreditation teams who are responsible for
@@ -50,7 +50,7 @@ accepted guidance. **_(36 tests)_**
     3. **Additional Hardening:** Configuration hardening improvements that have been made
 to the stemcell. As with most software, a stemcell’s security improves over time and every
 stemcell release is tested to ensure that it is suitable for use with its associated CF release.
-Later releases of a stemcell can include additional security features that were not present in
+Later releases of a stemcell may include additional security features that were not present in
 earlier releases. **_(86 tests)_**
 
     4. **New CF-specific Tests:** New tests that have been added to check CF stemcell-specific
@@ -62,7 +62,7 @@ tests)_**
 
     5. **Maintenance, Updates, and Patching**
 
-        1. Regular patches and feature enhancements are delivered through routine BOSH deployments of
+        1. Regular patches and feature enhancements are delivered via routine BOSH deployments of
            updated stemcells (obviates apt-get upgrade).
 
     6. **File System Hardening**
@@ -77,18 +77,18 @@ tests)_**
 
         6. The temporary storage directories such as /tmp and /var/tmp are mounted on a dedicated partition, and configured with appropriately limiting options such as nodev, nosuid, and noexec.
 
-        7. Each of the following directories is in a separate partition, with mount options managed through BOSH agent:
+        7. Each of the following directories is in a separate partition, with mount options managed via BOSH agent:
            + /var
            + /var/log
            + /var/log/audit
            + /home
            + /tmp
 
-        8. File system mount options for users’ home directories are limited through appropriate mount options including nodev.
+        8. File system mount options for users’ home directories are limited via appropriate mount options including nodev.
 
-        9. Removable media might not be mounted as character or block special device.
+        9. Removable media may not be mounted as character or block special device.
 
-        10. Executable programs might not run from removable media.
+        10. Executable programs may not run from removable media.
 
         11. setuid and setgid are not allowed on removable media.
 
@@ -157,7 +157,7 @@ tests)_**
 
         32. The X Window system is not used in CF and is not installed.
 
-        33. NTP time setting is synchronized on the stemcell through the ntpdate utility.
+        33. NTP time setting is synchronized on the stemcell via the ntpdate utility.
 
         34. The Samba daemon is not used in CF and is deactivated.
 
@@ -220,7 +220,7 @@ tests)_**
 
         59. Audit records are created for loading and unloading of kernel modules and for system calls.
 
-        63. File Integrity Monitoring can be done on the stemcell (through a BOSH Add-on).
+        63. File Integrity Monitoring can be done on the stemcell (via a BOSH Add-on).
 
     12. **Authentication and Authorization**
 
@@ -228,7 +228,7 @@ tests)_**
 
         65. Access to the /etc/crontab file is limited to root.
 
-        66. Access to the cron utility configuration through the hourly, daily, weekly, and monthly directories is limited.
+        66. Access to the cron utility configuration via the hourly, daily, weekly, and monthly directories is limited.
 
         67. User authorization to schedule cron jobs is limited.
 
@@ -263,9 +263,9 @@ tests)_**
 
         81. Idle SSH sessions are terminated after 15 minutes. No client "keep alive" messages are sent.
 
-        82. The SSH login banner might be configured to display site-specific text before user authentication is permitted (through BOSH Add-on).
+        82. The SSH login banner may be configured to display site-specific text before user authentication is permitted (via BOSH Add-on).
 
-        83. Root login is only permitted through console, not through tty devices.
+        83. Root login is only permitted via console, not via tty devices.
 
         84. Only the vcap user is authorized in the sudo group.
 
@@ -273,9 +273,9 @@ tests)_**
 
     13. **Compliance**
 
-        86. Contents of /etc/issue and /etc/issue.net have been configured to the phrase: "'Unauthorized use is strictly prohibited. All access and activity is subject to logging and monitoring." This might be amended if and as necessary through a BOSH Add-on.
+        86. Contents of /etc/issue and /etc/issue.net have been configured to the phrase: "'Unauthorized use is strictly prohibited. All access and activity is subject to logging and monitoring." This may be amended if and as necessary via a BOSH Add-on.
 
-        87. The Message of the Day file /etc/motd is not used, but might be populated through a BOSH Add-on if needed.
+        87. The Message of the Day file /etc/motd is not used, but may be populated via a BOSH Add-on if needed.
 
         88. Identification of the OS and/or version information about the OS does not appear in any login banners.
 
@@ -285,7 +285,7 @@ tests)_**
 
         90. Use and/or presence of any world-writable files has been audited, and minimized to the extent possible for CF.
 
-        91. By default, all stemcell files are owned by a known user and group, and might not belong to a non-existent user or group.
+        91. By default, all stemcell files are owned by a known user and group, and may not belong to a non-existent user or group.
 
         92. Use of SUID and GUID is restricted, and only the /usr/bin/sudo and /bin/su programs are authorized as SUID and/or GUID programs.
 
@@ -299,7 +299,7 @@ tests)_**
 
         96. The GID for the root account is 0.
 
-        97. User accounts might not have empty passwords.
+        97. User accounts may not have empty passwords.
 
         98. NIS is not used in CF, and integration of OS security configuration with legacy NIS permissioning is not enabled (e.g., for /etc/passwd, shadow, and group).
 

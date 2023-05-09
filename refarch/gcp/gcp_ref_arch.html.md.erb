@@ -40,7 +40,7 @@ A single-project VPC lets the platform architect give <%= vars.ops_manager %> fu
 
 ## <a id='shared-vpc'></a> Shared VPC GCP Reference Architecture
 
-The following diagram illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
+The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
 
 ![alt-text="Complex diagram showing many high-level system and routing components. The large groupings in the Organization are Host Project, Service Project (Foundation), and Region."](../images/gcp-overview-shared-vpc.png)
 
@@ -48,7 +48,7 @@ The following diagram illustrates a reference architecture for a deployment of <
 
 ### <a id='shared-vpc-nat'></a> NAT Network Topology
 
-To expose a minimal number of public IP addresses, set up your NAT as shown in the following diagram.
+To expose a minimal number of public IP addresses, set up your NAT as shown in the diagram below.
 
 ![alt-text="Complex NAT network topology diagram. Detailed routing for the Region block is shown."](../images/gcp-nat-flow.png)
 
@@ -56,7 +56,7 @@ To expose a minimal number of public IP addresses, set up your NAT as shown in t
 
 ### <a id='shared-vpc-interconnect'></a> Cloud Interconnect
 
-To speed communication between data centers, use Google Cloud Interconnect, as shown in the following diagram.
+To speed communication between data centers, use Google Cloud Interconnect, as shown in the diagram below.
 
 ![alt-text="This cloud interconnect diagram is described in the following text."](../images/gcp-cloud-interconnect.png)
 
@@ -110,7 +110,7 @@ The service project manages these resources:
 
 ## <a id='single-vpc'></a> Single-Project VPC Base GCP Reference Architecture
 
-The following diagram illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP.
+The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP.
 
 ![alt-text="The GCP Reference Architecture components are listed in the following section."](../images/gcp-overview-single-vpc.png)
 
@@ -118,7 +118,7 @@ The following diagram illustrates a reference architecture for a deployment of <
 
 ### <a id='base_components'></a> Base Reference Architecture Components
 
-The following table lists the components that are part of a reference architecture deployment with three AZs.
+The table below lists the components that are part of a reference architecture deployment with three AZs.
 
 | **Component** | **Reference Architecture Notes** |
 | ------------- | -------------------------------- |
@@ -145,11 +145,11 @@ At a high level, there are currently two possible ways of granting public Intern
 
 #### <a id='no_nat'></a> Public IP Addresses Solution
 
-If you prefer not to use a NAT solution, you can configure <%= vars.app_runtime_abbr %> on GCP to assign public IP addresses for all components. This type of deployment might be more performant since most of the network traffic between <%= vars.app_runtime_abbr %> components are routed through the front end load balancer and the GoRouter.
+If you prefer not to use a NAT solution, you can configure <%= vars.app_runtime_abbr %> on GCP to assign public IP addresses for all components. This type of deployment may be more performant since most of the network traffic between <%= vars.app_runtime_abbr %> components are routed through the front end load balancer and the GoRouter.
 
 #### <a id='network_components'></a> Network Objects
 
-The following table lists the network objects expected for each type of reference architecture deployment with three AZs (assumes you are using NAT).
+The table below lists the network objects expected for each type of reference architecture deployment with three AZs (assumes you are using NAT).
 
 | **Network Object** | **Notes** | **Minimum Number: NAT-Based** | **Minimum Number: Public IP Addresses** |
 | ------------------ | --------- | ----------------------------- | --------------------------------------- |
@@ -157,7 +157,7 @@ The following table lists the network objects expected for each type of referenc
 | **NAT** | One NAT per AZ. | 3 | 0 |
 | **Network** | One per deployment. GCP Network objects allow multiple subnets with multiple CIDRs, so a typical deployment likely only ever requires one GCP Network object. | 1 | 1 |
 | **Subnets** | Separate subnets for infrastructure (<%= vars.ops_manager %> VM, BOSH Director, jumpbox), <%= vars.app_runtime_abbr %>, and services. Using separate subnets allows you to configure different firewall rules due to your needs. | 3 | 3 |
-| **Routes** | Routes are typically created by GCP dynamically when subnets are created, but you might need to create additional routes to force outbound communication to dedicated SNAT nodes. These objects are required to deploy <%= vars.app_runtime_abbr %> without public IP addresses. | 3+ | 3|
+| **Routes** | Routes are typically created by GCP dynamically when subnets are created, but you may need to create additional routes to force outbound communication to dedicated SNAT nodes. These objects are required to deploy <%= vars.app_runtime_abbr %> without public IP addresses. | 3+ | 3|
 | **Firewall Rules** | GCP firewall rules are bound to a Network object and can be created to use IP ranges, subnets, or instance tags to match for source and destination fields in a rule. The preferred method used in the reference architecture deployment is instance tags. | 6+ | 6+ |
 | **Load balancers** | Used to handle requests to GoRouters and infrastructure components. GCP uses two or more load balancers. The HTTP load balancer and TCP WebSockets load balancer are both required. The TCP router load balancer used for TCP routing and the SSH load balancer that allows SSH access to Diego apps are both optional. The HTTP load balancer provides SSL termination. | 2+ | 2+ |
 | **Jumpbox** | Optional. Provides a way of accessing different network components. For example, you can configure it with your own permissions and then set it up to access to VMware Tanzu Network to download tiles. Using a jumpbox is particularly useful in IaaSes where <%= vars.ops_manager %> does not have a public IP address. In these cases, you can SSH into the <%= vars.ops_manager %> VM or any other component through the jumpbox. | (1) | (1)|
@@ -175,7 +175,7 @@ In a <%= vars.app_runtime_abbr %> on GCP deployment, the GoRouter receives two t
 
 * Encrypted secure web socket traffic on port 443 that is passed through the TCP WebSockets load balancer.
 
-TLS is stopped for HTTPS on the HTTP load balancer and is stopped for WebSockets (WSS) traffic on the GoRouter.
+TLS is terminated for HTTPS on the HTTP load balancer and is terminated for WebSockets (WSS) traffic on the GoRouter.
 
 <%= vars.app_runtime_abbr %> deployments on GCP use two load balancers to handle GoRouter traffic because HTTP load balancers currently do not support WebSockets.
 

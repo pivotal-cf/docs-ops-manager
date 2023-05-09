@@ -81,16 +81,16 @@ All <%= vars.ops_manager %> product teams participate in go-to-market steps for 
 
 <%= vars.company_name %> uses multiple methods to identify security vulnerabilities in <%= vars.company_name %> software and dependencies internally, including:
 
-* Security notifications from [Canonical](http://www.canonical.com/) for their Ubuntu operating system, provided through <%= vars.company_name %>'s commercial relationship with Canonical.
-* Software component scans that use third-party security software to update continuously from external security vulnerability sources.
-* Dependency analysis software that identifies and catalogs software dependencies.
-* Security vulnerability notifications from known software dependencies.
+* Security notifications from [Canonical](http://www.canonical.com/) for their Ubuntu operating system, provided through <%= vars.company_name %>'s commercial relationship with Canonical
+* Software component scans that use third-party security software to update continuously from external security vulnerability sources
+* Dependency analysis software that identifies and catalogs software dependencies
+* Security vulnerability notifications from known software dependencies
 
 <%= vars.company_name %> also monitors externally-reported vulnerabilities from many sources, including:
 
-* Third-party security analysis requested by <%= vars.company_name %>.
-* Cloud Foundry Foundation security notifications from member companies.
-* Customer, prospect and other third-party security reports.
+* Third-party security analysis requested by <%= vars.company_name %>
+* Cloud Foundry Foundation security notifications from member companies
+* Customer, prospect and other third-party security reports
 
 When <%= vars.company_name %> discovers a potential security vulnerability in <%= vars.ops_manager %>, the security team opens an issue to assess it. If it confirms the vulnerability exists, <%= vars.company_name %> identifies and updates affected components with plans to backport the fix to stable releases. Fixes are implemented on a target timeline based on the severity level of the vulnerability. For more information, see [<%= vars.ops_manager %> Security Overview and Policy](pcf-security.html).
 
@@ -103,45 +103,45 @@ The following flowchart details the steps that <%= vars.company_name %> performs
 
 The triage flowchart shows the following steps:
 
-1. Vulnerability reported in a Cloud Foundry Dependency.
+1. Vulnerability reported in a Cloud Foundry Dependency
 
-2. OSS Cloud Foundry team addresses vulnerability.
+2. OSS Cloud Foundry team addresses vulnerability
 
-    1. Story detailing the vulnerability and acceptance criteria for fiex priorized on OSS backlog.
+    1. Story detailing the vulnerability and acceptance criteria for fiex priorized on OSS backlog
 
-    2. Unit Tests written before coding the fix.
+    2. Unit Tests written before coding the fix
 
-    3. Fix written; Unit Tests pass.
+    3. Fix written; Unit Tests pass
 
-    4. Code committed; OSS Integration Tests pass.
+    4. Code committed; OSS Integration Tests pass
 
     5. **Check:** Does Product Owner verify that fix meets acceptance criteria?
 
     6. If yes, fix is ready for integration.
 
-3. VMware Tanzu team integrates fix.
+3. VMware Tanzu team integrates fix
 
-    1. Story detailing the issue and acceptance criteria for fix prioritized on Commercial backlog.
+    1. Story detailing the issue and acceptance criteria for fix prioritized on Commercial backlog
 
-    2. Fix patched in all release lines under General Support.
+    2. Fix patched in all release lines under General Support
 
     3. **Check:** Have all tests passed each stage?
 
     4. If yes, patched builds kick off integration pipeline.
 
-4. Release Engineering Integration Pipelines validate quality.
+4. Release Engineering Integration Pipelines validate quality
 
     1. Tests pass by scenario:
-      - New installation scenario: integration tests pass.
-      - Upgrade scenario: Integration Tests pass.
-      - Additional customer scenarios: Integration Tests pass.
+      - New installation scenario: integration tests pass
+      - Upgrade scenario: Integration Tests pass
+      - Additional customer scenarios: Integration Tests pass
 
     2. **Check:** Have all pipelines passed on every supported IaaS?
 
-    3. If yes, ready for Publishing.
+    3. If yes, ready for Publishing
 
-5. Release is published for distribution.
+5. Release is published for distribution
 
-    1. Post to <%= vars.company_name %> Network; with High CVE vulnerab ility release the fix with as fast a turnaround as possible.
+    1. Post to <%= vars.company_name %> Network; with High CVE vulnerab ility release the fix with as fast a turnaround as possible
 
-    2. Customer receives announcements and downloads release for their IaaS.
+    2. Customer receives announcements and downloads release for their IaaS

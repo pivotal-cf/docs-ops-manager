@@ -46,7 +46,7 @@ Microsoft Azure documentation.
     az login
     ```
 
-    Authenticate by going to the URL in the output from the command, entering the provided
+    Authenticate by navigating to the URL in the output from the command, entering the provided
     code, and clicking your account.
 
 ## <a id='default-subscription'></a> Step 2: Set your default subscription
@@ -113,7 +113,7 @@ the other subscription as the default. To set a new default subscription, run th
 configuration steps.
 
 1. Record the value of `tenantID` of the default subscription. This is your `TENANT_ID` for
-creating a service principal. If your `tenantID` value is not defined, you might be using a personal
+creating a service principal. If your `tenantID` value is not defined, you may be using a personal
 account to log in to your Azure subscription.
 
 ## <a id='create-aad'></a> Step 3: Create an AAD application
@@ -141,7 +141,7 @@ account to log in to your Azure subscription.
     <code>homepage</code> and <code>identifier-uris</code> flags, but the value of
     <code>identifer-uris</code> must be unique within the organization associated with your Azure
     subscription. For the <code>homepage</code>, <%= vars.company_name %> recommends using
-    <code>http://BOSHAzureCPI</code> as shown in the preceding example.
+    <code>http://BOSHAzureCPI</code> as shown in the example above.
     </p>
 
 1. From the output of the `az ad app create` that you ran in the previous step, locate and record
@@ -203,7 +203,7 @@ the Owner role on your service principal, run the following command:
 
     Where:
 
-    * `SERVICE-PRINCIPAL-NAME` is any value of `servicePrincipalNames` from the preceding output, such
+    * `SERVICE-PRINCIPAL-NAME` is any value of `servicePrincipalNames` from the output above, such
       as `YOUR-APPLICATION-ID`.
     * `SUBSCRIPTION-ID` is the value of the `id` of the default subscription that you recorded in
       [Set Your Default Subscription](#default-subscription).
@@ -218,11 +218,11 @@ the Owner role on your service principal, run the following command:
     </pre>
 
     <p class='note'><strong>Note:</strong> If you need to use multiple resource groups for your
-    deployment on Azure, you can define custom roles for your service principal. These roles enable
+    deployment on Azure, you can define custom roles for your service principal. These roles allow
     BOSH to deploy to pre-existing network resources outside of the resource group.
     </p>
 
-   For more information about Azure Role-Based Access Control, refer to <a href="https://azure.microsoft.com/en-us/documentation/articles/role-based-access-built-in-roles/">Built-in roles for Azure resource</a> the Microsoft Azure documentation.
+    For more information about Azure Role-Based Access Control, refer to <a href="https://azure.microsoft.com/en-us/documentation/articles/role-based-access-built-in-roles/">Built-in roles for Azure resource</a> the Microsoft Azure documentation.
 
 1. To verify the role assignment, run the following command:
 
@@ -230,7 +230,7 @@ the Owner role on your service principal, run the following command:
     az role assignment list --assignee "SERVICE-PRINCIPAL-NAME"
     ```
 
-    Where `"SERVICE-PRINCIPAL-NAME"` is any value of `servicePrincipalNames` from the preceding output,
+    Where `"SERVICE-PRINCIPAL-NAME"` is any value of `servicePrincipalNames` from the output above,
     such as `YOUR-APPLICATION-ID`.
 
     For example:
@@ -292,7 +292,7 @@ $ az login --username 5c552e8f-b977-45f5-a50b-981cfe17cb9d \
 ]
 </pre>
 
-If you cannot log in, the service principal is invalid. Create a new service principal and log in
+If you cannot log in, the service principal is invalid. Create a new service principal and try
 again.
 
 ## <a id='register'></a> Step 6: Perform registrations

@@ -3,7 +3,7 @@ title: Azure Reference Architecture
 owner: Customer0
 ---
 
-This topic describes the reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>, on Azure. It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
+This topic describes a reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>, on Azure. It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
 
 For additional requirements and installation instructions for running <%= vars.ops_manager %> on Azure, see
 [Installing <%= vars.ops_manager %> on Azure](../../install/azure.html).
@@ -29,14 +29,14 @@ security policies.
 
 ### <a id='diagram'></a> Diagram
 
-The following diagram illustrates the reference architecture for <%= vars.ops_manager %> on Azure using the hub and spoke
-model.
+The diagram below illustrates the reference architecture for <%= vars.ops_manager %> on Azure using the hub and spoke
+model described above.
 
 ![alt-text="Architecture on Azure using Availability Sets. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures."](../images/PAS_Azure.png)
 
 [View a larger version of this diagram.](../images/PAS_Azure.png).
 
-The following sections provide guidance about the resources that you use for running <%= vars.ops_manager %> on Azure.
+The sections below provide guidance about the resources that you use for running <%= vars.ops_manager %> on Azure.
 
 
 ## <a id='networking'></a> Networking
@@ -58,12 +58,12 @@ the Microsoft Azure documentation.
 
 * Use ExpressRoutes for a dedicated connection from an on-premises datacenter to VDC. For more information, see the
 [ExpressRoute documentation](https://docs.microsoft.com/en-us/azure/expressroute/). As a backup for when ExpressRoutes
-stops, you can use Azure VPN Gateways, which pass encrypted data into VDC through the Internet.
+goes down, you can use Azure VPN Gateways, which pass encrypted data into VDC through the Internet.
 
 * Use a central firewall in the hub resource group and a network appliance to prevent data infiltration and
 exfiltration.
 
-* You can place network resources, such as DNS and NTP servers, either onpremise or on Azure Cloud.
+* You can place network resources, such as DNS and NTP servers, either on-premises or on Azure Cloud.
 
 ### <a id='dns'></a> DNS
 
@@ -114,7 +114,7 @@ Use AZs instead of Availability Sets in all Azure regions where they are availab
 pinning issue associated with Availability Sets and allow greater control when defining high-availability
 configuration when using multiple Azure services.
 
-For additional guidance depending on your use case, see the following table:
+For additional guidance depending on your use case, see the table below:
 
 <table>
   <tr>
@@ -155,7 +155,7 @@ in the Microsoft Azure documentation.
 AZs are an Azure primitive that supports HA within a region. They are physically separate data centers in the same
 region, each with separate power, cooling, and network.
 
-The following diagram illustrates <%= vars.app_runtime_abbr %> deployed on Azure using AZs.
+The diagram below illustrates <%= vars.app_runtime_abbr %> deployed on Azure using AZs.
 
 ![alt-text="Architecture on Azure using Availability Zones. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures."](../images/PAS_Azure_with_AZs.png)
 
@@ -178,7 +178,7 @@ Availability Sets were the first Azure primitive to support high availability wi
 
 <p class='note caution'><strong>Caution:</strong> Availability Sets are implemented at the hardware rack level, which
 can cause issues when deploying <%= vars.ops_manager %> on Azure. For more information, see
-<a href="#placement-group-pinning">Placement Group Pinning Issues</a>.</p>
+<a href="#placement-group-pinning">Placement Group Pinning Issues</a> below.</p>
 
 Availability Sets have the following properties:
 
@@ -246,7 +246,7 @@ fully-redundant hot, cold, or archival storage in either local, regional, or glo
 
 * Resources
 
-These buckets require an associated role for read-write access.
+These buckets require an associated role for read/write access.
 
 
 ## <a id='identity-management'></a> Identity Management

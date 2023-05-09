@@ -5,11 +5,11 @@ owner: Ops Manager
 
 This topic provides the procedure for accessing BOSH CredHub with the CredHub CLI.
 
-For example, you might need to access BOSH CredHub to rotate the Services TLS CA and its leaf certificates. For more information, see [Rotating the Services TLS
+For example, you may need to access BOSH CredHub to rotate the Services TLS CA and its leaf certificates. For more information, see [Rotating the Services TLS
 CA and Its Leaf Certificates](services_tls_ca_rotate.html).
 
 
-## <a id='overview'></a> Bosh Credhub Overview
+## <a id='overview'></a> Overview
 
 <%= vars.ops_manager_first %> stores some of its internal CA (certificate authority) and non-CA certificates in the BOSH CredHub credentials store. For more
 information, see [BOSH CredHub](https://docs.pivotal.io/platform/credhub/#bosh).
@@ -58,7 +58,7 @@ CredHub server by running the following command:
     --ca-cert=/var/tempest/workspaces/default/root_ca_certificate
     ```
 
-    Where `BOSH-DIRECTOR-IP` is the IP address of the BOSH Director VM you previously recorded.
+    Where `BOSH-DIRECTOR-IP` is the IP address of the BOSH Director VM you recorded above.
 
     For example:
 

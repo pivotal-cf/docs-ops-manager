@@ -30,7 +30,7 @@ This section describes how to access logs for <%= vars.app_runtime_abbr %> and <
 
 The format for VM logs is Syslog RFC 5424. For more information, see [RFC 5424 - The Syslog Protocol](https://tools.ietf.org/html/rfc5424) in the IETF documentation.
 
-See one of the following sections:
+See one of the following sections below:
 
 * [Access VM Logs on <%= vars.app_runtime_abbr %>](#vm-logs-tas)
 
@@ -101,7 +101,7 @@ The following table describes how to access VM logs on foundations with <%= vars
 
 This section describes how to access metrics for <%= vars.app_runtime_abbr %> VMs and <%= vars.k8s_runtime_abbr %> VMs.
 
-See one of the following sections:
+See one of the following sections below:
 
 * [Access VM Metrics on <%= vars.app_runtime_abbr %>](#vm-metrics-tas)
 
@@ -179,7 +179,7 @@ The following table describes how to access VM metrics on foundations with <%= v
 
 This section describes how to access app logs on <%= vars.ops_manager %>.
 
-See one of the following sections:
+See one of the following sections below:
 
 * [Access App Container Logs on <%= vars.app_runtime_abbr %>](#app-logs-tas)
 
@@ -275,7 +275,7 @@ The following table describes how to access app container logs on foundations wi
 				<li>You can send logs from a namespace within a cluster to a log destination by configuring a namespace log <code>Sink</code>. For more information, see <a href="https://docs.pivotal.io/tkgi/create-sinks.html">Creating Sink Resources</a> in the <%= vars.k8s_runtime_abbr %> documentation.</li>
 				<li>You must configure a <code>ClusterSink</code> for each new cluster.</li>
 				<li>You must provide your own access policy.</li>
-				<li>Developers might not have permissions to configure a <code>ClusterSink</code>. Operators must define an access policy that allows developers to create a <code>ClusterSink</code>.</li>
+				<li>Developers may not have permissions to configure a <code>ClusterSink</code>. Operators must define an access policy that allows developers to create a <code>ClusterSink</code>.</li>
 			</ul>
 		</td>
 	</tr>
@@ -286,7 +286,7 @@ The following table describes how to access app container logs on foundations wi
 
 This section describes how to access app container metrics on <%= vars.ops_manager %>.
 
-See one of the following sections:
+See one of the following sections below:
 
 * [Access App Container Metrics on <%= vars.app_runtime_abbr %>](#app-metrics-tas)
 
@@ -377,7 +377,7 @@ The following table describes how to access app container metrics on foundations
 			<ul>
 				<li>You must configure a <code>ClusterMetricSink</code> for each new cluster.</li>
 				<li><code>ClusterMetricSink</code> automatically scrapes an annotated <code>/metrics</code> Prometheus endpoint.</li>
-				<li>Developers might not have permissions to configure a <code>ClusterMetricSink</code>. Operators must define an access policy that allows developers to create a <code>ClusterMetricSink</code>.</li>
+				<li>Developers may not have permissions to configure a <code>ClusterMetricSink</code>. Operators must define an access policy that allows developers to create a <code>ClusterMetricSink</code>.</li>
 			</ul>
 		</td>
 	</tr>

@@ -6,7 +6,7 @@ owner: Ops Manager
 This topic describes how to delete the AWS resources associated with a <%= vars.ops_manager_first %> deployment.
 
 
-## <a id='overview'></a> Overview on Deleting Ops Manager from AWS
+## <a id='overview'></a> Overview
 
 When you deploy <%= vars.ops_manager %> to Amazon Web Services (AWS), you provision a set of resources.
 You can use the AWS console to remove an installation of all components, but retain the objects in your bucket for a future deployment.
@@ -25,40 +25,40 @@ To delete the resources associated with <%= vars.ops_manager %> from AWS:
 
 1. Log into the AWS Management Console.
 
-2. Go to the EC2 Dashboard.
-    1. Select **Instances** from navigation menu.
+2. Navigate to the EC2 Dashboard.
+    1. Select **Instances** from the left navigation menu.
         1. Select the Ops Manager instance from the list.
-        2. Click **Actions** to open the drop-down menu.
+        2. Click **Actions** to open the drop down menu.
         3. In **Instance State**, select **Terminate**.
-        4. A dialog box appears that prompts you to confirm the stoppage of the instances. Click **Yes, Terminate** to confirm.
-    2. Select **Load Balancers** from the navigation menu.
+        4. A dialog box will appear prompting you to confirm the termination of the instances. Click **Yes, Terminate** to confirm.
+    2. Select **Load Balancers** from the left navigation menu.
         1. Select the web, SSH, and TCP load balancers from the list.
-        2. Select **Actions** to open the drop-down menu.
+        2. Select **Actions** to open the drop down menu.
         3. To delete all load balancers, select **Delete**.
-        4. A dialog appears that prompts you to confirm the deletion of the load balancers. Click **Yes, Delete** to confirm.
+        4. A dialog box will appear prompting you to confirm the deletion of the load balancers. Click **Yes, Delete** to confirm.
 
 3. From the AWS Console, select **RDS**.
-    1. Select **Instances** from the navigation menu.
-        1. Select **Instance Actions** to open the drop-down menu.
+    1. Select **Instances** from the left navigation menu.
+        1. Select **Instance Actions** to open the drop down menu.
         2. To delete all RDS instances, select **Delete**. The **Delete DB Instance** pane appears.
-        3. Select **Create final Snapshot** from the drop-down menu.
+        3. Select **Create final Snapshot** from the drop down menu.
         4. To delete the database instance, click **Delete**.
 
 4. On the AWS Console, select **S3**.
-    1. Select **Buckets** from the navigation menu.
+    1. Select **Buckets** from the left navigation menu.
     2. For each bucket created, do the following:
         1. Select the bucket.
         2. Click **Delete**.
         3. On the page that appears, enter the name of the bucket into the confirmation text field, then click **Delete bucket**.
 
 5. On the AWS Console, select **VPC**.
-    1. Select **NAT gateways** from the navigation menu.
+    1. Select **NAT gateways** from the left navigation menu.
         1. Select the NAT gateway you created for your installation.
-        2. Select **Actions** to open the drop-down menu.
+        2. Select **Actions** to open the drop down menu.
         3. To delete the NAT gateway, select **Delete NAT gateway**.
-        4. A dialog appears that prompts you to confirm the deletion of the NAT gateway. Enter `delete` into the confirmation text field, then click **Delete**.
-    2. Select **Your VPCs** from the navigation menu.
+        4. A dialog box will appear prompting you to confirm the deletion of the NAT gateway. Enter `delete` into the confirmation text field, then click **Delete**.
+    2. Select **Your VPCs** from the left navigation menu.
         1. Select the VPC you created for your installation.
-        2. Select **Actions** to open the drop-down menu.
+        2. Select **Actions** to open the drop down menu.
         3. To delete the VPCs, select **Delete VPC**.
-        4. A dialog appears prompting you to confirm the deletion of the VPC. Enter `delete` into the confirmation text field, then click **Delete**.
+        4. A dialog box will appear prompting you to confirm the deletion of the VPC. Enter `delete` into the confirmation text field, then click **Delete**.

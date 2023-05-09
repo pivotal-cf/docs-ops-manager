@@ -4,7 +4,7 @@
 
     ![alt-text="Status tab on the BOSH Director pane. The IP address for the BOSH Director job is in the IPS column."](../images/director-ip.png)
 
-1. From the command line, log in to the BOSH Director, using the IP address that you previously used. Run:
+1. From the command line, log in to the BOSH Director, using the IP address that you recorded above. Run:
 
     ```
     bosh -e DIRECTOR-IP \
@@ -13,7 +13,7 @@
 
     Where:
 
-    * `DIRECTOR-IP` is the BOSH Director IP address previously recorded.
+    * `DIRECTOR-IP` is the BOSH Director IP address recorded above.
     * `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the root Certificate Authority (CA) certificate as outlined in [Set Up your Jumpbox](backup-pcf-bbr.html#setup-jumpbox).
 
 2. When prompted for **Email ()**, specify `director`.

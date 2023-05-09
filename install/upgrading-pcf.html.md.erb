@@ -10,13 +10,13 @@ This topic describes upgrading <%= vars.ops_manager_first %> and <%= vars.app_ru
 
 ## <a id='overview'></a> Overview
 
-The following procedure describes upgrading <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %>, and product tiles.
+The procedure below describes upgrading <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %>, and product tiles.
 
 The apps in your deployment continue to run during the upgrade. However, you cannot write to your deployment or make changes to apps during the upgrade.
 
 For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components, see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.pivotal.io/application-service/operating/understanding-pas.html).
 
-<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade <%= vars.ops_manager %> to <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>](#jump-upgrade). To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare).
+<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade <%= vars.ops_manager %> to <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>](#jump-upgrade) below. To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare) below.
 
 
 ## <a id='jump-upgrade'></a> Jump Upgrade from <%= vars.ops_manager %> v2.5 Through v2.9
@@ -29,12 +29,12 @@ To jump upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
 1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
 
-1. Follow the procedure in this topic to upgrade <%= vars.ops_manager %>, starting at [Task 1: Prepare to Upgrade](#prepare). Do not complete the steps to upgrade <%= vars.app_runtime_abbr %>.
+1. Follow the procedure in this topic to upgrade <%= vars.ops_manager %>, starting at [Task 1: Prepare to Upgrade](#prepare) below. Do not complete the steps to upgrade <%= vars.app_runtime_abbr %>.
 
 
 ## <a id='upgrade-tas'></a> Upgrade <%= vars.app_runtime_abbr %>
 
-Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you cannot skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> might result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>.
+Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you should not skip minor versions when upgrading <%= vars.app_runtime_abbr %>. Skipping minor versions when upgrading <%= vars.app_runtime_abbr %> may result in additional breaking changes. To avoid this, upgrade <%= vars.app_runtime_abbr %> to the minor version that directly follows your current version of <%= vars.app_runtime_abbr %>.
 
 If you are upgrading <%= vars.app_runtime_abbr %> to the next minor release:
 
@@ -67,17 +67,17 @@ To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager 
 1. To avoid conflicts, power off the existing <%= vars.ops_manager %> VM.
 
 1. Deploy the new <%= vars.ops_manager %> VM by following the steps in one of these topics:
-    * **AWS:** [Upgrading BOSH Director on AWS](aws-om-upgrade.html).
-    * **Azure:** [Upgrading BOSH Director on Azure](azure-om-upgrade.html).
-    * **GCP:** [Upgrading BOSH Director on GCP](gcp-om-upgrade.html).
-    * **OpenStack:** [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html).
-    * **vSphere:** [Deploying <%= vars.ops_manager %> on vSphere](../vsphere/deploy.html).
+    * **AWS:** [Upgrading BOSH Director on AWS](aws-om-upgrade.html)
+    * **Azure:** [Upgrading BOSH Director on Azure](azure-om-upgrade.html)
+    * **GCP:** [Upgrading BOSH Director on GCP](gcp-om-upgrade.html)
+    * **OpenStack:** [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html)
+    * **vSphere:** [Deploying <%= vars.ops_manager %> on vSphere](../vsphere/deploy.html)
 
 1. When redirected to the **Welcome to <%= vars.ops_manager %>** page, select **Import Existing Installation**.
 
     ![alt-text=""](images/upgrading/welcome.png)
 
-1. When you are prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
+1. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
 You set this passphrase during your initial installation of <%= vars.ops_manager %>.
     <p class='note'><strong>Note:</strong> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
 
@@ -87,7 +87,7 @@ You set this passphrase during your initial installation of <%= vars.ops_manager
 
 1. Click **Import**.
     <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
-      and might appear to fail.</p>
+      and might appear to hang.</p>
 
 2. A **Successfully imported installation** message appears upon completion.
 
@@ -155,7 +155,7 @@ For more information, see the [Healthwatch documentation](https://docs.pivotal.i
 
 If you are not using Healthwatch, you can do some or all of the following to monitor upgrade progress:
 
-* Use the BOSH CLI to check the status of a task, VM, or instance. For more information, see [Check Status Using BOSH CLI](#bosh-cli-status).
+* Use the BOSH CLI to check the status of a task, VM, or instance. For more information, see [Check Status Using BOSH CLI](#bosh-cli-status) below.
 
 * Check app availability.
 
@@ -235,7 +235,7 @@ and clean up after upgrading:
 
 To log in to BOSH after upgrading <%= vars.ops_manager %>, you must re-create your alias.
 
-To recreate your alias using BOSH:
+To re-create your alias using BOSH:
 
 1. Run:
 

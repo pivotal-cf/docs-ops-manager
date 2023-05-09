@@ -9,7 +9,7 @@ restoring BOSH deployments.
 For BBR release notes, see [BOSH Backup and Restore Release Notes](https://docs.cloudfoundry.org/bbr/bbr-rn.html) in the Cloud Foundry documentation.
 
 
-## <a id='overview'></a> Overview on Restoring Deployments
+## <a id='overview'></a> Overview
 
 To perform the procedures in this topic, you must have backed up your deployment by following the procedure in [Backing Up Deployments with BBR](backup-pcf-bbr.html).
 
@@ -17,7 +17,7 @@ The procedures described in this topic prepare your environment for <%= vars.ops
 
 <p class='note caution'><strong>Caution:</strong> Restoring a deployment with BBR is a destructive operation. If the restore fails, the new environment could be left in an unusable state and require re-provisioning. Only perform the procedures in this topic for the purpose of disaster recovery, such as re-creating a deployment after a storage-area network (SAN) corruption.</p>
 
-<p class='note caution'><strong>Caution:</strong> When validating your backup, the VMs and disks from the backed-up BOSH Director must not be visible to the new BOSH Director. As a result, <%= vars.company_name %> recommends that you deploy the new BOSH Director to a different IaaS network and account than the VMs and disks of the backed-up BOSH Director.</p>
+<p class='note caution'><strong>Caution:</strong> When validating your backup, the VMs and disks from the backed-up BOSH Director should not be visible to the new BOSH Director. As a result, <%= vars.company_name %> recommends that you deploy the new BOSH Director to a different IaaS network and account than the VMs and disks of the backed-up BOSH Director.</p>
 
 <p class='note'><strong>Note:</strong> If the BOSH Director you are restoring had any deployments that were deployed manually rather than through a <%= vars.ops_manager %> tile, you must restore them manually at the end of the process. For more information, see <a href="#non-tiles">(Optional) Restore Non-Tile Deployments</a>.</p>
 
@@ -47,7 +47,7 @@ For a backup artifact to be restorable, these restrictions apply:
 
 The diagram illustrates the flow of the restore process in a series of steps performed by the operator. These steps are described in more detail throughout this topic.
 
-![alt-text="Flowchart of restore workflow taken by an Operator. See the following full description."](images/pcf-restore.png)
+![alt-text="Flowchart of restore workflow taken by an Operator. Full description below."](images/pcf-restore.png)
 
 [View a larger version of this diagram.](images/pcf-restore.png).
 
@@ -78,7 +78,7 @@ These sections describe the procedure you must perform before restoring your bac
 
 In the event of a disaster, you can lose not only your VMs and disks, but your IaaS resources as well, such as networks and load balancers.
 
-If you need to recreate your IaaS resources, prepare your environment
+If you need to re-create your IaaS resources, prepare your environment
 by following the instructions specific to your IaaS in
 [Installation Overview](../index.html).
 
@@ -143,7 +143,7 @@ To update <%= vars.ops_manager %>:
 1. Enable the advanced mode of <%= vars.ops_manager %>. For more information, see [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager) in the Knowledge Base.
     <p class='note'><strong>Note:</strong> In advanced mode, <%= vars.ops_manager %> allows you to make changes that are normally disallowed. You might see warning messages when you save changes.</p>
 
-1. Go to the Installation Dashboard.
+1. Navigate to the Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
@@ -199,13 +199,13 @@ To remove the BOSH state file:
     sudo rm /var/tempest/workspaces/default/deployments/bosh-state.json
     ```
 
-1. In a browser, go to the FQDN of your <%= vars.ops_manager %> deployment.
+1. In a browser, navigate to the FQDN of your <%= vars.ops_manager %> deployment.
 
 1. Log in to <%= vars.ops_manager %>.
 
 ### <a id='bosh-only-deploy'></a> Step 5: Deploy the BOSH Director
 
-Use the <%= vars.ops_manager %> API or the check box on the **Review Pending Changes** page to deploy the BOSH Director by itself.
+Use the <%= vars.ops_manager %> API or the checkbox on the **Review Pending Changes** page to deploy the BOSH Director by itself.
 
 ### <a id='artifacts-jumpbox'></a> Step 6: Transfer Artifacts to Jumpbox
 
@@ -231,7 +231,7 @@ To retrieve the IP address of your BOSH Director from the BOSH Director tile:
 <div class="note"><strong>Notes:</strong>
   <ul>
     <li>The BBR BOSH Director restore command can take at least 15 minutes to complete.</li>
-    <li><%= vars.company_name %> recommends that you run it independently of the SSH session, so that the process can continue running even if your connection to the jumpbox fails. The preceding command uses <code>nohup</code>, but you could also run the command in a <code>screen</code> or <code>tmux</code> session.</li>
+    <li><%= vars.company_name %> recommends that you run it independently of the SSH session, so that the process can continue running even if your connection to the jumpbox fails. The command above uses <code>nohup</code>, but you could also run the command in a <code>screen</code> or <code>tmux</code> session.</li>
   </ul>
 </div>
 
@@ -381,7 +381,7 @@ To upload the required stemcell:
 #### <a id='create-external-database'></a> Create External Databases
 
 If your foundation is configured to use an external MySQL database instance,
-recreate the databases on the external database instance, and
+re-create the databases on the external database instance, and
 then ensure that your external database is suitably configured.
 For an example of how to create external databases,
 see [Creating Databases for <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/create-pas-dbs.html).
@@ -399,7 +399,7 @@ see [Configure Databases](https://docs.pivotal.io/application-service/operating/
 
 To redeploy <%= vars.app_runtime_abbr %>:
 
-1. Go to the Installation Dashboard.
+1. Navigate to the Installation Dashboard.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
@@ -409,9 +409,9 @@ To redeploy <%= vars.app_runtime_abbr %>:
   <p class='note caution'><strong>Caution:</strong> Restore fails if there is not exactly one MySQL Server instance deployed.</p>
 
 1. (Optional) Increase the CPU and memory of the `backup_restore` VM.
-   This action decreases how long the restore process takes during [Restore <%= vars.app_runtime_abbr %>](#restore-ert).
+   This will decrease how long the restore process will take during [Restore <%= vars.app_runtime_abbr %>](#restore-ert).
 
-1. Verify that all errands needed by your system are set to **Run**.
+1. Ensure that all errands needed by your system are set to **Run**.
 
 1. Return to the Installation Dashboard.
 
@@ -427,7 +427,7 @@ To redeploy <%= vars.app_runtime_abbr %>:
 
 For this step, you must restore data to pre-provisioned service tiles.
 
-The procedures for restoring service data might vary. For more information, see the documentation for your service tile.
+The procedures for restoring service data vary. For more information, see the documentation for your service tile.
 
 For example, if you are using Redis for <%= vars.ops_manager %> v1.14, see [Using BOSH Backup and Restore (BBR)](https://docs.pivotal.io/redis/1-14/bbr-backup.html).
 
@@ -438,7 +438,7 @@ The BBR <%= vars.app_runtime_abbr %> restore command can take at least 15 minute
 After the BBR <%= vars.app_runtime_abbr %> restore completes,
 then Diego brings the apps back into a running state,
 unless <%= vars.app_runtime_abbr %> file storage has been configured to selectively back up the blobstore.
-In that case, you need to follow [(Optional) Restore Apps to a Running State](#restore-apps).
+In that case, you need to follow [(Optional) Restore Apps to a Running State](#restore-apps) below.
 
 <%= vars.company_name %> recommends that you run the BBR <%= vars.app_runtime_abbr %> restore command
    independently of the SSH session,
@@ -471,7 +471,7 @@ To restore your <%= vars.app_runtime_abbr %> backup:
     - `PATH-TO-<%= vars.app_runtime_abbr %>-BACKUP` is the path to the <%= vars.app_runtime_abbr %> backup you want to restore.
 
 1. (Optional) To scale the MySQL Server job back up to its previous number of instances:
-  1. Go to the Installation Dashboard
+  1. Navigate to the Installation Dashboard
   1. Click the the <%= vars.app_runtime_abbr %> tile.
   1. Select **Resource Config**.
   1. Scale the MySQL Server job back up.
@@ -485,7 +485,7 @@ To restore your <%= vars.app_runtime_abbr %> backup:
 
 1. (Optional) Run `cf apps` to view the status of apps.
    By observing which apps are running
-   and which are still pending, you can estimate how much longer the restore takes.
+   and which are still pending, you can estimate how much longer the restore will take.
 
 ### <a id='restore-apps'></a> Step 15: (Optional) Restore Apps to a Running State
 
@@ -525,13 +525,13 @@ you can restore them after successfully restoring <%= vars.app_runtime_abbr %>.
 
 To restore your on-demand service instances:
 
-1. Go to the Installation Dashboard.
+1. Navigate to the Installation Dashboard.
 
-1. Click the on-demand service tile.
+1. Click an on-demand service tile.
 
 1. Select the **Errands** tab.
 
-1. Verify that the **Upgrade All Service Instances** errand is **On**.
+1. Ensure the **Upgrade All Service Instances** errand is **On**.
 
 1. Repeat for all on-demand service tiles.
 
@@ -596,7 +596,7 @@ To restore the VMs:
     - `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director, if the certificate is not verifiable by the local machine's certificate chain.
     - `DEPLOYMENT-NAME` is the deployment name you retrieved in [Identify Your Deployment](#identify-deployment).
 
-The process state for all VMs must show as `running`.
+The process state for all VMs should show as `running`.
 
 
 ## <a id='after-restore'></a> After Restoring Your Backup
@@ -607,7 +607,7 @@ This section describes the procedures you must perform after restoring your back
 
 <p class='note caution'><strong>Caution:</strong> This is a very destructive operation.</p>
 
-Disks from a previous deployment prevent recreated deployments from working.
+Disks from a previous deployment prevent re-created deployments from working.
 
 #### <a id='bosh-clean-up-disks'></a> Use BOSH to Clean Up Disks
 
