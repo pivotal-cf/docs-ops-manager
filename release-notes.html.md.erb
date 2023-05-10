@@ -26,10 +26,9 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 08, 2023
 
-- **[Feature]** OpsManager allows users to download logs for the BOSH Director
-- **[Feature]** Upgrade Ops Manager 2.10 to Ruby 3.1
-- **[Bug Fix]** Default ldap "Group Max Search Depth" to 1
-- **[Bug Fix]** The "label" of Ops Manager tile form fields should be read out by a screen reader, and a screen reader should announce that a field is "required" when it is required
+- **[Feature]** Ops Manager allows users to download logs for the BOSH Director
+- **[Feature]** Upgrade to Ruby 3.1
+- **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
 - **[Bug Fix]** Blobstore credentials do not appear in IaaS metadata when signed URLs are used
 
 <table border="1" class="nice">
@@ -57,7 +56,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
-- **[Feature]** OpsManager allows users to download /var/log logs from deployed instances 
+- **[Feature]** OpsManager allows users to download /var/log logs from deployed instances
 - **[Bug Fix]** Add descriptive 'aria-label's to buttons in Ops Manager "Delete Product" modal
 - **[Feature]** Ops Manager allows users to download logs for the BOSH Director
 - **[Feature]** Improve internal Rails log by enabling log_tags
@@ -1915,3 +1914,9 @@ error: could not delete some certificate versions
 ```
 
 You can ignore this error. The certificate should not be deleted.
+
+### <a id='bosh-reuses-packages'></a> BOSH Inappropriately Reuses Compiled Packages
+
+The BOSH Director attempts to match packages from an uploaded release to "similar" packages that have been previously uploaded. The match is made using the fingerprint on the uncompiled package contents. However, recently the packages in <code>golang-release</code> were modified to be templated. This led to packages that shared the same fingerprint to be used interchangeably even though they represented different versions of Golang. Reusing these packages could cause Apply Changes to fail if a tile expected one version of Golang but got another.
+
+This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.57.
