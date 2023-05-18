@@ -80,7 +80,7 @@ template_variables:
 
 # Book content variables
   recommended_by: VMware
-  expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="https://docs.pivotal.io/platform/customizing/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
+  expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="./install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
 
   add_volumes_link: For more information, see [Configuring Volume Services](../../opsguide/enable-vol-services.html).
   admin: Ops Manager admin
