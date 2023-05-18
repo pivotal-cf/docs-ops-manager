@@ -80,7 +80,7 @@ template_variables:
 
 # Book content variables
   recommended_by: VMware
-  expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="https://docs.pivotal.io/platform/customizing/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
+  expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
 
   add_volumes_link: For more information, see [Enabling Volume Services](../../opsguide/enable-vol-services.html).
   admin: Ops Manager admin
@@ -374,7 +374,7 @@ template_variables:
   uaa_admin_client_creds: Record the **Admin Client Credentials** from the **UAA** row in the TAS for VMs **Credentials** tab.
   supporting_websockets: By default, TAS for VMs assigns port 443 for TCP/WebSocket communications. If you have configured your load balancer to use a port other than 443 for TCP/WebSocket traffic, you must edit the **Loggregator port** field in the **Networking** pane of the TAS for VMs tile.
   tcp_emitter_oauth_creds: Record the **Tcp Emitter Credentials** from the **UAA** row in the TAS for VMs **Credentials** tab.
-  expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping Availability Zones to expand your network. For more information about configuring additional subnets, see <a href="https://docs.pivotal.io/platform/2-11/customizing/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
+  expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping Availability Zones to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
   haproxy_hsts_support: You can force HTTPS-only connections by enabling HSTS on HAProxy. For more information, see the [Secure Apps Domain with HAProxy](../opsguide/securing-endpoints.html#load-balancer) section of the _Securing System and App Endpoints_ topic.
   external_lb: For more information, see [Using Your Own Load Balancer](https://docs.pivotal.io/platform/2-11/customizing/custom-load-balancer.html).
   gather_routing_logs: To SSH into the router VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.pivotal.io/platform/2-11/customizing/trouble-advanced.html#bosh-ssh). To download the router VM logs from Ops Manager, see [Monitoring VMs](https://docs.pivotal.io/platform/2-11/customizing/monitoring.html).
