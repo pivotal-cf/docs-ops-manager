@@ -22,6 +22,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 08, 2023
 
+- **[Known Issue]** Deployment of TAS and related tiles (e.g. Isolation Segment) will fail during the _first_ Apply Changes with the error, "Extracting compiled package archive failed". If you encounter this error, run Apply Changes again. This issue will be fixed in a following release of <%= vars.ops_manager %>.
 - **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
 - **[Bug Fix]** The See Changes page should not return an error after upgrading from Ops Manager 2.10 to 3.0
 
