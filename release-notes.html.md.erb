@@ -31,7 +31,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 - **[Known Issue Fix]** The bosh-cli, when uploading releases, will no longer exclude releases that have the same fingerprint but a different name. This behavior caused the "Extracting compiled package archive failed" issue in <%= vars.ops_manager %> v2.10.57.
-- **[Bug Fix]** Configuration LDAP authentication via the API will no longer fail when ldap_max_search_depth is not provided.
+- **[Bug Fix]** Configuring LDAP authentication via the API will no longer fail when ldap_max_search_depth is not provided.
 - **[Bug Fix]** Configuring UAA expiration tokens will no longer cause UAA to restart when the values are not changed.
 - **[Feature]** Core Consumption data can now be downloaded from the "Advanced Options" Settings page. The accuracy of this data depends on upgrading to <%= vars.ops_manager %> Tile versions of products that support this functionality.
 
