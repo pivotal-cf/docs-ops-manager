@@ -1,13 +1,11 @@
 ---
-title: Logging Into Ops Manager with Auth
+title: Logging into Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes how to log into <%= vars.ops_manager_first %> for the first time after a new <%= vars.ops_manager %> deployment.
+This topic describes how you can log into <%= vars.ops_manager_first %> for the first time after deploying <%= vars.ops_manager %>. It also describes how you can configure the <%= vars.ops_manager %> default authentication with either SAML, LDAP, or internal authentication.
 
-This topic also describes how to configure the <%= vars.ops_manager %> default authentication with either SAML, LDAP, or internal authentication.
-
-## <a id='overview'></a> Overview
+## <a id='overview'></a> About login and authentication methods
 
 When you have a new installation of <%= vars.ops_manager %>, you choose the default authentication and login method.
 
@@ -22,7 +20,7 @@ Your login method and authentication choices are:
 * **[LDAP Server](#ldap):** An external identity server maintains your user database.
 
 
-## <a id='login-first-time'></a> Log In to <%= vars.ops_manager %> For the First Time
+## <a id='login-first-time'></a> Log in to <%= vars.ops_manager %> for the first time
 
 To log in to <%= vars.ops_manager %> for the first time with a new <%= vars.ops_manager %> deployment:
 
@@ -34,7 +32,7 @@ To log in to <%= vars.ops_manager %> for the first time with a new <%= vars.ops_
     * [LDAP Server](#ldap)
 
 
-## <a id='internal'></a> Log In to <%= vars.ops_manager %> with Internal Authentication
+## <a id='internal'></a> Log in to <%= vars.ops_manager %> with internal authentication
 
 To set up internal authentication that <%= vars.ops_manager %> maintains:
 
@@ -47,10 +45,10 @@ To set up internal authentication that <%= vars.ops_manager %> maintains:
 
 1. Log in to <%= vars.ops_manager %> with the Admin username and password you created in the previous step.
 
-## <a id='saml2'></a> Log In to <%= vars.ops_manager %> with SAML Identity Provider
+## <a id='saml2'></a> Log in to <%= vars.ops_manager %> with SAML identity provider
 
 <%= partial './common/using_saml_idp_ops_manager' %>
 
-## <a id='ldap'></a> Log In to <%= vars.ops_manager %> with LDAP
+## <a id='ldap'></a> Log in to <%= vars.ops_manager %> with LDAP
 
 <%= partial './common/using_ldap_server_ops_manager' %>
