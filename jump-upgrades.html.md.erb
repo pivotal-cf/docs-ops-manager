@@ -19,7 +19,7 @@ Before you jump upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %> o
 
 * If you are using vSphere with NSX-T, you must have NSX-T v2.3 or later installed.
 
-## <a id='bosh-dns-migration'></a> BOSH DNS Certificates Regeneration
+## <a id='bosh-dns-migration'></a> BOSH DNS certificates regeneration
 
 In <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. This migration process is required before you upgrade to <%= vars.ops_manager %> v2.10.33 and later. If you do not complete this migration before upgrading to v2.10.33 or later, you might experience unexpected BOSH DNS resolution issues until the change is rolled out to all VMs.
 
@@ -32,7 +32,7 @@ To allow DNS certificate regeneration and avoid communication issues between sys
 1. **Apply Changes** to all tiles.
 
 
-## <a id='jump-upgrade'></a> Jump Upgrade
+## <a id='jump-upgrade'></a> Jump upgrade
 
 After you ensure your deployment meets the requirements described in [Prerequisites](#prerequisites), you can upgrade to <%= vars.ops_manager %> to <%= vars.v_major_version %> or later.
 
@@ -43,7 +43,7 @@ To jump upgrade to <%= vars.ops_manager %> to <%= vars.v_major_version %> or lat
 1. Follow the procedure in [Upgrading <%= vars.ops_manager %>](install/upgrading-pcf.html).
 
 
-## <a id='breaking-changes'></a> Breaking Changes
+## <a id='breaking-changes'></a> Breaking changes
 
 The table below describes the breaking changes that affect <%= vars.ops_manager %> v2.5 through v2.9 and how to address them before upgrading:
 
@@ -56,7 +56,7 @@ The table below describes the breaking changes that affect <%= vars.ops_manager 
 	<tr>
 		<td>Any prior to v2.10.33</td>
 		<td>For <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. If you do not distribute the BOSH DNS leaf certificates to all VMs, you can experience downtime caused by communication issues between system components.</td>
-		<td>When upgrading to <%= vars.ops_manager %> v2.10.9 or later, run the <strong>Upgrade service instances</strong> errand on all service tiles and <strong>Apply Changes</strong> to all tiles. For more information, see <a href="#bosh-dns-migration">BOSH DNS Certificates Regeneration</a>.</td>
+		<td>When upgrading to <%= vars.ops_manager %> v2.10.9 or later, run the <strong>Upgrade service instances</strong> errand on all service tiles and <strong>Apply Changes</strong> to all tiles. For more information, see <a href="#bosh-dns-migration">BOSH DNS certificates regeneration</a>.</td>
 	</tr>
 	<tr>
 		<td>v2.5</td>
