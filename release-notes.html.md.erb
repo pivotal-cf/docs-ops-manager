@@ -1,5 +1,5 @@
 ---
-title: Ops Manager v3.0 Release Notes
+title: Ops Manager v3.0 release notes
 owner: Ops Manager
 ---
 
@@ -356,16 +356,16 @@ issues with tile upgrade failures.
 </table>
 
 
-## <a id='how-to-upgrade'></a> How to Upgrade
+## <a id='how-to-upgrade'></a> How to upgrade
 
 To upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>, see [Upgrading <%= vars.ops_manager %>](install/upgrading-pcf.html).
 
 
-## <a id='major-features'></a> New Features in <%= vars.ops_manager %> <%= vars.v_major_version %>
+## <a id='major-features'></a> New features in <%= vars.ops_manager %> <%= vars.v_major_version %>
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> includes the following major features:
 
-### <a id='lts'></a> Long-Term Support for <%= vars.ops_manager %> <%= vars.v_major_version %>
+### <a id='lts'></a> Long-term support for <%= vars.ops_manager %> <%= vars.v_major_version %>
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version of <%= vars.ops_manager %>. <%= vars.ops_manager %>
 <%= vars.v_major_version %> is to be supported through March 2025.
@@ -381,7 +381,7 @@ while the filename for the Azure version of <%= vars.ops_manager %> <%= vars.v_m
 You can jump upgrade directly from previous versions of <%= vars.ops_manager %> to <%= vars.ops_manager %> <%= vars.v_major_version %>. For more information,
 see [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](jump-upgrades.html).
 
-### <a id='ubuntu-jammy'></a> Jammy Jellyfish Stemcell Support
+### <a id='ubuntu-jammy'></a> Jammy Jellyfish stemcell support
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> uses Jammy Jellyfish, a Jammy stemcell based on Ubuntu 22.04.
 
@@ -392,7 +392,7 @@ until they reach EOGS.
 <%= vars.ops_manager %> <%= vars.v_major_version %> allows tile authors to upgrade from Xenial stemcells to Jammy Jellyfish stemcells. This ensures that
 <%= vars.ops_manager %> <%= vars.v_major_version %> users can maintain access to secure stemcells.
 
-### <a id='applied-runtime-config'></a> Review Pending Changes Page Includes Applied Runtime Configurations
+### <a id='applied-runtime-config'></a> Review Pending Changes page includes applied runtime configurations
 
 In the <%= vars.ops_manager %> Installation Dashboard, the **Review Pending Changes** page for a tile includes a list of runtime configurations to be applied
 to that tile.
@@ -405,7 +405,7 @@ Metrics** check box in the **Director Config** pane of the BOSH Director tile, t
 Changes to a runtime configuration can cause longer deployment times when you re-deploy a tile. By reviewing the runtime configurations that are to be applied
 to tiles during re-deployment, you can determine in advance which tiles might take a longer time to re-deploy.
 
-### <a id='aws-vm-catalog'></a> AWS Deployments Use 5th-Generation AMD Instances
+### <a id='aws-vm-catalog'></a> AWS deployments use 5th-generation AMD instances
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> uses 5th-generation AMD instances for AWS deployments. 5th-generation AMD instances have better
 performance characteristics and are more cost-effective than previous instance types. Both Jammy Jellyfish stemcells and Xenial stemcells support
@@ -426,7 +426,7 @@ jobs to a larger VM type. You can configure both the number of instances and VM 
 For more information about AWS Linux instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html). For
 more information about AWS Windows instance types, see the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html).
 
-### <a id='aws-gp3'></a> AWS Deployments Use gp3 Disks
+### <a id='aws-gp3'></a> AWS deployments use gp3 disks
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> uses gp3 disks for AWS deployments. The gp3 disks have better performance characteristics and are more
 cost-effective than gp2 disks.
@@ -436,7 +436,7 @@ New installations of <%= vars.ops_manager %> <%= vars.v_major_version %> use gp3
 **AWS Config** pane of the BOSH Director tile. For more information, see [Step 2: AWS Config Page](aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring
 BOSH Director on AWS_.
 
-### <a id='google-vm-catalog'></a> GCP Deployments Use E2 Series Instances
+### <a id='google-vm-catalog'></a> GCP deployments use E2 Series instances
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> uses E2 Series instances for GCP deployments. E2 Series instances have better performance characteristics
 and are more cost-effective than previous instance types. Both Jammy Jellyfish stemcells and Xenial stemcells support E2 Series instances.
@@ -455,7 +455,7 @@ type. You can configure both the number of instances and VM type of each job in 
 
 For more information about GCP instance types, see the [GCP documentation](https://cloud.google.com/compute/docs/machine-types).
 
-### <a id='google-native-machine-types'></a> GCP Deployments Allow Machine Types in Custom VM Type Catalogs
+### <a id='google-native-machine-types'></a> GCP deployments allow machine types in custom VM type catalogs
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> allows you to include machine types in your custom VM type catalogs for GCP deployments. When you
 configure VMs to use a specific machine type, the BOSH Director creates VMs using that machine type, rather than creating a custom VM that matches the CPU and
@@ -466,7 +466,7 @@ If you do not specify a machine type as a custom VM type, the BOSH Director cont
 For more information about custom VM type catalogs for GCP deployments, see the [<%= vars.ops_manager %> API
 documentation](https://docs.pivotal.io/ops-manager/3-0/opsman-api/#tag/VM-types/paths/~1api~1v0~1vm_types/put).
 
-### <a id='short-lived-nats-creds'></a> Short-Lived NATS Bootstrap Credentials
+### <a id='short-lived-nats-creds'></a> Short-lived NATS bootstrap credentials
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %>, the **Director Config** pane includes the **Enable Short Lived NATS Bootstrap Credentials** check box.
 Activating this check box configures your VMs to use short-lived NATS credentials during the bootstrap process. This increases the security of your
@@ -482,7 +482,7 @@ Credentials](security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html
   <a href="security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html#stemcells">Stemcell Compatibility</a> in <em>Using Short-Lived NATS Bootstrap
   Credentials</em>.</p>
 
-### <a id='rotate-certs-redeploy'></a> Rotate Non-Configurable Leaf Certificates During Re-Deployment
+### <a id='rotate-certs-redeploy'></a> Rotate non-configurable leaf certificates during re-deployment
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %>, the **Review Pending Changes** page in the <%= vars.ops_manager %> Installation Dashboard includes the
 **Rotate All Non-Configurable Leaf Certificates** check box. Activating this check box allows you to rotate non-configurable leaf certificates when you
@@ -492,11 +492,11 @@ For more information about rotating non-configurable leaf certificates through t
 Page](install/review-pending-changes.html#review-pending-changes) in _Reviewing Pending Product Changes_.
 
 
-## <a id='breaking-changes'></a> Breaking Changes in <%= vars.ops_manager %> <%= vars.v_major_version %>
+## <a id='breaking-changes'></a> Breaking changes in <%= vars.ops_manager %> <%= vars.v_major_version %>
 
 <%= vars.ops_manager %> <%= vars.v_major_version %> includes the following breaking changes:
 
-### <a id='bosh-metrics-server-removed'></a> BOSH System Metrics Server is Removed
+### <a id='bosh-metrics-server-removed'></a> BOSH System Metrics Server is removed
 
 The BOSH System Metrics Server is removed from <%= vars.ops_manager %> <%= vars.v_major_version %>.
 
@@ -505,33 +505,33 @@ Director to deploy the BOSH System Metrics Server, you must deactivate the **Ena
 **Enable additional System Metrics** check box in the **Director Config** pane of the BOSH Director tile before you begin upgrading. In <%= vars.ops_manager %>
 <%= vars.v_major_version %>, the **Enable BOSH System Metrics Server** check box is removed from the BOSH Director tile.
 
-### <a id='nsx-v-removed'></a> NSX-V Networking is Removed
+### <a id='nsx-v-removed'></a> NSX-V networking is removed
 
 NSX-V networking reached EOGS in January 2022. Because of this, you cannot configure NSX-V networking in <%= vars.ops_manager %> <%= vars.v_major_version %>.
 
 You can still configure NSX-T networking for compatible vSphere deployments. For more information, see [Resource Requirements](install/vsphere.html#runtimes)
 in _Installing <%= vars.ops_manager %> on vSphere_.
 
-### <a id='keystone-v2-removed'></a> Keystone v2 Authentication is Removed
+### <a id='keystone-v2-removed'></a> Keystone v2 authentication is removed
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %>, Keystone v2 is removed and replaced by Keystone v3 for user authentication in OpenStack deployments.
 
 If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.10 or earlier, and you previously used Keystone v2 to
 authenticate users, you must re-configure your deployment to use Keystone v3 authentication before you begin upgrading.
 
-### <a id='bosh-multihome-removed'></a> Multi-Network Configuration for the BOSH Director VM is Removed
+### <a id='bosh-multihome-removed'></a> Multi-network configuration for the BOSH Director VM is removed
 
 <%= vars.ops_manager %> v2.10 and earlier include an undocumented API endpoint that allows you to configure a second network on the BOSH Director VM. In
 <%= vars.ops_manager %> <%= vars.v_major_version %>, this API endpoint is removed, and you can no longer configure a second network on the BOSH Director VM.
 
-### <a id='azure'></a> Azure Germany and Azure Stack Support is Removed
+### <a id='azure'></a> Azure Germany and Azure Stack support is removed
 
 As of 2021, Microsoft has discontinued the Azure Germany cloud platform. Because of this, you cannot configure an Azure Germany environment in
 <%= vars.ops_manager %> <%= vars.v_major_version %>. However, you can still use Germany-based regions in the global Azure Commercial Cloud environment.
 
 You also cannot configure an Azure Stack environment in <%= vars.ops_manager %> <%= vars.v_major_version %>.
 
-### <a id='syslog-custom-rules'></a> Invalid Custom Syslog Rules Cause Errors
+### <a id='syslog-custom-rules'></a> Invalid custom syslog rules cause errors
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %>, invalid custom syslog rules cause <%= vars.ops_manager %> deployments to fail with a relevant error
 message. In <%= vars.ops_manager %> v2.10 and earlier, invalid custom syslog rules only cause <%= vars.ops_manager %> to log errors and discard the invalid
@@ -550,11 +550,11 @@ BOSH Director tile.
     ```
 
 
-## <a id='known-issues'></a> Known Issues
+## <a id='known-issues'></a> Known issues
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %> includes the following known issues:
 
-### <a id='postgres-db-index'> Upgrading <%= vars.ops_manager %> Corrupts BOSH Director PostgreSQL Database Indexes
+### <a id='postgres-db-index'></a> Upgrading <%= vars.ops_manager %> corrupts BOSH Director PostgreSQL database indexes
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %>, the BOSH Director is deployed using a Jammy stemcell. In <%= vars.ops_manager %> v2.10 and earlier,
 the BOSH Director is deployed using a Xenial stemcell, which uses a different version of `glibc`. When you upgrade to <%= vars.ops_manager %>
@@ -566,7 +566,7 @@ This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.5+
 <%= vars.v_major_version %>.5+LTS-T might cause your <%= vars.ops_manager %> deployment to fail. If this happens, contact
 [Support](https://tanzu.vmware.com/support) for assistance.
 
-### <a id='re-deploy-fail'></a> Missing Classes Cause Re-Deployment Failures
+### <a id='re-deploy-fail'></a> Missing classes cause re-deployment failures
 
 After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T, improperly encoded data in the <%= vars.ops_manager %> database can cause
 errors similar to the following example when you re-deploy <%= vars.ops_manager %>:
@@ -592,7 +592,7 @@ This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.6+
   <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
   the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>
 
-### <a id='bosh-reuses-packages'></a> BOSH Inappropriately Reuses Compiled Packages
+### <a id='bosh-reuses-packages'></a> BOSH inappropriately reuses compiled packages
 
 The BOSH Director attempts to match packages from an uploaded release to "similar" packages that have been previously uploaded. The match is made using the fingerprint on the uncompiled package contents. However, recently the packages in <code>golang-release</code> were modified to be templated. This led to packages that shared the same fingerprint to be used interchangeably even though they represented different versions of Golang. Reusing these packages could cause Apply Changes to fail if a tile expected one version of Golang but got another.
 
