@@ -1,12 +1,11 @@
 ---
-title: Using the Ops Manager Interface
+title: Using the Ops Manager interface
 owner: Ops Manager
 ---
 
-This topic describes key features of the <%= vars.ops_manager_first %> interface.
+This topic tells you about the key features of the <%= vars.ops_manager_first %> interface.
 
-
-## <a id='installation-dashboard'></a> Installation Dashboard Page
+## <a id='installation-dashboard'></a> Installation Dashboard page
 
 The Installation Dashboard is the central <%= vars.ops_manager %> interface for managing your deployment. It displays the BOSH Director configuration for your IaaS and product tiles for your deployment.
 
@@ -42,7 +41,7 @@ The following list describes each section that is labeled for the Installation D
 * **L**---**API Docs:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the user interface. For more information about the <%= vars.ops_manager %> API, see [Using the <%= vars.ops_manager %> API](install/ops-man-api.html).
 
 
-## <a id='changelog'></a> Change Log Page
+## <a id='changelog'></a> Change Log page
 
 Go to the **Change Log** page by clicking the corresponding link in the dashboard header. This page shows<%= vars.ops_manager %>'s deployment history, a record of all of its **Apply Changes** actions.
 
@@ -112,7 +111,7 @@ The details listed for each product are as follows:
 
 A **Total** row, lists all-product totals for the **STARTED**, **FINISHED**, AND **DURATION** fields.
 
-### <a id='changelog-using'></a> Using the Change Log Page
+### <a id='changelog-using'></a> Using the Change Log page
 
 Configure the **Change Log** page by modifying the following fields:
 
@@ -125,7 +124,7 @@ Configure the **Change Log** page by modifying the following fields:
 * **Previous / Next**---Click **Previous**, **Next**, or the number between them to load older or newer entries.
 
 
-## <a id='certificates'></a> Certificates Page
+## <a id='certificates'></a> Certificates page
 
 Go to the **Certificates** page by clicking the corresponding link in the dashboard header. This page shows the certificates in your <%= vars.ops_manager %> installation.
 
@@ -153,7 +152,7 @@ The following describes the information listed on the **Certificates** page:
 
 The following image shows the **Excluded certificates** section of the **Certificates** page:
 
-![alt-text="The Excluded certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until."](images/excluded-certificates.png)
+![alt-text="The Excluded certificates section includes the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until."](images/excluded-certificates.png)
 
 The **Excluded certificates** section includes the certificates that the <%= vars.ops_manager %> API does not attempt to rotate, because they either must be rotated using the CredHub Maestro CLI or cannot be rotated safely at all.
 
@@ -162,7 +161,7 @@ The Services TLS CA and its leaf certificates must be rotated using the CredHub 
 For all other certificates listed in **Excluded certificates**, see the documentation for the product tile associated with the non-rotatable certificate or contact [Support](https://tanzu.vmware.com/support).
 
 
-## <a id='settings'></a> Settings Page
+## <a id='settings'></a> Settings page
 
 Go to the **Settings** page by clicking on your user name, located at the upper right corner of the screen, and selecting **Settings**. On the screen that appears, select **Change Decryption Passprase**.
 
@@ -247,7 +246,7 @@ Enter your [VMware Tanzu Network API](install/add-delete.html#pivnet-api) token 
 
 If you are using a proxy to connect to <%= vars.ops_manager %>, update your **Proxy Settings** by providing a **HTTP proxy**, **HTTPS proxy**, or **No proxy**.
 
-### <a id='custom-banner'></a> Custom Banner
+### <a id='custom-banner'></a> Custom banner
 
 Create a custom text banner to communicate important messages to operators. For **UI Banner**, enter the text you want to be shown on each page of the <%= vars.ops_manager %> UI. For **SSH Banner**, enter the text that appears when an operator shells into Operations Manager.
 
@@ -276,7 +275,7 @@ To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 * **Delete This Installation:** Deletes your <%= vars.ops_manager %> installation permanently.
 
 
-## <a id='account_settings'></a> My Account Page
+## <a id='account_settings'></a> My Account page
 
 To change your email and password, go to the **My Account** page by clicking on your user name located at the upper right corner of the screen and selecting **My Account**. The **Account Settings** page includes the following information and links:
 
@@ -287,7 +286,7 @@ To change your email and password, go to the **My Account** page by clicking on 
 
 ![alt-text=""](images/account_settings.png)
 
-## <a id='support'></a> Support Page
+## <a id='support'></a> Support page
 
 Click **Support** in the footer of any page in <%= vars.ops_manager %> to access the **Support** page.
 
