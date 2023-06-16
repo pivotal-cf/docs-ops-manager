@@ -1,10 +1,9 @@
 ---
-title: Preparing to Deploy Ops Manager on AWS
+title: Preparing to deploy Ops Manager on AWS
 owner: Ops Manager
 ---
 
 This topic describes how to manually configure the Amazon Web Services (AWS) components that you need to deploy <%= vars.ops_manager_first %> on AWS.
-
 
 ## <a id='overview'></a> Overview of Deploying on AWS
 
@@ -14,34 +13,33 @@ To view the list of AWS objects created by the procedures in this topic, see [Re
 
 To prepare <%= vars.ops_manager %> for deployment with AWS:
 
-1. [File an AWS Ticket/Request](#file-ticket)
+1. [File an AWS ticket/request](#file-ticket)
 
-1. [Create S3 Buckets](#create-s3)
+1. [Create S3 buckets](#create-s3)
 
-1. [Create a Policy](#create-policy)
+1. [Create a policy](#create-policy)
 
-1. [Create an IAM Role or User](#create-iam)
+1. [Create an IAM role or user](#create-iam)
 
 1. [Create a VPC](#pcfaws-vpc)
 
-1. [Create an Internet Gateway](#pcfaws-om-igw)
+1. [Create an internet gateway](#pcfaws-om-igw)
 
-1. [Create a NAT Gateway](#pcfaws-nat-gateway)
+1. [Create a NAT gateway](#pcfaws-nat-gateway)
 
-1. [Configure a Security Group for Ops Manager](#pcfaws-om-secgrp)
+1. [Configure a security group for Ops Manager](#pcfaws-om-secgrp)
 
-1. [Configure a Security Group for BOSH-Deployed VMs](#pcfaws-om-ersecgrp)
+1. [Configure a security group for BOSH-deployed VMs](#pcfaws-om-ersecgrp)
 
-1. [Configure a Security Group for the Web ELB](#pcfaws-om-elbsecgrp)
+1. [Configure a security group for the Web ELB](#pcfaws-om-elbsecgrp)
 
-1. [Configure a Security Group for the TCP ELB](#pcfaws-om-tcpelbsecgrp)
+1. [Configure a security group for the TCP ELB](#pcfaws-om-tcpelbsecgrp)
 
-1. [Configure a Security Group for MySQL](#pcfaws-om-mysqlsecgrp)
+1. [Configure a security group for MySQL](#pcfaws-om-mysqlsecgrp)
 
 After completing the procedures in this topic, proceed to [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html) to continue deploying <%= vars.ops_manager %>.
 
-
-## <a id='file-ticket'></a> File an AWS Ticket/Request
+## <a id='file-ticket'></a> File an AWS ticket/request
 
 Log in to the AWS Management Console, and file a ticket with Amazon to ensure that your account can launch more than the default 20 instances. In the ticket, ask for a limit of 50 `t3.micro` instances and 20 `c5.large` instances in the region you are using.
 
@@ -54,7 +52,7 @@ contact the Platform Architect assigned for your account.</p>
 You can verify the limits on your account by visiting the EC2 Dashboard on the AWS Management Console and clicking **Limits** on the left navigation menu.
 
 
-## <a id='create-s3'></a> Create S3 Buckets
+## <a id='create-s3'></a> Create S3 buckets
 
 <p class='note'><strong>Note:</strong>S3 bucket names must be globally unique. When naming buckets, <%= vars.company_name %> recommends that you prefix the generic names below with an unique and helpfully identifiable string (i.e. ID-STRING-pcf-ops-manager-bucket, MY-IDENTIFIER-pcf-buildpacks-bucket, and so on). Then you should use the same prefix when naming other associated resources, such as IAM policies.</p>
 
@@ -75,7 +73,7 @@ Perform the following steps to create five S3 buckets:
     * `ID-STRING-pcf-droplets-bucket`
 
 
-## <a id='create-policy'></a> Create a Policy for <%= vars.ops_manager %>
+## <a id='create-policy'></a> Create a policy for <%= vars.ops_manager %>
 
 Perform the following steps to create a Amazon Identity and Access Management (IAM) policy with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
 
@@ -94,7 +92,7 @@ Perform the following steps to create a Amazon Identity and Access Management (I
 1. Click **Create policy**.
 
 
-## <a id='create-iam'></a> Create an IAM Role or User for <%= vars.ops_manager %>
+## <a id='create-iam'></a> Create an IAM role or user for <%= vars.ops_manager %>
 
 Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
 
@@ -266,7 +264,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 1. Click **Add new subnet**.
 
-## <a id='pcfaws-om-igw'></a> Create an Internet Gateway
+## <a id='pcfaws-om-igw'></a> Create an internet gateway
 
 1. On the VPC dashboard, click **Internet gateways**.
 
@@ -283,7 +281,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Attach internet gateway**.
 
 
-## <a id='pcfaws-nat-gateway'></a> Create a NAT Gateway
+## <a id='pcfaws-nat-gateway'></a> Create a NAT gateway
 
 1. On the VPC dashboard, click **NAT gateways**.
 
@@ -298,7 +296,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Create NAT gateway**.
 
 
-## <a id='pcfaws-public-routes'></a> Create Route Table for Public Subnets
+## <a id='pcfaws-public-routes'></a> Create route table for public subnets
 
 1. On the VPC dashboard, click **Route tables**.
 
@@ -322,7 +320,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
   3. Click **Save associations**.
 
 
-## <a id='pcfaws-remaining-routes'></a> Create Route Table for Remaining Subnets
+## <a id='pcfaws-remaining-routes'></a> Create route table for remaining subnets
 
 1. On the VPC dashboard, click **Route tables**.
 
@@ -343,7 +341,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
   3. Click **Save associations**.
 
 
-## <a id='pcfaws-om-secgrp'></a> Configure a Security Group for <%= vars.ops_manager %>
+## <a id='pcfaws-om-secgrp'></a> Configure a security group for <%= vars.ops_manager %>
 
 1. Return to the EC2 Dashboard.
 
@@ -406,7 +404,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Create security group**.
 
 
-## <a id='pcfaws-om-ersecgrp'></a> Configure a Security Group for BOSH-Deployed VMs
+## <a id='pcfaws-om-ersecgrp'></a> Configure a security group for BOSH-deployed VMs
 
 1. On the **Security Groups** page, click **Create Security Group** to create another security group.
 
@@ -449,7 +447,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Create security group**.
 
 
-## <a id='pcfaws-om-elbsecgrp'></a> Configure a Security Group for the Web ELB
+## <a id='pcfaws-om-elbsecgrp'></a> Configure a security group for the Web ELB
 
 1. On the **Security Groups** page, click **Create Security Group** to create another security group.
 
@@ -461,7 +459,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
 2. In the **Inbound rules** section, add rules to allow traffic to ports `80`, `443`, and `4443` from `0.0.0.0/0`, as shown in the table.
 
-    <p class='note'><strong>Note</strong>: Allow traffic to port `4443` only if you are in an AWS cloud region that does not support AWS ALBs. For example, the GovCloud region. For more information about AWS regoins and availability zones, see <a href="https://aws.amazon.com/about-aws/global-infrastructure/">AWS Global Infrastructure</a>.</p>
+    <p class='note'><strong>Note</strong>: Allow traffic to port `4443` only if you are in an AWS cloud region that does not support AWS ALBs. For example, the GovCloud region. For more information about AWS regions and availability zones, see <a href="https://aws.amazon.com/about-aws/global-infrastructure/">AWS Global Infrastructure</a>.</p>
 
     <p class='note'><strong>Note:</strong> For finer control over what can reach <%= vars.app_runtime_abbr %>, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to <%= vars.app_runtime_abbr %> from apps such as the cf CLI and app URLs.</p>
 
@@ -498,7 +496,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Create security group**.
 
 
-## <a id='pcfaws-om-tcpelbsecgrp'></a> Configure a Security Group for the TCP ELB
+## <a id='pcfaws-om-tcpelbsecgrp'></a> Configure a security group for the TCP ELB
 
 1. On the **Security Groups** page, click **Create Security Group** to create another security group.
 
@@ -529,7 +527,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 1. Click **Create security group**.
 
 
-## <a id='pcfaws-om-mysqlsecgrp'></a> Configure a Security Group for MySQL
+## <a id='pcfaws-om-mysqlsecgrp'></a> Configure a security group for MySQL
 
 <p class='note'><strong>Note:</strong> If you plan to use an internal database, skip this step. If you are using RDS, you must configure a security group that enables the <%= vars.ops_manager %> VM and BOSH Director VM to access the database.</p>
 
