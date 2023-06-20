@@ -5,18 +5,17 @@ iaas: Azure
 install_type: manual
 ---
 
-This topic describes how to configure the BOSH Director tile within <%= vars.ops_manager_first %> on Azure after [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
-
+After you deploy <%= vars.ops_manager_first %> on Azure, follow these steps to configure the BOSH Director tile within <%= vars.ops_manager %> on Azure.
 
 ## <a id='prerequisites'></a> Prerequisites
 
 See the following sections to prepare for configuring BOSH Director on Azure.
 
-### <a id='general-prereqs'></a> General Prerequisites
+### <a id='general-prereqs'></a> General prerequisites
 
 Before you perform the procedures in this topic, you must have completed the procedures in the following topics:
 
-* [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html)
+* [Preparing to deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html)
 * [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html)
 
 <p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
@@ -49,7 +48,7 @@ PUT -H "Authorization: bearer UAA-ACCESS-TOKEN"
 To verify that you have successfully set your custom VM types, use the `GET /api/v0/vm_types` Ops
 Manager API endpoint.
 
-#### <a id='azure-vm-types'></a> Azure Generation 2 VM Types
+#### <a id='azure-vm-types'></a> Azure Generation 2 VM types
 
 Azure Government Cloud uses Azure Generation 2 VM types by default. If necessary, you can re-configure the VMs in your
 deployment to use Azure Generation 1 VM types.
@@ -83,13 +82,13 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 | |	Standard_F48s_v2 |
 | |	Standard_F64s_v2 |
 
-## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='access-om'></a> Step 1: Log into <%= vars.ops_manager %>
 
 1. In a web browser, go to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you created in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
-## <a id='azure-config'></a> Step 2: Azure Config Page
+## <a id='azure-config'></a> Step 2: Azure Config page
 
 1. Click the **BOSH Director** tile.
 
@@ -155,11 +154,11 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 14. Click **Save**.
 
 
-## <a id='director-config'></a> Step 3: Director Config Page
+## <a id='director-config'></a> Step 3: Director Config page
 
 <%= partial "../common/director-config" %>
 
-## <a id='network'></a> Step 4: Create Networks Page
+## <a id='network'></a> Step 4: Create Networks page
 
 Create the following networks:
 
@@ -169,7 +168,7 @@ Create the following networks:
 
 <p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
-### <a id='infrastructure-network'></a> Infrastructure Network
+### <a id='infrastructure-network'></a> Infrastructure network
 
 To create the infrastructure network:
 
@@ -217,7 +216,7 @@ To create the infrastructure network:
 
 2. Click **Save**.<%= vars.expand_network_azs %>
 
-### <a id='runtime-network'></a> Runtime Network
+### <a id='runtime-network'></a> Runtime network
 
 To create the runtime network:
 
@@ -262,7 +261,7 @@ To create the runtime network:
 
 2. Click **Save**.
 
-### <a id='services-network'></a> Services Network
+### <a id='services-network'></a> Services network
 
 To create the services network:
 
@@ -333,7 +332,7 @@ To create the services network:
 
 <%= partial '../common/bosh-dns-config'  %>
 
-## <a id='syslog'></a> Step 8: Syslog Page
+## <a id='syslog'></a> Step 8: Syslog page
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
@@ -357,11 +356,11 @@ To create the services network:
 
 3. Click **Save**.
 
-## <a id='custom-vm-extensions'></a> Step 10: (Optional) Add Custom VM Extensions
+## <a id='custom-vm-extensions'></a> Step 10: Add custom VM extensions (optional)
 
 <%= partial "../common/vm-extension-config"  %>
 
-## <a id='complete-installation'></a> Step 11: Complete the BOSH Director Installation
+## <a id='complete-installation'></a> Step 11: Complete the BOSH Director installation
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If a red ICMP error message appears and you have deactivated ICMP, click **Ignore errors and start the install**.
 
@@ -370,7 +369,7 @@ To create the services network:
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 * (Optional) When <%= vars.ops_manager %> finishes deploying, deploy BOSH Add-ons to your system. For more information, see [Deploying BOSH Add-Ons](../install/add-ons.html).
 
