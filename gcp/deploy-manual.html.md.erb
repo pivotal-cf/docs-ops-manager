@@ -6,14 +6,13 @@ owner: Ops Manager
 
 <html class="list-style-none"></html>
 
-This topic describes how to deploy <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
+This topic describes how you can deploy <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
 Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html).
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP](config-manual.html).
 
-
-## <a id='select-tgz'></a> Step 1: Locate the <%= vars.ops_manager %> Installation File
+## <a id='select-tgz'></a> Step 1: Locate the <%= vars.ops_manager %> installation file
 
 1. Log in to the [VMware Tanzu Network](https://network.pivotal.io/products/pivotal-cf), and click **<%= vars.ops_manager %>**.
 
@@ -28,7 +27,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 1. Copy the filepath string of the <%= vars.ops_manager %> image based on your deployment location.
 
-## <a id='create-image'></a> Step 2: Create a Private VM Image
+## <a id='create-image'></a> Step 2: Create a private VM image
 
 1. Log in to the [GCP console](https://console.cloud.google.com/).
 
@@ -47,7 +46,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 1. Click **Create**. The file might take a few minutes to import.
 
-## <a id='start-vm'></a> Step 3: Create the <%= vars.ops_manager %> VM Instance
+## <a id='start-vm'></a> Step 3: Create the <%= vars.ops_manager %> VM instance
 
 1. Select the check box for the image that you previously created.
 
@@ -100,7 +99,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
     <p class='note'><strong>Note:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP](config-manual.html).
 
