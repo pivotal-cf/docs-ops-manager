@@ -1,17 +1,11 @@
 ---
-title: Jump Upgrading to Ops Manager v2.10
+title: Jump upgrading to Ops Manager v2.10
 owner: Ops Manager
 ---
 
-This topic describes upgrading to <%= vars.ops_manager_first %> <%= vars.v_major_version %>.2 or later directly from <%= vars.ops_manager %> v2.5 and later.
+This topic describes how you can upgrade to <%= vars.ops_manager_first %> <%= vars.v_major_version %>.2 or later directly from v2.5 and later, skipping minor versions. This is called a jump upgrade.
 
-
-## <a id='overview'></a> Overview
-
-Jump upgrading describes the process of skipping minor versions when upgrading <%= vars.ops_manager %>. Jump upgrading enables you to upgrade directly to the long-term support (LTS) version of <%= vars.ops_manager %>, which is <%= vars.v_major_version %>.
-<%= vars.ops_manager %> v2.10 is supported through April 2024. For more
-information, see [Long-Term Support for Ops Manager v2.10](release-notes.html#lts)
-in _<%= vars.ops_manager %> v2.10 Release Notes_.
+Jump upgrading enables you to upgrade directly to the long-term support (LTS) version of <%= vars.ops_manager %>, which is <%= vars.v_major_version %>. Jump upgrading <%= vars.ops_manager %> v2.10 is supported through April 2024. For more information, see [Long-Term Support for Ops Manager v2.10](release-notes.html#lts) in _<%= vars.ops_manager %> v2.10 Release Notes_.
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -31,7 +25,7 @@ Before you jump upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.2
 
 * You have installed Trusty stemcell 3541 or later.
 
-## <a id='bosh-dns-migration'></a> BOSH DNS Certificates Regeneration
+## <a id='bosh-dns-migration'></a> BOSH DNS certificates regeneration
 
 In <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. This migration process is required before you upgrade to <%= vars.ops_manager %> v2.10.33 and later. If you do not complete this migration before upgrading to v2.10.33 or later, you might experience unexpected BOSH DNS resolution issues until the change is rolled out to all VMs.
 
@@ -44,7 +38,7 @@ To allow DNS certificate regeneration and avoid communication issues between sys
 1. **Apply Changes** to all tiles.
 
 
-## <a id='jump-upgrade'></a> Jump Upgrade
+## <a id='jump-upgrade'></a> Jump upgrade
 
 After you ensure your deployment meets the requirements described in [Prerequisites](#prerequisites) above, you can upgrade to <%= vars.ops_manager %> to <%= vars.v_major_version %>.2 or later.
 
@@ -55,7 +49,7 @@ To jump upgrade to <%= vars.ops_manager %> to <%= vars.v_major_version %>.2 or l
 1. Follow the procedure in [Upgrading <%= vars.ops_manager %>](install/upgrading-pcf.html).
 
 
-## <a id="breaking-changes"></a> Breaking Changes
+## <a id='breaking-changes'></a> Breaking changes
 
 The table below describes the breaking changes that affect <%= vars.ops_manager %>
 v2.4 through v2.8 and how to address them before upgrading:
@@ -69,7 +63,7 @@ v2.4 through v2.8 and how to address them before upgrading:
 	<tr>
 		<td>Any prior to v2.10.33</td>
 		<td>For <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. If you do not distribute the BOSH DNS leaf certificates to all VMs, you can experience downtime caused by communication issues between system components.</td>
-		<td>When upgrading to <%= vars.ops_manager %> v2.10.9 or later, run the <strong>Upgrade service instances</strong> errand on all service tiles and <strong>Apply Changes</strong> to all tiles. For more information, see <a href="#bosh-dns-migration">BOSH DNS Certificates Regeneration</a> above</td>
+		<td>When upgrading to <%= vars.ops_manager %> v2.10.9 or later, run the <strong>Upgrade service instances</strong> errand on all service tiles and <strong>Apply Changes</strong> to all tiles. For more information, see <a href="#bosh-dns-migration">BOSH DNS certificates regeneration</a> above</td>
 	</tr>
 	<tr>
 		<td>v2.4</td>

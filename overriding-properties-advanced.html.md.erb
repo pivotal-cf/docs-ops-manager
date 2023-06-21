@@ -1,13 +1,10 @@
 ---
-title: Overriding Manifest Properties in Advanced Mode
+title: Overriding manifest properties in Advanced Mode
 owner: Ops Manager
 ---
 
-This topic describes how you can use Advanced Mode to override some manifest properties. This allows you to change properties that you cannot change through
-the <%= vars.ops_manager_first %> UI or the <%= vars.ops_manager %> API.
-
-
-## <a id='overview'></a> Overview
+This topic describes how you can use Advanced Mode to override some manifest properties that you cannot change through
+the <%= vars.ops_manager_first %> UI or API.
 
 <%= vars.ops_manager %> is an interface to the BOSH Director manifest and the runtime configs
 that underlie VMware Tanzu.
@@ -21,7 +18,6 @@ values provided by VMware Tanzu or BOSH.
 Use the manifest property override feature described in this topic to modify properties
 that cannot be modified in other ways.
 
-
 ## <a id='process'></a> Procedure
 
 To override manifest properties:
@@ -30,9 +26,9 @@ To override manifest properties:
 or the <%= vars.ops_manager %> API, use the UI or API to change the property.
 
 1. If the property cannot be modified through the <%= vars.ops_manager %> UI or the <%= vars.ops_manager %> API:
-    1. Determine if the property can be overridden. See [Overridable Properties](#properties) below.
-    1. If the property is in the BOSH Director Manifest, see [Override BOSH Director Manifest Properties](#bosh-overrides) below.
-    1. If the property is in one of the runtime configs, see [Override Runtime Config Properties](#runtime-config-overrides) below.
+    1. Determine if the property can be overridden. See [Overridable properties](#properties) below.
+    1. If the property is in the BOSH Director Manifest, see [Override BOSH Director manifest properties](#bosh-overrides) below.
+    1. If the property is in one of the runtime configs, see [Override runtime config properties](#runtime-config-overrides) below.
 
 You can also use the <%= vars.ops_manager %> API to view the BOSH Director manifest,
 view the list of overrides for the BOSH Director and runtime configs,
@@ -40,12 +36,11 @@ and delete the overrides.
 For more information, see [Advanced Manifest Configuration](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration)
 in the <%= vars.ops_manager %> API documentation.
 
-
-## <a id='properties'></a> Overridable Properties
+## <a id='properties'></a> Overridable properties
 
 You can edit properties in the BOSH Director manifest, another tile manifest, or two of the runtime configs.
 
-### <a id='bosh-director-manifest'></a> BOSH Director Manifest
+### <a id='bosh-director-manifest'></a> BOSH Director manifest
 
 In the BOSH Director manifest, you can override properties in the following sections:
 
@@ -60,7 +55,7 @@ You cannot:
 
 For an example, see [Change the Network Type to Dynamic](#example1) below.
 
-### <a id='tile-manifest'></a> Tile Manifest
+### <a id='tile-manifest'></a> Tile manifest
 
 In the tile manifest, you can override properties in the following sections:
 
@@ -70,7 +65,7 @@ In the tile manifest, you can override properties in the following sections:
 For an example, see [Change Number of Canary Instances](#example3) or
 [Enable Returning DNS Addresses in Links](#example4) below.
 
-### <a id='runtime-configs'></a> Runtime Configs
+### <a id='runtime-configs'></a> Runtime configs
 
 You can edit properties in two add-ons in each of two of the runtime configs files.
 The table below lists these properties:
@@ -101,7 +96,7 @@ The table below lists these properties:
 </table>
 
 
-## <a id='bosh-overrides'></a> Override BOSH Director Manifest Properties
+## <a id='bosh-overrides'></a> Override BOSH Director manifest properties
 
 To override properties in the BOSH Director manifest:
 
@@ -129,7 +124,7 @@ in the <%= vars.ops_manager %> API documentation.
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 
-## <a id='tile-overrides'></a> Override Tile Manifest Properties
+## <a id='tile-overrides'></a> Override tile manifest properties
 
 To override properties in the tile manifest:
 
@@ -158,7 +153,7 @@ in the Ops Manager API documentation.
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 
-## <a id='runtime-config-overrides'></a> Override Runtime Config Properties
+## <a id='runtime-config-overrides'></a> Override runtime config properties
 
 To override properties in the runtime configs:
 
@@ -190,11 +185,11 @@ in the Knowledge Base.
 
 For an example, see [Change the Timeout for the BOSH DNS Network Health Check](#example2) below.
 
-## <a id='examples'></a> Examples of Overridable Properties
+## <a id='examples'></a> Examples of overridable properties
 
 This section contains examples of properties that customers have asked to override.
 
-### <a id='example1'></a> BOSH Director Manifest Example: Change the Network Type to Dynamic
+### <a id='example1'></a> BOSH Director manifest example: change the network type to Dynamic
 
 By default, the network type is set to `manual`.
 You cannot change this property through the  UI or API.
@@ -202,7 +197,7 @@ You cannot change this property through the  UI or API.
 You can override this default by changing the value of the `type` property
 in the `networks` section of the BOSH Director manifest.
 
-### <a id='example3'></a> Tile Manifest Example: Change Number of Canary Instances
+### <a id='example3'></a> Tile manifest example: change number of canary instances
 
 By default, the number of canary instances is set to 1.
 You cannot change this property through the  UI or API.
@@ -213,7 +208,7 @@ in the `update` section of the tile manifest.
 For a list of all the properties you can change in the `update` section,
 see [Update Block](https://bosh.io/docs/manifest-v2/#update) in the BOSH documentation.
 
-### <a id='example4'></a> Tile Manifest Example: Enable Returning DNS Addresses in Links
+### <a id='example4'></a> Tile manifest example: enable returning DNS addresses in links
 
 By default, `use_dns_addresses` is set to `false`.
 You cannot change this property through the  UI or API.
@@ -224,7 +219,7 @@ in the `features` section of the tile manifest.
 For a list of all the properties you can change in the `features` section,
 see [Features Block](https://bosh.io/docs/manifest-v2/#features) in the BOSH documentation.
 
-### <a id='example2'></a> Runtime Config Example: Change the Timeout for the BOSH DNS Network Health Check
+### <a id='example2'></a> Runtime config example: change the timeout for the BOSH DNS network health check
 
 By default, the network timeout for synchronous health checks is 1 second.
 You cannot change this property through the  UI or API.
