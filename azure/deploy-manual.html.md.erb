@@ -1,11 +1,11 @@
 ---
-title: Deploying Ops Manager on Azure
+title: Deploying Ops Manager on Azure manually
 owner: Ops Manager
 ---
 
 <html class="list-style-none"></html>
 
-This topic describes how to deploy BOSH and <%= vars.ops_manager_first %> on Azure by using individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
+You can use these instructions to deploy BOSH and <%= vars.ops_manager_first %> on Azure by using individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
 
 Before you perform the procedures in this topic, you must complete the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
 
@@ -14,7 +14,7 @@ Before you perform the procedures in this topic, you must complete the procedure
 <p class='note'><strong>Note:</strong> Sometimes Azure portal displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 
-## <a id='network'></a> Step 1: Create Network Resources
+## <a id='network'></a> Step 1: Create network resources
 
 To create network resources for your deployment:
 
@@ -160,7 +160,7 @@ To create network resources for your deployment:
     ```
 
 
-## <a id='storage'></a> Step 2: Create BOSH and Deployment Storage Accounts
+## <a id='storage'></a> Step 2: Create BOSH and deployment storage accounts
 
 <%= vars.ops_manager %> on Azure uses multiple general-purpose Azure storage accounts. The BOSH and <%= vars.ops_manager %> VMs use one main BOSH account, and the other components share five or more deployment storage accounts.
 
@@ -285,7 +285,7 @@ To create storage accounts for BOSH and your deployment:
         ````
 
 
-## <a id='lb'></a> Step 3: Create Load Balancers
+## <a id='lb'></a> Step 3: Create load balancers
 
 Your load balancer configuration depends on whether you want apps to be available from public IP addresses, private IP addresses, or both.
 
@@ -633,7 +633,7 @@ To boot <%= vars.ops_manager %>:
         ```
 
 
-## <a id='post-deploy'></a> Step 5: Complete BOSH Director Configuration
+## <a id='post-deploy'></a> Step 5: Complete BOSH Director configuration
 
 To finish configuring BOSH Director:
 
