@@ -1,29 +1,27 @@
 ---
-title: Configuring BOSH Director on Azure Using Terraform
+title: Configuring BOSH Director on Azure using Terraform
 owner: Ops Manager
 iaas: Azure
 install_type: terraform
 ---
 
+After you deploy <%= vars.ops_manager_first %> to Azure, follow these steps to configure the BOSH Director tile within <%= vars.ops_manager %> on Azure. For information about deploying <%= vars.ops_manager %> to Azure, see [Deploying <%= vars.ops_manager %> to Azure](prepare-env-terraform.html).
+
 <%= partial "/pcf/warning-terraform" %>
 
-This topic describes how to configure the BOSH Director tile within <%= vars.ops_manager_first %> on Azure after [Deploying <%= vars.ops_manager %> to Azure](prepare-env-terraform.html).
-
 <p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
-
 
 ## <a id='prerequisites'></a> Prerequisite
 
 To complete the procedures in this topic, you must have access to the output generated when you ran `terraform apply` to create resources for this deployment. To view this output, run `terraform output` in the directory where you ran `terraform apply`. You use the values in this output to configure the BOSH Director tile.
 
-
-## <a id='access-om'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='access-om'></a> Step 1: Log into <%= vars.ops_manager %>
 
 1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %>. Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
-## <a id='azure-config'></a> Step 2: Azure Config Page
+## <a id='azure-config'></a> Step 2: Azure Config page
 
 1. Click the **BOSH Director** tile.
 
@@ -74,7 +72,7 @@ Select **Create Networks** and follow the procedures in this section to add the 
 * [Create Network for <%= vars.app_runtime_abbr %>](#pas-network)
 * [Create Network for <%= vars.k8s_runtime_abbr %>](#pks-network)
 
-### <a id='pas-network'></a> Create Network for <%= vars.app_runtime_abbr %>
+### <a id='pas-network'></a> Create network for <%= vars.app_runtime_abbr %>
 
 Create the following three networks:
 
@@ -84,7 +82,7 @@ Create the following three networks:
 
 <p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
-#### <a id='pas-infrastructure-network'></a> <%= vars.app_runtime_abbr %> Infrastructure Network
+#### <a id='pas-infrastructure-network'></a> <%= vars.app_runtime_abbr %> infrastructure network
 
 To create the infrastructure network:
 
@@ -136,7 +134,7 @@ To create the infrastructure network:
 
 1. Click **Save**.<%= vars.expand_network_azs %>
 
-#### <a id='pas-runtime-network'></a> <%= vars.app_runtime_abbr %> Runtime Network
+#### <a id='pas-runtime-network'></a> <%= vars.app_runtime_abbr %> runtime network
 
 1. Click **Add Network**.
 
@@ -184,7 +182,7 @@ To create the infrastructure network:
 
 1. Click **Save**.
 
-#### <a id='pas-services-network'></a> <%= vars.app_runtime_abbr %> Services Network
+#### <a id='pas-services-network'></a> <%= vars.app_runtime_abbr %> services network
 
 1. Click **Add Network**.
 
@@ -236,7 +234,7 @@ To create the infrastructure network:
 
 If you complete this step for <%= vars.app_runtime_abbr %>, proceed to [Assign AZs and Networks Page](#assign-networks).
 
-### <a id='pks-network'></a> Create Network for <%= vars.k8s_runtime_abbr %>
+### <a id='pks-network'></a> Create network for <%= vars.k8s_runtime_abbr %>
 
 Create the following three networks:
 
@@ -246,7 +244,7 @@ Create the following three networks:
 
 <p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
-#### <a id='pks-infrastructure-network'></a> <%= vars.k8s_runtime_abbr %> Infrastructure Network
+#### <a id='pks-infrastructure-network'></a> <%= vars.k8s_runtime_abbr %> infrastructure network
 
 To create the infrastructure network:
 
@@ -296,7 +294,7 @@ To create the infrastructure network:
 
 1. Click **Save**.
 
-#### <a id='pks-runtime-network'></a> <%= vars.k8s_runtime_abbr %> Runtime Network
+#### <a id='pks-runtime-network'></a> <%= vars.k8s_runtime_abbr %> runtime network
 
 1. Click **Add Network**.
 
@@ -344,7 +342,7 @@ To create the infrastructure network:
 
 1. Click **Save**.
 
-### <a id='pks-services-network'></a> <%= vars.k8s_runtime_abbr %> Services Network
+### <a id='pks-services-network'></a> <%= vars.k8s_runtime_abbr %> services network
 
 1. Click **Add Network**.
 
@@ -396,7 +394,7 @@ To create the infrastructure network:
    Ignore them only if **Enable ICMP checks** is not selected.
 
 
-## <a id='assign-networks'></a> Step 5: Assign AZs and Networks Page
+## <a id='assign-networks'></a> Step 5: Assign AZs and Networks page
 
 <ol>
   <li>Select <strong>Assign AZs and Networks</strong>.<br/>
@@ -411,19 +409,19 @@ To create the infrastructure network:
 </ol>
 
 
-## <a id='security'></a> Step 6: Security Page
+## <a id='security'></a> Step 6: Security page
 
 <%= partial "../common/security-pane" %>
 
-## <a id='bosh-dns'></a> Step 7: BOSH DNS Config Page
+## <a id='bosh-dns'></a> Step 7: BOSH DNS Config page
 
 <%= partial '../common/bosh-dns-config'  %>
 
-## <a id='syslog'></a> Step 8: Syslog Page
+## <a id='syslog'></a> Step 8: Syslog page
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
-## <a id='resource-config'></a> Step 9: Resource Config Page
+## <a id='resource-config'></a> Step 9: Resource Config page
 
 1. Select **Resource Config**.
 
@@ -442,11 +440,11 @@ To create an application gateway, follow the procedures in [Create an applicatio
 
 1. Click **Save**.
 
-## <a id='custom-vm-extensions'></a> Step 10: (Optional) Add Custom VM Extensions
+## <a id='custom-vm-extensions'></a> Step 10: Add custom VM extensions (optional)
 
 <%= partial "../common/vm-extension-config"  %>
 
-## <a id='complete'></a> Step 11: Complete the BOSH Director Installation
+## <a id='complete'></a> Step 11: Complete the BOSH Director installation
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
@@ -459,7 +457,7 @@ To create an application gateway, follow the procedures in [Create an applicatio
     ![alt-text=""](../common/images/cloudform/ops-manager-complete.png)
 
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After you complete this procedure, do one of the following:
 <ul>

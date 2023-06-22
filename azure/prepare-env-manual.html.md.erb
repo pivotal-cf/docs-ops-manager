@@ -1,14 +1,12 @@
 ---
-title: Preparing to Deploy Ops Manager on Azure
+title: Preparing to deploy Ops Manager on Azure
 owner: Ops Manager
 ---
 
-
 <html class="list-style-none"></html>
 
-This topic describes how to prepare Azure to deploy <%= vars.ops_manager_first %>. You must deploy <%= vars.ops_manager %> to deploy
+This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_first %>. You must deploy <%= vars.ops_manager %> in order to deploy
 <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %>.
-
 
 ## <a id='install'></a> Step 1: Install and configure the Azure CLI
 
@@ -315,7 +313,7 @@ again.
     az provider register --namespace Microsoft.Compute
     ```
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After you complete this procedure, follow the instructions in
 [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
