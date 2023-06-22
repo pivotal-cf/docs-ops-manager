@@ -1,13 +1,13 @@
 ---
-title: Deploying Ops Manager on GCP Using Terraform
+title: Deploying Ops Manager on GCP using Terraform
 owner: Ops Manager
 iaas: GCP
 install_type: terraform
 ---
 
-<%= partial "/pcf/warning-terraform" %>
+Follow these steps before you install <%= vars.ops_manager_first %> on Google Cloud Platform (GCP) using Terraform templates.
 
-This guide describes the preparation steps required to install <%= vars.ops_manager_first %> on Google Cloud Platform (GCP) using Terraform templates.
+<%= partial "/pcf/warning-terraform" %>
 
 The Terraform template for <%= vars.ops_manager %> on GCP describes a set of GCP resources and properties. For more information about how Terraform creates resources in GCP, see [Google Cloud Provider](https://www.terraform.io/docs/providers/google/index.html) on the Terraform site.
 
@@ -30,7 +30,7 @@ In addition to fulfilling the prerequisites listed in [Installing <%= vars.ops_m
   * [Compute Engine API](https://console.developers.google.com/apis/api/compute/overview)
 
 
-## <a id='svc-key'></a> Step 1: Obtain a GCP Service Account Key File
+## <a id='svc-key'></a> Step 1: Obtain a GCP service account key file
 
 To use the Terraform templates to create the necessary infrastructure
 resources for <%= vars.ops_manager %>, you need a service account key file.
@@ -63,7 +63,7 @@ To create an account key file, follow the procedure below corresponding to your 
   </ul>
 
 
-## <a id='download'></a> Step 2: Download Templates and Edit Variables File
+## <a id='download'></a> Step 2: Download templates and edit variables file
 
 Before you can run Terraform commands to provision infrastructure resources,
 you must download the GCP Terraform Templates and create a Terraform template variables
@@ -171,7 +171,7 @@ the Terraform files for your runtime.
   </table>
 
 
-## <a id='variables'></a> Step 3: Add Optional Variables
+## <a id='variables'></a> Step 3: Add optional variables
 
 Complete this step if you want to do any of the following:
 
@@ -185,7 +185,7 @@ In your `terraform.tfvars` file, specify the appropriate variables from the sect
 
 <p class='note'><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
 
-### <a id='subnet_cidr'></a> CIDR Ranges for Subnets
+### <a id='subnet_cidr'></a> CIDR ranges for subnets
 
 If you want to change the CIDR ranges for the infrastructure, your runtime, or services networks that Terraform creates, add the following variables to your `terraform.tfvars` file, replacing `YOUR-INFRASTRUCTURE-CIDR`, `YOUR-RUNTIME-CIDR` and `YOUR-SERVICES-CIDR` with your desired values.
 
@@ -195,7 +195,7 @@ pas_cidr = YOUR-RUNTIME-CIDR
 services_cidr = YOUR-SERVICES-CIDR
 ```
 
-### <a id='iso_seg'></a> Isolation Segments
+### <a id='iso_seg'></a> Isolation segments
 
 If you plan to deploy the <%= vars.segment_runtime_full %> tile, add the following variables to your `terraform.tfvars` file, replacing `YOUR-CERTIFICATE` and `YOUR-PRIVATE-KEY` with a certificate and private key. This causes Terraform to create an additional HTTP load balancer across three availability zones to use for the <%= vars.segment_runtime_full %> tile.
 
@@ -213,7 +213,7 @@ YOUR-PRIVATE-KEY
 ISO_SEG_SSL_KEY
 ```
 
-### <a id='cloudsql'></a> External Database
+### <a id='cloudsql'></a> External database
 
 1. If you want to use an external Google Cloud SQL database for <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, add the following to your `terraform.tfvars` file:
 
@@ -230,7 +230,7 @@ ISO_SEG_SSL_KEY
 
     Where `HOST-IP-ADDRESS` is your desired IP address(es).
 
-### <a id='gcs'></a> External Storage Buckets
+### <a id='gcs'></a> External storage buckets
 
 If you want to use Google Cloud Storage buckets for the <%= vars.app_runtime_abbr %> Cloud Controller, add the following to your `terraform.tfvars` file:
 
@@ -238,7 +238,7 @@ If you want to use Google Cloud Storage buckets for the <%= vars.app_runtime_abb
 create_gcs_buckets = true
 ```
 
-### <a id='gcs'></a> GCP Service Account Key for Blobstore
+### <a id='gcs'></a> GCP service account key for blobstore
 
 If you want to provide your own service account for blob storage instead of using a generated service account, add the following to your `terraform.tfvars` file:
 
@@ -247,7 +247,7 @@ create_blobstore_service_account_key = false
 ```
 
 
-## <a id='resources'></a> Step 4: Create GCP Resources with Terraform
+## <a id='resources'></a> Step 4: Create GCP resources with Terraform
 
 Follow these steps to use the Terraform CLI to create resources on GCP:
 
@@ -262,7 +262,7 @@ Follow these steps to use the Terraform CLI to create resources on GCP:
     <p class='note'><strong>Note:</strong> It may take several minutes for Terraform to create all the resources in GCP.
 
 
-## <a id='dns'></a> Step 5: Create DNS Record
+## <a id='dns'></a> Step 5: Create DNS record
 
 1. In a browser, navigate to the DNS provider for the DNS suffix you entered in your `terraform.tfvars` file.
 
@@ -270,6 +270,6 @@ Follow these steps to use the Terraform CLI to create resources on GCP:
   1. In this record, enter the name servers included in `env_dns_zone_name_servers` from your Terraform output.
 
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP Using Terraform](config-terraform.html).
