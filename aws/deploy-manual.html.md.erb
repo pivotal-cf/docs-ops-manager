@@ -3,7 +3,7 @@ title: Deploying Ops Manager on AWS
 owner: Ops Manager
 ---
 
-This topic describes how to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
+This topic describes how you can deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
 
 Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html).
 
@@ -71,7 +71,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 4. Click **View all instances** to access the **Instances** page on the EC2 Dashboard.
 
 
-## <a id='pcfaws-web-lb'></a> Step 2: Create Web Load Balancer
+## <a id='pcfaws-web-lb'></a> Step 2: Create web load balancer
 
 1. On the EC2 Dashboard, click **Load Balancers**.
 
@@ -134,7 +134,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 6. For **Step 6: Review**, review the load balancer details and then click **Create**. A message appears to confirm that AWS has successfully created the load balancer.
 
 
-## <a id='pcfaws-ssh-lb'></a> Step 3: Create SSH Load Balancer
+## <a id='pcfaws-ssh-lb'></a> Step 3: Create SSH load balancer
 
 1. From the **Load Balancers** page, click **Create Load Balancer**.
 
@@ -179,7 +179,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 5. For **Step 5: Review**, review the load balancer details and then click **Create**. A message appears to confirm that AWS has successfully created the load balancer.
 
 
-## <a id='pcfaws-tcp-lb'></a> Step 4: Create TCP Load Balancer
+## <a id='pcfaws-tcp-lb'></a> Step 4: Create TCP load balancer
 
 1. On the **Load Balancers** page, click **Create Load Balancer**.
 
@@ -258,7 +258,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 10. Review and confirm the load balancer details, and click **Create**.
 
 
-## <a id='pcfaws-dns'></a> Step 5: Configure DNS Records
+## <a id='pcfaws-dns'></a> Step 5: Configure DNS records
 
 1. Perform the following steps for all three of the load balancers you created in previous steps, named `pcf-web-elb`, `pcf-ssh-elb`, and `pcf-tcp-elb`:
 
@@ -282,7 +282,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 2. Click **Assign Security Groups**.
 
-## <a id='pcfaws-rds-subnet-group'></a> Step 6: Create RDS Subnet Group
+## <a id='pcfaws-rds-subnet-group'></a> Step 6: Create RDS subnet group
 
 1. Navigate to the RDS Dashboard.
 
@@ -302,7 +302,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
     <p class='note'><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
 
-## <a id='pcfaws-mysql-rds'></a> Step 7: Create a MySQL Database Using AWS RDS
+## <a id='pcfaws-mysql-rds'></a> Step 7: Create a MySQL database using AWS RDS
 
 <p class='note'><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.ops_manager %> on AWS.</p>
 
@@ -341,7 +341,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
 1. Click **Launch DB Instance**. Launching the instance may take several minutes.
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 When the instance has launched, you the following:
 

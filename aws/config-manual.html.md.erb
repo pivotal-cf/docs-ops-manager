@@ -1,16 +1,16 @@
 ---
-title: Configuring BOSH Director on AWS
+title: Configuring BOSH Director for deploying Ops Manager on AWS
 owner: Ops Manager
 iaas: AWS
 install_type: manual
 ---
 
-This topic describes how to configure BOSH Director to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
+This topic describes how you can configure BOSH Director to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
 
 Before beginning this procedure, ensure that you have completed all of the steps in [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
 
 
-## <a id='pcfaws-om-access'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='pcfaws-om-access'></a> Step 1: Log into <%= vars.ops_manager %>
 
 1. In a web browser, navigate to the fully qualified domain you created in the [Configure DNS Records](deploy-manual.html#pcfaws-dns) step of _Deploying <%= vars.ops_manager %> on AWS_.
 
@@ -64,7 +64,7 @@ Before beginning this procedure, ensure that you have completed all of the steps
 2. Click **Save**.
 
 
-## <a id='network'></a> Step 5: Create Networks Page
+## <a id='network'></a> Step 5: Create Networks page
 
 1. Select **Create Networks**.
 
@@ -354,7 +354,7 @@ Before beginning this procedure, ensure that you have completed all of the steps
     <%= vars.expand_network_azs %>
 
 
-## <a id='assign-azs'></a> Step 6: Assign AZs and Networks
+## <a id='assign-azs'></a> Step 6: Assign AZs and Networks page
 
 1. Click **Assign AZs and Networks**.
 
@@ -367,7 +367,7 @@ Before beginning this procedure, ensure that you have completed all of the steps
 3. Click **Save**.
 
 
-## <a id='security'></a> Step 7: Security Page
+## <a id='security'></a> Step 7: Security page
 
 <%= partial "../common/security-pane" %>
 
@@ -375,7 +375,7 @@ Before beginning this procedure, ensure that you have completed all of the steps
 
 <%= partial "../common/bosh-dns-config" %>
 
-## <a id='syslog'></a> Step 9: Syslog Page
+## <a id='syslog'></a> Step 9: Syslog page
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
@@ -411,7 +411,7 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
 1. Click **Save**.
 
 
-## <a id='pcfaws-om-complete'></a> Step 11: Complete the BOSH Director Installation
+## <a id='pcfaws-om-complete'></a> Step 11: Complete the BOSH Director installation
 
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -421,7 +421,7 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
 
     ![alt-text=""](../common/images/aws/vpc-step16.png)
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After completing the procedures in this topic, you must configure a runtime for <%= vars.ops_manager %>.
 You can install <%= vars.ops_manager %> on AWS with the <%= vars.app_runtime_abbr %> runtime.
