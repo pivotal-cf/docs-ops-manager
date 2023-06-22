@@ -29,6 +29,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes the full contents of `/var/log` and additional DNS configuration and information about disk space to help when diagnosing issues.
 - **[Feature]** Tiles can now be re-uploaded to Ops Manager. You can re-upload tiles in cases where the BOSH releases or Tile metadata currently on the <%= vars.ops_manager %> instance are missing or corrupted.
+- **[Feature]** Datastore clusters can now be nested within  folders in vSphere by entering the full path to the datastore cluster. Folder names must be followed by a forward slash character.
 - **[Bug Fix]** Downloading the Core Consumption report now takes log rotation into account to ensure a complete report is always downloaded.
 - **[Bug Fix]** You can run the Decrypt / Encrypt helper scripts from any directory. Changes in <%= vars.ops_manager %> 3.0 previously required these scripts to be run from within the application root directory. They now once again work when being run from any location.
 - **[Bug Fix]** UAA is only restarted if there are changes to its configuration. Previously, re-configuring the <%= vars.ops_manager %> UAA configuration with the same values caused <%= vars.ops_manager %> to restart UAA.
