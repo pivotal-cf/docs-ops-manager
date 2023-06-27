@@ -33,6 +33,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Bug Fix]** Downloading the Core Consumption report now takes log rotation into account to ensure a complete report is always downloaded.
 - **[Bug Fix]** You can run the Decrypt / Encrypt helper scripts from any directory. Changes in <%= vars.ops_manager %> 3.0 previously required these scripts to be run from within the application root directory. They now once again work when being run from any location.
 - **[Bug Fix]** UAA is only restarted if there are changes to its configuration. Previously, re-configuring the <%= vars.ops_manager %> UAA configuration with the same values caused <%= vars.ops_manager %> to restart UAA.
+- **[Bug Fix]** Upgrading Ops Manager no longer fails with the error "Import failure [Tried to load unspecified class: ActionController::Parameters]".
 
 <table border="1" class="nice">
   <thead>
