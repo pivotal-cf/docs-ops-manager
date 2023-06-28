@@ -31,12 +31,12 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
-- **[Feature]** Users can re-upload Tiles to Ops Manager
-- **[Feature]** Support log rotated core consumption csv
-- **[Bug Fix]** Decrypt / encrypt helper scripts can be run from any directory
-- **[Bug Fix]** UAA should only be restarted if there are changes to its configuration
-- **[Feature]** Add director logs to support bundle in opsman
-- **[Feature]** Include the contents of `/var/log` in the Ops Manager Support Bundle, as well as a few useful commands
+- **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes the full contents of `/var/log` and additional DNS configuration and information about disk space to help when diagnosing issues.
+- **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes BOSH Director logs.
+- **[Feature]** Tiles can now be re-uploaded to <%= vars.ops_manager %>. You can re-upload tiles in cases where the BOSH releases or Tile metadata currently on the <%= vars.ops_manager %> instance are missing or corrupted.
+- **[Feature]** You can now nest datastore clusters within folders in vSphere by entering the full path to the datastore cluster. Folder names must be followed by a forward slash character.
+- **[Bug Fix]** Downloading the Core Consumption report now takes log rotation into account to ensure a complete report is always downloaded.
+- **[Bug Fix]** UAA is only restarted if there are changes to its configuration. Previously, re-configuring the <%= vars.ops_manager %> UAA configuration with the same values caused <%= vars.ops_manager %> to restart UAA.
 
 <table border="1" class="nice">
   <thead>
