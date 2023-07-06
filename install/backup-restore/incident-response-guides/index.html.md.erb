@@ -1,18 +1,13 @@
 ---
-title: Incident Response Guides
+title: Incident response guides for Ops Manager
 owner: Platform Recovery
 ---
 
-This guide describes how <%= vars.ops_manager_first %> operators can use BOSH Backup and Restore (BBR) to respond to upgrade failures and data loss within
-their deployment.
+The following guides describe how you can use BOSH Backup and Restore (BBR) to respond to upgrade failures and data loss within your
+<%= vars.ops_manager_first %> deployment:
 
+* [Restoring lost BOSH Director persistent disk](lost-director-disk.html)
 
-## Contents
+* [Restoring lost <%= vars.app_runtime_abbr %> data](lost-cf-data.html)
 
-This guide includes the following topics:
-
-* [Restoring Lost BOSH Director Persistent Disk](lost-director-disk.html).
-
-* [Restoring Lost <%= vars.app_runtime_abbr %> Data](lost-cf-data.html).
-
-* [Recovering from an <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> Upgrade Failure](failed-pas-upgrade.html).
+* [Recovering from an <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> upgrade failure](failed-pas-upgrade.html)

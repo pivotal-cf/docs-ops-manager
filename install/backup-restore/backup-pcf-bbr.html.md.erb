@@ -1,17 +1,11 @@
 ---
-title: Backing up Deployments with BBR
+title: Backing up your Ops Manager deployments with BBR
 owner: RelEng
 ---
 
-This topic describes the procedure for backing up your critical back-end components with BOSH Backup and Restore (BBR), a command-line tool for backing up and
-restoring BOSH deployments. To restore your backup, see [Restoring Deployments from Backup with BBR](restore-pcf-bbr.html).
+This topic describes how you can back up critical back-end components with BOSH Backup and Restore (BBR), a command-line tool for backing up and restoring BOSH deployments. For information about restoring your backup, see [Restoring Ops Manager deployments from backup with BBR](restore-pcf-bbr.html).
 
-For BBR release notes, see [BOSH Backup and Restore Release Notes](https://docs.cloudfoundry.org/bbr/bbr-rn.html) in the Cloud Foundry documentation.
-
-
-## <a id='overview'></a> Overview on Deployment Backups with BBR
-
-During the backup, BBR stops the Cloud Controller API and the Cloud Controller workers to create a consistent backup. API functionality is affected, such as when pushing apps or using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
+In order to create a consistent backup, BBR stops the Cloud Controller API and the Cloud Controller workers during backup. This affects API functionality, such as when pushing apps or using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
 
 <div class="note caution">
   <strong>Caution:</strong>
