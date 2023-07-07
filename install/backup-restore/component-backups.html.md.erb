@@ -1,15 +1,9 @@
 ---
-title: TAS for VMs Component Availability During Backup
+title: TAS for VMs component availability during backup process
 owner: Component Teams
 ---
 
-This topic describes the operational impact of backing up <%= vars.app_runtime_first %> components with BBR.
-
-
-## <a id='overview'></a> Overview
-
-To ensure correctness of backups, each component that requires backup has its own set of scripts. The sections in this topic describe the availability of each component during backup of its database.
-
+This topic describes component availability while you back up <%= vars.app_runtime_first %> using BOSH Backup and Restore (BBR). To ensure the correctness of backups, each component that requires a backup of its database has its own set of scripts.
 
 ## <a id='cloud-controller'></a> Cloud Controller
 
@@ -59,7 +53,7 @@ The BBR SDK backup script for the Routing API backs up its database, which conta
 For more information, see the [Routing API documentation](https://github.com/cloudfoundry-incubator/routing-api/blob/master/docs/api_docs.md) in the Routing API repository on GitHub.
 
 
-## <a id='usage-service'></a> Usage Service
+## <a id='usage-service'></a> Usage service
 
 The Usage service is unavailable during backup. You cannot access the API as described in [Monitoring App, Task, and Service Instance Usage](https://docs.pivotal.io/application-service/operating/accounting-report.html). Additionally, you cannot view usage and accounting reports as described in [Monitoring Instance Usage with Apps Manager](https://docs.pivotal.io/application-service/operating/accounting-report-apps-man.html).
 
@@ -91,7 +85,7 @@ The following table describes the backup process for App Autoscaler:
 For more information, see [Scaling an App Using App Autoscaler](https://docs.pivotal.io/application-service/appsman-services/autoscaler/using-autoscaler.html).
 
 
-## <a id='nfs-volume-services'></a> NFS Volume Service
+## <a id='nfs-volume-services'></a> NFS volume service
 
 The NFS Service Broker backup scripts rely on the locking of the Cloud Controller to stop traffic to its service. This is because the Cloud Controller is responsible for invoking the NFS Service Broker.
 

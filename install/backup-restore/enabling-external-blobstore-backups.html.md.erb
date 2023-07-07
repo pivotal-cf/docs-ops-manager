@@ -1,9 +1,9 @@
 ---
-title: Enabling External Blobstore Backups
+title: Enabling external blobstore backups
 owner: BBR
 ---
 
-This topic describes enabling external blobstore backups in your <%= vars.app_runtime_first %> tile.
+This topic describes how you can enable external blobstore backups in your <%= vars.app_runtime_first %> tile.
 
 BOSH Backup and Restore (BBR) supports:
 
@@ -17,8 +17,7 @@ For more information, see [Backup and Restore for External Blobstores](https://d
 
 <p class='note'><strong>Note:</strong> To enable external blobstore backups for <%= vars.app_runtime_abbr %>, you must enable <strong>Backup Restore Node</strong>. For more information, see <a href="backup-pcf-bbr.html#backup-restore-node">Step 6: Confirm Backup Restore Node Is Deployed</a> in <em>Backing Up Deployments with BBR</em>.</p>
 
-
-## <a id='blobstore-support'></a> External Blobstore Support
+## <a id='blobstore-support'></a> External blobstore support
 
 External blobstore backup support varies based on which version of <%= vars.ops_manager %> you are running and what type of blobstore you are backing up.
 
@@ -78,8 +77,7 @@ To determine if external blobstore support is included in the version of <%= var
   </tr>
 </table>
 
-
-## <a id='s3'></a> S3 or S3-Compatible Blobstores
+## <a id='s3'></a> S3 or S3-compatible blobstores
 
 In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up and restoring versioned and unversioned S3 or S3-compatible blobstores by default. For more information about configuring an S3 or S3-compatible blobstore, see [AWS](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#aws) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
 
@@ -91,8 +89,7 @@ In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up 
     </ul>
 </div>
 
-
-## <a id='azure'></a> Azure Blobstores
+## <a id='azure'></a> Azure blobstores
 
 To configure your Azure blobstore for backups, you must enable soft delete in your Azure Storage account. You can also enable soft delete for existing Azure storage accounts that were not initially created with soft delete enabled. For more information, see [Soft delete for Azure Storage blobs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-soft-delete#quickstart) in the Microsoft documentation.
 
@@ -100,7 +97,6 @@ After enabling soft delete, you can enable Azure blobstore backups in <%= vars.o
 
 To save storage space and cost, <%= vars.company_name %> recommends that you configure a retention.
 
-
-## <a id='gcs'></a> GCS Blobstores
+## <a id='gcs'></a> GCS blobstores
 
 For more information about configuring a GCS blobstore, see [GCP](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.

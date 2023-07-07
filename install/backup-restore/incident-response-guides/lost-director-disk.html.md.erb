@@ -1,10 +1,9 @@
 ---
-title: Restoring Lost BOSH Director Persistent Disk
+title: Restoring lost BOSH Director persistent disk
 owner: Platform Recovery
 ---
 
-This guide explains how to use BOSH Backup and Restore (BBR) to restore a BOSH Director that has lost its persistent disk.
-
+This guide explains how you can use BOSH Backup and Restore (BBR) to restore a BOSH Director that has lost its persistent disk.
 
 ## <a id='prerequisite'></a> Prerequisite
 
@@ -15,13 +14,13 @@ This command produces a backup artifact in the format `DIRECTOR_IP_TIMESTAMP/`.
 <p class='note caution'><strong>Caution:</strong> BOSH Director backups require identical references to all BOSH-deployed VMs. If BOSH re-creates your deployment VMs for any reason, such as changes to stemcells, networks, or availability zones (AZs), your BBR backup artifact is no longer compatible for performing a restore.</p>
 
 
-## <a id='prepare-environment'></a> Prepare Your Environment
+## <a id='prepare-environment'></a> Prepare your environment
 
 Your BOSH Director must be in a healthy state before you can perform a BOSH Director restore. The BOSH Director is in a healthy state when all jobs are running.
 
 If your BOSH Director has lost its persistent disk, you must create a new disk to return your BOSH Director to a healthy state.
 
-### <a id='new-disk'></a> Create a New BOSH Director Persistent Disk
+### <a id='new-disk'></a> Create a new BOSH Director persistent disk
 
 To create a new persistent disk for the BOSH Director:
 
@@ -36,14 +35,14 @@ To create a new persistent disk for the BOSH Director:
 1. Update the persistent disk size in <%= vars.ops_manager %> and then click **Apply Changes**. This creates a new BOSH Director VM and attaches the new persistent disk to it.
 
 
-## <a id='perform-restore'></a> Perform the Restore
+## <a id='perform-restore'></a> Perform the restore
 
 <p class='note caution'><strong>Caution:</strong> BBR restore is a destructive process which removes any current data in your deployment. Performing a restore overwrites all new data since you created your most recent backup artifact.</p>
 
 Perform a BOSH Director restore by following the BBR instructions in [Step 8: Restore the BOSH Director](../restore-pcf-bbr.html#restore-bosh) in _Restoring Deployments From Backup with BBR_.
 
 
-## <a id='consolidate'></a> Consolidate Your Environment
+## <a id='consolidate'></a> Consolidate your environment
 
 After you successfully restore your BOSH Director, the BOSH Director uses the VM references that were stored in the backup artifact. If you clicked **Apply Changes** in <%= vars.ops_manager %> between when the backup and the restore took place, check if any BOSH-deployed VMs were deleted or added.
 

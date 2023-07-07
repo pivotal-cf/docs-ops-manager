@@ -1,16 +1,15 @@
 ---
-title: Troubleshooting BBR
+title: Troubleshooting BOSH Backup and Restore
 owner: RelEng
 ---
 
-This topic lists common troubleshooting scenarios and their solutions when using BOSH Backup and Restore (BBR) to back up and restore deployments.
+This topic describes how to solve common problems that you may encounter when using BOSH Backup and Restore (BBR) to back up and restore your deployments.
 
-
-## <a id='troubleshooting-restore'></a> Troubleshooting During a Restore
+## <a id='troubleshooting-restore'></a> Troubleshooting during a restore
 
 This section provides solutions for errors that occur during a restore.
 
-### <a id='mysql-timeout'></a> Restore Fails with a MySQL Monit Start Timeout
+### <a id='mysql-timeout'></a> Restore fails with a MySQL Monit start timeout
 
 #### Symptom
 
@@ -85,7 +84,7 @@ If your MySQL Server cluster is already scaled down to one node, it might have t
 
 1. Re-attempt the restore with BBR.
 
-### <a id='structure-mismatch'></a> Deployment Does Not Match the Structure of the Backup
+### <a id='structure-mismatch'></a> Deployment does not match the structure of the backup
 
 #### Symptom
 
@@ -104,11 +103,11 @@ The instance groups with the restore scripts in the destination environment do n
 BBR only supports restoring to an environment that matches your original environment. <%= vars.company_name %> recommends altering the destination environment to match the structure of the backup.
 
 
-## <a id='general'></a> General Troubleshooting
+## <a id='general'></a> General troubleshooting
 
 This section provides solutions for general errors.
 
-### <a id='connection-error'></a> Connection Error
+### <a id='connection-error'></a> Connection error
 
 #### Symptom
 
@@ -137,7 +136,7 @@ To resolve connection problems between the jumpbox and the VMs in the deployment
 
 1. Repeat the BBR operation.
 
-### <a id='metadata-error'></a> Error Running Metadata Script
+### <a id='metadata-error'></a> Error running metadata script
 
 #### Symptom
 
