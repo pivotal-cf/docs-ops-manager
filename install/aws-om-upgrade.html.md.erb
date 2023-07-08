@@ -1,14 +1,11 @@
 ---
-title: Upgrading BOSH Director on AWS
+title: Upgrading BOSH Director for Ops Manager on AWS
 owner: Ops Manager
 ---
 
-This topic describes how to upgrade BOSH Director for <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
+This topic describes how you can upgrade BOSH Director for <%= vars.ops_manager_first %> on Amazon Web Services (AWS). Perform these tasks as part of the <%= vars.ops_manager %> upgrade process.
 
-Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>](upgrading-pcf.html#upgrade_ops) in _Upgrading <%= vars.ops_manager %>_.
-
-
-## <a id='overview'></a> Overview
+For information about upgrading <%= vars.ops_manager %>, see [Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>](upgrading-pcf.html#upgrade_ops) in _Upgrading <%= vars.ops_manager %>_.
 
 <%= partial "./om_upgrade_overview" %>
 
@@ -21,7 +18,6 @@ To create an <%= vars.ops_manager %> VM instance:
 1. Launch the AMI. For more information, see [Launch <%= vars.ops_manager %> AMI](#pcfaws-om-ami) below.
 
 1. Edit the <%= vars.ops_manager %> DNS A Record. For more information, see [Edit <%= vars.ops_manager %> DNS A Record](#dns) below.
-
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -40,7 +36,6 @@ To retrieve the AMI ID for <%= vars.ops_manager %>:
 1. In the **Release Download Files**, click the file named **<%= vars.ops_manager %> for AWS** to download a PDF.
 
 1. Open the PDF and record the AMI ID for your region.
-
 
 ## <a id='pcfaws-om-ami'></a> Launch <%= vars.ops_manager %> AMI
 
@@ -94,8 +89,7 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 1.  Select the `<%= vars.product_name_lc %>-ops-manager-key` key pair, confirm that you have access to the private key file, and click **Launch Instances**. You use this key pair to access the <%= vars.ops_manager %> VM.
 
-
-## <a id='dns'></a> Edit <%= vars.ops_manager %> DNS A Record
+## <a id='dns'></a> Edit <%= vars.ops_manager %> DNS A record
 
 After you deploy the new <%= vars.ops_manager %> VM, edit the <%= vars.ops_manager %> DNS record in the EC2 dashboard to point to the IP address for the new VM.
 
@@ -109,7 +103,6 @@ To edit the <%= vars.ops_manager %> DNS A record:
 
 1. In your DNS provider, edit the **A** record for `<%= vars.product_name_lc %>.SYSTEM-DOMAIN` to point to the IP address recorded in the previous step, where `SYSTEM-DOMAIN` is the system domain of your <%= vars.ops_manager %> deployment.
 
-
-## <a id='continue'></a> Next Steps
+## <a id='continue'></a> Next steps
 
 After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).
