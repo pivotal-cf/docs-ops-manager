@@ -1,17 +1,13 @@
 ---
 breadcrumb: Ops Manager Documentation
-title: Deploying BOSH Add-Ons
+title: Deploying BOSH Add-ons with Ops Manager
 owner: PCF Documentation
 ---
 
-This topic explains how to deploy optional BOSH Add-ons.
+This topic explains how you can deploy BOSH Add-ons, optional platform extensions deployed with BOSH rather than installed as <%= vars.ops_manager_first %> tiles.
 
-
-## <a id='overview'></a> Overview on Deploying BOSH Add-ons
-
-BOSH Add-ons are optional platform extensions that you deploy with BOSH rather than installing them as <%= vars.ops_manager_first %> tiles.
-
-<%= vars.company_name %> recommends installing BOSH Add-ons immediately after deploying BOSH and <%= vars.ops_manager %>, before you use <%= vars.ops_manager %> to add tiles to the platform.
+>**Note**
+> <%= vars.company_name %> recommends installing BOSH Add-ons immediately after deploying BOSH and <%= vars.ops_manager %>, before you use <%= vars.ops_manager %> to add tiles to the platform.
 
 BOSH Add-ons from <%= vars.company_name %> include [IPsec](https://docs.vmware.com/en/IPsec-for-VMware-Tanzu/index.html), [ClamAV](https://docs.vmware.com/en/Anti-Virus-for-VMware-Tanzu/index.html), and [File Integrity Monitoring](https://docs.vmware.com/en/File-Integrity-Monitoring-for-VMware-Tanzu/index.html), which enhance <%= vars.app_runtime_first %> platform security and security logging.
 
@@ -19,8 +15,7 @@ BOSH Add-ons from <%= vars.company_name %> include [IPsec](https://docs.vmware.c
 
 For an overview of the BOSH deployment process, see [Deploying Software with BOSH](deploy-bosh-om.html#bosh in _Deploying BOSH and <%= vars.ops_manager %>_).
 
-
-## <a id='contents'></a> Contents
+## <a id='contents'></a> Available Add-ons
 
 * [IPsec](https://docs.vmware.com/en/IPsec-for-VMware-Tanzu/index.html): Secures data transmissions inside <%= vars.app_runtime_abbr %> following IPSec standards.
 
