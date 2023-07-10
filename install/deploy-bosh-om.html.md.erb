@@ -4,10 +4,7 @@ title: Deploying BOSH and Ops Manager
 owner: PCF Documentation
 ---
 
-This topic explains how to deploy BOSH and <%= vars.ops_manager_first %>.
-
-
-## <a id='overview'></a> Overview on Deploying BOSH and Ops Manager
+This topic explains how you can deploy BOSH and <%= vars.ops_manager_first %>.
 
 [BOSH](http://bosh.io) and [<%= vars.ops_manager %>](../index.html) provide the foundation for <%= vars.app_runtime_first %> and its associated products. When you install <%= vars.app_runtime_abbr %>, you install the following components first.
 
@@ -26,8 +23,7 @@ This topic explains how to deploy BOSH and <%= vars.ops_manager_first %>.
 
 For all of the mentioned information, the specifics depend on the IaaS on which you are deploying <%= vars.ops_manager %>. The contents of this documentation are organized by IaaS.
 
-
-## <a id='contents'></a> IaaS-Specific Deployment Guidelines
+## <a id='contents'></a> IaaS-specific deployment guidelines
 
 For information on deploying <%= vars.ops_manager %> to your IaaS, choose one of the following:
 
@@ -39,8 +35,7 @@ For information on deploying <%= vars.ops_manager %> to your IaaS, choose one of
 
 * **Deploying to vSphere:** [Installing <%= vars.ops_manager %> on vSphere](vsphere.html)
 
-
-## <a id='bosh'></a> Deploying Software with BOSH
+## <a id='bosh'></a> Deploying software with BOSH
 
 The following describes how you can use BOSH to run software in the cloud:
 
@@ -54,7 +49,7 @@ The following describes how you can use BOSH to run software in the cloud:
 
 1. BOSH CLI and API commands let you control BOSH-managed processes and allocate or release IaaS resources.
 
-## <a id='multiple-releases'></a> Including Multiple BOSH Releases in a Deployment
+## <a id='multiple-releases'></a> Including multiple BOSH releases in a deployment
 
 You can include additional features in the BOSH Director through targeted customization of the manifest.yml. The only software you can include in the BOSH Director is additional BOSH releases.
 All additional releases must be available at an HTTP address that <%= vars.ops_manager %> can reach. You cannot host or store additional BOSH releases on <%= vars.ops_manager %> or the BOSH Director.
