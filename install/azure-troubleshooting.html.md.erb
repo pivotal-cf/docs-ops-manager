@@ -5,14 +5,13 @@ owner: Ops Manager, Release Integration
 
 <html class="list-style-none"></html>
 
-This topic describes how to troubleshoot known issues when deploying or running <%= vars.ops_manager_first %> on Azure.
+This topic describes how you can troubleshoot known issues when deploying or running <%= vars.ops_manager_first %> on Azure.
 
-
-## <a id='install-issues'></a> Installation Issues
+## <a id='install-issues'></a> Installation issues
 
 This section describes how to troubleshoot known installation issues.
 
-### <a id='cannot-copy-om'></a> Cannot Copy the <%= vars.ops_manager %> Image
+### <a id='cannot-copy-om'></a> Cannot copy the <%= vars.ops_manager %> image
 
 #### Symptom
 
@@ -30,7 +29,7 @@ az --version
 
 Install the Azure CLI v2.0 by following the instructions for your operating system in [Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) in the Microsoft Azure documentation.
 
-### <a id='create-env-fails'></a> Deployment Fails at "create-env"
+### <a id='create-env-fails'></a> Deployment fails at "create-env"
 
 #### Symptom
 
@@ -60,16 +59,16 @@ You provided a passphrase when creating your key pair in [Step 4: Boot <%= vars.
 
 Create a new key pair with no passphrase and re-do the installation. For more information, see [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
 
-### <a id='database-permissions'></a> Insufficient External Database Permissions
+### <a id='database-permissions'></a> Insufficient external database permissions
 
 Upgrade issues can be caused when the external database user used for the network policy database is given insufficient permissions. To avoid this upgrade issue, ensure that the Network Policy Server database user has the `ALL PRIVILEGES` permission.
 
 
-## <a id='operation-issues'></a> Operation Issues
+## <a id='operation-issues'></a> Operation issues
 
 This section describes how to troubleshoot known operation issues.
 
-### <a id='timeouts'></a> Slow Performance or Timeouts
+### <a id='timeouts'></a> Slow performance or timeouts
 
 #### Symptom
 
@@ -95,7 +94,7 @@ To edit the **Gorouter timeout to back ends** field:
 
 1. Click **Save**.
 
-### <a id='service-create-fail'></a> Service Instance Creation Times Out
+### <a id='service-create-fail'></a> Service instance creation times out
 
 #### Symptom
 

@@ -1,18 +1,13 @@
 ---
-title: Managing Custom VM Extensions
+title: Managing custom VM extensions with the Ops Manager API
 owner: Ops Manager
 ---
 
-This topic describes how to add, delete, apply, and list custom VM extensions using the <%= vars.ops_manager %> API.
-
-## <a id='overview'></a> Overview
-
-VM extensions allow you to specify IaaS-specific configurations for your VMs such as associated security groups and load balancers. You can use the <%= vars.ops_manager %> API to create custom VM extensions, give them names, and associate those names with BOSH jobs.
+You can use the <%= vars.ops_manager_first %> API to manage VM extensions, which allow you to specify IaaS-specific configurations for your VMs such as associated security groups and load balancers. Using the <%= vars.ops_manager %> API, you can create custom VM extensions, give them names, and associate those names with BOSH jobs.
 
 The **Resource Config** pane in a product tile lets you configure some IaaS-specific load balancing and security properties, and creates VM extensions to support them.  For examples from the <%= vars.ops_manager_first %> product, see [Configuring Load Balancing for <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/operating/configure-lb.html).
 
 <p class='note caution'><strong>Caution:</strong> If you use custom VM extensions, you may override other settings. For example, if you use a custom VM extension to add tags, the default tags are removed from all instance groups. To use default tags with custom VM extensions, apply the tags manually.</p>
-
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -24,8 +19,7 @@ To manage custom VM extensions, you need the following:
 
 * **Knowledge of your IaaS-specific configurations:** To find configurations you can set for custom VM extensions, see the _VM Types_ section of your IaaS CPI in the [BOSH documentation](http://bosh.io/docs). For example, see [VM Types](http://bosh.io/docs/aws-cpi.html#resource-pools) in the AWS CPI docs for a list of AWS VM extension options.
 
-
-## <a id='create-vm-extension'></a> Create or Update a VM Extension
+## <a id='create-vm-extension'></a> Create or update a VM extension
 
 From the `/api/v0/staged/vm_extensions/NAME` endpoint, use `PUT` to enter your custom VM extension. Replace `NAME` in the endpoint with the name of the VM extension.
 
@@ -47,7 +41,7 @@ curl "https://example.com/api/v0/staged/vm_extensions/example_vm_extension_name"
 
 For more information about this command, see [Creating a new vm extension](https://docs.pivotal.io/ops-manager/2-10/api/#tag/VM-Extensions) in the <%= vars.ops_manager %> API documentation.
 
-## <a id='delete-vm-extension'></a> Delete a VM Extension
+## <a id='delete-vm-extension'></a> Delete a VM extension
 
 From the `/api/v0/staged/vm_extensions/NAME` endpoint, use `DELETE` to delete a custom VM extension by `name`. Replace `NAME` in the API endpoint with the name of the VM extension.
 
@@ -63,7 +57,7 @@ curl "https://example.com/api/v0/staged/vm_extensions/vm_ext1" \
 
 For more information about this command, see [Deleting a vm extension](https://docs.pivotal.io/platform/opsman-api/#deleting-a-vm-extension) in the <%= vars.ops_manager %> API docs.
 
-## <a id='apply-vm-extensions'></a> Apply VM Extensions to a Job
+## <a id='apply-vm-extensions'></a> Apply VM extensions to a job
 
 From the `/api/v0/staged/products/PRODUCT_GUID/jobs/JOB_GUID/resource_config` endpoint use `PUT` to configure a job with the names of your VM extensions.
 
@@ -96,7 +90,7 @@ curl "https://example.com/api/v0/staged/products/product-type1-guid/jobs/example
 
 For more information about this command, see [Configuring resources for a job](https://docs.pivotal.io/platform/opsman-api/#configuring-resources-for-a-job) in the <%= vars.ops_manager %> API docs.
 
-## <a id='deployed-vm-extensions'></a> See Deployed VM Extensions
+## <a id='deployed-vm-extensions'></a> See deployed VM extensions
 
 From the `/api/v0/deployed/vm_extensions` endpoint, use `GET` to see your applied custom VM extensions.
 

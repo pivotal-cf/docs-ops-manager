@@ -3,14 +3,9 @@ title: Using the Ops Manager CLI
 owner: Ops Manager
 ---
 
-This topic describes how to use the <%= vars.ops_manager %> command line interface (om CLI) to perform common <%= vars.ops_manager_first %> operations.
+This topic explains how to perform common operations with the om CLI, a tool that helps you configure and deploy tiles to <%= vars.ops_manager_first %> without using the <%= vars.ops_manager %> UI. The om CLI communicates with the <%= vars.ops_manager %> API.
 
-
-## <a id='about'></a> About om CLI
-
-om CLI is a tool that helps you configure and deploy tiles to <%= vars.ops_manager %> without using the <%= vars.ops_manager %> UI. om CLI communicates with the <%= vars.ops_manager %> API and makes commands simpler.
-
-With the om CLI, you can also manage <%= vars.ops_manager %> programmatically through platform automation. For more information about platform automation, see the [Platform Automation Toolkit](https://docs.pivotal.io/platform-automation).
+In addition to using the om CLI directly, you can use it to manage <%= vars.ops_manager %> programmatically through platform automation. For information about platform automation, see the [Platform Automation Toolkit](https://docs.pivotal.io/platform-automation).
 
 The om CLI has the following benefits over the <%= vars.ops_manager %> API:
 
@@ -22,8 +17,7 @@ The om CLI has the following benefits over the <%= vars.ops_manager %> API:
 
 For more information about using the om CLI, see [om](https://github.com/pivotal-cf/om) in GitHub.
 
-
-## <a id='install'></a> Install om CLI
+## <a id='install'></a> Install the om CLI
 
 You can install the om CLI in one of the following ways:
 
@@ -31,7 +25,7 @@ You can install the om CLI in one of the following ways:
 
 * **Windows, Mac, or Linux Users:** [Install om CLI from Direct Download](#download)
 
-### <a id='homebrew'></a> Install om CLI Using Homebrew
+### <a id='homebrew'></a> Install the om CLI using Homebrew
 
 If you are on a Mac or Linux machine, you can use Homebrew to install the om CLI. You must first have Homebrew installed to use this method.
 
@@ -55,7 +49,7 @@ To install the om CLI using Homebrew:
     om version
     ```
 
-### <a id='download'></a> Install om CLI from Direct Download
+### <a id='download'></a> Install the om CLI from direct download
 
 You can install the om CLI directly from the om CLI GitHub repo.
 
@@ -122,6 +116,6 @@ To authenticate with the om CLI:
     +----------------------+---------------+------------------+------------------+
     </pre>
 
-## <a id='om-cli-commands'></a> om CLI Commands
+## <a id='om-cli-commands'></a> om CLI commands
 
 For a list of all om CLI commands, see [Commands](https://github.com/pivotal-cf/om/blob/main/docs/README.md#commands) in the om CLI GitHub documentation.

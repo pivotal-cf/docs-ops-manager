@@ -1,19 +1,13 @@
 ---
-title: Requirements and Prerequisites for Ops Manager on Azure
+title: Requirements and prerequisites for Ops Manager on Azure
 owner: Ops Manager
 ---
 
-This topic describes how to install <%= vars.ops_manager_first %> on Microsoft Azure.
+Ensure that you meet the following requirements and prerequisites before installing <%= vars.ops_manager_first %> on Microsoft Azure.
 
-It includes resource requirements, prerequisites, instructions for installing <%= vars.ops_manager %> on Azure, and additional resources.
+You can install <%= vars.ops_manager %> on Azure, Azure Government Cloud, or Azure Germany. For information about Azure regions, see the [Microsoft Azure documentation](https://azure.microsoft.com/en-us/global-infrastructure/regions/).
 
-
-## <a id='overview'></a> Overview
-
-You can install <%= vars.ops_manager %> on Azure, Azure Government Cloud, or Azure Germany. For more information about Azure regions, see the [Microsoft Azure documentation](https://azure.microsoft.com/en-us/global-infrastructure/regions/).
-
-You can install <%= vars.ops_manager %> on Azure with the <%= vars.app_runtime_first %> runtime. There are resource requirements specific to both <%= vars.app_runtime_abbr %> and Azure. Ensure you meet the requirements for <%= vars.app_runtime_abbr %> and the requirements specific to Azure before installing <%= vars.ops_manager %> on Azure. For more information, see [Requirements](#requirements) below.
-
+You can install <%= vars.ops_manager %> on Azure with the <%= vars.app_runtime_first %> runtime. There are resource requirements specific to both <%= vars.app_runtime_abbr %> and Azure. Ensure that you meet the requirements for <%= vars.app_runtime_abbr %> and the requirements specific to Azure before installing <%= vars.ops_manager %> on Azure. For more information, see [Requirements](#requirements).
 
 ## <a id='requirements'></a> Requirements
 
@@ -23,7 +17,7 @@ This section lists the resource requirements for installing <%= vars.ops_manager
 
 * For Azure-specific resource requirements, see [Azure Resource Requirements](#azure-requirements) below.
 
-### <a id='azure-requirements'></a> Azure Resource Requirements
+### <a id='azure-requirements'></a> Azure resource requirements
 
 The following are the minimum resource requirements for deploying an <%= vars.ops_manager %> deployment with <%= vars.app_runtime_abbr %> on Azure:
 
@@ -149,7 +143,7 @@ To install <%= vars.ops_manager %> on Azure Government Cloud, see [Configuring B
 
 To install <%= vars.ops_manager %> in Azure Germany, see [Configuring BOSH Director on Azure Germany](../azure/german-cloud.html).
 
-## <a id='resources'></a> Additional Resources
+## <a id='resources'></a> Additional resources
 
 The following are additional resources related to installing <%= vars.ops_manager %> on GCP:
 
