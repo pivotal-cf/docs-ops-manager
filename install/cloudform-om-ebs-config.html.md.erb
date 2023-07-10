@@ -1,9 +1,11 @@
 ---
-title: Configuring Amazon EBS Encryption
+title: Configuring Amazon EBS encryption for Ops Manager
 owner: Ops Manager
 ---
 
-<%= vars.ops_manager %> supports Amazon Elastic Block Store (EBS) encryption for <%= vars.ops_manager_first %> deployments on AWS. You can use this feature to meet data-at-rest encryption requirements or as a security best practice. This feature uses AWS Key Management Service (KMS).
+<%= vars.ops_manager_first %> supports Amazon Elastic Block Store (EBS) encryption for <%= vars.ops_manager %> deployments on AWS. You can use this feature to meet data-at-rest encryption requirements or as a security best practice.
+
+This feature uses AWS Key Management Service (KMS).
 
 <p class='note'><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.app_runtime_first %> for Windows are not encrypted.</p>
 
@@ -16,8 +18,7 @@ There is no performance penalty for using encrypted EBS volumes. <%= vars.compan
 
 <p class='note'><strong>Note:</strong> Before you enable EBS encryption with KMS, you might need to update your AWS policy. For more information, see <a href="policy-doc.html#add-policies">Add Additional AWS Policies</a>.</p>
 
-
-## <a id='enable-bosh'></a> Enable Encryption for BOSH
+## <a id='enable-bosh'></a> Enable encryption for BOSH
 
 To enable EBS encryption:
 
@@ -81,6 +82,6 @@ key/12345678-9012-3456-7890-123456789012
 
 <p class='note caution'><strong>Caution:</strong> After you activate or deactivate the <strong>Encrypt Linux EBS Volumes</strong> check box, click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
 
-## <a id='enable-om'></a> Enable Encryption for <%= vars.ops_manager %>
+## <a id='enable-om'></a> Enable encryption for <%= vars.ops_manager %>
 
 To encrypt the <%= vars.ops_manager %> VM, you must manually re-launch <%= vars.ops_manager %> with a new Amazon Machine Image (AMI). For more information, see [Step 1: Launch an <%= vars.ops_manager %> AMI](../aws/deploy-manual.html#pcfaws-om-ami) in _Deploying <%= vars.ops_manager %> on AWS_.

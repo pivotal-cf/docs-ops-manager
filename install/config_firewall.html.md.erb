@@ -1,12 +1,11 @@
 ---
-title: Preparing Your Firewall
+title: Preparing your firewall
 owner: Ops Manager
 ---
 
-This topic describes how to configure your firewall and how to verify that component VMs correctly resolve DNS entries behind your firewall.
+This topic describes how to configure your firewall for <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %>, and how to verify that component VMs correctly resolve DNS entries behind your firewall.
 
-
-## <a id='firewall_configuration'></a> Configure Your Firewall
+## <a id='firewall_configuration'></a> Configure your firewall
 
 <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> require the following open TCP ports:
 
@@ -26,7 +25,7 @@ If you want to use an external NTP server, UDP port `123` must be open.
 For more information about required ports for additional installed products, see
 [Routing Network Communications](https://docs.pivotal.io/application-service/3-0/operating/networking/routing-network-paths.html).
 
-### <a id='example'></a> Example: Configure Firewall with iptables
+### <a id='example'></a> Example: Configure firewall with iptables
 
 The following example uses `iptables` commands to configure a firewall.
 
@@ -101,7 +100,7 @@ The following example uses `iptables` commands to configure a firewall.
 For more information about administering IP tables with `iptables`, see the [iptables documentation](http://ipset.netfilter.org/iptables.man.html).
 
 
-## <a id='DNS_fails'></a> Verify that Component VMs Resolve DNS Entries Behind Your Firewall
+## <a id='DNS_fails'></a> Verify that component VMs resolve DNS entries behind your firewall
 
 When you install <%= vars.ops_manager %> in an environment that uses a strong firewall, the firewall might block DNS resolution. For example, if you use
 `xip.io` to test your DNS configuration, the tests fail without warning if the firewall prevents <%= vars.app_runtime_abbr %> from accessing `*.xip.io`.
