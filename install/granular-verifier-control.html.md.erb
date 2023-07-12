@@ -1,9 +1,9 @@
 ---
-title: Managing Ops Manager Verifiers
+title: Managing verifiers in your Ops Manager deployment
 owner: Ops Manager
 ---
 
-This topic describes how to deactivate and re-activate verifiers for fields in the BOSH Director and other product tiles in <%= vars.ops_manager_first %>.
+This topic describes how you can deactivate and re-activate verifiers for fields in the BOSH Director and other <%= vars.ops_manager_first %> product tiles.
 
 <%= vars.ops_manager %> provides this option for troubleshooting
 purposes. For example, your deployment may have a unique configuration that the
@@ -16,8 +16,7 @@ deactivate <%= vars.ops_manager %> verifiers.</p>
 The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivated. Deactivated verifiers
 persist through upgrades.</p>
 
-
-## <a id='about-verifiers'></a> About Verifiers
+## <a id='about-verifiers'></a> About verifiers
 
 <%= vars.ops_manager %> verifiers narrow the feedback loop for operators by checking that fields are
 configured correctly. <%= vars.ops_manager %> verifiers reach out and find objects in the world. For example, given an IP, a
@@ -46,14 +45,13 @@ Verifiers run on two occasions:
   </tr>
 </table>
 
-
-## <a id='disable'></a> Deactivate Verifiers by type
+## <a id='disable'></a> Deactivate verifiers by type
 
 You can deactivate verifiers by verifier type. For example, you can deactivate all MySQL
 verifiers for a tile. To deactivate a verifier type for a tile, you
 must find and record the type, then use the <%= vars.ops_manager %> API.
 
-### <a id='record-type'></a> Step 1: Record the Verifier Type
+### <a id='record-type'></a> Step 1: Record the verifier type
 
 To record the verifier type:
 
@@ -76,7 +74,7 @@ The API endpoint varies by tile. Go to one of the procedures below:
 
 - [Deactivate Verifiers for Other Tiles](#tile-disable)
 
-#### <a id='bosh-director-disable'></a> Deactivate Verifiers for the BOSH Director Tile
+#### <a id='bosh-director-disable'></a> Deactivate verifiers for the BOSH Director tile
 
 To deactivate a verifier type for the BOSH Director:
 
@@ -154,7 +152,7 @@ To deactivate a verifier type for the BOSH Director:
 <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
 
 
-#### <a id='tile-disable'></a> Deactivate Verifiers for other tiles
+#### <a id='tile-disable'></a> Deactivate verifiers for other tiles
 
 To deactivate a verifier type for tiles other than the BOSH Director:
 
@@ -248,7 +246,7 @@ To deactivate a verifier type for tiles other than the BOSH Director:
 1. Record the product and the verifier type that you deactivated in a secure location.
 <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
 
-## <a id='re-enable'></a> Re-enable Verifiers by Type
+## <a id='re-enable'></a> Re-enable verifiers by type
 
 <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
 The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivate. Deactivated verifiers

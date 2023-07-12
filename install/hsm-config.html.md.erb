@@ -1,12 +1,9 @@
 ---
-title: Preparing CredHub HSMs for Configuration
+title: Preparing CredHub HSMs for configuration
 owner: CredHub
 ---
 
-This topic describes how to prepare a Hardware Security Module (HSM) to store CredHub encryption keys. Storing CredHub encryption keys in an HSM is more secure than storing them internally.
-
-
-## <a id='overview'></a> Overview
+This topic describes how you can prepare a Hardware Security Module (HSM) to store CredHub encryption keys. Storing CredHub encryption keys in an HSM is more secure than storing them internally.
 
 SafeNet Luna HSM is the only HSM option that you can use as a CredHub encryption provider. The Amazon Web Services (AWS) [CloudHSM Classic](https://aws.amazon.com/cloudhsm/faqs-classic/) service uses SafeNet Luna HSMs. For more information about SafeNet Luna HSM, see the [SafeNet Luna Network HSMs](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) product page.
 
@@ -18,8 +15,7 @@ To configure BOSH CredHub, see _Step 3: Configure Director_ in the [BOSH Directo
 
 Configure runtime CredHub with one or more HSMs to securely manage service broker credentials. To configure runtime CredHub, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/secure-si-creds.html#pas-config).
 
-
-## <a id='checklist'></a> Preparation Checklist
+## <a id='checklist'></a> Preparation checklist
 
 As you follow these procedures, you should collect or create these resources:
 
@@ -33,12 +29,11 @@ As you follow these procedures, you should collect or create these resources:
 
 * Your HSM partition serial numbers
 
-
-## <a id='initialize-and-configure'></a> Initialize and Configure New HSMs
+## <a id='initialize-and-configure'></a> Initialize and configure new HSMs
 
 The procedures in these sections describe how to initialize and configure new HSMs.
 
-### <a id='initialize-and-set-policies'></a> Initialize HSM and Set Policies
+### <a id='initialize-and-set-policies'></a> Initialize HSM and set policies
 
 To initialize a new HSM and set its policies:
 
@@ -89,7 +84,7 @@ To initialize a new HSM and set its policies:
     lunash:> hsm changePolicy -policy 15 -value 1
     ```
 
-### <a id='retrieve-hsm-certificate'></a> Retrieve HSM Certificate
+### <a id='retrieve-hsm-certificate'></a> Retrieve HSM certificate
 
 To retrieve your HSM certificate:
 
@@ -104,7 +99,7 @@ To retrieve your HSM certificate:
 
 BOSH CredHub uses this certificate to validate the identity of the HSM when connecting to it.
 
-### <a id='create-an-hsm-partition'></a> Create an HSM Partition
+### <a id='create-an-hsm-partition'></a> Create an HSM partition
 
 To create an HSM partition to hold the encryption keys:
 
@@ -128,12 +123,11 @@ To create an HSM partition to hold the encryption keys:
 
 1. Record the `Partition SN` shown in the output of the command you ran in the previous step.
 
-
-## <a id='create-register-hsm'></a> Create and Register HSM Clients
+## <a id='create-register-hsm'></a> Create and register HSM clients
 
 Clients that communicate with the HSM must provide a client certificate to establish a client-authenticated session. You must set up each client's certificate on the HSM and assign access rights for your partition.
 
-### <a id='network-trust-link'></a> Establish a Network Trust Link Between Client and HSMs
+### <a id='network-trust-link'></a> Establish a network trust link between client and HSMs
 
 To establish a network trust link between a client and your HSMs:
 
@@ -163,7 +157,7 @@ To establish a network trust link between a client and your HSMs:
     ```
     Where `CLIENT-HOSTNAME-OR-IP` is the hostname or IP address of the client.
 
-### <a id='register'></a> Register HSM Client Host and Partitions
+### <a id='register'></a> Register HSM client host and partitions
 
 To register a client host and partitions for your HSM:
 
@@ -197,12 +191,11 @@ To register a client host and partitions for your HSM:
     * `CLIENT-NAME` is the name of the client.
     * `PARTITION-NAME` is the name of the partition you created.
 
-
-## <a id='hsm-encryption-keys'></a> Set, Review, and Delete HSM Encryption Keys
+## <a id='hsm-encryption-keys'></a> Set, review, and delete HSM encryption keys
 
 You can set which key is used for encryption operations by defining the encryption key name in the **Director Config** pane of the BOSH Director tile for BOSH Credhub, the **CredHub** pane of the <%= vars.app_runtime_abbr %> tile for runtime CredHub, or the <%= vars.ops_manager %> API. If a key already exists on the HSM, CredHub uses it by default. If a key does not exist on the HSM, CredHub creates one automatically in the referenced partition.
 
-### <a id='review-stored-keys'></a> Review Stored Keys on a Partition
+### <a id='review-stored-keys'></a> Review stored keys on a partition
 
 When you generate a new key, you should review the list of keys on each HSM to validate that key replication is occurring. If new keys do not propagate among the HSMs, you could get locked out of HSMs.
 
@@ -215,7 +208,7 @@ To review stored keys on a partition:
     ```
     Where `PARTITION-NAME` is the name of your partition.
 
-### <a id='delete-key'></a> Delete Key
+### <a id='delete-key'></a> Delete key
 
 <%= vars.ops_manager %> places extra safeguards around the `/api/v0/staged/director/properties` endpoint to ensure that you cannot accidentally delete active CredHub encryption keys through the <%= vars.ops_manager %> API:
 

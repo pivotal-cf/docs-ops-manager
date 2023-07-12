@@ -1,15 +1,9 @@
 ---
-title: Managing Errands in Ops Manager
+title: Managing errands in your Ops Manager deployment
 owner: Ops Manager
 ---
 
-This topic describes product errands used in <%= vars.ops_manager_first %> and how to configure them.
-
-
-## <a id='overview'></a> Overview
-
-Errands are scripts that can run at the beginning and at the end of an installed product's availability time.
-You can use <%= vars.ops_manager %> to adjust whether and when these errands run.
+Errands are scripts that can run at the beginning and at the end of an installed product's availability time. This topic describes the product errands used in <%= vars.ops_manager_first %>, and how you can use <%= vars.ops_manager %> to adjust whether and when these errands run.
 
 Product tiles include two types of errands:
 
@@ -23,25 +17,23 @@ When you click **Review Pending Changes**, then **Apply Changes** in <%= vars.op
 
 For information about the errands associated with any other <%= vars.ops_manager %> product, see the documentation provided with the product tile.
 
-
-## <a id='rules'></a> Errand Run Rules
+## <a id='rules'></a> Errand run rules
 
 Operators can configure two different run rules for errands: **On** and **Off**. These rules control when <%= vars.ops_manager %> executes the errand.
 
 When the errand is configured to be **On**, then it always runs, even if there are no changes to the product manifest. When the errand is configured to be **Off**, it never runs.
 
-### <a id='defaults'></a> <%= vars.ops_manager %> Defaults and Tile Defaults
+### <a id='defaults'></a> <%= vars.ops_manager %> defaults and tile defaults
 
 By default, <%= vars.ops_manager %> applies the **On** rule to all  errands.
 
 For any errand, the tile developer can override these <%= vars.ops_manager %> defaults with their own tile-specific defaults defined in the tile [property blueprints](https://docs.pivotal.io/tiledev/property-reference.html#property-blueprints).
 
-
-## <a id='modify'></a> Configure Run Rules in <%= vars.ops_manager %>
+## <a id='modify'></a> Configure run rules in <%= vars.ops_manager %>
 
 You can configure the run rules for errands in two places in <%= vars.ops_manager %>. The [Errands](#errands-pane) pane saves your configuration and applies the configuration to future installations. The [Pending Changes](#changes-view) view applies the rules only to the next time you run an <%= vars.ops_manager %> install, without saving them.
 
-### <a id='errands-pane'></a> Errands Pane: Persistent Rules
+### <a id='errands-pane'></a> Errands pane: persistent rules
 
 Product tiles for <%= vars.app_runtime_abbr %> and other <%= vars.ops_manager %> products have an **Errands** pane that configures the run rules for the product's errands and saves the settings for later.
 
@@ -61,7 +53,7 @@ To configure the run rules for a tile:
 
 5. Click **Review Pending Changes**, then **Apply Changes** to redeploy the tile with the new settings.
 
-### <a id='changes-view'></a> Pending Changes: One-Time Rules
+### <a id='changes-view'></a> Pending Changes: one-time rules
 
 <%= vars.ops_manager %> lets you quickly configure one-time errand run rules for any product queued up for installation:
 
@@ -75,6 +67,6 @@ To configure the run rules for a tile:
 
 2. Click **Review Pending Changes**, then **Apply Changes** to redeploy the tile.
 
-## <a id='related'></a> Related Links
+## <a id='related'></a> Related links
 
 If you are a product developer and want to learn more about adding errands to your product tile for <%= vars.ops_manager %>, see [Errands](https://docs.pivotal.io/tiledev/tile-errands.html) in _<%= vars.ops_manager %> Tile Developer Guide_.
