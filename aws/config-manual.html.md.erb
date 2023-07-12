@@ -5,17 +5,15 @@ iaas: AWS
 install_type: manual
 ---
 
-This topic describes how you can configure BOSH Director to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
+You can configure BOSH Director to deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
 
 Before you begin this procedure, ensure that you have completed all of the steps in [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
-
 
 ## <a id='pcfaws-om-access'></a> Step 1: log into <%= vars.ops_manager %>
 
 1. In a web browser, go to the fully qualified domain that you created in the [Configure DNS Records](deploy-manual.html#pcfaws-dns) step of _Deploying <%= vars.ops_manager %> on AWS_.
 
 1. Log in to <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
-
 
 ## <a id='pcfaws-om-awsconfig'></a> Step 2: AWS Config page
 
@@ -36,15 +34,18 @@ Before you begin this procedure, ensure that you have completed all of the steps
     * **Region**: Select the region where you deployed <%= vars.ops_manager %>.
     * **VM Type Catalog** Select the VM catalog that you want to use for your BOSH-deployed VMs.
     * **AWS EBS disk type**: Select the type of EBS volume for BOSH deployed VMs to use.
-        <p class='note caution'><strong>Caution:</strong> If you change this value, BOSH recreates all VMs when you apply changes.</p>
+      <p class="note caution">
+      <span class="note__title">Caution</span>
+      If you change this value, BOSH recreates all VMs when you apply changes.</p>
 
     * **Encrypt Linux EBS Volumes**: Select this check box to enable full encryption on persistent disks of all BOSH deployed VMs except the <%= vars.ops_manager %> VM and BOSH Director VM.
 
       For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for <%= vars.ops_manager %> on AWS](../install/cloudform-om-ebs-config.html).
-        <p class='note'><strong>Note:</strong> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_first %> or <%= vars.windows_runtime_abbr %> 2012 R2 are not encrypted.</p>
 
-1. Click **Save**.
+        <p class="note important">
+      <span class="note__title">Important</span> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_first %> or <%= vars.windows_runtime_abbr %> 2012 R2 are not encrypted.</p>
 
+2. Click **Save**.
 
 ## <a id='pcfaws-om-dirconfig'></a> Step 3: Director Config page
 
@@ -52,7 +53,7 @@ Before you begin this procedure, ensure that you have completed all of the steps
 
 ## <a id='az'></a> Step 4: Create Availability Zones page
 
-<p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends at least three availability zones (AZs) for a highly available installation of <%= vars.app_runtime_first %>. The procedures in <a href="prepare-env-manual.html">Preparing to Deploy <%= vars.ops_manager %> on AWS</a> use 3 AZs.</p>
+<p> <%= vars.company_name %> recommends at least three availability zones (AZs) for a highly available installation of <%= vars.app_runtime_first %>. The procedures in <a href="prepare-env-manual.html">Preparing to Deploy <%= vars.ops_manager %> on AWS</a> use 3 AZs.</p>
 
 1. Select **Create Availability Zones**.
 
@@ -164,7 +165,8 @@ Before you begin this procedure, ensure that you have completed all of the steps
           </tr>
         </table>
 
-        <strong><sup>*</sup></strong> If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.
+        <p class="note important">
+        <span class="note__title">Important</span> If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.</p
 
     1. Click **Add Network**.
     1. For **Name**, enter the name of your runtime. For example, `tas` or `pks`.
@@ -254,7 +256,7 @@ Before you begin this procedure, ensure that you have completed all of the steps
           </tr>
         </table>
 
-        <strong><sup>*</sup></strong> If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.
+        If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.
 
     1. Click **Add Network**.
     1. For **Name**, enter `services`.
@@ -344,7 +346,7 @@ Before you begin this procedure, ensure that you have completed all of the steps
           </tr>
         </table>
 
-        <strong><sup>*</sup></strong> If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.
+        If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.
 
 3. Click **Save**.
 
@@ -354,7 +356,6 @@ Before you begin this procedure, ensure that you have completed all of the steps
     see <a href="https://docs.pivotal.io/tkgi/deploy-workloads.html#aws">AWS Prerequisites</a>.</p>
 
     <%= vars.expand_network_azs %>
-
 
 ## <a id='assign-azs'></a> Step 6: Assign AZs and Networks page
 
@@ -389,9 +390,12 @@ Before you begin this procedure, ensure that you have completed all of the steps
 
 2. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields,
 select **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
-    <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
-    <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
-    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Main Compilation Job</strong>
+
+    <p> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
+
+    <p> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
+
+    <p> If you install <%= vars.windows_runtime_first %>, provision your <strong>Main Compilation Job</strong>
     with at least 100&nbsp;GB of disk space.</p>
 
 1. (Optional) To configure an Application Load Balancer (ALB) for your BOSH Director, click the icon next to the **BOSH Director** job name to see more fields.
@@ -399,8 +403,7 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
 
     To create an ALB and target group, follow the procedures in [Getting Started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html) in the AWS documentation. Then go to **Target Groups** in the **EC2 Dashboard** menu to find your target group **Name**.
 
-    <div class="note">
-      <p><strong>Note:</strong> To configure an ALB, you must have the following AWS IAM permissions.</p>
+    <p> To configure an ALB, you must have the following AWS IAM permissions.</p>
       <pre class="terminal">
       "elasticloadbalancing:DescribeLoadBalancers",
       "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
@@ -408,10 +411,9 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
       "elasticloadbalancing:DescribeTargetGroups",
       "elasticloadbalancing:RegisterTargets"
       </pre>
-    </div>
+    </p>
 
 1. Click **Save**.
-
 
 ## <a id='pcfaws-om-complete'></a> Step 11: complete the BOSH Director installation
 
@@ -426,6 +428,7 @@ Enter your AWS target group name in the **Load Balancers** field for the **BOSH 
 ## <a id='next'></a> Next steps
 
 After you complete the procedures in this topic, you must configure a runtime for <%= vars.ops_manager %>.
+
 You can install <%= vars.ops_manager %> on AWS with the <%= vars.app_runtime_abbr %> runtime.
 
 To configure <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
