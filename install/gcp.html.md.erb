@@ -1,17 +1,11 @@
 ---
-title: Requirements and Prerequisites for Ops Manager on GCP
+title: Requirements and prerequisites for Ops Manager on GCP
 owner: Ops Manager
 ---
 
-This topic describes how to install <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
+Ensure that you meet the following requirements and prerequisites before installing <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
-It includes resource requirements, prerequisites, instructions for installing <%= vars.ops_manager %> on GCP, and additional resources.
-
-
-## <a id='overview'></a> Overview
-
-You can install <%= vars.ops_manager %> on GCP with either the <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %> runtime. There are resource requirements specific to each runtime. Ensure you meet the requirements for your runtime and the requirements specific to GCP before installing <%= vars.ops_manager %> on GCP.
-
+You can install <%= vars.ops_manager %> on GCP with either the <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %> runtime. There are resource requirements specific to each runtime. Ensure that you meet the requirements for your runtime and the requirements specific to GCP before installing <%= vars.ops_manager %> on GCP.
 
 ## <a id='requirements'></a> Requirements
 
@@ -21,7 +15,7 @@ This section lists the following resource requirements for installing <%= vars.o
 
 * GCP-specific resource requirements. For more information, see [GCP Resource Requirements](#gcp-requirements) below.
 
-### <a id='general-requirements'></a> <%= vars.ops_manager %> Resource Requirements
+### <a id='general-requirements'></a> <%= vars.ops_manager %> Resource requirements
 
 This section lists resource requirements for installing <%= vars.ops_manager %> on GCP. It includes links to general resource requirements for both the <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> runtimes.
 
@@ -31,7 +25,7 @@ See one of the following topics, depending on the runtime you plan to install us
 
 * For <%= vars.k8s_runtime_abbr %>-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
 
-### <a id='gcp-requirements'></a> GCP Resource Requirements
+### <a id='gcp-requirements'></a> GCP resource requirements
 
 The following are GCP-specific resource requirements for installing <%= vars.ops_manager %> on GCP:
 
@@ -145,7 +139,6 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
 
 * (<%= vars.app_runtime_abbr %>-only) Your GCP project must have sufficient quota to deploy all the VMs needed to install <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>. For a list of suggested quotas, see [Recommended GCP Quotas](gcp-quotas.html).
 
-
 ## <a id='prerequisites'></a> Prerequisites
 
 To install <%= vars.ops_manager %> on GCP, you must do the following:
@@ -188,15 +181,13 @@ To install <%= vars.ops_manager %> on GCP, you must do the following:
 
 * **(Optional)** **(<%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>-only)** Configure external user stores. When you deploy <%= vars.ops_manager %>, you can select a SAML user store for <%= vars.ops_manager %> or a SAML or LDAP user store for <%= vars.app_runtime_abbr %>, to integrate existing user accounts.
 
-
 ## <a id='install'></a> Install <%= vars.ops_manager %> on GCP
 
 You can install <%= vars.ops_manager %> on GCP.
 
 To install <%= vars.ops_manager %> on GCP, see [Installing <%= vars.ops_manager %> on GCP](gcp-manual.html)
 
-
-## <a id='resources'></a> Additional Resources
+## <a id='resources'></a> Additional resources
 
 The following are additional resources related to installing <%= vars.ops_manager %> on GCP:
 

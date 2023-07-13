@@ -1,11 +1,11 @@
 ---
-title: Configuring a Shared VPC on GCP
+title: Configuring a shared VPC on GCP with Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes the preparation steps required to configure and integrate a shared Virtual Private Cloud (VPC) on Google Cloud Platform (GCP) with <%= vars.ops_manager_first %>.
+This topic describes how you can configure and integrate a shared Virtual Private Cloud (VPC) on Google Cloud Platform (GCP) with <%= vars.ops_manager_first %>.
 
-GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables you to assign GCP resources to individual projects within an organization but allows communication and shared services between projects. For more information about shared VPCs, see [Shared VPC Overview](https://cloud.google.com/compute/docs/shared-vpc/) in the GCP documentation.
+GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables you to assign GCP resources to individual projects within an organization but allows communication and shared services between projects. For more information about shared VPCs, see the [GCP documentation](https://cloud.google.com/vpc/docs/shared-vpc).
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -18,12 +18,12 @@ To configure a shared VPC, you must assign your project to a Cloud Organization.
 For more information, see [Creating and Managing Organizations](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id) in the GCP documentation. If you do not have a Cloud Organization, contact GCP support.
 
 
-## <a id='provision'></a> Step 1: Provision the Shared VPC
+## <a id='provision'></a> Step 1: Provision the shared VPC
 
 Follow the procedure in [Enabling a shared VPC host project](https://cloud.google.com/compute/docs/shared-vpc/provisioning-shared-vpc#enable-shared-vpc-host) in the GCP documentation. This procedure requires shared VPC admin permissions.
 
 
-## <a id='network'></a> Step 2: Create a Shared VPC Network
+## <a id='network'></a> Step 2: Create a shared VPC network
 
 Follow the procedures in [Preparing to Deploy <%= vars.ops_manager %> on GCP](../gcp/prepare-env-manual.html) to create a new network with firewall rules. Then follow the procedures in:
 
@@ -32,7 +32,7 @@ Follow the procedures in [Preparing to Deploy <%= vars.ops_manager %> on GCP](..
 * [Step 5: Create Firewall Rules for the Network](../gcp/prepare-env-manual.html#firewall_rules)
 
 
-## <a id='shared'></a> Step 3: Connect the Shared VPC to <%= vars.ops_manager %>
+## <a id='shared'></a> Step 3: Connect the shared VPC to <%= vars.ops_manager %>
 
 You can use the [GCP console](https://console.cloud.google.com/) or the gcloud CLI to connect the shared VPC host project with <%= vars.ops_manager %>.
 
@@ -40,7 +40,7 @@ For more information, see [VPC Network Peering](https://cloud.google.com/compute
 
 <p class='note caution'><strong>Caution:</strong> VPC Network Peering is currently in beta and intended for evaluation and test purposes only.</p>
 
-### <a id='shared-gui'></a> Set Up VPC Network Peering with GCP Console
+### <a id='shared-gui'></a> Set up VPC network peering with the GCP console
 
 To set up VPC network peering with the GCP console:
 
@@ -62,7 +62,7 @@ To set up VPC network peering with the GCP console:
 
 5. Click **Save**.
 
-### <a id='shared-cli'></a> Set Up VPC Network Peering with gcloud CLI
+### <a id='shared-cli'></a> Set up VPC network peering with the gcloud CLI
 
 To set up VPC network peering with the gcloud CLI:
 
@@ -117,7 +117,7 @@ To set up VPC network peering with the gcloud CLI:
     * `OPSMANAGER-NETWORK` is the name of the network assigned to the <%= vars.ops_manager %> project in GCP.
 
 
-## <a id='verify'></a> Step 4: Verify the Shared VPC Configuration
+## <a id='verify'></a> Step 4: Verify the shared VPC configuration
 
 After configuring a shared VPC, use the following procedure to verify that the shared VPC host project VM appears in the <%= vars.ops_manager %> project.
 
