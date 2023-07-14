@@ -3,19 +3,14 @@ title: Using the Ops Manager API
 owner: Ops Manager
 ---
 
-This topic explains how to access the <%= vars.ops_manager %> API, and gives examples of how to use the API to perform some common <%= vars.ops_manager_first %> operations.
+This topic explains how you can access the <%= vars.ops_manager_first %> API, and gives examples of using the API to perform common operations.
 
-
-## <a id='overview'></a> Overview
-
-The <%= vars.ops_manager %> API controls the <%= vars.ops_manager %> VM directly, bypassing the <%= vars.ops_manager %> UI.
-
-Platform operators use the <%= vars.ops_manager %> API to automate deployments, retrieve and manage credentials, and otherwise work with <%= vars.ops_manager %>.
+The <%= vars.ops_manager %> API controls the <%= vars.ops_manager %> VM directly, bypassing the <%= vars.ops_manager %> UI. Platform operators use the <%= vars.ops_manager %> API to automate deployments, retrieve and manage credentials, and otherwise work with <%= vars.ops_manager %>.
 Tile Developers use the <%= vars.ops_manager %> API to test and debug <%= vars.ops_manager %> product tiles.
 
 For more information about the <%= vars.ops_manager %> API, see the [<%= vars.ops_manager %> API](https://docs.pivotal.io/ops-manager/3-0/api) documentation. Your <%= vars.ops_manager %> serves a local copy of this documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
 
-### <a id='related'></a> Related Tools
+### <a id='related'></a> Related tools
 
 For running <%= vars.ops_manager %> operations from the command line or within shell scripts, the <%= vars.ops_manager %> command-line interface (CLI) `om` is usually a better tool than the <%= vars.ops_manager %> API.
 
@@ -38,7 +33,7 @@ If you haven't already, install the UAA Command Line Interface (UAAC) by running
 gem install cf-uaac
 ```
 
-### <a id='token'></a> Retrieve an Authorization Token
+### <a id='token'></a> Retrieve an authorization token
 
 Every call to the <%= vars.ops_manager %> API must include an authorization token that is acceptable to the <%= vars.ops_manager %> UAA.
 
@@ -210,7 +205,7 @@ To log in to the <%= vars.ops_manager %> VM and retrieve your token:
 
 If authentication is successful, the UAAC displays the following message: `Successfully fetched token via owner password grant.`
 
-### <a id='run-commands'></a> Run API Commands
+### <a id='run-commands'></a> Run API commands
 
 To run any <%= vars.ops_manager %> API command, you pass your authorization token to the API command endpoint in a header that follows the format `Authorization: Bearer YOUR-ACCESS-TOKEN`.
 
@@ -219,7 +214,7 @@ If you are calling <%= vars.ops_manager %> API commands from the command line, t
   * **Internal:** You must run <%= vars.ops_manager %> API commands from the <%= vars.ops_manager %> VM.
   * **External:** You may run commands from your local machine.
 
-#### <a id='test-command'></a> API Access Test
+#### <a id='test-command'></a> API access test
 
 The following procedure tests whether you can access the <%= vars.ops_manager %> API from the command line by retrieving a list of deployed products:
 
@@ -254,7 +249,7 @@ The following procedure tests whether you can access the <%= vars.ops_manager %>
     0000000","type":"cf","product_version":"1.10.0"}]
     </pre>
 
-## <a id='api-procedures'></a> Example <%= vars.ops_manager %> API Procedures
+## <a id='api-procedures'></a> Example <%= vars.ops_manager %> API procedures
 
 The following procedures illustrate how to test API calls from the command line. If you are a developer writing deployment or test routines in programming languages, these procedures show how you might test the routines line-by-line while building them.
 
@@ -349,7 +344,7 @@ Specify whether or not to use ICMP checks by setting the `icmp_checks_enabled` p
 	1. Use the following HTTP request to list all jobs on the Director: `GET api/v0/staged/products/:BOSH-DIRECTOR-GUID/jobs`.
 	2. Use the following HTTP request to update the resource config of each job on the BOSH Director: `PUT api/v0/staged/products/:BOSH-DIRECTOR-GUID/jobs/:JOB-GUID/resource_config`.
 
-### <a id='configure-product'></a> Configure a Product
+### <a id='configure-product'></a> Configure a product
 
 The following procedure uploads, stages, and configures a product tile using the <%= vars.ops_manager %> API:
 

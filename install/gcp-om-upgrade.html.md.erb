@@ -1,14 +1,11 @@
 ---
-title: Upgrading BOSH Director on GCP
+title: Upgrading BOSH Director for Ops Manager on GCP
 owner: Ops Manager
 ---
 
-This topic describes how to upgrade BOSH Director for <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
+This topic describes how you can upgrade BOSH Director for <%= vars.ops_manager_first %> on Google Cloud Platform (GCP). Perform these tasks as part of the <%= vars.ops_manager %> upgrade process.
 
-Complete the tasks in this topic as part of the <%= vars.ops_manager %> upgrade process. For more information, see [Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>](upgrading-pcf.html#upgrade_ops) in _Upgrading <%= vars.ops_manager %>.
-
-
-## <a id='overview'></a> Overview on Upgrading BOSH Director on GCP
+For information about upgrading <%= vars.ops_manager %>, see [Task 2: Upgrade <%= vars.ops_manager %> and Installed Products to <%= vars.v_major_version %>](upgrading-pcf.html#upgrade_ops) in _Upgrading <%= vars.ops_manager %>.
 
 <%= partial "./om_upgrade_overview" %>
 
@@ -20,12 +17,11 @@ To create an <%= vars.ops_manager %> VM instance:
 
 1. Create the <%= vars.ops_manager %> VM. For more information, see [Create the <%= vars.ops_manager %> VM Instance](#start-vm).
 
-
 ## <a id='prerequisites'></a> Prerequisites
 
 <%= partial "./om_upgrade_prerequisite" %>
 
-## <a id='select-tgz'></a> Locate the <%= vars.ops_manager %> Installation File
+## <a id='select-tgz'></a> Locate the <%= vars.ops_manager %> installation file
 
 The <%= vars.ops_manager %> installation file includes a filepath to the <%= vars.ops_manager %> image. You use this image file to create a private VM image for the new <%= vars.ops_manager %> VM.
 
@@ -43,8 +39,7 @@ To locate the <%= vars.ops_manager %> installation file:
 
 1. Copy the filepath string of the <%= vars.ops_manager %> image based on your existing deployment location.
 
-
-## <a id='create-image'></a> Create a Private VM Image
+## <a id='create-image'></a> Create a private VM image
 
 Create a private VM image to use when you create the new <%= vars.ops_manager %> VM.
 
@@ -67,8 +62,7 @@ To create a private VM image:
 
 1. Click **Create**. The file might take a few minutes to import.
 
-
-## <a id='start-vm'></a> Create the <%= vars.ops_manager %> VM Instance
+## <a id='start-vm'></a> Create the <%= vars.ops_manager %> VM instance
 
 Create an <%= vars.ops_manager %> VM instance to host the new version of <%= vars.ops_manager %>.
 
@@ -126,8 +120,7 @@ To create an <%= vars.ops_manager %> VM instance:
 
     <p class='note caution'><strong>Caution:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using a FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access. If you are importing older <%= vars.ops_manager %> settings, you must use the FQDN.</p>
 
-
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After you complete this procedure, continue the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).
 

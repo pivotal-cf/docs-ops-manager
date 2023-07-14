@@ -1,14 +1,11 @@
 ---
-title: Using Ops Manager Programmatically and from the Command Line
+title: Using Ops Manager programmatically and from the command line
 owner: Ops Manager
 ---
 
-This topic introduces three tools for running <%= vars.ops_manager_first %> operations programmatically and from the command line, rather than from the <%= vars.ops_manager %> UI: the <%= vars.ops_manager %> API, the `om` command-line interface (CLI), and Platform Automation tasks.
+As an operator or tile developer, you can perform <%= vars.ops_manager_first %> operations programmatically and from the command line, rather than from the <%= vars.ops_manager %> UI.
 
-
-## <a id='overview'></a> Overview
-
-<%= vars.ops_manager %> includes three related tools that let you run <%= vars.ops_manager %> operations programmatically and from the command line, rather than from the <%= vars.ops_manager %> UI:
+<%= vars.ops_manager %> includes three related tools for performing operations programmatically and from the command line, rather than from the UI:
 
 * The <%= vars.ops_manager %> API. For more information, see the [<%= vars.ops_manager %> API](https://docs.pivotal.io/platform/opsman-api) documentation.
 
@@ -16,12 +13,9 @@ This topic introduces three tools for running <%= vars.ops_manager_first %> oper
 
 * Platform Automation tasks. For more information, see the [Platform Automation](http://docs.pivotal.io/platform-automation) documentation.
 
-These three tools control the <%= vars.ops_manager %> VM at different levels of abstraction. Platform operators and tile developers use them.
+These three tools control the <%= vars.ops_manager %> VM at different levels of abstraction. For more information about tile development, see the [<%= vars.ops_manager %> Tile Developer Guide](http://docs.pivotal.io/tiledev/index.html).
 
-For more information about tile development, see the [<%= vars.ops_manager %> Tile Developer Guide](http://docs.pivotal.io/tiledev/index.html).
-
-
-## <a id='api'></a> <%= vars.ops_manager %> API
+## <a id='api'></a> The <%= vars.ops_manager %> API
 
 The <%= vars.ops_manager %> API offers the most granular control of the <%= vars.ops_manager %> VM, The API enables users to do the following:
 
@@ -39,7 +33,7 @@ For information about getting started with the <%= vars.ops_manager %> API, see 
 
 Your <%= vars.ops_manager %> serves a local copy of the complete <%= vars.ops_manager %> API documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
 
-## <a id='om'></a> <%= vars.ops_manager %> CLI (om)
+## <a id='om'></a> The <%= vars.ops_manager %> CLI (om)
 
 The <%= vars.ops_manager %> CLI, `om`, calls the <%= vars.ops_manager %> API to do the following:
 
@@ -49,7 +43,7 @@ The <%= vars.ops_manager %> CLI, `om`, calls the <%= vars.ops_manager %> API to 
 
 For information, including how to install `om` and a usage example, see [Using the <%= vars.ops_manager %> CLI](cli.html).
 
-## <a id='platform-automation'></a> Platform Automation (Beta)
+## <a id='platform-automation'></a> Platform Automation (beta)
 
 Platform Automation tasks call the `om` CLI to do the following:
 
@@ -58,7 +52,7 @@ Platform Automation tasks call the `om` CLI to do the following:
 
 For a complete list of Platform Automation tasks, see [Concourse Tasks](https://docs.pivotal.io/platform-automation/v3.0/reference/task.html) in the Platform Automation documentation.
 
-## <a id='example-ops'></a> Examples of Equivalent Operations
+## <a id='example-ops'></a> Examples of equivalent operations
 
 The following table lists some common operations using the <%= vars.ops_manager %> UI, <%= vars.ops_manager %> API, `om` CLI, and Platform Automation tasks, as examples of how different <%= vars.ops_manager %> interfaces relate to one another.
 

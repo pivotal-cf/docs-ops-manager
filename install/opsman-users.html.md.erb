@@ -1,11 +1,8 @@
 ---
-title: Creating and Managing Ops Manager User and Client Accounts
+title: Creating and managing Ops Manager user and client accounts
 ---
 
-This topic describes how to add and remove <%= vars.ops_manager_first %> users. It also describes how you can use an administrator <%= vars.ops_manager %> account to create client accounts that you can use for <%= vars.ops_manager %> automation.
-
-
-## <a id='about-om-users'></a> Overview
+This topic describes how you can add and remove <%= vars.ops_manager_first %> users. It also describes how you can use an administrator <%= vars.ops_manager %> account to create client accounts that you can use for <%= vars.ops_manager %> automation.
 
 <%= vars.ops_manager %> supports multiple user accounts in <%= vars.ops_manager %>. A User Account and Authentication (UAA) module co-located on the <%= vars.ops_manager %> VM manages access permissions to <%= vars.ops_manager %>.
 
@@ -19,8 +16,7 @@ Client accounts are not bound to the same authentication protocols as user accou
 
 You can create client accounts after deploying <%= vars.ops_manager %>, or during configuration for an initial deployment. For more information about adding clients during initial configuration or after deployment, see [Add Pre-Created Client](#pre-created-clients).
 
-
-## <a id='add-user'></a> Add <%= vars.ops_manager %> Users
+## <a id='add-user'></a> Add <%= vars.ops_manager %> users
 
 This section describes how to add or remove users with UAAC. If you do not already have the UAAC installed, run `gem install cf-uaac` on the command line.
 
@@ -69,7 +65,7 @@ To add <%= vars.ops_manager %> users:
 
 4. (Optional) Set the Role-Based Access Control (RBAC) permissions for your user. For more information, see [Configuring Role-Based Access Control (RBAC) in <%= vars.ops_manager %>](../opsguide/config-rbac.html).
 
-## <a id='remove-user'></a> Remove <%= vars.ops_manager %> Users
+## <a id='remove-user'></a> Remove <%= vars.ops_manager %> users
 
 To remove <%= vars.ops_manager %> users:
 
@@ -107,11 +103,11 @@ To remove <%= vars.ops_manager %> users:
 
     Where `USER-NAME` is the username of the user you wish to delete.
 
-## <a id='clients'></a> Add <%= vars.ops_manager %> Client Accounts
+## <a id='clients'></a> Add <%= vars.ops_manager %> client accounts
 
 The following sections describe how to create client accounts for <%= vars.ops_manager %> automation using an admin account.
 
-### <a name='authenticate'></a> Log in to UAAC as an Admin
+### <a name='authenticate'></a> Log in to UAAC as an admin
 
 In order to configure a client, you must first log in to UAAC as an admin.
 
@@ -120,7 +116,7 @@ Use one of the following two methods to authenticate to UAAC:
 * [Authenticate Using SAML or SSO](#saml)
 * [Authenticate Using LDAP](#ldap)
 
-### <a name='saml'></a> Authenticate Using SAML or SSO
+### <a name='saml'></a> Authenticate using SAML or SSO
 
 If you're using SAML or SSO, authenticate to UAAC as an admin before creating a client.
 
@@ -153,7 +149,7 @@ To authenticate to UAAC:
     * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
     * `YOUR-UAA-PASSCODE` is the passcode with which you authenticate to UAA.
 
-### <a name='ldap'></a> Authenticate Using LDAP
+### <a name='ldap'></a> Authenticate using LDAP
 
 If you're not using SAML or SSO, authenticate to UAAC as an admin before creating a client.
 
@@ -185,7 +181,7 @@ To authenticate to UAAC:
 1. A message appears confirming that UAAC has `Successfully fetched token`.
 
 
-### <a name='client-create'></a> Create a Client
+### <a name='client-create'></a> Create a client
 
 After you authenticate to UAAC, create a client to manage automated components and tasks.
 
@@ -206,14 +202,14 @@ The `opsman.admin` authority referenced in the previous example grant specific p
 
 For more information about <%= vars.ops_manager %> roles and what they do, see [Understanding Roles in <%= vars.ops_manager %>](../opsguide/config-rbac.html#about).
 
-## <a id='pre-created-clients'></a> Add Pre-Created Client
+## <a id='pre-created-clients'></a> Add pre-created client
 
 You can add a pre-created client to <%= vars.ops_manager %> using the <%= vars.ops_manager %> API in either of the following ways:
 
 * [Add a Pre-Created Client Before Initial Deployment](#pcc-initial-setup), or
 * [Add or Modify a Pre-Created Client for an Existing Deployment ](#pcc-existing-deployment)
 
-### <a id='pcc-initial-setup'></a> Add a Pre-Created Client Before Initial Deployment
+### <a id='pcc-initial-setup'></a> Add a pre-created client before initial deployment
 
 This section describes how to add a pre-created client before you deploy <%= vars.ops_manager %> for the first time.
 
@@ -244,7 +240,7 @@ To add a pre-created client before you deploy <%= vars.ops_manager %>:
 When `precreated_client_secret` is passed, a UAA client is created called `precreated-client`. To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
 
 
-### <a id='pcc-existing-deployment'></a> Add or Modify a Pre-Created Client for an Existing Deployment
+### <a id='pcc-existing-deployment'></a> Add or modify a pre-created client for an existing deployment
 
 This section describes how to add a pre-created client after you have already deployed <%= vars.ops_manager %>. You might only have one pre-created client at a time. If you have an existing pre-created client, you might also use this procedure to change its authentication secret.
 
@@ -265,7 +261,7 @@ To add a pre-created client to an <%= vars.ops_manager %> that has already been 
 
 To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
 
-### <a id='pcc-login'></a> Authenticate as the Pre-Created Client
+### <a id='pcc-login'></a> Authenticate as the pre-created client
 
 To authenticate to UAAC as the pre-created client:
 
