@@ -1,9 +1,9 @@
 ---
-title: Upgrading TAS for VMs and Other Ops Manager Products
+title: Upgrading TAS for VMs and other Ops Manager products
 owner: RelEng
 ---
 
-This topic describes how to upgrade to a point release of <%= vars.app_runtime_first %> and other product tiles without upgrading <%= vars.ops_manager_first %>. For example, use this topic to upgrade from <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.0 to <%= vars.v_major_version %>.1. You might need to perform this upgrade if a security update for <%= vars.app_runtime_abbr %> is released, or if new features are introduced in a point release of a product tile.
+This topic describes how you can upgrade to a point release (for example, from <%= vars.v_major_version %>.0 to <%= vars.v_major_version %>.1) of <%= vars.app_runtime_first %> and other product tiles without upgrading <%= vars.ops_manager_first %>. You might need to perform this upgrade if a security update for <%= vars.app_runtime_abbr %> is released, or if new features are introduced in a point release of a product tile.
 
 For <%= vars.app_runtime_abbr %> component and version information, see the [<%= vars.app_runtime_abbr %>
 documentation](http://docs.pivotal.io/application-service/release-notes/runtime-rn.html).
@@ -11,7 +11,6 @@ documentation](http://docs.pivotal.io/application-service/release-notes/runtime-
 <p class='note'><strong>Note:</strong> If you cannot download products from <%= vars.product_network %>
   due to restricted network connectivity, see <a href="offline_installation.html">Installing
   <%= vars.ops_manager %> in Air-Gapped Environments</a>.</p>
-
 
 ## <a id='before-upgrade'></a> Prerequisites
 
@@ -33,8 +32,7 @@ before starting. For all available product release notes, see:
   in the <%= vars.windows_runtime_first %> documentation
   * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html) in the <%= vars.k8s_runtime_first %> documentation
 
-
-## <a id='check-disk-space'></a> Check BOSH Director Disk Space
+## <a id='check-disk-space'></a> Check BOSH Director disk space
 
 <%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
 <%= partial "../upgrade/check_disk_before_upgrade" %>
@@ -63,7 +61,7 @@ staging area.
 1. Click **Apply Changes** to install the service.
 
 
-## <a id='other-products'></a> Upgrading <%= vars.ops_manager %> Products
+## <a id='other-products'></a> Upgrading <%= vars.ops_manager %> products
 
 <p class='note'><strong>Note:</strong> If you are using the <%= vars.product_network %> API,
   the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
@@ -112,14 +110,14 @@ trust the self-signed certificate:
 1. Click **Apply Changes**.
 
 
-## <a id='replica-tiles'></a> Upgrading Replicated Tiles
+## <a id='replica-tiles'></a> Upgrading replicated tiles
 
 To upgrade a replicated tile, you must:
 
 * Generate a replica of the newer version of the tile using the Replicator
 * Give the new replica the same name as the existing replica.
 
-### <a id='replica-example'></a> Example Workflow
+### <a id='replica-example'></a> Example workflow
 
 This example workflow assumes the following:
 

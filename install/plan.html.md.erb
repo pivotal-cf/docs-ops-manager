@@ -1,13 +1,11 @@
 ---
-title: Planning Your Ops Manager Deployment
+title: Planning your Ops Manager deployment
 owner: PCF Documentation
 ---
 
-This documentation provides an overview of how to plan a <%= vars.ops_manager_first %> installation.
+This topic provides an overview of how you can plan a <%= vars.ops_manager_first %> installation.
 
-## <a id='overview'></a> Overview
-
-In planning an <%= vars.ops_manager %> installation, you should:
+When planning an <%= vars.ops_manager %> installation:
 
 - Review the Requirements for your IaaS.
 
@@ -15,12 +13,9 @@ In planning an <%= vars.ops_manager %> installation, you should:
 
 - Assess your platform needs, including capacity, availability, container support, host OS, resource isolation, and geographical distribution. Discuss with your <%= vars.company_name %> contact.
 
-For all of the above, the specifics depend on the IaaS that you are deploying <%= vars.ops_manager %> to. The contents of this documentation are organized by IaaS.
+For all of the above, the specifics depend on the IaaS that you are deploying <%= vars.ops_manager %> to. The information in this topic is organized by IaaS.
 
-
-## <a id='contents'></a> Contents
-
-### <a id='requirements'></a> General Requirements
+## <a id='requirements'></a> General requirements
 
 The general requirements for deploying and managing a <%= vars.platform_name %> deployment with <%= vars.ops_manager %> and <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) are:
 
@@ -61,14 +56,14 @@ The general requirements for deploying and managing a <%= vars.platform_name %> 
 
 * The most recent version of the [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli#downloads) (cf CLI).
 
-### <a id='front-end'></a> Front End Planning for All IaaSes
+## <a id='front-end'></a> Front end planning for all IaaSes
 
  - [Providing a Certificate for your SSL Termination Point](https://docs.pivotal.io/application-service/operating/security_config.html)
  - [Using Your Own Load Balancer](https://docs.pivotal.io/application-service/operating/custom-load-balancer.html)
  - [Preparing Your Firewall](config_firewall.html)
  - [(Optional) Installing <%= vars.ops_manager %> in Air-Gapped Environments](offline_installation.html)
 
-### <a id='specific'></a> IaaS-Specific Planning
+## <a id='specific'></a> IaaS-specific planning
 
 * Amazon Web Services (AWS)
 

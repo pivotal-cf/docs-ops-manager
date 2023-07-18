@@ -1,12 +1,11 @@
 ---
-title: Troubleshooting Deployment Problems
+title: Troubleshooting problems in your Ops Manager deployment
 owner: Ops Manager
 ---
 
-This guide is intended to provides assistance with resolving issues encountered when deploying products with <%= vars.ops_manager_first %>.
+This guide describes procedures that you can use if you encounter issues while deploying products with <%= vars.ops_manager_first %>.
 
-
-## <a id='retry'></a> Retrying the Deployment
+## <a id='retry'></a> Retrying the deployment
 
 An installation or update can fail for many reasons, but the system is self-healing, and can often
 automatically correct or work around hardware or network faults.
@@ -21,13 +20,12 @@ is not accompanied by useful information, click **Install** or **Review Pending 
 When the system does provide informative evidence, see [Common Issues](#common_issues)
 section below to see if your problem is covered.
 
-
-## <a id='common_issues'></a> Common Issues
+## <a id='common_issues'></a> Common issues
 
 Compare evidence that you have gathered to the descriptions below. If your issue is covered, try
 the recommended remediation procedures.
 
-### <a id='reinstall_bosh'></a> BOSH Does Not Reinstall
+### <a id='reinstall_bosh'></a> BOSH does not reinstall
 
 You might want to reinstall BOSH for troubleshooting purposes.
 However, if <%= vars.ops_manager %> does not detect any changes, BOSH does not reinstall.
@@ -35,7 +33,7 @@ To force a reinstall of BOSH, select **BOSH Director > Resource Sizes**
 and change a resource value.
 For example, you could increase the amount of RAM by 4&nbsp;MB.
 
-### <a id='time_out'></a> Creating Bound Missing VMs Times Out
+### <a id='time_out'></a> Creating bound missing VMs times out
 
 This task happens immediately following package compilation, but before job assignment to agents.
 For example:
@@ -107,7 +105,7 @@ This key-value pair represents where the agent expects the NATS server to be.
 One diagnostic tactic is to try pinging this NATS IP address from the VM to
 determine whether you are experiencing routing issues.
 
-### <a id='RSA-cert'></a> Install Exits With a Creates/Updates/Deletes App Failure or With a 403 Error###
+### <a id='RSA-cert'></a> Install exits with a creates/updates/deletes app failure or with a 403 error
 
 **Scenario 1:**
 Your <%= vars.ops_manager %> install exits with the following 403 error when you attempt to
@@ -147,7 +145,7 @@ domain values.
 
 ![alt-text=""](images/rsa_cert.png)
 
-### <a id='runtime_depend'></a> Install Fails When Gateway Instances Exceed Zero
+### <a id='runtime_depend'></a> Install fails when Gateway instances exceed zero
 
 If you configure the number of Gateway instances to be greater than zero for a
 given product, you create a dependency on <%= vars.app_runtime_abbr %> for that product
@@ -161,7 +159,7 @@ value next to the product Gateway job.
 
 To remove the <%= vars.app_runtime_abbr %> dependency, change the value of this field to `0`.
 
-### <a id='out_of_disk_space'></a> Out of Disk Space Error
+### <a id='out_of_disk_space'></a> Out of disk space error
 
 <%= vars.ops_manager %> displays an `Out of Disk Space` error if log files expand to fill
 all available disk space.
@@ -174,7 +172,7 @@ Diego cells may be running out of disk space capacity.
 To perform a detailed analysis of disk usage by containers and host VMs in your <%= vars.ops_manager %> deployment,
 see [Examining GrootFS Disk Usage](https://docs.pivotal.io/application-service/adminguide/examining_grootfs_disk.html).
 
-### <a id='vsphere_fails'></a> Installing BOSH Director Fails in vSphere
+### <a id='vsphere_fails'></a> Installing BOSH Director fails in vSphere
 
 If the DNS information for the <%= vars.ops_manager %> VM is incorrectly specified when
 deploying the <%= vars.ops_manager %> .ova file, installing BOSH Director fails at the "Installing Micro BOSH" step.
@@ -182,7 +180,7 @@ deploying the <%= vars.ops_manager %> .ova file, installing BOSH Director fails 
 To resolve this issue, correct the DNS settings in the <%= vars.ops_manager %> Virtual
 Machine properties.
 
-### <a id='delete_om_fails'></a> Deleting a Deployment Fails
+### <a id='delete_om_fails'></a> Deleting a deployment fails
 
 <%= vars.ops_manager %> displays an error message when it cannot delete your installation. This
 scenario might happen if the BOSH Director cannot access the VMs or is experiencing other issues.
@@ -199,12 +197,12 @@ To manually delete your installation and all VMs, you must do the following:
 
 Your installation is now deleted.
 
-### <a id='elastic_runtime_fails'></a> Installing <%= vars.app_runtime_abbr %> Fails
+### <a id='elastic_runtime_fails'></a> Installing <%= vars.app_runtime_abbr %> fails
 
 The following sections describe errors that may occur when installing <%= vars.app_runtime_abbr %>
 and how to resolve them.
 
-#### <%= vars.app_runtime_abbr %> Cannot Verify App Push
+#### <%= vars.app_runtime_abbr %> Cannot verify app push
 
 If the DNS information for the <%= vars.ops_manager %> VM becomes incorrect after BOSH Director
 has been installed, installing <%= vars.app_runtime_abbr %> fails at the "Verifying app push" step.
@@ -212,7 +210,7 @@ has been installed, installing <%= vars.app_runtime_abbr %> fails at the "Verify
 To resolve this issue, correct the DNS settings in the <%= vars.ops_manager %> Virtual
 Machine properties.
 
-#### MySQL Monitor Not Running After Update
+#### MySQL Monitor not running after update
 
 When MySQL cannot communicate with UAA, <%= vars.ops_manager %> shows the following error:
 
@@ -224,7 +222,7 @@ If you see this error, create firewall rules that allow MySQL to reach UAA, usin
 [MySQL Network Communications](https://docs.pivotal.io/application-service/3-0/operating/networking/mysql-network-paths.html) as a
 reference.
 
-### <a id='ip_address_taken'></a><%= vars.ops_manager %> Hangs During MicroBOSH Install or HAProxy States "IP Address Already Taken"
+### <a id='ip_address_taken'></a><%= vars.ops_manager %> hangs during MicroBOSH install or HAProxy states "IP Address Already Taken"
 
 During a <%= vars.app_runtime_abbr %> installation, you might receive the following errors:
 
@@ -245,7 +243,7 @@ second. For example:
 To resolve this issue, ensure that the next two subsequent IP addresses from the manually assigned
 address are unassigned.
 
-### <a id='pcf_slow'></a> Poor Performance
+### <a id='pcf_slow'></a> Poor performance
 
 If you notice poor network performance by your deployment and your
 deployment uses a Network Address Translation (NAT) gateway,
@@ -259,7 +257,7 @@ originating from your private network directly to an S3-compatible object store.
 decreased average latency and improved network performance, perform the solution below to scale up
 your NAT gateway.
 
-#### <a id='solution-slow'></a> Scale Up Your NAT Gateway
+#### <a id='solution-slow'></a> Scale up your NAT gateway
 
 Perform the following steps to scale up your NAT gateway:
 
@@ -275,12 +273,12 @@ The specific procedures will vary depending on your IaaS. Consult your IaaS docu
 information.
 
 
-## <a id='common_problems_firewalls'></a> Common Issues Caused by Firewalls
+## <a id='common_problems_firewalls'></a> Common issues caused by firewalls
 
 This section describes various issues you might encounter when installing
 <%= vars.ops_manager %> in an environment that uses a strong firewall.
 
-### <a id='DNS_res_fails'></a> DNS Resolution Fails
+### <a id='DNS_res_fails'></a> DNS resolution fails
 
 When you install <%= vars.ops_manager %> in an environment that uses a strong firewall, the
 firewall might block DNS resolution. To resolve this issue, see

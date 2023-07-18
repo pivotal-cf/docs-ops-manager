@@ -3,18 +3,13 @@ title: Troubleshooting Ops Manager for VMware vSphere
 owner: Ops Manager
 ---
 
-This guide provides help with diagnosing and resolving issues that are specific to
-<%= vars.ops_manager_first %> deployments on VMware vSphere.
-
-For infrastructure-agnostic troubleshooting help, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
-
-
-## <a id='common-issues'></a> Common Issues
+This guide shows how you can diagnose and resolve issues that can occur in 
+<%= vars.ops_manager_first %> deployments on VMware vSphere. For infrastructure-agnostic troubleshooting help, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
 
 The following sections list common issues that you might encounter with <%= vars.ops_manager %>
 and possible resolutions.
 
-### <a id='vcenter-setting'></a> <%= vars.ops_manager %> Installation Fails
+## <a id='vcenter-setting'></a> <%= vars.ops_manager %> installation fails
 
 If you modify the vCenter Statistics Interval Duration setting from its default setting of five
 minutes, the <%= vars.ops_manager %> installation might fail at the MicroBOSH deployment stage,
@@ -30,7 +25,7 @@ the call to this method fails when the retrieved value does not match the expect
 To resolve this issue, launch vCenter, navigate to **Administration > vCenter Server Settings > Statistics**,
 and reset the vCenter Statistics Interval Duration setting to five minutes.
 
-### <a id='bosh_install'></a> BOSH Automated Installation Fails
+## <a id='bosh_install'></a> BOSH automated installation fails
 
 Before starting an <%= vars.app_runtime_first %> deployment, you must
 set up and configure a vSphere cluster.
@@ -43,14 +38,14 @@ If you set the Automation level to **Manual**, the BOSH automated installation w
 
 ![alt-text="On the New Cluster Wizard, the Automation Level page shows the Partially Automated button selected."](images/troubleshooting/drs_automation_level.png)
 
-### <a id='net-settings'></a> <%= vars.ops_manager %> Loses IP Address After HA or Reboot
+## <a id='net-settings'></a> <%= vars.ops_manager %> loses IP address after HA or reboot
 
 <%= vars.ops_manager %> can lose its IP address and use DHCP due to an issue in the open source
 version of VMware Tools. For more information to troubleshoot this issue, see
 [IP is not Getting Assigned in vSphere after <%= vars.ops_manager %> Restart](https://community.pivotal.io/s/article/IP-is-not-Getting-Assigned-in-vSphere-after-Ops-Manager-Restart)
 in the Knowledge Base.
 
-### <a id='net-settings'></a> Cannot Connect to the OVF in a Browser
+## <a id='net-settings'></a> Cannot connect to the OVF in a browser
 
 If you deployed the OVF file but cannot connect to it in a browser, check that the network settings
 you entered in the wizard are correct.
@@ -77,7 +72,7 @@ and select the correct network.
 
 1. Reboot the installation VM.
 
-### <a id='communication'></a> Installation Fails with Failed Network Connection
+## <a id='communication'></a> Installation fails with failed network connection
 
 If you experience a communication error while installing <%= vars.ops_manager %> or MicroBOSH
 Director, check the following:
@@ -94,7 +89,7 @@ these IP addresses during installation to compile and deploy VMs, install
 allocate at least 36 dynamic IP addresses when deploying <%= vars.ops_manager %> and
 <%= vars.app_runtime_abbr %>.
 
-### <a id='database-permissions'></a> Insufficient External Database Permissions
+## <a id='database-permissions'></a> Insufficient external database permissions
 
 Upgrade issues can be caused when the external database user used for the network policy database
 is given insufficient permissions. To avoid this upgrade issue, ensure that the networkpolicyserver

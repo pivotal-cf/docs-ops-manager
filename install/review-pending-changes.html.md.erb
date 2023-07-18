@@ -1,13 +1,11 @@
 ---
-title: Reviewing Pending Product Changes
+title: Reviewing your pending product changes in Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes the **Review Pending Changes** page and how to selectively deploy individual or multiple tiles in <%= vars.ops_manager_first %>.
-Deploying tiles selectively can dramatically reduce deployment time.
+This topic describes the **Review Pending Changes** page and how you can selectively deploy individual or multiple tiles in <%= vars.ops_manager_first %>. Deploying tiles selectively can dramatically reduce deployment time.
 
-
-## <a id='review-pending-changes'></a> Review Pending Changes Page
+## <a id='review-pending-changes'></a> Review Pending Changes page
 
 The following image shows the **Review Pending Changes** page. The features called out with red letters are described in the following sections.
 
@@ -88,7 +86,7 @@ checkbox without needing to look at the **Certificates** page.
     <a href="../security/pcf-infrastructure/rotate-non-configurable-certs.html">Rotating Non-Configurable Leaf Certificates</a>.</p>
 
 
-## <a id='pending-changes'></a> About Pending Changes for a Specific Tile
+## <a id='pending-changes'></a> About pending changes for a specific tile
 
 If you have changed the configuration of a tile in your deployment, use the **Pending Changes** page to review the changes to the existing manifest or
 configurations line-by-line.
@@ -98,7 +96,7 @@ This page summarizes staged changes to the configuration of the existing tile. T
 This page allows you to verify changes to the manifest and configurations, so you can approve any staged changes before re-deploying tiles.
 
 
-## <a id='pending-changes-ui'></a> Use the Pending Changes Page
+## <a id='pending-changes-ui'></a> Use the Pending Changes page
 
 The change summary fields display features that have been activated or deactivated through the <%= vars.ops_manager %> Installation Dashboard or
 <%= vars.ops_manager %> API. These changes are staged, but have not been implemented yet. You must click **Apply Changes** to put these changes into effect.

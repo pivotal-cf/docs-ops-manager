@@ -1,12 +1,11 @@
 ---
-title: Floating Stemcells
+title: Floating stemcells in Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes how floating stemcells work in <%= vars.ops_manager_first %> and the consequences for upgrading product tiles in <%= vars.ops_manager %>.
+This topic explains how floating stemcells work in <%= vars.ops_manager_first %>, and how they affect your <%= vars.ops_manager %> product tile upgrades.
 
-
-## <a id='purpose'></a> Floating Stemcell Benefits
+## <a id='purpose'></a> Benefits of floating stemcells
 
 Floating stemcells have the following benefits:
 
@@ -15,14 +14,13 @@ Floating stemcells have the following benefits:
 * Operators can perform certain deployment-wide updates, such as CVEs, by uploading a new stemcell instead of uploading `.pivotal` files for each tile, which reduces the time spent waiting for files to upload.
 
 
-## <a id='upgrade-limitations'></a> Stemcell Major and Minor Upgrade Limitations
+## <a id='upgrade-limitations'></a> Stemcell major and minor upgrade limitations
 
 Floating stemcells allow upgrade to the minor versions of stemcells but not the major versions.
 
 For example, a stemcell can float from `1234.56` to `1234.99` but not from `1234.991` to `1235.0`.
 
-
-## <a id='process'></a> Product Tile Upgrades
+## <a id='process'></a> Product tile upgrades
 
 When an operator upgrades a product tile, <%= vars.ops_manager %> performs the following steps:
 
@@ -30,7 +28,6 @@ When an operator upgrades a product tile, <%= vars.ops_manager %> performs the f
 
 1. If a minor stemcell is available from the current major line, <%= vars.ops_manager %> installs the upgraded tile and all compatible product tiles in the deployment on the new stemcell.
 
-
-## <a id='manage-stemcells'></a> Uploading and Managing Stemcells
+## <a id='manage-stemcells'></a> Uploading and managing stemcells
 
 Operators can upload new stemcells to their product tiles by using the <%= vars.ops_manager %> API or by using the **Stemcell Library** in the <%= vars.ops_manager %> Installation Dashboard. For more information about the Stemcell Library, see [Importing and Managing Stemcells](../opsguide/managing-stemcells.html).

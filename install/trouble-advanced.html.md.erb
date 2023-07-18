@@ -1,14 +1,11 @@
 ---
-title: Advanced Troubleshooting with the BOSH CLI
+title: Advanced Ops Manager troubleshooting with the BOSH CLI
 owner: Ops Manager
 ---
 
-This topic describes using the BOSH CLI to help diagnose and resolve issues with your
+This topic describes how you can use the BOSH CLI to help diagnose and resolve issues with your
 <%= vars.ops_manager_first %> deployment. Before using the information and techniques in this topic,
 review [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
-
-
-## <a id='overview'></a> Overview on Advanced Troubleshooting with the BOSH CLI
 
 To follow the steps in this topic, you must log in to the BOSH Director VM. The BOSH Director runs
 on the virtual machine (VM) that <%= vars.ops_manager %> deploys on the first install of the BOSH
@@ -23,8 +20,7 @@ entire <%= vars.ops_manager %> installation.
   <a href="https://bosh.io/docs/cli-v2#task-mgmt">Tasks</a> in <em>BOSH CLI commands</em>
   in the BOSH documentation.</p>
 
-
-## <a id='gather'></a> Gather Credential and IP Address Information
+## <a id='gather'></a> Gather credential and IP address information
 
 Before you begin troubleshooting with the BOSH CLI, follow the instructions to collect the information you need from the <%= vars.ops_manager %> interface.
 
@@ -65,7 +61,7 @@ To authenticate with BOSH, use one of the following methods:
 * [Set the BOSH Environment Variables on the <%= vars.ops_manager %> VM](#export-bosh-envs)
 * [Create a Local BOSH Director Alias](#bosh-alias)
 
-### <a id='export-bosh-envs'></a> Set the BOSH Environment Variables on the <%= vars.ops_manager %> VM
+### <a id='export-bosh-envs'></a> Set the BOSH environment variables on the <%= vars.ops_manager %> VM
 
 If you have access to the <%= vars.ops_manager %> VM, SSH into the <%= vars.ops_manager %> VM
 and do the following:
@@ -98,7 +94,7 @@ and do the following:
     bosh deployments
     ```
 
-### <a id='bosh-alias'></a> Create a Local BOSH Director Alias
+### <a id='bosh-alias'></a> Create a local BOSH Director alias
 
 To create a BOSH Director alias and log in to the BOSH Director VM:
 
@@ -124,7 +120,7 @@ To create a BOSH Director alias and log in to the BOSH Director VM:
   * [External User Store Login through SAML](#saml-bosh): Use an external user store to log in to
     the BOSH Director VM.
 
-#### <a id='uaa-bosh'></a> Log In to the BOSH Director VM with UAA
+#### <a id='uaa-bosh'></a> Log in to the BOSH Director VM with UAA
 
 1. Retrieve the Director username and password in one of the following ways:
   * In <%= vars.ops_manager %>, click the BOSH Director, select the **Credentials** tab, and
@@ -194,11 +190,11 @@ Provider Properties:
     Logged in as admin@example.org
     </pre>
 
-## <a id='bosh-director-ssh'></a> SSH Into the BOSH Director VM
+## <a id='bosh-director-ssh'></a> SSH into the BOSH Director VM
 
 <%= partial "../common/ssh-to-bosh" %>
 
-## <a id='cli'></a> Use the BOSH CLI for Troubleshooting
+## <a id='cli'></a> Use the BOSH CLI for troubleshooting
 
 This section describes three BOSH CLI commands commonly used during troubleshooting.
 
@@ -254,7 +250,7 @@ following repair options:
 
 To use this command, run `bosh -e MY-ENV -d MY-DEPLOYMENT <%= vars.bosh_cloud_check %>`, where `MY-ENV` is your environment, and `MY-DEPLOYMENT` is your deployment.
 
-#### Example Scenarios
+#### Example scenarios
 
 **Unresponsive Agent**
 

@@ -1,19 +1,15 @@
 ---
-title: Platform Operators
+title: Platform operator roles and permissions in Ops Manager
 owners: CAPI, Identity
 ---
 
 This topic describes the roles and permissions of the operator user type in a <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> deployment.
 
-
-## <a id='overview'></a> Overview
-
 There are various user types in <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> deployments. Roles are assigned categories that more specifically define functions that a user can perform. For more information about user types in <%= vars.app_runtime_abbr %>, see [<%= vars.app_runtime_abbr %> User Types](https://docs.pivotal.io/application-service/operating/user-types.html).
 
 Operators are users who run a deployment and have admin privileges. Operators are also referred to as <%= vars.ops_manager %> admins and runtime admins because they perform an admin role within these contexts.
 
-
-## <a id='operator-tools-tasks'></a> Operator Tools and Tasks
+## <a id='operator-tools-tasks'></a> Operator tools and tasks
 
  Operators fulfill system admin roles covering the entire deployment. They work primarily with their IaaS and <%= vars.ops_manager %> to configure and maintain <%= vars.app_runtime_abbr %> runtime component VMs. The component VMs support the VMs that host apps.
 
@@ -28,7 +24,7 @@ Typical operator tasks include:
 * Creating service plans that define the access granted to end users.
 
 
-## <a id='operator-accounts'></a> Operator User Accounts
+## <a id='operator-accounts'></a> Operator user accounts
 
 When <%= vars.ops_manager %> starts up for the first time, the operator specifies one of the following authentication systems for operator user accounts:
 
@@ -37,7 +33,7 @@ When <%= vars.ops_manager %> starts up for the first time, the operator specifie
 
 The operator can then use the UAA CLI (UAAC) to create more operator accounts. For more information, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](../install/opsman-users.html).
 
-## <a id='table'></a> Operator Roles and Permissions
+## <a id='table'></a> Operator roles and permissions
 
 The following table summarizes the operator user type, including their roles, the tools they use, the System of Record (SOR) that stores their accounts, and the accounts that they can provision.
 
