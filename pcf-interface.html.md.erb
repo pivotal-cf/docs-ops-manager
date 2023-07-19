@@ -270,6 +270,8 @@ To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
 * **Download Root CA Cert:** Use this to download the root CA certificate of your deployment as an alternative to curling the <%= vars.ops_manager %> API.
 
+* **Download Core Consumption Data:** Use this to download the historical core consumption CSV as an alternative to curling the <%= vars.ops_manager %> API. The CSV contains an hourly reading of the chargeable cores consumed by each product in the form of timestamp,product_identifier,physical_cores,logical_cores. Products which do not support core counting will not show up in this CSV.
+
 * **View Diagnostic Report:** Displays various types of information about the configuration of your deployment.
 
 * **Delete This Installation:** Deletes your <%= vars.ops_manager %> installation permanently.
