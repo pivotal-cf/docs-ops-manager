@@ -1,11 +1,11 @@
 ---
-title: Creating UAA Clients for BOSH Director
+title: Creating UAA clients for the BOSH Director
 owners: Ops Manager
 ---
 
-<p class='note'><strong>Note:</strong> This topic assumes you are using <a href="https://bosh.io/docs/cli-v2.html">BOSH CLI v2+</a>.</p>
+This topic describes how to create a UAA client for the BOSH Director. You must create an automation client to run BOSH from a script or set up a continuous integration pipeline.
 
-This topic describes the process of creating a UAA client for the BOSH Director. You must create an automation client to run BOSH from a script or set up a continuous integration pipeline.
+<p class='note'><strong>Note:</strong> This topic assumes you are using <a href="https://bosh.io/docs/cli-v2.html">BOSH CLI v2+</a>.</p>
 
 To create an automation client, do one of the following:
 
@@ -13,8 +13,7 @@ To create an automation client, do one of the following:
 
 * [Provision Admin Client](#saml): When setting up SAML or LDAP authentication, ensure <%= vars.ops_manager_first %> provisions an admin client.
 
-
-## <a id='local_auth'></a> Local Authentication
+## <a id='local_auth'></a> Local authentication
 
 To perform this procedure, the UAAC client must be installed on the <%= vars.ops_manager %> virtual machine (VM).
 
@@ -88,7 +87,7 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
 
     You can now use the UAA client you created to run BOSH in automated or scripted environments, such as continuous integration pipelines.
 
-## <a id='saml'></a> Provision Admin Client
+## <a id='saml'></a> Provision admin client
 
 <%= vars.company_name %> does not support LDAP or SAML authentication to the BOSH Director.
 <%= vars.ops_manager %> provides an option to create UAA clients during SAML or LDAP configuration so that BOSH can be automated using scripts and tooling.

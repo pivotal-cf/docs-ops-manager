@@ -1,20 +1,9 @@
 ---
-title: Modifying Your Ops Manager Installation and Product Template Files
+title: Modifying installation and product template files
 owner: Ops Manager
 ---
 
-<style>
-    .note.warning {
-       background-color: #fdd;
-       border-color: #fbb
-  	          }
-
-    .note.warning:before {
-       color: #f99;
-		         }
-</style>
-
-This topic describes how to modify your <%= vars.ops_manager_first %> installation by decrypting and editing the YAML files that <%= vars.ops_manager %> uses to store
+This topic describes how you can modify your <%= vars.ops_manager_first %> installation by decrypting and editing the YAML files that <%= vars.ops_manager %> uses to store
 configuration data.
 
 Operators can use these procedures to view and change values that they cannot access through the <%= vars.ops_manager %> web interface. They can also modify the product templates that <%= vars.ops_manager %> uses to create forms and obtain user input.
@@ -29,7 +18,7 @@ Operators might want to modify the <%= vars.ops_manager %> installation and prod
 
 <p class='note caution'><strong>Caution:</strong> Be careful when making changes to your <%= vars.ops_manager %> installation and product template files. Use spaces instead of tabs, and remember that YAML files use whitespace as a delimiter. Finally, <%= vars.company_name %> does not officially support these procedures, so use them at your own risk.</p>
 
-## <a id='understand-files'></a> Understand Installation and Product Template Files
+## <a id='understand-files'></a> Understand installation and product template files
 
 During the installation process, <%= vars.ops_manager %> combines information from the installation and product template files to generate the manifests that define your deployment.
 
@@ -40,7 +29,7 @@ During the installation process, <%= vars.ops_manager %> combines information fr
 <p class='note'><strong>Note:</strong> Upgrading <%= vars.ops_manager %> might eliminate your changes to the installation and product template files.</p>
 
 
-## <a id='installation'></a> Modify the Installation Files
+## <a id='installation'></a> Modify the installation files
 
 Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manager %> installation files `installation.yml` and `actual-installation.yml`.
 
@@ -80,7 +69,7 @@ Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manage
 1. Click **Review Pending Changes**, then **Apply Changes**.
 1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this topic to restore your previous settings.
 
-## <a id='templates'></a> Modify Product Template Files
+## <a id='templates'></a> Modify product template files
 
 Perform the following steps to locate and edit your <%= vars.ops_manager %> product template files:
 
@@ -97,7 +86,7 @@ Perform the following steps to locate and edit your <%= vars.ops_manager %> prod
 1. Navigate to <%= vars.ops_manager %> to see your changes.
 1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this to restore your previous settings.
 
-## <a id='revert'></a> Revert to Your Backup
+## <a id='revert'></a> Revert to your backup
 
 Perform the following steps to revert to your backup of an installation or product template file:
 

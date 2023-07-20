@@ -1,12 +1,11 @@
 ---
-title: Installing Ops Manager in Air-Gapped Environments
+title: Installing Ops Manager in your air-gapped environment
 owner: Ops Manager
 ---
 
-This topic provides an overview of the components and resources needed to install <%= vars.ops_manager_first %> in air-gapped environments, including the typical corresponding automation resources.
+This topic gives an overview of the components and resources you need to install <%= vars.ops_manager_first %> in air-gapped environments, including the typical corresponding automation resources.
 
-
-## <a id='offline-components'></a> Offline Components
+## <a id='offline-components'></a> Offline components
 
 To run offline, you must obtain resources from the internet and move them into offline components that store and use them.
 The method you use to move a resource from VMware Tanzu Network or GitHub
@@ -61,12 +60,12 @@ The following table provides more detail about resources and the component you m
 </table>
 
 
-## <a id='architectural-patterns'></a> Architectural Patterns
+## <a id='architectural-patterns'></a> Architectural patterns
 
 The following sections describe three architectural patterns for running in air-gapped environments.
 The pattern you use depends on how your environment is set up.
 
-### <a id='pattern-one'></a> Pattern One: Artifact Store with Internet Access
+### <a id='pattern-one'></a> Pattern One: Artifact store with internet access
 
 It is common for organizations to deploy an artifact store such as Artifactory or Nexus  as a gateway to the Internet. In this configuration, the artifact store is typically configured as a Docker mirror.
 
@@ -120,7 +119,7 @@ The following table provides an example of how you might handle resources in thi
 </table>
 
 
-### <a id='pattern-two'></a> Pattern Two: Completely Offline
+### <a id='pattern-two'></a> Pattern Two: Completely offline
 
 In completely offline environments, you must bring in all resources manually and store them in the available local components.
 Blocks shown in this configuration are:
@@ -174,7 +173,7 @@ In this architectural pattern, you must configure pipelines to watch components 
   </tr>
 </table>
 
-### <a id='pattern-three'></a> Pattern Three: TLS Intercepting Proxy
+### <a id='pattern-three'></a> Pattern Three: TLS intercepting proxy
 
 This pattern allows Internet access, but only through a proxy that decrypts and rewrites  TLS certificates. In general, this resembles an online install, however it requires that you add your corporate certificate to all BOSH-deployed VMs.
 Blocks shown in this configuration are:
