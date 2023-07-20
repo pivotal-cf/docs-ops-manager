@@ -83,26 +83,25 @@ To migrate your <%= vars.ops_manager %> deployment to a new datastore:
 1. Select **vCenter Config**.
 
 1. Update the **Ephemeral Datastore Names** and **Persistent Datastore Names** fields to reflect the new datastore names.
-    <p class='note'><strong>Note:</strong> If you use the datastore clustering feature in vSphere, provide only the datastore cluster name in the <strong>Persistent Datastore Cluster Names</strong> // <strong>Ephemeral Datastore Cluster Names</strong> fields.</p>
+    <p> If you use the datastore clustering feature in vSphere, provide only the datastore cluster name in the <strong>Persistent Datastore Cluster Names</strong> // <strong>Ephemeral Datastore Cluster Names</strong> fields.</p>
 
 1. Click **Save**.
 
-1. Click **Review Pending Changes**, then **Apply Changes**.
+1. Click **Review Pending Changes**, then deselect the **Select All Products** check box so that
+only the BOSH Director tile is still selected.
+
+1. Click **Apply Changes**.
 
 1. Confirm that the BOSH Director VM has persistent disk on the new datastore.
-   1. Select **vCenter Resource Pools** and select the **Resource Pool** that contains your <%= vars.ops_manager %> deployment VMs and new datastore.
-   1. Click the **Related Objects** tab.
-   1. Click **Virtual Machines**.
-   1. Locate the <%= vars.ops_manager %> VM and verify that the VM has an expected value in the **Provisioned Space** column.
+   1. From the vCenter, find the BOSH Director VM.
+   2. In the **Related Objects** section, verify the storage has been updated to the new datastore.
 
-   ![alt-text=""](../images/vsphere-web-client.png)
+2. In the BOSH Director tile, select **Director Config**.
 
-1. In the BOSH Director tile, select **Director Config**.
+3. Select the **Recreate VMs deployed by the BOSH Director** option.
 
-2. Select the **Recreate VMs deployed by the BOSH Director** option.
+4. Click **Review Pending Changes**.
 
-3. Click **Review Pending Changes**.
+5. If you are using any service tiles, select the **Recreate All On-Demand Service Instances** errand for each of the tiles you migrate.
 
-4. If you use any service tiles, select the **Recreate All On-Demand Service Instances** errand for each of the tiles you migrate.
-
-5. Click **Apply Changes**.
+6. Click **Apply Changes**.
