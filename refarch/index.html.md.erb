@@ -1,15 +1,12 @@
 ---
 breadcrumb: Ops Manager Documentation
-title: Platform Architecture and Planning Overview
+title: Architecture and planning for Ops Manager and runtimes
 owner: Customer0
 ---
 
-This topic describes the reference architectures for installing <%= vars.ops_manager_first %> on any infrastructure to support the <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %> runtime environments.
+This topic describes the reference architectures that you can use when installing <%= vars.ops_manager_first %> on any infrastructure to support the <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %> runtime environments. These reference architectures describe proven approaches for deploying <%= vars.ops_manager %> and Runtimes, such as <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>, on a specific IaaS, such as AWS, Azure, GCP, OpenStack, or vSphere.
 
-
-## <a id='overview'></a> Overview
-
-The reference architectures in this section describe proven approaches for deploying <%= vars.ops_manager %> and Runtimes, such as <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>, on a specific IaaS, such as AWS, Azure, GCP, OpenStack, or vSphere. These reference architectures meet the following requirements:
+These reference architectures meet the following requirements:
 
 * They are secure.
 * They are publicly accessible.
@@ -19,8 +16,7 @@ The reference architectures in this section describe proven approaches for deplo
 
 You can use <%= vars.ops_manager %> reference architectures to help plan the best configuration for your <%= vars.ops_manager %> deployment on your IaaS.
 
-
-## <a id='topics'></a> Reference Architecture and Planning Topics
+## <a id='topics'></a> Reference architecture and planning topics
 
 All <%= vars.ops_manager %> reference architectures start with the base <%= vars.app_runtime_abbr %> architecture and base <%= vars.k8s_runtime_abbr %> architecture.
 
@@ -41,16 +37,15 @@ These topics address aspects of platform architecture and planning that the <%= 
 * [Implementing a Multi-Foundation <%= vars.k8s_runtime_abbr %> Deployment](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-nsxt-multi.html)
 * [Using Global DNS Load Balancers for Multi-Foundation](global-dns-lb.html)
 
-
-## <a id='pas-base'></a> <%= vars.app_runtime_abbr %> Architecture
+## <a id='pas-base'></a> <%= vars.app_runtime_abbr %> architecture
 
 The following diagram illustrates a base architecture for <%= vars.app_runtime_abbr %> and how its network topology places and replicates <%= vars.app_runtime_abbr %> components across subnets and availability zones (AZs).
 
-![alt-text="TAS for VMs Base Deployment Topology. Categories of elements included in each AZ are Infrastructure subnet, PAS Subnet, Services subnet, On-demand services subnet, and Isolation Segment subnet."](images/v2/export/PAS_Base.png)
+![alt-text="TAS for VMs Base Topology. Each AZ includes Infrastructure subnet, PAS Subnet, Services subnet, On-demand services subnet, Isolation Segment subnet."](images/v2/export/PAS_Base.png)
 
 [View a larger version of this diagram.](images/v2/export/PAS_Base.png)
 
-### <a id='pas-components'></a> Internal Components
+### <a id='pas-components'></a> Internal components
 
 The following table describes the internal component placements shown in the preceding diagram:
 
@@ -69,7 +64,7 @@ The following table describes the internal component placements shown in the pre
 
 These sections describe <%= vars.app_runtime_abbr %>'s recommendations for defining your networks and load-balancing their incoming requests.
 
-#### <a id='pas-subnets'></a> Required Subnets
+#### <a id='pas-subnets'></a> Required subnets
 
 <%= vars.app_runtime_abbr %> requires these statically-defined networks to host its main component systems:
 
@@ -87,7 +82,7 @@ These sections describe <%= vars.app_runtime_abbr %>'s recommendations for defin
 
 * Isolation segment subnets - `/24` segments<br>You can add one or more isolation segment tiles to a <%= vars.app_runtime_abbr %> installation to compartmentalize hosting and routing resources. For each isolation segment you deploy, you can designate a `/24` network for its range of address space.
 
-#### <a id='pas-lb'></a> Load Balancing
+#### <a id='pas-lb'></a> Load balancing
 
 Any <%= vars.app_runtime_abbr %> installation needs a suitable load balancer to send incoming HTTP, HTTPS, SSH, and SSL traffic to its GoRouters and app containers. All installations approaching production-level use rely on external load balancing from hardware appliance vendors or other network-layer solutions.
 
@@ -105,7 +100,7 @@ To load-balance across multiple <%= vars.app_runtime_abbr %> foundations, use an
 
 For more information, see [Global DNS Load Balancers for Multi-Foundation Environments](global-dns-lb.html).
 
-### <a id='pas-ha'></a> High Availability
+### <a id='pas-ha'></a> High availability
 
 <%= vars.app_runtime_abbr %> is not considered high availability (HA) until it runs across at least two AZs. <%= vars.company_name %> recommends defining three AZs.
 
@@ -133,7 +128,7 @@ For information about how <%= vars.app_runtime_abbr %> implements security, see:
 
 * [Network Communication Paths in <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/operating/) in _Network Security_
 
-### <a id='pas-domains'></a> Domain Names
+### <a id='pas-domains'></a> Domain names
 
 <%= vars.app_runtime_abbr %>  requires these domain names to be registered:
 
@@ -150,20 +145,19 @@ You must also define these wildcard domain names and include them when creating 
 
 * \*.uaa.SYSTEM-DOMAIN
 
-### <a id='pas-scaling'></a> Component Scaling
+### <a id='pas-scaling'></a> Component scaling
 
 For recommendations on scaling <%= vars.app_runtime_abbr %> for different deployment scenarios, see [Scaling <%= vars.app_runtime_abbr %> ](https://docs.pivotal.io/application-service/operating/scaling-ert-components.html).
-
 
 ## <a id='pks-base'></a> <%= vars.k8s_runtime_abbr %> Architecture
 
 The following diagram illustrates a base architecture for <%= vars.k8s_runtime_abbr %> and how its network topology places and replicates <%= vars.k8s_runtime_abbr %> components across subnets and AZs:
 
-![alt-text="TKGI Base Deployment Topology. Categories of elements included in each AZ are Infrastructure subnet, Services subnet, and PKS Cluster Subnets, which are dynamically generated."](images/v2/export/PKS_Base.png)
+![alt-text="TKGI Base Deployment Topology. Each AZ includes Infrastructure subnet, Services subnet, and PKS Cluster Subnets, which are dynamically generated."](images/v2/export/PKS_Base.png)
 
 [View a larger version of this diagram.](images/v2/export/PKS_Base.png)
 
-### <a id='pks-components'></a> Internal Components
+### <a id='pks-components'></a> Internal components
 
 The following table describes the internal component placements shown in the preceding diagram:
 
@@ -180,7 +174,7 @@ The following table describes the internal component placements shown in the pre
 
 These sections describe <%= vars.company_name %>'s recommendations for defining your networks and load-balancing their incoming requests.
 
-#### <a id='pks-subnets'></a> Subnets Requirements
+#### <a id='pks-subnets'></a> Subnets requirements
 
 <%= vars.k8s_runtime_abbr %> requires two defined networks to host the main elements:
 
@@ -190,11 +184,11 @@ These sections describe <%= vars.company_name %>'s recommendations for defining 
 
 * <%= vars.k8s_runtime_abbr %> cluster subnets - each one a `/24` from a pool of pre-allocated IPs<br>These subnets host <%= vars.k8s_runtime_abbr %> clusters.
 
-#### <a id='pks-lb'></a> Load Balancing
+#### <a id='pks-lb'></a> Load balancing
 
 Load balancers can be used to manage traffic across primary nodes of a <%= vars.k8s_runtime_abbr %> cluster or for deployed workloads. For more information on how to configure load balancers for <%= vars.k8s_runtime_abbr %>, see the corresponding section in the [reference architecture for your IaaS](#topics).
 
-### <a id='pks-ha'></a> High Availability
+### <a id='pks-ha'></a> High availability
 
 <%= vars.k8s_runtime_abbr %> has no inherent HA capabilities to design for. Make the best efforts to have HA design at the IaaS, storage, power, and access layers to support <%= vars.k8s_runtime_abbr %>.
 
@@ -206,12 +200,12 @@ Load balancers can be used to manage traffic across primary nodes of a <%= vars.
 
 For information about how <%= vars.k8s_runtime_abbr %> implements security, see [Enterprise <%= vars.k8s_runtime_abbr %> Security](https://docs.pivotal.io/tkgi/security.html) and [Firewall Ports](https://docs.pivotal.io/tkgi/ports-protocols-nsx-t.html).
 
-### <a id='pks-domains'></a> Domain Names
+### <a id='pks-domains'></a> Domain names
 
 <%= vars.k8s_runtime_abbr %> requires the `*.pks.domain.name` domain name to be registered when creating a wildcard certificate and <%= vars.k8s_runtime_abbr %> tile configurations.
 
 The wildcard certificate covers both the <%= vars.k8s_runtime_abbr %> API domain, such as `api.pks.domain.name`, and the <%= vars.k8s_runtime_abbr %> clusters domains, such as `cluster.pks.domain.name`.
 
-### <a id='pks-management'></a> Cluster Management
+### <a id='pks-management'></a> Cluster management
 
 For information about managing <%= vars.k8s_runtime_abbr %> clusters, see [Managing Clusters](https://docs.pivotal.io/tkgi/managing-clusters.html).

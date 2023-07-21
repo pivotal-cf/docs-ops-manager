@@ -1,13 +1,12 @@
 ---
-title: Global DNS Load Balancers for Multi-Foundation Environments
+title: Global DNS load balancers for multi-foundation environments
 ---
 
-This topic describes global DNS load balancers (GLBs) for multi foundation environments. This topic also describes concepts such as foundation affinity and healthchecks.
+This topic describes how you can use global DNS load balancers (GLBs) for multi-foundation environments. This topic also describes concepts such as foundation affinity and health checks.
 
 <p class='note'><strong>Note:</strong> If you want to configure a load balancer dedicated to one foundation and you are using an F5 LTM, see <a href="https://docs.pivotal.io/application-service/operating/f5-lb.html">Configuring an F5 Load Balancer for <%= vars.app_runtime_abbr %></a>.</p>
 
-
-## <a id='multi-foundation'></a> Overview of Multi-Foundation Environments
+## <a id='multi-foundation'></a> About multi-foundation environments
 
 Multi-foundation environments are multiple instances of <%= vars.ops_manager_first %> and
 runtime products such as <%= vars.app_runtime_first %> or
@@ -17,8 +16,7 @@ Each foundation can use different infrastructures to fit your preferences.
 
 Multi-foundation environments are commonly deployed in an active-active or active-passive pattern. An _active-active pattern_ is when instances of apps run on two foundations and they are both in use. An _active-passive pattern_ is when instances of apps run on two foundations, but the instances might only be active on one foundation, and the other foundation becomes active only in the event of a failover.
 
-
-## <a id='configure-glb'></a> Configure Your GLB
+## <a id='configure-glb'></a> Configure your GLB
 
 The typical setup for foundation failover requires the GLB be authoritative for a wildcard app domain. The wildcard app domain is not the same domain as the foundation-default app domain.
 
@@ -31,7 +29,7 @@ To configure your GLB:
 1. To support failover, set the time-to-live (TTL) in the wildcard DNS record to about 30 to 180 seconds. When you determine your TTL, consider the tradeoff between the app performance impact and the resulting time for failover to occur.
 
 
-## <a id='foundation-affinity'></a> About Foundation Affinity
+## <a id='foundation-affinity'></a> About foundation affinity
 
 _Foundation affinity_ occurs when the GLB favors one foundation over another during a route request. For example, users experience less latency if they are routed to a foundation that is geographically closer, so the GLB can favor that foundation.
 
@@ -67,7 +65,7 @@ Different GLBs have their own mechanisms to achieve this. For more information, 
 </table>
 
 
-## <a id='healthchecks'></a> About Health Checks
+## <a id='healthchecks'></a> About health checks
 
 In <%= vars.app_runtime_abbr %>, _health checks_ determine whether a foundation for an app is healthy or not.
 
