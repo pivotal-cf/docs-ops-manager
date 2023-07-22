@@ -3,7 +3,7 @@ title: Using Edge Services Gateway on VMware NSX
 owner: Customer0
 ---
 
-This topic describes how to configure the NSX firewall, load balancing, and NAT/SNAT services for <%= vars.ops_manager %> on vSphere installations. These NSX-provided services take the place of an external device or the bundled HAProxy VM in <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
+This topic describes how you can configure the NSX firewall, load balancing, and NAT/SNAT services for <%= vars.ops_manager_first %> on vSphere installations. These NSX-provided services take the place of an external device or the bundled HAProxy VM in <%= vars.app_runtime_full %>.
 
 This document presents the reader with fundamental configuration options of an Edge Services Gateway (ESG) with <%= vars.ops_manager %> and vSphere NSX. Its purpose is not to dictate the settings required on every deployment, but instead to empower the NSX Administrator with the ability to establish a known good "base" configuration and apply specific security configurations as required.
 
@@ -28,8 +28,7 @@ For detailed installation and configuration information about these products, se
 
 * [Installation Overview](../../install/index.html)
 
-
-## <a id="overview"></a> General Overview
+## <a id="overview"></a> Overview
 
 This cookbook follows a three-step recipe to deploy <%= vars.ops_manager %>, <%= vars.app_runtime_abbr %> and services behind an ESG:
 
@@ -83,7 +82,7 @@ The diagram below illustrates container-to-container networking. The overlay add
 [View a larger version of this diagram](../images/vsphere-pcf-c2c-networking.png).
 
 
-## <a id="prereq"></a> Prep Step: Configure DNS and Network Prerequisites
+## <a id="prereq"></a> Prep step: Configure DNS and network prerequisites
 
 As a prerequisite, create wildcard DNS entries for system and apps domains in <%= vars.app_runtime_abbr %>. Map these domains to the selected IP address on the uplink (outside) interface of the ESG in your DNS server.
 
@@ -106,7 +105,7 @@ Additionally, assign these IP addresses and address ranges within your network:
 You must update the security group and load balancer information for your <%= vars.app_runtime_abbr %> deployments using NSX-V on vSphere through the <%= vars.ops_manager %> API. For more information, see [vSphere with NSX-T or NSX-V](https://docs.pivotal.io/application-service/operating/configure-lb.html#vsphere) in _Configuring Load Balancing for <%= vars.app_runtime_abbr %>_.
 
 
-## <a id="firewall"></a> Step 1: Configure Firewall
+## <a id="firewall"></a> Step 1: Configure firewall
 
 This procedure populates the ESG internal firewall with rules to protect a foundation.
 
@@ -139,7 +138,7 @@ To configure the ESG firewall:
     | Default Rule | Any | Any | Any | Deny |
 
 
-## <a id="load_balancer"></a> Step 2: Configure Load Balancer
+## <a id="load_balancer"></a> Step 2: Configure load balancer
 
 The ESG provides software load balancing functionality, equivalent to the bundled HAProxy that is included with <%= vars.app_runtime_abbr %>, or hardware appliances such as an F5 or A10 load balancer.
 
@@ -169,7 +168,7 @@ You can pre-select or reserved IP addresses prior to deployment. Otherwise, you 
 
 You do all of the procedures in these sections through the ESG UI.
 
-### <a id="import_ssl"></a> Step 2.1: Import SSL Certificate
+### <a id="import_ssl"></a> Step 2.1: Import SSL certificate
 
 <%= vars.app_runtime_abbr %> requires SSL termination at the load balancer.
 
@@ -191,7 +190,7 @@ To enable SSL termination at the load balancer in ESG:
 
 1. Click **Save**.
 
-### <a id="enable_lb"></a> Step 2.2: Enable the Load Balancer
+### <a id="enable_lb"></a> Step 2.2: Enable the load balancer
 
 To enable the load balancer:
 
@@ -207,7 +206,7 @@ To enable the load balancer:
 
 1. Set logging to your desired level.
 
-### <a id="create_app"></a> Step 2.3: Create Application Profiles
+### <a id="create_app"></a> Step 2.3: Create application profiles
 
 The Application Profiles allow advanced `X-Forwarded` options as well as linking to the SSL certificate. You must create three profiles: `<%= vars.platform_code %>-HTTP`, `<%= vars.platform_code %>-HTTPS`, and `<%= vars.platform_code %>-TCP`.
 
@@ -241,7 +240,7 @@ The Application Profiles allow advanced `X-Forwarded` options as well as linking
 
     <%= image_tag('../images/vsphere-app-profile-pcf-tcp.png', :alt => "'Edit Profile' screen has 'Type' dropdown set to TCP.") %>
 
-### <a id="create_app_rules"></a> Step 2.4: Create Application Rules
+### <a id="create_app_rules"></a> Step 2.4: Create application rules
 
 In order for the ESG to perform proper `X-Forwarded` requests, you must add HAProxy directives to the ESG Application Rules. NSX supports most directives that HAProxy supports.
 
@@ -268,7 +267,7 @@ To create the Application Rules:
 
 <%= image_tag('../images/vsphere-lb-app-rules.png', :alt => "'Add Application Rule' modal shows 'Name' and 'Script' text fields filled with the script described in the steps above.") %>
 
-### <a id="create_monitors"></a> Step 2.5: Create Monitors For Pools
+### <a id="create_monitors"></a> Step 2.5: Create monitors for pools
 
 NSX ships with several load balancing monitoring types pre-defined. These types are for HTTP, HTTPS, and TCP. For this installation, operators build new monitors matching the needs of each pool to ensure correct 1:1 monitoring for each pool type.
 
@@ -299,11 +298,11 @@ To create monitors for pools:
 
 These monitors are selected during the next step when pools are created. A pool and a monitor are matched 1:1.
 
-### <a id="pools"></a> Step 2.6: Create Pools of Multi-Element <%= vars.ops_manager %> Targets
+### <a id="pools"></a> Step 2.6: Create pools of multi-element <%= vars.ops_manager %> targets
 
 This procedure describes creating the pools of resources that ESG load-balances to: the Gorouter, TCP router, and Diego Brain jobs deployed by BOSH Director. If the IP addresses specified in the configuration do not exactly match the IP addresses reserved or used for the resources, then the pool does not effectively load-balance.
 
-#### <a id="http_router_pools"></a> Step 2.6a: Create Pool for `http-routers`
+#### <a id="http_router_pools"></a> Step 2.6a: Create pool for `http-routers`
 
 To create a pool for `http-routers`:
 
@@ -331,7 +330,7 @@ To create a pool for `http-routers`:
 
 <%= image_tag('../images/vsphere-edit-pool-bordered.png', :alt => "'Edit Pool' screen shows Name with 'http-routers'. Members table has several rows with Monitor port of 8080.") %>
 
-#### <a id="tcp_router_pools"></a> Step 2.6b: Create Pool for `tcp-routers`
+#### <a id="tcp_router_pools"></a> Step 2.6b: Create pool for `tcp-routers`
 
 To create a pool for `tcp-routers`:
 
@@ -356,7 +355,7 @@ To create a pool for `tcp-routers`:
   1. Leave **Port** empty.
   1. For **Monitor Port**, enter `80`.
 
-#### <a id="diego_brain_pools"></a> Step 2.6c: Create Pool for `diego-brains`
+#### <a id="diego_brain_pools"></a> Step 2.6c: Create pool for `diego-brains`
 
 To create a pool for `diego-brains`:
 
@@ -381,7 +380,7 @@ To create a pool for `diego-brains`:
   1. For **Port**, enter `2222`.
   1. For **Monitor Port**, enter `2222`.
 
-### <a id="create_virtual_servers"></a> Step 2.7: Create Virtual Servers
+### <a id="create_virtual_servers"></a> Step 2.7: Create virtual servers
 
 A The Virtual Server is the Virtual IP (VIP) that the load balancer uses to represent the pool of Gorouters to the outside world. A The Virtual Server also links the Application Policy, Application Rules, and back end pools to provide <%= vars.app_runtime_abbr %> load balancing services. The Virtual Server is the interface that the load balancer balances **from**. You create three Virtual Servers.
 
@@ -513,7 +512,7 @@ NAT/SNAT functionality is not required if routable IP address space is used on t
 <p class="note"><strong>Note:</strong> NSX generates a number of DNAT rules based on load balancing configs. You can safely ignore these.</p>
 
 
-## <a id="notes"></a> Additional Notes
+## <a id="notes"></a> Additional notes
 
 The ESG also supports scenarios where Private RFC subnets and NAT are not utilized for **Deployment** or **Infrastructure** networks, and the guidance in this topic can be modified to meet those scenarios.
 

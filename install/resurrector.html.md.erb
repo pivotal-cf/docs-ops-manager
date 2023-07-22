@@ -4,7 +4,7 @@ owner: Ops Manager
 ---
 
 This topic describes the BOSH Resurrector, which monitors VMs and re-creates VMs that become unavailable.
-It also describes how to enable the BOSH Resurrector, to ensure high availability (HA) for your <%= vars.ops_manager_first %> deployment.
+You can enable the BOSH Resurrector to ensure high availability (HA) for your <%= vars.ops_manager_first %> deployment.
 
 For vSphere users, this topic explains how to enable vSphere HA to work along with the BOSH Resurrector.
 
@@ -14,12 +14,7 @@ For vSphere users, this topic explains how to enable vSphere HA to work along wi
 
 For more information about the BOSH Resurrector, see the [Auto-healing Capabilities](https://bosh.io/docs/resurrector/) section of the BOSH documentation.
 
-
-## <a id='bosh-resurrector'></a> BOSH Resurrector
-
-The following sections describe the BOSH Resurrector and how to enable it.
-
-### <a id='about-resurrector'></a> About BOSH Resurrector
+## <a id='about-resurrector'></a> How the BOSH Resurrector increases Ops Manager availability
 
 The BOSH Resurrector increases <%= vars.ops_manager %> availability in the following ways:
 
@@ -32,7 +27,7 @@ The BOSH Resurrector increases <%= vars.ops_manager %> availability in the follo
 The BOSH Resurrector continuously monitors the status of all virtual machines in an <%= vars.ops_manager %> deployment. The Resurrector also monitors the BOSH
 Agent on each VM. If either the VM or the BOSH Agent fail, the Resurrector recreates the virtual machine on another active host.
 
-### <a id='limitations'></a> BOSH Resurrector Limitations
+## <a id='limitations'></a> BOSH Resurrector limitations
 
 The following limitations apply to using the BOSH Resurrector:
 
@@ -44,7 +39,7 @@ The following limitations apply to using the BOSH Resurrector:
 
 To mitigate these limitations, <%= vars.company_name %> recommends vSphere HA. For more information, see [vSphere HA](#vsphere-ha) below.
 
-### <a id='enabling'></a> Enable BOSH Resurrector
+## <a id='enabling'></a> Enable the BOSH Resurrector
 
 To enable the BOSH Resurrector:
 

@@ -4,7 +4,7 @@ owner: Ops Manager
 iaas: vSphere
 ---
 
-This guide describes how to install <%= vars.ops_manager_first %> on vSphere.
+This guide describes how you can install <%= vars.ops_manager_first %> on vSphere.
 
 If you experience a problem while following the steps below, see [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html) or the _Known Issues_ sections of the following topics:
 
@@ -18,7 +18,6 @@ If you experience a problem while following the steps below, see [Diagnosing Dep
 
 * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html#known-issues) in the <%= vars.k8s_runtime_abbr %> documentation
 
-
 ## <a id='prerequisites'></a> Requirements
 
 This section describes the resource requirements for installing <%= vars.ops_manager %>.
@@ -27,7 +26,7 @@ This section describes the resource requirements for installing <%= vars.ops_man
 
 <p class='note'><strong>Note:</strong> When installing <%= vars.ops_manager %> on a vSphere environment with multiple ESXi hosts, you must use network-attached or shared storage devices. Local storage devices do not support sharing across multiple ESXi hosts.</p>
 
-### <a id='version'></a> Version Requirements
+### <a id='version'></a> Version requirements
 
 <%= vars.ops_manager %> can be installed on and the BOSH Director tile within <%= vars.ops_manager %> can be configured with the following versions of vSphere:
 
@@ -47,7 +46,7 @@ The BOSH Director tile within <%= vars.ops_manager %> can optionally be configur
 
 * NSX-T v3.0
 
-### <a id='runtimes'></a> Resource Requirements
+### <a id='runtimes'></a> Resource requirements
 
 You can install <%= vars.ops_manager %> with one of two runtimes. For more information about the requirements for each runtime, see the following:
 
@@ -56,11 +55,11 @@ You can install <%= vars.ops_manager %> with one of two runtimes. For more infor
     * **Without NSX-T:** [vSphere Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/vsphere-requirements.html)
     * **With NSX-T:** See the _Preparing to Install <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T_ section of [Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center](https://docs.pivotal.io/tkgi/vsphere-nsxt-index.html).
 
-### <a id='firewall'></a> Firewall Port Requirements
+### <a id='firewall'></a> Firewall port requirements
 
 <%= partial '../common/vsphere-firewall-ports' %>
 
-### <a id='permissions'></a> vSphere Service Account Requirements
+### <a id='permissions'></a> vSphere service account requirements
 
 <%= vars.ops_manager %> requires read/write permissions to the data center level of the [vSphere Inventory Hierarchy](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-03B36057-B38C-479C-BD78-341CD83A0584.html) to successfully install. <%= vars.company_name %> recommends defining a custom role for the service account that has all privileges for all objects in the data center, including propagating privileges to children.
 
@@ -74,7 +73,7 @@ For more information about service account requirements, see the following topic
 
 <p class='note'><strong>Note:</strong> You can also apply the default <a href="http://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.pg.doc/PG_Appx_Privileges_Reference.22.4.html">VMware Administrator System Role</a> to the service account to achieve the appropriate permission level.</p>
 
-### <a id='security'></a> vSphere Security Documents
+### <a id='security'></a> vSphere security documents
 
 The following guides contain best practices for securing and managing a vSphere installation:
 
@@ -84,8 +83,7 @@ The following guides contain best practices for securing and managing a vSphere 
 
 * [vSphere v7.0 Security Guide (PDF)](https://docs.vmware.com/en/VMware-vSphere/7.0/vsphere-esxi-vcenter-server-70-security-guide.pdf)
 
-
-## <a id='procedure'></a> Procedure
+## <a id='procedure'></a> Installation procedure
 
 This section describes the steps for installing <%= vars.ops_manager %>.
 
@@ -97,8 +95,7 @@ Complete the following procedures to install <%= vars.ops_manager %> on vSphere:
 
 1. [Configuring BOSH Director on vSphere](../vsphere/config.html)
 
-
-## <a id='additional'></a> Additional Configuration
+## <a id='additional'></a> Additional configuration
 
 See the following topics for additional configuration options:
 
@@ -108,8 +105,7 @@ See the following topics for additional configuration options:
 
 * [Availability Zones in vSphere](understand-az.html)
 
-
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After completing the procedures above, configure a runtime.
 

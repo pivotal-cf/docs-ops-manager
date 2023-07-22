@@ -3,14 +3,13 @@ title: Deploying Ops Manager on OpenStack
 owner: Ops Manager
 ---
 
-This guide describes how to provision the OpenStack infrastructure where you need to install <%= vars.ops_manager_first %>. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
+This guide describes how you can provision the OpenStack infrastructure where you need to install <%= vars.ops_manager_first %>. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
 
 After completing this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html) and [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
 
 <p class='note'><strong>Note:</strong> This document uses Mirantis OpenStack for screenshots and examples. The screens of your OpenStack vendor configuration interface may differ.</p>
 
-
-## <a id='log-in'></a> Step 1: Log in to the OpenStack Horizon Dashboard
+## <a id='log-in'></a> Step 1: Log in to the OpenStack Horizon dashboard
 
 1. Log in to the OpenStack Horizon dashboard.
 
@@ -20,8 +19,7 @@ After completing this procedure, complete all of the steps in [Configuring BOSH 
 
     ![alt-text=""](../common/images/openstack/project-list.png)
 
-
-## <a id='security'></a> Step 2: Configure Security
+## <a id='security'></a> Step 2: Configure security
 
 <p class='note important'><strong>Important:</strong> If you are using OpenStack Liberty or Mitaka, do not create the key pair with the OpenStack Horizon dashboard. Instead make sure that you generate the SSH key pair manually. For example, use the <code>ssh-keygen</code> command. Then follow the procedure below to import that key pair into OpenStack. This is due to an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.</p>
 
@@ -146,7 +144,7 @@ After completing this procedure, complete all of the steps in [Configuring BOSH 
     ![alt-text=""](../common/images/openstack/ingress-egress-rules.png)
 
 
-## <a id='validate-openstack'></a> Step 3: (Optional) Run the CF OpenStack Validator Tool
+## <a id='validate-openstack'></a> Step 3: Run the CF OpenStack Validator tool (optional)
 
 As an optional but recommended step, you can now run the CF OpenStack Validator tool against your OpenStack tenant to verify support for <%= vars.ops_manager %>.
 
@@ -156,7 +154,7 @@ As an optional but recommended step, you can now run the CF OpenStack Validator 
 
 Troubleshooting the output of the CF OpenStack Validator tool is beyond the scope of this document.
 
-## <a id='create-om-image'></a> Step 4: Create <%= vars.ops_manager %> Image
+## <a id='create-om-image'></a> Step 4: Create <%= vars.ops_manager %> image
 
 You can create the <%= vars.ops_manager %> image in OpenStack using the OpenStack Horizon dashboard.
 
@@ -273,7 +271,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 2. Click the **Launch Instance** button. This starts your new <%= vars.ops_manager %> instance.
 
 
-## <a id='floating-ip'></a> Step 6: Associate a Floating IP Address
+## <a id='floating-ip'></a> Step 6: Associate a floating IP address
 
 1. In the left navigation of your OpenStack dashboard, click **Project > Compute > Instances**. The **Instances** table appears. You will see a row with **INSTANCE NAME** <%= vars.ops_manager %>.
 
@@ -303,7 +301,6 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 1. Click **Associate**.
 
-
 ## <a id='blob-storage'></a> Step 7: Add Blob Storage
 
 1. In the left navigation of your OpenStack dashboard, click **Project > Object Store > Containers**.
@@ -316,8 +313,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 1. Click **Create**.
 
-
-## <a id='blobstore-creds'></a> Step 8: Download Credentials for S3 Blob Storage
+## <a id='blobstore-creds'></a> Step 8: Download credentials for S3 Blob Storage
 
 1. In the left navigation menu on the OpenStack dashboard, click **Project > Compute > Access & Security**. Click the **API Access** tab.
 
@@ -330,7 +326,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 3. If you select **S3 Compatible Blobstore** in your [BOSH Director Config](config.html#director-config), you need the contents of this file to complete the configuration.
 
 
-## <a id='dns-entry'></a> Step 9: Create a DNS Entry
+## <a id='dns-entry'></a> Step 9: Create a DNS entry
 
 Create a DNS entry for the floating IP address that you assigned to <%= vars.ops_manager %> in [Step 6: Associate a Floating IP Address](#floating-ip).
 

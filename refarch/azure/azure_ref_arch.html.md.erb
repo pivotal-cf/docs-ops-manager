@@ -1,13 +1,12 @@
 ---
-title: Azure Reference Architecture
+title: Azure reference architecture for Ops Manager and runtimes
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>, on Azure. It builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
+This topic describes an Azure reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>. This architecture builds on the common base architectures described in [Architecture and planning for Ops Manager and runtimes](../index.html).
 
 For additional requirements and installation instructions for running <%= vars.ops_manager %> on Azure, see
 [Installing <%= vars.ops_manager %> on Azure](../../install/azure.html).
-
 
 ## <a id='overview'></a> Overview
 
@@ -32,7 +31,7 @@ security policies.
 The diagram below illustrates the reference architecture for <%= vars.ops_manager %> on Azure using the hub and spoke
 model described above.
 
-![alt-text="Architecture on Azure using Availability Sets. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures."](../images/PAS_Azure.png)
+![alt-text="Architecture on Azure using Availability Sets. For details about components and communication, see the base and Azure reference architectures."](../images/PAS_Azure.png)
 
 [View a larger version of this diagram.](../images/PAS_Azure.png).
 
@@ -43,7 +42,7 @@ The sections below provide guidance about the resources that you use for running
 
 The following sections provide guidance about networking resources.
 
-### <a id='network-considerations'></a> General Requirements and Recommendations
+### <a id='network-considerations'></a> General requirements and recommendations
 
 The following are general requirements and recommendations related to networking when running <%= vars.ops_manager %>
 on Azure:
@@ -82,7 +81,7 @@ other records desired for your <%= vars.ops_manager %> deployments.
 
 You do not need to make any configuration changes in <%= vars.ops_manager %> to support Azure DNS.
 
-### <a id='lb-types'></a> Load Balancing
+### <a id='lb-types'></a> Load balancing
 
 Use Standard Azure Load Balancers (ALBs). To allow Internet ingress, you must create the ALBs with elastic IP addresses.
 
@@ -99,7 +98,7 @@ IP address assigned. You set these domains in the **Domains** pane of the <%= va
 <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %>. For more information, see the _Networks_ sections in
 [Platform Architecture and Planning Overview](../index.html).
 
-### <a id='pas-single-azure-resource'></a> <%= vars.app_runtime_abbr %> on a Single Resource Group
+### <a id='pas-single-azure-resource'></a> <%= vars.app_runtime_abbr %> on a single resource group
 
 If shared network resources do not exist in an Azure subscription, you can use a single resource group to deploy
 <%= vars.ops_manager %> and define network constructs.
@@ -150,14 +149,14 @@ For more information about availability modes in Azure, see the following:
 * [Manage the availability of Windows virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-windows-manage-availability)
 in the Microsoft Azure documentation.
 
-### <a id='AZ'></a> Availability Zones
+### <a id='AZ'></a> Availability zones
 
 AZs are an Azure primitive that supports HA within a region. They are physically separate data centers in the same
 region, each with separate power, cooling, and network.
 
 The diagram below illustrates <%= vars.app_runtime_abbr %> deployed on Azure using AZs.
 
-![alt-text="Architecture on Azure using Availability Zones. For specific details about the components and communication represented in this diagram, see the base and Azure reference architectures."](../images/PAS_Azure_with_AZs.png)
+![alt-text="Architecture on Azure using Availability Zones. For details about components and communication, see the base and Azure reference architectures."](../images/PAS_Azure_with_AZs.png)
 
 [View a larger version of this diagram.](../images/PAS_Azure_with_AZs.png).
 
@@ -191,7 +190,7 @@ and therefore maintain availability of a subset of VMs in the set.
 * When updates are rolled out to a Cluster, VMs in independent Update Domains are not updated at the same time,
 ensuring downtime incurred by an update does not affect the availability of the set.
 
-#### <a id='placement-group-pinning'></a> Placement Group Pinning Issues
+#### <a id='placement-group-pinning'></a> Placement group pinning issues
 
 In Availability Set HA mode, VMs for a particular job are pinned to a placement
 group determined when the first VM in the Availability Set is provisioned. This is because BOSH places VMs for each job
@@ -228,7 +227,7 @@ of 20 VMs each.
 The Internal MySQL database provided by <%= vars.app_runtime_abbr %> is sufficient for production use.
 
 
-## <a id='blobstore-storage-accts'></a> Blobstore Storage Account
+## <a id='blobstore-storage-accts'></a> Blobstore storage account
 
 Use Azure Blob Storage as the external file storage option for <%= vars.ops_manager %>. This provides redundancy for
 high-availability deployments of <%= vars.ops_manager %> and unlimited scaling. Azure Blob Storage provides
@@ -249,7 +248,7 @@ fully-redundant hot, cold, or archival storage in either local, regional, or glo
 These buckets require an associated role for read/write access.
 
 
-## <a id='identity-management'></a> Identity Management
+## <a id='identity-management'></a> Identity management
 
 Use unique managed identities to deploy <%= vars.ops_manager %>, BOSH Director, Microsoft Azure Service Broker for VMware Tanzu, and any other tiles that require independent credentials. Ensure that each managed identity is scoped to the least privilege
 necessary to operate.

@@ -1,14 +1,9 @@
 ---
-title: Configuring Proxy Settings for the BOSH CPI
+title: Configuring proxy settings for the BOSH CPI
 owner: Ops Manager
 ---
 
-This topic describes how to configure proxy settings for the BOSH Cloud Provider Interface (CPI), which is the API that the BOSH Director uses to interact with your IaaS endpoint.
-
-
-## <a id='overview'></a> Overview
-
-If you use a proxy to mediate traffic between your BOSH installation and your IaaS endpoint, you must enter your proxy information when <%= vars.ops_manager_first %> starts for the first time.
+This topic describes how to configure proxy settings for the BOSH Cloud Provider Interface (CPI), the API that the BOSH Director uses to interact with your IaaS endpoint. If you use a proxy to mediate traffic between your BOSH installation and your IaaS endpoint, you must enter your proxy information when <%= vars.ops_manager_first %> starts for the first time.
 
 The following diagram illustrates how a proxy mediates HTTP and HTTPS requests between the CPI of the BOSH Director and the IaaS endpoint.
 
@@ -18,8 +13,7 @@ For more information about BOSH components, see the [BOSH documentation](https:/
 
 <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> only supports proxying requests between the BOSH CPI and the IaaS API. It does not support proxying blobstore and database traffic.</p>
 
-
-## <a id='config-proxy'></a> Configure Proxy
+## <a id='config-proxy'></a> Configure the proxy
 
 Perform the following steps to configure your proxy for the BOSH CPI when <%= vars.ops_manager %> starts for the first time:
 
@@ -27,7 +21,7 @@ Perform the following steps to configure your proxy for the BOSH CPI when <%= va
 
 1. Follow the <%= vars.ops_manager %> installation instructions for your IaaS. For more information, see [Installing <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/concepts/overview.html).
 
-1. When <%= vars.ops_manager %> starts for the first time, you must select **Use an Identity Provider** or **Internal Authentication**. For more information, see the following IaaS-specific topics for more information:
+1. When <%= vars.ops_manager %> starts for the first time, you must select **Use an Identity Provider** or **Internal Authentication**. For more information, see the following IaaS-specific topics:
     * [Configuring BOSH Director on AWS](../aws/config-manual.html#access-om)
     * [Configuring BOSH Director on vSphere](../vsphere/config.html#set-up)
     * [Configuring BOSH Director on OpenStack](../openstack/config.html#log-in)

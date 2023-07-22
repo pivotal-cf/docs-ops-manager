@@ -1,12 +1,11 @@
 ---
-title: Upgrading vSphere without Runtime Downtime
+title: Upgrading vSphere without causing downtime for your runtime
 owner: Customer0
 ---
 
-This topic describes how to upgrade the vSphere components that host your <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %> deployment without service disruption.
+This topic describes how to upgrade the vSphere components that host your runtime deployment, either <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %>, without disrupting service.
 
-
-## <a id='overview'></a> Minimum Requirements
+## <a id='overview'></a> Minimum requirements
 
 At minimum, vSphere contains a vCenter Server and one or more ESXi hosts.
 
@@ -21,7 +20,7 @@ Cells in your deployment or pause VMs to make more capacity available. These act
 in downtime for <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>.
 
 
-## <a id='rec_start'></a> Recommended Starting Configuration
+## <a id='rec_start'></a> Recommended starting configuration
 
 If you are running a <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %> deployment
 following the base reference architecture described in [vSphere Reference Architecture](vsphere_ref_arch.html),
@@ -49,7 +48,7 @@ For more information about how to upgrade vCenter, see [Overview of the vCenter 
 Process](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-C5CBFB63-4E95-4143-BA89-89AA5D292C68.html?hWord=N4IghgNiBcIG4GMCmA7ALkgTgAgM5bi2wFcAHAc0zABMltTMB7ZXXEAXyA) in the
 vSphere documentation.
 
-### <a id='upgrade_esxi'></a> Step 2: Upgrade ESXi Hosts
+### <a id='upgrade_esxi'></a> Step 2: Upgrade ESXi hosts
 
 After a successful vCenter upgrade, you must upgrade your ESXi hosts one at a time, starting
 with the first ESXi host.

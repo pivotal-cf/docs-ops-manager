@@ -1,13 +1,12 @@
 ---
-title: vSphere Reference Architecture
+title: vSphere reference architecture for Ops Manager and runtimes
 owner: Customer0
 ---
 
-This topic describes a reference architecture for <%= vars.ops_manager %> and any runtime products, including <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) and <%= vars.k8s_runtime_full %> (<%= vars.k8s_runtime_abbr %>), on vSphere.
-It builds on the common base architectures described in [Platform Architecture and Planning](../index.html).
+This topic describes a vSphere reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>.
+This architecture builds on the common base architectures described in [Architecture and planning for Ops Manager and runtimes](../index.html).
 
 For additional requirements and installation instructions for <%= vars.ops_manager %> on vSphere, see [Installing <%= vars.ops_manager %> on vSphere](../../install/vsphere.html).
-
 
 ## <a id='overview'></a> Overview
 
@@ -60,7 +59,7 @@ An NSX-T Tier-0 router is on the front end of the <%= vars.app_runtime_abbr %> d
 
 Several Tier-1 routers, such as the router for the <%= vars.app_runtime_abbr %> and infrastructure subnets, connect to the Tier-0 router.
 
-### <a id='pas-nsx-t-pas'></a> NSX-T Container Plugin Requirement
+### <a id='pas-nsx-t-pas'></a> NSX-T Container Plugin requirement
 
 <%= vars.app_runtime_abbr %> deployments require the VMware NSX-T Container Plugin to enable the SDN features available through NSX-T.
 
@@ -91,7 +90,7 @@ The Tier-0 router must have routable external IP address space to advertise on t
 
 For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
 
-#### <a id='pas-nsx-t-load-balancing'></a> Load Balancing
+#### <a id='pas-nsx-t-load-balancing'></a> Load balancing
 
 The load balancing requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments are:
 
@@ -107,7 +106,7 @@ The load balancing requirements and recommendations for <%= vars.app_runtime_abb
 
 * Layer 4 and Layer 7 NSX-T load balancers are created automatically during app deployment.
 
-#### <a id='pas-nsx-t-networking-subnets-ip'></a> Networking, Subnets, and IP Address Spacing
+#### <a id='pas-nsx-t-networking-subnets-ip'></a> Networking, subnets, and IP address spacing
 
 The requirements and recommendations related to networks, subnets, and IP address spacing for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments are:
 
@@ -121,23 +120,23 @@ The requirements and recommendations related to networks, subnets, and IP addres
 
 For more information about <%= vars.app_runtime_abbr %> subnets, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
-### <a id='pas-nsx-t-ha'></a> High Availability
+### <a id='pas-nsx-t-ha'></a> High availability
 
 For information about high availability (HA) requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere, see [High Availability](../index.html#pas-ha) in _Platform Architecture and Planning Overview_.
 
-### <a id='pas-nsx-t-shared-storage'></a> Shared Storage
+### <a id='pas-nsx-t-shared-storage'></a> Shared storage
 
 <%= vars.app_runtime_abbr %> requires shared storage.
 You can allocate networked storage to the host clusters following one of two common approaches: horizontal or vertical.
 The approach you follow reflects how your data center arranges its storage and host blocks in its physical layout.
 
-#### <a id='horizontal-shared-storage'></a> Horizontal Shared Storage
+#### <a id='horizontal-shared-storage'></a> Horizontal shared storage
 
 With the horizontal shared storage approach, you grant all hosts access to all datastores and assign a subset to each <%= vars.app_runtime_abbr %> installation.
 
 For example, with six datastores `ds01` through `ds06`, you grant all nine hosts access to all six datastores. You then provision your first <%= vars.app_runtime_abbr %> installation to use stores `ds01` through `ds03`  and your second <%= vars.app_runtime_abbr %> installation to use `ds04` through `ds06`.
 
-#### <a id='vertical-shared-storage'></a> Vertical Shared Storage
+#### <a id='vertical-shared-storage'></a> Vertical shared storage
 
 With the vertical shared storage approach, you grant each cluster its own datastores, creating a cluster-aligned storage strategy. vSphere VSAN is an example of this architecture.
 
@@ -145,7 +144,7 @@ For example, with six datastores `ds01` through `ds06`, you assign datastores `d
 
 With this arrangement, all VMs in the same installation and cluster share a dedicated datastore.
 
-### <a id='pas-nsx-t-storage-capacity'></a> Storage Capacity
+### <a id='pas-nsx-t-storage-capacity'></a> Storage capacity
 
 <%= vars.company_name %> recommends these storage capacity allocations for production and non-production <%= vars.app_runtime_abbr %> environments:
 
@@ -169,7 +168,7 @@ For information about configuring system databases on <%= vars.app_runtime_abbr 
 
 For information about security requirements and recommendations for <%= vars.app_runtime_abbr %> deployments, see [Security](../index.html#pas-security) in _Platform Architecture and Planning Overview_.
 
-### <a id='pas-nsx-t-blobstore'></a> Blobstore Storage
+### <a id='pas-nsx-t-blobstore'></a> Blobstore storage
 
 <%= vars.company_name %> recommends that you use these blobstore storages for production and non-production <%= vars.app_runtime_abbr %> environments:
 
@@ -239,21 +238,21 @@ The load balancing requirements and recommendations for <%= vars.app_runtime_abb
 
 * <%= vars.company_name %> recommends that you configure external load balancers in front of the Edge router. For example, you can configure an F5 external load balancer.
 
-#### <a id='pas-nsx-v-ip-spacing'></a> Networks, Subnets, and IP Address Spacing
+#### <a id='pas-nsx-v-ip-spacing'></a> Networks, subnets, and IP address spacing
 
 For information about network, subnet, and IP address space planning requirements and recommendations, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
-### <a id='pas-nsx-v-ha'></a> High Availability
+### <a id='pas-nsx-v-ha'></a> High availability
 
 For information about HA requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere, see [High Availability](../index.html#pas-ha) in _Platform Architecture and Planning Overview_.
 
-### <a id='pas-nsx-v-shared-storage'></a> Shared Storage
+### <a id='pas-nsx-v-shared-storage'></a> Shared storage
 
 <%= vars.app_runtime_abbr %> requires shared storage. You can allocate networked storage to the host clusters following one of two common approaches: horizontal or vertical. The approach you follow reflects how your data center arranges its storage and host blocks in its physical layout.
 
 For information about horizontal and vertical shared storage, see [Shared Storage](#pas-nsx-v-shared-storage).
 
-### <a id='pas-nsx-v-storage-capacity'></a> Storage Capacity
+### <a id='pas-nsx-v-storage-capacity'></a> Storage capacity
 
 <%= vars.company_name %> recommends these storage capacity allocations for production and non-production <%= vars.app_runtime_abbr %> environments:
 
@@ -280,7 +279,7 @@ For information about configuring system databases on <%= vars.app_runtime_abbr 
 
 For information about security requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere deployments, see [Security](../index.html#pas-security) in _Platform Architecture and Planning Overview_.
 
-### <a id='pas-nsx-v-blobstore'></a> Blobstore Storage
+### <a id='pas-nsx-v-blobstore'></a> Blobstore storage
 
 <%= vars.company_name %> recommends that you use these blobstore storages for production and non-production <%= vars.app_runtime_abbr %> environments:
 
@@ -312,7 +311,7 @@ Below is a best-guess layout for IP address space utilization in a single <%= va
 
 * Services - `/23`<br>This size is almost completely dependent on the estimated desired capacity for services. Resize as necessary.
 
-### <a id='pas-routed-iso-seg'></a> Isolation Segments
+### <a id='pas-routed-iso-seg'></a> Isolation segments
 
 Isolation segments can help with satisfying IP address space needs in a routed network design. You can build smaller groups of GoRouters and Diego Cells aligned to a particular service. Smaller groups use less IP address space.
 
@@ -342,7 +341,7 @@ Several Tier-1 routers, such as the router for the infrastructure subnet, connec
 
 These sections describe networking requirements and recommendations for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments.
 
-#### <a id='pks-nsx-t-load-balancing'></a> Load Balancing
+#### <a id='pks-nsx-t-load-balancing'></a> Load balancing
 
 The load balancing requirements and recommendations for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments are:
 
@@ -410,7 +409,7 @@ The routable IP address requirements and recommendations for <%= vars.k8s_runtim
 
 <%= partial '../../common/vsphere-firewall-ports' %>
 
-#### <a id='pks-nsx-t-ip-spacing'></a> Networks, Subnets, and IP Address Spacing
+#### <a id='pks-nsx-t-ip-spacing'></a> Networks, subnets, and IP address spacing
 
 These considerations and recommendations apply to networks, subnets, and IP address spacing for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments:
 
@@ -431,7 +430,7 @@ These considerations and recommendations apply to networks, subnets, and IP addr
 
 For more information, see [Networks](../index.html#pks-network) in _Platform Architecture and Planning Overview_.
 
-### <a id='pks-nsx-t-multitenancy'></a> Multi-Tenancy
+### <a id='pks-nsx-t-multitenancy'></a> Multi-tenancy
 
 For <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments, networks are created dynamically for both <%= vars.k8s_runtime_abbr %> clusters and Pods.
 
@@ -439,7 +438,7 @@ To accommodate these dynamically-created networks, <%= vars.company_name %> reco
 
 Multiple clusters provide additional features such as security, customization on a per-cluster basis, privileged containers, failure domains, and version choice. Namespaces should be used as a naming construct and not as a tenancy construct.
 
-### <a id='pks-nsx-t-master-nodes'></a> Master Nodes
+### <a id='pks-nsx-t-master-nodes'></a> Master nodes
 
 The <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T architecture supports multiple master nodes for <%= vars.k8s_runtime_abbr %> v1.2 and later.
 
@@ -447,11 +446,11 @@ You can define the number of master nodes per plan in the <%= vars.k8s_runtime_a
 
 <%= vars.company_name %> recommends that you have at least one master node per AZ for HA and disaster recovery.
 
-### <a id='pks-nsx-t-ha'></a> High Availability
+### <a id='pks-nsx-t-ha'></a> High availability
 
 For information about HA requirements and recommendations, see [High Availability](../index.html#pks-ha) in _Platform Architecture and Planning Overview_.
 
-### <a id='pks-nsx-t-storage-capacity'></a> Storage Capacity
+### <a id='pks-nsx-t-storage-capacity'></a> Storage capacity
 
 <%= vars.company_name %> recommends the following storage capacity allocation for production and non-production <%= vars.k8s_runtime_abbr %> environments:
 
