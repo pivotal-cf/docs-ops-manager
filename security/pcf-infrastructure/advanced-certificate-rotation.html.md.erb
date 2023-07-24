@@ -275,6 +275,7 @@ To rotate the Services TLS CA and its leaf certificates:
         ```
         maestro regenerate ca --name "/services/tls_ca" --force
         ```
+    1. For deployments that use MySQL for VMware Tanzu, follow [these instructions](https://docs.vmware.com/en/VMware-SQL-with-MySQL-for-Tanzu-Application-Service/3.0/mysql-for-tas/prepare-tls.html#add-ca-cert) to add the new Services TLS CA to the **Trusted Certificates** of the **BOSH Director**.
 
 1. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
