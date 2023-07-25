@@ -1,17 +1,11 @@
 ---
-title: Overriding Duration for Certificates
+title: Overriding duration for Ops Manager and CredHub certificates
 owner: Ops Manager
 ---
 
-This topic describes how to set values to override the duration for certificate authority (CA) and leaf certificates managed by <%= vars.ops_manager_first %>
-and CredHub.
+You can set values to override the duration for certificate authority (CA) and leaf certificates managed by <%= vars.ops_manager_first %> and CredHub. By default, certificates that <%= vars.ops_manager %> and CredHub generate use the duration set by the tile and certificate authors, which can vary from certificate to certificate.
 
-
-## <a id='overview'></a> Overview
-
-By default, certificates that <%= vars.ops_manager %> and CredHub generate use the duration set by the tile and certificate authors. These durations can vary from certificate to certificate.
-In <%= vars.ops_manager %> v2.10.19 and later, you can set values to override the durations for CA and leaf certificates.
-When you apply an override, you can increase certificate duration and reduce the frequency of required certificate rotations.
+In <%= vars.ops_manager %> v2.10.19 and later, you can set values to override the durations for CA and leaf certificates. When you apply an override, you can increase certificate duration and reduce the frequency of required certificate rotations.
 
 The following table describes what happens when you enable this feature:
 
@@ -36,8 +30,7 @@ A <%= vars.app_runtime_abbr %> certificate that is normally created with a durat
 
 <p class='note'><strong>Note:</strong> <%= vars.recommended_by %> recommends that you do not change your scheduled certificate rotations to use the duration override feature. Instead, you can enable a duration override and use it when the next scheduled rotation takes place.</p>
 
-
-## <a id='enable'></a> Enable Duration Overrides
+## <a id='enable'></a> Enable duration overrides
 
 To enable the duration override feature:
 
@@ -56,7 +49,7 @@ Depending on your deployment, continue to one of the following sections:
 - [Apply a Duration Override on an Existing <%= vars.ops_manager %>](#apply-existing)
 - [Apply a Duration Override on a New <%= vars.ops_manager %>](#apply-new)
 
-### <a id='apply-existing'></a> Apply a Duration Override on an Existing <%= vars.ops_manager %>
+### <a id='apply-existing'></a> Apply a duration override on an existing <%= vars.ops_manager %>
 
 This procedure describes how to apply a duration override on an existing <%= vars.ops_manager %>.
 
@@ -69,7 +62,7 @@ To apply a duration override:
 1. To apply a duration override to both CA and leaf certificates, you must do a full CA rotation. To rotate CAs and leaf certificates, see [Rotating CAs and Leaf Certificates](rotate-cas-and-leaf-certs.html).
 1. By default, the Services TLS CA is excluded by the <%= vars.ops_manager %> certificate rotation API. You can rotate this certificate separately to apply the configured duration. To rotate the Services TLS CA, see [Rotate the Services TLS CA and Its Leaf Certificates](advanced-certificate-rotation.html#services-rotation).
 
-### <a id='apply-new'></a> Apply a Duration Override on a New <%= vars.ops_manager %>
+### <a id='apply-new'></a> Apply a duration override on a new <%= vars.ops_manager %>
 
 This procedure describes how to apply a duration override on a new <%= vars.ops_manager %>.
 
@@ -83,7 +76,7 @@ To apply a duration override:
     1. You do not need to run **Apply Changes**.
 
 
-## <a id='excluded-certs'></a> Excluded Certificates
+## <a id='excluded-certs'></a> Excluded certificates
 
 This section describes the certificates that are excluded from the duration override setting.
 The duration override setting applies only to certificates that are rotated by the <%= vars.ops_manager %> certificate rotation procedures.

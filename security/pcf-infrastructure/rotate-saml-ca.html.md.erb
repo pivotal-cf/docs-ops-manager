@@ -1,12 +1,11 @@
 ---
-title: Rotating Identity Provider SAML Certificates
+title: Rotating identity provider SAML certificates in Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes how to rotate SAML service provider (SP) credentials in <%= vars.ops_manager_first %>.
+This topic describes how you can rotate SAML service provider (SP) credentials in your <%= vars.ops_manager_first %> deployment.
 
-
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview of rotating SAML SP credentials
 
 SAML SP credentials are one example of configurable certificates in <%= vars.app_runtime_first %>. When <%= vars.app_runtime_abbr %> is configured to use SAML as an IDP, it uses a configurable certificate authority (CA) certificate to authenticate to an external SAML server. The CA generates ephemeral certificates that <%= vars.app_runtime_abbr %> includes in its outbound request message headers. This CA has a two-year expiration period.
 
@@ -17,7 +16,6 @@ This topic provides an example of how to rotate certificates for each IDP, inclu
 For more information about rotating SAML certificates in <%= vars.app_runtime_abbr %>, see [PCF Advisory - SAML Service Provider Credential Certificates Expire after 2 Years](https://community.pivotal.io/s/article/PCF-Advisory---SAML-Service-Provider-Credential-Certificates-Expire-after-2-Years) in the VMware Tanzu Knowledge Base.
 
 For more information about rotating SAML certificates in <%= vars.ops_manager %>, see [How to check and rotate Ops Manager SAML Certificate before it expires](https://community.pivotal.io/s/article/how-to-check-and-rotate-ops-manager-saml-certificate-before-it-expires) in the VMware Tanzu Knowledge Base.
-
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -31,7 +29,7 @@ SAML SP credentials are only required for your <%= vars.app_runtime_abbr %> depl
 
 * You are validating the signature of SAML authentication request with your IDP.
 
-## <a id='rotate-certs'></a> Rotate SAML Certificates
+## <a id='rotate-certs'></a> Rotate SAML certificates
 
 To regenerate and rotate SAML SP certificates without disrupting <%= vars.app_runtime_abbr %> or your apps using the Single Sign-On for VMware Tanzu service:
 

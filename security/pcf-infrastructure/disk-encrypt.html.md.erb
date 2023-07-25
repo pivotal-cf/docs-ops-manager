@@ -1,14 +1,9 @@
 ---
-title: Disk Encryption
+title: Encrypting Ops Manager VM disks
 owner: Security
 ---
 
-This topic describes how to secure <%= vars.ops_manager_first %> VMs by encrypting their disks or rotating their disk encryption keys.
-
-
-## <a id='overview'></a> Overview
-
-Disk encryption protects data integrity if computing resources are stolen physically.
+This topic describes how you can secure <%= vars.ops_manager_first %> VMs by encrypting their disks or rotating their disk encryption keys. Disk encryption protects data integrity if computing resources are stolen physically.
 
 Disk encryption for VMs works at the IaaS level. An IaaS encrypts disks when it first creates them, or re-encrypts them when it rotates encryption keys. To encrypt disks in <%= vars.ops_manager %>, you must:
 
@@ -18,7 +13,7 @@ Disk encryption for VMs works at the IaaS level. An IaaS encrypts disks when it 
 
 The procedures below describe how to do this for each IaaS.
 
-### <a id='disks'></a> Disks You Can Encrypt on an <%= vars.ops_manager %> VM
+### <a id='disks'></a> Disks you can encrypt on an <%= vars.ops_manager %> VM
 
 The disks you can encrypt on an <%= vars.ops_manager %> VM are:
 
@@ -28,7 +23,7 @@ The disks you can encrypt on an <%= vars.ops_manager %> VM are:
 
 * Persistent disk for the VM.
 
-### <a id='scopes'></a> Which VMs Each Procedure Encrypts
+### <a id='scopes'></a> VMs encrypted by each procedure
 
 For each IaaS, there are two disk encryption procedures, which encrypt different VMs:
 
@@ -36,8 +31,7 @@ For each IaaS, there are two disk encryption procedures, which encrypt different
 
 * The **BOSH-deployed VM** procedure encrypts disks for the VMs that the BOSH Director creates, after BOSH has been deployed.
 
-
-## <a id='encrypt-rotate'></a> Encrypt Disks or Rotate Keys
+## <a id='encrypt-rotate'></a> Encrypt disks or rotate keys
 
 You can use the same procedure to either encrypt disks for the first time or rotate encryption keys.
 
@@ -56,11 +50,11 @@ Azure provides virtual disk space through Azure Storage accounts. In some region
 
 For more information about Azure Storage, see [Introduction to Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction) in the Microsoft Azure documentation. For more information about managed disks, see [Introduction to Azure managed disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview) in the Microsoft Azure documentation.
 
-#### <a id='azure-sa-vs-md'></a> Managed Disks versus Unmanaged Storage Accounts
+#### <a id='azure-sa-vs-md'></a> Managed disks versus unmanaged storage accounts
 
 For disk encryption, <%= vars.company_name %> recommends managed disk storage where available. With managed disks, encryption keys are managed by the IaaS, so you do not supply your own keys. You also do not need to re-create VMs after encrypting disks or rotating encryption keys, because the IaaS propagates the change to all VMs automatically.
 
-#### <a id='azure-vms'></a> Encrypt Azure Disks
+#### <a id='azure-vms'></a> Encrypt Azure disks
 
 To initiate or rotate disk encryption for BOSH-deployed VMs on Azure:
 
@@ -120,7 +114,7 @@ To encrypt BOSH-deployed VMs and the <%= vars.ops_manager %> VM on AWS, see [Con
 
 For more information about how BOSH integrates with IaaS-level disk encryption on AWS, see [Encryption](https://bosh.io/docs/aws/#encryption) in _Amazon Web Services_ in the BOSH documentation.
 
-### <a id='recreate'></a> Recreate BOSH-Deployed Disks
+### <a id='recreate'></a> Recreate BOSH-deployed disks
 
 Unless you are using Azure managed disks, you must manually recreate disks on BOSH-deployed VMs after you have added or rotated disk encryption keys. To manually recreate disks:
 

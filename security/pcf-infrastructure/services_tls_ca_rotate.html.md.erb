@@ -1,19 +1,15 @@
 ---
-title: Rotating the Services TLS CA and its Leaf Certificates
+title: Rotating the Services TLS CA and its leaf certificates
 owner: Ops Manager
 ---
 
-<p class='note'><strong>Note:</strong> The preferred method for rotating the Services TLS CA and its leaf certificates in <%= vars.ops_manager %> v2.9 and later is to use CredHub Maestro. If all of the service tiles in your deployment are compatible with Maestro</a>, then use the procedure documented in <a href="advanced-certificate-rotation.html#services-rotation">Advanced Certificate Rotation with CredHub Maestro</a> instead of this procedure. To determine whether your tiles are compatible with Maestro, see <a href="maestro-tile-compatibility.html">CredHub Maestro Tile Compatibility</a>.</p>
+This topic describes the Services TLS Certificate Authority (CA) and explains how you can rotate the Services TLS CA certificate and its leaf certificates in <%= vars.ops_manager_first %>.
 
-* Services TLS CA Overview
-* Prerequisites for Rotating the Services TLS CA
-* Procedure for Rotating the Services TLS CA
+<p class='note'><strong>Note:</strong> The preferred method for rotating the Services TLS CA and its leaf certificates in <%= vars.ops_manager %> v2.9 and later is to use CredHub Maestro. If all of the service tiles in your deployment are compatible with Maestro, then use the procedure in <a href="advanced-certificate-rotation.html#services-rotation">Advanced Certificate Rotation with CredHub Maestro</a> instead of this procedure. To determine whether your tiles are compatible with Maestro, see <a href="maestro-tile-compatibility.html">CredHub Maestro Tile Compatibility</a>.</p>
 
-This topic provides an overview of the Services TLS Certificate Authority (CA) and a procedure for rotating the Services TLS CA certificate and its leaf certificates.
+## <a id='services-tls-ca-overview'></a> About the Services TLS CA
 
-## <a id='services-tls-ca-overview'></a> Services TLS CA Overview
-
-In a <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> deployment, the Services TLS CA signs the certificate that service brokers use to sign leaf certificates for TLS-enabled service instances.
+In an <%= vars.ops_manager %> and <%= vars.app_runtime_first %> deployment, the Services TLS CA signs the certificate that service brokers use to sign leaf certificates for TLS-enabled service instances.
 
 Service instances include instances created by on-demand services such as <%= vars.on_demand_service_tiles %>. You may have one or more of these service tiles installed in your deployment. All deployed service tiles in a foundation use the same Services TLS CA certificate, which is stored in BOSH CredHub with the name `/services/tls_ca`.
 
@@ -27,7 +23,7 @@ When an operator creates an on-demand TLS enabled service instance or updates an
 In the following procedure, BOSH rotates leaf certificates
 when you select the upgrade all service instances errand for an on-demand service tile and apply changes in <%= vars.ops_manager %>.
 
-## <a id='prerequisites'></a> Prerequisites for Rotating the Services TLS CA Certificate
+## <a id='prerequisites'></a> Prerequisites for rotating the Services TLS CA certificate
 
 Before you begin this rotation procedure, ensure that you have the following:
 
@@ -53,12 +49,12 @@ There is a potential for app downtime in the following specific cases:<br><br>
     <li>If you are using Redis for Pivotal Platform v2.2 or v2.3 and use this procedure to rotate the Services TLS CA certificate, you may experience downtime for apps that bind to Redis service instances. To workaround the issue in v2.2 or 2.3, see this <a href="https://community.pivotal.io/s/article/Redis-On-Demand-Services-do-not-rotated-services-tls-ca-leaf-certs">Knowledgebase Article</a>. This issue is fixed in Redis for VMware Tanzu Application Service v2.4.1.</li>
     </ul></div>
 
-## <a id='tls'></a> Procedure for Rotating the Services TLS CA Certificate
+## <a id='tls'></a> Procedure for rotating the Services TLS CA certificate
 
 This section provides the procedure to rotate the Services TLS CA certificate
 and update all its leaf certificates.
 
-### <a id='checkexpdate'></a> Verify the Expiration Status of Services TLS CA Certificate
+### <a id='checkexpdate'></a> Verify the expiration status of Services TLS CA certificate
 
 Before starting the rotation, check that the Services TLS CA certificate has not already expired.
 
@@ -84,7 +80,7 @@ To check the expiration date:
     The expiration date for the certificate is the value of `Not After`.
 1. If your Services TLS CA certificate has already expired, follow the procedure in the [Knowledgebase Article](https://community.pivotal.io/s/article/How-to-rotate-and-already-expired-services-tls-ca-certificate) to rotate the certificate instead of the procedure in this topic.
 
-### <a id='obtainorgenerate'></a> Obtain or Generate a New Services TLS CA Certificate
+### <a id='obtainorgenerate'></a> Obtain or generate a new Services TLS CA certificate
 
 To obtain or generate a new Services TLS CA certificate:
 
@@ -135,7 +131,7 @@ To obtain or generate a new Services TLS CA certificate:
         - `duration` is set to `1825`, which is a recommended value of five years. If you do not specify a duration, the default value is `365` or one year.
         - `ca` is the path to the root CA for the new certificate. Replace `PATH-TO-ROOT-CA` with the appropriate path for the root CA.
 
-### <a id='addnewandold'></a> Add Certificates to <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>
+### <a id='addnewandold'></a> Add certificates to <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>
 
 To add your new and current Services TLS CA certificate to <%= vars.ops_manager %>:
 
@@ -157,7 +153,7 @@ To add your new and current Services TLS CA certificate to <%= vars.ops_manager 
 1. In the <%= vars.app_runtime_abbr %> and Isolation Segment tiles, paste both certificates into the **Networking** > <%= vars.ca_trust_gorouter_haproxy_fields %>.
 1. Click **Save**.
 
-### <a id='applychanges1'></a> Apply Changes for the First Time
+### <a id='applychanges1'></a> Apply changes for the first time
 
 <p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
 all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
@@ -180,7 +176,7 @@ To apply these changes:
         <p class='note'><strong>Note:</strong> The name of the upgrade all service instances errand may differ slightly between services.</p>
 1. Click **Apply Changes**.
 
-### <a id='setnew'></a> Set New Services TLS CA Certificate
+### <a id='setnew'></a> Set new Services TLS CA certificate
 
 To set the new Services TLS CA certificate:
 
@@ -212,7 +208,7 @@ To set the new Services TLS CA certificate:
         --private=new_ca.private_key
         ```
 
-### <a id='applychanges2'></a> Apply Changes for the Second Time
+### <a id='applychanges2'></a> Apply changes for the second time
 
 <p class='note caution'><strong>Caution:</strong> This procedure involves redeploying
   all of the VMs in your <%= vars.ops_manager %> deployment to apply a CA certificate. The
@@ -232,7 +228,7 @@ To apply these changes:
         <p class='note'><strong>Note:</strong> The name of the upgrade all service instances errand may differ slightly between services.</p>
 1. Click **Apply Changes**.
 
-### <a id='remove'></a> Remove the Old Services TLS CA Certificate
+### <a id='remove'></a> Remove the old Services TLS CA certificate
 
 After your apps have reconnected to service instances with new certificates,
 remove the old CA certificate:
@@ -254,7 +250,7 @@ Director** tile.
 
 1. Click **Save**.
 
-### <a id='applychanges3'></a> Apply Changes for the Third Time
+### <a id='applychanges3'></a> Apply changes for the third time
 
 As a security best practice, you should remove outdated certificates as soon as possible from your deployment.
 You can schedule this step at a convenient time. Most deployments
