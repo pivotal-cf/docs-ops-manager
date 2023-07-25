@@ -1,12 +1,11 @@
 ---
-title: Rotating Certificates with Customer-Provided CAs
+title: Rotating Ops Manager certificates with customer-provided CAs
 owner: Ops Manager
 ---
 
-This topic describes how to handle customer-provided certificate authorities (CAs) during a <%= vars.ops_manager_first %> certificate rotation.
+This topic describes how you can handle customer-provided certificate authorities (CAs) when rotating <%= vars.ops_manager_first %> certificates.
 
-
-## <a id='overview'></a> Overview of Customer-Provided CAs
+## <a id='overview'></a> Overview of customer-provided CAs
 
 If you have customer-provided CAs, CredHub Maestro requires that you perform manual steps at the beginning of the certificate rotation process to correctly handle those customer-provided CAs.
 
@@ -19,8 +18,7 @@ To handle customer-provided CAs, you can use one of two methods:
 - **Method Two:** If you are already in the process of rotating certificates, see [Method Two: Manually Replace the Customer-Provided CAs](#method-two). You can use this procedure after encountering the following Maestro error:
    <pre>certificate authorities latest version is not transitional</pre>
 
-
-## <a id='ca-check'></a> Check for Customer-Provided CAs
+## <a id='ca-check'></a> Check for customer-provided CAs
 
 Before you rotate CAs, you can check to see if you have customer-provided CAs. If you do have customer-provided CAs, this section also describes where to find and record the CredHub path.
 
@@ -53,7 +51,7 @@ You can identify customer-provided CAs in one of the following ways:
 
 If no Customer-provided CAs are found, then Certificate Rotation can proceed as normal, and the remainder of this document can be ignored.
 
-## <a id='method-one'></a> Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs
+## <a id='method-one'></a> Method One: Tell CredHub Maestro to ignore customer-provided CAs
 
 Pass the list of CredHub paths to the customer-provided CAs to the `exclude_from_rotation` parameter to either the `api/v0/certificate_authorities/generate` or the `api/v0/certificate_authorities` endpoint.
 
@@ -71,7 +69,7 @@ The payload that must be provided to the request has the following structure:
 
 <p class='note caution'><strong>Caution:</strong> the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption during the certificate rotation process.</p>
 
-## <a id='method-two'></a> Method Two: Manually Replace the Customer-Provided CAs
+## <a id='method-two'></a> Method Two: Manually replace the customer-provided CAs
 
 This method must be performed after rotation has been started; it cannot be performed before rotation has started. It must be performed immediately after rotation has been started, but can be performed after Maestro emits the `certificate authorities latest version is not transitional` error.
 

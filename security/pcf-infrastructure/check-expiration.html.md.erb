@@ -1,23 +1,13 @@
 ---
-title: Checking Expiration Dates and Certificate Types
+title: Checking Ops Manager certificate expiration dates and types
 owner: Ops Manager
 ---
 
-This topic describes how to check the expiration dates and types of the certificate authorities (CAs) and leaf certificates that the <%= vars.ops_manager_first %> API manages. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
-
-
-## <a id='overview'></a> Overview
-
-There are two ways to manually check the expiration dates and types of the certificates that the <%= vars.ops_manager %> API manages:
-
-* Through the <%= vars.ops_manager %> UI. For more information, see [Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> UI](#check-ui).
-
-* Through the <%= vars.ops_manager %> API. For more information, see [Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> API](#check-api).
+This topic describes how you can use the <%= vars.ops_manager_first %> UI or API to manually check the expiration dates and types of the certificate authorities (CAs) and leaf certificates managed by the <%= vars.ops_manager %> API. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
 
 To configure Concourse to automatically monitor expiring certificates, you can use Platform Automation. For more information, see [expiring-certificates](https://docs.pivotal.io/platform-automation/v4.1/tasks.html#expiring-certificates) in the Platform Automation documentation.
 
-
-## <a id='check-ui'></a> Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> UI
+## <a id='check-ui'></a> Check expiration dates and certificate types through the <%= vars.ops_manager %> UI
 
 The **Certificates** page in the <%= vars.ops_manager %> UI lists the certificates your deployment uses. It is divided into two sections, **Certificates** and **Excluded certificates**.
 
@@ -50,7 +40,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
     <p class='note caution'><strong>Caution:</strong> The <strong>Excluded certificates</strong> section lists certificates that you cannot safely rotate using the methods described in this topic. To rotate the Services TLS CA certificate and its leaf certificates, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>. For all other certificates listed in <strong>Excluded certificates</strong>, contact <a href="https://tanzu.vmware.com/support">Support</a> for guidance.</p>
 
 
-## <a id='check-api'></a> Check Expiration Dates and Certificate Types Through the <%= vars.ops_manager %> API
+## <a id='check-api'></a> Check expiration dates and certificate types through the <%= vars.ops_manager %> API
 
 To check certificate expiration dates and types through the <%= vars.ops_manager %> API:
 

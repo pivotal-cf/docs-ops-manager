@@ -1,22 +1,15 @@
 ---
-title: Reviewing and Resetting Manually Set Certificates in BOSH CredHub
+title: Resetting manually-set certificates in BOSH CredHub
 owner: Security
 ---
 
-This topic describes how you can identify and update certificates that either you or another operator have set manually in BOSH CredHub.
+This topic describes how you can identify and update certificates that were set manually: certificates that an operator added directly to BOSH CredHub through the CredHub CLI instead of using a CredHub-generated certificate. For example, an operator might have provided an existing certificate to BOSH CredHub as described in the [VMware SQL with MySQL for Tanzu Application Service documentation](https://docs.vmware.com/en/VMware-SQL-with-MySQL-for-Tanzu-Application-Service/3.0/mysql-for-tas/prepare-tls.html).
 
-
-## <a id='overview'></a> Overview on how to Identify and Update Certificates
-
-A manually set certificate is a certificate that an operator has added directly to BOSH CredHub through the CredHub CLI instead of using a CredHub-generated certificate.
-
-For example, you or another operator might have provided an existing certificate to BOSH CredHub as described in [Preparing for TLS](https://docs.pivotal.io/p-mysql/2-5/prepare-tls.html) in the MySQL for Pivotal Platform documentation.
-
-To ensure that <%= vars.ops_manager_first %> does not rotate these certificates alongside CredHub-generated certificates, you must ensure that the `generated` field of all manually set certificates is set to `false` in CredHub.
+To ensure that <%= vars.ops_manager_first %> does not rotate manually-set certificates alongside CredHub-generated certificates, you must ensure that the `generated` field of all manually set certificates is set to `false` in CredHub.
 
 In this procedure, use the CredHub CLI to review existing certificates and then check for manually set certificates. If you find any manually set certificates that require updates, you can use the CredHub CLI to reset the certificate.
 
-### <a id='credhub-creds'></a> Find BOSH Client Credentials and BOSH Director IP Address
+### <a id='credhub-creds'></a> Find BOSH client credentials and BOSH Director IP address
 
 You need the BOSH client name and client secret to use the CredHub CLI.
 
@@ -47,7 +40,7 @@ To find the BOSH CredHub client name and client secret:
 1. In the **BOSH Director** row, locate and record the IP address of the BOSH Director. For example, `10.0.0.5`.
 
 
-## <a id='login-credhub'></a> Target and Log in to the BOSH CredHub API Server
+## <a id='login-credhub'></a> Target and log in to the BOSH CredHub API server
 
 You can run CredHub CLI commands on the <%= vars.ops_manager %> VM.
 
@@ -73,7 +66,7 @@ To log in to and access the CredHub API:
     * `CREDHUB-CLIENT-SECRET` is the value you recorded for `BOSH_CLIENT_SECRET` in [Find BOSH Client Credentials and BOSH Director IP Address](#credhub-creds).
 
 
-## <a id='check-credhub-certs'></a> Check Certificates in CredHub
+## <a id='check-credhub-certs'></a> Check certificates in CredHub
 
 After you log in to CredHub, you can query the CredHub API on the command line.
 
@@ -107,7 +100,7 @@ To retrieve a list of CredHub certificates:
 1. For each certificate where `generated` value is `null`, follow the procedure in [Reset a Certificate in CredHub](#reset-certificates).
 
 
-## <a id='reset-certificates'></a> Reset a Certificate in CredHub
+## <a id='reset-certificates'></a> Reset a certificate in CredHub
 
 To reset a certificate in CredHub:
 

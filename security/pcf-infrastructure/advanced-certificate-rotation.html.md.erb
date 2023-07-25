@@ -1,14 +1,13 @@
 ---
-title: Advanced Certificate Rotation with CredHub Maestro
+title: Advanced certificate rotation with CredHub Maestro
 owner: CredHub Maestro
 ---
 
-This topic describes how to rotate certificates and certificate authorities (CAs) in BOSH CredHub using CredHub Maestro. The topic only covers rotating CredHub-managed certificates.
+This topic describes how you can rotate certificates and certificate authorities (CAs) in BOSH CredHub using CredHub Maestro. The topic only covers rotating certificates that are managed by CredHub.
 
 For more information about setting up and using CredHub Maestro, see [Getting Started with CredHub Maestro](getting-started-with-maestro-cli.html).
 
-
-## <a id='when-to-use'></a> When to Use CredHub Maestro for Certificate Rotation
+## <a id='when-to-use'></a> When to use CredHub Maestro for certificate rotation
 
 <%= vars.company_name %> recommends that you use the <%= vars.ops_manager_first %> API to perform bulk rotation of certificates. For more information, see [Overview of Certificate Rotation](api-cert-rotation.html).
 
@@ -35,7 +34,7 @@ Before you rotate CredHub-managed certificates with CredHub Maestro:
   For more information about which tiles support certificate rotation,
   see [CredHub Maestro Tile Compatibility](maestro-tile-compatibility.html).
 
-## <a id='check-expiration'></a> Check Expiration Dates and Certificate Types
+## <a id='check-expiration'></a> Check expiration dates and certificate types
 
 This section describes how to manually check the expiration dates of the CAs and leaf certificates managed by CredHub.
 
@@ -53,7 +52,7 @@ To check certificate expiration dates and types:
 1. After you identify the list of certificates that expire soon, follow the procedure in [Rotate Certificates](#rotate-certs).
 
 
-## <a id='rotate-certs'></a> Rotate Certificates
+## <a id='rotate-certs'></a> Rotate certificates
 
 This section explains how to rotate leaf certificates and CAs stored in CredHub. There are different rotation procedures for each type of certificate that requires rotation.
 
@@ -75,7 +74,7 @@ To rotate certificates, follow one of the following procedures:
 
 <p class='note'><strong>Note:</strong> All CredHub Maestro rotation commands have a dry-run flag that can be used to preview the certificates to be modified.</p>
 
-### <a id='safety-checks'></a> Safety Checks
+### <a id='safety-checks'></a> Safety checks
 
 CredHub Maestro performs basic safety checks when rotating certificates to prevent unsafe operations.
 
@@ -83,7 +82,7 @@ To skip CredHub Maestro safety checks, you can pass the `--skip-safety-check` fl
 
 For more information, see [Troubleshooting CredHub Maestro Safety Violations During Certificate Rotation](troubleshoot-cert-errors.html).
 
-### <a id='bulk-rotation'></a> Rotate All CAs and Leaf Certificates
+### <a id='bulk-rotation'></a> Rotate all CAs and leaf certificates
 
 This section describes the procedure for bulk rotating all CAs and leaf certificates using CredHub Maestro.
 
@@ -163,7 +162,7 @@ will be trusted by clients. Run:
 
     5. Click **Apply Changes**.
 
-### <a id='leaf-rotation'></a> Rotating All Leaf Certificates
+### <a id='leaf-rotation'></a> Rotating all leaf certificates
 
 This section describes the procedure for bulk rotating all leaf certificates using CredHub Maestro.
 
@@ -193,7 +192,7 @@ To rotate all leaf certificates in CredHub:
 
     1. Click **Apply Changes**.
 
-### <a id='single-rotation'></a> Rotate a Single CA and Its Leaf Certificates
+### <a id='single-rotation'></a> Rotate a single CA and its leaf certificates
 
 This section describes the procedure for rotating a single CA and its leaf certificates.
 
@@ -234,7 +233,7 @@ To rotate a single CA and its leaf certificates:
 
 1. Re-deploy all deployments that use the CA.
 
-### <a id='services-rotation'></a> Rotate the Services TLS CA and Its Leaf Certificates
+### <a id='services-rotation'></a> Rotate the Services TLS CA and its leaf certificates
 
 <%= partial 'minimum-duration' %>
 
@@ -413,7 +412,7 @@ To rotate a CredHub-set CA:
 
     1. Click **Apply Changes**.
 
-### <a id='set-leaf-certificate-rotation'></a> Rotate CredHub-set Leaf Certificates
+### <a id='set-leaf-certificate-rotation'></a> Rotate CredHub-set leaf certificates
 
 This section describes the procedure for rotating leaf certificates that are manually set in CredHub.
 
@@ -452,7 +451,7 @@ To rotate a CredHub-set leaf certificate:
     1. Click **Apply Changes**.
 
 
-## <a id='garbage-collection'></a> Delete Inactive Certificate Versions
+## <a id='garbage-collection'></a> Delete inactive certificate versions
 
 Over the course of many rotations, it is possible for the CredHub database to fill up. In order to prevent this, you can periodically use CredHub Maestro's garbage collect functionality to delete old, unused certificate versions.
 
@@ -466,7 +465,7 @@ To see if you need to run garbage collect, do one of the following:
 
 <p class='note caution'><strong>Caution:</strong> To enhance the safety of the garbage collect command, CredHub Maestro only deletes versions of a certificate older than the currently active version. To delete all inactive versions of CAs or leaf certificates, add the <code>--force</code> flag to the garbage collect command. <%= vars.company_name %> does not recommend using the <code>--force</code> flag during a rotation.</p>
 
-### <a id='leaf-cert-cleanup'></a> Delete All Leaf Certificates
+### <a id='leaf-cert-cleanup'></a> Delete all leaf certificates
 
 To delete all leaf certificates:
 
@@ -482,7 +481,7 @@ To delete all leaf certificates:
     maestro garbage-collect leaf --all
     ```
 
-### <a id='ca-cleanup'></a> Delete All CAs
+### <a id='ca-cleanup'></a> Delete all CAs
 
 To delete all CAs:
 
@@ -498,7 +497,7 @@ To delete all CAs:
     maestro garbage-collect ca --all
     ```
 
-### <a id='single-leaf-cert-cleanup'></a> Delete a Single Leaf Certificate
+### <a id='single-leaf-cert-cleanup'></a> Delete a single leaf certificate
 
 To delete a single leaf certificate:
 
@@ -514,7 +513,7 @@ To delete a single leaf certificate:
     maestro garbage-collect leaf --name "LEAF-CERTIFICATE-NAME"
     ```
 
-### <a id='single-ca-cleanup'></a> Delete a Single CA
+### <a id='single-ca-cleanup'></a> Delete a single CA
 
 To delete a single CA:
 

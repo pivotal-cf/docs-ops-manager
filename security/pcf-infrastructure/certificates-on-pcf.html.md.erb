@@ -1,12 +1,11 @@
 ---
-title: Certificates on Ops Manager
+title: Sources and uses for certificates in Ops Manager
 owner: Security
 ---
 
-This topic describes the sources and uses for certificates to secure both internal and external networking calls in <%= vars.ops_manager_first %>.
+This topic describes <%= vars.ops_manager_first %> certificate sources, and how <%= vars.ops_manager %> uses certificates to secure both internal and external networking calls.
 
-
-## <a id='sources'></a> Certificate Sources
+## <a id='sources'></a> Certificate sources
 
 Certificates in <%= vars.ops_manager %> originate from these sources:
 
@@ -14,7 +13,7 @@ Certificates in <%= vars.ops_manager %> originate from these sources:
 
 * [CredHub](#credhub).
 
-### <a id='enterprise-root-ca'></a> Enterprise Root CA
+### <a id='enterprise-root-ca'></a> Enterprise root CA
 
 An enterprise root CA is able to grant itself a certificate and create subordinate CAs. Domains require an enterprise root CA to enable clients to request certificates.
 

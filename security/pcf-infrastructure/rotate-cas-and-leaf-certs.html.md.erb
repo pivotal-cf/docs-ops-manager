@@ -1,22 +1,17 @@
 ---
-title: Rotating CAs and Leaf Certificates
+title: Rotating CAs and leaf certificates using the Ops Manager API
 owner: Ops Manager
 ---
 
-This topic describes how to rotate certificate authorities (CAs) and leaf certificates using the <%= vars.ops_manager %> API. To rotate only leaf certificates, see one of the leaf certificate rotation topics listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.
+This topic describes how you can rotate certificate authorities (CAs) and leaf certificates using the <%= vars.ops_manager_first %> API. To rotate only leaf certificates, see one of the leaf certificate rotation topics listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.
 
-
-## <a id='overview'></a> Overview on Rotating Certificate Authorities and Leaf Certificates
-
-This procedure uses the <%= vars.ops_manager %> API to rotate the <%= vars.ops_manager_first %> root CA and leaf certificates. When you rotate the <%= vars.ops_manager %> root CA, the <%= vars.ops_manager %> API automatically rotates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
+This procedure uses the <%= vars.ops_manager %> API to rotate the <%= vars.ops_manager %> root CA and leaf certificates. When you rotate the <%= vars.ops_manager %> root CA, the <%= vars.ops_manager %> API automatically rotates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
 
 This procedure includes three redeploys. The first deploy adds the new CA certificates to <%= vars.ops_manager %> components. The second deploy replaces the old leaf certificates with the new leaf certificates. The third deploy removes the old CA certificates, leaving only the new CA certificates.
-
 
 ## <a id='prerequisites'></a> Prerequisites
 
 <%= partial "rotate-cas-certs-prereqs" %>
-
 
 ## <a id='procedure'></a> Procedure
 
@@ -39,7 +34,7 @@ To rotate CAs, configurable leaf certificates, and non-configurable leaf certifi
 <p class='note caution'><strong>Caution:</strong> The Services TLS CA, <code>/services/tls_ca</code>,
 cannot be rotated using this procedure. For information about how to rotate the Services TLS CA, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
 
-### <a id='add-new-ca'></a> Step 1: Add New CAs
+### <a id='add-new-ca'></a> Step 1: Add new CAs
 
 This section describes how to add a new root CA for <%= vars.ops_manager %>. The new root CA can be an <%= vars.ops_manager %>-generated CA or your own custom CA.
 
@@ -258,7 +253,7 @@ To activate the CAs that you added in [Add New CAs](#add-new-ca):
 
 1. Examine the response to ensure that your new root CA has the `active` property set to `true`.
 
-### <a id='rotate-config-after-new-root'></a> Step 3: Rotate Configurable Leaf Certificates
+### <a id='rotate-config-after-new-root'></a> Step 3: Rotate configurable leaf certificates
 
 Any configurable leaf certificates generated from the <%= vars.ops_manager %> root CA must be rotated. These are the leaf certificates that you generated using the **Generate RSA Certificate** button in the <%= vars.ops_manager %> UI. For example, see [Providing a Certificate for Your TLS Termination Point](https://docs.pivotal.io/application-service/operating/security_config.html) in the <%= vars.app_runtime_abbr %> documentation.
 
@@ -273,7 +268,7 @@ To regenerate and rotate each configurable leaf certificate that expires soon:
 
 1. Click **Save** at the bottom of each pane in which you added new leaf certificates.
 
-### <a id='regenerate-from-new-root'></a> Step 4: Rotate Non-Configurable Leaf Certificates from the New CAs
+### <a id='regenerate-from-new-root'></a> Step 4: Rotate non-configurable leaf certificates from the new CAs
 
 After activating the new <%= vars.ops_manager %> root CA and other CAs, you must rotate non-configurable leaf certificates from the new CAs.
 
@@ -335,7 +330,7 @@ To rotate non-configurable leaf certificates:
 
 1. When the deploy finishes and you have completed all necessary tasks to update service instances, continue to the next section, [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete).
 
-### <a id='delete'></a> Step 5: Delete the Old Root CA and Mark Old CAs in CredHub as Inactive
+### <a id='delete'></a> Step 5: Delete the old root CA and mark old CAs in CredHub as inactive
 
 After you activate the new CAs and rotate leaf certificates from the new CAs, you must:
 
@@ -418,7 +413,7 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
 
         Where `SERVICE-INSTANCE-DEPLOYMENT` is the BOSH deployment name for the service instance.
 
-## <a id='specialized-procedures'></a> Certificates with Specialized Procedures
+## <a id='specialized-procedures'></a> Certificates with specialized procedures
 
 Some certificates are not rotated when using the standard rotation procedure. The following table lists certificates that use a separate, specialized rotation procedure and provides links to documentation and Knowledge Base articles to help you rotate these certificates.
 

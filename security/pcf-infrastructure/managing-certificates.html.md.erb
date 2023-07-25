@@ -1,18 +1,9 @@
 ---
-title: Managing Certificates with the Ops Manager API
+title: Managing certificates with the Ops Manager API
 owner: Ops Manager
 ---
 
-This topic describes how to manage and retrieve information about certificates in <%= vars.ops_manager_first %> using the <%= vars.ops_manager %> API.
-
-
-## <a id='overview'></a> Overview on how to Manage and Retrieve Information on Certificates
-
-The <%= vars.ops_manager %> API includes endpoints for managing and retrieving information about certificates in an <%= vars.ops_manager %> deployment.
-
-For more information about <%= vars.ops_manager %> API endpoints for managing certificates, see the [<%= vars.ops_manager %> API
-documentation](https://docs.pivotal.io/platform/opsman-api/#tag/Certificate-Authorities).
-
+This topic describes how you can use <%= vars.ops_manager_first %> API endpoints to manage and retrieve information about certificates in your <%= vars.ops_manager %> deployment. For more information about the <%= vars.ops_manager %> API endpoints for managing certificates, see the [<%= vars.ops_manager %> API documentation](https://docs.pivotal.io/platform/opsman-api/#tag/Certificate-Authorities).
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -22,7 +13,7 @@ To use the <%= vars.ops_manager %> API, you must generate an access token by aut
 For more information about authenticating with UAA, see [Using the <%= vars.ops_manager %> API](../../install/ops-man-api.html).
 
 
-## <a id='generate-rsa-certs'></a> Generate a Single RSA Certificate
+## <a id='generate-rsa-certs'></a> Generate a single RSA certificate
 
 To generate and retrieve a new RSA certificate signed by the root certificate authority (CA):
 
@@ -42,11 +33,11 @@ To generate and retrieve a new RSA certificate signed by the root certificate au
     characters such as `\n`.
 
 
-## <a id='root-certs'></a> Retrieve the <%= vars.ops_manager %> Root CA
+## <a id='root-certs'></a> Retrieve the <%= vars.ops_manager %> root CA
 
 You can view the <%= vars.ops_manager %> root CA as a file or in JSON format.
 
-### <a id='root-certs-file-ui'></a> Retrieve the <%= vars.ops_manager %> Root CA as a File Through the <%= vars.ops_manager %> UI
+### <a id='root-certs-file-ui'></a> Retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %> UI
 
 To retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %>
 UI:
@@ -60,7 +51,7 @@ UI:
 1. Select **Download Root CA Cert**. Your browser downloads the <%= vars.ops_manager %> root
 CA certificate file.
 
-### <a id='root-certs-file'></a> Retrieve the <%= vars.ops_manager %> Root CA as a File Through the <%= vars.ops_manager %> API
+### <a id='root-certs-file'></a> Retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %> API
 
 To retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %>
 API:
@@ -79,7 +70,7 @@ API:
     * `UAA-ACCESS-TOKEN` is your <%= vars.ops_manager %> access token without any newline
     characters such as `\n`.
 
-### <a id='root-certs-json'></a> Retrieve the <%= vars.ops_manager %> Root CA in JSON Format
+### <a id='root-certs-json'></a> Retrieve the <%= vars.ops_manager %> root CA in JSON format
 
 To retrieve the <%= vars.ops_manager %> root CA in JSON format:
 
@@ -98,7 +89,7 @@ To retrieve the <%= vars.ops_manager %> root CA in JSON format:
     characters such as `\n`.
 
 
-## <a id='list-rsa-certs'></a> List All RSA Certificates
+## <a id='list-rsa-certs'></a> List all RSA certificates
 
 To view metadata from all deployed RSA certificates visible to <%= vars.ops_manager %>, including
 the root CA and certificates that <%= vars.ops_manager %> stores in CredHub:

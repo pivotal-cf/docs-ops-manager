@@ -1,12 +1,11 @@
 ---
-title: Troubleshooting CredHub Maestro Safety Violations During Certificate Rotation
+title: Troubleshooting CredHub Maestro safety violations
 owner: CredHub
 ---
 
-This topic provides operators with information on how to troubleshoot safety violation errors that are returned when rotating certificates with either the <%= vars.ops_manager %> API or CredHub Maestro CLI.
+This topic provides information about how you can troubleshoot safety violation errors encountered when rotating certificates with either the <%= vars.ops_manager_first %> API or the CredHub Maestro CLI.
 
-
-## <a id='overview'></a> Overview of CredHub Maestro Safety Checks
+## <a id='overview'></a> About CredHub Maestro safety checks
 
 CredHub Maestro performs basic safety checks when rotating certificates to prevent unsafe operations.
 
@@ -20,8 +19,7 @@ For information about certificate rotation using the <%= vars.ops_manager %> API
 
 For information about using the CredHub Maestro CLI, see [Getting Started with CredHub Maestro](getting-started-with-maestro-cli.html).
 
-
-## <a id='skip-checks'></a> Skip Safety Checks
+## <a id='skip-checks'></a> Skip safety checks
 
 To skip CredHub Maestro safety checks in <%= vars.ops_manager %> API calls, you can pass `skip_safety_check=true` as a parameter to certificate rotation API endpoints.
 
@@ -29,12 +27,11 @@ To skip CredHub Maestro safety checks in the CredHub Maestro CLI, specify the `-
 
 <p class='note caution'><strong>Caution:</strong> Skipping safety checks is strongly discouraged. Use the option only if absolutely necessary. For example, you might want to skip safety checks if your CA has already expired and your apps are experiencing downtime. Skipping safety checks can help bring your apps back online faster. If certificates have expired, contact <%= vars.support_link %> for guidance.</p>
 
-
-## <a id='error_ref'></a> Troubleshoot Certificate Rotation Safety Violations
+## <a id='error_ref'></a> Troubleshoot certificate rotation safety violations
 
 This section lists known safety violations that might occur when using the <%= vars.ops_manager %> API or CredHub Maestro CLI to rotate certificates. Each table includes the literal safety violation message, describes the safety violation, and presents possible solutions to resolve the underlying cause.
 
-### <a id='multiple-signing-cas'></a> Multiple Signing Versions of a CA
+### <a id='multiple-signing-cas'></a> Multiple signing versions of a CA
 
 <div>
 <table class="nice">
@@ -107,7 +104,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='transitional-ca-detected'></a> Transitional Version of CA Detected
+### <a id='transitional-ca-detected'></a> Transitional version of CA detected
 
 <div>
 <table class="nice">
@@ -142,7 +139,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='multiple-active-child-certs'></a> Multiple Active Child Certificates
+### <a id='multiple-active-child-certs'></a> Multiple active child certificates
 
 <div>
 <table class="nice">
@@ -197,7 +194,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='ca-not-transitional'></a> Latest CA is Not Transitional
+### <a id='ca-not-transitional'></a> Latest CA is not transitional
 
 <div>
 <table class="nice">
@@ -243,7 +240,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='signing-version-transitional-req'></a> Signing Version Must Be Transitional
+### <a id='signing-version-transitional-req'></a> Signing version must be transitional
 
 <div>
 <table class="nice">
@@ -284,7 +281,7 @@ This section lists known safety violations that might occur when using the <%= v
 </div>
 
 
-### <a id='active-child-must-trust-signing-ca'></a> Active Child Must Trust Signing CA
+### <a id='active-child-must-trust-signing-ca'></a> Active child must trust signing CA
 
 <div>
 <table class="nice">
@@ -324,7 +321,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='ca-must-have-nontransitional-version'></a> CA Must Have a Non-Transitional Version
+### <a id='ca-must-have-nontransitional-version'></a> CA must have a non-transitional version
 
 <div>
 <table class="nice">
@@ -369,7 +366,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='non-latest-version-is-signing'></a> Signed By Non-Latest CA Version
+### <a id='non-latest-version-is-signing'></a> Signed by non-latest CA version
 
 <div>
 <table class="nice">
@@ -418,7 +415,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='active-not-latest'></a> Active Certificates Not Signed By Latest CA Detected
+### <a id='active-not-latest'></a> Active certificates not signed by latest CA detected
 
 <div>
 <table class="nice">
@@ -453,7 +450,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='active-not-latest'></a> Stale Leaf Certificates Detected
+### <a id='active-not-latest'></a> Stale leaf certificates detected
 
 <div>
 <table class="nice">
@@ -488,7 +485,7 @@ This section lists known safety violations that might occur when using the <%= v
 </table>
 </div>
 
-### <a id='transitional-ca-latest'></a> Transitional CA Detected as Latest CA
+### <a id='transitional-ca-latest'></a> Transitional CA detected as latest CA
 
 <div>
 <table class="nice">

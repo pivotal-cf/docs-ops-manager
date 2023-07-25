@@ -1,12 +1,11 @@
 ---
-title: Certificate Types
+title: Certificate types used by Ops Manager
 owner: Ops Manager
 ---
 
 This topic describes the types of certificates used in <%= vars.ops_manager_first %> that require planned rotation.
 
-
-## <a id='overview'></a> Overview
+## <a id='overview'></a> Overview of certificates in Ops Manager
 
 <%= vars.ops_manager %> uses certificate authorities (CAs) and various leaf certificates.
 CAs are self-signed certificates that issue leaf certificates. CAs can be custom or generated
@@ -27,8 +26,7 @@ with product upgrades.
 <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %> both use tile certificates in addition to their <%= vars.ops_manager %>
 certificates.
 
-
-## <a id='types'></a> Certificate Types
+## <a id='types'></a> Certificate types
 
 The following types of <%= vars.ops_manager %> certificates require planned rotation and
 can be viewed and managed with the <%= vars.ops_manager %> API:

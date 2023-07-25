@@ -3,24 +3,17 @@ title: Accessing BOSH CredHub with the CredHub CLI
 owner: Ops Manager
 ---
 
-This topic provides the procedure for accessing BOSH CredHub with the CredHub CLI.
+<%= vars.ops_manager_first %> stores some of its internal CA (certificate authority) and non-CA certificates in the BOSH CredHub credentials store. This topic describes how you can use the CredHub CLI to access BOSH CredHub.
 
 For example, you might need to access BOSH CredHub to rotate the Services TLS CA and its leaf certificates. For more information, see [Rotating the Services TLS
 CA and Its Leaf Certificates](services_tls_ca_rotate.html).
 
-
-## <a id='overview'></a> Bosh Credhub Overview
-
-<%= vars.ops_manager_first %> stores some of its internal CA (certificate authority) and non-CA certificates in the BOSH CredHub credentials store. For more
-information, see [BOSH CredHub](https://docs.pivotal.io/platform/credhub/#bosh).
-
-To access the BOSH CredHub credentials store, you must retrieve credentials from the BOSH Director and then use the credentials to log in to CredHub from the
-<%= vars.ops_manager %> VM.
-
+For information about BOSH CredHub, see the [CredHub documentation](https://docs.pivotal.io/platform/credhub/#bosh).
 
 ## <a id='credhub'></a> Procedure
 
-To access BOSH CredHub:
+To access the BOSH CredHub credentials store, you must retrieve credentials from the BOSH Director and then use the credentials to log in to CredHub from the
+<%= vars.ops_manager %> VM.
 
 1. In the <%= vars.ops_manager %> Installation Dashboard, click the **BOSH Director** tile.
 

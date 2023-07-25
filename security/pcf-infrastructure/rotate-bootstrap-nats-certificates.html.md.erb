@@ -1,12 +1,11 @@
 ---
-title: Using Short-Lived NATS Bootstrap Credentials
+title: Using short-lived NATS bootstrap credentials in Ops Manager
 owner: Ops Manager
 ---
 
-This topic describes using short lived NATS bootstrap credentials in your <%= vars.ops_manager_first %> deployment.
+This topic describes how you can use short-lived NATS bootstrap credentials in your <%= vars.ops_manager_first %> deployment.
 
-
-## <a id='overview'></a> Overview of Short-Lived NATS Bootstrap Credentials
+## <a id='overview'></a> Overview of short-lived NATS bootstrap credentials
 
 BOSH NATS is a service that allows the BOSH Director and BOSH Agents in deployed VMs to communicate with each other. The BOSH Director uses BOSH NATS to send
 commands and information to the BOSH Agent, so that the BOSH Agent can execute tasks or return information about the current state of the VM.
@@ -30,8 +29,7 @@ To learn about the stemcells that are compatible with short-lived bootstrap cred
 To configure your VMs to use short-lived bootstrap credentials when communicating through BOSH NATS, see [Configure Short-Lived NATS Bootstrap
 Credentials](#configure).
 
-
-## <a id='stemcells'></a> Stemcell Compatibility
+## <a id='stemcells'></a> Stemcell compatibility
 
 You can configure short-lived bootstrap credentials for VMs using the following stemcells:
 
@@ -48,8 +46,7 @@ You can configure short-lived bootstrap credentials for VMs using the following 
 
 If you configure short-lived bootstrap credentials for VMs using unsupported stemcells, the VMs become unresponsive.
 
-
-## <a id='configure'></a> Configure Short-Lived NATS Bootstrap Credentials
+## <a id='configure'></a> Configure short-lived NATS bootstrap credentials
 
 To configure your VMs to use short-lived bootstrap credentials when communicating through BOSH NATS:
 

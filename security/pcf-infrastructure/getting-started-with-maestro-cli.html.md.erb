@@ -1,14 +1,11 @@
 ---
-title: Getting Started with CredHub Maestro
+title: Getting started with CredHub Maestro
 owner: CredHub Maestro
 ---
 
-This topic describes setting up and using CredHub Maestro for CredHub.
+This topic describes how you can set up and use CredHub Maestro, a command-line interface (CLI) that rotates certificates in CredHub.
 
-
-## <a id='overview'></a> Overview of Setting up and Using CredHub Maestro
-
-CredHub Maestro is a command-line interface (CLI) that facilitates rotations of certificates in CredHub. Using CredHub Maestro, you can:
+Using CredHub Maestro, you can:
 
 * Determine if any of your CredHub certificates are expiring soon.
 
@@ -16,12 +13,11 @@ CredHub Maestro is a command-line interface (CLI) that facilitates rotations of 
 
 * Clean up inactive certificate versions so that CredHub does not run out of disk space.
 
-
-## <a id='setup-usage'></a> Set Up Environment Variables
+## <a id='setup-usage'></a> Set up environment variables
 
 This section describes setting up the environment variables you need to use CredHub Maestro.
 
-### <a id='required-env-vars'></a> Required Environment Variables
+### <a id='required-env-vars'></a> Required environment variables
 
 To set the CredHub environment variables you need to set up CredHub Maestro, follow the guidance in the following table:
 
@@ -38,7 +34,7 @@ To set BOSH environment variables, see [Advanced Troubleshooting with the BOSH C
 | CREDHUB_SECRET | CredHub client secret. This is the same as `BOSH_CLIENT_SECRET`. |
 | CREDHUB_CA_CERT | Path or value of CredHub trusted CA certificate. This is the same as `BOSH_CA_CERT`. |
 
-### <a id='maestro-outside-foundation'></a> Using CredHub Maestro from Outside Your Foundation
+### <a id='maestro-outside-foundation'></a> Using CredHub Maestro from outside your foundation
 
 To use CredHub Maestro from outside your foundation, you must also set the following variables in addition to the required environment variables:
 
@@ -47,7 +43,7 @@ To use CredHub Maestro from outside your foundation, you must also set the follo
 | BOSH_ALL_PROXY | SOCKS5 proxy address of BOSH Director jumpbox. |
 | CREDHUB_PROXY | SOCKS5 proxy address of CredHub jumpbox. |
 
-### <a id='optional-env-vars'></a> Optional Environment Variables
+### <a id='optional-env-vars'></a> Optional environment variables
 
 You can also set the following optional enviroment variables:
 
@@ -206,7 +202,7 @@ You can use the following flags with `maestro garbage-collect ca`:
 
 * `force`: Remove all inactive CAs.
 
-## <a id='safety-checks'></a> Safety Checks
+## <a id='safety-checks'></a> Safety checks
 
 CredHub Maestro performs basic safety checks when rotating certificates to prevent unsafe operations.
 
