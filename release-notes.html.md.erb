@@ -31,6 +31,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
+- **[Known Issue Fix]** Apply Changes no longer fails with "Extracting compiled package archive failed" when using certain versions of tiles.
 - **[Bug Fix]** API docs now load as expected (Javascript issues caused loading problems).
 
 <table border="1" class="nice">
@@ -58,6 +59,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
+- **[Known Issue]** Apply Changes can fail with "Extracting compiled package archive failed" when using certain versions of tiles. Doing a second Apply Changes afterwards should not encounter this error.
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes the full contents of `/var/log` and additional DNS configuration and information about disk space to help when diagnosing issues.
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes BOSH Director logs.
 - **[Feature]** Tiles can now be re-uploaded to <%= vars.ops_manager %>. You can re-upload tiles in cases where the BOSH releases or Tile metadata currently on the <%= vars.ops_manager %> instance are missing or corrupted.
