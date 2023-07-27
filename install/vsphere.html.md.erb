@@ -23,9 +23,9 @@ the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMwa
 
 This section describes the resource requirements for installing <%= vars.ops_manager %>.
 
-<p class='note'><strong>Note:</strong> If you are using the Cisco Nexus 1000v Switch, see the <a href="nexus-switch.html">Using the Cisco Nexus 1000v Switch with <%= vars.ops_manager %></a> for more information.</p>
+<p>n If you are using the Cisco Nexus 1000v Switch, see the <a href="nexus-switch.html">Using the Cisco Nexus 1000v Switch with <%= vars.ops_manager %></a> for more information.</p>
 
-<p class='note'><strong>Note:</strong> When installing <%= vars.ops_manager %> on a vSphere environment with multiple ESXi hosts, you must use network-attached or shared storage devices. Local storage devices do not support sharing across multiple ESXi hosts.</p>
+<p> When you install <%= vars.ops_manager %> on a vSphere environment with multiple ESXi hosts, you must use network-attached or shared storage devices. Local storage devices do not support sharing across multiple ESXi hosts.</p>
 
 ### <a id='version'></a> Version requirements
 
@@ -71,25 +71,25 @@ For more information about service account requirements, see the following topic
 
 * **<%= vars.app_runtime_abbr %>:** [vSphere Service Account Requirements](../vsphere/vsphere-service-account.html)
 
-* **<%= vars.k8s_runtime_abbr %>:** [Create the BOSH/<%= vars.ops_manager %> Service Account](https://docs.pivotal.io/pks/vsphere-prepare-env.html#create-bosh-ops-man) in _Preparing vSphere Before Deploying <%= vars.k8s_runtime_abbr %>_
+* **<%= vars.k8s_runtime_abbr %>:** [Create the BOSH/<%= vars.ops_manager %> Service Account](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-prepare-env.html#create-bosh-ops-man) in _Preparing vSphere Before Deploying <%= vars.k8s_runtime_abbr %>_
 
-<p class='note'><strong>Note:</strong> You can also apply the default <a href="http://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.pg.doc/PG_Appx_Privileges_Reference.22.4.html">VMware Administrator System Role</a> to the service account to achieve the appropriate permission level.</p>
+<p> You can also apply the default <a href="http://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.pg.doc/PG_Appx_Privileges_Reference.22.4.html">VMware Administrator System Role</a> to the service account to achieve the appropriate permission level.</p>
 
 ### <a id='security'></a> vSphere security documents
 
-The following guides contain best practices for securing and managing a vSphere installation:
+The following links contain best practices for securing and managing a vSphere installation:
 
-* [vSphere v6.5 Security Guide (PDF)](http://pubs.vmware.com/vsphere-65/topic/com.vmware.ICbase/PDF/vsphere-esxi-vcenter-server-65-security-guide.pdf)
+* [vSphere v6.5 Security Guide (PDF)](https://core.vmware.com/vmware-vsphere-65-security-configuration-guide)
 
-* [vSphere v6.7 Security Guide (PDF)](https://docs.vmware.com/en/VMware-vSphere/6.7/vsphere-esxi-vcenter-server-67-security-guide.pdf)
+* [vSphere v6.7 Release Notes](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-esxi-vcenter-server-67-release-notes.html)
 
-* [vSphere v7.0 Security Guide (PDF)](https://docs.vmware.com/en/VMware-vSphere/7.0/vsphere-esxi-vcenter-server-70-security-guide.pdf)
+* [vSphere v7.0 Security Guide (PDF)](https://docs.vmware.com/en/VMware-vSphere/7.0/vsphere-esxi-vcenter-server-703-security-guide.pdf)
 
 ## <a id='procedure'></a> Installation procedure
 
 This section describes the steps for installing <%= vars.ops_manager %>.
 
-### <a id='install-om'></a> Step 1: Install <%= vars.ops_manager %>
+### <a id='install-om'></a> Step 1: Installation <%= vars.ops_manager %>
 
 Complete the following procedures to install <%= vars.ops_manager %> on vSphere:
 
@@ -101,7 +101,7 @@ Complete the following procedures to install <%= vars.ops_manager %> on vSphere:
 
 See the following topics for additional configuration options:
 
-* [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html)
+* [vSphere Virtual Disk Types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/disk-format.html)
 
 * [Using the BOSH Resurrector](resurrector.html)
 
@@ -114,14 +114,15 @@ After completing the procedures above, configure a runtime.
 For information about installing and configuring a runtime, see the following:
 
 * **<%= vars.app_runtime_abbr %>:**
-    * **Without NSX-T:** [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html)
-    * **With NSX-T:** [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/operating/vsphere-nsx-t.html)
-        <p class='note'><strong>Note:</strong> You must install the NSX-T tile before you install or Upgrade the <%= vars.app_runtime_abbr %> tile.</p>
+    * **Without NSX-T:** [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html)
+    * **With NSX-T:** [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vsphere-nsx-t.html)
+
+    <p> You must install the NSX-T tile before you install or Upgrade the <%= vars.app_runtime_abbr %> tile.</p>
 
 * **<%= vars.k8s_runtime_abbr %>:**
-    * **Without NSX-T:** [Installing <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/tkgi/vsphere-index.html)
-    * **With NSX-T:** [Deploying NSX-T for <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/tkgi/nsxt-deploy.html)
+    * **Without NSX-T:** [Installing <%= vars.k8s_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-index.html)
+    * **With NSX-T:** [Installing NSX-T for <%= vars.k8s_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-installing-nsx-t.html)
 
-* [Installing and Configuring <%= vars.windows_runtime_abbr %>](https://docs.pivotal.io/application-service/windows/installing.html)
+* [Installing and Configuring <%= vars.windows_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/installing.html)
 
-* [Installing Small Footprint <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/small-footprint.html#install)
+* [Installing Small Footprint <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service//tas-for-vms/small-footprint.html)
