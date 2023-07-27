@@ -1,10 +1,9 @@
 ---
-title: Testing, Release, and Security Lifecycle
+title: Testing, release, and security lifecycle for Ops Manager
 owner: Security
 ---
 
 This topic explains how <%= vars.company_name %>'s development practices, automated build tools, and organizational structures work together to create and support stable releases of <%= vars.ops_manager_first %>.
-
 
 ## <a id='overview'></a> Overview
 
@@ -14,8 +13,7 @@ This topic explains how <%= vars.company_name %>'s development practices, automa
 
 * Teams build tests into the product consistently and run them automatically with any code change.
 
-
-## <a id='mechanics'></a> Release Mechanics
+## <a id='mechanics'></a> Release mechanics
 
 <%= vars.company_name %> releases, patches, and supports multiple versions of <%= vars.ops_manager %> simultaneously. This section explains the versioning and support conventions <%= vars.company_name %> follows.
 
@@ -33,7 +31,7 @@ As of <%= vars.platform_old_pivotal %> (<%= vars.platform_code_pivotal %>) v1.8,
 
 Support includes maintenance updates and upgrades, bug and security fixes, and technical help. For more details about support standards, technical guidance, and publication phases, see [Support Lifecycle Policy](https://tanzu.vmware.com/support/lifecycle_policy) on the VMware Tanzu website. For a definition of <%= vars.company_name %> support in legal terms, see [VMware Tanzu Software Support Services Terms & Conditions](https://tanzu.vmware.com/support/support_terms_conditions) on the VMware Tanzu website.
 
-### <a id='patch-releases'></a> Patch Releases
+### <a id='patch-releases'></a> Patch releases
 
 Patch releases are more frequent and less predictable than major and minor releases. The <%= vars.platform_code_pivotal %> v1.6.x line provides a good example of their frequency. <%= vars.platform_code_pivotal %> v1.6.1 was released on October 26, 2015. Through August 2016, 36 additional patches of Elastic Runtime v1.6.x and 18 patches of <%= vars.ops_manager %> v1.6.x provided security and bug fixes to customers.
 
@@ -46,7 +44,7 @@ The Pivotal Application Security Team maintains a running list of security fixes
 All <%= vars.ops_manager %> releases pass through extensive test suites that include automated unit, integration, and acceptance tests on multiple IaaSes. Regardless of this extensive testing, <%= vars.company_name %> recommends that you test major and minor releases in a non-production environment before implementing them across your deployment. Upgrade your production environment as soon as possible after you validate the new release on your test environment.
 
 
-## <a id='testing'></a> Release Testing, Integration, and Validation
+## <a id='testing'></a> Release testing, integration, and validation
 
 This section describes <%= vars.company_name %>'s software development processes and explains compliance and regulatory standards to which <%= vars.company_name %> software adheres.
 
@@ -64,18 +62,18 @@ With every software change, automated build pipelines trigger these tests for th
 
 * **<%= vars.ops_manager %> integration tests:** The <%= vars.ops_manager %> Release Engineering (RelEng) team validates the quality and cross-product integration health of the commercial <%= vars.ops_manager %> release. RelEng runs OSS Acceptance Tests against all supported releases. These tests run on full <%= vars.ops_manager %> instances configured to represent diverse real-world customer scenarios on various IaaSes and using both internal and external load balancer, database, blobstore, and user store solutions.
 
-### <a id='release-gates'></a> Additional Pre-Release Gates: Internal, PWS, and Compliance
+### <a id='release-gates'></a> Additional pre-release gates: Internal, PWS, and Compliance
 
 In addition to its automated unit and integration testing, <%= vars.company_name %> deploys all upgrades slated for upcoming <%= vars.ops_manager %> releases on at-scale test environments. Prior to each major or minor commercial release, <%= vars.company_name %> runs the entire <%= vars.ops_manager %> suite of services on several internally-managed large integration environments that run customer-like data and workloads.
 
 All <%= vars.ops_manager %> product teams participate in go-to-market steps for each release, as is often required for shipping a legally compliant product. Examples include [Open Source License File](https://network.pivotal.io/open-source) attribution and an Export Compliance classification.
 
 
-## <a id='bug-fixes'></a> Patch Releases: Security and Bug Fixes
+## <a id='bug-fixes'></a> Patch releases: security and bug fixes
 
 <%= vars.company_name %> uses established processes to track, disclose, and remediate vulnerabilities in <%= vars.ops_manager %> and related dependent components. This section explains how <%= vars.company_name %> identifies vulnerabilities and implements fixes for them.
 
-### <a id='vulnerabilities'></a> Identifying Security Vulnerabilities
+### <a id='vulnerabilities'></a> Identifying security vulnerabilities
 
 <%= vars.company_name %> has an established process to track and patch vulnerabilities in software dependencies and <%= vars.ops_manager %> software. Additionally, the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page describes a responsible disclosure process for reporting vulnerabilities identified in <%= vars.company_name %> software by third parties.
 
@@ -95,7 +93,7 @@ All <%= vars.ops_manager %> product teams participate in go-to-market steps for 
 When <%= vars.company_name %> discovers a potential security vulnerability in <%= vars.ops_manager %>, the security team opens an issue to assess it. If it confirms the vulnerability exists, <%= vars.company_name %> identifies and updates affected components with plans to backport the fix to stable releases. Fixes are implemented on a target timeline based on the severity level of the vulnerability. For more information, see [<%= vars.ops_manager %> Security Overview and Policy](pcf-security.html).
 
 
-## <a id='lifecycle'></a> Fix, Test, and Release Lifecycle
+## <a id='lifecycle'></a> Fix, test, and release lifecycle
 
 The following flowchart details the steps that <%= vars.company_name %> performs on a typical high-priority CVE, to publish a patch release fix on [<%= vars.company_name %> Network](https://network.pivotal.io). A detailed description of the steps follow.
 

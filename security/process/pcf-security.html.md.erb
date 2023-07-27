@@ -1,25 +1,21 @@
 ---
-title: Ops Manager Security Overview and Policy
+title: Ops Manager security overview and policy
 owner: Security
 ---
 
-This document outlines <%= vars.company_name %>'s security policy and is addressed to operators deploying <%= vars.ops_manager_first %>.
+This document is for operators who are deploying <%= vars.ops_manager_first %>, and outlines <%= vars.company_name %>'s security policy. You can find a comprehensive overview of the security architecture of each <%= vars.app_runtime_first %> component in the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/security.html).
 
-For a comprehensive overview of the security architecture of each <%= vars.app_runtime_first %> component, see [<%= vars.app_runtime_abbr %> Security](https://docs.pivotal.io/application-service/concepts/security.html).
-
-
-## <a id='monitor'></a> How <%= vars.company_name %> Monitors for Security Vulnerabilities
+## <a id='monitor'></a> How <%= vars.company_name %> monitors for security vulnerabilities
 
 <%= vars.company_name %> receives private reports on vulnerabilities from customers and from field personnel through <%= vars.company_name %>'s secure disclosure process. <%= vars.company_name %> also monitors public repositories of software security vulnerabilities to identify newly discovered vulnerabilities that might affect one or more of <%= vars.company_name %>'s products.
 
-### <a id='report'></a> How to Report a Vulnerability
+### <a id='report'></a> How to report a vulnerability
 
 <%= vars.company_name %> encourages users who become aware of a security vulnerability in <%= vars.company_name %>'s products to contact <%= vars.company_name %> with details of the vulnerability. Please send descriptions of any vulnerabilities found to security@pivotal.io. Include details about the software and hardware configuration of your system so that <%= vars.company_name %> can reproduce the issue.
 
 <p class='note'><strong>Note:</strong> <%= vars.company_name %> encourages use of encrypted email. For <%= vars.company_name %>'s public PGP key, see <a href="https://tanzu.vmware.com/security">Pivotal Application Security Team</a> on the VMware Tanzu website.</p>
 
-
-## <a id='notification-policy'></a> Notification Policy
+## <a id='notification-policy'></a> Notification policy
 
 <%= vars.ops_manager %> has many customer stakeholders who need to know about security updates. When there is a possible security vulnerability identified for an <%= vars.ops_manager %> component, <%= vars.company_name %> does the following:
 
@@ -33,8 +29,7 @@ For a comprehensive overview of the security architecture of each <%= vars.app_r
   1. Automated notification to end users who have downloaded or subscribed to an <%= vars.ops_manager %> product on [<%= vars.product_network %>](https://network.pivotal.io) when a new, fixed version is available.
   1. Adding a new post to the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page.
 
-
-## <a id='classes'></a> Classes of Vulnerabilities
+## <a id='classes'></a> Classes of vulnerabilities
 
 Attackers can exploit vulnerabilities to compromise user data and processing resources. This can affect data confidentiality, integrity, and availability to different degrees. For vulnerabilities related to Ubuntu provided packages, <%= vars.company_name %> follows Canonical's priority levels. For other vulnerabilities, <%= vars.company_name %> follows Common Vulnerability Scoring System v3.0 standards when assessing severity. For more information about Canonical's priority levels, see [CVE Priority](http://people.canonical.com/~ubuntu-security/cve/priority.html) in Ubuntu CVE Tracker. For more information about Common Vulnerability Scoring System v3.0 standards, see [Common Vulnerability Scoring System version 3.1: Specification Document](https://www.first.org/cvss/specification-document) on the FIRST website.
 
@@ -54,12 +49,10 @@ Medium vulnerabilities are those in which the ability to exploit is mitigated to
 
 Low vulnerabilities are all other issues that have a security impact. These include vulnerabilities for which exploitation is believed to be extremely difficult, or for which successful exploitation would have minimal impact.
 
-
-## <a id='release-policy'></a> Release Policy
+## <a id='release-policy'></a> Release policy
 
 <%= vars.company_name %> schedules regular monthly releases of software to address Low and Medium severity vulnerability exploits. When High severity vulnerability exploits are identified, <%= vars.company_name %> releases fixes to software as quickly as possible.
 
-
-## <a id='alerts'></a> Alerts and Actions Archive
+## <a id='alerts'></a> Alerts and actions archive
 
 To review an archive of <%= vars.ops_manager %> vulnerability reports, see the <%= vars.company_name %> Product Vulnerability Reports on the [Pivotal Application Security Team](https://tanzu.vmware.com/security) page.
