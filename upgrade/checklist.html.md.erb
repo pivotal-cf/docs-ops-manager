@@ -1,16 +1,9 @@
 ---
-title: Upgrade Preparation Checklist for Ops Manager v2.10
+title: Upgrade preparation checklist for Ops Manager v2.10
 owner: Ops Manager
 ---
 
-This topic serves as a checklist for preparing to upgrade <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> from v2.9 to <%= vars.v_major_version %>.
-
-
-## <a id='overview'></a> Overview
-
-This topic contains important preparation steps that you must follow before beginning your upgrade. Failure to follow these instructions may jeopardize your existing deployment data and cause the upgrade to fail.
-
-After completing the steps in this topic, you can continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).
+This checklist contains important preparation steps that you must follow before beginning to upgrade <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> from v2.9 to <%= vars.v_major_version %>. If you do not follow these instructions, you may jeopardize your existing deployment data and cause the upgrade to fail.
 
 <%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade from <%= vars.ops_manager %> v2.5 Through v2.9](../install/upgrading-pcf.html#jump-upgrade) in _Upgrading <%= vars.ops_manager %>_.
 
@@ -18,18 +11,15 @@ After completing the steps in this topic, you can continue to [Upgrading <%= var
 
 <p class='note caution'><strong>Caution:</strong> Any certificate rotation must be completed before upgrading <%= vars.ops_manager %>. Failure to complete the CA rotation results in the inability to <strong>Apply Changes</strong> due to safety violations.</p>
 
-
-## <a id='back-up-your-pcf-deployment'></a> Back Up Your <%= vars.ops_manager %> Deployment
+## <a id='back-up-your-pcf-deployment'></a> Back up your <%= vars.ops_manager %> deployment
 
 <%= vars.company_name %> recommends backing up your <%= vars.ops_manager %> deployment before upgrading, to restore in the case of failure. To do this, follow the instructions in [Backing Up Deployments with BBR](../install/backup-restore/backup-pcf-bbr.html).
 
-
-## <a id='decryption-passphrase'></a> Find Your Decryption Passphrase for <%= vars.ops_manager %>
+## <a id='decryption-passphrase'></a> Find your decryption passphrase for <%= vars.ops_manager %>
 
 To complete the <%= vars.ops_manager %> upgrade, you must have your <%= vars.ops_manager %> decryption passphrase. You defined this decryption passphrase during the initial installation of <%= vars.ops_manager %>.
 
-
-## <a id='review-runtime-release-notes'></a> Review Changes in <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>
+## <a id='review-runtime-release-notes'></a> Review changes in <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>
 
 Review each of the following links to understand the changes in the new release, such as new features, known issues, and breaking changes.
 
@@ -51,8 +41,7 @@ Review each of the following links to understand the changes in the new release,
 * **Diego Network Communications**
 	* [Diego Network Communications](https://docs.pivotal.io/application-service/2-10/operating/networking/diego-network-paths.html)
 
-
-## <a id='nsx-t'></a> Check VMware NSX-T Data Center Version
+## <a id='nsx-t'></a> Check VMware NSX-T Data Center version
 
 For vSphere deployments, the vSphere BOSH CPI that is included in <%= vars.ops_manager %> <%= vars.v_major_version %> no longer supports NSX-T v2.2 and earlier. If you are using NSX-T v2.2 or earlier, you must upgrade NSX-T to a supported version.
 
@@ -62,12 +51,11 @@ The specific version of NSX-T required for your deployment depends on which runt
 
 * For <%= vars.app_runtime_abbr %> deployments, see the [Support Matrix: <%= vars.app_runtime_abbr %>, VMware NSX-T Container Plug-in](https://network.pivotal.io/products/vmware-nsx-t/).
 
-
-## <a id='tiles-addons'></a> Update Tiles and Add-Ons
+## <a id='tiles-addons'></a> Update tiles and add-ons
 
 These sections describe changes you must make to your product tiles and add-ons before upgrading <%= vars.ops_manager %>.
 
-### <a id='compatibility'></a> Review Service Tile Compatibility
+### <a id='compatibility'></a> Review service tile compatibility
 
 Before you upgrade, check whether the service tiles that you currently have are compatible with the new version of <%= vars.ops_manager %>.
 
@@ -89,7 +77,7 @@ Some partner service tiles may be incompatible with <%= vars.ops_manager %> <%= 
 For information about partner service tile compatibility,
 review the **Depends On** section on your partner tile download page, see the tile release documentation in the [VMware Tanzu documentation](https://docs.pivotal.io), or contact the partner organization that produces the service tile.
 
-#### <a id='env'></a> Environment Details
+#### <a id='env'></a> Environment details
 
 You can use the empty table below as a template for recording and tracking the tile versions that you have deployed in all of your environments.
 
@@ -107,7 +95,7 @@ You can use the empty table below as a template for recording and tracking the t
 | **<%= vars.ops_manager %> Partner Services** | [New Relic](https://network.pivotal.io/products/p-new-relic) |        |        |        |        |
 |        | ... |        |        |        |        |
 
-### <a id='upgrade-service-tiles'></a> Upgrade Services Tiles
+### <a id='upgrade-service-tiles'></a> Upgrade services tiles
 
 Upgrade all service tiles to versions that are compatible with <%= vars.ops_manager %> <%= vars.v_major_version %>. Service tiles are add-on products you install alongside your runtime. For example, VMware Tanzu SQL [MySQL for VMs], Healthwatch, and RabbitMQ for VMware Tanzu [VMs] are service tiles.
 
@@ -119,7 +107,7 @@ To verify version compatibility, see [Upgrade Planner](https://upgrade-planner.p
 
 With each release of a new <%= vars.ops_manager %> version, BOSH Director may require specific updates before upgrading to the new version. For actions to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, see the sections below.
 
-#### <a id='check-specs'></a> Check Required Machine Specifications
+#### <a id='check-specs'></a> Check required machine specifications
 
 Check the required machine specifications for <%= vars.ops_manager %> <%= vars.v_major_version %>. These specifications are specific to your IaaS. If these specifications do not match your existing <%= vars.ops_manager %> deployment, modify the values of your <%= vars.ops_manager %> VM instance. For example, if the boot disk of your existing <%= vars.ops_manager %> deployment is 50&nbsp;GB and the new <%= vars.ops_manager %> deployment requires 100&nbsp;GB, increase the size of your <%= vars.ops_manager %> boot disk to 100&nbsp;GB.
 
@@ -130,7 +118,7 @@ or Generation 2 as your default VM type. For more information, see [Azure Genera
 
 With each release of a new <%= vars.ops_manager %> version, <%= vars.app_runtime_abbr %> may require specific updates before upgrading to the new version. For more information, see the following sections for what action to take before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-#### <a id='disable-hostname-validation'></a> Deactivate Hostname Validation for External Databases on GCP and Azure
+#### <a id='disable-hostname-validation'></a> Deactivate hostname validation for external databases on GCP and Azure
 
 This pre-upgrade step applies only to existing <%= vars.app_runtime_abbr %> v2.9 deployments where both of these conditions are met:
 
@@ -150,13 +138,13 @@ To deactivate hostname validation:
 
 For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see [Configure Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
 
-#### <a id="disable-unused-errands"></a> (Optional) Deactivate Unused Errands
+#### <a id="disable-unused-errands"></a> Deactivate unused errands (optional)
 
 To save upgrade time, you can deactivate unused <%= vars.app_runtime_abbr %> post-deploy errands. For more information, see [Post-Deploy Errands](https://docs.pivotal.io/tiledev/tile-errands.html#post-deploy) in _Errands_. Deactivate these errands only if your environment does not need them.
 
 In some cases, if you have previously deactivated lifecycle errands for any installed product to reduce deployment time, you may want to re-enable these errands before upgrading. For more information, see [Add and Import Products](../install/add-delete.html#add-import) in _Adding and Deleting Products_.
 
-### <a id='stemcell-compat'></a> Check OS Compatibility of BOSH-Managed Add-Ons and Tiles
+### <a id='stemcell-compat'></a> Check OS compatibility of BOSH-managed add-ons and tiles
 
 Before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, operators who have deployed any BOSH-managed add-ons such as **IPsec**, **Anti-Virus**, or **File Integrity Monitoring** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information, see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/windows/index.html).
 
@@ -194,7 +182,7 @@ After removing this job from your runtime configuration, ensure that the **Enabl
 
 For more information, see [Azure Blobstores](../install/backup-restore/enabling-external-blobstore-backups.html#azure) in _Enabling External Blobstore Backups_.
 
-## <a id='cert-expiry'></a> Check Certificate Authority Expiration Dates
+## <a id='cert-expiry'></a> Check certificate authority expiration dates
 
 Depending on the requirements of your deployment, you may need to rotate your certificate authority (CA) certificates. The non-configurable certificates in your deployment expire every two years. You must regenerate and rotate them so that critical components do not face a complete outage.
 
@@ -217,16 +205,15 @@ Where:
 
 For information about regenerating and rotating CA certificates, see [Overview of Certificate Rotation](../security/pcf-infrastructure/api-cert-rotation.html).
 
-
-## <a id='capacity'></a> Check the Capacity of Your Deployment
+## <a id='capacity'></a> Check the capacity of your deployment
 
 These sections describe steps for ensuring your deployment has adequate capacity to perform the upgrade.
 
-### <a id='confirm-om-disk'></a> Confirm Adequate Disk Space
+### <a id='confirm-om-disk'></a> Confirm adequate disk space
 
 <%= partial 'check_disk_before_upgrade' %>
 
-### <a id='check-diego-cell-ram-and-disk'></a> Check Diego Cell RAM and Disk
+### <a id='check-diego-cell-ram-and-disk'></a> Check Diego Cell RAM and disk
 
 Check that Diego Cells have sufficient available RAM and disk capacity to support app containers.
 
@@ -235,7 +222,7 @@ The KPIs that monitor these these resources are are:
 * `rep.CapacityRemainingMemory`
 * `rep.CapacityRemainingDisk`
 
-### <a id='adjust-diego-cell-limits'></a> Adjust Diego Cell Limits
+### <a id='adjust-diego-cell-limits'></a> Adjust Diego Cell limits
 
 If needed, adjust the maximum number of Diego Cells that the platform can upgrade simultaneously, to avoid overloading the other Diego Cells. For more information, see [Limit Component Instance Restarts](https://docs.pivotal.io/application-service/operating/configuring.html#limit-restart) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_ in the <%= vars.app_runtime_abbr %> documentation.
 
@@ -243,7 +230,7 @@ The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4
 
 For more information about these KPIs, see [Diego Cell Metrics](https://docs.pivotal.io/application-service/operating/monitoring/kpi.html#Cell) in _Key Performance Indicators_ in the <%= vars.app_runtime_abbr %> documentation.
 
-### <a id='storage'></a> Review File Storage IOPS and Other Upgrade Limiting Factors
+### <a id='storage'></a> Review file storage IOPS and other upgrade limiting factors
 
 During the <%= vars.ops_manager %> upgrade process, a large quantity of data is moved around on disk.
 
@@ -260,7 +247,7 @@ In addition to file storage IOPS, consider additional existing deployment factor
 For example upgrade-related performance measurements of an existing production deployment,
 see [Upgrade Load Example: Pivotal Web Services During Upgrade](https://docs.pivotal.io/application-service/operating/pws_upgrade_load.html) in the <%= vars.app_runtime_abbr %> documentation.
 
-### <a id='bosh-clean-up'></a> Run BOSH Clean-Up
+### <a id='bosh-clean-up'></a> Run BOSH clean-up
 
 To clean up old stemcells, releases, orphaned disks, and other resources before upgrade:
 
@@ -273,12 +260,11 @@ To clean up old stemcells, releases, orphaned disks, and other resources before 
 
 This cleanup helps prevent the product and stemcell upload process from exceeding the BOSH Director's available persistent disk space.
 
-
-## <a id='health'></a> Check the Health of Your Deployment
+## <a id='health'></a> Check the health of your deployment
 
 These sections describe steps for ensuring your deployment is healthy before you perform the upgrade.
 
-### <a id='collect-foundation-health-status'></a> Collect Foundation Health Status
+### <a id='collect-foundation-health-status'></a> Collect foundation health status
 
 For collecting foundation health status, <%= vars.company_name %> recommends Healthwatch,
 which monitors and alerts on the current health, performance,
@@ -331,13 +317,13 @@ If you are not using Healthwatch, you can do some or all of the following to col
 
 Check that a test app can be pushed and scaled horizontally, manually, or through automated testing. This check ensures that the platform supports apps as expected before the upgrade.
 
-### <a id='validate-mysql-cluster-health'></a> Validate MySQL Cluster Health
+### <a id='validate-mysql-cluster-health'></a> Validate MySQL cluster health
 
 If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster.
 
 For BOSH CLI v2 instructions, see [Running mysql-diag](https://docs.pivotal.io/application-service/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
 
-### <a id='check-health'></a> Review Pending and Recent Changes
+### <a id='check-health'></a> Review pending and recent changes
 
 To review pending and recent changes:
 
@@ -351,8 +337,7 @@ To review pending and recent changes:
     Exited with 0.
     ```
 
-
-## <a id='export'></a> Export Your Installation
+## <a id='export'></a> Export your installation
 
 To export your installation:
 
@@ -371,6 +356,6 @@ When you export an installation, the export contains the base VM images, necessa
 <p class='note'><strong>Note:</strong> Some operating systems automatically unzip the exported installation. If this occurs, create a ZIP file of the unzipped export. Do not start compressing at the "installation" folder level. Instead, start compressing at the level containing the <code>rails_database_dump.postgres</code> file.
 </p>
 
-## <a id='next-steps'></a> Next Steps
+## <a id='next-steps'></a> Next steps
 
 Now that you have completed the Upgrade Preparation Checklist, continue to [Upgrading <%= vars.ops_manager %>](../install/upgrading-pcf.html).

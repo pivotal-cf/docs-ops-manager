@@ -3,19 +3,15 @@ title: Deploying Ops Manager on vSphere
 owner: Ops Manager
 ---
 
-This topic provides instructions for deploying <%= vars.ops_manager_first %> to VMware vSphere.
+You can use these instructions to deploy <%= vars.ops_manager_first %> to VMware vSphere. The instructions in this topic are based on vSphere 6.5 using the vSphere Client (HTML5) interface.
 
-The instructions in this topic are based on vSphere 6.5 using the vSphere Client (HTML5) interface.
-
-
-## <a id='pas-and-pks'></a> Runtime Considerations
+## <a id='pas-and-pks'></a> Runtime considerations
 
 For security purposes, VMware requires a dedicated instance of <%= vars.ops_manager %> for use with <%= vars.k8s_runtime_first %>.
 
 <p class='note important'><strong>Important:</strong> If you are installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
 integration, follow the instructions in
 <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-om-deploy.html">Deploying <%= vars.ops_manager %> with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the steps described in this topic.</p>
-
 
 ## <a id='prepare-vsphere'></a> Prepare vSphere
 
@@ -154,7 +150,6 @@ vSphere objects used to organize resources.
 
 1. Navigate to the fully qualified domain of your <%= vars.ops_manager %> in a web browser.
 
-
-## <a id='next-steps'></a> Next Steps
+## <a id='next-steps'></a> Next steps
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on vSphere](config.html).
