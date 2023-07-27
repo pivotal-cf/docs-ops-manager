@@ -21,61 +21,31 @@ Every topic in the Ops Manager documentation has a corresponding file in this re
 the source file for a topic, navigate to the topic on the Ops Manager documentation site and click
 "View the source for this page in GitHub" at the bottom of the topic.
 
-[Bookbinder](https://github.com/pivotal-cf/bookbinder/) uses the contents of this repository and others as sources to assemble the documentation for Ops Manager.
-
 ## <a name="version-branch"></a> Versions and Branches
 
-| **Book Branch** | **Content Branch** | **Published URL** |
-|-----------------|--------------------|-------------------|
-|            N/A  |              `3.0` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html  |
-|            N/A  |             `2.10` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/index.html |
-|           `2.9` |              `2.9` | https://docs.pivotal.io/ops-manager/2-9/index.html  |
-|           `2.8` |              `2.8` | https://docs.pivotal.io/ops-manager/2-8/index.html  |
-|           `2.7` |              `2.7` | https://docs.pivotal.io/ops-manager/2-7/index.html  |
-|          `edge` |           `master` |          not used |
-|        `master` |           `master` |          not used |
-| `om-previous-versions` | `2.6` | https://docs.pivotal.io/ops-manager/2-6/index.html |
-| `om-previous-versions` | `2.5` | https://docs.pivotal.io/ops-manager/2-5/index.html |
-| `om-previous-versions` | `2.4` | https://docs.pivotal.io/ops-manager/2-4/index.html |
-| `om-previous-versions` | `2.3` | https://docs.pivotal.io/ops-manager/2-3/index.html |
-| `om-previous-versions` | `2.2` | https://docs.pivotal.io/ops-manager/2-2/index.html |
-| `om-previous-versions` | `2.1` | https://docs.pivotal.io/ops-manager/2-1/index.html |
-| `om-previous-versions` | `2.0` | https://docs.pivotal.io/ops-manager/2-0/index.html |
+| **Content Branch** | **Published URL** |
+|--------------------|-------------------|
+|              `3.0` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html  |
+|             `2.10` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/index.html |
+|              `2.9` | Not supported. https://docs.pivotal.io/ops-manager/2-9/index.html  (archived and publiched as a PDF) |
+|              `2.8` | Not supported. https://docs.pivotal.io/ops-manager/2-8/index.html  (archived and publiched as a PDF)  |
+|              `2.7` | Not supported. https://docs.pivotal.io/ops-manager/2-7/index.html  (archived and publiched as a PDF)  |
+|           `master` |          not used |
+|           `master` |          not used |
+| `2.6` | https://docs.pivotal.io/ops-manager/2-6/index.html |
+| `2.5` | https://docs.pivotal.io/ops-manager/2-5/index.html |
+| `2.4` | https://docs.pivotal.io/ops-manager/2-4/index.html |
+| `2.3` | https://docs.pivotal.io/ops-manager/2-3/index.html |
+| `2.2` | https://docs.pivotal.io/ops-manager/2-2/index.html |
+| `2.1` | https://docs.pivotal.io/ops-manager/2-1/index.html |
+| `2.0` | https://docs.pivotal.io/ops-manager/2-0/index.html |
 
+
+**3.0**: The `3.0` branch is used to publish the v3.0 site. Create pull requests on `3.0` to contribute or
+correct technical inaccuracies in the Ops Manager v3.0 documentation.
 
 **2.10**: The `2.10` branch is used to publish the v2.10 site. Create pull requests on `2.10` to contribute or
 correct technical inaccuracies in the Ops Manager v2.10 documentation.
-
-**2.9**: The `2.9` branch is used to publish the v2.9 site. Create pull requests on `2.9` to contribute or
-correct technical inaccuracies in the Ops Manager v2.9 documentation.
-
-**2.8**: The `2.8` branch is used to publish the v2.8 site. Create pull requests on `2.8` to contribute or
-correct technical inaccuracies in the Ops Manager v2.8 documentation.
-
-**2.7**: The `2.7` branch is used to publish the v2.7 site. Create pull requests on `2.7` to contribute or
-correct technical inaccuracies in the Ops Manager v2.7 documentation.
-
-**2.6**: The `2.6` branch is used to publish the v2.6 site. Create pull requests on `2.6` to contribute or
-correct technical inaccuracies in the Ops Manager v2.6 documentation.
-
-**2.5**: The `2.5` branch is used to publish the v2.5 site. The `2.5` branch has reached End of General Support and is
-no longer being updated.
-
-**2.4**: The `2.4` branch is used to publish the v2.4 site. The `2.4` branch has reached End of General Support and is
-no longer being updated.
-
-**2.3**: The `2.3` branch is used to publish the v2.3 site. The `2.3` branch has reached End of General Support and is
-no longer being updated.
-
-**2.2**: The `2.2` branch is used to publish the v2.2 site. The `2.2` branch has reached End of General Support and is
-no longer being updated.
-
-**2.1**: The `2.1` branch is used to publish the v2.1 site. The `2.1` branch has reached End of General Support and is
-no longer being updated.
-
-**2.0**: The `2.0` branch is used to publish the v2.0 site. The `2.0` branch has reached End of General Support and is
-no longer being updated.
-
 
 ## Publishing Docs (2.10 and later)
 
