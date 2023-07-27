@@ -260,7 +260,7 @@ For a multi-site or WAN setup, you must perform the **Apply Changes** steps acro
 To rotate the Services TLS CA and its leaf certificates:
 
 1. Check the [CredHub Maestro Tile Compatibility](maestro-tile-compatibility.html) document to ensure that all service tile versions currently deployed are compatible with Maestro.
-    <p class='note caution'><strong>Caution:</strong> If you have any service tiles that are not compatible with CredHub Maestro, do not follow this procedure. If you do, you might experience extended downtime or data loss. Instead, follow the procedure in <a href="services_tls_ca_rotate.html">Rotating the Services TLS CA and Its Leaf Certificates</a>.</p>
+    <p class='note caution'><strong>Caution:</strong> If you have any service tiles that are not compatible with CredHub Maestro, follow their rotation procedure.  Do not follow this procedure. If you do, you might experience extended downtime or data loss.</p>
 
 1. Regenerate the Services TLS CA and mark the latest version of the CA as transitional. This creates a new version of the Services TLS CA and indicates that the latest version is inactive, so that all leaf certificates trust the new CA.
     1. On the Services TLS CA, see if your Services TLS CA was CredHub-set by running:
@@ -274,6 +274,7 @@ To rotate the Services TLS CA and its leaf certificates:
         ```
         maestro regenerate ca --name "/services/tls_ca" --force
         ```
+    1. For deployments that use MySQL for VMware Tanzu, follow [these instructions](https://docs.vmware.com/en/VMware-SQL-with-MySQL-for-Tanzu-Application-Service/3.0/mysql-for-tas/prepare-tls.html#add-ca-cert) to add the new Services TLS CA to the **Trusted Certificates** of the **BOSH Director**.
 
 1. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
