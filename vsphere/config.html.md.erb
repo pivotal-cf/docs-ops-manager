@@ -5,7 +5,7 @@ iaas: vSphere
 install_type: manual
 ---
 
-This topic describes how to configure the BOSH Director tile for VMware vSphere.
+This topic describes how you can configure the BOSH Director tile for VMware vSphere.
 
 You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see [Using the <%= vars.ops_manager %> API](../install/ops-man-api.html).
 
@@ -19,18 +19,15 @@ After you complete this procedure, follow the configuration instructions for the
 
 For more information about <%= vars.ops_manager_first %> runtimes, see [Installing Runtimes](../install/runtimes.html).
 
-
 ## <a id='prerequisites'></a> Prerequisite
 
 Before you begin this procedure, you must complete all steps in [Deploying <%= vars.ops_manager %> to vSphere](deploy.html).
 
-
-## <a id='set-up'></a> Step 1: Log Into <%= vars.ops_manager %>
+## <a id='set-up'></a> Step 1: Log into <%= vars.ops_manager %>
 
 1. In a web browser, go to the fully qualified domain of your <%= vars.ops_manager %>.
 
 1. Log in to <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
-
 
 ## <a id='vcenter-config'></a> Step 2: Configure vCenter
 
@@ -97,12 +94,11 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
 1. (Optional) Click **Add vCenter Config** toward the top of the form to configure additional vCenters. Once you click **Save**, your multiple vCenter Configs are listed in the **vCenter Configs** pane. For more information about multiple vCenter configs, see [Managing Multiple Data Centers](../install/multiple-datacenters.html).
 
-
-## <a id='dir-config'></a> Step 3: Director Config Pane
+## <a id='dir-config'></a> Step 3: Director Config pane
 
 <%= partial "../common/director-config" %>
 
-## <a id='create-az'></a> Step 4: Create Availability Zones Pane
+## <a id='create-az'></a> Step 4: Create Availability Zones pane
 
 <%= vars.ops_manager %> Availability Zones (AZs) correspond to your vCenter clusters, resource pools or host groups.
 
@@ -136,8 +132,7 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Click **Save**.
 
-
-## <a id='create-networks'></a> Step 5: Create Networks Pane
+## <a id='create-networks'></a> Step 5: Create Networks pane
 
 1. Select **Create Networks**.
 
@@ -352,7 +347,6 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Click **Save**.
 
-
 ## <a id='assign-azs'></a> Step 6: Assign AZs and Networks
 
 1. Select **Assign AZs and Networks**.
@@ -365,22 +359,21 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Click **Save**.
 
-
-## <a id='security'></a> Step 7: Security Pane
+## <a id='security'></a> Step 7: Security pane
 
 <%= partial "../common/security-pane" %>
 
-## <a id='bosh-dns'></a> Step 8: BOSH DNS Config Pane
+## <a id='bosh-dns'></a> Step 8: BOSH DNS Config pane
 
 <%= partial '../common/bosh-dns-config'  %>
 
-## <a id='syslog'></a> Step 9: Syslog Pane
+## <a id='syslog'></a> Step 9: Syslog pane
 
 <p class='note'><strong>Note:</strong> BOSH Director logs contain sensitive information that can be considered privileged. For example, these logs might contain cloud provider credentials. If you choose to forward logs to an external syslog endpoint, use TLS encryption to prevent information from being intercepted by a third party.</p>
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'BOSH Director' } %>
 
-## <a id='resource-config'></a> Step 10: Resource Config Pane
+## <a id='resource-config'></a> Step 10: Resource Config pane
 
 1. Click **Resource Config**.
 
@@ -400,19 +393,17 @@ Multiple AZs allow you to provide high availability and load balancing to your a
 
 1. Click **Save**.
 
-
-## <a id='custom-vm-extensions'></a> Step 11: (Optional) Add Custom VM Extensions
+## <a id='custom-vm-extensions'></a> Step 11: Add custom VM extensions (optional)
 
 <%= partial "../common/vm-extension-config"  %>
 
-## <a id='complete-installation'></a> Step 12: Complete the BOSH Director Installation
+## <a id='complete-installation'></a> Step 12: Complete the BOSH Director installation
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
 1. Click **Review Pending Changes**. Select the product that you intend to deploy and review the changes. For more information, see [Reviewing Pending Product Changes](../install/review-pending-changes.html).
 
-
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After you complete this procedure, follow the instructions for the runtime that you intend to install:
 

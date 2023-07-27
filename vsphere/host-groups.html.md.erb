@@ -1,12 +1,11 @@
 ---
-title: Host Groups in vSphere
+title: Using vSphere host groups with your Ops Manager deployment
 owner: Ops Manager
 ---
 
-The vSphere host groups feature allows an operator to use host groups in <%= vars.ops_manager_first %> to build flexible scalability and high availability into their BOSH deployments. This topic describes the host groups feature and how to configure the Distributed Resource Scheduler (DRS) Host-Affinity Rule for host groups.
+You can use the vSphere host groups feature with <%= vars.ops_manager_first %> to build flexible scalability and high availability into your BOSH deployments. This topic describes the host groups feature and how you can configure the Distributed Resource Scheduler (DRS) Host-Affinity Rule for host groups.
 
-
-## <a id='overview'></a> Overview on Host Groups in vSphere
+## <a id='overview'></a> About host groups in vSphere
 
 vSphere host groups and resource pools are both methods for segmenting and organizing resources within a vSphere cluster.
 A vSphere cluster is a collection of ESXi servers that run VMs.
@@ -19,8 +18,7 @@ The association of vSphere resource pools or host groups with AZs allows BOSH to
 
 For more information about configuring AZs in BOSH Director, see [Create Availability Zones](config.html#create-az) in _Configuring BOSH Director on vSphere_.
 
-
-## <a id='when-to-use'></a> When to Use Host Groups
+## <a id='when-to-use'></a> When to use host groups
 
 This section describes the types of deployments that benefit most from using host groups.
 For multi use vSphere clusters, it's better to use host groups instead of resource pools.
@@ -30,7 +28,7 @@ In deployments where the underlying clusters are dedicated to a single use,
 such as running only app containers, it's simpler to not use host groups and
 rather to use AZs to balance associated jobs and apps.
 
-### <a id='strict-resource-boundaries'></a> Stricter Resource Boundaries in Multi-Use Clusters
+### <a id='strict-resource-boundaries'></a> Stricter resource boundaries in multi-use clusters
 
 Host groups are the most useful for deployments where the underlying clusters are used by multiple BOSH-managed deployments
 and you want greater control of cluster resource usage than is provided by resource pools.
@@ -43,7 +41,7 @@ The deployments can share the resources, but in the event that resource consumpt
 a resource management engine enforces resource usage limits.
 In this situation, the engine might deny pool resources to one of the deployments. Depending on the nature of the deployments, denying resources to one of the deployments might not be ideal.
 
-### <a id='vertical-scale'></a> Vertical Scaling
+### <a id='vertical-scale'></a> Vertical scaling
 
 Host groups also allow you to scale up or down the number of ESXi hosts used by your AZ.
 They also allow you to scale resources without forcing BOSH to redeploy its AZs.
@@ -56,8 +54,7 @@ For more information on using host groups in scaling platforms,
 see [Growth Beyond Minimal Viable Platform](https://docs.pivotal.io/pra/2-3/growth.html)
 in the _Tanzu Architecture for Dell EMC VxRail_ (TA4V) documentation set.
 
-
-## <a id='host-affinity-rule'></a> DRS Host-Affinity Rules and Stretched Clusters
+## <a id='host-affinity-rule'></a> DRS Host-Affinity Rules and stretched clusters
 
 When you configure host groups, configure the host group's Distributed Resource Scheduler (DRS) Host-Affinity Rule to `SHOULD`.
 This configuration allows VMs to start up in a new host group and AZ in the event that an AZ fails or in the event that you want to scale up the number of VM instances for a job.
