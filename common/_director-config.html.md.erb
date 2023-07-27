@@ -43,39 +43,38 @@ To configure the **Director Config** pane:
 
 1. Select the **Enable VM Resurrector Plugin** check box to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.pivotal.io/platform/customizing/resurrector.html) for more information about the Resurrector plugin.<% end %>
 
-1. If you want to collect detailed metrics from BOSH-managed VMs, activate the **Enable additional System Metrics** check box. For a list of metrics that the System Metrics Agent collects from BOSH-managed VMs, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/develop/docs/system-metrics-agent.md) on GitHub.
+1. If you want to collect detailed metrics from BOSH-managed VMs, activate the **Enable additional System Metrics** check box. For a list of metrics that the System Metrics Agent collects from BOSH-managed VMs, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/main/docs/system-metrics-agent.md) on GitHub.
 
 1. Select **Enable Post Deploy Scripts** to run a post deployment script after deployment. This script allows the job to execute additional commands against a deployment.
-    <p class='note'><strong>Note:</strong> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
+
+<p> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
 
 1. To configure your VMs to use short lived NATS credentials during the bootstrap process, activate the **Enable Short Lived NATS Bootstrap Credentials**
 check box. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
-communicate with the BOSH Director through BOSH NATS. For more information, see [Using Short-Lived NATS Bootstrap
+communicate with the BOSH Director through BOSH NATS.
+
+For more information, see [Using Short-Lived NATS Bootstrap
 Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
-    <div class='note'><strong>Notes:</strong>
-      <ul>
-        <li>Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
-          are created somewhat more slowly.</li>
-        <li>This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %>
-          deployments to use short-lived bootstrap credentials, you must re-create them.</li>
-      </ul>
-    </div>
+<p> Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
+are created somewhat more slowly.
+This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %>
+deployments to use short-lived bootstrap credentials, you must re-create them. </p>
 
-1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deployment. This process does not re-create the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful re-deployment.
+1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deployment. This process does not recreate the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
-1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be re-created on the next deploy. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful re-deployment.
+1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be re-created on the next deploy. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
-1. Select **Recreate All Persistent Disks** to force BOSH to migrate and re-create persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful re-deployment.
+1. Select **Recreate All Persistent Disks** to force BOSH to migrate and re-create persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
 1. Select **Enable bosh deploy retries** to instruct <%= vars.ops_manager %> to retry failed BOSH operations up to five times.
 
-1. Select **Skip Director Drain Lifecycle** to prevent drain scripts from running when the BOSH Director is re-created.
+1. Select **Skip Director Drain Lifecycle** to prevent drain scripts from running when the BOSH Director is recreated.
 
 1. Select **Store BOSH Job Credentials on tmpfs (beta)** to store credentials for BOSH jobs on temporary file storage (tmpfs) memory, rather than on disk. You must re-create all BOSH-deployed VMs for this setting to take effect.
 
 1. Select **Keep Unreachable Director VMs** to preserve BOSH Director VMs after a failed deployment for troubleshooting purposes.
 
-1. (Optional) Modify the **Director Workers** value, which sets the number of workers available to execute BOSH Director tasks. This field defaults to `5`.
+1. (Optional) Modify the **Director Workers** value, which sets the number of workers available to run BOSH Director tasks. This field defaults to `5`.
 
 1. (Optional) **Max Threads** sets the maximum number of threads that the BOSH Director can run simultaneously. <%= vars.company_name %> recommends that you leave the field blank to use the default value, unless doing so results in rate limiting or errors on your IaaS.
 
