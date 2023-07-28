@@ -5,7 +5,8 @@ iaas: Azure
 install_type: manual
 ---
 
-After you deploy <%= vars.ops_manager_first %> on Azure, follow these steps to configure the BOSH Director tile within <%= vars.ops_manager %> on Azure.
+After you deploy <%= vars.ops_manager_first %> on Azure, follow the steps in this topic to configure the
+BOSH Director tile within <%= vars.ops_manager %> on Azure.
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -13,16 +14,18 @@ See the following sections to prepare for configuring BOSH Director on Azure.
 
 ### <a id='general-prereqs'></a> General prerequisites
 
-Before you perform the procedures in this topic, you must have completed the procedures in the following topics:
+Before you complete the procedures in this topic, you must have completed the procedures in the
+following topics:
 
 * [Preparing to deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html)
 * [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html)
 
-<p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+<p> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
 ### <a id='stack-gov-prereqs'></a> Prerequisites for Azure Government Cloud
 
-If you use Azure Government Cloud, you must set custom VM types for a successful deployment. You can set custom VM types with the <%= vars.ops_manager %> API. For more information, see [Using the <%= vars.ops_manager %> API](../install/ops-man-api.html).
+If you use Azure Government Cloud, you must set custom VM types for a successful deployment. You can set
+custom VM types with the <%= vars.ops_manager %> API. For more information, see [Using the <%= vars.ops_manager %> API](../install/ops-man-api.html).
 
 Example `curl` command to set a VM types:
 
@@ -50,8 +53,8 @@ Manager API endpoint.
 
 #### <a id='azure-vm-types'></a> Azure Generation 2 VM types
 
-You can use Generation 2 Azure VM types as the default VM type.
-For more information, see the <a href="../release-notes.html#2-10-3">Ops Manager v2.10.3 Release Notes</a>.
+Azure Government Cloud uses Azure Generation 2 VM types by default. If necessary, you can reconfigure the VMs in your
+deployment to use Azure Generation 1 VM types.
 
 The following table shows the mapping between Generation 1 and Generation 2 Azure VM types:
 
@@ -106,6 +109,14 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 	* **Resource Group Name**: Enter the name of your resource group, which you exported as the `$RESOURCE_GROUP` environment variable.
 	* **BOSH Storage Account Name**: Enter the name of your storage account, which you exported as the `$STORAGE_NAME` environment variable.
 
+4. From the **Storage Tier ephemeral / persistent disks** drop-down menu, select the storage option that corresponds with your Azure subscription:
+	* For HDD-based storage, select **Standard_LRS**.
+	* For SSD-based storage, select **Premium_LRS**.
+
+5. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** check box. This overrides the default behavior, which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
+
+    ![alt-text=""](../common/images/azure/azure-storage-tier.png)
+
 1. For **Cloud Storage Type**, select one of the following options based on your Azure VM storage settings.
 
     * **Use Managed Disks**: Select this option if you use Azure Managed Disks. For more information, see [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documention.
@@ -117,10 +128,14 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 
         ![alt-text=""](../common/images/azure/storage-accounts.png)
 
-    <p class='note caution'><strong>Caution:</strong> You can update your deployment from using storage accounts to using managed disks. However, after you select <strong>Use Managed Disks</strong> and deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.</p>
+        <p class="note caution">
+        <span class="note__title">Caution</span>
+        You can update your deployment from using
+    storage accounts to using managed disks. However, after you select <strong>Use Managed Disks</strong> and
+    deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.</p>
 
 1. (Optional) Enter your **Default Security Group**. For more information about Network Security Groups, see [Filter network traffic with network security groups](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg) in Microsoft Azure's documentation.
-    <p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
+    <p> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 2. For **SSH Public Key**, copy and paste the contents of your public key in the `opsman.pub` file. You created this file in [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html).
 
@@ -131,11 +146,12 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 5.  For **Availability Mode**, choose whether to use **Availability Sets** or **Availability Zones**. You can further configure this option in the **Assign AZs and Networks** pane. For more information, see [Assign AZs and Networks](#assign-networks).
    * **For new installations of <%= vars.ops_manager %>**: **Availability Zones** are selected by default, but you can choose **Availability Sets**.
    * **If you are upgrading from v2.4**: You must use **Availability Sets**.
-    <p class='note'><strong>Note:</strong> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
+    <p> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile
+    that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
 
 <%= partial "../common/azure-environment" %>
 
-    <p class='note'><strong>Note:</strong> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS) refer to <a href="https://docs.pivotal.io/platform/2-4/pcf-release-notes/opsmanager-rn.html#additional-cpi-settings">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
+    <p> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS) refer to <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/release-notes.html">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
 
 13. (Optional) If you selected `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
   14. For **Domain**, enter the domain for your Azure Stack deployment. For example, `local.azurestack.external`.
@@ -159,7 +175,7 @@ Create the following three networks:
 * [Runtime Network](#runtime-network)
 * [Services Network](#services-network)
 
-<p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
+<p> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 ### <a id='infrastructure-network'></a> Infrastructure network
 
@@ -306,11 +322,11 @@ To create the services network:
 
 <ol>
 <li>Select <strong>Assign AZs and Networks</strong>.<br/>
-  <p class='note'><strong>Note:</strong> The appearance of this page changes based on whether you are using Availability Zones or Availability Sets. For more information, see <a href="#azure-config">Azure Config Page</a>.</p>
+  <p> The appearance of this page changes based on whether you are using Availability Zones or Availability Sets. For more information, see <a href="#azure-config">Azure Config Page</a>.</p>
     <ul>
-    <li>If you use Availability Zones, select one of the three available zones from the <strong>Singleton Availability Zone</strong> dropdown, then select a network from the <strong>Networks</strong> dropdown. The networks that appear in this list are networks that you created earlier in this procedure.
+    <li>If you use Availability Zones, select one of the three available zones from the <strong>Singleton Availability Zone</strong> drop-down menu, then select a network from the <strong>Networks</strong> drop-down menu. The networks that appear in this list are networks that you created earlier in this procedure.
     </li>
-    <li>If you use Availability Sets, select a network from the <strong>Networks</strong> dropdown. The networks that appear in this list are networks that you created earlier in this procedure.</li>
+    <li>If you use Availability Sets, select a network from the <strong>Networks</strong> drop-down menu. The networks that appear in this list are networks that you created earlier in this procedure.</li>
     </ul>
   </li>
 <li>Click <strong>Save</strong>.</li>
@@ -335,17 +351,18 @@ To create the services network:
 
     ![alt-text=""](../common/images/azure/om-resource-config.png)
 
-1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the dropdown to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
-    <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
-    <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
-    <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>,
+1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, select **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
+    <p> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
+    <p> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
+    <p> If you install <%= vars.windows_runtime_first %>,
     provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 2. (Optional) To add a load balancer to the BOSH Director:
   1. Select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox.
   2. Ensure that the **Internet Connected** check box is not selected.
   3. For **Load Balancers**, enter your Azure application gateway name for each associated job. To create an application gateway, follow the procedures in [Configure an application gateway for SSL offload by using Azure Resource Manager](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-arm) from the Azure documentation. When you create the application gateway, associate the gateway's IP address with your system domain.
-    <p class='note caution'><strong>Caution:</strong> This feature is not recommended for production use. The Azure load balancer does not support an override port in the healthcheck configuration.</p>
+
+  <p> This feature is not recommended for production use. The Azure load balancer does not support an override port in the healthcheck configuration.</p>
 
 3. Click **Save**.
 

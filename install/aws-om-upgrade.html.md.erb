@@ -29,7 +29,7 @@ To create an <%= vars.ops_manager %> VM instance:
 
 To retrieve the AMI ID for <%= vars.ops_manager %>:
 
-1. Navigate to the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network.
+1. Go to the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) page on VMware Tanzu Network.
 
 1. Select the version of <%= vars.ops_manager %> you want to install from the **Releases** dropdown.
 
@@ -43,13 +43,15 @@ Use the AMI ID for your region to launch an AMI instance that hosts the new vers
 
 To launch the AMI for <%= vars.ops_manager %>:
 
-1. Navigate to your EC2 Dashboard.
+1. Go to your EC2 Dashboard.
 
-1. In  the **Images** menu, select **AMIs**.
+1. In the **Images** menu, select **AMIs**.
 
 1. In the **Owned by me** drop-down filter, select **Public images**.
 
 1. Paste the AMI ID for your region into the search bar and press enter.
+
+    <p> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the VMware Tanzu Network and file a support ticket.</p>
 
 1. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS):
   1. Right-click the row that lists your AMI and click **Copy AMI**.
@@ -73,11 +75,11 @@ To launch the AMI for <%= vars.ops_manager %>:
 
 1. Click **Next: Add Storage**.
 
-1.  Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
+1. Adjust the **Size (GiB)** value. The default persistent disk value is 50&nbsp;GB. <%= vars.company_name %> recommends increasing this value to a minimum of 100&nbsp;GB.
 
 1. Click **Next: Tag Instance**
 
-1.  On the **Add Tags** page, add a tag with the key `Name` and value `<%= vars.product_name_lc %>-ops-manager`.
+1. On the **Add Tags** page, add a tag with the key `Name` and value `<%= vars.product_name_lc %>-ops-manager`.
 
 1.  Click **Next: Configure Security Group**.
 

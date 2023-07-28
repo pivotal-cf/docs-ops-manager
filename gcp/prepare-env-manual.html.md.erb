@@ -4,7 +4,7 @@ owner: Ops Manager
 iaas: GCP
 ---
 
-You must follow these steps before installing <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
+You must follow these steps before you install <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -12,7 +12,8 @@ Before you prepare your <%= vars.ops_manager %> installation, do the following d
 
 - If you are deploying <%= vars.app_runtime_first %>, see [<%= vars.ops_manager %> on GCP Requirements](../install/gcp.html).
 
-- If you are deploying Enterprise <%= vars.k8s_runtime_first %>, see [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/gcp-requirements.html).
+- If you are deploying Enterprise <%= vars.k8s_runtime_first %>, see [GCP Prerequisites and
+Resource Requirements](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-gcp-requirements.html).
 
 
 ## <a id='config-components'></a> Configuration and components
@@ -55,7 +56,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
         * **Compute Engine > Compute Storage Admin**
         * **Storage > Storage Admin**
 
-        <p class='note'><strong>Note:</strong> You must scroll down in the pop-up windows to select all required roles.<br><br>
+        <p> You must scroll down in the pop-up windows to select all required roles.<br><br>
         The <strong>Service Account User</strong> role is required only if you plan to use <strong>The <%= vars.ops_manager %> VM Service Account</strong> to deploy <%= vars.ops_manager %>. For more information about <strong>The <%= vars.ops_manager %> VM Service Account</strong>, see <a href="config-manual.html#gcp-config">Step 2: Google Cloud Platform Config</a> in <em>Configuring BOSH Director on GCP</em>.</p>
 
   * **Service account ID**: The field automatically generates a unique ID based on the username.
@@ -65,7 +66,8 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
-<p class='note'><strong>Note:</strong> You can use this service account to configure file storage for <%= vars.app_runtime_abbr %>. For more information, see <a href="https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp">GCP</a> in <em>Configuring File Storage for <%= vars.app_runtime_abbr %></em>.</p>
+<p> You can use this service account to configure file storage for <%= vars.app_runtime_abbr %>.
+For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/pas-file-storage.html#gcp">GCP</a> in <em>Configuring File Storage for <%= vars.app_runtime_abbr %></em>.</p>
 
 
 ## <a id='enable_compute_resource_api'></a> Step 2: Enable Google Cloud APIs
@@ -140,7 +142,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
         ![alt-text="The New subnet dialog box includes these sections: Name, Region, IP address range, Private Google access, and Flow logs."](../common/images/gcp/gcp-vpc-subnet.png)
 
-        <p class='note'><strong>Note:</strong> For deployments that do not use external IP addresses, enable <strong>Private Google access</strong> to allow your runtime to make API calls to Google services.</p>
+        <p> For deployments that do not use external IP addresses, enable <strong>Private Google access</strong> to allow your runtime to make API calls to Google services.</p>
 
     2. Click **Add subnet** to add a second subnet for the BOSH Director and components specific to your runtime. Complete the form as follows:
 
@@ -247,7 +249,8 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
     6. For **External IP**, select `Ephemeral`.
 
-        <p class='note'><strong>Note:</strong> If you select a static external IP address for the NAT instance, then you can use the static IP to further secure access to your CloudSQL instances.</p>
+        <p> If you select a static external IP address for the NAT instance, then you can use the
+        static IP to further secure access to your CloudSQL instances.</p>
 
     7. Set **IP forwarding** to `On`.
     8. Click **Done**.
@@ -438,7 +441,8 @@ This step assigns tags and firewall rules to <%= vars.ops_manager %> components 
       </tr>
     </table>
 
-   <p class='note'><strong>Note:</strong> If you want your firewall rules to only permit traffic within your private network, modify the <strong>Source IP Ranges</strong> from the table accordingly.</p>
+   <p> If you want your firewall rules to only permit traffic within your private network, modify
+   the <strong>Source IP Ranges</strong> from the table accordingly.</p>
 
 1. If you are only using your GCP project to deploy <%= vars.ops_manager %>, then you can delete the following default firewall rules:
 
@@ -482,13 +486,14 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
        * Under **High availability**, select the **Create failover replica** checkbox.
     * **Authorize Networks**: Click **Add network** and create a network named `all` that allows traffic from `0.0.0.0/0`.
 
-        <p class='note'><strong>Note:</strong> If you assigned static IP addresses to your NAT instances, you can instead limit access to the database instances by specifying the NAT IP addresses.</p>
+        <p> If you assigned static IP addresses to your NAT instances, you can instead limit access to the
+        database instances by specifying the NAT IP addresses.</p>
 
 1. Click **Create**.
 
 ### <a id='create-dbs'></a> Create databases
 
-1. Navigate to the **Instances** page and select the database instance you just created.
+1. Go to the **Instances** page and select the database instance you just created.
 
 1. Select the **Databases** tab.
 
@@ -513,7 +518,7 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 
 1. Click **Create user account** to create a unique username and password for each database you created above. For **Host name**, select **Allow any host**. You must create a total of fourteen user accounts.
 
-<p class='note'><strong>Note:</strong> Ensure that the networkpolicyserver database user has the <code>ALL PRIVILEGES</code> permission.</p>
+<p> Ensure that the networkpolicyserver database user has the <code>ALL PRIVILEGES</code> permission.</p>
 
 
 ## <a id='buckets'></a> Step 7: Create storage buckets
@@ -545,7 +550,7 @@ To create an internal load balancer for <%= vars.ops_manager %> on GCP, do the f
 
 1. Create an internal-facing TCP/UDP load balancer for each region of your <%= vars.ops_manager %> deployment.
 
-    <p class='note'><strong>Note:</strong> GCP Internal Load Balancer (iLB) is a regional product. Within the same VPC/network, client VMs in a different region from the iLB cannot access the iLB. For more information, see the <a href="https://cloud.google.com/load-balancing/docs/internal/setting-up-internal#global_routing_issue">GCP documentation</a>.</p>
+    <p> GCP Internal Load Balancer (iLB) is a regional product. Within the same VPC/network, client VMs in a different region from the iLB cannot access the iLB. For more information, see the <a href="https://cloud.google.com/load-balancing/docs/internal/setting-up-internal#global_routing_issue">GCP documentation</a>.</p>
 
 1. Assign private IP addresses to the load balancers.
 
@@ -574,7 +579,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='create-instance-group'></a> Create instance group
 
-1. Navigate to **Compute Engine** > **Instance groups**.
+1. Go to **Compute Engine** > **Instance groups**.
 
 1. Click **CREATE INSTANCE GROUP**.
 
@@ -608,7 +613,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='create-health-check'></a> Create health check
 
-1. Navigate to **Compute Engine** > **Health checks**.
+1. Go to **Compute Engine** > **Health checks**.
 
 1. Click **CREATE HEALTH CHECK**.
 
@@ -625,7 +630,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='config-backend'></a> Configure back end
 
-1. Navigate to **Network services** > **Load balancing**.
+1. Go to **Network services** > **Load balancing**.
 
 1. Click **CREATE LOAD BALANCER**.
 
@@ -664,7 +669,8 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 1. Click **Add Frontend IP and port** and add the following:
 
-    <p class='note'><strong>Note:</strong> Skip this step if you do not have either a self-signed or trusted SSL certificate.
+    <p> Skip this step if you do not have either a self-signed or trusted SSL certificate.</p>
+
        When you configure the tile for your chosen runtime, you are given the opportunity to create a new self-signed certificate.
        Upon creating a certificate, you can complete the <strong>Add Frontend IP and port</strong> section. </p>
 
@@ -782,7 +788,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 ## <a id='tcp_lb'></a> Step 11: Create load balancer for TCP router
 
-<p class='note'><strong>Note:</strong> This step is optional and only required if you enable TCP routing in your deployment.</p>
+<p> This step is optional and only required if you enable TCP routing in your deployment.</p>
 
 To create a load balancer for TCP routing in GCP:
 
@@ -797,7 +803,7 @@ To create a load balancer for TCP routing in GCP:
 1. Select **Backend configuration**, and enter the following field values:
 
     * **Region**: Select the region you used to create the network in [Create a GCP Network with Subnet](#create_network).
-    * From the **Health check** dropdown, create a health check with the following details:
+    * From the **Health check** drop-down menu, create a health check with the following details:
         * **Name**: `pcf-tcp-lb`
         * **Port**: `80`
         * **Request path**: `/health`
@@ -835,7 +841,9 @@ In this step, you redirect queries for your domain to the IP addresses of your l
     * A TCP load balancer for WebSockets named `pcf-wss-logs`
     * A TCP load balancer named `pcf-ssh-proxy`
     * A TCP load balancer named `pcf-cf-tcp-lb`
-    <p class='note'><strong>Note:</strong> You can locate the static IP address of each load balancer by clicking its name under <strong>Network services > Load balancing</strong> in the GCP console.</p>
+
+    <p> You can locate the static IP address of each load balancer by clicking its name
+    under <strong>Network services > Load balancing</strong> in the GCP console.</p>
 
 1. Log in to the DNS registrar that hosts your domain. Examples of DNS registrars include Network Solutions, GoDaddy, and Register.com.
 

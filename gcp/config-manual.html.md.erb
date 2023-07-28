@@ -5,9 +5,9 @@ iaas: GCP
 install_type: manual
 ---
 
-You can follow these steps to configure the BOSH Director in <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
+You can use the steps in this topic to configure BOSH Director in <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
-<p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+<p> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
 
 ## <a id='access-om'></a> Step 1: Log into <%= vars.ops_manager %>
@@ -16,8 +16,8 @@ To configure BOSH Director, you must first access your <%= vars.ops_manager %> i
 
 To access <%= vars.ops_manager %>:
 
-1. In a web browser, navigate to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you set up in [Deploying <%= vars.ops_manager %> on GCP](deploy-manual.html).
-  <p class='note'><strong>Note:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
+1. In a web browser, go to the fully qualified domain name (FQDN) of <%= vars.ops_manager %> that you set up in [Deploying <%= vars.ops_manager %> on GCP](deploy-manual.html).
+  <p> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
 
 1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
 
@@ -30,8 +30,9 @@ To configure your GCP tile:
 1. Select **Google Config** and complete the following fields:
     * **Project ID**: Enter your GCP project ID in lowercase, such as: `your-gcp-project-id`.
     * **Default Deployment Tag**: Enter the prefix that you used when creating the GCP resources for this <%= vars.ops_manager %> installation.
-    * Select **AuthJSON**. In the field below, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
-        <p class='note'><strong>Note:</strong> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
+    * Select **AuthJSON**. In the following field, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
+        <p> As an alternative, you can select <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
+    * **VM Type Catalog**. Select the VM catalog that you want to use for your BOSH-deployed VMs.
 
         ![alt-text=""](../common/images/gcp/google_config.png)
 
@@ -46,10 +47,10 @@ To configure the **Director Config** pane in the BOSH Director tile, you must ha
 
 ## <a id='az'></a> Step 4: Configure Create Availability Zones
 
-<div class="note"><strong>Note:</strong> <%= vars.company_name %> recommends at least three availability zones (AZs) for a highly available installation.
+<div><%= vars.company_name %> recommends at least three availability zones (AZs) for a highly available installation.
   <ul>
     <li>For configuring a <%= vars.app_runtime_abbr %> deployment with multiple AZs, see <a href="../refarch/gcp/gcp_ref_arch.html">Reference Architecture for <%= vars.ops_manager %> on GCP</a>.</li>
-    <li>For <%= vars.k8s_runtime_abbr %> best practices for distributing workloads across multiple AZs and clusters, see <a href="https://docs.pivotal.io/pks/maintain-uptime.html">Maintaining Workload Uptime</a>.</li>
+    <li>For <%= vars.k8s_runtime_abbr %> best practices for distributing workloads across multiple AZs and clusters, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-maintain-uptime.html">Maintaining Workload Uptime</a>.</li>
   </ul>
 </div>
 
@@ -79,8 +80,11 @@ To configure the **Create Networks** pane:
 
 1. Make sure **Enable ICMP checks** is not selected. GCP routers do not respond to ICMP pings.
 
-1. Click **Add Network**. Create the three networks described in the tables below.
-    <p class='note'><strong>Note:</strong> To use a shared VPC network, enter the shared VPC host project name before the network name in the format <code>VPC-PROJECT-NAME/NETWORK-NAME/SUBNET-NAME/REGION-NAME</code>. For example, <code>vpc-project/opsmgr/central/us-central1</code>. For more information, see <a href="../install/gcp-shared-vpc.html">Configuring a Shared VPC on GCP</a>.</p>
+1. Click **Add Network**. Create the three networks described in the following tables.
+
+    <p> To use a shared VPC network, enter the shared VPC host project name before the network name in the format <code>VPC-PROJECT-NAME/NETWORK-NAME/SUBNET-NAME/REGION-NAME</code>. For example, <code>vpc-project/opsmgr/central/us-central1</code>.
+
+    For more information, see <a href="../install/gcp-shared-vpc.html">Configuring a Shared VPC on GCP</a>.</p>
     <h3>Infrastructure Network</h3>
     <table>
       <tr>
@@ -176,7 +180,7 @@ To configure the **Create Networks** pane:
     </table>
    <%= vars.expand_network_azs %>
 
-    <p class='note'><strong>Note:</strong> Ensure <code>169.254.169.254</code>, the IP address of the <code>metadata.google.internal</code> metadata server, is always specified at the beginning of this step's DNS resolver lists.</p>
+    <p> Ensure <code>169.254.169.254</code>, the IP address of the <code>metadata.google.internal</code> metadata server, is always specified at the beginning of this step's DNS resolver lists.</p>
 
 
 ## <a id='assign-azs'></a> Step 6: Configure Assign AZs and Networks
@@ -220,7 +224,7 @@ To configure the **Resource Config** pane:
 
 1. To add a load balancer to the BOSH Director, select the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** checkbox. Ensure that the **Internet Connected** checkbox is not selected for any job. The checkbox gives VMs a public IP address that enables outbound internet access. In [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.
 
-  <p class='note'><strong>Note:</strong> If you install <%= vars.windows_runtime_first %>, provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+  <p> If you install <%= vars.windows_runtime_first %>, provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
 
 ## <a id='custom-vm-extensions'></a> Step 11: Add custom VM extensions (optional)
@@ -245,6 +249,6 @@ To complete your BOSH Director installation:
 
 After you complete this procedure, follow the instructions for the runtime you intend to install.
 
-* To deploy <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
+* To deploy <%= vars.app_runtime_abbr %>, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configure-pas.html).
 
-* To prepare to deploy <%= vars.k8s_runtime_abbr %>, see [Creating Service Accounts in GCP for <%= vars.k8s_runtime_abbr %>](https://docs.pivotal.io/tkgi/gcp-service-accounts.html).
+* To prepare to deploy <%= vars.k8s_runtime_abbr %>, see [Creating Service Accounts in GCP for <%= vars.k8s_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-gcp-service-accounts.html).

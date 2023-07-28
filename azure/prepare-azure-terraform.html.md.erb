@@ -5,13 +5,15 @@ owner: Ops Manager
 
 <html class="list-style-none"></html>
 
-This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_first %>. You must deploy <%= vars.ops_manager %> in order to deploy <%= vars.app_runtime_first %> or <%=vars.k8s_runtime_first %>.
+This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_first %>. You must
+deploy <%= vars.ops_manager %> in order to deploy <%= vars.app_runtime_first %> or <%=vars.k8s_runtime_first %>.
 
 <%= partial "/pcf/warning-terraform" %>
 
 ## <a id='install'></a> Step 1: Install and configure the Azure CLI
 
-1. Install the Azure CLI 2.0 by following the instructions for your operating system in [Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) in the Microsoft Azure documentation.
+1. Install the Azure CLI 2.0 by following the instructions for your operating system in
+[Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 1. On the command line, set your cloud with a `name` value by running:
 
@@ -30,8 +32,10 @@ This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_fi
     $ az cloud set --name AzureCloud
     </pre>
 
-    <p class='note'><strong>Note:</strong> For more information about installing <%= vars.ops_manager %> in the China
-    Region, see <a href="../install/offline_installation.html#install_china">Install in the China Region</a> in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
+    <p class="note important">
+<span class="note__title"> Important</span> For more information about installing <%= vars.ops_manager %> in the China
+Region, see <a href="../install/offline_installation.html#install_china">Install in the China Region</a>
+in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
 
 1. To log in, run:
 
@@ -90,6 +94,7 @@ This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_fi
     ```
     Where `SUBSCRIPTION-ID` is the value of the `id` field of the subscription that you want to set as the default.
     <br><br>
+
     The following example sets the default to a subscription that has an `id` with the value of `"87654321-1234-5678-1234-567891234567"`.
     <pre class="terminal">
     $ az account set --subscription "87654321-1234-5678-1234-567891234567"
@@ -117,7 +122,8 @@ This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_fi
     --password "Swordfish" --homepage "http://BOSHAzureCPI" \
     --identifier-uris "http://BOSHAzureCPI"
     </pre>
-    <p class='note'><strong>Note:</strong> You can provide any string for the <code>homepage</code> and <code>identifier-uris</code> flags, but the value of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription. For the <code>homepage</code>, <%= vars.company_name %> recommends using <code>http://BOSHAzureCPI</code> as shown in the example above.</p>
+    <p> You can provide any string for the <code>identifier-uris</code> flag, but the value
+    of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription.</p>
 
 1. From the output of the `az ad app create` that you ran in the previous step, locate and record the value of `appId`. This is your `APP_ID` for creating a service principal.
 
@@ -163,7 +169,8 @@ This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_fi
     }
     </pre>
 
-1. You must have the Owner role on your service principal to deploy <%= vars.ops_manager %> to Azure. To assign the Owner role on your service principal, run:
+1. You must have the Owner role on your service principal to deploy <%= vars.ops_manager %> to Azure.
+To assign the Owner role on your service principal, run:
 
     ```
     az role assignment create --assignee "SERVICE-PRINCIPAL-NAME" \
@@ -180,7 +187,8 @@ This topic describes how you can prepare Azure to deploy <%= vars.ops_manager_fi
     --role "Owner" \
     --scope /subscriptions/87654321-1234-5678-1234-567891234567
     </pre>
-    <p class='note'><strong>Note:</strong> If you need to use multiple resource groups for your deployment on Azure, you can define custom roles for your Service Principal. These roles allow BOSH to deploy to pre-existing network resources outside of the resource group.</p>
+
+    <p> If you need to use multiple resource groups for your deployment on Azure, you can define custom roles for your Service Principal. These roles enable BOSH to deploy to pre-existing network resources outside of the resource group.</p>
 
     For more information about Azure Role-Based Access Control, see [Built-in roles for Azure resource](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-built-in-roles/) the Microsoft Azure documentation.
 

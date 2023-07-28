@@ -15,7 +15,7 @@ BOSH Backup and Restore (BBR) supports:
 
 For more information, see [Backup and Restore for External Blobstores](https://docs.cloudfoundry.org/bbr/external-blobstores.html) in the Cloud Foundry documentation.
 
-<p class='note'><strong>Note:</strong> To enable external blobstore backups for <%= vars.app_runtime_abbr %>, you must enable <strong>Backup Restore Node</strong>. For more information, see <a href="backup-pcf-bbr.html#backup-restore-node">Step 6: Confirm Backup Restore Node Is Deployed</a> in <em>Backing Up Deployments with BBR</em>.</p>
+<p> To enable external blobstore backups for <%= vars.app_runtime_abbr %>, you must enable <strong>Backup Restore Node</strong>. For more information, see <a href="backup-pcf-bbr.html#backup-restore-node">Step 6: Confirm Backup Restore Node Is Deployed</a> in <em>Backing Up Deployments with BBR</em>.</p>
 
 ## <a id='blobstore-support'></a> External blobstore support
 
@@ -81,22 +81,24 @@ To determine if external blobstore support is included in the version of <%= var
 
 In <%= vars.app_runtime_abbr_pivotal %> v2.2 and later, BBR supports backing up and restoring versioned and unversioned S3 or S3-compatible blobstores by default. For more information about configuring an S3 or S3-compatible blobstore, see [AWS](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#aws) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
 
-<div class="note">
-  <strong>Note:</strong>
-    <ul>
-      <li>Backup artifacts of external, S3-compatible, versioned blobstores do not contain the physical blobs. BBR requires that the original buckets still exist to be restored.</li>
-      <li>To protect yourself from losing a bucket, see <a href="https://docs.cloudfoundry.org/bbr/external-blobstores.html#enable-s3-versioned-replication">Enable Replication on Your Versioned S3-Compatible Blobstore</a> in <em>Backup and Restore for External Blobstores</em>.</li>
-    </ul>
-</div>
+<p class="note">
+<span class="note__title">Note</span> Backup artifacts of external, S3-compatible,
+versioned blobstores do not contain the physical blobs.
+  BBR requires that the original buckets still exist to be restored. To protect yourself from
+  losing a bucket,
+  see <a href="https://docs.cloudfoundry.org/bbr/external-blobstores.html#enable-s3-versioned-replication">Enable Replication on Your Versioned S3-Compatible Blobstore</a>
+in <em>Backup and Restore for External Blobstores</em>.</p>
 
 ## <a id='azure'></a> Azure blobstores
 
 To configure your Azure blobstore for backups, you must enable soft delete in your Azure Storage account. You can also enable soft delete for existing Azure storage accounts that were not initially created with soft delete enabled. For more information, see [Soft delete for Azure Storage blobs](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-soft-delete#quickstart) in the Microsoft documentation.
 
-After enabling soft delete, you can enable Azure blobstore backups in <%= vars.ops_manager %> for new or existing blobstores. For more information, see [Azure](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#azure) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
+After activating soft delete, you can enable Azure blobstore backups in <%= vars.ops_manager %> for new or existing blobstores. For more information,
+see [Azure](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/pas-file-storage.html#azure) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
 
 To save storage space and cost, <%= vars.company_name %> recommends that you configure a retention.
 
 ## <a id='gcs'></a> GCS blobstores
 
-For more information about configuring a GCS blobstore, see [GCP](https://docs.pivotal.io/application-service/operating/pas-file-storage.html#gcp) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
+For more information about configuring a GCS blobstore,
+see [GCP](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/pas-file-storage.html#gcp) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.

@@ -6,13 +6,13 @@ owner: Ops Manager
 This topic describes how you can add and delete additional products, such as [VMware RabbitMQ for Tanzu Application Service](https://network.pivotal.io/products/p-rabbitmq),
 from <%= vars.ops_manager_first %>.
 
-<p class='note'><strong>Note:</strong> In <%= vars.ops_manager %>, all product tiles use floating
+<p> In <%= vars.ops_manager %>, all product tiles use floating
   stemcells by default. This increases the security of your deployment by enabling tiles to
   automatically use the latest patched version of a stemcell, but it may significantly increase
   the amount of time required by a tile upgrade. For more information, see
   <a href="understanding-stemcells.html">Floating Stemcells</a>.</p>
 
-## <a id='add-import'></a> Add and Import Products
+## <a id='add-import'></a> Add and import products
 
 To add or import a product to your <%= vars.ops_manager %> installation:
 
@@ -20,7 +20,7 @@ To add or import a product to your <%= vars.ops_manager %> installation:
 cannot download products from <%= vars.product_network %> due to restricted network connectivity,
 see [Installing <%= vars.ops_manager %> in Air-Gapped Environments](offline_installation.html).
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and log in.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard and log in.
 
 1. Click **Import a Product**.
 
@@ -45,7 +45,7 @@ automatically run after a product installs, before <%= vars.ops_manager %> makes
 available for use. For more information about post-install errands, see [Errands](http://docs.pivotal.io/tiledev/tile-errands.html)
 in the <%= vars.ops_manager %> Tile Developer Guide.
 
-  <p class='note'><strong>Note:</strong> By default, <%= vars.ops_manager %> reruns errands
+  <p> By default, <%= vars.ops_manager %> reruns errands
     even if they are not necessary due to settings left from a previous install. Leaving errands
     checked at all times can cause updates and other processes to take longer. To prevent an
     errand from running, deselect the checkbox for the errand in the <strong>Errands</strong>
@@ -63,7 +63,7 @@ in the <%= vars.ops_manager %> Tile Developer Guide.
 the product.
 
 
-## <a id='pivnet-api'></a> Using the <%= vars.product_network %> API to Upgrade Products
+## <a id='pivnet-api'></a> Using the <%= vars.product_network %> API to upgrade products
 
 Instead of manually downloading each new version of the products in your <%= vars.ops_manager %>
 installation, you can upgrade your products by connecting your <%= vars.ops_manager %> Installation
@@ -71,7 +71,7 @@ Dashboard with <%= vars.product_network %> using a API token. Once you have uplo
 all subsequent product upgrades appear automatically in the <%= vars.ops_manager %> Installation
 Dashboard.
 
-<p class='note'><strong>Note:</strong> You can only use the <%= vars.product_network %> API
+<p> You can only use the <%= vars.product_network %> API
   if you have access to the Internet, since communication between <%= vars.ops_manager %> and
   <%= vars.product_network %> is necessary to import your products. If you are on an isolated
   network, do not save your API token.</p>
@@ -100,7 +100,7 @@ To connect the <%= vars.ops_manager %> Installation Dashboard with <%= vars.prod
 
 1. Click **Save**.
 
-### <a id='update-products'></a> Update Existing Products
+### <a id='update-products'></a> Update existing products
 
 After you save the <%= vars.product_network %> API token to the <%= vars.ops_manager %> Installation
 Dashboard, the latest versions of your existing products appear in the <%= vars.ops_manager %>
@@ -122,7 +122,7 @@ Dashboard, locate the product you want to upgrade.
 1. Click **Apply Changes**.
 
 
-## <a id='apply-changes'></a> Apply Changes to the BOSH Director
+## <a id='apply-changes'></a> Apply changes to BOSH Director
 
 You can use the <%= vars.ops_manager %> API or the **Review Pending Changes** page in the
 <%= vars.ops_manager %> Installation Dashboard to apply pending changes only to the BOSH Director
@@ -132,7 +132,17 @@ of an upgrade.
 For more information, see [Reviewing Pending Product Changes](review-pending-changes.html).
 
 
-## <a id='del-prod'></a> Delete Products
+## <a id='del-prod'></a> Delete products
 
-<%# Find this partial in GitHub at `pivotal-cf/docs-partials` %>
-<%= partial "/pcf/core/2-10/delete-product" %>
+To delete a product from your Ops Manager installation:
+
+From the Installation Dashboard:
+
+1. Click the trash icon on a product tile to remove that product.
+1. In the **Delete Product** dialog that appears, click **Confirm**.
+
+    <p> You cannot delete the BOSH Director product.</p>
+
+1. Click **Review Pending Changes**, then **Apply Changes**.
+
+After you delete a product, the product tile is removed from the installation and the Installation Dashboard. However, the product appears in the Available Products view.

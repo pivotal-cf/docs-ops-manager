@@ -5,11 +5,13 @@ owner: Ops Manager
 
 <html class="list-style-none"></html>
 
-This guide describes the steps you must follow before deploying <%= vars.ops_manager_first %> to Azure using Terraform templates.
+This guide describes the steps you must follow before you deploy <%= vars.ops_manager_first %> to Azure using Terraform templates.
 
 <%= partial "/pcf/warning-terraform" %>
 
-The Azure Terraform templates describe a set of Azure resources and properties. For more information about how Terraform creates resources in Azure, see [Azure Provider](https://www.terraform.io/docs/providers/azurerm/index.html) on the Terraform site.
+The Azure Terraform templates describe a set of Azure resources and properties.
+
+For more information about how Terraform creates resources in Azure, see [Azure Provider](https://www.terraform.io/docs/providers/azurerm/index.html) on the Terraform site.
 
 You may also find it helpful to review different deployment options in
 [Azure Reference Architecture](../refarch/azure/azure_ref_arch.html).
@@ -116,7 +118,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
 
 Complete this section if you plan to deploy the <%= vars.segment_runtime_full %> tile.
 
-<p class='note'><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
+<p> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
 
 Add the following variable to your `terraform.tfvars` file. This causes Terraform to create an additional HTTP load balancer and DNS record to use for the <%= vars.segment_runtime_full %> tile.
 

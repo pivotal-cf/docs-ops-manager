@@ -7,12 +7,12 @@ owner: Ops Manager
 
 You can use these instructions to deploy BOSH and <%= vars.ops_manager_first %> on Azure by using individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
 
-Before you perform the procedures in this topic, you must have completed the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
+Before you complete the procedures in this topic, you must complete the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
 
-<p class='note'><strong>Note:</strong> If you are deploying BOSH and <%= vars.ops_manager %> on Azure Stack, complete the procedures in <a href="https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-connect-cli">Install and configure CLI for use with Azure Stack</a> in the Microsoft documentation before following the procedures in this topic.</p>
+<p> If you deploy BOSH and <%= vars.ops_manager %> on Azure Stack, complete the procedures in <a href="https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-connect-cli">Install and configure CLI for use with Azure Stack</a> in the Microsoft documentation before following the procedures in this topic.</p>
 
-<p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
-
+<p> Sometimes Azure portal displays the names of resources with incorrect capitalization. Always use
+the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 ## <a id='network'></a> Step 1: Create network resources
 
@@ -28,7 +28,7 @@ To create network resources for your deployment:
     export RESOURCE_GROUP="YOUR-RESOURCE-GROUP-NAME"
     ```
 
-    <p class='note'><strong>Note:</strong> If you are on a Windows machine, you can use <code>set</code> instead of <code>export</code>.</p>
+    <p> If you are on a Windows machine, you can use <code>set</code> instead of <code>export</code>.</p>
 
 1. Export your location. For example, `westus`.
 
@@ -181,8 +181,10 @@ To create storage accounts for BOSH and your deployment:
     --location $LOCATION
     ```
 
-    <p class='note'><strong>Note:</strong> <code>Standard_LRS</code> refers to a Standard Azure storage account. The BOSH Director requires table storage to store stemcell information. Azure Premium storage does not support table storage and cannot be used for the BOSH storage account.</p>
-    If the command fails, ensure you have followed the rules for naming your storage account. Export another new storage account name if necessary.
+    <p> <code>Standard_LRS</code> refers to a Standard Azure storage account. The BOSH Director requires
+    table storage to store stemcell information. Azure Premium storage does not support table storage and cannot be used for the BOSH storage account.</p>
+    If the command fails, make sure you followed the rules for naming your storage account.
+    Export another new storage account name if necessary.</p>
 
 1. Configure the Azure CLI to use the BOSH storage account as its default.
 
@@ -231,7 +233,9 @@ To create storage accounts for BOSH and your deployment:
 
 1. Decide which type of storage to use and run the corresponding command below.
 
-    <p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends five Premium storage accounts, which provides a reasonable amount of initial storage capacity. You can use either Premium or Standard storage accounts, but they have very different scalability metrics. <%= vars.company_name %> recommends creating 1 Standard storage account for every 30 VMs, or 1 Premium storage account for every 150 VMs. You can increase the number of storage accounts later by provisioning more and following the naming sequence.</p>
+    <p> <%= vars.company_name %> recommends five Premium storage accounts, which provides a reasonable
+    amount of initial storage capacity. You can use either Premium or Standard storage accounts, but they
+    have very different scalability metrics. <%= vars.company_name %> recommends creating 1 Standard storage account for every 30 VMs, or 1 Premium storage account for every 150 VMs. You can increase the number of storage accounts later by provisioning more and following the naming sequence.</p>
 
     * To use Premium storage (recommended):
 
@@ -302,7 +306,7 @@ To create load balancers:
         --sku Standard
         ```
 
-        <p class='note'><strong>Note:</strong> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
+        <p> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
 
         This back end pool is empty when you create it.
     1. Add a probe to the load balancer.
@@ -377,11 +381,11 @@ To create load balancers:
             --probe-name http8080
             ```
 
-            <p class='note'><strong>Note:</strong> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
+            <p> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
 
             This back end pool is empty when you create it.
 
-    1.  Navigate to your DNS provider and create an entry that points `*.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-lb-ip --resource-group $RESOURCE_GROUP`.
+    1.  Go to your DNS provider and create an entry that points `*.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-lb-ip --resource-group $RESOURCE_GROUP`.
 
 1. **Optional:** Diego SSH Load Balancer
     1. Create a load balancer named `pcf-ssh-lb`.
@@ -394,7 +398,7 @@ To create load balancers:
         --sku Standard
         ```
 
-        <p class='note'><strong>Note:</strong> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
+        <p> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
 
         This back end pool is empty when you create it.
 
@@ -410,7 +414,7 @@ To create load balancers:
         --subnet pcf-pas-subnet
         ```
 
-        <p class='note'><strong>Note:</strong> If the Standard SKU is not available in Azure China, you can change to use the Basic SKU.</p>
+        <p> If the Standard SKU is not available in Azure China, you can change to use the Basic SKU.</p>
 
         This back end pool is empty when you create it.
 
@@ -454,7 +458,7 @@ To boot <%= vars.ops_manager %>:
 
     * If you use unmanaged disks, perform the following steps:
 
-        <p class='note'><strong>Note:</strong> Azure Stack requires unmanaged disks.</p>
+        <p> Azure Stack requires unmanaged disks.</p>
 
         1. Download the <%= vars.ops_manager %> image to your local machine. The image size is 10&nbsp;GB.
 
@@ -610,7 +614,7 @@ To boot <%= vars.ops_manager %>:
 
 1. If you plan to install more than one tile in this <%= vars.ops_manager %> installation, do the following to increase the size of the <%= vars.ops_manager %> VM disk. You can repeat this process and increase the disk again at a later time if necessary.
 
-    <p class='note'><strong>Note:</strong> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
+    <p> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
 
     1. Run the following command to stop the VM and detach the disk:
 
@@ -637,6 +641,8 @@ To boot <%= vars.ops_manager %>:
 
 To finish configuring BOSH Director:
 
-1. Navigate to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) to the public IP address of <%= vars.ops_manager %>. As a best practice, always use the FQDN to access <%= vars.ops_manager %>.
+1. Go to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) to the
+public IP address of <%= vars.ops_manager %>. As a best practice, always use the FQDN to
+access <%= vars.ops_manager %>.
 
 1. Continue to [Configuring BOSH Director on Azure](config-manual.html).

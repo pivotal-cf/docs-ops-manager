@@ -83,14 +83,14 @@ file as described below:
     $ cd ~/workspace/pivotal-cf-terraforming-gcp
     </pre>
 
-1. Navigate to the `terraforming-pas` or `terraforming-pks` directory that contains
+1. Go to the `terraforming-pas` or `terraforming-pks` directory that contains
 the Terraform files for your runtime.
 
 1. In the runtime directory, create a text file named `terraform.tfvars`.
 
 1. Open the `terraform.tfvars` file and add the following:
 
-    <p class='note'><strong>Note:</strong> Ensure that you insert a new line at the end of the file.</p>
+    <p> Ensure that you insert a new line at the end of the file.</p>
 
     ```
     env_name         = "YOUR-ENVIRONMENT-NAME"
@@ -131,9 +131,11 @@ the Terraform files for your runtime.
     <tr>
       <td><code>YOUR-OPS-MAN-IMAGE-URL</code></td>
       <td>
-        Enter the source URL of the <%= vars.ops_manager %> image you want to boot. You can find this URL in the PDF included with the <%= vars.ops_manager %> release on <a href="https://network.pivotal.io/">VMware Tanzu Network</a>.
+        Enter the source URL of the <%= vars.ops_manager %> image you want to boot. You can find this URL in the PDF included with
+        the <%= vars.ops_manager %> release on <a href="https://network.pivotal.io/">VMware Tanzu Network</a>.
         <br><br>
-        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disallow the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see <a href="https://docs.pivotal.io/platform-automation">Platform Automation</a>.
+        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disallow the creation of the <%= vars.ops_manager %> VM from Terraform.
+        For more information, see <a href="https://docs.pivotal.io/platform-automation/v5.1/">Platform Automation</a>.
       </td>
     </tr>
     <tr>
@@ -183,7 +185,8 @@ Complete this step if you want to do any of the following:
 
 In your `terraform.tfvars` file, specify the appropriate variables from the sections below.
 
-<p class='note'><strong>Note:</strong> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
+<p> You can see the configurable options by opening the <code>variables.tf</code> file and looking for
+variables with default values.</p>
 
 ### <a id='subnet_cidr'></a> CIDR ranges for subnets
 
@@ -257,9 +260,10 @@ Follow these steps to use the Terraform CLI to create resources on GCP:
 1. Run the following command to create the execution plan for Terraform.
     <pre>terraform plan -out=plan</pre>
 
-1. To execute the plan from the previous step, run the following command:
+1. To run the plan from the previous step, run the following command:
     <pre>terraform apply plan</pre>
-    <p class='note'><strong>Note:</strong> It may take several minutes for Terraform to create all the resources in GCP.
+
+    <p> It might take several minutes for Terraform to create all the resources in GCP.</p>
 
 
 ## <a id='dns'></a> Step 5: Create DNS record

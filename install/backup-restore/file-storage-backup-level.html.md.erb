@@ -3,7 +3,10 @@ title: Ops Manager file storage backup levels
 owner: RelEng
 ---
 
-You can configure <%= vars.app_runtime_first %> file storage backups to include all files, exclude droplets, or exclude droplets and packages. For information about configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets or to exclude droplets and packages, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/configure-pas.html#file-storage).
+You can configure <%= vars.app_runtime_first %> file storage backups to include all files, exclude droplets, or exclude
+droplets and packages. For information about configuring the <%= vars.app_runtime_abbr %> blobstore to
+exclude droplets or to exclude droplets and packages,
+see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#file-storage).
 
 ## <a id='file-storage-motivation'></a> Considerations for configuring file storage backups
 
@@ -33,7 +36,8 @@ If you configure <%= vars.app_runtime_abbr %> to exclude droplets from the file 
 
 When restoring from this backup, apps return in a stopped state because the foundation does not have their corresponding droplets. Developers must restage each app to return them to a running state. <%= vars.app_runtime_abbr %> must recompile the droplet using the packages in the backup then deploy the new droplet. This process increases the RTO.
 
-For more information about configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets, see [Configure File Storage](https://docs.pivotal.io/application-service/operating/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
+For more information about configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets,
+see [Configure File Storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='exclude-droplets-packages-file-storage'></a> File storage backups excluding droplets and packages
 
@@ -41,4 +45,3 @@ If you configure <%= vars.app_runtime_abbr %> to exclude droplets and packages f
 
 When restoring from this backup, apps return in a stopped state because the foundation does not have their corresponding droplets or packages. Developers must re-push each app to return them to a running state. This uploads the app packages, compiles them, and deploys a new droplet. This process increases the RTO.
 
-For more information about to configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets and packages, see [Configure File Storage](https://docs.pivotal.io/application-service/operating/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.

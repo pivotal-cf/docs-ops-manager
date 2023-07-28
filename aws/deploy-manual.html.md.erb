@@ -3,7 +3,7 @@ title: Deploying Ops Manager on AWS
 owner: Ops Manager
 ---
 
-This topic describes how you can deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
+You can deploy <%= vars.ops_manager_first %> on Amazon Web Services (AWS).
 
 Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Preparing to Deploy <%= vars.ops_manager %> on AWS](prepare-env-manual.html).
 
@@ -29,7 +29,8 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
 1. Paste the AMI ID for your region into the search bar and press enter.
 
-    <p class="note"><strong>Note:</strong> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the <a href="https://network.pivotal.io">VMware Tanzu Network</a> and file a Support ticket.</p>
+  <p> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the <a href="https://network.pivotal.io">VMware Tanzu Network</a>
+  and file a Support ticket.</p>
 
 2. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS), perform the following additional steps:
 
@@ -96,7 +97,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
         * If you already have a certificate from AWS Certificate Manager (ACM), select **Choose a certificate from ACM**.
         * If you do not have a certificate from ACM, select **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
 
-        <p class="note"><strong>Note:</strong> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate, leaving the <strong>Certificate chain</strong> entry blank.</p>
+        <p> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate, leaving the **Certificate chain** entry blank.</p>
 
     2. Click **Next: Configure Security Groups**.
 
@@ -298,13 +299,15 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
     2. Repeat the steps above to add `pcf-rds-subnet-az1` and `pcf-rds-subnet-az2` to the group.
     3. Click **Create**.
 
-    <p class="note"><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
+        <p> On the Subnet Group page, you might need to refresh the page to view the new group.</p>
 
-    <p class='note'><strong>Note:</strong> On the Subnet Group page, you may need to refresh the page to view the new group.</p>
 
 ## <a id='pcfaws-mysql-rds'></a> Step 7: Create a MySQL database using AWS RDS
 
-<p class='note'><strong>Note:</strong> You must have an empty MySQL database when you install or reinstall <%= vars.ops_manager %> on AWS.</p>
+<p class="note important">
+<span class="note__title"> Important</span> You must have an empty MySQL database when you install or
+reinstall <%= vars.ops_manager %> on AWS.
+</p>
 
 1. Navigate to the RDS Dashboard.
 
@@ -318,9 +321,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
 
     * **DB Instance Identifier**: Enter `pcf-ops-manager-director`.
     * Enter a secure **Master Username** and **Master Password**.
-
-        <p class="note"><strong>Note:</strong> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
-
+        <p> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
     * **DB Instance Class**: Select **db.m5.large - 2 vCPU, 7.5 GiB RAM**.
     * **Storage Type**: Select `Provisioned IOPS SSD`.
     * **Allocated Storage**: Enter **100&nbsp;GB**.

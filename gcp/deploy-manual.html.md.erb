@@ -16,7 +16,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 1. Log in to the [VMware Tanzu Network](https://network.pivotal.io/products/pivotal-cf), and click **<%= vars.ops_manager %>**.
 
-1. From the **Releases** dropdown, select the release to install.
+1. From the **Releases** drop-down menu, select the release to install.
 
 1. Select one of the following download files:
     * **<%= vars.ops_manager %> for GCP**
@@ -68,7 +68,8 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
     * **Boot disk**: Click **Change**, then perform the following steps:
         * Click **Custom images** if it is not already selected.
-        * Select the **Boot disk type**. If your environment has high performance needs, select **SSD**. As an example, environments used to [develop <%= vars.ops_manager %> tiles](http://docs.pivotal.io/tiledev/) might benefit from a higher performing <%= vars.ops_manager %> VM boot disk. For most environments, you can select **Standard**.
+        * Select the **Boot disk type**. If your environment has high performance needs, select **SSD**. As an example, environments used to
+        [develop <%= vars.ops_manager %> tiles](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/index.html) might benefit from a higher performing <%= vars.ops_manager %> VM boot disk. For most environments, you can select **Standard**.
         * Set the **Size (GB)** of the boot disk to the minimum or higher.
 
             | **Machine Spec** | **Minimum Value** |
@@ -97,7 +98,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 4. Navigate to your DNS provider, and create an entry that points a fully qualified domain name (FQDN) `opsman.MY-DOMAIN` to the `pcf-opsman` static IP address of <%= vars.ops_manager %> that you created in a previous step.
 
-    <p class='note'><strong>Note:</strong> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
+    <p> In order to set up <%= vars.ops_manager %> authentication correctly, <%= vars.company_name %> recommends using an FQDN to access <%= vars.ops_manager %>. Using an ephemeral IP address to access <%= vars.ops_manager %> can cause authentication errors upon subsequent access.</p>
 
 ## <a id='next'></a> Next steps
 
