@@ -30,9 +30,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
 </div>
 
-
-- **[Bug Fix]** Ops Manager API docs' Javascript doesn't work: "Content Security Policy" issue with Redoc.ly
-- **[Feature]** Include the contents of `/var/log` in the Ops Manager Support Bundle, as well as a few useful commands
+- **[Feature]** Introduces a `bosh recover` command that allows users to more quickly recover from IaaS problems. For more information, see the [bosh recover documentation](https://bosh.io/docs/cli-v2/#recover).
+- **[Known Issue Fix]** Apply Changes no longer fails with "Extracting compiled package archive failed" when using certain versions of tiles.
+- **[Known Issue Fix]** The scheduled `bosh clean-up` task runs successfully again.
+- **[Bug Fix]** API docs now load as expected (Javascript issues caused loading problems).
 
 <table border="1" class="nice">
   <thead>
@@ -59,6 +60,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
+- **[Known Issue]** Apply Changes can fail with "Extracting compiled package archive failed" when using certain versions of tiles. If you encounter this error, apply your changes a second time.
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes the full contents of `/var/log` and additional DNS configuration and information about disk space to help when diagnosing issues.
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes BOSH Director logs.
 - **[Feature]** Tiles can now be re-uploaded to <%= vars.ops_manager %>. You can re-upload tiles in cases where the BOSH releases or Tile metadata currently on the <%= vars.ops_manager %> instance are missing or corrupted.
@@ -203,6 +205,8 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 * **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, load times and caching for the **Stemcell Library** page are improved.
 
 * **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> supports vSphere 8.0 and NSX 4.0.
+
+* **[Known Issue]** The scheduled `bosh clean-up` task fails with a "Tried to load unspecified class: Bosh::Director::Jobs::DBJob" error.
 
 * **[Bug Fix]** Temporary verifier failures are properly exposed and do not cause a `500` error.
 
