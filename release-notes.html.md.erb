@@ -27,8 +27,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
-- **[Feature]** Disk type for deployed VMs is now configurable on GCP
+- **[Feature]** Introduces a `bosh recover` command that allows users to more quickly recover from IaaS problems. For more information, see the [bosh recover documentation](https://bosh.io/docs/cli-v2/#recover).
+- **[Feature]** Disk type for deployed VMs is now configurable on GCP.
 - **[Known Issue Fix]** Apply Changes no longer fails with "Extracting compiled package archive failed" when using certain versions of tiles.
+- **[Known Issue Fix]** The scheduled `bosh clean-up` task runs successfully again.
 
 <table border="1" class="nice">
   <thead>
@@ -308,6 +310,8 @@ more information about this known issue, see [Upgrading <%= vars.ops_manager %> 
 
 * **[Known Issue]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T, improperly encoded data in the <%= vars.ops_manager %>
 database can cause re-deployments to fail. For more information, see [Missing Classes Cause Re-Deployment Failures](#re-deploy-fail).
+
+* **[Known Issue]** The scheduled `bosh clean-up` task fails with a "Tried to load unspecified class: Bosh::Director::Jobs::DBJob" error.
 
 * **[Bug Fix]** Temporary verifier failures are properly exposed and do not cause a `500` error.
 
