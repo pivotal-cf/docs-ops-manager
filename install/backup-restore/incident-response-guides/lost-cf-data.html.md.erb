@@ -3,7 +3,7 @@ title: Restoring lost VMware Tanzu Application Service for VMs data
 owner: Platform Recovery
 ---
 
-This guide explains how you can use BOSH Backup and Restore (BBR) to restore a lost piece of
+You can use BOSH Backup and Restore (BBR) to restore a lost piece of
 <%= vars.app_runtime_first %> data, such as a user or space.
 
 ## <a id='prerequisite'></a> Prerequisite
@@ -154,12 +154,16 @@ Where:
 * `APP-TO-RESTORE` is the app you need to restore.
 * `APP-DROPLET` is the droplet for the app that you need to restore.
 
-<p class='note'><strong>Note:</strong> If you use an external blobstore, go to your IaaS console and verify that the backup bucket for the droplet is present.</p>
+<p> If you use an external blobstore, go to your IaaS console and verify that the backup bucket for the droplet is present.</p>
 
 
 ## <a id='perform-restore'></a> Perform the restore
 
-<p class='note caution'><strong>Caution:</strong> BBR restore is a destructive process which removes any current data in your deployment. Performing a restore overwrites all new data since you created your most recent backup artifact.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+BBR restore is a destructive process which removes any current data in your deployment.
+Performing a restore overwrites all new data since you created your most recent backup artifact.
+</p>
 
 <%= vars.company_name %> recommends that you verify the compatibility of your backup artifact by attempting the restore on an environment that is identical to the target environment. If this is not possible, see [Compatibility of Restore](../restore-pcf-bbr.html#compatibility) in _Restoring Deployments from Backup with BBR_ to confirm that your backup is compatible with your restore environment.
 
@@ -170,6 +174,9 @@ After a restore, <%= vars.app_runtime_abbr %> rolls back to its state at the tim
 
 ## <a id='consolidating-environment'></a> Consolidate your environment
 
-If you have service instances that were not present when you performed the backup, then the BOSH service deployments become orphaned. <%= vars.app_runtime_abbr %> has no reference to these service deployments, but they continue to exist. You can locate orphaned service deployments using the BOSH command-line interface (CLI).
+If you have service instances that were not present when you performed the backup, then the
+BOSH service deployments become orphaned. <%= vars.app_runtime_abbr %> has no reference to these service deployments, but they continue to exist. You can locate
+orphaned service deployments using the BOSH command-line interface (CLI).
 
-You can locate orphaned on-demand service instances by running the `orphan-deployments` errand. For more information, see [Orphan Deployments](https://docs.pivotal.io/svc-sdk/odb/management.html#orphan-deployments) in _Broker and Service Management_.
+You can locate orphaned on-demand service instances by running the `orphan-deployments` errand.
+For more information, see [Orphan Deployments](https://docs.vmware.com/en/On-Demand-Services-SDK-for-VMware-Tanzu/0.42/on-demand-services-sdk/GUID-management.html#orphan-deployments) in _Broker and Service Management_.

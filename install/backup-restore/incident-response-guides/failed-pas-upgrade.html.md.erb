@@ -3,9 +3,11 @@ title: Recovering from Ops Manager and TAS for VMs upgrade failure
 owner: Platform Recovery
 ---
 
-This guide explains how you can use BOSH Backup and Restore (BBR) to restore <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to a healthy state after a failed upgrade between <%= vars.app_runtime_abbr %> minor versions.
+You can use BOSH Backup and Restore (BBR) to restore <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to a healthy state after a failed upgrade between <%= vars.app_runtime_abbr %> minor versions.
 
-<p class='note'><strong>Note:</strong> BBR can only restore across the same <%= vars.app_runtime_abbr %> minor versions. To verify which version of <%= vars.app_runtime_abbr %> was used to create the backup artifact, see <code>metadata/cf-VERSION.yml</code> in the backup artifact.</p>
+<p> BBR can only restore across the same <%= vars.app_runtime_abbr %> minor versions. To verify
+which version of <%= vars.app_runtime_abbr %> was used to create the backup artifact,
+see <code>metadata/cf-VERSION.yml</code> in the backup artifact.</p>
 
 
 ## <a id='evaluate'></a> Evaluate your deployment
@@ -42,7 +44,7 @@ Before you can restore after a failed upgrade between <%= vars.app_runtime_abbr 
 
 #### <a id='bosh-director'></a> Confirm that your BOSH Director is healthy
 
-To check that the BOSH Director is in a healthy state for a `bbr restore`, SSH to the <%= vars.ops_manager %> VM and ensure that all jobs are running.
+To verify that the BOSH Director is in a healthy state for a `bbr restore`, SSH to the <%= vars.ops_manager %> VM and ensure that all jobs are running.
 
 To ensure that all jobs are running:
 

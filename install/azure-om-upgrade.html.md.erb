@@ -3,13 +3,14 @@ title: Upgrading BOSH Director for Ops Manager on Azure
 owner: Ops Manager
 ---
 
-This topic describes how you can upgrade BOSH Director for <%= vars.ops_manager_first %> on Azure. Perform these tasks as part of the <%= vars.ops_manager %> upgrade process.
+You can upgrade BOSH Director for <%= vars.ops_manager_first %> on Azure. Complete these tasks as part of
+the <%= vars.ops_manager %> upgrade process.
 
 For information about upgrading <%= vars.ops_manager %>, see [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html#upgrade_ops).
 
 <%= partial "./om_upgrade_overview" %>
 
-<p class='note'><strong>Note:</strong> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
+<p> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 To create an <%= vars.ops_manager %> VM instance:
 
@@ -325,9 +326,11 @@ To create an <%= vars.ops_manager %> VM instance:
             * `OPS-MANAGER-VERSION` is the version of <%= vars.ops_manager %> you are deploying. For example, `opsman-2.0.1`.
             * `PATH-TO-PUBLIC-KEY` is the path to your public key .pub file.
 
-1. If you have deployed more than one tile in this <%= vars.ops_manager %> installation, increase the size of the <%= vars.ops_manager %> VM disk. You can repeat this process and increase the disk again at a later time if necessary.
+1. If you deploy more than one tile in this <%= vars.ops_manager %> installation, increase the
+size of the <%= vars.ops_manager %> VM disk. You can repeat this process and increase the disk again at
+a later time if necessary.
 
-    <p class='note'><strong>Note:</strong> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
+    <p> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
 
     1. Stop the VM and detach the disk by running:
 

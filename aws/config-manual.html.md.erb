@@ -9,7 +9,7 @@ You can configure BOSH Director to deploy <%= vars.ops_manager_first %> on Amazo
 
 Before you begin this procedure, ensure that you have completed all of the steps in [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html).
 
-## <a id='pcfaws-om-access'></a> Step 1: log into <%= vars.ops_manager %>
+## <a id='pcfaws-om-access'></a> Step 1: Log into <%= vars.ops_manager %>
 
 1. In a web browser, go to the fully qualified domain that you created in the [Configure DNS Records](deploy-manual.html#pcfaws-dns) step of _Deploying <%= vars.ops_manager %> on AWS_.
 
@@ -34,7 +34,8 @@ Before you begin this procedure, ensure that you have completed all of the steps
     * **Region**: Select the region where you deployed <%= vars.ops_manager %>.
     * **VM Type Catalog** Select the VM catalog that you want to use for your BOSH-deployed VMs.
     * **AWS EBS disk type**: Select the type of EBS volume for BOSH deployed VMs to use.
-      <p class="note caution">
+
+    <p class="note caution">
       <span class="note__title">Caution</span>
       If you change this value, BOSH recreates all VMs when you apply changes.</p>
 
@@ -42,7 +43,7 @@ Before you begin this procedure, ensure that you have completed all of the steps
 
       For more information about using EBS encryption, see [Configuring Amazon EBS Encryption for <%= vars.ops_manager %> on AWS](../install/cloudform-om-ebs-config.html).
 
-        <p class="note important">
+      <p class="note important">
       <span class="note__title">Important</span> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_first %> or <%= vars.windows_runtime_abbr %> 2012 R2 are not encrypted.</p>
 
 2. Click **Save**.
@@ -166,7 +167,9 @@ Before you begin this procedure, ensure that you have completed all of the steps
         </table>
 
         <p class="note important">
-        <span class="note__title">Important</span> If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.</p
+        <span class="note__title">Important</span> If you set a VPC CIDR other than
+        recommended, enter the second IP in your VPC CIDR. For example, for
+        a <code>10.0.0.0/24</code> VPC CIDR, enter <code>10.0.0.2</code> in each subnet.</p
 
     1. Click **Add Network**.
     1. For **Name**, enter the name of your runtime. For example, `tas` or `pks`.
@@ -350,10 +353,11 @@ Before you begin this procedure, ensure that you have completed all of the steps
 
 3. Click **Save**.
 
-    <p class='note'><strong>Note:</strong> If you are deploying <%= vars.k8s_runtime_first %> with a <%= vars.k8s_runtime_abbr %>  workload load balancer,
+    <p> If you are deploying <%= vars.k8s_runtime_first %> with a <%= vars.k8s_runtime_abbr %>  workload load balancer,
     you must tag each AWS subnet with your <%= vars.k8s_runtime_abbr %> Kubernetes cluster unique identifier before you create the load balancer.
+
     For more information about tagging subnets with a <%= vars.k8s_runtime_abbr %> cluster unique identifier,
-    see <a href="https://docs.pivotal.io/tkgi/deploy-workloads.html#aws">AWS Prerequisites</a>.</p>
+    see <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-deploy-workloads.html#aws">AWS Prerequisites</a>.</p>
 
     <%= vars.expand_network_azs %>
 
