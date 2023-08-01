@@ -17,7 +17,7 @@ Configure runtime CredHub with one or more HSMs to securely manage service broke
 
 ## <a id='checklist'></a> Preparation checklist
 
-As you follow these procedures, you should collect or create these resources:
+As you follow these procedures, you can collect or create these resources:
 
 * The name of your encryption key
 
@@ -133,7 +133,7 @@ To establish a network trust link between a client and your HSMs:
 
 1. Create a certificate for the client by running:
 
-    ```
+    ```console
     openssl req \
       -x509   \
       -newkey rsa:4096 \
@@ -143,10 +143,13 @@ To establish a network trust link between a client and your HSMs:
       -subj   "/CN=CLIENT-HOSTNAME-OR-IP" \
       -keyout CLIENT-HOSTNAME-OR-IP.pem \
       -out    CLIENT-HOSTNAME-OR-IP.pem
-    ```
-    Where:
-    * `NUMBER-OF-DAYS` is the number of days you want the network trust link to be valid.
-    * `CLIENT-HOSTNAME-OR-IP` is the hostname or IP address of the client.
+
+Where:
+
+  <ul>
+      <li>`NUMBER-OF-DAYS` is the number of days you want the network trust link to be valid.</li>
+      <li><code>`CLIENT-HOSTNAME-OR-IP` is the hostname or IP address of the client.</li>
+    </ul>
 
 1. Copy the client certificate to your HSM by running:
 
@@ -243,7 +246,7 @@ To delete the currently active key:
               }
             }
           }'
-    ```
+
   Where:
     <ul>
     <li>`OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> instance.</li>
@@ -271,7 +274,7 @@ To delete the currently active key:
                       }
                     }
                   }'
-            ```
+
 Where:
 <ul>
   <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
@@ -302,9 +305,9 @@ Where:
                       }
                     }
                   }'
-            ```
+
   Where:
-               <ul>
+  <ul>
       <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
       <li>`DEACTIVATED-KEY` is the key you deactivated.</li>
       <li>`UPLOADED-KEY` is the name of the encryption key you uploaded in the previous step..</li>
@@ -365,8 +368,8 @@ Where:
 
 Where:
      <ul>
-              <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
-              <li>`ACTIVATED-KEY` is the name of the encryption key you activated in the previous step.</li>
+          <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
+          <li>`ACTIVATED-KEY` is the name of the encryption key you activated in the previous step.</li>
    </ul>
 
 For information about running commands with the <%= vars.ops_manager %> API, see [Run API Commands](ops-man-api.html#run-commands) in _Using the <%= vars.ops_manager %> API_.
