@@ -166,9 +166,9 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 08, 2023
 
-- **[Known Issue]** Deployment of TAS and related tiles (e.g. Isolation Segment) will fail during the _first_ Apply Changes with the error, "Extracting compiled package archive failed". If you encounter this error, run Apply Changes again. This issue will be fixed in a following release of <%= vars.ops_manager %>.
+- **[Known Issue]** Deployment of TAS and related tiles (e.g. Isolation Segment) fail during the _first_ Apply Changes with the error, "Extracting compiled package archive failed". If you encounter this error, run Apply Changes again. This issue will be fixed in a following release of <%= vars.ops_manager %>.
 - **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
-- **[Bug Fix]** The See Changes page should not return an error after upgrading from Ops Manager 2.10 to 3.0
+- **[Bug Fix]** The See Changes page does not return an error after upgrading from Ops Manager 2.10 to 3.0.
 
 <table border="1" class="nice">
   <thead>
@@ -181,7 +181,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   <tr>
     <td>Tanzu Ops Manager</td><td>3.0.9-build.367*</td>
   </tr>
-  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.108</td></tr><tr><td>BBR SDK</td><td>1.18.69*</td></tr><tr><td>BOSH Director</td><td>277.3.1*</td></tr><tr><td>BOSH DNS</td><td>1.36.1</td></tr><tr><td>System Metrics</td><td>2.2.7</td></tr><tr><td>CredHub</td><td>2.12.26</td></tr><tr><td>CredHub Maestro</td><td>9.0.4</td></tr><tr><td>Syslog</td><td>12.1.4*</td></tr><tr><td>Windows Syslog</td><td>1.1.14*</td></tr><tr><td>UAA</td><td>76.11.0*</td></tr><tr><td>BPM</td><td>1.2.0</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>98</td></tr><tr><td>Azure CPI</td><td>44.0.0</td></tr><tr><td>Google CPI</td><td>47.0.0</td></tr><tr><td>OpenStack CPI</td><td>52</td></tr><tr><td>vSphere CPI</td><td>92</td></tr><tr><td>BOSH CLI</td><td>7.2.3</td></tr><tr><td>Credhub CLI</td><td>2.9.14</td></tr><tr><td>BBR CLI</td><td>1.9.45*</td></tr><tr><td>Telemetry</td><td>2.0.5</td></tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.108</td></tr><tr><td>BBR SDK</td><td>1.18.69*</td></tr><tr><td>BOSH Director</td><td>277.3.1*</td></tr><tr><td>BOSH DNS</td><td>1.36.1</td></tr><tr><td>System Metrics</td><td>2.2.7</td></tr><tr><td>CredHub</td><td>2.12.26</td></tr><tr><td>CredHub Maestro</td><td>9.0.4</td></tr><tr><td>Syslog</td><td>12.1.4*</td></tr><tr><td>Windows Syslog</td><td>1.1.14*</td></tr><tr><td>UAA</td><td>76.11.0*</td></tr><tr><td>BPM</td><td>1.2.0</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>98</td></tr><tr><td>Azure CPI</td><td>44.0.0</td></tr><tr><td>Google CPI</td><td>47.0.0</td></tr><tr><td>OpenStack CPI</td><td>52</td></tr><tr><td>vSphere CPI</td><td>92</td></tr><tr><td>BOSH CLI</td><td>7.2.3</td></tr><tr><td>CredHub CLI</td><td>2.9.14</td></tr><tr><td>BBR CLI</td><td>1.9.45*</td></tr><tr><td>Telemetry</td><td>2.0.5</td></tr>
     <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
@@ -710,6 +710,6 @@ This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.6+
 
 ### <a id='bosh-reuses-packages'></a> BOSH inappropriately reuses compiled packages
 
-The BOSH Director attempts to match packages from an uploaded release to "similar" packages that have been previously uploaded. The match is made using the fingerprint on the uncompiled package contents. However, recently the packages in <code>golang-release</code> were modified to be templated. This led to packages that shared the same fingerprint to be used interchangeably even though they represented different versions of Golang. Reusing these packages could cause Apply Changes to fail if a tile expected one version of Golang but got another.
+The BOSH Director attempts to match packages from an uploaded release to "similar" packages that were previously uploaded. The match is made using the fingerprint on the uncompiled package contents. However, the packages in <code>golang-release</code> were recently modified to be templated. Because of this, packages that shared the same fingerprint were used interchangeably, even though they represented different versions of Go. Reusing these packages can cause Apply Changes to fail if a tile expected one version of Go but encountered another version.
 
 This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.9+LTS-T.
