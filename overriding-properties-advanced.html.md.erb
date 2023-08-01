@@ -103,18 +103,16 @@ To override properties in the BOSH Director manifest:
 1. Set <%= vars.ops_manager %> to Advanced Mode by following the procedure in
 [How to Enable Advanced Mode in the <%= vars.ops_manager %>](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
+
 For more information about Advanced Mode,
 see [Advanced Mode](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Mode)
 in the <%= vars.ops_manager %> API documentation.
 
-  <div class="note caution"><strong>Caution:</strong>
-    <ul>
-      <li><%= vars.company_name %> recommends that only skilled operators use Advanced Mode in <%= vars.ops_manager %>.
-        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.</li>
-      <li><%= vars.ops_manager %> does not validate the properties that you change using Advanced Mode.
-        For example, if you enter a string where an integer is required, you do not receive an error.</li>
-    </ul>
-  </div>
+  <p class="note caution">
+<span class="note__title">Caution</span>
+<%= vars.company_name %> recommends that only skilled operators use Advanced Mode in <%= vars.ops_manager %>.
+        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment. <%= vars.ops_manager %> does not validate the properties that you change using Advanced Mode.
+        For example, if you enter a string where an integer is required, you do not receive an error.</p>
 
 1. Use the `/api/v0/staged/director/overrides` endpoint. For more information, see
 [Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1overrides/put)
@@ -134,14 +132,13 @@ in the Knowledge Base.
 For more information about Advanced Mode,
 see [Advanced Mode](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Mode)
 in the <%= vars.ops_manager %> API documentation.
-  <div class="note caution"><strong>Caution:</strong>
-    <ul>
-      <li><%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
-        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.</li>
-      <li> does not validate the properties that you change using Advanced Mode.
-        For example, if you enter a string where an integer is required, you do not receive an error.</li>
-    </ul>
-  </div>
+
+  <p class="note caution">
+<span class="note__title">Caution</span>
+<%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
+        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.
+        and it does not validate the properties that you change using Advanced Mode.
+        For example, if you enter a string where an integer is required, you do not receive an error.</p>
 
 1. Use the `/api/v0/staged/products` endpoint to get and record the product GUID from the output of the command. For more information, see [All staged products](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Products/paths/~1api~1v0~1staged~1products/get) in the Ops Manager API documentation.
 
@@ -163,14 +160,13 @@ in the Knowledge Base.
 For more information about Advanced Mode,
 see [Advanced Mode](https://docs.pivotal.io/ops-manager/3-0/api/#tag/Advanced-Mode)
 in the <%= vars.ops_manager %> API documentation.
-  <div class="note caution"><strong>Caution:</strong>
-    <ul>
-      <li><%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
-        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.</li>
-      <li> does not validate the properties that you change using Advanced Mode.
-        For example, if you enter a string where an integer is required, you do not receive an error.</li>
-    </ul>
-  </div>
+
+  <p class="note caution">
+<span class="note__title">Caution</span>
+<%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
+        If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment. It does not validate the properties that you change using Advanced Mode.
+        For example, if you enter a string where an integer is required, you do not receive an error.</p>
+
 
 1. Use the `/api/v0/staged/director/runtime_configs/overrides` endpoint. For more information, see:
   * [BOSH DNS job spec](https://github.com/cloudfoundry/bosh-dns-release/blob/master/jobs/bosh-dns/spec) in GitHub.

@@ -4,7 +4,8 @@ title: Global DNS load balancers for multi-foundation environments
 
 This topic describes how you can use global DNS load balancers (GLBs) for multi-foundation environments. This topic also describes concepts such as foundation affinity and health checks.
 
-<p class='note'><strong>Note:</strong> If you want to configure a load balancer dedicated to one foundation and you are using an F5 LTM, see <a href="https://docs.pivotal.io/application-service/operating/f5-lb.html">Configuring an F5 Load Balancer for <%= vars.app_runtime_abbr %></a>.</p>
+<p> If you want to configure a load balancer dedicated to one foundation and you are using an F5 LTM,
+see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/f5-lb.html">Configuring an F5 Load Balancer for <%= vars.app_runtime_abbr %></a>.</p>
 
 ## <a id='multi-foundation'></a> About multi-foundation environments
 
@@ -22,7 +23,8 @@ The typical setup for foundation failover requires the GLB be authoritative for 
 
 To configure your GLB:
 
-1. Find and record your wildcard app domain. For <%= vars.app_runtime_abbr %>, your wildcard app domain is typically the **Apps domain** you configure in the **Domains** pane of the <%= vars.app_runtime_abbr %> tile. For more information, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/configure-pas.html#domains).
+1. Find and record your wildcard app domain. For <%= vars.app_runtime_abbr %>, your wildcard app domain is typically the **Apps domain** you configure in the **Domains** pane of the <%= vars.app_runtime_abbr %> tile. For more information,
+see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#domains).
 
 1. Add the domain you recorded to both <%= vars.app_runtime_abbr %> foundations using a shared domain. You can create a shared domain using the Cloud Foundry Command Line Interface (cf CLI). For more information about the cf CLI command to create shared domains, see the [Cloud Foundry CLI Reference Guide](https://cli.cloudfoundry.org/en-US/cf/create-shared-domain.html).
 
@@ -86,4 +88,4 @@ For the levels at which you can check the health of your foundation, see the fol
 </tr>
 </table>
 
-<p class='note caution'><strong>Caution:</strong> <%= vars.company_name %> does not recommend setting health checks at the app level. Configuring health checks in this way can cause more frequent failover and delays while pushing apps. Complete failover of a foundation affects all apps on the platform. Health checks on a per-app basis can require additional overhead beyond the control of an app developer.</p>
+<p> <%= vars.company_name %> does not recommend setting health checks at the app level. Configuring health checks in this way can cause more frequent failover and delays while pushing apps. Complete failover of a foundation affects all apps on the platform. Health checks on a per-app basis can require additional overhead beyond the control of an app developer.</p>

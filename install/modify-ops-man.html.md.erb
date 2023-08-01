@@ -16,7 +16,13 @@ Operators might want to modify the <%= vars.ops_manager %> installation and prod
 
 * To migrate content across different <%= vars.ops_manager %> releases.
 
-<p class='note caution'><strong>Caution:</strong> Be careful when making changes to your <%= vars.ops_manager %> installation and product template files. Use spaces instead of tabs, and remember that YAML files use whitespace as a delimiter. Finally, <%= vars.company_name %> does not officially support these procedures, so use them at your own risk.</p>
+<p class="note">
+<span class="note__title">Note</span> Be careful when you make changes to
+your <%= vars.ops_manager %> installation and product template files. Use spaces instead of
+tabs, and remember that YAML files use whitespace as a delimiter. Finally,
+<%= vars.company_name %> does not officially support these procedures, so use them at
+your own risk.
+</p>
 
 ## <a id='understand-files'></a> Understand installation and product template files
 
@@ -26,7 +32,9 @@ During the installation process, <%= vars.ops_manager %> combines information fr
 
 * **Product templates:** <%= vars.ops_manager %> uses product templates to create forms and obtain user input. The `job_types` and `property_blueprint` key-value pairs in a product template determine how the `jobs` and `properties` sections display in the installation file. <%= vars.ops_manager %> stores product templates as YAML files in the directory `/var/tempest/workspaces/default/metadata` on the <%= vars.ops_manager %> VM. These files are not encrypted, so you can edit them without decrypting. User input does not alter these files.
 
-<p class='note'><strong>Note:</strong> Upgrading <%= vars.ops_manager %> might eliminate your changes to the installation and product template files.</p>
+<p> When you upgrade<%= vars.ops_manager %> your changes might be eliminated
+in the installation and
+product template files.</p>
 
 
 ## <a id='installation'></a> Modify the installation files
@@ -71,7 +79,7 @@ Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manage
 
 ## <a id='templates'></a> Modify product template files
 
-Perform the following steps to locate and edit your <%= vars.ops_manager %> product template files:
+Complete the following steps to locate and edit your <%= vars.ops_manager %> product template files:
 
 1. SSH into the <%= vars.ops_manager %> VM by following the steps in the [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
 1. On the <%= vars.ops_manager %> VM, go to the `/var/tempest/workspaces/default/metadata` directory.
@@ -88,7 +96,7 @@ Perform the following steps to locate and edit your <%= vars.ops_manager %> prod
 
 ## <a id='revert'></a> Revert to your backup
 
-Perform the following steps to revert to your backup of an installation or product template file:
+Complete the following steps to revert to your backup of an installation or product template file:
 
 1. SSH into the <%= vars.ops_manager %> VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
 1. Overwrite the modified file with the backup:

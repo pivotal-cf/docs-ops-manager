@@ -54,7 +54,7 @@ If two admins are working at the same time, the admin who first clicks **Apply C
 
 <%= vars.recommended_by %> recommends coordinating changes between admins to avoid overwriting configurations.
 
-<p class='note'><strong>Note:</strong> If you are having deployment issues or changes to your <%= vars.ops_manager %> are not persisting correctly, confirm that your work is not conflicting with an automated admin.</p>
+<p> If you are having deployment issues or changes to your <%= vars.ops_manager %> are not persisting correctly, confirm that your work is not conflicting with an automated admin.</p>
 
 
 ## <a id='enable'></a> Enable RBAC in <%= vars.ops_manager %> after upgrade
@@ -65,7 +65,7 @@ If your organization has operators who are devoted to managing certain services 
 
 If you upgrade from an older <%= vars.ops_manager %> instance, you must enable RBAC and assign roles to users before they can access <%= vars.ops_manager %>. If you do not assign any roles to a user, they cannot log in to <%= vars.ops_manager %>.
 
-<p class='note caution'><strong>Caution:</strong> Do not assign roles before you enable RBAC. Changing UAA authentication settings causes the roles to delete.</p>
+<p> Do not assign roles before you enable RBAC. Changing UAA authentication settings causes the roles to delete.</p>
 
 ### <a id='enable-internal'></a> Enable RBAC with internal authentication
 
@@ -78,12 +78,9 @@ If you are upgrading from an older version of <%= vars.ops_manager %> and use in
 1. Click **Advanced**.
 
 1. Click **Enable RBAC**. When the confirmation dialog box appears, click **Confirm and Logout**.
-  <div class="note"><strong>Notes:</strong>
-    <ul>
-      <li>Enabling RBAC is permanent. You cannot undo this action. When you upgrade <%= vars.ops_manager %>, your RBAC settings remain configured.</li>
-      <li>This dialog does not appear if RBAC is already configured. With new instances of <%= vars.ops_manager %>, RBAC is permanently configured by default.</li>
-    </li>
-  </div>
+
+   Enabling RBAC is permanent. You cannot undo this action. When you upgrade <%= vars.ops_manager %>, your RBAC settings remain configured.
+   This dialog does not appear if RBAC is already configured. With new instances of <%= vars.ops_manager %>, RBAC is permanently configured by default.
 
 ### <a id='enable-saml'></a> Enable RBAC with SAML authentication
 
@@ -103,16 +100,17 @@ To gather information from your SAML dashboard:
 
 Follow the procedure in [Enable RBAC with Internal Authentication](#enable-internal) to configure <%= vars.ops_manager %> to recognize your SAML admin user group.
 
-<p class='note'><strong>Note:</strong> When RBAC is enabled, only users with the <%= vars.ops_manager %> Administrator role can edit SAML configuration.</p>
+<p> When RBAC is enabled, only users with the <%= vars.ops_manager %> Administrator role can edit SAML configuration.</p>
 
 
 ## <a id='create-users'></a> Create user accounts in <%= vars.ops_manager %>
 
-To assign RBAC roles to operators, you must first create user accounts for them. For more information about creating user accounts in <%= vars.ops_manager %> with the User Account and Authentication (UAA) module, see [Creating and Managing <%= vars.ops_manager %> User Accounts](https://docs.pivotal.io/platform/customizing/opsman-users.html).
+To assign RBAC roles to operators, you must first create user accounts for them. For more information about creating user accounts in <%= vars.ops_manager %> with the User Account and Authentication (UAA) module,
+see [Creating and Managing <%= vars.ops_manager %> User Accounts](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/opsguide-config-rbac.html).
 
 In addition to user accounts, you can create a client account to add to <%= vars.ops_manager %>. Client accounts manage automation tasks, such as upgrade scripts, log management, and other behaviors that might be negatively impacted if managed by a user account. You can add a client account either before initial deployment or to an existing deployment.
 
-For more information about client accounts, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](https://docs.pivotal.io/platform/customizing/opsman-users.html).
+For more information about client accounts, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-opsman-users.html).
 
 
 ## <a id='manage-roles'></a> Manage RBAC roles in <%= vars.ops_manager %>
@@ -121,7 +119,8 @@ You can assign the roles defined in [Roles in <%= vars.ops_manager %>](#about) t
 
 ### <a id='write-internal'></a> Manage roles with internal authentication
 
-If you configured <%= vars.ops_manager %> to use internal authentication, you can configure roles using the UAA Command Line Interface (UAAC). For more information, see [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.pivotal.io/platform/uaa/uaa-user-management.html).
+If you configured <%= vars.ops_manager %> to use internal authentication, you can configure roles using the UAA Command Line Interface (UAAC). For more information,
+see [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html).
 
 To use the UAAC to configure roles:
 
@@ -182,7 +181,7 @@ To use the UAAC to configure roles:
 
 ### <a id='write-saml'></a> Manage roles with SAML authentication
 
-If you configured <%= vars.ops_manager %> with SAML authentication, you can assign non-admin user roles using UAAC. To assign non-admin user roles:
+If you configured <%= vars.ops_manager %> with SAML authentication, you can assign non admin user roles using UAAC. To assign non-admin user roles:
 
 1. Target your UAA server and log in as an admin by running:
 
@@ -215,7 +214,7 @@ If you configured <%= vars.ops_manager %> with SAML authentication, you can assi
 
 ### <a id='write-ldap'></a> Manage roles with LDAP authentication
 
-If you configured <%= vars.ops_manager %> with LDAP authentication, you can assign non-admin user roles using UAAC. To assign non-admin user roles:
+If you configured <%= vars.ops_manager %> with LDAP authentication, you can assign non admin user roles using UAAC. To assign non-admin user roles:
 
 1. Target your UAA server and log in as an admin by running:
 
@@ -244,4 +243,4 @@ If you configured <%= vars.ops_manager %> with LDAP authentication, you can assi
        * `LDAP-GROUP` is the name of the LDAP group to which the user belongs.
        * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
 
-2. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard. Users must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.
+2. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard. You must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.

@@ -13,7 +13,7 @@ This section describes the reference architecture for a <%= vars.app_runtime_abb
 
 ### <a id='diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
+The following diagram illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
 
 * Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
 * 3 TAS subnets
@@ -75,7 +75,7 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 		</tr>
 	</table>
 
-* If you plan to install [VMware Tanzu Service Broker for AWS](https://docs.pivotal.io/aws-services/index.html), you might want to create another set of networks in addition to those outlined in the base reference architecture. This set of networks would be used for RDS and other AWS-managed instances.
+* If you plan to install [VMware Tanzu Service Broker for AWS](https://docs.vmware.com/en/VMware-Tanzu-Service-Broker-for-AWS/1.4/documentation/GUID-index.html), you might want to create another set of networks in addition to those outlined in the base reference architecture. This set of networks would be used for RDS and other AWS-managed instances.
 
 #### <a id='alternatives'></a> Alternative network layouts
 
@@ -121,7 +121,8 @@ These options are available for choosing your network topology:
 
 ### <a id='rds'></a> RDS
 
-Use a single RDS instance for BOSH and <%= vars.app_runtime_abbr %>. This instance requires several databases. For more information, see [Step 3: Director Config Page](../../aws/config-manual.html#pcfaws-om-dirconfig) in _Configuring BOSH Director on AWS_ and [External System Database Configuration](https://docs.pivotal.io/application-service/operating/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
+Use a single RDS instance for BOSH and <%= vars.app_runtime_abbr %>. This instance requires several databases. For more information, see [Step 3: Director Config Page](../../aws/config-manual.html#pcfaws-om-dirconfig) in _Configuring BOSH Director on AWS_
+and [External System Database Configuration](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='blobstore'></a> Blobstore storage accounts
 
@@ -173,9 +174,9 @@ You can use AWS Route 53 for DNS resolution to host your <%= vars.k8s_runtime_ab
 
 You can configure a front end load balancer to enable public access to the <%= vars.k8s_runtime_abbr %> API VM.
 
-For each <%= vars.k8s_runtime_abbr %> cluster, <%= vars.company_name %> recommends creating a load balancer for the corresponding primary node or nodes. For more information, see [Creating and Configuring an AWS Load Balancer for <%= vars.k8s_runtime_abbr %> Clusters](https://docs.pivotal.io/tkgi/aws-cluster-load-balancer.html).
+For each <%= vars.k8s_runtime_abbr %> cluster, <%= vars.company_name %> recommends creating a load balancer for the corresponding primary node or nodes. For more information, see [Creating and Configuring an AWS Load Balancer for <%= vars.k8s_runtime_abbr %> Clusters](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-aws-cluster-load-balancer.html).
 
-For deployed workloads, Kubernetes can automatically create load balancers when applying the service definition to the app instances. For more information, see [Deploying and Exposing Basic Workloads](https://docs.pivotal.io/tkgi/deploy-workloads.html).
+For deployed workloads, Kubernetes can automatically create load balancers when applying the service definition to the app instances. For more information, see [Deploying and Exposing Basic Workloads](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-deploy-workloads.html).
 
 #### <a id='pks-subnets'></a> Networks, subnets, and IP spacing planning
 
@@ -235,6 +236,6 @@ Use a single RDS instance for BOSH. This instance requires a database. For more 
 
 ### <a id='pks-id'></a> Identity management
 
-To create and manage Kubernetes master and worker nodes, use Instance Profiles. For more information, see [Kubernetes Cloud Provider](https://docs.pivotal.io/tkgi/installing-aws.html#cloud-provider) in _Installing Enterprise <%= vars.k8s_runtime_abbr %> on AWS_.
+To create and manage Kubernetes master and worker nodes, use Instance Profiles. For more information, see [Kubernetes Cloud Provider](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-installing-aws.html#cloud-provider) in _Installing Enterprise <%= vars.k8s_runtime_abbr %> on AWS_.
 
 For information about installing the required AWS constructs for <%= vars.k8s_runtime_abbr %>, see [Installing <%= vars.ops_manager %> on AWS](../../install/aws.html).

@@ -5,7 +5,8 @@ owner: TAS-Anycloud
 
 This topic describes the VMware Managed Cloud for AWS (VMC) reference architecture for <%= vars.ops_manager_first %>, including <%= vars.app_runtime_first %>. This architecture builds on the common base architectures described in [Platform Architecture and Planning Overview](../index.html).
 
-For specific installation instructions for running <%= vars.app_runtime_abbr %> on VMC, see [Deploying <%= vars.app_runtime_abbr %> to VMC](https://docs.pivotal.io/application-service/operating/vmc.html).
+For specific installation instructions for running <%= vars.app_runtime_abbr %> on VMC, see [Deploying <%= vars.app_runtime_abbr %>
+to VMC](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vmc.html).
 
 ## <a id='networking'></a> Networking
 
@@ -13,7 +14,7 @@ These sections provide guidance about networking resources.
 
 ### <a id='subnets'></a> Networks, subnets, and IP address spacing planning
 
-When planning networks, subnets, and IP address spacing, consider the following:
+When you plan networks, subnets, and IP address spacing, consider the following:
 
 * VMC SDDCs initially provision an NSX-T segment that provides a single class C subnet for workload VMs. Depending on your IP address requirements, you can use this subnet for your entire <%= vars.app_runtime_abbr %> deployment, or add additional segments from the [VMC Console](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws.networking-security/GUID-267DEADB-BD01-46B7-82D5-B9AA210CA9EE.html).
 
@@ -24,7 +25,7 @@ When planning networks, subnets, and IP address spacing, consider the following:
 
 ## <a id='VPC'></a> AWS VPCs
 
-When deploying <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> to VMC, VMware recommends creating a dedicated Virtual Private Cloud (VPC) on AWS to connect to your VMC SDDC.
+When you deploy <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> to VMC, VMware recommends creating a dedicated Virtual Private Cloud (VPC) on AWS to connect to your VMC SDDC.
 
 Placing AWS services such as RDS in a dedicated connected VPC allows you to connect them to your SDDC while disallowing access from other networks. The AWS VPC is associated to your SDDC when you connect your AWS account.
 
@@ -35,7 +36,8 @@ For more information, see [Connected AWS Account](https://docs.vmware.com/en/VMw
 
 Provision a single RDS instance to use as the external database for <%= vars.app_runtime_abbr %>. For compatibility, VMware recommends using MySQL.
 
-New database instances require several databases to be created. For more information, see [External System Database Configuration](https://docs.pivotal.io/application-service/operating/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
+New database instances require several databases to be created. For more information,
+see [External System Database Configuration](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 VMware recommends provisioning your RDS instance in the connected VPC. This allows you to connect to the endpoint for your RDS instance without making your database publicly accessible.
 
@@ -52,7 +54,8 @@ For better security, use a gateway endpoint so that only requests from your SDDC
 
 1. Create a gateway endpoint for S3. Follow Step 1 in [Access an S3 Bucket Using an S3 Endpoint](https://docs.vmware.com/en/VMware-Cloud-on-AWS/services/com.vmware.vmc-aws-operations/GUID-B501FA3C-EAF9-4005-AC72-155C3F592281.html).
 1. Create the S3 buckets required by <%= vars.app_runtime_abbr %>.
-1. Add a security rule that disallows requests to the S3 bucket unless they come through the VPC endpoint. For more information, see [How can I restrict access to my Amazon S3 bucket using specific VPC endpoints or IP addresses?](https://aws.amazon.com/premiumsupport/knowledge-center/block-s3-traffic-vpc-ip/) in the AWS documentation. This can look like the following:
+1. Add a security rule that disallows requests to the S3 bucket unless they come through the VPC endpoint.
+For more information, see [How can I restrict access to my Amazon S3 bucket using specific VPC endpoints or IP addresses?](https://aws.amazon.com/premiumsupport/knowledge-center/block-s3-traffic-vpc-ip/) in the AWS documentation. This can look like the following:
 
 	  ```
 	  {

@@ -3,7 +3,7 @@ title: Using the BOSH Resurrector
 owner: Ops Manager
 ---
 
-This topic describes the BOSH Resurrector, which monitors VMs and re-creates VMs that become unavailable.
+This topic describes the BOSH Resurrector, which monitors VMs and recreates VMs that become unavailable.
 You can enable the BOSH Resurrector to ensure high availability (HA) for your <%= vars.ops_manager_first %> deployment.
 
 For vSphere users, this topic explains how to enable vSphere HA to work along with the BOSH Resurrector.
@@ -12,7 +12,8 @@ For vSphere users, this topic explains how to enable vSphere HA to work along wi
 
 * <%= vars.company_name %> recommends enabling the vSphere HA, the BOSH Resurrector, and a highly-available storage solution to protect the VMs in your deployment.
 
-For more information about the BOSH Resurrector, see the [Auto-healing Capabilities](https://bosh.io/docs/resurrector/) section of the BOSH documentation.
+For more information about the BOSH Resurrector, see
+the [Auto-healing Capabilities](https://bosh.io/docs/resurrector/) section of the BOSH documentation.
 
 ## <a id='about-resurrector'></a> How the BOSH Resurrector increases Ops Manager availability
 
@@ -70,9 +71,10 @@ For more information, see [vSphere High Availability](https://bosh.io/docs/vsphe
 
 To enable vSphere High Availability:
 
-1. Launch the vSphere Management Console.
+1. Run the vSphere Management Console.
 
-1. In the left side panel, right-click the cluster that contains the [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) deployment and select **Edit Settings**.
+1. In the left panel, right-click the cluster that contains
+the [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) deployment and select **Edit Settings**.
 
 1. Select the **Turn on vSphere High Availability** check box.
 

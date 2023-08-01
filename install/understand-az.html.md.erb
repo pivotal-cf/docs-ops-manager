@@ -7,19 +7,21 @@ This topic describes what an availability zone (AZ) is in vSphere, and gives an 
 
 <%= vars.company_name %> defines an AZ as an operator-assigned, functionally-independent segment of network infrastructure. In cases of partial infrastructure failure, a tile distributes and balances all instances of running apps across remaining AZs. Strategic use of AZs contributes to the fault tolerance and high availability of a tile deployment.
 
-vSphere supports distributing deployments across multiple AZs. For more information, see _Step 4: Create Availability Zones_ in [Configuring BOSH Director on vSphere](../vsphere/config.html.md.erb#create-az).
+vSphere supports distributing deployments across multiple AZs.
+For more information, see _Step 4: Create Availability Zones_ in [Configuring BOSH Director on vSphere](../vsphere/config.html.md.erb#create-az).
 
 <%= vars.company_name %> recommends that customers use three AZs to operate a highly available tile deployment.
 
 ## <a id='example-case'></a> Example scenario: Balancing across AZs during failure
 
-An operator scales an app to four instances in a tile environment distributed across three AZs: A1, A2, and A3. The environment allocates the instances according to the Diego Auction. For more information about the Diego Auction, see [How Diego Balances App Processes](https://docs.pivotal.io/application-service/concepts/diego/diego-auction.html).
+An operator scales an app to four instances in a tile environment distributed across three AZs: A1, A2, and A3. The environment allocates the instances according to the Diego Auction. For more information about
+the Diego Auction, see [How Diego Balances App Processes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/diego-diego-auction.html).
 
 For a visual representation of this scenario, see the following diagram:
 
 ![alt-text="A box labeled Your Runtime. Underneath it, three boxes in a row, labeled A1, A2, and A3. A1 contains two App Instances. A2 and A3 each contain one."](./images/az_er_1.png)
 
-If A1 experiences a power outage or hardware failure, the two app instances running in A1 terminate while the app instances in zones A2 and A3 continue to run.
+If A1 experiences a power outage or hardware failure, the two app instances running in A1 stops while the app instances in zones A2 and A3 continue to run.
 
 For a visual representation of this scenario, see the following diagram:
 

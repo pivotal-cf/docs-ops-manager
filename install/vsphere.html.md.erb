@@ -6,17 +6,18 @@ iaas: vSphere
 
 This guide describes how you can install <%= vars.ops_manager_first %> on vSphere.
 
-If you experience a problem while following the following steps, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.pivotal.io/application-service/operating/diagnostics.html) or the _Known Issues_ sections of the following topics:
+If you experience a problem while following the following steps, see
+the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/diagnostics.html) or the _Known Issues_ sections of the following topics:
 
 * [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html#known-issues)
 
-* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/runtime-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
+* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/runtime-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
 
-* [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/release-notes/segment-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
+* [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/segment-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
 
-* [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.pivotal.io/application-service/windows/release-notes.html#known-issues) in the <%= vars.windows_runtime_abbr %> documentation
+* [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/release-notes.html#known-issues) in the <%= vars.windows_runtime_abbr %> documentation
 
-* [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html#known-issues) in the <%= vars.k8s_runtime_abbr %> documentation
+* [Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-release-notes.html#known-issues) in the <%= vars.k8s_runtime_abbr %> documentation
 
 ## <a id='prerequisites'></a> Requirements
 
@@ -50,10 +51,11 @@ The BOSH Director tile within <%= vars.ops_manager %> can optionally be configur
 
 You can install <%= vars.ops_manager %> with one of two runtimes. For more information about the requirements for each runtime, see the following:
 
-* **<%= vars.app_runtime_first %>:** [<%= vars.app_runtime_abbr %> on vSphere Requirements](https://docs.pivotal.io/application-service/operating/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.pivotal.io/application-service/operating/vsphere-nsx-t.html).
+* **<%= vars.app_runtime_first %>:** [<%= vars.app_runtime_abbr %> on vSphere Requirements](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying <%= vars.app_runtime_abbr %>
+with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vsphere-nsx-t.html).
 * **<%= vars.k8s_runtime_first %>:**
     * **Without NSX-T:** [vSphere Prerequisites and Resource Requirements](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-requirements.html)
-    * **With NSX-T:** See the _Preparing to Install <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T_ section of [Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center](https://docs.pivotal.io/tkgi/vsphere-nsxt-index.html).
+    * **With NSX-T:** See the _Preparing to Install <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T_ section of [Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-nsxt-index.html).
 
 ### <a id='firewall'></a> Firewall port requirements
 
@@ -63,7 +65,7 @@ You can install <%= vars.ops_manager %> with one of two runtimes. For more infor
 
 <%= vars.ops_manager %> requires read/write permissions to the data center level of the [vSphere Inventory Hierarchy](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-03B36057-B38C-479C-BD78-341CD83A0584.html) to successfully install. <%= vars.company_name %> recommends defining a custom role for the service account that has all privileges for all objects in the data center, including propagating privileges to children.
 
-Since <%= vars.ops_manager %> passes all required credentials through to BOSH, you only need one service account with the required vSphere privileges to complete the installation. Setting up separate service accounts for <%= vars.ops_manager %> and BOSH is not necessary or recommended.
+Because <%= vars.ops_manager %> passes all required credentials through to BOSH, you only need one service account with the required vSphere privileges to complete the installation. Setting up separate service accounts for <%= vars.ops_manager %> and BOSH is not necessary or recommended.
 
 For more information about service account requirements, see the following topics:
 

@@ -4,11 +4,11 @@ owner: Ops Manager
 iaas: vSphere and OpenStack
 ---
 
-This topic describes how you can add, delete, and modify multiple data centers in the IaaS config pane of the BOSH Director tile. This allows you to spread instances across regions without having to deploy and manage multiple <%= vars.ops_manager_first %> foundations.
+You can add, delete, and modify multiple data centers in the IaaS config pane of the BOSH Director tile. This allows you to spread instances across regions without having to deploy and manage multiple <%= vars.ops_manager_first %> foundations.
 
-<p class='note'><strong>Note:</strong> You can only have multiple data centers with vSphere and OpenStack.</p>
+You can only have multiple data centers with vSphere and OpenStack.</p>
 
-## <a id='add-config'></a> Add a New IaaS Config
+## <a id='add-config'></a> Add a new IaaS config
 
 When you have only one IaaS config, you do not see a list of IaaS configs when you select the IaaS configs pane. Instead, you see the form to the one config and an option to add more.
 
@@ -54,9 +54,10 @@ To delete your IaaS config:
 
 1. From the BOSH Director tile, go to the **Create Availability Zones** pane.
 
-1. Click the trashcan icon to disassociate each AZ with your IaaS config. To know which AZs are associated, expand each AZ and see **IaaS Configuration**.
+1. Click the trash can icon to disassociate each AZ with your IaaS config. To know which AZs
+are associated, expand each AZ and see **IaaS Configuration**.
 
-    <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> does not allow you to delete your first AZ or your first IaaS config. Your first AZ is always associated with your first IaaS config.</p>
+    <p> <%= vars.ops_manager %> does not allow you to delete your first AZ or your first IaaS config. Your first AZ is always associated with your first IaaS config.</p>
 
 1. Click **Save**
 

@@ -5,7 +5,7 @@ owner: PCF Documentation
 
 This topic provides an overview of how you can plan a <%= vars.ops_manager_first %> installation.
 
-When planning an <%= vars.ops_manager %> installation:
+When you are planning an <%= vars.ops_manager %> installation, do the following:
 
 - Review the Requirements for your IaaS.
 
@@ -13,7 +13,8 @@ When planning an <%= vars.ops_manager %> installation:
 
 - Assess your platform needs, including capacity, availability, container support, host OS, resource isolation, and geographical distribution. Discuss with your <%= vars.company_name %> contact.
 
-For all of the above, the specifics depend on the IaaS that you are deploying <%= vars.ops_manager %> to. The information in this topic is organized by IaaS.
+For all of the tasks mentioned, the specifics depend on the IaaS that you
+are deploying <%= vars.ops_manager %> to. The information in this topic is organized by IaaS.
 
 ## <a id='requirements'></a> General requirements
 
@@ -41,12 +42,14 @@ The general requirements for deploying and managing a <%= vars.platform_name %> 
       * TCP Router
   * One IP for each VM instance created by the service.
   * An additional IP address for each compilation worker. The formula for total IPs needed is `IPs needed = static IPs + VM instances + compilation workers`.
-    <p class="note"><strong>Note:</strong> <%= vars.company_name %> recommends that you allocate at least 36 dynamic IP addresses when deploying <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>. BOSH requires additional dynamic IP addresses during installation to compile and deploy VMs, install <%= vars.app_runtime_abbr %>, and connect to services.</p>
+
+  <p> <%= vars.company_name %> recommends that you allocate at least 36 dynamic IP addresses when deploying <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>. BOSH requires additional dynamic IP addresses during installation to compile and deploy VMs, install <%= vars.app_runtime_abbr %>, and connect to services.</p>
 
 * One or more NTP servers if not already provided by your IaaS.
 
 * (**Recommended**) A network without DHCP available for deploying the <%= vars.app_runtime_abbr %> VMs.
-  <p class="note"><strong>Note:</strong> If you have DHCP, see <a href="troubleshooting.html">Troubleshooting Deployment Problems</a> for guidance on avoiding issues with your installation.</p>
+
+  <p> If you have DHCP, see <a href="troubleshooting.html">Troubleshooting Deployment Problems</a> for guidance on avoiding issues with your installation.</p>
 
 * (**Optional**) External storage. When you deploy <%= vars.app_runtime_abbr %>, you can select internal file storage or external file storage, either network-accessible or IaaS-provided, as an option in the <%= vars.app_runtime_abbr %> tile. <%= vars.company_name %> recommends using external storage whenever possible. For more information about how file storage location affects platform performance and stability during upgrades, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/configuring.html#file-storage).
 
@@ -58,8 +61,8 @@ The general requirements for deploying and managing a <%= vars.platform_name %> 
 
 ## <a id='front-end'></a> Front end planning for all IaaSes
 
- - [Providing a Certificate for your SSL Termination Point](https://docs.pivotal.io/application-service/operating/security_config.html)
- - [Using Your Own Load Balancer](https://docs.pivotal.io/application-service/operating/custom-load-balancer.html)
+ - [Providing a Certificate for your SSL Termination Point](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/security_config.html)
+ - [Using Your Own Load Balancer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/custom-load-balancer.html)
  - [Preparing Your Firewall](config_firewall.html)
  - [(Optional) Installing <%= vars.ops_manager %> in Air-Gapped Environments](offline_installation.html)
 
@@ -91,7 +94,7 @@ The general requirements for deploying and managing a <%= vars.platform_name %> 
 
   - [<%= vars.ops_manager %> on vSphere Requirements](vsphere.html)
   - [vSphere Reference Architecture](../refarch/vsphere/vsphere_ref_arch.html)
-  - [Configuring SSL Termination for vSphere Deployments](https://docs.pivotal.io/application-service/operating/ssl-term.html)
-  - [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html)
+  - [Configuring SSL Termination for vSphere Deployments](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/ssl-term.html)
+  - [vSphere Virtual Disk Types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/disk-format.html)
   - [vSphere Permissions Guidelines](../vsphere/vsphere-service-account.html)
   - [Availability Zones in vSphere](understand-az.html)

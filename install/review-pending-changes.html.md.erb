@@ -78,11 +78,13 @@ for a Specific Tile](#pending-changes).
 
 * **K** --- **Rotate All Non-Configurable Leaf Certificates:** When this checkbox is activated, all non-configurable leaf certificates are rotated as the
 first step of re-deployment. The page displays when the next non-configurable leaf certificate is to expire, allowing you to decide whether to activate the
-checkbox without needing to look at the **Certificates** page.
-  <p class='note important'><strong>Important:</strong> When you activate the <strong>Rotate All Non-Configurable Leaf Certificates</strong> checkbox, you
-    must re-deploy all tiles to ensure that all VMs receive the latest version of the certificates. You must also activate the <strong>Upgrade All Service
+check box without needing to look at the **Certificates** page.
+
+<p>When you activate the <strong>Rotate All Non-Configurable Leaf Certificates</strong> checkbox, you
+    must deploy again all tiles to ensure that all VMs receive the latest version of the certificates. You must also activate the <strong>Upgrade All Service
     instances</strong> errand for any tiles that have that errand. This errand re-deploys VMs associated with service instances, ensuring that they also
-    receive the latest version of the certificates. For more information, see
+    receive the latest version of the certificates. For more information,
+    see
     <a href="../security/pcf-infrastructure/rotate-non-configurable-certs.html">Rotating Non-Configurable Leaf Certificates</a>.</p>
 
 
@@ -128,4 +130,4 @@ When you make changes to a tile, change summaries are displayed for the followin
 
 If an aspect of the tile has not changed, the change summary displays `No changes`.
 
-<p class='note'><strong>Note:</strong> Changes to errands do not display in the page UI.</p>
+<p> Changes to errands do not display in the page UI.</p>
