@@ -3,9 +3,9 @@ title: Advanced Ops Manager troubleshooting with the BOSH CLI
 owner: Ops Manager
 ---
 
-This topic describes how you can use the BOSH CLI to help diagnose and resolve issues with your
+You can use the BOSH CLI to help diagnose and resolve issues with your
 <%= vars.ops_manager_first %> deployment. Before using the information and techniques in this topic,
-review [Diagnosing Deployment Problems](https://docs.pivotal.io/application-service/operating/diagnostics.html).
+review [Diagnosing Deployment Problems](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/diagnostics.html).
 
 To follow the steps in this topic, you must log in to the BOSH Director VM. The BOSH Director runs
 on the virtual machine (VM) that <%= vars.ops_manager %> deploys on the first install of the BOSH
@@ -15,7 +15,7 @@ After authenticating into the BOSH Director, you can run specific commands using
 Line Interface (BOSH CLI). BOSH Director diagnostic commands have access to information about your
 entire <%= vars.ops_manager %> installation.
 
-<p class='note'><strong>Note:</strong> Before running any BOSH CLI commands, verify that no BOSH
+<p> Before you run any BOSH CLI commands, verify that no BOSH
   Director tasks are running on the <%= vars.ops_manager %> VM. For more information, see
   <a href="https://bosh.io/docs/cli-v2#task-mgmt">Tasks</a> in <em>BOSH CLI commands</em>
   in the BOSH documentation.</p>
@@ -24,7 +24,7 @@ entire <%= vars.ops_manager %> installation.
 
 Before you begin troubleshooting with the BOSH CLI, follow the instructions below to collect the information you need from the <%= vars.ops_manager %> interface.
 
-1. Open the <%= vars.ops_manager %> interface by navigating to the <%= vars.ops_manager %>
+1. Open the <%= vars.ops_manager %> interface by going to the <%= vars.ops_manager %>
 fully qualified domain name (FQDN) in a web browser.
 
 1. Click the **BOSH Director** tile and click the **Status** tab.
@@ -47,7 +47,7 @@ tile and repeat the procedure above to record the IP address and VM credentials 
 
 1. Log out of <%= vars.ops_manager %>.
 
-<p class='note'><strong>Note:</strong> Ensure that there are no <%= vars.ops_manager %>
+<p> Ensure that there are no <%= vars.ops_manager %>
   installations or updates in progress while using the BOSH CLI.</p>
 
 ## <a id='ssh'></a> Log in to the <%= vars.ops_manager %> VM with SSH
@@ -173,7 +173,7 @@ Provider Properties:
 
     Follow the BOSH CLI prompts and enter your SAML credentials to log in to the BOSH Director VM.
 
-    <p class='note'><strong>Note:</strong> Your browser must be able to reach the BOSH Director to
+    <p> Your browser must be able to reach the BOSH Director to
     log in with SAML.</p>
 
 1. Click **Log in with organization credentials (SAML)**. A temporary authentication code appears.
@@ -227,11 +227,11 @@ troubleshooting.
 * `--vitals`: Report also includes load, CPU, memory usage, swap usage, system disk usage,
   ephemeral disk usage, and persistent disk usage for each VM
 
-  <p class='note'><strong>Note:</strong> The <strong>Status</strong> tab of the
-  <%= vars.app_runtime_abbr %> tile displays information similar to the
+  <p> The <strong>Status</strong> tab of the
+  <%= vars.app_runtime_abbr %> tile shows information similar to the
   <code>bosh vms</code> output.</p>
 
-### <a id='cck'></a> BOSH Cloud Check
+### <a id='cck'></a> BOSH Cloud check
 
 Run the `bosh <%= vars.bosh_cloud_check %>` command to instruct BOSH to detect differences
 between the VM state database maintained by the BOSH Director and the actual

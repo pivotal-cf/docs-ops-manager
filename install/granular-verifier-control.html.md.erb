@@ -3,18 +3,22 @@ title: Managing verifiers in your Ops Manager deployment
 owner: Ops Manager
 ---
 
-This topic describes how you can deactivate and re-activate verifiers for fields in the BOSH Director and other <%= vars.ops_manager_first %> product tiles.
+You can deactivate and reactivate verifiers for fields in the BOSH Director and
+other <%= vars.ops_manager_first %> product tiles.
 
 <%= vars.ops_manager %> provides this option for troubleshooting
 purposes. For example, your deployment may have a unique configuration that the
 verifier cannot detect. In this case, you can unblock your deployment by disabling the verifier.
 
-<p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends contacting Support before you
+<p> <%= vars.company_name %> recommends contacting Support before you
 deactivate <%= vars.ops_manager %> verifiers.</p>
 
-<p class="note caution"><strong>Caution:</strong> <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
-The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivate. Deactivated verifiers
-persist through upgrades.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+<%= vars.company_name %> recommends recording
+and routinely revisiting which verifiers you deactivate.
+The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivated. Deactivated
+verifiers persist through upgrades.</p>
 
 ## <a id='about-verifiers'></a> About verifiers
 

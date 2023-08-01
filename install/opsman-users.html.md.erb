@@ -2,7 +2,7 @@
 title: Creating and managing Ops Manager user and client accounts
 ---
 
-This topic describes how you can add and remove <%= vars.ops_manager_first %> users. It also describes how you can use an administrator <%= vars.ops_manager %> account to create client accounts that you can use for <%= vars.ops_manager %> automation.
+You can add and remove <%= vars.ops_manager_first %> users. You can use an administrator <%= vars.ops_manager %> account to create client accounts that you can use for <%= vars.ops_manager %> automation.
 
 <%= vars.ops_manager %> supports multiple user accounts in <%= vars.ops_manager %>. A User Account and Authentication (UAA) module co-located on the <%= vars.ops_manager %> VM manages access permissions to <%= vars.ops_manager %>.
 
@@ -10,7 +10,7 @@ When <%= vars.ops_manager %> boots for the first time, you create an admin user.
 
 Users are not the only type of account you can create for <%= vars.ops_manager %>. You can also create client accounts, which connect automation tools and scripts to <%= vars.ops_manager %>. <%= vars.company_name %> recommends using clients to handle automated tasks.
 
-<p class="note"><strong>Note:</strong> Users that are created this way do not persist if UAA authentication settings change.</p>
+<p> Users that are created this way do not persist if UAA authentication settings change.</p>
 
 Client accounts are not bound to the same authentication protocols as user accounts. A user account that controls automated components can cause those components to fail if the account experiences inconsistent availability due to permission or authentication issues.
 
@@ -20,7 +20,7 @@ You can create client accounts after deploying <%= vars.ops_manager %>, or durin
 
 This section describes how to add or remove users with UAAC. If you do not already have the UAAC installed, run `gem install cf-uaac` on the command line.
 
-<p class="note"><strong>Note:</strong> You can only manage users on the <%= vars.ops_manager %> UAA module if you chose to use Internal Authentication instead of an external Identity Provider when configuring <%= vars.ops_manager %>.</p>
+<p> You can only manage users on the <%= vars.ops_manager %> UAA module if you chose to use Internal Authentication instead of an external Identity Provider when configuring <%= vars.ops_manager %>.</p>
 
 To add <%= vars.ops_manager %> users:
 
@@ -49,7 +49,7 @@ To add <%= vars.ops_manager %> users:
     * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
     * `OPSMANAGER-ADMIN-USERNAME` and `OPSMANAGER-ADMIN-PASSWORD` are the username and password for the <%= vars.ops_manager %> admin user.
 
-    <p class='note'><strong>Note:</strong> The <code>Client Secret</code> field does not require a value.</p>
+    <p> The <code>Client Secret</code> field does not require a value.</p>
 
 3. Add a user.
 
@@ -93,7 +93,7 @@ To remove <%= vars.ops_manager %> users:
     * `YOUR-OPSMANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %> installation.
     * `OPSMANAGER-ADMIN-USERNAME` and `OPSMANAGER-ADMIN-PASSWORD` are the username and password for the <%= vars.ops_manager %> admin user.
 
-    <p class='note'><strong>Note:</strong> The <code>Client Secret</code> field does not require a value.</p>
+    <p> The <code>Client Secret</code> field does not require a value.</p>
 
 2. Delete a user:
 
@@ -224,7 +224,8 @@ To add a pre-created client before you deploy <%= vars.ops_manager %>:
     POST /api/v0/setup
     ```
 
-    Include any configuration details your deployment requires. For more information about configuring <%= vars.ops_manager %> with the API, see the <a href="http://docs.pivotal.io/pivotalcf/2-5/opsman-api/#setting-up-with-saml">Setting Up with SAML</a> in the <%= vars.ops_manager %> API documentation.
+    Include any configuration details your deployment requires. For more information about configuring <%= vars.ops_manager %> with the API,
+    see the <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-opsman-users.html">Setting Up with SAML</a> in the <%= vars.ops_manager %> API documentation.
 
 1. In the configuration details, specify this parameter:
 
@@ -233,9 +234,10 @@ To add a pre-created client before you deploy <%= vars.ops_manager %>:
     ```
 
     Where `YOUR-SECRET` is the authentication secret you use to access the pre-created client.
-
-    <p class='note'><strong>Note:</strong> The authentication secret for the pre-created client must be between 1 and 255 ASCII characters.</p>
-
+    <p class="note important">
+    <span class="note__title"> Important</span> The authentication secret for
+    the pre-created client must be between 1 and 255 ASCII characters.
+    </p>
 
 When `precreated_client_secret` is passed, a UAA client is created called `precreated-client`. To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
 
@@ -256,8 +258,10 @@ To add a pre-created client to an <%= vars.ops_manager %> that has already been 
     ```
 
     Where `NEW-SECRET` is the authentication secret you use to access the pre-created client. This secret must differ from the previous secret you used. The secret cannot be blank.
-
-    <p class='note'><strong>Note:</strong> The authentication secret for the pre-created client must be between one and 255 ASCII characters.</p>
+    <p class="note important">
+    <span class="note__title"> Important</span> The authentication secret for
+    the pre-created client must be between 1 and 255 ASCII characters.
+    </p>
 
 To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
 

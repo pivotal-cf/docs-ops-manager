@@ -5,11 +5,18 @@ owner: Ops Manager
 
 This topic describes how you can upgrade <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to <%= vars.v_major_version %>, and then upgrade your product tiles.
 
-<p class="note important"><strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, and <a href="https://docs.pivotal.io/application-service/windows/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections, before starting the upgrade process.</p>
+<p class="note important">
+<span class="note__title"> Important</span> <strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>,
+<a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>,
+and <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections,
+before you start the upgrade process.
+</p>
 
-During an upgrade, the apps in your deployment continue to run. However, you cannot write to your deployment or make changes to apps during the upgrade. For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components, see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.pivotal.io/application-service/operating/understanding-pas.html).
+During an upgrade, the apps in your deployment continue to run. However, you cannot write to your deployment or make changes to apps during the upgrade. For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components,
+see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/understanding-pas.html).
 
-<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9. To upgrade <%= vars.ops_manager %> to <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>](#jump-upgrade) below. To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare) below.
+<%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9.
+To upgrade <%= vars.ops_manager %> to <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>](#jump-upgrade). To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare).
 
 ## <a id='jump-upgrade'></a> Jump upgrade from <%= vars.ops_manager %> v2.5 through v2.9
 
@@ -32,7 +39,8 @@ If you are upgrading <%= vars.app_runtime_abbr %> to the next minor release:
 
 1. Locate the version of [Upgrade Preparation Checklist for <%= vars.ops_manager %>](../upgrade/checklist.html) that is specific to the minor release version to which you are upgrading and complete the steps that are specific to <%= vars.app_runtime_abbr %>.
 
-1. For more information, see the versions of [Configuring <%= vars.app_runtime_abbr %> for Upgrades](https://docs.pivotal.io/application-service/operating/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
+1. For more information, see the versions
+of [Configuring <%= vars.app_runtime_abbr %> for Upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
 
 
 ## <a id='prepare'></a> Task 1: Prepare to upgrade
@@ -52,7 +60,8 @@ The following sections describe how to upgrade <%= vars.ops_manager %> and insta
 
 To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager %> <%= vars.v_major_version %> VM:
 
-1. Download the <%= vars.ops_manager %> VM Template <%= vars.v_major_version %> from the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) download page on VMware Tanzu Network.
+1. Download the <%= vars.ops_manager %> VM Template <%= vars.v_major_version %> from
+the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) download page on VMware Tanzu Network.
 
 1. Record the fully qualified domain name (FQDN) address of the existing <%= vars.ops_manager %> VM.
 
@@ -71,32 +80,32 @@ To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager 
 
 1. When prompted, enter the **Decryption Passphrase** for this <%= vars.ops_manager %> installation.
 You set this passphrase during your initial installation of <%= vars.ops_manager %>.
-    <p class='note'><strong>Note:</strong> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
+    <p> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
 
 1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
     ![alt-text=""](images/upgrading/decryption_passphrase.png)
 
 1. Click **Import**.
-    <p class='note'><strong>Note:</strong> Some browsers do not provide feedback on the status of the import process,
-      and might appear to hang.</p>
+    <p> Some browsers do not provide feedback on the status of the import process,
+      and might appear to fail.</p>
 
 2. A **Successfully imported installation** message appears upon completion.
 
     ![alt-text=""](./images/upgrading/success.png)
 
-    <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> automatically imports the
+    <p> <%= vars.ops_manager %> automatically imports the
       Telemetry for <%= vars.ops_manager %> tile.
       This tile collects product usage data, which helps improve VMware products and services. <br><br>
       Using Telemetry for <%= vars.ops_manager %> is optional
       and the tile does not share product usage data until you add and configure it.
       For more information, see the documentation for the
-      <a href="https://docs.pivotal.io/pivotal-telemetry/index.html">Telemetry for <%= vars.ops_manager %></a> tile.
+      <a href="https://docs.vmware.com/en/Tanzu-Telemetry-for-Ops-Manager/index.html">Telemetry for <%= vars.ops_manager %></a> tile.
     </p>
 
 ### <a id='upgrade-products'></a> Import new <%= vars.app_runtime_abbr %> and product tiles
 
-<a name='success'></a> After upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, you must upgrade your product versions.
+<a name='success'></a> After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>, you must upgrade your product versions.
 
 To upgrade your product versions:
 
@@ -110,11 +119,11 @@ To upgrade your product versions:
 
 ### <a id='perform-upgrade'></a> Perform your upgrade
 
-<p class='note caution'><strong>Caution:</strong> If the installation fails or returns errors, contact <%= vars.support_link %>. Do not attempt to roll back the upgrade by restarting the previous version's <%= vars.ops_manager %> VM.</p>
+<p> If the installation fails or returns errors, contact <%= vars.support_link %>. Do not attempt to roll back the upgrade by restarting the previous version's <%= vars.ops_manager %> VM.</p>
 
-To perform your upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
+To complete your upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**, then **Apply Changes**. This immediately imports and applies upgrades to all tiles in a single transaction.
 
@@ -140,10 +149,11 @@ VMware recommends live-monitoring your upgrade with Healthwatch, which captures,
 
 * BOSH-reported VM metrics
 * Runtime component metrics
-* [Key Performance Indicators](https://docs.pivotal.io/application-service/operating/monitoring/kpi.html) and [Key Scaling Indicators](https://docs.pivotal.io/application-service/operating/monitoring/key-cap-scaling.html)
-* Healthwatch-generated [super metrics](https://docs.pivotal.io/healthwatch/metrics.html)
+* [Key Performance Indicators](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/monitoring-kpi.html)
+   and [Key Scaling Indicators](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/monitoring-key-cap-scaling.html)
+* Healthwatch-generated [super metrics](https://docs.vmware.com/en/Healthwatch-for-VMware-Tanzu/2.2/healthwatch/metrics.html)
 
-For more information, see the [Healthwatch documentation](https://docs.pivotal.io/healthwatch/index.html).
+For more information, see the [Healthwatch documentation](https://docs.vmware.com/en/Healthwatch-for-VMware-Tanzu/2.2/healthwatch/index.html).
 
 If you are not using Healthwatch, you can do some or all of the following to monitor upgrade progress:
 
@@ -249,7 +259,8 @@ To install the version of the Cloud Foundry Command Line Interface (cf CLI) pack
 
 1. Unzip the cf CLI ZIP file containing compressed binaries for the cf CLI.
 
-1. Follow the procedure in [Install the cf CLI Using a Compressed Binary](https://docs.pivotal.io/application-service/cf-cli/install-go-cli.html#bin) in _Installing the cf CLI_ in the <%= vars.app_runtime_abbr %> documentation.
+1. Follow the procedure in the [<%= vars.app_runtime_abbr %>
+documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/install-go-cli.html#bin).
 
 ### <a id='health'></a> Check the health of your deployment
 
@@ -272,7 +283,8 @@ To check the health of your deployment:
 
 1. Push and horizontally scale a test app to test <%= vars.app_runtime_abbr %> performance.
 
-1. If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster. For more information, see the BOSH CLI v2 instructions in [Running mysql-diag](https://docs.pivotal.io/application-service/mysql/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
+1. If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster. For more information, see the BOSH CLI v2
+instructions in [Running mysql-diag](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id='resource-settings'></a> Check resource settings
 
@@ -301,4 +313,6 @@ To clean up old stemcells, releases, orphaned disks, and other unused resources:
 
 VMware recommends telling developers to restage any apps that use buildpacks that were updated as a part of this upgrade.
 
-For more information about how developers can restage apps, see [Restage Your App](https://docs.pivotal.io/application-service/devguide/deploy-apps/start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.
+For more information about how developers can restage apps,
+see
+[Restage Your App](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/deploy-apps-start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.

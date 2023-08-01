@@ -9,9 +9,10 @@ This topic describes how you can configure BOSH Director after deploying <%= var
 
 * Before beginning this procedure, ensure that you have successfully completed all steps in [Provisioning the OpenStack Infrastructure](setup.html).
 
-* After you complete this procedure, follow the instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
+* After you complete this procedure, follow the
+instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html).
 
-<p class='note'><strong>Note:</strong> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+<p> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
 ## <a id='log-in'></a> Step 1: Log into <%= vars.ops_manager %>
 
@@ -68,7 +69,7 @@ This topic describes how you can configure BOSH Director after deploying <%= var
 
 ## <a id='advanced-config'></a> Step 3: Advanced Config page (optional)
 
-<p class='note'><strong>Note:</strong> This is an advanced option. Most users leave this field blank.</p>
+<p> This is an advanced option. Most users leave this field blank.</p>
 
 1. In <%= vars.ops_manager %>, select **Advanced Infrastructure Config**.
 
@@ -76,7 +77,7 @@ This topic describes how you can configure BOSH Director after deploying <%= var
 
 1. If your OpenStack environment requires specific connection options, enter them in the **Connection Options** text box in JSON format. For example: `'connection_options' => { 'read_timeout' => 200 }`
 
-    <p class='note'><strong>Note:</strong> Your connection options apply to all of your OpenStack configs.</p>
+    <p> Your connection options apply to all of your OpenStack configs.</p>
 
 2. Click **Save**.
 
@@ -164,8 +165,8 @@ This topic describes how you can configure BOSH Director after deploying <%= var
   * **VM TYPE**
   * **PERSISTENT DISK TYPE**
 
-    <p class='note'><strong>Note:</strong> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
-    <p class='note'><strong>Note:</strong> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
+    <p> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
+    <p> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
 
 1. (Optional) To define floating IP addresses for the BOSH Director job:
   1. Select the icon next to the **BOSH Director** job name to see the **FLOATING IPs** field.
@@ -192,7 +193,8 @@ This topic describes how you can configure BOSH Director after deploying <%= var
 
     ![alt-text=""](../common/images/openstack/om-installed.png)
 
-1. After you complete this procedure, follow the instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
+1. After you complete this procedure, follow the instructions
+in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html).
 
 ## Next steps
 

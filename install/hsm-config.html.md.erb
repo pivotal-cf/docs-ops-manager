@@ -11,9 +11,9 @@ When configuring <%= vars.ops_manager_first %>, BOSH CredHub uses a single HSM t
 
 To configure BOSH CredHub, see _Step 3: Configure Director_ in the [BOSH Director configuration topic for your IaaS](deploy-bosh-om.html#contents).
 
-<p class='note'><strong>Note:</strong> You can configure multiple HSMs for BOSH CredHub using the <%= vars.ops_manager %> API. For more information, see the <a href="https://docs.pivotal.io/platform/opsman-api/#updating-director-and-iaas-properties-experimental"><%= vars.ops_manager %> API documentation</a>.</p>
+<p> You can configure multiple HSMs for BOSH CredHub using the <%= vars.ops_manager %> API. For more information, see the <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html"><%= vars.ops_manager %> API documentation</a>.</p>
 
-Configure runtime CredHub with one or more HSMs to securely manage service broker credentials. To configure runtime CredHub, see [Step 1: Configure the <%= vars.app_runtime_abbr %> Tile](https://docs.pivotal.io/application-service/operating/secure-si-creds.html#pas-config) in _Securing Service Instance Credentials with Runtime CredHub_.
+Configure runtime CredHub with one or more HSMs to securely manage service broker credentials. To configure runtime CredHub, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/secure-si-creds.html#pas-config).
 
 ## <a id='checklist'></a> Preparation checklist
 
@@ -244,10 +244,12 @@ To delete the currently active key:
             }
           }'
     ```
-    Where:
-    * `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> instance.
-    * `KEY-TO-DEACTIVATE` is the name of the encryption key you want to deactivate.
-    * `OTHER-KEY` is any other key you may have stored in CredHub.
+  Where:
+    <ul>
+    <li>`OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) of your <%= vars.ops_manager %> instance.</li>
+    <li>`KEY-TO-DEACTIVATE` is the name of the encryption key you want to deactivate.</li>
+    <li>`OTHER-KEY` is any other key you may have stored in CredHub.</li>
+</ul>
 
 1. Activate either a new or existing key.
     * To activate a new key:
@@ -270,10 +272,13 @@ To delete the currently active key:
                     }
                   }'
             ```
-            Where:
-            * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
-            * `KEY-TO-UPLOAD` is the name of the encryption key you want to upload.
-        1. Activate the key by running:
+Where:
+<ul>
+  <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
+  <li>`KEY-TO-UPLOAD` is the name of the encryption key you want to upload.</li>
+</ul>
+
+1. Activate the key by running:
 
             ```
             curl "https://OPS-MANAGER-FQDN/api/v0/staged/director/properties" \
@@ -298,13 +303,16 @@ To delete the currently active key:
                     }
                   }'
             ```
-            Where:
-            * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
-            * `DEACTIVATED-KEY` is the key you deactivated.
-            * `UPLOADED-KEY` is the name of the encryption key you uploaded in the previous step.
-    * To activate an existing key, run:
+  Where:
+               <ul>
+      <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
+      <li>`DEACTIVATED-KEY` is the key you deactivated.</li>
+      <li>`UPLOADED-KEY` is the name of the encryption key you uploaded in the previous step..</li>
+</ul>
 
-        ```
+  To activate an existing key, run:
+
+        ```console
         curl "https://OPS-MANAGER-FQDN/api/v0/staged/director/properties" \
           -X PUT \
           -H "Content-Type: application/json" \
@@ -327,10 +335,13 @@ To delete the currently active key:
                 }
               }'
         ```
-        Where:
-        * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
-        * `DEACTIVATED-KEY` is the key you want to deactivate.
-        * `KEY-TO-ACTIVATE` is the name of the encryption key you want to activate.
+
+  Where:
+        <ul>
+      <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
+      <li>`DEACTIVATED-KEY` is the key you want to deactivate.</li>
+      <li>`KEY-TO-ACTIVATE` is the name of the encryption key you want to activate.</li>
+</ul>
 
 1. To delete the key you deactivated, you must run a `PUT` request with the key you want to delete omitted from your `keys` array. Run:
 
@@ -351,9 +362,11 @@ To delete the currently active key:
               }
             }
           }'
-    ```
-    Where:
-    * `OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.
-    * `ACTIVATED-KEY` is the name of the encryption key you activated in the previous step.
+
+Where:
+     <ul>
+              <li>`OPS-MANAGER-FQDN` is the FQDN of your <%= vars.ops_manager %> instance.</li>
+              <li>`ACTIVATED-KEY` is the name of the encryption key you activated in the previous step.</li>
+   </ul>
 
 For information about running commands with the <%= vars.ops_manager %> API, see [Run API Commands](ops-man-api.html#run-commands) in _Using the <%= vars.ops_manager %> API_.

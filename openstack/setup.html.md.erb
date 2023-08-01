@@ -5,9 +5,12 @@ owner: Ops Manager
 
 This guide describes how you can provision the OpenStack infrastructure where you need to install <%= vars.ops_manager_first %>. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
 
-After completing this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html) and [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
-
-<p class='note'><strong>Note:</strong> This document uses Mirantis OpenStack for screenshots and examples. The screens of your OpenStack vendor configuration interface may differ.</p>
+After you complete this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html)
+and [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configure-pas.html).
+<p class="note">
+<span class="note__title">Note</span> This document uses Mirantis OpenStack for screenshots
+and examples. The screens of your OpenStack vendor configuration interface might differ.
+</p>
 
 ## <a id='log-in'></a> Step 1: Log in to the OpenStack Horizon dashboard
 
@@ -21,9 +24,15 @@ After completing this procedure, complete all of the steps in [Configuring BOSH 
 
 ## <a id='security'></a> Step 2: Configure security
 
-<p class='note important'><strong>Important:</strong> If you are using OpenStack Liberty or Mitaka, do not create the key pair with the OpenStack Horizon dashboard. Instead make sure that you generate the SSH key pair manually. For example, use the <code>ssh-keygen</code> command. Then follow the procedure below to import that key pair into OpenStack. This is due to an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.</p>
+<p class="note important">
+<span class="note__title"> Important</span> If you are using OpenStack Liberty or Mitaka, do not create the key pair with the
+  OpenStack Horizon dashboard. Instead make sure that you generate the SSH key pair manually.
+  For example, use the <code>ssh-keygen</code> command. Then follow this procedure to import
+  that key pair into OpenStack. This is due to
+  an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.
+</p>
 
-1. In the left navigation menu of your OpenStack Horizon dashboard, click **Project > Compute > Access & Security**.
+1. In the navigation menu of your OpenStack Horizon dashboard, click **Project > Compute > Access & Security**.
 
 1. On the **Access & Security** page, click the **Key Pairs** tab.
 
@@ -50,7 +59,7 @@ After completing this procedure, complete all of the steps in [Configuring BOSH 
 
 1. On the **Access & Security** page, add the ingress access rules for HTTP, HTTPS, and SSH as shown in the table below. The rules with `opsmanager` in the Remote column have restricted access to that particular Security Group.
 
-    <p class='note'><strong>Note:</strong> Adjust the remote sources as necessary for your own security compliance. <%= vars.company_name %> recommends limiting remote access to <%= vars.ops_manager %> to IP ranges within your organization.</p>
+    <p> Adjust the remote sources as necessary for your own security compliance. <%= vars.company_name %> recommends limiting remote access to <%= vars.ops_manager %> to IP ranges within your organization.</p>
 
     <table class='nice' border='1'>
       <tr>
@@ -158,7 +167,7 @@ Troubleshooting the output of the CF OpenStack Validator tool is beyond the scop
 
 You can create the <%= vars.ops_manager %> image in OpenStack using the OpenStack Horizon dashboard.
 
-<p class='note'><strong>Note:</strong> If your Horizon Dashboard does not support file uploads, you must use the <a href="https://docs.openstack.org/python-glanceclient/latest/cli/glance.html">Glance CLI</a> client.</p>
+<p> If your Horizon Dashboard does not support file uploads, you must use the <a href="https://docs.openstack.org/python-glanceclient/latest/cli/glance.html">Glance CLI</a> client.</p>
 
 To create an <%= vars.ops_manager %> image in OpenStack, perform the following steps:
 
@@ -186,7 +195,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 ## <a id='launch-om-vm'></a> Step 5: Launch <%= vars.ops_manager %> VM
 
-1. In the left navigation of your OpenStack dashboard, click **Project > Compute > Images**.
+1. In the left navigation menu of your OpenStack dashboard, click **Project > Compute > Images**.
 
 1. Select the 'Ops Manager' row, and in the **Actions** column, click **Launch**.
 
@@ -208,7 +217,8 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 1. Click the **Flavor** tab, and configure the OpenStack VM flavors as follows:
 
-  <p class='note'><strong>Note:</strong> Do not change the names of the VM flavors.</p>
+  <p> Do not change the names of the VM flavors.</p>
+
   <table class='nice' border='1'>
     <tr>
       <th><strong>ID</strong></th>
@@ -335,7 +345,8 @@ You must use this fully qualified domain name when you log into <%= vars.ops_man
 
 ## <a id='configure-ops'></a> Step 10: Configure BOSH Director for OpenStack
 
-After completing this procedure, complete all of the steps in the [Configuring BOSH Director on OpenStack](config.html) and [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
+After you complete this procedure, complete all of the steps in the [Configuring BOSH Director on OpenStack](config.html)
+and [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configure-pas.html).
 
 ---
 

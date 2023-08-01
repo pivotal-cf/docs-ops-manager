@@ -3,7 +3,7 @@ title: Installing Ops Manager on OpenStack
 owner: Ops Manager
 ---
 
-This guide describes how you can install <%= vars.ops_manager_first %> on OpenStack with <%= vars.app_runtime_first %>. OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a data center.
+You can install <%= vars.ops_manager_first %> on OpenStack with <%= vars.app_runtime_first %>. OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a data center.
 
 ## <a id='security'></a> OpenStack security documents
 
@@ -20,11 +20,15 @@ These documents provide a general reference for OpenStack service credential man
 
 This section describes the requirements for installing <%= vars.ops_manager %> on OpenStack, including general requirements for installing <%= vars.ops_manager %> with <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> as well as OpenStack requirements.
 
-<p class='note'><strong>Note:</strong> You can install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime. The <%= vars.k8s_runtime_first %> runtime is not supported for OpenStack. For more information about <%= vars.app_runtime_abbr %>, see <a href="https://docs.pivotal.io/application-service/concepts/architecture/index.html"><%= vars.app_runtime_abbr %> Components</a>. For more information about <%= vars.k8s_runtime_abbr %>, see the <a href="https://docs.pivotal.io/pks/index.html"><%= vars.k8s_runtime_abbr %> documentation</a>.</p>
+<p> You can install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_abbr %> runtime. The <%= vars.k8s_runtime_first %> runtime is not supported for OpenStack. For more information about <%= vars.app_runtime_abbr %>,
+see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/architecture-index.html"><%= vars.app_runtime_abbr %> Components</a>.
+For more information about <%= vars.k8s_runtime_abbr %>,
+see <a>"https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-index.html">.</p>
 
 ### <a id='general'></a> General resource requirements
 
-For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-11/operating/requirements.html).
+For <%= vars.app_runtime_abbr %>-specific resource requirements,
+see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/requirements.html).
 
 ### <a id='openstack'></a> OpenStack requirements
 
@@ -43,7 +47,7 @@ The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
   * Username and password. The `PrimaryProject` for the user must be the project you want to use to deploy <%= vars.ops_manager %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
   * Project name
   * Region (with multiple availability zones if you require high availability)
-  * SSL certificate for your wildcard domain (see below)
+  * SSL certificate for your wildcard domain
 
 * You must have the ability to do the following in OpenStack:
   * Create and modify VM flavors
@@ -64,7 +68,8 @@ The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
   * 1&nbsp;TB of storage
   * Nova or Neutron networking with floating IP support
 
-      <p class='note'><strong>Note:</strong> By default, <%= vars.app_runtime_abbr %> deploys the number of VM instances required to run a highly available configuration of <%= vars.ops_manager %>. If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require HA, then you can scale down the number of instances in your deployment. For information about the number of instances required to run a minimal, non-HA <%= vars.ops_manager %> deployment, see <a href="https://docs.pivotal.io/application-service/operating/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
+      <p> By default, <%= vars.app_runtime_abbr %> deploys the number of VM instances required to run a highly available configuration of <%= vars.ops_manager %>. If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require HA, then you can scale down the number of instances in your deployment. For information about the number of instances required to run a minimal, non-HA <%= vars.ops_manager %> deployment,
+      see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
 
 * The following are requirements for the OpenStack Cinder back end:
   * <%= vars.ops_manager %> requires RAW root disk images. The Cinder back end for your OpenStack project must support RAW.
@@ -74,9 +79,10 @@ The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
 * The following are requirements for using an Overlay Network with VXLAN or GRE Protocols:
   * If an overlay network is being used with VXLAN or GRE protocols, the MTU of the created VMs must be adjusted to the best practices recommended by the plugin vendor (if any).
   * DHCP must be enabled in the internal network for the MTU to be assigned to the VMs automatically.
-  * To adjust your MTU values, see [Configure Networking](https://docs.pivotal.io/application-service/operating/configure-pas.html#networking) in _Configuring <%= vars.app_runtime_abbr %>_.
-  * Failure to configure your overlay network correctly could cause Apps Manager to fail since applications will not be able to connect to the UAA.
-    <p class='note'><strong>Note:</strong> If you are using IPsec, your resource usage will increase by approximately 36&nbsp;bytes. For details, including information about setting correct MTU values, see <a href="https://docs.pivotal.io/addon-ipsec/installing.html"> Installing IPsec</a> in the IPsec documentation.</p>
+  * To adjust your MTU values, see [Configure Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html) in _Configuring <%= vars.app_runtime_abbr %>_.
+  * Failure to configure your overlay network correctly could cause Apps Manager to fail since applications are not be able to connect to the UAA.
+
+  <p> If you are using IPsec, your resource usage increases by approximately 36&nbsp;bytes. For details, including information about setting correct MTU values, see <a href="https://docs.vmware.com/en/IPsec-for-VMware-Tanzu/1.9/documentation/GUID-installing.html"> Installing IPsec</a> in the IPsec documentation.</p>
 
 
 ## <a id='outputs'></a> Install <%= vars.ops_manager %> on OpenStack with <%= vars.app_runtime_abbr %>
@@ -91,4 +97,4 @@ To install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_ab
 
 After completing the procedures above, configure a runtime.
 
-For information about installing and configuring a runtime, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html).
+For information about installing and configuring a runtime, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html).

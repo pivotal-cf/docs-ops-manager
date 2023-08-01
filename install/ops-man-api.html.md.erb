@@ -8,7 +8,8 @@ This topic explains how you can access the <%= vars.ops_manager_first %> API, an
 The <%= vars.ops_manager %> API controls the <%= vars.ops_manager %> VM directly, bypassing the <%= vars.ops_manager %> UI. Platform operators use the <%= vars.ops_manager %> API to automate deployments, retrieve and manage credentials, and otherwise work with <%= vars.ops_manager %>.
 Tile Developers use the <%= vars.ops_manager %> API to test and debug <%= vars.ops_manager %> product tiles.
 
-For more information about the <%= vars.ops_manager %> API, see the [<%= vars.ops_manager %> API](https://docs.pivotal.io/ops-manager/2-10/api) documentation. Your <%= vars.ops_manager %> serves a local copy of this documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
+For more information about the <%= vars.ops_manager %> API, see
+the [<%= vars.ops_manager %> API](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html) documentation. Your <%= vars.ops_manager %> serves a local copy of this documentation at `https://YOUR-OPS-MANAGER-FQDN/docs`.
 
 ### <a id='related'></a> Related tools
 
@@ -23,7 +24,8 @@ For an overview of the <%= vars.ops_manager %> API and the tools based on it, se
 
 To access the <%= vars.ops_manager %> API, you must authenticate to the <%= vars.ops_manager %> User Account and Authentication (UAA) server and log in as described below.
 
-For more information about UAA, see [UAA Overview](https://docs.pivotal.io/application-service/uaa/uaa-overview.html).
+For more information about UAA,
+see [UAA Overview](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/uaa-overview.html).
 
 ### <a id='uaa'></a> Install the UAAC
 
@@ -319,7 +321,8 @@ To configure the BOSH Director with the <%= vars.ops_manager %> API:
       "no_proxy": "127.0.0.1"
     } }'
     </pre>
- 	<p class='note'><strong>Note:</strong> You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it is complete. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>
+
+    <p>You do not need to specify UAA or other authentication details on a first-time deploy. Making the <code>setup</code> request automatically creates a UAA client when it is complete. If you specify a UAA client for a first-time deployment, the deployment will fail.</p>
 
 1. A <code>200 OK</code> response appears.</li>
 
@@ -331,7 +334,7 @@ For more information about configuring the BOSH Director, see <a href="http://do
 
 1. Send an HTTP `POST` request to the `api/v0/staged/director/availability_zones` endpoint to create Availability Zones (AZs) for your product.
 
-    <p class='note'><strong>Note:</strong> The <code>create-azs</code> endpoint is optional for Azure-based deployments, because you cannot manually configure Azure AZs.</p>
+    <p> The <code>create-azs</code> endpoint is optional for Azure-based deployments, because you cannot manually configure Azure AZs.</p>
 
 1. Send an HTTP `PUT` request to the `api/v0/staged/director/networks` endpoint to create networking rules for the deployment.
 Specify whether or not to use ICMP checks by setting the `icmp_checks_enabled` parameter to `true` or `false`.

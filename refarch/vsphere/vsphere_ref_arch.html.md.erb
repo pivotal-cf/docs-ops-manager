@@ -8,8 +8,6 @@ This architecture builds on the common base architectures described in [Architec
 
 For additional requirements and installation instructions for <%= vars.ops_manager %> on vSphere, see [Installing <%= vars.ops_manager %> on vSphere](../../install/vsphere.html).
 
-## <a id='overview'></a> Overview
-
 The vSphere reference architecture for the <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> runtime tiles is based on software-defined networking (SDN) infrastructure.
 vSphere offers NSX-T and NSX-V to support SDN infrastructure.
 
@@ -47,7 +45,7 @@ such as network, load balancing, and storage capacity requirements and recommend
 
 ### <a id='pas-nsx-t-diagram'></a> Architecture
 
-The diagram below illustrates reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments:
+The following diagram illustrates reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments:
 
 ![alt-text="Architecture on vSphere with NSX-T deployment. For detailed information about the components and networking shown, see the following description."](../images/v2/export/PAS_vSphere_NSX-T.png)
 
@@ -65,7 +63,8 @@ Several Tier-1 routers, such as the router for the <%= vars.app_runtime_abbr %> 
 
 The NSX-T Container Plugin enables a container networking stack and integrates with NSX-T.
 
-<p class='note'><strong>Note:</strong> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plugin, go to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
+<p> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plugin, go to
+the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
 
 ### <a id='pas-nsx-t-networking'></a> Networking
 
@@ -98,9 +97,7 @@ The load balancing requirements and recommendations for <%= vars.app_runtime_abb
   * The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer VIP.
   * You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
 
-* <%= vars.company_name %> recommends that you configure Layer 4 NSX-V load balancers for the Gorouters. With Layer 4 load balancers, traffic passes through the load balancers and SSL is terminated at the Gorouters. This approach reduces overhead processing.
-
-  <p class='note'><strong>Note:</strong> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
+  <p> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
 
 * Any TCP GoRouters and SSH Proxies within the platform also require NSX-T load balancers.
 
@@ -152,9 +149,9 @@ With this arrangement, all VMs in the same installation and cluster share a dedi
 
 * **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
 
-<p class='note'><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
+<p> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores can be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
-<p class='note'><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must deactivate the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">Migrating <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
+<p> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must deactivate the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">Migrating <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
 
 For more information about general storage requirements and recommendations for <%= vars.app_runtime_abbr %>, see [Storage](../index.html#pas-storage) in _Platform Architecture and Planning Overview_.
 
@@ -162,7 +159,8 @@ For more information about general storage requirements and recommendations for 
 
 An internal MySQL database is sufficient for use in production environments. However, an external database provides more control over database management for large environments that require multiple data centers.
 
-For information about configuring system databases on <%= vars.app_runtime_abbr %>, see [Configure System Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
+For information about configuring system databases on <%= vars.app_runtime_abbr %>,
+see [Configure System Databases](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='pas-nsx-t-securty'></a> Security
 
@@ -175,68 +173,15 @@ For information about security requirements and recommendations for <%= vars.app
 * **Production environments**: Use an S3 storage appliance as the blobstore.
 * **Non-production environments**: Use an NFS/WebDAV blobstore.
 
-<p class='note'><strong>Note:</strong> For non-production environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
+<p> For non-production environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
 
-For more information about blobstore storage requirements and recommendations, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
-
-
-## <a id='pas-nsx-v'></a> <%= vars.app_runtime_abbr %> on vSphere with NSX-V
-
-These sections describe the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments. They also provide requirements and recommendations for deploying <%= vars.app_runtime_abbr %> on vSphere with NSX-V, such as network, load balancing, and storage capacity requirements and recommendations.
-
-<%= vars.app_runtime_abbr %> on vSphere with NSX-V enables services provided by NSX on the <%= vars.app_runtime_abbr %> platform, such as an Edge Services Gateway (ESG), load balancers, firewall services, and NAT/SNAT services.
-
-### <a id='pas-nsx-v-diagram'></a> Architecture
-
-The diagram below illustrates the reference architecture for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
-
-![The diagram shows the architecture for a <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployment. For more information about the components and networking demonstrated by the diagram, read the description below this diagram.](../images/v2/export/PAS_vSphere_NSX-V.png)
-
-[View a larger version of this diagram](../images/v2/export/PAS_vSphere_NSX-V.png).
-
-<%= vars.app_runtime_abbr %> deployments with NSX-V are deployed with three clusters and three AZs.
-
-<%= vars.app_runtime_abbr %> deployments with NSX-V also include an NSX-V Edge router on the front end. You can install the NSX-V Edge router as an ESG or as a distributed logical router (DLR).
-
-The Edge router is a central logical router into the <%= vars.app_runtime_abbr %> platform. You can configure VLAN routing from the routed backbone into NSX-V through the Edge router.
-
-Compared to NSX-T architecture, NSX-V architecture does not use Tier-1 routers to connect the central router to the various subnets for the <%= vars.app_runtime_abbr %> deployment.
-
-For more information about using ESG on vSphere, see [Using Edge Services Gateway on VMware NSX](./vsphere_nsx_cookbook.html).
+For more information about blobstore storage requirements and recommendations,
+see [Configure File Storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 ### <a id='pas-nsx-t-networking'></a> Networking
 
-These sections describe networking requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments.
-
-#### <a id='pas-nsx-v-routable-ip'></a> Routable IPs
-
-You must assign routable external IPs on the server side, such as routable IPs for NATs and load balancers, to the Edge router.
-
-#### <a id='pas-nsx-v-firewall'></a> Firewall
-
-<%= partial '../../common/vsphere-firewall-ports' %>
-
-#### <a id='pas-nsx-v-dns'></a> DNS
-
-<%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
-
-For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
-
-#### <a id='pas-nsx-v-load-balancing'></a> Load Balancing
-
-The load balancing requirements and recommendations for <%= vars.app_runtime_abbr %> on vSphere with NSX-V deployments are:
-
-* NSX-V includes an Edge router. The Edge router supports ESG. ESG provides load balancing and is configured to route to the <%= vars.app_runtime_abbr %> platform.
-
-* <%= vars.company_name %> recommends that you configure Layer 4 NSX-V load balancers for the Gorouters. With Layer 4 load balancers, traffic passes through the load balancers and SSL is terminated at the Gorouters. This approach reduces overhead processing.
-
-    <p class='note'><strong>Note:</strong> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
-
-* The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer. You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
-
-* Any TCP routers and SSH Proxies also require NSX-V load balancers.
-
-* <%= vars.company_name %> recommends that you configure external load balancers in front of the Edge router. For example, you can configure an F5 external load balancer.
+For information about installing TAS with NSX-T,
+see [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vsphere-nsx-t.html).
 
 #### <a id='pas-nsx-v-ip-spacing'></a> Networks, subnets, and IP address spacing
 
@@ -260,9 +205,9 @@ For information about horizontal and vertical shared storage, see [Shared Storag
 
 * **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
 
-<p class='note'><strong>Note:</strong> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores should be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
+<p> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores can be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
-<p class='note'><strong>Note:</strong> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must deactivate the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
+<p> If a datastore is part of a vSphere Storage Cluster using DRS storage (sDRS), you must deactivate the s-vMotion feature on any datastores used by <%= vars.ops_manager %>. Otherwise, s-vMotion activity can rename independent disks and cause BOSH to malfunction. For more information, see <a href="./vsphere_migrate_datastore.html">How to Migrate <%= vars.ops_manager %> to a New Datastore in vSphere</a>.</p>
 
 For more information about general storage requirements and recommendations for <%= vars.app_runtime_abbr %>, see
 [Storage](../index.html#pas-storage) in _Platform Architecture and Planning Overview_.
@@ -273,7 +218,8 @@ An internal MySQL database is sufficient for use in production environments.
 
 However, an external database provides more control over database management for large environments that require multiple data centers.
 
-For information about configuring system databases on <%= vars.app_runtime_abbr %>, see [Configure System Databases](https://docs.pivotal.io/application-service/operating/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
+For information about configuring system databases on <%= vars.app_runtime_abbr %>,
+see [Configure System Databases](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='pas-nsx-v-security'></a> Security
 
@@ -286,16 +232,18 @@ For information about security requirements and recommendations for <%= vars.app
 * **Production environments**: Use an S3 storage appliance as the blobstore.
 * **Non-production environments**: Use an NFS/WebDAV blobstore.
 
-<p class='note'><strong>Note:</strong> For non-production environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
+<p> For non-production environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
 
-For more information about blobstore storage requirements and recommendations, see [Configure File Storage](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+For more information about blobstore storage requirements and recommendations,
+see [Configure File Storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 
 ## <a id='pas-no-nsx'></a> <%= vars.app_runtime_abbr %> on vSphere without NSX
 
 These sections describe the architecture for <%= vars.app_runtime_abbr %> on vSphere without software-defined networking deployments.
 
-<p class='note'><strong>Note:</strong> This architecture was validated for earlier versions of <%= vars.app_runtime_abbr %>.
+<p class="note important">
+<span class="note__title"> Important</span> This architecture was validated for earlier versions of <%= vars.app_runtime_abbr %>.
 However, it has not been validated for <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.
 </p>
 
@@ -319,11 +267,16 @@ Isolation segments can help with satisfying IP address space needs in a routed n
 
 These sections describe the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments. They also provide requirements and recommendations for deploying <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T, such as network, load balancing, and storage capacity requirements and recommendations.
 
-<p class='note'><strong>Note:</strong> VMware recommends deploying <%= vars.k8s_runtime_abbr %> on its own dedicated <%= vars.ops_manager %> instance, rather than on a shared <%= vars.ops_manager %> that also hosts other runtimes such as <%= vars.app_runtime_abbr %>.</p>
+<p class="note important">
+<span class="note__title"> Important</span> VMware recommends deploying <%= vars.k8s_runtime_abbr %> on its own dedicated <%= vars.ops_manager %>
+instance, rather than on a shared <%= vars.ops_manager %> that also hosts other runtimes such
+as <%= vars.app_runtime_abbr %>.
+</p>
+
 
 ### <a id='pks-nsx-t-diagram'></a> Architecture
 
-The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments.
+The flollowing diagram illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments.
 
 ![alt-text="Architecture on vSphere with NSX-T deployment. For detailed information about the components and networking shown, see the following description."](../images/v2/export/PKS_vSphere_NSX-T.png)
 
@@ -335,7 +288,7 @@ An NSX-T Tier-0 router is on the front end of the <%= vars.k8s_runtime_abbr %> d
 
 Several Tier-1 routers, such as the router for the infrastructure subnet, connect to the Tier-0 router. New Tier-1 routers are created on-demand as new clusters and namespaces are added to <%= vars.k8s_runtime_abbr %>.
 
-<p class='note'><strong>Note:</strong> The <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T architecture supports multiple master nodes for <%= vars.k8s_runtime_abbr %> v1.2 and later.</p>
+<p> The <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T architecture supports multiple primary nodes for <%= vars.k8s_runtime_abbr %> v1.2 and later.</p>
 
 ### <a id='pks-nsx-t-networking'></a> Networking
 
@@ -420,7 +373,7 @@ These considerations and recommendations apply to networks, subnets, and IP addr
 
     NSX-T creates IP address blocks of `/24` from these `/14` networks by default each time a new cluster or Pod is created. You can configure this CIDR range for <%= vars.k8s_runtime_abbr %> in <%= vars.ops_manager %>.
 
-* When deploying <%= vars.k8s_runtime_abbr %> with <%= vars.ops_manager %>, you must allow for a block of address space for dynamic networks that <%= vars.k8s_runtime_abbr %> deploys for each namespace. The recommended address space allows you to view a queue of which jobs relate to each service.
+* When you deploy <%= vars.k8s_runtime_abbr %> with <%= vars.ops_manager %>, you must allow for a block of address space for dynamic networks that <%= vars.k8s_runtime_abbr %> deploys for each namespace. The recommended address space allows you to view a queue of which jobs relate to each service.
 
 * When a new <%= vars.k8s_runtime_abbr %> cluster is created, <%= vars.k8s_runtime_abbr %> creates a new `/24` network from <%= vars.k8s_runtime_abbr %> cluster address space.
 
@@ -456,7 +409,8 @@ For information about HA requirements and recommendations, see [High Availabilit
 
 <%= vars.k8s_runtime_abbr %> on vSphere supports static persistent volume provisioning and dynamic persistent volume provisioning.
 
-For more information about storage requirements and recommendations, see [PersistentVolume Storage Options on vSphere](https://docs.pivotal.io/tkgi/vsphere-persistent-storage.html).
+For more information about storage requirements and recommendations,
+see [PersistentVolume Storage Options on vSphere](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-persistent-storage.html).
 
 ### <a id='pks-nsx-t-security'></a> Security
 
@@ -473,4 +427,4 @@ Select from networks already identified in <%= vars.ops_manager %> to deploy the
 <%= vars.k8s_runtime_abbr %> API and <%= vars.k8s_runtime_abbr %>-provisioned
 Kubernetes clusters.
 
-<p class='note'><strong>Note:</strong> VMware recommends deploying <%= vars.k8s_runtime_abbr %> on its own dedicated <%= vars.ops_manager %> instance, rather than on a shared <%= vars.ops_manager %> that also hosts other runtimes such as <%= vars.app_runtime_abbr %>.</p>
+<p> VMware recommends deploying <%= vars.k8s_runtime_abbr %> on its own dedicated <%= vars.ops_manager %> instance, rather than on a shared <%= vars.ops_manager %> that also hosts other runtimes such as <%= vars.app_runtime_abbr %>.</p>

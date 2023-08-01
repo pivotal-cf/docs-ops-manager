@@ -7,7 +7,7 @@ This guide describes procedures that you can use if you encounter issues while d
 
 ## <a id='retry'></a> Retrying the deployment
 
-An installation or update can fail for many reasons, but the system is self-healing, and can often
+An installation or update can fail for many reasons, but the system is self healing, and can often
 automatically correct or work around hardware or network faults.
 
 Click **Install** or **Review Pending Changes**, then **Apply Changes** again, and the system may
@@ -22,7 +22,7 @@ section below to see if your problem is covered.
 
 ## <a id='common_issues'></a> Common issues
 
-Compare evidence that you have gathered to the descriptions below. If your issue is covered, try
+Compare evidence that you have gathered to the following descriptions. If your issue is covered, try
 the recommended remediation procedures.
 
 ### <a id='reinstall_bosh'></a> BOSH does not reinstall
@@ -53,7 +53,7 @@ To diagnose:
 
 1. Access the VM using your virtualization console and log in.
 
-1. Navigate to the **Credentials** tab of the
+1. Go to the **Credentials** tab of the
 <%= vars.app_runtime_first %> tile and locate the VM in question to
 find the **VM credentials**.
 
@@ -170,7 +170,7 @@ If users receive `Out of Disk Space` errors when trying to push apps, this can m
 Diego cells may be running out of disk space capacity.
 
 To perform a detailed analysis of disk usage by containers and host VMs in your <%= vars.ops_manager %> deployment,
-see [Examining GrootFS Disk Usage](https://docs.pivotal.io/application-service/adminguide/examining_grootfs_disk.html).
+see [Examining GrootFS Disk Usage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/examining_grootfs_disk.html).
 
 ### <a id='vsphere_fails'></a> Installing BOSH Director fails in vSphere
 
@@ -219,7 +219,7 @@ Error: 'mysql_monitor/12a3b456-cd7e-8fgh-9012-345678b90ijk (0)' is not running a
 </pre>
 
 If you see this error, create firewall rules that allow MySQL to reach UAA, using
-[MySQL Network Communications](https://docs.pivotal.io/application-service/2-10/operating/networking/mysql-network-paths.html) as a
+[MySQL Network Communications](https://docs.pivotal.io/application-service/<%= vars.current_major_version %>/operating/networking/mysql-network-paths.html) as a
 reference.
 
 ### <a id='ip_address_taken'></a><%= vars.ops_manager %> hangs during MicroBOSH install or HAProxy states "IP Address Already Taken"
