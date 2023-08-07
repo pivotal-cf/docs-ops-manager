@@ -1,6 +1,6 @@
 1. Select a **Blobstore Location** to configure the blobstore as either an internal server or an external endpoint.
 
-    <p class='note'><strong>Note:</strong> After you deploy the BOSH Director, only <%= vars.ops_manager %> users in Advanced Mode can change the blobstore location. For more information, see <a href="https://docs.pivotal.io/platform/2-9/customizing/lock-on-deploy.html"><%= vars.ops_manager %> Fields That Lock On Deploy</a>.</p>
+    <p> After you deploy the BOSH Director, only <%= vars.ops_manager %> users in Advanced Mode can change the blobstore location. For more information, see <a href="https://docs.pivotal.io/platform/2-9/customizing/lock-on-deploy.html"><%= vars.ops_manager %> Fields That Lock On Deploy</a>.</p>
 
     * **Internal:** Select this option to use an internal blobstore. No additional configuration is required.
 
@@ -39,7 +39,7 @@
 
         1. **Bucket Name:** Enter the name of the S3 bucket.
         1. **URL Style:** Select either path-style or domain-style to specify the URL style for the S3-compatible blobstore. By default, the blobstore uses domain-style URLs.
-            <p class='note important'><strong>Important:</strong> AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.pivotal.io/platform/2-9/release-notes/opsmanager-rn.html#domain-style">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.</p>
+            <p> AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.pivotal.io/platform/2-9/release-notes/opsmanager-rn.html#domain-style">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.</p>
         <% if current_page.data.iaas == "AWS" %>
         1. **Credentials Source:**
         Input your credentials from the following sources.
@@ -49,10 +49,10 @@
         <% else %>
         1. **Access Key** and **Secret Key:** Enter the keys you generated when creating your S3 bucket.
         <% end %>
-        1. **Enable signed URLs:** Select this checkbox to configure BOSH VMs to generate short-lived, pre-signed URLs for communication between the BOSH Agent and blobstore. If you enable this feature, BOSH Agents do not use credentials to communicate with the blobstore, and VM disks do not store blobstore credentials.
-            <p class='note'><strong>Note:</strong> This feature is only available for BOSH VMs that use Xenial stemcell line 621 or later.</p>
+        1. **Enable signed URLs:** Select this chec kbox to configure BOSH VMs to generate short-lived, pre-signed URLs for communication between the BOSH Agent and blobstore. If you enable this feature, BOSH Agents do not use credentials to communicate with the blobstore, and VM disks do not store blobstore credentials.
+            <p> This feature is only available for BOSH VMs that use Xenial stemcell line 621 or later.</p>
         1. Select **V2 Signature** or **V4 Signature**. If you select **V4 Signature**, enter your **Region**.
-            <p class='note'><strong>Note:</strong> AWS recommends using Signature Version 4. For more information about AWS S3 Signatures, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating Requests</a> in the AWS documentation.</p>
+            <p> AWS recommends using Signature Version 4. For more information about AWS S3 Signatures, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating Requests</a> in the AWS documentation.</p>
         1. **S3 Backup Strategy:** To configure whether and how to back up the BOSH Director's S3 blobstore, select one of the following options:
             * **No backups**
             * **Use a versioned bucket:** This option uses blobstore bucket versioning to save backups. It requires an S3 blobstore that supports versioning.

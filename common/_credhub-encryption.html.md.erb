@@ -2,14 +2,14 @@
 
     Before configuring an HSM encryption provider in the **Director Config** pane, you must follow the procedures and collect information described in [Preparing CredHub HSMs for Configuration](../install/hsm-config.html).
 
-    <p class='note'><strong>Note:</strong> After you deploy <%= vars.ops_manager %> with an HSM encryption provider, you cannot change BOSH CredHub to store encryption keys internally.</p>
+    <p> After you deploy <%= vars.ops_manager %> with an HSM encryption provider, you cannot change BOSH CredHub to store encryption keys internally.</p>
 
     ![alt-text=""](../common/images/credhub-hsm.png)
 
     * **Internal:** Select this option for internal CredHub key storage. This option is selected by default and requires no additional configuration.
     * **Luna HSM:** Select this option to use a SafeNet Luna HSM as your permanent CredHub encryption provider, and fill in the following fields:
 
-        <p class='note'><strong>Note:</strong> If you use multiple HSM hosts, you must use the <%= vars.ops_manager %> API to set or update the HSM configuration. For more information, see <a href="https://docs.pivotal.io/platform/opsman-api/#updating-director-and-iaas-properties-experimental">Updating director and Iaas properties (Experimental)</a> in the <%= vars.ops_manager %> API documentation.</p>
+        <p> If you use multiple HSM hosts, you must use the <%= vars.ops_manager %> API to set or update the HSM configuration. For more information, see <a href="https://docs.pivotal.io/platform/opsman-api/#updating-director-and-iaas-properties-experimental">Updating director and Iaas properties (Experimental)</a> in the <%= vars.ops_manager %> API documentation.</p>
 
         1. **Encryption Key Name**: Any name to identify the key that the HSM uses to encrypt and decrypt the CredHub data. Changing this key name after you deploy <%= vars.ops_manager %> can cause service downtime.
         2. **Provider Partition**: The partition that stores your encryption key. Changing this partition after you deploy <%= vars.ops_manager %> could cause service downtime. For this value and the ones below, use values gathered in [Preparing CredHub HSMs for Configuration](../install/hsm-config.html).

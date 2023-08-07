@@ -5,15 +5,13 @@ owner: Security
 
 This topic provides security guidelines for the Infrastructure as a Service (IaaS) providers supported by <%= vars.ops_manager_first %>.
 
-## <a id='overview'></a> Overview
-
 <%= vars.ops_manager %> supports a variety of IaaS providers. Different IaaS providers require different configuration steps to secure user data, identity information, and credentials.
 
 Security requirements can vary broadly based on the unique configuration and infrastructure of each organization. Rather than provide specific guidance that may not apply to all use cases, <%= vars.company_name %> has collected links to IaaS providers' security and identity management documentation. The documents below may help you understand how your IaaS' security requirements impact your <%= vars.ops_manager %> deployment.
 
 <%= vars.company_name %> does not endorse these documents for accuracy or guarantee that their contents apply to all <%= vars.ops_manager %> installations.
 
-Find your IaaS provider in the list below. The documentation items linked for each IaaS may help you configure and secure your installation infrastructure.
+Find your IaaS provider in the following list. The documentation items linked for each IaaS may help you configure and secure your installation infrastructure.
 
 ## <a id='aws'></a> Amazon Web Services (AWS)
 
@@ -33,7 +31,7 @@ These topics in the AWS documentation provide a general reference for AWS' Ident
 
 <%= vars.app_runtime_first %> v2.13.0 and later are compatible with IMDSv2. For all versions of <%= vars.k8s_runtime_first %>, it might be necessary to set the hop limit using the `metadata_options` key. For more information, see [VM Types / VM Extensions](https://bosh.io/docs/aws-cpi/#resource-pools) in the BOSH documentation.
 
-<div class="note caution"><strong>Caution:</strong> All tiles and service instances must be using stemcell Xenial v621.183 or later in order to require IMDSv2. Requiring IMDSv2 while using an older stemcell causes Apply Changes to fail due to an unresponsive BOSH agent.</div>
+<p>All tiles and service instances must be using stemcell Xenial v621.183 or later in order to require IMDSv2. Requiring IMDSv2 while using an older stemcell causes Apply Changes to fail due to an unresponsive BOSH agent.</p>
 
 To require IMDSv2 on all BOSH-deployed VMs:
 
@@ -44,7 +42,7 @@ To require IMDSv2 on all BOSH-deployed VMs:
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Configure the BOSH Director to re-create VMs:
-    1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+    1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
     1. Click the **BOSH Director** tile.
 
@@ -55,7 +53,7 @@ To require IMDSv2 on all BOSH-deployed VMs:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
-    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands might be slightly different between services.</p>
+    <p> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands might be slightly different between services.</p>
     1. Click the tile.
     1. Click the **Errands** tab.
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.

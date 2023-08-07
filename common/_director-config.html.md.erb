@@ -39,7 +39,7 @@ To configure the **Director Config** pane:
     1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
 1. Leave the **Bosh HM Forwarder IP Address** field blank.
-    <p class='note'><strong>Note:</strong> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> field blank.</p>
+    <p> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> field blank.</p>
 
 1. Select the **Enable VM Resurrector Plugin** checkbox to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.pivotal.io/platform/customizing/resurrector.html) for more information about the Resurrector plugin.<% end %>
 
@@ -58,7 +58,7 @@ Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats
 <p> Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
 are created somewhat more slowly.
 This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %>
-deployments to use short-lived bootstrap credentials, you must re-create them. </p>
+deployments to use short-lived bootstrap credentials, you must recreate them. </p>
 
 1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deployment. This process does not recreate the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
