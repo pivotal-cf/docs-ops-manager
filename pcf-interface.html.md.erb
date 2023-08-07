@@ -16,11 +16,11 @@ The following image shows the <%= vars.ops_manager %> Installation Dashboard. Ea
 The following list describes each section that is labeled for the Installation Dashboard:
 
 * **A**---**Import a Product:** Click this button to add a new product to <%= vars.ops_manager %>. You can download <%= vars.ops_manager %>-compatible product files from [VMware Tanzu Network](https://network.pivotal.io).
-  * If you have configured a [VMware Tanzu Network API](install/add-delete.html) token in the **Settings** section of <%= vars.ops_manager %>, a list of the latest versions of already imported products appears automatically.
+  * If you configure a [VMware Tanzu Network API](install/add-delete.html) token in the **Settings** section of <%= vars.ops_manager %>, a list of the latest versions of already imported products appears automatically.
 
 * **B**---**Delete All Unused Products:** Click this link to delete any unused products.
 
-* **C**---**Installation Dashboard:** Click this link to return to the <%= vars.ops_manager %> Installation Dashboard page from other <%= vars.ops_manager %> pages.
+* **C**---**Installation Dashboard:** Click this link to return to the <%= vars.ops_manager %> Installation Dashboard topic from other <%= vars.ops_manager %> topics.
 
 * **D**---**Stemcell Library:** Click this link to open the **Stemcell Library**. In the **Stemcell Library** you can import stemcells, stage stemcells, and review your stemcell version numbers. For more information, see [Importing and Managing Stemcells](opsguide/managing-stemcells.html).
 
@@ -28,22 +28,22 @@ The following list describes each section that is labeled for the Installation D
 
 * **F**---**Certificates:** Click this link to view certificates in your installation. For more information, see the [Certificates Page](#certificates) section of this topic for details.
 
-* **G**---**User Account Menu:** Click the arrow next to your username to view the menu. Use this menu to go to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more information, see [My Account](#account_settings) of this topic for details on account information. For more information, see the [Settings Page](#settings) section of this topic for details on available <%= vars.ops_manager %> settings.
+* **G**---**User Account Menu:** Click the arrow next to your user name to view the menu. Use this menu to go to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more details about accounts, see [My Account](#account_settings) of this topic for details on account information. For more information, see the [Settings Page](#settings) section of this topic for details that are available <%= vars.ops_manager %> settings.
 
 * **H**---**Revert:** Click the revert button to return to the previous successful installation. Any pending changes you have made to the current installation settings are lost.
 
-* **I**---**Review Pending Changes:** Click the button to go to the **Review Pending Changes** page, which organizes pending changes by tile. You are able to activate or deactivate each tile to selectively deploy individual tiles and their dependencies. For more information, see [Reviewing Pending Product Changes](install/review-pending-changes.html).
+* **I**---**Review Pending Changes:** Click the button to go to the **Review Pending Changes** page, which organizes pending changes by tile. You can activate or deactivate each tile to selectively deploy individual tiles and their dependencies. For more information, see [Reviewing Pending Product Changes](install/review-pending-changes.html).
 
 * **J**---**Orange Bar:** Indicates that additional configuration for the product tile is required before deployment. Click the product tile to complete its configuration.
 
-* **K**---**Missing Stemcell Link:** If an imported product is missing a required stemcell, a **Missing Stemcell** link appears on the tile. Click this link to open the Stemcell Library. For more information, see [Importing and Managing Stemcells](opsguide/managing-stemcells.html).
+* **K**---**Missing Stemcell Link:** If an imported product is missing a required stemcell, a **Missing Stemcell** link appears on the tile. Click this link to open the stemcell library. For more information about stemcells, see [Importing and Managing Stemcells](opsguide/managing-stemcells.html).
 
-* **L**---**API Docs:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the user interface. For more information about the <%= vars.ops_manager %> API, see [Using the <%= vars.ops_manager %> API](install/ops-man-api.html).
+* **L**---**API Docs:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the UI. For more information about the <%= vars.ops_manager %> API, see [Using the <%= vars.ops_manager %> API](install/ops-man-api.html).
 
 
 ## <a id='changelog'></a> Change Log page
 
-Go to the **Change Log** page by clicking the corresponding link in the dashboard header. This page shows<%= vars.ops_manager %>'s deployment history, a record of all of its **Apply Changes** actions.
+Go to the **Change Log** page by clicking the corresponding link in the dashboard header. This topic shows the <%= vars.ops_manager %>'s deployment history, and a record of all of its **Apply Changes** actions.
 
 The following table lists the following top-level attributes for each deployment:
 
@@ -53,17 +53,17 @@ The following table lists the following top-level attributes for each deployment
     <th>Type</th>
     <th>Description</th>
   </tr>
-	<tr>
+  <tr>
     <th>STATUS</th>
     <td>Icon</td>
     <td>Whether the deployment succeeded or failed</td>
   </tr>
-	<tr>
+  <tr>
     <th>DEPLOYMENT ID</th>
     <td>Text</td>
     <td>A sequentially-numbered identifier for the deployment</td>
   </tr>
-	<tr>
+  <tr>
     <th>USER</th>
     <td>Username</td>
     <td>The user who initiated the deployment</td>
@@ -82,38 +82,38 @@ The details listed for each product are as follows:
     <th>Type</th>
     <th>Description</th>
   </tr>
-	<tr>
+  <tr>
     <th>PRODUCT</th>
     <td>Text</td>
     <td>The name of the product</td>
   </tr>
-	<tr>
+  <tr>
     <th>ACTION</th>
     <td>One of the following labels: <strong>ADDED</strong>, <strong>UPDATED</strong>, <strong>DELETED</strong>, <strong>NO CHANGES</strong>, <strong>FAILED</strong></td>
-    <td>The action, if any, that the deployment took with the product</td>
+    <td>The action, if any, that the deployment took with the product.</td>
   </tr>
-	<tr>
+  <tr>
     <th>STARTED</th>
     <td>UTC timestamp</td>
-    <td>When <%= vars.ops_manager %> began deploying the product</td>
+    <td>When <%= vars.ops_manager %> began deploying the product.</td>
   </tr>
-	<tr>
+  <tr>
     <th>FINISHED</th>
     <td>UTC timestamp</td>
-    <td>When <%= vars.ops_manager %> stopped deploying or attempting to deploy the product</td>
+    <td>When <%= vars.ops_manager %> stopped deploying or attempting to deploy the product.</td>
   </tr>
-	<tr>
+  <tr>
     <th>DURATION</th>
     <td>Time, in minutes</td>
-    <td>How long <%= vars.ops_manager %> took to deploy or attempt to deploy the product</td>
+    <td>How long <%= vars.ops_manager %> took to deploy or attempt to deploy the product.</td>
   </tr>
 </table>
 
-A **Total** row, lists all-product totals for the **STARTED**, **FINISHED**, AND **DURATION** fields.
+A **Total** row, lists all product totals for the **STARTED**, **FINISHED**, AND **DURATION** text boxes.
 
 ### <a id='changelog-using'></a> Using the Change Log page
 
-Configure the **Change Log** page by modifying the following fields:
+Configure the **Change Log** topic by modifying the following text boxes:
 
 * **Installation Dashboard**---Click **Installation Dashboard** to return to the <%= vars.ops_manager %> Installation Dashboard. Alternatively, click the **Back** button in your web browser.
 
@@ -121,18 +121,17 @@ Configure the **Change Log** page by modifying the following fields:
 
 * **Search**---Type in the search box to sort the Change Log page by text or integer matches. As you type, matching entries appear on the screen.
 
-* **Previous / Next**---Click **Previous**, **Next**, or the number between them to load older or newer entries.
-
+* **Previous / Next**---Click **Previous**, **Next**, or the number between them to load later or newer entries.
 
 ## <a id='certificates'></a> Certificates page
 
-Go to the **Certificates** page by clicking the corresponding link in the dashboard header. This page shows the certificates in your <%= vars.ops_manager %> installation.
+Go to the **Certificates** topic by clicking the corresponding link in the dashboard header. This topic shows the certificates in your <%= vars.ops_manager %> installation.
 
-The following image shows the top section of the **Certificates** page:
+The following image shows the top section of the **Certificates** topic:
 
 ![alt-text="The Certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until."](images/certificates.png)
 
-The top section of the **Certificates** page includes the certificates that the <%= vars.ops_manager %> API attempts to rotate. This section includes both certificates that the <%= vars.ops_manager %> API can rotate and certificates that you must rotate manually.
+The top section of the **Certificates** topic includes the certificates that the <%= vars.ops_manager %> API attempts to rotate. This section includes both certificates that the <%= vars.ops_manager %> API can rotate and certificates that you must rotate manually.
 
 For information about how to rotate these certificates, see [Overview of Certificate Rotation](security/pcf-infrastructure/api-cert-rotation.html).
 
@@ -163,15 +162,15 @@ For all other certificates listed in **Excluded certificates**, see the document
 
 ## <a id='settings'></a> Settings page
 
-Go to the **Settings** page by clicking on your user name, located at the upper right corner of the screen, and selecting **Settings**. On the screen that appears, select **Change Decryption Passprase**.
+Go to the **Settings** topic by clicking on your user name and click **Settings**. On the screen that appears, click **Change Decryption Passprase**.
 
 ![alt-text=""](images/user_account_menu.png)
 
-The following sections describes the configuration panes.
+The following sections describes the configuration topics.
 
-<p> Modifying these settings does not require you to return to the Installation Dashboard and click <strong>Apply Changes</strong>. These settings apply to the <%= vars.ops_manager %> VM. The BOSH Director does not apply them to your deployment.</p>
+<p> If you modify these settings, it does not require you to return to the Installation Dashboard and click <strong>Apply Changes</strong>. These settings apply to the <%= vars.ops_manager %> VM. The BOSH Director does not apply them to your deployment.</p>
 
-### <a id='change-decryption'></a> Change Decryption Passphrase
+### <a id='change-decryption'></a> Change decryption passphrase
 
 To reset your decryption passphrase, enter the details as follows, and click **Change Decryption Passphrase**.
 
@@ -181,37 +180,37 @@ To reset your decryption passphrase, enter the details as follows, and click **C
 
 ![alt-text=""](images/settings_menu.png)
 
-### <a id='internal-auth'></a> Internal Authentication Settings
+### <a id='internal-auth'></a> Internal authentication settings
 
-You can use the **Internal Authentication Settings** pane to view and update the settings for your internal authentication method.
+You can use the **Internal Authentication Settings** topic to view and update the settings for your internal authentication method.
 
-This pane includes the following fields:
+This pane includes the following text boxes:
 
 * **Current Decryption Passphrase:** Update the decryption passphrase for your internal authentication method.
 
-* **Admin Username:** Update the username for the admin user.
+* **Admin Username:** Update the user name for the admin user.
 
 * **Admin Password** and **Admin Password Confirmation:** Update the password for the admin user.
 
-### <a id='saml'></a> SAML Settings
+### <a id='saml'></a> SAML settings
 
-To change your Identity Provider (IdP) to SAML, configure the following fields:
+To change your Identity Provider (IdP) to SAML, configure the following text boxes:
 
 * **Current Decryption Passphrase:** Enter your decryption passphrase.
 
 * **SAML IDP Metadata:** Enter the full URL or XML SAML IdP metadata.
 
-* **BOSH IDP Metadata:** (Optional) Enter the full URL or XML BOSH IdP metadata. If left blank, the default is the same metadata as the preceding field.
+* **BOSH IDP Metadata:** (Optional) Enter the full URL or XML BOSH IdP metadata. If left blank, the default is the same metadata as the preceding text box.
 
-* **SAML Admin Group:** Enter the name of the SAML group that contains all of the <%= vars.ops_manager %> administrators. This field is case-sensitive.
+* **SAML Admin Group:** Enter the name of the SAML group that contains all of the <%= vars.ops_manager %> administrators. This text box is case-sensitive.
 
-* **Groups Attribute:** Enter the groups attribute tag name with which you configured the SAML server. This field is case-sensitive.
+* **Groups Attribute:** Enter the groups attribute tag name with which you configured the SAML server. This text box is case-sensitive.
 
-* **Provision an admin client in the Bosh UAA:** Enable if you want to provision an admin client in the BOSH UAA. For more information, see [Provision Admin Client](install/opsmanager-create-bosh-client.html#saml) in _Creating UAA Clients for BOSH Director_.
+* **Provision an admin client in the Bosh UAA:** Enable to provision an admin client in the BOSH UAA. For more information, see [Provision Admin Client](install/opsmanager-create-bosh-client.html#saml) in _Creating UAA Clients for BOSH Director_.
 
-### <a id='ldap'></a> LDAP Settings
+### <a id='ldap'></a> LDAP settings
 
-Use this pane to change your IdP to LDAP.
+Use this topic to change your IdP to LDAP.
 
 For more information about changing your IdP to SAML or LDAP, view the following instructions for your IaaS configuration:
 
@@ -225,38 +224,38 @@ For more information about changing your IdP to SAML or LDAP, view the following
 
 * [Configuring BOSH Director on vSphere](vsphere/config.html)
 
-### <a id='ssl-certs'></a> SSL Certificate
+### <a id='ssl-certs'></a> SSL certificate
 
 You can use the **SSL Certificate** pane to configure <%= vars.ops_manager %> to use a custom SSL certificate for all <%= vars.ops_manager %> traffic both through the UI and API.
 
-This pane includes the following fields:
+This pane includes the following text boxes:
 
 * **Certificate:** Enter a custom certificate.
 * **Private Key:** Enter the private key for the certificate.
 
-If you leave the fields blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. If you want to replace a custom certificate with a self-signed certificate, select **Revert to self-signed certificate**.
+If you leave the text boxes blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. To replace a custom certificate with a self-signed certificate, click **Revert to self-signed certificate**.
 
 ![alt-text=""](images/settings-ssl-cert.png)
 
-### <a id='vmware-tanzu'></a> VMware Tanzu Network Settings
+### <a id='vmware-tanzu'></a> VMware Tanzu Network settings
 
 Enter your [VMware Tanzu Network API](install/add-delete.html#pivnet-api) token and click **Add Token** to connect your **Installation Dashboard** to VMware Tanzu Network.
 
-### <a id='proxy-settings'></a> Proxy Settings
+### <a id='proxy-settings'></a> Proxy settings
 
 If you are using a proxy to connect to <%= vars.ops_manager %>, update your **Proxy Settings** by providing a **HTTP proxy**, **HTTPS proxy**, or **No proxy**.
 
 ### <a id='custom-banner'></a> Custom banner
 
-Create a custom text banner to communicate important messages to operators. For **UI Banner**, enter the text you want to be shown on each page of the <%= vars.ops_manager %> UI. For **SSH Banner**, enter the text that appears when an operator shells into Operations Manager.
+Create a custom text banner to communicate important messages to operators. For **UI Banner**, enter the text you want to be shown on each page of the <%= vars.ops_manager %> UI. For **SSH Banner**, enter the text that appears when an operator logs in to Ops Manager.
 
-### <a id='export-installation'></a> Export Installation Settings
+### <a id='export-installation'></a> Export installation settings
 
 Exports the current installation with all of its assets. When you export an installation, the exported file contains references to the base VM images, necessary packages, and configuration settings.
 
 ### <a id='syslog'></a> Syslog
 
-Viewable by administrators only. Configure a custom Syslog server for <%= vars.ops_manager %>. When you select **Yes** and fill the following fields, <%= vars.ops_manager %> produces and sends all syslog entries from the <%= vars.ops_manager %> VM to the configured syslog endpoint. <%= vars.ops_manager %> also sends BOSH Director access events to the syslog endpoint.
+Viewable by administrators only. Configure a custom syslog server for <%= vars.ops_manager %>. When you click **Yes** and fill the following text boxes, <%= vars.ops_manager %> produces and sends all syslog entries from the <%= vars.ops_manager %> VM to the configured syslog endpoint. <%= vars.ops_manager %> also sends BOSH Director access events to the syslog endpoint.
 
 <p> <%= vars.ops_manager %> syslog entries are sent in RFC 3164 format.</p>
 
@@ -264,13 +263,13 @@ To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'Ops Manager' } %>
 
-### <a id='advanced'></a> Advanced Options
+### <a id='advanced'></a> Advanced options
 
-* **Download Activity Data:** Downloads a directory containing the configuration file for the installation, the deployment history, and version information.
+* **Download Activity Data:** Downloads a directory that contains the configuration file for the installation, the deployment history, and version information.
 
-* **Download Root CA Cert:** Use this to download the root CA certificate of your deployment as an alternative to curling the <%= vars.ops_manager %> API.
+* **Download Root CA Cert:** Use this to download for the root CA certificate of your deployment as an alternative to curling the <%= vars.ops_manager %> API.
 
-* **Download Core Consumption Data:** Use this to download the historical core consumption CSV as an alternative to curling the <%= vars.ops_manager %> API. The CSV contains an hourly reading of the chargeable cores consumed by each product in the form of timestamp,product_identifier,physical_cores,logical_cores. Products which do not support core counting will not show up in this CSV.
+* **Download Core Consumption Data:** Use this option to download the historical core consumption CSV as an alternative to curling the <%= vars.ops_manager %> API. The CSV contains an hourly reading of the chargeable cores that are consumed by each product in the form of timestamp,product_identifier,physical_cores,and logical_cores. Products which do not support core counting do not show up in this CSV.
 
 * **View Diagnostic Report:** Displays various types of information about the configuration of your deployment.
 
@@ -279,7 +278,7 @@ To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
 ## <a id='account_settings'></a> My Account page
 
-To change your email and password, go to the **My Account** page by clicking on your user name located at the upper right corner of the screen and selecting **My Account**. The **Account Settings** page includes the following information and links:
+To change your email and password, go to the **My Account** page by clicking on your user name located at the upper right corner of the screen and selecting **My Account**. The **Account Settings** topic includes the following information and links:
 
 * **Profile**: The current email address and obscured password are shown.
 * **Third Party Access**: Any third-party applications authorized for use are listed here.
@@ -290,8 +289,8 @@ To change your email and password, go to the **My Account** page by clicking on 
 
 ## <a id='support'></a> Support page
 
-Click **Support** in the footer of any page in <%= vars.ops_manager %> to access the **Support** page.
+Click **Support** in the footer of any topic in <%= vars.ops_manager %> to access the support topic.
 
-The **Support** page allows you to download a ZIP file that includes <%= vars.ops_manager %> logs, deployed manifests and configurations, and BOSH deployment diagnostics.
+The **Support** topic allows you to download a ZIP file that includes <%= vars.ops_manager %> logs, deployed manifests and configurations, and BOSH deployment diagnostics.
 
-The contents of the ZIP file help Support more quickly address any issues in your deployment.
+The contents of the ZIP file help Support quickly address any issues in your deployment.
