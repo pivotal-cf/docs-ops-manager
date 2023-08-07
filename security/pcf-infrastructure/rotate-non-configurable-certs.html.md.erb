@@ -5,7 +5,7 @@ owner: Ops Manager
 
 This topic describes how you can rotate non-configurable <%= vars.ops_manager_first %> leaf certificates that are visible to the <%= vars.ops_manager %> API, whether they are managed and stored by <%= vars.ops_manager %> directly, or by CredHub at <%= vars.ops_manager %> request. To rotate all certificates in your <%= vars.ops_manager %> deployment, see [Rotating CAs and Leaf Certificates](rotate-cas-and-leaf-certs.html).
 
-<p class='note caution'><strong>Caution:</strong> This procedure does not rotate the <%= vars.ops_manager %> root certificate authority (CA) or other CAs in your deployment. To rotate CAs and leaf certificates, see <a href="rotate-cas-and-leaf-certs.html">Rotating CAs and Leaf Certificates</a>.</p>
+<p> This procedure does not rotate the <%= vars.ops_manager %> root certificate authority (CA) or other CAs in your deployment. To rotate CAs and leaf certificates, see <a href="rotate-cas-and-leaf-certs.html">Rotating CAs and Leaf Certificates</a>.</p>
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -36,7 +36,7 @@ To rotate non-configurable leaf certificates:
     The API returns a successful response:
     <pre class="terminal">HTTP/1.1 200 OK</pre>
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have any on-demand service tiles installed, for each on-demand service tile:
     1. Click the tile.

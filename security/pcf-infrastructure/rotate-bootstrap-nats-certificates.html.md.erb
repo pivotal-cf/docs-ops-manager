@@ -5,8 +5,6 @@ owner: Ops Manager
 
 This topic describes how you can use short-lived NATS bootstrap credentials in your <%= vars.ops_manager_first %> deployment.
 
-## <a id='overview'></a> Overview of short-lived NATS bootstrap credentials
-
 BOSH NATS is a service that allows the BOSH Director and BOSH Agents in deployed VMs to communicate with each other. The BOSH Director uses BOSH NATS to send
 commands and information to the BOSH Agent, so that the BOSH Agent can execute tasks or return information about the current state of the VM.
 
@@ -40,9 +38,12 @@ You can configure short-lived bootstrap credentials for VMs using the following 
 * Bionic 1.36 and later.
 
 * Jammy 1.95 and later.
-  <p class='note important'><strong>Important:</strong> All Jammy stemcell versions are compatible with short-lived bootstrap credentials. However, if you use
-    Jammy 1.94 or earlier, using short-lived bootstrap credentials causes VMs with re-sized disk allocations to fail when they are re-created. To fix this
-    issue, upgrade your stemcell to Jammy 1.95 or later.</p>
+<p class="note important">
+<span class="note__title"> Important</span>  All Jammy stemcell versions are compatible with short-lived bootstrap credentials. However, if you use
+Jammy 1.94 or earlier, using short-lived bootstrap credentials causes VMs with re-sized disk allocations to fail when they are re-created. To fix this
+issue, upgrade your stemcell to Jammy 1.95 or later.
+</p>
+
 
 If you configure short-lived bootstrap credentials for VMs using unsupported stemcells, the VMs become unresponsive.
 

@@ -3,7 +3,7 @@ title: Checking Ops Manager certificate expiration dates and types
 owner: Ops Manager
 ---
 
-This topic describes how you can use the <%= vars.ops_manager_first %> UI or API to manually check the expiration dates and types of the certificate authorities (CAs) and leaf certificates managed by the <%= vars.ops_manager %> API. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
+This topic tells you how to use the <%= vars.ops_manager_first %> UI or API to manually check the expiration dates and types of the certificate authorities (CAs) and leaf certificates managed by the <%= vars.ops_manager %> API. After identifying the types of certificates that expire soon, you can determine which certificate rotation procedure to follow.
 
 To configure Concourse to automatically monitor expiring certificates, you can use Platform Automation. For more information, see [expiring-certificates](https://docs.pivotal.io/platform-automation/v4.1/tasks.html#expiring-certificates) in the Platform Automation documentation.
 
@@ -17,7 +17,7 @@ The **Certificates** page in the <%= vars.ops_manager %> UI lists the certificat
 
 To check certificate expiration dates and types through the <%= vars.ops_manager %> UI:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. In the top menu, select **Certificates**.
 
@@ -37,7 +37,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
       * **Type:** CA
 
 1. After you identify the list of certificates that expire soon, follow one of the procedures listed in [Certificate Rotation Procedures](api-cert-rotation.html#procedures) in _Overview of Certificate Rotation_.
-    <p class='note caution'><strong>Caution:</strong> The <strong>Excluded certificates</strong> section lists certificates that you cannot safely rotate using the methods described in this topic. To rotate the Services TLS CA certificate and its leaf certificates, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>. For all other certificates listed in <strong>Excluded certificates</strong>, contact <a href="https://tanzu.vmware.com/support">Support</a> for guidance.</p>
+    <p> The <strong>Excluded certificates</strong> section lists certificates that you cannot safely rotate using the methods described in this topic. To rotate the Services TLS CA certificate and its leaf certificates, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>. For all other certificates listed in <strong>Excluded certificates</strong>, contact <a href="https://tanzu.vmware.com/support">Support</a> for guidance.</p>
 
 
 ## <a id='check-api'></a> Check expiration dates and certificate types through the <%= vars.ops_manager %> API
@@ -45,7 +45,7 @@ To check certificate expiration dates and types through the <%= vars.ops_manager
 To check certificate expiration dates and types through the <%= vars.ops_manager %> API:
 
 1. Follow the procedure in [Using <%= vars.ops_manager %> API](../../install/ops-man-api.html) to target and authenticate with the <%= vars.ops_manager %> User Account and Authentication (UAA) server. Record your <%= vars.ops_manager %> access token, and use it for `UAA-ACCESS-TOKEN` in the steps below.
-  <p class='note'><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
+  <p> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
 
 1. To retrieve the certificates, call the `/deployed/certificates` endpoint of the <%= vars.ops_manager %> API by running:
 

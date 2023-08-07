@@ -19,7 +19,7 @@ This procedure includes three redeploys. The first deploy adds the new CA certif
 
 To rotate CAs, configurable leaf certificates, and non-configurable leaf certificates:
 
-<p class='note caution'><strong>Caution:</strong> You must complete these steps in the exact order specified. Otherwise, you may damage your deployment.</p>
+<p> You must complete these steps in the exact order specified. Otherwise, you may damage your deployment.</p>
 
 1. Add a new <%= vars.ops_manager %> root CA. This step also automatically adds new CAs for all CAs visible to the <%= vars.ops_manager %> API. For more information, see [Add New CAs](#add-new-ca) below.
 
@@ -31,7 +31,7 @@ To rotate CAs, configurable leaf certificates, and non-configurable leaf certifi
 
 1. Delete the old root CA and mark the old CAs in CredHub as inactive. For more information, see [Delete the Old Root CA and Mark Old CAs in CredHub as Inactive](#delete) below.
 
-<p class='note caution'><strong>Caution:</strong> The Services TLS CA, <code>/services/tls_ca</code>,
+<p> The Services TLS CA, <code>/services/tls_ca</code>,
 cannot be rotated using this procedure. For information about how to rotate the Services TLS CA, see <a href="advanced-certificate-rotation.html#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
 
 ### <a id='add-new-ca'></a> Step 1: Add new CAs
@@ -40,16 +40,16 @@ This section describes how to add a new root CA for <%= vars.ops_manager %>. The
 
 This procedure also automatically regenerates the BOSH NATS CA as well as CAs stored in CredHub, such as the BOSH DNS CA and the Diego root CA.
 
-<p class='note caution'><strong>Caution:</strong> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
+<p> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
 
 To add new CAs:
 
 1. If you have not already done so, follow the procedure in [Using <%= vars.ops_manager %> API](../../install/ops-man-api.html) to target and authenticate with the <%= vars.ops_manager %> UAA server. Record your <%= vars.ops_manager %> access token, and use it for `UAA-ACCESS-TOKEN` in the following steps.
-  <p class='note'><strong>Note:</strong> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
+  <p> When you record your <%= vars.ops_manager %> access token, remove any newline characters such as <code>\n</code>.</p>
 
 1. Use <%= vars.ops_manager %> to generate a new CA, or add your own custom CA:
 
-    <p class ="note"><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
+    <p> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
 
     * **To use your own custom CA:** Call the <%= vars.ops_manager %> API `certificate_authorities` endpoint by running:
 
@@ -192,7 +192,7 @@ To add new CAs:
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
-    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
+    <p> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
     1. Click the tile.
     1. Click the **Errands** tab.
     1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.
@@ -272,7 +272,7 @@ To regenerate and rotate each configurable leaf certificate that expires soon:
 
 After activating the new <%= vars.ops_manager %> root CA and other CAs, you must rotate non-configurable leaf certificates from the new CAs.
 
-<p class='note caution'><strong>Caution:</strong> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
+<p> The <%= vars.ops_manager %> API also excludes from rotation the CAs for certain versions of the VMware Tanzu SQL [MySQL for VMs], Redis for VMware Tanzu, VMware Tanzu RabbitMQ, and VMware Tanzu GemFire tiles and IPsec for VMware Tanzu. For information about rotating these CAs, see the documentation for those products.</p>
 
 To rotate non-configurable leaf certificates:
 
@@ -309,7 +309,7 @@ To rotate non-configurable leaf certificates:
 
 1. If you have service tiles installed, for each service tile:
 
-    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
+    <p> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
 
     1. Click the tile.
     1. Click the **Errands** tab.
@@ -341,9 +341,12 @@ Within CredHub, the leaf certificates that are generated when you rotate your de
 
 The <%= vars.ops_manager %> API call you use to delete your deployment's old root CA also marks the old versions of all CAs stored in CredHub as inactive, including those not generated by the old root CA.
 
-<p class='note'><strong>Note:</strong> This procedure does not delete leaf certificates stored in CredHub. It marks CredHub leaf certificates as transitional, which indicates that the leaf certificate is inactive. To delete CredHub leaf certificates, use the CredHub Maestro garbage collection feature. For information about CredHub Maestro certificate garbage collection, see <a href="advanced-certificate-rotation.html#garbage-collection">Delete Inactive Certificate Versions</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
+<p> This procedure does not delete leaf certificates stored in CredHub. It marks CredHub leaf certificates as transitional, which indicates that the leaf certificate is inactive. To delete CredHub leaf certificates, use the CredHub Maestro garbage collection feature. For information about CredHub Maestro certificate garbage collection, see <a href="advanced-certificate-rotation.html#garbage-collection">Delete Inactive Certificate Versions</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</p>
 
-<p class='note caution'><strong>Caution:</strong> Before you delete the old CA, ensure that you reviewed the <strong>Review Pending Changes</strong> page and clicked <strong>Apply Changes</strong> as part of <a href="#regenerate-from-new-root">Rotate Non-Configurable Leaf Certificates from the New CAs</a> above.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+Before you delete the old CA, ensure that you reviewed the <strong>Review Pending Changes</strong> page and clicked <strong>Apply Changes</strong> as part of <a href="#regenerate-from-new-root">Rotate Non-Configurable Leaf Certificates from the New CAs</a>.
+</p>
 
 To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs as inactive:
 
@@ -393,7 +396,7 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
 
 1. If you have service tiles installed, for each service tile:
 
-    <p class='note'><strong>Note:</strong> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
+    <p> The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands may be slightly different between services.</p>
 
     1. Click the tile.
     1. Click the **Errands** tab.

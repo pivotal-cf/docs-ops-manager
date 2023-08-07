@@ -7,7 +7,7 @@ This topic describes how you can identify and update certificates that were set 
 
 To ensure that <%= vars.ops_manager_first %> does not rotate manually-set certificates alongside CredHub-generated certificates, you must ensure that the `generated` field of all manually set certificates is set to `false` in CredHub.
 
-In this procedure, you use the CredHub CLI to review existing certificates and then check for manually set certificates. If you find any manually set certificates that require updates, you can use the CredHub CLI to reset the certificate.
+In this procedure, use the CredHub CLI to review existing certificates and then check for manually set certificates. If you find any manually set certificates that require updates, you can use the CredHub CLI to reset the certificate.
 
 ### <a id='credhub-creds'></a> Find BOSH client credentials and BOSH Director IP address
 
@@ -15,7 +15,7 @@ You need the BOSH client name and client secret to use the CredHub CLI.
 
 To find the BOSH CredHub client name and client secret:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
@@ -68,7 +68,7 @@ To login and access the CredHub API:
 
 ## <a id='check-credhub-certs'></a> Check certificates in CredHub
 
-After logging in to CredHub, you can query the CredHub API on the command line.
+After you log in to CredHub, you can query the CredHub API on the command line.
 
 To retrieve a list of CredHub certificates:
 
