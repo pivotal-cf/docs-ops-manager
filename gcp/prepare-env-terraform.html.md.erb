@@ -1,5 +1,5 @@
 ---
-title: Deploying Ops Manager on GCP using Terraform
+title: Deploying Tanzu Operations Manager on GCP using Terraform
 owner: Ops Manager
 iaas: GCP
 install_type: terraform
@@ -11,7 +11,7 @@ Follow these steps before you install <%= vars.ops_manager_first %> on Google Cl
 
 The Terraform template for <%= vars.ops_manager %> on GCP describes a set of GCP resources and properties. For more information about how Terraform creates resources in GCP, see [Google Cloud Provider](https://www.terraform.io/docs/providers/google/index.html) on the Terraform site.
 
-You might find it helpful to review different deployment options in [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
+You might find it helpful to review different deployment options in [Reference architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).
 
 
 ## <a id='prereqs'></a> Prerequisites
@@ -41,7 +41,7 @@ To create an account key file, follow the procedure that goes with your own use 
     <li>**I already have a service account I want to use:**</li>
     <ol>
       <li>Go to the GCP console.</li>
-      <li>Select **IAM** and locate your service account.</li>
+      <li>Click **IAM** and locate your service account.</li>
       <li>From the **Options** column, open the dropdown and click **Create Key**.</li>
     </ol>
     <li>**I want to create a new service account:**</li>
