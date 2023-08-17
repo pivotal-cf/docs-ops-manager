@@ -1,5 +1,5 @@
 ---
-title: Deploying Ops Manager on GCP
+title: Deploying Tanzu Operations Manager on GCP
 owner: Ops Manager
 ---
 
@@ -8,15 +8,15 @@ owner: Ops Manager
 
 This topic describes how you can deploy <%= vars.ops_manager_first %> on Google Cloud Platform (GCP).
 
-Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Preparing to Deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html).
+Before you deploy <%= vars.ops_manager %>, see the preparation steps in [Preparing to deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html).
 
 After you complete this procedure, follow the instructions in [Configuring BOSH Director on GCP](config-manual.html).
 
 ## <a id='select-tgz'></a> Step 1: Locate the <%= vars.ops_manager %> installation file
 
-1. Log in to the [VMware Tanzu Network](https://network.pivotal.io/products/pivotal-cf), and click **<%= vars.ops_manager %>**.
+1. Log in to [VMware Tanzu Network](https://network.pivotal.io/products/pivotal-cf), and click **<%= vars.ops_manager %>**.
 
-1. From the **Releases** drop-down menu, select the release to install.
+1. From the **Releases** drop-down menu, select the release for your to installation.
 
 1. Select one of the following download files:
     * **<%= vars.ops_manager %> for GCP**
@@ -31,11 +31,11 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 1. Log in to the [GCP console](https://console.cloud.google.com/).
 
-1. In the left navigation panel, click **Compute Engine**, and select **Images**.
+1. In the navigation panel, click **Compute Engine** > **Images**.
 
 1. Click **Create Image**.
 
-1. Complete the following fields:
+1. Complete the following text boxes:
 
     * **Name**: Enter a name. For example, `om-pcf`.
     * **Encryption**: Leave **Automatic (recommended)** selected.
@@ -54,7 +54,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
 1. Click **Create Instance**.
 
-2. In the **Create an instance form**, complete the following fields:
+2. In the **Create an instance form**, complete the following text boxes:
 
     * **Name**: Enter a name that matches the naming conventions of your deployment.
     * **Zone**: Choose a zone from the region in which you created your network.
@@ -68,7 +68,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
 
     * **Boot disk**: Click **Change**, then perform the following steps:
         * Click **Custom images** if it is not already selected.
-        * Select the **Boot disk type**. If your environment has high performance needs, select **SSD**. As an example, environments used to
+        * Click **Boot disk type**. If your environment has high performance needs, click **SSD**. As an example, environments used to
         [develop <%= vars.ops_manager %> tiles](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/index.html) might benefit from a higher performing <%= vars.ops_manager %> VM boot disk. For most environments, you can select **Standard**.
         * Set the **Size (GB)** of the boot disk to the minimum or higher.
 
