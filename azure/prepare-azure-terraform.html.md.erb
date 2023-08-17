@@ -1,5 +1,5 @@
 ---
-title: Preparing to deploy Ops Manager on Azure using Terraform
+title: Preparing to deploy Tanzu Operations Manager on Azure using Terraform
 owner: Ops Manager
 ---
 
@@ -10,7 +10,7 @@ deploy <%= vars.ops_manager %> in order to deploy <%= vars.app_runtime_first %> 
 
 <%= partial "/pcf/warning-terraform" %>
 
-## <a id='install'></a> Step 1: install and configure the Azure CLI
+## <a id='install'></a> Step 1: Install and configure the Azure CLI
 
 1. Install the Azure CLI 2.0 by following the instructions for your operating system in
 [Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
@@ -46,7 +46,7 @@ in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
     Authenticate by navigating to the URL in the output from the command, entering the provided code, and clicking your account.
 
 
-## <a id='default-subscription'></a> Step 2: set your default subscription
+## <a id='default-subscription'></a> Step 2: Set your default subscription
 
 1. To list your Azure subscriptions, run:
 
@@ -105,7 +105,7 @@ in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
 1. Record the value of `tenantID` of the default subscription. This is your `TENANT_ID` for creating a service principal. If your `tenantID` value is not defined, you might be using a personal account to log in to your Azure subscription.
 
 
-## <a id='create-aad'></a> Step 3: create an AAD app
+## <a id='create-aad'></a> Step 3: Create an AAD app
 
 1. To create an Azure Active Directory (AAD) app, run:
 
@@ -142,7 +142,7 @@ in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
     </pre>
 
 
-## <a id='create-credential'></a> Step 4: create a credential for the ADD app
+## <a id='create-credential'></a> Step 4: Create a credential for the ADD app
 
 1. To create a credential associated with the app, run:
     ```
@@ -163,7 +163,7 @@ in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
 
 1. From the output of `az ad app credential reset` that you ran in the previous step, locate and record the value of `password`. This is your `CLIENT_SECRET` for creating a service principal.
 
-## <a id='create-configure'></a> Step 5: create and configure a service principal
+## <a id='create-configure'></a> Step 5: Create and configure a service principal
 
 1. To create a service principal, run:
 
@@ -237,7 +237,7 @@ To assign the Owner role on your service principal, run:
     </pre>
 
 
-## <a id='verify-your-service-principal'></a> Step 6: verify your service principal
+## <a id='verify-your-service-principal'></a> Step 6: Verify your service principal
 
 To verify your service principal, run the following command to log in to your service principal:
 
@@ -275,7 +275,7 @@ $ az login --username 5c552e8f-b977-45f5-a50b-981cfe17cb9d \
 If you cannot log in, the service principal is invalid. Create a new service principal and log in again.
 
 
-## <a id='register'></a> Step 7: perform registrations
+## <a id='register'></a> Step 7: Complete registrations
 
 1. To register your subscription with Microsoft.Storage, run:
 
