@@ -5,8 +5,8 @@ To configure <%= vars.ops_manager %> to log in by default using an LDAP server f
     * `ldaps://`: This specifies that the LDAP server uses SSL for an encrypted connection and requires that the LDAP server holds a trusted certificate or that you import a trusted certificate to the JVM truststore.
 
 1. For **LDAP Username** and **LDAP Password**, enter the LDAP Distinguished Name (DN) and the password for binding to the LDAP Server. Example DN: `cn=administrator,ou=Users,dc=example,dc=com`
-    <p class='note'><strong>Note:</strong> <%= vars.company_name %> recommends that you provide LDAP credentials that grant read-only permissions on the LDAP Search Base and the LDAP Group Search Base. In addition to this, if the bind user belongs to a different search base, you must use the full DN.</p>
-    <p class='note caution'><strong>Caution:</strong> <%= vars.company_name %> recommends against reusing LDAP service accounts across environments. LDAP service accounts are not subject to manual lockouts. For example, lockouts that result from users using the same account. Also, LDAP service accounts are not subject to automated deletions, since disruption to these service accounts could prevent user logins.
+    <p> <%= vars.company_name %> recommends that you provide LDAP credentials that grant read-only permissions on the LDAP Search Base and the LDAP Group Search Base. In addition to this, if the bind user belongs to a different search base, you must use the full DN.</p>
+    <p> <%= vars.company_name %> recommends against reusing LDAP service accounts across environments. LDAP service accounts are not subject to manual lockouts. For example, lockouts that result from users using the same account. Also, LDAP service accounts are not subject to automated deletions, since disruption to these service accounts could prevent user logins.
     </p>
 
 1. For **User Search Base**, enter the location in the LDAP directory tree from which any LDAP User search begins. The typical LDAP Search Base matches your domain name. For example, a domain named "cloud.example.com" typically uses the following LDAP User Search Base: `ou=Users,dc=example,dc=com`
@@ -16,7 +16,7 @@ To configure <%= vars.ops_manager %> to log in by default using an LDAP server f
 In the LDAP search filter string that you use to configure your runtime, use `{0}` instead of the username. For example, use `cn={0}` to return all LDAP objects with the same common name as the username.
 <br><br>
 In addition to `cn`, other attributes commonly searched for and returned are `mail`, `uid` and, in the case of Active Directory, `sAMAccountName`.
-    <p class='note'><strong>Note:</strong> For instructions for testing and troubleshooting your LDAP search filters,
+    <p> For instructions for testing and troubleshooting your LDAP search filters,
     see <a href="https://community.pivotal.io/s/article/Configuring-LDAP-Integration-with-Pivotal-Cloud-Foundry">Configuring LDAP Integration</a> in the Knowledge Base.
     </p>
 
@@ -28,7 +28,8 @@ In addition to `cn`, other attributes commonly searched for and returned are `ma
 
 1. For **LDAP RBAC Admin Group Name**, enter the DN of the LDAP group you want to have admin permissions in <%= vars.ops_manager %>.
 
-1. From the drop-down menu, select how the UAA handles LDAP server referrals out to other external user stores. The UAA can:
+1. From the drop-down menu, select how the UAA handles LDAP server referrals out to other external user stores.
+The UAA can:
     * **Automatically follow any referrals**.
     * **Ignore referrals and return partial result**.
     * **Throw exception for each referral and abort**.
@@ -41,6 +42,6 @@ In addition to `cn`, other attributes commonly searched for and returned are `ma
 
 1. Read the **End User License Agreement**, and select the check box to accept the terms.
 
-1. Select **Provision an admin client in the BOSH UAA**. You can use this to enable BOSH automation with scripts and tooling. For more information, see [Provision Admin Client](/docs-ops-manager/install/opsmanager-create-bosh-client.html#saml) in _Creating UAA Clients for BOSH Director_.
+1. Click **Provision an admin client in the BOSH UAA**. You can use this to enable BOSH automation with scripts and tooling. For more information, see [Provision Admin Client](/docs-ops-manager/install/opsmanager-create-bosh-client.html#saml) in _Creating UAA Clients for BOSH Director_.
 
 1. Click **Setup Authentication**.

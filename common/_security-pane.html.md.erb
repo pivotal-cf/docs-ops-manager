@@ -1,10 +1,11 @@
-<%# This Security Pane partial is conditionalized between the "Setting Trusted Certificates" topic (trusted-certificates.html) and IaaS-specific Ops Manager configuration topics. %>
+<%# This Security Pane partial is conditionalized between the "Setting Trusted Certificates"
+topic (trusted-certificates.html) and IaaS-specific Ops Manager configuration topics. %>
 
 <% if current_page.data.title == "Setting Trusted Certificates" %>
 1. Go to the BOSH Director tile from the <%= vars.ops_manager %> Installation Dashboard.
 <% end %>
 
-1. Select **Security**.
+1. Click **Security**.
     <% if current_page.data.title == "Setting Trusted Certificates" %>
     <% else %>
     ![alt-text=""](/docs-ops-manager/common/images/om-security.png)
@@ -32,10 +33,10 @@
     ------END CERTIFICATE------
     </pre>
 
-    <p class='note'><strong>Note:</strong> If you want to use Docker registries to run <%= vars.app_runtime_abbr %> app instances in Docker containers, enter the certificate for your private Docker registry in this field. For more information about running app instances in <%= vars.app_runtime_abbr %> using Docker registries, see <a href="https://docs.pivotal.io/application-service/operating/docker-registry.html">Using Docker Registries</a>.</p>
+    <p> If you want to use Docker registries to run <%= vars.app_runtime_abbr %> app instances in Docker containers, enter the certificate for your private Docker registry in this text box. For more information about running app instances in <%= vars.app_runtime_abbr %> using Docker registries, see <a href="https://docs.pivotal.io/application-service/operating/docker-registry.html">Using Docker Registries</a>.</p>
 
-1. To include the <%= vars.ops_manager %> root CA in the **Trusted Certificates** field, select the **Include OpsManager Root CA in Trusted Certs** check box. BOSH Director includes this CA in the trust store of every VM that it deploys.
-  <p class='note important'><strong>Important:</strong> If you are using <%= vars.ops_manager %> to generate certificates for either a load balancer or router, then you must select this check box.</p>
+1. To include the <%= vars.ops_manager %> root CA in the **Trusted Certificates** text box, select the **Include OpsManager Root CA in Trusted Certs** check box. BOSH Director includes this CA in the trust store of every VM that it deploys.
+  <p> If you are using <%= vars.ops_manager %> to generate certificates for either a load balancer or router, then you must select this check box.</p>
 
 1. To clear the default trusted certificates from all BOSH-deployed Linux VMs, select the **Clear the Default Trusted Certificates Store** check box. You must provide your own trusted certificates when selecting this check box as all TLS communication fails without trusted certificates available.
 

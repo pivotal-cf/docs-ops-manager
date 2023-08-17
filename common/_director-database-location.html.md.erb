@@ -1,12 +1,12 @@
-<%# OVERVIEW This partial separates by IaaS the config documentation for the **Database Locations** field in the Ops Manager **Director Config** pane. PARTIAL REFERENCES This partial is called from `_director-config.html.md.erb`. `_director-config.html.md.erb` is called in all IaaS-specific BOSH Director configuration topics. %>
+<%# OVERVIEW This partial separates by IaaS the config documentation for the **Database Locations** text box in the Tanzu Operations Manager **Director Config** pane. PARTIAL REFERENCES This partial is called from `_director-config.html.md.erb`. `_director-config.html.md.erb` is called in all IaaS-specific BOSH Director configuration topics. %>
 <%# For GCP Terraform config topic only: %>
 <% if current_page.data.iaas == "GCP" && current_page.data.install_type == "terraform" %>
 
-1. For **Database Location**, if you configured your `terraform.tfvars` file to create an external database for <%= vars.ops_manager %>, select **External MySQL Database** and complete the following fields. Otherwise, select **Internal**.
+1. For **Database Location**, if you configured your `terraform.tfvars` file to create an external database for <%= vars.ops_manager %>, click **External MySQL Database** and complete the following fields. Otherwise, click **Internal**.
 
-    <p class='note'><strong>Note:</strong> The external MySQL database only applies to the BOSH Director. UAA and CredHub does not use these settings and continues to use the Postgres database colocated with the BOSH Director.</p>
+    <p> The external MySQL database only applies to the BOSH Director. UAA and CredHub does not use these settings and continues to use the Postgres database colocated with the BOSH Director.</p>
 
-    <p class='note caution'><strong>Caution:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
+    <p> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
 
     * **Host**: Enter the value of `sql_db_ip` from your Terraform output.
     * **Port**: Enter `3306`.
@@ -21,17 +21,17 @@
     * **TLS Certificate:** Enter the client certificate for mutual TLS connections to the database.
     * **TLS Private Key:** Enter the client private key for mutual TLS connections to the database.
 
-        <p class='note'><strong>Note:</strong> You must select <strong>Enable TLS for Director Database</strong> to configure the TLS-related fields.</p>
+        <p> Enable TLS for Director Database</strong> to configure the TLS-related text boxes.</p>
 
     * **Advanced DB Connection Options:** This field accepts a JSON-formatted options string. It can be left blank unless directed by <%= vars.company_name %> Support.
 <% end %>
 <%# For GCP Manual config topic only: %>
 <% if current_page.data.iaas == "GCP" && current_page.data.install_type == "manual" %>
-1. For **Database Location**, if you configured an external MySQL database such as Cloud SQL, select **External MySQL Database** and complete the following fields. Otherwise, select **Internal**. For more information about creating a Cloud SQL instance, see [Quickstart for Cloud SQL for MySQL](https://cloud.google.com/sql/docs/mysql/quickstart) in the Google Cloud documentation.
+1. For **Database Location**, if you configured an external MySQL database such as Cloud SQL, click **External MySQL Database** and complete the following fields. Otherwise, clickt **Internal**. For more information about creating a Cloud SQL instance, see [Quickstart for Cloud SQL for MySQL](https://cloud.google.com/sql/docs/mysql/quickstart) in the Google Cloud documentation.
 
-    <p class='note'><strong>Note:</strong> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
+    <p> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
 
-    <p class='note caution'><strong>Caution:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
+    <p> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
 
     * **Host:** Enter the value of your host.
     * **Port:** Enter your port number. For example, `3306`.
@@ -49,9 +49,10 @@
 <% end %>
 <%# For AWS Terraform config topic only: %>
 <% if current_page.data.iaas == "AWS" && current_page.data.install_type == "terraform" %>
-1. For **Database Location**, if you choose to configure an external MySQL database with Amazon Relational Database Service (RDS) or another service, select **External MySQL Database** and complete the following fields. Otherwise, select **Internal**. For more information about creating a RDS MySQL instance, see [Creating a MySQL DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html#CHAP_GettingStarted.Creating.MySQL) in the AWS documentation.
-<p class='note'><strong>Note:</strong> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
-<p class='note caution'><strong>Caution:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
+1. For **Database Location**, if you choose to configure an external MySQL database with Amazon Relational Database Service (RDS) or another service, click **External MySQL Database** and complete the following fields. Otherwise, click **Internal**.
+For more information about creating a RDS MySQL instance, see [Creating a MySQL DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.MySQL.html#CHAP_GettingStarted.Creating.MySQL) in the AWS documentation.
+<p> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
+<p> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
 
     * **Host**: Enter the value of your host.
     * **Port**: Enter your port number. For example, `3306`.
@@ -69,13 +70,13 @@
 <% end %>
 <%# For AWS Manual config topic only: %>
 <% if current_page.data.iaas == "AWS" && current_page.data.install_type == "manual" %>
-1. For **Database Location**, select **External MySQL Database** and complete the following steps:
+1. For **Database Location**, click **External MySQL Database** and complete the following steps:
 
-    <p class='note'><strong>Note:</strong> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
+    <p> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
 
-    <p class='note caution'><strong>Caution:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
+    <p> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
 
-    ![alt-text="There are two radio buttons: Internal, and External MySQL Database. There are five text fields, Host, Port, Username, Password, and Database."](../common/images/director_database.png)
+    ![alt-text="There are two radio buttons: Internal, and External MySQL Database. There are five text boxes, Host, Port, Username, Password, and Database."](../common/images/director_database.png)
 
     * From the AWS Console, go to the RDS Dashboard.
     * Click **Databases**, then click the instance to display the **Connectivity &amp; security** information.
@@ -112,15 +113,15 @@
 <% end %>
 <%# For Azure Terraform topic only: %>
 <% if current_page.data.iaas == "Azure" && current_page.data.install_type == "terraform" %>
-1. For **Database Location**, select **Internal**.
+1. For **Database Location**, clcik **Internal**.
 <% end %>
 <%# For all other IaaSes such as OpenStack, vSphere and manual Azure: %>
 <% if current_page.data.iaas != "GCP" && current_page.data.iaas != "AWS" && current_page.data.install_type == "manual" %>
-1. Select a **Database Location**. By default, <%= vars.ops_manager %> deploys and manages an **Internal** database for you. If you choose to use an **External MySQL Database**, complete the associated fields with information obtained from your external MySQL Database provider: **Host**, **Port**, **Username**, **Password**, and **Database**.
+1. Click **Database Location**. By default, <%= vars.ops_manager %> deploys and manages an **Internal** database for you. If you choose to use an **External MySQL Database**, complete the associated fields with information obtained from your external MySQL Database provider: **Host**, **Port**, **Username**, **Password**, and **Database**.
 
-    <p class='note'><strong>Note:</strong> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
+    <p> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
 
-    <p class='note caution'><strong>Caution:</strong> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
+    <p> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
 
     ![alt-text="There are two radio buttons: Internal, and External MySQL Database. There are five text fields, Host, Port, Username, Password, and Database."](../common/images/director_database.png)
 
@@ -130,5 +131,5 @@
     * **TLS CA:** Enter the Certificate Authority for the TLS Certificate.
     * **TLS Certificate:** Enter the client certificate for mutual TLS connections to the database.
     * **TLS Private Key:** Enter the client private key for mutual TLS connections to the database.
-    * **Advanced DB Connection Options:** This field accepts a JSON-formatted options string. It can be left blank unless directed by <%= vars.company_name %> Support.
+    * **Advanced DB Connection Options:** This text box accepts a JSON-formatted options string. It can be left blank unless directed by <%= vars.company_name %> Support.
 <% end %>
