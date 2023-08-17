@@ -1,5 +1,5 @@
 ---
-title: Deploying Ops Manager on AWS using Terraform
+title: Deploying Tanzu Operations Manager on AWS using Terraform
 owner: Ops Manager
 ---
 
@@ -39,7 +39,7 @@ In addition to reviewing the prerequisites for your runtime, ensure you have:
 
 ## <a id='download'></a> Step 1: Download templates and edit variables file
 
-Before you can run Terraform commands to provision infrastructure resources, you must download the AWS Terraform templates and create a Terraform template variables file. To download the templates and create a template variables file:
+Before you run Terraform commands to provision infrastructure resources, you must download the AWS Terraform templates and create a Terraform template variables file. To download the templates and create a template variables file:
 
 1. On [VMware Tanzu Network](https://network.pivotal.io), navigate to the **<%= vars.app_runtime_full %>** release.
 
@@ -92,7 +92,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
     <tr>
       <td><code>YOUR-ENVIRONMENT-NAME</code></td>
       <td>Enter a name to use to identify resources in AWS. Terraform prepends the names of the resources it creates with this environment name.
-      <p> You can only enter lowercase alphanumeric characters and hyphens. Examples include <code>pcf</code>, <code>pas</code>, and <code>pks</code>.</td>
+      <p> Only enter lowercase alphanumeric characters and hyphens. Examples include <code>pcf</code>, <code>pas</code>, and <code>pks</code>.</td>
     </tr>
     <tr>
       <td><code>YOUR-ACCESS-KEY</code></td>
@@ -113,11 +113,12 @@ Before you can run Terraform commands to provision infrastructure resources, you
     <tr>
       <td><code>YOUR-OPS-MAN-IMAGE-AMI</code></td>
       <td>
-        Enter the source code for the <%= vars.ops_manager %> Amazon Machine Image (AMI) you want to boot. You can find this code in the PDF included with the <%= vars.ops_manager %> release on VMware Tanzu Network.
+        Enter the source code for the <%= vars.ops_manager %> Amazon Machine Image (AMI) you want to boot. You find this code in the PDF included with the <%= vars.ops_manager %> release on VMware Tanzu Network.
         <br><br>
         If you want to encrypt your <%= vars.ops_manager %> VM, create an encrypted AMI copy from the AWS EC2 dashboard and enter the source code for the copied <%= vars.ops_manager %> image instead. For more information about copying an AMI, see [Launch an <%= vars.ops_manager %> AMI](deploy-manual.html#pcfaws-om-ami) in _Deploying <%= vars.ops_manager %> on AWS_.
         <br><br>
-        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disallow the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see [Platform Automation](https://docs.pivotal.io/platform-automation).
+        To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must
+        disallow the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see [Platform Automation](https://docs.pivotal.io/platform-automation).
       </td>
     </tr>
     <tr>
@@ -126,7 +127,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
     </tr>
     <tr>
       <td><code>YOUR-CERTIFICATE</code></td>
-      <td>Enter a certificate to use for HTTP load balancing. For production environments, use a certificate from a Certificate Authority (CA). For test environments, you can use a self-signed certificate.
+      <td>Enter a certificate to use for HTTP load balancing. For production environments, use a certificate from a Certificate Authority (CA). For test environments, use a self-signed certificate.
 
       Your certificate must specify your system domain as the common name. Your system domain is <code>YOUR-ENVIRONMENT-NAME.YOUR-DNS-SUFFIX</code>.
 
@@ -141,7 +142,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
 
 ## <a id='variables'></a> Step 2: Add optional variables
 
-Complete this step if you want to:
+Follow this step if you want to:
 
 * Use an AWS Relational Database Service (RDS) for your <%= vars.app_runtime_abbr %> deployment. For more information, see [Getting started with Amazon RDS](https://aws.amazon.com/rds/resources/) in the AWS documentation.
 
@@ -149,7 +150,7 @@ Complete this step if you want to:
 
 In your `terraform.tfvars` file, specify the appropriate variables from the sections below.
 
-<p> You can see the configurable options by opening the <code>variables.tf</code> file and searching for variables with default values.</p>
+<p> You see the configurable options by opening the <code>variables.tf</code> file and searching for variables with default values.</p>
 
 ### <a id='iso_seg'></a> Isolation segments
 

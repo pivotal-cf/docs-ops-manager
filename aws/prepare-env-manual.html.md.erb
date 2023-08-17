@@ -1,11 +1,11 @@
 ---
-title: Preparing to deploy Ops Manager on AWS
+title: Preparing to deploy Tanzu Operations Manager on AWS
 owner: Ops Manager
 ---
 
 You can manually configure the Amazon Web Services (AWS) components that you need to deploy <%= vars.ops_manager_first %> on AWS.
 
-To deploy <%= vars.ops_manager %> on AWS, you must perform the procedures in this topic to create the objects in the AWS Management Console that <%= vars.ops_manager %> requires.
+To deploy <%= vars.ops_manager %> on AWS, you must complete the procedures in this topic to create the objects in the AWS Management Console that <%= vars.ops_manager %> requires.
 
 To view the list of AWS objects created by the procedures in this topic, see [Required AWS Objects](required-objects.html).
 
@@ -18,13 +18,14 @@ To prepare <%= vars.ops_manager %> for deployment with AWS:
 1. [Create a VPC](#pcfaws-vpc)
 1. [Create an internet gateway](#pcfaws-om-igw)
 1. [Create a NAT gateway](#pcfaws-nat-gateway)
-1. [Configure a security group for Ops Manager](#pcfaws-om-secgrp)
+
+1. [Configure a security group for Tanzu Operations Manager](#pcfaws-om-secgrp)
 1. [Configure a security group for BOSH-deployed VMs](#pcfaws-om-ersecgrp)
 1. [Configure a security group for the Web ELB](#pcfaws-om-elbsecgrp)
 1. [Configure a security group for the TCP ELB](#pcfaws-om-tcpelbsecgrp)
 1. [Configure a security group for MySQL](#pcfaws-om-mysqlsecgrp)
 
-After completing the procedures in this topic, proceed to [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html) to continue deploying <%= vars.ops_manager %>.
+After you complete the procedures in this topic, proceed to [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html) to continue deploying <%= vars.ops_manager %>.
 
 ## <a id='file-ticket'></a> File an AWS ticket/request
 
@@ -45,7 +46,7 @@ You can check the limits on your account by visiting the EC2 Dashboard on the AW
 <p> S3 bucket names must be globally unique. When naming buckets, <%= vars.company_name %> recommends that
 you prefix the generic names below with an unique and helpfully identifiable string (For example, ID-STRING-pcf-ops-manager-bucket, MY-IDENTIFIER-pcf-buildpacks-bucket, and so on). Then you should use the same prefix when naming other associated resources, such as IAM policies.</p>
 
-Complete the following steps to create five S3 buckets:
+Follow these steps to create five S3 buckets:
 
 1. On the S3 Dashboard, click **Create Bucket**.
 
@@ -65,7 +66,7 @@ Complete the following steps to create five S3 buckets:
 
 ## <a id='create-policy'></a> Create a policy for <%= vars.ops_manager %>
 
-Complete the following steps to create a Amazon Identity and Access Management (IAM) policy with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
+Follow these steps to create a Amazon Identity and Access Management (IAM) policy with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
 
 1. Click **IAM** to access the IAM Dashboard.
 
@@ -77,14 +78,14 @@ Complete the following steps to create a Amazon Identity and Access Management (
 
 1. Click **Next:Tags** and click **Next:Review**.
 
-1. In the **Name** field, enter `pcf-iam-policy`.
+1. In the **Name** text box, enter `pcf-iam-policy`.
 
 1. Click **Create policy**.
 
 
 ## <a id='create-iam'></a> Create an IAM role or user for <%= vars.ops_manager %>
 
-Perform the following steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
+Follow these steps to create an Amazon Identity and Access Management (IAM) user or role with the minimal permissions necessary to run and install <%= vars.ops_manager %>:
 
   <p> <%= vars.company_name %> recommends that you use IAM roles instead of users to improve security.</p>
 
@@ -111,7 +112,8 @@ Perform the following steps to create an Amazon Identity and Access Management (
 
     4. Click **Next: Permissions**.
     5. Click the **Attach existing policies directly** tab.
-    6. In the **Filter policies** search box, enter the name of the policy you created. Then check the check box next to the policy in the search results.
+    6. In the **Filter policies** search box, enter the name of the policy you created. Then, select the
+    check box next to the policy in the search results.
     7. Click **Next: Tags**, and then click **Next: Review**.
     8. Click **Create user**.
     9.  Click **Download .csv** to download the user security credentials.
@@ -125,7 +127,7 @@ Perform the following steps to create an Amazon Identity and Access Management (
 ## <a id='pcfaws-vpc'></a> Create a VPC
 
 1. Follow the AWS tutorial to create an elastic IP address, a VPC, and additional subnets.
-To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/batch/latest/userguide/create-public-private-vpc.html). Refer to the following table when configuring the VPC wizard fields and subnets.
+To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/batch/latest/userguide/create-public-private-vpc.html). See the following table when configuring the VPC wizard fields and subnets.
 
 	<table>
 	<tr>
@@ -168,7 +170,7 @@ To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/
 
 1. On the VPC dashboard, click **Subnets**, and then **Create subnet**.
 
-1. In **VPC ID**, select the VPC that includes `(pcf-vpc)`.
+1. In **VPC ID**, click the VPC that includes `(pcf-vpc)`.
 
 1. Add the following subnets.
 For each subnet, enter the **Subnet name**, **Availability Zone**, and **IPv4 CIDR block**. Then
@@ -271,7 +273,7 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In **Actions**, click **Attach to VPC**.
 
-1. In **Available VPCs**, select the VPC that includes `pcf-vpc`.
+1. In **Available VPCs**, click the VPC that includes `pcf-vpc`.
 
 1. Click **Attach internet gateway**.
 
@@ -299,14 +301,14 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In **Name**, enter `pcf-public-route-table`.
 
-1. In **VPC**, select the VPC that includes `(pcf-vpc)`.
+1. In **VPC**, click the VPC that includes `(pcf-vpc)`.
 
 1. Click **Create route table**.
 
   1. In the **Routes** section, click **Edit routes**.
   2. Click **Add route**.
   3. In **Destination**, enter `0.0.0.0/0`.
-  4. In **Target**, select **Internet Gateway**, then select the internet gateway that includes `(pcf-internet-gateway)`.\
+  4. In **Target**, click **Internet Gateway**, then click the internet gateway that includes `(pcf-internet-gateway)`.\
   5. Click **Save changes**.
 
 2. Click the **Subnet associations** tab.
@@ -322,17 +324,17 @@ click **Add new subnet** to add the next subnet in the table:
 1. Click **Create route table**.
 
 1. In **Name**, enter `pcf-management-route-table`.
-  1. In **VPC**, select the VPC that includes `(pcf-vpc)`.
+  1. In **VPC**, click the VPC that includes `(pcf-vpc)`.
   2. Click **Create route table**.
 
 2. In the **Routes** section, click **Edit routes**.
    1. Click **Add route**.n **Destination**, enter `0.0.0.0/0`.
-   2. In **Target**, select **NAT Gateway**, then select the NAT gateway that includes `(pcf-nat-gateway)`.
+   2. In **Target**, click **NAT Gateway**, then click the NAT gateway that includes `(pcf-nat-gateway)`.
    3. Click **Save changes**.
 
 3. Click the **Subnet associations** tab.
   1. In the **Explicit subnet associations** section, click **Edit subnet associations**.
-  2. Select `pcf-management-subnet-az0`, `pcf-management-subnet-az1`, `pcf-management-subnet-az2`, `pcf-tas-subnet-az0`, `pcf-tas-subnet-az1`, `pcf-tas-subnet-az2`, `pcf-services-subnet-az0`, `pcf-services-subnet-az1`, and `pcf-services-subnet-az2`.
+  2. Click `pcf-management-subnet-az0`, `pcf-management-subnet-az1`, `pcf-management-subnet-az2`, `pcf-tas-subnet-az0`, `pcf-tas-subnet-az1`, `pcf-tas-subnet-az2`, `pcf-services-subnet-az0`, `pcf-services-subnet-az1`, and `pcf-services-subnet-az2`.
   3. Click **Save associations**.
 
 
@@ -340,13 +342,13 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. Return to the EC2 Dashboard.
 
-1. Select **Security Groups>Create Security Group**.
+1. Click **Security Groups>Create Security Group**.
 
 1. In **Security group name**, enter `pcf-ops-manager-security-group`.
 
 1. In **Description**, enter a description to identify this security group.
 
-1. In **VPC**, select the VPC in which you want to deploy Ops Manager.
+1. In **VPC**, click the VPC in which you want to deploy <%= vars.ops_manager %>.
 
 1. In the **Inbound rules** section, add rules using the information in the table below.
 
@@ -408,7 +410,7 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In **Description**, enter a description to identify this security group.
 
-1. In **VPC**, select the VPC where you want to deploy the BOSH-deployed VMs.
+1. In **VPC**, click the VPC where you want to deploy the BOSH-deployed VMs.
 
 1. In the **Inbound rules** section, add rules for all traffic from your public and private subnets to your private subnet, as shown in the table.
     This rule configuration does the following:
@@ -449,9 +451,9 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In **Security group name**, enter `pcf-web-elb-security-group`.
 
-1. In **Description**, enter a description to identify this security group.
+1. In the **Description** text box, enter a description to identify this security group.
 
-1. In **VPC**, select the VPC where you want to deploy this Elastic Load Balancer (ELB).
+1. In **VPC**, click the VPC where you want to deploy this Elastic Load Balancer (ELB).
 
 2. In the **Inbound rules** section, add rules to allow traffic to ports `80`, `443`, and `4443` from `0.0.0.0/0`, as shown in the table.
 
@@ -500,7 +502,7 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In **Description** text box, enter a description to identify this security group.
 
-1. In **VPC**, select the VPC in which you want to deploy this ELB.
+1. In **VPC**, click the VPC in which you want to deploy this ELB.
 
 1. In the **Inbound rules** section, add the following rule:
     <table border="1" class="nice" >
@@ -533,7 +535,7 @@ configure a security group that enables the <%= vars.ops_manager %> VM and BOSH 
 
 1. In **Description** text box, enter a description to identify this security group.
 
-1. In **VPC**, select the VPC where you want to deploy MySQL.
+1. In **VPC**, click the VPC where you want to deploy MySQL.
 
 2. In the **Inbound rules** section, add a rule of type `MySQL` and specify the subnet of your VPC in **Source**, as shown in the table.
     <table border="1" class="nice" >
