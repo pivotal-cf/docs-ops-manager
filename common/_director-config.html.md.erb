@@ -4,7 +4,7 @@
 
 To configure the **Director Config** pane:
 
-1. Select **Director Config**.
+1. Click **Director Config**.
 
     ![alt-text=""](../common/images/director-config.png)
 
@@ -12,17 +12,17 @@ To configure the **Director Config** pane:
 
 <%# For OpenStack: %>
 <% if current_page.data.iaas == "OpenStack" %>
-1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** field. For example, `us.pool.ntp.org`.
+1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** text box. For example, `us.pool.ntp.org`.
 <% end %>
 
 <%# For GCP: %>
 <% if current_page.data.iaas == "GCP" %>
-1. In the **NTP Servers (comma delimited)** field, enter `169.254.169.254` to designate the `metadata.google.internal` host as NTP server.
+1. In the **NTP Servers (comma delimited)** text box, enter `169.254.169.254` to designate the `metadata.google.internal` host as NTP server.
 <% end %>
 
 <%# For AWS: %>
 <% if current_page.data.iaas == "AWS" %>
-1. In the **NTP Servers (comma delimited)** field, enter at least three reachable NTP servers separated by a comma. For example: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+1. In the **NTP Servers (comma delimited)** text box, enter at least three reachable NTP servers separated by a comma. For example: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
 
     If your AWS environment is air gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
 <% end %>
@@ -34,7 +34,7 @@ To configure the **Director Config** pane:
 
 <%# For vSphere: %>
 <% if current_page.data.iaas == "vSphere" %>
-1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** field. For example, `us.pool.ntp.org`.
+1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** text box. For example, `us.pool.ntp.org`.
 <% end %>
     1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
@@ -45,7 +45,7 @@ To configure the **Director Config** pane:
 
 1. If you want to collect detailed metrics from BOSH-managed VMs, activate the **Enable additional System Metrics** check box. For a list of metrics that the System Metrics Agent collects from BOSH-managed VMs, see [System Metrics Agent](https://github.com/cloudfoundry/system-metrics-release/blob/main/docs/system-metrics-agent.md) on GitHub.
 
-1. Select **Enable Post Deploy Scripts** to run a post deployment script after deployment. This script allows the job to execute additional commands against a deployment.
+1. Click **Enable Post Deploy Scripts** to run a post deployment script after deployment. This script allows the job to execute additional commands against a deployment.
 
 <p> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
 
@@ -53,51 +53,54 @@ To configure the **Director Config** pane:
 check box. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
 communicate with the BOSH Director through BOSH NATS.
 
-For more information, see [Using Short-Lived NATS Bootstrap
-Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
+For more information, see [Using short-lived NATS bootstrap
+credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
+
 <p> Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
 are created somewhat more slowly.
-This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %>
+
+This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to
+configure VMs in existing <%= vars.ops_manager %>
 deployments to use short-lived bootstrap credentials, you must recreate them. </p>
 
-1. Select **Recreate VMs deployed by the BOSH Director** to force BOSH to re-create BOSH-deployed VMs on the next deployment. This process does not recreate the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
+1. Click **Recreate VMs deployed by the BOSH Director** to force BOSH to recreate BOSH-deployed VMs on the next deployment. This process does not recreate the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
-1. Select **Recreate BOSH Director VMs** to force the BOSH Director VM to be re-created on the next deploy. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
+1. Click **Recreate BOSH Director VMs** to force the BOSH Director VM to be recreated on the next deploy. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
-1. Select **Recreate All Persistent Disks** to force BOSH to migrate and re-create persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
+1. Click **Recreate All Persistent Disks** to force BOSH to migrate and recreate persistent disks for the BOSH Director and all tiles. This process does not destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
-1. Select **Enable bosh deploy retries** to instruct <%= vars.ops_manager %> to retry failed BOSH operations up to five times.
+1. Click **Enable bosh deploy retries** to instruct <%= vars.ops_manager %> to retry failed BOSH operations up to five times.
 
-1. Select **Skip Director Drain Lifecycle** to prevent drain scripts from running when the BOSH Director is recreated.
+1. Click **Skip Director Drain Lifecycle** to prevent drain scripts from running when the BOSH Director is recreated.
 
-1. Select **Store BOSH Job Credentials on tmpfs (beta)** to store credentials for BOSH jobs on temporary file storage (tmpfs) memory, rather than on disk. You must re-create all BOSH-deployed VMs for this setting to take effect.
+1. Click **Store BOSH Job Credentials on tmpfs (beta)** to store credentials for BOSH jobs on temporary file storage (tmpfs) memory, rather than on disk. You must re-create all BOSH-deployed VMs for this setting to take effect.
 
-1. Select **Keep Unreachable Director VMs** to preserve BOSH Director VMs after a failed deployment for troubleshooting purposes.
+1. Click **Keep Unreachable Director VMs** to preserve BOSH Director VMs after a failed deployment for troubleshooting purposes.
 
-1. (Optional) Modify the **Director Workers** value, which sets the number of workers available to run BOSH Director tasks. This field defaults to `5`.
+1. (Optional) Modify the **Director Workers** value, which sets the number of workers available to run BOSH Director tasks. By default, this text box defaults to `5`.
 
-1. (Optional) **Max Threads** sets the maximum number of threads that the BOSH Director can run simultaneously. <%= vars.company_name %> recommends that you leave the field blank to use the default value, unless doing so results in rate limiting or errors on your IaaS.
+1. (Optional) **Max Threads** sets the maximum number of threads that the BOSH Director can run simultaneously. <%= vars.company_name %> recommends that you leave the text box blank to use the default value, unless doing so results in rate limiting or errors on your IaaS.
 
-1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname**. You can also use this field to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
+1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname** text box. You can also use this text box to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
 
-    ![alt-text="There are three text fields, Director Workers, Max Threads, and Director Hostname."](../common/images/director_workers.png)
+    ![alt-text="There are three text text boxes, Director Workers, Max Threads, and Director Hostname."](../common/images/director_workers.png)
 
-1. (Optional) To set a custom banner that users see when logging in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** field.
+1. (Optional) To set a custom banner that users see when you log in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** text box.
 
 2. <%= partial "../common/identification-tags" %>
 
 3. <%= partial "../common/certificates-config" %>
 
-1. Select **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
+1. Click **HM Pager Duty Plugin** to enable Health Monitor integration with PagerDuty.<br>
 
-    ![alt-text="There is a selected check box, HM Pager Duty Plugin, and two text fields, Service Key and HTTP Proxy."](../common/images/director_hm_pager.png)
+    ![alt-text="There is a selected check box, HM Pager Duty Plugin, and two text boxes, Service Key and HTTP Proxy."](../common/images/director_hm_pager.png)
 
     * **Service Key**: Enter your API service key from PagerDuty.
     * **HTTP Proxy**: Enter an HTTP proxy for use with PagerDuty.
 
-1. Select **HM Email Plugin** to enable Health Monitor integration with email.
+1. Click **HM Email Plugin** to enable Health Monitor integration with email.
 
-    ![alt-text="There is a selected check box, HM Email Plugin, and seven text fields: Host, Port, Domain, From, Recipients, Username, and Password."](../common/images/director_hm_email.png)
+    ![alt-text="There is a selected check box, HM Email Plug-in, and seven text boxes: Host, Port, Domain, From, Recipients, Username, and Password."](../common/images/director_hm_email.png)
 
     * **Host**: Enter your email hostname.
     * **Port**: Enter your email port number.
@@ -106,7 +109,7 @@ deployments to use short-lived bootstrap credentials, you must recreate them. </
     * **Recipients**: Enter comma-separated addresses of intended recipients.
     * **Username**: Enter the username for your email server.
     * **Password**: Enter the password for your email server.
-    * **Enable TLS**: Select this checkbox to enable Transport Layer Security to the email host.
+    * **Enable TLS**: Select this check box to enable Transport Layer Security to the email host.
 
 <%= partial "../common/credhub-encryption" %>
 

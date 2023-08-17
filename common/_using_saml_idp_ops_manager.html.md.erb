@@ -1,14 +1,15 @@
-To configure <%= vars.ops_manager %> to log in by default using a SAML identity provider for user authentication:
+To configure <%= vars.ops_manager %> to log in by default using a SAML identity provider for user
+authentication:
 
 1. Log in to your identity provider console and download the identity provider metadata XML. Optionally, if your identity provider supports metadata URL, you can copy the metadata URL instead of the XML.
 
 1. Do one of the following, depending on if you use a separate identity provider for BOSH:
     - **For the same identity provider:** Copy the identity provider metadata XML or URL to the <%= vars.ops_manager %> **SAML Identity Provider** login page.<br><br>
-    - **For a separate identity provider:** Copy the metadata XML or URL from that identity provider and enter it into the BOSH identity provider metadata text field in the <%= vars.ops_manager %> login page.
+    - **For a separate identity provider:** Copy the metadata XML or URL from that identity provider and enter it into the BOSH identity provider metadata text box in the <%= vars.ops_manager %> login page.
 
-1. Enter values for the fields listed below. Failure to provide values in these fields results in a `500` error.
-    * **SAML admin group**: Enter the name of the SAML group that contains all <%= vars.ops_manager %> administrators. This field is case-sensitive.
-    * **SAML groups attribute**: Enter the groups attribute tag name with which you configured the SAML server. This field is case-sensitive.
+1. Enter values for the following text boxes. Failure to provide values in these text boxes results in a `500` error.
+    * **SAML admin group**: Enter the name of the SAML group that contains all <%= vars.ops_manager %> administrators. This text box is case-sensitive.
+    * **SAML groups attribute**: Enter the groups attribute tag name with which you configured the SAML server. This text box is case sensitive.
 
 1. Enter your **Decryption passphrase**. Read the **End User License Agreement**, and select the checkbox to accept the terms.
 

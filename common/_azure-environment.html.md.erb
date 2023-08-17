@@ -2,5 +2,6 @@
 <% if current_page.data.title == "Configuring BOSH Director on Azure Using Terraform" %>
 1. For **Azure Environment**, select **Azure Commercial Cloud**.
 <% else %>
-1. For **Azure Environment**, select the Azure cloud you want to use. <%= vars.company_name %> recommends **Azure Commercial Cloud** for most Azure environments. <p class='note'><strong>Note:</strong> If you selected Azure Stack or Azure Government Cloud as your Azure environment, you must configure custom VM types. For more information, see <a href="./config-manual.html#stack-gov-prereqs">Prerequisites for Azure Stack or Azure Government Cloud</a> in <em>Configuring BOSH Director on Azure</em>.</p>
+1. For **Azure Environment**, select the Azure cloud you want to use. <%= vars.company_name %> recommends **Azure Commercial Cloud** for most Azure environments. <p class='note'><strong>Note:</strong> If you selected Azure Government Cloud as your Azure environment, you must configure custom VM types.
+For more information, see <a href="config-manual.html#stack-gov-prereqs">Prerequisites for Azure Government Cloud</a> in <em>Configuring BOSH Director on Azure</em>.</p>
 <% end %>
