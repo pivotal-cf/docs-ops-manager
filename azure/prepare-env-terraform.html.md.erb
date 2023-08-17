@@ -1,11 +1,11 @@
 ---
-title: Deploying Ops Manager on Azure using Terraform
+title: Deploying Tanzu Operations Manager on Azure using Terraform
 owner: Ops Manager
 ---
 
 <html class="list-style-none"></html>
 
-This guide describes the steps you must follow before you deploy <%= vars.ops_manager_first %> to Azure using Terraform templates.
+This topic tells you about the steps you must follow before you deploy <%= vars.ops_manager_first %> to Azure using Terraform templates.
 
 <%= partial "/pcf/warning-terraform" %>
 
@@ -13,7 +13,7 @@ The Azure Terraform templates describe a set of Azure resources and properties.
 
 For more information about how Terraform creates resources in Azure, see [Azure Provider](https://www.terraform.io/docs/providers/azurerm/index.html) on the Terraform site.
 
-You may also find it helpful to review different deployment options in
+You might also find it helpful to review different deployment options in
 [Azure Reference Architecture](../refarch/azure/azure_ref_arch.html).
 
 ## <a id='prereqs'></a> Prerequisites
@@ -118,7 +118,7 @@ Before you can run Terraform commands to provision infrastructure resources, you
 
 Complete this section if you plan to deploy the <%= vars.segment_runtime_full %> tile.
 
-<p> You can see the configurable options by opening the <code>variables.tf</code> file and looking for variables with default values.</p>
+<p> You can see the configurable options by opening the <code>variables.tf</code> file and locating the variables with default values.</p>
 
 Add the following variable to your `terraform.tfvars` file. This causes Terraform to create an additional HTTP load balancer and DNS record to use for the <%= vars.segment_runtime_full %> tile.
 
@@ -149,4 +149,4 @@ Follow these steps to use the Terraform CLI to create resources on Azure:
 
 ## <a id='next'></a> Next steps
 
-Proceed to the next step in the deployment, [Configuring BOSH Director on Azure Using Terraform](config-terraform.html).
+Go to the next step in the deployment, [Configuring BOSH Director on Azure using Terraform](config-terraform.html).

@@ -1,15 +1,17 @@
 ---
-title: Deploying Ops Manager on Azure manually
+title: Deploying Tanzu Operations Manager on Azure manually
 owner: Ops Manager
 ---
 
 <html class="list-style-none"></html>
 
-You can use these instructions to deploy BOSH and <%= vars.ops_manager_first %> on Azure by using individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
+You can use these instructions to deploy BOSH and <%= vars.ops_manager_first %> on Azure by using
+individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
 
-Before you complete the procedures in this topic, you must complete the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
+Before you follow the procedures in this topic, you must do the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you followed
+    the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
 
-<p> If you deploy BOSH and <%= vars.ops_manager %> on Azure Stack, complete the procedures in <a href="https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-connect-cli">Install and configure CLI for use with Azure Stack</a> in the Microsoft documentation before following the procedures in this topic.</p>
+<p> If you deploy BOSH and <%= vars.ops_manager %> on Azure Stack, follow the procedures in <a href="https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-connect-cli">Install and configure CLI for use with Azure Stack</a> in the Microsoft documentation before following the procedures in this topic.</p>
 
 <p> Sometimes Azure portal displays the names of resources with incorrect capitalization. Always use
 the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
@@ -18,19 +20,21 @@ the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
 
 To create network resources for your deployment:
 
-1. Navigate to the Azure portal, click **Resource groups**, and click **Add** to create a new resource group for your deployment.
+1. Go to the Azure portal, click **Resource groups** > **Add** to create a new resource group for your deployment.
 
-1. Enter a **Resource group name**, select your **Subscription**, and select a **Resource group location**. Click **Create**.
+1. Enter a **Resource group name**.
 
-1. Export the name of your resource group as the environment variable `$RESOURCE_GROUP`.
+2. Click your **Subscription**, click a **Resource group location**, then click **Create**.
+
+3. Export the name of your resource group as the environment variable `$RESOURCE_GROUP`.
 
     ```console
     export RESOURCE_GROUP="YOUR-RESOURCE-GROUP-NAME"
     ```
 
-    <p> If you are on a Windows machine, you can use <code>set</code> instead of <code>export</code>.</p>
+    <p> If you are on a Microsoft Windows machine, use <code>set</code> instead of <code>export</code>.</p>
 
-1. Export your location. For example, `westus`.
+4. Export your location. For example, `westus`.
 
     ```console
     export LOCATION=westus
@@ -38,7 +42,7 @@ To create network resources for your deployment:
 
     For a list of available locations, run `az account list-locations`.
 
-1. Create a network security group named `pcf-nsg`.
+5. Create a network security group named `pcf-nsg`.
 
     ```console
     az network nsg create --name pcf-nsg \
@@ -46,7 +50,7 @@ To create network resources for your deployment:
     --location $LOCATION
     ```
 
-1. Add network security group rules to the `pcf-nsg` group to allow traffic to known ports from the public Internet.
+6. Add network security group rules to the `pcf-nsg` group to enable traffic to known ports from the public internet.
 
     ```console
     az network nsg rule create --name ssh \
@@ -79,7 +83,7 @@ To create network resources for your deployment:
      * To block traffic from the public Internet, append `--source-address-prefixes AzureLoadBalancer` to allow traffic from only the Azure load balancer or `--source-address-prefixes VirtualNetwork` to only allow traffic from the virtual network.
      * To allow traffic from both the Azure load balancer and the virtual network, create duplicates of each rule, one specifying `--source-address-prefixes AzureLoadBalancer` and one specifying `--source-address-prefixes VirtualNetwork`.
 
-1. Create a network security group named `opsmgr-nsg`.
+7. Create a network security group named `opsmgr-nsg`.
 
     ```console
     az network nsg create --name opsmgr-nsg \
@@ -87,7 +91,7 @@ To create network resources for your deployment:
     --location $LOCATION
     ```
 
-1. Add a network security group rule to the `opsmgr-nsg` group to allow HTTP traffic to the <%= vars.ops_manager %> VM.
+8. Add a network security group rule to the `opsmgr-nsg` group to enable HTTP traffic to the <%= vars.ops_manager %> VM.
 
     ```console
     az network nsg rule create --name http \
@@ -96,7 +100,7 @@ To create network resources for your deployment:
     --destination-port-range 80
     ```
 
-1. Add a network security group rule to the `opsmgr-nsg` group to allow HTTPS traffic to the <%= vars.ops_manager %> VM.
+9.  Add a network security group rule to the `opsmgr-nsg` group to enable HTTPS traffic to the <%= vars.ops_manager %> VM.
 
     ```console
     az network nsg rule create --name https \
@@ -105,7 +109,7 @@ To create network resources for your deployment:
     --destination-port-range 443
     ```
 
-1. Add a network security group rule to the `opsmgr-nsg` group to allow SSH traffic to the <%= vars.ops_manager %> VM.
+10. Add a network security group rule to the `opsmgr-nsg` group to enable SSH traffic to the <%= vars.ops_manager %> VM.
 
     ```console
     az network nsg rule create --name ssh \
@@ -131,7 +135,7 @@ To create network resources for your deployment:
         --source-address-prefixes AzureLoadBalancer
         ```
 
-1. Create a virtual network named `pcf-virtual-network`.
+11. Create a virtual network named `pcf-virtual-network`.
 
     ```console
     az network vnet create --name pcf-virtual-network \
@@ -139,7 +143,7 @@ To create network resources for your deployment:
     --address-prefixes 10.0.0.0/16
     ```
 
-1. Add subnets to the network for <%= vars.ops_manager %>, BOSH director, and the VMs for your runtime, and attach the Network Security Group.
+12. Add subnets to the network for <%= vars.ops_manager %>, BOSH director, and the VMs for your runtime, and attach the Network Security Group.
 
     ```console
     az network vnet subnet create --name pcf-infrastructure-subnet \
@@ -158,7 +162,6 @@ To create network resources for your deployment:
     --address-prefix 10.0.8.0/22 \
     --network-security-group pcf-nsg
     ```
-
 
 ## <a id='storage'></a> Step 2: Create BOSH and deployment storage accounts
 
@@ -183,8 +186,8 @@ To create storage accounts for BOSH and your deployment:
 
     <p> <code>Standard_LRS</code> refers to a Standard Azure storage account. The BOSH Director requires
     table storage to store stemcell information. Azure Premium storage does not support table storage and cannot be used for the BOSH storage account.</p>
-    If the command fails, make sure you followed the rules for naming your storage account.
-    Export another new storage account name if necessary.</p>
+    If the command fails, verify that you followed the rules for naming your storage account.
+    Export another new storage account name if it's necessary.</p>
 
 1. Configure the Azure CLI to use the BOSH storage account as its default.
 
@@ -288,7 +291,6 @@ To create storage accounts for BOSH and your deployment:
         --connection-string $CONNECTION_STRING
         ````
 
-
 ## <a id='lb'></a> Step 3: Create load balancers
 
 Your load balancer configuration depends on whether you want apps to be available from public IP addresses, private IP addresses, or both.
@@ -381,13 +383,13 @@ To create load balancers:
             --probe-name http8080
             ```
 
-            <p> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
+            <p> If the Standard SKU is not available in Azure China, use the Basic SKU.</p>
 
             This back end pool is empty when you create it.
 
     1.  Go to your DNS provider and create an entry that points `*.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-lb-ip --resource-group $RESOURCE_GROUP`.
 
-1. **Optional:** Diego SSH Load Balancer
+2. **Optional:** Diego SSH Load Balancer
     1. Create a load balancer named `pcf-ssh-lb`.
 
         ```console
@@ -402,7 +404,7 @@ To create load balancers:
 
         This back end pool is empty when you create it.
 
-    1. (Optional) For private IPs, create a load balancer named `pcf-ssh-lb`.
+    2. (Optional) For private IPs, create a load balancer named `pcf-ssh-lb`.
 
         ```console
         az network lb create --name pcf-ssh-lb \
@@ -414,11 +416,11 @@ To create load balancers:
         --subnet pcf-pas-subnet
         ```
 
-        <p> If the Standard SKU is not available in Azure China, you can change to use the Basic SKU.</p>
+        <p> If the Standard SKU is not available in Azure China, you can use the Basic SKU.</p>
 
         This back end pool is empty when you create it.
 
-    1. Add a probe to the load balancer.
+    3. Add a probe to the load balancer.
 
         ```console
         az network lb probe create --lb-name pcf-ssh-lb \
@@ -426,7 +428,7 @@ To create load balancers:
         --protocol Tcp --port 2222
         ```
 
-    1. Add a load balancing rule for SSH.
+    4. Add a load balancing rule for SSH.
 
         ```console
         az network lb rule create --lb-name pcf-ssh-lb \
@@ -437,7 +439,7 @@ To create load balancers:
         --probe-name tcp2222
         ```
 
-    1.  Navigate to your DNS provider, and create an entry that points `ssh.sys.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-ssh-lb-ip --resource-group $RESOURCE_GROUP`.
+    5.  Go to your DNS provider, and create an entry that points `ssh.sys.YOUR-SUBDOMAIN` to the public IP address of your load balancer. For example, create an entry that points `azure.example.com` to `198.51.100.1`. You can retrieve it by running `az network public-ip show --name pcf-ssh-lb-ip --resource-group $RESOURCE_GROUP`.
 
 
 ## <a id='boot'></a> Step 4: Boot <%= vars.ops_manager %>
