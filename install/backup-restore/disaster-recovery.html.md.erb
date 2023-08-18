@@ -1,13 +1,16 @@
 ---
-title: Disaster Recovery
+title: Disaster recovery
 owner: BBR
 ---
 
-As an operator, you have a range of approaches for ensuring that you can recover your deployment, apps, and data in case of a disaster. The approaches fall into two categories:
+As an operator, you have a range of approaches for ensuring that you can recover your deployment, apps,
+and data in case of a disaster.
 
-* Using data from a backup to restore the data in the deployment. For more information, see [Back Up and Restore Using BOSH Backup and Restore (BBR)](#bbr).
+The approaches fall into two categories:
 
-* Re-creating the data in the deployment by automating the creation of state. For more information, see [Disaster Recovery by Recreating the Deployment](#recreation).
+* Using data from a backup to restore the data in the deployment. For more information, see [Back up and restore using BOSH Backup and Restore (BBR)](#bbr).
+
+* Recreating the data in the deployment by automating the creation of state. For more information, see [Disaster recovery by recreating the deployment](#recreation).
 
 ## <a id='bbr'></a> Back up and restore using BOSH Backup and Restore (BBR)
 
@@ -279,5 +282,5 @@ To ensure that backup artifacts are valid, the BBR tool creates checksums of the
 However, the only way to be sure that the backup artifact can be used to successfully re-create
 the deployment is to test it in the restore process.
 This is a cumbersome, dangerous process that must be done with care.
-For instructions, see [Step 11: (Optional) Validate Your Backup](backup-pcf-bbr.html#validate-backup)
+For instructions, see [Step 11: (Optional) Validate your backup](backup-pcf-bbr.html#validate-backup)
 in _Backing Up Deployments with BBR_.

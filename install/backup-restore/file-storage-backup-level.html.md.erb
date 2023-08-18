@@ -1,5 +1,5 @@
 ---
-title: Ops Manager file storage backup levels
+title: Tanzu Operations Manager file storage backup levels
 owner: RelEng
 ---
 
@@ -10,9 +10,11 @@ see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/
 
 ## <a id='file-storage-motivation'></a> Considerations for configuring file storage backups
 
-When considering configuration for your use case, the two main factors are backup artifact size and Recovery Time Objective (RTO).
+When considering configuration for your use case, the two main factors are backup artifact
+size and Recovery Time Objective (RTO).
 
-If you want a smaller backup artifact, you can exclude certain blobs from the backup. This can enable you to take more frequent backups without using a large amount of storage space and causes shorter periods of app downtime. However, you will have to re-push or restage all apps, which results in a higher RTO.
+If you want a smaller backup artifact, you can exclude certain blobs from the backup. This can enable
+you to take more frequent backups without using a large amount of storage space and causes shorter periods of app downtime. However, you will have to re-push or restage all apps, which results in a higher RTO.
 
 If you want a lower RTO, you can do a complete file storage backup. However, this results in a larger backup artifact size.
 
@@ -37,7 +39,7 @@ If you configure <%= vars.app_runtime_abbr %> to exclude droplets from the file 
 When restoring from this backup, apps return in a stopped state because the foundation does not have their corresponding droplets. Developers must restage each app to return them to a running state. <%= vars.app_runtime_abbr %> must recompile the droplet using the packages in the backup then deploy the new droplet. This process increases the RTO.
 
 For more information about configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets,
-see [Configure File Storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
+see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='exclude-droplets-packages-file-storage'></a> File storage backups excluding droplets and packages
 

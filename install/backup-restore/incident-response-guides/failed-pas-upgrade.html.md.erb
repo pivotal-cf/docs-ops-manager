@@ -1,9 +1,10 @@
 ---
-title: Recovering from Ops Manager and TAS for VMs upgrade failure
+title: Recovering from Tanzu Operations Manager and TAS for VMs upgrade failure
 owner: Platform Recovery
 ---
 
-You can use BOSH Backup and Restore (BBR) to restore <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to a healthy state after a failed upgrade between <%= vars.app_runtime_abbr %> minor versions.
+You can use BOSH Backup and Restore (BBR) to restore <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to a healthy state after a failed
+upgrade between <%= vars.app_runtime_abbr %> minor versions.
 
 <p> BBR can only restore across the same <%= vars.app_runtime_abbr %> minor versions. To verify
 which version of <%= vars.app_runtime_abbr %> was used to create the backup artifact,
