@@ -1,9 +1,11 @@
 ---
-title: Managing custom VM extensions with the Ops Manager API
+title: Managing custom VM extensions with the Tanzu Operations Manager API
 owner: Ops Manager
 ---
 
-You can use the <%= vars.ops_manager_first %> API to manage VM extensions, which allow you to specify IaaS-specific configurations for your VMs such as associated security groups and load balancers. Using the <%= vars.ops_manager %> API, you can create custom VM extensions, give them names, and associate those names with BOSH jobs.
+You can use the <%= vars.ops_manager_first %> API to manage VM extensions, which allow you to
+specify IaaS-specific configurations for your VMs such as associated security groups and load balancers.
+Using the <%= vars.ops_manager %> API, you can create custom VM extensions, give them names, and associate those names with BOSH jobs.
 
 The **Resource Config** pane in a product tile lets you configure some IaaS-specific load balancing and security properties, and creates VM extensions to support them.  For examples from the <%= vars.ops_manager_first %> product, see [Configuring Load Balancing for <%= vars.ops_manager %>](https://docs.pivotal.io/application-service/operating/configure-lb.html).
 
@@ -46,7 +48,7 @@ curl "https://example.com/api/v0/staged/vm_extensions/example_vm_extension_name"
 </pre>
 
 For more information about this command,
-see [Creating a new vm extension](https://docs.pivotal.io/ops-manager/3-0/api/#tag/VM-Extensions) in the <%= vars.ops_manager %> API documentation.
+see [Creating a new VM extension](https://docs.pivotal.io/ops-manager/3-0/api/#tag/VM-Extensions) in the <%= vars.ops_manager %> API documentation.
 
 ## <a id='delete-vm-extension'></a> Delete a VM extension
 
@@ -134,4 +136,4 @@ See the following example output:
 </pre>
 
 For more information about this command,
-see [Creating a new VM extension](https://docs.pivotal.io/platform/opsman-api#creating-a-new-vm-extension) in the <%= vars.ops_manager %> API documentation.
+see [Creating a new VM extension](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html) in the <%= vars.ops_manager %> API documentation.

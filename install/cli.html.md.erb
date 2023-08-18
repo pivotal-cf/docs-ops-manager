@@ -1,15 +1,17 @@
 ---
-title: Using the Ops Manager CLI
+title: Using the Tanzu Operations Manager CLI
 owner: Ops Manager
 ---
 
-This topic explains how to perform common operations with the om CLI, a tool that helps you configure and deploy tiles to <%= vars.ops_manager_first %> without using the <%= vars.ops_manager %> UI. The om CLI communicates with the <%= vars.ops_manager %> API.
+This topic explains how to perform common operations with the Tanzu Operations Manager CLI, a tool that
+helps you configure and deploy tiles to <%= vars.ops_manager_first %> without using the <%= vars.ops_manager %> UI. The Tanzu Operations Manager CLI
+communicates with the <%= vars.ops_manager %> API.
 
 In addition to using the om CLI directly, you can use it to manage <%= vars.ops_manager %> programmatically through platform automation.
 For information about platform automation,
 see the [Platform Automation Toolkit](https://docs.pivotal.io/platform-automation/v5.1/).
 
-The om CLI has the following benefits over the <%= vars.ops_manager %> API:
+The Tanzu Operations Manager CLI has the following benefits over the <%= vars.ops_manager %> API:
 
 * You can `om curl` <%= vars.ops_manager %> API calls with easier authentication
 
@@ -17,23 +19,23 @@ The om CLI has the following benefits over the <%= vars.ops_manager %> API:
 
 * om CLI output can be easier to parse
 
-For more information about using the om CLI, see [om](https://github.com/pivotal-cf/om) in GitHub.
+For more information about using the Tanzu Operations Manager CLI, see [om](https://github.com/pivotal-cf/om) in GitHub.
 
-## <a id='install'></a> Install the om CLI
+## <a id='install'></a> Install the Tanzu Operations Manager CLI
 
-You can install the om CLI in one of the following ways:
+You can install the Tanzu Operations Manager CLI in one of the following ways:
 
-* **Mac or Linux Users:** [Install om CLI Using Homebrew](#homebrew)
+* **Mac or Linux Users:** [Install om CLI using Homebrew](#homebrew)
 
-* **Windows, Mac, or Linux Users:** [Install om CLI from Direct Download](#download)
+* **Windows, Mac, or Linux Users:** [Install om CLI from direct download](#download)
 
-### <a id='homebrew'></a> Install the om CLI using Homebrew
+### <a id='homebrew'></a> Install the Tanzu Operations Manager CLI using Homebrew
 
-If you are on a Mac or Linux machine, you can use Homebrew to install the om CLI. You must first have Homebrew installed to use this method.
+If you are on a Mac or Linux machine, you can use Homebrew to install the Tanzu Operations Manager CLI. You must first have Homebrew installed to use this method.
 
-To install the om CLI using Homebrew:
+To install the Tanzu Operations Manager CLI using Homebrew:
 
-1. Download the om CLI.
+1. Download the Tanzu Operations Manager CLI.
 
     ```
     brew tap pivotal-cf/om https://github.com/pivotal-cf/om
@@ -51,13 +53,13 @@ To install the om CLI using Homebrew:
     om version
     ```
 
-### <a id='download'></a> Install the om CLI from direct download
+### <a id='download'></a> Install the Tanzu Operations Manager CLI from direct download
 
-You can install the om CLI directly from the om CLI GitHub repo.
+You can install the Tanzu Operations Manager CLI directly from the om CLI GitHub repo.
 
-To install the om CLI from direct download:
+To install the Tanzu Operations Manager CLI from direct download:
 
-1. Go to the [om CLI releases](https://github.com/pivotal-cf/om/releases) in GitHub and choose your release.
+1. Go to [om CLI releases](https://github.com/pivotal-cf/om/releases) in GitHub and choose your release.
 
 1. Download the release from **Assets**. Choose the asset that corresponds with your operating system. For example, download `om-windows-x.x.x.zip` for Windows machines.
 
@@ -67,11 +69,11 @@ To install the om CLI from direct download:
 
 1. Test your installation by opening a Shell window and running `om version`.
 
-## <a id='login-cli'></a> Authenticate with the om CLI
+## <a id='login-cli'></a> Authenticate with the Tanzu Operations Manager CLI
 
 For most om CLI commands, you must authenticate with <%= vars.ops_manager %> by putting your <%= vars.ops_manager %> login information into a YAML file.
 
-To authenticate with the om CLI:
+To authenticate with the Tanzu Operations Manager CLI:
 
 1. In your workspace, create a YAML file that represents your <%= vars.ops_manager %> environment. Give the file a name. For example:
 
@@ -79,7 +81,7 @@ To authenticate with the om CLI:
     touch om-cli-env.yml
     ```
 
-1. Add the following content to the file. For more information about configuring the file, see [Generating an Env File](https://docs.pivotal.io/platform-automation/v5.0/how-to-guides/configuring-env.html) in the Platform Automation Toolkit documentation.
+1. Add the following content to the file. For more information about configuring the file, see [Generating an Env File](https://docs.pivotal.io/platform-automation/v5.1/how-to-guides/configuring-env.html) in the Platform Automation Toolkit documentation.
 
     ```yaml
     ---
@@ -118,6 +120,6 @@ To authenticate with the om CLI:
     +----------------------+---------------+------------------+------------------+
     </pre>
 
-## <a id='om-cli-commands'></a> om CLI commands
+## <a id='om-cli-commands'></a>  Tanzu Operations Manager CLI commands
 
-For a list of all om CLI commands, see [Commands](https://github.com/pivotal-cf/om/blob/main/docs/README.md#commands) in the om CLI GitHub documentation.
+For a list of all Tanzu Operations Manager CLI commands, see [Commands](https://github.com/pivotal-cf/om/blob/main/docs/README.md#commands) in the om CLI GitHub documentation.

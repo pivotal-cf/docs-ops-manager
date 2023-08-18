@@ -1,5 +1,5 @@
 ---
-title: Configuring Amazon EBS encryption for Ops Manager
+title: Configuring Amazon EBS encryption for Tanzu Operations Manager
 owner: Ops Manager
 ---
 
@@ -7,7 +7,7 @@ owner: Ops Manager
 
 This feature uses AWS Key Management Service (KMS).
 
-<p> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.app_runtime_first %> for Windows are not encrypted.</p>
+<p> Enabling EBS encryption only encrypts Linux VMs. The Microsoft Windows VMs deployed with <%= vars.app_runtime_first %> for Windows are not encrypted.</p>
 
 By following the procedures in this topic, you can use full disk encryption for all persistent disks on the following VMs:
 
@@ -16,17 +16,17 @@ By following the procedures in this topic, you can use full disk encryption for 
 
 There is no performance penalty for using encrypted EBS volumes. <%= vars.company_name %> recommends that all users of <%= vars.ops_manager %> on AWS enable encryption.
 
-<p> Before you enable EBS encryption with KMS, you might need to update your AWS policy. For more information, see <a href="policy-doc.html#add-policies">Add Additional AWS Policies</a>.</p>
+<p> Before you enable EBS encryption with KMS, you might need to update your AWS policy. For more information, see <a href="policy-doc.html#add-policies">Add additional AWS policies</a>.</p>
 
 ## <a id='enable-bosh'></a> Enable encryption for BOSH Director
 
 To enable EBS encryption:
 
-1. Go to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
-1. Select **AWS Config** to open the **AWS Management Console Config** pane.
+1. Click **AWS Config** to open the **AWS Management Console Config** pane.
 
     ![alt-text=""](images/cloudform/aws-config.png)
 
@@ -40,7 +40,7 @@ To enable EBS encryption:
 	arn:aws:kms:us-east-1:123456789012:
 key/12345678-9012-3456-7890-123456789012
 	```
-	If you leave the field blank, the encryption key defaults to the Amazon account key. For more information about creating your own encryption key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) and [Viewing Keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html) in the AWS documentation.
+	If you leave the text box blank, the encryption key defaults to the Amazon account key. For more information about creating your own encryption key, see [Creating Keys](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html) and [Viewing Keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html) in the AWS documentation.
 
 	<p> AWS rotates your KMS automatically each year. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html">Rotating AWS KMS Keys</a> in the AWS Documentation.</p>
 
@@ -56,10 +56,10 @@ key/12345678-9012-3456-7890-123456789012
 	2. Encrypt BOSH-created VMs:
 		1. Enter the `bosh stemcells` and `bosh deployments` commands into the command line. Record the stemcell names that BOSH-deployed VMs are using.
 		**Encrypt BOSH-deployed VMs**
-		2. Go to the folder `var/tempest/stemcells` in the SSHed <%= vars.ops_manager %> VM.
+		2. Go to the `var/tempest/stemcells` folder in the SSHed <%= vars.ops_manager %> VM.
 		3. Enter the `bosh upload-stemcell STEMCELL_NAME --fix` command into the command line for each stemcell to enforce the BOSH Director, encrypt the stemcells, and re-upload them.
 	3. Reset Persistent Disks and Recreate VMs:
-		1. Select **Director Config**.
+		1. Click **Director Config**.
 		2. Enable **Recreate VMs deployed by the BOSH Director**.
 		3. Enable **Recreate BOSH Director VM**.
 		4. Enable **Recreate All Persistent Disks**.
@@ -69,7 +69,8 @@ key/12345678-9012-3456-7890-123456789012
 
 2. Click **Review Pending Changes**.
 
-3. Click **Apply Changes** and review any reported errors. The following example error message lists jobs that cannot be encrypted due to unsupported instance types.
+3. Click **Apply Changes** and review any reported errors. The following example error message lists
+jobs that cannot be encrypted due to unsupported instance types.
 
     ![alt-text="Example list of Ops Manager Amazon EBS Encryption errors."](images/cloudform/encrypt-ebs-errors.png)
 
@@ -81,7 +82,8 @@ key/12345678-9012-3456-7890-123456789012
 
 3. Click **Apply Changes**.
 
-<p> After you activate or deactivate the <strong>Encrypt Linux EBS Volumes</strong> check box, click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
+<p> After you activate or deactivate the <strong>Encrypt Linux EBS Volumes</strong> check box,
+click <strong>Review Pending Changes</strong>, and click <strong>Apply Changes</strong>, <%= vars.ops_manager %> recreates all existing persistent VM disks.</p>
 
 ## <a id='enable-om'></a> Enable encryption for <%= vars.ops_manager %>
 

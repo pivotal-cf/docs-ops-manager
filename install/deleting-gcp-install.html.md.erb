@@ -1,15 +1,16 @@
 ---
-title: Deleting your Ops Manager deployment from GCP
+title: Deleting your Tanzu Operations Manager deployment from GCP
 owner: Ops Manager
 ---
 
-This topic describes how you can delete the Google Cloud Platform (GCP) resources associated with an <%= vars.ops_manager_first %> deployment.
+This topic describes how you can delete the Google Cloud Platform (GCP) resources associated
+with an <%= vars.ops_manager_first %> deployment.
 
-You can delete the resources in one of following two ways:
+You can delete the resources in one of following ways:
 
-* If you created a separate project for your <%= vars.ops_manager %> deployment, follow the procedure in [Delete the Project](#delete-project) below.
+* If you created a separate project for your <%= vars.ops_manager %> deployment, follow the procedure in [Delete the project](#delete-project).
 
-* If the project that contains your <%= vars.ops_manager %> deployment also contains other resources that you want to preserve, follow the procedure in [Delete <%= vars.ops_manager %> Resources](#delete-resources) below.
+* If the project that contains your <%= vars.ops_manager %> deployment also contains other resources that you want to preserve, follow the procedure in [Delete <%= vars.ops_manager %> resources](#delete-resources).
 
 ## <a id='delete-project'></a> Delete the project
 
@@ -29,35 +30,39 @@ To delete the resources associated with your <%= vars.ops_manager %> deployment:
 
 1. Go to the GCP Console Dashboard.
 
-1. Click the upper icon and select **Networking**.
+1. Click the upper icon and click **Networking**.
 
 1. Click **Load balancing**.
 
 1. Perform the following steps for all load balancers associated with your <%= vars.ops_manager %> deployment:
 	1. Click the trashcan icon next to the load balancer.
-	1. In the next dialog, select any **health checks** and **backend services** associated with the load balancer.
+	1. In the next dialog, click any **health checks** and **backend services** associated with the
+	load balancer.
 	1. Click **DELETE LOAD BALANCER AND THE SELECTED RESOURCES**.
 
-1. Click the upper left icon and select **Compute Engine**.
+1. Click the upper left icon and click **Compute Engine**.
 
 1. Perform the following steps for **VM instances**, **Instance groups**, and **Disks:**
 	1. Select the check box next to the <%= vars.ops_manager %> resource.
-	1. When all <%= vars.ops_manager %> resources are selected, click **DELETE** in the upper right.
-	1. Click **DELETE** to confirm.
+	1. When all <%= vars.ops_manager %> resources are selected, click **DELETE**.
+	1. Click **DELETE** again to confirm.
 
-1. Click the upper left icon and select **Networking**.
+1. Click the upper left icon and click **Networking**.
 
 1. Click **External IP addresses**.
 
-1. Select all external IP addresses associated with your <%= vars.ops_manager %> deployment, and click **RELEASE STATIC ADDRESS**.
+1. Select all external IP addresses associated with your <%= vars.ops_manager %> deployment, and
+click **RELEASE STATIC ADDRESS**.
 
-1. Click **Networks**, and perform the following steps for any networks you created for <%= vars.ops_manager %>:
+1. Click **Networks**, and complete the steps for any networks you created for <%= vars.ops_manager %>:
 	1. Click the name of the network.
 	1. Click **DELETE NETWORK**.
 	1. Click **DELETE** to confirm.
 
-1. Click the upper left icon and select **IAM & Admin**.
+1. Click the upper left icon and click **IAM & Admin**.
 
-1. Click the trash can icon next to the `bosh` service account you created for <%= vars.ops_manager %> and click **REMOVE**.
+1. Click the trash can icon next to the `bosh` service account you created
+for <%= vars.ops_manager %> and click **REMOVE**.
 
-1. Go to **Compute Engine > Metadata > SSH Keys**. Delete the `vcap` SSH key that you created for the project.
+1. Go to **Compute Engine > Metadata > SSH Keys**. Delete the `vcap` SSH key that you created
+for the project.
