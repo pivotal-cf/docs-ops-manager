@@ -28,7 +28,6 @@ The following table describes the backup process for the Cloud Controller:
 
 For more information, see the [Cloud Controller API](http://v3-apidocs.cloudfoundry.org/version/3.34.0/index.html) documentation.
 
-
 ## <a id='uaa'></a> UAA
 
 UAA remains available in read-only mode during backup. This means that you cannot perform write operations for clients, users, groups, identity providers, or zone configuration. However, you can continue performing read operations, such as generating, validating, and revoking tokens. Additionally, UAA continues to authenticate users and authorize requests for users and clients.
@@ -68,7 +67,6 @@ The following table describes the backup process for Usage service:
 | 3: Post-backup unlock | The Usage service apps in the `system` org start again. This unlock occurs after the Cloud Controller and UAA components unlock. |
 
 <p> The Usage service runs as a set of <%= vars.app_runtime_abbr %> apps in the <code>system</code> org.</p>
-
 
 ## <a id='app-autoscaler'></a> App Autoscaler
 

@@ -1,13 +1,16 @@
 ---
-title: Disaster Recovery
+title: Disaster recovery
 owner: BBR
 ---
 
-As an operator, you have a range of approaches for ensuring that you can recover your deployment, apps, and data in case of a disaster. The approaches fall into two categories:
+As an operator, you have a range of approaches for ensuring that you can recover your deployment, apps,
+and data in case of a disaster.
 
-* Using data from a backup to restore the data in the deployment. For more information, see [Back Up and Restore Using BOSH Backup and Restore (BBR)](#bbr) below.
+The approaches fall into two categories:
 
-* Re-creating the data in the deployment by automating the creation of state. For more information, see [Disaster Recovery by Recreating the Deployment](#recreation) below.
+* Using data from a backup to restore the data in the deployment. For more information, see [Back up and restore using BOSH Backup and Restore (BBR)](#bbr).
+
+* Recreating the data in the deployment by automating the creation of state. For more information, see [Disaster recovery by recreating the deployment](#recreation).
 
 ## <a id='bbr'></a> Back up and restore using BOSH Backup and Restore (BBR)
 
@@ -28,7 +31,7 @@ Backing up your deployment requires backing up the following components:
 * <%= vars.app_runtime_abbr %>
 * Data services
 
-For more information, see [Backing Up Deployments with BBR](backup-pcf-bbr.html).
+For more information, see [Backing up deployments with BBR](backup-pcf-bbr.html).
 With these backup artifacts, operators can re-create their deployment exactly as it was when the backup was taken.
 
 ### <a id='bbr-restore'></a> Restoring your deployment
@@ -113,9 +116,9 @@ Blobstores can be very large. To minimize downtime, BBR only takes blob metadata
 
 * **External blobstores and databases:** BBR support for backing up and restoring external databases
     and blobstores varies across <%= vars.ops_manager %> versions.
-    For more information, see [Supported Components](backup-pcf-bbr.html#supported) and
-    [External Storage Support Across <%= vars.ops_manager %> Versions](backup-pcf-bbr.html#version-compatibility)
-    in _Backing Up Deployments with BBR_.
+    For more information, see [Supported components](backup-pcf-bbr.html#supported) and
+    [External storage support across <%= vars.ops_manager %> versions](backup-pcf-bbr.html#version-compatibility)
+    in backing up deployments with BBR.
 
 ### <a id='best-practices'></a> Best practices
 
@@ -127,19 +130,19 @@ This section describes best practices for backing up your deployment.
 
 #### <a id='artifact-retention'></a> Retention of backup artifacts
 
-Operators should retain backup artifacts based on the timeframe they need to be able to restore to. For example, if backups are taken every 24 hours and the deployment must be able to be restored to three days prior, three sets of backup artifacts should be retained.
+Operators must retain backup artifacts based on the timeframe they need to be able to restore to. For example, if backups are taken every 24 hours and the deployment must be able to be restored to three days prior, three sets of backup artifacts should be retained.
 
-Artifacts should be stored in two data centers other than the data center. When deciding the restore timeframe, you should take other factors such as compliance and audit-ability into account.
+Artifacts must be stored in two data centers other than the data center. When deciding the restore timeframe, you should take other factors such as compliance and audit-ability into account.
 
 #### <a id='security'></a> Security
 
 <%= vars.company_name %> recommends that you encrypt artifacts and store them securely.
 
-## <a id='recreation'></a> Disaster Recovery by re-creating the deployment
+## <a id='recreation'></a> Disaster Recovery by recreating the deployment
 
-An alternative strategy for recovering your deployment after a disaster is to have automation in place so that all the data can be re-created. This requires that every modification to settings and state is automated, typically through the use of a pipeline.
+An alternative strategy for recovering your deployment after a disaster is to have automation in place so that all the data can be recreated. This requires that every modification to settings and state is automated, typically through the use of a pipeline.
 
-Recovery steps include creating a new deployment, re-creating orgs, spaces, users, services, service bindings and other state, and re-pushing apps.
+Recovery steps include creating a new deployment, re-creating orgs, spaces, users, services, service bindings and other state, and pushing the apps again.
 
 For more information about this approach, see the Cloud Foundry Summit presentation [Multi-DC Cloud Foundry: What, Why and How?](https://www.youtube.com/watch?v=t61r8THmtsc) on YouTube.
 
@@ -151,7 +154,8 @@ This section describes disaster recovery strategies for different deployment top
 
 To prevent app downtime, some customers run an active-active deployment, where they run two or more identical deployments in different data centers. If one deployment becomes unavailable, traffic is seamlessly routed to the other deployment. To achieve identical deployments, all operations are automated so they can be applied to both deployments in parallel.
 
-Because all operations have been automated, the automation approach to disaster recovery is a viable option for an active-active deployment. Disaster recovery requires re-creating the deployment, then running all the automation to re-create state.
+Because all operations have been automated, the automation approach to disaster recovery is a viable option for an active-active deployment.
+Disaster recovery requires recreating the deployment, then running all the automation to re-create state.
 
 This option requires discipline to automate all changes to the deployment. Some of the operations that need to be automated are:
 
@@ -187,14 +191,14 @@ The following table compares backing up and restoring using BBR to recreating a 
   <th>Steps</th>
     <td>
       <ol>
-        <li>Re-create the deployment</li>
+        <li>Recreate the deployment</li>
         <li>Restore</li>
         <li>Apply changes to make the restored deployment match the other active deployment</li>
       </ol>
     </td>
     <td>
       <ol>
-        <li>Re-create the deployment</li>
+        <li>Recreate the deployment</li>
         <li>Trigger automation to re-create orgs, spaces, etc.</li>
         <li>Notify app developers to re-push apps, re-create service instances and bindings</li>
       </ol>
@@ -234,9 +238,9 @@ Instead of having a true active-active deployment across all layers, some custom
 
 1. Switching traffic to the passive deployment, making it active.
 
-1. Recovering the formerly-active deployment. Operators can choose to do this through automation, if that option is available, or by using BBR and the restore process.
+1. Recovering the formerly-active deployment. You can choose to do this through automation, if that option is available, or by using BBR and the restore process.
 
-The RTO and RPO for re-creating the active deployment are the same as outlined in the table above.
+The RTO and RPO for recreating the active deployment are the same as outlined in the table above.
 
 ## <a id='reducing-rto'></a> Reducing RTO
 
@@ -278,6 +282,5 @@ To ensure that backup artifacts are valid, the BBR tool creates checksums of the
 
 However, the only way to be sure that the backup artifact can be used to successfully re-create
 the deployment is to test it in the restore process.
-This is a cumbersome, dangerous process that should be done with care.
-For instructions, see [Step 11: (Optional) Validate Your Backup](backup-pcf-bbr.html#validate-backup)
-in _Backing Up Deployments with BBR_.
+This is a cumbersome, dangerous process that must be done with care.
+For instructions, see [Step 11: (Optional) Validate your backup](backup-pcf-bbr.html#validate-backup).

@@ -1,11 +1,13 @@
 ---
-title: Backing up your Ops Manager deployments with BBR
+title: Backing up your Tanzu Operations Manager deployments with BBR
 owner: RelEng
 ---
 
-You can back up critical back-end components with BOSH Backup and Restore (BBR), a command-line tool for backing up and restoring BOSH deployments. For information about restoring your backup, see [Restoring Ops Manager deployments from backup with BBR](restore-pcf-bbr.html).
+You can back up critical back-end components with BOSH Backup and Restore (BBR), a command-line tool for backing up and restoring BOSH deployments. For information about restoring your backup, see [Restoring Tanzu Operations Manager deployments from backup with BBR](restore-pcf-bbr.html).
 
-In order to create a consistent backup, BBR stops the Cloud Controller API and the Cloud Controller workers during backup. This affects API functionality, such as when pushing apps or using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
+In order to create a consistent backup, BBR stops the Cloud Controller API and the
+Cloud Controller workers during backup. This affects API functionality, such as when pushing apps or
+using the Cloud Foundry Command Line Interface (cf CLI). The deployed apps do not experience downtime.
 
 <div class="note caution">
   <strong>Caution</strong>
@@ -153,7 +155,7 @@ When backing up services:
 
 * BBR does not back up managed services or their data.
 
-* You can back up and restore brokered services with the procedures documented in this topic and in [Restoring Deployments from Backup with BBR](restore-pcf-bbr.html).
+* You can back up and restore brokered services with the procedures documented in this topic and in [Restoring deployments from backup with BBR](restore-pcf-bbr.html).
 
 
 ## <a id='workflow'></a> Backup workflow
@@ -170,11 +172,11 @@ Scripts in the same stage are all triggered together. For instance, BBR triggers
 
 The backup artifacts are drained to the jumpbox, where the operator can transfer them to storage and use them to restore the deployment.
 
-The diagram shows a sample backup flow. A detailed description follows.
+The following diagram shows a sample backup flow. A detailed description follows.
 
 ![alt-text=""](images/backup-flow.png)
 
-1. An operator runs `bbr backup pcf-deployment` on the jumpbox.
+1. Run `bbr backup pcf-deployment` on the jumpbox.
 
 2. BBR calls the following backup scripts on the deployment:
   * `backup-lock`
@@ -211,11 +213,11 @@ As an alternative to using the <%= vars.ops_manager %> VM as your jumpbox, you c
 
 To retrieve the Cloud Controller database encryption credentials from the <%= vars.app_runtime_abbr %> tile:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
-1. Select **Credentials**.
+1. Click **Credentials**.
 
 1. Locate the **Cloud Controller** section.
 
@@ -338,7 +340,7 @@ To check your BOSH Director:
 
     <p> To enable debug logs, use the optional <code>--debug</code> flag. For more information, see <a href="#logging">Logging</a>.</p>
 
-1. After the pre-backup check succeeds, continue to [Step 6: Confirm Backup Restore Node is Deployed](#backup-restore-node). If the pre-backup check fails, the BOSH Director might not have the correct backup scripts or the connection to the BOSH Director might have failed.
+1. After the pre-backup verification succeeds, continue to [Step 6: Confirm backup Restore Node is deployed](#backup-restore-node). If the pre-backup check fails, the BOSH Director might not have the correct backup scripts or the connection to the BOSH Director might have failed.
 
 ### <a id='backup-restore-node'></a> Step 6: Confirm backup restore node is deployed
 
@@ -346,11 +348,11 @@ When BBR backs up <%= vars.app_runtime_abbr %>, it needs a Backup Restore node.
 
 To confirm that the Backup Restore node is deployed:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
-1. Select **Resource Config**.
+1. Click **Resource Config**.
 
 1. Find the **Backup Restore Node** job and check that the **Instances** dropdown is set to `1`.
 
@@ -359,9 +361,9 @@ To confirm that the Backup Restore node is deployed:
 1. If the **Instances** dropdown is not set to `1`:
   1. Set the **Instances** dropdown to `1`.
   2. Click **Save**.
-  3. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+  3. Go to <%= vars.ops_manager %> Installation Dashboard.
   4. Click **Review Pending Changes**.
-  5. Review your changes. For more information, see [Reviewing Pending Product Changes](../review-pending-changes.html).
+  5. Review your changes. For more information, see [Reviewing pending product changes](../review-pending-changes.html).
   6. Click **Apply Changes**.
 
 ### <a id='identify-deployment'></a> Step 7: Identify your deployment
@@ -438,11 +440,12 @@ To export your installation settings using the <%= vars.ops_manager %> UI:
 
 1. From the <%= vars.ops_manager %> Installation Dashboard, click your username at the top right navigation.
 
-1. Select **Settings**.
+1. Click **Settings**.
 
-1. Select **Export Installation Settings**.
+1. Click **Export Installation Settings**.
 
-1. Click **Export Installation Settings**. Note the warning: 'Upgrading Ops Manager may block the upgrade path for certain products. Review _Upgrading Ops Manager_ and verify that an upgrade path exists for your installed products.'
+1. Click **Export Installation Settings**. Note the warning: 'Upgrading Ops Manager may block the upgrade path for certain products. Review _Upgrading Ops Manager_ and verify that an upgrade path
+exists for your installed products.'
 
     ![alt-text=""](../images/settings.png)
 
@@ -463,14 +466,14 @@ To export your installation settings using the <%= vars.ops_manager %> API:
     - `OPS-MANAGER-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
     - `UAA-ACCESS-TOKEN` is your UAA access token. For more information, see [Access the API](../ops-man-api.html#access-api) in _Using the <%= vars.ops_manager %> API_.
 
-### <a id='bbr-backup-director'></a> Step 10: Back Up BOSH Director
+### <a id='bbr-backup-director'></a> Step 10: Back up BOSH Director
 
-<div class="note"><strong>Notes</strong>
-  <ul>
-    <li>The time it takes to back up the BOSH Director varies depending on conditions such as network infrastructure and underlying hardware. For large foundations, this step can take a considerable amount of time.</li>
-    <li>Because the BBR <code>backup</code> command can take a long time to complete, <%= vars.company_name %> recommends you run it independently of the SSH session so that the process can continue running even if your connection to the jumpbox fails. Use <code>nohup</code>, a <code>screen</code>, or a <code>tmux</code> session.</li>
-  </ul>
-</div>
+<p> The time it takes to back up the BOSH Director varies depending on conditions such as network infrastructure and underlying
+hardware. For large foundations, this step can take a considerable amount of time because the BBR <code>backup</code> command
+can take a long time to complete. <%= vars.company_name %> recommends you run it independently of the
+SSH session so that the process can continue running even if your connection to the jumpbox fails.
+Use <code>nohup</code>, a <code>screen</code>, or a <code>tmux</code> session.</li>
+</p>
 
 To back up BOSH Director:
 
@@ -513,14 +516,17 @@ To clean up:
       * If the BOSH Director is public, `HOST` is a URL, such as `https://bosh.xxx.cf-app.com`.
       * If the BOSH Director is not public, `HOST` is the `BOSH-DIRECTOR-IP` retrieved in [Step 4: Retrieve BOSH Director Address](#retrieve-address).
 
-### <a id='bbr-backup'></a> Step 11: Back Up Your <%= vars.app_runtime_abbr %> Deployment
+### <a id='bbr-backup'></a> Step 11: Back up your <%= vars.app_runtime_abbr %> deployment
 
-<div class="note"><strong>Notes</strong>
-  <ul>
-    <li>Backing up <%= vars.app_runtime_abbr %> can take a considerable amount of time, and varies depending on network and hardware infrastructure. In controlled conditions, backup durations have been observed ranging from a few minutes to several hours. To reduce your backup lock times, consider using selective backups. For more information, see <a href="file-storage-backup-level.html">File Storage Backup Level</a>. Part of the backup process causes downtime for Cloud Controller, during which you cannot push, scale, or delete apps. Your apps are not affected.</li>
-    <li>Because the BBR <code>backup</code> command can take a long time to complete, <%= vars.company_name %> recommends you run it independently of the SSH session, so that the process can continue running even if your connection to the jumpbox fails. The command above uses <code>nohup</code>, but you could also run the command in a <code>screen</code> or <code>tmux</code> session.</li>
-  </ul>
-</div>
+<p> Backing up <%= vars.app_runtime_abbr %> can take a considerable amount of time, and varies depending
+on network and hardware infrastructure. In controlled conditions, backup durations have been observed
+ranging from a few minutes to several hours. To reduce your backup lock times, consider using selective
+backups. For more information, see <a href="file-storage-backup-level.html">File storage backup level</a>.
+Part of the backup process causes downtime for Cloud Controller, during which you cannot push, scale,
+or delete apps. Your apps are not affected.
+Because the BBR <code>backup</code> command can take a long time to
+    complete, <%= vars.company_name %> recommends you run it independently of the SSH session,
+    so that the process can continue running even if your connection to the jumpbox fails. The prededing command uses <code>nohup</code>, but you could also run the command in a <code>screen</code> or <code>tmux</code> session.</p>
 
 To back up your <%= vars.app_runtime_abbr %> deployment:
 
@@ -573,11 +579,11 @@ To back up your <%= vars.app_runtime_abbr %> deployment:
       * The specified deployment exists.
 
 
-## <a id='after'></a> After Taking Your Backup
+## <a id='after'></a> After taking your backup
 
 This section describes the procedures you must perform after taking your backup.
 
-### <a id='transfer-artifacts'></a> Step 12: Transfer Backup Artifacts
+### <a id='transfer-artifacts'></a> Step 12: Transfer backup artifacts
 
 After creating your backup successfully:
 
@@ -589,18 +595,20 @@ After creating your backup successfully:
 
 <p> Backup artifacts might contain data covered by European Union regulations. For more information, see <a href="#gdpr">European Union's <em>General Data Protection Regulation (GDPR)</em></a>.</p>
 
-### <a id='validate-backup'></a> Step 13: (Optional) Validate Your Backup
+### <a id='validate-backup'></a> Step 13: (Optional) Validate your backup
 
 After backing up <%= vars.ops_manager %>, consider validating your backup by restoring it and checking the apps. BBR is designed for disaster recovery and BBR backups are only compatible with environments matching their source environment's configuration.
 
-<div class="note caution"><strong>Caution</strong>
-  <ul>
-    <li><strong>The VMs and disks from the backed-up BOSH Director must not be visible to the new BOSH Director</strong> when validating your backup. As a result, <%= vars.company_name %> recommends that you deploy the new BOSH Director to a different IaaS network and account than the VMs and disks of the backed-up BOSH Director.</li>
-    <li><strong>Data services outside of <%= vars.ops_manager %> might produce unexpected side effects during restoration.</strong> Restored apps and services might attempt to connect to data services when you restore to a new environment. For example, consider an app that processes mail queues and connects to an external database. When you validate your backup in a test environment, the app might start processing the queue, and this work might be lost.</li>
-  </ul>
-</div>
+<p> The VMs and disks from the backed-up BOSH Director must not be visible to the
+new BOSH Director when validating your backup. As a result, <%= vars.company_name %> recommends that
+you deploy the new BOSH Director to a different IaaS network and account than the VMs and disks of the
+backed-up BOSH Director. Data services outside of <%= vars.ops_manager %> might produce
+unexpected side effects during restoration.</strong> Restored apps and services might attempt to
+connect to data services when you restore to a new environment. For example, consider an app that
+processes mail queues and connects to an external database. When you validate your backup in a test
+environment, the app might start processing the queue, and this work might be lost.</p>
 
-#### <a id='full-validate'></a> Validate Your Backup in a Second Environment
+#### <a id='full-validate'></a> Validate your backup in a second environment
 
 To spin up a second environment and test the backup:
 
@@ -612,7 +620,7 @@ To spin up a second environment and test the backup:
 
 1. Follow the procedures in [Restoring Deployments from Backup with BBR](restore-pcf-bbr.html).
 
-#### <a id='ert-validate'></a> Validate Your <%= vars.app_runtime_abbr %> Backup Only
+#### <a id='ert-validate'></a> Validate your <%= vars.app_runtime_abbr %> backup only
 
 For a sandbox or other non-production environment, you can optionally perform an _in-place_ restore of <%= vars.app_runtime_abbr %> only. In this case, you restore the <%= vars.app_runtime_abbr %> backup to the same <%= vars.ops_manager %> environment that the backup was created from. For more information, see [Step 12: Redeploy <%= vars.app_runtime_abbr %>](restore-pcf-bbr.html#restore-ert) in _Restoring Deployments from Backup with BBR_.
 
@@ -634,7 +642,7 @@ If you require additional logging, use the optional `--debug` flag to print:
 * Standard in and standard out streams for the backup and restore scripts when they are executed
 
 
-## <a id='canceling-backup'></a> Canceling a Backup
+## <a id='canceling-backup'></a> Canceling a backup
 
 To cancel a backup:
 
@@ -677,10 +685,11 @@ To cancel a backup:
         * To ensure that BBR downloads your current deployment manifest when backing up, use the optional `--with-manifest` flag. These manifests are included in the <%= vars.ops_manager %> export, but are useful for reference.
 
 
-## <a id='gdpr'></a> European Union's General Data Protection Regulation (GDPR)
+## <a id='gdpr'></a> European Union General Data Protection Regulation (GDPR)
 
 Backup artifacts might contain personal and other data covered by the European Union's _General Data Protection Regulation (GDPR)_.
 
 For example, a <%= vars.app_runtime_abbr %> backup could contain user email addresses.
 
-As such, handle backup artifacts in accordance with organizational policies and applicable laws as they pertain to security, confidentiality, and privacy.
+Handle backup artifacts in accordance with your organizational policies and applicable laws as they pertain to security,
+confidentiality, and privacy.
