@@ -1,5 +1,5 @@
 ---
-title: Creating and managing Ops Manager user and client accounts
+title: Creating and managing Tanzu Operations Manager user and client accounts
 ---
 
 You can add and remove <%= vars.ops_manager_first %> users. You can use an administrator <%= vars.ops_manager %> account to create client accounts that you can use for <%= vars.ops_manager %> automation.
@@ -10,17 +10,17 @@ When <%= vars.ops_manager %> boots for the first time, you create an admin user.
 
 Users are not the only type of account you can create for <%= vars.ops_manager %>. You can also create client accounts, which connect automation tools and scripts to <%= vars.ops_manager %>. <%= vars.company_name %> recommends using clients to handle automated tasks.
 
-<p> Users that are created this way do not persist if UAA authentication settings change.</p>
+<p> The Users account that is created this way does not persist if UAA authentication settings change.</p>
 
 Client accounts are not bound to the same authentication protocols as user accounts. A user account that controls automated components can cause those components to fail if the account experiences inconsistent availability due to permission or authentication issues.
 
-You can create client accounts after deploying <%= vars.ops_manager %>, or during configuration for an initial deployment. For more information about adding clients during initial configuration or after deployment, see [Add Pre-Created Client](#pre-created-clients) below.
+You create client accounts after you deploy <%= vars.ops_manager %>, or during configuration for an initial deployment. For more information about adding clients during initial configuration or after deployment, see [Add Pre-Created Client](#pre-created-clients).
 
 ## <a id='add-user'></a> Add <%= vars.ops_manager %> users
 
 This section describes how to add or remove users with UAAC. If you do not already have the UAAC installed, run `gem install cf-uaac` on the command line.
 
-<p> You can only manage users on the <%= vars.ops_manager %> UAA module if you chose to use Internal Authentication instead of an external Identity Provider when configuring <%= vars.ops_manager %>.</p>
+<p> You only manage users on the <%= vars.ops_manager %> UAA module if you choose to use Internal Authentication instead of an external Identity Provider when configuring <%= vars.ops_manager %>.</p>
 
 To add <%= vars.ops_manager %> users:
 
@@ -118,7 +118,7 @@ Use one of the following two methods to authenticate to UAAC:
 
 ### <a name='saml'></a> Authenticate using SAML or SSO
 
-If you're using SAML or SSO, authenticate to UAAC as an admin before creating a client.
+If you are using SAML or SSO, authenticate to UAAC as an admin before creating a client.
 
 To authenticate to UAAC:
 
@@ -206,8 +206,8 @@ For more information about <%= vars.ops_manager %> roles and what they do, see [
 
 You can add a pre-created client to <%= vars.ops_manager %> using the <%= vars.ops_manager %> API in either of the following ways:
 
-* [Add a Pre-Created Client Before Initial Deployment](#pcc-initial-setup), or
-* [Add or Modify a Pre-Created Client for an Existing Deployment ](#pcc-existing-deployment)
+* [Add a pre-created client before initial deployment](#pcc-initial-setup), or
+* [Add or modify a pre-created client for an existing deployment ](#pcc-existing-deployment)
 
 ### <a id='pcc-initial-setup'></a> Add a pre-created client before initial deployment
 
@@ -263,7 +263,7 @@ To add a pre-created client to an <%= vars.ops_manager %> that has already been 
     the pre-created client must be between 1 and 255 ASCII characters.
     </p>
 
-To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
+To use this client, see [Authenticate as the pre-created client](#pcc-login).
 
 ### <a id='pcc-login'></a> Authenticate as the pre-created client
 
@@ -285,6 +285,7 @@ To authenticate to UAAC as the pre-created client:
 
 1. A message appears confirming that UAAC has `Successfully fetched token`.
 
-You have authenticated to UAAC as the pre-created client. Use this client to perform any automation tasks you wish.
+You have authenticated to UAAC as the pre-created client.
+Use this client to complete any automation tasks you wish.
 
-For more information about the <%= vars.ops_manager %> API, see [Using the Ops Manaager API](ops-man-api.html).
+For more information about the <%= vars.ops_manager %> API, see [Using the Tanzu Operations Manaager API](ops-man-api.html).

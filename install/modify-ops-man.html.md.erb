@@ -3,12 +3,13 @@ title: Modifying installation and product template files
 owner: Ops Manager
 ---
 
-This topic describes how you can modify your <%= vars.ops_manager_first %> installation by decrypting and editing the YAML files that <%= vars.ops_manager %> uses to store
+This topic describes how you can modify your <%= vars.ops_manager_first %> installation by decrypting and
+editing the YAML files that <%= vars.ops_manager %> uses to store
 configuration data.
 
-Operators can use these procedures to view and change values that they cannot access through the <%= vars.ops_manager %> web interface. They can also modify the product templates that <%= vars.ops_manager %> uses to create forms and obtain user input.
+You can use these procedures to view and change values that they cannot access through the <%= vars.ops_manager %> web interface. They can also modify the product templates that <%= vars.ops_manager %> uses to create forms and obtain user input.
 
-Operators might want to modify the <%= vars.ops_manager %> installation and product template files for a number of reasons, including the following:
+You might want to modify the <%= vars.ops_manager %> installation and product template files for a number of reasons, including the following:
 
 * To change the User Account and Authentication (UAA) admin password of their deployment
 
@@ -39,7 +40,7 @@ product template files.</p>
 
 ## <a id='installation'></a> Modify the installation files
 
-Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manager %> installation files `installation.yml` and `actual-installation.yml`.
+Complete the following steps to locate, decrypt, and edit the <%= vars.ops_manager %> installation files `installation.yml` and `actual-installation.yml`.
 
 1. SSH into the <%= vars.ops_manager %> VM by following the steps in [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
 1. On the command line, navigate to the scripts directory:
@@ -59,7 +60,7 @@ Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manage
     <pre class="terminal">
     $ sudo -u tempest-web SECRET_KEY_BASE="s" RAILS_ENV=production /home/tempest-web/tempest/web/scripts/encrypt /tmp/installation.yml /var/tempest/workspaces/default/installation.yml
     </pre>
-    When prompted, enter a passphrase.
+    When you are prompted, enter a passphrase.
 1. Delete the temporary copy of the decrypted file:
     <pre class="terminal">
     $ rm /tmp/installation.yml
@@ -72,7 +73,7 @@ Perform the following steps to locate, decrypt, and edit the <%= vars.ops_manage
     <pre class="terminal">
     $ sudo service tempest-web stop && sudo service tempest-web start
     </pre>
-1. Navigate to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
+1. Go to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
 1. Log in to <%= vars.ops_manager %>.
 1. Click **Review Pending Changes**, then **Apply Changes**.
 1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this topic to restore your previous settings.
@@ -90,9 +91,9 @@ Complete the following steps to locate and edit your <%= vars.ops_manager %> pro
     <pre class="terminal">
     $ cp /var/tempest/workspace/default/metadata/YOUR-PRODUCT-TEMPLATE.yml ~/YOUR-PRODUCT-TEMPLATE-orig.yml
     </pre>
-1. Open and edit the product template YAML file as necessary. For more information about product templates, see [Product Template Reference](https://docs.pivotal.io/tiledev/product-template-reference.html).
-1. Navigate to <%= vars.ops_manager %> to see your changes.
-1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this to restore your previous settings.
+1. Open and edit the product template YAML file as necessary. For more information about product templates, see [Product template references](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/property-template-references.html).
+1. Go to <%= vars.ops_manager %> to see your changes.
+1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert to your backup](#revert) section of this to restore your previous settings.
 
 ## <a id='revert'></a> Revert to your backup
 
@@ -108,6 +109,6 @@ Complete the following steps to revert to your backup of an installation or prod
     <pre class="terminal">
     $ sudo service tempest-web stop && sudo service tempest-web start
     </pre>
-1. Navigate to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
+1. Go to <%= vars.ops_manager %> in a browser and enter your decryption passphrase.
 1. Log in to <%= vars.ops_manager %>.
 1. Click **Review Pending Changes**, then **Apply Changes**.

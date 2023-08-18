@@ -1,5 +1,5 @@
 ---
-title: Installing Ops Manager in your air-gapped environment
+title: Installing Tanzu Operations Manager in your air-gapped environment
 owner: Ops Manager
 ---
 
@@ -11,9 +11,13 @@ To run offline, you must obtain resources from the internet and move them into o
 The method you use to move a resource from VMware Tanzu Network or GitHub
 into an offline environment can vary from setting up a designated proxy to burning a DVD.
 
-The following image displays types of resources and the components you must move them to in your offline environment. It also includes a jumpbox. The jumpbox is a Linux host for running commands such as `bosh`, `uaac`, and `fly`. You could use the <%= vars.ops_manager %> VM for this purpose. Blocks shown in this configuration are:
+The following image displays types of resources and the components you must move them to in your offline
+environment. It also includes a jumpbox. The jumpbox is a Linux host for running commands
+such as `bosh`, `uaac`, and `fly`. You can use the <%= vars.ops_manager %> VM for this purpose.
 
-  * Ops Manager Network Resources, feeding into:
+Blocks shown in this configuration are:
+
+  * Tanzu Operations Manager Network Resources, feeding into:
     * S3
     * Artifact Store
   * Automation Resources, feeding into:
@@ -76,7 +80,7 @@ Blocks in this configuration are:
   * S3
   * Git
   * Runway / Concourse, feeing into:
-    * Ops Manager Network Resources
+    * Tanzu Operations Manager Network Resources
     * Artifact Store
   * Automation Resources, feeding into:
     * Artifact Store
@@ -125,7 +129,7 @@ In completely offline environments, you must bring in all resources manually and
 Blocks shown in this configuration are:
 
   * Jumpbox
-  * Ops Manager Network Resources, feeding into:
+  * Tanzu Operations Manager Network Resources, feeding into:
     * Operator and media
   * Automation Resources, feeding into:
     * Operator and media
@@ -179,7 +183,7 @@ This pattern allows Internet access, but only through a proxy that decrypts and 
 Blocks shown in this configuration are:
 
   * Jumpbox
-  * Ops Manager Network Resources block and Automation Resources block, feed (through a proxy) into:
+  * Tanzu Operations Manager Network Resources block and Automation Resources block, feed (through a proxy) into:
     * S3
     * Artifact Store
     * Docker Registry
