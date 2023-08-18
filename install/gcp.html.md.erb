@@ -1,5 +1,5 @@
 ---
-title: Requirements and prerequisites for Ops Manager on GCP
+title: Requirements and prerequisites for Tanzu Operations Manager on GCP
 owner: Ops Manager
 ---
 
@@ -12,9 +12,9 @@ You can install <%= vars.ops_manager %> on GCP with either the <%= vars.app_runt
 
 This section lists the following resource requirements for installing <%= vars.ops_manager %> on GCP:
 
-* General <%= vars.ops_manager %> resource requirements. For more information, see [<%= vars.ops_manager %> Resource Requirements](#general-requirements) below.
+* General <%= vars.ops_manager %> resource requirements. For more information, see [<%= vars.ops_manager %> Resource requirements](#general-requirements).
 
-* GCP-specific resource requirements. For more information, see [GCP Resource Requirements](#gcp-requirements) below.
+* GCP-specific resource requirements. For more information, see [GCP resource requirements](#gcp-requirements).
 
 ### <a id='general-requirements'></a> <%= vars.ops_manager %> Resource requirements
 
@@ -22,9 +22,9 @@ This section lists resource requirements for installing <%= vars.ops_manager %> 
 
 See one of the following topics, depending on the runtime you plan to install using <%= vars.ops_manager %>:
 
-* For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.pivotal.io/application-service/2-11/operating/requirements.html).
+* For <%= vars.app_runtime_abbr %>-specific resource requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/requirements.html).
 
-* For <%= vars.k8s_runtime_abbr %>-specific resource requirements, see [AWS Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/aws-requirements.html).
+* For <%= vars.k8s_runtime_abbr %>-specific resource requirements, see [AWS prerequisites and resource requirements](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.17/tkgi/GUID-aws-requirements.html).
 
 ### <a id='gcp-requirements'></a> GCP resource requirements
 
@@ -136,9 +136,9 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
           </tr>
         </table>
 
-    * **<%= vars.k8s_runtime_abbr %>:** See [GCP Prerequisites and Resource Requirements](https://docs.pivotal.io/tkgi/gcp-requirements.html).
+    * **<%= vars.k8s_runtime_abbr %>:** See [GCP Prerequisites and Resource Requirements](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.17/tkgi/GUID-gcp-requirements.html).
 
-* (<%= vars.app_runtime_abbr %>-only) Your GCP project must have sufficient quota to deploy all the VMs needed to install <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>. For a list of suggested quotas, see [Recommended GCP Quotas](gcp-quotas.html).
+* (<%= vars.app_runtime_abbr %>-only) Your GCP project must have sufficient quota to deploy all the VMs needed to install <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %>. For a list of suggested quotas, see [Recommended GCP quotas](gcp-quotas.html).
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -170,13 +170,14 @@ To install <%= vars.ops_manager %> on GCP, you must do the following:
 
 * Install the most recent version of one of the following CLIs, depending on your runtime:
   * **<%= vars.app_runtime_abbr %>:** The Cloud Foundry Command Line Interface (cf CLI). For more information, see [Cloud Foundry Command Line Interface](https://github.com/cloudfoundry/cli#downloads) in GitHub.
-  * **<%= vars.k8s_runtime_abbr %>:** The <%= vars.k8s_runtime_abbr %> CLI. For more information, see [Installing the <%= vars.k8s_runtime_abbr %> CLI](https://docs.pivotal.io/tkgi/installing-cli.html).
+  * **<%= vars.k8s_runtime_abbr %>:** The <%= vars.k8s_runtime_abbr %> CLI. For more information, see [Installing the <%= vars.k8s_runtime_abbr %> CLI](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.17/tkgi/GUID-installing-cli.html).
 
 * **(<%= vars.app_runtime_abbr %>-only)** Request a quota increase for your GCP project. For GCP quota requirements, see [GCP Resource Requirements](#gcp-requirements). To request an increase, see [Quotas](https://console.cloud.google.com/iam-admin/quotas) in the GCP console.
 
 * **(<%= vars.app_runtime_abbr %>-only)** Configure sufficient IP allocation. For more information about IP allocation requirements, see [<%= vars.app_runtime_abbr %> Resource Requirements](#pas) above.
 
-* **(Optional)** **(<%= vars.app_runtime_abbr %>-only)** Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades, see [Configure File Storage](https://docs.pivotal.io/application-service/operating/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+* **(Optional)** **(<%= vars.app_runtime_abbr %>-only)** Configure external storage. <%= vars.company_name %> recommends using external storage if possible. For more information about how file storage location affects platform performance and stability during upgrades,
+see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 * **(Optional)** **(<%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>-only)** Configure external databases. <%= vars.company_name %> recommends using external databases in production deployments for BOSH Director and <%= vars.app_runtime_abbr %>. An external database must be configured to use the UTC timezone.
 
@@ -193,5 +194,5 @@ To install <%= vars.ops_manager %> on GCP, see [Installing <%= vars.ops_manager 
 The following are additional resources related to installing <%= vars.ops_manager %> on GCP:
 
 - For general authentication guidelines for GCP, see [GCP authentication documentation](https://cloud.google.com/docs/authentication).
-- For more information about troubleshooting the <%= vars.ops_manager %> on GCP infrastructure, see [Troubleshooting <%= vars.ops_manager %> on GCP](https://docs.pivotal.io/application-service/operating/gcp-troubleshooting.html).
+- For more information about troubleshooting the <%= vars.ops_manager %> on GCP infrastructure, see [Troubleshooting <%= vars.ops_manager %> on GCP](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/gcp-troubleshooting.html).
 - For production-level deployment options for <%= vars.ops_manager %> on GCP, see [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html).

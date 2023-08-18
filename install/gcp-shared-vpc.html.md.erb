@@ -1,11 +1,13 @@
 ---
-title: Configuring a shared VPC on GCP with Ops Manager
+title: Configuring a shared VPC on GCP with Tanzu Operations Manager
 owner: Ops Manager
 ---
 
-This topic describes how you can configure and integrate a shared Virtual Private Cloud (VPC) on Google Cloud Platform (GCP) with <%= vars.ops_manager_first %>.
+This topic describes how you can configure and integrate a
+shared Virtual Private Cloud (VPC) on Google Cloud Platform (GCP) with <%= vars.ops_manager_first %>.
 
-GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables you to assign GCP resources to individual projects within an organization but allows communication and shared services between projects. For more information about shared VPCs, see the [GCP documentation](https://cloud.google.com/vpc/docs/shared-vpc).
+GCP Shared VPC, formerly known as Google Cross-Project Networking (XPN), enables you to assign
+GCP resources to individual projects within an organization but allows communication and shared services between projects. For more information about shared VPCs, see the [GCP documentation](https://cloud.google.com/vpc/docs/shared-vpc).
 
 ## <a id='prerequisites'></a> Prerequisites
 
@@ -48,7 +50,7 @@ and intended for evaluation and test purposes only.
 
 To set up VPC network peering with the GCP console:
 
-1. From the GCP console, click **Networking**, then **VPC network peering**.
+1. From the GCP console, click **Networking** > **VPC network peering**.
 
     ![alt-text=""](images/vpc-networks.png)
 
@@ -93,7 +95,7 @@ To set up VPC network peering with the gcloud CLI:
     * `OPSMANAGER-TO-VPC` is a name you choose for the connection, such as `om-to-vpc`.
     * `OPSMANAGER-NETWORK` is the name of the network assigned to the <%= vars.ops_manager %> project in GCP, such as `my-om-project`.
     * `VPC-HOST-PROJECT` is the name you gave the shared VPC project in [Step 1: Provision the Shared VPC](#provision).
-    * `VPC-NETWORK` is the name of the network you gave the shared VPC project in [Step 2: Create Shared VPC Networks](#network).
+    * `VPC-NETWORK` is the name of the network you gave the shared VPC project in [Step 2: Create shared VPC networks](#network).
 
 1. Run:
 
@@ -116,7 +118,7 @@ To set up VPC network peering with the gcloud CLI:
     Where:
 
     * `VPC-TO-OPSMANAGER` is a name you choose for the connection, such as `vpc-to-om`.
-    * `VPC-NETWORK` is the name of the network you gave the shared VPC project in [Step 2: Create Shared VPC Networks](#network).
+    * `VPC-NETWORK` is the name of the network you gave the shared VPC project in [Step 2: Create shared VPC network](#network).
     * `OPSMANAGER-PROJECT` is the name of the project that contains your <%= vars.ops_manager %> installation.
     * `OPSMANAGER-NETWORK` is the name of the network assigned to the <%= vars.ops_manager %> project in GCP.
 
@@ -127,10 +129,11 @@ After configuring a shared VPC, use the following procedure to verify that the s
 
 1. From the GCP console, select the <%= vars.ops_manager %> project from the drop-down menu at the top of the page.
 
-1. Click **Networking**, then **VPC networks**.
+1. Click **Networking** > **VPC networks**.
 
     ![alt-text=""](images/vpc-networks.png)
 
 2. Confirm that the shared VPC network name appears in the **Subnets** list.
 
-2. Confirm that the shared VPC network **IP address ranges** match what you set for the new VPC project in [Step 2: Create a Shared VPC Network](#network).
+2. Confirm that the shared VPC network **IP address ranges** match what you set for
+the new VPC project in [Step 2: Create a shared VPC network](#network).
