@@ -1,9 +1,10 @@
 ---
-title: Installing Ops Manager on GCP using Terraform
+title: Installing Tanzu Operations Manager on GCP using Terraform
 owner: Ops Manager
 ---
 
-This topic explains how you can install <%= vars.ops_manager_first %> on GCP using Terraform, with either the <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %> runtime.
+This topic explains how you can install <%= vars.ops_manager_first %> on GCP using Terraform, with
+either the <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %> runtime.
 
 <%= partial "/pcf/warning-terraform" %>
 
@@ -11,32 +12,32 @@ This topic explains how you can install <%= vars.ops_manager_first %> on GCP usi
 
 To install with <%= vars.app_runtime_abbr %> using Terraform:
 
-1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on GCP Using Terraform](../gcp/prepare-env-terraform.html).
+1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on GCP using Terraform](../gcp/prepare-env-terraform.html).
 
-1. Configure BOSH Director. For more information, see [Configuring BOSH Director on GCP Using Terraform](../gcp/config-terraform.html).
+1. Configure BOSH Director. For more information, see [Configuring BOSH Director on GCP using Terraform](../gcp/config-terraform.html).
 
-1. (Optional) Configure a shared VPC. For more information, see [(Optional) Configuring a Shared VPC on GCP](gcp-shared-vpc.html).
+1. (Optional) Configure a shared VPC. For more information, see [(Optional) Configuring a shared VPC on GCP](gcp-shared-vpc.html).
 
 ## <a id='terraform-pks'></a> Install with <%= vars.k8s_runtime_abbr %> using Terraform
 
 To install with <%= vars.k8s_runtime_abbr %> using Terraform:
 
-1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on GCP Using Terraform](../gcp/prepare-env-terraform.html).
+1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on GCP using Terraform](../gcp/prepare-env-terraform.html).
 
-1. Configure BOSH Director. For more information, see [Configuring BOSH Director on GCP Using Terraform](../gcp/config-terraform.html).
+1. Configure BOSH Director. For more information, see [Configuring BOSH Director on GCP using Terraform](../gcp/config-terraform.html).
 
-1. (Optional). Configure a shared VPC. For more information, see [(Optional) Configuring a Shared VPC on GCP](gcp-shared-vpc.html).
+1. (Optional). Configure a shared VPC. For more information, see [(Optional) Configuring a shared VPC on GCP](gcp-shared-vpc.html).
 
 ## <a id='next'></a> Next steps
 
-After completing the procedures above, configure a runtime.
+After you complete the previous procedures, configure a runtime.
 
 For information about installing and configuring a runtime, see the following:
 
-* [Configuring <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/configure-pas.html)
+* Configure <%= vars.app_runtime_abbr %>. For more information, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configure-pas.html).
 
-* [Installing <%= vars.k8s_runtime_abbr %> on GCP](https://docs.pivotal.io/tkgi/installing-gcp.html)
+* Configure <%= vars.k8s_runtime_abbr %>. For more information, see [Installing <%= vars.k8s_runtime_abbr %> on GCP](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.17/tkgi/GUID-installing-gcp.html).
 
-* [Installing and Configuring TAS for VMs on Windows](https://docs.pivotal.io/application-service/windows/installing.html)
+* [Installing and configuring <%= vars.windows_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/installing.html).
 
-* [Installing Small Footprint TAS for VMs](https://docs.pivotal.io/application-service/operating/small-footprint.html#install)
+* [Installing Small Footprint <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/small-footprint.html#install).
