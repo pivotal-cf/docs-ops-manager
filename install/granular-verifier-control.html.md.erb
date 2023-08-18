@@ -1,5 +1,5 @@
 ---
-title: Managing verifiers in your Ops Manager deployment
+title: Managing verifiers in your Tanzu Operations Manager deployment
 owner: Ops Manager
 ---
 
@@ -72,11 +72,11 @@ To record the verifier type:
 To deactivate verifiers, you must use the <%= vars.ops_manager %> API. To get started with
 the <%= vars.ops_manager %> API, follow the procedures in [Using the <%= vars.ops_manager %> API](ops-man-api.html).
 
-The API endpoint varies by tile. Go to one of the procedures below:
+The API endpoint varies by tile. Go to one of the following procedures:
 
-- [Deactivate Verifiers for the Bosh Director Tile](#bosh-director-disable)
+- [Deactivate Verifiers for the Bosh Director tile](#bosh-director-disable)
 
-- [Deactivate Verifiers for Other Tiles](#tile-disable)
+- [Deactivate Verifiers for other tiles](#tile-disable)
 
 #### <a id='bosh-director-disable'></a> Deactivate verifiers for the BOSH Director tile
 
@@ -99,8 +99,7 @@ To deactivate a verifier type for the BOSH Director:
     - `UAA_ACCESS_TOKEN` is your UAA access token. For more information, see [Access the
     API](ops-man-api.html#access-api).
 
-    For more information about this endpoint, see [Turning off a verifier for the
-    director](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#turning-off-a-verifier-for-the-director)
+    For more information about this endpoint, see [Endpoints](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html)
     in the <%= vars.ops_manager %> API documentation.
 
 1. To confirm your verifier type is deactivate, run the following command:
@@ -149,7 +148,7 @@ To deactivate a verifier type for the BOSH Director:
 
     For more information about this endpoint, see [Retrieving a list of install time
     verifiers for a specific
-    product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product)
+    product](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html)
     in the <%= vars.ops_manager %> API documentation.
 
 1. Record the product and the verifier type that you deactivated in a secure location.
@@ -189,7 +188,6 @@ To deactivate a verifier type for tiles other than the BOSH Director:
     }]}
     </pre>
 
-    For more information about this endpoint, see [Listing all staged products](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#listing-all-staged-products) in the <%= vars.ops_manager %> API documentation.
 
 1. To deactivate your verifier by type, run the following command.
 
@@ -205,11 +203,8 @@ To deactivate a verifier type for tiles other than the BOSH Director:
 
     - `OPS-MAN-FQDN` is the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment.
     - `PRODUCT-GUID` is the GUID you recorded in the previous step.
-    - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier Type](#verifier-type).
+    - `VERIFIER-TYPE` is the verifier type you recorded in [Step 1: Record the Verifier type](#verifier-type).
 
-    For more information about this endpoint, see [Turning off a verifier for a specific
-    product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#turning-off-a-verifier-for-a-specific-product)
-    in the <%= vars.ops_manager %> API documentation.
 
 1. To confirm your verifier type is deactivated, run the following command.
 
@@ -243,9 +238,6 @@ To deactivate a verifier type for tiles other than the BOSH Director:
     }]}
     </pre>
 
-    For more information about this endpoint, see
-    [Retrieving a list of install time verifiers for a specific product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product100)
-    in the <%= vars.ops_manager %> API documentation.
 
 1. Record the product and the verifier type that you deactivated in a secure location.
 <%= vars.company_name %> recommends recording and routinely revisiting which verifiers you deactivate.
@@ -256,11 +248,8 @@ To deactivate a verifier type for tiles other than the BOSH Director:
 The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivate. Deactivated verifiers
 persist through upgrades.
 
-To re-enable verifiers, follow the steps detailed in [Use the <%= vars.ops_manager %> API](#api-put)
-above. Instead of setting `enabled` to `false`, set it to `true`.
+To enable verifiers again, follow the steps detailed in [Use the <%= vars.ops_manager %> API](#api-put.
+Instead of setting `enabled` to `false`, set it to `true`.
 
 If you do not know what verifiers are deactivated, `curl` the `verifiers` endpoint for each
-installed product. For more information, see [Retrieving a list of install time verifiers
-for a specific
-product](http://docs.pivotal.io/pivotalcf/2-3/opsman-api/#retrieving-a-list-of-install-time-verifiers-for-a-specific-product100)
-in the <%= vars.ops_manager %> API documentation.
+installed product.
