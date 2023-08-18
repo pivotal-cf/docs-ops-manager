@@ -1,5 +1,5 @@
 ---
-title: Installing Ops Manager on AWS manually
+title: Installing Tanzu Operations Manager on AWS manually
 owner: Ops Manager
 ---
 
@@ -12,20 +12,20 @@ Do not use this topic if you intend to install the <%= vars.k8s_runtime_first %>
 
 To install <%= vars.ops_manager %> manually on AWS for use with <%= vars.app_runtime_abbr %>:
 
-1. (Optional) Review the resources you must deploy to AWS. For more information, see [Required AWS Objects](../aws/required-objects.html).
+1. (Optional) Review the resources you must deploy to AWS. For more information, see [Required AWS objects](../aws/required-objects.html).
 
-1. Prepare your AWS environment. For more information, see [Preparing to Deploy <%= vars.ops_manager %> on AWS](../aws/prepare-env-manual.html).
+1. Prepare your AWS environment. For more information, see [Preparing to deploy <%= vars.ops_manager %> on AWS](../aws/prepare-env-manual.html).
 
 1. Deploy <%= vars.ops_manager %>. For more information, see [Deploying <%= vars.ops_manager %> on AWS](../aws/deploy-manual.html).
 
-1. (Optional) Verify that you deployed all of the required resources to AWS. For more information, see [Required AWS Objects](../aws/required-objects.html).
+1. (Optional) Verify that you deployed all of the required resources to AWS. For more information, see [Required AWS objects](../aws/required-objects.html).
 
 1. Configure BOSH Director. For more information, see [Configuring BOSH Director on AWS](../aws/config-manual.html).
 
 
 ## <a id='next'></a> Next steps
 
-After completing the procedures above, configure a runtime.
+After you complete the previous procedures, configure a runtime.
 
 For information about installing and configuring a runtime, see the following:
 
@@ -33,6 +33,6 @@ For information about installing and configuring a runtime, see the following:
 
 * [Installing <%= vars.k8s_runtime_abbr %> on AWS](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-installing-aws.html).
 
-* [Installing and Configuring <%= vars.windows_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/installing.html).
+* [Installing and configuring <%= vars.windows_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/installing.html).
 
 * [Installing Small Footprint <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/small-footprint.html#install).

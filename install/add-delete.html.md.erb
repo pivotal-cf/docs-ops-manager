@@ -1,5 +1,5 @@
 ---
-title: Adding and deleting products from Ops Manager
+title: Adding and deleting products from Tanzu Operations Manager
 owner: Ops Manager
 ---
 
@@ -80,23 +80,22 @@ Dashboard.
 
 To connect the <%= vars.ops_manager %> Installation Dashboard with <%= vars.product_network %>:
 
-1. Log in to [<%= vars.product_network %>](https://network.pivotal.io).
+1. Log in to [<%= vars.product_network %>](https://tanzu.vmware.com/products).
 
-1. Click your username, located in the upper top right side of the page.
+1. Click your user name, located on right side of the page.
 
-1. From the dropdown, click **Edit Profile**.
+1. From the drop-down menu, click **Edit Profile**.
 
 1. Copy the **Legacy API Token**.
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and log in.
+1. Go to <%= vars.ops_manager %> Installation Dashboard and log in.
 
-1. Click your username, located in the upper top right side of the page.
+1. Click your user name, located in the top right side of the pane.
 
-1. From the dropdown, click **Settings**.
+1. From the drop-down menu, click **Settings** > **External API Access**.
 
-1. Select **External API Access**.
-
-1. In the **Set API token** field, paste the **Legacy API Token** you copied from <%= vars.product_network %>.
+1. In the **Set API token** text box, paste the **Legacy API Token** you copied
+from <%= vars.product_network %>.
 
 1. Click **Save**.
 
@@ -108,10 +107,10 @@ Installation Dashboard.
 
 To upgrade an existing product to the latest version:
 
-1. In the product list located on the left side of the <%= vars.ops_manager %> Installation
+1. In the product list of the <%= vars.ops_manager %> Installation
 Dashboard, locate the product you want to upgrade.
 
-1. In the bottom-right corner of the product listing, click the green download icon.
+1. In the product listing, click the green download icon.
 
 1. When the download is complete, refresh the page to use the product.
 
@@ -129,20 +128,21 @@ You can use the <%= vars.ops_manager %> API or the **Review Pending Changes** pa
 when you stage multiple products in a new <%= vars.ops_manager %> installation or as part
 of an upgrade.
 
-For more information, see [Reviewing Pending Product Changes](review-pending-changes.html).
+For more information, see [Reviewing pending product changes](review-pending-changes.html).
 
 
 ## <a id='del-prod'></a> Delete products
 
-To delete a product from your Ops Manager installation:
+To delete a product from your Tanzu Operations Manager installation:
 
 From the Installation Dashboard:
 
 1. Click the trash icon on a product tile to remove that product.
-1. In the **Delete Product** dialog that appears, click **Confirm**.
+1. In the **Delete Product** pane that appears, click **Confirm**.
 
     <p> You cannot delete the BOSH Director product.</p>
 
 1. Click **Review Pending Changes**, then **Apply Changes**.
 
-After you delete a product, the product tile is removed from the installation and the Installation Dashboard. However, the product appears in the Available Products view.
+After you delete a product, the product tile is removed from the installation, and the
+Installation Dashboard, however, the product appears in the Available Products view.

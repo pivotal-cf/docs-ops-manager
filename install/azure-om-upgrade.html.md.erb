@@ -1,5 +1,5 @@
 ---
-title: Upgrading BOSH Director for Ops Manager on Azure
+title: Upgrading BOSH Director for Tanzu Operations Manager on Azure
 owner: Ops Manager
 ---
 
@@ -16,7 +16,7 @@ To create an <%= vars.ops_manager %> VM instance:
 
 1. Export environment variables. For more information, see [Export Environment Variables](#env-vars).
 
-1. Copy the <%= vars.ops_manager %> image into your storage account. For more information, see [Copy the <%= vars.ops_manager %> Image](#setup).
+1. Copy the <%= vars.ops_manager %> image into your storage account. For more information, see [Copy the <%= vars.ops_manager %> image](#setup).
 
 1. Configure the <%= vars.ops_manager %> IP Address. For more information, see [Configure <%= vars.ops_manager %> IP Address](#config-ip).
 
@@ -27,7 +27,7 @@ To create an <%= vars.ops_manager %> VM instance:
 
 <%= partial "./om_upgrade_prerequisite" %>
 
-## <a id='env-vars'></a> Export Environment Variables
+## <a id='env-vars'></a> Export environment variables
 
 Export the `connectionString` variable for your Azure account and assign it to a new environment variable. You use the `connectionString` environment variable when you copy the <%= vars.ops_manager %> image in the following procedure.
 
@@ -53,7 +53,7 @@ To export environment variables:
     az login
     ```
 
-    Authenticate by navigating to the URL in the output, entering the provided code, and clicking your account.
+    Authenticate by going to the URL in the output, entering the provided code, and clicking your account.
 
 1. Ensure that the following environment variables are set to the names of the resources you created when deploying <%= vars.ops_manager %> as part of the procedures in [Deploying <%= vars.ops_manager %> on Azure](../azure/deploy-manual.html):
   * `$RESOURCE_GROUP`: This should be set to the name of your resource group. To list the resource groups for your subscription, run:
@@ -159,10 +159,10 @@ Remove the old <%= vars.ops_manager %> VM and record the IP address for the <%= 
 
 To configure the <%= vars.ops_manager %> IP address, follow one of these procedures:
 
-* [Reuse Existing Dynamic Public IP Address](#reuse-dynamic)
-* [Use a New Dynamic Public IP Address](#new-ip)
+* [Reuse existing Dynamic Public IP Address](#reuse-dynamic)
+* [Use a new Dynamic Public IP Address](#new-ip)
 
-### <a id='reuse-dynamic'></a> Reuse Existing Dynamic Public IP Address
+### <a id='reuse-dynamic'></a> Reuse existing Dynamic Public IP Address
 
 To reuse an existing dynamic public IP address:
 
@@ -187,7 +187,7 @@ To reuse an existing dynamic public IP address:
     --resource-type Microsoft.Network/networkInterfaces
     ```
 
-### <a id='new-ip'></a> Use a New Dynamic Public IP Address
+### <a id='new-ip'></a> Use a new Dynamic Public IP Address
 
 To use a new dynamic public IP address:
 
@@ -231,7 +231,7 @@ To use a new dynamic public IP address:
     --name ops-manager-nic-new --location $LOCATION
     ```
 
-1. Shut down your old <%= vars.ops_manager %> VM, if it still exists. Run:
+1. Shut down your old <%= vars.ops_manager %> VM, if it still exists and run:
 
     ```
     az vm deallocate --name ops-manager --resource-group $RESOURCE_GROUP
@@ -358,6 +358,6 @@ a later time if necessary.
 
         Where `OPS-MANAGER-VERSION` is the version of <%= vars.ops_manager %> you are deploying. For example, `opsman-2.0.1`.
 
-## <a id='next'></a> Next Steps
+## <a id='next'></a> Next steps
 
 After you complete this procedure, continue to the upgrade instructions in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).

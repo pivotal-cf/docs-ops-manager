@@ -1,5 +1,5 @@
 ---
-title: Deploying BOSH and Ops Manager to Azure with ARM
+title: Deploying BOSH and Tanzu Operations Manager to Azure with ARM
 owner: Ops Manager
 ---
 
@@ -14,7 +14,7 @@ You can also deploy BOSH Director manually by following the procedure in [Deploy
 
 <p> Azure Stack is in beta for this release. <%= vars.company_name %> does not recommend using Azure Stack for a production deployment.</p>
 
-Before you perform the procedures in this topic, you must complete the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](../azure/config-manual.html).
+Before you perform the procedures in this topic, you must complete the procedures in [Preparing to deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](../azure/config-manual.html).
 
 ## <a id='arm-template'></a> Where to find the <%= vars.ops_manager %> Azure ARM templates
 
@@ -33,13 +33,14 @@ Azure for <%= vars.ops_manager %> uses multiple general-purpose Azure storage ac
 
 To create a BOSH storage account:
 
-1. Choose a name for your resource group and export it as an environment variable `$RESOURCE_GROUP`. Run:
+1. Choose a name for your resource group and export it as an environment variable `$RESOURCE_GROUP`.
+Run:
 
     ```
     export RESOURCE_GROUP="RESOURCE-GROUP-NAME"
     ```
     Where `RESOURCE-GROUP-NAME` is the name you want to give your resource group.
-    <p> If you are on a Windows machine, you can use <code>set</code> instead of <code>export</code>.</p>
+    <p> If you are on a Microsoft Windows machine, you can use <code>set</code> instead of <code>export</code>.</p>
 
 1. Export your location by running:
 
@@ -163,7 +164,7 @@ To copy your <%= vars.ops_manager %> image:
     --destination-blob image.vhd
     ```
 
-1. Copying the image may take several minutes. Run:
+1. Copying the image might take several minutes. Run:
 
     ```
     az storage blob show --name image.vhd \
@@ -240,7 +241,7 @@ To deploy the ARM template:
 
 ## <a id='post-deploy'></a> Step 5: Complete BOSH Director configuration
 
-To finish configuring the BOSH Director:
+To finish configuring BOSH Director:
 
 1. Go to your DNS provider and create an entry that points a fully-qualified domain name (FQDN) in your domain to the IP address of the <%= vars.ops_manager %> VM.
   <p> If the ARM template deployment does not return an IP address in the output of <code>opsMan-FQDN</code>, then visit the Azure Portal to retrieve the public IP address of the new <%= vars.ops_manager %> virtual machine.</p>
