@@ -1,20 +1,21 @@
 ---
-title: Using Ops Manager programmatically and from the command line
+title: Using Tanzu Operations Manager programmatically and from the command line
 owner: Ops Manager
 ---
 
-As an operator or tile developer, you can perform <%= vars.ops_manager_first %> operations programmatically and from the command line, rather than from the <%= vars.ops_manager %> UI.
+You can do <%= vars.ops_manager_first %> operations programmatically and from the command line, rather than
+  from the <%= vars.ops_manager %> UI.
 
 <%= vars.ops_manager %> includes three related tools for performing operations programmatically and from the command line, rather than from the UI:
 
 * The <%= vars.ops_manager %> API. For more information,
-see the [<%= vars.ops_manager %> API](https://docs.pivotal.io/platform/3-0/opsman-api/) documentation.
+see the [<%= vars.ops_manager %> API](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html) documentation.
 
 * The `om` command-line interface (CLI).  For more information about `om`,
 see the [`om` repository](https://github.com/pivotal-cf/om).
 
 * Platform Automation tasks. For more information,
-see the [Platform Automation](https://docs.pivotal.io/platform-automation/v5.1/index.html).
+see the [Platform Automation](https://docs.vmware.com/en/Concourse-for-VMware-Tanzu/7.0/vmware-tanzu-concourse/GUID-installation-install-platform-automation.html).
 
 These three tools control the <%= vars.ops_manager %> VM at different levels of abstraction. For more information about tile development, see
 the [<%= vars.ops_manager %> Tile Developer Guide](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/index.html).
@@ -55,7 +56,7 @@ Platform Automation tasks call the `om` CLI to do the following:
 - Within pipelines, store and retrieve product configuration values from secrets vaults like CredHub and code repositories like GitHub.
 
 For a complete list of Platform Automation tasks,
-see [Concourse Tasks](https://docs.pivotal.io/platform-automation/v5.1/tasks.html) in the Platform Automation documentation.
+see [Concourse Tasks](https://docs.vmware.com/en/Concourse-for-VMware-Tanzu/7.0/vmware-tanzu-concourse/GUID-installation-install-platform-automation.html) in the Platform Automation documentation.
 
 ## <a id='example-ops'></a> Examples of equivalent operations
 

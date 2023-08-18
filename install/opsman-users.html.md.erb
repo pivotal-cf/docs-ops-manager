@@ -1,5 +1,5 @@
 ---
-title: Creating and managing Ops Manager user and client accounts
+title: Creating and managing Tanzu Operations Manager user and client accounts
 ---
 
 You can add and remove <%= vars.ops_manager_first %> users. You can use an administrator <%= vars.ops_manager %> account to create client accounts that you can use for <%= vars.ops_manager %> automation.
@@ -14,13 +14,13 @@ Users are not the only type of account you can create for <%= vars.ops_manager %
 
 Client accounts are not bound to the same authentication protocols as user accounts. A user account that controls automated components can cause those components to fail if the account experiences inconsistent availability due to permission or authentication issues.
 
-You can create client accounts after deploying <%= vars.ops_manager %>, or during configuration for an initial deployment. For more information about adding clients during initial configuration or after deployment, see [Add Pre-Created Client](#pre-created-clients).
+You create client accounts after you deploy <%= vars.ops_manager %>, or during configuration for an initial deployment. For more information about adding clients during initial configuration or after deployment, see [Add Pre-Created Client](#pre-created-clients).
 
 ## <a id='add-user'></a> Add <%= vars.ops_manager %> users
 
 This section describes how to add or remove users with UAAC. If you do not already have the UAAC installed, run `gem install cf-uaac` on the command line.
 
-<p> You can only manage users on the <%= vars.ops_manager %> UAA module if you chose to use Internal Authentication instead of an external Identity Provider when configuring <%= vars.ops_manager %>.</p>
+<p> You only manage users on the <%= vars.ops_manager %> UAA module if you choose to use Internal Authentication instead of an external Identity Provider when configuring <%= vars.ops_manager %>.</p>
 
 To add <%= vars.ops_manager %> users:
 
@@ -263,7 +263,7 @@ To add a pre-created client to an <%= vars.ops_manager %> that has already been 
     the pre-created client must be between 1 and 255 ASCII characters.
     </p>
 
-To use this client, see [Authenticate as the Pre-Created Client](#pcc-login).
+To use this client, see [Authenticate as the pre-created client](#pcc-login).
 
 ### <a id='pcc-login'></a> Authenticate as the pre-created client
 
@@ -287,4 +287,4 @@ To authenticate to UAAC as the pre-created client:
 
 You have authenticated to UAAC as the pre-created client. Use this client to perform any automation tasks you wish.
 
-For more information about the <%= vars.ops_manager %> API, see [Using the Ops Manaager API](ops-man-api.html).
+For more information about the <%= vars.ops_manager %> API, see [Using the Tanzu Operations Manaager API](ops-man-api.html).

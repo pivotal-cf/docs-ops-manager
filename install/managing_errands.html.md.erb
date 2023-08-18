@@ -1,10 +1,12 @@
 ---
-title: Managing errands in your Ops Manager deployment
+title: Managing errands in your Tanzu Operations Manager deployment
 owner: Ops Manager
 ---
 
 Errands are scripts that can run at the beginning and at the end of an
-installed product's availability time. This topic describes the product
+installed product's availability time.
+
+This topic describes the product
 errands used in <%= vars.ops_manager_first %>, and how you can use <%= vars.ops_manager %> to adjust whether and when these errands run.
 
 Product tiles include two types of errands:
@@ -29,7 +31,8 @@ When the errand is configured to be **On**, then it always runs, even if there a
 
 By default, <%= vars.ops_manager %> applies the **On** rule to all  errands.
 
-For any errand, the tile developer can override these <%= vars.ops_manager %> defaults with their own tile-specific defaults defined in the tile [property blueprints](https://docs.pivotal.io/tiledev/property-reference.html#property-blueprints).
+For any errand, you can override these <%= vars.ops_manager %> defaults with your own tile-specific defaults
+defined in the tile [property blueprints](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/property-template-references.html#property-blueprints).
 
 ## <a id='modify'></a> Configure run rules in <%= vars.ops_manager %>
 
@@ -59,7 +62,8 @@ To configure the run rules for a tile:
 
 <%= vars.ops_manager %> lets you quickly configure one-time errand run rules for any product queued up for installation:
 
-1. Go to <%= vars.ops_manager %>. The **Pending Changes** section at top right shows products that <%= vars.ops_manager %> has yet to install or update.
+1. Go to <%= vars.ops_manager %>. The **Pending Changes** section that shows products
+that <%= vars.ops_manager %> has yet to install or update.
 
 1. Under **Pending Changes**, click the product you wish to configure. A list of errands associated with the product appears.
 
@@ -71,4 +75,5 @@ To configure the run rules for a tile:
 
 ## <a id='related'></a> Related links
 
-If you are a product developer and want to learn more about adding errands to your product tile for <%= vars.ops_manager %>, see [Errands](https://docs.pivotal.io/tiledev/tile-errands.html) in _<%= vars.ops_manager %> Tile Developer Guide_.
+If you are a product developer and want to learn more about adding errands to your
+product tile for <%= vars.ops_manager %>, see [Errands](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/tile-errands.html) in _<%= vars.ops_manager %> Tile Developer Guide_.

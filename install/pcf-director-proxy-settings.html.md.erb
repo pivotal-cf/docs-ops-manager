@@ -17,7 +17,7 @@ not support proxying blobstore and database traffic.</p>
 
 ## <a id='config-proxy'></a> Configure the proxy
 
-Perform the following steps to configure your proxy for the BOSH CPI when <%= vars.ops_manager %> starts for the first time:
+Complete the following steps to configure your proxy for the BOSH CPI when <%= vars.ops_manager %> starts for the first time:
 
 1. Ensure that you have installed your proxy and that it is functioning properly. You can install one proxy for HTTPS requests and another proxy for HTTP requests, or choose to use the same proxy for both kinds of traffic.
 
@@ -44,6 +44,7 @@ Complete the fields with the following information:
       * `127.0.0.1`
       * The IP address of your BOSH Director. This is the first IP address not in your reserved range. For example, if you enter `10.0.16.0-10.0.16.10` in the **Reserved IP Ranges** field of the **Create Networks** page when configuring the BOSH Director, the BOSH Director IP is `10.0.16.11`.
 
-      <p> When the BOSH Director talks to other components on its VM, such as the database and the User Account and Authentication (UAA) module, it communicates with them as if they were external. You must enter the BOSH Director IP address in the no-proxy list to prevent traffic from the BOSH Director to other components on the same VM from passing through the proxy.</p>
+      <p> When the BOSH Director talks to other components on its VM, such as the database and the User Account and Authentication (UAA) module, it communicates with them as if they were external. You must enter the BOSH Director IP address in the no-proxy list to prevent traffic from the BOSH Director to other
+      components on the same VM from passing through the proxy.</p>
 
       <p> The values in the <strong>No Proxy</strong> field must be comma-delimited, with no spaces or quotation marks between values. Example: <code>127.0.0.1,10.0.16.11</code></p>

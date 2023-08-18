@@ -3,7 +3,8 @@ title: Creating UAA clients for the BOSH Director
 owners: Ops Manager
 ---
 
-This topic describes how to create a UAA client for the BOSH Director. You must create an automation client to run BOSH from a script or set up a continuous integration pipeline.
+This topic describes how to create a UAA client for the BOSH Director. You must create an automation client
+to run BOSH from a script or set up a continuous integration pipeline.
 
 <p> This topic assumes you are using <a href="https://bosh.io/docs/cli-v2.html">BOSH CLI v2+</a>.</p>
 
@@ -15,11 +16,11 @@ To create an automation client, do one of the following:
 
 ## <a id='local_auth'></a> Local authentication
 
-To perform this procedure, the UAAC client must be installed on the <%= vars.ops_manager %> virtual machine (VM).
+To complete this procedure, the UAAC client must be installed on the <%= vars.ops_manager %> virtual machine (VM).
 
 1. Open a terminal and SSH into the <%= vars.ops_manager %> VM by following the instructions for your IaaS in [Log Into the <%= vars.ops_manager %> VM with SSH](ssh-login.html#ssh-by-iaas).
 
-1. Navigate to the <%= vars.ops_manager %> **Installation Dashboard** and select the **BOSH Director** tile. In BOSH Director, click the **Status** tab, and record the IP address.
+1. Go to the <%= vars.ops_manager %> **Installation Dashboard** and click the **BOSH Director** tile. In BOSH Director, click the **Status** tab, and record the IP address.
 
 1. Using the `uaac target` command, target BOSH Director UAA on port `8443` using the IP address you copied, and specify the location of the root certificate. The default location is `/var/tempest/workspaces/default/root_ca_certificate`.
 
@@ -34,7 +35,7 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
 
     <p> You can also curl or point your browser to the following endpoint to obtain the root certificate: <code>https://OPS-MANAGER-FQDN/api/v0/security/root_ca_certificate</code></p>
 
-1. Log in to the BOSH Director UAA and retrieve the owner token. Perform the following step to obtain the values for `UAA-LOGIN-CLIENT-PASSWORD` and `UAA-ADMIN-CLIENT-PASSWORD`:
+1. Log in to the BOSH Director UAA and retrieve the owner token. Complete the following step to obtain the values for `UAA-LOGIN-CLIENT-PASSWORD` and `UAA-ADMIN-CLIENT-PASSWORD`:
 
     1. Select the **BOSH Director** tile from the <%= vars.ops_manager %> **Installation Dashboard**.
     1. Click the **Credentials** tab, and record the entries for **Uaa Login Client Credentials** and **Uaa Admin User Credentials**.
@@ -49,7 +50,7 @@ To perform this procedure, the UAAC client must be installed on the <%= vars.ops
         Context: admin, from client login
         ```
 
-    To obtain the password for the UAA login and admin clients, you can also curl or point your browser to the following endpoints: <code>https://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_login_client_credentials</code>
+    To obtain the password for the UAA log in and admin clients, you can also curl or point your browser to the following endpoints: <code>https://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_login_client_credentials</code>
     and <code>https://OPS-MANAGER-FQDN/api/v0/deployed/director/credentials/uaa_admin_user_credentials</code>.
 
 2. Create a new UAA Client with `bosh.admin` privileges.

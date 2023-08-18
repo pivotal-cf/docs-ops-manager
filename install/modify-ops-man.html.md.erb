@@ -3,12 +3,13 @@ title: Modifying installation and product template files
 owner: Ops Manager
 ---
 
-This topic describes how you can modify your <%= vars.ops_manager_first %> installation by decrypting and editing the YAML files that <%= vars.ops_manager %> uses to store
+This topic describes how you can modify your <%= vars.ops_manager_first %> installation by decrypting and
+editing the YAML files that <%= vars.ops_manager %> uses to store
 configuration data.
 
-Operators can use these procedures to view and change values that they cannot access through the <%= vars.ops_manager %> web interface. They can also modify the product templates that <%= vars.ops_manager %> uses to create forms and obtain user input.
+You can use these procedures to view and change values that they cannot access through the <%= vars.ops_manager %> web interface. They can also modify the product templates that <%= vars.ops_manager %> uses to create forms and obtain user input.
 
-Operators might want to modify the <%= vars.ops_manager %> installation and product template files for a number of reasons, including the following:
+You might want to modify the <%= vars.ops_manager %> installation and product template files for a number of reasons, including the following:
 
 * To change the User Account and Authentication (UAA) admin password of their deployment.
 
@@ -90,9 +91,9 @@ Complete the following steps to locate and edit your <%= vars.ops_manager %> pro
     <pre class="terminal">
     $ cp /var/tempest/workspace/default/metadata/YOUR-PRODUCT-TEMPLATE.yml ~/YOUR-PRODUCT-TEMPLATE-orig.yml
     </pre>
-1. Open and edit the product template YAML file as necessary. For more information about product templates, see [Product Template Reference](https://docs.pivotal.io/tiledev/product-template-reference.html).
+1. Open and edit the product template YAML file as necessary. For more information about product templates, see [Product template references](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/property-template-references.html).
 1. Go to <%= vars.ops_manager %> to see your changes.
-1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert To Your Backup](#revert) section of this to restore your previous settings.
+1. If <%= vars.ops_manager %> cannot load your changes, see the [Revert to your backup](#revert) section of this to restore your previous settings.
 
 ## <a id='revert'></a> Revert to your backup
 

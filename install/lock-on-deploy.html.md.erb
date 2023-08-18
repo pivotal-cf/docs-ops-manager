@@ -1,5 +1,5 @@
 ---
-title: Ops Manager fields that lock on deploy
+title: Tanzu Operations Manager fields that lock on deploy
 owner: OpsManager
 ---
 
@@ -13,11 +13,11 @@ Because deployment requirements might evolve in unanticipated ways over time, so
 
 In summary, there are three types of configurable fields in <%= vars.ops_manager %>:
 
-* **Standard fields**, which can be reconfigured after deployment as many times as you need.
+* **Standard**, which can be reconfigured after deployment as many times as you need.
 
-* **Unlockable fields**, which lock on deployment but can be unlocked and configured with Advanced Mode.
+* **Unlockable**, which lock on deployment but can be unlocked and configured with Advanced Mode.
 
-* **Permanently locked fields**, which lock on deployment and cannot be unlocked.
+* **Permanently locked**, which lock on deployment and cannot be unlocked.
 
 <p class="note important">
 <span class="note__title"> Important</span> <%= vars.company_name %> recommends that only skilled operators
@@ -27,7 +27,7 @@ deactivate or destroy your deployment.
 
 ## <a id='unlock'></a> Unlockable fields
 
-This section describes the fields that lock during deployment and can be unlocked and configured after deployment. To unlock these fields, you must use <%= vars.ops_manager %>'s Advanced Mode. For more information, see [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager) in the VMware Tanzu Knowledge Base.
+This section describes the fields that lock during deployment and can be unlocked and configured after deployment. To unlock these fields, you must use <%= vars.ops_manager %>'s Advanced Mode. For more information, see [How to enable Advanced Mode in Tanzu Operations Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager) in the VMware Tanzu Knowledge Base.
 
 After you have enabled Advanced Mode, you can use the API or <%= vars.ops_manager %> UI to reconfigure some fields that were locked previously. Those fields are listed in the following sections.
 
@@ -38,7 +38,7 @@ your deployment.
 </p>
 
 
-### <a id='director-tile'></a> Unlockable fields in the Director tile
+### <a id='director-tile'></a> Unlockable fields in the BOSH Director tile
 
 In the **Director Config** pane, you can unlock the following fields in Advanced Mode after deployment:
 
@@ -97,4 +97,4 @@ In the **Create Availability Zones** pane, the following field locks permanently
 
 No fields other than the ones previous listed lock in third-party product tiles. However, tile authors can specify which additional fields must lock on deploy by passing the `freeze-on-deploy` flag.
 
-For more information about this flag, see [Common Property Blueprint Attributes](https://docs.pivotal.io/tiledev/3-0/property-template-references.html#common-attributes) in _Property and Template References_ in the <%= vars.ops_manager %> Tile Developer Guide.
+For more information about this flag, see [Common Property Blueprint Attributes](https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/property-template-references.html#common-attributes) in _Property and Template References_ in the <%= vars.ops_manager %> Tile Developer Guide.

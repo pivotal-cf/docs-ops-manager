@@ -1,9 +1,10 @@
 ---
-title: Using the Ops Manager API
+title: Using the Tanzu Operations Manager API
 owner: Ops Manager
 ---
 
-This topic explains how you can access the <%= vars.ops_manager_first %> API, and gives examples of using the API to perform common operations.
+This topic explains how you can access the <%= vars.ops_manager_first %> API, and gives examples on using
+the API to perform common operations.
 
 The <%= vars.ops_manager %> API controls the <%= vars.ops_manager %> VM directly, bypassing the <%= vars.ops_manager %> UI. Platform operators use the <%= vars.ops_manager %> API to automate deployments, retrieve and manage credentials, and otherwise work with <%= vars.ops_manager %>.
 Tile Developers use the <%= vars.ops_manager %> API to test and debug <%= vars.ops_manager %> product tiles.
@@ -29,7 +30,7 @@ see [UAA Overview](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<
 
 ### <a id='uaa'></a> Install the UAAC
 
-If you haven't already, install the UAA Command Line Interface (UAAC) by running the following command from a terminal window:
+If you have not already, install the UAA Command Line Interface (UAAC) by running the following command from a terminal window:
 
 ```
 gem install cf-uaac
@@ -41,13 +42,15 @@ Every call to the <%= vars.ops_manager %> API must include an authorization toke
 
 How you retrieve this token depends on whether your <%= vars.ops_manager %> user store is an internal IaaS component or an external server.  With an internal UAA, the procedure depends on which IaaS you are on.
 
-To retrieve your authorization token, perform the procedure below that corresponds to your Ops Man UAA location and IaaS.
+To retrieve your authorization token, perform the following procedure that corresponds to your Tanzu Operations Manager
+UAA location and IaaS.
 
 #### <a id='vsphere'></a> Internal UAA on vSphere
 
 To log in to the <%= vars.ops_manager %> VM with SSH in vSphere, you need the public SSH key that imports the <%= vars.ops_manager %> `.ova` or `.ovf` file into your virtualization system.
 
-You set the public SSH key in the **Public SSH Key** field of the **Customize template** screen when you deployed <%= vars.ops_manager %>. For more information, see [Deploy <%= vars.ops_manager %>](../vsphere/deploy.html#deploy).
+You set the public SSH key in the **Public SSH Key** text box of the **Customize template** pane when you
+deployed <%= vars.ops_manager %>. For more information, see [Deploy <%= vars.ops_manager %>](../vsphere/deploy.html#deploy).
 
 To retrieve the authorization token from internal UAA on vSphere:
 
@@ -104,7 +107,7 @@ To retrieve the authorization token from internal UAA on vSphere:
 
 1. Confirm that you have installed the gcloud CLI. If you do not have the gcloud CLI, see [the Google Cloud Platform documentation](https://cloud.google.com/sdk/gcloud/#downloading_gcloud):
 
-1. To configure your Google Cloud Platform project, run the following command:
+1. To configure your Google Cloud Platform project, run:
 
     ```
     gcloud config set project MY-PROJECT
@@ -115,7 +118,7 @@ To retrieve the authorization token from internal UAA on vSphere:
 
     <pre class="terminal">$ gcloud config set project gcp</pre>
 
-1. Run the following command:
+1. Run:
 
     ```
     gcloud auth login MY-GCP-ACCOUNT
@@ -126,7 +129,7 @@ To retrieve the authorization token from internal UAA on vSphere:
 
     <pre class="terminal">$ gcloud auth login user@example.com</pre>
 
-1. Run the following command:
+1. Run:
 
     ```
     gcloud compute ssh MY-INSTANCE --zone MY-ZONE
@@ -220,7 +223,7 @@ If you are calling <%= vars.ops_manager %> API commands from the command line, t
 
 The following procedure tests whether you can access the <%= vars.ops_manager %> API from the command line by retrieving a list of deployed products:
 
-1. List your tokens by running the following command:
+1. List your tokens. Run:
 
     ```
     uaac contexts
@@ -237,7 +240,7 @@ The following procedure tests whether you can access the <%= vars.ops_manager %>
 
     Where `UAA-ACCESS-TOKEN` is the access token recorded in the previous step.
 
-    The command output should look like the following:
+    The command output looks like the following:
 
     <pre class="terminal">
     $ curl "https:my-opsmanager.example.com/api/v0/deployed/products" \
@@ -273,7 +276,7 @@ The following procedure configures the BOSH Director for your IaaS using the <%=
 
 To configure the BOSH Director with the <%= vars.ops_manager %> API:
 
-1. Access the <%= vars.ops_manager %> API by following the procedure in <a href="#access">Access the <%= vars.ops_manager %> API</a> procedure above.</li>
+1. Access the <%= vars.ops_manager %> API by following the procedure in <a href="#access">Access the <%= vars.ops_manager %> API</a> procedure.</li>
 
 1. To perform initial setup, enter a `POST` request to the Ops Man API `setup` endpoint, passing metadata to the `-d` flag:
 
@@ -329,8 +332,9 @@ To configure the BOSH Director with the <%= vars.ops_manager %> API:
 1. After the successful response, a UAA client with the metadata you specified is created and launched. <%= vars.ops_manager %> users can authenticate with UAAC, and if they have a pre-created client they can target UAAC with the client name and password. For more information on pre-created clients, see <a href="./opsman-users.html">Creating and Managing <%= vars.ops_manager %> User and Client Accounts</a>.
 
 1. Send an HTTP `PUT` request to the `api/v0/staged/director/properties` endpoint to configure your IaaS and BOSH Director.
-There are many configuration parameters available to customize your BOSH Director. All the commands are IaaS-agnostic except the IaaS configuration key. Missing required fields should cause an error.
-For more information about configuring the BOSH Director, see <a href="http://docs.pivotal.io/pivotalcf/2-5/opsman-api/#fetching-director-iaas-and-security-properties-experimental">Fetching Director, IaaS, and Security Properties</a>.
+There are many configuration parameters available to customize your BOSH Director.
+All the commands are IaaS-agnostic except the IaaS configuration key. Missing required fields can cause an error.
+For more information about configuring the BOSH Director, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-opsmanager-create-bosh-client.html">Fetching Director, IaaS, and Security Properties</a>.
 
 1. Send an HTTP `POST` request to the `api/v0/staged/director/availability_zones` endpoint to create Availability Zones (AZs) for your product.
 
