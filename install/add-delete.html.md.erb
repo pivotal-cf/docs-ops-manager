@@ -1,5 +1,5 @@
 ---
-title: Adding and deleting products from Ops Manager
+title: Adding and deleting products from Tanzu Operations Manager
 owner: Ops Manager
 ---
 
@@ -92,11 +92,10 @@ To connect the <%= vars.ops_manager %> Installation Dashboard with <%= vars.prod
 
 1. Click your username, located in the upper top right side of the page.
 
-1. From the drop-down menu, click **Settings**.
+1. From the drop-down menu, click **Settings** > **External API Access**.
 
-1. Select **External API Access**.
-
-1. In the **Set API token** field, paste the **Legacy API Token** you copied from <%= vars.product_network %>.
+1. In the **Set API token** text box, paste the **Legacy API Token** you copied
+from <%= vars.product_network %>.
 
 1. Click **Save**.
 
@@ -134,15 +133,16 @@ For more information, see [Reviewing Pending Product Changes](review-pending-cha
 
 ## <a id='del-prod'></a> Delete products
 
-To delete a product from your Ops Manager installation:
+To delete a product from your Tanzu Operations Manager installation:
 
 From the Installation Dashboard:
 
 1. Click the trash icon on a product tile to remove that product.
-1. In the **Delete Product** dialog that appears, click **Confirm**.
+1. In the **Delete Product** pane that appears, click **Confirm**.
 
     <p> You cannot delete the BOSH Director product.</p>
 
 1. Click **Review Pending Changes**, then **Apply Changes**.
 
-After you delete a product, the product tile is removed from the installation and the Installation Dashboard. However, the product appears in the Available Products view.
+After you delete a product, the product tile is removed from the installation, and the
+Installation Dashboard, however, the product appears in the Available Products view.

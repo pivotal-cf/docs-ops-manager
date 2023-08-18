@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Ops Manager on Azure
+title: Troubleshooting Tanzu Operations Manager on Azure
 owner: Ops Manager, Release Integration
 ---
 
@@ -33,7 +33,8 @@ Install the Azure CLI v2.0 by following the instructions for your operating syst
 
 #### Symptom
 
-After clicking **Review Pending Changes**, then **Apply Changes** to install <%= vars.ops_manager %> and <%= vars.app_runtime_first %>, the deployment fails at `create-env` with an error message similar to the following:
+After you click **Review Pending Changes**, then **Apply Changes** to install <%= vars.ops_manager %> and <%= vars.app_runtime_first %>, the deployment
+fails at `create-env` with an error message similar to the following:
 
 ```
 Command 'deploy' failed:
@@ -53,15 +54,17 @@ Exited with 1.
 
 #### Explanation
 
-You provided a passphrase when creating your key pair in [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+You provided a passphrase when you created your key pair in [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
 
 #### Solution
 
-Create a new key pair with no passphrase and re-do the installation. For more information, see [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
+Create a new key pair with no passphrase and do the installation again. For more information, see [Step 4: Boot <%= vars.ops_manager %>](../azure/deploy-manual.html#boot) in _Deploying <%= vars.ops_manager %> on Azure_.
 
 ### <a id='database-permissions'></a> Insufficient external database permissions
 
-Upgrade issues can be caused when the external database user used for the network policy database is given insufficient permissions. To avoid this upgrade issue, ensure that the Network Policy Server database user has the `ALL PRIVILEGES` permission.
+Upgrade issues can arise when the external database user that was used for the network policy database
+is given insufficient permissions. To avoid this upgrade issue, ensure that the Network Policy Server database user
+has the `ALL PRIVILEGES` permission.
 
 
 ## <a id='operation-issues'></a> Operation issues
@@ -84,13 +87,13 @@ To mitigate slow performance or timeouts, the default value of the **Back end re
 
 To edit the **Back end request and idle timeout** field:
 
-1. Go to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
-1. Select **Networking**.
+1. Click **Networking**.
 
-1. Enter your desired time, in seconds, in the **Back end request and idle timeout** field.
+1. Enter your desired time, in seconds, in the **Back end request and idle timeout** text box.
 
 1. Click **Save**.
 
@@ -108,4 +111,4 @@ HTTP libraries for Java and Go, running with default settings, prune connections
 
 In the **Networking** pane of the <%= vars.app_runtime_abbr %> tile, enter a value of `240` or less in the the **Front end idle timeout** field, so that <%= vars.ops_manager %> regenerates the front end connection before it times out.
 
-For more information, see [Azure Networking Connection Idle for more than Four minutes](https://community.pivotal.io/s/article/Azure-Networking-Connection-Idle-for-more-than-Four-minutes) in the Knowledge Base.
+For more information, see [Azure Networking Connection idle for more than four minutes](https://community.pivotal.io/s/article/Azure-Networking-Connection-Idle-for-more-than-Four-minutes) in the Knowledge Base.
