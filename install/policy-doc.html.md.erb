@@ -1,18 +1,19 @@
 ---
-title: Ops Manager for AWS policy document
+title: Tanzu Operations Manager for AWS policy document
 owner: Ops Manager
 ---
 
 You can use this policy document to complete the procedure in [Create an IAM User for <%= vars.ops_manager %>](../aws/prepare-env-manual.html#create-iam) in
 _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
-## <a id='policy-code'></a> The policy document base code
+## <a id='policy-code'></a> Policy document base code
 
 <p> For the S3 Bucket policy sections, make sure to update the generic bucket naming with your custom/unique bucket names.</p>
 
-From the AWS Management Console, copy and paste the following text in the **Policy Document** field.
+From the AWS Management Console, copy and paste the following text in the **Policy Document** text box.
 
-You may want to consider adding more policies to enable additional features. For more information, see [Add Additional AWS Policies](#add-policies) below.
+You might want to consider adding more policies to enable additional features.
+For more information, see [Add additional AWS policies](#add-policies).
 
 <pre class="terminal">
 
@@ -150,9 +151,10 @@ You may want to consider adding more policies to enable additional features. For
 
 ## <a id='add-policies'></a> Add additional AWS policies
 
-To perform specific tasks, you may need to add additional policies to your **Policy Document** field in the AWS Management Console.
+To perform specific tasks, you might need to add additional policies to your **Policy Document** text box in the AWS Management Console.
 
-Consult the table below to determine what additional policies you may want to include. Then paste the code from the corresponding row. Enter the code in your existing policy after any `},`.
+Consult the following table to determine what additional policies you might want to include. Then paste the
+code from the corresponding row. Enter the code in your existing policy after any `},`.
 
 <table>
     <tr>
@@ -283,4 +285,4 @@ Consult the table below to determine what additional policies you may want to in
         </tr>
 </table>
 
-For more information about AWS policies, see [Example Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html) in the AWS documentation.
+For more information about AWS policies, see [Example policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html) in the AWS documentation.

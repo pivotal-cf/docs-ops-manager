@@ -1,16 +1,19 @@
 ---
-title: Logging into Ops Manager VMs with SSH
+title: Logging into Tanzu Operations Manager VMs with SSH
 owner: Ops Manager
 ---
 
-To troubleshoot your <%= vars.ops_manager_first %> deployments, you might need to SSH into the <%= vars.ops_manager %> VM or BOSH Director VM. This topic describes how you can use SSH to connect to the <%= vars.ops_manager %> VM or the BOSH Director VM.
+To troubleshoot your <%= vars.ops_manager_first %> deployments, you might need to SSH into
+the <%= vars.ops_manager %> VM or BOSH Director VM. You can use SSH to connect to
+the <%= vars.ops_manager %> VM or the BOSH Director VM.
 
-After you successfully SSH into the <%= vars.ops_manager %> VM, you can perform troubleshooting operations. For more information about troubleshooting, see [Advanced Troubleshooting with the BOSH CLI](trouble-advanced.html).
+After you successfully SSH into the <%= vars.ops_manager %> VM, you can perform troubleshooting operations.
+For more information about troubleshooting, see [Advanced troubleshooting with the BOSH CLI](trouble-advanced.html).
 
-## <a id='ssh-by-iaas'></a> Log into the <%= vars.ops_manager %> VM with SSH
+## <a id='ssh-by-iaas'></a> Log in to <%= vars.ops_manager %> VM with SSH
 
 <%= partial "../common/ssh-to-om" %>
 
-## <a id='bosh-director-ssh'></a> Log into the BOSH Director VM with SSH
+## <a id='bosh-director-ssh'></a> Log in to the BOSH Director VM with SSH
 
 <%= partial "../common/ssh-to-bosh" %>

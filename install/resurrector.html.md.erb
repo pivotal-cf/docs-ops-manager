@@ -3,7 +3,7 @@ title: Using the BOSH Resurrector
 owner: Ops Manager
 ---
 
-This topic describes the BOSH Resurrector, which monitors VMs and recreates VMs that become unavailable.
+This topic tells you about the BOSH Resurrector, which monitors VMs and recreates VMs that become unavailable.
 You can enable the BOSH Resurrector to ensure high availability (HA) for your <%= vars.ops_manager_first %> deployment.
 
 For vSphere users, this topic explains how to enable vSphere HA to work along with the BOSH Resurrector.
@@ -15,7 +15,7 @@ For vSphere users, this topic explains how to enable vSphere HA to work along wi
 For more information about the BOSH Resurrector, see
 the [Auto-healing Capabilities](https://bosh.io/docs/resurrector/) section of the BOSH documentation.
 
-## <a id='about-resurrector'></a> How the BOSH Resurrector increases Ops Manager availability
+## <a id='about-resurrector'></a> How the BOSH Resurrector increases Tanzu Operations Manager availability
 
 The BOSH Resurrector increases <%= vars.ops_manager %> availability in the following ways:
 
@@ -46,15 +46,15 @@ To enable the BOSH Resurrector:
 
 1. Log into the <%= vars.ops_manager %> web interface.
 
-1. On the Product Dashboard, select **BOSH Director**.
+1. On the Product Dashboard, click **BOSH Director**.
 
     ![alt-text=""](images/director-tile-vmware.png)
 
-1. In the left navigation menu, select **Director Config**.
+1. In the navigation menu, click **Director Config**.
 
     ![alt-text=""](images/resurrector/resurrector.png)
 
-1. Select **Enable VM Resurrector Plugin** and click **Save**.
+1. Click **Enable VM Resurrector Plugin** and then click **Save**.
 
 
 ## <a id='vsphere-ha'></a> vSphere HA
@@ -74,7 +74,7 @@ To enable vSphere High Availability:
 1. Run the vSphere Management Console.
 
 1. In the left panel, right-click the cluster that contains
-the [<%= vars.ops_manager %>](https://network.pivotal.io/products/pivotal-cf) deployment and select **Edit Settings**.
+the [<%= vars.ops_manager %>](https://tanzu.vmware.com/products) deployment and click **Edit Settings**.
 
 1. Select the **Turn on vSphere High Availability** check box.
 
