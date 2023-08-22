@@ -1,5 +1,5 @@
 ---
-title: Using custom certificate authorities in Ops Manager
+title: Using custom certificate authorities in Tanzu Operations Manager
 owner: OpsMan
 ---
 
@@ -9,8 +9,9 @@ To secure traffic in your <%= vars.ops_manager %> deployment, you must provide a
 
 <%= vars.company_name %> recommends you supply a CA from a trusted provider when using a production environment. While you can create your own custom CAs if necessary, a trusted CA is more secure because it has been authenticated by the trusted entities permitted to issue them.
 
-<p class='note'><strong>Note:</strong> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
+<p> Elliptic Curve Digital Signature Algorithm (ECDSA) certificates are not supported in <%= vars.ops_manager %>.</p>
 
 ## <a id='add-custom-ca'></a> Add a custom CA
 
-You can add a new custom CA as part of the procedure for rotating CAs and other certificate types in <%= vars.ops_manager %>. To add and activate a new custom CA in <%= vars.ops_manager %>, see [Rotating CAs and Leaf Certificates](rotate-cas-and-leaf-certs.html).
+You can add a new custom CA as part of the procedure for rotating CAs and other certificate types in <%= vars.ops_manager %>. To add and activate a new
+custom CA in <%= vars.ops_manager %>, see [Rotating CAs and Leaf Certificates](rotate-cas-and-leaf-certs.html).
