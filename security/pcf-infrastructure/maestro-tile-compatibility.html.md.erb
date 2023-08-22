@@ -1,13 +1,13 @@
 ---
-title: Ops Manager tiles that are compatible with CredHub Maestro
+title: Tanzu Operations Manager tiles that are compatible with CredHub Maestro
 owner: CredHub Maestro
 ---
 
 This topic describes which <%= vars.ops_manager_first %> tiles are compatible or not compatible with CredHub Maestro. A compatible tile has certificates that you can rotate using CredHub Maestro.
 
-For more information about CredHub Maestro, see [Getting Started with CredHub Maestro](getting-started-with-maestro-cli.html) and [Advanced Certificate Rotation with CredHub Maestro](advanced-certificate-rotation.html).
+For more information about CredHub Maestro, see [Getting started with CredHub Maestro](getting-started-with-maestro-cli.html) and [Advanced certificate rotation with CredHub Maestro](advanced-certificate-rotation.html).
 
-<p class='note'><strong>Note:</strong> If you see out-of-date or incorrect information on this page, please contact the CredHub team or log a GitHub issue.</p>
+<p> If you see out-of-date or incorrect information on this page, contact the CredHub team or log a GitHub issue.</p>
 
 <table border="1">
   <tr>
@@ -26,7 +26,8 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
       <ul>
         <li>The <%= vars.k8s_runtime_abbr %> certificate authorities (CAs) <code>kubo_ca_2018</code> and <code>etcd_ca_201</code>, as well as their leaf certificates. For more information, see <a href="https://docs.pivotal.io/tkgi/1-9/rotate-cluster-certificates.html#unique">Rotate Cluster-Specific Certificates (Non-NSX-T)</a> in <em>Rotating Cluster Certificates</em> in the <%= vars.k8s_runtime_abbr %> documentation.</li>
         <li>Cluster-specific <code>tls-nsx-t</code> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</li>
-        <li>CredHub-managed certificates for all other runtimes. For more information, see <a href="advanced-certificate-rotation.html#when-to-use">When to Use CredHub Maestro for Certificate Rotation</a> in <em>Advanced Certificate Rotation with CredHub Maestro</em>.</li>
+        <li>CredHub-managed certificates for all other runtimes.
+        For more information, see <a href="advanced-certificate-rotation.html#when-to-use">When to use CredHub Maestro for certificate rotation</a> in <em>Advanced certificate rotation with CredHub Maestro</em>.</li>
       </ul>
     </td>
   </tr>
@@ -49,7 +50,7 @@ For more information about CredHub Maestro, see [Getting Started with CredHub Ma
     <td>ipsec</td>
     <td><em>n/a</em></td>
     <td>No</td>
-    <td>IPsec uses its own rotation method. For more information, see <a href="https://docs.pivotal.io/addon-ipsec/1-9/credentials.html">Rotating Active IPsec Certificates</a> in the IPsec documentation.</td>
+    <td>IPsec uses its own rotation method. For more information, see <a href="https://docs.vmware.com/en/IPsec-for-VMware-Tanzu/1.9/documentation/GUID-credentials.html">Rotating Active IPsec Certificates</a> in the IPsec documentation.</td>
   </tr>
   <tr>
     <td>Metric Store (alpha)</td>
