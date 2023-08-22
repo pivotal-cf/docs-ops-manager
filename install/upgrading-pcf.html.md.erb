@@ -1,9 +1,10 @@
 ---
-title: Upgrading your Ops Manager deployment
+title: Upgrading your Tanzu Operations Manager deployment
 owner: Ops Manager
 ---
 
-This topic describes how you can upgrade <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> to <%= vars.v_major_version %>, and then upgrade your product tiles.
+You can upgrade <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %>
+to <%= vars.v_major_version %>, and then upgrade your product tiles.
 
 <p class="note important">
 <span class="note__title"> Important</span> <strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>,
@@ -24,11 +25,11 @@ Jump upgrading describes the process of skipping minor versions when upgrading <
 
 To jump upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-1. Review the prerequisites and breaking changes described in [Jump Upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](../jump-upgrades.html).
+1. Review the prerequisites and breaking changes described in [Jump upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>](../jump-upgrades.html).
 
-1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
+1. Complete the steps to prepare <%= vars.ops_manager %>, the BOSH Director, and BOSH-managed add-ons for upgrading in [Upgrade preparation checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html). Do not complete the steps to prepare <%= vars.app_runtime_abbr %> for upgrading.
 
-1. Follow the procedure in this topic to upgrade <%= vars.ops_manager %>, starting at [Task 1: Prepare to Upgrade](#prepare). Do not complete the steps to upgrade <%= vars.app_runtime_abbr %>.
+1. Follow the procedure in this topic to upgrade <%= vars.ops_manager %>, starting at [Task 1: Prepare to upgrade](#prepare). Do not complete the steps to upgrade <%= vars.app_runtime_abbr %>.
 
 
 ## <a id='upgrade-tas'></a> Upgrade <%= vars.app_runtime_abbr %>
@@ -37,31 +38,31 @@ Although you can skip minor versions when upgrading <%= vars.ops_manager %>, you
 
 If you are upgrading <%= vars.app_runtime_abbr %> to the next minor release:
 
-1. Locate the version of [Upgrade Preparation Checklist for <%= vars.ops_manager %>](../upgrade/checklist.html) that is specific to the minor release version to which you are upgrading and complete the steps that are specific to <%= vars.app_runtime_abbr %>.
+1. Locate the version of [Upgrade preparation checklist for <%= vars.ops_manager %>](../upgrade/checklist.html) that is specific to the minor release version to which you are upgrading and complete the steps that are specific to <%= vars.app_runtime_abbr %>.
 
 1. For more information, see the versions
-of [Configuring <%= vars.app_runtime_abbr %> for Upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
+of [Configuring <%= vars.app_runtime_abbr %> for upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
 
 
 ## <a id='prepare'></a> Task 1: Prepare to upgrade
 
-If you have not already, complete the steps in [Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html).
+If you have not already, complete the steps in [Upgrade preparation checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>](../upgrade/checklist.html).
 
 ## <a id='upgrade_ops'></a> Task 2: Upgrade <%= vars.ops_manager %> and installed products to <%= vars.v_major_version %>
 
 The following sections describe how to upgrade <%= vars.ops_manager %> and installed products to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
-* [Import Installation to <%= vars.ops_manager %> <%= vars.v_major_version %> VM](#upgrade)
-* [Import New <%= vars.app_runtime_abbr %> and Product Tiles](#upgrade-products)
-* [Perform Your Upgrade](#perform-upgrade)
-* [Restage Apps](#restage-apps)
+* [Import installation to <%= vars.ops_manager %> <%= vars.v_major_version %> VM](#upgrade)
+* [Import new <%= vars.app_runtime_abbr %> and product tiles](#upgrade-products)
+* [Perform your upgrade](#perform-upgrade)
+* [Restage apps](#restage-apps)
 
 ### <a id='upgrade'></a> Import installation to <%= vars.ops_manager %> <%= vars.v_major_version %> VM
 
 To import your <%= vars.ops_manager %> installation to the <%= vars.ops_manager %> <%= vars.v_major_version %> VM:
 
 1. Download the <%= vars.ops_manager %> VM Template <%= vars.v_major_version %> from
-the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) download page on VMware Tanzu Network.
+the [<%= vars.ops_manager %>](https://tanzu.vmware.com/products) download page on VMware Tanzu Network.
 
 1. Record the fully qualified domain name (FQDN) address of the existing <%= vars.ops_manager %> VM.
 
@@ -74,7 +75,7 @@ the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) d
     * **OpenStack:** [Deploying <%= vars.ops_manager %> on OpenStack](../openstack/setup.html).
     * **vSphere:** [Deploying <%= vars.ops_manager %> on vSphere](../vsphere/deploy.html).
 
-1. When redirected to the **Welcome to <%= vars.ops_manager %>** page, select **Import Existing Installation**.
+1. When redirected to the **Welcome to <%= vars.ops_manager %>** page, click **Import Existing Installation**.
 
     ![alt-text=""](images/upgrading/welcome.png)
 
@@ -82,7 +83,7 @@ the [<%= vars.ops_manager %>](https://network.pivotal.io/products/ops-manager) d
 You set this passphrase during your initial installation of <%= vars.ops_manager %>.
     <p> If lost, the <strong>Decryption Passphrase</strong> cannot be recovered.</p>
 
-1. Click **Choose File** and browse to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
+1. Click **Choose File** and go to the installation ZIP file exported in the installation export step of your upgrade preparation. For more information, see [Export Your Installation](../upgrade/checklist.html#export) in _Upgrade Preparation Checklist for <%= vars.ops_manager %> <%= vars.v_major_version %>_.
 
     ![alt-text=""](images/upgrading/decryption_passphrase.png)
 
@@ -111,35 +112,37 @@ To upgrade your product versions:
 
 1. Click **IMPORT A PRODUCT** to upload the product file.
 
-1. Under **IMPORT A BUTTON**, click **+** next to tile. This adds the tile to your staging area.
+1. In **IMPORT A BUTTON**, click **+** next to tile. This adds the tile to your staging area.
 
 1. Click the newly-added tile to review and save any configurable options.
 
-1. (Optional) If you use other service tiles, you can upgrade them following the same procedure. For more information, see [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html).
+1. (Optional) If you use other service tiles, you can upgrade them following the same procedure.
+For more information, see [Upgrading <%= vars.app_runtime_abbr %> and other <%= vars.ops_manager %> products](upgrading-products.html).
 
-### <a id='perform-upgrade'></a> Perform your upgrade
+### <a id='perform-upgrade'></a> Complete your upgrade
 
 <p> If the installation fails or returns errors, contact <%= vars.support_link %>. Do not attempt to roll back the upgrade by restarting the previous version's <%= vars.ops_manager %> VM.</p>
 
-To perform your upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
+To complete your upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>:
 
 1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
-1. Click **Review Pending Changes**, then **Apply Changes**. This immediately imports and applies upgrades to all tiles in a single transaction.
+1. Click **Review Pending Changes**, then click **Apply Changes**. This immediately imports and applies upgrades to all tiles in a single transaction.
 
-1. Click each service tile, select the **Status** tab, and confirm that all VMs appear and are in good health.
+1. Click each service tile, click the **Status** tab, and confirm that all VMs appear and are in good health.
 
-1. After confirming that the new installation functions correctly, remove the previous version's <%= vars.ops_manager %> VM.
+1. After confirming that the new installation functions correctly, remove the previous
+version's <%= vars.ops_manager %> VM.
 
 
 ## <a id='monitor'></a> Task 3: Monitor the upgrade (optional)
 
 The following sections describe how to monitor your <%= vars.ops_manager %> foundation during the upgrade and troubleshoot issues:
 
-* [Check Status and Performance](#status)
-* [Check Diego State](#diego)
-* [Take Snapshots of Storage Metrics](#storage)
-* [Collect Logs](#collect-logs)
+* [Check status and performance](#status)
+* [Check Diego state](#diego)
+* [Take snapshots of storage metrics](#storage)
+* [Collect logs](#collect-logs)
 
 ### <a id='status'></a> Check status and performance
 
@@ -227,11 +230,11 @@ This information helps determine the cause of upgrade issues.
 The following sections describe how to prepare for use of your new environment, check its health status,
 and clean up after upgrading:
 
-* [Re-Create BOSH Alias](#bosh-alias)
-* [Install New cf CLI](#cf-cli)
-* [Check the Health of Your Deployment](#health)
-* [Check Resource Settings](#resource-settings)
-* [Run BOSH Clean-Up](#bosh-cleanup)
+* [Recreate BOSH Alias](#bosh-alias)
+* [Install new cf CLI](#cf-cli)
+* [Check the health of your deployment](#health)
+* [Check resource settings](#resource-settings)
+* [Run BOSH clean-up](#bosh-cleanup)
 
 ### <a id='bosh-alias'></a> Recreate BOSH alias
 
@@ -253,7 +256,7 @@ To recreate your alias using BOSH:
 
 To install the version of the Cloud Foundry Command Line Interface (cf CLI) packaged with the <%= vars.app_runtime_abbr %> tile on VMware Tanzu Network:
 
-1. Go to the [<%= vars.app_runtime_full %>](https://network.pivotal.io/products/elastic-runtime/) download page on VMware Tanzu Network.
+1. Go to the [<%= vars.app_runtime_full %>](https://www.vmware.com/products.html) download page on VMware Tanzu Network.
 
 1. Click the **CF CLI** download button.
 
@@ -294,7 +297,7 @@ To check your custom resource settings:
 
 1. Go to the Installation Dashboard and click the **BOSH Director** tile.
 
-1. Select **Resource Config**.
+1. Click **Resource Config**.
 
 1. Ensure that the values for **VM Type** and **Persistent Disk Type** are correct.
 
@@ -307,7 +310,7 @@ To clean up old stemcells, releases, orphaned disks, and other unused resources:
     ```
     bosh -e ALIAS clean-up --all
     ```
-    Where `ALIAS` is the BOSH alias you are re-creating.
+    Where `ALIAS` is the BOSH alias you are recreating.
 
 ### <a id='restage-apps'></a> Restage apps
 
@@ -315,4 +318,4 @@ VMware recommends telling developers to restage any apps that use buildpacks tha
 
 For more information about how developers can restage apps,
 see
-[Restage Your App](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/deploy-apps-start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.
+[Restage your app](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/deploy-apps-start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.

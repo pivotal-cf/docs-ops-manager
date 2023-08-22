@@ -1,9 +1,9 @@
 ---
-title: Upgrading TAS for VMs and other Ops Manager products
+title: Upgrading TAS for VMs and other Tanzu Operations Manager products
 owner: RelEng
 ---
 
-This topic describes how you can upgrade to a point release (for example, from <%= vars.v_major_version %>.0 to <%= vars.v_major_version %>.1) of <%= vars.app_runtime_first %> and other product tiles without upgrading <%= vars.ops_manager_first %>. You might need to perform this upgrade if a security update for <%= vars.app_runtime_abbr %> is released, or if new features are introduced in a point release of a product tile.
+You can upgrade to a point release (for example, from <%= vars.v_major_version %>.0 to <%= vars.v_major_version %>.1) of <%= vars.app_runtime_first %> and other product tiles without upgrading <%= vars.ops_manager_first %>. You might need to perform this upgrade if a security update for <%= vars.app_runtime_abbr %> is released, or if new features are introduced in a point release of a product tile.
 
 For <%= vars.app_runtime_abbr %> component and version information, see the [<%= vars.app_runtime_abbr %>
 documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/runtime-rn.html).
@@ -18,7 +18,7 @@ Before you upgrade to point releases:
 
 * You must have completed the procedure in [Upgrading <%= vars.ops_manager %>](upgrading-pcf.html).
 
-* For the latest compatibility information, see [Upgrade Planner](https://upgrade-planner.pivotal.io/) before upgrading <%= vars.app_runtime_abbr %>.
+* For the latest compatibility information, see [Upgrade planner](https://upgrade-planner.pivotal.io/) before upgrading <%= vars.app_runtime_abbr %>.
 
 * **Important:** Read the _Known Issues_ sections for the products that you plan to install
 before starting. For all available product release notes, see:
@@ -30,7 +30,7 @@ before starting. For all available product release notes, see:
   in the <%= vars.app_runtime_abbr %> documentation
   * [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/release-notes.html)
   in the <%= vars.windows_runtime_first %> documentation
-  * [Release Notes](https://docs.pivotal.io/tkgi/release-notes.html) in the <%= vars.k8s_runtime_first %> documentation
+  * [Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.17/tkgi/GUID-release-notes.html) in the <%= vars.k8s_runtime_first %> documentation
 
 ## <a id='check-disk-space'></a> Check BOSH Director disk space
 
@@ -44,11 +44,11 @@ before starting. For all available product release notes, see:
   the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
   Dashboard.
   For more information, see <a href="add-delete.html#pivnet-api">Using
-  <%= vars.product_network %> API to Upgrade Products</a> in <em>Adding and Deleting Products</em>.</p>
+  <%= vars.product_network %> API to upgrade products</a> in <em>Adding and Deleting Products</em>.</p>
 
 To upgrade <%= vars.app_runtime_abbr %> without upgrading <%= vars.ops_manager %>:
 
-1. Download the product file from [<%= vars.product_network %>](https://network.pivotal.io/).
+1. Download the product file from [<%= vars.product_network %>](https://www.vmware.com/products.html).
 
 1. Import the product file to your <%= vars.ops_manager %> Installation Dashboard.
 
@@ -67,7 +67,7 @@ staging area.
 <p> If you use the <%= vars.product_network %> API,
   the latest product versions automatically appear in the <%= vars.ops_manager %> Installation
   Dashboard. For more information, see <a href="add-delete.html#pivnet-api">Using
-  <%= vars.product_network %> API to Upgrade Products</a> in <em>Adding and Deleting Products</em>.</p>
+  <%= vars.product_network %> API to upgrade products</a> in <em>Adding and Deleting Products</em>.</p>
 
 This section describes how to upgrade individual products like [Single Sign-On for VMware Tanzu](https://docs.pivotal.io/p-identity/index.html),
 [VMware Tanzu SQL [MySQL]](https://docs.vmware.com/en/VMware-SQL-with-MySQL-for-Tanzu-Application-Service/<%= vars.current_major_version %>/mysql-for-tas/index.html),
@@ -77,7 +77,7 @@ Ensure you review the individual product upgrade procedure for each tile.
 
 To upgrade your products:
 
-1. Browse to [<%= vars.product_network %>](https://network.pivotal.io/) and sign in.
+1. Browse to [<%= vars.product_network %>](https://www.vmware.com/products.html) and sign in.
 
 1. Download the latest release for the product or products that you want to upgrade. Every
 product is tied to exactly one stemcell. Download the stemcell that matches your product and
@@ -138,7 +138,7 @@ tile.
 To upgrade your replicated tile to <%= vars.segment_runtime_full %> v2:
 
 1. Download and unzip the new Replicator from
-the [<%= vars.segment_runtime_full %>](https://network.pivotal.io/products/p-isolation-segment/) page on <%= vars.product_network %>.
+the [<%= vars.segment_runtime_full %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/isolation-segments.html) page on <%= vars.product_network %>.
 You must download the version of Replicator that corresponds with the version of the
 <%= vars.segment_runtime_full %> tile you want to replicate.
 
