@@ -1,10 +1,10 @@
 ---
-title: AVS reference architecture for Ops Manager and runtimes
+title: AVS reference architecture for Tanzu Operations Manager
 owner: TAS Journey Platform Provider Experience
 ---
 
-This topic describes a Azure VMware Solution (AVS) reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %>.
-This architecture builds on the common base architectures described in [Architecture and planning for Ops Manager and runtimes](../index.html).
+This topic describes the Azure VMware Solution (AVS) reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %>.
+This architecture builds on the common base architectures described in [Platform architecture and planning](../index.html).
 
 For additional requirements and installation instructions for <%= vars.ops_manager %> on AVS, see the [<%= vars.app_runtime_abbr %>
 documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/avs.html).
@@ -18,27 +18,27 @@ The AVS reference architecture for the <%= vars.app_runtime_abbr %> runtime tile
 
 ## <a id='pas-nsx-t'></a> <%= vars.app_runtime_abbr %> on AVS with NSX-T
 
-These sections describe the reference architecture for <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments.
+The following sections describe the reference architecture for <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments.
 They also provide requirements and recommendations for deploying <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on AVS with NSX-T,
 such as network, load balancing, and storage capacity requirements and recommendations.
 
 <%= vars.app_runtime_abbr %> on AVS with NSX-T supports these following SDN features:
 
-* Virtualized, encapsulated networks and encapsulated broadcast domains
+* Virtualized, encapsulated networks and encapsulated broadcast domains.
 
-* VLAN exhaustion avoidance with the use of virtualized Logical Networks
+* VLAN exhaustion avoidance with the use of virtualized Logical Networks.
 
-* DNAT/SNAT services to create separate, non-routable network spaces for the <%= vars.app_runtime_abbr %> installation
+* DNAT/SNAT services to create separate, non-routable network spaces for the <%= vars.app_runtime_abbr %> installation.
 
-* Load balancing services to pass traffic through Layer 4 to pools of platform routers at Layer 7
+* Load balancing services to pass traffic through Layer 4 to pools of platform routers at Layer 7.
 
-* SSL termination at the load balancer at Layer 7 with the option to forward on at Layer 4 or 7 with unique certificates
+* SSL termination at the load balancer at Layer 7 with the option to forward on at Layer 4 or 7 with unique certificates.
 
-* Virtual, distributed routing and firewall services native to the hypervisor
+* Virtual, distributed routing and firewall services native to the hypervisor.
 
 ### <a id='pas-nsx-t-diagram'></a> Architecture
 
-The diagram below illustrates reference architecture for <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments:
+The following diagram illustrates reference architecture for <%= vars.app_runtime_abbr %> on AVS with NSX-T deployments:
 
 ![alt-text="Architecture on AVS with NSX-T deployment. For information about the components and networking in the diagram, see the description that follows."](../images/v2/export/PAS_vSphere_NSX-T.png)
 
@@ -54,10 +54,10 @@ Several Tier-1 routers, such as the router for the <%= vars.app_runtime_abbr %> 
 
 <%= vars.app_runtime_abbr %> deployments require the VMware NSX-T Container Plugin to enable the SDN features available through NSX-T.
 
-The NSX-T Container Plugin enables a container networking stack and integrates with NSX-T.
+The NSX-T Container Plug-in enables a container networking stack and integrates with NSX-T.
 
 <p> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plug-in must be installed, configured, and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plug-in, go
-to the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
+to the <a href="https://tanzu.vmware.com/products">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
 
 ### <a id='pas-nsx-t-networking'></a> Networking
 
@@ -80,7 +80,7 @@ The Tier-0 router must have routable external IP address space to advertise on t
 
 <%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
 
-For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
+For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain names](../index.html#pas-domains) in _Platform Planning and Architecture_.
 
 #### <a id='pas-nsx-t-load-balancing'></a> Load balancing
 
@@ -110,7 +110,7 @@ The requirements and recommendations related to networks, subnets, and IP addres
 
 * NSX-T dynamically assigns <%= vars.app_runtime_abbr %> org networks and adds a Tier-1 router. These org networks are automatically instantiated based on a non-overlapping block of address space. You can configure the block of address space in the **NCP Configuration** section of the NSX-T tile in <%= vars.ops_manager %>. The default is `/24`. This means that every org in <%= vars.app_runtime_abbr %> is assigned a new `/24` network.
 
-For more information about <%= vars.app_runtime_abbr %> subnets, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
+For more information about <%= vars.app_runtime_abbr %> subnets, see [Required subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
 ### <a id='pas-nsx-t-ha'></a> High availability
 

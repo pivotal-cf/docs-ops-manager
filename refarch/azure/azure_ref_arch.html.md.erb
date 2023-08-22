@@ -1,5 +1,5 @@
 ---
-title: Azure reference architecture for Ops Manager and runtimes
+title: Azure reference architecture for Tanzu Operationas Manager
 owner: Customer0
 ---
 
@@ -11,7 +11,8 @@ For additional requirements and installation instructions for running <%= vars.o
 Azure Virtual Data Center (VDC) uses a hub and spoke model for extending on-premises data centers. For more
 information about VDC, see the [Azure Virtual Datacenter e-book](https://azure.microsoft.com/en-us/resources/azure-virtual-datacenter/).
 
-When installing <%= vars.ops_manager %>, you can use this model to place resources in resource groups. For example, an
+When you install <%= vars.ops_manager %>, you can use this model to place resources in resource groups.
+For example, an
 <%= vars.ops_manager %> installation contains:
 
 * **Hub**:
@@ -24,7 +25,7 @@ security policies.
     <%= vars.k8s_runtime_abbr %> resource groups for all <%= vars.app_runtime_abbr %> or
     <%= vars.k8s_runtime_abbr %> resources.
 
-### <a id='diagram'></a> Diagram
+### <a id='diagram'></a> Reference architecture diagram
 
 The following diagram illustrates the reference architecture for <%= vars.ops_manager %> on Azure using the hub and spoke
 model described above.
@@ -161,7 +162,7 @@ The following diagram illustrates <%= vars.app_runtime_abbr %> deployed on Azure
 AZs have the following advantages:
 
 * VMs and other zonal services deployed to independent zones provide greater physical separation than Fault Domains and
-avoid the placement group pinning issue associated with Availability Sets.
+avoid the placement group pinning issue associated with Availability sets.
 
 * Zonal services are effectively in separate Update Domains as updates are rolled out to one zone at a time.
 
@@ -169,15 +170,15 @@ avoid the placement group pinning issue associated with Availability Sets.
 physical zone. This allows services of different types to take advantage of the highly available qualities that a zone
 provides.
 
-### <a id='AS'></a> Availability Sets
+### <a id='AS'></a> Availability sets
 
-Availability Sets were the first Azure primitive to support high availability within a region.
+Availability sets were the first Azure primitive to support high availability within a region.
 
 <p class="note caution">
 <span class="note__title">Caution</span>
 Availability Sets are implemented at the hardware rack level, which
 can cause issues when deploying <%= vars.ops_manager %> on Azure. For more information, see
-<a href="#placement-group-pinning">Placement Group Pinning Issues</a>.
+<a href="#placement-group-pinning">Placement group pinning issues</a>.
 </p>
 
 Availability Sets have the following properties:

@@ -1,5 +1,5 @@
 ---
-title: AWS reference architecture for Ops Manager
+title: AWS reference architecture for Tanzu Operations Manager
 owner: Customer0
 ---
 
@@ -11,11 +11,12 @@ For general requirements for running <%= vars.ops_manager %> and specific requir
 
 This section describes a reference architecture for a <%= vars.app_runtime_abbr %> installation on AWS.
 
-### <a id='diagram'></a> Diagram
+### <a id='diagram'></a> Reference architecture diagram
 
-The following diagram illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
+The following diagram illustrates the reference architecture for <%= vars.app_runtime_abbr %> on AWS.
+The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
 
-* Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
+* Infrastructure subnet (with Tanzu Operations Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
 * 3 TAS subnets
 * 3 Services subnets
 * On-demand Services subnets
@@ -150,7 +151,7 @@ These sections describe a reference architecture for a <%= vars.k8s_runtime_abbr
 
 The following diagram illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader internet into the VPC Network. Categories of elements in the VPC Network include:
 
-* Infrastructure subnet (with Ops Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
+* Infrastructure subnet (with Tanzu Operations Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
 * 3 Services subnets
 * 3 PKS subnets
 * Kubernetes Pods subnet
@@ -230,12 +231,12 @@ These options are available for choosing your network topology:
   </tr>
 </table>
 
-### <a id='pks-rds'></a> RDS
+### <a id='pks-rds'></a> RDS instance
 
-Use a single RDS instance for BOSH. This instance requires a database. For more information, see [Step 3: Director Config Page](../../aws/config-manual.html#pcfaws-om-dirconfig) in _Configuring BOSH Director on AWS_.
+Use a single RDS instance for BOSH. This instance requires a database. For more information, see [Step 3: Director Config page](../../aws/config-manual.html#pcfaws-om-dirconfig) in _Configuring BOSH Director on AWS_.
 
 ### <a id='pks-id'></a> Identity management
 
-To create and manage Kubernetes master and worker nodes, use Instance Profiles. For more information, see [Kubernetes Cloud Provider](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-installing-aws.html#cloud-provider) in _Installing Enterprise <%= vars.k8s_runtime_abbr %> on AWS_.
+To create and manage Kubernetes master and worker nodes, use Instance Profiles. For more information, see [Kubernetes cloud provider](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-installing-aws.html#cloud-provider) in _Installing Enterprise <%= vars.k8s_runtime_abbr %> on AWS_.
 
 For information about installing the required AWS constructs for <%= vars.k8s_runtime_abbr %>, see [Installing <%= vars.ops_manager %> on AWS](../../install/aws.html).
