@@ -3,7 +3,7 @@ title: Upgrading vSphere without causing downtime for your runtime
 owner: Customer0
 ---
 
-This topic describes how to upgrade the vSphere components that host your runtime deployment, either <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %>, without disrupting service.
+You can upgrade the vSphere components that host your runtime deployment, either <%= vars.app_runtime_first %> or <%= vars.k8s_runtime_first %>, without disrupting service.
 
 ## <a id='overview'></a> Minimum requirements
 
@@ -22,9 +22,9 @@ in downtime for <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %>.
 
 ## <a id='rec_start'></a> Recommended starting configuration
 
-If you are running a <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %> deployment
-following the base reference architecture described in [vSphere Reference Architecture](vsphere_ref_arch.html),
-your vSphere deployment should have these components:
+If you run a <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_abbr %> deployment
+following the base reference architecture described in [vSphere Reference architecture](vsphere_ref_arch.html),
+your vSphere deployment has these components:
 
 * One vCenter Server
 
@@ -40,12 +40,12 @@ your vSphere deployment should have these components:
 
 ## <a id='upgrade_procedure'></a> Upgrade vSphere
 
-These sections describe the procedure to upgrade the vSphere management layer that underlies <%= vars.ops_manager %>.
+The following sections describe the procedure to upgrade the vSphere management layer that underlies <%= vars.ops_manager %>.
 
 ### <a id='upgrade_vcenter'></a> Step 1: Upgrade vCenter
 
-For more information about how to upgrade vCenter, see [Overview of the vCenter Server Upgrade
-Process](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-C5CBFB63-4E95-4143-BA89-89AA5D292C68.html?hWord=N4IghgNiBcIG4GMCmA7ALkgTgAgM5bi2wFcAHAc0zABMltTMB7ZXXEAXyA) in the
+For more information about how to upgrade vCenter, see [Overview of the vCenter server upgrade
+process](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-C5CBFB63-4E95-4143-BA89-89AA5D292C68.html?hWord=N4IghgNiBcIG4GMCmA7ALkgTgAgM5bi2wFcAHAc0zABMltTMB7ZXXEAXyA) in the
 vSphere documentation.
 
 ### <a id='upgrade_esxi'></a> Step 2: Upgrade ESXi hosts
@@ -67,7 +67,7 @@ vMotion places the VMs on the other hosts based on available capacity. For more 
 see [Migration with vMotion](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-D19EA1CB-5222-49F9-A002-4F8692B92D63.html?hWord=N4IghgNiBcILIEsDmAnMAXBB7AdgAgHcF0ALPANzi01xAF8g) in the vSphere documentation.
 
 1. Upgrade the evacuated ESXi host. For example, you might be upgrading from ESXi v6.0 to ESX
-v6.5. For more information, see [Upgrading ESXi Hosts](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-122035F6-8433-463E-A0F7-B4FC71A05B04.html?hWord=N4IghgNiBcIKoAcDmAnMATAlgOyQAgFEBlADUzwAkB7AZwBcaQBfIA) in the vSphere
+v6.5. For more information, see [Upgrading ESXi hosts](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-122035F6-8433-463E-A0F7-B4FC71A05B04.html?hWord=N4IghgNiBcIKoAcDmAnMATAlgOyQAgFEBlADUzwAkB7AZwBcaQBfIA) in the vSphere
 documentation.
 
 1. Repeat the previous steps for each remaining host, one at a time. vSphere automatically

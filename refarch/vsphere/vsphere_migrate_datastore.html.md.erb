@@ -1,5 +1,5 @@
 ---
-title: Migrating Ops Manager to a new datastore in vSphere
+title: Migrating Tanzu Operations Manager to a new datastore in vSphere
 owner: Customer0
 ---
 
@@ -58,7 +58,8 @@ Check the **Status** tab in your runtime product tiles, such as <%= vars.app_run
 
 ### <a id='tile_heatlh'></a> Step 4: Check installed products health
 
-In each tile installed in your <%= vars.ops_manager %> deployment, check the **Status** tab and make sure there are no errors or reported issues.
+In each tile installed in your <%= vars.ops_manager %> deployment, check the **Status** tab and verify
+there are no errors or reported issues.
 
 ### <a id='opsman_health'></a> Step 5: Check BOSH Director status
 
@@ -66,9 +67,9 @@ To check the status of your BOSH Director:
 
 1. Verify that there are no pending changes and that the status of all tiles is green.
 
-1. Make sure the last Installation Log does not contain any errors.
+1. Verify the last installation log does not contain any errors.
 
-1. Before proceeding with the migration, click **Review Pending Changes** and **Apply Changes** to make sure there are no errors in the Installation Log.
+1. Before you proceed with the migration, click **Review Pending Changes** and click **Apply Changes** to make sure there are no errors in the installation log.
 
 
 ## <a id='migrate_proc'></a> Procedure: Migrate <%= vars.ops_manager %> to a new datastore
@@ -79,10 +80,11 @@ To migrate your <%= vars.ops_manager %> deployment to a new datastore:
 
 1. Click the BOSH Director tile.
 
-1. Select **vCenter Config**.
+1. Click **vCenter Config**.
 
-1. Update the **Ephemeral Datastore Names** and **Persistent Datastore Names** fields to reflect the new datastore names.
-    <p> If you use the datastore clustering feature in vSphere, provide only the datastore cluster name in the <strong>Persistent Datastore Cluster Names</strong> // <strong>Ephemeral Datastore Cluster Names</strong> fields.</p>
+1. Update the **Ephemeral Datastore Names** and **Persistent Datastore Names** text boxes to reflect the new
+datastore names.
+<p> If you use the datastore clustering feature in vSphere, provide only the datastore cluster name in the <strong>Persistent Datastore Cluster Names</strong> // <strong>Ephemeral Datastore Cluster Names</strong> fields.</p>
 
 1. Click **Save**.
 
@@ -95,7 +97,7 @@ only the BOSH Director tile is still selected.
    1. From the vCenter, find the BOSH Director VM.
    2. In the **Related Objects** section, verify the storage has been updated to the new datastore.
 
-2. In the BOSH Director tile, select **Director Config**.
+2. In the BOSH Director tile, click **Director Config**.
 
 3. Select the **Recreate VMs deployed by the BOSH Director** option.
 
