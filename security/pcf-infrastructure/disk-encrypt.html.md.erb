@@ -1,15 +1,18 @@
 ---
-title: Encrypting Ops Manager VM disks
+title: Encrypting Tanzu Operations Manager VM disks
 owner: Security
 ---
 
 This topic describes how you can secure <%= vars.ops_manager_first %> VMs by encrypting their disks or rotating their disk encryption keys. Disk encryption protects data integrity if computing resources are stolen physically.
 
-Disk encryption for VMs works at the IaaS level. An IaaS encrypts disks when it first creates them, or re-encrypts them when it rotates encryption keys. To encrypt disks in <%= vars.ops_manager %>, you must:
+Disk encryption for VMs works at the IaaS level. An IaaS encrypts disks when it first creates them, or
+re-encrypts them when it rotates encryption keys.
 
-1. Configure the IaaS to encrypt disks when it creates or re-creates them.
+To encrypt disks in <%= vars.ops_manager %>, you must:
 
-1. Trigger BOSH to re-create the existing VMs that use the disks, and create encrypted disks from now on for new VMs.
+1. Configure the IaaS to encrypt disks when it creates or recreates them.
+
+1. Trigger BOSH to recreate the existing VMs that use the disks, and create encrypted disks from now on for new VMs.
 
 The procedures below describe how to do this for each IaaS.
 
@@ -48,7 +51,7 @@ For BOSH-deployed VMs, some IaaSes let you associate a policy with the BOSH proc
 
 Azure provides virtual disk space through Azure Storage accounts. In some regions, Azure offers a managed disks service for storage accounts, which allocates disk space flexibly on demand.
 
-For more information about Azure Storage, see [Introduction to Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction) in the Microsoft Azure documentation. For more information about managed disks, see [Introduction to Azure managed disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview) in the Microsoft Azure documentation.
+For more information about Azure Storage, see [Introduction to Azure storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction) in the Microsoft Azure documentation. For more information about managed disks, see [Introduction to Azure managed disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview) in the Microsoft Azure documentation.
 
 #### <a id='azure-sa-vs-md'></a> Managed disks versus unmanaged storage accounts
 
@@ -76,9 +79,9 @@ To initiate or rotate disk encryption for BOSH-deployed VMs on vSphere v6.5 or l
 
 1. Log in to vCenter.
 
-1. Follow the procedure in [Encrypt an Existing Virtual Machine or Virtual Disk](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-5E2C3F74-38C1-44C3-ABC5-C2C9353B9DC4.html) in the VMware documentation. If you are configuring volume encryption for <%= vars.k8s_runtime_abbr %>, change the **Default Storage Policy** to an existing encryption policy.
+1. Follow the procedure in [Encrypt an existing virtual machine or virtual disk](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.security.doc/GUID-5E2C3F74-38C1-44C3-ABC5-C2C9353B9DC4.html) in the VMware documentation. If you are configuring volume encryption for <%= vars.k8s_runtime_abbr %>, change the **Default Storage Policy** to an existing encryption policy.
 
-1. Follow the procedure in [Recreate BOSH-Deployed Disks](#re-create) procedure to propagate the change to existing VMs.
+1. Follow the procedure in [Recreate BOSH-deployed disks](#re-create) procedure to propagate the change to existing VMs.
 
 1. If you are configuring volume encryption for <%= vars.k8s_runtime_abbr %>:
     1. Delete the BOSH Director stemcell used for the <%= vars.k8s_runtime_abbr %> foundation from the disk using vSphere WebClient. For more information on how to delete the BOSH Director stemcell, see [How to recreate BOSH Director VM when the Stemcell is deleted from vSphere](https://community.pivotal.io/s/article/How-to-recreate-BOSH-Director-VM-when-the-Stemcell-is-deleted-from-vSphere?language=en_US).
