@@ -1,5 +1,5 @@
 ---
-title: Credential and identity management in Ops Manager
+title: Credential and identity management in Tanzu Operations Manager
 owner: Security
 ---
 
@@ -9,9 +9,9 @@ These topics describe different aspects of identity management in <%= vars.ops_m
 
 These topics provide general information about credential and identity management in <%= vars.ops_manager %>:
 
-* [<%= vars.app_runtime_abbr %> User Types](https://docs.pivotal.io/application-service/operating/user-types.html)
+* [<%= vars.app_runtime_abbr %> user types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/user-types.html)
 
-* [Retrieving credentials from your Ops Manager deployment](../../install/credentials.html)
+* [Retrieving credentials from your Tanzu Operations Manager deployment](../../install/credentials.html)
 
 
 ## <a id='credhub'></a> CredHub documentation
@@ -22,9 +22,9 @@ CredHub centralizes and secures credential generation, storage, lifecycle manage
 
 These topics provide general information about CredHub:
 
-* [CredHub](https://docs.pivotal.io/credhub/index.html)
+* [CredHub](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/credhub-index.html)
 
-* [CredHub Credential Types](https://docs.pivotal.io/credhub/credential-types.html)
+* [CredHub credential types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/credential-types.html)
 
 
 ## <a id='uaa'></a> UAA documentation
@@ -35,45 +35,45 @@ UAA supports access control as OAuth2 services and can store user information in
 
 These topics provide general information about UAA:
 
-* [UAA Overview](https://docs.pivotal.io/application-service/uaa/uaa-overview.html)
+* [UAA overview](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/uaa-overview.html)
 
-* [UAA Concepts](https://docs.pivotal.io/application-service/uaa/uaa-concepts.html)
+* [UAA concepts](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/uaa-concepts.html)
 
-* [UAA Architecture](https://docs.pivotal.io/application-service/concepts/architecture/uaa.html)
+* [UAA architecture](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/architecture-uaa.html)
 
-* [Identity Providers in UAA](https://docs.pivotal.io/application-service/uaa/identity-providers.html)
+* [Identity providers in UAA](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/identity-providers.html)
 
 
 ## <a id='pcf'></a> <%= vars.ops_manager %> roles and user accounts
 
-These topics describe how to manage <%= vars.ops_manager %> roles and user accounts in <%= vars.ops_manager %>:
+The following topics describe how to manage <%= vars.ops_manager %> roles and user accounts in <%= vars.ops_manager %>:
 
-* [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.pivotal.io/application-service/uaa/uaa-user-management.html)
+* [Creating and managing users with the UAA CLI (UAAC)](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/uaa-user-management.html)
 
-* [Adding Existing SAML or LDAP Users to an <%= vars.ops_manager %> Deployment](https://docs.pivotal.io/application-service/operating/external-user-management.html)
+* [Adding existing SAML or LDAP users to an <%= vars.ops_manager %> deployment](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/external-user-management.html)
 
 ### <a id='ops-man'></a> <%= vars.ops_manager %> roles and permissions
 
-These topics provide information about <%= vars.ops_manager %> roles and permissions:
+The following topics provide information about <%= vars.ops_manager %> roles and permissions:
 
 * [Creating UAA clients for the BOSH Director](../../install/opsmanager-create-bosh-client.html)
 
-* [Configuring Role-Based Access Control in Ops Manager](../../opsguide/config-rbac.html)
+* [Configuring role-based access control in Tanzu Operations Manager](../../opsguide/config-rbac.html)
 
-* [Creating and managing Ops Manager user and client accounts](../../install/opsman-users.html)
+* [Creating and managing Tanzu Operations Manager user and client accounts](../../install/opsman-users.html)
 
 ### <a id='pas'></a> <%= vars.app_runtime_first %> roles and permissions
 
-These topics provide information about <%= vars.app_runtime_abbr %> roles and permissions:
+The following topics provide information about <%= vars.app_runtime_abbr %> roles and permissions:
 
-* [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/application-service/concepts/roles.html)
+* [Orgs, spaces, roles, and permissions](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/roles.html)
 
-* [Creating New <%= vars.app_runtime_abbr %> User Accounts](https://docs.pivotal.io/application-service/operating/creating-account.html)
+* [Creating new <%= vars.app_runtime_abbr %> user accounts](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/creating-account.html)
 
-* [Managing User Roles with Apps Manager](https://docs.pivotal.io/application-service/console/console-roles.html)
+* [Managing user roles with Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/console-roles.html)
 
 ### <a id='pks'></a> <%= vars.k8s_runtime_first %> roles and permissions
 
-These topics provide information about <%= vars.k8s_runtime_abbr %> roles and permissions:
+This topics provides information about <%= vars.k8s_runtime_abbr %> roles and permissions:
 
-* [Managing Users in <%= vars.k8s_runtime_abbr %> with UAA](https://docs.pivotal.io/tkgi/manage-users.html)
+* [Managing users in <%= vars.k8s_runtime_abbr %> with UAA](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.17/tkgi/GUID-manage-users.html)
