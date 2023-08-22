@@ -1,5 +1,5 @@
 ---
-title: Configuring Role-Based Access Control in Ops Manager
+title: Configuring Role-Based Access Control in Tanzu Operations Manager
 owner: Ops Manager
 ---
 
@@ -7,21 +7,21 @@ This topic describes how you can customize role-based access control (RBAC) in <
 
 For information about configuring <%= vars.ops_manager %> to use internal authentication or SAML authentication, see the BOSH Manager configuration topic for your IaaS:
 
-* [Configuring BOSH Director on AWS](../aws/config-manual.html#access-om)
+* [Configuring BOSH Director on AWS](../aws/config-manual.html#access-om).
 
-* [Configuring BOSH Director on Azure](../azure/config-manual.html#access-om)
+* [Configuring BOSH Director on Azure](../azure/config-manual.html#access-om).
 
-* [Configuring BOSH Director on GCP](../gcp/config-manual.html#access-om)
+* [Configuring BOSH Director on GCP](../gcp/config-manual.html#access-om).
 
-* [Configuring BOSH Director on OpenStack](../openstack/config.html#log-in)
+* [Configuring BOSH Director on OpenStack](../openstack/config.html#log-in).
 
-* [Configuring BOSH Director on vSphere](../vsphere/config.html#set-up)
+* [Configuring BOSH Director on vSphere](../vsphere/config.html#set-up).
 
 ## <a id='about'></a> Roles in <%= vars.ops_manager %>
 
 The folllowing diagram illustrates the roles you can assign to determine which operators in your organization make deployment changes, view credentials, and manage user roles in <%= vars.ops_manager %>. Full details are also shown in the following table.
 
-![alt-text="Ops Manager roles diagram"](images/roles-diagram.png)
+![alt-text="Tanzu Operations Manager roles diagram"](images/roles-diagram.png)
 
 <%= vars.ops_manager %> admins can use these roles to meet the security needs of their organization. The roles provide a range of privileges that are appropriate for different types of users. For example, assign either **Restricted Control** or **Restricted View** to an operator to prevent access to all <%= vars.ops_manager %> credentials.
 
@@ -35,7 +35,7 @@ For more information about each role, see the following table:
 | **Full View** | Operators can view <%= vars.ops_manager %> configuration settings and view credentials in the **Credentials** tab and <%= vars.ops_manager %> API endpoints. They cannot make configuration changes or click **Apply Changes**. | `opsman.full_view` |
 | **Restricted View** | Operators can view <%= vars.ops_manager %> configuration settings. They cannot make configuration changes or view credentials in the **Credentials** tab or <%= vars.ops_manager %> API endpoints. | `opsman.restricted_view` |
 
-To assign one of the pfreceding roles to an operator, see [Manage Roles with Internal Authentication](#write-internal) or [Manage Roles with SAML Authentication](#write-saml).
+To assign one of the pfreceding roles to an operator, see [Manage roles with internal authentication](#write-internal) or [Manage roles with SAML authentication](#write-saml).
 
 When you install a new <%= vars.ops_manager %> instance, all existing users have the <%= vars.ops_manager %> Administrator role by default.
 
@@ -46,7 +46,7 @@ When you install a new <%= vars.ops_manager %> instance, all existing users have
 
 The interface does not provide visibility to other admins that are logged in. <%= vars.recommended_by %> recommends that admins communicate with each other and coordinate their changes.
 
-### <a id='write-user-precedence'></a> Precedence for Apply Changes
+### <a id='write-user-precedence'></a> Precedence for apply changes
 
 Only one deployment takes precedence when two admins try to deploy around the same time.
 
@@ -69,7 +69,7 @@ If you upgrade from an older <%= vars.ops_manager %> instance, you must enable R
 
 ### <a id='enable-internal'></a> Enable RBAC with internal authentication
 
-If you are upgrading from an older version of <%= vars.ops_manager %> and use internal authentication:
+If you upgrade from an earlier version of <%= vars.ops_manager %> and use internal authentication:
 
 1. Log in to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -84,7 +84,7 @@ If you are upgrading from an older version of <%= vars.ops_manager %> and use in
 
 ### <a id='enable-saml'></a> Enable RBAC with SAML authentication
 
-If you are upgrading from an older version of <%= vars.ops_manager %> and use SAML authentication, follow the procedures in these sections to enable RBAC. To enable RBAC in <%= vars.ops_manager %> when using SAML authentication, you must configure groups in SAML for admins and non-admins and then map the admin group to <%= vars.ops_manager %>.
+If you upgrade from an earlier version of <%= vars.ops_manager %> and use SAML authentication, follow the procedures in these sections to enable RBAC. To enable RBAC in <%= vars.ops_manager %> when using SAML authentication, you must configure groups in SAML for admins and non-admins and then map the admin group to <%= vars.ops_manager %>.
 
 #### <a id='admin-saml'></a> Step 1: Configure SAML groups
 
@@ -98,7 +98,7 @@ To gather information from your SAML dashboard:
 
 #### <a id='enable-om-saml'></a> Step 2: Enable RBAC in <%= vars.ops_manager %>
 
-Follow the procedure in [Enable RBAC with Internal Authentication](#enable-internal) to configure <%= vars.ops_manager %> to recognize your SAML admin user group.
+Follow the procedure in [Enable RBAC with internal authentication](#enable-internal) to configure <%= vars.ops_manager %> to recognize your SAML admin user group.
 
 <p> When RBAC is enabled, only users with the <%= vars.ops_manager %> Administrator role can edit SAML configuration.</p>
 
@@ -106,11 +106,11 @@ Follow the procedure in [Enable RBAC with Internal Authentication](#enable-inter
 ## <a id='create-users'></a> Create user accounts in <%= vars.ops_manager %>
 
 To assign RBAC roles to operators, you must first create user accounts for them. For more information about creating user accounts in <%= vars.ops_manager %> with the User Account and Authentication (UAA) module,
-see [Creating and Managing <%= vars.ops_manager %> User Accounts](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/opsguide-config-rbac.html).
+see [Creating and managing <%= vars.ops_manager %> user accounts](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/opsguide-config-rbac.html).
 
 In addition to user accounts, you can create a client account to add to <%= vars.ops_manager %>. Client accounts manage automation tasks, such as upgrade scripts, log management, and other behaviors that might be negatively impacted if managed by a user account. You can add a client account either before initial deployment or to an existing deployment.
 
-For more information about client accounts, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-opsman-users.html).
+For more information about client accounts, see [Creating and managing <%= vars.ops_manager %> user and client accounts](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-opsman-users.html).
 
 
 ## <a id='manage-roles'></a> Manage RBAC roles in <%= vars.ops_manager %>
@@ -120,7 +120,7 @@ You can assign the roles defined in [Roles in <%= vars.ops_manager %>](#about) t
 ### <a id='write-internal'></a> Manage roles with internal authentication
 
 If you configured <%= vars.ops_manager %> to use internal authentication, you can configure roles using the UAA Command Line Interface (UAAC). For more information,
-see [Creating and Managing Users with the UAA CLI (UAAC)](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html).
+see [Creating and managing users with the UAA CLI (UAAC)](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html).
 
 To use the UAAC to configure roles:
 
@@ -241,6 +241,8 @@ If you configured <%= vars.ops_manager %> with LDAP authentication, you can assi
     Where:
 
        * `LDAP-GROUP` is the name of the LDAP group to which the user belongs.
-       * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user. To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
+       * `OPS-MANAGER-SCOPE` is the <%= vars.ops_manager %> UAA scope you want to assign to the user.
+       To determine which UAA scope to use, see the table in [Roles in <%= vars.ops_manager %>](#about).
 
-2. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard. You must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.
+2. Add new and existing users to the appropriate LDAP groups in the LDAP provider dashboard.
+You must log out of both <%= vars.ops_manager %> and the LDAP provider for role changes to take effect.

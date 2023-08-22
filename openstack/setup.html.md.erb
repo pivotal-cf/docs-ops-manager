@@ -1,15 +1,16 @@
 ---
-title: Deploying Ops Manager on OpenStack
+title: Deploying Tanzu Operations Manager on OpenStack
 owner: Ops Manager
 ---
 
-This guide describes how you can provision the OpenStack infrastructure and where you need to install <%= vars.ops_manager_first %>. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
+This guide describes how you can provision the OpenStack infrastructure and where you need to
+install <%= vars.ops_manager_first %>. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
 
 After you complete this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html)
 and [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configure-pas.html).
 <p class="note">
-<span class="note__title">Note</span> This document uses Mirantis OpenStack for screenshots
-and examples. The screens of your OpenStack vendor configuration interface might differ.
+<span class="note__title">Note</span> This document uses Mirantis OpenStack for images
+and examples. The screenshots of your OpenStack vendor configuration interface might differ.
 </p>
 
 ## <a id='log-in'></a> Step 1: Log in to the OpenStack Horizon dashboard
@@ -32,7 +33,7 @@ and examples. The screens of your OpenStack vendor configuration interface might
   an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.
 </p>
 
-1. In the navigation menu of your OpenStack Horizon dashboard, click **Project > Compute > Access & Security**.
+1. In your OpenStack Horizon dashboard, click **Project > Compute > Access & Security**.
 
 1. On the **Access & Security** page, click the **Key Pairs** tab.
 
@@ -45,9 +46,9 @@ and examples. The screens of your OpenStack vendor configuration interface might
 
 1. Click **Import Key Pair**.
 
-2. In the left navigation menu, click **Access & Security** to refresh the page. The new key pair appears in the list.
+2. In the navigation menu, click **Access & Security** to refresh the page. The new key pair appears in the list.
 
-3. Click the **Security Groups** tab. Click **Create Security Group** and create a group with the following properties:
+3. Click the **Security Groups** tab, then click **Create Security Group** and create a group with the following properties:
     * **Name**: `opsmanager`
     * **Description**: `<%= vars.ops_manager %>`
 
@@ -169,11 +170,11 @@ You can create the <%= vars.ops_manager %> image in OpenStack using the OpenStac
 
 <p> If your Horizon Dashboard does not support file uploads, you must use the <a href="https://docs.openstack.org/python-glanceclient/latest/cli/glance.html">Glance CLI</a> client.</p>
 
-To create an <%= vars.ops_manager %> image in OpenStack, perform the following steps:
+To create an <%= vars.ops_manager %> image in OpenStack, complete the following steps:
 
 1. Download the **<%= vars.ops_manager %> for OpenStack** image file from [VMware Tanzu Network](https://network.pivotal.io).
 
-1. In the left navigation of your OpenStack dashboard, click **Project > Compute > Images**.
+1. In the navigation menu, of your OpenStack dashboard, click **Project > Compute > Images**.
 
 1. Click **Create Image**.
 
@@ -181,7 +182,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
     * **Name**: Enter `<%= vars.ops_manager %>`.
     * **Image Source**: Select **Image File**.
     * **Image File**: Click **Choose File**. Browse to and select the image file
-      that you downloaded from [VMware Tanzu Network](https://network.pivotal.io).
+      that you downloaded from [VMware Tanzu Network](https://tanzu.vmware.com/products).
     * **Format**: Select **Raw**.
     * **Minimum Disk (GB)**: Enter `80`.
     * **Minimum RAM (MB)**: Enter `8192`.
@@ -195,7 +196,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 ## <a id='launch-om-vm'></a> Step 5: Launch <%= vars.ops_manager %> VM
 
-1. In the left navigation menu of your OpenStack dashboard, click **Project > Compute > Images**.
+1. In the navigation menu of your OpenStack dashboard, click **Project > Compute > Images**.
 
 1. Select the 'Ops Manager' row, and in the **Actions** column, click **Launch**.
 
@@ -262,17 +263,17 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
     </tr>
   </table>
 
-1. Click the **Networks** tab, and select a private subnet. You will add a Floating IP to this network in a later step.
+1. Click the **Networks** tab, and select a private subnet. You need to add a Floating IP to this network in a later step.
 
     ![alt-text=""](../common/images/openstack/instance-networks.png)
 
 1. Skip the **Network Ports** tab.
 
-2. Click the **Security Groups** tab, and select the **opsmanager** security group that you created in [Step 2: Configure Security](#security). Deselect all other Security Groups.
+2. Click the **Security Groups** tab, and click the **opsmanager** security group that you created in [Step 2: Configure security](#security). Deselect all other Security Groups.
 
     ![alt-text=""](../common/images/openstack/instance-security-groups.png)
 
-1. Click the **Key Pair** tab, and select the key pair that you imported in [Step 2: Configure Security](#security).
+1. Click the **Key Pair** tab, and select the key pair that you imported in [Step 2: Configure security](#security).
 
     ![alt-text=""](../common/images/openstack/instance-key-pairs.png)
 
@@ -283,7 +284,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 ## <a id='floating-ip'></a> Step 6: Associate a floating IP address
 
-1. In the left navigation of your OpenStack dashboard, click **Project > Compute > Instances**. The **Instances** table appears. You will see a row with **INSTANCE NAME** <%= vars.ops_manager %>.
+1. In the navigation of your OpenStack dashboard, click **Project > Compute > Instances**. The **Instances** table appears. You see a row with **INSTANCE NAME** <%= vars.ops_manager %>.
 
 1. Wait until the **Power State** of the <%= vars.ops_manager %> instance shows as _Running_.
 
@@ -291,7 +292,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
     ![alt-text=""](../common/images/openstack/instance-running.png)
 
-  You must provide this IP Address when you perform [Step 6: Complete the Create Networks Page](config.html#create-networks) in <%= vars.ops_manager %>.
+  You must provide this IP Address when you complete [Step 6: Complete the Create Networks page](config.html#create-networks) in <%= vars.ops_manager %>.
 
 1. Select the **<%= vars.ops_manager %>** row by clicking the check box in the left-most column.
 
@@ -311,9 +312,9 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 1. Click **Associate**.
 
-## <a id='blob-storage'></a> Step 7: Add Blob Storage
+## <a id='blob-storage'></a> Step 7: Add Blob storage
 
-1. In the left navigation of your OpenStack dashboard, click **Project > Object Store > Containers**.
+1. In the navigation of your OpenStack dashboard, click **Project > Object Store > Containers**.
 
 1. Click **Create Container**. Create a container with the following properties:
     * **Container Name**: Enter `pcf`.
@@ -323,7 +324,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 1. Click **Create**.
 
-## <a id='blobstore-creds'></a> Step 8: Download credentials for S3 Blob Storage
+## <a id='blobstore-creds'></a> Step 8: Download credentials for S3 Blob storage
 
 1. In the left navigation menu on the OpenStack dashboard, click **Project > Compute > Access & Security**. Click the **API Access** tab.
 
@@ -338,14 +339,14 @@ To create an <%= vars.ops_manager %> image in OpenStack, perform the following s
 
 ## <a id='dns-entry'></a> Step 9: Create a DNS entry
 
-Create a DNS entry for the floating IP address that you assigned to <%= vars.ops_manager %> in [Step 6: Associate a Floating IP Address](#floating-ip).
+Create a DNS entry for the floating IP address that you assigned to <%= vars.ops_manager %> in [Step 6: Associate a floating IP address](#floating-ip).
 
 You must use this fully qualified domain name when you log in to <%= vars.ops_manager %> for the first time.
 
 
 ## <a id='configure-ops'></a> Step 10: Configure BOSH Director for OpenStack
 
-After you complete this procedure, complete all of the steps in the [Configuring BOSH Director on OpenStack](config.html)
+After you complete this procedure, then complete all of the steps in the [Configuring BOSH Director on OpenStack](config.html)
 and [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configure-pas.html).
 
 ---

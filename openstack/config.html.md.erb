@@ -5,27 +5,27 @@ iaas: OpenStack
 install_type: manual
 ---
 
-This topic describes how you can configure BOSH Director after deploying <%= vars.ops_manager_first %> on OpenStack. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
+This topic describes how you can configure BOSH Director after you deploy <%= vars.ops_manager_first %> on OpenStack. Use this topic when [Installing <%= vars.ops_manager %> on OpenStack](../install/openstack.html).
 
-* Before you begin this procedure, ensure that you have successfully completed all steps in [Provisioning the OpenStack Infrastructure](setup.html).
+* Before you begin this procedure, ensure that you have successfully completed all steps in [Provisioning the OpenStack infrastructure](setup.html).
 
 * After you complete this procedure, follow the
 instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html).
 
-<p> You can also perform the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+<p> You can also complete the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
 
 ## <a id='log-in'></a> Step 1: Log into <%= vars.ops_manager %>
 
-1. In a web browser, go to the fully qualified domain you created in the [Create a DNS Entry](setup.html#dns-entry) step of _Provisioning the OpenStack Infrastructure_.
+1. In a web browser, go to the fully qualified domain you created in the [Create a DNS entry](setup.html#dns-entry) step of _Provisioning the OpenStack Infrastructure_.
 
-1. Log into <%= vars.ops_manager %>. To log in, see [Log In to <%= vars.ops_manager %> For the First Time](../login.html#login-first-time).
+1. Log in to <%= vars.ops_manager %>. To log in, see [Log in to <%= vars.ops_manager %> for the first time](../login.html#login-first-time).
 
 
 ## <a id='openstack-config'></a> Step 2: OpenStack Configs page
 
-1. In the left navigation of your OpenStack dashboard, click **Project > Compute > Access & Security**. Click the **API Access** tab.
+1. In your OpenStack dashboard, click **Project > Compute > Access & Security**. Click the **API Access** tab.
 
-2. In the **SERVICE** column, find the **Identity** row. Record the **Service Endpoint** in this row. You will use this Service Endpoint as the Authentication URL for <%= vars.ops_manager %> in a later step.
+2. In the **SERVICE** column, find the **Identity** row. Record the **Service Endpoint** in this row. You need this Service Endpoint as the Authentication URL for <%= vars.ops_manager %> in a later step.
 
     ![alt-text=""](../common/images/openstack/record-endpoint.png)
 
@@ -92,29 +92,29 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
     ![alt-text=""](../common/images/openstack/create-az.png)
 
-1. In **Name**, enter the name of the availability zone that you selected in the [Launch <%= vars.ops_manager %> VM](setup.html#launch-om-vm) step of _Provisioning the OpenStack Infrastructure_.
+1. In **Name** text box, enter the name of the availability zone that you selected in the [Launch <%= vars.ops_manager %> VM](setup.html#launch-om-vm) step of _Provisioning the OpenStack Infrastructure_.
 
 2. (Optional) Using the **IaaS Configuration** drop-down menu, select an OpenStack config name. The default is set to your first OpenStack config.
 
 3. In **OpenStack Availability Zone**, enter the OpenStack AZ of your OpenStack environment. Many OpenStack environments default to `nova`.
 
-4. Click **Add** for each additional OpenStack config you created in [Step 2: OpenStack Configs Page](#openstack-config). Give each AZ a unique **Name** and an **IaaS Configuration** with a different OpenStack config.
+4. Click **Add** for each additional OpenStack config you created in [Step 2: OpenStack Configs page](#openstack-config). Give each AZ a unique **Name** and an **IaaS Configuration** with a different OpenStack config.
 
 5. Click **Save**.
 
 ## <a id='create-networks'></a> Step 6: Create Networks page
 
-1. In the left navigation menu of your OpenStack dashboard, click **Project > Network > Networks**.
+1. In the OpenStack dashboard, click **Project > Network > Networks**.
 
 1. Click the name of the network that contains the private subnet where you deployed the <%= vars.ops_manager %> VM. The OpenStack Network Detail page displays your network settings. In the **Subnets** table, the row for your subnet contains the **NETWORK ADDRESS** and the **GATEWAY IP**.
 
     ![alt-text=""](../common/images/openstack/view-network-info.png)
 
-1. In <%= vars.ops_manager %>, select **Create Networks**.
+1. In <%= vars.ops_manager %>, click**Create Networks**.
 
     ![alt-text=""](../common/images/openstack/om-create-networks-config.png)
 
-1. Select **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable. Review the [Configure Security](setup.html#security) step of _Deploying BOSH and <%= vars.ops_manager %> to OpenStack_ to ensure you have configured ICMP in your Security Group.
+1. Click **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable. Review the [Configure Security](setup.html#security) step of _Deploying BOSH and <%= vars.ops_manager %> to OpenStack_ to ensure you have configured ICMP in your Security Group.
 
 2. Use the following steps to create one or more <%= vars.ops_manager %> networks using information from your OpenStack network:
     * Click **Add Network**.
@@ -130,7 +130,7 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
 ## <a id='assign-az'></a> Step 7: Assign AZs and Networks page
 
-1. Select **Assign Availability Zones**.
+1. Click **Assign Availability Zones**.
 
     ![alt-text=""](../common/images/openstack/assign-az.png)
 
@@ -155,7 +155,7 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
 ## <a id='resource-config'></a> Step 11: Resource Config page
 
-1. Select **Resource Config**.
+1. Click **Resource Config**.
 
     ![alt-text=""](../common/images/openstack/om-resource-config.png)
 
@@ -169,7 +169,7 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
     <p> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
 
 1. (Optional) To define floating IP addresses for the BOSH Director job:
-  1. Select the icon next to the **BOSH Director** job name to see the **FLOATING IPs** field.
+  1. Click the icon next to the **BOSH Director** job name to see the **FLOATING IPs** field.
   2. Enter a floating IP address range under **FLOATING IPs**. The number of IP addresses in the range that you provide must match the number of job instances.
 
 2. Click **Save**.
@@ -182,7 +182,7 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
-1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, click **Ignore errors and start the install**. The errors you can ignore are:
+1. Click **Review Pending Changes**, then click **Apply Changes**. If the following ICMP error message appears, click **Ignore errors and start the install**. The errors you can ignore are:
 
   * Cannot reach gateway with IP 10.0.16.0 (Ignorable if CMP is deactivated)
   * Cannot reach DNS with IP 10.0.0.2 (Ignorable if CMP is deactivated)
