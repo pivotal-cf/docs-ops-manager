@@ -1,5 +1,5 @@
 ---
-title: Accessing logs and metrics for your Ops Manager deployment
+title: Accessing logs and metrics for your Tanzu Operations Manager deployment
 owner: Oratos, Log Egress, Loggregator
 ---
 
@@ -19,20 +19,22 @@ For both <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %>, operator
 
 The format for the BOSH Director VM logs is Syslog RFC 5424. For more information, see [RFC 5424 - The Syslog Protocol](https://tools.ietf.org/html/rfc5424) in the Internet Engineering Task Force (IETF) documentation.
 
-The format for the <%= vars.ops_manager %> VM logs is Syslog RFC 3164. For more information, see [The BSD Syslog Protocol](https://tools.ietf.org/html/rfc3164) in the IETF documentation.
+The format for the <%= vars.ops_manager %> VM logs is Syslog RFC 3164.
+For more information, see [The BSD Syslog Protocol](https://tools.ietf.org/html/rfc3164) in the IETF documentation.
 
 
 ## <a id='vm-logs'></a> Access VM logs
 
 This section describes how to access logs for <%= vars.app_runtime_abbr %> and <%= vars.k8s_runtime_abbr %> VMs.
 
-The format for VM logs is Syslog RFC 5424. For more information, see [RFC 5424 - The Syslog Protocol](https://tools.ietf.org/html/rfc5424) in the IETF documentation.
+The format for VM logs is Syslog RFC 5424.
+For more information, see [RFC 5424 - The Syslog Protocol](https://tools.ietf.org/html/rfc5424) in the IETF documentation.
 
 See one of the following sections below:
 
-* [Access VM Logs on <%= vars.app_runtime_abbr %>](#vm-logs-tas)
+* [Access VM Logs on <%= vars.app_runtime_abbr %>](#vm-logs-tas).
 
-* [Access VM Logs on <%= vars.k8s_runtime_abbr %>](#vm-logs-tkgi)
+* [Access VM Logs on <%= vars.k8s_runtime_abbr %>](#vm-logs-tkgi).
 
 ### <a id='vm-logs-tas'></a> Access VM logs on <%= vars.app_runtime_abbr %>
 
@@ -102,9 +104,9 @@ This section describes how to access metrics for <%= vars.app_runtime_abbr %> VM
 
 See one of the following sections below:
 
-* [Access VM Metrics on <%= vars.app_runtime_abbr %>](#vm-metrics-tas)
+* [Access VM Metrics on <%= vars.app_runtime_abbr %>](#vm-metrics-tas).
 
-* [Access VM Metrics on <%= vars.k8s_runtime_abbr %>](#vm-metrics-tkgi)
+* [Access VM Metrics on <%= vars.k8s_runtime_abbr %>](#vm-metrics-tkgi).
 
 ### <a id='vm-metrics-tas'></a> Access VM metrics on <%= vars.app_runtime_abbr %>
 
@@ -177,17 +179,17 @@ The following table describes how to access VM metrics on foundations with <%= v
 </table>
 
 
-## <a id='app-logs'></a> Access App Container Logs
+## <a id='app-logs'></a> Access App Container logs
 
 This section describes how to access app logs on <%= vars.ops_manager %>.
 
 See one of the following sections below:
 
-* [Access App Container Logs on <%= vars.app_runtime_abbr %>](#app-logs-tas)
+* [Access App Container logs on <%= vars.app_runtime_abbr %>](#app-logs-tas).
 
-* [Access App Container Logs on <%= vars.k8s_runtime_abbr %>](#app-logs-tkgi)
+* [Access App Container logs on <%= vars.k8s_runtime_abbr %>](#app-logs-tkgi).
 
-### <a id='app-logs-tas'></a> Access App Container Logs on <%= vars.app_runtime_abbr %>
+### <a id='app-logs-tas'></a> Access App Container logs on <%= vars.app_runtime_abbr %>
 
 App container logs for <%= vars.app_runtime_abbr %> deployments include logs for apps and service instances.
 
@@ -238,7 +240,7 @@ The following table describes how to access app logs on foundations with <%= var
 	</tr>
 </table>
 
-### <a id='app-logs-tkgi'></a> Access App Container Logs on <%= vars.k8s_runtime_abbr %>
+### <a id='app-logs-tkgi'></a> Access App Container logs on <%= vars.k8s_runtime_abbr %>
 
 The following table describes how to access app container logs on foundations with <%= vars.k8s_runtime_abbr %> based on user role and permissions:
 
@@ -293,15 +295,15 @@ The following table describes how to access app container logs on foundations wi
 </table>
 
 
-## <a id='app-metrics'></a> Access App Container Metrics
+## <a id='app-metrics'></a> Access App Container metrics
 
 This section describes how to access app container metrics on <%= vars.ops_manager %>.
 
 See one of the following sections below:
 
-* [Access App Container Metrics on <%= vars.app_runtime_abbr %>](#app-metrics-tas)
+* [Access App Container metrics on <%= vars.app_runtime_abbr %>](#app-metrics-tas).
 
-* [Access App Container Metrics on <%= vars.k8s_runtime_abbr %>](#app-metrics-tkgi)
+* [Access App Container metrics on <%= vars.k8s_runtime_abbr %>](#app-metrics-tkgi).
 
 ### <a id='app-metrics-tas'></a> Access App Container Metrics on <%= vars.app_runtime_abbr %>
 

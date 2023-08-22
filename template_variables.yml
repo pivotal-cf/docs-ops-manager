@@ -214,8 +214,8 @@ template_variables:
   GSG_intro_sentence:
   gsg_app_video_link: <p> See the <a href="https://tanzu.vmware.com/tutorials/getting-started" target="_blank">Getting Started with Tanzu Application Service</a> to learn app deployment concepts.
   health_monitor_footnote: <a href="https://docs.pivotal.io/platform/monitoring/metrics.html#bosh-cf">Configuring a Monitoring System</a>
-  http_routing: For more information, see [Securing traffic into TAS for VMs](../adminguide/securing-traffic.html).
-  incompatible_ldap_saml: <p> The procedures described here are not compatible with using SAML or LDAP for user identity management. To create and manage user accounts in a SAML- or LDAP-enabled TAS for VMs deployment, see <a href='../operating/external-user-management.html'>Adding Existing SAML or LDAP Users to a TAS for VMs Deployment</a>.</p>
+  http_routing: For more information, see [Securing Traffic into TAS for VMs](../adminguide/securing-traffic.html).
+  incompatible_ldap_saml: <p class='note'><strong>Note</strong>&#58; The procedures described here are not compatible with using SAML or LDAP for user identity management. To create and manage user accounts in a SAML- or LDAP-configured TAS for VMs deployment, see <a href='../operating/external-user-management.html'>Adding Existing SAML or LDAP Users to a TAS for VMs Deployment</a>.</p>
   info_loc: In Tanzu Operations Manager
   invite_members: images/pcf/invite-members.png
   ipsec_note: <li>Use the <a href="https://docs.pivotal.io/addon-ipsec/index.html">IPsec add-on</a> to encrypt IP data traffic within your deployment.</li>
@@ -249,7 +249,7 @@ template_variables:
   max_app_size_table: Set in the <strong>App Developer Controls</strong> pane of the TAS for VMs tile
   max_healthcheck_timeout: <code>cc.maximum_health_check_timeout</code> has a maximum value of `600` seconds.
   max_in_flight_config: <br/><br/> To retrieve or override the existing `max_in_flight` value in BOSH Director, use the Tanzu Operations Manager API. For more information, see [Retrieving the max_in_flight settings for a product's jobs](https://docs.pivotal.io/platform/opsman-api/#retrieving-the-max_in_flight-settings-for-a-product-39-s-jobs) in the Tanzu Operations Manager API documentation.
-  metadata_ref: You can add metadata to apps and spaces using Apps Manager. For more information, see [Managing Apps and Service Instances Using Apps Manager](https://docs.pivotal.io/platform/console/manage-apps.html). For more information about adding metadata to spaces using Apps Manager, see [Managing orgs and spaces using Apps Manager](https://docs.pivotal.io/platform/console/manage-spaces.html).
+  metadata_ref: You can add metadata to apps and spaces using Apps Manager. For more information, see [Managing apps and service instances using Apps Manager](https://docs.pivotal.io/platform/console/manage-apps.html). For more information about adding metadata to spaces using Apps Manager, see [Managing orgs and spaces using Apps Manager](https://docs.pivotal.io/platform/console/manage-spaces.html).
   metrics_login: In a browser, navigate to `metrics.YOUR-SYSTEM-DOMAIN` and log in with your User Account and Authentication (UAA) credentials.
   metrics_product_ref: PCF Metrics. See <a href="https://docs.pivotal.io/pcf-metrics/index.html">PCF Metrics</a>.
   metrics_viewapps: PCF Metrics uses UAA to retrieve a list of apps that correspond to your user's org roles, space roles, and permissions. To view metrics information for an app, enter the name of the app in the search box and select it from the drop-down menu.
@@ -312,7 +312,7 @@ template_variables:
   sso_plan_enabled: have the Single Sign-On service broker installed on your Tanzu Operations Manager deployment. You must create a plan, grant any plan admins, and specify any orgs this plan can be the authentication authority for. For help configuring plans, see [Manage service plans](../manage-service-plans.html).
   suspended_roles_table: "../console/pcf_suspended_roles_table"
   syslog_forwarding_ref: Syslog forwarding. See <a href="https://docs.pivotal.io/platform/devguide/services/log-management.html">Streaming App Logs to Log Management Services</a>.
-  tas_networking: To configure the names of the cookies, see [Configure Networking](../operating/configure-pas.html#networking) in _Configuring TAS for VMs_.
+  tas_networking: To configure the names of the cookies, see [Configure networking](../operating/configure-pas.html#networking) in _Configuring TAS for VMs_.
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for enabling TCP routing in the [Configure Networking](https://docs.pivotal.io/platform/2-11/customizing/configure-pas.html#networking) section of the _Configuring TAS for VMs_ topic.
   tcp_mod_port_change: "../adminguide/tcp_empty_file"
   tcp_port: "/pcf/core/2-10/tcp_port_review"
@@ -356,7 +356,7 @@ template_variables:
   tcp_ert_subnav: <br><li><a href="../operating/tcp-routing-ert-config.html">Configuring TCP Routing in TAS for VMs</a></li><br>
   tls_info_subnav: <li><a href="https://docs.pivotal.io/ops-manager/2-11/security/networking/tls-info.html">TLS Connections in Tanzu Operations Manager deployments</a></li>
   vsphere_az_subnav: <li><a href="https://docs.pivotal.io/platform/2-11/customizing/understand-az.html">Availability Zones in vSphere</a></li>
-  ha_ert: <p class="note"><strong>Note</strong>&#58; In PCF v1.11 and later, TAS for VMs defaults to a highly available resource configuration. However, you might need to complete additional procedures described below to make your deployment highly available.</p>
+  ha_ert: <p> In PCF v1.11 and later, TAS for VMs defaults to a highly available resource configuration. However, you might need to complete additional procedures described below to make your deployment highly available.</p>
   enable_invitations: <p> The <strong>Enable invitations</strong> check box in the <strong>Apps Manager</strong> pane of the TAS for VMs tile must be enabled to invite new users.</p>
   route_services_appsman1: <p> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.</p>
   route_services_appsman2: <p> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.</p>
@@ -394,7 +394,7 @@ template_variables:
   switchboard_url: <code>http<span>s</span>://BOSH-JOB-INDEX-proxy-p-mysql-ert.YOUR-SYSTEM-DOMAIN</code>
   footnote_asterisk: <sup>*</sup>
   service_mesh_network_link: For information about the communication ports and protocols used by these components, see [Service Mesh](https://docs.pivotal.io/ops-manager/2-11/security/networking/routing-network-paths.html#service-mesh) in _Routing Network Communications_.
-  get_auditor_binary: Download the Stack Auditor binary for your OS from [Buildpack Extensions](https://network.pivotal.io/products/buildpack-extensions/) on VMware Tanzu Network.
+  get_auditor_binary: Download the Stack Auditor binary for your OS from [Buildpack extensions](https://network.pivotal.io/products/buildpack-extensions/) on VMware Tanzu Network.
   droplet_config: <strong>Maximum staged droplets per app</strong> field in the <strong>File Storage</strong> pane of the VMware Tanzu Application Service for VMs (TAS for VMs) tile.
   vm_note: <p> The following images are based on the VM names in an open-source deployment of Cloud Foundry Application Runtime. In TAS for VMs, the processes interact in the same way, but are on different VMs. Correct VM names for each process are in the components sections of this topic.</p>
   diego_vm_1: diego_brain
