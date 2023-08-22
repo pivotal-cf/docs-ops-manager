@@ -1,5 +1,5 @@
 ---
-title: Using short-lived NATS bootstrap credentials in Ops Manager
+title: Using short-lived NATS bootstrap credentials in Tanzu Operations Manager
 owner: Ops Manager
 ---
 
@@ -22,28 +22,26 @@ Because no user or process can access VMs during the bootstrap process, and apps
 bootstrap credentials ensures that any malicious user or process that obtains the TLS certificate stored in the metadata service cannot use it to access your
 VMs or apps.
 
-To learn about the stemcells that are compatible with short-lived bootstrap credentials, see [Stemcell Compatibility](#stemcells).
+To learn about the stemcells that are compatible with short-lived bootstrap
+credentials, see [Stemcell compatibility](#stemcells).
 
 To configure your VMs to use short-lived bootstrap credentials when communicating through BOSH NATS, see [Configure Short-Lived NATS Bootstrap
-Credentials](#configure).
+credentials](#configure).
 
 ## <a id='stemcells'></a> Stemcell compatibility
 
 You can configure short-lived bootstrap credentials for VMs using the following stemcells:
 
-* Windows 2019.41 and later.
+* Microsoft Windows 2019.41 and later.
 
 * Xenial 621.171 and later.
 
 * Bionic 1.36 and later.
 
 * Jammy 1.95 and later.
-<p class="note important">
-<span class="note__title"> Important</span>  All Jammy stemcell versions are compatible with short-lived bootstrap credentials. However, if you use
-Jammy 1.94 or earlier, using short-lived bootstrap credentials causes VMs with re-sized disk allocations to fail when they are re-created. To fix this
-issue, upgrade your stemcell to Jammy 1.95 or later.
-</p>
-
+  <p> All Jammy stemcell versions are compatible with short-lived bootstrap credentials. However, if you use
+    Jammy 1.94 or earlier, using short-lived bootstrap credentials causes VMs with re-sized disk allocations to fail when they are re-created. To fix this
+    issue, upgrade your stemcell to Jammy 1.95 or later.</p>
 
 If you configure short-lived bootstrap credentials for VMs using unsupported stemcells, the VMs become unresponsive.
 
@@ -51,21 +49,22 @@ If you configure short-lived bootstrap credentials for VMs using unsupported ste
 
 To configure your VMs to use short-lived bootstrap credentials when communicating through BOSH NATS:
 
-1. In a browser window, go to the <%= vars.ops_manager %> Installation Dashboard.
+1. In a browser window, go to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the **BOSH Director** tile.
 
-1. Select **Director Config**.
+1. Click **Director Config**.
 
 1. Activate the **Enable Short Lived NATS Bootstrap Credentials** checkbox.
 
 1. Click **Save**.
 
-1. Return to the <%= vars.ops_manager %> Installation Dashboard.
+1. Return to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**.
 
 1. Click **Apply Changes**.
 
-This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in existing <%= vars.ops_manager %> deployments to use
+This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to configure VMs in
+existing <%= vars.ops_manager %> deployments to use
 short-lived bootstrap credentials, you must recreate them.

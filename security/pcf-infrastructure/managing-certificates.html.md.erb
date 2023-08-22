@@ -1,5 +1,5 @@
 ---
-title: Managing certificates with the Ops Manager API
+title: Managing certificates with the Tanzu Operations Manager API
 owner: Ops Manager
 ---
 
@@ -7,7 +7,7 @@ This topic describes how you can use <%= vars.ops_manager_first %> API endpoints
 
 ## <a id='prerequisites'></a> Prerequisites
 
-To use the <%= vars.ops_manager %> API, you must generate an access token by authenticating with the <%= vars.ops_manager %> User Account and Authentication
+To use the <%= vars.ops_manager %> API, you must generate an access token by authenticating with the <%= vars.ops_manager %> user account and authentication
 (UAA) server.
 
 For more information about authenticating with UAA, see [Using the <%= vars.ops_manager %> API](../../install/ops-man-api.html).
@@ -42,13 +42,13 @@ You can view the <%= vars.ops_manager %> root CA as a file or in JSON format.
 To retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %>
 UI:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
-1. From the account menu dropdown in the upper-right corner of the screen, select **Settings**.
+1. From the account menu drop-down menu, select **Settings**.
 
-1. Select **Advanced Options**.
+1. Click **Advanced Options**.
 
-1. Select **Download Root CA Cert**. Your browser downloads the <%= vars.ops_manager %> root
+1. Click **Download Root CA Cert**. Your browser downloads the <%= vars.ops_manager %> root
 CA certificate file.
 
 ### <a id='root-certs-file'></a> Retrieve the <%= vars.ops_manager %> root CA as a file through the <%= vars.ops_manager %> API

@@ -15,18 +15,18 @@ You need the BOSH client name and client secret to use the CredHub CLI.
 
 To find the BOSH CredHub client name and client secret:
 
-1. Go to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the BOSH Director tile.
 
-1. Select the **Credentials** tab.
+1. Click the **Credentials** tab.
 
-1. In the **BOSH Director** section, navigate to the **BOSH Commandline Credentials** row, and click the corresponding link, **Link to Credential**.
+1. In the **BOSH Director** section, go to the **BOSH Commandline Credentials** row, and click the corresponding link, **Link to Credential**.
 
     ![alt-text=""](../images/bosh-client-creds.png)
 
 
-1. Record the values for `BOSH_CLIENT` and `BOSH_CLIENT_SECRET`. Below is an example of the credentials page:
+1. Record the values for `BOSH_CLIENT` and `BOSH_CLIENT_SECRET`. Here is an example of the credentials page:
 
   	```
   	{"credential":"BOSH_CLIENT=ops_manager
@@ -35,7 +35,7 @@ To find the BOSH CredHub client name and client secret:
   	BOSH_ENVIRONMENT=10.0.0.5 bosh "}
   	```
 
-1. Select the **Status** tab.
+1. Click the **Status** tab.
 
 1. In the **BOSH Director** row, locate and record the IP address of the BOSH Director. For example, `10.0.0.5`.
 
@@ -46,7 +46,7 @@ You can run CredHub CLI commands on the <%= vars.ops_manager %> VM.
 
 To login and access the CredHub API:
 
-1. SSH into the <%= vars.ops_manager %> VM. For IaaS-specific instructions on how to SSH, see [Log Into the <%= vars.ops_manager %> VM with SSH](../../install/ssh-login.html#ssh-by-iaas).
+1. SSH into the <%= vars.ops_manager %> VM. For IaaS-specific instructions on how to SSH, see [Log in to the <%= vars.ops_manager %> VM with SSH](../../install/ssh-login.html#ssh-by-iaas).
 
 1. Set the CredHub API target of the CLI by running:
 
@@ -78,7 +78,8 @@ To retrieve a list of CredHub certificates:
     credhub curl -p "/api/v1/certificates" -X GET | jq .
     ```
 
-1. In the JSON output, check the value of the `generated` field of each certificate. For example:
+1. In the JSON output, check the value of the `generated` field of each certificate.
+For example:
 
     ```
     {
@@ -97,7 +98,7 @@ To retrieve a list of CredHub certificates:
           },
      ```
 
-1. For each certificate where `generated` value is `null`, follow the procedure in [Reset a Certificate in CredHub](#reset-certificates).
+1. For each certificate where `generated` value is `null`, follow the procedure in [Reset a certificate in CredHub](#reset-certificates).
 
 
 ## <a id='reset-certificates'></a> Reset a certificate in CredHub
