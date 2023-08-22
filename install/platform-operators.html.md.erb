@@ -1,9 +1,10 @@
 ---
-title: Platform operator roles and permissions in Ops Manager
+title: Platform operator roles and permissions in Tanzu Operations Manager
 owners: CAPI, Identity
 ---
 
-This topic describes the roles and permissions of the operator user type in a <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> deployment.
+This topic describes the roles and permissions of the operator user type
+in a <%= vars.ops_manager_first %> and <%= vars.app_runtime_first %> deployment.
 
 There are various user types in <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %> deployments. Roles are assigned categories that more specifically define functions that a user can perform. For more information about user types in <%= vars.app_runtime_abbr %>,
 see [<%= vars.app_runtime_abbr %> User Types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/user-types.html).
@@ -32,7 +33,7 @@ When <%= vars.ops_manager %> starts up for the first time, the operator specifie
 * Internal authentication, using a new UAA database that <%= vars.ops_manager %> creates.
 * External authentication, through an existing identity provider accessed through SAML protocol.
 
-The operator can then use the UAA CLI (UAAC) to create more operator accounts. For more information, see [Creating and Managing <%= vars.ops_manager %> User and Client Accounts](../install/opsman-users.html).
+The operator can then use the UAA CLI (UAAC) to create more operator accounts. For more information, see [Creating and managing <%= vars.ops_manager %> user and client accounts](../install/opsman-users.html).
 
 ## <a id='table'></a> Operator roles and permissions
 
