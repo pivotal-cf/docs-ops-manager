@@ -1,5 +1,5 @@
 ---
-title: GCP reference architecture for Ops Manager
+title: GCP reference architecture for Tanzu Operations Manager
 owner: Customer0
 ---
 
@@ -33,8 +33,8 @@ A shared VPC installation is harder to configure than an <%= vars.ops_manager %>
 
 A single-project VPC lets the platform architect give <%= vars.ops_manager %> full access to the VPC and its resources, which makes configuration easier. <%= vars.company_name %> recommends single-project VPC architecture for:
 
-* Standalone deployments that do not connect to an internal network
-* Test and experimental deployments, and for projects which do not belong to an organization
+* Standalone deployments that do not connect to an internal network.
+* Test and experimental deployments, and for projects which do not belong to an organization.
 
 
 ## <a id='shared-vpc'></a> Shared VPC GCP reference architecture
@@ -47,7 +47,7 @@ The following diagram illustrates a reference architecture for a deployment of <
 
 ### <a id='shared-vpc-nat'></a> NAT network topology
 
-To expose a minimal number of public IP addresses, set up your NAT as shown in the following diagram.
+To expose a minimal number of public IP addresses, set up your NAT as shown in the following diagram:
 
 ![alt-text="Complex NAT network topology diagram. Detailed routing for the Region block is shown."](../images/gcp-nat-flow.png)
 
@@ -55,7 +55,7 @@ To expose a minimal number of public IP addresses, set up your NAT as shown in t
 
 ### <a id='shared-vpc-interconnect'></a> Cloud Interconnect
 
-To speed communication between data centers, use Google Cloud Interconnect, as shown in the following diagram.
+To speed communication between data centers, use Google Cloud Interconnect, as shown in the following diagram:
 
 ![alt-text="This Cloud Interconnect diagram is described in the following text."](../images/gcp-cloud-interconnect.png)
 
@@ -109,7 +109,7 @@ The service project manages these resources:
 
 ## <a id='single-vpc'></a> Single-project VPC base GCP reference architecture
 
-The following diagram illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP.
+The following diagram illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a single-project [VPC](https://cloud.google.com/vpc/docs/vpc) on GCP:
 
 ![alt-text="The GCP Reference Architecture components are listed in the following section."](../images/gcp-overview-single-vpc.png)
 
@@ -135,9 +135,9 @@ The following table lists the components that are part of a reference architectu
 
 This section describes the possible network layouts for <%= vars.app_runtime_abbr %> deployments as covered by the reference architecture of <%= vars.ops_manager %> on GCP.
 
-At a high level, there are currently two possible ways of granting public Internet access to <%= vars.app_runtime_abbr %> as described by the reference architecture:
+At a high level, there are currently two possible ways of granting public internet access to <%= vars.app_runtime_abbr %> as described by the reference architecture:
 
-* NAT provides connectivity from <%= vars.app_runtime_abbr %> internals to the public Internet.
+* NAT provides connectivity from <%= vars.app_runtime_abbr %> internals to the public internet.
 	* The procedures in [Installing <%= vars.ops_manager %> on GCP](../../install/gcp-manual.html) use this method.
 
 * Every VM receives its own public IP address (no NAT).
@@ -180,4 +180,5 @@ TLS is stopped for HTTPS on the HTTP load balancer and is stopped for WebSockets
 
 ### <a id='icmp'></a> ICMP
 
-GCP routers do not respond to ICMP. <%= vars.company_name %> recommends disabling ICMP checks in your BOSH Director network configuration. For more information, see [Step 5: Create Networks Page](../../gcp/config-manual.html#network) in _Configuring BOSH Director on GCP_.
+GCP routers do not respond to ICMP. <%= vars.company_name %> recommends deactivating ICMP checks in your BOSH Director network configuration.
+    For more information, see [Step 5: Create Networks page](../../gcp/config-manual.html#network) in _Configuring BOSH Director on GCP_.
