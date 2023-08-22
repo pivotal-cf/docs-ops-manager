@@ -1,9 +1,9 @@
 ---
-title: Troubleshooting Ops Manager for VMware vSphere
+title: Troubleshooting Tanzu Operations Manager for VMware vSphere
 owner: Ops Manager
 ---
 
-This guide shows how you can diagnose and resolve issues that can occur in
+You can diagnose and resolve issues that can occur in
 <%= vars.ops_manager_first %> deployments on VMware vSphere. For infrastructure-agnostic troubleshooting help,
 see [Diagnosing Deployment Problems](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/diagnostics.html).
 
@@ -23,18 +23,18 @@ The specified parameter is not correct, interval
 This failure happens because <%= vars.ops_manager %> expects a default value of five minutes, and
 the call to this method fails when the retrieved value does not match the expected default value.
 
-To resolve this issue, launch vCenter, navigate to **Administration > vCenter Server Settings > Statistics**,
+To resolve this issue, launch vCenter, go to **Administration > vCenter Server Settings > Statistics**,
 and reset the vCenter Statistics Interval Duration setting to five minutes.
 
 ## <a id='bosh_install'></a> BOSH automated installation fails
 
-Before starting an <%= vars.app_runtime_first %> deployment, you must
+Before you start an <%= vars.app_runtime_first %> deployment, you must
 set up and configure a vSphere cluster.
 
 If you enable vSphere DRS (Distributed Resource Scheduler) for the cluster, you must set the
 Automation level to **Partially automated** or **Fully automated**.
 
-If you set the Automation level to **Manual**, the BOSH automated installation will fail with a
+If you set the Automation level to **Manual**, the BOSH automated installation fails with a
 `power_on_vm` error when BOSH attempts to create virtual VMs.
 
 ![alt-text="On the New Cluster Wizard, the Automation Level page shows the Partially Automated button selected."](images/troubleshooting/drs_automation_level.png)
@@ -43,7 +43,7 @@ If you set the Automation level to **Manual**, the BOSH automated installation w
 
 <%= vars.ops_manager %> can lose its IP address and use DHCP due to an issue in the open source
 version of VMware Tools. For more information to troubleshoot this issue, see
-[IP is not Getting Assigned in vSphere after <%= vars.ops_manager %> Restart](https://community.pivotal.io/s/article/IP-is-not-Getting-Assigned-in-vSphere-after-Ops-Manager-Restart)
+[IP is not Getting Assigned in vSphere after <%= vars.ops_manager %> Restart](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-troubleshooting-vsphere.html)
 in the Knowledge Base.
 
 ## <a id='net-settings'></a> Cannot connect to the OVF in a browser
@@ -63,7 +63,7 @@ imported the <%= vars.ops_manager %> `.ova` in vCenter.
 1. If any of the settings are incorrect, run `sudo vi /etc/network/interfaces` and correct the
 incorrect entries.
 
-1. In vSphere, navigate to the **Summary** tab for the VM and confirm that the network name is
+1. In vSphere, go to the **Summary** tab for the VM and confirm that the network name is
 correct.
 
     ![alt-text="The Summary tab has two sections: General and Resources."](images/troubleshooting/network_settings.png)

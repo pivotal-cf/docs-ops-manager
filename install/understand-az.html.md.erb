@@ -3,9 +3,10 @@ title: Understanding and using availability zones in vSphere
 owner: Ops Manager
 ---
 
-This topic describes what an availability zone (AZ) is in vSphere, and gives an example of how you might scale an app across AZs.
+This topic describes what an availability zone (AZ) is in vSphere, and gives an example of how you might
+scale an app across AZs.
 
-<%= vars.company_name %> defines an AZ as an operator-assigned, functionally-independent segment of network infrastructure. In cases of partial infrastructure failure, a tile distributes and balances all instances of running apps across remaining AZs. Strategic use of AZs contributes to the fault tolerance and high availability of a tile deployment.
+<%= vars.company_name %> defines an AZ as an operator-assigned, functionally independent segment of network infrastructure. In cases of partial infrastructure failure, a tile distributes and balances all instances of running apps across remaining AZs. Strategic use of AZs contributes to the fault tolerance and high availability of a tile deployment.
 
 vSphere supports distributing deployments across multiple AZs.
 For more information, see _Step 4: Create Availability Zones_ in [Configuring BOSH Director on vSphere](../vsphere/config.html.md.erb#create-az).
@@ -14,7 +15,7 @@ For more information, see _Step 4: Create Availability Zones_ in [Configuring BO
 
 ## <a id='example-case'></a> Example scenario: Balancing across AZs during failure
 
-An operator scales an app to four instances in a tile environment distributed across three AZs: A1, A2, and A3. The environment allocates the instances according to the Diego Auction. For more information about
+You can scale an app to four instances in a tile environment distributed across three AZs: A1, A2, and A3. The environment allocates the instances according to the Diego Auction. For more information about
 the Diego Auction, see [How Diego Balances App Processes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/diego-diego-auction.html).
 
 For a visual representation of this scenario, see the following diagram:
