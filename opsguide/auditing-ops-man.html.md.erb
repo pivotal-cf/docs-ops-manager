@@ -1,5 +1,5 @@
 ---
-title: Auditing user activity for your Ops Manager deployment
+title: Auditing user activity for your Tanzu Operations Manager deployment
 owner: Ops Man
 ---
 
@@ -9,11 +9,11 @@ You can audit <%= vars.ops_manager %> user activity to help improve security pra
 
 You can find relevant information for auditing user activity in <%= vars.ops_manager %> in the following <%= vars.ops_manager %> logs:
 
-* SSH login logs. For more information, see [Logs for Auditing User Activity](#logs).
+* SSH login logs. For more information, see [Logs for auditing user activity](#logs).
 
-* UAA login and failed UAA login logs. For more information, see [Logs for Auditing User Activity](#logs).
+* UAA login and failed UAA login logs. For more information, see [Logs for auditing user activity](#logs).
 
-* The <%= vars.ops_manager %> `audit_log.txt` file. For more information, see [Audit Logs Text File](#audit-logs-text-file).
+* The <%= vars.ops_manager %> `audit_log.txt` file. For more information, see [Audit logs text file](#audit-logs-text-file).
 
 ## <a id='access-logs'></a> Access logs on the <%= vars.ops_manager %> VM
 
@@ -21,7 +21,7 @@ You can access logs for auditing user activity by logging on to the <%= vars.ops
 
 To access logs for auditing user activity:
 
-1. SSH onto the <%= vars.ops_manager %> VM using your private SSH key. For more information, see [Log Into the <%= vars.ops_manager %> VM](../install/ssh-login.html#ssh-by-iaas).
+1. SSH onto the <%= vars.ops_manager %> VM using your private SSH key. For more information, see [Log in to the <%= vars.ops_manager %> VM](../install/ssh-login.html#ssh-by-iaas).
 
 1. Navigate to the location of the logs and open or preview the log file. For example, to view the `audit_log.txt` file, run:
 
@@ -34,7 +34,7 @@ To access logs for auditing user activity:
 
 The table below describes the types of user actions that you can audit with logs, and the location of the logs.
 
-For information about how to access the logs in this table, see [Access Logs on the <%= vars.ops_manager %> VM](#access-logs).
+For information about how to access the logs in this table, see [Access logs on the <%= vars.ops_manager %> VM](#access-logs).
 
 <table>
 	<tr>
@@ -91,7 +91,7 @@ For information about how to access the logs in this table, see [Access Logs on 
 
 The <%= vars.ops_manager %> `audit_log.txt` file includes metadata about actions taken by users in the <%= vars.ops_manager %> app in JSON format.
 
-The following shows an example of the content in the `audit_log.txt` file:
+The following example shows the content in the `audit_log.txt` file:
 
 ```
 {
@@ -214,6 +214,7 @@ These logs contain relevant information for auditing user activity and can be fo
 * `uaa.log`
 * `uaa_events.logs`
 
-When syslog forwarding is enabled, <%= vars.ops_manager %> automatically forwards BOSH Director access events. These events allow you to audit BOSH Director access and the execution of BOSH CLI commands. For more information about BOSH Director access events,  see [Logging API Access](https://bosh.io/docs/director-access-events/) in the BOSH documentation.
+When syslog forwarding is enabled, <%= vars.ops_manager %> automatically forwards BOSH Director access events. These events allow you to audit BOSH Director access and the execution of BOSH CLI commands.
+For more information about BOSH Director access events,  see [Logging API access](https://bosh.io/docs/director-access-events/) in the BOSH documentation.
 
 For more information about syslog forwarding in <%= vars.ops_manager %>, see [Syslog](../pcf-interface.html#syslog) in _Using the <%= vars.ops_manager %> Interface_.
