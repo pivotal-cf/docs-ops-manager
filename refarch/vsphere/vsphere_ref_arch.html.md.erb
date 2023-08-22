@@ -1,10 +1,10 @@
 ---
-title: vSphere reference architecture for Ops Manager and runtimes
+title: vSphere reference architecture for Tanzu Operations Manager
 owner: Customer0
 ---
 
-This topic describes a vSphere reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>.
-This architecture builds on the common base architectures described in [Architecture and planning for Ops Manager and runtimes](../index.html).
+This topic describes the vSphere reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>.
+This architecture builds on the common base architectures described in [Platform architecture and planning](../index.html).
 
 For additional requirements and installation instructions for <%= vars.ops_manager %> on vSphere, see [Installing <%= vars.ops_manager %> on vSphere](../../install/vsphere.html).
 
@@ -25,7 +25,7 @@ vSphere offers NSX-T and NSX-V to support SDN infrastructure.
 
 ## <a id='pas-nsx-t'></a> <%= vars.app_runtime_abbr %> on vSphere with NSX-T
 
-These sections describe the reference architecture for <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments, including vSphere deployments managed by VMware Cloud Foundation (VCF).
+The following sections describe the reference architecture for <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on vSphere with NSX-T deployments, including vSphere deployments managed by VMware Cloud Foundation (VCF).
 They also provide requirements and recommendations for deploying <%= vars.ops_manager %> with <%= vars.app_runtime_abbr %> on vSphere with NSX-T,
 such as network, load balancing, and storage capacity requirements and recommendations.
 
@@ -57,14 +57,15 @@ An NSX-T Tier-0 router is on the front end of the <%= vars.app_runtime_abbr %> d
 
 Several Tier-1 routers, such as the router for the <%= vars.app_runtime_abbr %> and infrastructure subnets, connect to the Tier-0 router.
 
-### <a id='pas-nsx-t-pas'></a> NSX-T Container Plugin requirement
+### <a id='pas-nsx-t-pas'></a> NSX-T Container Plug-in requirement
 
-<%= vars.app_runtime_abbr %> deployments require the VMware NSX-T Container Plugin to enable the SDN features available through NSX-T.
+<%= vars.app_runtime_abbr %> deployments require the VMware NSX-T Container Plug-in to enable the SDN features available through NSX-T.
 
-The NSX-T Container Plugin enables a container networking stack and integrates with NSX-T.
+The NSX-T Container Plug-in enables a container networking stack and integrates with NSX-T.
 
-<p> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plugin must be installed, configured, and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plugin, go to
-the <a href="https://network.pivotal.io/products/vmware-nsx-t">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
+<p> To use NSX-T with <%= vars.app_runtime_abbr %>, the NSX-T Container Plug-in must be installed, configured,
+and deployed at the same time as the <%= vars.app_runtime_abbr %> tile. To download the NSX-T Container Plug-in, go to
+the <a href="https://tanzu.vmware.com/products">VMware NSX-T Container Plug-in</a> page on <%= vars.product_network %>.</p>
 
 ### <a id='pas-nsx-t-networking'></a> Networking
 
@@ -74,8 +75,8 @@ These sections describe networking requirements and recommendations for <%= vars
 
 The Tier-0 router must have routable external IP address space to advertise on the BGP network with its peers. Select a network range for the Tier-0 router with enough space so that you can separate the network into these two jobs:
 
-* Routing incoming and outgoing traffic
-* DNATs and SNATs, load balancer VIPs, and other platform components
+* Routing incoming and outgoing traffic.
+* DNATs and SNATs, load balancer VIPs, and other platform components.
 
 <p class="note"><strong>Note:</strong> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
 
@@ -87,7 +88,7 @@ The Tier-0 router must have routable external IP address space to advertise on t
 
 <%= vars.app_runtime_abbr %> requires a system domain, app domain, and several wildcard domains.
 
-For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain Names](../index.html#pas-domains) in _Platform Planning and Architecture_.
+For more information about DNS requirements for <%= vars.app_runtime_abbr %>, see [Domain names](../index.html#pas-domains) in _Platform Planning and Architecture_.
 
 #### <a id='pas-nsx-t-load-balancing'></a> Load balancing
 
@@ -97,7 +98,7 @@ The load balancing requirements and recommendations for <%= vars.app_runtime_abb
   * The domains for the <%= vars.app_runtime_abbr %> system and apps must resolve to the load balancer VIP.
   * You must assign either a private or a public IP address assigned to the domains for the <%= vars.app_runtime_abbr %> system and apps.
 
-  <p> You can use Layer 7 load balancers and terminate SSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
+  <p> You can use Layer 7 load balancers and stop TSL at the load balancers. However, <%= vars.company_name %> discourages this approach because it adds additional overhead processing.</p>
 
 * Any TCP GoRouters and SSH Proxies within the platform also require NSX-T load balancers.
 
@@ -115,7 +116,7 @@ The requirements and recommendations related to networks, subnets, and IP addres
 
 * NSX-T dynamically assigns <%= vars.app_runtime_abbr %> org networks and adds a Tier-1 router. These org networks are automatically instantiated based on a non-overlapping block of address space. You can configure the block of address space in the **NCP Configuration** section of the NSX-T tile in <%= vars.ops_manager %>. The default is `/24`. This means that every org in <%= vars.app_runtime_abbr %> is assigned a new `/24` network.
 
-For more information about <%= vars.app_runtime_abbr %> subnets, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
+For more information about <%= vars.app_runtime_abbr %> subnets, see [Required subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
 ### <a id='pas-nsx-t-ha'></a> High availability
 
@@ -171,21 +172,21 @@ For information about security requirements and recommendations for <%= vars.app
 <%= vars.company_name %> recommends that you use these blobstore storages for production and non-production <%= vars.app_runtime_abbr %> environments:
 
 * **Production environments**: Use an S3 storage appliance as the blobstore.
-* **Non-production environments**: Use an NFS/WebDAV blobstore.
+* **Nonproduction environments**: Use an NFS/WebDAV blobstore.
 
-<p> For non-production environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
+<p> For nonproduction environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
 
 For more information about blobstore storage requirements and recommendations,
-see [Configure File Storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 ### <a id='pas-nsx-t-networking'></a> Networking
 
 For information about installing TAS with NSX-T,
-see [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vsphere-nsx-t.html).
+see [Deploying <%= vars.app_runtime_abbr %> with NSX-T networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vsphere-nsx-t.html).
 
 #### <a id='pas-nsx-v-ip-spacing'></a> Networks, subnets, and IP address spacing
 
-For information about network, subnet, and IP address space planning requirements and recommendations, see [Required Subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
+For information about network, subnet, and IP address space planning requirements and recommendations, see [Required subnets](../index.html#pas-network) in _Platform Architecture and Planning Overview_.
 
 ### <a id='pas-nsx-v-ha'></a> High availability
 
@@ -195,7 +196,7 @@ For information about HA requirements and recommendations for <%= vars.app_runti
 
 <%= vars.app_runtime_abbr %> requires shared storage. You can allocate networked storage to the host clusters following one of two common approaches: horizontal or vertical. The approach you follow reflects how your data center arranges its storage and host blocks in its physical layout.
 
-For information about horizontal and vertical shared storage, see [Shared Storage](#pas-nsx-v-shared-storage).
+For information about horizontal and vertical shared storage, see [Shared storage](#pas-nsx-v-shared-storage).
 
 ### <a id='pas-nsx-v-storage-capacity'></a> Storage capacity
 
@@ -203,7 +204,7 @@ For information about horizontal and vertical shared storage, see [Shared Storag
 
 * **Production environments**: Configure at least 8&nbsp;TB of data storage. You can configure this as either one 8&nbsp;TB store or a number of smaller volumes that sum to 8&nbsp;TB. Frequently-used developments might require significantly more storage to accommodate new code and buildpacks.
 
-* **Non-production environments**: Configure 4 to 6&nbsp;TB of data storage.
+* **Nonproduction environments**: Configure 4 to 6&nbsp;TB of data storage.
 
 <p> The latest versions of <%= vars.ops_manager %> validated for the reference architecture do not support using vSphere Storage Clusters. Datastores can be listed in the vSphere tile by their native name, not the cluster name created by vCenter for the storage cluster.</p>
 
@@ -219,7 +220,7 @@ An internal MySQL database is sufficient for use in production environments.
 However, an external database provides more control over database management for large environments that require multiple data centers.
 
 For information about configuring system databases on <%= vars.app_runtime_abbr %>,
-see [Configure System Databases](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
+see [Configure system databases](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#sys-db) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='pas-nsx-v-security'></a> Security
 
@@ -230,12 +231,12 @@ For information about security requirements and recommendations for <%= vars.app
 <%= vars.company_name %> recommends that you use these blobstore storages for production and non-production <%= vars.app_runtime_abbr %> environments:
 
 * **Production environments**: Use an S3 storage appliance as the blobstore.
-* **Non-production environments**: Use an NFS/WebDAV blobstore.
+* **Nonproduction environments**: Use an NFS/WebDAV blobstore.
 
-<p> For non-production environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
+<p> For nonproduction environments, the NFS/WebDAV blobstore can be the primary consumer of storage, as the NFS/WebDAV blobstore must be actively maintained. <%= vars.app_runtime_abbr %> deployments experience downtime during events such as storage upgrades or migrations to new disks.</p>
 
 For more information about blobstore storage requirements and recommendations,
-see [Configure File Storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
+see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %> for Upgrades_.
 
 
 ## <a id='pas-no-nsx'></a> <%= vars.app_runtime_abbr %> on vSphere without NSX
@@ -265,7 +266,7 @@ Isolation segments can help with satisfying IP address space needs in a routed n
 
 ## <a id='pks-nsx-t'></a> <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
 
-These sections describe the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments. They also provide requirements and recommendations for deploying <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T, such as network, load balancing, and storage capacity requirements and recommendations.
+The following sections describe the reference architecture for <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T deployments. They also provide requirements and recommendations for deploying <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T, such as network, load balancing, and storage capacity requirements and recommendations.
 
 <p class="note important">
 <span class="note__title"> Important</span> VMware recommends deploying <%= vars.k8s_runtime_abbr %> on its own dedicated <%= vars.ops_manager %>
@@ -410,7 +411,7 @@ For information about HA requirements and recommendations, see [High Availabilit
 <%= vars.k8s_runtime_abbr %> on vSphere supports static persistent volume provisioning and dynamic persistent volume provisioning.
 
 For more information about storage requirements and recommendations,
-see [PersistentVolume Storage Options on vSphere](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-persistent-storage.html).
+see [Persistent volume storage options on vSphere](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-persistent-storage.html).
 
 ### <a id='pks-nsx-t-security'></a> Security
 
@@ -419,7 +420,7 @@ For information about security requirements and recommendations, see [Security](
 ## <a id='pks-without-nsx-t'></a> <%= vars.k8s_runtime_abbr %> on vSphere without NSX-T
 
 You can deploy <%= vars.k8s_runtime_abbr %> without NSX-T.
-To deploy <%= vars.k8s_runtime_abbr %> without NSX-T, select
+To deploy <%= vars.k8s_runtime_abbr %> without NSX-T, click
 **Flannel** as your container network interface in the **Networking** pane of
 the <%= vars.k8s_runtime_abbr %> tile.
 
@@ -427,4 +428,5 @@ Select from networks already identified in <%= vars.ops_manager %> to deploy the
 <%= vars.k8s_runtime_abbr %> API and <%= vars.k8s_runtime_abbr %>-provisioned
 Kubernetes clusters.
 
-<p> VMware recommends deploying <%= vars.k8s_runtime_abbr %> on its own dedicated <%= vars.ops_manager %> instance, rather than on a shared <%= vars.ops_manager %> that also hosts other runtimes such as <%= vars.app_runtime_abbr %>.</p>
+<p> VMware recommends deploying <%= vars.k8s_runtime_abbr %> on its own dedicated <%= vars.ops_manager %>
+instance, rather than on a shared <%= vars.ops_manager %> that also hosts other runtimes such as <%= vars.app_runtime_abbr %>.</p>
