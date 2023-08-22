@@ -1,5 +1,5 @@
 ---
-title: Floating stemcells in Ops Manager
+title: Floating stemcells in Tanzu Operations Manager
 owner: Ops Manager
 ---
 
@@ -11,7 +11,7 @@ Floating stemcells have the following benefits:
 
 * <%= vars.ops_manager %> can quickly propagate a patched stemcell to all virtual machines in the deployment when a vulnerability is discovered.
 
-* Operators can perform certain deployment-wide updates, such as CVEs, by uploading a new stemcell instead of uploading `.pivotal` files for each tile, which reduces the time spent waiting for files to upload.
+* You can do certain deployment-wide updates, such as CVEs, by uploading a new stemcell instead of uploading `.pivotal` files for each tile, which reduces the time spent waiting for files to upload.
 
 
 ## <a id='upgrade-limitations'></a> Stemcell major and minor upgrade limitations
@@ -22,12 +22,13 @@ For example, a stemcell can float from `1234.56` to `1234.99` but not from `1234
 
 ## <a id='process'></a> Product tile upgrades
 
-When an operator upgrades a product tile, <%= vars.ops_manager %> performs the following steps:
+When you upgrade a product tile, <%= vars.ops_manager %> completes the following steps:
 
 1. <%= vars.ops_manager %> checks to see whether a new minor, or patch, version of the stemcell exists.
 
-1. If a minor stemcell is available from the current major line, <%= vars.ops_manager %> installs the upgraded tile and all compatible product tiles in the deployment on the new stemcell.
+1. If a minor stemcell is available from the current major line, <%= vars.ops_manager %> installs the
+upgraded tile and all compatible product tiles in the deployment on the new stemcell.
 
 ## <a id='manage-stemcells'></a> Uploading and managing stemcells
 
-Operators can upload new stemcells to their product tiles by using the <%= vars.ops_manager %> API or by using the **Stemcell Library** in the <%= vars.ops_manager %> Installation Dashboard. For more information about the Stemcell Library, see [Importing and Managing Stemcells](../opsguide/managing-stemcells.html).
+You can upload new stemcells to your product tiles by using the <%= vars.ops_manager %> API or by using the **Stemcell Library** in the <%= vars.ops_manager %> Installation Dashboard. For more information about the Stemcell Library, see [Importing and Managing Stemcells](../opsguide/managing-stemcells.html).

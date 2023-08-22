@@ -1,24 +1,24 @@
 ---
-title: Troubleshooting problems in your Ops Manager deployment
+title: Troubleshooting problems in your Tanzu Operations Manager deployment
 owner: Ops Manager
 ---
 
-This guide describes procedures that you can use if you encounter issues while deploying products with <%= vars.ops_manager_first %>.
+You can use the following procedures if you encounter issues while deploying products
+with <%= vars.ops_manager_first %>.
 
 ## <a id='retry'></a> Retrying the deployment
 
 An installation or update can fail for many reasons, but the system is self healing, and can often
 automatically correct or work around hardware or network faults.
 
-Click **Install** or **Review Pending Changes**, then **Apply Changes** again, and the system may
+Click **Install** or **Review Pending Changes**, then click **Apply Changes** again, and the system might
 resolve a problem on its own.
 
 Some failures only produce generic errors like `Exited with 1`. In cases like this, where a failure
 is not accompanied by useful information, click **Install** or **Review Pending Changes**, then
-**Apply Changes** to retry.
+click **Apply Changes** to retry.
 
-When the system does provide informative evidence, see [Common Issues](#common_issues)
-section below to see if your problem is covered.
+When the system does provide informative evidence, see [Common issues](#common_issues) to see if your problem is covered.
 
 ## <a id='common_issues'></a> Common issues
 
@@ -31,7 +31,7 @@ You might want to reinstall BOSH for troubleshooting purposes.
 However, if <%= vars.ops_manager %> does not detect any changes, BOSH does not reinstall.
 To force a reinstall of BOSH, select **BOSH Director > Resource Sizes**
 and change a resource value.
-For example, you could increase the amount of RAM by 4&nbsp;MB.
+For example, you can increase the amount of RAM by 4&nbsp;MB.
 
 ### <a id='time_out'></a> Creating bound missing VMs times out
 
@@ -46,7 +46,7 @@ This is most likely a NATS issue with the VM in question.
 To identify a NATS issue, inspect the agent log for the VM.
 Since the BOSH director is unable to reach the BOSH agent, you must access the
 VM using another method.
-You will likely also be unable to access the VM using TCP.
+You might be unable to access the VM using TCP.
 In this case, access the VM using your virtualization console.
 
 To diagnose:
@@ -97,6 +97,7 @@ For example:
 
 This is a JSON blob of key-value pairs representing the expected infrastructure
 for the BOSH agent.
+
 For this issue, the following section is the most important:
 
 `"mbus"=>"nats://nats:nats@192.0.2.17:4222"`
@@ -129,14 +130,14 @@ Your <%= vars.ops_manager %> install exits with a `creates/updates/deletes an ap
      Connection refused - connect(2)
 ```
 
-In either of the above scenarios, ensure that you have correctly entered your
+In either of the previous scenarios, ensure that you have correctly entered your
 domains in wildcard format:
 
 1. Browse to the fully qualified domain name (FQDN) of <%= vars.ops_manager %>.
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
-1. Select **HAProxy** and click **Generate Self-Signed RSA Certificate**.
+1. Click **HAProxy** > **Generate Self-Signed RSA Certificate**.
 
 1. Enter your system and app domains in wildcard format, as well as optionally
 any custom domains, and click **Save**.
@@ -166,11 +167,11 @@ all available disk space.
 If this happens, rebooting the <%= vars.ops_manager %> installation VM clears the tmp
 directory of these log files and resolves the error.
 
-If users receive `Out of Disk Space` errors when trying to push apps, this can mean that
-Diego cells may be running out of disk space capacity.
+If you receive `Out of Disk Space` errors when trying to push apps, this can mean that
+Diego cells might be running out of disk space capacity.
 
 To perform a detailed analysis of disk usage by containers and host VMs in your <%= vars.ops_manager %> deployment,
-see [Examining GrootFS Disk Usage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/examining_grootfs_disk.html).
+see [Examining GrootFS disk usage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/examining_grootfs_disk.html).
 
 ### <a id='vsphere_fails'></a> Installing BOSH Director fails in vSphere
 
@@ -259,9 +260,9 @@ your NAT gateway.
 
 #### <a id='solution-slow'></a> Scale up your NAT gateway
 
-Perform the following steps to scale up your NAT gateway:
+Complete the following steps to scale up your NAT gateway:
 
-1. Navigate to your IaaS console.
+1. Go to your IaaS console.
 
 1. Spin up a new NAT gateway of a larger VM size than your previous NAT gateway.
 
@@ -269,7 +270,7 @@ Perform the following steps to scale up your NAT gateway:
 
 1. Spin down the old NAT gateway.
 
-The specific procedures will vary depending on your IaaS. Consult your IaaS documentation for more
+The specific procedures vary depending on your IaaS. Consult your IaaS documentation for more
 information.
 
 
@@ -282,5 +283,5 @@ This section describes various issues you might encounter when installing
 
 When you install <%= vars.ops_manager %> in an environment that uses a strong firewall, the
 firewall might block DNS resolution. To resolve this issue, see
-[Verify <%= vars.ops_manager %> Resolves DNS Entries Behind a Firewall](config_firewall.html#DNS_fails) in
+[Verify <%= vars.ops_manager %> resolves DNS Entries behind a firewall](config_firewall.html#DNS_fails) in
 _Preparing Your Firewall_.

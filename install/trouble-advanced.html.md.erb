@@ -1,5 +1,5 @@
 ---
-title: Advanced Ops Manager troubleshooting with the BOSH CLI
+title: Advanced Tanzu Operations Manager troubleshooting with BOSH CLI
 owner: Ops Manager
 ---
 
@@ -11,7 +11,7 @@ To follow the steps in this topic, you must log in to the BOSH Director VM. The 
 on the virtual machine (VM) that <%= vars.ops_manager %> deploys on the first install of the BOSH
 Director tile.
 
-After authenticating into the BOSH Director, you can run specific commands using the BOSH Command
+After you authenticate in to the BOSH Director, you can run specific commands using the BOSH Command
 Line Interface (BOSH CLI). BOSH Director diagnostic commands have access to information about your
 entire <%= vars.ops_manager %> installation.
 
@@ -22,7 +22,8 @@ entire <%= vars.ops_manager %> installation.
 
 ## <a id='gather'></a> Gather credential and IP address information
 
-Before you begin troubleshooting with the BOSH CLI, follow the instructions to collect the information you need from the <%= vars.ops_manager %> interface.
+Before you begin troubleshooting with the BOSH CLI, follow these instructions to collect the information you
+need from the <%= vars.ops_manager %> interface:
 
 1. Open the <%= vars.ops_manager %> interface by going to the <%= vars.ops_manager %>
 fully qualified domain name (FQDN) in a web browser.
@@ -58,8 +59,8 @@ tile and repeat the previous procedure to record the IP address and VM credentia
 
 To authenticate with BOSH, use one of the following methods:
 
-* [Set the BOSH Environment Variables on the <%= vars.ops_manager %> VM](#export-bosh-envs)
-* [Create a Local BOSH Director Alias](#bosh-alias)
+* [Set the BOSH Environment Variables on the <%= vars.ops_manager %> VM](#export-bosh-envs).
+* [Create a Local BOSH Director Alias](#bosh-alias).
 
 ### <a id='export-bosh-envs'></a> Set the BOSH environment variables on the <%= vars.ops_manager %> VM
 
@@ -198,9 +199,9 @@ Provider Properties:
 
 This section describes three BOSH CLI commands commonly used during troubleshooting.
 
-* **VMs:** Lists the VMs in a deployment
-* **Cloud Check:** Runs a cloud consistency check and interactive repair
-* **SSH:** Starts an interactive session or executes commands with a VM
+* **VMs:** Lists the VMs in a deployment.
+* **Cloud Check:** Runs a cloud consistency check and interactive repair.
+* **SSH:** Starts an interactive session or executes commands with a VM.
 
 ### <a id='vms'></a> BOSH VMs
 
@@ -211,7 +212,7 @@ BOSH, or `bosh -e MY-ENV -d MY-DEPLOYMENT vms` to see only the virtual machines 
 particular deployment. Replace `MY-ENV` with your environment, and, if using the `-d` flag, also
 replace `MY-DEPLOYMENT` with the name of a deployment.
 
-When troubleshooting an issue with your deployment, `bosh vms` might show a VM in
+When you troubleshoot an issue with your deployment, `bosh vms` might show a VM in
 an **unknown** state.
 Run [bosh <%= vars.bosh_cloud_check %>](#cck) on a VM in an **unknown** state to instruct BOSH to
 diagnose problems with the VM.
@@ -222,10 +223,10 @@ troubleshooting.
 
 `bosh vms` supports the following arguments:
 
-* `--dns`: Report also includes the DNS A record for each VM
+* `--dns`: Report also includes the DNS A record for each VM.
 
 * `--vitals`: Report also includes load, CPU, memory usage, swap usage, system disk usage,
-  ephemeral disk usage, and persistent disk usage for each VM
+  ephemeral disk usage, and persistent disk usage for each VM.
 
   <p> The <strong>Status</strong> tab of the
   <%= vars.app_runtime_abbr %> tile shows information similar to the
