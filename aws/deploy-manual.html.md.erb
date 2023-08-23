@@ -304,13 +304,13 @@ reinstall <%= vars.ops_manager %> on AWS.
 3. Under **Templates**, click **Production** to create a database for production environments.
 
 4. Specify the following database details:
-    * **DB instance identifier**: Enter `pcf-ops-manager-director`.
+    * **Multi-AZ deployment**: Click **Multi-AZ DB instance**.
+    * **DB cluster identifier**: Enter `pcf-ops-manager-director`.
     * Enter a secure **Master username** and **Master password**.
         <p> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
-    * **DB instance class**: Click **db.m5.large - 2 vCPUs, 8 GiB RAM**.
+    * **DB instance class**: Click **db.m5d.large - 2 vCPUs, 8 GiB RAM**.
     * **Storage type**: Click `Provisioned IOPS SSD (io1)`.
     * **Allocated storage**: Enter **100&nbsp;GiB**.
-    * **Multi-AZ deployment**: Click **Create a standby instance**.
 
 1. In the **Connectivity** section, enter the following values:
     * **Virtual private cloud (VPC)**: Click `pcf-vpc`.
