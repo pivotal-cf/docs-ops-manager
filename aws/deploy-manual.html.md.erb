@@ -308,7 +308,7 @@ reinstall <%= vars.ops_manager %> on AWS.
     * **DB cluster identifier**: Enter `pcf-ops-manager-director`.
     * Enter a secure **Master username** and **Master password**.
         <p> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
-    * **DB instance class**: Click **db.m5d.large - 2 vCPUs, 8 GiB RAM**.
+    * **DB instance class**: Click **db.m5.large - 2 vCPUs, 8 GiB RAM**.
     * **Storage type**: Click `Provisioned IOPS SSD (io1)`.
     * **Allocated storage**: Enter **100&nbsp;GiB**.
 
@@ -317,6 +317,10 @@ reinstall <%= vars.ops_manager %> on AWS.
     * **DB subnet group**: Click the `pcf-rds-subnet-group` you created in [Step 6: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
     * **Public access**: Click **No**.
     * **VPC security group (firewall)**: Click the `pcf-mysql-security-group` that you created in [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * Accept the default values for the remaining fields.
+
+1. In the **Additional configuration** section, enter the following values:
+    * **Initial database name**: Enter `bosh`.
     * Accept the default values for the remaining fields.
 
 1. Click **Create database**. Creating the database might take several minutes.
