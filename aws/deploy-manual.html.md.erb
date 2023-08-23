@@ -304,26 +304,22 @@ reinstall <%= vars.ops_manager %> on AWS.
 3. Under **Templates**, click **Production** to create a database for production environments.
 
 4. Specify the following database details:
-    * **DB Instance Identifier**: Enter `pcf-ops-manager-director`.
-    * Enter a secure **Master Username** and **Master Password**.
+    * **DB instance identifier**: Enter `pcf-ops-manager-director`.
+    * Enter a secure **Master username** and **Master password**.
         <p> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
-    * **DB Instance Class**: Click **db.m5.large - 2 vCPU, 7.5 GiB RAM**.
-    * **Storage Type**: Click `Provisioned IOPS SSD`.
-    * **Allocated Storage**: Enter **100&nbsp;GB**.
-    * **Multi-AZ Deployment**: Click **Create a standby instance**.
+    * **DB instance class**: Click **db.m5.large - 2 vCPUs, 8 GiB RAM**.
+    * **Storage type**: Click `Provisioned IOPS SSD (io1)`.
+    * **Allocated storage**: Enter **100&nbsp;GiB**.
+    * **Multi-AZ deployment**: Click **Create a standby instance**.
 
 1. In the **Connectivity** section, enter the following values:
-    * **VPC**: Click `pcf-vpc`.
-    * **Subnet Group**: Click the `pcf-rds-subnet-group` you created in [Step 6: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
-    * **Publicly Accessible**: Click **No**.
-    * **VPC Security Groups**: Click the `pcf-mysql-security-group` that you created in [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
+    * **Virtual private cloud (VPC)**: Click `pcf-vpc`.
+    * **DB subnet group**: Click the `pcf-rds-subnet-group` you created in [Step 6: Create RDS Subnet Group](#pcfaws-rds-subnet-group).
+    * **Public access**: Click **No**.
+    * **VPC security group (firewall)**: Click the `pcf-mysql-security-group` that you created in [Configure a Security Group for MySQL](prepare-env-manual.html#pcfaws-om-mysqlsecgrp) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
     * Accept the default values for the remaining fields.
 
-1. In the **Additional configuration** section, enter the following values:
-    * **Initial Database Name**: Enter `bosh`.
-    * Accept the default values for the remaining fields.
-
-1. Click **Launch DB Instance**. Launching the instance might take several minutes.
+1. Click **Create database**. Creating the database might take several minutes.
 
 ## <a id='next'></a> Next steps
 
