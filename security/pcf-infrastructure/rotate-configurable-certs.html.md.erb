@@ -3,7 +3,8 @@ title: Rotating configurable Tanzu Operations Manager leaf certificates
 owner: Ops Manager
 ---
 
-This topic tells you how to rotate configurable leaf certificates for your <%= vars.ops_manager_first %> deployment. To rotate all certificates in your <%= vars.ops_manager %> deployment, see [Rotating CAs and Leaf Certificates](rotate-cas-and-leaf-certs.html).
+This topic describes how you can rotate configurable leaf certificates for your <%= vars.ops_manager_first %> deployment. To rotate all
+certificates in your <%= vars.ops_manager %> deployment, see [Rotating CAs and Leaf Certificates](rotate-cas-and-leaf-certs.html).
 
 You can generate configurable certificates and paste them into <%= vars.ops_manager %> configuration panes
 where ever needed. Examples include certificates that stop SSL traffic into <%= vars.app_runtime_first %>, or authenticate a Single Sign-On for VMware Tanzu service plan to an external SAML server.
@@ -41,8 +42,7 @@ To rotate configurable leaf certificates:
 
 ## <a id='specialized-procedures'></a> Certificates with specialized procedures
 
-Some certificates are not rotated when using the standard rotation procedure.
-The following table lists
+Some certificates are not rotated when using the standard rotation procedure. The following table lists
 certificates that use a separate, specialized rotation procedure and provides links to documentation and Knowledge Base articles to help you rotate these certificates.
 
 | Certificate | Tile | Procedure |
