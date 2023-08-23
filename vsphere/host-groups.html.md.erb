@@ -1,9 +1,11 @@
 ---
-title: Using vSphere host groups with your Ops Manager deployment
+title: Using vSphere host groups with your Tanzu Operations Manager deployment
 owner: Ops Manager
 ---
 
-You can use the vSphere host groups feature with <%= vars.ops_manager_first %> to build flexible scalability and high availability into your BOSH deployments. This topic describes the host groups feature and how you can configure the Distributed Resource Scheduler (DRS) Host-Affinity Rule for host groups.
+You can use the vSphere host groups feature with <%= vars.ops_manager_first %> to build flexible
+scalability and high availability into your BOSH deployments. This topic describes the host groups
+feature and how you can configure the Distributed Resource Scheduler (DRS) Host-Affinity Rule for host groups.
 
 ## <a id='overview'></a> About host groups in vSphere
 
@@ -16,7 +18,7 @@ In BOSH, AZs provide a mechanism for balancing apps and jobs across resources fo
 Optionally, when defining an AZ, you can specify a resource pool or host group that is associated with the cluster.
 The association of vSphere resource pools or host groups with AZs allows BOSH to distribute deployments across predefined vSphere resources.
 
-For more information about configuring AZs in BOSH Director, see [Create Availability Zones](config.html#create-az) in _Configuring BOSH Director on vSphere_.
+For more information about configuring AZs in BOSH Director, see [Create Availability Zones](config.html#create-az).
 
 ## <a id='when-to-use'></a> When to use host groups
 
@@ -51,8 +53,7 @@ When one of the deployments requires more resources, instead of updating AZs or 
 This prevents disruption to the BOSH deployments.
 
 For more information on using host groups in scaling platforms,
-see [Growth Beyond Minimal Viable Platform](https://docs.pivotal.io/pra/2-3/growth.html)
-in the _Tanzu Architecture for Dell EMC VxRail_ (TA4V) documentation set.
+see [Growth beyond minimal viable platform](https://docs.vmware.com/en/VMware-Tanzu-Architecture-for-Dell-EMC-VxRail/3.2/vmware-tanzu-architecture-dell-emc-vxrail/GUID-index.html).
 
 ## <a id='host-affinity-rule'></a> DRS Host-Affinity Rules and stretched clusters
 
@@ -68,4 +69,4 @@ In deployments that use stretched clusters, configuring the DRS Host-Affinity Ru
 
 You configure this rule when setting the host group for an AZ in BOSH Director. For more information, see _Step 4: Create Availability Zones_ in [Configuring BOSH Director on vSphere](config.html#create-az).
 
-For more information about DRS Host-Affinity Rules, see [VM-Host Affinity Rules](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.resmgmt.doc/GUID-2FB90EF5-7733-4095-8B66-F10D6C57B820.html) in the _VMware vSphere Product Documentation_.
+For more information about DRS Host-Affinity Rules, see [VM-Host affinity rules](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.resmgmt.doc/GUID-2FB90EF5-7733-4095-8B66-F10D6C57B820.html) in the _VMware vSphere Product Documentation_.

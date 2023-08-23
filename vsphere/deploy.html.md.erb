@@ -1,5 +1,5 @@
 ---
-title: Deploying Ops Manager on vSphere
+title: Deploying Tanzu Operations Manager on vSphere
 owner: Ops Manager
 ---
 
@@ -9,48 +9,48 @@ You can use these instructions to deploy <%= vars.ops_manager_first %> to VMware
 
 For security purposes, VMware requires a dedicated instance of <%= vars.ops_manager %> for use with <%= vars.k8s_runtime_first %>.
 
-<p class='note important'><strong>Important:</strong> If you are installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
+<p> If you are installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T
 integration, follow the instructions in
-<a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-om-deploy.html">Deploying <%= vars.ops_manager %> with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the steps described in this topic.</p>
+<a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.17/tkgi/GUID-vsphere-nsxt-om-deploy.html">Deploying <%= vars.ops_manager %> with NSX-T for <%= vars.k8s_runtime_abbr %></a> instead of performing the
+steps described in this topic.</p>
 
 ## <a id='prepare-vsphere'></a> Prepare vSphere
 
-1. Log into vCenter using the vSphere Client (HTML5).
+1. Log in to vCenter using the vSphere Client (HTML5).
 
 1. Select the vSphere Datacenter where you are deploying <%= vars.ops_manager %>.
 
-1. Create one or more vSphere clusters. A vSphere cluster is a collection of ESXi hosts and associated virtual machines (VMs) with shared resources and a shared management interface. Follow the steps below to create a vSphere cluster:
+1. Create one or more vSphere clusters. A vSphere cluster is a collection of ESXi hosts and associated virtual machines (VMs) with shared resources and a shared management interface.
+Follow the next steps to create a vSphere cluster:
 
-    <p class='note'><strong>Note:</strong>  For highly available, production-ready environments, you
-    must create more than one cluster. For more information, see <a href="../refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA Considerations</a> and
-    <a href="../refarch/vsphere/vsphere_ref_arch.html#scaling">Scaling and Capacity Management</a> in _vSphere Reference Architecture_.</p>
+    <p> For highly available, production-ready environments, you
+    must create more than one cluster. For more information, see <a href="../refarch/vsphere/vsphere_ref_arch.html#high-availability">Compute and HA considerations</a> and
+    <a href="../refarch/vsphere/vsphere_ref_arch.html#scaling">Scaling and capacity management</a> in _vSphere Reference architecture_.</p>
 
     1. Right-click the vSphere Datacenter object.
 
-    1. Select **New Cluster**.
+    1. Click **New Cluster**.
 
     1. Name the Cluster. For example, `Cluster1`.
 
-    1. Select **Turn ON vSphere DRS** to enable DRS. Set DRS Automation to **Partially Automated**
+    1. Click **Turn ON vSphere DRS** to enable DRS. Set DRS Automation to **Partially Automated**
       or **Full Automated**.
 
-    1. Select **Turn ON vSphere HA** to enable vSphere HA.
+    1. Click **Turn ON vSphere HA** to enable vSphere HA.
 
 1. If you created more than one vSphere cluster, configure shared storage for the clusters. You can allocate shared storage to the clusters using one of two common approaches: horizontal or vertical. For more information about configuring shared storage for clusters, see [Storage Design](../refarch/vsphere/vsphere_ref_arch.html#storage) in _vSphere Reference Architecture_.
-  <p class='note caution'><b>Caution:</b> Failure to properly configure shared storage for vSphere clusters could result in downtime and unrecoverable loss of data.</p>
+  <p> Failure to properly configure shared storage for vSphere clusters could result in downtime and unrecoverable loss of data.</p>
 
 1. Create a resource pool for the management components in your deployment. Resource pools are
 vSphere objects used to organize resources.
-    <p class='note'><strong>Note:</strong> The management resource pool separates non-HA components
+    <p> The management resource pool separates non-HA components
     such as BOSH Director. For example, if you deploy <%= vars.ops_manager %> for use with <%= vars.k8s_runtime_abbr %>,
     the <%= vars.k8s_runtime_abbr %> management plane includes <%= vars.ops_manager %>, BOSH Director, the <%= vars.k8s_runtime_abbr %> control plane, and
     Harbor (optional).</p>
 
     Follow the steps below to create a vSphere resource pool:
 
-    1. Right-click the vSphere cluster object that you created.
-
-    1. Select **New Resource Pool**.
+    1. Right-click the vSphere cluster object that you created and click **New Resource Pool**.
 
     1. Name the resource pool. For example, `RP-MGMT`.
 
@@ -58,13 +58,14 @@ vSphere objects used to organize resources.
 
     1. Click **OK**.
 
-1. (Optional) If desired, create host groups within the clusters. For information about using host groups in vSphere, see [Host Groups in vSphere](host-groups.html).
+1. (Optional) If desired, create host groups within the clusters.
+For information about using host groups in vSphere, see [Host groups in vSphere](host-groups.html).
 
-    1. Select the **Cluster** where you want to create a host group.
+    1. Click the **Cluster** where you want to create a host group.
 
-    1. Select the **Configure** tab.
+    1. Click the **Configure** tab.
 
-    1. Under **Configuration**, select **VM/Host Groups**.
+    1. In **Configuration**, click **VM/Host Groups**.
 
     1. Click **Add** and configure the host group as follows:
         - Name: Enter a name for the host group.
@@ -76,63 +77,66 @@ vSphere objects used to organize resources.
 
 <%= vars.ops_manager %> for vSphere is provided as an OVA file. An OVA file is a template for a VM. To deploy <%= vars.ops_manager %> on vSphere, you import the OVA file into your vSphere environment.
 
-1. Download the [<%= vars.ops_manager %> for vSphere](https://network.pivotal.io/products/ops-manager) OVA file from [VMware Tanzu Network](https://network.pivotal.io). Use the **Releases** dropdown menu to select an <%= vars.ops_manager %> release.
+1. Download the [<%= vars.ops_manager %> for vSphere](https://network.tanzu.vmware.com/products/ops-manager) OVA file from [VMware Tanzu Network](https://network.tanzu.vmware.com/products/). Use the **Releases** drop-down menu to
+select an <%= vars.ops_manager %> release.
 
 1. Right-click the management resource pool that you created and select **Deploy OVF Template**. Alternatively, from the vCenter menu, select **Actions** > **Deploy OVF Template**.
 
-1. On the **Select an OVF template** screen, click **Browse**.
+1. On the **Select an OVF template** pane, click **Browse**.
 
-1. Select the <%= vars.ops_manager %> OVA file that you downloaded and click **Open**.
+1. Click the <%= vars.ops_manager %> OVA file that you downloaded and click **Open**.
 
 1. Review the template selection and click **Next**.
 
-1. On the **Select a name and folder** screen:
+1. On the **Select a name and folder** pane:
     * Enter a name for the <%= vars.ops_manager %> virtual machine, or use the default name.
     * Select the object labeled **Datacenter**.
     * Click **Next**.
 
     ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-01.png)
 
-1. On the **Select a compute resource** screen, select the compute resource where the <%= vars.ops_manager %> VM will run, and click **Next**. Select the Resource Pool for the management components.
+1. On the **Select a compute resource** pane, select the compute resource where the <%= vars.ops_manager %> VM runs, and click **Next**. Select the Resource Pool for the management components.
 
     ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-10.png)
 
-    <p class='note'><strong>Note:</strong> Hardware virtualization must be turned off if your
+    <p> Hardware virtualization must be turned off if your
     vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.ops_manager %> on vSphere Requirements</em> for more information.</p>
 
-1. On the **Review Details** screen, confirm the configuration up to this point, and click **Next**.
+1. On the **Review Details** pane, confirm the configuration up to this point, and click **Next**.
 
-1. At the **Select Storage** screen, select the virtual disk format.
+1. At the **Select Storage** pane, select the virtual disk format.
 
     1. Choose a Datastore.
         * If you use vSAN, select the vSAN datastore and apply the default storage policy.
-        * If you use a dedicated disk, select the appropriate disk format for your deployment needs. The default type is **Thin Provision**, but you can choose to use a thick provisioned disk such as **Thick Provisioned Lazy Zeroed**. For more information, see [vSphere Virtual Disk Types](https://docs.pivotal.io/application-service/operating/disk-format.html).
+        * If you use a dedicated disk, select the appropriate disk format for your deployment needs. The default type is **Thin Provision**, but you can choose to use a
+        thick provisioned disk such as **Thick Provisioned Lazy Zeroed**.
+        For more information, see [vSphere virtual disk types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/disk-format.html).
 
     2. Click **Next**.
 
-        <p class='note caution'><strong>Caution:</strong> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
+        <p> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
 
         ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-04.png)
 
-1. On the **Select Networks** screen, either select the default **VM Network**, or ideally, create an **Infrastructure** Network, and click **Next**.
+1. On the **Select Networks** pane, either select the default **VM Network**, or ideally, create an **Infrastructure** Network, and click **Next**.
 
     ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-12.png)
 
-1. On the **Customize template** screen, enter the following information, and click **Next**.
+1. On the **Customize template** pane, enter the following information, and click **Next**.
    * **IP Address**: The IP address of the <%= vars.ops_manager %> network interface. For example, `10.0.0.2`.
    * **Netmask**: The network mask for <%= vars.ops_manager %>. For example, `255.255.255.0`.
    * **Default Gateway**: The default gateway for <%= vars.ops_manager %> to use. For example, `10.0.0.1`.
    * **DNS**: One or more DNS servers for the <%= vars.ops_manager %> VM to use. For example, `10.20.20.1`.
    * **NTP Servers**: The IP address of one or more NTP servers for <%= vars.ops_manager %>. For example, `10.113.60.176`.
-   * **Public SSH Key**: Enter pre-existing public SSH key value to allow SSH access to the <%= vars.ops_manager %> VM. Enter the full key in the `ssh-rsa AAA...` format.
-      <p class='note important'><strong>Important:</strong> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and may enter a reboot loop.</p>
+   * **Public SSH Key**: Enter pre-existing public SSH key value to enable SSH access to the <%= vars.ops_manager %> VM. Enter the full key in the `ssh-rsa AAA...` format.
+      <p> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and might enter a reboot loop.</p>
    * **Custom hostname**: The hostname for the <%= vars.ops_manager %> VM. For example, `ops-manager`.
 
-2. On the **Ready to complete** screen, review the configuration settings and click **Finish**.
+2. On the **Ready to complete** pane, review the configuration settings and click **Finish**.
 
     This action begins the OVA import and deployment process.
 
-3. Use the **Recent Tasks** panel at the bottom of the vCenter dashboard to check the progress of the OVA import and deployment.
+3. Use the **Recent Tasks** pane at the bottom of the vCenter dashboard to check the progress of the OVA import and deployment.
    <br/><br/>
    If the import or deployment is unsuccessful, check the configuration for errors. Fix any errors and restart the deployment process.
 
@@ -140,16 +144,17 @@ vSphere objects used to organize resources.
 
 1. Create a DNS entry for the IP address that you used for <%= vars.ops_manager %>. You must use this fully qualified domain name when you log into <%= vars.ops_manager %>.
 
-    <p class='note'><strong>Note:</strong> <%= vars.ops_manager %> security features require you to create a fully qualified domain name to access <%= vars.ops_manager %> during the initial configuration. For more information, see <a href="../install/vsphere.html"><%= vars.ops_manager %> on vSphere Requirements</a>.</p>
+    <p> <%= vars.ops_manager %> security features require you to create a fully qualified domain name to access <%= vars.ops_manager %> during the initial configuration. For more information, see <a href="../install/vsphere.html"><%= vars.ops_manager %> on vSphere Requirements</a>.</p>
 
 1. Select the <%= vars.ops_manager %> VM and click **Actions** > **Power** > **Power On**.
 
     Once the VM boots, the <%= vars.ops_manager %> web interface is available at the IP address that you specified.
 
-    <p class='note'><strong>Note:</strong> It is normal to experience a brief delay before the interface is accessible while the web server and VM start.</p>
+    <p> It's normal to experience a brief delay before the interface is accessible while the web server and VM start.</p>
 
 1. Navigate to the fully qualified domain of your <%= vars.ops_manager %> in a web browser.
 
 ## <a id='next-steps'></a> Next steps
 
-After you complete this procedure, follow the instructions in [Configuring BOSH Director on vSphere](config.html).
+After you complete this procedure, follow the instructions
+in [Configuring BOSH Director on vSphere](config.html).
