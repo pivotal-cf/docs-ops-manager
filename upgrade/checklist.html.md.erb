@@ -178,20 +178,7 @@ To update an add-on manifest:
 1. Upload the modified manifest file to your <%= vars.ops_manager %> deployment. For example instructions,
 see [Installing file integrity monitoring on BOSH Director](https://docs.vmware.com/en/File-Integrity-Monitoring-for-VMware-Tanzu/2.0/fim-for-vmware-tanzu-2-0.pdf) in the File integrity monitoring documentation.
 
-If you use any other BOSH-managed add-ons in your deployment, you should verify OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Addons Block](https://bosh.io/docs/runtime-config.html#addons) in _Director Runtime Config_ in the BOSH documentation.
-
-### <a id="azure-blobstore-addon"></a> Check backup and restore external Blobstore add-on
-
-If you have enabled external blobstore backups for an Azure Blobstore using the blobstore add-on, you must update your runtime configuration to remove the `sdk-preview` add-on before upgrading. If you do not remove this job, upgrading <%= vars.app_runtime_abbr %> fails with the error below:
-
-```
-Preparing deployment: Preparing deployment (00:00:01)
-  L Error: Colocated job 'azure-blobstore-backup-restorer' is already added to the instance group 'backup-restore'.
-```
-
-After removing this job from your runtime configuration, ensure that the **Enable backup and restore** checkbox is enabled in the **File Storage** pane of the <%= vars.app_runtime_abbr %> tile.
-
-For more information, see [Azure Blobstores](../install/backup-restore/enabling-external-blobstore-backups.html#azure) in _Enabling External Blobstore Backups_.
+If you use any other BOSH-managed add-ons in your deployment, verify that OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Add ons block](https://bosh.io/docs/runtime-config.html#addons).
 
 ## <a id='cert-expiry'></a> Check certificate authority expiration dates
 
