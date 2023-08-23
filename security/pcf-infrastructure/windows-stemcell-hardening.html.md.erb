@@ -3,7 +3,7 @@ title: Windows stemcell hardening
 owner: TASW
 ---
 
-This topic provides information about the security hardening of Windows stemcells.
+This topic provides information about the security hardening of Microsoft Windows stemcells.
 
 ## <a id='overview'></a> Overview of securing Windows stemcells
 
@@ -11,13 +11,16 @@ A stemcell is a versioned OS image that is customized based on IaaS. A typical s
 
 Stemcell hardening is the process of securing a stemcell by reducing its surface of vulnerability. The surface of vulnerability for a stemcell is larger when a system performs more functions. For example, a single-function system is more secure than a multipurpose one.
 
-## <a id='msft-baseline'></a> Microsoft Baseline Security Standard
+## <a id='msft-baseline'></a> Microsoft baseline security standard
 
 Windows Stemcells for both <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %> follow the Microsoft Baseline Security Standard.
 
-<p class='note'><strong>Note:</strong> Windows stemcells do not yet align completely with the Microsoft Baseline Security Standard. For details about the ways in which Windows stemcell hardening differs from the Microsoft Baseline Security Standard, contact <%= vars.company_name %> at <a href="mailto:pcf-windows@pivotal.io">pcf-windows@pivotal.io</a>.</p>
+<p> Windows stemcells do not yet align completely with the Microsoft Baseline Security Standard. For details
+    about the ways in which Windows stemcell hardening differs from the Microsoft Baseline Security Standard,
+    contact <%= vars.company_name %> at <a href="mailto:pcf-windows@pivotal.io">pcf-windows@pivotal.io</a>.</p>
 
-For more information about Microsoft Baseline Security Standard and to download security configuration baselines for Windows, see [Microsoft Security Compliance Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=55319) on the Microsoft website.
+For more information about Microsoft Baseline Security Standard and to download security configuration
+baselines for Windows, see [Microsoft Security Compliance Toolkit](https://www.microsoft.com/en-us/download/details.aspx?id=55319) on the Microsoft website.
 
 ### <a id='auditing'></a> Audit policies
 

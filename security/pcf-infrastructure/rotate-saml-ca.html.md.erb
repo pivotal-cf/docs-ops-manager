@@ -1,27 +1,29 @@
 ---
-title: Rotating identity provider SAML certificates in Ops Manager
+title: Rotating identity provider SAML certificates in Tanzu Operations Manager
 owner: Ops Manager
 ---
 
-This topic describes how you can rotate SAML service provider (SP) credentials in your <%= vars.ops_manager_first %> deployment.
+You can rotate SAML service provider (SP) credentials in your <%= vars.ops_manager_first %> deployment.
 
-## <a id='overview'></a> Overview of rotating SP credentials
-
-SAML SP credentials are one example of configurable certificates in <%= vars.app_runtime_first %>. When <%= vars.app_runtime_abbr %> is configured to use SAML as an IDP, it uses a configurable certificate authority (CA) certificate to authenticate to an external SAML server. The CA generates ephemeral certificates that <%= vars.app_runtime_abbr %> includes in its outbound request message headers. This CA has a two-year expiration period.
+SAML SP credentials are one example of configurable certificates in <%= vars.app_runtime_first %>.
+When <%= vars.app_runtime_abbr %> is configured to use SAML as an IDP, it uses a configurable certificate
+authority (CA) certificate to authenticate to an external SAML server. The CA generates ephemeral
+certificates that <%= vars.app_runtime_abbr %> includes in its outbound request message headers. This CA has a
+two-year expiration period.
 
 In addition, the Single Sign-On for VMware Tanzu service shares the use of <%= vars.app_runtime_abbr %> SAML certificates for every SAML external IDP integration, such as trust, partnership, or federation. You must rotate these in lockstep with <%= vars.app_runtime_abbr %>. For more information about Single Sign-On for VMware Tanzu, see the [Single Sign-On for VMware Tanzu documentation](https://docs.pivotal.io/p-identity/index.html).
 
-This topic provides an example of how to rotate certificates for each IDP, including temporarily disabling certificate validation on the IDP side during the rotation.
+This topic also provides an example of how to rotate certificates for each IDP, including temporarily deactivating certificate validation on the IDP side during the rotation.
 
 For more information about rotating SAML certificates in <%= vars.app_runtime_abbr %>, see [PCF Advisory - SAML Service Provider Credential Certificates Expire after 2 Years](https://community.pivotal.io/s/article/PCF-Advisory---SAML-Service-Provider-Credential-Certificates-Expire-after-2-Years) in the VMware Tanzu Knowledge Base.
 
-For more information about rotating SAML certificates in <%= vars.ops_manager %>, see [How to check and rotate Ops Manager SAML Certificate before it expires](https://community.pivotal.io/s/article/how-to-check-and-rotate-ops-manager-saml-certificate-before-it-expires) in the VMware Tanzu Knowledge Base.
+For more information about rotating SAML certificates in <%= vars.ops_manager %>, see [How to check and rotate Tanzu Operations Manager SAML Certificate before it expires](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/security-pcf-infrastructure-rotate-saml-ca.html) in the VMware Tanzu Knowledge Base.
 
 ## <a id='prerequisites'></a> Prerequisites
 
 SAML SP credentials are only required for your <%= vars.app_runtime_abbr %> deployment if all of these conditions are met:
 
-* You are using Single Sign-On for VMware Tanzu in production for login to <%= vars.app_runtime_abbr %> or using the Single Sign-On for VMware Tanzu service for login to apps.
+* You are using Single Sign-On for VMware Tanzu in production for log in to <%= vars.app_runtime_abbr %> or using the Single Sign-On for VMware Tanzu service for login to apps.
 
 * You are using SAML IDPs for <%= vars.app_runtime_abbr %> or Single Sign-On for VMware Tanzu service plans.
 
@@ -35,7 +37,7 @@ To regenerate and rotate SAML SP certificates without disrupting <%= vars.app_ru
 
 1. Deactivate certificate validation in your IDP.
 
-1. For <%= vars.app_runtime_abbr %>, follow the procedure in the table below that corresponds to your use case.
+1. For <%= vars.app_runtime_abbr %>, follow the procedure in the following table that corresponds to your use case.
 This includes downloading and importing a new certificate and updated SAML metadata in your IDP.
 
     <table border="1">
@@ -57,7 +59,7 @@ This includes downloading and importing a new certificate and updated SAML metad
       </tr>
     </table>
 
-1. For the Single Sign-On for VMware Tanzu service, follow the procedure in the table below that corresponds to your use case.
+1. For the Single Sign-On for VMware Tanzu service, follow the procedure in the following table that corresponds to your use case.
 This includes downloading the SAML SP metadata for each SAML IDP integration. For example, trust, partnership, or federation, and importing the updated SAML SP metadata in your IDP.
 
     <table border="1">

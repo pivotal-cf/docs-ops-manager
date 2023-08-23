@@ -3,21 +3,25 @@ title: Troubleshooting CredHub Maestro safety violations
 owner: CredHub
 ---
 
-This topic provides information about how you can troubleshoot safety violation errors encountered when rotating certificates with either the <%= vars.ops_manager_first %> API or the CredHub Maestro CLI.
+You can troubleshoot safety violation errors that you encounter when rotating certificates with either
+the <%= vars.ops_manager_first %> API or the CredHub Maestro CLI.
 
 ## <a id='overview'></a> About CredHub Maestro safety checks
 
-CredHub Maestro performs basic safety checks when rotating certificates to prevent unsafe operations.
+CredHub Maestro completes basic safety checks when rotating certificates to prevent unsafe operations.
 
-The <%= vars.ops_manager %> API runs CredHub Maestro when rotating certificates. If a certificate rotation API command is unsafe, CredHub Maestro stops the command and returns one or more safety violations.
+The <%= vars.ops_manager %> API runs CredHub Maestro when rotating certificates. If a certificate rotation API
+command is unsafe, CredHub Maestro stops the command and returns one or more safety violations.
 
 The <%= vars.ops_manager %> API does not invoke CredHub Maestro and subsequently CredHub Maestro-related safety checks during certificate rotation if it detects an installation of <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.8.2 or earlier, any version of <%= vars.k8s_runtime_first %>, or any version of <%= vars.k8s_runtime_abbr_pivotal %> (<%= vars.k8s_runtime_abbr_pivotal %>).
 
-CredHub Maestro returns safety violations if a rotation step is run out of order. For example, you generate a new root certificate authority (CA) but attempt to activate it before clicking **Apply Changes**. Performing steps out of the correct order during certificate rotations can make your deployment unstable or risk downtime.
+CredHub Maestro returns safety violations if a rotation step is run out of order. For example,
+you generate a new root certificate authority (CA) but attempt to activate it before clicking **Apply Changes**. Performing steps
+out of the correct order during certificate rotations can make your deployment unstable or risk downtime.
 
 For information about certificate rotation using the <%= vars.ops_manager %> API, see [Overview of Certificate Rotation](api-cert-rotation.html).
 
-For information about using the CredHub Maestro CLI, see [Getting Started with CredHub Maestro](getting-started-with-maestro-cli.html).
+For information about using the CredHub Maestro CLI, see [Getting started with CredHub Maestro](getting-started-with-maestro-cli.html).
 
 ## <a id='skip-checks'></a> Skip safety checks
 
@@ -25,11 +29,13 @@ To skip CredHub Maestro safety checks in <%= vars.ops_manager %> API calls, you 
 
 To skip CredHub Maestro safety checks in the CredHub Maestro CLI, specify the `--skip-safety-check` flag when running certificate rotation commands.
 
-<p class='note caution'><strong>Caution:</strong> Skipping safety checks is strongly discouraged. Use the option only if absolutely necessary. For example, you might want to skip safety checks if your CA has already expired and your apps are experiencing downtime. Skipping safety checks can help bring your apps back online faster. If certificates have expired, contact <%= vars.support_link %> for guidance.</p>
+<p> Skipping safety checks is strongly discouraged. Use the option only if absolutely necessary. For example, you might want to skip safety checks if your CA has already expired and your apps are experiencing downtime. Skipping safety checks can help bring your apps back online faster. If certificates have expired, contact <%= vars.support_link %> for guidance.</p>
 
 ## <a id='error_ref'></a> Troubleshoot certificate rotation safety violations
 
-This section lists known safety violations that might occur when using the <%= vars.ops_manager %> API or CredHub Maestro CLI to rotate certificates. Each table includes the literal safety violation message, describes the safety violation, and presents possible solutions to resolve the underlying cause.
+This section lists known safety violations that might occur when using
+the <%= vars.ops_manager %> API or CredHub Maestro CLI to rotate certificates. Each table includes the
+literal safety violation message, describes the safety violation, and presents possible solutions to resolve the underlying cause.
 
 ### <a id='multiple-signing-cas'></a> Multiple signing versions of a CA
 

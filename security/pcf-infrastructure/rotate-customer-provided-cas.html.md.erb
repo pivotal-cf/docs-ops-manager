@@ -1,32 +1,35 @@
 ---
-title: Rotating Ops Manager certificates with customer-provided CAs
+title: Rotating Tanzu Operations Manager certificates with customer-provided CAs
 owner: Ops Manager
 ---
 
-This topic describes how you can handle customer-provided certificate authorities (CAs) when rotating <%= vars.ops_manager_first %> certificates.
+This topic describes how you can handle certificate authorities (CAs) when
+rotating <%= vars.ops_manager_first %> certificates.
 
 ## <a id='overview'></a> Overview of customer-provided CAs
 
-If you have customer-provided CAs, CredHub Maestro requires that you perform manual steps at the beginning of the certificate rotation process to correctly handle those customer-provided CAs.
+If you have customer-provided CAs, CredHub Maestro requires that you perform manual steps at the beginning of
+the certificate rotation process to correctly handle those customer-provided CAs.
 
-If you are unsure whether customer-provided CAs are installed, see [Check for Customer-Provided CAs](#ca-check).
+If you are unsure whether customer-provided CAs are installed, see [Check for customer-provided CAs](#ca-check).
 
-To handle customer-provided CAs, you can use one of two methods:
+To handle customer-provided CAs, you can use one of the two following methods:
 
-- **Method One:** If the certificate rotation process is unstarted, see [Method One: Tell CredHub Maestro to Ignore Customer-Provided CAs](#method-one).
+- **Method One:** If the certificate rotation process is unstarted, see [Method One: Tell CredHub Maestro to ignore customer-provided CAs](#method-one).
 
-- **Method Two:** If you are already in the process of rotating certificates, see [Method Two: Manually Replace the Customer-Provided CAs](#method-two). You can use this procedure after encountering the following Maestro error:
+- **Method Two:** If you are already in the process of rotating certificates, see [Method Two: Manually replace the customer-provided CAs](#method-two). You can use this procedure after encountering the following Maestro error:
    <pre>certificate authorities latest version is not transitional</pre>
 
 ## <a id='ca-check'></a> Check for customer-provided CAs
 
-Before you rotate CAs, you can check to see if you have customer-provided CAs. If you do have customer-provided CAs, this section also describes where to find and record the CredHub path.
+Before you rotate CAs, you can check to see if you have customer-provided CAs. If you do have customer-provided
+  CAs, this section also describes where to find and record the CredHub path.
 
 You can identify customer-provided CAs in one of the following ways:
 
 - **From the <%= vars.ops_manager %> UI:**
-  1. Log in to the <%= vars.ops_manager %> dashboard.
-  1. Go to the **Certificates** page. For more information, see [Certificates Page](../../pcf-interface.html#certificates).
+  1. Log in to the <%= vars.ops_manager %> Dashboard.
+  1. Go to the **Certificates** page. For more information, see [Certificates page](../../pcf-interface.html#certificates).
   1. Find customer-provided CAs with the following properties:
       - **Location:** `credhub`<br/>
       - **Type:** `CA`<br/>
@@ -49,7 +52,8 @@ You can identify customer-provided CAs in one of the following ways:
       - `"certificate_authority" : true`<br/>
   1. If you find no customer-provided CAs, you do not need to do the manual procedure described in this topic.
 
-If no Customer-provided CAs are found, then Certificate Rotation can proceed as normal, and the remainder of this document can be ignored.
+If no customer-provided CAs are found, then Certificate Rotation can proceed as normal, and the remainder of
+this topic can be ignored.
 
 ## <a id='method-one'></a> Method One: Tell CredHub Maestro to ignore customer-provided CAs
 
@@ -65,13 +69,20 @@ The payload that must be provided to the request has the following structure:
 }
 ```
 
-<p class='note'><strong>Note:</strong> You will need to get the CredHub paths to the customer-provided CAs. The procedure to do this is detailed in the "Prerequisites" section of this document.</p>
+<p> You need to get the CredHub paths to the customer-provided CAs. The procedure to do this is detailed in the "Prerequisites" section of this document.</p>
 
-<p class='note caution'><strong>Caution:</strong> the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption during the certificate rotation process.</p>
+  <p class="note caution">
+  <span class="note__title">Caution</span>
+  the "/services/tls_ca" CA <strong>must</strong> be included along with the paths to the
+customer-provided CAs. Failure to include this CA in the list of CAs will result in service disruption
+during the certificate rotation process.
+  </p>
 
 ## <a id='method-two'></a> Method Two: Manually replace the customer-provided CAs
 
-This method must be performed after rotation has been started; it cannot be performed before rotation has started. It must be performed immediately after rotation has been started, but can be performed after Maestro emits the `certificate authorities latest version is not transitional` error.
+This method must be completed after the rotation has been started; it cannot be performed before the rotation
+has started. It must be completed immediately after the rotation has been started, but can be completed
+after Maestro emits the `certificate authorities latest version is not transitional` error.
 
 The steps in this method are as follows:
 
@@ -79,7 +90,7 @@ The steps in this method are as follows:
 
 2. Use `credhub curl` on the `api/v1/certificates/:certificate_id/update_transitional_version` API endpoint to set the transitional flag for each customer-provided CA.
 
-Because there are already customer-provided CAs loaded into CredHub, it is assumed that you are familiar with the `credhub set` command, so no further guidance on that command will be provided.
+Because there are already customer-provided CAs loaded into CredHub, it's assumed that you are familiar with the `credhub set` command, so no further guidance on that command will be provided.
 
 The structure of the `credhub curl` invocation to set the `transitional` flag on the CAs is as follows:
 
@@ -87,7 +98,8 @@ The structure of the `credhub curl` invocation to set the `transitional` flag on
 credhub curl -i -X PUT -p api/v1/certificates/$CERTIFICATE_ID/update_transitional_version -d '{"version": "$VERSION_ID"}'
 ```
 
-To set the `transitional` flag, you must gather the certificate ID of each certificate and the version ID of the latest version of each certificate.
+To set the `transitional` flag, you must gather the certificate ID for each certificate and the version ID of
+the latest version of each certificate.
 
 To retrieve the certificate ID of each certificate that must be updated, consult the output of `maestro topology`. Search the `versions` array associated with the certificate for an item that has a `valid_until` date that matches the expiry date of the certificate that was loaded with `credhub set`.
 
@@ -120,6 +132,7 @@ topology:
               valid_until: 2022-04-09T23:30:45Z
 ```
 
-Given this output, use the `update_transitional_version` endpoint on the certificate with the id `75b9f5a6-f3c6-42f8-a834-3cfa6098c73a` and the version with the id `7e172086-a08d-4e62-98ba-308942a52e8a`.
+Given this output, use the `update_transitional_version` endpoint on the certificate with the
+id `75b9f5a6-f3c6-42f8-a834-3cfa6098c73a` and the version with the id `7e172086-a08d-4e62-98ba-308942a52e8a`.
 
-After you complete this operation on each customer-provided CA, you can continue with the normal Certificate Rotation process.
+After you complete this task for each customer-provided CA, you can continue with the normal Certificate Rotation process.
