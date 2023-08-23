@@ -180,7 +180,7 @@ see [Installing file integrity monitoring on BOSH Director](https://docs.vmware.
 
 If you use any other BOSH-managed add-ons in your deployment, you should verify OS compatibility for those component as well. For more information about configuring BOSH add-on manifests, see [Addons Block](https://bosh.io/docs/runtime-config.html#addons) in _Director Runtime Config_ in the BOSH documentation.
 
-### <a id="azure-blobstore-addon"></a> Check Backup and Restore External Blobstore Add-On
+### <a id="azure-blobstore-addon"></a> Check backup and restore external Blobstore add-on
 
 If you have enabled external blobstore backups for an Azure Blobstore using the blobstore add-on, you must update your runtime configuration to remove the `sdk-preview` add-on before upgrading. If you do not remove this job, upgrading <%= vars.app_runtime_abbr %> fails with the error below:
 
@@ -325,7 +325,7 @@ If you are not using Healthwatch, you can do some or all of the following to col
 
 * (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see [Viewing Logs in the Command Line Interface](https://docs.pivotal.io/application-service/devguide/deploy-apps/streaming-logs.html#view) in _App Logging in <%= vars.app_runtime_abbr %>_ in the <%= vars.app_runtime_abbr %> documentation.
 
-### <a id="push-test-app"></a> Push and Scale a Test App
+### <a id="push-test-app"></a> Push and scale a test app
 
 Check that a test app can be pushed and scaled horizontally, manually, or through automated testing. This check ensures that the platform supports apps as expected before the upgrade.
 
