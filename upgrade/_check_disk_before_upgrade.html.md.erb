@@ -1,17 +1,18 @@
 Confirm that the BOSH Director VM has adequate disk space for your upgrades. You need at least 20&nbsp;GB of free disk space to upgrade
-<%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>. If you plan to upgrade other products, the amount of disk space required depends on how many tiles
+<%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>. If you plan to upgrade other products, the
+amount of disk space required depends on how many tiles
 you plan to deploy to your upgraded <%= vars.ops_manager %> deployment.
 
 To check current persistent disk usage:
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click the **BOSH Director** tile.
 
-1. Select the **Status** tab.
+1. Click the **Status** tab.
 
 1. Check the value of the **PERSISTENT DISK TYPE** column. If persistent disk usage is higher than 50%:
-	1. Select the **Settings** tab.
-	1. Select **Resource Config**.
-	1. Increase your persistent disk space to handle the size of the resources. If you do not know how much disk space to allocate, set the value to at least
-	`100&nbspGB`.
+	1. Click the **Settings** tab.
+	1. Click **Resource Config**.
+	1. Increase your persistent disk space to handle the size of the resources. If you do not know how
+		much disk space to allocate, set the value to at least `100&nbspGB`.
