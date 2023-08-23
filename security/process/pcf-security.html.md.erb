@@ -1,13 +1,17 @@
 ---
-title: Ops Manager security overview and policy
+title: Tanzu Operations Manager security overview and policy
 owner: Security
 ---
 
-This document is for operators who are deploying <%= vars.ops_manager_first %>, and outlines <%= vars.company_name %>'s security policy. You can find a comprehensive overview of the security architecture of each <%= vars.app_runtime_first %> component in the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/security.html).
+This topic is for operators who are deploying <%= vars.ops_manager_first %>, and
+outlines <%= vars.company_name %>'s security policy. You can find a comprehensive overview of the
+security architecture of each <%= vars.app_runtime_first %> component in the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/security.html).
 
 ## <a id='monitor'></a> How <%= vars.company_name %> monitors for security vulnerabilities
 
-<%= vars.company_name %> receives private reports on vulnerabilities from customers and from field personnel through <%= vars.company_name %>'s secure disclosure process. <%= vars.company_name %> also monitors public repositories of software security vulnerabilities to identify newly discovered vulnerabilities that might affect one or more of <%= vars.company_name %>'s products.
+<%= vars.company_name %> receives private reports on vulnerabilities from customers and from field
+personnel through <%= vars.company_name %>'s secure disclosure process. <%= vars.company_name %> also
+monitors public repositories of software security vulnerabilities to identify newly discovered vulnerabilities that might affect one or more of <%= vars.company_name %>'s products.
 
 ### <a id='report'></a> How to report a vulnerability
 
@@ -21,7 +25,7 @@ This document is for operators who are deploying <%= vars.ops_manager_first %>, 
 
 1. Assess the impact to <%= vars.ops_manager %>.
 
-1. If the vulnerability would affect an <%= vars.ops_manager %> component, <%= vars.company_name %> schedules an update for the impacted components.
+1. If the vulnerability affects an <%= vars.ops_manager %> component, <%= vars.company_name %> schedules an update for the impacted components.
 
 1. Update the affected components and perform system tests.
 
