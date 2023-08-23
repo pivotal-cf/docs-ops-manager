@@ -26,14 +26,14 @@ To override manifest properties:
 or the <%= vars.ops_manager %> API, use the UI or API to change the property.
 
 1. If the property cannot be modified through the <%= vars.ops_manager %> UI or the <%= vars.ops_manager %> API:
-    1. Determine if the property can be overridden. See [Overridable properties](#properties) below.
-    1. If the property is in the BOSH Director Manifest, see [Override BOSH Director manifest properties](#bosh-overrides) below.
-    1. If the property is in one of the runtime configs, see [Override runtime config properties](#runtime-config-overrides) below.
+    1. Verify if the property is overridden. See [Overridable properties](#properties).
+    1. If the property is in the BOSH Director Manifest, see [Override BOSH Director manifest properties](#bosh-overrides).
+    1. If the property is in one of the runtime configs, see [Override Runtime Config properties](#runtime-config-overrides).
 
 You can also use the <%= vars.ops_manager %> API to view the BOSH Director manifest,
 view the list of overrides for the BOSH Director and runtime configs,
 and delete the overrides.
-For more information, see [Advanced Manifest Configuration](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration)
+For more information, see [Advanced Manifest configuration](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html)
 in the <%= vars.ops_manager %> API documentation.
 
 ## <a id='properties'></a> Overridable properties
@@ -53,7 +53,7 @@ You cannot:
 * Add or delete a network
 * Add or delete an instance group
 
-For an example, see [Change the Network Type to Dynamic](#example1) below.
+For an example, see [Change the Network type to dynamic](#example1).
 
 ### <a id='tile-manifest'></a> Tile manifest
 
@@ -62,8 +62,8 @@ In the tile manifest, you can override properties in the following sections:
 * `features`
 * `update`
 
-For an example, see [Change Number of Canary Instances](#example3) or
-[Enable Returning DNS Addresses in Links](#example4) below.
+For example, see [Change number of Canary instances](#example3) or
+[Enable returning DNS addresses in links](#example4).
 
 ### <a id='runtime-configs'></a> Runtime configs
 
@@ -101,50 +101,39 @@ The table below lists these properties:
 To override properties in the BOSH Director manifest:
 
 1. Set <%= vars.ops_manager %> to Advanced Mode by following the procedure in
-[How to Enable Advanced Mode in the <%= vars.ops_manager %>](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
-in the Knowledge Base.
+[VMware Tanzu Support documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html?hWord=N4IghgNiBcIIIBEBqcByBhAoggBAWQHkFMcBLAOxwIAcBnfMcsAcwFMAnEAXyA).
 
-For more information about Advanced Mode,
-see [Advanced Mode](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Mode)
-in the <%= vars.ops_manager %> API documentation.
-
-  <p class="note caution">
-<span class="note__title">Caution</span>
-<%= vars.company_name %> recommends that only skilled operators use Advanced Mode in <%= vars.ops_manager %>.
+  <p> <%= vars.company_name %> recommends that only skilled operators use Advanced Mode in <%= vars.ops_manager %>.
         If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment. <%= vars.ops_manager %> does not validate the properties that you change using Advanced Mode.
         For example, if you enter a string where an integer is required, you do not receive an error.</p>
 
 1. Use the `/api/v0/staged/director/overrides` endpoint. For more information, see
-[Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1overrides/put)
+[Provide a new list of overrides for the BOSH Director](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html)
 in the <%= vars.ops_manager %> API documentation.
 
-1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
-[How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
-in the Knowledge Base.
+1. After you completed your changes, deactivate Advanced Mode by following the procedure in
+[VMware Tanzu Support documentation](https://docs.vmware.com/en/VMware-Tanzu/index.html).
 
 ## <a id='tile-overrides'></a> Override tile manifest properties
 
 To override properties in the tile manifest:
 
-1. Set  to Advanced Mode by following the procedure in
-[How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
-in the Knowledge Base.
+1. Set to Advanced Mode by following the procedure in
+[VMware Tanzu Support documentation](https://docs.vmware.com/en/VMware-Tanzu/index.html).
 For more information about Advanced Mode,
 see [Advanced Mode](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Mode)
 in the <%= vars.ops_manager %> API documentation.
 
-  <p class="note caution">
-<span class="note__title">Caution</span>
-<%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
+  <p> <%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
         If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment.
         and it does not validate the properties that you change using Advanced Mode.
         For example, if you enter a string where an integer is required, you do not receive an error.</p>
 
 1. Use the `/api/v0/staged/products` endpoint to get and record the product GUID from the output of the command. For more information, see [All staged products](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Products/paths/~1api~1v0~1staged~1products/get) in the Ops Manager API documentation.
 
-1. Use the `/api/v0/staged/products/PRODUCT-GUID/overrides` endpoint. Where `PRODUCT-GUID` is the GUID you recorded in the previous step. For more information, see
-[Provide a new list of overrides for the BOSH Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1products~1{product_guid}~1overrides/put)
-in the Ops Manager API documentation.
+1. Use the `/api/v0/staged/products/PRODUCT-GUID/overrides` endpoint. Where `PRODUCT-GUID` is the GUID you recorded earlier in this procedure.
+For more information, see [Provide a new list of overrides for the BOSH Director](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html)
+in the Tanzu Operations Manager API documentation.
 
 1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
 [How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
@@ -155,15 +144,13 @@ in the Knowledge Base.
 To override properties in the runtime configs:
 
 1. Set  to Advanced Mode by following the procedure in
-[How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
+[How to enable Advanced Mode in the Tanzu Operations Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
 in the Knowledge Base.
 For more information about Advanced Mode,
-see [Advanced Mode](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Mode)
+see [Advanced Mode](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html)
 in the <%= vars.ops_manager %> API documentation.
 
-  <p class="note caution">
-<span class="note__title">Caution</span>
-<%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
+  <p> <%= vars.company_name %> recommends that only skilled operators use Advanced Mode in .
         If you use Advanced Mode incorrectly, you can deactivate or destroy your deployment. It does not validate the properties that you change using Advanced Mode.
         For example, if you enter a string where an integer is required, you do not receive an error.</p>
 
@@ -172,14 +159,10 @@ in the <%= vars.ops_manager %> API documentation.
   * [BOSH DNS job spec](https://github.com/cloudfoundry/bosh-dns-release/blob/master/jobs/bosh-dns/spec) in GitHub.
 This file shows the properties and defaults for the `bosh_dns` add-on in the `ops_manager_dns_runtime`.
   * [Provide a new list of runtime config overrides for the BOSH
-Director](https://docs.pivotal.io/ops-manager/2-10/api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1runtime_configs~1overrides/put)
+Director](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html)
 in the <%= vars.ops_manager %> API documentation.
 
-1. After you have completed your changes, deactivate Advanced Mode by following the procedure in
-[How to Enable Advanced Mode in the Ops Manager](https://community.pivotal.io/s/article/How-to-Enable-Advanced-Mode-in-the-Ops-Manager?language=en_US)
-in the Knowledge Base.
-
-For an example, see [Change the Timeout for the BOSH DNS Network Health Check](#example2) below.
+1. After you complete your changes, deactivate Advanced Mode.
 
 ## <a id='examples'></a> Examples of overridable properties
 
@@ -213,7 +196,7 @@ You can override this default by changing the value to `true`
 in the `features` section of the tile manifest.
 
 For a list of all the properties you can change in the `features` section,
-see [Features Block](https://bosh.io/docs/manifest-v2/#features) in the BOSH documentation.
+see [Features block](https://bosh.io/docs/manifest-v2/#features) in the BOSH documentation.
 
 ### <a id='example2'></a> Runtime config example: change the timeout for the BOSH DNS network health check
 

@@ -1,5 +1,5 @@
 ---
-title: Ops Manager v2.10 release notes
+title: Tanzu Operations Manager v2.10 release notes
 owner: Ops Manager
 ---
 
@@ -44,18 +44,68 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   </thead>
   <tbody>
   <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.60-build.1372*</td>
+    <td>Tanzu Operations Manager</td><td>3.0.14-build.712*</td>
   </tr>
   <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>621.615*</td></tr><tr><td>BBR SDK</td><td>1.18.85*</td></tr><tr><td>BOSH Director</td><td>277.4.3*</td></tr><tr><td>BOSH DNS</td><td>1.36.3*</td></tr><tr><td>Metrics Server</td><td>0.1.14*</td></tr><tr><td>System Metrics</td><td>2.3.3*</td></tr><tr><td>CredHub</td><td>2.12.37*</td></tr><tr><td>CredHub Maestro</td><td>9.0.8*</td></tr><tr><td>Syslog</td><td>11.8.11*</td></tr><tr><td>Windows Syslog</td><td>1.1.16*</td></tr><tr><td>UAA</td><td>76.17.0*</td></tr><tr><td>BPM</td><td>1.2.4*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>99</td></tr><tr><td>Azure CPI</td><td>46.0.0</td></tr><tr><td>Google CPI</td><td>49.0.0*</td></tr><tr><td>OpenStack CPI</td><td>53</td></tr><tr><td>vSphere CPI</td><td>95*</td></tr><tr><td>BOSH CLI</td><td>7.3.1*</td></tr><tr><td>Credhub CLI</td><td>2.9.18*</td></tr><tr><td>BBR CLI</td><td>1.9.47*</td></tr><tr><td>Telemetry</td><td>1.2.6*</td></tr><tr><td>Core Consumption</td><td>0.3.6*</td></tr>
     <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
 
-### <a id="2-10-59"></a> v2.10.59
+### <a id="3-0-13"></a> v3.0.13+LTS-T
+
+**Release Date:** July 03, 2023
+
+- **[Known Issue]** Apply Changes can fail with "Extracting compiled package archive failed" when using certain versions of tiles. If you encounter this error, apply your changes a second time.
+- **[Feature]** It is now possible to configure vSphere to use [human-readable VM names](https://bosh.io/docs/vsphere-human-readable-names/).
+- **[Bug Fix]** API docs now load as expected (Javascript issues caused loading problems).
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Operations Manager</td><td>3.0.13-build.622*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Tanzu Operations Manager)</td><td>1.148*</td></tr><tr><td>BBR SDK</td><td>1.18.81*</td></tr><tr><td>BOSH Director</td><td>277.3.4</td></tr><tr><td>BOSH DNS</td><td>1.36.2</td></tr><tr><td>System Metrics</td><td>2.3.2</td></tr><tr><td>CredHub</td><td>2.12.34</td></tr><tr><td>CredHub Maestro</td><td>9.0.7</td></tr><tr><td>Syslog</td><td>12.1.6</td></tr><tr><td>Windows Syslog</td><td>1.1.15</td></tr><tr><td>UAA</td><td>76.15.0</td></tr><tr><td>BPM</td><td>1.2.3</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>99</td></tr><tr><td>Azure CPI</td><td>46.0.0</td></tr><tr><td>Google CPI</td><td>48.0.0</td></tr><tr><td>OpenStack CPI</td><td>53</td></tr><tr><td>vSphere CPI</td><td>94</td></tr><tr><td>BOSH CLI</td><td>7.2.4</td></tr><tr><td>Credhub CLI</td><td>2.9.17</td></tr><tr><td>BBR CLI</td><td>1.9.46</td></tr><tr><td>Telemetry</td><td>2.0.5</td></tr><tr><td>Core Consumption</td><td>0.3.5</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
+### <a id="3-0-12"></a> v3.0.12+LTS-T
 
 **Release Date:** June 27, 2023
 
-<p> This release includes new versions of BOSH DNS and System Metrics, which causes all VMs to redeploy.
+<p> This release includes a new version of BOSH DNS, which causes all VMs to redeploy.
+<p>
+
+
+- **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes BOSH Director logs.
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Operations Manager</td><td>3.0.12-build.604*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Tanzu Operations Manager)</td><td>1.147*</td></tr><tr><td>BBR SDK</td><td>1.18.80*</td></tr><tr><td>BOSH Director</td><td>277.3.4*</td></tr><tr><td>BOSH DNS</td><td>1.36.2*</td></tr><tr><td>System Metrics</td><td>2.3.2</td></tr><tr><td>CredHub</td><td>2.12.34*</td></tr><tr><td>CredHub Maestro</td><td>9.0.7*</td></tr><tr><td>Syslog</td><td>12.1.6</td></tr><tr><td>Windows Syslog</td><td>1.1.15</td></tr><tr><td>UAA</td><td>76.15.0*</td></tr><tr><td>BPM</td><td>1.2.3*</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>99*</td></tr><tr><td>Azure CPI</td><td>46.0.0*</td></tr><tr><td>Google CPI</td><td>48.0.0*</td></tr><tr><td>OpenStack CPI</td><td>53*</td></tr><tr><td>vSphere CPI</td><td>94</td></tr><tr><td>BOSH CLI</td><td>7.2.4*</td></tr><tr><td>Credhub CLI</td><td>2.9.17*</td></tr><tr><td>BBR CLI</td><td>1.9.46</td></tr><tr><td>Telemetry</td><td>2.0.5</td></tr><tr><td>Core Consumption</td><td>0.3.5</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
+### <a id="3-0-11"></a> v3.0.11+LTS-T
+
+**Release Date:** June 21, 2023
+
+<p> This release includes a new version of System Metrics, which causes all VMs to redeploy.
 </p>
 
 
@@ -76,7 +126,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   </thead>
   <tbody>
   <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.59-build.1232*</td>
+    <td>Tanzu Operations Manager</td><td>3.0.11-build.570*</td>
   </tr>
   <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>621.584*</td></tr><tr><td>BBR SDK</td><td>1.18.80*</td></tr><tr><td>BOSH Director</td><td>277.3.4*</td></tr><tr><td>BOSH DNS</td><td>1.36.2*</td></tr><tr><td>Metrics Server</td><td>0.1.13*</td></tr><tr><td>System Metrics</td><td>2.3.2*</td></tr><tr><td>CredHub</td><td>2.12.34*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9</td></tr><tr><td>Syslog</td><td>11.8.10*</td></tr><tr><td>Windows Syslog</td><td>1.1.15*</td></tr><tr><td>UAA</td><td>76.15.0*</td></tr><tr><td>BPM</td><td>1.2.3*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>99*</td></tr><tr><td>Azure CPI</td><td>46.0.0*</td></tr><tr><td>Google CPI</td><td>48.0.0*</td></tr><tr><td>OpenStack CPI</td><td>53*</td></tr><tr><td>vSphere CPI</td><td>94*</td></tr><tr><td>BOSH CLI</td><td>7.2.4*</td></tr><tr><td>Credhub CLI</td><td>2.9.17*</td></tr><tr><td>BBR CLI</td><td>1.9.46*</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr><tr><td>Core Consumption</td><td>0.3.5*</td></tr>
     <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
@@ -105,7 +155,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   </thead>
   <tbody>
   <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.58-build.1011*</td>
+    <td>Tanzu Operations Manager</td><td>3.0.10-build.430*</td>
   </tr>
   <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>621.543*</td></tr><tr><td>BBR SDK</td><td>1.18.76*</td></tr><tr><td>BOSH Director</td><td>277.3.2*</td></tr><tr><td>BOSH DNS</td><td>1.36.1</td></tr><tr><td>Metrics Server</td><td>0.1.12</td></tr><tr><td>System Metrics</td><td>2.3.1*</td></tr><tr><td>CredHub</td><td>2.12.28*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9</td></tr><tr><td>Syslog</td><td>11.8.9</td></tr><tr><td>Windows Syslog</td><td>1.1.14</td></tr><tr><td>UAA</td><td>74.5.73*</td></tr><tr><td>BPM</td><td>1.2.2*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>98</td></tr><tr><td>Azure CPI</td><td>44.0.0</td></tr><tr><td>Google CPI</td><td>47.0.0</td></tr><tr><td>OpenStack CPI</td><td>52</td></tr><tr><td>vSphere CPI</td><td>92</td></tr><tr><td>BOSH CLI</td><td>7.2.3</td></tr><tr><td>Credhub CLI</td><td>2.9.15*</td></tr><tr><td>BBR CLI</td><td>1.9.45</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr><tr><td>Core Consumption</td><td>0.3.3</td></tr>
     <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
@@ -120,6 +170,31 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Feature]** Upgrade to Ruby 3.1
 - **[Known Issue]** Deployment of TAS and related tiles (for example, Isolation Segment) fails during the _first_ Apply Changes with the error, "Extracting compiled package archive failed". If you encounter this error, run Apply Changes again. This issue is fixed in a following release of <%= vars.ops_manager %>.
 - **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
+- **[Bug Fix]** The See Changes page does not return an error after upgrading from Tanzu Operations Manager 2.10 to 3.0.
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Operations Manager</td><td>3.0.9-build.367*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Tanzu Operations Manager)</td><td>1.108</td></tr><tr><td>BBR SDK</td><td>1.18.69*</td></tr><tr><td>BOSH Director</td><td>277.3.1*</td></tr><tr><td>BOSH DNS</td><td>1.36.1</td></tr><tr><td>System Metrics</td><td>2.2.7</td></tr><tr><td>CredHub</td><td>2.12.26</td></tr><tr><td>CredHub Maestro</td><td>9.0.4</td></tr><tr><td>Syslog</td><td>12.1.4*</td></tr><tr><td>Windows Syslog</td><td>1.1.14*</td></tr><tr><td>UAA</td><td>76.11.0*</td></tr><tr><td>BPM</td><td>1.2.0</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>98</td></tr><tr><td>Azure CPI</td><td>44.0.0</td></tr><tr><td>Google CPI</td><td>47.0.0</td></tr><tr><td>OpenStack CPI</td><td>52</td></tr><tr><td>vSphere CPI</td><td>92</td></tr><tr><td>BOSH CLI</td><td>7.2.3</td></tr><tr><td>CredHub CLI</td><td>2.9.14</td></tr><tr><td>BBR CLI</td><td>1.9.45*</td></tr><tr><td>Telemetry</td><td>2.0.5</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
+### <a id="3-0-8"></a> v3.0.8+LTS-T
+
+**Release Date:** May 01, 2023
+
+- **[Feature]** Allow both gp3 and throughput (IOPS) to be set through API when creating custom disk types
+- **[Feature]** Use clang to compile Ruby in Tanzu Operations Manager
+- **[Bug Fix]** Default ldap "Group Max Search Depth" to 1
 - **[Bug Fix]** Blobstore credentials do not appear in IaaS metadata when signed URLs are used
 
 <table border="1" class="nice">
@@ -131,7 +206,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   </thead>
   <tbody>
   <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.57-build.911*</td>
+    <td>Tanzu Operations Manager</td><td>3.0.8-build.344*</td>
   </tr>
   <tr><td>Stemcell (Bosh Director and Tanzu Operations Manager)</td><td>621.508*</td></tr><tr><td>BBR SDK</td><td>1.18.69*</td></tr><tr><td>BOSH Director</td><td>277.3.1*</td></tr><tr><td>BOSH DNS</td><td>1.36.1</td></tr><tr><td>Metrics Server</td><td>0.1.12*</td></tr><tr><td>System Metrics</td><td>2.2.7</td></tr><tr><td>CredHub</td><td>2.12.26*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9</td></tr><tr><td>Syslog</td><td>11.8.9*</td></tr><tr><td>Windows Syslog</td><td>1.1.14*</td></tr><tr><td>UAA</td><td>74.5.71*</td></tr><tr><td>BPM</td><td>1.2.0</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.3</td></tr><tr><td>AWS CPI</td><td>98*</td></tr><tr><td>Azure CPI</td><td>44.0.0*</td></tr><tr><td>Google CPI</td><td>47.0.0*</td></tr><tr><td>OpenStack CPI</td><td>52*</td></tr><tr><td>vSphere CPI</td><td>92*</td></tr><tr><td>BOSH CLI</td><td>7.2.3*</td></tr><tr><td>Credhub CLI</td><td>2.9.14*</td></tr><tr><td>BBR CLI</td><td>1.9.45*</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
     <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
@@ -161,7 +236,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   </thead>
   <tbody>
   <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.56-build.762*</td>
+    <td>Tanzu Operations Manager</td><td>3.0.7-build.289*</td>
   </tr>
   <tr><td>Stemcell (Bosh Director and Tanzu Operations Manager)</td><td>621.463</td></tr><tr><td>BBR SDK</td><td>1.18.65*</td></tr><tr><td>BOSH Director</td><td>277.3.0</td></tr><tr><td>BOSH DNS</td><td>1.36.1*</td></tr><tr><td>Metrics Server</td><td>0.1.11</td></tr><tr><td>System Metrics</td><td>2.2.7</td></tr><tr><td>CredHub</td><td>2.12.25*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9</td></tr><tr><td>Syslog</td><td>11.8.8</td></tr><tr><td>Windows Syslog</td><td>1.1.13</td></tr><tr><td>UAA</td><td>74.5.68*</td></tr><tr><td>BPM</td><td>1.2.0*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.3*</td></tr><tr><td>AWS CPI</td><td>97</td></tr><tr><td>Azure CPI</td><td>43.0.0*</td></tr><tr><td>Google CPI</td><td>46.0.2</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>91*</td></tr><tr><td>BOSH CLI</td><td>7.2.2*</td></tr><tr><td>Credhub CLI</td><td>2.9.13*</td></tr><tr><td>BBR CLI</td><td>1.9.43*</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
     <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
@@ -184,11 +259,11 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.55-build.729*</td>
-  </tr>
-  <tr><td>Stemcell (Bosh Director and Tanzu Operations Manager)</td><td>621.463*</td></tr><tr><td>BBR SDK</td><td>1.18.62</td></tr><tr><td>BOSH Director</td><td>277.3.0</td></tr><tr><td>BOSH DNS</td><td>1.36.0</td></tr><tr><td>Metrics Server</td><td>0.1.11</td></tr><tr><td>System Metrics</td><td>2.2.7</td></tr><tr><td>CredHub</td><td>2.12.22*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9</td></tr><tr><td>Syslog</td><td>11.8.8</td></tr><tr><td>Windows Syslog</td><td>1.1.13</td></tr><tr><td>UAA</td><td>74.5.65*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>97</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.2*</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>90</td></tr><tr><td>BOSH CLI</td><td>7.2.0*</td></tr><tr><td>Credhub CLI</td><td>2.9.12</td></tr><tr><td>BBR CLI</td><td>1.9.42*</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+    <tr>
+      <td>Tanzu Operations Manager</td><td>3.0.6-build.269*</td>
+    </tr>
+    <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>1.95*</td></tr><tr><td>BBR SDK</td><td>1.18.62</td></tr><tr><td>BOSH Director</td><td>277.3.0</td></tr><tr><td>BOSH DNS</td><td>1.36.1*</td></tr><tr><td>System Metrics</td><td>2.2.7</td></tr><tr><td>CredHub</td><td>2.12.23*</td></tr><tr><td>CredHub Maestro</td><td>9.0.2*</td></tr><tr><td>Syslog</td><td>12.1.3</td></tr><tr><td>Windows Syslog</td><td>1.1.13</td></tr><tr><td>UAA</td><td>76.8.0*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>97</td></tr><tr><td>Azure CPI</td><td>42.0.0</td></tr><tr><td>Google CPI</td><td>46.0.2*</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>90</td></tr><tr><td>BOSH CLI</td><td>7.2.0*</td></tr><tr><td>Credhub CLI</td><td>2.9.13*</td></tr><tr><td>BBR CLI</td><td>1.9.42*</td></tr><tr><td>Telemetry</td><td>2.0.5</td></tr>
+      <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
 
@@ -219,11 +294,12 @@ you are using the most recent stemcell versions.
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.54-build.726*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operationss Manager)</td><td>621.448*</td></tr><tr><td>BBR SDK</td><td>1.18.62*</td></tr><tr><td>BOSH Director</td><td>277.3.0*</td></tr><tr><td>BOSH DNS</td><td>1.36.0</td></tr><tr><td>Metrics Server</td><td>0.1.11*</td></tr><tr><td>System Metrics</td><td>2.2.7*</td></tr><tr><td>CredHub</td><td>2.12.21*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9</td></tr><tr><td>Syslog</td><td>11.8.8*</td></tr><tr><td>Windows Syslog</td><td>1.1.13*</td></tr><tr><td>UAA</td><td>74.5.64*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>97*</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.1</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>90*</td></tr><tr><td>BOSH CLI</td><td>7.1.3*</td></tr><tr><td>Credhub CLI</td><td>2.9.12*</td></tr><tr><td>BBR CLI</td><td>1.9.41*</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+    <tr>
+      <td>Tanzu Operations Manager</td><td>3.0.5-build.251*</td>
+    </tr>
+    <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>1.93*</td></tr><tr><td>BBR SDK</td><td>1.18.62*</td></tr><tr><td>BOSH Director</td><td>277.3.0*</td></tr><tr><td>BOSH DNS</td><td>1.36.0</td></tr><tr><td>System Metrics</td><td>2.2.7*</td></tr><tr><td>CredHub</td><td>2.12.21*</td></tr><tr><td>CredHub Maestro</td><td>9.0.1*</td></tr><tr><td>Syslog</td><td>12.1.3*</td></tr><tr><td>Windows Syslog</td><td>1.1.13*</td></tr><tr><td>UAA</td><td>76.7.0*</td></tr><tr><td>BPM</td><td>1.1.21</td>
+    </tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>97*</td></tr><tr><td>Azure CPI</td><td>42.0.0*</td></tr><tr><td>Google CPI</td><td>46.0.1</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>90*</td></tr><tr><td>BOSH CLI</td><td>7.1.3*</td></tr><tr><td>Credhub CLI</td><td>2.9.12*</td></tr><tr><td>BBR CLI</td><td>1.9.41*</td></tr><tr><td>Telemetry</td><td>2.0.5</td></tr>
+      <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
 
@@ -250,11 +326,11 @@ you are using the most recent stemcell versions.
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.53-build.706*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.401*</td></tr><tr><td>BBR SDK</td><td>1.18.61*</td></tr><tr><td>BOSH Director</td><td>276.1.1*</td></tr><tr><td>BOSH DNS</td><td>1.36.0*</td></tr><tr><td>Metrics Server</td><td>0.1.9</td></tr><tr><td>System Metrics</td><td>2.2.5*</td></tr><tr><td>CredHub</td><td>2.12.19*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9</td></tr><tr><td>Syslog</td><td>11.8.6</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.63*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.1</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>89*</td></tr><tr><td>BOSH CLI</td><td>7.1.2*</td></tr><tr><td>Credhub CLI</td><td>2.9.10</td></tr><tr><td>BBR CLI</td><td>1.9.39*</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+    <tr>
+      <td>Tanzu Operations Manager</td><td>3.0.4-build.227*</td>
+    </tr>
+    <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>1.83*</td></tr><tr><td>BBR SDK</td><td>1.18.61*</td></tr><tr><td>BOSH Director</td><td>276.1.1</td></tr><tr><td>BOSH DNS</td><td>1.36.0*</td></tr><tr><td>System Metrics</td><td>2.2.5*</td></tr><tr><td>CredHub</td><td>2.12.19*</td></tr><tr><td>CredHub Maestro</td><td>8.0.9*</td></tr><tr><td>Syslog</td><td>12.1.1</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.63*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.1*</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>89*</td></tr><tr><td>BOSH CLI</td><td>7.1.2*</td></tr><tr><td>Credhub CLI</td><td>2.9.10*</td></tr><tr><td>BBR CLI</td><td>1.9.39*</td></tr><tr><td>Telemetry</td><td>2.0.5*</td></tr>
+      <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
 
@@ -276,11 +352,11 @@ you are using the most recent stemcell versions.
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.52-build.679*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.376*</td></tr><tr><td>BBR SDK</td><td>1.18.60*</td></tr><tr><td>BOSH Director</td><td>273.1.3</td></tr><tr><td>BOSH DNS</td><td>1.34.1*</td></tr><tr><td>Metrics Server</td><td>0.1.9</td></tr><tr><td>System Metrics</td><td>2.2.4</td></tr><tr><td>CredHub</td><td>2.12.18</td></tr><tr><td>CredHub Maestro</td><td>8.0.9*</td></tr><tr><td>Syslog</td><td>11.8.6</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.62*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.1*</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>88*</td></tr><tr><td>BOSH CLI</td><td>7.1.1*</td></tr><tr><td>Credhub CLI</td><td>2.9.10*</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+    <tr>
+      <td>Tanzu Operations Manager</td><td>3.0.3-build.203*</td>
+    </tr>
+    <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>1.75*</td></tr><tr><td>BBR SDK</td><td>1.18.60*</td></tr><tr><td>BOSH Director</td><td>276.1.1</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>System Metrics</td><td>2.2.4</td></tr><tr><td>CredHub</td><td>2.12.18</td></tr><tr><td>CredHub Maestro</td><td>8.0.8</td></tr><tr><td>Syslog</td><td>12.1.1</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.61</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>46.0.0*</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>88*</td></tr><tr><td>BOSH CLI</td><td>7.1.0</td></tr><tr><td>Credhub CLI</td><td>2.9.9</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>2.0.2</td></tr>
+      <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
 
@@ -303,11 +379,11 @@ you are using the most recent stemcell versions.
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.51-build.662*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.364*</td></tr><tr><td>BBR SDK</td><td>1.18.59*</td></tr><tr><td>BOSH Director</td><td>273.1.3*</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>Metrics Server</td><td>0.1.9*</td></tr><tr><td>System Metrics</td><td>2.2.4*</td></tr><tr><td>CredHub</td><td>2.12.18*</td></tr><tr><td>CredHub Maestro</td><td>8.0.8*</td></tr><tr><td>Syslog</td><td>11.8.6*</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.61*</td></tr><tr><td>BPM</td><td>1.1.21*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96*</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>87</td></tr><tr><td>BOSH CLI</td><td>7.1.0*</td></tr><tr><td>Credhub CLI</td><td>2.9.9*</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+    <tr>
+      <td>Tanzu Operations Manager</td><td>3.0.2-build.192*</td>
+    </tr>
+    <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>1.71*</td></tr><tr><td>BBR SDK</td><td>1.18.59</td></tr><tr><td>BOSH Director</td><td>276.1.1</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>System Metrics</td><td>2.2.4*</td></tr><tr><td>CredHub</td><td>2.12.18*</td></tr><tr><td>CredHub Maestro</td><td>8.0.8</td></tr><tr><td>Syslog</td><td>12.1.1</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.61*</td></tr><tr><td>BPM</td><td>1.1.21</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>87</td></tr><tr><td>BOSH CLI</td><td>7.1.0</td></tr><tr><td>Credhub CLI</td><td>2.9.9*</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>2.0.2</td></tr>
+      <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
 
@@ -329,417 +405,11 @@ you are using the most recent stemcell versions.
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.50-build.622*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.330*</td></tr><tr><td>BBR SDK</td><td>1.18.58*</td></tr><tr><td>BOSH Director</td><td>273.1.2*</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>Metrics Server</td><td>0.1.8*</td></tr><tr><td>System Metrics</td><td>2.2.2*</td></tr><tr><td>CredHub</td><td>2.12.14*</td></tr><tr><td>CredHub Maestro</td><td>8.0.7</td></tr><tr><td>Syslog</td><td>11.8.5*</td></tr><tr><td>Windows Syslog</td><td>1.1.11*</td></tr><tr><td>UAA</td><td>74.5.58*</td></tr><tr><td>BPM</td><td>1.1.19</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>95*</td></tr><tr><td>Azure CPI</td><td>41.0.0*</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>51*</td></tr><tr><td>vSphere CPI</td><td>87*</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.8*</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-49'></a> v2.10.49
-
-**Release Date:** November 02, 2022
-
-- **[Bug Fix]** Metrics server continues to accept old leaf certificate for mutual TLS during a CA rotation
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.49-build.594*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.305</td></tr><tr><td>BBR SDK</td><td>1.18.56*</td></tr><tr><td>BOSH Director</td><td>273.1.1</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>Metrics Server</td><td>0.1.7</td></tr><tr><td>System Metrics</td><td>2.0.18</td></tr><tr><td>CredHub</td><td>2.12.12</td></tr><tr><td>CredHub Maestro</td><td>8.0.7</td></tr><tr><td>Syslog</td><td>11.8.0</td></tr><tr><td>Windows Syslog</td><td>1.1.10</td></tr><tr><td>UAA</td><td>74.5.56*</td></tr><tr><td>BPM</td><td>1.1.19</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>94</td></tr><tr><td>Azure CPI</td><td>40.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>50</td></tr><tr><td>vSphere CPI</td><td>85*</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.7</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-48'></a> v2.10.48
-
-**Release Date:** October 27, 2022
-
-<div class='note caution'><strong>Caution:</strong>
-  <ul>
-    <li>This release includes a new version of BOSH DNS. Upgrading to Ops Manager <%= vars.ops_manager %> <%= vars.v_major_version %>.48 causes all VMs to
-      redeploy.</li>
-    <li>This release contains a new end-user license agreement that you must manually accept when downloading the release binaries from VMware Tanzu
-      Network.</li>
-  </ul>
-</div>
-
--  **[Feature]** Improve accessibility within Ops Manager UI
--  **[Known Issue Fix]** Upgrading from below <%= vars.ops_manager %> <%= vars.v_major_version %>.9 does not default to using the Policy API for NSX-T on vSphere
--  **[Known Issue Fix]** The issue beginning in <%= vars.ops_manager %> <%= vars.v_major_version %>.41 that caused some Ops Manager users to experience slow VM creation times has been resolved with the vSphere CPI included in this release
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.48-build.590*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Ops Manager)</td><td>621.305*</td></tr><tr><td>BBR SDK</td><td>1.18.55*</td></tr><tr><td>BOSH Director</td><td>273.1.1*</td></tr><tr><td>BOSH DNS</td><td>1.34.0*</td></tr><tr><td>Metrics Server</td><td>0.1.7*</td></tr><tr><td>System Metrics</td><td>2.0.18</td></tr><tr><td>CredHub</td><td>2.12.12*</td></tr><tr><td>CredHub Maestro</td><td>8.0.7*</td></tr><tr><td>Syslog</td><td>11.8.0</td></tr><tr><td>Windows Syslog</td><td>1.1.10*</td></tr><tr><td>UAA</td><td>74.5.55*</td></tr><tr><td>BPM</td><td>1.1.19</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>94</td></tr><tr><td>Azure CPI</td><td>40.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0*</td></tr><tr><td>OpenStack CPI</td><td>50*</td></tr><tr><td>vSphere CPI</td><td>81*</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.7*</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-47'></a> v2.10.47
-
-**Release Date:** September 28, 2022
-
-- **[Bug Fix]** Ops Manager correctly removes temporary files created during an export
-- **[Known Issue Fix]** Fixes a bug preventing Azure configurations from being correctly saved/deployed when Storage Accounts are used for Cloud Storage (problem introduced in 2.10.44)
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than Ops Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
-
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.47-build.562*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Ops Manager)</td><td>621.280*</td></tr><tr><td>BBR SDK</td><td>1.18.53*</td></tr><tr><td>BOSH Director</td><td>273.1.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.6*</td></tr><tr><td>System Metrics</td><td>2.0.18</td></tr><tr><td>CredHub</td><td>2.12.9*</td></tr><tr><td>CredHub Maestro</td><td>8.0.4</td></tr><tr><td>Syslog</td><td>11.8.0</td></tr><tr><td>Windows Syslog</td><td>1.1.9*</td></tr><tr><td>UAA</td><td>74.5.51*</td></tr><tr><td>BPM</td><td>1.1.19*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>94*</td></tr><tr><td>Azure CPI</td><td>40.0.0*</td></tr><tr><td>Google CPI</td><td>44.0.0*</td></tr><tr><td>OpenStack CPI</td><td>49*</td></tr><tr><td>vSphere CPI</td><td>80*</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.4*</td></tr><tr><td>BBR CLI</td><td>1.9.38*</td></tr><tr><td>Telemetry</td><td>1.2.4</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-46'></a> v2.10.46
-
-**Release Date:** August 25, 2022
-
-<p> When upgrading from <%= vars.ops_manager %> <%= vars.v_major_version %>.8 or earlier on vSphere, the NSX-T
-  Policy API mode is configured by default. If you are not using the NSX-T Policy API, you must either deactivate the <strong>Use NSX-T Policy API</strong>
-  checkbox in the <strong>vCenter Config</strong> pane of the BOSH Director tile or set the <code>nsx_t_use_policy_api</code> property in your manifest to
-  <code>false</code>.</p>
-
-- **[Feature]** Ops Manager generated leaf certificates includes the keyEncipherment extension
-- **[Change]** New installs of OM on vSphere default to use policy-api
-- **[Bug Fix]** Upgrading stemcell, then upgrading Tanzu Operations Manager to version that does not include that stemcell does not fail
-- **[Bug Fix]** UI Fixes:
-  - Datastore cluster/datastore configuration form fields have been adjusted for clarity.
-  - Expired certificates do not display negative values for "expires in"
-- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Ops Manager 2.10.44)
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.46-build.541*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager) </td><td>621.265*</td></tr><tr><td>BBR SDK</td><td>1.18.50*</td></tr><tr><td>BOSH Director</td><td>273.1.0*</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.5*</td></tr><tr><td>System Metrics</td><td>2.0.18</td></tr><tr><td>CredHub</td><td>2.12.8*</td></tr><tr><td>CredHub Maestro</td><td>8.0.4*</td></tr><tr><td>Syslog</td><td>11.8.0</td></tr><tr><td>Windows Syslog</td><td>1.1.8*</td></tr><tr><td>UAA</td><td>74.5.48*</td></tr><tr><td>BPM</td><td>1.1.18</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>39.0.0*</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>48*</td></tr><tr><td>vSphere CPI</td><td>79*</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.37*</td></tr><tr><td>Telemetry</td><td>1.2.4*</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-45'></a> v2.10.45
-
-**Release Date:** July 27, 2022
-
-<p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.45 causes all VMs to redeploy.</p>
-
-- **[Fix]** BOSH task cleanup occurs daily (rather than weekly). This change might alleviate issues seen in deployments where the BOSH Director runs tasks frequently (e.g. for monitoring).
-- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Ops Manager 2.10.44)
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.45-build.512*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager) </td><td>621.256</td></tr><tr><td>BBR SDK</td><td>1.18.47*</td></tr><tr><td>BOSH Director</td><td>272.6.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.4*</td></tr><tr><td>System Metrics</td><td>2.0.18*</td></tr><tr><td>CredHub</td><td>2.12.6</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.8.0</td></tr><tr><td>Windows Syslog</td><td>1.1.7</td></tr><tr><td>UAA</td><td>74.5.46</td></tr><tr><td>BPM</td><td>1.1.18</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>47*</td></tr><tr><td>vSphere CPI</td><td>76</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.35*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-44'></a> v2.10.44
-
-**Release Date:** July 14, 2022
-
-- **[Security Fix]** Remediated CVE-2022-23923 in the tile JavaScript migration process.
-- **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Ops Manager 2.10.44)
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.44-build.502*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager) </td><td>621.256*</td></tr><tr><td>BBR SDK</td><td>1.18.46*</td></tr><tr><td>BOSH Director</td><td>272.6.0*</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.3</td></tr><tr><td>System Metrics</td><td>2.0.17</td></tr><tr><td>CredHub</td><td>2.12.6*</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.8.0*</td></tr><tr><td>Windows Syslog</td><td>1.1.7*</td></tr><tr><td>UAA</td><td>74.5.46*</td></tr><tr><td>BPM</td><td>1.1.18</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>76*</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.34*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-43'></a> v2.10.43
-
-**Release Date:** June 16, 2022
-
-- **[Known Issue Fix]** Certificates endpoint no longer returns a 500 error due to "nested asn" error. Issue is introduced in v2.10.40.
-- **[Known Issue Fix]** Deleting VM types using the API endpoint is allowed even when VMs are deployed with those types. Issue is introduced in v2.10.40.
-- **[Known Issue Fix]** Content-Security-Policy header does not prevent users logging in with SAML. Issue is introduced in v2.10.40.
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.43-build.494*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.251*</td></tr><tr><td>BBR SDK</td><td>1.18.43</td></tr><tr><td>BOSH Director</td><td>272.5.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.3</td></tr><tr><td>System Metrics</td><td>2.0.17</td></tr><tr><td>CredHub</td><td>2.12.5</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.11</td></tr><tr><td>Windows Syslog</td><td>1.1.6</td></tr><tr><td>UAA</td><td>74.5.41</td></tr><tr><td>BPM</td><td>1.1.18</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>74</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.32</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-42'></a> v2.10.42
-
-**Release Date:** June 11, 2022
-
-- **[Known Issue Fix]** The expiring certificates API does not return a 500 status error when syslog certificates are not configured. Issue is introduced in v2.10.40.
-- **[Known Issue Fix]** The VM type deletion API endpoint does not return a 500 status error. Issue is introduced in v2.10.40.
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.42-build.491*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.245</td></tr><tr><td>BBR SDK</td><td>1.18.43*</td></tr><tr><td>BOSH Director</td><td>272.5.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.3</td></tr><tr><td>System Metrics</td><td>2.0.17</td></tr><tr><td>CredHub</td><td>2.12.5</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.11</td></tr><tr><td>Windows Syslog</td><td>1.1.6</td></tr><tr><td>UAA</td><td>74.5.41</td></tr><tr><td>BPM</td><td>1.1.18</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>74</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.32*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-41'></a> v2.10.41
-
-**Release Date:** June 07, 2022
-
-- **[Bug Fix]** The BOSH Director would fail to deploy if the persistent disk still contained the postgres 9 data directory. This data has not been in use since Ops Manager 2.4, but there was no automated cleanup process.
-- **[Known Issue]** The expiring certificates API endpoint returns a 500 status error for customers that have the syslog feature configured without entering an SSL certificate. Additionally, attempting to generate a support bundle returns an error. To workaround this issue, see [Support bundle download gives error undefined method `strip` and Tanzu Operations Manager certificate pane does not load](https://community.pivotal.io/s/article/Support-bundle-download-gives-error-undefined-method)
-- **[Known Issue]** Deleting custom VM types using the API always returns a 500 status error.
-- **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.41-build.487*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.245</td></tr><tr><td>BBR SDK</td><td>1.18.42</td></tr><tr><td>BOSH Director</td><td>272.5.0*</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.3</td></tr><tr><td>System Metrics</td><td>2.0.17</td></tr><tr><td>CredHub</td><td>2.12.5</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.11*</td></tr><tr><td>Windows Syslog</td><td>1.1.6</td></tr><tr><td>UAA</td><td>74.5.41</td></tr><tr><td>BPM</td><td>1.1.18</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>74</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.31</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-40'></a> v2.10.40
-
-**Release Date:** June 03, 2022
-
-<p>There is a known issue with the BOSH Director when upgrading from an <%= vars.ops_manager %> installation that was created before March 2019. If your
-<%= vars.ops_manager %> installation was originally created before <%= vars.ops_manager %> v2.5.0, even if you are now on a current patch, you
-do not upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.40.
-This issue if resolved in <%= vars.v_major_version %>.41. This release includes a new version of System Metrics. Upgrading to
-<%= vars.ops_manager %> <%= vars.v_major_version %>.40 causes all VMs to
-  redeploy.</p>
-
-- **[Feature]** The Certificates page and expiring certificates API endpoint now include configurable certificates that were not previously displayed. The new certificates include IaaS and trusted certificates within the BOSH Director tile, the Tanzu Operations Manager SSL certificate, syslog certificates, and certificates in plain-text fields within other tiles. After upgrading to this patch, the expiring certificates
-warning banner might appear if any of these certificates are close to their expiration date.
-- **[Feature]** Allow users to select a stemcell for the BOSH Director tile. This allows you to redeploy the BOSH Director with newer stemcells without upgrading to a new Ops Manager patch. Users still need to upgrade to the latest Tanzu Operations Manager patch to receive CVE fixes for the Tanzu Operations Manager VM itself.
-- **[Feature]** Add Content-Security-Policy headers are returned when accessing Tanzu Operations Manager. These headers replace the previously used X-XSS-Protection headers to protect against cross-site scripting attacks.
-- **[Feature]** Tanzu Operations Manager no longer deploys the deprecated BOSH registry on the BOSH Director.
-- **[Bug Fix]** The BOSH Director on vSphere uses the selected CPI config instead of first CPI config.
-- **[Bug Fix]** Deleting in-use custom VM types no longer causes Ops Manager to return 500 status code errors until you restart it.
-- **[Bug Fix]** Tile properties that have been frozen due to a deploy now remain frozen after upgrading that tile.
-- **[Bug Fix]** Principal Identity (certificate-based) authentication for NSX-T works when Policy API mode is activated.
-- **[Bug Fix]** BOSH Health Monitor no longer continues to report that a VM is unresponsive after it has been deleted.
-- **[Known Issue]** The expiring certificates API endpoint returns a 500 status error for customers that have the syslog feature configured without entering an SSL certificate. Additionally, attempting to generate a support bundle returns an error. To workaround this issue, see [Support bundle download gives error undefined method `strip` and Ops Manager certificate pane does not load](https://community.pivotal.io/s/article/Support-bundle-download-gives-error-undefined-method)
-- **[Known Issue]** Deleting custom VM types using the API always returns a 500 status error.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.40-build.482*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.245*</td></tr><tr><td>BBR SDK</td><td>1.18.42*</td></tr><tr><td>BOSH Director</td><td>272.4.0*</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.3</td></tr><tr><td>System Metrics</td><td>2.0.17*</td></tr><tr><td>CredHub</td><td>2.12.5*</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.10*</td></tr><tr><td>Windows Syslog</td><td>1.1.6*</td></tr><tr><td>UAA</td><td>74.5.41*</td></tr><tr><td>BPM</td><td>1.1.18*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>74*</td></tr><tr><td>BOSH CLI</td><td>7.0.1*</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.31*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-39'></a> v2.10.39
-
-**Release Date:** April 25, 2022
-
-<p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.39 causes all VMs to redeploy.</p>
-
-- **[Bug Fix]** Changes to `/api/v0/installation_asset_collection` in 2.10.37 were inconsistent with Tanzu Operations Manager RBAC documentation. The endpoint is now unavailable for users without access to view credentials.
-- **[Feature]** Allow users to downgrade stemcells for Tiles. This makes it easier to recover from a stemcell/Tile compatibility problem.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.39-build.450*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.236*</td></tr><tr><td>BBR SDK</td><td>1.18.39*</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.3*</td></tr><tr><td>System Metrics</td><td>2.0.14*</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.8*</td></tr><tr><td>Windows Syslog</td><td>1.1.5*</td></tr><tr><td>UAA</td><td>74.5.37</td></tr><tr><td>BPM</td><td>1.1.17*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>43.0.0*</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>73</td></tr><tr><td>BOSH CLI</td><td>6.4.17</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.28*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-38'></a> v2.10.38 - Withdrawn
-
-**Release Date:** April 09, 2022
-
-<p> This release has been removed from VMware Tanzu Network because it included an unpublished stemcell. This
-  stemcell is testing new security enhancements, and <%= vars.company_name %> has received reports of Diego Cell VMs in <%= vars.app_runtime_abbr %>
-  deployments becoming unresponsive. If you are experiencing problems caused by the 621.230 stemcell, upgrade to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.39.</p>
-
-This release is primarily intended for OpenStack users as images are not available for <%= vars.ops_manager %> <%= vars.v_major_version %>.37. There are no
-major functionality changes in this release.
-
-- **[Bug Fix]** Update dependencies in systemd config for the Tanzu Operations Manager VM. This was causing error messages to appear in `/var/log/syslog`
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.38-build.448*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.230*</td></tr><tr><td>BBR SDK</td><td>1.18.38*</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.37</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>42.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>73</td></tr><tr><td>BOSH CLI</td><td>6.4.17</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.27</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-37'></a> v2.10.37
-
-**Release Date:** April 06, 2022
-
-- **[Security Fix]** This release addresses [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). We now consider this update necessary for secure operation, and recommend installation ASAP. We previously believed this was fixed in 2.10.35 but further investigation found it was not.
-- **[Known Issue]** OpenStack images are currently unavailable for 2.10.37. It's recommended to follow the [workaround instructions](https://community.pivotal.io/s/article/Workaround-instructions-to-address-CVE-2022-22965-in-Tanzu-Application-Service?language=en_US) for OpenStack environments until we are able to publish the updated image.
-- **[Breaking Change]** **[Security Fix]** Restricted View users can no longer access the `/api/v0/installation_asset_collection` API endpoint. The output contains hashed credentials.
-- **[Known Issue]** Full View users cannot access the `/api/v0/installation_asset_collection` API endpoint.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.37-build.445*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.224</td></tr><tr><td>BBR SDK</td><td>1.18.36</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.37*</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>42.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>73</td></tr><tr><td>BOSH CLI</td><td>6.4.17</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.27*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-36'></a> v2.10.36
-
-**Release Date:** April 01, 2022
-
-- **[Known Issue]** This release is impacted by [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). Please upgrade to 2.10.37 or higher.
-- **[Known Issue Fix]** Reverts Azure CPI to v38 to address a bug that required internet connectivity.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.36-build.441*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.224</td></tr><tr><td>BBR SDK</td><td>1.18.36</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.36</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0*</td></tr><tr><td>Google CPI</td><td>42.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>73</td></tr><tr><td>BOSH CLI</td><td>6.4.17</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.26</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-35'></a> v2.10.35
-
-**Release Date:** April 01, 2022
-
-* **[Known Issue]** This release originally addressed [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). After additional investigation we found this vulnerability still exists. Please upgrade to 2.10.37 or higher.
-* **[Known Issue]** On Azure, BOSH might fail to deploy if it does not have internet access due to a problem with Azure CPI v39.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.35-build.439*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.224</td></tr><tr><td>BBR SDK</td><td>1.18.36</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.36*</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>39.0.0*</td></tr><tr><td>Google CPI</td><td>42.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>73</td></tr><tr><td>BOSH CLI</td><td>6.4.17</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.26</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+    <tr>
+      <td>Tanzu Operations Manager</td><td>3.0.1-build.184*</td>
+    </tr>
+    <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>1.64*</td></tr><tr><td>BBR SDK</td><td>1.18.59*</td></tr><tr><td>BOSH Director</td><td>276.1.1*</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>System Metrics</td><td>2.2.3*</td></tr><tr><td>CredHub</td><td>2.12.16*</td></tr><tr><td>CredHub Maestro</td><td>8.0.8*</td></tr><tr><td>Syslog</td><td>12.1.1*</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.60*</td></tr><tr><td>BPM</td><td>1.1.21*</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>96*</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>87</td></tr><tr><td>BOSH CLI</td><td>7.1.0*</td></tr><tr><td>Credhub CLI</td><td>2.9.8</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>2.0.2*</td></tr>
+      <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
   </tbody>
 </table>
 
@@ -759,1044 +429,10 @@ major functionality changes in this release.
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.34-build.436*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.224*</td></tr><tr><td>BBR SDK</td><td>1.18.36*</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.35</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>42.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>73*</td></tr><tr><td>BOSH CLI</td><td>6.4.17</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.26*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-33'></a> v2.10.33
-
-**Release Date:** March 07, 2022
-
-<div This release includes a new version of BOSH DNS. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.33 causes all VMs to redeploy.
-  <br>
-  <br>
-  This version of BOSH DNS requires every BOSH DNS certificate to have a Subject Alternative Name (SAN). A migration was introduced in <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.9 to add SANs to these certificates. Upgrade to v<%= vars.ops_manager %> <%= vars.v_major_version %>.9 or later and redeploy
-  all VMs before you upgrade to this patch. If you do not complete this migration first, you might experience BOSH DNS resolution issues until the change is
-  rolled out to all VMs.
-  <br>
-  <br>
-  To see whether the migration has been succesfully run on all VMs, see
-  <a href="https://community.pivotal.io/s/article/How-to-Verify-Bosh-DNS-Certificates-Have-Correct-SAN-Fields?language=en_US">How to Verify Bosh DNS
-    Certificates Have Correct SAN Fields</a> in the Knowledge Base.
-</div>
-
-- **[Feature]** Certificate rotation procedures appear on the **Certificates** page and API endpoint
-- **[Feature]** The **Certificates** page can be filtered by both expiration date and rotation procedure
-- **[Feature]** Added support for Jammy Jellyfish (Ubuntu 22.04) stemcells.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.33-build.426*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.211</td></tr><tr><td>BBR SDK</td><td>1.18.35*</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.31.0*</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.35</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>42.0.0*</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.17</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.25</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-32'></a> v2.10.32
-
-**Release Date:** February 25, 2022
-
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director. This was most commonly seen in BOSH releases for Windows components.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.32-build.420*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.211</td></tr><tr><td>BBR SDK</td><td>1.18.34</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.3*</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.35*</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.17*</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.25*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-31'></a> v2.10.31
-
-**Release Date:** February 23, 2022
-
-- **[Bug Fix]** Tanzu Operations Manager pre_deploy_check fails on vSphere
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.31-build.414*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.211*</td></tr><tr><td>BBR SDK</td><td>1.18.34*</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.2</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.34</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.16</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.24</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-30'></a> v2.10.30
-
-**Release Date:** February 16, 2022
-
-- **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director.
-- **[Bug Fix]** BOSH deployments failing when enabling Spot Instances with VM Extensions is resolved in this release.
-- **[Feature]** The BOSH Blobstore is configured to allow TLS communication only. Communication was previously done via TLS, but non-TLS requests were still allowed.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.30-build.408*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.208</td></tr><tr><td>BBR SDK</td><td>1.18.33</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.2</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.34</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.16*</td></tr><tr><td>Credhub CLI</td><td>2.9.3</td></tr><tr><td>BBR CLI</td><td>1.9.24</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-29'></a> v2.10.29
-
-**Release Date:** February 11, 2022
-
-- **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
-- **[Bug Fix]** The UAA issue introduced in [v2.10.27](#2-10-27) causing UAA startup to fail on air-gapped environments is resolved in this release.
-- **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release. This issue caused deployment failures if a BOSH release that includes compiled packages was uploaded, and an identical BOSH release that includes source packages already existed on the BOSH Director.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.29-build.402*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.208*</td></tr><tr><td>BBR SDK</td><td>1.18.33</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.2*</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.34*</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93</td></tr><tr><td>Azure CPI</td><td>38.0.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.15*</td></tr><tr><td>Credhub CLI</td><td>2.9.3*</td></tr><tr><td>BBR CLI</td><td>1.9.24</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-28'></a> v2.10.28
-
-**Release Date:** February 04, 2022
-
-- **[Known Issue]** UAA fails to start in air-gapped Tanzu Operations Manager environments.
-- **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
-- **[Bug Fix]** The BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release.
-- **[Feature]** The Azure CPI has been updated to allow load balancers to be specified using an array of hashes. This is not available in the UI, but can be configured manually with BOSH.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.28-build.393*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.198</td></tr><tr><td>BBR SDK</td><td>1.18.33*</td></tr><tr><td>BOSH Director</td><td>271.20.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.33</td></tr><tr><td>BPM</td><td>1.1.16</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>93*</td></tr><tr><td>Azure CPI</td><td>38.0.0*</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.14*</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.24*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-27'></a> v2.10.27
-
-**Release Date:** February 02, 2022
-
-- **[Known Issue]** UAA fails to start in air-gapped Tanzu Operations Manager environments.
-- **[Known Issue]** The BOSH CLI included on the Tanzu Operations Manager VM can cause deployment failures in certain circumstances. If a BOSH release that includes compiled packages is uploaded, and an identical BOSH release that includes source packages already exists on the BOSH Director, the deployment might fail. If you run into this situation, please contact support.
-- **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
-
-- **[Security Fix]** Upgrades the Tanzu Operations Manager PostgreSQL to 13.5 and the BOSH Director PostgreSQL to 10.19 to fix a potential MITM vulnerability.
-([CVE-2021-23214](https://www.postgresql.org/support/security/CVE-2021-23214/))
-
-- **[Bug Fix]** For Azure deployments, Tanzu Operations Manager correctly respects the storage type you set in the UI.
-- **[Bug Fix]** For vSphere deployments, Tanzu Operations Manager does not generate a `Too many open file handles` error due to open vCenter connections.
-
-- **[Feature]** BOSH Director templating rendering speed up for large deployments.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.27-build.387*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.198*</td></tr><tr><td>BBR SDK</td><td>1.18.32*</td></tr><tr><td>BOSH Director</td><td>271.20.0*</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.33*</td></tr><tr><td>BPM</td><td>1.1.16*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>92</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.13*</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.22*</td></tr><tr><td>Telemetry</td><td>1.2.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-26'></a> v2.10.26
-
-**Release Date:** January 13, 2022
-
-- **[Bug Fix]** Tanzu Operations Manager OpenAPI documentation fixes:
-    - Sample URLs in the documentation no longer have a duplicate and erroneous "/api/v0" component in their path.
-    - The hostname in the URLs is corrected and is no longer "{opsmanager-installation}}".
-    - The warning in the API documentation about unsupported parallel API calls is clearer. Additional words added to mention that calls made by different users, but at the same time are just as unsupported as calls by the same user.
-- **[Bug Fix]** Includes BOSH Director v271.18.0. This fixes the incorrect handling of the `NO_PROXY` setting in Ops Manager that might have been introduced in Ops Manager v2.10.16. You can now enter hosts in the **No Proxy** field of the Ops Manager's **Proxy Settings** dialog and have Ops Manager, BOSH, and BOSH-deployed VMs reach out to those hosts directly.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.26-build.365*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.196*</td></tr><tr><td>BBR SDK</td><td>1.18.31*</td></tr><tr><td>BOSH Director</td><td>271.18.0*</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.2*</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.9*</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.31*</td></tr><tr><td>BPM</td><td>1.1.15</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>92</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.11*</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.21*</td></tr><tr><td>Telemetry</td><td>1.2.2*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-25'></a> v2.10.25
-
-**Release Date:** December 22, 2021
-
-- **[Security Fix]** Upgrades the included versions of CredHub and UAA to fix a potential Denial of Service vulnerability caused by Log4j2.
-  ([CVE-2021-45105](https://nvd.nist.gov/vuln/detail/CVE-2021-45105))
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.25-build.362*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.192*</td></tr><tr><td>BBR SDK</td><td>1.18.29</td></tr><tr><td>BOSH Director</td><td>271.17.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.1*</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.8*</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.30*</td></tr><tr><td>BPM</td><td>1.1.15</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>92*</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.8</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.20</td></tr><tr><td>Telemetry</td><td>1.2.1</td></tr>
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-  </tbody>
-</table>
-
-### <a id='2-10-24'></a> v2.10.24
-
-**Release Date:** December 16, 2021
-
-<div class='note caution'><strong>Caution:</strong>
-  <ul>
-    <li><%= vars.company_name %> recommends upgrading to this <%= vars.ops_manager %> patch as soon as possible to address
-    <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. If you are unable to upgrade, you can mitigate this CVE manually. For more information, see <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a> in the Knowledge Base.</li>
-    <li>This vulnerability also affects <%= vars.app_runtime_abbr %>. VMware recommends upgrading to <%= vars.app_runtime_abbr %> v2.12.5 as soon as possible. For more information, see the <a href="https://docs.pivotal.io/application-service/2-12/release-notes/runtime-rn.html#2.12.5"><%= vars.app_runtime_abbr %> v2.12.5 release notes</a>.</li>
-  </ul>
-</div>
-
-- **[Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.24-build.360*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.183</td></tr><tr><td>BBR SDK</td><td>1.18.29</td></tr><tr><td>BOSH Director</td><td>271.17.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.13</td></tr><tr><td>CredHub</td><td>2.9.7*</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.7</td></tr><tr><td>Windows Syslog</td><td>1.1.4</td></tr><tr><td>UAA</td><td>74.5.29*</td></tr><tr><td>BPM</td><td>1.1.15</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>91</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.8</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.20</td></tr><tr><td>Telemetry</td><td>1.2.1</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-23'></a> v2.10.23
-
-**Release Date:** December 12, 2021
-
-<p class="note caution">
-  <strong>Caution:</strong> This patch upgrades components using Log4j to version 2.15 in order to mitigate <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. VMware recommends upgrading to Ops Manager v2.10.24, which uses Log4j version 2.16 instead. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.
-</p>
-
-- **[Incomplete Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
-- **[Feature]** Allow configuration of OM UAA's password policies
-- **[Feature]** Allow operators to require IMDSv2 in AWS. For more information, see [Enable IMDSv2 in <%= vars.ops_manager%>](security/security-adjacent/security-guidelines-iaas.html#aws-imds-v2).
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.23-build.356*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.183*</td></tr><tr><td>BBR SDK</td><td>1.18.29*</td></tr><tr><td>BOSH Director</td><td>271.17.0</td></tr><tr><td>BOSH DNS</td><td>1.30.0*</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.13*</td></tr><tr><td>CredHub</td><td>2.9.6*</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.7*</td></tr><tr><td>Windows Syslog</td><td>1.1.4*</td></tr><tr><td>UAA</td><td>74.5.28*</td></tr><tr><td>BPM</td><td>1.1.15</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>91</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72</td></tr><tr><td>BOSH CLI</td><td>6.4.8</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.20*</td></tr><tr><td>Telemetry</td><td>1.2.1</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-22'></a> v2.10.22
-
-**Release Date:** November 29, 2021
-
-- **[Feature]** The IMDS Hop Limit can now be configured on AWS. See the `metadata_options` property on the [bosh.io AWS CPI documentation](https://bosh.io/docs/aws-cpi/#resource-pools)
-- **[Bug Fix]** Tanzu Operations Manager does not re-apply Identification Tags to VMs on every deploy. This issue was introduced in v2.10.20. The tags must be applied one final time for any VMs deployed using Ops Manager v2.10.20 or v2.10.21.
-- **[Bug Fix]** Tanzu Operations Manager scales the maximum database connections on the BOSH Director database with the number of BOSH workers specified. Previously, scaling the workers could lead to running out of database connections.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.22-build.344*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.176*</td></tr><tr><td>BBR SDK</td><td>1.18.28*</td></tr><tr><td>BOSH Director</td><td>271.17.0*</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.5</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.6</td></tr><tr><td>Windows Syslog</td><td>1.1.3</td></tr><tr><td>UAA</td><td>74.5.26</td></tr><tr><td>BPM</td><td>1.1.15</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>91*</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>41.0.0</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>72*</td></tr><tr><td>BOSH CLI</td><td>6.4.8*</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.19*</td></tr><tr><td>Telemetry</td><td>1.2.1*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-21'></a> v2.10.21
-
-**Release Date:** November 10, 2021
-
-- **[Feature]** Operators can clear the default trusted certificates store on BOSH-deployed VMs.
-- **[Feature]** Operators can specify trusted certificates for use with S3-compatible blobstores.
-- **[Bug Fix]** Root disks in AWS respect the AWS EBS disk type setting.
-- **[Known Issue]** If you use Identification Tags, Tanzu Operations Manager reapplies the tags on every deploy. This does not cause the VMs to be restarted, but causes slow deployments.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.21-build.330*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.171</td></tr><tr><td>BBR SDK</td><td>1.18.26*</td></tr><tr><td>BOSH Director</td><td>271.15.0*</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.5</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.6*</td></tr><tr><td>Windows Syslog</td><td>1.1.3</td></tr><tr><td>UAA</td><td>74.5.26</td></tr><tr><td>BPM</td><td>1.1.15</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>90*</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>41.0.0*</td></tr><tr><td>OpenStack CPI</td><td>46</td></tr><tr><td>vSphere CPI</td><td>70</td></tr><tr><td>BOSH CLI</td><td>6.4.7</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.17</td></tr><tr><td>Telemetry</td><td>1.2.0</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-20'></a> v2.10.20
-
-**Release Date:** November 2, 2021
-
-- **[Feature]** Operators can rotate CAs without having to re-create affected VMs. This requires stemcells Xenial 621.171 or later and Windows 2019.41 or later. For more information, see [Rotating CAs and Leaf Certificates](security/pcf-infrastructure/rotate-cas-and-leaf-certs.html).
-- **[Feature]** Include uaa.log files in support bundle.
-- **[Known Issue]** If Prometheus alerting rules are configured on this version of Tanzu Operations Manager, Healthwatch versions 2.0.0 to 2.1.4 fail to deploy.
-- **[Known Issue]** If you use Identification Tags, Tanzu Operations Manager reapplies the tags on every deploy. This does not cause the VMs to be restarted, but causes slow deployments.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.20-build.323*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.171*</td></tr><tr><td>BBR SDK</td><td>1.18.23*</td></tr><tr><td>BOSH Director</td><td>271.14.0*</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.5*</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.5</td></tr><tr><td>Windows Syslog</td><td>1.1.3</td></tr><tr><td>UAA</td><td>74.5.26</td></tr><tr><td>BPM</td><td>1.1.15*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.2*</td></tr><tr><td>AWS CPI</td><td>89</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>40.0.5*</td></tr><tr><td>OpenStack CPI</td><td>46*</td></tr><tr><td>vSphere CPI</td><td>70</td></tr><tr><td>BOSH CLI</td><td>6.4.7</td></tr><tr><td>Credhub CLI</td><td>2.9.1</td></tr><tr><td>BBR CLI</td><td>1.9.17*</td></tr><tr><td>Telemetry</td><td>1.2.0*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-19'></a> v2.10.19
-
-**Release Date:** October 12, 2021
-
-- **[Feature]** Operators can choose between `gp2` and `gp3` for the default AWS disk type.
-- **[Feature]** Operators can override certificate durations. See [Override Duration for Certificates](#certificate-duration-overrides) below.
-- **[Feature]** Operators can configure additional SSH users on the BOSH Director.
-- **[Feature]** The BOSH Director accepts TLS v1.2 connections only.
-- **[Known Issue]** If Prometheus alerting rules are configured on this version of Tanzu Operations Manager, Healthwatch versions 2.0.0 to 2.1.4 fail to deploy.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.19-build.314*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.160*</td></tr><tr><td>BBR SDK</td><td>1.18.21*</td></tr><tr><td>BOSH Director</td><td>271.11.0*</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.4*</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.5</td></tr><tr><td>Windows Syslog</td><td>1.1.3</td></tr><tr><td>UAA</td><td>74.5.26</td></tr><tr><td>BPM</td><td>1.1.14*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>89*</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>45</td></tr><tr><td>vSphere CPI</td><td>70</td></tr><tr><td>BOSH CLI</td><td>6.4.7</td></tr><tr><td>Credhub CLI</td><td>2.9.1*</td></tr><tr><td>BBR CLI</td><td>1.9.16*</td></tr><tr><td>Telemetry</td><td>1.1.7</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-18'></a> v2.10.18
-
-**Release Date:** September 28, 2021
-
-- **[Bug Fix]** BOSH Director disk is no longer re-created when its size and properties have not changed. See [BOSH Director Disk Is Re-Created Unnecessarily](#recreate-persistent-disks) below.
-- **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs might not be correctly returned, causing the wrong disk to be attached.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.18-build.301*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.154*</td></tr><tr><td>BBR SDK</td><td>1.18.19*</td></tr><tr><td>BOSH Director</td><td>271.9.0</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.5</td></tr><tr><td>Windows Syslog</td><td>1.1.3</td></tr><tr><td>UAA</td><td>74.5.26*</td></tr><tr><td>BPM</td><td>1.1.13</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>88</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>45</td></tr><tr><td>vSphere CPI</td><td>70*</td></tr><tr><td>BOSH CLI</td><td>6.4.7*</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.15*</td></tr><tr><td>Telemetry</td><td>1.1.7</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-17'></a> v2.10.17
-
-**Release Date:** September 16, 2021
-
-- **[Known Issue]** TKGI customers are recommended to skip this version. Deployments using the `disk.enableUUID` vmx option and attaching additional SCSI devices, for example, TKGI clusters using persistent volumes, might experience data loss if the VM is powered off and powered on again. This is due to a functional regression causing the VM to mount the wrong disk at startup. This regression is fixed in v2.10.18.
-
-- **[Bug Fix]** Operators can configure NSX-T server pools without a port.
-- **[Bug Fix]** The API returns an error when using duplicate GUIDs while updating vSphere clusters.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.17-build.293*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.151*</td></tr><tr><td>BBR SDK</td><td>1.18.18*</td></tr><tr><td>BOSH Director</td><td>271.9.0</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.7.5*</td></tr><tr><td>Windows Syslog</td><td>1.1.3</td></tr><tr><td>UAA</td><td>74.5.25*</td></tr><tr><td>BPM</td><td>1.1.13</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>88*</td></tr><tr><td>Azure CPI</td><td>37.6.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>45</td></tr><tr><td>vSphere CPI</td><td>69*</td></tr><tr><td>BOSH CLI</td><td>6.4.6*</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.11</td></tr><tr><td>Telemetry</td><td>1.1.7</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-16'></a> v2.10.16
-
-**Release Date:** July 22, 2021
-
-- **[Bug Fix]** BOSH Backup and Restore works correctly when using AWS IAM Profiles.
-- **[Bug Fix]** vSphere unexpected VM and persistent disk re-creations no longer occur. However, if you have installed Ops Manager v2.10.15 and already re-created all VMs and disks, they are re-created again after you click **Apply Changes** in Ops Manager v2.10.16.
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.16-build.269*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.135*</td></tr><tr><td>BBR SDK</td><td>1.18.13*</td></tr><tr><td>BOSH Director</td><td>271.9.0*</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.1.3*</td></tr><tr><td>UAA</td><td>74.5.24*</td></tr><tr><td>BPM</td><td>1.1.13*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>87</td></tr><tr><td>Azure CPI</td><td>37.6.0*</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>45*</td></tr><tr><td>vSphere CPI</td><td>63*</td></tr><tr><td>BOSH CLI</td><td>6.4.4</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.11*</td></tr><tr><td>Telemetry</td><td>1.1.7</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-15'></a> v2.10.15
-
-**Release Date:** June 30, 2021
-
-<p> This release shipped with a change that affects vSphere users. This change causes unintended recreation of all VMs and disks on the next Apply Changes. This issue is fixed in v2.10.16. However, if you have already re-created all VMs and disks, they are re-created again when you click <strong>Apply Changes</strong> on v2.10.16.</p>
-
-- **[Known Issue]** Foundations that use multiple vCenter Configs might encounter failures when applying changes with the message `No valid placement found for VM compute and storage requirement`. A bug was introduced in <%= vars.ops_manager %> v2.10.15 that requires the following workaround: the datastores listed in the **Ephemeral and/or Persistent Datastore Names** field of the first vCenter Config must be the union of all **Ephemeral or Persistent Datastore Names** across all vCenter Configs.
-
-- **[Feature]** Support for vSphere datastore clusters.
-- **[Feature]** A section in the BOSH Director manifest makes obvious which `additional_cloud_properties` overrides are used.
-- **[Bug Fix]** Resolved issue with support bundle creation that could cause **Apply Changes** to fail with the error `No such file or directory - getcwd`.
-
-Tanzu Operations Manager v2.10.15 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.15-build.255*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.131*</td></tr><tr><td>BBR SDK</td><td>1.18.11*</td></tr><tr><td>BOSH Director</td><td>271.8.0</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.23</td></tr><tr><td>BPM</td><td>1.1.12</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>87</td></tr><tr><td>Azure CPI</td><td>37.5.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>60</td></tr><tr><td>BOSH CLI</td><td>6.4.4</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.7</td></tr><tr><td>Telemetry</td><td>1.1.7</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-14'></a> v2.10.14
-
-**Release Date:** June 16, 2021
-
-- **[Known Issue Fix]** NSX-T Certificate Authentication does not cause **Apply Changes** to fail. Issue is introduced in v2.10.12.
-
-Tanzu Operations Manager v2.10.14 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.14-build.248*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.130</td></tr><tr><td>BBR SDK</td><td>1.18.9</td></tr><tr><td>BOSH Director</td><td>271.8.0</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.23*</td></tr><tr><td>BPM</td><td>1.1.12</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>87</td></tr><tr><td>Azure CPI</td><td>37.5.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>60*</td></tr><tr><td>BOSH CLI</td><td>6.4.4*</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.7</td></tr><tr><td>Telemetry</td><td>1.1.7</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-13'></a> v2.10.13
-
-**Release Date:** June 10, 2021
-
-- **[Known Issue]** NSX-T Certificate Authentication causes **Apply Changes** to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`.
-
-Tanzu Operations Manager v2.10.13 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.13-build.243*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.130*</td></tr><tr><td>BBR SDK</td><td>1.18.9</td></tr><tr><td>BOSH Director</td><td>271.8.0</td></tr><tr><td>BOSH DNS</td><td>1.29.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22</td></tr><tr><td>BPM</td><td>1.1.12</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>87</td></tr><tr><td>Azure CPI</td><td>37.5.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>59</td></tr><tr><td>BOSH CLI</td><td>6.4.3</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.7</td></tr><tr><td>Telemetry</td><td>1.1.7*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-12'></a> v2.10.12
-
-**Release Date:** June 7, 2021
-
-- **[Known Issue]** NSX-T Certificate Authentication causes **Apply Changes** to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`.
-- **[Bug Fix]** Removes an unnecessary vSphere privilege.
-
-Tanzu Operations Manager v2.10.12 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.12-build.240*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.129*</td></tr><tr><td>BBR SDK</td><td>1.18.9</td></tr><tr><td>BOSH Director</td><td>271.8.0</td></tr><tr><td>BOSH DNS</td><td>1.29.0*</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.12*</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22</td></tr><tr><td>BPM</td><td>1.1.12*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>87*</td></tr><tr><td>Azure CPI</td><td>37.5.0*</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>59*</td></tr><tr><td>BOSH CLI</td><td>6.4.3</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.7</td></tr><tr><td>Telemetry</td><td>1.1.5</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-11'></a> v2.10.11
-
-**Release Date:** May 11, 2021
-
-- **[Feature]** You can distinguish between fixed and floating stemcells on the **Stemcells** in the <%= vars.ops_manager %> UI.
-- **[Feature]** Maestro topology output is included in the support bundle.
-- **[Feature]** `us-gov-east-1` region is available in AWS GovCloud.
-
-Tanzu Operations Manager v2.10.11 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.11-build.222*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.125*</td></tr><tr><td>BBR SDK</td><td>1.18.9</td></tr><tr><td>BOSH Director</td><td>271.8.0</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1</td></tr><tr><td>AWS CPI</td><td>86*</td></tr><tr><td>Azure CPI</td><td>37.3.1</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>57*</td></tr><tr><td>BOSH CLI</td><td>6.4.3*</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.7</td></tr><tr><td>Telemetry</td><td>1.1.5*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-10'></a> v2.10.10
-
-**Release Date:** April 27, 2021
-
-- **[Known Issue Fix]** <%= vars.ops_manager %> does not overwrite UAAC. Known issue is introduced in <%= vars.ops_manager %> v2.10.9.
-- **[Bug Fix]** Regenerating leaf certificates succeeds when CredHub server certificate is expired.
-
-Tanzu Operations Manager v2.10.10 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.10-build.206*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.123*</td></tr><tr><td>BBR SDK</td><td>1.18.9*</td></tr><tr><td>BOSH Director</td><td>271.8.0*</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.1*</td></tr><tr><td>AWS CPI</td><td>85</td></tr><tr><td>Azure CPI</td><td>37.3.1*</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>55</td></tr><tr><td>BOSH CLI</td><td>6.4.1</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.7*</td></tr><tr><td>Telemetry</td><td>1.1.4*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-9'></a> v2.10.9
-
-**Release Date:** April 13, 2021
-
-- **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN). On upgrade to v2.10.9 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles. Upgrading <%= vars.ops_manager %> while a CA rotation is in progress results in the inability to **Apply Changes** due to safety violations.
-- **[Known Issue]** Due to permission changes, running `uaac` as the `ubuntu` user results in the error `/home/tempest-web/tempest/web/vendor/uaac/Gemfile not found`. To work around this issue, run `unalias uaac` as the `ubuntu` user before running `uaac`. <%= vars.ops_manager %> v2.10.10 and later fixes this issue.
-- **[Feature]** vSphere users have the option to use the Policy API when placing VMs in policy NSX-T groups by enabling **Use NSX-T Policy API** in the **vCenter Config** pane of the BOSH Director tile
-- **[Feature]** The **Putting Tile Credentials into CredHub** step of **Apply Changes** produces more diagnostic output
-- **[Bug Fix]** The **Internet Connected** checkbox appears on the **Resource Config** pane for AWS
-- **[Bug Fix]** Copying credentials to CredHub during **Apply Changes** does not fail due to volume or slowness
-- **[Bug Fix]** NATS leaf certificates shows on `/api/v0/deployed/certificates` endpoint
-- **[Bug Fix]** <%= vars.ops_manager %> UAA logs are log rotated
-- **[Bug Fix]** Restrict permissions on the `/home/tempest-web` and `/home/ubuntu` directories to 750
-- **[Bug Fix]** The `service tempest-web restart` command reliably connects with <%= vars.ops_manager %> without frequent 502 gateway errors
-
-
-Tanzu Operations Manager v2.10.9 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.9-build.195*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.117*</td></tr><tr><td>BBR SDK</td><td>1.18.6*</td></tr><tr><td>BOSH Director</td><td>271.7.0*</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>85*</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>55*</td></tr><tr><td>BOSH CLI</td><td>6.4.1</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.5*</td></tr><tr><td>Telemetry</td><td>1.1.3*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-8'></a> v2.10.8
-
-**Release Date:** February 23, 2021
-
-- **[Known Issue Fix]** Resolves issue discovered in v2.10.7 with sending BOSH System metrics to the Firehose
-
-Tanzu Operations Manager v2.10.8 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.8-build.168*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.101</td></tr><tr><td>BBR SDK</td><td>1.18.3</td></tr><tr><td>BOSH Director</td><td>271.6.0*</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>84</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.1</td></tr><tr><td>BOSH CLI</td><td>6.4.1</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.1</td></tr><tr><td>Telemetry</td><td>1.1.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-7'></a> v2.10.7
-
-**Release Date:** February 11, 2021
-
-- **[Known Issue]** Tanzu Operations Manager v2.10.7 has an issue sending BOSH System metrics to the Firehose.
-This causes a loss of monitoring for systems relying on metrics
-including Healthwatch and other downstream monitoring implementations. For more information
-on these metrics, see [System (BOSH) Metrics](https://docs.pivotal.io/application-service/2-10/operating/monitoring/kpi.html#bosh). <br><br>For more information, see [Healthwatch smoke test failing with Ops Manager v2.10.7](https://community.pivotal.io/s/article/Healthwatch-smoke-test-failing-with-Ops-Manager-v2-10-7) in the Tanzu Community Knowledge Base.
-- **[Bug Fix]** Signature version is included in S3 CLI on BOSH Director
-- **[Bug Fix]** `10.x.x.x` IP addresses are recorded in the audit log under a new field called `forwarded_for`
-- **[Bug Fix]** Improve performance speed of streaming the manifest diff
-
-Tanzu Operations Manager v2.10.7 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.7-build.163*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.101*</td></tr><tr><td>BBR SDK</td><td>1.18.3*</td></tr><tr><td>BOSH Director</td><td>271.5.0*</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>84</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>40.0.4</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.1</td></tr><tr><td>BOSH CLI</td><td>6.4.1</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.1</td></tr><tr><td>Telemetry</td><td>1.1.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-6'></a> v2.10.6
-
-**Release Date:** January 29, 2021
-
-- **[Security Fix]** This patch addresses [CVE-2021-3156](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-3156)
-
-Tanzu Operations Manager v2.10.6 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.6-build.154*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.99*</td></tr><tr><td>BBR SDK</td><td>1.18.1</td></tr><tr><td>BOSH Director</td><td>271.2.0</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.22*</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>84*</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>40.0.4*</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.1</td></tr><tr><td>BOSH CLI</td><td>6.4.1</td></tr><tr><td>Credhub CLI</td><td>2.9.0</td></tr><tr><td>BBR CLI</td><td>1.9.1</td></tr><tr><td>Telemetry</td><td>1.1.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-5'></a> v2.10.5
-
-**Release Date:** January 25, 2021
-
-- **[Bug Fix]** Unnecessary `Host.Inventory.EditCluster` permission check for vSphere is removed
-- **[Bug Fix]** You can apply NSX settings to BOSH Director when using Principal Identity Certificate authorization with NSX-T
-
-Tanzu Operations Manager v2.10.5 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.5-build.147*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.97*</td></tr><tr><td>BBR SDK</td><td>1.18.1*</td></tr><tr><td>BOSH Director</td><td>271.2.0</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.21</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>81</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>30.0.0</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.1</td></tr><tr><td>BOSH CLI</td><td>6.4.1</td></tr><tr><td>Credhub CLI</td><td>2.9.0*</td></tr><tr><td>BBR CLI</td><td>1.9.1*</td></tr><tr><td>Telemetry</td><td>1.1.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-4'></a> v2.10.4
-
-**Release Date:** December 10, 2020
-
-- **[Feature]** BlobstoreVerifier has improved logging and error messaging.
-- **[Feature]** Operators can use the Tanzu Operations Manager API to rotate certificates on Redis for Pivotal Platform v2.3 and later.
-- **[Bug Fix]** Tanzu Operations Manager no longer returns an error when uploading a stemcell twice.
-- **[Bug Fix]** Tanzu Operations Manager no longer publishes images to the `us-gov-east-1` region in AWS.
-- **[Bug Fix]** BlobstoreVerifier no longer defaults to domain-style access when the path-style parameter is absent in tiles.
-
-
-Tanzu Operations Manager v2.10.4 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.4-build.137*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager</td><td>621.94*</td></tr><tr><td>BBR SDK</td><td>1.18.0</td></tr><tr><td>BOSH Director</td><td>271.2.0</td></tr><tr><td>BOSH DNS</td><td>1.27.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.21</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>81</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>30.0.0</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.1*</td></tr><tr><td>BOSH CLI</td><td>6.4.1</td></tr><tr><td>Credhub CLI</td><td>2.8.0</td></tr><tr><td>BBR CLI</td><td>1.9.0*</td></tr><tr><td>Telemetry</td><td>1.1.2</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-3'></a> v2.10.3
-
-**Release Date:** November 18, 2020
-
-
-- **[Feature]** A yellow banner in the Tanzu Operations Manager UI shows the number of days until a certificate expires. The banner appears when a certificate expires soon.
-- **[Feature]** When you export a `installation.zip` file, a new `metadata.json` file includes timestamp, version, and product GUID. The `metadata.json` file can be used to identify when the export was created, which foundation the export represents, and to ensure that you are using the correct export file during an upgrade.
-- **[Feature]** API endpoints default to `application/json` content type
-- **[Feature]**: You can use the Tanzu Operations Manager UI or API to set Azure Generation 2 VMs as the default VM type. For more information, see [Azure Generation 2 VM Types](azure/config-manual.html#azure-vm-types) in _Configuring BOSH Director on Azure Manually_.<br><br>
-Consider the following before using Azure Generation 2 VM types:
-  * If you use Availability Sets, you cannot use Generation 2 VM types.
-  * Ensure that Generation 2 VM types are available in your Azure regions.
-  * Switching to Generation 2 VM types causes all tiles to redeploy.
-  * If you have custom VM types set, your custom VMs are still used even if you switch to Generation 2. To use Generation 2 VMs in your custom VM types:
-      1. Back up your current custom VM types.
-      1. Delete the custom VM types.
-      1. Switch to Generation 2 using either the Tanzu Operations Manager API or UI.
-      1. Re-add your custom VM types.
-      For information about adding or deleting custom VM types, see [How to Create or Remove a custom VM_TYPE template in Pivotal Cloud Foundry (PCF) using the Operations Manager API](https://community.pivotal.io/s/article/how-to-create-or-remove-custom-vmtype-template-using-the-ops-manager-api?language=en_US) in the Knowledge Base.
-- **[Feature]** You can use IAM instance profiles when configuring the S3 blobstore for the BOSH Director. To use this feature, you must select **Enable signed URLs**.
-- **[Feature]** Upgrade NGINX
-- **[Bug Fix]** Repeated calls to `DELETE /api/v0/installation_asset_collection` deletes any deployed products
-- **[Bug Fix]** Safety check for BOSH product certificates on `DELETE` only includes the `system_metrics_certificate`
-- **[Bug Fix]** Clusters in an AZ are validated based on cluster name, resource pool, host group, and VM host affinity rule
-- **[Bug Fix]** The AZ and Network configuration pane does not error when properties are missing
-
-Tanzu Operations Manager v2.10.3 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.3-build.127*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.90*</td></tr><tr><td>BBR SDK</td><td>1.18.0</td></tr><tr><td>BOSH Director</td><td>271.2.0</td></tr><tr><td>BOSH DNS</td><td>1.27.0*</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.21*</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>81</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>30.0.0</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.0</td></tr><tr><td>BOSH CLI</td><td>6.4.1*</td></tr><tr><td>Credhub CLI</td><td>2.8.0</td></tr><tr><td>BBR CLI</td><td>1.8.1*</td></tr><tr><td>Telemetry</td><td>1.1.2*</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-2'></a> v2.10.2
-
-**Release Date:** September 25, 2020
-
-- **[Bug Fix]**: `IaasConfigurationVerifier` no longer fails on Azure deployments with a `500` error when you click **Apply Changes** or modify IaaS settings.
-
-- **[Bug Fix]**: Actions that require Instance Metadata Service (IMDS), such as configuring antivirus or adding SSH keys,
-no longer fail on Tanzu Operations Manager instances deployed in AWS regions that do not have Instance Metadata Service Version 2 (IMDSv2).
-
-- **[Bug Fix]**: If you added or activated a CA on Tanzu Operations Manager v2.7 or earlier,
-you can then activate or delete that CA after upgrading to Tanzu Operations Manager v2.9 or later as expected.
-
-- **[Bug Fix]**: The **Settings** page no longer crashes when you attempt to save a long LDAP admin group name that contains spaces. The following error message is associated with this bug: `NoMethodError: undefined method `<' for nil:NilClass`.
-
-- **[Bug Fix]**: On the **Certificates** page, the **Excluded Certificates** section is updated to correctly list all certificates that the Ops Manager API does not attempt to rotate.
-
-- **[Bug Fix]**: The `/api/v0/certificate_authorities/active/regenerate` API endpoint rotates all leaf certificates as expected when a CA certificate rotation is in progress.
-
-- **[Feature]**: You can use the Tanzu Operations Manager API to rotate certificates managed by CredHub if you have the following versions of
-Pivotal Application Service (PAS), Pivotal Isolation Segment tile, Small Footprint PAS, or Pivotal Application Service for Windows (PASW) installed:
-  * PAS v2.7.21 or later
-  * PAS v2.8.2 or later
-  * Pivotal Isolation Segment tile v2.7.21 or later
-  * Pivotal Isolation Segment tile v2.8.2 or later
-  * Small Footprint PAS v2.7.21 or later
-  * Small Footprint PAS v2.8.2 or later
-  * PASW v2.7.17 or later
-  * PASW v2.8.2 or later
-
-    For more information, see [Overview of Certificate Rotation](security/pcf-infrastructure/api-cert-rotation.html).
-
-- **[Feature]**: IPsec for VMware Tanzu certificates are excluded from certificate rotation with the Ops Manager API.
-To rotate IPsec certificates, see [Rotating Active IPsec Certificates
-](https://docs.pivotal.io/addon-ipsec/1-9/credentials.html) in the IPsec for VMware Tanzu documentation.
-
-- **[Feature]**: Ops Manager is rebranded to VMware Tanzu Operations Manager. This rebrand is reflected in the VMware Tanzu Operations Manager UI and on VMware Tanzu Network.
-
-- **[Feature]**: You can use the `/api/v0/staged/products/{product_guid}/overrides` Tanzu Operations Manager API endpoint to edit the `update` and `features` sections in the manifest for an Ops Manager tile while you are in Advanced Mode.
-For more information, see [Provide a new list of overrides for the given Product](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Advanced-Manifest-Configuration) in the Ops Manager API documentation.
-
-- **[Feature]**: You can jump upgrade directly to the long-term support (LTS) version of Tanzu Operations Manager, which is v2.10.2. For more information, see [Jump Upgrading to Ops Manager v2.10](https://docs.pivotal.io/ops-manager/2-10/jump-upgrades.html).
-
-Tanzu Operations Manager v2.10.2 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Tanzu Ops Manager</td><td>2.10.2-build.90*</td>
-  </tr>
-  <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>621.84*</td></tr><tr><td>BBR SDK</td><td>1.18.0</td></tr><tr><td>BOSH Director</td><td>271.2.0</td></tr><tr><td>BOSH DNS</td><td>1.24.0</td></tr><tr><td>Metrics Server</td><td>0.1.0</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.9.0*</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.18</td></tr><tr><td>BPM</td><td>1.1.9</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0</td></tr><tr><td>AWS CPI</td><td>81</td></tr><tr><td>Azure CPI</td><td>37.3.0</td></tr><tr><td>Google CPI</td><td>30.0.0</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.0</td></tr><tr><td>BOSH CLI</td><td>6.4.0*</td></tr><tr><td>Credhub CLI</td><td>2.8.0</td></tr><tr><td>BBR CLI</td><td>1.8.0*</td></tr><tr><td>Telemetry</td><td>1.1.1</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-
-### <a id='2-10-1'></a> v2.10.1
-
-**Release Date:** September 1, 2020
-
-- **[Feature]**: Addition of `tasks_cleanup_schedule`, a scheduled task that cleans up completed BOSH tasks to reduce memory consumption. This task runs weekly by default.
-- **[Feature]**: If you click the **Support** link in the Tanzu Operations Manager UI, information about expired certificates appears in the Platform Information Bundle.
-- **[Bug Fix]**: The `regenerate` API endpoint does not exclude any leaf certificates from rotation.
-- **[Bug Fix]**: Tanzu Operations Manager does not crash after you change the LDAP authentication group.
-- **[Bug Fix]**: The Support Bundle downloads successfully for deploy records that do not have timestamps.
-- **[Bug Fix]**: TKGI users can deploy Tanzu Operations Manager v2.10 with the BOSH metrics server feature enabled.
-- **[Bug Fix]**: The **Revert Changes** button does not appear when there are no pending changes.
-- **[Bug Fix]**: If you have a tile that is not configured and you apply changes, you receive a warning message but changes to other configured tiles are applied. In earlier patches, the apply changes failed. This only happened on vSphere environments.
-- **[Bug Fix]**: For Redis for VMware Tanzu v2.4 and later, certificates can be rotated by CredHub Maestro.
-- **[Bug Fix]**: When the **Enable additional System Metrics** check box is cleared on the tile UI, the `loggr-system-metrics-agent` and `loggr-system-metrics-agent-windows` jobs of the `system-metrics` release are removed from the product tile.
-- **[Bug Fix]**: For the `hm_emailer_options.recipients` key, the `PUT /api/v0/staged/director/properties` endpoint accepts the format used by `GET /api/v0/staged/director/properties` endpoint for this key in addition to the existing format accepted.
-
-
-Ops Manager v2.10.1 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Ops Manager</td><td>2.10.1-build.69*</td>
-  </tr>
-  <tr><td>Stemcell</td><td>621.82*</td></tr><tr><td>BBR SDK</td><td>1.18.0</td></tr><tr><td>BOSH Director</td><td>271.2.0*</td></tr><tr><td>BOSH DNS</td><td>1.24.0*</td></tr><tr><td>Metrics Server</td><td>0.1.0*</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.8.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.18</td></tr><tr><td>BPM</td><td>1.1.9*</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.1.0*</td></tr><tr><td>AWS CPI</td><td>81</td></tr><tr><td>Azure CPI</td><td>37.3.0*</td></tr><tr><td>Google CPI</td><td>30.0.0</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.0</td></tr><tr><td>BOSH CLI</td><td>6.3.1</td></tr><tr><td>Credhub CLI</td><td>2.8.0*</td></tr><tr><td>BBR CLI</td><td>1.7.2</td></tr><tr><td>Telemetry</td><td>1.1.1</td></tr>
-
-    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
-
-  </tbody>
-</table>
-
-### <a id='2-10-0'></a> v2.10.0
-
-**Release Date:** July 31, 2020
-
-* See [New Features in <%= vars.ops_manager %> v2.10](#major-features).
-* See [Breaking Changes in <%= vars.ops_manager %> v2.10](#breaking-changes).
-
-<%= vars.ops_manager %> v2.10.0 uses the following component versions:
-
-<table border="1" class="nice">
-  <thead>
-  <tr>
-    <th>Component</th>
-    <th>Version</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Ops Manager</td><td>2.10.0-build.48</td>
-  </tr>
-  <tr><td>Stemcell</td><td>621.77</td></tr><tr><td>BBR SDK</td><td>1.18.0</td></tr><tr><td>BOSH Director</td><td>270.11.1</td></tr><tr><td>BOSH DNS</td><td>1.21.0</td></tr><tr><td>Metrics Server</td><td>0.0.24</td></tr><tr><td>System Metrics</td><td>2.0.11</td></tr><tr><td>CredHub</td><td>2.8.0</td></tr><tr><td>CredHub Maestro</td><td>8.0.1</td></tr><tr><td>Syslog</td><td>11.6.1</td></tr><tr><td>Windows Syslog</td><td>1.0.3</td></tr><tr><td>UAA</td><td>74.5.18</td></tr><tr><td>BPM</td><td>1.1.8</td></tr><tr><td>Networking</td><td>9</td></tr><tr><td>OS Conf</td><td>22.0.0</td></tr><tr><td>AWS CPI</td><td>81</td></tr><tr><td>Azure CPI</td><td>37.2.0</td></tr><tr><td>Google CPI</td><td>30.0.0</td></tr><tr><td>OpenStack CPI</td><td>44</td></tr><tr><td>vSphere CPI</td><td>54.1.0</td></tr><tr><td>BOSH CLI</td><td>6.3.1</td></tr><tr><td>Credhub CLI</td><td>2.7.0</td></tr><tr><td>BBR CLI</td><td>1.7.2</td></tr><tr><td>Telemetry</td><td>1.1.1</td></tr>
-
+    <tr>
+      <td>Tanzu Operations Manager</td><td>3.0.0-build.158</td>
+    </tr>
+    <tr><td>Stemcell (BOSH Director and Tanzu Operations Manager)</td><td>1.44</td></tr><tr><td>BBR SDK</td><td>1.18.57</td></tr><tr><td>BOSH Director</td><td>276.1.0</td></tr><tr><td>BOSH DNS</td><td>1.34.0</td></tr><tr><td>System Metrics</td><td>2.2.2</td></tr><tr><td>CredHub</td><td>2.12.13</td></tr><tr><td>CredHub Maestro</td><td>8.0.7</td></tr><tr><td>Syslog</td><td>12.0.6</td></tr><tr><td>Windows Syslog</td><td>1.1.11</td></tr><tr><td>UAA</td><td>74.5.58</td></tr><tr><td>BPM</td><td>1.1.19</td></tr><tr><td>OS Conf</td><td>22.1.2</td></tr><tr><td>AWS CPI</td><td>95</td></tr><tr><td>Azure CPI</td><td>41.0.0</td></tr><tr><td>Google CPI</td><td>45.0.0</td></tr><tr><td>OpenStack CPI</td><td>51</td></tr><tr><td>vSphere CPI</td><td>87</td></tr><tr><td>BOSH CLI</td><td>7.0.1</td></tr><tr><td>Credhub CLI</td><td>2.9.8</td></tr><tr><td>BBR CLI</td><td>1.9.38</td></tr><tr><td>Telemetry</td><td>2.0.1</td></tr>
   </tbody>
 </table>
 
