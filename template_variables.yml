@@ -83,7 +83,7 @@ template_variables:
   expand_network_azs: <p class="note"><strong>Note</strong>&#58; After you deploy Ops Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
 
   add_volumes_link: For more information, see [Configuring Volume Services](../../opsguide/enable-vol-services.html).
-  admin: Ops Manager admin
+  admin: Tanzu Operations Manager admin
   admin_read_only_role: "<ul><li><strong>Admin Read-Only</strong>: Read-only access to all Cloud Controller API resources. Assigned the <code>cloud_controller.admin_read_only</code> scope in UAA.</li></ul>"
   admin_role: "<ul><li><strong>Admin</strong>: Perform operational actions on all orgs and spaces using the Cloud Controller API. Assigned the <code>cloud_controller.admin</code> scope in UAA.</li></ul>"
   api_endpoint: <a href="https://docs.pivotal.io/platform/opsguide/api-endpoint.html">the URL of the Cloud Controller in your TAS for VMs instance</a>
