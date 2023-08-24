@@ -27,7 +27,7 @@ configured correctly. <%= vars.ops_manager %> verifiers reach out and find objec
 verifier can ping the IP to see that it responds.
 
 Verifiers run early in a deployment. With verifiers turned off,
-deployments may fail much later.
+deployments might fail much later.
 
 Verifiers run on two occasions:
 
@@ -64,8 +64,6 @@ To record the verifier type:
 1. Click **Apply Changes** and see the verifier error message.
 
 1. Record the `type` in the verifier error message. For example, `WildcardDomainVerifier`.
-
-![alt-text=""](images/verifier-error.png)
 
 ### <a id='api-put'></a> Step 2: Use the <%= vars.ops_manager %> API
 
@@ -248,8 +246,7 @@ To deactivate a verifier type for tiles other than the BOSH Director:
 The <%= vars.ops_manager %> UI does not indicate which verifiers you deactivate. Deactivated verifiers
 persist through upgrades.
 
-To enable verifiers again, follow the steps detailed in [Use the <%= vars.ops_manager %> API](#api-put.
-Instead of setting `enabled` to `false`, set it to `true`.
+To enable verifiers again, follow the steps detailed in [Use the <%= vars.ops_manager %> API](#api-put). Instead of setting `enabled` to `false`, set it to `true`.
 
 If you do not know what verifiers are deactivated, `curl` the `verifiers` endpoint for each
 installed product.
