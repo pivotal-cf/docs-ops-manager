@@ -8,13 +8,13 @@ to <%= vars.v_major_version %>, and then upgrade your product tiles.
 
 <p class="note important">
 <span class="note__title"> Important</span> <strong>Breaking Changes:</strong> Read the <a href="../release-notes.html"><%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes</a>,
-<a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>,
-and <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections,
+<a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/runtime-rn.html"><%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, <a href="https://docs.pivotal.io/application-service/release-notes/segment-rn.html"><%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes</a>,
+and <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/release-notes.html"><%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes</a>, including the <em>Breaking Changes</em> and <em>Known Issues</em> sections,
 before you start the upgrade process.
 </p>
 
 During an upgrade, the apps in your deployment continue to run. However, you cannot write to your deployment or make changes to apps during the upgrade. For details about how upgrading impacts individual <%= vars.app_runtime_abbr %> components,
-see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/understanding-pas.html).
+see [What Happens During <%= vars.app_runtime_abbr %> Upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/understanding-pas.html).
 
 <%= vars.company_name %> recommends upgrading directly to <%= vars.ops_manager %> <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9.
 To upgrade <%= vars.ops_manager %> to <%= vars.v_major_version %> from <%= vars.ops_manager %> v2.5 through v2.9, see [Jump Upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>](#jump-upgrade). To upgrade both <%= vars.ops_manager %> and <%= vars.app_runtime_abbr %>, see [Task 1: Prepare to Upgrade](#prepare).
@@ -41,7 +41,7 @@ If you are upgrading <%= vars.app_runtime_abbr %> to the next minor release:
 1. Locate the version of [Upgrade preparation checklist for <%= vars.ops_manager %>](../upgrade/checklist.html) that is specific to the minor release version to which you are upgrading and complete the steps that are specific to <%= vars.app_runtime_abbr %>.
 
 1. For more information, see the versions
-of [Configuring <%= vars.app_runtime_abbr %> for upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
+of [Configuring <%= vars.app_runtime_abbr %> for upgrades](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configuring.html) in the <%= vars.app_runtime_abbr %> documentation and [Upgrading <%= vars.app_runtime_abbr %> and Other <%= vars.ops_manager %> Products](upgrading-products.html) that are specific to the minor release version to which you are upgrading.
 
 
 ## <a id='prepare'></a> Task 1: Prepare to upgrade
@@ -152,8 +152,8 @@ VMware recommends live-monitoring your upgrade with Healthwatch, which captures,
 
 * BOSH-reported VM metrics
 * Runtime component metrics
-* [Key Performance Indicators](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/monitoring-kpi.html)
-   and [Key Scaling Indicators](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/monitoring-key-cap-scaling.html)
+* [Key Performance Indicators](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/monitoring-kpi.html)
+   and [Key Scaling Indicators](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/monitoring-key-cap-scaling.html)
 * Healthwatch-generated [super metrics](https://docs.vmware.com/en/Healthwatch-for-VMware-Tanzu/2.2/healthwatch/metrics.html)
 
 For more information, see the [Healthwatch documentation](https://docs.vmware.com/en/Healthwatch-for-VMware-Tanzu/2.2/healthwatch/index.html).
@@ -263,7 +263,7 @@ To install the version of the Cloud Foundry Command Line Interface (cf CLI) pack
 1. Unzip the cf CLI ZIP file containing compressed binaries for the cf CLI.
 
 1. Follow the procedure in the [<%= vars.app_runtime_abbr %>
-documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/install-go-cli.html#bin).
+documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/install-go-cli.html#bin).
 
 ### <a id='health'></a> Check the health of your deployment
 
@@ -287,7 +287,7 @@ To check the health of your deployment:
 1. Push and horizontally scale a test app to test <%= vars.app_runtime_abbr %> performance.
 
 1. If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster. For more information, see the BOSH CLI v2
-instructions in [Running mysql-diag](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
+instructions in [Running mysql-diag](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/mysql-diag.html) in the <%= vars.app_runtime_abbr %> documentation.
 
 ### <a id='resource-settings'></a> Check resource settings
 
@@ -318,4 +318,4 @@ VMware recommends telling developers to restage any apps that use buildpacks tha
 
 For more information about how developers can restage apps,
 see
-[Restage your app](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/deploy-apps-start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.
+[Restage your app](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/deploy-apps-start-restart-restage.html#restage) in _Starting, Restarting, and Restaging Apps_ in the <%= vars.app_runtime_abbr %> documentation.

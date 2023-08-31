@@ -7,7 +7,7 @@ This topic describes the VMware Managed Cloud for AWS (VMC) reference architectu
 architecture builds on the common base architectures described in [Platform architecture and Planning overview](../index.html).
 
 For specific installation instructions for running <%= vars.app_runtime_abbr %> on VMC, see [Deploying <%= vars.app_runtime_abbr %>
-to VMC](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vmc.html).
+to VMC](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/vmc.html).
 
 ## <a id='networking'></a> Networking
 
@@ -38,7 +38,7 @@ For more information, see [Connected AWS account](https://docs.vmware.com/en/VMw
 Provision a single RDS instance to use as the external database for <%= vars.app_runtime_abbr %>. For compatibility, VMware recommends using MySQL.
 
 New database instances require several databases to be created. For more information,
-see [External system database configuration](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
+see [External system database configuration](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 VMware recommends provisioning your RDS instance in the connected VPC. This allows you to connect to the endpoint for your RDS instance without making your database publicly accessible.
 
