@@ -161,7 +161,7 @@ see [How to enable advanced mode in the Tanzu Operations Manager](https://commun
 1. If necessary, select **Networking** and update the load balancer SSL certificate and private key under **Certificates and private keys for the GoRouter and HAProxy**.
 
 1. If your environment has a new DNS address, update the old environment DNS entries to point to the new load balancer addresses. For more information,
-see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#networking) and follow the instructions for your IaaS.
+see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#networking) and follow the instructions for your IaaS.
 
 1. If your <%= vars.app_runtime_abbr %> deployment uses an external blobstore, ensure that the <%= vars.app_runtime_abbr %> tile is configured to use a different blobstore. Otherwise, it attempts to connect to the blobstore that the backed-up <%= vars.app_runtime_abbr %> deployment is using.
 
@@ -382,7 +382,7 @@ then ensure that your external database is suitably configured.
 
 For an example of how to create external databases,
 see
-the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/create-pas-dbs.html).
+the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/create-pas-dbs.html).
 
 If you do not know whether your foundation uses an external or internal database,
 look on the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
@@ -390,7 +390,7 @@ look on the **Databases** pane in the <%= vars.app_runtime_abbr %> tile.
 If your external database VM instance has also changed, for example, if the database instance has been lost,
 update the configuration settings in the **Databases** pane on the <%= vars.app_runtime_abbr %> tile.
 For information about the **Databases** pane,
-see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#sys-db).
+see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#sys-db).
 
 #### <a id='redeploy-pas'></a> Redeploy <%= vars.app_runtime_abbr %>
 

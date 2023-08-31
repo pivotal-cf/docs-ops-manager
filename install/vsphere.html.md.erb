@@ -7,15 +7,15 @@ iaas: vSphere
 This guide describes how you can install <%= vars.ops_manager_first %> on vSphere.
 
 If you experience a problem while using the following steps, see
-the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/diagnostics.html) or the _Known Issues_ sections of the following topics:
+the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/diagnostics.html) or the _Known Issues_ sections of the following topics:
 
 * [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html#known-issues)
 
-* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/runtime-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
+* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/runtime-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
 
-* [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/segment-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
+* [<%= vars.segment_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/segment-rn.html#known-issues) in the <%= vars.app_runtime_abbr %> documentation
 
-* [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/release-notes.html#known-issues) in the <%= vars.windows_runtime_abbr %> documentation
+* [<%= vars.windows_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/release-notes.html#known-issues) in the <%= vars.windows_runtime_abbr %> documentation
 
 * [Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-release-notes.html#known-issues) in the <%= vars.k8s_runtime_abbr %> documentation
 
@@ -51,8 +51,8 @@ The BOSH Director tile within <%= vars.ops_manager %> can optionally be configur
 
 You can install <%= vars.ops_manager %> with one of two runtimes. For more information about the requirements for each runtime, see the following:
 
-* **<%= vars.app_runtime_first %>:** [<%= vars.app_runtime_abbr %> on vSphere Requirements](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying <%= vars.app_runtime_abbr %>
-with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vsphere-nsx-t.html).
+* **<%= vars.app_runtime_first %>:** [<%= vars.app_runtime_abbr %> on vSphere Requirements](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/pas-vsphere-requirements.html). For information requirements when deploying with NSX-T, see the _Requirements_ section of [Deploying <%= vars.app_runtime_abbr %>
+with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/vsphere-nsx-t.html).
 * **<%= vars.k8s_runtime_first %>:**
     * **Without NSX-T:** [vSphere Prerequisites and Resource Requirements](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-requirements.html)
     * **With NSX-T:** See the _Preparing to Install <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T_ section of [Installing <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T Data Center](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-nsxt-index.html).
@@ -101,7 +101,7 @@ Complete the following procedures to install <%= vars.ops_manager %> on vSphere:
 
 See the following topics for additional configuration options:
 
-* [vSphere Virtual Disk Types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/disk-format.html)
+* [vSphere Virtual Disk Types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/disk-format.html)
 
 * [Using the BOSH Resurrector](resurrector.html)
 
@@ -114,8 +114,8 @@ After completing the procedures above, configure a runtime.
 For information about installing and configuring a runtime, see the following:
 
 * **<%= vars.app_runtime_abbr %>:**
-    * **Without NSX-T:** [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html)
-    * **With NSX-T:** [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/vsphere-nsx-t.html)
+    * **Without NSX-T:** [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html)
+    * **With NSX-T:** [Deploying <%= vars.app_runtime_abbr %> with NSX-T Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/vsphere-nsx-t.html)
 
     <p> You must install the NSX-T tile before you install or Upgrade the <%= vars.app_runtime_abbr %> tile.</p>
 
@@ -123,6 +123,6 @@ For information about installing and configuring a runtime, see the following:
     * **Without NSX-T:** [Installing <%= vars.k8s_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-index.html)
     * **With NSX-T:** [Installing NSX-T for <%= vars.k8s_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-installing-nsx-t.html)
 
-* [Installing and configuring <%= vars.windows_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/installing.html)
+* [Installing and configuring <%= vars.windows_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/installing.html)
 
 * [Installing Small Footprint <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service//tas-for-vms/small-footprint.html)

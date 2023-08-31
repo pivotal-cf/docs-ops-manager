@@ -6,7 +6,7 @@ owner: RelEng
 You can configure <%= vars.app_runtime_first %> file storage backups to include all files, exclude droplets, or exclude
 droplets and packages. For information about configuring the <%= vars.app_runtime_abbr %> blobstore to
 exclude droplets or to exclude droplets and packages,
-see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#file-storage).
+see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#file-storage).
 
 ## <a id='file-storage-motivation'></a> Considerations for configuring file storage backups
 
@@ -39,7 +39,7 @@ If you configure <%= vars.app_runtime_abbr %> to exclude droplets from the file 
 When restoring from this backup, apps return in a stopped state because the foundation does not have their corresponding droplets. Developers must restage each app to return them to a running state. <%= vars.app_runtime_abbr %> must recompile the droplet using the packages in the backup then deploy the new droplet. This process increases the RTO.
 
 For more information about configuring the <%= vars.app_runtime_abbr %> blobstore to exclude droplets,
-see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.current_major_version %>/tas-for-vms/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
+see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#file-storage) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='exclude-droplets-packages-file-storage'></a> File storage backups excluding droplets and packages
 
