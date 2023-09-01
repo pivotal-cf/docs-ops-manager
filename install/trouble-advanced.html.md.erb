@@ -296,6 +296,22 @@ expected `cf-d7293430724a2c421061: ccdb/0', got `cf-d7293430724a2c421061: nats/0
 - Ignore problem
 - Delete VM (unless it has persistent disk)
 
+### <a id='recover'></a> BOSH Recover
+
+For scenarios where underlying infrastructure issues cause widespread problems with a deployment, the `bosh recover` command may be useful.  The underlying machinery is very similar to `bosh <%= vars.bosh_cloud_check %>`, with several exceptions:
+1. There is a 2-step process: `bosh create-recovery-plan` scans the deployment for problems and then prompts the user to generate a recovery plan, which is saved to a file. The `bosh recover` command consumes that file.
+1. Resolutions to problems are selected by instance group and problem type. The `bosh cloud-check` command asks for a resolution for each particular problem.
+1. When generating a recovery plan, `max_in_flight` can be overriden per instance group. This can be handy to speed deployment recovery. The `bosh cloud-check` command uses the `max_in_flight` values in the deployment manfiest.
+
+The commands are
+<pre class="terminal">
+$ bosh -e example-env -d example-deployment create-recovery plan example-recovery-plan.yml</pre>
+and
+<pre class="terminal">
+$ bosh -e example-env -d example-deployment recover example-recovery-plan.yml</pre>
+
+See [Deployment Recovery](https://bosh.io/docs/recover/) for more details.
+
 ### <a id='bosh-ssh'></a> BOSH SSH
 
 Use `bosh ssh` to log in to the VMs in your deployment with SSH.
