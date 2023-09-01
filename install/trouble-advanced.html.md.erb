@@ -296,21 +296,42 @@ expected `cf-d7293430724a2c421061: ccdb/0', got `cf-d7293430724a2c421061: nats/0
 - Ignore problem
 - Delete VM (unless it has persistent disk)
 
-### <a id='recover'></a> BOSH Recover
+### <a id='recover'></a> BOSH recover
 
-For scenarios where underlying infrastructure issues cause widespread problems with a deployment, the `bosh recover` command may be useful.  The underlying machinery is very similar to `bosh <%= vars.bosh_cloud_check %>`, with several exceptions:
-1. There is a 2-step process: `bosh create-recovery-plan` scans the deployment for problems and then prompts the user to generate a recovery plan, which is saved to a file. The `bosh recover` command consumes that file.
-1. Resolutions to problems are selected by instance group and problem type. The `bosh cloud-check` command asks for a resolution for each particular problem.
-1. When generating a recovery plan, `max_in_flight` can be overriden per instance group. This can be handy to speed deployment recovery. The `bosh cloud-check` command uses the `max_in_flight` values in the deployment manfiest.
+If underlying infrastructure issues cause widespread problems with your deployment, run the `bosh create-recovery-plan` and `bosh recover` commands. The `bosh create-recovery-plan` command scans the deployment for problems and then prompts you to generate a recovery plan, which is saved to a file. The `bosh recover` command consumes the recovery plan file.
 
-The commands are
-<pre class="terminal">
-$ bosh -e example-env -d example-deployment create-recovery plan example-recovery-plan.yml</pre>
-and
-<pre class="terminal">
-$ bosh -e example-env -d example-deployment recover example-recovery-plan.yml</pre>
+These commands together work similarly to `bosh <%= vars.bosh_cloud_check %>`, with the following differences:
 
-See [Deployment Recovery](https://bosh.io/docs/recover/) for more details.
+* You select resolutions to problems by instance group and problem type. The `bosh cloud-check` command asks for a resolution for each particular problem.
+* You can override `max_in_flight` per instance group, to speed deployment recovery. The `bosh cloud-check` command uses the `max_in_flight` values in the deployment manifest.
+
+To use these commands:
+
+1. Run `bosh -e MY-ENV -d MY-DEPLOYMENT create-recovery-plan MY-RECOVERY-PLAN`, where:
+
+	* `MY-ENV` is your environment
+	* `MY-DEPLOYMENT` is your deployment
+	* `MY-RECOVERY-PLAN` is a filename for the recovery plan
+
+	For example:
+
+	<pre class="terminal">
+	$ bosh -e example-env -d example-deployment create-recovery-plan example-recovery-plan.yml
+	</pre>
+
+1. Run `bosh -e MY-ENV -d MY-DEPLOYMENT recover MY-RECOVERY-PLAN`, where:
+
+	* `MY-ENV` is your environment
+	* `MY-DEPLOYMENT` is your deployment
+	* `MY-RECOVERY-PLAN` is the filename you provided to the `bosh create-recovery-plan` command
+
+	For example:
+
+	<pre class="terminal">
+	$ bosh -e example-env -d example-deployment recover example-recovery-plan.yml
+	</pre>
+
+For more information about the `bosh create-recovery-plan` and `bosh-recover` commands, see the [BOSH documentation](https://bosh.io/docs/recover/).
 
 ### <a id='bosh-ssh'></a> BOSH SSH
 
