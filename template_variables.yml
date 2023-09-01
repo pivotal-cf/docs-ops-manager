@@ -29,7 +29,7 @@ template_variables:
   company_name: VMware
   product_network: VMware Tanzu Network
   platform_code: PCF
-  ops_manager_first: VMware Tanzu Operations Manager (Tanzu Operations Manager)
+  ops_manager_first: VMware Tanzu Operations Manager
   ops_manager: Tanzu Operations Manager
   platform_old: Pivotal Cloud Foundry
   app_runtime_first: VMware Tanzu Application Service for VMs (TAS for VMs)
