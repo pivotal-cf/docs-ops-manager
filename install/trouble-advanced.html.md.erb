@@ -197,10 +197,11 @@ Provider Properties:
 
 ## <a id='cli'></a> Use the BOSH CLI for troubleshooting
 
-This section describes three BOSH CLI commands commonly used during troubleshooting.
+This section describes five BOSH CLI commands commonly used during troubleshooting.
 
 * **VMs:** Lists the VMs in a deployment.
 * **Cloud Check:** Runs a cloud consistency check and interactive repair.
+* **Create Recovery Plan and Recover:** Interactively create a plan to use in repairing resources.
 * **SSH:** Starts an interactive session or executes commands with a VM.
 
 ### <a id='vms'></a> BOSH VMs
@@ -296,7 +297,7 @@ expected `cf-d7293430724a2c421061: ccdb/0', got `cf-d7293430724a2c421061: nats/0
 - Ignore problem
 - Delete VM (unless it has persistent disk)
 
-### <a id='recover'></a> BOSH recover
+### <a id='recover'></a> BOSH Create Recovery Plan and Recover
 
 If underlying infrastructure issues cause widespread problems with your deployment, run the `bosh create-recovery-plan` and `bosh recover` commands. The `bosh create-recovery-plan` command scans the deployment for problems and then prompts you to generate a recovery plan, which is saved to a file. The `bosh recover` command consumes the recovery plan file.
 
