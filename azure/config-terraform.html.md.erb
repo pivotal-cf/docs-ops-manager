@@ -33,10 +33,10 @@ To complete the procedures in this topic, you must have access to the output gen
 
     ![alt-text=""](../common/images/azure/azure-config.png)
 
-1. Complete the following fields with information you obtained in [Preparing to Deploy <%= vars.ops_manager %> on Azure Using Terraform](prepare-azure-terraform.html).
+1. Complete the following fields with information you obtained in [Preparing to deploy <%= vars.ops_manager %> on Azure Using Terraform](prepare-azure-terraform.html).
 	* **Subscription ID**: Enter the ID of your Azure subscription.
 	* **Tenant ID**: Enter your `TENANT_ID`.
-	* **Application ID**: Enter the `APPLICATION_ID` that you created in [Step 3: Create an AAD Application](prepare-azure-terraform.html#create-aad) in _Preparing to Deploy <%= vars.ops_manager %> on Azure Using Terraform_.
+	* **Application ID**: Enter the `APPLICATION_ID` that you created in [Step 3: Create an AAD application](prepare-azure-terraform.html#create-aad) in _Preparing to Deploy <%= vars.ops_manager %> on Azure Using Terraform_.
 	* **Client Secret**: Enter your `CLIENT_SECRET`.
 
 2. Complete the following fields:
@@ -82,9 +82,9 @@ Click **Create Networks** and follow the procedures in this section to add the n
 
 Create the following networks:
 
-* [<%= vars.app_runtime_abbr %> Infrastructure Network](#pas-infrastructure-network)
-* [<%= vars.app_runtime_abbr %> Runtime Network](#pas-runtime-network)
-* [<%= vars.app_runtime_abbr %> Services Network](#pas-services-network)
+* [<%= vars.app_runtime_abbr %> Infrastructure network](#pas-infrastructure-network)
+* [<%= vars.app_runtime_abbr %> Runtime network](#pas-runtime-network)
+* [<%= vars.app_runtime_abbr %> Services network](#pas-services-network)
 
 <p> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the
 Azure CLI to retrieve the correctly capitalized name of a resource.</p>
@@ -239,15 +239,15 @@ To create the infrastructure network:
 
 2. You might see red warnings. Ignore them only if **Enable ICMP checks** is not selected.
 
-If you complete this step for <%= vars.app_runtime_abbr %>, go to [Assign AZs and Networks Page](#assign-networks).
+If you complete this step for <%= vars.app_runtime_abbr %>, go to [Assign AZs and Networks page](#assign-networks).
 
 ### <a id='pks-network'></a> Create network for <%= vars.k8s_runtime_abbr %>
 
 Create the following three networks:
 
-* [<%= vars.k8s_runtime_abbr %> Infrastructure Network](#pks-infrastructure-network)
-* [<%= vars.k8s_runtime_abbr %> Runtime Network](#pks-runtime-network)
-* [<%= vars.k8s_runtime_abbr %> Services Network](#pks-services-network)
+* [<%= vars.k8s_runtime_abbr %> Infrastructure network](#pks-infrastructure-network)
+* [<%= vars.k8s_runtime_abbr %> Runtime network](#pks-runtime-network)
+* [<%= vars.k8s_runtime_abbr %> Services network](#pks-services-network)
 
 <p> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the
 Azure CLI to retrieve the correctly capitalized name of a resource.</p>
