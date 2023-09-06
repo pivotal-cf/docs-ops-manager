@@ -22,14 +22,16 @@ To configure the **Director Config** pane:
 
 <%# For AWS: %>
 <% if current_page.data.iaas == "AWS" %>
-1. In the **NTP Servers (comma delimited)** text box, enter at least three reachable NTP servers separated by a comma. For example: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
+1. In the **NTP Servers (comma delimited)** text box, enter at least three reachable NTP servers separated by a comma.
+For example: `0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org`
 
     If your AWS environment is air-gapped, consider using [Amazon's Time Sync Service](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html#configure-amazon-time-service) which has a dedicated IP that does not require access to the internet or configuration changes to your security group or network ACL rules to access.
 <% end %>
 
 <%# For Azure: %>
 <% if current_page.data.iaas == "Azure" %>
-1. Enter any valid value for **NTP Servers (comma delimited)**. A value is required but is ignored. For example, you can enter `us.pool.ntp.org`. By default, Azure VMs use a Precision Time Protocol (PTP) clock source. For more information, see [Time sync for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/time-sync) in the Azure documentation.
+1. Enter any valid value for **NTP Servers (comma delimited)**. A value is required but is ignored. For example, you can enter `us.pool.ntp.org`. By default, Azure VMs use a Precision Time Protocol (PTP) clock source.
+For more information, see [Time sync for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/time-sync) in the Azure documentation.
 <% end %>
 
 <%# For vSphere: %>
@@ -39,7 +41,7 @@ To configure the **Director Config** pane:
     1. The NTP server configuration only updates after VM recreation. If you modify the value of this text box, select the Recreate VMs deployed by the BOSH Director check box to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
 1. Leave the **Bosh HM Forwarder IP Address** text box blank.
-    <p class='note'><strong>Note:</strong> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> text box blank.</p>
+    <p> Starting in <%= vars.app_runtime_full_pivotal %> (<%= vars.app_runtime_abbr_pivotal %>) v2.0, BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> text box blank.</p>
 
 1. Select the **Enable VM Resurrector Plugin** check box to enable the BOSH Resurrector functionality and increase your runtime availability. <% if current_page.data.iaas == "vSphere" %>If you intend to install <%= vars.app_runtime_abbr %>, see [Using the BOSH Resurrector](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/high-availability.html) for more information about the Resurrector plug-in.<% end %>
 
@@ -54,7 +56,7 @@ check box. This increases the security of your <%= vars.ops_manager %> deploymen
 communicate with the BOSH Director through BOSH NATS.
 
 For more information, see [Using Short-Lived NATS Bootstrap
-Credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
+credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
 
 <p> Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
 are created somewhat more slowly.
@@ -81,7 +83,9 @@ deployments to use short-lived bootstrap credentials, you must recreate them. </
 
 1. (Optional) **Max Threads** sets the maximum number of threads that the BOSH Director can run simultaneously. <%= vars.company_name %> recommends that you leave the text box blank to use the default value, unless doing so results in rate limiting or errors on your IaaS.
 
-1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname** text box. You can also use this text box to configure a load balancer in front of your BOSH Director. For more information, see [How to Set Up a Load Balancer in Front of Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
+1. (Optional) To add a custom URL for your BOSH Director, enter a valid hostname in **Director Hostname** text box. You can also use this text box to configure a load balancer in front of your BOSH Director.
+For more information,
+see [How to set up a Load Balancer in front of Tanzu Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
 
     ![alt-text="There are three text text boxes, Director Workers, Max Threads, and Director Hostname."](../common/images/director_workers.png)
 
