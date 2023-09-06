@@ -66,7 +66,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
     * **Standard vCenter Networking:** This is the default option when upgrading <%= vars.ops_manager %>. If you select this option, you do not need to configure the **NSX-T Networking** fields below.
 
-        <p> If you intend to deploy <%= vars.k8s_runtime_abbr %> using Flannel as the CNI, select this option to configure the BOSH Director. Do not choose <strong>NSX-T Networking</strong>. When you configure the <%= vars.k8s_runtime_abbr %> tile later on, you configure Flannel as the container network interface (CNI).<br><br>If you intend to deploy <%= vars.k8s_runtime_abbr %> with NSX-T, see the <a href="https://docs.pivotal.io/tkgi/vsphere-nsxt-index.html"><%= vars.k8s_runtime_abbr %> documentation</a>.</p>
+        <p> If you intend to deploy <%= vars.k8s_runtime_abbr %> using Flannel as the CNI, select this option to configure the BOSH Director. Do not choose <strong>NSX-T Networking</strong>. When you configure the <%= vars.k8s_runtime_abbr %> tile later on, you configure Flannel as the container network interface (CNI).<br><br>If you intend to deploy <%= vars.k8s_runtime_abbr %> with NSX-T, see the <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-vsphere-nsxt-index.html"><%= vars.k8s_runtime_abbr %> documentation</a>.</p>
 
         <p> When deploying on VMC (vSphere on AWS), you must select <strong>Standard vCenter Networking</strong>. <strong>NSX-T Networking</strong> does not work with VMC.</p>
 

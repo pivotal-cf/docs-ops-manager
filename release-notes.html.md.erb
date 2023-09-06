@@ -943,9 +943,8 @@ major functionality changes in this release.
 
 **Release Date:** February 02, 2022
 
-- **[Known Issue]** UAA fails to start in air-gapped Tanzu Operations Manager environments.
-- **[Known Issue]** The BOSH CLI included on the Tanzu Operations Manager VM can cause deployment failures in certain circumstances. If a BOSH release that includes compiled packages is uploaded, and an identical BOSH release that includes source packages already exists on the BOSH Director, the deployment might fail. If you run into this situation, please contact support.
-- **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
+For more information about custom VM type catalogs for GCP deployments, see the [<%= vars.ops_manager %> API
+documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html).
 
 - **[Security Fix]** Upgrades the Tanzu Operations Manager PostgreSQL to 13.5 and the BOSH Director PostgreSQL to 10.19 to fix a potential MITM vulnerability.
 ([CVE-2021-23214](https://www.postgresql.org/support/security/CVE-2021-23214/))

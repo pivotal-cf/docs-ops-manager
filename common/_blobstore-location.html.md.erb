@@ -1,6 +1,6 @@
 1. Click **Blobstore Location** to configure the blobstore as either an internal server or an external endpoint.
 
-    <p> After you deploy the BOSH Director, only <%= vars.ops_manager %> users in Advanced Mode can change the blobstore location. For more information, see <a href="https://docs.pivotal.io/platform/2-9/customizing/lock-on-deploy.html"><%= vars.ops_manager %> Fields That Lock On Deploy</a>.</p>
+    <p> After you deploy the BOSH Director, only <%= vars.ops_manager %> users in Advanced Mode can change the blobstore location. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-platform-operators.html"><%= vars.ops_manager %> Fields That Lock On Deploy</a>.</p>
 
     * **Internal:** Use this option for an internal blobstore. No additional configuration is required.
 
@@ -39,7 +39,7 @@
 
         1. **Bucket Name:** Enter the name of the S3 bucket.
         1. **URL Style:** Click either path-style or domain-style to specify the URL style for the S3-compatible blobstore. By default, the blobstore uses domain-style URLs.
-            <p> AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.pivotal.io/platform/2-9/release-notes/opsmanager-rn.html#domain-style">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.</p>
+            <p> AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/index.html">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.</p>
         <% if current_page.data.iaas == "AWS" %>
         1. **Credentials Source:**
         Input your credentials from the following sources.
