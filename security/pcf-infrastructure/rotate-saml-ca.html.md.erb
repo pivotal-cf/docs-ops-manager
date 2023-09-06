@@ -11,7 +11,7 @@ authority (CA) certificate to authenticate to an external SAML server. The CA ge
 certificates that <%= vars.app_runtime_abbr %> includes in its outbound request message headers. This CA has a
 two-year expiration period.
 
-In addition, the Single Sign-On for VMware Tanzu service shares the use of <%= vars.app_runtime_abbr %> SAML certificates for every SAML external IDP integration, such as trust, partnership, or federation. You must rotate these in lockstep with <%= vars.app_runtime_abbr %>. For more information about Single Sign-On for VMware Tanzu, see the [Single Sign-On for VMware Tanzu documentation](https://docs.pivotal.io/p-identity/index.html).
+In addition, the Single Sign-On for VMware Tanzu service shares the use of <%= vars.app_runtime_abbr %> SAML certificates for every SAML external IDP integration, such as trust, partnership, or federation. You must rotate these in lockstep with <%= vars.app_runtime_abbr %>. For more information about Single Sign-On for VMware Tanzu, see the [Single Sign-On for VMware Tanzu documentation](https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-index.html).
 
 This topic also provides an example of how to rotate certificates for each IDP, including temporarily deactivating certificate validation on the IDP side during the rotation.
 
@@ -52,7 +52,7 @@ This includes downloading and importing a new certificate and updated SAML metad
       </tr>
       <tr>
         <td><a href='https://www.pingidentity.com/en/products/pingfederate.html'>PingFederate</a></td>
-        <td><a href="https://docs.pivotal.io/application-service/operating/ping-federate-sso-configuration.html">Configuring PingFederate as an Identity Provider</a></td>
+        <td><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/ping-federate-sso-configuration.html">Configuring PingFederate as an Identity Provider</a></td>
       </tr>
       <tr>
         <td><a href='https://technet.microsoft.com/en-us/windowsserver/dd448613.aspx'>Active Directory Federation Services (AD FS)</a></td>
@@ -70,23 +70,23 @@ This includes downloading the SAML SP metadata for each SAML IDP integration. Fo
       </tr>
       <tr>
         <td>AD FS</td>
-        <td><a href="https://docs.pivotal.io/p-identity/adfs/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
+        <td><a href="https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-adfs-config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
       </tr>
       <tr>
         <td>CA Single Sign-On for VMware Tanzu</td>
-        <td><a href="https://docs.pivotal.io/p-identity/ca-sso/config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
+        <td><a href="https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-index.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
       </tr>
       <tr>
         <td>Okta</td>
-        <td><a href="https://docs.pivotal.io/p-identity/okta/config-sso.html">Configure Okta as an Identity Provider</a></td>
+        <td><a href="https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-okta-config-sso.html">Configure Okta as an Identity Provider</a></td>
       </tr>
       <tr>
         <td>PingFederate</td>
-        <td><a href="https://docs.pivotal.io/p-identity/pingfederate/config-sso.html">Configure PingFederate as an Identity Provider</a></td>
+        <td><a href="https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-pingfederate-config-sso.html">Configure PingFederate as an Identity Provider</a></td>
       </tr>
       <tr>
         <td>Additional Documentation</td>
-        <td><a href="https://docs.pivotal.io/p-identity/index.html#guides">Integration Guides</a></td>
+        <td><a href="https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-index.html#guides">Integration Guides</a></td>
       </tr>
     </table>
 

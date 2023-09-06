@@ -116,7 +116,7 @@ see the [BOSH backup and restore](https://docs.cloudfoundry.org/bbr/) documentat
 
 <%= vars.app_runtime_abbr %> requires disk storage for each component, for both persistent data and to allocate to ephemeral data. You size these disks in the **Resource Config** pane of the <%= vars.app_runtime_abbr %> tile. For more information about storage configuration and capacity planning, see the corresponding section in the [reference architecture for your IaaS](#topics).
 
-The platform also requires you to configure file storage for large shared objects. These blobstores can be external or internal. For details, see [Configuring File Storage for <%= vars.app_runtime_abbr %>](https://docs.pivotal.io/application-service/operating/pas-file-storage.html).
+The platform also requires you to configure file storage for large shared objects. These blobstores can be external or internal. For details, see [Configuring File Storage for <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/pas-file-storage.html).
 
 ### <a id='pas-security'></a> Security
 
@@ -149,7 +149,7 @@ You must also define these wildcard domain names and include them when creating 
 
 ### <a id='pas-scaling'></a> Component scaling
 
-For recommendations on scaling <%= vars.app_runtime_abbr %> for different deployment scenarios, see [Scaling <%= vars.app_runtime_abbr %> ](https://docs.pivotal.io/application-service/operating/scaling-ert-components.html).
+For recommendations on scaling <%= vars.app_runtime_abbr %> for different deployment scenarios, see [Scaling <%= vars.app_runtime_abbr %> ](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/scaling-ert-components.html).
 
 ## <a id='pks-base'></a> <%= vars.k8s_runtime_abbr %> Architecture
 
@@ -168,7 +168,7 @@ The following table describes the internal component placements shown in the pre
 | <%= vars.ops_manager %> VM | Deployed on one of the subnets. Accessible by fully-qualified domain name (FQDN) or through an optional jumpbox. |
 | BOSH Director | Deployed on the infrastructure subnet. |
 | Jumpbox | Optional. Deployed on the infrastructure subnet for accessing <%= vars.k8s_runtime_abbr %> management components such as <%= vars.ops_manager %> and the `kubectl` command line interface. |
-| <%= vars.k8s_runtime_abbr %> API | Deployed as a service broker VM on the <%= vars.k8s_runtime_abbr %> services subnet. Handles <%= vars.k8s_runtime_abbr %> API and service adapter requests, and manages <%= vars.k8s_runtime_abbr %> clusters. For more information, see [<%= vars.k8s_runtime_abbr %> Architecture](https://docs.pivotal.io/tkgi/control-plane.html). |
+| <%= vars.k8s_runtime_abbr %> API | Deployed as a service broker VM on the <%= vars.k8s_runtime_abbr %> services subnet. Handles <%= vars.k8s_runtime_abbr %> API and service adapter requests, and manages <%= vars.k8s_runtime_abbr %> clusters. For more information, see [<%= vars.k8s_runtime_abbr %> Architecture](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-control-plane.html). |
 | Harbor tile | Optional container images registry, typically deployed to the services subnet. |
 | <%= vars.k8s_runtime_abbr %> Cluster | Deployed to a dynamically-created, dedicated <%= vars.k8s_runtime_abbr %> cluster subnet. Each cluster consists of worker nodes that run the workloads, or apps, and one or more primary nodes. |
 
@@ -200,7 +200,7 @@ Load balancers can be used to manage traffic across primary nodes of a <%= vars.
 
 ### <a id='pks-security'></a> Security
 
-For information about how <%= vars.k8s_runtime_abbr %> implements security, see [Enterprise <%= vars.k8s_runtime_abbr %> Security](https://docs.pivotal.io/tkgi/security.html) and [Firewall Ports](https://docs.pivotal.io/tkgi/ports-protocols-nsx-t.html).
+For information about how <%= vars.k8s_runtime_abbr %> implements security, see [Enterprise <%= vars.k8s_runtime_abbr %> Security](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-security.html) and [Firewall Ports](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-ports-protocols-nsx-t.html).
 
 ### <a id='pks-domains'></a> Domain names
 
@@ -210,4 +210,4 @@ The wildcard certificate covers both the <%= vars.k8s_runtime_abbr %> API domain
 
 ### <a id='pks-management'></a> Cluster management
 
-For information about managing <%= vars.k8s_runtime_abbr %> clusters, see [Managing clusters](https://docs.pivotal.io/tkgi/managing-clusters.html).
+For information about managing <%= vars.k8s_runtime_abbr %> clusters, see [Managing clusters](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-managing-clusters.html).
