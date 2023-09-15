@@ -15,7 +15,7 @@ vSphere offers NSX-T and NSX-V to support SDN infrastructure.
 
 * <%= vars.app_runtime_abbr %> on vSphere with NSX-T. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-T](#pas-nsx-t).
 
-* <%= vars.app_runtime_abbr %> on vSphere with NSX-V. For more information, see [<%= vars.app_runtime_abbr %> on vSphere with NSX-V](#pas-nsx-v).
+* <%= vars.app_runtime_abbr %> on vSphere with NSX-V. For more information, see [vSphere with NSX-V](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/vsphere-nsx-t.html).
 
 * <%= vars.app_runtime_abbr %> on vSphere without NSX. For more information, see [<%= vars.app_runtime_abbr %> on vSphere without NSX](#pas-no-nsx).
 
@@ -78,7 +78,7 @@ The Tier-0 router must have routable external IP address space to advertise on t
 * Routing incoming and outgoing traffic.
 * DNATs and SNATs, load balancer VIPs, and other platform components.
 
-<p class="note"><strong>Note:</strong> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
+<p> Compared to NSX-V, NSX-T consumes much more address space for SNATs.</p>
 
 #### <a id='pas-nsx-t-firewall'></a> Firewall
 
@@ -355,7 +355,7 @@ The routable IP address requirements and recommendations for <%= vars.k8s_runtim
     * Routing incoming and outgoing traffic
     * DNATs and SNATs, load balancer WIPs, and other platform components
 
-        <p class="note"><strong>Note:</strong> Compared to vSphere deployments with NSX-V, <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T consumes much more address space for SNATs.</p>
+        <p> Compared to vSphere deployments with NSX-V, <%= vars.k8s_runtime_abbr %> on vSphere with NSX-T consumes much more address space for SNATs.</p>
 
 * **Deployments with several load balancers:** <%= vars.company_name %> recommends a `/23` network for deployments that use several load balancers. Deployments with several load balancers have much higher address space consumption for load balancer WIPs. This is because Kubernetes service types allocate IP addresses very frequently. To accommodate the higher address space, allow for four times the address space.
 
