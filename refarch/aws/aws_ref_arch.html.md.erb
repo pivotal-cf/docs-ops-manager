@@ -52,7 +52,7 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 
 * If you want a VPC that is only public-facing, no special consideration is necessary for the use of IPs.
 
-* To understand the action required, depending on the type of traffic you want to allow for your <%= vars.ops_manager %> deployment, see the table below:
+* To understand the action required, depending on the type of traffic you want to allow for your <%= vars.ops_manager %> deployment, see the following table:
 	<table>
 		<tr>
 			<th>If you want...</th>
@@ -149,7 +149,7 @@ The following sections describe the reference architecture for a <%= vars.k8s_ru
 
 ### <a id='pks-diagram'></a> Diagram
 
-The diagram below illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
+The following diagram illustrates the reference architecture for <%= vars.k8s_runtime_abbr %> on AWS. The diagram shows the flow and components from the HQ, branch offices, and broader Internet into the VPC Network. Categories of elements in the VPC Network include:
 
 * Infrastructure subnet (with Tanzu Operations Manager, BOSH Director, Jumpbox, NLB interface, NAT GW Interface, and VPC Endpoints)
 * 3 Services subnets
