@@ -23,7 +23,7 @@ For information about the errands associated with any other <%= vars.ops_manager
 
 ## <a id='rules'></a> Errand run rules
 
-Operators can configure two different run rules for errands: **On** and **Off**. These rules control when <%= vars.ops_manager %> executes the errand.
+You can configure two different run rules for errands: **On** and **Off**. These rules control when <%= vars.ops_manager %> executes the errand.
 
 When the errand is configured to be **On**, then it always runs, even if there are no changes to the product manifest. When the errand is configured to be **Off**, it never runs.
 
@@ -46,7 +46,7 @@ The **Errands** pane lists all errands for the product and lets you select **On*
 
 ![alt-text=""](images/errands-on.png)
 
-To configure the run rules for a tile:
+To configure run rules for a tile:
 
 1. Go to <%= vars.ops_manager %> and click the tile to open it.
 
@@ -62,14 +62,17 @@ To configure the run rules for a tile:
 
 <%= vars.ops_manager %> lets you quickly configure one-time errand run rules for any product queued up for installation:
 
-1. Go to <%= vars.ops_manager %>. The **Review Pending Changes** section that shows products
+1. Go to <%= vars.ops_manager %> **Review Pending Changes** section that shows products
 that <%= vars.ops_manager %> has yet to install or update.
 
-1. Expand the **ERRANDS** link for the product you want to configure. A list of errands associated with the product appears.
+1. Expand the **ERRANDS** link, for the product you want to configure. A list of errands associated
+with the product appears.
 
     ![alt-text=""](images/pending_view_errands.png)
 
-1. Configure whether an errand will be run during **Apply Changes** using the checkboxes next to the errand. <%= vars.ops_manager %> uses these settings when you run **Apply Changes** to install the product, but does not save the settings for future installations.
+1.  Configure whether an errand runs during the **Apply Changes** action using the check boxes next to
+the errand. <%= vars.ops_manager %> uses these settings when
+you **Apply Changes** to install the product, but does not save the settings for future installations.
 
 2. Click **Apply Changes** to redeploy the tile.
 
