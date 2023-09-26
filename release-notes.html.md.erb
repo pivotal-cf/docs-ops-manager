@@ -636,6 +636,16 @@ redeploy your tiles through the <%= vars.ops_manager %> Installation Dashboard, 
 For more information about rotating non-configurable leaf certificates through the <%= vars.ops_manager %> Installation Dashboard, see [Review Pending Changes
 Page](install/review-pending-changes.html#review-pending-changes) in _Reviewing Pending Product Changes_.
 
+### <a id='auto-rotate-bosh-dns'></a> Automatic rotation of the BOSH DNS certificates (experimental)
+
+In <%= vars.ops_manager %> 3.0.17+LTS-T, the **Director Config** pane includes the **Enable automatic rotation of the BOSH DNS CA certificate (experimental)** check box.
+Activating this check box will cause <%= vars.ops_manager %> to automatically rotate the BOSH DNS CA certificate and associated leaf certificates during Apply Changes.
+The rotated BOSH DNS certificates will only be deployed to VMs during Apply Changes when new stemcells are also being deployed to those VMs. This allows the BOSH DNS
+certificates to be rotated gradually over time without user intervention, and without encountering unexpected long Apply Changes times. You can force the rotated
+BOSH DNS certificates to be deployed without updating a stemcell using the "Force latest BOSH DNS certificates to be used without requiring a stemcell update" check
+box on the Review Pending Changes page.
+
+For more information, see [Automatic rotation of BOSH DNS certificates](security/pcf-infrastructure/automatic-rotation-bosh-dns.html).
 
 ## <a id='breaking-changes'></a> Breaking changes in <%= vars.ops_manager %> <%= vars.v_major_version %>
 

@@ -101,7 +101,10 @@ For TKGi-specific certificates, please follow the certificate rotation instructi
     <li>Run <code>maestro regenerate leaf</code> with <code>--exclude-signed-by /services/tls_ca</code>.</li>
   </ul>
   </p>
-The process for rotating the Services TLS CA requires additional steps to ensure that there is no downtime. To rotate the Services TLS CA, see <a href="#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a>.</div>
+The process for rotating the Services TLS CA requires additional steps to ensure that there is no downtime. To rotate the Services TLS CA, see <a href="#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a>.
+
+If you have enabled the [Automatic rotation of BOSH DNS certificates](automatic-rotation-bosh-dns.html) feature:
+* Run all CredHub Maestro commands except `maestro regenerate leaf` with `--exclude /opsmgr/bosh_dns/tls_ca`.
 
 To rotate all CAs and leaf certificates in CredHub:
 
