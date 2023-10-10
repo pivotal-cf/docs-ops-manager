@@ -91,9 +91,6 @@ If you recreate your IaaS resources, you must also add those resources to <%= va
     1. Using the <%= vars.ops_manager %> UI:
         1. Access your new <%= vars.ops_manager %> deployment by navigating to the fully-qualified domain name (FQDN) for your <%= vars.ops_manager %> deployment in a browser.
         1. On the **Welcome to <%= vars.ops_manager %>** page, click **Import Existing Installation**.
-
-            ![alt-text=""](../images/upgrading/welcome.png)
-
         1. In the import panel:
           * Enter the **Decryption Passphrase** in use when you exported the installation settings from <%= vars.ops_manager %>.
           * Click **Browse** and browse to the installation ZIP file that you exported in [Export Installation Settings](backup-pcf-bbr.html#export) in _Backing Up Deployments with BBR_.
@@ -105,8 +102,6 @@ If you recreate your IaaS resources, you must also add those resources to <%= va
             <p> Some browsers do not provide feedback on the status of the import process, and might appear to hang. The import process takes at least 10 minutes, and takes longer the more tiles that were present on the backed-up <%= vars.ops_manager %>.</p>
 
         2. When the import is complete, a **Successfully imported installation** message appears.
-
-            ![alt-text=""](../images/upgrading/success.png)
 
     1. Using the <%= vars.ops_manager %> API:
         1. Run:
