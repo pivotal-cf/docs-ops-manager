@@ -569,7 +569,7 @@ To back up your <%= vars.app_runtime_abbr %> deployment:
         * `BOSH-CLIENT`, `BOSH-PASSWORD` are the **Uaa Bbr Client Credentials**, or the identity and password, that you retrieved in [Step 3: Retrieve BOSH Director Credentials](#retrieve-credentials).
         * `DEPLOYMENT-NAME` is the deployment name you retrieved in [Step 6: Identify Your Deployment](#identify-deployment).
         * `PATH-TO-BOSH-SERVER-CERTIFICATE` is the path to the CA for the BOSH Director.
-        *  To enable debug logs, use the optional `--debug` flag. For more information, see [Logging](#logging).
+        * To enable debug logs, use the optional `--debug` flag. For more information, see [Logging](#logging).
         * To ensure that BBR downloads your current deployment manifest when backing up, use the optional `--with-manifest` flag. These manifests are included in the <%= vars.ops_manager %> export, but are useful for reference.
 
   1. Run the BBR `backup` command again after ensuring that:
