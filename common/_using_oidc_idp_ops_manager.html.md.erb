@@ -1,0 +1,13 @@
+To configure <%= vars.ops_manager %> to log in by default using an OpenID Connect (OIDC) provider for user authentication:
+
+<%= partial '../common/oidc-fields' %>
+
+1. Enter a **Decryption passphrase** and the **Decryption passphrase confirmation**. This passphrase encrypts the <%= vars.ops_manager %> datastore, and is not recoverable.
+
+1. If you are using an **HTTP proxy** or **HTTPS proxy**, follow the instructions in [Configuring Proxy Settings for the BOSH CPI](/docs-ops-manager/install/pcf-director-proxy-settings.html).
+
+1. Read the **End User License Agreement**, and select the check box to accept the terms.
+
+1. Click **Provision an admin client in the BOSH UAA**. You can use this to enable BOSH automation with scripts and tooling. For more information, see [Provision Admin Client](/docs-ops-manager/install/opsmanager-create-bosh-client.html#saml) in _Creating UAA Clients for BOSH Director_.
+
+1. Click **Setup Authentication**.
