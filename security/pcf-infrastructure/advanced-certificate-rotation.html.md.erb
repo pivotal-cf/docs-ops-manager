@@ -426,7 +426,7 @@ Run:
     maestro update-transitional remove --name "CA-NAME"
     ```
 
-6. Re deploy:
+6. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, select the check box for all products using the rotated certificates. If unsure, select the **Select All Products** check box.
@@ -464,7 +464,7 @@ To rotate a CredHub-set leaf certificate:
           1. Locate the output entries whose name matches the CredHub path of the certificate that was rotated. Note that a certificate might be listed multiple times if it is associated with multiple deployments.
   1. For each output entry, look at the `deployment_name` key. This corresponds to a tile that you must redeploy. Entries with a deployment name like `service-instance-*` are certificates associated with a service instance created by a service tile. You must re-deploy the corresponding service tile and enable its **Upgrade all service instances** errand.
 
-1. Re deploy:
+1. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
     1. On the **Review Pending Changes** page, select the check box for all products using the rotated certificate. If unsure, select the **Select All Products** checkbox.
