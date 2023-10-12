@@ -47,6 +47,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
     * **vCenter Host**: The hostname of the vCenter that manages ESXi/vSphere.
     * **vCenter Username**: A vCenter username with create and delete privileges for virtual machines (VMs) and folders.
     * **vCenter Password**: The password for the vCenter user specified earlier.
+    * **vCenter CA Certificate**: The CA certificate or certificate chain that signs the TLS certificate for the vCenter host. When provided, TLS connections to the vCenter server will validate its certificate is trusted. When left blank, TLS connections will be established but the certificate will not be validated.
     * **Datacenter Name**: The name of the datacenter as it appears in vCenter.
     * **Virtual Disk Type**: The Virtual Disk Type to provision for all VMs. For guidance on
     selecting a virtual disk type, see [vSphere virtual disk types](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/disk-format.html).
