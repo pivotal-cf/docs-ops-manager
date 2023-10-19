@@ -18,15 +18,19 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <hr>
 
 ## <a id='releases'></a> Releases
-### <a id="3-0-17"></a> v3.0.17+LTS-T
+### <a id="3-0-17"></a> v3.0.17+LTS-T - Withdrawn
 
 **Release Date:** October 18, 2023
+
+<div class="note warning"><strong>Warning:</strong>
+  This release has been removed from VMware Tanzu Network because it included an issue in the BOSH Director that causes the Healthwatch tile to fail to deploy with errors like "undefined method `present?'".
+</div>
 
 <div class="note warning"><strong>Warning:</strong>
   This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
 </div>
 
-
+- **[Known Issue]** Healthwatch tile will fail to deploy with errors like "undefined method `present?'"
 - **[Feature]** You can opt in to automatic rotation of the BOSH DNS CA and leaf certificates. For information about automatic certificate rotation, see [Automatic rotation of the BOSH DNS certificates (experimental)](#auto-rotate-bosh-dns)
 - **[Feature]** You can opt in to and configure pruning of older Apply Changes logs
 - **[Bug Fix]** Remove unneeded monit restarts when deploying the BOSH Director
