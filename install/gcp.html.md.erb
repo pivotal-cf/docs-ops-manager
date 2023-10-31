@@ -34,12 +34,15 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
 
     * **<%= vars.app_runtime_abbr %>:** At a minimum, a new GCP deployment requires the following `custom` VMs for <%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>:
 
-        <table border='1' class='nice'>
+          <table class=“table”>
+          <thead>
           <tr>
             <th width ="33%">VM Count</th>
             <th width ="33%">vCPU Count per VM</th>
             <th width ="33%">RAM (GB)</th>
-          </tr><tr>
+          </tr>
+          </thead>
+          <tr>
             <td>28</td>
             <td>1</td>
             <td>1</td>
@@ -69,7 +72,8 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
         <p> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
 
     * **Small Footprint <%= vars.app_runtime_abbr %>:** At a minimum, a new GCP deployment requires the following VMs to run Small Footprint <%= vars.app_runtime_abbr %>:
-        <table id='small-footprint' border="1" class="nice">
+          <table class=“table”>
+          <thead>
           <tr>
             <th width ="15%"></th>
             <th width ="15%">VM Type</th>
@@ -77,7 +81,9 @@ The following are GCP-specific resource requirements for installing <%= vars.ops
             <th width ="15%">vCPU Count per VM</th>
             <th width ="15%">RAM (GB)</th>
             <th width ="25%">Notes</th>
-          </tr><tr>
+            </tr>
+            </thead>
+            <tr>
             <th rowspan=7>Small Footprint <%= vars.app_runtime_abbr %></th>
             <td>micro</td>
             <td>11</td>
