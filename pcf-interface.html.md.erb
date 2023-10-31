@@ -270,6 +270,14 @@ To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'Ops Manager' } %>
 
+### <a id='pruning'></a> Pruning Settings
+
+Pruning Settings are available in <%= vars.ops_manager %> 3.0.18+LTS-T and later.
+
+Configure the pruning of Change Logs which are created each time you Apply Changes.
+
+If pruning is enabled, Change Logs older than the configured date will be pruned once per day. The most recent Change Log for a tile will not be pruned even if it is older than the configured date.
+
 ### <a id='advanced'></a> Advanced options
 
 * **Download Activity Data:** Downloads a directory that contains the configuration file for the installation, the deployment history, and version information.
