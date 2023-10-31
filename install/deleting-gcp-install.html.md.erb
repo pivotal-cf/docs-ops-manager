@@ -30,24 +30,24 @@ To delete the resources associated with your <%= vars.ops_manager %> deployment:
 
 1. Go to the GCP Console Dashboard.
 
-1. Click the upper icon and click **Networking**.
+1. Click the **upper left** icon and click **Networking**.
 
 1. Click **Load balancing**.
 
-1. Perform the following steps for all load balancers associated with your <%= vars.ops_manager %> deployment:
-	1. Click the trashcan icon next to the load balancer.
+1. Complete the following steps for all load balancers associated with your <%= vars.ops_manager %> deployment:
+	1. Click the **trash can** icon next to the load balancer.
 	1. In the next dialog, click any **health checks** and **backend services** associated with the
 	load balancer.
 	1. Click **DELETE LOAD BALANCER AND THE SELECTED RESOURCES**.
 
-1. Click the upper left icon and click **Compute Engine**.
+1. Click the **upper left** icon and click **Compute Engine**.
 
-1. Perform the following steps for **VM instances**, **Instance groups**, and **Disks:**
+1. Complete the following steps for **VM instances**, **Instance groups**, and **Disks:**
 	1. Select the check box next to the <%= vars.ops_manager %> resource.
 	1. When all <%= vars.ops_manager %> resources are selected, click **DELETE**.
 	1. Click **DELETE** again to confirm.
 
-1. Click the upper left icon and click **Networking**.
+1. Click the **upper left** icon and click **Networking**.
 
 1. Click **External IP addresses**.
 
@@ -59,9 +59,9 @@ click **RELEASE STATIC ADDRESS**.
 	1. Click **DELETE NETWORK**.
 	1. Click **DELETE** to confirm.
 
-1. Click the upper left icon and click **IAM & Admin**.
+1. Click the **upper left** icon and click **IAM & Admin**.
 
-1. Click the trash can icon next to the `bosh` service account you created
+1. Click the **trash can** icon next to the `bosh` service account you created
 for <%= vars.ops_manager %> and click **REMOVE**.
 
 1. Go to **Compute Engine > Metadata > SSH Keys**. Delete the `vcap` SSH key that you created
