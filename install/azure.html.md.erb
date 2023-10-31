@@ -29,11 +29,13 @@ The following are the minimum resource requirements for deploying an <%= vars.op
 
     * **<%= vars.app_runtime_abbr %>:** A new Azure deployment requires the following VMs for <%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>:
 
-        <table border='1' class='nice'>
-          <tr>
+    <table class=“table”>
+    <thead>
+      <tr>
             <th>VM Type</th>
             <th>VM Count</th>
           </tr>
+          <thead>
           <tr>
             <td>F1s</td>
             <td>22</td>
@@ -61,13 +63,15 @@ The following are the minimum resource requirements for deploying an <%= vars.op
 
     * **Small Footprint <%= vars.app_runtime_abbr %>:** A new Azure deployment requires the following VMs for Small Footprint <%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>:
 
-        <table id='azure-requirements' border="1" class="nice">
+    <table class=“table”>
+    <thead>
           <tr>
             <th></th>
             <th>VM Type</th>
             <th>VM Count</th>
             <th>Notes</th>
           </tr>
+          <thead>
           <tr>
             <th rowspan=4>Small Footprint <%= vars.app_runtime_abbr %></th>
             <td>DS11 v2</td>
