@@ -22,11 +22,13 @@ To view monitoring information:
 
 The columns display the following information:
 
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 	<tr>
 		<th>VM Data Point</th>
 	  <th>Details</th>
 	</tr>
+	</thead>
 	<tr>
 	  <td><strong>Job</strong></td>
 	  <td>Each job represents a component running on one or more VMs that <%= vars.ops_manager %> deployed.</td>
@@ -80,6 +82,7 @@ The columns display the following information:
 
 As of <%= vars.ops_manager %> v3.0.3, you can directly download logs for instances and instance groups
 from the **Status** page in a product tile.
+
 The logs column for each instance group contains two links:
 
 * The first link retrieves logs for the instance.
@@ -96,7 +99,7 @@ product tile.
 
 ### <a id='ops-manager'></a> <%= vars.ops_manager %> VM disk space
 
-<%= vars.ops_manager %> stores its logs on the <%= vars.ops_manager %> VM in the `/tmp` directory.
+<%= vars.ops_manager %> stores its' logs on the <%= vars.ops_manager %> VM in the `/tmp` directory.
 
 <p> The logs collect over time and do not self-delete. To prevent the VM from running out of disk space, clear the log
 	entries from <code>/tmp</code> by restarting the VM.</p>

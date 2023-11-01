@@ -12,7 +12,7 @@ displays the BOSH Director configuration for your IaaS and product tiles for you
 
 The following image shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a red letter. Click the image to see it at full size.
 
-![alt-text="The Tanzu Operationss Manager Installation Dashboard: For a description of each labeled section, see the following list."](images/interface.png)
+![alt-text="The Tanzu Operations Manager Installation Dashboard: For a description of each labeled section, see the following list."](images/interface.png)
 
 The following list describes each section that is labeled for the Installation Dashboard:
 
@@ -53,12 +53,14 @@ its **Apply Changes** actions.
 
 The following table lists the following top-level attributes for each deployment:
 
-<table id='TK-NAME' border="1" class="nice" >
+<table class=“table”>
+<thead>
   <tr>
     <th>Label</th>
     <th>Type</th>
     <th>Description</th>
   </tr>
+  </thead>
   <tr>
     <th>STATUS</th>
     <td>Icon</td>
@@ -83,12 +85,14 @@ each installation.
 
 The details listed for each product are as follows:
 
-<table id='TK-NAME' border="1" class="nice" >
+<table class=“table”>
+<thead>
   <tr>
     <th>Label</th>
     <th>Type</th>
     <th>Description</th>
   </tr>
+  </thead>
   <tr>
     <th>PRODUCT</th>
     <td>Text</td>
@@ -269,6 +273,15 @@ Viewable by administrators only. Configure a custom syslog server for <%= vars.o
 To configure a custom syslog endpoint for <%= vars.ops_manager %> logs:
 
 <%= partial "/pcf/ops-manager/syslog_bosh", :locals => { :syslog_context => 'Ops Manager' } %>
+
+### <a id='pruning'></a> Pruning settings
+
+Pruning settings are available in <%= vars.ops_manager %> 3.0.18+LTS-T and later.
+
+You configure the pruning of Change Logs that are created each time you Apply Changes.
+
+If pruning is activated, Change Logs that are older than the configured date are pruned once per day. The most recent Change Log for a tile are pruned even if it's
+older than the configured date.
 
 ### <a id='advanced'></a> Advanced options
 
