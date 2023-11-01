@@ -22,64 +22,68 @@ To view monitoring information:
 
 The columns display the following information:
 
-<table border="1" class="nice" >
-<tr>
-	<th>VM Data Point</th>
-  <th>Details</th>
-</tr>
-<tr>
-  <td><strong>Job</strong></td>
-  <td>Each job represents a component running on one or more VMs that <%= vars.ops_manager %> deployed.</td>
-</tr>
-<tr>
-  <td><strong>Index</strong></td>
-  <td>For jobs that run across multiple VMs, the <strong>index</strong> value indicates the order in which the job VMs were deployed. For jobs that run on
-		only one VM, the VM has an <strong>index</strong> value of <code>0</code>.</td>
-</tr>
-<tr>
-  <td><strong>IPs</strong></td>
-  <td>IP address of the job VM.</td>
-</tr>
-<tr>
-  <td><strong>CID</strong></td>
-  <td>Uniquely identifies the VM.</td>
-</tr>
-<tr>
-  <td><strong>Load Avg15</strong></td>
-  <td>CPU load average over 15 minutes.</td>
-</tr>
-<tr>
-  <td><strong>CPU</strong></td>
-  <td>Current CPU usage.</td>
-</tr>
-<tr>
-  <td><strong>Memory</strong></td>
-  <td>Current memory usage.</td>
-</tr>
-<tr>
-  <td><strong>Swap</strong></td>
-  <td>Swap file percentage.</td>
-</tr>
-<tr>
-  <td><strong>System Disk</strong></td>
-  <td>System disk space usage.</td>
-</tr>
-<tr>
-  <td><strong>Ephem. Disk</strong></td>
-  <td>Ephemeral disk space usage.</td>
-</tr>
-<tr>
-	<td><strong>Pers. Disk</strong></td>
-  <td>Persistent disk space usage.</td>
-</tr>
-<tr>
-	<td><strong>Logs</strong></td>
-  <td>Download link for the most recent log files.</td>
-</tr>
+<table class=“table”>
+<thead>
+	<tr>
+		<th>VM Data Point</th>
+	  <th>Details</th>
+	</tr>
+	</thead>
+	<tr>
+	  <td><strong>Job</strong></td>
+	  <td>Each job represents a component running on one or more VMs that <%= vars.ops_manager %> deployed.</td>
+	</tr>
+	<tr>
+	  <td><strong>Index</strong></td>
+	  <td>For jobs that run across multiple VMs, the <strong>index</strong> value indicates the order in which the job VMs were deployed. For jobs that run on
+			only one VM, the VM has an <strong>index</strong> value of <code>0</code>.</td>
+	</tr>
+	<tr>
+	  <td><strong>IPs</strong></td>
+	  <td>IP address of the job VM.</td>
+	</tr>
+	<tr>
+	  <td><strong>CID</strong></td>
+	  <td>Uniquely identifies the VM.</td>
+	</tr>
+	<tr>
+	  <td><strong>Load Avg15</strong></td>
+	  <td>CPU load average over 15 minutes.</td>
+	</tr>
+	<tr>
+	  <td><strong>CPU</strong></td>
+	  <td>Current CPU usage.</td>
+	</tr>
+	<tr>
+	  <td><strong>Memory</strong></td>
+	  <td>Current memory usage.</td>
+	</tr>
+	<tr>
+	  <td><strong>Swap</strong></td>
+	  <td>Swap file percentage.</td>
+	</tr>
+	<tr>
+	  <td><strong>System Disk</strong></td>
+	  <td>System disk space usage.</td>
+	</tr>
+	<tr>
+	  <td><strong>Ephem. Disk</strong></td>
+	  <td>Ephemeral disk space usage.</td>
+	</tr>
+	<tr>
+		<td><strong>Pers. Disk</strong></td>
+	  <td>Persistent disk space usage.</td>
+	</tr>
+	<tr>
+		<td><strong>Logs</strong></td>
+	  <td>Download link for the most recent log files.</td>
+	</tr>
 </table>
 
-As of <%= vars.ops_manager %> v2.10.52, you can directly download logs for instances and instance groups from the **Status** page in a product tile. The logs
-column for each instance group contains two links:
+As of <%= vars.ops_manager %> v3.0.3, you can directly download logs for instances and instance groups
+from the **Status** page in a product tile.
+
+The logs column for each instance group contains two links:
 
 * The first link retrieves logs for the instance.
 
@@ -95,7 +99,7 @@ product tile.
 
 ### <a id='ops-manager'></a> <%= vars.ops_manager %> VM disk space
 
-<%= vars.ops_manager %> stores its logs on the <%= vars.ops_manager %> VM in the `/tmp` directory.
+<%= vars.ops_manager %> stores its' logs on the <%= vars.ops_manager %> VM in the `/tmp` directory.
 
 <p> The logs collect over time and do not self-delete. To prevent the VM from running out of disk space, clear the log
 	entries from <code>/tmp</code> by restarting the VM.</p>
