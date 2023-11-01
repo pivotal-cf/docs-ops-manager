@@ -13,7 +13,7 @@ Operators are users who run a deployment and have admin privileges. Operators ar
 
 ## <a id='operator-tools-tasks'></a> Operator tools and tasks
 
- Operators fulfill system admin roles covering the entire deployment. They work primarily with their IaaS and <%= vars.ops_manager %> to configure and maintain <%= vars.app_runtime_abbr %> runtime component VMs. The component VMs support the VMs that host apps.
+Operators fulfill system admin roles covering the entire deployment. They work primarily with their IaaS and <%= vars.ops_manager %> to configure and maintain <%= vars.app_runtime_abbr %> runtime component VMs. The component VMs support the VMs that host apps.
 
 Typical operator tasks include:
 
@@ -39,7 +39,8 @@ The operator can then use the UAA CLI (UAAC) to create more operator accounts. F
 
 The following table summarizes the operator user type, including their roles, the tools they use, the System of Record (SOR) that stores their accounts, and the accounts that they can provision.
 
-<table id='users-summary' border='1' class='nice'>
+<table class=“table”>
+<thead>
 	<col width="20%">
 	<col width="20%">
 	<col width="20%">
@@ -51,7 +52,7 @@ The following table summarizes the operator user type, including their roles, th
 		<th>Tools They Use</th>
 		<th>Account SOR</th>
 		<th>Accounts They Can Provision</th>
-	</tr><tr>
+	</tr></thead><tr>
 		<td>Operator</td>
 		<td>
 			<ul>
