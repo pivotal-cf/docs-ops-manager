@@ -3,7 +3,7 @@ title: Installing Tanzu Operations Manager in your air-gapped environment
 owner: Ops Manager
 ---
 
-This topic gives an overview of the components and resources you need to install <%= vars.ops_manager_first %> in air-gapped environments, including the typical corresponding automation resources.
+This topic provides an overview of the components and resources you need to install <%= vars.ops_manager_first %> in air-gapped environments, including the typical corresponding automation resources.
 
 ## <a id='offline-components'></a> Offline components
 
@@ -32,11 +32,13 @@ Blocks shown in this configuration are:
 
 The following table provides more detail about resources and the component you must move them to:
 
-<table>
+<table class=“table”>
+<thead>
   <tr>
     <th>Resource</th>
     <th>Component</th>
   </tr>
+  </thead>
   <tr>
     <td>VMware Tanzu Network products such as tiles, stemcells, BOSH releases, and <%= vars.ops_manager %></td>
     <td>S3 and artifact store</td>
@@ -91,11 +93,13 @@ Blocks in this configuration are:
 
 The following table provides an example of how you might handle resources in this scenario:
 
-<table>
+<table class=“table”>
+<thead>
   <tr>
     <th>Resource</th>
     <th>Component</th>
   </tr>
+  </thead>
   <tr>
     <td>VMware Tanzu Network products such as tiles, stemcells, BOSH releases, and <%= vars.ops_manager %></td>
     <td>This architectural pattern presents the challenge of getting VMware Tanzu Network resources from the Internet into the artifact store. For example, Artifactory and Nexus cannot interact directly with VMware Tanzu Network. You could place VMware Tanzu Network resources in an artifact store either through a remote Concourse worker with access to the Internet, by downloading them from the Internet and placing them in the artifact store manually, or some other method.</td>
@@ -146,11 +150,13 @@ Blocks shown in this configuration are:
 
 In this architectural pattern, you must configure pipelines to watch components for changes and apply updates when available. The following table provides an example of how you might handle resources in this scenario:
 
-<table>
+<table class=“table”>
+<thead>
   <tr>
     <th>Resource</th>
     <th>Component</th>
   </tr>
+  </thead>
   <tr>
     <td>VMware Tanzu Network products such as tiles, stemcells, BOSH releases, and <%= vars.ops_manager %></td>
     <td>Manually upload to Nexus.</td>
