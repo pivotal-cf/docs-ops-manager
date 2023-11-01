@@ -65,13 +65,14 @@ different <%= vars.ops_manager %> interfaces relate to one another.
 
 For complete lists of operations, consult the references in the previous sections.
 
-<table id='example-ops' border="1" class="nice" >
+<table class=“table”>
+<thead>
   <tr>
     <th>UI Action</th>
     <th>API Command</th>
     <th><code>om</code> Command</th>
     <th>Platform Automation (Beta) Task</th>
-  </tr><tr>
+  </tr></thead><tr>
     <td>Manually configure the BOSH Director tile</td>
     <td>Multiple commands; see <a href="./ops-man-api.html#configure-bosh">Configure the BOSH Director</a> in <em>Using the <%= vars.ops_manager %> API</em>.</td>
     <td><code>om configure-director</code></td>
