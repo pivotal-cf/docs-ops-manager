@@ -49,12 +49,14 @@ To jump upgrade to <%= vars.ops_manager %> to <%= vars.v_major_version %> or lat
 The following table describes the breaking changes that affect <%= vars.ops_manager %> v2.5 through v2.9 and
 how to address them before you upgrade:
 
-<table>
+<table class=“table”>
+<thead>
 	<tr>
 		<th>Upgrading From</th>
 		<th width="45%">Breaking Change</th>
 		<th>Action Before Upgrading</th>
 	</tr>
+	</thead>
 	<tr>
 		<td>Any prior to v2.10.33</td>
 		<td>For <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. If you do not distribute the BOSH DNS leaf certificates to all VMs, you can experience downtime caused by communication issues between system components.</td>
