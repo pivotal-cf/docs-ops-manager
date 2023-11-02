@@ -345,7 +345,8 @@ The load balancing requirements and recommendations for <%= vars.k8s_runtime_abb
 
 The routable IP address requirements and recommendations for <%= vars.k8s_runtime_abbr %> with NSX-T deployments are:
 
-* **Deployments with <%= vars.k8s_runtime_abbr %> NSX-T ingress:** <%= vars.company_name %> recommends a `/25` network for deployments with <%= vars.k8s_runtime_abbr %> NSX-T ingress. The Tier-0 router must have routable external IP address space to advertise on the BGP network with its peers.
+* **Deployments with <%= vars.k8s_runtime_abbr %> NSX-T ingress:** <%= vars.company_name %> recommends a `/25` network for deployments with <%= vars.k8s_runtime_abbr %> NSX-T ingress.
+The Tier-0 router must have routable external IP address space to advertise on the BGP network with its peers.
 	</br>
 	</br>
 	Select a network range for the Tier-0 router with enough space so that you can separate the network into these two jobs:

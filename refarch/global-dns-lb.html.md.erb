@@ -37,12 +37,14 @@ Foundation affinity occurs when the GLB favors one foundation over another durin
 
 Different GLBs have their own mechanisms to achieve this. For more information, see the following table for common concepts:
 
-<table>
+<table class=“table”>
+<thead>
 <tr><th colspan="2">Foundation Affinity Concepts</th><tr>
 <tr>
   <th>Term</th>
   <th>Description</th>
 </tr>
+</thead>
 <tr>
   <td><strong>Topology/geographically-based affinity</strong></td>
   <td>The GLB attempts to direct traffic to the graphically nearest foundation based on IP geolocation or provided topology for private networks of the LDNS server performing the lookup.</td>
@@ -73,11 +75,13 @@ In <%= vars.app_runtime_abbr %>, _health checks_ determine whether a foundation 
 
 For the levels at which you can check the health of your foundation, see the following table:
 
-<table>
+<table class=“table”>
+<thead>
 <tr>
   <th>Level</th>
   <th>Description</th>
 </tr>
+</thead>
 <tr>
   <td>Foundation</td>
   <td>The GLB relies on a local load balancer in front of the GoRouters to determine the overall health of the foundation. The GLB can perform health checks on TCP port 443 or 80 or on the local load balancer. The local load balancer checks the health of the back end pool of GoRouters on port 8080.</td>
