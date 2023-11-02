@@ -40,7 +40,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id='multiple-signing-cas'></a> Multiple signing versions of a CA
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -57,6 +58,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the following <%= vars.ops_manager %> API endpoints:
@@ -113,7 +115,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id='transitional-ca-detected'></a> Transitional version of CA detected
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -130,6 +133,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/generate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate ca</code> command.</td>
@@ -148,7 +152,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id='multiple-active-child-certs'></a> Multiple active child certificates
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -165,6 +170,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the following <%= vars.ops_manager %> API endpoints:
@@ -203,7 +209,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id='ca-not-transitional'></a> Latest CA is not transitional
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -220,6 +227,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/{certificate_authority_guid}/activate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional signing</code> command.</td>
@@ -249,7 +257,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id='signing-version-transitional-req'></a> Signing version must be transitional
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -266,6 +275,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
@@ -290,7 +300,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id="active-child-must-trust-signing-ca"></a> Active child must trust signing CA
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -307,6 +318,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
@@ -330,7 +342,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id="ca-must-have-nontransitional-version"></a> CA must have a non-transitional version
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -347,6 +360,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
@@ -375,7 +389,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id="non-latest-version-is-signing"></a> Signed by non-latest CA version
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -392,6 +407,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>POST /api/v0/certificate_authorities/active/regenerate</code> Ops Manager API endpoint or after running the <code>maestro regenerate leaf</code> command.</td>
@@ -424,7 +440,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id="active-not-latest"></a> Active certificates not signed by latest CA detected
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -441,6 +458,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
@@ -459,7 +477,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id='active-not-latest'></a> Stale leaf certificates detected
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -476,6 +495,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>
@@ -494,7 +514,8 @@ literal safety violation message, describes the safety violation, and presents p
 ### <a id='transitional-ca-latest'></a> Transitional CA detected as latest CA
 
 <div>
-<table class="nice">
+<table class=“table”>
+<thead>
   <style>
     main table {
       table-layout: fixed;
@@ -511,6 +532,7 @@ literal safety violation message, describes the safety violation, and presents p
       <br>
     </th>
   </tr>
+  </thead>
   <tr>
     <th>Related Commands</th>
     <td>This safety violation may appear after calling the <code>DELETE /api/v0/certificate_authorities/{certificate_authority_guid}</code> <%= vars.ops_manager %> API endpoint or after running the <code>maestro update-transitional remove</code> command.</td>

@@ -41,11 +41,13 @@ To regenerate and rotate SAML SP certificates without disrupting <%= vars.app_ru
 1. For <%= vars.app_runtime_abbr %>, follow the procedure in the following table that corresponds to your use case.
 This includes downloading and importing a new certificate and updated SAML metadata in your IDP.
 
-    <table border="1">
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Solution Name</th>
         <th>Procedure</th>
       </tr>
+      </thead>
       <tr>
         <td><a href='https://www.ca.com/us/securecenter/ca-single-sign-on.aspx'>CA Single Sign-On aka CA SiteMinder</a></td>
         <td><a href="https://docs.pivotal.io/application-service/operating/ca-sso-config.html">Configuring CA as an Identity Provider</a></td>
@@ -63,11 +65,13 @@ This includes downloading and importing a new certificate and updated SAML metad
 1. For the Single Sign-On for VMware Tanzu service, follow the procedure in the following table that corresponds to your use case.
 This includes downloading the SAML SP metadata for each SAML IDP integration. For example, trust, partnership, or federation, and importing the updated SAML SP metadata in your IDP.
 
-    <table border="1">
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Solution Name</th>
         <th>Procedure</th>
       </tr>
+      </thead>
       <tr>
         <td>AD FS</td>
         <td><a href="https://docs.vmware.com/en/Single-Sign-On-for-VMware-Tanzu-Application-Service/1.14/sso/GUID-adfs-config-sso.html">Configuring a Single Sign-On for VMware Tanzu Service Provider</a></td>
