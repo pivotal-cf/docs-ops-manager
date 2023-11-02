@@ -3,7 +3,7 @@ title: Disaster recovery
 owner: BBR
 ---
 
-As an operator, you have a range of approaches for ensuring that you can recover your deployment, apps,
+You have a range of approaches for ensuring that you can recover your deployment, apps,
 and data in case of a disaster.
 
 The approaches fall into two categories:
@@ -63,10 +63,12 @@ The first three phases of the backup are lock, backup, and unlock. During this t
 
 The table below gives an indication of the downtime that you can expect. Actual downtime varies based on hardware and configuration. These example timings were recorded with <%= vars.app_runtime_abbr %> deployed on Google Cloud Platform (GCP) with all components scaled to one and only one app pushed.
 
-<table>
+  <table class=“table”>
+  <thead>
   <tr>
     <th colspan="5"><strong>Backup timings</strong></th>
   </tr>
+  </thead>
   <tr>
    <td><strong>API State</strong></td>
    <td><strong>Backup phase</strong></td>
@@ -130,7 +132,7 @@ This section describes best practices for backing up your deployment.
 
 #### <a id='artifact-retention'></a> Retention of backup artifacts
 
-Operators must retain backup artifacts based on the timeframe they need to be able to restore to. For example, if backups are taken every 24 hours and the deployment must be able to be restored to three days prior, three sets of backup artifacts should be retained.
+You must retain backup artifacts based on the timeframe you need to be able to restore to. For example, if backups are taken every 24 hours and the deployment must be able to be restored to three days prior, three sets of backup artifacts must be retained.
 
 Artifacts must be stored in two data centers other than the data center. When deciding the restore timeframe, you should take other factors such as compliance and audit-ability into account.
 
@@ -173,10 +175,12 @@ Human-initiated changes always make their way into the system. These changes can
 
 The following table compares backing up and restoring using BBR to recreating a failed deployment in active-active:
 
-<table>
+<table class=“table”>
+<thead>
 <tr>
   <th colspan="3">Disaster Recovery</th>
 </tr>
+</thead>
 <tr>
   <th></th>
   <th>Restore the Data</th>

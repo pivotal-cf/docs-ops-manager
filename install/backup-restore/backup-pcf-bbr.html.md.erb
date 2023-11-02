@@ -99,11 +99,13 @@ BBR can back up and restore the BOSH Director configured with:
 
 You can use BBR to back up and restore the following types of external database and blobstore configurations:
 
-<table>
+    <table class=“table”>
+    <thead>
   <tr>
     <th>Deployment Type</th>
     <th>External Storage Type</th>
   </tr>
+  </thead>
   <tr>
     <td><%= vars.app_runtime_abbr %></td>
     <td>
@@ -176,7 +178,7 @@ The following diagram shows a sample backup flow. A detailed description follows
 
 ![alt-text=""](images/backup-flow.png)
 
-1. Run `bbr backup pcf-deployment` on the jumpbox.
+1. You run `bbr backup pcf-deployment` on the jumpbox.
 
 2. BBR calls the following backup scripts on the deployment:
   * `backup-lock`
