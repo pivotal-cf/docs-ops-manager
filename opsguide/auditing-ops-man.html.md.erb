@@ -36,13 +36,15 @@ The following table describes the types of user actions that you can audit with 
 
 For information about how to access the logs in this table, see [Access logs on the <%= vars.ops_manager %> VM](#access-logs).
 
-<table>
+<table class=“table”>
+<thead>
 	<tr>
 		<th width="15%">User Action</th>
 		<th width="25%">Description</th>
 		<th width="30%">Location of Logs</th>
 		<th width="30%">Example Log Trace</th>
 	</tr>
+	</thead>
 	<tr>
 		<td>SSH logins</td>
 		<td>User logs on to the <%= vars.ops_manager %> VM with SSH.</td>
@@ -119,12 +121,14 @@ The following example shows the content in the `audit_log.txt` file:
 
 The following table describes the properties in the `audit_log.txt` file and provides example values for each property:
 
-<table>
+<table class=“table”>
+<thead>
 	<tr>
 		<th width="35%">User Action Property</th>
 		<th width="35%">Description</th>
 		<th width="30%">Example Value</th>
 	</tr>
+	</thead>
 	<tr>
 		<td><code>user_identification</code></td>
 		<td>The username or client ID that submitted a request.</td>

@@ -53,11 +53,13 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 * If you want a VPC that is only public-facing, no special consideration is necessary for the use of IPs.
 
 * To understand the action required, depending on the type of traffic you want to allow for your <%= vars.ops_manager %> deployment, see the following table:
-	<table>
+		<table class=“table”>
+		<thead>
 		<tr>
 			<th>If you want...</th>
 			<th>then...</th>
 		</tr>
+		</thead>
 		<tr>
 			<td>Internet ingress</td>
 			<td>Create the load balancers with Elastic IPs.</td>
@@ -82,11 +84,13 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 
 These options are available for choosing your network topology:
 
-<table>
+	<table class=“table”>
+	<thead>
 	<tr>
 		<th>Type of Traffic</th>
 		<th>Options</th>
 	</tr>
+	</thead>
 	<tr>
 		<td>Internet ingress</td>
 		<td><ul>
@@ -193,11 +197,13 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 
 These options are available for choosing your network topology:
 
-<table>
+<table class=“table”>
+<thead>
   <tr>
     <th>Type of Traffic</th>
     <th>Options</th>
   </tr>
+  </thead>
   <tr>
     <td>Internet Ingress</td>
     <td><ul>
