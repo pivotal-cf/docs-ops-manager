@@ -39,12 +39,14 @@ You must create a VPC with public and private subnets from the VPC Dashboard.
 
 The following table lists the subnets in CIDR block `10.0.0.0/16`.
 
- <table>
+<table class=“table”>
+<thead>
  <tr>
    <th>Name</th>
    <th>AZ</th>
    <th>IPv4 CIDR block</th>
  </tr>
+ </thead>
  <tr>
    <td><code>pcf-public-subnet-az0</code></td>
    <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
@@ -139,13 +141,15 @@ The following sections describe the security groups you must create from the EC2
 
 The <%= vars.ops_manager %> Security Group must be named `pcf-ops-manager-security-group` and have the following inbound rules:
 
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 <tr>
   <th><strong>Type </strong></th>
   <th><strong>Protocol</strong></th>
   <th><strong>Port Range</strong></th>
   <th><strong>Source</strong></th>
 </tr>
+</thead>
 <tr>
   <td>HTTP</td>
   <td>TCP</td>
@@ -184,13 +188,15 @@ See [Configure a Security Group for <%= vars.ops_manager %>](prepare-env-manual.
 
 The BOSH-deployed VMs Security Group must be named `pcf-vms-security-group` and have the following inbound rules:
 
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 <tr>
   <th><strong>Type </strong></th>
   <th><strong>Protocol</strong></th>
   <th><strong>Port Range</strong></th>
   <th colspan='2'><strong>Source</strong></th>
 </tr>
+</thead>
 <tr>
   <td>All traffic</td>
   <td>All</td>
@@ -214,13 +220,15 @@ in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
 
 The Web ELB Security Group must be named `pcf-web-elb-security-group` and have the following inbound rules:
 
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 <tr>
   <th><strong>Type </strong></th>
   <th><strong>Protocol</strong></th>
   <th><strong>Port Range</strong></th>
   <th colspan='2'><strong>Source</strong></th>
 </tr>
+</thead>
 <tr>
   <td>Custom TCP rule</td>
   <td>TCP</td>
@@ -250,13 +258,15 @@ See [Configure a Security Group for the Web ELB](prepare-env-manual.html#pcfaws-
 
 The TCP ELB Security Group must be named `pcf-tcp-elb-security-group` and have the following inbound rule:
 
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 <tr>
   <th><strong>Type </strong></th>
   <th><strong>Protocol</strong></th>
   <th><strong>Port Range</strong></th>
   <th colspan='2'><strong>Source</strong></th>
 </tr>
+</thead>
 <tr>
   <td>Custom TCP rule</td>
   <td>TCP</td>
@@ -267,13 +277,15 @@ The TCP ELB Security Group must be named `pcf-tcp-elb-security-group` and have t
 </table>
 
 The TCP ELB Security Group must have the following outbound rule:
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 <tr>
   <th><strong>Type </strong></th>
   <th><strong>Protocol</strong></th>
   <th><strong>Port Range</strong></th>
   <th colspan='2'><strong>Source</strong></th>
 </tr>
+</thead>
 <tr>
   <td>All traffic</td>
   <td>All</td>
@@ -289,13 +301,15 @@ See [Configure a Security Group for the TCP ELB](prepare-env-manual.html#pcfaws-
 
 The MySQL Security Group must be named `pcf-mysql-security-group` and have the following inbound rule:
 
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 <tr>
   <th><strong>Type </strong></th>
   <th><strong>Protocol</strong></th>
   <th><strong>Port Range</strong></th>
   <th colspan='2'><strong>Source</strong></th>
 </tr>
+</thead>
 <tr>
   <td>MySQL</td>
   <td>TCP</td>
@@ -307,13 +321,15 @@ The MySQL Security Group must be named `pcf-mysql-security-group` and have the f
 
 The MySQL Security Group must have the following outbound rule:
 
-<table border="1" class="nice" >
+<table class=“table”>
+<thead>
 <tr>
   <th><strong>Type </strong></th>
   <th><strong>Protocol</strong></th>
   <th><strong>Port Range</strong></th>
   <th colspan='2'><strong>Destination</strong></th>
 </tr>
+</thead>
 <tr>
   <td>All traffic</td>
   <td>All</td>

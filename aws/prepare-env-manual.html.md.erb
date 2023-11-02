@@ -138,11 +138,13 @@ Follow these steps to create an Amazon Identity and Access Management (IAM) user
 1. Follow the AWS tutorial to create an elastic IP address, a VPC, and additional subnets.
 To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/batch/latest/userguide/create-public-private-vpc.html). See the following table when configuring the VPC wizard fields and subnets.
 
-    <table>
+    <table class=“table”>
+    <thead>
     <tr>
       <th>VPC Wizard Field</th>
       <th>Instructions</th>
     </tr>
+    </thead>
     <tr>
       <td><b>Resources to create</b></td>
       <td>Select <code>VPC and more</code></td>
@@ -185,12 +187,14 @@ To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/
 For each subnet, enter the **Subnet name**, **Availability Zone**, and **IPv4 CIDR block**. Then
 click **Add new subnet** to add the next subnet in the table:
 
-    <table>
+    <table class=“table”>
+    <thead>
     <tr>
        <th>Subnet name</th>
        <th>Availability Zone</th>
        <th>IPv4 CIDR block</th>
     </tr>
+    </thead>
     <tr>
        <td><code>pcf-public-subnet-az0</code></td>
        <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
@@ -359,18 +363,20 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In **VPC**, click the VPC in which you want to deploy <%= vars.ops_manager %>.
 
-1. In the **Inbound rules** section, add rules using the information in the table below.
+1. In the **Inbound rules** section, add rules using the information in the following table.
 
     <p> <%= vars.company_name %> recommends limiting access to <%= vars.ops_manager %> to IP ranges within
     your organization, but you might lessen the IP restrictions after configuring authentication for <%= vars.ops_manager %>.</p>
 
-    <table border="1" class="nice" >
+    <table class=“table”>
+    <thead>
       <tr>
         <th><strong>Type </strong></th>
         <th><strong>Protocol</strong></th>
         <th><strong>Port Range</strong></th>
         <th colspan='2'><strong>Source</strong></th>
       </tr>
+      </thead>
       <tr>
         <td>HTTP</td>
         <td>TCP</td>
@@ -428,13 +434,15 @@ click **Add new subnet** to add the next subnet in the table:
     * Enables app VMs to communicate through the router.
     * Allows the load balancer to send traffic to <%= vars.app_runtime_abbr %>.
 
-    <table border="1" class="nice" >
+    <table class=“table”>
+    <thead>
       <tr>
         <th><strong>Type </strong></th>
         <th><strong>Protocol</strong></th>
         <th><strong>Port Range</strong></th>
         <th colspan='2'><strong>Source</strong></th>
       </tr>
+      </thead>
       <tr>
         <td>All traffic</td>
         <td>All</td>
@@ -470,13 +478,15 @@ click **Add new subnet** to add the next subnet in the table:
 
     <p> For finer control over what can reach <%= vars.app_runtime_abbr %>, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to <%= vars.app_runtime_abbr %> from apps such as the cf CLI and app URLs.</p>
 
-    <table border="1" class="nice" >
+      <table class=“table”>
+      <thead>
       <tr>
         <th><strong>Type </strong></th>
         <th><strong>Protocol</strong></th>
         <th><strong>Port Range</strong></th>
         <th colspan='2'><strong>Source</strong></th>
       </tr>
+      </thead>
       <tr>
         <td>Custom TCP</td>
         <td>TCP</td>
@@ -515,13 +525,15 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In the **Inbound rules** section, add the following rule:
 
-    <table border="1" class="nice" >
+    <table class=“table”>
+    <thead>
     <tr>
       <th><strong>Type </strong></th>
       <th><strong>Protocol</strong></th>
       <th><strong>Port Range</strong></th>
       <th colspan='2'><strong>Source</strong></th>
     </tr>
+    </thead>
     <tr>
       <td>Custom TCP rule</td>
       <td>TCP</td>
@@ -549,13 +561,15 @@ configure a security group that enables the <%= vars.ops_manager %> VM and BOSH 
 
 2. In the **Inbound rules** section, add a rule of type `MySQL` and specify the subnet of your VPC in **Source**, as shown in the table.
 
-    <table border="1" class="nice" >
+    <table class=“table”>
+    <thead>
     <tr>
       <th><strong>Type </strong></th>
       <th><strong>Protocol</strong></th>
       <th><strong>Port Range</strong></th>
       <th colspan='2'><strong>Source</strong></th>
     </tr>
+    </thead>
     <tr>
       <td>MYSQL/Aurora</td>
       <td>TCP</td>
@@ -567,13 +581,15 @@ configure a security group that enables the <%= vars.ops_manager %> VM and BOSH 
 
 3. In the **Outbound rules** section, add a rule of type `All traffic` and specify the subnet of your VPC in **Destination**, as shown in the table.
 
-    <table border="1" class="nice" >
+    <table class=“table”>
+    <thead>
     <tr>
       <th><strong>Type </strong></th>
       <th><strong>Protocol</strong></th>
       <th><strong>Port Range</strong></th>
       <th colspan='2'><strong>Destination</strong></th>
     </tr>
+    </thead
     <tr>
       <td>All traffic</td>
       <td>All</td>
