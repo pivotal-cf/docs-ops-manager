@@ -70,11 +70,13 @@ Use the `ops_manager_dns` value from running `terraform output`.
 1. Use the **Add Network** button to create the following three networks:
     <p> To use a shared VPC network, enter the shared VPC host project name before the network name in the format <code>VPC-PROJECT-NAME/NETWORK-NAME/SUBNET-NAME/REGION-NAME</code>. For example, <code>vpc-project/opsmgr/central/us-central1</code>. For more information, see <a href="../install/gcp-shared-vpc.html">Configuring a Shared VPC on GCP</a>.</p>
     <h3>Infrastructure Network</h3>
-    <table>
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Network Name</th>
         <td><code>infrastructure</code></td>
       </tr>
+      </thead>
       <tr>
         <th>Google Network Name</th>
         <td>Use the <code>network_name</code>, <code>infrastructure_subnet_name</code>, and <code>region</code> text boxes from your Terraform output to enter the name of the infrastructure network created by Terraform. <br>The format is: <code>network_name/infrastructure_subnet_name/region</code></td>
@@ -101,11 +103,13 @@ Use the `ops_manager_dns` value from running `terraform output`.
       </tr>
     </table>
     <h3>Runtime Network</h3>
-    <table>
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Network Name</th>
         <td>Enter the name of the runtime that you intend to deploy in this environment. For example, <code>pas</code> or <code>pks</code>.</td>
       </tr>
+      </thead>
       <tr>
         <th>Google Network Name</th>
         <td>Use the <code>network_name</code>, <code>pas_subnet_name</code>, and <code>region</code> textb boxes from your Terraform output to enter the name of the runtime network created by Terraform. <br>The format is: <code>network_name/pas_subnet_name/region</code></td>
@@ -132,11 +136,13 @@ Use the `ops_manager_dns` value from running `terraform output`.
       </tr>
     </table>
     <h3>Services Network</h3>
-    <table>
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Network Name</th>
         <td><code>services</code></td>
       </tr>
+      </thead>
       <tr>
         <th>Google Network Name</th>
         <td>Use the <code>network_name</code>, <code>services_subnet_name</code>, and <code>region</code> text boxes from your Terraform output to enter the name of the services network created by Terraform. <br>The format is: <code>network_name/services_subnet_name/region</code></td>
