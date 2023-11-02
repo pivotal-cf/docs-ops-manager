@@ -63,11 +63,13 @@ Before you run the Terraform commands to provision infrastructure resources, you
     ```
 
 1. Edit the values in the file according to the following table. For information about locating your Azure service principal values, see [Preparing to Deploy <%= vars.ops_manager %> on Azure Using Terraform](prepare-azure-terraform.html).
-  <table>
+  <table class=“table”>
+  <thead>
     <tr>
       <th style="width: 35%">Value to replace</th>
       <th>Guidance</th>
     </tr>
+    </thead>
     <tr>
       <td><code>YOUR-SUBSCRIPTION-ID</code></td>
       <td>Enter the subscription ID of your Azure service principal. Terraform uses this ID when creating resources.</td>
