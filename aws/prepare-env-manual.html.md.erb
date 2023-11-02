@@ -129,42 +129,44 @@ Follow these steps to create an Amazon Identity and Access Management (IAM) user
 1. Follow the AWS tutorial to create an elastic IP address, a VPC, and additional subnets.
 To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/batch/latest/userguide/create-public-private-vpc.html). See the following table when configuring the VPC wizard fields and subnets.
 
-	<table>
-	<tr>
-	  <th>VPC Wizard Field</th>
-	  <th>Instructions</th>
-	</tr>
-	<tr>
-	  <td><b>Resources to create</b></td>
-	  <td>Select <code>VPC and more</code></td>
-	</tr>
-	<tr>
-	  <td><b>Name tag</b></td>
-	  <td>Enter <code>pcf-vpc</code></td>
-	</tr>
-	<tr>
-	  <td><b>IPv4 CIDR block</b></td>
-	  <td>Select <code>IPv4 CIDR manual input</code></td>
-	</tr>
-	<tr>
-	  <td><b>IPv4 CIDR</b></td>
-	  <td>Enter <code>10.0.0.0/16</code></td>
-	</tr>
-	<tr>
-	  <td><b>IPv6 CIDR block</b></td>
-	  <td>Select <b>No IPv6 CIDR block</b></td>
-	</tr>
-	<tr>
-	  <td><b>Number of public subnets</b></td>
-	  <td>Select <b>0</b></td>
-	</tr>
-	<tr>
-	  <td><b>Number of private subnets</b></td>
-	  <td>Select <b>0</b></td>
-	</tr>
-  </table>
-  <br />
-  For all other fields, accept the defaults.
+    <table class=“table”>
+    <thead>
+    <tr>
+      <th>VPC Wizard Field</th>
+      <th>Instructions</th>
+    </tr>
+    </thead>
+    <tr>
+      <td><b>Resources to create</b></td>
+      <td>Select <code>VPC and more</code></td>
+    </tr>
+    <tr>
+      <td><b>Name tag</b></td>
+      <td>Enter <code>pcf-vpc</code></td>
+    </tr>
+    <tr>
+      <td><b>IPv4 CIDR block</b></td>
+      <td>Select <code>IPv4 CIDR manual input</code></td>
+    </tr>
+    <tr>
+      <td><b>IPv4 CIDR</b></td>
+      <td>Enter <code>10.0.0.0/16</code></td>
+    </tr>
+    <tr>
+      <td><b>IPv6 CIDR block</b></td>
+      <td>Select <b>No IPv6 CIDR block</b></td>
+    </tr>
+    <tr>
+      <td><b>Number of public subnets</b></td>
+      <td>Select <b>0</b></td>
+    </tr>
+    <tr>
+      <td><b>Number of private subnets</b></td>
+      <td>Select <b>0</b></td>
+    </tr>
+    </table>
+
+    For all other fields, accept the defaults.
 
 1. Click **Create VPC**.
 
@@ -176,88 +178,90 @@ To access the tutorial, see the [AWS documentation](https://docs.aws.amazon.com/
 For each subnet, enter the **Subnet name**, **Availability Zone**, and **IPv4 CIDR block**. Then
 click **Add new subnet** to add the next subnet in the table:
 
-	 <table>
-	 <tr>
-	   <th>Subnet name</th>
-	   <th>Availability Zone</th>
-	   <th>IPv4 CIDR block</th>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-public-subnet-az0</code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.0.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-public-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.1.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-public-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.2.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-management-subnet-az0<code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.16.0/28</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-management-subnet-az1<code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.16.16/28</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-management-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.16.32/28</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az0</code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.4.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.5.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.6.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-services-subnet-az0</code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.8.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-services-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.9.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-services-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.10.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-rds-subnet-az0</code></td>
-	   <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
-	   <td><code>10.0.12.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-rds-subnet-az1</code></td>
-	   <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
-	   <td><code>10.0.13.0/24</code></td>
-	 </tr>
-	 <tr>
-	   <td><code>pcf-rds-subnet-az2</code></td>
-	   <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
-	   <td><code>10.0.14.0/24</code></td>
-	 </tr>
-	 </table>
+    <table class=“table”>
+    <thead>
+    <tr>
+       <th>Subnet name</th>
+       <th>Availability Zone</th>
+       <th>IPv4 CIDR block</th>
+    </tr>
+    </thead>
+    <tr>
+       <td><code>pcf-public-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.0.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-public-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.1.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-public-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.2.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-management-subnet-az0<code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.16.0/28</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-management-subnet-az1<code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.16.16/28</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-management-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.16.32/28</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.4.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.5.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-<%= vars.app_runtime_abbr_lc %>-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.6.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-services-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.8.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-services-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.9.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-services-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.10.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-rds-subnet-az0</code></td>
+       <td><code>REGION-#a</code> (for example, <code>us-west-2a</code>)</td>
+       <td><code>10.0.12.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-rds-subnet-az1</code></td>
+       <td><code>REGION-#b</code> (for example, <code>us-west-2b</code>)</td>
+       <td><code>10.0.13.0/24</code></td>
+    </tr>
+    <tr>
+       <td><code>pcf-rds-subnet-az2</code></td>
+       <td><code>REGION-#c</code> (for example, <code>us-west-2c</code>)</td>
+       <td><code>10.0.14.0/24</code></td>
+    </tr>
+    </table>
 
 1. Click **Add new subnet**.
 
@@ -350,54 +354,56 @@ click **Add new subnet** to add the next subnet in the table:
 
 1. In **VPC**, click the VPC in which you want to deploy <%= vars.ops_manager %>.
 
-1. In the **Inbound rules** section, add rules using the information in the table below.
+1. In the **Inbound rules** section, add rules using the information in the following table.
 
     <p> <%= vars.company_name %> recommends limiting access to <%= vars.ops_manager %> to IP ranges within
     your organization, but you might lessen the IP restrictions after configuring authentication for <%= vars.ops_manager %>.</p>
 
-    <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>HTTP</td>
-  <td>TCP</td>
-  <td>80</td>
-  <td>My IP</td>
-  <td></td>
-</tr>
-<tr>
-  <td>HTTPS</td>
-  <td>TCP</td>
-  <td>443</td>
-  <td>My IP</td>
-  <td></td>
-</tr>
-<tr>
-  <td>SSH</td>
-  <td>TCP</td>
-  <td>22</td>
-  <td>My IP</td>
-  <td></td>
-</tr>
-<tr>
-  <td>Custom TCP (BOSH Agent)</td>
-  <td>TCP</td>
-  <td>6868</td>
-  <td>Custom</td>
-  <td>10.0.0.0/16</td>
-</tr>
-<tr>
-  <td>Custom TCP (BOSH Director)</td>
-  <td>TCP</td>
-  <td>25555</td>
-  <td>Custom</td>
-  <td>10.0.0.0/16</td>
-</tr>
-</table>
+    <table class=“table”>
+    <thead>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      </thead>
+      <tr>
+        <td>HTTP</td>
+        <td>TCP</td>
+        <td>80</td>
+        <td>My IP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>HTTPS</td>
+        <td>TCP</td>
+        <td>443</td>
+        <td>My IP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>SSH</td>
+        <td>TCP</td>
+        <td>22</td>
+        <td>My IP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Custom TCP (BOSH Agent)</td>
+        <td>TCP</td>
+        <td>6868</td>
+        <td>Custom</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+      <tr>
+        <td>Custom TCP (BOSH Director)</td>
+        <td>TCP</td>
+        <td>25555</td>
+        <td>Custom</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+    </table>
 
 1. Click **Create security group**.
 
@@ -419,28 +425,30 @@ click **Add new subnet** to add the next subnet in the table:
     * Enables app VMs to communicate through the router.
     * Allows the load balancer to send traffic to <%= vars.app_runtime_abbr %>.
 
-    <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>All traffic</td>
-  <td>All</td>
-  <td>All</td>
-  <td>Custom</td>
-  <td>10.0.0.0/16</td>
-</tr>
-<tr>
-  <td>Custom TCP rule</td>
-  <td>TCP</td>
-  <td>2222</td>
-  <td>Anywhere-IPv4</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
+    <table class=“table”>
+    <thead>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      </thead>
+      <tr>
+        <td>All traffic</td>
+        <td>All</td>
+        <td>All</td>
+        <td>Custom</td>
+        <td>10.0.0.0/16</td>
+      </tr>
+      <tr>
+        <td>Custom TCP rule</td>
+        <td>TCP</td>
+        <td>2222</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+    </table>
 
 1. Click **Create security group**.
 
@@ -461,35 +469,37 @@ click **Add new subnet** to add the next subnet in the table:
 
     <p> For finer control over what can reach <%= vars.app_runtime_abbr %>, change <code>0.0.0.0/0</code> to be more restrictive. This security group governs external access to <%= vars.app_runtime_abbr %> from apps such as the cf CLI and app URLs.</p>
 
-    <table border="1" class="nice" >
-<tr>
-  <th><strong>Type </strong></th>
-  <th><strong>Protocol</strong></th>
-  <th><strong>Port Range</strong></th>
-  <th colspan='2'><strong>Source</strong></th>
-</tr>
-<tr>
-  <td>Custom TCP</td>
-  <td>TCP</td>
-  <td>4443</td>
-  <td>Anywhere-IPv4</td>
-  <td>0.0.0.0/0</td>
-</tr>
-<tr>
-  <td>HTTP</td>
-  <td>TCP</td>
-  <td>80</td>
-  <td>Anywhere-IPv4</td>
-  <td>0.0.0.0/0</td>
-</tr>
-<tr>
-  <td>HTTPS</td>
-  <td>TCP</td>
-  <td>443</td>
-  <td>Anywhere-IPv4</td>
-  <td>0.0.0.0/0</td>
-</tr>
-</table>
+      <table class=“table”>
+      <thead>
+      <tr>
+        <th><strong>Type </strong></th>
+        <th><strong>Protocol</strong></th>
+        <th><strong>Port Range</strong></th>
+        <th colspan='2'><strong>Source</strong></th>
+      </tr>
+      </thead>
+      <tr>
+        <td>Custom TCP</td>
+        <td>TCP</td>
+        <td>4443</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+        <td>HTTP</td>
+        <td>TCP</td>
+        <td>80</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+      <tr>
+        <td>HTTPS</td>
+        <td>TCP</td>
+        <td>443</td>
+        <td>Anywhere-IPv4</td>
+        <td>0.0.0.0/0</td>
+      </tr>
+    </table>
 
 1. Click **Create security group**.
 
@@ -505,13 +515,16 @@ click **Add new subnet** to add the next subnet in the table:
 1. In **VPC**, click the VPC in which you want to deploy this ELB.
 
 1. In the **Inbound rules** section, add the following rule:
-    <table border="1" class="nice" >
+
+    <table class=“table”>
+    <thead>
     <tr>
       <th><strong>Type </strong></th>
       <th><strong>Protocol</strong></th>
       <th><strong>Port Range</strong></th>
       <th colspan='2'><strong>Source</strong></th>
     </tr>
+    </thead>
     <tr>
       <td>Custom TCP rule</td>
       <td>TCP</td>
@@ -538,13 +551,16 @@ configure a security group that enables the <%= vars.ops_manager %> VM and BOSH 
 1. In **VPC**, click the VPC where you want to deploy MySQL.
 
 2. In the **Inbound rules** section, add a rule of type `MySQL` and specify the subnet of your VPC in **Source**, as shown in the table.
-    <table border="1" class="nice" >
+
+    <table class=“table”>
+    <thead>
     <tr>
       <th><strong>Type </strong></th>
       <th><strong>Protocol</strong></th>
       <th><strong>Port Range</strong></th>
       <th colspan='2'><strong>Source</strong></th>
     </tr>
+    </thead>
     <tr>
       <td>MYSQL/Aurora</td>
       <td>TCP</td>
@@ -555,13 +571,16 @@ configure a security group that enables the <%= vars.ops_manager %> VM and BOSH 
     </table>
 
 3. In the **Outbound rules** section, add a rule of type `All traffic` and specify the subnet of your VPC in **Destination**, as shown in the table.
-    <table border="1" class="nice" >
+
+    <table class=“table”>
+    <thead>
     <tr>
       <th><strong>Type </strong></th>
       <th><strong>Protocol</strong></th>
       <th><strong>Port Range</strong></th>
       <th colspan='2'><strong>Destination</strong></th>
     </tr>
+    </thead
     <tr>
       <td>All traffic</td>
       <td>All</td>
