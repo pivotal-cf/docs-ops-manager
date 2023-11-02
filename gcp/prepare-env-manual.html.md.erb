@@ -122,12 +122,14 @@ go to the host project.
 
     1. Under **Subnets**, complete the form as follows to create an infrastructure subnet for <%= vars.ops_manager %> and NAT instances:
 
-        <table>
+          <table class=“table”>
+          <thead>
           <tr>
             <th style="width:22%">Name</th>
             <td><code>pcf-infrastructure-subnet-GCP-REGION</code><br>
             Example: <code>pcf-infrastructure-subnet-us-west1</code></td>
           </tr>
+          </thead>
           <tr>
             <th>Region</th>
             <td>A region that supports three availability zones. For help selecting the correct region for your deployment,
@@ -148,12 +150,14 @@ go to the host project.
 
     2. Click **Add subnet** to add a second subnet for the BOSH Director and components specific to your runtime. Complete the form as follows:
 
-        <table>
+        <table class=“table”>
+        <thead>
           <tr>
             <th style="width:25%">Name</th>
             <td><code>pcf-RUNTIME-subnet-GCP-REGION</code><br>
             Example: <code>pcf-pas-subnet-us-west1</code></td>
           </tr>
+          </thead>
           <tr>
             <th>Region</th>
             <td>The same region you selected for the infrastructure subnet</td>
@@ -167,12 +171,14 @@ go to the host project.
 
     3. Click **Add subnet** to add a third **Subnet** with the following details:
 
-        <table>
+        <table class=“table”>
+        <thead>
           <tr>
             <th style="width:25%">Name</th>
             <td><code>pcf-services-subnet-GCP-REGION</code><br>
             Example: <code>pcf-services-subnet-us-west1</code></td>
           </tr>
+          </thead>
           <tr>
             <th>Region</th>
             <td>The same region you selected for the previous subnets</td>
@@ -261,7 +267,8 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 6. Repeat steps 2 through 6 to create two additional NAT instances with the names and zones specified in the following table. The rest of the configuration remains the same.
 
-    <table>
+      <table class=“table”>
+      <thead>
       <tr>
         <th rowspan="3" width="15%">Instance 2</th>
         <td width="15%"><strong>Name</strong></td>
@@ -269,6 +276,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
           <code>pcf-nat-gateway-sec</code>
         </td>
       </tr>
+      </thead>
       <tr>
         <td><strong>Zone</strong></td>
         <td>
@@ -328,13 +336,15 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 1. Repeat steps 2 through 4 to create two additional routes with the names and next hop instances specified in the following table. The rest of the configuration remains the same.
 
-    <table>
+      <table class=“table”>
+      <thead>
       <tr>
         <th>Route 2</th>
         <td>
           <strong>Name</strong>: <code>pcf-nat-sec</code><br>
           <strong>Next hop instance</strong>: <code>pcf-nat-gateway-sec</code>
         </td>
+        </thead>
       </tr>
       <tr>
         <th>Route 3</th>
@@ -355,8 +365,10 @@ This step assigns tags and firewall rules to <%= vars.ops_manager %> components 
 
 1. Apply the firewall rules in the following table:
 
-    <table>
+      <table class=“table”>
+      <thead>
       <tr><th colspan="2" style="text-align: center;">Firewall Rules</th></tr>
+      </thead>
       <tr>
         <th>Rule 1</th>
         <td>
@@ -850,9 +862,11 @@ In this step, you redirect queries for your domain to the IP addresses of your l
 
 1. Create **A records** with your DNS registrar that map domain names to the public static IP addresses of the load balancers located above:
 
-    <table border="1" valign="top">
+      <table class=“table”>
+      <thead>
       <tr>
       <th>Create and map this record...</th><th>To the IP of this load balancer</th><th>Required</th>
+      </thead>
       </tr>
       <tr>
         <td><code>\*.sys.MY-DOMAIN</code><br>

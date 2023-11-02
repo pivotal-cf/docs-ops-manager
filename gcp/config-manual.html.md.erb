@@ -87,11 +87,13 @@ To configure the **Create Networks** pane:
 
     For more information, see <a href="../install/gcp-shared-vpc.html">Configuring a Shared VPC on GCP</a>.</p>
     <h3>Infrastructure Network</h3>
-    <table>
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Network Name</th>
         <td><code>infrastructure</code></td>
       </tr>
+      </thead>
       <tr>
         <th>Google Network Name</th>
         <td>Enter the name of the infrastructure network that you created in <a href="prepare-env-manual.html#create_network">Create a GCP Network with Subnets</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. <br>The format is: <code>pcf-virt-net/pcf-infrastructure-subnet-MY-REGION/MY-GCP-REGION</code></td>
@@ -118,11 +120,13 @@ To configure the **Create Networks** pane:
       </tr>
     </table>
     <h3>Runtime Network</h3>
-    <table>
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Name</th>
         <td>Enter the name of the runtime that you intend to deploy in this environment. For example, <code>pas</code> or <code>pks</code>.</td>
       </tr>
+      </thead>
       <tr>
         <th>Google Network Name</th>
         <td>Enter the name of the runtime network that you created when you prepared your GCP environment. <br>The format is: <code>pcf-virt-net/pcf-RUNTIME-subnet-MY-REGION/MY-GCP-REGION</code></td>
@@ -149,11 +153,13 @@ To configure the **Create Networks** pane:
       </tr>
     </table>
     <h3>Services Network</h3>
-    <table>
+    <table class=“table”>
+    <thead>
       <tr>
         <th>Network Name</th>
         <td><code>services</code></td>
       </tr>
+      </thead>
       <tr>
         <th>Google Network Name</th>
         <td>Enter the name of the services network that you created when you prepared your GCP environment. <br>The format is: <code>pcf-virt-net/pcf-services-subnet-MY-REGION/MY-GCP-REGION</code></td>
