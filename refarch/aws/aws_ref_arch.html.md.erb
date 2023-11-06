@@ -53,30 +53,30 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 * If you want a VPC that is only public-facing, no special consideration is necessary for the use of IPs.
 
 * To understand the action required, depending on the type of traffic you want to allow for your <%= vars.ops_manager %> deployment, see the following table:
-		<table class=“table”>
-		<thead>
-		<tr>
-			<th>If you want...</th>
-			<th>then...</th>
-		</tr>
-		</thead>
-		<tr>
-			<td>Internet ingress</td>
-			<td>Create the load balancers with Elastic IPs.</td>
-		</tr>
-		<tr>
-			<td>Internet egress</td>
-			<td>Create the NAT Gateway toward the Internet.</td>
-		</tr>
-		<tr>
-			<td>Corporate ingress</td>
-			<td>Create load balancers on your corporate subnet.</td>
-		</tr>
-		<tr>
-			<td>Corporate egress (for accessing corporate resources)</td>
-			<td>Create the NAT instance on your corporate subnet, or if business requirements dictate, make the entire VPC corporate-routable.</td>
-		</tr>
-	</table>
+  <table class=“table”>
+  <thead>
+  <tr>
+   <th>If you want...</th>
+   <th>then...</th>
+  </tr>
+  </thead>
+  <tr>
+   <td>Internet ingress</td>
+   <td>Create the load balancers with Elastic IPs.</td>
+  </tr>
+  <tr>
+   <td>Internet egress</td>
+   <td>Create the NAT Gateway toward the Internet.</td>
+  </tr>
+  <tr>
+   <td>Corporate ingress</td>
+   <td>Create load balancers on your corporate subnet.</td>
+  </tr>
+  <tr>
+   <td>Corporate egress (for accessing corporate resources)</td>
+   <td>Create the NAT instance on your corporate subnet, or if business requirements dictate, make the entire VPC corporate-routable.</td>
+  </tr>
+ </table>
 
 * If you plan to install [VMware Tanzu Service Broker for AWS](https://docs.vmware.com/en/VMware-Tanzu-Service-Broker-for-AWS/1.4/documentation/GUID-index.html), you might want to create another set of networks in addition to those outlined in the base reference architecture. This set of networks would be used for RDS and other AWS-managed instances.
 
@@ -84,50 +84,50 @@ When planning networks, subnets, and IP spacing, some things to consider are:
 
 These options are available for choosing your network topology:
 
-	<table class=“table”>
-	<thead>
-	<tr>
-		<th>Type of Traffic</th>
-		<th>Options</th>
-	</tr>
-	</thead>
-	<tr>
-		<td>Internet ingress</td>
-		<td><ul>
-				<li>Allow Internet ingress by associating load balancers with Elastic IPs.</li>
-				<li>Do not allow Internet ingress.</li>
-			</ul></td>
-	</tr>
-	<tr>
-		<td>Internet egress</td>
-		<td>
-			<ul>
-				<li>Allow <%= vars.app_runtime_abbr %> to access the Internet through a NAT gateway.</li>
-				<li>Do not allow <%= vars.app_runtime_abbr %> to access the Internet. Use only a corporate network.</li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td>Peering</td>
-		<td><ul>
-				<li>Isolated. This is normally Internet-only facing.</li>
-				<li>Peered with corporate or other VPCs through Transit Gateway.</li>
-				<li>Peered directly with other VPCs and corporate connections.</li>
-			</ul></td>
-	</tr>
-	<tr>
-		<td>Corporate peering</td>
-		<td><ul>
-				<li>SNAT for corporate resources. This requires three corporate IPs.</li>
-				<li>Routable IP addresses for VPC using <code>/20</code> or a larger CIDR block necessary.</li>
-			</ul></td>
-	</tr>
-</table>
+<table class=“table”>
+   <thead>
+    <tr>
+  <th>Type of Traffic</th>
+  <th>Options</th>
+     </tr>
+     </thead>
+     <tr>
+  <td>Internet ingress</td>
+  <td><ul>
+    <li>Allow Internet ingress by associating load balancers with Elastic IPs.</li>
+    <li>Do not allow Internet ingress.</li>
+   </ul></td>
+ </tr>
+ <tr>
+  <td>Internet egress</td>
+  <td>
+   <ul>
+    <li>Allow <%= vars.app_runtime_abbr %> to access the Internet through a NAT gateway.</li>
+    <li>Do not allow <%= vars.app_runtime_abbr %> to access the Internet. Use only a corporate network.</li>
+   </ul>
+  </td>
+ </tr>
+ <tr>
+  <td>Peering</td>
+  <td><ul>
+    <li>Isolated. This is normally Internet-only facing.</li>
+    <li>Peered with corporate or other VPCs through Transit Gateway.</li>
+    <li>Peered directly with other VPCs and corporate connections.</li>
+   </ul></td>
+ </tr>
+ <tr>
+  <td>Corporate peering</td>
+  <td><ul>
+    <li>SNAT for corporate resources. This requires three corporate IPs.</li>
+    <li>Routable IP addresses for VPC using <code>/20</code> or a larger CIDR block necessary.</li>
+   </ul></td>
+     </tr>
+    </table>
 
 ### <a id='rds'></a> RDS
 
 Use a single RDS instance for BOSH and <%= vars.app_runtime_abbr %>. This instance requires several databases. For more information, see [Step 3: Director Config Page](../../aws/config-manual.html#pcfaws-om-dirconfig) in _Configuring BOSH Director on AWS_
-and [Configure an external database](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
+and [Configure an external database](<https://docs.vmware.com/en/VMware-Tanzu-Application-Service/><%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#create-dbs) in _Configuring <%= vars.app_runtime_abbr %>_.
 
 ### <a id='blobstore'></a> Blobstore storage accounts
 
@@ -145,7 +145,6 @@ These buckets require an associated role for read/write access.
 ### <a id='identity-management'></a> Identity management
 
 For identity management, use Instance Profiles whenever possible. For example, the **AWS Config Page** of the BOSH Director tile provides a **Use AWS Instance Profile** option. For more information, see [Step 2: AWS Config Page](../../aws/config-manual.html#pcfaws-om-awsconfig) in _Configuring BOSH Director on AWS_.
-
 
 ## <a id='pks'></a> <%= vars.k8s_runtime_abbr %>
 
