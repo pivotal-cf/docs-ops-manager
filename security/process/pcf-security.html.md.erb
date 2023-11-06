@@ -37,9 +37,13 @@ monitors public repositories of software security vulnerabilities to identify ne
 
 Attackers can exploit vulnerabilities to compromise user data and processing resources. This can affect data confidentiality, integrity, and availability to different degrees. For vulnerabilities related to Ubuntu provided packages, <%= vars.company_name %> follows Canonical's priority levels. For other vulnerabilities, <%= vars.company_name %> follows Common Vulnerability Scoring System v3.0 standards when assessing severity. For more information about Canonical's priority levels, see [CVE Priority](http://people.canonical.com/~ubuntu-security/cve/priority.html) in Ubuntu CVE Tracker. For more information about Common Vulnerability Scoring System v3.0 standards, see [Common Vulnerability Scoring System version 3.1: Specification Document](https://www.first.org/cvss/specification-document) on the FIRST website.
 
-<%= vars.company_name %> uses Canonical's Ubuntu distribution of Linux for <%= vars.ops_manager %> Ubuntu stemcells and rootfs. Canonical provides <%= vars.company_name %> with support services allowing <%= vars.company_name %> to escalate CVEs that <%= vars.company_name %> determine might affect <%= vars.ops_manager %>. In general, <%= vars.company_name %> does not escalate to upstream open source software components or vendors for Medium or Low CVEs that are not yet patched. <%= vars.ops_manager %> can escalate on behalf of a customer for High or Critical CVEs. <%= vars.ops_manager %> customers who are interested in addressing CVEs in Ubuntu that are not yet patched can establish their own support relationship with Canonical through the [Support](https://www.ubuntu.com/support) page on the Ubuntu website.
+<%= vars.company_name %> uses Canonical's Ubuntu distribution of Linux for <%= vars.ops_manager %> Ubuntu stemcells and rootfs.
+Canonical provides <%= vars.company_name %> with support services allowing <%= vars.company_name %> to escalate CVEs that <%= vars.company_name %> determine might affect <%= vars.ops_manager %>. In general,
+<%= vars.company_name %> does not escalate to upstream open source software components or vendors for Medium or Low CVEs that are not yet patched. <%= vars.ops_manager %> can escalate on behalf of a customer
+for High or Critical CVEs. <%= vars.ops_manager %> customers who are interested in addressing CVEs in Ubuntu that are not yet patched can establish their own support relationship with Canonical through the [Support](https://www.ubuntu.com/support) page on the Ubuntu website.
 
-<%= vars.company_name %> reports the severity of vulnerabilities using the following severity classes:
+<%= vars.company_name %> reports the severity of vulnerabilities using the
+following severity classes:
 
 ### <a id='high'></a> High
 
