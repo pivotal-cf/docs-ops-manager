@@ -147,12 +147,14 @@ which is to use a storage tier based on the instance size. For more information,
 5.  For **Availability Mode**, choose whether to use **Availability Sets** or **Availability Zones**. You can further configure this option in the **Assign AZs and Networks** pane. For more information, see [Assign AZs and Networks](#assign-networks).
    * **For new installations of <%= vars.ops_manager %>**: **Availability Zones** are selected by default, but you can choose **Availability Sets**.
    * **If you are upgrading from v2.4**: You must use **Availability Sets**.
-    <p> You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile
-    that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.</p>
+
+  You can only choose between Availability Zones and Availability Sets in a staged BOSH Director tile
+    that has not yet deployed. After you click <strong>Apply Changes</strong> and the BOSH Director deploys successfully, you cannot switch between Availability Zones and Availability Sets.
 
 <%= partial "../common/azure-environment" %>
 
-    <p> To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS) see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/release-notes.html">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.</p>
+To deploy <%= vars.ops_manager %> on Azure using Active Directory Federation Services (ADFS)
+see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/release-notes.html">IaaS-Specific Global CPI Properties Are Configurable From the API</a>.
 
 13. (Optional) If you clicked `Azure Stack` for your **Azure Environment**, complete the following Azure Stack-only fields:
   14. For **Domain**, enter the domain for your Azure Stack deployment. For example, `local.azurestack.external`.
@@ -369,7 +371,7 @@ To create the services network:
   2. Ensure that the **Internet Connected** check box is not selected.
   3. For **Load Balancers**, enter your Azure application gateway name for each associated job. To create an application gateway, follow the procedures in [Configure an application gateway for SSL offload by using Azure Resource Manager](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-arm) from the Azure documentation. When you create the application gateway, associate the gateway's IP address with your system domain.
 
-  <p> This feature is not recommended for production use. The Azure load balancer does not support an override port in the healthcheck configuration.</p>
+This feature is not recommended for production use. The Azure load balancer does not support an override port in the healthcheck configuration.
 
 3. Click **Save**.
 
