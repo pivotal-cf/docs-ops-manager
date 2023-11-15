@@ -24,7 +24,7 @@ The typical setup for foundation failover requires the GLB be authoritative for 
 To configure your GLB:
 
 1. Find and record your wildcard app domain. For <%= vars.app_runtime_abbr %>, your wildcard app domain is typically the **Apps domain** you configure in the **Domains** pane of the <%= vars.app_runtime_abbr %> tile. For more information,
-see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html#domains).
+see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/config-domains.html#domains).
 
 1. Add the domain you recorded to both <%= vars.app_runtime_abbr %> foundations using a shared domain. You can create a shared domain using the Cloud Foundry Command Line Interface (cf CLI). For more information about the cf CLI command to create shared domains, see the [Cloud Foundry CLI Reference Guide](https://cli.cloudfoundry.org/en-US/cf/create-shared-domain.html).
 

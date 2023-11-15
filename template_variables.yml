@@ -150,7 +150,7 @@ template_variables:
   concepts_product_model_header: <h2><a id='commercial-model'></a>How TAS for VMs Differs from Open Source Cloud Foundry</h2>
   concepts_product_model_image: The following diagram shows open source Cloud Foundry components in blue and commercial features available with TAS for VMs in green&#58;<br><br><img src="../overview/images/pcf-commercialization.png" alt=""><br><br><a href="https://github.com/pivotal-cf/docs-pas/blob/master/images/pcf-commercialization.png?raw=true">View a larger version of this diagram.</a>.
   concepts_product_model_text: "/pcf/core//pcf_overview_model"
-  configure_system_logging_link: For more information, see <a href="../operating/configure-pas.html#sys-logging">Configure System Logging</a> in <em>Configuring TAS for VMs</em>.
+  configure_system_logging_link: For more information, see <a href="../operating/config-sys-logs.html#sys-logging">Configure System Logging</a> in <em>Configuring TAS for VMs</em>.
   configuring_logging_ref: <a href="https://docs.pivotal.io/platform/2-11/opsguide/logging-config-opsman.html">Configuring Logging in TAS for VMs</a>
   configuring_registrar_ref: <a href="../metric-registrar/index.html">Configuring the Metric Registrar</a>
   configuring_registrar_toc: This topic provides an overview of the Metric Registrar. It also explains how to configure the Metric Registrar for exporting custom app metrics to the Loggregator.
@@ -314,7 +314,7 @@ template_variables:
   sso_plan_enabled: have the Single Sign-On service broker installed on your Tanzu Operations Manager deployment. You must create a plan, grant any plan admins, and specify any orgs this plan should be the authentication authority for. For help configuring plans, see [Manage Service Plans](../manage-service-plans.html).
   suspended_roles_table: "../console/pcf_suspended_roles_table"
   syslog_forwarding_ref: Syslog forwarding. See <a href="https://docs.pivotal.io/platform/devguide/services/log-management.html">Streaming App Logs to Log Management Services</a>.
-  tas_networking: To configure the names of the cookies, see [Configure networking](../operating/configure-pas.html#networking) in _Configuring TAS for VMs_.
+  tas_networking: To configure the names of the cookies, see [Configure networking](../operating/config-networking.html#networking) in _Configuring TAS for VMs_.
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for configuring TCP routing in the [TAS for VMs documentation](https://docs.pivotal.io/platform/2-11/customizing/configure-pas.html#networking).
   tcp_mod_port_change: "../adminguide/tcp_empty_file"
   tcp_port: "/pcf/core//tcp_port_review"
@@ -412,7 +412,7 @@ template_variables:
   scaling_loggregator_link: For more information, see [Scaling Loggregator](../../loggregator/log-ops-guide.html#scaling) in _Loggregator Guide for TAS for VMs Operators_.
   using_docker_link: For an explanation of how Docker works in TAS for VMs, see [Using Docker in TAS for VMs](../../adminguide/docker.html).
   zipkin_tracing_link: For more information about Zipkin tracing, see [Configuring Zipkin Tracing](../adminguide/zipkin_tracing.html).
-  app_graceful_shutdown_config: If your apps require a longer period of time to finish in-flight jobs and gracefully shut down, you can increase the graceful shutdown period. For more information, see the [TAS for VMs documentation](https://docs.pivotal.io/application-service/2-11/operating/configure-pas.html#advanced).
+  app_graceful_shutdown_config: If your apps require a longer period of time to finish in-flight jobs and gracefully shut down, you can increase the graceful shutdown period. For more information, see the [TAS for VMs documentation](https://docs.pivotal.io/application-service/2-11/operating/config-advanced-features.html#advanced).
   app_log_limit_config: For more information, see the <a href="https://docs.pivotal.io/platform/3-0/release-notes/runtime-rn.html#app-log-limit">TAS for VMs documentation</a>.
   isolation_segments_smoke_tests: <p class='note'><strong>Note:</strong> If you run smoke tests as a post-deploy errand in the Isolation Segment tile, the smoke tests check if your isolation segment is registered in the CCDB. If the isolation segment is not registered, the smoke tests register it in the CCDB. This eliminates the need to manually register an isolation segment with <code>cf create-isolation-segment</code>. For more information, see <a href="../operating/installing-pcf-is.html#smoke-tests">Smoke Tests</a> in <em>Installing Isolation Segment</em>.</p>
   on_demand_service_tiles: MySQL for VMware Tanzu, VMware Tanzu GemFire, Redis for VMware Tanzu, and RabbitMQ for VMware Tanzu [VMs]

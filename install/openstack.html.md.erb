@@ -83,7 +83,7 @@ The following are OpenStack requirements for deploying <%= vars.ops_manager %>:
 * The following are requirements for using an Overlay Network with VXLAN or GRE Protocols:
   * If an overlay network is being used with VXLAN or GRE protocols, the MTU of the created VMs must be adjusted to the best practices recommended by the plug-in vendor (if any).
   * DHCP must be enabled in the internal network for the MTU to be assigned to the VMs automatically.
-  * To adjust your MTU values, see [Configure Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html) in _Configuring <%= vars.app_runtime_abbr %>_.
+  * To adjust your MTU values, see [Configure Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/config-networking.html) in _Configuring <%= vars.app_runtime_abbr %>_.
   * Failure to configure your overlay network correctly could cause Apps Manager to fail since applications are not be able to connect to the UAA.
 
   <p> If you are using IPsec, your resource usage increases by approximately 36&nbsp;bytes. For details, including information about setting correct MTU values, see <a href="https://docs.vmware.com/en/IPsec-for-VMware-Tanzu/1.9/documentation/GUID-installing.html"> Installing IPsec</a> in the IPsec documentation.</p>
@@ -101,4 +101,4 @@ To install <%= vars.ops_manager %> on OpenStack with the <%= vars.app_runtime_ab
 
 After you complete the previous procedures, configure a runtime.
 
-For information about installing and configuring a runtime, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configure-pas.html).
+For information about installing and configuring a runtime, see [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/prerequisites.html).
