@@ -1,4 +1,5 @@
 ---
+title: Content request
 name: Content request
 about: Suggest a change or addition to the content
 
