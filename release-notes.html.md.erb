@@ -1197,7 +1197,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
   <ul>
     <li><%= vars.company_name %> recommends upgrading to this <%= vars.ops_manager %> patch as soon as possible to address
     <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. If you are unable to upgrade, you can mitigate this CVE manually. For more information, see <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a> in the Knowledge Base.</li>
-    <li>This vulnerability also affects <%= vars.app_runtime_abbr %>. VMware recommends upgrading to <%= vars.app_runtime_abbr %> v2.12.5 as soon as possible. For more information, see the <a href="https://docs.pivotal.io/application-service/2-12/release-notes/runtime-rn.html#2.12.5"><%= vars.app_runtime_abbr %> v2.12.5 release notes</a>.</li>
+    <li>This vulnerability also affects <%= vars.app_runtime_abbr %>. VMware recommends upgrading to <%= vars.app_runtime_abbr %> v2.12.5 as soon as possible. For more information, see the <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.12/tas-for-vms/runtime-rn.html#2.12.5"><%= vars.app_runtime_abbr %> v2.12.5 release notes</a>.</li>
   </ul>
 </div>
 
@@ -1682,7 +1682,7 @@ Tanzu Operations Manager v2.10.8 uses the following component versions:
 - **[Known Issue]** Tanzu Operations Manager v2.10.7 has an issue sending BOSH System metrics to the Firehose.
 This causes a loss of monitoring for systems relying on metrics
 including Healthwatch and other downstream monitoring implementations. For more information
-on these metrics, see [System (BOSH) Metrics](https://docs.pivotal.io/application-service/2-10/operating/monitoring/kpi.html#bosh). <br><br>For more information, see [Healthwatch smoke test failing with Tanzu Operations Manager v2.10.7](https://community.pivotal.io/s/article/Healthwatch-smoke-test-failing-with-Ops-Manager-v2-10-7) in the Tanzu Community Knowledge Base.
+on these metrics, see [System (BOSH) Metrics](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/monitoring-kpi.html). <br><br>For more information, see [Healthwatch smoke test failing with Tanzu Operations Manager v2.10.7](https://community.pivotal.io/s/article/Healthwatch-smoke-test-failing-with-Ops-Manager-v2-10-7) in the Tanzu Community Knowledge Base.
 - **[Bug Fix]** Signature version is included in S3 CLI on BOSH Director
 - **[Bug Fix]** `10.x.x.x` IP addresses are recorded in the audit log under a new field called `forwarded_for`
 - **[Bug Fix]** Improve performance speed of streaming the manifest diff
@@ -1870,15 +1870,14 @@ Pivotal Application Service (PAS), Pivotal Isolation Segment tile, Small Footpri
     For more information, see [Overview of Certificate Rotation](security/pcf-infrastructure/api-cert-rotation.html).
 
 - **[Feature]**: IPsec for VMware Tanzu certificates are excluded from certificate rotation with the Tanzu Operations Manager API.
-To rotate IPsec certificates, see [Rotating Active IPsec Certificates
-](https://docs.pivotal.io/addon-ipsec/1-9/credentials.html) in the IPsec for VMware Tanzu documentation.
+To rotate IPsec certificates, see [Rotating Active IPsec Certificates](https://docs.vmware.com/en/IPsec-for-VMware-Tanzu/1.9/documentation/GUID-credentials.html) in the IPsec for VMware Tanzu documentation.
 
 - **[Feature]**: Tanzu Operations Manager is rebranded to VMware Tanzu Operations Manager. This rebrand is reflected in the VMware Tanzu Operations Manager UI and on VMware Tanzu Network.
 
 - **[Feature]**: You can use the `/api/v0/staged/products/{product_guid}/overrides` Tanzu Operations Manager API endpoint to edit the `update` and `features` sections in the manifest for a Tanzu Operations Manager tile while you are in Advanced Mode.
-For more information, see [Provide a new list of overrides for the given Product](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Advanced-Manifest-Configuration) in the Tanzu Operations Manager API documentation.
+For more information, see [Provide a new list of overrides for the given Product](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html) in the Tanzu Operations Manager API documentation.
 
-- **[Feature]**: You can jump upgrade directly to the long-term support (LTS) version of Tanzu Operations Manager, which is v2.10.2. For more information, see [Jump Upgrading to Tanzu Operations Manager v2.10](https://docs.pivotal.io/ops-manager/2-10/jump-upgrades.html).
+- **[Feature]**: You can jump upgrade directly to the long-term support (LTS) version of Tanzu Operations Manager, which is v2.10.2. For more information, see [Jump Upgrading to Tanzu Operations Manager v2.10](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/jump-upgrades.html).
 
 Tanzu Operations Manager v2.10.2 uses the following component versions:
 
@@ -1995,7 +1994,7 @@ You must be in Advanced Mode to use this feature.
 For more information about this feature,
 see [Overriding Manifest Properties in Advanced Mode](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/overriding-properties-advanced.html).
 
-For information on the Tanzu Operations Manager API endpoints related to this feature, see [Advanced Manifest Configuration](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Advanced-Manifest-Configuration) in Tanzu Operations Manager API Documentation.
+For information on the Tanzu Operations Manager API endpoints related to this feature, see [Advanced Manifest Configuration](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html) in Tanzu Operations Manager API Documentation.
 
 ### <a id='runtime-config-overrides'></a> Override runtime config properties
 
@@ -2037,7 +2036,7 @@ For more information, see:
 + [Overriding Manifest Properties in Advanced Mode](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/overriding-properties-advanced.html).
 + [BOSH DNS job spec](https://github.com/cloudfoundry/bosh-dns-release/blob/master/jobs/bosh-dns/spec) in GitHub
 + [Provide a new list of runtime config overrides for the BOSH
-Director](https://docs.pivotal.io/platform/2-10/opsman-api/#tag/Advanced-Manifest-Configuration/paths/~1api~1v0~1staged~1director~1runtime_configs~1overrides/get)
+Director](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/overriding-properties-advanced.html)
 
 ### <a id='certs-om-ui'></a> View certificates in the Tanzu Operations Manager UI
 
@@ -2152,7 +2151,7 @@ Resetting these certificates is not a required condition for the <%= vars.ops_ma
 
 To reset a certificate in CredHub, see [Reviewing and Resetting Manually Set Certificates in CredHub](security/pcf-infrastructure/manual-credhub-certificate.html).
 
-For more information about rotating certificates using the <%= vars.ops_manager %> API, see [Overview of Certificate Rotation](security/pcf-infrastructure/api-cert-rotation.html). For more information about the `certificate_authorities/active/regenerate` endpoint, see [Rotate Certificates](https://docs.pivotal.io/pivotalcf/2-10/opsman-api/#create-root-certificate-authorities) in the <%= vars.ops_manager %> API documentation.
+For more information about rotating certificates using the <%= vars.ops_manager %> API, see [Overview of Certificate Rotation](security/pcf-infrastructure/api-cert-rotation.html). For more information about the `certificate_authorities/active/regenerate` endpoint, see [Rotate Certificates](https://duckduckgo.com/?q=vmware+tanzu+ops+manager+api+create+root+certificate+authorities&ia=web) in the <%= vars.ops_manager %> API documentation.
 
 ### <a id='maestro-gc-error'></a> Maestro garbage collection error
 
