@@ -90,92 +90,92 @@ To follow the procedures in this topic, you must have access to the output from 
 
 See the following table for the information required to create all three subnets:
 
-      <table class=“table”>
-      <thead>
-      <tr>
-        <th rowspan="7">First<br>Subnet</th>
-      </tr>
-      </thead>
-      <tr>
-        <th>VPC Subnet ID</th>
-        <td>The first value of <code>infrastructure_subnet_ids</code> from the Terraform output.</td>
-      </tr>
-      <tr>
-        <th>CIDR</th>
-        <td><code>10.0.16.0/28</code></td>
-      </tr>
-      <tr>
-        <th>Reserved IP Ranges</th>
-        <td><code>10.0.16.0-10.0.16.4</code></td>
-      </tr>
-      <tr>
-        <th>DNS</th>
-        <td><code>10.0.0.2</code>\*</td>
-      </tr>
-      <tr>
-        <th>Gateway</th>
-        <td><code>10.0.16.1</code></td>
-      </tr>
-      <tr>
-        <th>Availability Zones</th>
-        <td>The first value of <code>infrastructure_subnet_availability_zones</code> from the Terraform output.</td>
-      </tr>
-       <tr>
-        <th rowspan="7">Second<br>Subnet</th>
-      </tr>
-      <tr>
-        <th>VPC Subnet ID</th>
-        <td>The second value of <code>infrastructure_subnet_ids</code> from the Terraform output.</td>
-      </tr>
-      <tr>
-        <th>CIDR</th>
-        <td><code>10.0.16.16/28</code></td>
-      </tr>
-      <tr>
-        <th>Reserved IP Ranges</th>
-        <td><code>10.0.16.16-10.0.16.20</code></td>
-      </tr>
-      <tr>
-        <th>DNS</th>
-        <td><code>10.0.0.2</code>\*</td>
-      </tr>
-      <tr>
-        <th>Gateway</th>
-        <td><code>10.0.16.17</code></td>
-      </tr>
-      <tr>
-        <th>Availability Zones</th>
-        <td>The second value of <code>infrastructure_subnet_availability_zones</code> from the Terraform output.</td>
-      </tr>
-      <tr>
-        <th rowspan="7">Third<br>Subnet</th>
-      </tr>
-      <tr>
-        <th>VPC Subnet ID</th>
-        <td>The third value of <code>infrastructure_subnet_ids</code> from the Terraform output.</td>
-      </tr>
-      <tr>
-        <th>CIDR</th>
-        <td><code>10.0.16.32/28</code></td>
-      </tr>
-      <tr>
-        <th>Reserved IP Ranges</th>
-        <td><code>10.0.16.32-10.0.16.36</code></td>
-      </tr>
-      <tr>
-        <th>DNS</th>
-        <td><code>10.0.0.2</code>\*</td>
-      </tr>
-      <tr>
-        <th>Gateway</th>
-        <td><code>10.0.16.33</code></td>
-      </tr>
-      <tr>
-        <th>Availability Zones</th>
-        <td>The third value of <code>infrastructure_subnet_availability_zones</code> from the Terraform output.</td>
-      </tr>
-    </table>
-    \* If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a `10.0.0.0/24` VPC CIDR, enter `10.0.0.2` in each subnet.
+  <table class=“table”>
+  <thead>
+  <tr>
+    <th rowspan="7">First<br>Subnet</th>
+  </tr>
+  </thead>
+  <tr>
+    <th>VPC Subnet ID</th>
+    <td>The first value of <code>infrastructure_subnet_ids</code> from the Terraform output.</td>
+  </tr>
+  <tr>
+    <th>CIDR</th>
+    <td><code>10.0.16.0/28</code></td>
+  </tr>
+  <tr>
+    <th>Reserved IP Ranges</th>
+    <td><code>10.0.16.0-10.0.16.4</code></td>
+  </tr>
+  <tr>
+    <th>DNS</th>
+    <td><code>10.0.0.2</code>\*</td>
+  </tr>
+  <tr>
+    <th>Gateway</th>
+    <td><code>10.0.16.1</code></td>
+  </tr>
+  <tr>
+    <th>Availability zones</th>
+    <td>The first value of <code>infrastructure_subnet_availability_zones</code> from the Terraform output.</td>
+  </tr>
+    <tr>
+    <th rowspan="7">Second<br>Subnet</th>
+  </tr>
+  <tr>
+    <th>VPC subnet ID</th>
+    <td>The second value of <code>infrastructure_subnet_ids</code> from the Terraform output.</td>
+  </tr>
+  <tr>
+    <th>CIDR</th>
+    <td><code>10.0.16.16/28</code></td>
+  </tr>
+  <tr>
+    <th>Reserved IP ranges</th>
+    <td><code>10.0.16.16-10.0.16.20</code></td>
+  </tr>
+  <tr>
+    <th>DNS</th>
+    <td><code>10.0.0.2</code>\*</td>
+  </tr>
+  <tr>
+    <th>Gateway</th>
+    <td><code>10.0.16.17</code></td>
+  </tr>
+  <tr>
+    <th>Availability zones</th>
+    <td>The second value of <code>infrastructure_subnet_availability_zones</code> from the Terraform output.</td>
+  </tr>
+  <tr>
+    <th rowspan="7">Third<br>Subnet</th>
+  </tr>
+  <tr>
+    <th>VPC subnet ID</th>
+    <td>The third value of <code>infrastructure_subnet_ids</code> from the Terraform output.</td>
+  </tr>
+  <tr>
+    <th>CIDR</th>
+    <td><code>10.0.16.32/28</code></td>
+  </tr>
+  <tr>
+    <th>Reserved IP ranges</th>
+    <td><code>10.0.16.32-10.0.16.36</code></td>
+  </tr>
+  <tr>
+    <th>DNS</th>
+    <td><code>10.0.0.2</code>\*</td>
+  </tr>
+  <tr>
+    <th>Gateway</th>
+    <td><code>10.0.16.33</code></td>
+  </tr>
+  <tr>
+    <th>Availability zones</th>
+    <td>The third value of <code>infrastructure_subnet_availability_zones</code> from the Terraform output.</td>
+  </tr>
+</table>
+    * If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a `10.0.0.0/24` VPC CIDR, enter `10.0.0.2` in each subnet.
 
   <br><br>
 
@@ -191,7 +191,7 @@ See the following table for the information required to create all three subnets
       </tr>
       </thead>
       <tr>
-        <th>VPC Subnet ID</th>
+        <th>VPC subnet ID</th>
         <td>The first value of <code>RUNTIME_subnet_ids</code> from the Terraform output, where <code>RUNTIME</code> is either <code>pas</code> or <code>pks</code>.</td>
       </tr>
       <tr>
@@ -199,7 +199,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.4.0/24</code></td>
       </tr>
       <tr>
-        <th>Reserved IP Ranges</th>
+        <th>Reserved IP ranges</th>
         <td><code>10.0.4.0-10.0.4.4</code></td>
       </tr>
       <tr>
@@ -211,14 +211,14 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.4.1</code></td>
       </tr>
       <tr>
-        <th>Availability Zones</th>
+        <th>Availability zones</th>
         <td>The first value of <code>RUNTIME_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
        <tr>
         <th rowspan="7">Second<br>Subnet</th>
       </tr>
       <tr>
-        <th>VPC Subnet ID</th>
+        <th>VPC subnet ID</th>
         <td>The second value of <code>RUNTIME_subnet_ids</code> from the Terraform output.</td>
       </tr>
       <tr>
@@ -226,7 +226,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.5.0/24</code></td>
       </tr>
       <tr>
-        <th>Reserved IP Ranges</th>
+        <th>Reserved IP ranges</th>
         <td><code>10.0.5.0-10.0.5.4</code></td>
       </tr>
       <tr>
@@ -238,14 +238,14 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.5.1</code></td>
       </tr>
       <tr>
-        <th>Availability Zones</th>
+        <th>Availability zones</th>
         <td>The second value of <code>RUNTIME_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
       <tr>
         <th rowspan="7">Third<br>Subnet</th>
       </tr>
       <tr>
-        <th>VPC Subnet ID</th>
+        <th>VPC subnet ID</th>
         <td>The third value of <code>RUNTIME_subnet_ids</code> from the Terraform output.</td>
       </tr>
       <tr>
@@ -253,7 +253,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.6.0/24</code></td>
       </tr>
       <tr>
-        <th>Reserved IP Ranges</th>
+        <th>Reserved IP ranges</th>
         <td><code>10.0.6.0-10.0.6.4</code></td>
       </tr>
       <tr>
@@ -265,7 +265,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.6.1</code></td>
       </tr>
       <tr>
-        <th>Availability Zones</th>
+        <th>Availability zones</th>
         <td>The third value of <code>RUNTIME_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
     </table>
@@ -284,7 +284,7 @@ See the following table for the information required to create all three subnets
       </tr>
       </thead>
       <tr>
-        <th>VPC Subnet ID</th>
+        <th>VPC subnet ID</th>
         <td>The first value of <code>services_subnet_ids</code> from the Terraform output.</td>
       </tr>
       <tr>
@@ -292,7 +292,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.8.0/24</code></td>
       </tr>
       <tr>
-        <th>Reserved IP Ranges</th>
+        <th>Reserved IP ranges</th>
         <td><code>10.0.8.0-10.0.8.3</code></td>
       </tr>
       <tr>
@@ -304,14 +304,14 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.8.1</code></td>
       </tr>
       <tr>
-        <th>Availability Zones</th>
+        <th>Availability zones</th>
         <td>The first value of <code>services_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
        <tr>
         <th rowspan="7">Second<br>Subnet</th>
       </tr>
       <tr>
-        <th>VPC Subnet ID</th>
+        <th>VPC subnet ID</th>
         <td>The second value of <code>services_subnet_ids</code> from the Terraform output.</td>
       </tr>
       <tr>
@@ -319,7 +319,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.9.0/24</code></td>
       </tr>
       <tr>
-        <th>Reserved IP Ranges</th>
+        <th>Reserved IP ranges</th>
         <td><code>10.0.9.0-10.0.9.3</code></td>
       </tr>
       <tr>
@@ -331,14 +331,14 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.9.1</code></td>
       </tr>
       <tr>
-        <th>Availability Zones</th>
+        <th>Availability zones</th>
         <td>The second value of <code>services_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
       <tr>
         <th rowspan="7">Third<br>Subnet</th>
       </tr>
       <tr>
-        <th>VPC Subnet ID</th>
+        <th>VPC subnet ID</th>
         <td>The third value of <code>services_subnet_ids</code> from the Terraform output.</td>
       </tr>
       <tr>
@@ -346,7 +346,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.10.0/24</code></td>
       </tr>
       <tr>
-        <th>Reserved IP Ranges</th>
+        <th>Reserved IP ranges</th>
         <td><code>10.0.10.0-10.0.10.3</code></td>
       </tr>
       <tr>
@@ -358,7 +358,7 @@ See the following table for the information required to create all three subnets
         <td><code>10.0.10.1</code></td>
       </tr>
       <tr>
-        <th>Availability Zones</th>
+        <th>Availability zones</th>
         <td>The third value of <code>services_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
     </table>

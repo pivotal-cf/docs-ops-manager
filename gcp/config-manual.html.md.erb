@@ -90,12 +90,12 @@ To configure the **Create Networks** pane:
     <table class=“table”>
     <thead>
       <tr>
-        <th>Network Name</th>
+        <th>Network name</th>
         <td><code>infrastructure</code></td>
       </tr>
       </thead>
       <tr>
-        <th>Google Network Name</th>
+        <th>Google network name</th>
         <td>Enter the name of the infrastructure network that you created in <a href="prepare-env-manual.html#create_network">Create a GCP Network with Subnets</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. <br>The format is: <code>pcf-virt-net/pcf-infrastructure-subnet-MY-REGION/MY-GCP-REGION</code></td>
       </tr>
       <tr>
@@ -103,7 +103,7 @@ To configure the **Create Networks** pane:
         <td>Enter the name of the CIDR ending in <code>/26</code> that you used when you created the infrastructure subnet in GCP. <br>Example: <code>192.168.101.0/26</code></td>
       </tr>
       <tr>
-        <th>Reserved IP Ranges</th>
+        <th>Reserved IP ranges</th>
         <td>Enter the first <code>.1</code> through <code>.9</code> addresses from the CIDR. For example, if the CIDR is <code>192.168.101.0/26</code>, enter the range <code>192.168.101.1-192.168.101.9</code>.</td>
       </tr>
       <tr>
@@ -115,76 +115,77 @@ To configure the **Create Networks** pane:
         <td>Enter the first <code>.1</code> address from the CIDR. For example, if the CIDR is <code>192.168.101.0/26</code>, enter <code>192.168.101.1</code>.</td>
       </tr>
       <tr>
-        <th>Availability Zones</th>
+        <th>Availability zones</th>
         <td>Select all three AZs.</td>
       </tr>
     </table>
     <h3>Runtime Network</h3>
-    <table class=“table”>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <td>Enter the name of the runtime that you intend to deploy in this environment. For example, <code>pas</code> or <code>pks</code>.</td>
-      </tr>
-      </thead>
-      <tr>
-        <th>Google Network Name</th>
-        <td>Enter the name of the runtime network that you created when you prepared your GCP environment. <br>The format is: <code>pcf-virt-net/pcf-RUNTIME-subnet-MY-REGION/MY-GCP-REGION</code></td>
-      </tr>
-      <tr>
-        <th>CIDR</th>
-        <td>Enter the name of the CIDR ending in <code>/22</code> that you used when you created the runtime subnet in GCP. <br>Example: <code>192.168.16.0/22</code></td>
-      </tr>
-      <tr>
-        <th>Reserved IP Ranges</th>
-        <td>Enter the first <code>.1</code> through <code>.9</code> addresses from the CIDR. For example, if the CIDR is <code>192.168.16.0/22</code>, enter the range <code>192.168.16.1-192.168.16.9</code>.</td>
-      </tr>
-      <tr>
-        <th>DNS</th>
-        <td><code>169.254.169.254</code></td>
-      </tr>
-      <tr>
-        <th>Gateway</th>
-        <td>Enter the first <code>.1</code> address from the CIDR. For example, if the CIDR is <code>192.168.16.0/22</code>, enter <code>192.168.16.1</code>.</td>
-      </tr>
-      <tr>
-        <th>Availability Zones</th>
-        <td>Select all three AZs.</td>
-      </tr>
-    </table>
-    <h3>Services Network</h3>
-    <table class=“table”>
-    <thead>
-      <tr>
-        <th>Network Name</th>
-        <td><code>services</code></td>
-      </tr>
-      </thead>
-      <tr>
-        <th>Google Network Name</th>
-        <td>Enter the name of the services network that you created when you prepared your GCP environment. <br>The format is: <code>pcf-virt-net/pcf-services-subnet-MY-REGION/MY-GCP-REGION</code></td>
-      </tr>
-      <tr>
-        <th>CIDR</th>
-        <td>Enter the name of the CIDR ending in <code>/22</code> that you used when you created the services subnet in GCP. <br>Example: <code>192.168.20.0/22</code></td>
-      </tr>
-      <tr>
-        <th>Reserved IP Ranges</th>
-        <td>Enter the first <code>.1</code> through <code>.9</code> addresses from the CIDR. For example, if the CIDR is <code>192.168.20.0/22</code>, enter the range <code>192.168.20.1-192.168.20.9</code>.</td>
-      </tr>
-      <tr>
-        <th>DNS</th>
-        <td><code>169.254.169.254</code></td>
-      </tr>
-      <tr>
-        <th>Gateway</th>
-        <td>Enter the first <code>.1</code> address from the CIDR. For example, if the CIDR is <code>192.168.20.0/22</code>, enter <code>192.168.20.1</code>.</td>
-      </tr>
-      <tr>
-        <th>Availability Zones</th>
-        <td>Select all three AZs.</td>
-      </tr>
-    </table>
+  <table class=“table”>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <td>Enter the name of the runtime that you intend to deploy in this environment. For example, <code>pas</code> or <code>pks</code>.</td>
+    </tr>
+    </thead>
+    <tr>
+      <th>Google network name</th>
+      <td>Enter the name of the runtime network that you created when you prepared your GCP environment. <br>The format is: <code>pcf-virt-net/pcf-RUNTIME-subnet-MY-REGION/MY-GCP-REGION</code></td>
+    </tr>
+    <tr>
+      <th>CIDR</th>
+      <td>Enter the name of the CIDR ending in <code>/22</code> that you used when you created the runtime subnet in GCP. <br>Example: <code>192.168.16.0/22</code></td>
+    </tr>
+    <tr>
+      <th>Reserved IP ranges</th>
+      <td>Enter the first <code>.1</code> through <code>.9</code> addresses from the CIDR. For example, if the CIDR is <code>192.168.16.0/22</code>, enter the range <code>192.168.16.1-192.168.16.9</code>.</td>
+    </tr>
+    <tr>
+      <th>DNS</th>
+      <td><code>169.254.169.254</code></td>
+    </tr>
+    <tr>
+      <th>Gateway</th>
+      <td>Enter the first <code>.1</code> address from the CIDR. For example, if the CIDR is <code>192.168.16.0/22</code>, enter <code>192.168.16.1</code>.</td>
+    </tr>
+    <tr>
+      <th>Availability zones</th>
+      <td>Select all three AZs.</td>
+    </tr>
+  </table>
+    <h3>Services network</h3>
+  <table class=“table”>
+  <thead>
+    <tr>
+      <th>Network name</th>
+      <td><code>services</code></td>
+    </tr>
+    </thead>
+    <tr>
+      <th>Google network Name</th>
+      <td>Enter the name of the services network that you created when you prepared your GCP environment. <br>The format is: <code>pcf-virt-net/pcf-services-subnet-MY-REGION/MY-GCP-REGION</code></td>
+    </tr>
+    <tr>
+      <th>CIDR</th>
+      <td>Enter the name of the CIDR ending in <code>/22</code> that you used when you created the services subnet in GCP. <br>Example: <code>192.168.20.0/22</code></td>
+    </tr>
+    <tr>
+      <th>Reserved IP ranges</th>
+      <td>Enter the first <code>.1</code> through <code>.9</code> addresses from the CIDR. For example, if the CIDR is <code>192.168.20.0/22</code>, enter the range <code>192.168.20.1-192.168.20.9</code>.</td>
+    </tr>
+    <tr>
+      <th>DNS</th>
+      <td><code>169.254.169.254</code></td>
+    </tr>
+    <tr>
+      <th>Gateway</th>
+      <td>Enter the first <code>.1</code> address from the CIDR. For example, if the CIDR is <code>192.168.20.0/22</code>, enter <code>192.168.20.1</code>.</td>
+    </tr>
+    <tr>
+      <th>Availability zones</th>
+      <td>Select all three AZs.</td>
+    </tr>
+  </table>
+
    <%= vars.expand_network_azs %>
 
     <p> Ensure <code>169.254.169.254</code>, the IP address of the <code>metadata.google.internal</code> metadata server, is always specified at the beginning of this step's DNS resolver lists.</p>

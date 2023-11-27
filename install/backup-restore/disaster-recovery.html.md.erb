@@ -70,11 +70,11 @@ The following table gives an indication of the downtime that you can expect. Act
   </tr>
   </thead>
   <tr>
-   <td><strong>API State</strong></td>
+   <td><strong>API state</strong></td>
    <td><strong>Backup phase</strong></td>
-   <td><strong>Duration for External Versioned S3-Compatible Blobstore</strong></td>
-   <td><strong>Duration for External Unversioned S3-Compatible Blobstore</strong></td>
-   <td><strong>Duration for Internal Blobstore</strong></td>
+   <td><strong>Duration for external versioned S3-compatible blobstore</strong></td>
+   <td><strong>Duration for external unversioned S3-compatible blobstore</strong></td>
+   <td><strong>Duration for internal blobstore</strong></td>
    </tr>
   <tr>
     <td rowspan="3">API unavailable</td>
@@ -182,8 +182,8 @@ The following table compares backing up and restoring using BBR to recreating a 
 </thead>
 <tr>
   <th></th>
-  <th>Restore the Data</th>
-  <th>Re-create the Data</th>
+  <th>Restore the data</th>
+  <th>Re-create the data</th>
 </tr>
 <tr>
   <th>Preconditions</th>
@@ -208,7 +208,7 @@ The following table compares backing up and restoring using BBR to recreating a 
     </td>
 </tr>
 <tr>
-  <th colspan="3">RTO (Recovery Time Objective)</th>
+  <th colspan="3">RTO (recovery time objective)</th>
 </tr>
 <tr>
   <th>Platform</th>
@@ -221,7 +221,7 @@ The following table compares backing up and restoring using BBR to recreating a 
     <td>Time until orgs, spaces, etc. have been re-created and apps have been re-pushed</td>
 </tr>
 <tr>
-  <th colspan="3">RPO (Recovery Point Objective)</th>
+  <th colspan="3">RPO (recovery point objective)</th>
 </tr>
 <tr>
   <th>Platform</th>
@@ -249,7 +249,7 @@ The RTO and RPO for re-creating the active deployment are the same as outlined i
 
 Both the restore and recreate data disaster recovery options require standing up a new deployment, which can take hours. If you require shorter RTO, several options involving a pre-created standby hardware are available. The following table outlines these options:
 
-<table>
+<table class="tabel">
 <tbody>
 <tr>
   <th><p><strong>Active-cold</strong></p></th>

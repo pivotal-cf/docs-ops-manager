@@ -120,22 +120,22 @@ go to the host project.
 
     1. Under **Subnets**, complete the form as follows to create an infrastructure subnet for <%= vars.ops_manager %> and NAT instances:
 
-          <table class=“table”>
-          <tr>
-            <th style="width:22%">Name</th>
-            <td><code>pcf-infrastructure-subnet-GCP-REGION</code><br>
-            Example: <code>pcf-infrastructure-subnet-us-west1</code></td>
-          </tr>
-          <tr>
-            <th>Region</th>
-            <td>A region that supports three availability zones. For help selecting the correct region for your deployment, see the <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones">Google documentation about regions and zones</a>.</td>
-          </tr>
-          <tr>
-          <th>IP address range</th>
-          <td>A CIDR ending in <code>/26</code><br>
-          Example: <code>192.168.101.0/26</code></td>
-          </tr>
-        </table>
+        <table class=“table”>
+        <thead><tr>
+          <th style="width:22%">Name</th>
+          <td><code>pcf-infrastructure-subnet-GCP-REGION</code><br>
+          Example: <code>pcf-infrastructure-subnet-us-west1</code></td>
+        </tr></thead>
+        <tr>
+          <th>Region</th>
+          <td>A region that supports three availability zones. For help selecting the correct region for your deployment, see the <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones">Google documentation about regions and zones</a>.</td>
+        </tr>
+        <tr>
+        <th>IP address range</th>
+        <td>A CIDR ending in <code>/26</code><br>
+        Example: <code>192.168.101.0/26</code></td>
+        </tr>
+      </table>
 
         See the following image for an example:
 
@@ -145,43 +145,43 @@ go to the host project.
 
     2. Click **Add subnet** to add a second subnet for the BOSH Director and components specific to your runtime. Complete the form as follows:
 
-        <table class=“table”>
-        <thead>
-          <tr>
-            <th style="width:25%">Name</th>
-            <td><code>pcf-RUNTIME-subnet-GCP-REGION</code><br>
-            Example: <code>pcf-pas-subnet-us-west1</code></td>
-          </tr>
-          </thead>
-          <tr>
-            <th>Region</th>
-            <td>The same region you selected for the infrastructure subnet</td>
-          </tr>
-          <tr>
-          <th>IP address range</th>
-          <td>A CIDR ending in <code>/22</code><br>
-              Example: <code>192.168.16.0/22</code></td>
-          </tr>
-        </table>
+      <table class=“table”>
+      <thead>
+        <tr>
+          <th style="width:25%">Name</th>
+          <td><code>pcf-RUNTIME-subnet-GCP-REGION</code><br>
+          Example: <code>pcf-pas-subnet-us-west1</code></td>
+        </tr>
+        </thead>
+        <tr>
+          <th>Region</th>
+          <td>The same region you selected for the infrastructure subnet</td>
+        </tr>
+        <tr>
+        <th>IP address range</th>
+        <td>A CIDR ending in <code>/22</code><br>
+          Example: <code>192.168.16.0/22</code></td>
+        </tr>
+      </table>
 
     3. Click **Add subnet** to add a third **Subnet** with the following details:
 
-        <table class=“table”>
-          <tr>
-            <th style="width:25%">Name</th>
-            <td><code>pcf-services-subnet-GCP-REGION</code><br>
-            Example: <code>pcf-services-subnet-us-west1</code></td>
-          </tr>
-          <tr>
-            <th>Region</th>
-            <td>The same region you selected for the previous subnets</td>
-          </tr>
-          <tr>
-          <th>IP address range</th>
-          <td>A CIDR in <code>/22</code><br>
-              Example: <code>192.168.20.0/22</code></td>
-          </tr>
-        </table>
+<table class=“table”>
+  <tr>
+    <th style="width:25%">Name</th>
+    <td><code>pcf-services-subnet-GCP-REGION</code><br>
+    Example: <code>pcf-services-subnet-us-west1</code></td>
+  </tr>
+  <tr>
+    <th>Region</th>
+    <td>The same region you selected for the previous subnets</td>
+  </tr>
+  <tr>
+  <th>IP address range</th>
+  <td>A CIDR in <code>/22</code><br>
+      Example: <code>192.168.20.0/22</code></td>
+  </tr>
+</table>
 
         See the following image for an example:
 
@@ -259,52 +259,52 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 6. Repeat steps 2 through 6 to create two additional NAT instances with the names and zones specified in the following table. The rest of the configuration remains the same.
 
-      <table class=“table”>
-      <thead>
-      <tr>
-        <th rowspan="3" width="15%">Instance 2</th>
-        <td width="15%"><strong>Name</strong></td>
-        <td>
-          <code>pcf-nat-gateway-sec</code>
-        </td>
-      </tr>
-      </thead>
-      <tr>
-        <td><strong>Zone</strong></td>
-        <td>
-          Select the second zone from your region.<br>
-          Example: For region <code>us-west1</code>, select zone <code>us-west1-b</code>.<br>
-        </td>
-      </tr>
-      <tr>
-        <td><strong>Internal IP</strong></td>
-        <td>
-          Select <code>Custom</code> and enter an IP address in the <strong>Internal IP address</strong> text box. Example: <code>192.168.101.3</code>.
-          <br><br>As described previously, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
-        </td>
-      </tr>
-      <tr>
-        <th rowspan="3">Instance 3</th>
-        <td><strong>Name</strong></td>
-        <td>
-          <code>pcf-nat-gateway-ter</code>
-        </td>
-      </tr>
-      <tr>
-        <td><strong>Zone</strong></td>
-        <td>
-          Select the third zone from your region.<br>
-          Example: For region <code>us-west1</code>, select zone <code>us-west1-c</code>.
-        </td>
-      </tr>
-      <tr>
-        <td><strong>Internal IP</strong></td>
-        <td>
-          Select <code>Custom</code> and enter an IP address in the <strong>Internal IP address</strong> text box. Example: <code>192.168.101.4</code>.
-          <br><br>As previously described, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
-        </td>
-      </tr>
-    </table>
+  <table class=“table”>
+  <thead>
+  <tr>
+    <th rowspan="3" width="15%">Instance 2</th>
+    <td width="15%"><strong>Name</strong></td>
+    <td>
+      <code>pcf-nat-gateway-sec</code>
+    </td>
+  </tr>
+  </thead>
+  <tr>
+    <td><strong>Zone</strong></td>
+    <td>
+      Select the second zone from your region.<br>
+      Example: For region <code>us-west1</code>, select zone <code>us-west1-b</code>.<br>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Internal IP</strong></td>
+    <td>
+      Select <code>Custom</code> and enter an IP address in the <strong>Internal IP address</strong> text box. Example: <code>192.168.101.3</code>.
+      <br><br>As described previously, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
+    </td>
+  </tr>
+  <tr>
+    <th rowspan="3">Instance 3</th>
+    <td><strong>Name</strong></td>
+    <td>
+      <code>pcf-nat-gateway-ter</code>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Zone</strong></td>
+    <td>
+      Select the third zone from your region.<br>
+      Example: For region <code>us-west1</code>, select zone <code>us-west1-c</code>.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Internal IP</strong></td>
+    <td>
+      Select <code>Custom</code> and enter an IP address in the <strong>Internal IP address</strong> text box. Example: <code>192.168.101.4</code>.
+      <br><br>As previously described, this address must in the CIDR range you set for the <code>pcf-infrastructure-subnet-GCP-REGION</code> subnet, must exist in a reserved IP range set later in BOSH Director, and cannot be the same as the Gateway IP address set later in <%= vars.ops_manager %>.
+    </td>
+  </tr>
+</table>
 
 ### <a id='nat-routes'></a> Create routes for NAT instances
 
@@ -328,22 +328,22 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 1. Repeat steps 2 through 4 to create two additional routes with the names and next hop instances specified in the following table. The rest of the configuration remains the same.
 
-      <table class=“table”>
-      <tr>
-        <th>Route 2</th>
-        <td>
-          <strong>Name</strong>: <code>pcf-nat-sec</code><br>
-          <strong>Next hop instance</strong>: <code>pcf-nat-gateway-sec</code>
-        </td>
-      </tr>
-      <tr>
-        <th>Route 3</th>
-        <td>
-          <strong>Name</strong>: <code>pcf-nat-ter</code><br>
-          <strong>Next hop instance</strong>: <code>pcf-nat-gateway-ter</code>
-        </td>
-      </tr>
-    </table>
+  <table class=“table”>
+  <tr>
+    <th>Route 2</th>
+    <td>
+      <strong>Name</strong>: <code>pcf-nat-sec</code><br>
+      <strong>Next hop instance</strong>: <code>pcf-nat-gateway-sec</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Route 3</th>
+    <td>
+      <strong>Name</strong>: <code>pcf-nat-ter</code><br>
+      <strong>Next hop instance</strong>: <code>pcf-nat-gateway-ter</code>
+    </td>
+  </tr>
+</table>
 
 ## <a id='firewall_rules'></a> Step 5: Create firewall rules for the network
 
@@ -354,93 +354,93 @@ This step assigns tags and firewall rules to <%= vars.ops_manager %> components 
 
 1. Apply the firewall rules in the following table:
 
-      <table class=“table”>
-      <tr><th colspan="2" style="text-align: center;">Firewall Rules</th></tr>
-      <tr>
-        <th>Rule 1</th>
-        <td>
-          This rule allows SSH from public networks.<br><br>
-          <strong>Name</strong>: <code>pcf-allow-ssh</code><br>
-          <strong>Network</strong>: <code>pcf-virt-net</code><br>
-          <strong>Allowed protocols and ports</strong>: <code>tcp:22</code><br>
-          <strong>Source filter</strong>: IP ranges<br>
-          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-          <strong>Target tags</strong>: <code>allow-ssh</code>
-        </td>
-      </tr>
-      <tr>
-        <th>Rule 2</th>
-        <td>
-          This rule allows HTTP from public networks.<br><br>
-          <strong>Name</strong>: <code>pcf-allow-http</code><br>
-          <strong>Network</strong>: <code>pcf-virt-net</code><br>
-          <strong>Allowed protocols and ports</strong>: <code>tcp:80</code><br>
-          <strong>Source filter</strong>: IP ranges<br>
-          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-          <strong>Target tags</strong>: <code>allow-http</code>, <code>router</code>
-        </td>
-      </tr>
-      <tr>
-        <th>Rule 3</th>
-        <td>
-          This rule allows HTTPS from public networks.<br><br>
-          <strong>Name</strong>: <code>pcf-allow-https</code><br>
-          <strong>Network</strong>: <code>pcf-virt-net</code><br>
-          <strong>Allowed protocols and ports</strong>: <code>tcp:443</code><br>
-          <strong>Source filter</strong>: IP ranges<br>
-          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-          <strong>Target tags</strong>: <code>allow-https</code>, <code>router</code>
-        </td>
-      </tr>
-      <tr>
-        <th>Rule 4</th>
-        <td>
-          This rule allows GoRouter health checks.<br><br>
-          <strong>Name</strong>: <code>pcf-allow-http-8080</code><br>
-          <strong>Network</strong>: <code>pcf-virt-net</code><br>
-          <strong>Allowed protocols and ports</strong>: <code>tcp:8080</code><br>
-          <strong>Source filter</strong>: IP ranges<br>
-          <strong>Source IP Ranges</strong>: <code>0.0.0.0/0</code><br>
-          <strong>Target tags</strong>: <code>router</code>
-        </td>
-      </tr>
-      <tr>
-        <th>Rule 5</th>
-        <td>
-          This rule allows communication between BOSH-deployed jobs.<br><br>
-          <strong>Name</strong>: <code>pcf-allow-pas-all</code><br>
-          <strong>Network</strong>: <code>pcf-virt-net</code><br>
-          <strong>Allowed protocols and ports</strong>: <code>tcp;udp;icmp</code><br>
-          <strong>Source filter</strong>: Source tags<br>
-          <strong>Target tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code><br>
-          <strong>Source tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code>
-        </td>
-      </tr>
-      <tr>
-        <th>Rule 6 (Optional)</th>
-        <td>
-          This rule allows access to the TCP router.<br><br>
-          <strong>Name</strong>: <code>pcf-allow-cf-tcp</code><br>
-          <strong>Network</strong>: <code>pcf-virt-net</code><br>
-          <strong>Source filter</strong>: IP ranges<br>
-          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-          <strong>Allowed protocols and ports</strong>: <code>tcp:1024-65535</code><br>
-          <strong>Target tags</strong>: <code>pcf-cf-tcp</code>
-        </td>
-      </tr>
-      <tr>
-        <th>Rule 7 (Optional)</th>
-        <td>
-          This rule allows access to the SSH proxy.<br><br>
-          <strong>Name</strong>: <code>pcf-allow-ssh-proxy</code><br>
-          <strong>Network</strong>: <code>pcf-virt-net</code><br>
-          <strong>Source filter</strong>: IP ranges<br>
-          <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-          <strong>Allowed protocols and ports</strong>: <code>tcp:2222</code><br>
-          <strong>Target tags</strong>: <code>pcf-ssh-proxy</code>, <code>diego-brain</code><br>
-        </td>
-      </tr>
-    </table>
+  <table class=“table”>
+  <tr><th colspan="2" style="text-align: center;">Firewall Rules</th></tr>
+  <tr>
+    <th>Rule 1</th>
+    <td>
+      This rule allows SSH from public networks.<br><br>
+      <strong>Name</strong>: <code>pcf-allow-ssh</code><br>
+      <strong>Network</strong>: <code>pcf-virt-net</code><br>
+      <strong>Allowed protocols and ports</strong>: <code>tcp:22</code><br>
+      <strong>Source filter</strong>: IP ranges<br>
+      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+      <strong>Target tags</strong>: <code>allow-ssh</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Rule 2</th>
+    <td>
+      This rule allows HTTP from public networks.<br><br>
+      <strong>Name</strong>: <code>pcf-allow-http</code><br>
+      <strong>Network</strong>: <code>pcf-virt-net</code><br>
+      <strong>Allowed protocols and ports</strong>: <code>tcp:80</code><br>
+      <strong>Source filter</strong>: IP ranges<br>
+      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+      <strong>Target tags</strong>: <code>allow-http</code>, <code>router</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Rule 3</th>
+    <td>
+      This rule allows HTTPS from public networks.<br><br>
+      <strong>Name</strong>: <code>pcf-allow-https</code><br>
+      <strong>Network</strong>: <code>pcf-virt-net</code><br>
+      <strong>Allowed protocols and ports</strong>: <code>tcp:443</code><br>
+      <strong>Source filter</strong>: IP ranges<br>
+      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+      <strong>Target tags</strong>: <code>allow-https</code>, <code>router</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Rule 4</th>
+    <td>
+      This rule allows GoRouter health checks.<br><br>
+      <strong>Name</strong>: <code>pcf-allow-http-8080</code><br>
+      <strong>Network</strong>: <code>pcf-virt-net</code><br>
+      <strong>Allowed protocols and ports</strong>: <code>tcp:8080</code><br>
+      <strong>Source filter</strong>: IP ranges<br>
+      <strong>Source IP Ranges</strong>: <code>0.0.0.0/0</code><br>
+      <strong>Target tags</strong>: <code>router</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Rule 5</th>
+    <td>
+      This rule allows communication between BOSH-deployed jobs.<br><br>
+      <strong>Name</strong>: <code>pcf-allow-pas-all</code><br>
+      <strong>Network</strong>: <code>pcf-virt-net</code><br>
+      <strong>Allowed protocols and ports</strong>: <code>tcp;udp;icmp</code><br>
+      <strong>Source filter</strong>: Source tags<br>
+      <strong>Target tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code><br>
+      <strong>Source tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Rule 6 (Optional)</th>
+    <td>
+      This rule allows access to the TCP router.<br><br>
+      <strong>Name</strong>: <code>pcf-allow-cf-tcp</code><br>
+      <strong>Network</strong>: <code>pcf-virt-net</code><br>
+      <strong>Source filter</strong>: IP ranges<br>
+      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+      <strong>Allowed protocols and ports</strong>: <code>tcp:1024-65535</code><br>
+      <strong>Target tags</strong>: <code>pcf-cf-tcp</code>
+    </td>
+  </tr>
+  <tr>
+    <th>Rule 7 (Optional)</th>
+    <td>
+      This rule allows access to the SSH proxy.<br><br>
+      <strong>Name</strong>: <code>pcf-allow-ssh-proxy</code><br>
+      <strong>Network</strong>: <code>pcf-virt-net</code><br>
+      <strong>Source filter</strong>: IP ranges<br>
+      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+      <strong>Allowed protocols and ports</strong>: <code>tcp:2222</code><br>
+      <strong>Target tags</strong>: <code>pcf-ssh-proxy</code>, <code>diego-brain</code><br>
+    </td>
+  </tr>
+</table>
 
    <p> If you want your firewall rules to only permit traffic within your private network, modify
    the <strong>Source IP Ranges</strong> from the table accordingly.</p>
@@ -859,52 +859,52 @@ In this step, you redirect queries for your domain to the IP addresses of your l
 
 1. Create **A records** with your DNS registrar that map domain names to the public static IP addresses of the load balancers located previously:
 
-      <table class=“table”>
-      <thead>
-      <tr>
-      <th>Create and map this record...</th><th>To the IP of this load balancer</th><th>Required</th>
-      </thead>
-      </tr>
-      <tr>
-        <td><code>\*.sys.MY-DOMAIN</code><br>
-        Example: <code>\*.sys.example.com</code></td>
-        <td><code>pcf-global-pcf</code></td>
-        <td>Yes</td>
-      </tr>
-      <tr>
-        <td><code>\*.apps.MY-DOMAIN</code><br>
-        Example: <code>\*.apps.example.com</code></td>
-        <td><code>pcf-global-pcf</code></td>
-        <td>Yes</td>
-      </tr>
-      <tr>
-        <td><code>doppler.sys.MY-DOMAIN</code>
-        <br>
-        Example: <code>doppler.sys.example.com</code></td>
-        <td><code>pcf-wss-logs</code></td>
-        <td>Yes</td>
-      </tr>
-            <tr>
-        <td><code>loggregator.sys.MY-DOMAIN</code><br>
-        Example: <code>loggregator.sys.example.com</code></td>
-        <td><code>pcf-wss-logs</code></td>
-        <td>Yes</td>
-      </tr>
-      <tr>
-        <td><code>ssh.sys.MY-DOMAIN</code>
-        <br>
-        Example: <code>ssh.sys.example.com</code></td>
-        <td><code>pcf-ssh-proxy</code></td>
-        <td>Yes, to allow SSH access to apps</td>
-      </tr>
-      <tr>
-        <td><code>tcp.MY-DOMAIN</code>
-        <br>
-        Example: <code>tcp.example.com</code></td>
-        <td><code>pcf-cf-tcp-lb</code></td>
-        <td>No, only set up if you have enabled the TCP routing feature</td>
-      </tr>
-    </table>
+    <table class=“table”>
+    <thead>
+    <tr>
+    <th>Create and map this record...</th><th>To the IP of this load balancer</th><th>Required</th>
+    </thead>
+    </tr>
+    <tr>
+      <td><code>\*.sys.MY-DOMAIN</code><br>
+      Example: <code>\*.sys.example.com</code></td>
+      <td><code>pcf-global-pcf</code></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><code>\*.apps.MY-DOMAIN</code><br>
+      Example: <code>\*.apps.example.com</code></td>
+      <td><code>pcf-global-pcf</code></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><code>doppler.sys.MY-DOMAIN</code>
+      <br>
+      Example: <code>doppler.sys.example.com</code></td>
+      <td><code>pcf-wss-logs</code></td>
+      <td>Yes</td>
+    </tr>
+          <tr>
+      <td><code>loggregator.sys.MY-DOMAIN</code><br>
+      Example: <code>loggregator.sys.example.com</code></td>
+      <td><code>pcf-wss-logs</code></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><code>ssh.sys.MY-DOMAIN</code>
+      <br>
+      Example: <code>ssh.sys.example.com</code></td>
+      <td><code>pcf-ssh-proxy</code></td>
+      <td>Yes, to allow SSH access to apps</td>
+    </tr>
+    <tr>
+      <td><code>tcp.MY-DOMAIN</code>
+      <br>
+      Example: <code>tcp.example.com</code></td>
+      <td><code>pcf-cf-tcp-lb</code></td>
+      <td>No, only set up if you have enabled the TCP routing feature</td>
+    </tr>
+  </table>
 
 1. Save your changes within the web interface of your DNS registrar.
 

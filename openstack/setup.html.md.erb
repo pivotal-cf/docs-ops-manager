@@ -62,94 +62,94 @@ and examples. The screenshots of your OpenStack vendor configuration interface m
 
     <p> Adjust the remote sources as necessary for your own security compliance. <%= vars.company_name %> recommends limiting remote access to <%= vars.ops_manager %> to IP ranges within your organization.</p>
 
-    <table class=“table”>
-    <thead>
-      <tr>
-        <th><strong>Direction</strong></th>
-        <th><strong>Ether Type</strong></th>
-        <th><strong>IP Protocol</strong></th>
-        <th><strong>Port/Port Range</strong></th>
-        <th><strong>Remote</strong></th>
-      </tr>
-      </thead>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>22 (SSH)</td>
-        <td>0.0.0.0/0 (CIDR)</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>80 (HTTP)</td>
-        <td>0.0.0.0/0 (CIDR)</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>443 (HTTPS)</td>
-        <td>0.0.0.0/0 (CIDR)</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>4222 (NATS)</td>
-        <td>opsmanager</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>6868 (BOSH Agent)</td>
-        <td>opsmanager</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>8844 (CredHub)</td>
-        <td>opsmanager</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>8853 (BOSH Health Monitor)</td>
-        <td>opsmanager</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>25250 (BOSH Blobstore)</td>
-        <td>opsmanager</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>25555 (BOSH Director)</td>
-        <td>opsmanager</td>
-      </tr>
-      <tr>
-        <td>Ingress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>25777 (BOSH Registry)</td>
-        <td>opsmanager</td>
-      </tr>
-      <tr>
-        <td>Egress</td>
-        <td>IPv4</td>
-        <td>TCP</td>
-        <td>1-65535</td>
-        <td>0.0.0.0/0 (CIDR)</td>
-      </tr>
-    </table>
+  <table class=“table”>
+  <thead>
+    <tr>
+      <th><strong>Direction</strong></th>
+      <th><strong>Ether type</strong></th>
+      <th><strong>IP protocol</strong></th>
+      <th><strong>Port/port range</strong></th>
+      <th><strong>Remote</strong></th>
+    </tr>
+    </thead>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>22 (SSH)</td>
+      <td>0.0.0.0/0 (CIDR)</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>80 (HTTP)</td>
+      <td>0.0.0.0/0 (CIDR)</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>443 (HTTPS)</td>
+      <td>0.0.0.0/0 (CIDR)</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>4222 (NATS)</td>
+      <td>opsmanager</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>6868 (BOSH Agent)</td>
+      <td>opsmanager</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>8844 (CredHub)</td>
+      <td>opsmanager</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>8853 (BOSH Health Monitor)</td>
+      <td>opsmanager</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>25250 (BOSH Blobstore)</td>
+      <td>opsmanager</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>25555 (BOSH Director)</td>
+      <td>opsmanager</td>
+    </tr>
+    <tr>
+      <td>Ingress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>25777 (BOSH Registry)</td>
+      <td>opsmanager</td>
+    </tr>
+    <tr>
+      <td>Egress</td>
+      <td>IPv4</td>
+      <td>TCP</td>
+      <td>1-65535</td>
+      <td>0.0.0.0/0 (CIDR)</td>
+    </tr>
+  </table>
 
 2. Do not change the existing default egress access rules. As shown in the image, the **Egress** rows contain **ETHER TYPE** 'IPv4' and 'IPv6', respectively. Both **IP PROTOCOL** and **PORT RANGE** are set to 'Any'.
 

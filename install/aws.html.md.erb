@@ -32,234 +32,234 @@ The following are AWS-specific resource requirements for installing <%= vars.ops
 
     * **<%= vars.app_runtime_abbr %>:** At a minimum, a new AWS deployment requires the following VMs for <%= vars.app_runtime_abbr %>:
 
-        <table class=“table”>
-        <thead>
-          <tr>
-            <th>AWS Requirements</th>
-            <th>VM Name</th>
-            <th>VM Type</th>
-            <th>Default VM Count</th>
-            <th>Required or Optional VM</th>
-          </tr>
-          </thead>
-          <tr>
-            <th rowspan=22><%= vars.app_runtime_abbr %></th>
-              <td>NATS</td>
-              <td>t3.micro</td>
-              <td>2</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>File Storage</td>
-              <td>m5.large</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>MySQL Proxy</td>
-              <td>t3.micro</td>
-              <td>2</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>MySQL Server</td>
-              <td>r5.large</td>
-              <td>3</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Backup Restore Node</td>
-              <td>t3.micro</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Diego BBS</td>
-              <td>t3.micro</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>UAA</td>
-              <td>m5.large</td>
-              <td>2</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Cloud Controller</td>
-              <td>m5.large</td>
-              <td>2</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>HAProxy</td>
-              <td>t3.micro</td>
-              <td>0</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Router</td>
-              <td>t3.micro</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>MySQL Monitor</td>
-              <td>t3.micro</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Clock Global</td>
-              <td>t3.medium</td>
-              <td>2</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Cloud Controller Worker</td>
-              <td>t3.micro</td>
-              <td>2</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Diego Brain</td>
-              <td>t3.small</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Diego Cell</td>
-              <td>r5.xlarge</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Loggregator Traffic Controller</td>
-              <td>t3.micro</td>
-              <td>2</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Doppler Server</td>
-              <td>m5.large</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>TCP Router</td>
-              <td>t3.micro</td>
-              <td>0</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>CredHub</td>
-              <td>r5.large</td>
-              <td>2</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Istio Router</td>
-              <td>r5.large</td>
-              <td>0</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Istio Control</td>
-              <td>r5.large</td>
-              <td>0</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Route Syncer</td>
-              <td>r5.large</td>
-              <td>0</td>
-              <td>Optional</td>
-          </tr><tr>
-            <th rowspan=2><%= vars.ops_manager %></th>
-              <td>BOSH Director</td>
-              <td>m5.large</td>
-              <td>1</td>
-              <td>Required</td>
-          </tr>
-        </table>
+<table class=“table”>
+<thead>
+    <tr>
+    <th>AWS requirements</th>
+    <th>VM name</th>
+    <th>VM type</th>
+    <th>Default VM count</th>
+    <th>Required or optional VM</th>
+    </tr>
+    </thead>
+    <tr>
+    <th rowspan=22><%= vars.app_runtime_abbr %></th>
+        <td>NATS</td>
+        <td>t3.micro</td>
+        <td>2</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>File storage</td>
+        <td>m5.large</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>MySQL proxy</td>
+        <td>t3.micro</td>
+        <td>2</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>MySQL server</td>
+        <td>r5.large</td>
+        <td>3</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Backup restore node</td>
+        <td>t3.micro</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Diego BBS</td>
+        <td>t3.micro</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>UAA</td>
+        <td>m5.large</td>
+        <td>2</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Cloud Controller</td>
+        <td>m5.large</td>
+        <td>2</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>HAProxy</td>
+        <td>t3.micro</td>
+        <td>0</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Router</td>
+        <td>t3.micro</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>MySQL monitor</td>
+        <td>t3.micro</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Clock global</td>
+        <td>t3.medium</td>
+        <td>2</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Cloud Controller worker</td>
+        <td>t3.micro</td>
+        <td>2</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Diego Brain</td>
+        <td>t3.small</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Diego Cell</td>
+        <td>r5.xlarge</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Loggregator Traffic Controller</td>
+        <td>t3.micro</td>
+        <td>2</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Doppler server</td>
+        <td>m5.large</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>TCP router</td>
+        <td>t3.micro</td>
+        <td>0</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>CredHub</td>
+        <td>r5.large</td>
+        <td>2</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Istio router</td>
+        <td>r5.large</td>
+        <td>0</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Istio control</td>
+        <td>r5.large</td>
+        <td>0</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Route syncer</td>
+        <td>r5.large</td>
+        <td>0</td>
+        <td>Optional</td>
+    </tr><tr>
+    <th rowspan=2><%= vars.ops_manager %></th>
+        <td>BOSH Director</td>
+        <td>m5.large</td>
+        <td>1</td>
+        <td>Required</td>
+    </tr>
+</table>
 
         <p> If you are deploying a test or sandbox deployment that does not require high availability, then you can scale down the number of VM instances in your deployment. For more information,
         see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.</p>
 
     * **Small Footprint <%= vars.app_runtime_abbr %>:** To run Small Footprint <%= vars.app_runtime_abbr %>, a new AWS deployment requires:
 
-        <table class=“table”>
-        <thead>
-          <tr>
-          	<th>AWS Requirements</th>
-            <th>VM Name</th>
-            <th>VM Type</th>
-            <th>Default VM Count</th>
-            <th>Minimum HA VM Count</th>
-            <th>Required or Optional VM</th>
-          </tr>
-          </thead>
-          <tr>
-            <th rowspan=12>Small Footprint <%= vars.app_runtime_abbr %></th>
-              <td>Compute</td>
-              <td>r5.xlarge</td>
-              <td>1</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Control</td>
-              <td>r5.xlarge</td>
-              <td>1</td>
-              <td>2</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Database</td>
-              <td>r5.large</td>
-              <td>1</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>Router</td>
-              <td>t3.micro</td>
-              <td>1</td>
-              <td>3</td>
-              <td>Required</td>
-          </tr><tr>
-              <td>File Storage</td>
-              <td>m5.large</td>
-              <td>1</td>
-              <td>N/A</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Backup Restore Node</td>
-              <td>t3.micro</td>
-              <td>1</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>MySQL Monitor</td>
-              <td>t3.micro</td>
-              <td>1</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>HAProxy</td>
-              <td>t3.micro</td>
-              <td>0</td>
-              <td>2</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>TCP Router</td>
-              <td>t3.micro</td>
-              <td>0</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Istio Router</td>
-              <td>r5.large</td>
-              <td>0</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Istio Control</td>
-              <td>r5.large</td>
-              <td>0</td>
-              <td>2</td>
-              <td>Optional</td>
-          </tr><tr>
-              <td>Route Syncer</td>
-              <td>r5.large</td>
-              <td>0</td>
-              <td>1</td>
-              <td>Optional</td>
-          </tr><tr>
-            <th rowspan=2><%= vars.ops_manager %></th>
-              <td>BOSH Director</td>
-              <td>m5.large</td>
-              <td>1</td>
-              <td>N/A</td>
-              <td>Required</td>
-          </tr>
-        </table>
+<table class=“table”>
+<thead>
+    <tr>
+    <th>AWS eequirements</th>
+    <th>VM name</th>
+    <th>VM type</th>
+    <th>Default VM count</th>
+    <th>Minimum HA VM count</th>
+    <th>Required or optional VM</th>
+    </tr>
+    </thead>
+    <tr>
+    <th rowspan=12>Small footprint <%= vars.app_runtime_abbr %></th>
+        <td>Compute</td>
+        <td>r5.xlarge</td>
+        <td>1</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Control</td>
+        <td>r5.xlarge</td>
+        <td>1</td>
+        <td>2</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Database</td>
+        <td>r5.large</td>
+        <td>1</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>Router</td>
+        <td>t3.micro</td>
+        <td>1</td>
+        <td>3</td>
+        <td>Required</td>
+    </tr><tr>
+        <td>File storage</td>
+        <td>m5.large</td>
+        <td>1</td>
+        <td>N/A</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Backup restore node</td>
+        <td>t3.micro</td>
+        <td>1</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>MySQL monitor</td>
+        <td>t3.micro</td>
+        <td>1</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>HAProxy</td>
+        <td>t3.micro</td>
+        <td>0</td>
+        <td>2</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>TCP router</td>
+        <td>t3.micro</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Istio router</td>
+        <td>r5.large</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Istio control</td>
+        <td>r5.large</td>
+        <td>0</td>
+        <td>2</td>
+        <td>Optional</td>
+    </tr><tr>
+        <td>Route syncer</td>
+        <td>r5.large</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Optional</td>
+    </tr><tr>
+    <th rowspan=2><%= vars.ops_manager %></th>
+        <td>BOSH Director</td>
+        <td>m5.large</td>
+        <td>1</td>
+        <td>N/A</td>
+        <td>Required</td>
+    </tr>
+</table>
 
     * **<%= vars.k8s_runtime_abbr %>:** See [AWS Prerequisites and Resource Requirements](https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-aws-requirements.html).
 

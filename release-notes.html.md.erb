@@ -61,7 +61,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Bug Fix]** Downloading core consumption data no longer fails with a 500 status code error
 - **[Bug Fix]** Reduce the size of export zip file by dropping legacy encrypted database columns leftover after the Rails 7 upgrade
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -83,7 +83,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 - **[Known Issue Fix]** The Healthwatch deployment issue in <%= vars.ops_manager %> v3.0.17+LTS-T is fixed with the inclusion of BOSH Director 280.0.6.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -116,7 +116,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Feature]** You can opt in to and configure pruning of older Apply Changes logs
 - **[Bug Fix]** Remove unneeded monit restarts when deploying the BOSH Director
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -136,9 +136,9 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** September 29, 2023
 
-- **[Bug Fix]** Tiles are unable to use a named manifest in a collection 
+- **[Bug Fix]** Tiles are unable to use a named manifest in a collection
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -170,7 +170,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Feature]** Upgrade the Tanzu Operations Manager VM's vSphere NIC from E1000 to VMXNET 3 for performance improvements
 - **[Bug Fix]** Temporary files are now cleaned up after a support bundle is created.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -199,7 +199,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Known Issue Fix]** Apply Changes no longer fails with "Extracting compiled package archive failed" when using certain versions of tiles.
 - **[Known Issue Fix]** The scheduled `bosh clean-up` task runs successfully again.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -223,7 +223,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Feature]** It is now possible to configure vSphere to use [human-readable VM names](https://bosh.io/docs/vsphere-human-readable-names/).
 - **[Bug Fix]** API docs now load as expected (Javascript issues caused loading problems).
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -249,7 +249,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes BOSH Director logs.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -281,7 +281,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Bug Fix]** UAA is only restarted if there are changes to its configuration. Previously, re-configuring the <%= vars.ops_manager %> UAA configuration with the same values caused <%= vars.ops_manager %> to restart UAA.
 - **[Bug Fix]** Upgrading Tanzu Operations Manager no longer fails with the error "Import failure [Tried to load unspecified class: ActionController::Parameters]".
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -310,7 +310,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 - **[Bug Fix]** Upgrading <%= vars.ops_manager %> from v2.10 no longer fails if authentication is configured to use LDAP without a TLS certificate.
 - **[Feature]** Core Consumption data can now be downloaded from the "Advanced Options" Settings page. The accuracy of this data depends on upgrading to <%= vars.ops_manager %> Tile versions of products that support this functionality.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -335,7 +335,7 @@ This issue is fixed in a following release of <%= vars.ops_manager %>.
 - **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
 - **[Bug Fix]** The See Changes page does not return an error after upgrading from Tanzu Operations Manager 2.10 to 3.0.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -361,7 +361,7 @@ This issue is fixed in a following release of <%= vars.ops_manager %>.
 - **[Bug Fix]** Blobstore credentials do not appear in IaaS metadata when signed URLs are used
 - **[Bug Fix]** The "label" of Tanzu Operations Manager tile form fields can be read out loud by a screen reader, and a screen reader announces that a field is "required" when it is required
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -393,7 +393,7 @@ readers.
 
 * **[Bug Fix]** `bpm` no longer restricts the size of `/dev/shm` to 64&nbsp;MB. As a result, `/dev/shm` no longer causes PostgreSQL failures.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
   <tr>
     <th>Component</th>
@@ -429,7 +429,7 @@ Failures](#re-deploy-fail).
 * **[Bug Fix]** When you retrieve the manifest for a deployed product through the <%= vars.ops_manager %> API, the API endpoint no longer returns an invalid
 manifest.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
     <tr>
       <th>Component</th>
@@ -483,7 +483,7 @@ database can cause redeployments to fail. For more information, see [Missing Cla
 * **[Bug Fix]** In the <%= vars.ops_manager %> Installation Dashboard, the **Review Pending Changes** page does not show a `Stemcell Out of Date` status when
 you are using the most recent stemcell versions.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
     <tr>
       <th>Component</th>
@@ -511,7 +511,7 @@ you are using the most recent stemcell versions.
 
 * **[Bug Fix]** When you click **See Changes**, secrets are correctly redacted from <%= vars.ops_manager %> production logs.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
     <tr>
       <th>Component</th>
@@ -538,7 +538,7 @@ you are using the most recent stemcell versions.
 * **[Feature]** <%= vars.ops_manager %> creates additional logs to track when tile migrations are applied. This allows VMware to better use logs to debug
 issues with tile upgrade failures.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
     <tr>
       <th>Component</th>
@@ -561,7 +561,7 @@ issues with tile upgrade failures.
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.2 causes all VMs to redeploy.</p>
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
     <tr>
       <th>Component</th>
@@ -592,7 +592,7 @@ issues with tile upgrade failures.
 
 * **[Bug Fix]** Deploying the BOSH Director in an air-gapped environment no longer causes an error.
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
     <tr>
       <th>Component</th>
@@ -621,7 +621,7 @@ issues with tile upgrade failures.
 
 <%= vars.ops_manager %> v3.0.0 uses the following component versions:
 
-<table border="1" class="nice">
+<table border="1" class="table">
   <thead>
     <tr>
       <th>Component</th>
