@@ -3,7 +3,9 @@ title: Azure reference architecture for Tanzu Operationas Manager
 owner: Customer0
 ---
 
-This topic describes an Azure reference architecture for <%= vars.ops_manager_first %> and any runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>. This architecture builds on the common base architectures described in [Architecture and planning for Ops Manager and runtimes](../index.html).
+This topic describes an Azure reference architecture for <%= vars.ops_manager_first %> and any
+runtime products, including <%= vars.app_runtime_first %> and <%= vars.k8s_runtime_first %>. This architecture builds on the common
+base architectures described in [Architecture and planning for Tanzu Operations Manager and runtimes](../index.html).
 
 For additional requirements and installation instructions for running <%= vars.ops_manager %> on Azure, see
 [Installing <%= vars.ops_manager %> on Azure](../../install/azure.html).
@@ -34,7 +36,7 @@ model described above.
 
 [View a larger version of this diagram.](../images/PAS_Azure.png).
 
-The sections below provide guidance about the resources that you use for running <%= vars.ops_manager %> on Azure.
+The following sections provide guidance about the resources that you use for running <%= vars.ops_manager %> on Azure.
 
 
 ## <a id='networking'></a> Networking
@@ -43,7 +45,7 @@ The following sections provide guidance about networking resources.
 
 ### <a id='network-considerations'></a> General requirements and recommendations
 
-The following are general requirements and recommendations related to networking when running <%= vars.ops_manager %>
+The following general requirements and recommendations are related to networking when running <%= vars.ops_manager %>
 on Azure:
 
 * You must enable virtual network peering between hub and spoke resource groups. For more information, see
@@ -112,7 +114,7 @@ Use AZs instead of Availability Sets in all Azure regions where they are availab
 pinning issue associated with Availability Sets and allow greater control when defining high-availability
 configuration when using multiple Azure services.
 
-For additional guidance depending on your use case, see the table below:
+For additional guidance depending on your use case, see the following table:
 
 <table class=“table”>
 <thead>

@@ -39,7 +39,7 @@ A single-project VPC lets the platform architect give <%= vars.ops_manager %> fu
 
 ## <a id='shared-vpc'></a> Shared VPC GCP reference architecture
 
-The diagram below illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
+The following diagram illustrates a reference architecture for a deployment of <%= vars.ops_manager %> on a shared VPC on GCP. This architecture requires an organization on the VPC that contains a host project and a service project.
 
 ![alt-text="High-level system and routing components. The large groupings in the Organization are Host Project, Service Project (Foundation), and Region."](../images/gcp-overview-shared-vpc.png)
 
@@ -119,7 +119,7 @@ The following diagram illustrates a reference architecture for a deployment of <
 
 The following table lists the components that are part of a reference architecture deployment with three AZs.
 
-| **Component** | **Reference Architecture Notes** |
+| **Component** | **Reference architecture notes** |
 | ------------- | -------------------------------- |
 | **Domains and DNS** | Domain zones and routes in use by the reference architecture include: domains for *.apps and *.system (required), a route for <%= vars.ops_manager %> (required), a route for Doppler (required), a route for Loggregator (required), a route for SSH access to app containers (optional), and a route for TCP routing to apps (optional). Reference architecture uses GCP Cloud DNS as the DNS provider. |
 | **<%= vars.ops_manager %> VM** | Deployed on the infrastructure subnet and accessible by fully-qualified domain name (FQDN) or through an optional jumpbox. |

@@ -40,7 +40,7 @@ reference architectures do not cover:
 
 ## <a id='pas-base'></a> <%= vars.app_runtime_abbr %> architecture
 
-The diagram below illustrates a base architecture for <%= vars.app_runtime_abbr %> and how its network topology places and replicates <%= vars.app_runtime_abbr %> components across subnets and availability zones (AZs).
+The following diagram illustrates a base architecture for <%= vars.app_runtime_abbr %> and how its network topology places and replicates <%= vars.app_runtime_abbr %> components across subnets and availability zones (AZs).
 
 ![alt-text="TAS for VMs Base Topology. Each AZ includes Infrastructure subnet, PAS Subnet, Services subnet, On-demand services subnet, Isolation Segment subnet."](images/v2/export/PAS_Base.png)
 
@@ -48,7 +48,7 @@ The diagram below illustrates a base architecture for <%= vars.app_runtime_abbr 
 
 ### <a id='pas-components'></a> Internal components
 
-The table below describes the internal component placements shown in the diagram above:
+The following table describes the internal component placements shown in the previous diagram:
 
 | Component | Placement and access notes |
 | ------------- | ------------------------------ |
@@ -153,7 +153,7 @@ For recommendations on scaling <%= vars.app_runtime_abbr %> for different deploy
 
 ## <a id='pks-base'></a> <%= vars.k8s_runtime_abbr %> Architecture
 
-The diagram below illustrates a base architecture for <%= vars.k8s_runtime_abbr %> and how its network topology places and replicates <%= vars.k8s_runtime_abbr %> components across subnets and AZs:
+The following diagram illustrates a base architecture for <%= vars.k8s_runtime_abbr %> and how its network topology places and replicates <%= vars.k8s_runtime_abbr %> components across subnets and AZs:
 
 ![alt-text="TKGI Base Deployment Topology. Each AZ includes Infrastructure subnet, Services subnet, and PKS Cluster Subnets, which are dynamically generated."](images/v2/export/PKS_Base.png)
 
