@@ -20,9 +20,9 @@ template_variables:
   dot_major_version: "3.0"
 
   # Associated Tanzu Application Service for VMs version
-  current_tas_version: "4-0"
-  v_major_tas_version: "v4.0"
-  dot_major_tas_version: "4.0"
+  current_tas_version: "5-0"
+  v_major_tas_version: "v5.0"
+  dot_major_tas_version: "5.0"
 
   gtm_account_id: GTM-MM86KCJ
 
