@@ -18,6 +18,36 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <hr>
 
 ## <a id='releases'></a> Releases
+### <a id="3-0-21"></a> v3.0.21+LTS-T
+
+**Release Date:** December 15, 2023
+
+<div class="note warning"><strong>Warning:</strong>
+  This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
+</div>
+
+
+- **[Feature]** Prevent Tomcat errors from exposing the Tomcat version
+- **[Feature]** Expose configuration in Ops Manager to allow UAA to proxy to an upstream OIDC server
+- **[Bug Fix]** The tempest-worker process crashes, resulting in background jobs not being run
+- **[Bug Fix]** Increase puma client timeouts to improve connection reliability under VM load
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Ops Manager</td><td>3.0.21-build.1098*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.318*</td></tr><tr><td>BBR SDK</td><td>1.18.111*</td></tr><tr><td>BOSH Director</td><td>280.0.12*</td></tr><tr><td>BOSH DNS</td><td>1.36.11*</td></tr><tr><td>System Metrics</td><td>3.0.4*</td></tr><tr><td>CredHub</td><td>2.12.55*</td></tr><tr><td>CredHub Maestro</td><td>9.0.14*</td></tr><tr><td>Syslog</td><td>12.2.1*</td></tr><tr><td>Windows Syslog</td><td>1.2.2*</td></tr><tr><td>UAA</td><td>76.27.0*</td></tr><tr><td>BPM</td><td>1.2.12*</td></tr><tr><td>OS Conf</td><td>22.2.1*</td></tr><tr><td>AWS CPI</td><td>101</td></tr><tr><td>Azure CPI</td><td>46.0.0</td></tr><tr><td>Google CPI</td><td>49.0.9*</td></tr><tr><td>OpenStack CPI</td><td>54</td></tr><tr><td>vSphere CPI</td><td>97.0.2</td></tr><tr><td>BOSH CLI</td><td>7.5.1*</td></tr><tr><td>Credhub CLI</td><td>2.9.24*</td></tr><tr><td>BBR CLI</td><td>1.9.56</td></tr><tr><td>Telemetry</td><td>2.1.4*</td></tr><tr><td>Core Consumption</td><td>0.3.12*</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
 ### <a id="3-0-20"></a> v3.0.20+LTS-T
 
 **Release Date:** November 29, 2023
