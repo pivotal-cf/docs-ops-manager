@@ -36,125 +36,6 @@ If you have not already, install the UAA Command Line Interface (UAAC) by runnin
 gem install cf-uaac
 ```
 
-### <a id='token'></a> Retrieve an authorization token
-
-Every call to the <%= vars.ops_manager %> API must include an authorization token that is acceptable to the <%= vars.ops_manager %> UAA.
-
-How you retrieve this token depends on whether your <%= vars.ops_manager %> user store is an internal IaaS component or an external server.  With an internal UAA, the procedure depends on which IaaS you are on.
-
-To retrieve your authorization token, perform the following procedure that corresponds to your Tanzu Operations Manager
-UAA location and IaaS.
-
-#### <a id='vsphere'></a> Internal UAA on vSphere
-
-To log in to the <%= vars.ops_manager %> VM with SSH in vSphere, you need the public SSH key that imports the <%= vars.ops_manager %> `.ova` or `.ovf` file into your virtualization system.
-
-You set the public SSH key in the **Public SSH Key** text box of the **Customize template** pane when you
-deployed <%= vars.ops_manager %>. For more information, see [Deploy <%= vars.ops_manager %>](../vsphere/deploy.html#deploy).
-
-To retrieve the authorization token from internal UAA on vSphere:
-
-1. SSH onto the <%= vars.ops_manager %> VM:
-
-    ```
-    ssh ubuntu@OPS-MANAGER-FQDN
-    ```
-
-    Where `OPS-MANAGER-FQDN` is the fully qualified domain name of <%= vars.ops_manager %>.
-
-    For example:
-
-    <pre class="terminal">
-    $ ssh ubuntu@my-opsmanager.example.com
-    </pre>
-
-1. When prompted, enter the public SSH key.
-
-1. Proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
-
-#### <a id='aws'></a> Internal UAA on AWS, Azure, or OpenStack
-
-1. Locate the <%= vars.ops_manager %> FQDN on the AWS **EC2 instances** page, Azure **Virtual machines** page, or the OpenStack **Access & Security** page.
-
-1. Run `chmod 600` to change the permissions on the `.pem` file to be more restrictive:
-
-    ```
-    chmod 600 OPS-MGR-PEM
-    ```
-    Where `OPS-MGR-PEM` is the public key from the keypair used when creating the <%= vars.ops_manager %> VM.
-
-    For example:
-
-    <pre class="terminal">$ chmod 600 ops_mgr.pem</pre>
-
-1. SSH into the <%= vars.ops_manager %> VM:
-
-    ```
-    ssh -i OPS-MGR-PEM ubuntu@OPS-MANAGER-FQDN
-    ```
-    Where:
-
-    * `OPS-MGR-PEM` is the public key from the keypair used when creating the <%= vars.ops_manager %> VM.
-    * `OPS-MANAGER-FQDN` is the fully qualified domain name of your <%= vars.ops_manager %>.
-
-    For example:
-
-    <pre class="terminal">$ ssh -i ops_mgr.pem ubuntu@my-opsmanager.example.com</pre>
-
-1. Proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
-
-#### <a id='gcp'></a> Internal UAA on GCP
-
-1. Confirm that you have installed the gcloud CLI. If you do not have the gcloud CLI, see [the Google Cloud Platform documentation](https://cloud.google.com/sdk/gcloud/#downloading_gcloud):
-
-1. To configure your Google Cloud Platform project, run:
-
-    ```
-    gcloud config set project MY-PROJECT
-    ```
-    Where `PROJECT` is the name of your GCP project.
-
-    For example:
-
-    <pre class="terminal">$ gcloud config set project gcp</pre>
-
-1. Run:
-
-    ```
-    gcloud auth login MY-GCP-ACCOUNT
-    ```
-    Where `MY-GCP-ACCOUNT` is your GCP account ID.
-
-    For example:
-
-    <pre class="terminal">$ gcloud auth login user@example.com</pre>
-
-1. Run:
-
-    ```
-    gcloud compute ssh MY-INSTANCE --zone MY-ZONE
-    ```
-    Where:
-
-    * `MY-INSTANCE` is your <%= vars.ops_manager %> VM instance.
-    * `MY-ZONE` is the zone where your <%= vars.ops_manager %> VM is running.
-
-    For example:
-
-    <pre class="terminal">$ gcloud compute ssh om-<%= vars.product_name_lc %>-1a --zone us-central1-b</pre>
-
-1. Switch to the `ubuntu` user by running the following command:
-
-    ```
-    sudo su - ubuntu
-    ```
-
-1. Proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
-
-#### <a id='external-idp'></a> External UAA
-
-If you configured your <%= vars.ops_manager %> for an external Identity Provider with SAML or LDAP, you do not need any IaaS-specific setup. You can proceed to [Log in to <%= vars.ops_manager %>](#opsman_login).
-
 ### <a id='opsman_login'></a> Log in to <%= vars.ops_manager %>
 
 To log in to the <%= vars.ops_manager %> VM and retrieve your token:
@@ -171,8 +52,8 @@ To log in to the <%= vars.ops_manager %> VM and retrieve your token:
 
     <pre class="terminal">$ uaac target https://my-opsmanager.example.com/uaa</pre>
 
-1. Depending on whether your <%= vars.ops_manager %> UAA is internal or external, run a command to retrieve your UAA token and respond to the authentication prompts as follows:
-  * **Internal**
+1. Run a command to retrieve your UAA token. See below for the appropriate command to run and responses to provide for the authentication prompts.
+  * **If <%= vars.ops_manager %> UAA uses an internal or LDAP identity provider**, run:
 
     	```
       uaac token owner get
@@ -191,7 +72,7 @@ To log in to the <%= vars.ops_manager %> VM and retrieve your token:
         User name: my-opsman-username
         Password: my-opsman-password
       </pre>
-  * **External**
+  * **If <%= vars.ops_manager %> UAA uses a SAML or OIDC identity provider,** run
 
     	```
       uaac token sso get

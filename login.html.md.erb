@@ -19,6 +19,7 @@ Your login method and authentication choices are:
 
 * **[LDAP Server](#ldap):** An external identity server maintains your user database.
 
+* **[OIDC Identity Provider](#oidc):** An external identity server maintains your user database.
 
 ## <a id='login-first-time'></a> Log in to <%= vars.ops_manager %> for the first time
 
@@ -52,3 +53,7 @@ To set up internal authentication that <%= vars.ops_manager %> maintains:
 ## <a id='ldap'></a> Log in to <%= vars.ops_manager %> with LDAP
 
 <%= partial './common/using_ldap_server_ops_manager' %>
+
+## <a id='oidc'></a> Log in to <%= vars.ops_manager %> with OIDC Identity Provider
+
+<%= partial './common/using_oidc_idp_ops_manager' %>
