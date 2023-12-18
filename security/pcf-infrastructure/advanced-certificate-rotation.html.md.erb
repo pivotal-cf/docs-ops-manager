@@ -18,8 +18,7 @@ The following information describes when to use CredHub Maestro instead of <%= v
 
 * You need to rotate one or more specific CredHub managed certificates as part of a certificate rotation repair process due to errors returned by the standard procedure.
 
-* You have <%= vars.k8s_runtime_first %> installed and therefore cannot use the <%= vars.ops_manager %> API to rotate CredHub-managed certificates. In <%= vars.k8s_runtime_abbr %> v1.9 and later, these include the cluster-specfic `kubo_ca_2018` and `etcd_ca_2018` CAs and their leaf certificates.
-    <p> In <%= vars.k8s_runtime_abbr %> v1.8 and earlier, you cannot use CredHub Maestro to rotate <%= vars.k8s_runtime_abbr %> certificates. To rotate these certificates, contact <a href="https://tanzu.vmware.com/support">Support</a>.</p>
+* If you use <%= vars.k8s_runtime_first %>, rotate your certificates using the instructions in the <%= vars.k8s_runtime_abbr %> documentation; see [<%= vars.k8s_runtime_full %> Certificates|https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.18/tkgi/GUID-certificate-concepts.html]. Use the following instructions for only the certificates that are not rotated by the <%= vars.k8s_runtime_abbr %> procedures.
 
 
 ## <a id='prerequisites'></a> Prerequisites
