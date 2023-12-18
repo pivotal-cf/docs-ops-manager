@@ -30,10 +30,9 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
 </div>
 
-
-- **[Feature]** Prevent Tomcat errors from exposing the Tomcat version
-- **[Bug Fix]** The tempest-worker process crashes, resulting in background jobs not being run
-- **[Bug Fix]** Increase puma client timeouts to improve connection reliability under VM load
+- **[Known Issue Fix]** Background jobs such as the temporary file cleaner and pruning feature run as expected
+- **[Bug Fix]** Prevent the Tomcat error page from listing the Tomcat version
+- **[Bug Fix]** Increase Puma web server timeouts to improve connection reliability under VM load
 
 <table border="1" class="nice">
   <thead>
@@ -57,7 +56,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 
-
+- **[Known Issue]** Background jobs such as the temporary file cleaner and pruning feature are not being run
 - **[Feature]** Replace thin with Puma as the web server used by Ops Manager
 
 <table border="1" class="nice">
