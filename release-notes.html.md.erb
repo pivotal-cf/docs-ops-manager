@@ -27,10 +27,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
-- **[Feature]** Prevent Tomcat errors from exposing the Tomcat version
-- **[Feature]** Expose configuration in Ops Manager to allow UAA to proxy to an upstream OIDC server
-- **[Bug Fix]** The tempest-worker process crashes, resulting in background jobs not being run
-- **[Bug Fix]** Increase puma client timeouts to improve connection reliability under VM load
+- **[Feature]** Operators can configure Ops Manager to allow UAA to proxy to an upstream OIDC server. For more information about using OIDC as an Identity Provider (IdP), see [OIDC settings](./pcf-interface.html#oidc).
+- **[Known Issue Fix]** Background jobs such as the temporary file cleaner and pruning feature run as expected
+- **[Bug Fix]** Prevent the Tomcat error page from listing the Tomcat version
+- **[Bug Fix]** Increase Puma web server timeouts to improve connection reliability under VM load
 
 <table border="1" class="nice">
   <thead>
@@ -56,7 +56,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes a new version of System Metrics, which will cause all VMs to redeploy.
 </div>
 
-
+- **[Known Issue]** Background jobs such as the temporary file cleaner and pruning feature are not being run
 - **[Feature]** Replace thin with Puma as the web server used by Ops Manager
 
 <table border="1" class="nice">
