@@ -1,18 +1,23 @@
-1. In your OIDC Provider, create a new Client that will be used for authentication by <%= vars.ops_manager %>
-   * Configure the "Grant Type" to be "Authorization Code"
-   * Register `https://OPS-MAN-FQDN/uaa/login/callback/oidc` as a valid `redirect_uri` for the client
-   * If you plan to use OIDC authentication for the BOSH cli, also add `https://BOSH-FQDN-OR-IP:8443/uaa/login/callback/oidc` as a valid `redirect_uri` for the client. If you intend to use the BOSH FQDN, you will need to configure the that later in the Director Config
+1. In your OIDC provider, create a new client for <%= vars.ops_manager %> to use for authentication.
 
-1. For **Discovery URL**, enter the URL that points to your OIDC service provider discovery URL.
+  * For "Grant Type", select "Authorization Code".
+  * Register `https://OPS-MAN-FQDN/uaa/login/callback/oidc` as a valid `redirect_uri` for the client.
+  * If you plan to use OIDC authentication for the BOSH CLI, register `https://BOSH-FQDN-OR-IP:8443/uaa/login/callback/oidc` as a valid `redirect_uri` for the client. If you intend to use the BOSH FQDN, you must configure that later in the BOSH Director configuration.
 
-1. For **Client ID**, enter the "Client ID" created in step 1
+1. For **Discovery URL**, enter your OIDC service provider discovery URL.
 
-1. For **Client Secret**, enter the "Client Secret" created in step 1
+1. For **Client ID**, enter the "Client ID" created in Step 1.
 
-1. For **Scopes**, enter the scopes to request from the OIDC provider as a comma separated list. The scope of `openid` is required as well as a scope that will allow access to the group claim. Standard scopes of `email` and `profile` may be needed if you plan to use the Claims below to populate common fields in UAA
+1. For **Client Secret**, enter the "Client Secret" created in Step 1.
 
-1. The claims are used to populate the UAA user store with data from the OIDC provider. Only the External Groups Claim is required.
-   * Enter the **Username Claim** to populate the `username` field in UAA. <%= vars.ops_manager %> uses this to show the currently logged in user.
-   * Enter the **External Groups Claim** to populate the user's associated groups in UAA. Only the provided OIDC Admin Group Name and the default group names of `opsman.full_control`, `opsman.restricted_control`, `opsman.full_view` and `opsman.restricted_view` will be mapped to UAA groups.
+1. For **Scopes**, enter the scopes to request from the OIDC provider as a comma-separated list. You must include the following scopes.
 
-1. For **OIDC Admin Group Name**, enter the group name within the OIDC provider that corresponds to users that should have admin access. Users in this OIDC group will be granted the `opsman.admin` scope in UAA.
+  * The `openid` scope
+  * A scope that allows access to the group claim
+  * Standard `email` and `profile` scopes, if you plan to use the claims listed in the next step to populate common fields in UAA
+
+1. Enter the claims used to populate the UAA user store with data from the OIDC provider.
+   * Enter the **External Groups Claim** to populate associated groups for the user in UAA. Only the provided OIDC Admin Group Name and the default group names of `opsman.full_control`, `opsman.restricted_control`, `opsman.full_view` and `opsman.restricted_view` are mapped to UAA groups.
+   * (Optional) Enter the **Username Claim** to populate the `username` field in UAA. <%= vars.ops_manager %> uses this to show the current logged-in user.
+
+1. For **OIDC Admin Group Name**, enter the OIDC provider group name that corresponds to users who receive admin access. Users in this OIDC group are granted the `opsman.admin` scope in UAA.

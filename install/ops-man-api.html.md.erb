@@ -52,8 +52,8 @@ To log in to the <%= vars.ops_manager %> VM and retrieve your token:
 
     <pre class="terminal">$ uaac target https://my-opsmanager.example.com/uaa</pre>
 
-1. Depending on whether your <%= vars.ops_manager %> UAA is configured with an internal or external identity provider, run a command to retrieve your UAA token and respond to the authentication prompts as follows:
-  * **Internal or LDAP identity provider**
+1. Run a command to retrieve your UAA token. See below for the appropriate command to run and responses to provide for the authentication prompts.
+  * **If <%= vars.ops_manager %> UAA uses an internal or LDAP identity provider**, run:
 
     	```
       uaac token owner get
@@ -72,7 +72,7 @@ To log in to the <%= vars.ops_manager %> VM and retrieve your token:
         User name: my-opsman-username
         Password: my-opsman-password
       </pre>
-  * **SAML or OIDC identity provider**
+  * **If <%= vars.ops_manager %> UAA uses a SAML or OIDC identity provider,** run
 
     	```
       uaac token sso get
