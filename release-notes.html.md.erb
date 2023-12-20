@@ -26,7 +26,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
 </div>
 
-
+- **[Known Issue]** If you have already installed Stemcell 1.318 prior to upgrading to v3.0.21+LTS-T the Bosh Director will show "missing stemcell" incorrectly. Please contact support to resolve this issue.
 - **[Feature]** Operators can configure Ops Manager to allow UAA to proxy to an upstream OIDC server. For more information about using OIDC as an Identity Provider (IdP), see [OIDC settings](./pcf-interface.html#oidc).
 - **[Known Issue Fix]** Background jobs such as the temporary file cleaner and pruning feature run as expected
 - **[Bug Fix]** Prevent the Tomcat error page from listing the Tomcat version
