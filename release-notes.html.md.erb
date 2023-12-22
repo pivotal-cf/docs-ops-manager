@@ -52,6 +52,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
 </div>
 
+- **[Known Issue]** If you have already installed stemcell 621.782 before upgrading to <%= vars.ops_manager %> v2.10.67, the BOSH Director shows "missing stemcell" incorrectly. To resolve this issue, contact Support.
 - **[Known Issue Fix]** Background jobs such as the temporary file cleaner and pruning feature run as expected
 - **[Bug Fix]** Prevent the Tomcat error page from listing the Tomcat version
 - **[Bug Fix]** Increase Puma web server timeouts to improve connection reliability under VM load
