@@ -26,12 +26,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
 </div>
 
-
-- **[Feature]** Set things up so that Ops Manager-owned subprocesses (ex: ActiveJob) can have access to encrypted data
-- **[Bug Fix]** Possible race condition when upgrading Ops Manager
-- **[Feature]** Prevent Ops Manager from polluting logs files with Stack Traces from HEAD requests
-- **[Bug Fix]** Fix product template validation regression
-- **[Bug Fix]** Tiles with non-configurable instance count that have a default should always use that default
+- **[Bug Fix]** When upgrading <%= vars.ops_manager %>, additional HTTP requests during the import process no longer cause the import to fail
+- **[Bug Fix]** Restore Tile template validations. The validations were unintentionally disabled in <%= vars.ops_manager %> v3.0.11+LTS-T
+- **[Bug Fix]** Tiles with instance counts defined as non-configurable no longer keep previously configured instance count values
+- **[Bug Fix]** HEAD requests to <%= vars.ops_manager %> no longer generate errors in the logs
 
 <table border="1" class="nice">
   <thead>
