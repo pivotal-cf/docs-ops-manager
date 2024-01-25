@@ -209,6 +209,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 
 **Release Date:** September 29, 2023
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Tiles are unable to use a named manifest in a collection
 
 <table border="1" class="nice">
@@ -236,6 +237,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 </div>
 
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Improve color contrast of Tanzu Operations Manager UI.
 - **[Feature]** Add pagination to the Change Log page and improve performance of the installations API endpoint.
 - **[Feature]** Compilation VMs now have a default disk size of 64&nbsp;GB or higher to better accommodate TAS for Windows.
@@ -266,6 +268,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 <span class="note__title"> Important</span> This release includes new versions of BOSH DNS, System Metrics, which causes all VMs to redeploy.
 </p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Introduces a `bosh recover` command that allows users to more quickly recover from IaaS problems. For more information, see the [bosh recover documentation](https://bosh.io/docs/cli-v2/#recover).
 - **[Known Issue Fix]** Apply Changes no longer fails with "Extracting compiled package archive failed" when using certain versions of tiles.
 - **[Known Issue Fix]** The scheduled `bosh clean-up` task runs successfully again.
@@ -295,6 +298,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 </p>
 
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** Apply Changes can fail with "Extracting compiled package archive failed" when using certain versions of tiles. If you encounter this error, apply your changes a second time.
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes the full contents of `/var/log` and additional DNS configuration and information about disk space to help when diagnosing issues.
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes BOSH Director logs.
@@ -327,6 +331,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
   This release includes a new version of System Metrics, which causes all VMs to redeploy.
 </div>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue Fix]** The bosh-cli, when uploading releases, no longer excludes releases that have the same fingerprint but a different name. This behavior caused the "Extracting compiled package archive failed" issue in <%= vars.ops_manager %> v2.10.57.
 - **[Bug Fix]** Configuring LDAP authentication via the API no longer fails when ldap_max_search_depth is not provided.
 - **[Bug Fix]** Configuring UAA expiration tokens no longer causes UAA to restart when the values are not changed.
@@ -352,6 +357,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 
 **Release Date:** May 08, 2023
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Tanzu Operations Manager allows users to download logs for the BOSH Director
 - **[Feature]** Upgrade to Ruby 3.1
 - **[Known Issue]** Deployment of TAS and related tiles (for example, Isolation Segment) fails during the _first_ Apply Changes with the error, "Extracting compiled package archive failed". If you encounter this error, run Apply Changes again. This issue is fixed in a following release of <%= vars.ops_manager %>.
@@ -382,6 +388,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 </p>
 
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Tanzu Operations Manager allows users to download /var/log logs from deployed instances
 - **[Bug Fix]** Add descriptive 'aria-label's to buttons in Tanzu Operations Manager "Delete Product" modal
 - **[Feature]** Tanzu Operations Manager allows users to download logs for the BOSH Director
@@ -409,6 +416,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 
 **Release Date:** March 23, 2023
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Add support for AWS eu-central-2 region
 - **[Bug Fix]** Fix time synchronization on Azure-based Tanzu Operations Manager VMs
 
@@ -436,15 +444,12 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.54 causes all VMs to redeploy.</p>
 
-* **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, load times and caching for the **Stemcell Library** page are improved.
-
-* **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> supports vSphere 8.0 and NSX 4.0.
-
-* **[Known Issue]** The scheduled `bosh clean-up` task fails with a "Tried to load unspecified class: Bosh::Director::Jobs::DBJob" error.
-
-* **[Bug Fix]** Temporary verifier failures are properly exposed and do not cause a `500` error.
-
-* **[Bug Fix]** In the <%= vars.ops_manager %> Installation Dashboard, the **Review Pending Changes** page does not show a `Stemcell Out of Date` status when
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
+- **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, load times and caching for the **Stemcell Library** page are improved.
+- **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> supports vSphere 8.0 and NSX 4.0.
+- **[Known Issue]** The scheduled `bosh clean-up` task fails with a "Tried to load unspecified class: Bosh::Director::Jobs::DBJob" error.
+- **[Bug Fix]** Temporary verifier failures are properly exposed and do not cause a `500` error.
+- **[Bug Fix]** In the <%= vars.ops_manager %> Installation Dashboard, the **Review Pending Changes** page does not show a `Stemcell Out of Date` status when
 you are using the most recent stemcell versions.
 
 <table border="1" class="nice">
@@ -475,6 +480,7 @@ you are using the most recent stemcell versions.
   </ul>
 </div>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Secrets correctly redacted from Tanzu Operations Manager production logs when "See Changes" is clicked.
 - **[Feature]** Remove non-inclusive language from the Tanzu Operations Manager UI
 
@@ -501,6 +507,7 @@ you are using the most recent stemcell versions.
 <p> This release includes a new version of BOSH DNS. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.52 causes all VMs to redeploy.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Logs for instance and instance groups can be directly downloaded from a product tile's "Status" tab.
 - **[Feature]** Added additional logging to track when Tile Migrations are applied. This allows to use logs to debug issues with Tile upgrade failures.
 
@@ -527,6 +534,7 @@ you are using the most recent stemcell versions.
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.51 causes all VMs to redeploy.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Tanzu Operations Manager's **Export Installations Settings** promptly cleans up files in /tmp, allowing users to do multiple exports within a day.
 - **[Feature]** Improve accessibility when navigating the Tanzu Operations Manager UI using a keyboard. With these changes, a thick blue outline is typically placed around the currently focused link.
 - **[Feature]** Deploy the BOSH Director using PostgreSQL 13. Previously the BOSH Director was deployed with PostgreSQL 10, which has gone out of support.
@@ -554,6 +562,7 @@ you are using the most recent stemcell versions.
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.50 causes all VMs to redeploy.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** WildcardDomainResolver does not cause timeouts when remote DNS server is unresponsive
 - **[Feature]** Improve UI feedback when deleting unused products
 
@@ -577,6 +586,7 @@ you are using the most recent stemcell versions.
 
 **Release Date:** November 02, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Metrics server continues to accept old leaf certificate for mutual TLS during a CA rotation
 
 <table border="1" class="nice">
@@ -608,9 +618,10 @@ you are using the most recent stemcell versions.
   </ul>
 </div>
 
--  **[Feature]** Improve accessibility within Tanzu Operations Manager UI
--  **[Known Issue Fix]** Upgrading from below <%= vars.ops_manager %> <%= vars.v_major_version %>.9 does not default to using the Policy API for NSX-T on vSphere
--  **[Known Issue Fix]** The issue beginning in <%= vars.ops_manager %> <%= vars.v_major_version %>.41 that caused some Tanzu Operations Manager users to experience slow VM creation times has been resolved with the vSphere CPI included in this release
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
+- **[Feature]** Improve accessibility within Tanzu Operations Manager UI
+- **[Known Issue Fix]** Upgrading from below <%= vars.ops_manager %> <%= vars.v_major_version %>.9 does not default to using the Policy API for NSX-T on vSphere
+- **[Known Issue Fix]** The issue beginning in <%= vars.ops_manager %> <%= vars.v_major_version %>.41 that caused some Tanzu Operations Manager users to experience slow VM creation times has been resolved with the vSphere CPI included in this release
 
 <table border="1" class="nice">
   <thead>
@@ -632,6 +643,7 @@ you are using the most recent stemcell versions.
 
 **Release Date:** September 28, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Tanzu Operations Manager correctly removes temporary files created during an export
 - **[Known Issue Fix]** Fixes a bug preventing Azure configurations from being correctly saved/deployed when Storage Accounts are used for Cloud Storage (problem introduced in 2.10.44)
 - **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
@@ -662,6 +674,7 @@ you are using the most recent stemcell versions.
   checkbox in the <strong>vCenter Config</strong> pane of the BOSH Director tile or set the <code>nsx_t_use_policy_api</code> property in your manifest to
   <code>false</code>.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Tanzu Operations Manager generated leaf certificates includes the keyEncipherment extension
 - **[Change]** New installs of OM on vSphere default to use policy-api
 - **[Bug Fix]** Upgrading stemcell, then upgrading Tanzu Operations Manager to version that does not include that stemcell does not fail
@@ -694,6 +707,7 @@ you are using the most recent stemcell versions.
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.45 causes all VMs to redeploy.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Fix]** BOSH task cleanup occurs daily (rather than weekly). This change might alleviate issues seen in deployments where the BOSH Director runs tasks frequently (e.g. for monitoring).
 - **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Tanzu Operations Manager 2.10.44)
 - **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
@@ -718,6 +732,7 @@ you are using the most recent stemcell versions.
 
 **Release Date:** July 14, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Security Fix]** Remediated CVE-2022-23923 in the tile JavaScript migration process.
 - **[Known Issue]** Azure configurations cannot be correctly saved/deployed when Storage Accounts are used for Cloud Storage (this issue first appears in Tanzu Operations Manager 2.10.44)
 - **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
@@ -742,6 +757,7 @@ you are using the most recent stemcell versions.
 
 **Release Date:** June 16, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue Fix]** Certificates endpoint no longer returns a 500 error due to "nested asn" error. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** Deleting VM types using the API endpoint is allowed even when VMs are deployed with those types. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** Content-Security-Policy header does not prevent users logging in with SAML. Issue is introduced in v2.10.40.
@@ -767,6 +783,7 @@ you are using the most recent stemcell versions.
 
 **Release Date:** June 11, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue Fix]** The expiring certificates API does not return a 500 status error when syslog certificates are not configured. Issue is introduced in v2.10.40.
 - **[Known Issue Fix]** The VM type deletion API endpoint does not return a 500 status error. Issue is introduced in v2.10.40.
 - **[Known Issue]** vSphere deployments might create VMs much more slowly than Tanzu Operations Manager versions prior to 2.10.41 if there are multiple datastores attached to the target AZs.
@@ -791,6 +808,7 @@ you are using the most recent stemcell versions.
 
 **Release Date:** June 07, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** The BOSH Director would fail to deploy if the persistent disk still contained the postgres 9 data directory. This data has not been in use since Tanzu Operations Manager 2.4, but there was no automated cleanup process.
 - **[Known Issue]** The expiring certificates API endpoint returns a 500 status error for customers that have the syslog feature configured without entering an SSL certificate. Additionally, attempting to generate a support bundle returns an error. To workaround this issue, see [Support bundle download gives error undefined method `strip` and Tanzu Operations Manager certificate pane does not load](https://community.pivotal.io/s/article/Support-bundle-download-gives-error-undefined-method)
 - **[Known Issue]** Deleting custom VM types using the API always returns a 500 status error.
@@ -823,6 +841,7 @@ This issue if resolved in <%= vars.v_major_version %>.41. This release includes 
 <%= vars.ops_manager %> <%= vars.v_major_version %>.40 causes all VMs to
   redeploy.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** The Certificates page and expiring certificates API endpoint now include configurable certificates that were not previously displayed. The new certificates include IaaS and trusted certificates within the BOSH Director tile, the Tanzu Operations Manager SSL certificate, syslog certificates, and certificates in plain-text fields within other tiles. After upgrading to this patch, the expiring certificates
 warning banner might appear if any of these certificates are close to their expiration date.
 - **[Feature]** Allow users to select a stemcell for the BOSH Director tile. This allows you to redeploy the BOSH Director with newer stemcells without upgrading to a new Tanzu Operations Manager patch. Users still need to upgrade to the latest Tanzu Operations Manager patch to receive CVE fixes for the Tanzu Operations Manager VM itself.
@@ -859,6 +878,7 @@ warning banner might appear if any of these certificates are close to their expi
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.39 causes all VMs to redeploy.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Changes to `/api/v0/installation_asset_collection` in 2.10.37 were inconsistent with Tanzu Operations Manager RBAC documentation. The endpoint is now unavailable for users without access to view credentials.
 - **[Feature]** Allow users to downgrade stemcells for Tiles. This makes it easier to recover from a stemcell/Tile compatibility problem.
 
@@ -890,6 +910,7 @@ warning banner might appear if any of these certificates are close to their expi
 This release is primarily intended for OpenStack users as images are not available for <%= vars.ops_manager %> <%= vars.v_major_version %>.37. There are no
 major functionality changes in this release.
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Update dependencies in systemd config for the Tanzu Operations Manager VM. This was causing error messages to appear in `/var/log/syslog`
 
 <table border="1" class="nice">
@@ -912,6 +933,7 @@ major functionality changes in this release.
 
 **Release Date:** April 06, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Security Fix]** This release addresses [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). We now consider this update necessary for secure operation, and recommend installation ASAP. We previously believed this was fixed in 2.10.35 but further investigation found it was not.
 - **[Known Issue]** OpenStack images are currently unavailable for 2.10.37. It's recommended to follow the [workaround instructions](https://community.pivotal.io/s/article/Workaround-instructions-to-address-CVE-2022-22965-in-Tanzu-Application-Service?language=en_US) for OpenStack environments until we are able to publish the updated image.
 - **[Breaking Change]** **[Security Fix]** Restricted View users can no longer access the `/api/v0/installation_asset_collection` API endpoint. The output contains hashed credentials.
@@ -937,6 +959,7 @@ major functionality changes in this release.
 
 **Release Date:** April 01, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** This release is impacted by [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). Please upgrade to 2.10.37 or higher.
 - **[Known Issue Fix]** Reverts Azure CPI to v38 to address a bug that required internet connectivity.
 
@@ -960,8 +983,9 @@ major functionality changes in this release.
 
 **Release Date:** April 01, 2022
 
-* **[Known Issue]** This release originally addressed [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). After additional investigation we found this vulnerability still exists. Please upgrade to 2.10.37 or higher.
-* **[Known Issue]** On Azure, BOSH might fail to deploy if it does not have internet access due to a problem with Azure CPI v39.
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
+- **[Known Issue]** This release originally addressed [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). After additional investigation we found this vulnerability still exists. Please upgrade to 2.10.37 or higher.
+- **[Known Issue]** On Azure, BOSH might fail to deploy if it does not have internet access due to a problem with Azure CPI v39.
 
 <table border="1" class="nice">
   <thead>
@@ -986,6 +1010,8 @@ major functionality changes in this release.
 
 <p class='note caution'><strong>Caution:</strong> This release includes a new version of BOSH DNS. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.34 causes all VMs to redeploy. For more information, see <a href="#2-10-33">v2.10.33</a> below.</p>
+
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 
 <table border="1" class="nice">
   <thead>
@@ -1022,6 +1048,7 @@ major functionality changes in this release.
     Certificates Have Correct SAN Fields</a> in the Knowledge Base.
 </div>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Certificate rotation procedures appear on the **Certificates** page and API endpoint
 - **[Feature]** The **Certificates** page can be filtered by both expiration date and rotation procedure
 - **[Feature]** Added support for Jammy Jellyfish (Ubuntu 22.04) stemcells.
@@ -1046,6 +1073,7 @@ major functionality changes in this release.
 
 **Release Date:** February 25, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director. This was most commonly seen in BOSH releases for Windows components.
 
 <table border="1" class="nice">
@@ -1071,6 +1099,7 @@ major functionality changes in this release.
 
 **Release Date:** February 23, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Tanzu Operations Manager pre_deploy_check fails on vSphere
 
 <table border="1" class="nice">
@@ -1096,6 +1125,7 @@ major functionality changes in this release.
 
 **Release Date:** February 16, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
 - **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.28](#2-10-28) is resolved in this release. This issue caused deployment failures if a tile used a BOSH release with source packages that shared some packages with a BOSH release that was already uploaded to the BOSH Director.
 - **[Bug Fix]** BOSH deployments failing when enabling Spot Instances with VM Extensions is resolved in this release.
@@ -1124,6 +1154,7 @@ major functionality changes in this release.
 
 **Release Date:** February 11, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
 - **[Bug Fix]** The UAA issue introduced in [v2.10.27](#2-10-27) causing UAA startup to fail on air-gapped environments is resolved in this release.
 - **[Bug Fix]** An additional BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release. This issue caused deployment failures if a BOSH release that includes compiled packages was uploaded, and an identical BOSH release that includes source packages already existed on the BOSH Director.
@@ -1151,6 +1182,7 @@ major functionality changes in this release.
 
 **Release Date:** February 04, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** UAA fails to start in air-gapped Tanzu Operations Manager environments.
 - **[Known Issue]** The API endpoint `/api/v0/staged/director/pre_deploy_check` fails in vSphere environments with an `Internal Server Error`.
 - **[Bug Fix]** The BOSH CLI issue introduced in [v2.10.27](#2-10-27) is resolved in this release.
@@ -1182,6 +1214,7 @@ major functionality changes in this release.
 For more information about custom VM type catalogs for GCP deployments, see the [<%= vars.ops_manager %> API
 documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-ops-man-api.html).
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Security Fix]** Upgrades the Tanzu Operations Manager PostgreSQL to 13.5 and the BOSH Director PostgreSQL to 10.19 to fix a potential MITM vulnerability.
 ([CVE-2021-23214](https://www.postgresql.org/support/security/CVE-2021-23214/))
 
@@ -1213,6 +1246,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** January 13, 2022
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Tanzu Operations Manager OpenAPI documentation fixes:
     - Sample URLs in the documentation no longer have a duplicate and erroneous "/api/v0" component in their path.
     - The hostname in the URLs is corrected and is no longer "{opsmanager-installation}}".
@@ -1242,6 +1276,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** December 22, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Security Fix]** Upgrades the included versions of CredHub and UAA to fix a potential Denial of Service vulnerability caused by Log4j2.
   ([CVE-2021-45105](https://nvd.nist.gov/vuln/detail/CVE-2021-45105))
 
@@ -1273,6 +1308,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
   </ul>
 </div>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
 
 <table border="1" class="nice">
@@ -1302,6 +1338,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
   <strong>Caution:</strong> This patch upgrades components using Log4j to version 2.15 in order to mitigate <a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a>. VMware recommends upgrading to Tanzu Operations Manager v2.10.24, which uses Log4j version 2.16 instead. If you are unable to upgrade, you can mitigate this CVE manually. See <a href="https://community.pivotal.io/s/article/5004y00001mPn2N1639255611105?language=en_US">Instructions to address CVE-2021-44228 in Tanzu Operations Manager</a>.
 </p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Incomplete Security Fix]** Fix remote code execution vulnerability related to Log4j (CVE-2021-44228)
 - **[Feature]** Allow configuration of OM UAA's password policies
 - **[Feature]** Allow operators to require IMDSv2 in AWS. For more information, see [Enable IMDSv2 in <%= vars.ops_manager%>](security/security-adjacent/security-guidelines-iaas.html#aws-imds-v2).
@@ -1329,6 +1366,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** November 29, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** The IMDS Hop Limit can now be configured on AWS. See the `metadata_options` property on the [bosh.io AWS CPI documentation](https://bosh.io/docs/aws-cpi/#resource-pools)
 - **[Bug Fix]** Tanzu Operations Manager does not re-apply Identification Tags to VMs on every deploy. This issue was introduced in v2.10.20. The tags must be applied one final time for any VMs deployed using Tanzu Operations Manager v2.10.20 or v2.10.21.
 - **[Bug Fix]** Tanzu Operations Manager scales the maximum database connections on the BOSH Director database with the number of BOSH workers specified. Previously, scaling the workers could lead to running out of database connections.
@@ -1356,6 +1394,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** November 10, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Operators can clear the default trusted certificates store on BOSH-deployed VMs.
 - **[Feature]** Operators can specify trusted certificates for use with S3-compatible blobstores.
 - **[Bug Fix]** Root disks in AWS respect the AWS EBS disk type setting.
@@ -1384,6 +1423,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** November 2, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Operators can rotate CAs without having to re-create affected VMs. This requires stemcells Xenial 621.171 or later and Windows 2019.41 or later. For more information, see [Rotating CAs and Leaf Certificates](security/pcf-infrastructure/rotate-cas-and-leaf-certs.html).
 - **[Feature]** Include uaa.log files in support bundle.
 - **[Known Issue]** If Prometheus alerting rules are configured on this version of Tanzu Operations Manager, Healthwatch versions 2.0.0 to 2.1.4 fail to deploy.
@@ -1412,6 +1452,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** October 12, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** Operators can choose between `gp2` and `gp3` for the default AWS disk type.
 - **[Feature]** Operators can override certificate durations. See [Override Duration for Certificates](#certificate-duration-overrides) below.
 - **[Feature]** Operators can configure additional SSH users on the BOSH Director.
@@ -1441,6 +1482,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** September 28, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** BOSH Director disk is no longer re-created when its size and properties have not changed. See [BOSH Director Disk Is Re-Created Unnecessarily](#recreate-persistent-disks) below.
 - **[Bug Fix]** Fixes potential issue with the vSphere CPI where disk UUIDs might not be correctly returned, causing the wrong disk to be attached.
 
@@ -1467,6 +1509,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** September 16, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** TKGI customers are recommended to skip this version. Deployments using the `disk.enableUUID` vmx option and attaching additional SCSI devices, for example, TKGI clusters using persistent volumes, might experience data loss if the VM is powered off and powered on again. This is due to a functional regression causing the VM to mount the wrong disk at startup. This regression is fixed in v2.10.18.
 
 - **[Bug Fix]** Operators can configure NSX-T server pools without a port.
@@ -1495,6 +1538,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 **Release Date:** July 22, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** BOSH Backup and Restore works correctly when using AWS IAM Profiles.
 - **[Bug Fix]** vSphere unexpected VM and persistent disk re-creations no longer occur. However, if you have installed Tanzu Operations Manager v2.10.15 and already re-created all VMs and disks, they are re-created again after you click **Apply Changes** in Tanzu Operations Manager v2.10.16.
 
@@ -1523,6 +1567,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 
 <p> This release shipped with a change that affects vSphere users. This change causes unintended recreation of all VMs and disks on the next Apply Changes. This issue is fixed in v2.10.16. However, if you have already re-created all VMs and disks, they are re-created again when you click <strong>Apply Changes</strong> on v2.10.16.</p>
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** Foundations that use multiple vCenter Configs might encounter failures when applying changes with the message `No valid placement found for VM compute and storage requirement`. A bug was introduced in <%= vars.ops_manager %> v2.10.15 that requires the following workaround: the datastores listed in the **Ephemeral and/or Persistent Datastore Names** field of the first vCenter Config must be the union of all **Ephemeral or Persistent Datastore Names** across all vCenter Configs.
 
 - **[Feature]** Support for vSphere datastore clusters.
@@ -1554,6 +1599,7 @@ Tanzu Operations Manager v2.10.15 uses the following component versions:
 
 **Release Date:** June 16, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue Fix]** NSX-T Certificate Authentication does not cause **Apply Changes** to fail. Issue is introduced in v2.10.12.
 
 Tanzu Operations Manager v2.10.14 uses the following component versions:
@@ -1580,6 +1626,7 @@ Tanzu Operations Manager v2.10.14 uses the following component versions:
 
 **Release Date:** June 10, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** NSX-T Certificate Authentication causes **Apply Changes** to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`.
 
 Tanzu Operations Manager v2.10.13 uses the following component versions:
@@ -1606,6 +1653,7 @@ Tanzu Operations Manager v2.10.13 uses the following component versions:
 
 **Release Date:** June 7, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** NSX-T Certificate Authentication causes **Apply Changes** to fail with the following error: `uninitialized constant VSphereCloud::Cloud::Tempfile`.
 - **[Bug Fix]** Removes an unnecessary vSphere privilege.
 
@@ -1633,6 +1681,7 @@ Tanzu Operations Manager v2.10.12 uses the following component versions:
 
 **Release Date:** May 11, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** You can distinguish between fixed and floating stemcells on the **Stemcells** in the <%= vars.ops_manager %> UI.
 - **[Feature]** Maestro topology output is included in the support bundle.
 - **[Feature]** `us-gov-east-1` region is available in AWS GovCloud.
@@ -1662,6 +1711,7 @@ Tanzu Operations Manager v2.10.11 uses the following component versions:
 
 **Release Date:** April 27, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue Fix]** <%= vars.ops_manager %> does not overwrite UAAC. Known issue is introduced in <%= vars.ops_manager %> v2.10.9.
 - **[Bug Fix]** Regenerating leaf certificates succeeds when CredHub server certificate is expired.
 
@@ -1689,6 +1739,7 @@ Tanzu Operations Manager v2.10.10 uses the following component versions:
 
 **Release Date:** April 13, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Breaking Change]** On **Apply Changes**, <%= vars.ops_manager %> generates new BOSH DNS certificates with a subject alternative name (SAN). On upgrade to v2.10.9 and later, you must run the **Upgrade service instances** errand on service tiles and **Apply Changes** to all tiles. Upgrading <%= vars.ops_manager %> while a CA rotation is in progress results in the inability to **Apply Changes** due to safety violations.
 - **[Known Issue]** Due to permission changes, running `uaac` as the `ubuntu` user results in the error `/home/tempest-web/tempest/web/vendor/uaac/Gemfile not found`. To work around this issue, run `unalias uaac` as the `ubuntu` user before running `uaac`. <%= vars.ops_manager %> v2.10.10 and later fixes this issue.
 - **[Feature]** vSphere users have the option to use the Policy API when placing VMs in policy NSX-T groups by enabling **Use NSX-T Policy API** in the **vCenter Config** pane of the BOSH Director tile
@@ -1725,6 +1776,7 @@ Tanzu Operations Manager v2.10.9 uses the following component versions:
 
 **Release Date:** February 23, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue Fix]** Resolves issue discovered in v2.10.7 with sending BOSH System metrics to the Firehose
 
 Tanzu Operations Manager v2.10.8 uses the following component versions:
@@ -1751,6 +1803,7 @@ Tanzu Operations Manager v2.10.8 uses the following component versions:
 
 **Release Date:** February 11, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Known Issue]** Tanzu Operations Manager v2.10.7 has an issue sending BOSH System metrics to the Firehose.
 This causes a loss of monitoring for systems relying on metrics
 including Healthwatch and other downstream monitoring implementations. For more information
@@ -1784,6 +1837,7 @@ Tanzu Operations Manager v2.10.7 uses the following component versions:
 
 **Release Date:** January 29, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Security Fix]** This patch addresses [CVE-2021-3156](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-3156)
 
 Tanzu Operations Manager v2.10.6 uses the following component versions:
@@ -1810,6 +1864,7 @@ Tanzu Operations Manager v2.10.6 uses the following component versions:
 
 **Release Date:** January 25, 2021
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]** Unnecessary `Host.Inventory.EditCluster` permission check for vSphere is removed
 - **[Bug Fix]** You can apply NSX settings to BOSH Director when using Principal Identity Certificate authorization with NSX-T
 
@@ -1837,6 +1892,7 @@ Tanzu Operations Manager v2.10.5 uses the following component versions:
 
 **Release Date:** December 10, 2020
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** BlobstoreVerifier has improved logging and error messaging.
 - **[Feature]** Operators can use the Tanzu Operations Manager API to rotate certificates on Redis for Pivotal Platform v2.3 and later.
 - **[Bug Fix]** Tanzu Operations Manager no longer returns an error when uploading a stemcell twice.
@@ -1869,6 +1925,7 @@ Tanzu Operations Manager v2.10.4 uses the following component versions:
 **Release Date:** November 18, 2020
 
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]** A yellow banner in the Tanzu Operations Manager UI shows the number of days until a certificate expires. The banner appears when a certificate expires soon.
 - **[Feature]** When you export a `installation.zip` file, a new `metadata.json` file includes timestamp, version, and product GUID. The `metadata.json` file can be used to identify when the export was created, which foundation the export represents, and to ensure that you are using the correct export file during an upgrade.
 - **[Feature]** API endpoints default to `application/json` content type
@@ -1914,6 +1971,7 @@ Tanzu Operations Manager v2.10.3 uses the following component versions:
 
 **Release Date:** September 25, 2020
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Bug Fix]**: `IaasConfigurationVerifier` no longer fails on Azure deployments with a `500` error when you click **Apply Changes** or modify IaaS settings.
 
 - **[Bug Fix]**: Actions that require Instance Metadata Service (IMDS), such as configuring antivirus or adding SSH keys,
@@ -1976,6 +2034,7 @@ Tanzu Operations Manager v2.10.2 uses the following component versions:
 
 **Release Date:** September 1, 2020
 
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 - **[Feature]**: Addition of `tasks_cleanup_schedule`, a scheduled task that cleans up completed BOSH tasks to reduce memory consumption. This task runs weekly by default.
 - **[Feature]**: If you click the **Support** link in the Tanzu Operations Manager UI, information about expired certificates appears in the Platform Information Bundle.
 - **[Bug Fix]**: The `regenerate` API endpoint does not exclude any leaf certificates from rotation.
@@ -2015,6 +2074,7 @@ Tanzu Operations Manager v2.10.1 uses the following component versions:
 
 * See [New Features in <%= vars.ops_manager %> v2.10](#major-features).
 * See [Breaking Changes in <%= vars.ops_manager %> v2.10](#breaking-changes).
+- **[Known Issue]** This version is incompatible with vSphere versions 8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> 2.10.63 for compatibility with vSphere 8.0.3 and later
 
 <%= vars.ops_manager %> v2.10.0 uses the following component versions:
 
