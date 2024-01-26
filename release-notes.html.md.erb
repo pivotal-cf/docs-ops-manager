@@ -217,6 +217,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** September 29, 2023
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Bug Fix]** Tiles are unable to use a named manifest in a collection
 
 <table border="1" class="table">
@@ -243,6 +244,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
 </div>
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** Improve color contrast of Tanzu Operations Manager UI.
 - **[Feature]** Add pagination to the Change Log page and improve performance of the installations API endpoint.
 - **[Feature]** Compilation VMs now have a default disk size of 64&nbsp;GB or higher to better accommodate TAS for Windows.
@@ -275,6 +277,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </p>
 
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** Introduces a `bosh recover` command that allows users to more quickly recover from IaaS problems. For more information, see the [bosh recover documentation](https://bosh.io/docs/cli-v2/#recover).
 - **[Feature]** Disk type for deployed VMs is now configurable on GCP.
 - **[Known Issue Fix]** Apply Changes no longer fails with "Extracting compiled package archive failed" when using certain versions of tiles.
@@ -300,6 +303,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** July 03, 2023
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Known Issue]** Apply Changes can fail with "Extracting compiled package archive failed" when using certain versions of tiles. If you encounter this error, apply your changes a second time.
 - **[Feature]** It is now possible to configure vSphere to use [human-readable VM names](https://bosh.io/docs/vsphere-human-readable-names/).
 - **[Bug Fix]** API docs now load as expected (Javascript issues caused loading problems).
@@ -328,6 +332,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <p>
 
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes BOSH Director logs.
 
 <table border="1" class="table">
@@ -354,6 +359,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </p>
 
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** The <%= vars.ops_manager %> Support Bundle now includes the full contents of `/var/log` and additional DNS configuration and information about disk space to help when diagnosing issues.
 - **[Feature]** Tiles can now be re-uploaded to Tanzu Operations Manager. You can re-upload tiles in cases where the BOSH releases or Tile metadata currently on the <%= vars.ops_manager %> instance are missing or corrupted.
 - **[Feature]** You can now nest datastore clusters within folders in vSphere by entering the full path to the datastore cluster. Folder names must be followed by a forward slash character.
@@ -385,6 +391,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <div> This release includes a new version of System Metrics, which causes all VMs to redeploy.
 </div>
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Known Issue Fix]** The bosh-cli, when uploading releases, no longer excludes releases that have the same fingerprint but a different name. This behavior caused the "Extracting compiled package archive failed" issue in <%= vars.ops_manager %> v3.0.9+LTS-T.
 - **[Bug Fix]** Configuring LDAP authentication through the API no longer fails when ldap_max_search_depth is not provided.
 - **[Bug Fix]** Configuring UAA expiration tokens no longer causes UAA to restart when the values are not changed.
@@ -411,6 +418,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 08, 2023
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Known Issue]** Deployment of VMware Tanzu Application Service  and related tiles (for example, Isolation Segment) fail during the _first_ Apply Changes with the error, "Extracting compiled package archive failed". If you encounter this error, run Apply Changes again.
 This issue is fixed in a following release of <%= vars.ops_manager %>.
 - **[Known Issue Fix]** The BOSH Director now looks up compiled packages by name in addition to fingerprint. For more information about this known issue, see [BOSH Inappropriately Reuses Compiled Packages](#bosh-reuses-packages).
@@ -436,6 +444,7 @@ This issue is fixed in a following release of <%= vars.ops_manager %>.
 
 **Release Date:** May 01, 2023
 
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** Allow both gp3 and throughput (IOPS) to be set through API when creating custom disk types
 - **[Feature]** Use clang to compile Ruby in Tanzu Operations Manager
 - **[Bug Fix]** Default ldap "Group Max Search Depth" to 1
@@ -463,16 +472,13 @@ This issue is fixed in a following release of <%= vars.ops_manager %>.
 
 **Release Date:** April 05, 2023
 
-* **[Feature]** You can download logs for the BOSH Director from the **Status** page in the <%= vars.ops_manager %> Installation Dashboard.
-
-* **[Feature Improvement]** Internal Rails logs for <%= vars.ops_manager %> include log tags.
-
-* **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, the **Delete Product** modal is more accessible for users who use screen
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
+- **[Feature]** You can download logs for the BOSH Director from the **Status** page in the <%= vars.ops_manager %> Installation Dashboard.
+- **[Feature Improvement]** Internal Rails logs for <%= vars.ops_manager %> include log tags.
+- **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, the **Delete Product** modal is more accessible for users who use screen
 readers.
-
-* **[Bug Fix]** The Azure CPI properly updates the Azure China region when you deploy <%= vars.ops_manager %>.
-
-* **[Bug Fix]** `bpm` no longer restricts the size of `/dev/shm` to 64&nbsp;MB. As a result, `/dev/shm` no longer causes PostgreSQL failures.
+- **[Bug Fix]** The Azure CPI properly updates the Azure China region when you deploy <%= vars.ops_manager %>.
+- **[Bug Fix]** `bpm` no longer restricts the size of `/dev/shm` to 64&nbsp;MB. As a result, `/dev/shm` no longer causes PostgreSQL failures.
 
 <table border="1" class="table">
   <thead>
@@ -498,16 +504,15 @@ readers.
 <p> This release includes a new version of BOSH DNS. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.6+LTS-T causes all VMs to redeploy.</p>
 
-* **[Feature]** Logs downloaded from BOSH-deployed VMs through <%= vars.ops_manager %> also contain logs from the `/var/log` directory.
-
-* **[Known Issue Fix]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T, improperly encoded data in the
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
+- **[Feature]** Logs downloaded from BOSH-deployed VMs through <%= vars.ops_manager %> also contain logs from the `/var/log` directory.
+- **[Known Issue Fix]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T, improperly encoded data in the
 <%= vars.ops_manager %> database does not cause redeployments to fail. For more information about this known issue, see [Missing Classes Cause Redeployment
 Failures](#re-deploy-fail).
   <p> If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
     <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
     the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>
-
-* **[Bug Fix]** When you retrieve the manifest for a deployed product through the <%= vars.ops_manager %> API, the API endpoint no longer returns an invalid
+- **[Bug Fix]** When you retrieve the manifest for a deployed product through the <%= vars.ops_manager %> API, the API endpoint no longer returns an invalid
 manifest.
 
 <table border="1" class="table">
@@ -533,35 +538,25 @@ manifest.
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.5+LTS-T causes all VMs to redeploy.</p>
 
-* **[Feature]** <%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version. If you use automation scripts to deploy
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
+- **[Feature]** <%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version. If you use automation scripts to deploy
 <%= vars.ops_manager %>, you might need to update them in order to install new patch versions. For more information, see [Long-Term Support for
 <%= vars.ops_manager %> <%= vars.v_major_version %>](#lts).
-
-* **[Feature]** You can rotate non-configurable leaf certificates through the **Review Pending Changes** page in the <%= vars.ops_manager %> Installation
+- **[Feature]** You can rotate non-configurable leaf certificates through the **Review Pending Changes** page in the <%= vars.ops_manager %> Installation
 Dashboard. For more information, see [Rotate Non-Configurable Leaf Certificates During Redeployment](#rotate-certs-redeploy).
-
-* **[Feature]** You can configure your VMs to use short-lived NATS credentials during the bootstrap process. For more information, see [Short-Lived NATS
+- **[Feature]** You can configure your VMs to use short-lived NATS credentials during the bootstrap process. For more information, see [Short-Lived NATS
 Bootstrap Credentials](#short-lived-nats-creds).
-
-* **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> uses Rails 7.0.
-
-* **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> uses Node 18.
-
-* **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> supports vSphere 8.0 and NSX 4.0.
-
-* **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, load times and caching for the **Stemcell Library** page are improved.
-
-* **[Known Issue Fix]** Upgrading from previous versions of <%= vars.ops_manager %> does not corrupt the PostgreSQL database indexes in the BOSH Director. For
+- **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> uses Rails 7.0.
+- **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> uses Node 18.
+- **[Feature Improvement]** <%= vars.ops_manager %> <%= vars.v_major_version %> supports vSphere 8.0 and NSX 4.0.
+- **[Feature Improvement]** In the <%= vars.ops_manager %> Installation Dashboard, load times and caching for the **Stemcell Library** page are improved.
+- **[Known Issue Fix]** Upgrading from previous versions of <%= vars.ops_manager %> does not corrupt the PostgreSQL database indexes in the BOSH Director. For
 more information about this known issue, see [Upgrading <%= vars.ops_manager %> Corrupts BOSH Director PostgreSQL Database Indexes](#postgres-db-index).
-
-* **[Known Issue]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T, improperly encoded data in the <%= vars.ops_manager %>
+- **[Known Issue]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T, improperly encoded data in the <%= vars.ops_manager %>
 database can cause redeployments to fail. For more information, see [Missing Classes Cause Redeployment Failures](#re-deploy-fail).
-
-* **[Known Issue]** The scheduled `bosh clean-up` task fails with a "Tried to load unspecified class: Bosh::Director::Jobs::DBJob" error.
-
-* **[Bug Fix]** Temporary verifier failures are properly exposed and do not cause a `500` error.
-
-* **[Bug Fix]** In the <%= vars.ops_manager %> Installation Dashboard, the **Review Pending Changes** page does not show a `Stemcell Out of Date` status when
+- **[Known Issue]** The scheduled `bosh clean-up` task fails with a "Tried to load unspecified class: Bosh::Director::Jobs::DBJob" error.
+- **[Bug Fix]** Temporary verifier failures are properly exposed and do not cause a `500` error.
+- **[Bug Fix]** In the <%= vars.ops_manager %> Installation Dashboard, the **Review Pending Changes** page does not show a `Stemcell Out of Date` status when
 you are using the most recent stemcell versions.
 
 <table border="1" class="table">
@@ -588,9 +583,9 @@ you are using the most recent stemcell versions.
 <p> This release includes new versions of BOSH DNS and System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.4 causes all VMs to redeploy.</p>
 
-* **[Feature]** The <%= vars.ops_manager %> Installation Dashboard uses more inclusive text.
-
-* **[Bug Fix]** When you click **See Changes**, secrets are correctly redacted from <%= vars.ops_manager %> production logs.
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
+- **[Feature]** The <%= vars.ops_manager %> Installation Dashboard uses more inclusive text.
+- **[Bug Fix]** When you click **See Changes**, secrets are correctly redacted from <%= vars.ops_manager %> production logs.
 
 <table border="1" class="table">
   <thead>
@@ -612,11 +607,10 @@ you are using the most recent stemcell versions.
 
 **Release Date:** January 06, 2023
 
-* **[Feature]** The ephemeral disk size of `e2-highmem-4` and `e2-highmem-8` VM types is increased.
-
-* **[Feature]** You can download logs for instances and instance groups from the **Status** page in the <%= vars.ops_manager %> Installation Dashboard.
-
-* **[Feature]** <%= vars.ops_manager %> creates additional logs to track when tile migrations are applied. This allows VMware to better use logs to debug
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
+- **[Feature]** The ephemeral disk size of `e2-highmem-4` and `e2-highmem-8` VM types is increased.
+- **[Feature]** You can download logs for instances and instance groups from the **Status** page in the <%= vars.ops_manager %> Installation Dashboard.
+- **[Feature]** <%= vars.ops_manager %> creates additional logs to track when tile migrations are applied. This allows VMware to better use logs to debug
 issues with tile upgrade failures.
 
 <table border="1" class="table">
@@ -638,6 +632,8 @@ issues with tile upgrade failures.
 ### <a id='3-0-2'></a> v3.0.2
 
 **Release Date:** December 16, 2022
+
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.2 causes all VMs to redeploy.</p>
@@ -665,13 +661,11 @@ issues with tile upgrade failures.
 <p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
   <%= vars.v_major_version %>.1 causes all VMs to redeploy.</p>
 
-* **[Feature]** BOSH Director is deployed with PostgreSQL 13.
-
-* **[Feature]** Keyboard accessibility for navigating the <%= vars.ops_manager %> Installation Dashboard is improved.
-
-* **[Bug Fix]** When you export your installation settings, files on disk are properly cleaned up.
-
-* **[Bug Fix]** Deploying the BOSH Director in an air-gapped environment no longer causes an error.
+- **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
+- **[Feature]** BOSH Director is deployed with PostgreSQL 13.
+- **[Feature]** Keyboard accessibility for navigating the <%= vars.ops_manager %> Installation Dashboard is improved.
+- **[Bug Fix]** When you export your installation settings, files on disk are properly cleaned up.
+- **[Bug Fix]** Deploying the BOSH Director in an air-gapped environment no longer causes an error.
 
 <table border="1" class="table">
   <thead>
@@ -694,11 +688,9 @@ issues with tile upgrade failures.
 
 **Release Date:** November 15, 2022
 
-* See [New Features in <%= vars.ops_manager %> v3.0](#major-features).
-
-* See [Breaking Changes in <%= vars.ops_manager %> v3.0](#breaking-changes).
-
-* See [Known Issues in <%= vars.ops_manager %> v3.0](#known-issues).
+- See [New Features in <%= vars.ops_manager %> v3.0](#major-features).
+- See [Breaking Changes in <%= vars.ops_manager %> v3.0](#breaking-changes).
+- See [Known Issues in <%= vars.ops_manager %> v3.0](#known-issues).
 
 <%= vars.ops_manager %> v3.0.0 uses the following component versions:
 
@@ -925,6 +917,10 @@ BOSH Director tile.
 ## <a id='known-issues'></a> Known issues
 
 In <%= vars.ops_manager %> <%= vars.v_major_version %> includes the following known issues:
+
+### <a id='vsphere-8-0-3'></a> vSphere v8.0.3 incompatibility
+
+This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 
 ### <a id='postgres-db-index'></a> Upgrading <%= vars.ops_manager %> corrupts BOSH Director PostgreSQL database indexes
 
