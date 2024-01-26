@@ -620,8 +620,8 @@ you are using the most recent stemcell versions.
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v2.10.63 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** Improve accessibility within Tanzu Operations Manager UI
-- **[Known Issue Fix]** Upgrading from below <%= vars.ops_manager %> <%= vars.v_major_version %>.9 does not default to using the Policy API for NSX-T on vSphere
-- **[Known Issue Fix]** The issue beginning in <%= vars.ops_manager %> <%= vars.v_major_version %>.41 that caused some Tanzu Operations Manager users to experience slow VM creation times has been resolved with the vSphere CPI included in this release
+- **[Known Issue Fix]** Upgrading from versions earlier than <%= vars.ops_manager %> <%= vars.v_major_version %>.9 does not default to using the Policy API for NSX-T on vSphere
+- **[Known Issue Fix]** The issue beginning in <%= vars.ops_manager %> <%= vars.v_major_version %>.41 that caused some Tanzu Operations Manager users to experience slow VM creation times is resolved with the vSphere CPI included in this release
 
 <table border="1" class="nice">
   <thead>
@@ -984,8 +984,8 @@ major functionality changes in this release.
 **Release Date:** April 01, 2022
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v2.10.63 for compatibility with vSphere v8.0.3 and later
-- **[Known Issue]** This release originally addressed [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). After additional investigation we found this vulnerability still exists. Please upgrade to 2.10.37 or higher.
-- **[Known Issue]** On Azure, BOSH might fail to deploy if it does not have internet access due to a problem with Azure CPI v39.
+- **[Known Issue]** This release originally addressed [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965). Additional investigation found that this vulnerability still exists. Upgrade to v2.10.37 or higher.
+- **[Known Issue]** On Azure, BOSH might fail to deploy if it does not have Internet access due to a problem with Azure CPI v39.
 
 <table border="1" class="nice">
   <thead>
