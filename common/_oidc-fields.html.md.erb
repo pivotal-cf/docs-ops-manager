@@ -17,7 +17,7 @@
   * Standard `email` and `profile` scopes, if you plan to use the claims listed in the next step to populate common fields in UAA
 
 1. Enter the claims used to populate the UAA user store with data from the OIDC provider.
-   * Enter the **External Groups Claim** to populate associated groups for the user in UAA. Only the provided OIDC Admin Group Name and the default group names of `opsman.full_control`, `opsman.restricted_control`, `opsman.full_view` and `opsman.restricted_view` are mapped to UAA groups.
+   * Enter the **External Groups Claim** to populate associated groups for the user in UAA. Enter the OIDC provider's token claim that contains the groups to which the user belongs. Only the provided OIDC Admin Group Name and the default group names of `opsman.full_control`, `opsman.restricted_control`, `opsman.full_view` and `opsman.restricted_view` are mapped to UAA groups.
    * (Optional) Enter the **Username Claim** to populate the `username` field in UAA. <%= vars.ops_manager %> uses this to show the current logged-in user.
 
 1. For **OIDC Admin Group Name**, enter the OIDC provider group name that corresponds to users who receive admin access. Users in this OIDC group are granted the `opsman.admin` scope in UAA.
