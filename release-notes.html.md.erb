@@ -26,6 +26,7 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
   This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
 </div>
 
+- **[Known Issue] Customers that have installed Telemetry 1.3.4 or 2.1.4 are unable to upgrade to <%= vars.ops_manager %> 3.0.23+LTS-T.
 - **[Bug Fix]** When upgrading <%= vars.ops_manager %>, additional HTTP requests during the import process no longer cause the import to fail
 - **[Bug Fix]** Restore Tile template validations. The validations were unintentionally deactivated in <%= vars.ops_manager %> v3.0.11+LTS-T
 - **[Bug Fix]** Tiles with instance counts defined as non-configurable no longer keep previously configured instance count values
