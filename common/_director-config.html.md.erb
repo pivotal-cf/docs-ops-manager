@@ -55,15 +55,15 @@ For more information, see [Time sync for Linux VMs in Azure](https://docs.micros
 check box. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
 communicate with the BOSH Director through BOSH NATS.
 
-For more information, see [Using Short-Lived NATS Bootstrap
-credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
+    For more information, see [Using Short-Lived NATS Bootstrap
+    credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
 
-<p> Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
-are created somewhat more slowly.
+    Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
+    are created somewhat more slowly.
 
-This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to
-configure VMs in existing <%= vars.ops_manager %>
-deployments to use short-lived bootstrap credentials, you must recreate them. </p>
+    This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to
+    configure VMs in existing <%= vars.ops_manager %>
+    deployments to use short-lived bootstrap credentials, you must recreate them.
 
 1. Click **Recreate VMs deployed by the BOSH Director** to force BOSH to recreate BOSH-deployed VMs on the next deployment. This process does not recreate the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 
@@ -87,7 +87,7 @@ deployments to use short-lived bootstrap credentials, you must recreate them. </
 For more information,
 see [How to set up a Load Balancer in front of Tanzu Operations Manager Director](https://community.pivotal.io/s/article/How-to-Set-Up-a-Load-Balancer-in-Front-of-Ops-Manager-Director) in the VMware Tanzu Support knowledge base.
 
-    ![alt-text="There are three text text boxes, Director Workers, Max Threads, and Director Hostname."](../common/images/director_workers.png)
+    ![alt-text="There are five text boxes: Director Workers, Max Threads, Director Hostname, Custom SSH Banner, and Identification Tags."](../common/images/director_workers.png)
 
 1. (Optional) To set a custom banner that users see when you log in to the BOSH Director using SSH, enter text in the **Custom SSH Banner** text box.
 
