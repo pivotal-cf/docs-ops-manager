@@ -246,17 +246,9 @@ To complete your BOSH Director installation:
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
-1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears:
+1. Click **Review Pending Changes**, then **Apply Changes**.
 
-  <blockquote>
-  Please review the errors below
-    <ul>
-      <li>Cannot reach gateway with IP 10.0.16.1 (ignorable if ICMP is disabled)</li>
-      <li>Cannot reach DNS with IP 10.0.0.2 (ignorable if ICMP is disabled)</li>
-    </ul>
-  </blockquote>
-
-	Return to the **Network Config** pane, and ensure you deselect the **Enable ICMP Checks** check box. Click **Review Pending Changes**, then click **Apply Changes** again.
+  If you encounter an error message saying "Cannot reach gateway with IP [IP] (ignorable if ICMP is disabled)", return to the **Network Config** pane and ensure that you have deselected the **Enable ICMP Checks** check box. Click **Review Pending Changes**, then click **Apply Changes** again.
 
 1. BOSH Director installation begins. This might take a few moments. When the installation process is complete, the **Changes Applied** dialog box appears.
 
