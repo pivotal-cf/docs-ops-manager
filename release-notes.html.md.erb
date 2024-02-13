@@ -31,14 +31,14 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 </div>
 
 
-- **[Known Issue Fix]** Ops Manager can be upgraded when Telemetry 1.3.4 or 2.1.4 were previously installed
+- **[Known Issue Fix]** You can upgrade <%= vars.ops_manager %> when Telemetry v1.3.4 or v2.1.4 were previously installed
 - **[Bug Fix]** Prevent the Apply Changes log page from exhausting database connections
-- **[Bug Fix]** Stemcell comparisons are now done correctly preventing incorrect "Stemcell out-of-date" messages from being displayed
+- **[Bug Fix]** Stemcell comparisons are now performed correctly, preventing incorrect "Stemcell out-of-date" messages from being displayed
 - **[Bug Fix]** Fix "stemcell.MF: Not found" error when uploading a stemcell created with `bosh repack-stemcell`
-- **[Bug Fix]** Entering an incorrect passphrase during import should not receive an unrecoverable 500 status error
-- **[Bug Fix]** Stemcells not present on disk should not be assigned to the BOSH Director tile during upgrade
-- **[Feature]** Ops Manager can be configured to enable duplicate IP detection in vSphere
-- **[Feature]** Improve Ops Manager performance for customers with large foundations
+- **[Bug Fix]** Entering an incorrect passphrase during import no longer causes an unrecoverable 500 status error
+- **[Bug Fix]** Stemcells not present on disk are not assigned to the BOSH Director tile during upgrade
+- **[Feature]** You can configure <%= vars.ops_manager %> to enable duplicate IP detection in vSphere
+- **[Feature]** Improve <%= vars.ops_manager %> performance in large foundations
 
 <table border="1" class="nice">
   <thead>
