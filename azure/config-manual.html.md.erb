@@ -113,7 +113,7 @@ The following table shows the mapping between Generation 1 and Generation 2 Azur
 	* For HDD-based storage, click **Standard_LRS**.
 	* For SSD-based storage, click **Premium_LRS**.
 
-5. If you want to all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** check box. This overrides the default behavior,
+5. If you want all BOSH-created disks to use the same storage tier for the root and OS disks, activate the **Use same Storage Tier for root / OS disk** check box. This overrides the default behavior,
 which is to use a storage tier based on the instance size. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
 
     ![alt-text=""](../common/images/azure/azure-storage-tier.png)
@@ -131,9 +131,8 @@ which is to use a storage tier based on the instance size. For more information,
 
         <p class="note caution">
         <span class="note__title">Caution</span>
-        You can update your deployment from using
-    storage accounts to using managed disks. However, after you click <strong>Use Managed Disks</strong> and
-    deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.</p>
+        You can update your deployment from using storage accounts to using managed disks. However, after you click <strong>Use Managed Disks</strong> and deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.
+        </p>
 
 1. (Optional) Enter your **Default Security Group**. For more information about Network Security Groups, see [Filter network traffic with network security groups](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg) in Microsoft Azure's documentation.
     <p> The Azure portal sometimes displays the names of resources with incorrect capitalization. Always use the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
