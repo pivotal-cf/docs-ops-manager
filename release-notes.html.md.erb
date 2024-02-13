@@ -22,9 +22,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** February 12, 2024
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+</p>
 
 
 - **[Known Issue Fix]** You can upgrade <%= vars.ops_manager %> when Telemetry v1.3.4 or v2.1.4 were previously installed
@@ -57,9 +58,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** January 24, 2024
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
+</p>
 
 - **[Known Issue] Customers that have installed Telemetry 1.3.4 or 2.1.4 are unable to upgrade to <%= vars.ops_manager %> 3.0.23+LTS-T.
 - **[Bug Fix]** When upgrading <%= vars.ops_manager %>, additional HTTP requests during the import process no longer cause the import to fail
@@ -109,9 +111,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** December 15, 2023
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
+</p>
 
 - **[Known Issue]** If you have already installed stemcell 1.318 before upgrading to <%= vars.ops_manager %> v3.0.21+LTS-T, the BOSH Director shows "missing stemcell" incorrectly. To resolve this issue, contact Support.
 - **[Feature]** Operators can configure Ops Manager to allow UAA to proxy to an upstream OIDC server. For more information about using OIDC as an Identity Provider (IdP), see [OIDC settings](./pcf-interface.html#oidc).
@@ -139,9 +142,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** November 29, 2023
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+</p>
 
 - **[Known Issue]** Background jobs such as the temporary file cleaner and pruning feature are not being run
 - **[Feature]** Replace thin with Puma as the web server used by Ops Manager
@@ -167,9 +171,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** November 13, 2023
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
+</p>
 
 
 - **[Feature]** You can configure an environment identifier under the Syslog page for the BOSH Director and certain tiles
@@ -220,13 +225,15 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** October 18, 2023
 
-<div class="note warning"><strong>Warning:</strong>
-  This release has been removed from VMware Tanzu Network because it included an issue in the BOSH Director that causes the Healthwatch tile to fail to deploy with errors like "undefined method `present?'".
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release has been removed from VMware Tanzu Network because it included an issue in the BOSH Director that causes the Healthwatch tile to fail to deploy with errors like "undefined method `present?'".
+</p>
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
+</p>
 
 - **[Known Issue]** Healthwatch tile will fail to deploy with errors like "undefined method `present?'"
 - **[Feature]** You can opt in to automatic rotation of the BOSH DNS CA and leaf certificates. For information about automatic certificate rotation, see [Automatic rotation of the BOSH DNS certificates (experimental)](#auto-rotate-bosh-dns)
@@ -276,9 +283,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** September 12, 2023
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
+</p>
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** Improve color contrast of Tanzu Operations Manager UI.
@@ -423,8 +431,10 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** May 26, 2023
 
-<div> This release includes a new version of System Metrics, which causes all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of System Metrics, which causes all VMs to redeploy.
+</p>
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Known Issue Fix]** The bosh-cli, when uploading releases, no longer excludes releases that have the same fingerprint but a different name. This behavior caused the "Extracting compiled package archive failed" issue in <%= vars.ops_manager %> v3.0.9+LTS-T.
@@ -536,17 +546,25 @@ readers.
 
 **Release Date:** March 24, 2023
 
-<p> This release includes a new version of BOSH DNS. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.6+LTS-T causes all VMs to redeploy.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of BOSH DNS. Upgrading to <%= vars.ops_manager %>
+<%= vars.v_major_version %>.6+LTS-T causes all VMs to redeploy.
+</p>
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** Logs downloaded from BOSH-deployed VMs through <%= vars.ops_manager %> also contain logs from the `/var/log` directory.
 - **[Known Issue Fix]** After you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T, improperly encoded data in the
 <%= vars.ops_manager %> database does not cause redeployments to fail. For more information about this known issue, see [Missing Classes Cause Redeployment
 Failures](#re-deploy-fail).
-  <p> If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
-    <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
-    the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>
+
+<p class="note caution">
+<span class="note__title">Caution</span>
+If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
+<%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
+the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.
+</p>
+
 - **[Bug Fix]** When you retrieve the manifest for a deployed product through the <%= vars.ops_manager %> API, the API endpoint no longer returns an invalid
 manifest.
 
@@ -570,8 +588,11 @@ manifest.
 
 **Release Date:** March 10, 2023
 
-<p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.5+LTS-T causes all VMs to redeploy.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
+<%= vars.v_major_version %>.5+LTS-T causes all VMs to redeploy.
+</p>
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** <%= vars.ops_manager %> <%= vars.v_major_version %> is a long-term support (LTS) version. If you use automation scripts to deploy
@@ -615,8 +636,11 @@ you are using the most recent stemcell versions.
 
 **Release Date:** February 09, 2023
 
-<p> This release includes new versions of BOSH DNS and System Metrics. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.4 causes all VMs to redeploy.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes new versions of BOSH DNS and System Metrics. Upgrading to <%= vars.ops_manager %>
+<%= vars.v_major_version %>.4 causes all VMs to redeploy.
+</p>
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** The <%= vars.ops_manager %> Installation Dashboard uses more inclusive text.
@@ -670,8 +694,11 @@ issues with tile upgrade failures.
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 
-<p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.2 causes all VMs to redeploy.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
+<%= vars.v_major_version %>.2 causes all VMs to redeploy.
+</p>
 
 <table border="1" class="table">
   <thead>
@@ -693,8 +720,11 @@ issues with tile upgrade failures.
 
 **Release Date:** December 09, 2022
 
-<p> This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
-  <%= vars.v_major_version %>.1 causes all VMs to redeploy.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of System Metrics. Upgrading to <%= vars.ops_manager %>
+<%= vars.v_major_version %>.1 causes all VMs to redeploy.
+</p>
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** BOSH Director is deployed with PostgreSQL 13.
@@ -865,11 +895,14 @@ NATS.
 For more information about short-lived NATS bootstrap credentials, see [Using Short-Lived NATS Bootstrap
 Credentials](security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
 
-<p> Before configuring your VMs to use short-lived NATS bootstrap credentials, you must ensure that all VMs in
-  your <%= vars.ops_manager %> deployment are using stemcells that support them, including VMs deployed by service tiles. VMs that do not use stemcells that
-  support short-lived NATS bootstrap credentials might become unresponsive. For more information, see
-  <a href="security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html#stemcells">Stemcell Compatibility</a> in <em>Using Short-Lived NATS Bootstrap
-  Credentials</em>.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+Before configuring your VMs to use short-lived NATS bootstrap credentials, you must ensure that all VMs in
+your <%= vars.ops_manager %> deployment are using stemcells that support them, including VMs deployed by service tiles. VMs that do not use stemcells that
+support short-lived NATS bootstrap credentials might become unresponsive. For more information, see
+<a href="security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html#stemcells">Stemcell Compatibility</a> in <em>Using Short-Lived NATS Bootstrap
+Credentials</em>.
+</p>
 
 ### <a id='rotate-certs-redeploy'></a> Rotate non-configurable leaf certificates during redeployment
 
@@ -991,9 +1024,12 @@ redeployments to fail.
 
 This issue is resolved in <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T.
 
-<p> If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
-  <%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
-  the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.</p>
+<p class="note caution">
+<span class="note__title">Caution</span>
+If you upgrade to <%= vars.ops_manager %> <%= vars.v_major_version %>.6+LTS-T to resolve this issue, a
+<%= vars.ops_manager %> <%= vars.v_major_version %>.5+LTS-T deployment that contains a large number of records on the <strong>Change Log</strong> page of
+the <%= vars.ops_manager %> Installation Dashboard might take a long time to import.
+</p>
 
 ### <a id='bosh-reuses-packages'></a> BOSH inappropriately reuses compiled packages
 
