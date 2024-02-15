@@ -14,25 +14,22 @@ Currently only the [docs-book-pivotalcf](https://github.com/pivotal-cf/docs-part
 
 **Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to.
 
-| Branch name | Use for… |
-|-------------| -------|
-| master      | Not in use |
-| 3.0         | v3.0.x |
-| 2.10        | v2.10.x |
-| 2.9		      | v2.9.x |
-| 2.8         | v2.8.x |
-| 2.7         | v2.7.x |
-| 2.6         | EOGS v2.6.x. |
-| 2.5         | EOGS v2.5.x. |
-| 2.4         | EOGS v2.4.x. |
-| 2.3         | EOGS v2.3.x.|
-| 2.2         | v2.2.x — PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.2.pdf |
-| 2.1         | v2.1.x — PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.1.pdf |
-| 2.0         | v2.0.x — PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.0.pdf |
-| 1.12        | v2.0.x — PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.0.pdf |
-| 1.11         | v2.0.x — PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.0.pdf |
-| 1.10         | v2.0.x — PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.0.pdf |
-| 1.9         | v2.0.x — PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.0.pdf |
+| Branch name | Use for… | |
+|-------------| ---------|-|
+| master      | Not used | |
+| 3.0         | v3.0.x   | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html |
+| 2.10        | v2.10.x  | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/index.html |
+| 2.9         | v2.9.x   | |
+| 2.8         | v2.8.x   | |
+| 2.7         | v2.7.x   | |
+| 2.6         | EOGS v2.6.x. | |
+| 2.5         | EOGS v2.5.x. | |
+| 2.4         | EOGS v2.4.x. | |
+| 2.3         | EOGS v2.3.x. | |
+| 2.2         | EOGS v2.2.x  | PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.2.pdf |
+| 2.1         | EOGS v2.1.x  | PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.1.pdf |
+| 2.0         | EOGS v2.0.x  | PDFed: https://resources.docs.pivotal.io/pdfs/pcf-docs-2.0.pdf |
+
 
 ## Partials
 
