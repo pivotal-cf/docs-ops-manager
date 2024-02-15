@@ -88,9 +88,10 @@ For more information, see [Troubleshooting CredHub Maestro safety violations dur
 
 This section describes the procedure for bulk rotating all CAs and leaf certificates using CredHub Maestro.
 
-<%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to Use CredHub Maestro for Certificate Rotation](#when-to-use).
-<p> If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option can damage your deployment. You should rotate individual CA certificates and their leaf certs instead. For TKGi-specific certificates, follow the
-certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
+<%= vars.company_name %> recommends that you use the <%= vars.ops_manager %> API to perform bulk rotation of certificates unless you meet the conditions described in [When to use CredHub Maestro for Certificate Rotation](#when-to-use).
+If your deployment includes Tanzu Kubernetes Grid Integrated Edition, using the <code>--all</code> option
+can damage your deployment. You can rotate individual CA certificates and their leaf certs instead.
+For TKGi-specific certificates, please follow the certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.15/tkgi/GUID-certificate-concepts.html#rotating-certificates-2">Rotating Certificates for Tanzu Kubernetes Grid Integrated Edition</a>.
   <br />
   <br />
   If any of your deployments use the Services TLS CA:
@@ -98,8 +99,8 @@ certificate rotation instructions at <a href="https://docs.vmware.com/en/VMware-
     <li>Run all CredHub Maestro commands except <code>maestro regenerate leaf</code> with <code>--exclude /services/tls_ca</code>.</li>
     <li>Run <code>maestro regenerate leaf</code> with <code>--exclude-signed-by /services/tls_ca</code>.</li>
   </ul>
-  </p>
-The process for rotating the Services TLS CA requires additional steps to ensure that there is no downtime. To rotate the Services TLS CA, see <a href="#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> below.</div>
+
+The process for rotating the Services TLS CA requires additional steps to ensure that there is no downtime. To rotate the Services TLS CA, see <a href="#services-rotation">Rotate the Services TLS CA and Its Leaf Certificates</a> below.
 
 To rotate all CAs and leaf certificates in CredHub:
 
