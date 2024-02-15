@@ -57,7 +57,7 @@ When using `bosh deploy` to manually re-deploy a deployment outside of <%= vars.
 ## <a id='monitor-progress'></a> Monitoring progress of automatic rotation
 
 It is important to continue monitoring the expiration date of the BOSH DNS certificates even when the automatic rotation feature is enabled. You still need to click Apply Changes on each tile and run their corresponding upgrade errands to re-deploy each VM with the new certificate versions. 
-You can check certificate expiration on the Certificates page, or using [the API](https://docs.pivotal.io/platform/3-0/opsman-api/#tag/Certificates/paths/~1api~1v0~1deployed~1certificates/get).
+You can check certificate expiration on the Certificates page, or using [the API](https://apigw-test.vmware.com/stg/v1/m12/api/TanzuOperationsManagerAPIDocumentation/3-0/opsman-api/#tag/Certificates/paths/~1api~1v0~1deployed~1certificates/get).
 
 In addition to the certificate expiration, a new step appears in the Apply Changes log showing the status of the rotation of the BOSH DNS certificates. 
 This step includes information about which tiles and service instances still need to be deployed.

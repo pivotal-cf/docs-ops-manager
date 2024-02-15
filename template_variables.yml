@@ -43,40 +43,22 @@ template_variables:
   k8s_runtime_abbr: TKGI
   product_name_lc: pcf
 
-# Pivotal variables - v2.7 and v2.8
-  platform_name_pivotal: Pivotal Platform
-  platform_old_pivotal: Pivotal Cloud Foundry
-  platform_code_pivotal: PCF
-  product_name_lc_pivotal: pcf
-  app_runtime_full_pivotal: Pivotal Application Service
-  app_runtime_pivotal: Application Service
-  app_runtime_abbr_pivotal: PAS
-  app_runtime_abbr_lc_pivotal: pas
-  k8s_runtime_full_pivotal: Enterprise Pivotal Container Service
-  k8s_runtime_pivotal: Tanzu Kubernetes Grid Integrated Edition
-  k8s_runtime_abbr_pivotal: TKGI
-  windows_runtime_full_pivotal: Pivotal Application Service for Windows
-  windows_runtime_pivotal: Application Service for Windows
-  windows_runtime_abbr_pivotal: PASW
-  ops_manager_full_pivotal: Pivotal Operations Manager
-  ops_manager_pivotal: Ops Manager
-
 # Deprecated variables -- replace with current product variables when possible
   platform_name: Ops Manager
-  product_name: Pivotal Platform
-  first_product_name: Pivotal Operations Manager
-  product_full: Pivotal Application Service (PAS)
-  product_runtime: Pivotal Application Service
-  product_short: PAS
+  product_name: Tanzu Platform
+  first_product_name: Tanzu Operations Manager
+  product_full: Tanzu Application Service (TAS for VMs)
+  product_runtime: Tanzu Application Service
+  product_short: TAS for VMs
   ops_manager_full: VMware Tanzu Operations Manager
   app_runtime_full: VMware Tanzu Application Service for VMs
   app_runtime: TAS for VMs
-  runtime_abbr: (PAS)
+  runtime_abbr: (TAS)
   windows_runtime_full: VMware Tanzu Application Service for VMs &#91;Windows&#93;
-  product_windows_full: Pivotal Application Service for Windows
-  product_windows: PASW
+  product_windows_full: Tanzu Application Service for Windows
+  product_windows: TASW
   k8s_runtime_full: VMware Tanzu Kubernetes Grid Integrated Edition
-  pks_product_full: Enterprise Pivotal Container Service
+  pks_product_full: Enterprise Tanzu Container Service
   pks_product_short: Enterprise PKS
   pks_product_tile: Enterprise PKS
 
