@@ -126,10 +126,8 @@ Unless you are using Azure managed disks, you must manually recreate disks on BO
         * Wait until a new stemcell comes out. This typically takes less than two weeks.
         * If propagating disk encryption is urgent, contact [Support](https://tanzu.vmware.com/support).
     * **Ephemeral Disks:** In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate VMs deployed by the BOSH Director** checkbox.
-    * **Persistent Disks**
-        * <%= vars.platform_old_pivotal %> (<%= vars.platform_code_pivotal %>) v2.3 and later: In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate All Persistent Disks** checkbox.
-        * <%= vars.platform_code_pivotal %> v2.2 and earlier: In the **Resource Config** pane of all tiles, change the disk or VM sizes of all VMs that you need to encrypt.
+    * **Persistent Disks**: In the **Director Config** pane of the <%= vars.ops_manager %> tile, enable the **Recreate All Persistent Disks** check box.
 
-1. Click **Review Pending Changes**.
+2. Click **Review Pending Changes**.
 
-1. Click **Apply Changes**.
+3. Click **Apply Changes**.

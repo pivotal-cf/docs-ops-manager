@@ -23,7 +23,7 @@ secure code from exposure to vulnerability.
 
 ### <a id='support'></a> Support
 
-As of <%= vars.platform_old_pivotal %> (<%= vars.platform_code_pivotal %>) v1.8, <%= vars.company_name %> supports each major and minor platform release according to the following criteria:
+<%= vars.company_name %> supports each major and minor platform release according to the following criteria:
 
 * <%= vars.company_name %> supports the release for at least nine months following its first publication date.
 
@@ -33,11 +33,11 @@ Support includes maintenance updates and upgrades, bug and security fixes, and t
 
 ### <a id='patch-releases'></a> Patch releases
 
-Patch releases are more frequent and less predictable than major and minor releases. The <%= vars.platform_code_pivotal %> v1.6.x line provides a good example of their frequency. <%= vars.platform_code_pivotal %> v1.6.1 was released on October 26, 2015. Through August 2016, 36 additional patches of Elastic Runtime v1.6.x and 18 patches of <%= vars.ops_manager %> v1.6.x provided security and bug fixes to customers.
+Patch releases are more frequent and less predictable than major and minor releases.
 
 <%= vars.company_name %> identifies security issues using standard nomenclature from [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/), [Ubuntu Security Notices (USN)](https://www.ubuntu.com/usn/), and other third-party sources. For more information about security fixes in core <%= vars.ops_manager %> code or packaged dependencies, see [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../../release-notes.html) and [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/runtime-rn.html).
 
-The Pivotal Application Security Team maintains a running list of security fixes in <%= vars.ops_manager %> and <%= vars.ops_manager %> dependencies. To see their most recent findings, see [Pivotal Application Security Team](https://tanzu.vmware.com/security) on the VMware Tanzu website.
+The Tanzu security team maintains a running list of security fixes in <%= vars.ops_manager %> and <%= vars.ops_manager %> dependencies. To see their most recent findings, see [Tanzu Security page](https://tanzu.vmware.com/security) on the VMware Tanzu website.
 
 ### <a id='upgrading'></a> Upgrading
 
@@ -66,7 +66,7 @@ With every software change, automated build pipelines trigger these tests for th
 
 In addition to its automated unit and integration testing, <%= vars.company_name %> deploys all upgrades slated for upcoming <%= vars.ops_manager %> releases on at-scale test environments. Prior to each major or minor commercial release, <%= vars.company_name %> runs the entire <%= vars.ops_manager %> suite of services on several internally-managed large integration environments that run customer-like data and workloads.
 
-All <%= vars.ops_manager %> product teams participate in go-to-market steps for each release, as is often required for shipping a legally compliant product. Examples include [Open Source License File](https://network.pivotal.io/open-source) attribution and an Export Compliance classification.
+All <%= vars.ops_manager %> product teams participate in go-to-market steps for each release, as is often required for shipping a legally compliant product. Examples include [Open Source License File](https://network.tanzu.vmware.com/open-source) attribution and an Export Compliance classification.
 
 
 ## <a id='bug-fixes'></a> Patch releases: security and bug fixes
