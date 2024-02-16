@@ -53,7 +53,7 @@ template_variables:
   ops_manager_full: VMware Tanzu Operations Manager
   app_runtime_full: VMware Tanzu Application Service for VMs
   app_runtime: TAS for VMs
-  runtime_abbr: (TAS)
+  runtime_abbr: (TAS for VMs)
   windows_runtime_full: VMware Tanzu Application Service for VMs &#91;Windows&#93;
   product_windows_full: Tanzu Application Service for Windows
   product_windows: TASW
@@ -64,7 +64,7 @@ template_variables:
 
 # Book content variables
   recommended_by: VMware
-  expand_network_azs: <p> After you deploy Tanzu Operations Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
+  expand_network_azs: <p class="note"><span class="note__title">Note</span> After you deploy Tanzu Operations Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
 
   add_volumes_link: For more information, see [Enabling volume services](../../opsguide/enable-vol-services.html).
   admin: Tanzu Operations Manager admin
@@ -78,7 +78,7 @@ template_variables:
   app_domain: shared-domain.example.com
   app_healthcheck_timeout: In Tanzu Operations Manager, the default timeout is 60 seconds and the maximum configurable timeout is 600 seconds. You can modify the timeout in the **App Containers** pane of the VMware Tanzu Application Service for VMs (TAS for VMs) tile.
   app_logging_footnote: <a href="https://tanzu.vmware.com/developer/guides/app-enhancements-logging-practices/">App Logging in TAS for VMs</a>
-  app_man_network: <p> You can also create and modify container-to-container networking policies using Apps Manager. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-apps.html">Create Container-to-Container Networking Policies</a> in the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.</p>
+  app_man_network: You can also create and modify container-to-container networking policies using Apps Manager. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-apps.html">Create Container-to-Container Networking Policies</a> in the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.
   app_runtime: TAS for VMs
   app_runtime_first: VMware Tanzu Application Service for VMs (TAS for VMs)
   app_sec_groups: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/notifications-asg.html">App Security Groups</a>
@@ -87,7 +87,7 @@ template_variables:
   app_sec_groups_link_2: For information about creating and configuring ASGs, see [App Security Groups](../concepts/asg.html).
   app_svc_links: <li><a href="../opsguide/config-ssh.html">Configuring SSH Access for TAS for VMs</a>&#58; Explains how to configure TAS for VMs to allow SSH access to app instances for debugging.</li><li><a href="../opsguide/app-sec-groups.html">Restricting App Access to Internal TAS for VMs Components</a>&#58; Details how to create ASGs, rules that allow internal outgoing communications from all apps in TAS for VMs, or the apps running in the same space.</li><li><a href="../opsguide/notifications-asg.html">Configuring App Security Groups for Email Notifications</a>&#58; Describes how to define an ASG to enable app-generated notifications.</li>
   app_traffic_logging: Container-to-container networking enables VMware Tanzu Application Service for VMs (TAS for VMs) to generate logs whenever containers communicate or attempt to communicate with each other. For more information about managing app traffic logging, see the [App Traffic Logging](../../opsguide/logging-config-opsman.html#app-traffic-log) section of the _Configuring Logging in TAS for VMs_ topic.
-  asg_note: <p> You can also view ASGs in Apps Manager under the <strong>Settings</strong> tab of a space or an app.</p>
+  asg_note: You can also view ASGs in Apps Manager under the <strong>Settings</strong> tab of a space or an app.
   asg_notifications_prereq: You also must configure [App Security Groups (ASGs)](../opsguide/notifications-asg.html).
   aws_network_elb: You can also select this option if you are installing Tanzu Operations Manager on AWS.
   az: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/maintaining-high-availability.html">availability zones</a>
@@ -124,7 +124,7 @@ template_variables:
   cli_v6: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/getting-started.html">Getting Started with cf CLI</a>
   cli_rec_min_version: <p> For use with Pivotal Cloud Foundry v1.10, the recommended minimum version is cf CLI v6.23 or later.</p>
   cloud_controller_dea_agent: <p> Pivotal Cloud Foundry (PCF) v1.6 and later no longer use Droplet Execution Agents (DEAs). Diego Cells replace their function. This topic is published here to help people who are running older versions of PCF. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/diego-diego-architecture.html#core">Diego Components and Architecture</a>.</p>
-  cloud_controller_dea_algorithm: <p> Pivotal Cloud Foundry (PCF) v1.6 and later no longer use the DEA Placement Algorithm. The Diego Auction replaces its function. This section is published here to help people who are running older versions of PCF. For more information about Diego Auction, see <a href="../diego/diego-auction.html">How Diego Balances App Processes</a>.</p>
+  cloud_controller_dea_algorithm: Pivotal Cloud Foundry (PCF) v1.6 and later no longer use the DEA Placement Algorithm. The Diego Auction replaces its function. This section is published here to help people who are running older versions of PCF. For more information about Diego Auction, see <a href="../diego/diego-auction.html">How Diego Balances App Processes</a>.
   cloud_controller_logging:
   compliance_links: <h2><a id='compliance'></a>Compliance</h2>For information about compliance in TAS for VMs, see the following topics:<br><ul><li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/services/nist/index.html">NIST Controls and VMware Tanzu Application Service for VMs</a>&#58; Provides a dedicated site that assesses TAS for VMs against NIST SP 800-53(r4) Controls.</li><li><a href="/application-service/2-11/operating/gdpr.html">General Data Protection Regulation</a>&#58; Provides an overview of the General Data Protection Regulation (GDPR) and where TAS for VMs might store personal data.</li></ul>
   collector_singleton: The singleton compilation components do not affect platform availability.
@@ -177,10 +177,10 @@ template_variables:
   docker_auth: To support Docker, TAS for VMs needs the ability to access Docker registries using either a Certificate Authority or an IP address allow list. For information about configuring this access, see [Using Docker Registries](../dopsguide/docker-registry.html).
   domain_name: vmware.tanzu.com
   domains_shared_domains: For more information about using custom domains shared across all orgs in your TAS for VMs account, see [Domains and Shared Domains](./domains.html).
-  email_notifications: <p> In Tanzu Operations Manager, you can configure email notifications in the <strong>Director Config</strong> section of the BOSH Director tile. For example, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/aws-config-manual.html">Configuring BOSH Director on AWS</a> for more information about how to configure email notifications on Amazon Web Services (AWS).</p>
+  email_notifications: In Tanzu Operations Manager, you can configure email notifications in the <strong>Director Config</strong> section of the BOSH Director tile. For example, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/aws-config-manual.html">Configuring BOSH Director on AWS</a> for more information about how to configure email notifications on Amazon Web Services (AWS).
   enable_c2c_discovery: open the **App Developer Controls** pane in your TAS for VMs tile and select the **Enable Service Discovery for Apps** check box
   enable_syslog_drain: For more information, see [Configuring system logging in TAS for VMs](../opsguide/logging-config-opsman.html).
-  enable_syslog_forwarding_link: <p> For this procedure to work, you must enable syslog forwarding. For more information, see the <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/logging-config-opsman.html#syslog-forward">Enable Syslog Forwarding</a> section of the <em>Configuring logging in TAS for VMs</em> topic.</p>
+  enable_syslog_forwarding_link: For this procedure to work, you must enable syslog forwarding. For more information, see the <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/logging-config-opsman.html#syslog-forward">Enable Syslog Forwarding</a> section of the <em>Configuring logging in TAS for VMs</em> topic.
   example_domain: www.example.com
   example_domain_edu: www.example.edu
   example_domain_net: www.example.net
@@ -190,16 +190,16 @@ template_variables:
   example_ip_2: 198.51.100.1
   example_ip_3: 203.0.113.1
   external_ips: external IP addresses
-  external_vol_smb_note: <p> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/smb-volumes-apps.html">Using SMB Volumes in .NET Apps</a>.</p>
-  external_vol_win_note: <p> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/smb-volumes-apps.html">Using SMB Volumes in .NET Apps</a>.<br>NFS is not available on Windows systems.</p>
+  external_vol_smb_note: If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/smb-volumes-apps.html">Using SMB Volumes in .NET Apps</a>.
+  external_vol_win_note: If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/smb-volumes-apps.html">Using SMB Volumes in .NET Apps</a>.<br>NFS is not available on Windows systems.
   gen_GSG:
   global_auditor_role:  "<ul><li><strong>Global Auditor</strong>: Read-only access to all Cloud Controller API resources except for secrets, such as environment variables. The Global Auditor role cannot access those values. Assigned the <code>cloud_controller.global_auditor</code> scope in UAA.</li></ul>"
   grant_devs_c2c: open the **App Developer Controls** pane in the TAS for VMs tile and enable the **Allow space developers to manage network policies** check box
   GSG_intro_sentence:
-  gsg_app_video_link: <p> See the <a href="https://tanzu.vmware.com/tutorials/getting-started" target="_blank">Getting Started with Tanzu Application Service</a> to learn app deployment concepts.
+  gsg_app_video_link: See the <a href="https://tanzu.vmware.com/tutorials/getting-started" target="_blank">Getting Started with Tanzu Application Service</a> to learn app deployment concepts.
   health_monitor_footnote: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/monitoring-metrics.html">Configuring a Monitoring System</a>
   http_routing: For more information, see [Securing Traffic into TAS for VMs](../adminguide/securing-traffic.html).
-  incompatible_ldap_saml: <p class='note'><strong>Note</strong>&#58; The procedures described here are not compatible with using SAML or LDAP for user identity management. To create and manage user accounts in a SAML- or LDAP-configured TAS for VMs deployment, see <a href='../operating/external-user-management.html'>Adding Existing SAML or LDAP Users to a TAS for VMs Deployment</a>.</p>
+  incompatible_ldap_saml: <p class="note"><span class="note__title">Note</span> The procedures described here are not compatible with using SAML or LDAP for user identity management. To create and manage user accounts in a SAML- or LDAP-configured TAS for VMs deployment, see <a href='../operating/external-user-management.html'>Adding Existing SAML or LDAP Users to a TAS for VMs Deployment</a>.</p>
   info_loc: In Tanzu Operations Manager
   invite_members: images/pcf/invite-members.png
   ipsec_note: <li>Use the <a href="https://docs.vmware.com/en/IPsec-for-VMware-Tanzu/1.9/documentation/GUID-index.html">IPsec add-on</a> to encrypt IP data traffic within your deployment.</li>
@@ -211,7 +211,7 @@ template_variables:
   lb_health_chk_healthy: Unhealthy Threshold
   lb_health_chk_unhealthy: Unhealthy Threshold
   link_adminguide_buildpack: For more information, see [Managing custom buildpacks](../adminguide/buildpacks.html).
-  link_adminguide_commands: <p> An Org Manager needs explicit admin permissions to perform certain actions. To create a user with admin rights, see <a href="../uaa/uaa-user-management.html">Creating and Managing Users with the UAA CLI (UAAC)</a>.</p>
+  link_adminguide_commands: An Org Manager needs explicit admin permissions to perform certain actions. To create a user with admin rights, see <a href="../uaa/uaa-user-management.html">Creating and Managing Users with the UAA CLI (UAAC)</a>.
   link_adminguide_domains: For admin-specific commands, see [Managing domains and routes](../../adminguide/manage-domains-routes.html).
   log_management:
   logg_forwarding: <a href="../opsguide/logging-config-opsman.html#syslog-forward">Configuring System Logging in TAS for VMs</a>
@@ -254,8 +254,8 @@ template_variables:
   or_apps_man: <span>&nbsp;</span> or <a href="../console/console-roles.html">Apps Manager</a>
   org_members: images/pcf/org-members.png
   org_roles: "Organization Manager and Organization Auditor"
-  pas_ssl_note: <p> TAS for VMs does not support using <code>syslog-tls</code> or <code>https</code> with self-signed certificates. If you are running your own syslog server and want to use <code>syslog-tls</code> or <code>https</code>, you must have an SSL certificate signed by a well-known certificate authority.</p>
-  pcf_pools: For information about configuring resource pools for Amazon Web Services, see [Amazon EC2 FAQs](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon documentation. </br></br> For information about configuring resource pools for OpenStack, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.</br></br>  For information about configuring resource pools for vSphere, see the [Resource Config Page](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-with-tanzu-installation-configuration/) section of the _Configuring BOSH Director on vSphere_ topic.
+  pas_ssl_note: TAS for VMs does not support using <code>syslog-tls</code> or <code>https</code> with self-signed certificates. If you are running your own syslog server and want to use <code>syslog-tls</code> or <code>https</code>, you must have an SSL certificate signed by a well-known certificate authority.
+  pcf_pools: For information about configuring resource pools for Amazon Web Services, see [Amazon EC2 FAQs](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon documentation. </br></br> For information about configuring resource pools for OpenStack, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.</br></br>  For information about configuring resource pools for vSphere, see the [Resource Config Page](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-with-tanzu-installation-configuration/) section of _Configuring BOSH Director on vSphere_.
   pcf_rec: Pivotal
   platform_metric_tool_ref: Healthwatch. See <a href="https://docs.vmware.com/en/Healthwatch-for-VMware-Tanzu/2.2/healthwatch/index.html">Healthwatch</a>.
   platform_ssh_configuration: Tanzu Operations Manager deployments control SSH access to apps at the TAS for VMs level. Additionally, TAS for VMs supports load balancing of SSH sessions with your load balancer. For information about setting SSH access for your deployment, see [Configuring SSH Access](../../opsguide/config-ssh.html).
@@ -300,7 +300,7 @@ template_variables:
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for enabling TCP routing in the [Configure Networking](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/configure-pas.html#networking) section of the _Configuring TAS for VMs_ topic.
   tcp_mod_port_change: "../adminguide/tcp_empty_file"
   tcp_port: "/pcf/core/2-10/tcp_port_review"
-  tiledev_link: <p> To develop service brokers and service tiles for Tanzu Operations Manager, see the <a href="https://docs.vmware.com/en/Tile-Developer-Guide/2.10/tile-dev-guide/index.html">Tanzu Operations Manager Tile Developer Guide</a>.</p>
+  tiledev_link: To develop service brokers and service tiles for Tanzu Operations Manager, see the <a href="https://docs.vmware.com/en/Tile-Developer-Guide/2.10/tile-dev-guide/index.html">Tanzu Operations Manager Tile Developer Guide</a>.
   uaa: <a href="../adminguide/notifications.html">UAA</a>
   uaa_cli: For more information, see [Creating and managing users with the UAA CLI (UAAC)](../../uaa/uaa-user-management.html) and [Orgs, Spaces, Roles, and Permissions](../../concepts/roles.html).
   uaa_cred: see the **Credentials** tab in the TAS for VMs tile
@@ -309,44 +309,44 @@ template_variables:
   user_org_creation: If enabled, this flag activates the **Create a New Org** link in the drop-down menu of the left navigation menu in Apps Manager.
   understanding_asg_individual_link: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/asg.html">App Security Groups</a>
   v3_cli_versions: The experimental commands described in this topic require Pivotal Cloud Foundry (PCF) v1.12 or later and the cf CLI v6.30.0 or later.
-  warden_garden: <p> Pivotal Cloud Foundry (PCF) v1.6 and later no longer use Warden. The platform-independent Garden subsystem replaces its function. This topic is intended for users who are running older versions of PCF.</p>
+  warden_garden: Pivotal Cloud Foundry (PCF) v1.6 and later no longer use Warden. The platform-independent Garden subsystem replaces its function. This topic is intended for users who are running older versions of PCF.
   ssl_gorouter_link: <a href="../opsguide/security_config.html#gorouter_term">Terminating SSL/TLS at the Gorouter only</a>
   ssl_lb_gorouter_link: <a href="../opsguide/security_config.html#gorouter_lb">Terminating SSL/TLS at the Load Balancer and the Gorouter</a>
   ssl_lb_link: <a href="../opsguide/security_config.html#unencrypted">Terminating SSL/TLS at the Load Balancer Only</a>
   ssl_haproxy: <tr><th>Optionally, if you are deploying HAProxy, and</th><th>Then in addition, terminate SSL/TLS at<span>:</span></th><th>Related topic and configuration procedure</th></tr><tr><td><ul><li>You would like to secure traffic to the HAProxy.</li></ul></td><td><strong>HAProxy</strong></td><td><a href="../opsguide/ssl-term-haproxy.html#haproxy">Terminating SSL/TLS at HAProxy</a></td></tr>
-  ssl_haproxy_2: <p> If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS termination at HAProxy</a>.</p>
+  ssl_haproxy_2: If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS termination at HAProxy</a>.
   zipkin_enable: "/pcf/core/2-10/zipkin-pcf-config"
-  zipkin_enable_link: <p>When Zipkin tracing is enabled in TAS for VMs, the Gorouter examines the HTTP request headers and performs the following:</p>
-  starting_container_count_maximum: For information about how to configure this setting, see the [Set a Maximum Number of Starting Containers](../upgrading/configuring.html#container-starts) section of the _Configuring TAS for VMs for Upgrades_ topic.
-  garden_runc: <p> PAS v1.8.8 and later use Garden-runC instead of Garden-Linux.</p>
+  zipkin_enable_link: When Zipkin tracing is enabled in TAS for VMs, the Gorouter examines the HTTP request headers and performs the following:
+  starting_container_count_maximum: For information about how to configure this setting, see the [Set a Maximum Number of Starting Containers](../upgrading/configuring.html#container-starts) section of _Configuring TAS for VMs for Upgrades_.
+  garden_runc: PAS v1.8.8 and later use Garden-runC instead of Garden-Linux.
   autoscaler_bullet: <li><a href="../appsman-services/autoscaler/using-autoscaler.html" class="subnav">Scaling an App Using App Autoscaler</a></li>
-  autoscaler_note_dev_guide: <p> You can configure your app to scale automatically based on rules that you set. For more information, see <a href="../../appsman-services/autoscaler/using-autoscaler.html">Scaling an App Using Autoscaler</a> and <a href="../../appsman-services/autoscaler/using-autoscaler-cli.html">Using the App Autoscaler CLI</a>.</p>
-  tasks_ai: <p> Running a task consumes an app instance and is billed accordingly.</p>
+  autoscaler_note_dev_guide: You can configure your app to scale automatically based on rules that you set. For more information, see <a href="../../appsman-services/autoscaler/using-autoscaler.html">Scaling an App Using Autoscaler</a> and <a href="../../appsman-services/autoscaler/using-autoscaler-cli.html">Using the App Autoscaler CLI</a>.
+  tasks_ai: Running a task consumes an app instance and is billed accordingly.
   cf_networking: Container-to-container networking is always enabled in TAS for VMs. For more information about how to configure container-to-container networking, see [Administering Container-to-Container Networking](../devguide/deploy-apps/cf-networking.html).
-  isolation_segments_intro: To enable isolation segments, an operator must install the Isolation Segment tile by performing the procedures in [Installing Isolation Segment](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/installing-pcf-is.html). Installing the tile creates a single isolation segment.
+  isolation_segments_intro: To enable isolation segments, an operator must install the Isolation Segment tile by performing the procedures in [Installing Isolation Segment](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/installing-pcf-is.html). Installing the tile creates a single isolation segment.
   isolation_segments_create: After you install the Isolation Segment tile, you must register it with Cloud Controller. If you only install the Isolation Segment tile without registering the isolation segment it creates, Cloud Controller does not detect the isolation segment and cannot place apps on it.
-  isolation_segments_note: <p> The isolation segment name used in the cf CLI command must match the value specified in the <strong>Segment name</strong> field of the Isolation Segment tile. If the names do not match, Tanzu Operations Manager fails to place apps in the isolation segment when apps are started or restarted in the space assigned to the isolation segment.</p>
-  install_isolation_segments: For more information about creating isolation segments, see [Installing Isolation Segment](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/installing-pcf-is.html).
-  pcf_networking_is1: Go to the **Assign AZs and Networks** pane of the Isolation Segment tile to assign your isolation segment to the network you created in Step 1. For more information, see [Step 3<span>:</span> Configure the tile](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/installing-pcf-is.html#config).
-  pcf_networking_is2: Go to the **Resource Config** pane of the Isolation Segment tile and use the drop-down menu to set your **Router** instances to a number greater than zero. For more information, see [Step 3<span>:</span> Configure the tile](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/installing-pcf-is.html#config).
-  pcf_networking_is3: If your IaaS supports it, go to the **Resource Config** pane of the Isolation Segment tile and enter the name of your load balancer under **Load Balancers**. For more information, see [Step 3<span>:</span> Configure the tile](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/installing-pcf-is.html#config). If your IaaS does not support this configuration, you must create static IP addresses and assign them to your load balancer out of band.
+  isolation_segments_note: The isolation segment name used in the cf CLI command must match the value specified in the <strong>Segment name</strong> field of the Isolation Segment tile. If the names do not match, Tanzu Operations Manager fails to place apps in the isolation segment when apps are started or restarted in the space assigned to the isolation segment.
+  install_isolation_segments: For more information about creating isolation segments, see [Installing Isolation Segment](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/installing-pcf-is.html).
+  pcf_networking_is1: Go to the **Assign AZs and Networks** pane of the Isolation Segment tile to assign your isolation segment to the network you created in Step 1. For more information, see [Step 3<span>:</span> Configure the tile](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/installing-pcf-is.html#config).
+  pcf_networking_is2: Go to the **Resource Config** pane of the Isolation Segment tile and use the drop-down menu to set your **Router** instances to a number greater than zero. For more information, see [Step 3<span>:</span> Configure the tile](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/installing-pcf-is.html#config).
+  pcf_networking_is3: If your IaaS supports it, go to the **Resource Config** pane of the Isolation Segment tile and enter the name of your load balancer under **Load Balancers**. For more information, see [Step 3<span>:</span> Configure the tile](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/installing-pcf-is.html#config). If your IaaS does not support this configuration, you must create static IP addresses and assign them to your load balancer out of band.
   config_ssh_link: For more information, see <a href='../../operating/config-ssh.html'>Configuring SSH Access for TAS for VMs</a>.
   inflight_img: <img src="../opsguide/images/max-container-starts.png" alt="">
-  asg_first_time: <p> If you are creating ASGs for the first time, see <a href="../operating/app-sec-groups.html">Restricting app access to internal TAS for VMs components</a>.</p>
-  lb_subnav: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/custom-load-balancer.html" class="subnav">Using Your Own Load Balancer</a></li><p><li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/diego-diego-architecture.html">Creating a Proxy ELB for Diego SSH</a></li>
+  asg_first_time: If you are creating ASGs for the first time, see <a href="../operating/app-sec-groups.html">Restricting app access to internal TAS for VMs components</a>.
+  lb_subnav: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/custom-load-balancer.html" class="subnav">Using your own Load Balancer</a></li><p><li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/diego-diego-architecture.html">Creating a Proxy ELB for Diego SSH</a></li>
   ssl_term_haproxy: <li><a href="../operating/ssl-term-haproxy.html">Configuring SSL/TLS Termination at HAProxy</a></li>
   ssl_term_vsphere: <li><a href="../operating/ssl-term.html" class="subnav">Configuring Tanzu Operations Manager SSL termination for vSphere deployments</a></li>
   ssl_tls_subnav: <li><a href="../operating/security_config.html">Providing a certificate for your TLS termination point</a></li>
   tcp_ert_subnav: <br><li><a href="../operating/tcp-routing-ert-config.html">Configuring TCP Routing in TAS for VMs</a></li><br>
   tls_info_subnav: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/networking-tls-info.html">TLS Connections in Tanzu Operations Manager deployments</a></li>
   vsphere_az_subnav: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-understand-az.html">Availability Zones in vSphere</a></li>
-  ha_ert: <p> In PCF v1.11 and later, TAS for VMs defaults to a highly available resource configuration. However, you might need to complete additional procedures described below to make your deployment highly available.</p>
-  enable_invitations: <p> The <strong>Enable invitations</strong> check box in the <strong>Apps Manager</strong> pane of the TAS for VMs tile must be enabled to invite new users.</p>
-  route_services_appsman1: <p> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.</p>
-  route_services_appsman2: <p> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of the <em>Managing Apps and Service Instances Using Apps Manager</em> topic.</p>
-  user_provided_apps_man: <p> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also create user-provided service instances in Apps Manager from the Marketplace. To update existing user-provided service instances, navigate to the service instance page and select the <strong>Configuration</strong> tab.</p>
-  aws_lb_cipher_suites: "https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/configure-pas.html"
-  ssl_cert_ert: <p> Alternately, you can use the TAS for VMs Tanzu Operations Manager interface to generate a certificate for you. Certificates generated in TAS for VMs are signed by the Tanzu Operations Manager Certificate Authority. They are not technically self-signed, but they are sometimes referred to as "self-signed certificates" in the Tanzu Operations Manager UI and throughout this documentation. For more information, see the <a href="../opsguide/security_config.html#ert_certgen">Generating a RSA Certificate in TAS for VMs</a> section in the <em>Providing a Certificate for Your TLS Termination Point</em> topic.</p>
+  ha_ert: In PCF v1.11 and later, TAS for VMs defaults to a highly available resource configuration. However, you might need to complete additional procedures described below to make your deployment highly available.
+  enable_invitations: The <strong>Enable invitations</strong> check box in the <strong>Apps Manager</strong> pane of the TAS for VMs tile must be enabled to invite new users.
+  route_services_appsman1: The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of <em>Managing Apps and Service Instances using Apps Manager</em>.
+  route_services_appsman2: The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see the <a href="../../console/manage-apps.html#manage-route-services">Manage Route Services</a> section of <em>Managing Apps and Service Instances using Apps Manager</em>.
+  user_provided_apps_man: The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also create user-provided service instances in Apps Manager from the Marketplace. To update existing user-provided service instances, navigate to the service instance page and select the <strong>Configuration</strong> tab.
+  aws_lb_cipher_suites: "https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/configure-pas.html"
+  ssl_cert_ert: Alternately, you can use the TAS for VMs Tanzu Operations Manager interface to generate a certificate for you. Certificates generated in TAS for VMs are signed by the Tanzu Operations Manager Certificate Authority. They are not technically self-signed, but they are sometimes referred to as "self-signed certificates" in the Tanzu Operations Manager UI and throughout this documentation. For more information, see <a href="../opsguide/security_config.html#ert_certgen">Generating a RSA Certificate in TAS for VMs</a> section in <em>Providing a Certificate for Your TLS Termination Point</em>.
   ssl_single_sans_wildcard: <li>You can use a single certificate with SANs in your deployment for your wildcard domains, and</li>
   ssl_gorouter_sans: <li>You can use a single SAN certificate on the Gorouter, and</li>
   ssl_single_san_restriction: <li>You cannot use a single SAN certificate for all system and app domains for your deployment, or</li>
@@ -358,16 +358,16 @@ template_variables:
   uaa_admin_client_creds: Record the **Admin Client Credentials** from the **UAA** row in the TAS for VMs **Credentials** tab.
   supporting_websockets: By default, TAS for VMs assigns port 443 for TCP/WebSocket communications. If you have configured your load balancer to use a port other than 443 for TCP/WebSocket traffic, you must edit the **Loggregator port** field in the **Networking** pane of the TAS for VMs tile.
   tcp_emitter_oauth_creds: Record the **Tcp Emitter Credentials** from the **UAA** row in the TAS for VMs **Credentials** tab.
-  expand_network_azs: <p> After you deploy Tanzu Operations Manager, you add subnets with overlapping Availability Zones to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
+  expand_network_azs: After you deploy Tanzu Operations Manager, you add subnets with overlapping Availability Zones to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.
   haproxy_hsts_support: You can force HTTPS-only connections by enabling HSTS on HAProxy. For more information, see the [Secure apps domain with HAProxy](../opsguide/securing-endpoints.html#load-balancer) section of the _Securing System and App Endpoints_ topic.
-  external_lb: For more information, see [Using your own Load Balancer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/custom-load-balancer.html).
+  external_lb: For more information, see [Using your own Load Balancer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/custom-load-balancer.html).
   gather_routing_logs: To SSH into the router VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-trouble-advanced.html). To download the router VM logs from Tanzu Operations Manager, see [Monitoring VMs](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-monitoring.html).
   routing_version: PCF 2.0
-  gorouter_metrics_link: https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/monitoring-kpi.html#gorouter
-  internal_domain_config: <p> The internal domain used for service discovery is <code>apps.internal</code> by default. Operators can modify this value in <strong>App Developer Controls</strong> pane of the TAS for VMs tile.</p>
-  mutual_tls_tcp: <p> If you have mutual TLS app identity verification enabled, app containers accept incoming communication only from the Gorouter. This deactivates TCP routing.</p>
+  gorouter_metrics_link: https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/monitoring-kpi.html#gorouter
+  internal_domain_config: The internal domain used for service discovery is <code>apps.internal</code> by default. Operators can modify this value in <strong>App Developer Controls</strong> pane of the TAS for VMs tile.
+  mutual_tls_tcp: If you have mutual TLS app identity verification enabled, app containers accept incoming communication only from the Gorouter. This deactivates TCP routing.
   support_note: <p>This buildpack is currently not supported in Tanzu Operations Manager.</p>
-  router_tls_recommend: <p> To ensure traffic is sent to the platform securely, VMware recommends as a minimum that you terminate TLS at the Gorouter. You can optionally terminate TLS at the load balancer.</p>
+  router_tls_recommend: To ensure traffic is sent to the platform securely, VMware recommends as a minimum that you terminate TLS at the Gorouter. You can optionally terminate TLS at the load balancer.
   gorouter_client_cert: "/pcf/core/2-10/gorouter_client_cert_pcf"
   ssl_termin_gorouter: "/pcf/core/2-10/ssl_termin_gorouter_pcf"
   ssl_termin_lb_only: "/pcf/core/2-10/ssl_termin_lb_only_pcf"
@@ -380,7 +380,7 @@ template_variables:
   service_mesh_network_link: For information about the communication ports and protocols used by these components, see [Service Mesh](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/networking-routing-network-paths.html#service-mesh) in _Routing Network Communications_.
   get_auditor_binary: Download the Stack Auditor binary for your OS from [Buildpack extensions](https://network.tanzu.vmware.com/products/buildpack-extensions/) on VMware Tanzu Network.
   droplet_config: <strong>Maximum staged droplets per app</strong> field in the <strong>File Storage</strong> pane of the VMware Tanzu Application Service for VMs (TAS for VMs) tile.
-  vm_note: <p> The following images are based on the VM names in an open-source deployment of Cloud Foundry Application Runtime. In TAS for VMs, the processes interact in the same way, but are on different VMs. Correct VM names for each process are in the components sections of this topic.</p>
+  vm_note: The following images are based on the VM names in an open-source deployment of Cloud Foundry Application Runtime. In TAS for VMs, the processes interact in the same way, but are on different VMs. Correct VM names for each process are in the components sections of this topic.
   diego_vm_1: diego_brain
   diego_vm_2: diego_database
   diego_vm_3: diego_cell
@@ -396,7 +396,7 @@ template_variables:
   zipkin_tracing_link: For more information about Zipkin tracing, see [Enabling Zipkin Tracing](../adminguide/zipkin_tracing.html).
   app_graceful_shutdown_config: If your apps require a longer period of time to finish in-flight jobs and gracefully shut down, you can increase the graceful shutdown period. For more information, see the [Configure Advanced Features](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.11/tas-for-vms/configure-pas.html#advanced) section of the _Configuring TAS for VMs_ topic.
   app_log_limit_config: For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/2.13/tas-for-vms/runtime-rn.html">Configure App Log Rate Limit (Beta)</a> in the _TAS for VMs v2.10 Release Notes_.
-  isolation_segments_smoke_tests: <p> If you run smoke tests as a post-deploy errand in the Isolation Segment tile, the smoke tests check if your isolation segment is registered in the CCDB. If the isolation segment is not registered, the smoke tests register it in the CCDB. This eliminates the need to manually register an isolation segment with <code>cf create-isolation-segment</code>. For more information, see <a href="../operating/installing-pcf-is.html#smoke-tests">Smoke Tests</a> in <em>Installing Isolation Segment</em>.</p>
+  isolation_segments_smoke_tests: <p> If you run smoke tests as a post-deploy errand in the Isolation Segment tile, the smoke tests check if your isolation segment is registered in the CCDB. If the isolation segment is not registered, the smoke tests register it in the CCDB. This eliminates the need to manually register an isolation segment with <code>cf create-isolation-segment</code>. For more information, see <a href="../operating/installing-pcf-is.html#smoke-tests">Smoke Tests</a> in <em>Installing Isolation Segment</em>.
   on_demand_service_tiles: MySQL for VMware Tanzu, VMware Tanzu GemFire, Redis for VMware Tanzu, and RabbitMQ for VMware Tanzu [VMs]
   ca_trust_gorouter_haproxy_fields:  <b>Certificate Authorities trusted by the Gorouter</b> and <b>Certificate Authorities trusted by the HAProxy</b> fields
   mysql_services_tls_ca_kb: To avoid app downtime, follow the procedure in this <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/security-pcf-infrastructure-rotate-cas-and-leaf-certs.html">Knowledgebase Article</a> instead of the procedure in this topic.
