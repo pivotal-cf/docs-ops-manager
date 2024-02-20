@@ -157,23 +157,19 @@ template_variables:
   domains_shared_domains: For more information about using custom domains shared across all orgs in your TAS for VMs account, see [Domains and Shared Domains](./domains.html).
   enable_c2c_discovery: open the **App Developer Controls** pane in your TAS for VMs tile and select the **Enable Service Discovery for Apps** check box
   external_ips: external IP addresses
-  external_vol_smb_note: <p class="note"><span class="note__title">Note</span> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see the <a href="https://docs.pivotal.io/application-service/windows/smb-volumes-apps.html">TAS for VMs documentation</a>.</p>
-  external_vol_win_note: <p class="note"><span class="note__title">Note</span> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see the <a href="https://docs.pivotal.io/application-service/windows/smb-volumes-apps.html">TAS for VMs documentation</a>.<br>NFS is not available on Windows systems.</p>
   gen_GSG:
   global_auditor_role:  "<ul><li><strong>Global Auditor</strong>: Read-only access to all Cloud Controller API resources except for secrets, such as environment variables. The Global Auditor role cannot access those values. Assigned the <code>cloud_controller.global_auditor</code> scope in UAA.</li></ul>"
   grant_devs_c2c: open the **App Developer Controls** pane in the TAS for VMs tile and activate the **Allow space developers to manage network policies** checkbox
   GSG_intro_sentence:
   gsg_app_video_link: <p class="note"><span class="note__title">Note</span> See the <a href="https://tanzu.vmware.com/tutorials/getting-started" target="_blank">Getting Started with Tanzu Application Service</a> to learn app deployment concepts.
-  health_monitor_footnote: <a href="https://docs.pivotal.io/platform/monitoring/metrics.html#bosh-cf">Configuring a Monitoring System</a>
   http_routing: For more information, see [Securing Traffic into TAS for VMs](../adminguide/securing-traffic.html).
   incompatible_ldap_saml: <p class="note"><span class="note__title">Note</span> The procedures described here are not compatible with using SAML or LDAP for user identity management. To create and manage user accounts in a SAML- or LDAP-configured TAS for VMs deployment, see <a href='../operating/external-user-management.html'>Adding Existing SAML or LDAP Users to a TAS for VMs Deployment</a>.</p>
   info_loc: In Tanzu Operations Manager
   invite_members: images/pcf/invite-members.png
-  ipsec_note: <li>Use the <a href="https://docs.pivotal.io/addon-ipsec/index.html">IPsec add-on</a> to encrypt IP data traffic within your deployment.</li>
   kb_link: <a href="https://kb.vmware.com/" target="_blank">Knowledge Base</a>
   keepalive: For more information, see [Gorouter Back End Keep-Alive Connections](../adminguide/routing-keepalive.html).
   keepalive_router: An operator can configure the feature by entering a non-zero value for the **Keep-alive connections** field in the **Networking** pane of the TAS for VMs tile.
-  known_issues: <a href="https://docs.pivotal.io/ops-manager/3-0/release-notes.html#known-issues">Known Issues</a>
+  known_issues:
   lb_health_chk_healthy: Unhealthy Threshold
   lb_health_chk_unhealthy: Unhealthy Threshold
   link_adminguide_buildpack: For more information, see [Managing Custom Buildpacks](../adminguide/buildpacks.html).
@@ -191,13 +187,9 @@ template_variables:
   max_app_size: the maximum app file size that an admin sets in the <strong>App Developer Controls</strong> pane of the TAS for VMs tile
   max_app_size_table: Set in the <strong>App Developer Controls</strong> pane of the TAS for VMs tile
   max_healthcheck_timeout: <code>cc.maximum_health_check_timeout</code> has a maximum value of `600` seconds.
-  max_in_flight_config: <br/><br/> To retrieve or override the existing `max_in_flight` value in BOSH Director, use the Tanzu Operations Manager API. For more information, see [Retrieving the max_in_flight settings for a product's jobs](https://docs.pivotal.io/platform/opsman-api/#retrieving-the-max_in_flight-settings-for-a-product-39-s-jobs) in the Tanzu Operations Manager API documentation.
   metadata_ref: You can add metadata to apps and spaces using Apps Manager. For more information, see [Managing Apps and Service Instances Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-apps.html). For more information about adding metadata to spaces using Apps Manager, see [Managing Orgs and Spaces Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-spaces.html).
   metrics_login: In a browser, navigate to `metrics.YOUR-SYSTEM-DOMAIN` and log in with your User Account and Authentication (UAA) credentials.
   metrics_viewapps: PCF Metrics uses UAA to retrieve a list of apps that correspond to your user's org roles, space roles, and permissions. To view metrics information for an app, enter the name of the app in the search box and select it from the dropdown.
-  monitoring_app_task_service_usage: <a href="https://docs.pivotal.io/platform/opsguide/accounting-report.html">Reporting App, Task, and Service Instance Usage</a>
-  monitoring_cf_ref: <a href="https://docs.pivotal.io/platform/monitoring/index.html">Monitoring TAS for VMs</a>
-  monitoring_instance_usage_ref: <a href="https://docs.pivotal.io/platform/opsguide/accounting-report-apps-man.html">Reporting Instance Usage with Apps Manager</a>
   monitoring_vm_ref: <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-monitoring.html">Monitoring VMs in Tanzu Operations Manager</a>
   mysql_metrics_origin: /mysql
   mysql_metrics_origin_v2: /mysql
@@ -209,11 +201,7 @@ template_variables:
   or_apps_man: <span>&nbsp;</span> or <a href="../console/console-roles.html">Apps Manager</a>
   org_members: images/pcf/org-members.png
   org_roles: "Organization Manager and Organization Auditor"
-  pas_ssl_note: <p class="note"><span class="note__title">Note</span> TAS for VMs does not support using <code>syslog-tls</code> or <code>https</code> with self-signed certificates. If you are running your own syslog server and want to use <code>syslog-tls</code> or <code>https</code>, you must have an SSL certificate signed by a well-known certificate authority.</p>
-  pcf_pools: For information about configuring resource pools for Amazon Web Services, see the [Amazon documentation](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2). </br></br> For information about configuring resource pools for OpenStack, see the [OpenStack documentation](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html).</br></br>  For information about configuring resource pools for vSphere, see [Resource Config Page](https://docs.pivotal.io/platform/customizing/vsphere-config.html#resource-config) in _Configuring BOSH Director on vSphere_.
-  platform_metric_tool_ref: Healthwatch. See <a href="https://docs.pivotal.io/pcf-healthwatch/index.html">Healthwatch</a>.
   platform_ssh_configuration: Tanzu Operations Manager deployments control SSH access to apps at the TAS for VMs level. Additionally, TAS for VMs supports load balancing of SSH sessions with your load balancer. For information about setting SSH access for your deployment, see [Configuring SSH Access](../../opsguide/config-ssh.html).
-  pools_link: the [Tanzu Operations Manager configuration topic for your IaaS](https://docs.pivotal.io/platform/om/).
   port_limitations: To support WebSockets, the operator must configure the load balancer correctly. Depending on the configuration, clients may have to use a different port for WebSocket connections, such as port 4443, or a different domain name. For more information, see [Supporting WebSockets](../../adminguide/supporting-websockets.html).
   port_limitations_1: To support WebSockets, the operator must configure the load balancer correctly. Depending on the configuration, clients may have to use a different port for WebSocket connections, such as port 4443, or a different domain name. For more information, see [Supporting WebSockets](../adminguide/supporting-websockets.html).
   private_app_domain: private-domain.example.com
@@ -221,7 +209,6 @@ template_variables:
   pws_metrics:
   python_cf245only:
   quota_resource: quota space
-  roles_table: "../console/pcf_roles_table"
   open_service_broker_api: "../open-service-broker/spec"
   open_service_broker_rn: "../open-service-broker/release-notes"
   saml_provider: Retrieve the name of your SAML provider by navigating to the TAS for VMs tile in the Tanzu Operations Manager Installation Dashboard, selecting **Authentication and Enterprise SSO**, and recording the value under **Provider name**. For more information about configuring TAS for VMs for a SAML identity provider, see [Configure TAS for VMs to Use a SAML Identity Provider](../opsguide/auth-sso.html#configure-saml) in _Configuring Authentication and Enterprise SSO for TAS for VMs_.
@@ -241,7 +228,6 @@ template_variables:
   ssl:
   ssl_term_vsphere: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/ssl-term.html">Configuring Tanzu Operations Manager SSL Termination for vSphere Deployments</a></li>
   sso_plan_enabled: have the Single Sign-On service broker installed on your Tanzu Operations Manager deployment. You must create a plan, grant any plan admins, and specify any orgs this plan should be the authentication authority for. For help configuring plans, see [Manage Service Plans](../manage-service-plans.html).
-  suspended_roles_table: "../console/pcf_suspended_roles_table"
   syslog_forwarding_ref: Syslog forwarding. See <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/services-log-management.html">Streaming App Logs to Log Management Services</a>.
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for configuring TCP routing in the [TAS for VMs documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/config-networking.html).
   tcp_mod_port_change: "../adminguide/tcp_empty_file"
