@@ -201,7 +201,6 @@ template_variables:
   max_in_flight_config: <br/><br/> To retrieve or override the existing `max_in_flight` value in BOSH Director, use the Tanzu Operations Manager API. For more information, see [Retrieving the max_in_flight settings for a product's jobs](https://docs.pivotal.io/platform/opsman-api/#retrieving-the-max_in_flight-settings-for-a-product-39-s-jobs) in the Tanzu Operations Manager API documentation.
   metadata_ref: You can add metadata to apps and spaces using Apps Manager. For more information, see [Managing Apps and Service Instances Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-apps.html). For more information about adding metadata to spaces using Apps Manager, see [Managing Orgs and Spaces Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-spaces.html).
   metrics_login: In a browser, navigate to `metrics.YOUR-SYSTEM-DOMAIN` and log in with your User Account and Authentication (UAA) credentials.
-  metrics_product_ref: PCF Metrics. See <a href="https://docs.pivotal.io/pcf-metrics/index.html">PCF Metrics</a>.
   metrics_viewapps: PCF Metrics uses UAA to retrieve a list of apps that correspond to your user's org roles, space roles, and permissions. To view metrics information for an app, enter the name of the app in the search box and select it from the dropdown.
   monitoring_app_task_service_usage: <a href="https://docs.pivotal.io/platform/opsguide/accounting-report.html">Reporting App, Task, and Service Instance Usage</a>
   monitoring_cf_ref: <a href="https://docs.pivotal.io/platform/monitoring/index.html">Monitoring TAS for VMs</a>
@@ -221,7 +220,6 @@ template_variables:
   org_roles: "Organization Manager and Organization Auditor"
   pas_ssl_note: <p class="note"><span class="note__title">Note</span> TAS for VMs does not support using <code>syslog-tls</code> or <code>https</code> with self-signed certificates. If you are running your own syslog server and want to use <code>syslog-tls</code> or <code>https</code>, you must have an SSL certificate signed by a well-known certificate authority.</p>
   pcf_pools: For information about configuring resource pools for Amazon Web Services, see the [Amazon documentation](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2). </br></br> For information about configuring resource pools for OpenStack, see the [OpenStack documentation](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html).</br></br>  For information about configuring resource pools for vSphere, see [Resource Config Page](https://docs.pivotal.io/platform/customizing/vsphere-config.html#resource-config) in _Configuring BOSH Director on vSphere_.
-  pcf_rec: Pivotal
   platform_metric_tool_ref: Healthwatch. See <a href="https://docs.pivotal.io/pcf-healthwatch/index.html">Healthwatch</a>.
   platform_ssh_configuration: Tanzu Operations Manager deployments control SSH access to apps at the TAS for VMs level. Additionally, TAS for VMs supports load balancing of SSH sessions with your load balancer. For information about setting SSH access for your deployment, see [Configuring SSH Access](../../opsguide/config-ssh.html).
   pools_link: the [Tanzu Operations Manager configuration topic for your IaaS](https://docs.pivotal.io/platform/om/).
@@ -259,7 +257,6 @@ template_variables:
   tas_networking: To configure the names of the cookies, see [Configure networking](../operating/config-networking.html#networking) in _Configuring TAS for VMs_.
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for configuring TCP routing in the [TAS for VMs documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/config-networking.html).
   tcp_mod_port_change: "../adminguide/tcp_empty_file"
-  tcp_port: "/pcf/core//tcp_port_review"
   tiledev_link: <p class="note"><span class="note__title">Note</span> To develop service brokers and service tiles for Ops Manager, see the <a href="https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/index.html">Tanzu Operations Manager Tile Developer Guide</a>.</p>
   uaa: <a href="../adminguide/notifications.html">UAA</a>
   uaa_cli: For more information, see [Creating and Managing Users with the UAA CLI (UAAC)](../../uaa/uaa-user-management.html) and [Orgs, Spaces, Roles, and Permissions](../../concepts/roles.html).
@@ -268,15 +265,12 @@ template_variables:
   use_global_header: true
   user_org_creation: If configured, this flag activates the **Create a New Org** link in the dropdown of the left navigation menu in Apps Manager.
   understanding_asg_individual_link: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/asg.html#asg-individual">App Security Groups</a>
-  v3_cli_versions: The experimental commands described in this topic require Pivotal Cloud Foundry (PCF) v1.12 or later and the cf CLI v6.30.0 or later.
-  warden_garden: <p class="note"><span class="note__title">Note</span> Pivotal Cloud Foundry (PCF) v1.6 and later no longer use Warden. The platform-independent Garden subsystem replaces its function. This topic is intended for users who are running older versions of PCF.</p>
   ssl_gorouter_link: <a href="../opsguide/security_config.html#gorouter_term">Terminating SSL/TLS at the Gorouter only</a>
   ssl_lb_gorouter_link: <a href="../opsguide/security_config.html#gorouter_lb">Terminating SSL/TLS at the Load Balancer and the Gorouter</a>
   ssl_lb_link: <a href="../opsguide/security_config.html#unencrypted">Terminating SSL/TLS at the Load Balancer Only</a>
   ssl_haproxy: <tr><th>Optionally, if you are deploying HAProxy, and</th><th>Then in addition, terminate SSL/TLS at<span>:</span></th><th>Related topic and configuration procedure</th></tr><tr><td><ul><li>You would like to secure traffic to the HAProxy.</li></ul></td><td><strong>HAProxy</strong></td><td><a href="../opsguide/ssl-term-haproxy.html#haproxy">Terminating SSL/TLS at HAProxy</a></td></tr>
   ssl_haproxy_2: <p class="note"><span class="note__title">Note</span> If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS Termination at HAProxy</a>.</p>
   starting_container_count_maximum: For information about how to configure this setting, see the [TAS for VMs documentation](../upgrading/configuring.html#container-starts).
-  garden_runc: <p class="note"><span class="note__title">Note</span> PAS v1.8.8 and later use Garden-runC instead of Garden-Linux.</p>
   autoscaler_bullet: <li><a href="../appsman-services/autoscaler/using-autoscaler.html" class="subnav">Scaling an App Using App Autoscaler</a></li>
   autoscaler_note_dev_guide: <p class="note"><span class="note__title">Note</span> You can configure your app to scale automatically based on rules that you set. For more information, see <a href="../../appsman-services/autoscaler/using-autoscaler.html">Scaling an App Using Autoscaler</a> and <a href="../../appsman-services/autoscaler/using-autoscaler-cli.html">Using the App Autoscaler CLI</a>.</p>
   tasks_ai: <p class="note"><span class="note__title">Note</span> Running a task consumes an app instance and is billed accordingly.</p>
@@ -311,7 +305,6 @@ template_variables:
   haproxy_hsts_support: You can force HTTPS-only connections by configuring HSTS on HAProxy. For more information, see [Secure Apps Domain with HAProxy](../opsguide/securing-endpoints.html#load-balancer) in _Securing System and App Endpoints_.
   external_lb: For more information, see [Using your own Load Balancer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/custom-load-balancer.html).
   gather_routing_logs: To SSH into the router VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-trouble-advanced.html#bosh-ssh). To download the router VM logs from Ops Manager, see [Monitoring VMs](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-monitoring.html).
-  routing_version: PCF 2.0
   gorouter_metrics_link: https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/monitoring-kpi.html
   internal_domain_config: <p class="note"><span class="note__title">Note</span> The internal domain used for service discovery is <code>apps.internal</code> by default. Operators can modify this value in the <strong>App Developer Controls</strong> pane of the TAS for VMs tile.</p>
   mutual_tls_tcp: <p class="note"><span class="note__title">Note</span> If you have mutual TLS app identity verification configured, app containers accept incoming communication only from the Gorouter. This disallows TCP routing.</p>
