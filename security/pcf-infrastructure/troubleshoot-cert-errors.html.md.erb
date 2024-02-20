@@ -13,8 +13,6 @@ CredHub Maestro completes basic safety checks when rotating certificates to prev
 The <%= vars.ops_manager %> API runs CredHub Maestro when rotating certificates. If a certificate rotation API
 command is unsafe, CredHub Maestro stops the command and returns one or more safety violations.
 
-The <%= vars.ops_manager %> API does not invoke CredHub Maestro and subsequently CredHub Maestro-related safety checks during certificate rotation if it detects an installation of Pivotal Application Service (PAS) v2.8.2 or earlier, any version of <%= vars.k8s_runtime_first %>, or any version of <%= vars.k8s_runtime_abbr_pivotal %> (<%= vars.k8s_runtime_abbr_pivotal %>).
-
 CredHub Maestro returns safety violations if a rotation step is run out of order. For example,
 you generate a new root certificate authority (CA) but attempt to activate it before clicking **Apply Changes**. Performing steps
 out of the correct order during certificate rotations can make your deployment unstable or risk downtime.
