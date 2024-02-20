@@ -182,13 +182,6 @@ template_variables:
   log_management:
   logg_forwarding: <a href="../opsguide/logging-config-opsman.html#syslog-forward">Configuring System Logging in TAS for VMs</a>
   logg_scaling: <a href="../opsguide/logging-config-opsman.html#scaling">Configuring Logging in TAS for VMs</a>
-  loggregator_links: <ul><li><a href="https://docs.pivotal.io/platform/2-11/monitoring/kpi.html" class="subnav">Key Performance Indicators</a></li><li><a href="../monitoring/key-cap-scaling.html" class="subnav">Key Capacity Scaling Indicators</a></li><li><a href="../monitoring/metrics.html" class="subnav">Selecting and Configuring a Monitoring System</a></li><li><a href="https://docs.pivotal.io/jmx-bridge/self-signed-ssl.html" class="subnav">Using SSL with a Self-Signed Certificate in JMX Bridge</a><li><a href="https://docs.pivotal.io/jmx-bridge/deploy-metrics.html" class="subnav">Deploying JMX Bridge</a></li><li><a href="https://docs.pivotal.io/jmx-bridge/use-metrics.html" class="subnav">Using JMX Bridge</a></li></ul>
-  loggregator_arch_link: <a href="../../loggregator/architecture.html">Loggregator Architecture</a>
-  loggregator_firehose_link: <a href="../../loggregator/architecture.html#firehose">Loggregator Firehose</a>
-  loggregator_log_cache_link: To use Log Cache, you must configure it in the VMware Tanzu Application Service for VMs (TAS for VMs) tile. To configure Log Cache, see [Log Cache](../opsguide/logging-config-opsman.html#log-cache) in _Configuring Logging in TAS for VMs_.
-  loggregator_log_cache_app_autoscaler_link: <h3><a id="autoscaler"></a> App Autoscaler</h3> App Autoscaler adjusts app instance counts to balance performance and cost. It uses data from the Log Cache API, so removing Log Cache makes App Autoscaler fail. For more information, see [App Autoscaler fails when Loggregator's log cache is Deactivated](https://docs.pivotal.io/platform/2-2/pcf-release-notes/breaking-changes.html#autoscaler-log-cache) in _Breaking Changes_.
-  loggregator_log_cache_link_pas: For more information, see [Loggregator Adds Log Cache in PAS Advanced Features](https://docs.pivotal.io/platform/2-2/pcf-release-notes/runtime-rn.html#log-cache) in the PAS v2.2 release notes.
-  loggregator_log_cache_link_syslog_scale: For guidance on scaling, see [CF Syslog Drain Performance Scaling Indicators](../monitoring/key-cap-scaling.html#scalable-syslog) in _Key Capacity Scaling Indicators_ and [Scale Loggregator](../opsguide/logging-config-opsman.html#scaling) in _Configuring Logging in TAS for VMs_.
   manage_apps_service_instances_ref: Apps Manager. See <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-apps.html#logs">Managing Apps and Service Instances Using Apps Manager</a>.
   manage_iso_seg_link: For more information about how to create and manage isolation segments in an Tanzu Operations Manager deployment, see [Installing Isolation Segment](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/installing-pcf-is.html) and [Managing Isolation Segments](../adminguide/isolation-segments.html).
   manage_roles_footnote: <sup>&Dagger;</sup>Defaults to no. Yes if feature flags `set_roles_by_username` and `unset_roles_by_username` are set to `true`.
@@ -225,7 +218,6 @@ template_variables:
   port_limitations_1: To support WebSockets, the operator must configure the load balancer correctly. Depending on the configuration, clients may have to use a different port for WebSocket connections, such as port 4443, or a different domain name. For more information, see [Supporting WebSockets](../adminguide/supporting-websockets.html).
   private_app_domain: private-domain.example.com
   product_url: https://network.tanzu.vmware.com/products/elastic-runtime/
-  pw_policy: To configure the password policy, see [Configuring UAA password policy](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/pw-policy.html).
   pws_metrics:
   python_cf245only:
   quota_resource: quota space
@@ -251,7 +243,6 @@ template_variables:
   sso_plan_enabled: have the Single Sign-On service broker installed on your Tanzu Operations Manager deployment. You must create a plan, grant any plan admins, and specify any orgs this plan should be the authentication authority for. For help configuring plans, see [Manage Service Plans](../manage-service-plans.html).
   suspended_roles_table: "../console/pcf_suspended_roles_table"
   syslog_forwarding_ref: Syslog forwarding. See <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/services-log-management.html">Streaming App Logs to Log Management Services</a>.
-  tas_networking: To configure the names of the cookies, see [Configure networking](../operating/config-networking.html#networking) in _Configuring TAS for VMs_.
   tcp_iaas: To configure your IP addresses for your TAS for VMs deployment, see the procedure for configuring TCP routing in the [TAS for VMs documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/config-networking.html).
   tcp_mod_port_change: "../adminguide/tcp_empty_file"
   tiledev_link: <p class="note"><span class="note__title">Note</span> To develop service brokers and service tiles for Ops Manager, see the <a href="https://docs.vmware.com/en/Tile-Developer-Guide/3.0/tile-dev-guide/index.html">Tanzu Operations Manager Tile Developer Guide</a>.</p>
@@ -323,11 +314,9 @@ template_variables:
   clock_vm: clock_global
   mysql_vm: mysql
   blobstore_link: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/config-file-storage.html">Configuring File Storage for TAS for VMs</a>
-  loggregator_architecture_syslog: In VMware Tanzu Application Service for VMs (TAS for VMs) v2.11, Loggregator architecture uses Syslog Agents and removes Syslog Adapters.<br/><br/>Platform operators can also configure System Metrics Agents on all VMs deployed with TAS for VMs to collect system-level metrics.
   enable_docker_link: To configure Docker support, see [Configure Docker](../../adminguide/docker.html#enable) in _Using Docker in TAS for VMs_.
   slow_nozzle_alerts_link: For more information, see [Slow Nozzle Alerts](../../loggregator/log-ops-guide.html#slow-noz) in _Loggregator Guide for TAS for VMs Operators_.
   scaling_nozzles_link: For more information, see [Scaling Nozzles](../../loggregator/log-ops-guide.html#scaling-nozzles) in _Loggregator Guide for TAS for VMs Operators_.
-  scaling_loggregator_link: For more information, see [Scaling Loggregator](../../loggregator/log-ops-guide.html#scaling) in _Loggregator Guide for TAS for VMs Operators_.
   using_docker_link: For an explanation of how Docker works in TAS for VMs, see [Using Docker in TAS for VMs](../../adminguide/docker.html).
   app_graceful_shutdown_config: If your apps require a longer period of time to finish in-flight jobs and gracefully shut down, you can increase the graceful shutdown period. For more information, see the [TAS for VMs documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/config-advanced-features.html).
   app_log_limit_config: For more information, see the <a href="https://docs.pivotal.io/platform/3-0/release-notes/runtime-rn.html#app-log-limit">TAS for VMs documentation</a>.
