@@ -178,17 +178,7 @@ template_variables:
   domain_name: pivotal.io
   domains_shared_domains: For more information about using custom domains shared across all orgs in your TAS for VMs account, see [Domains and Shared Domains](./domains.html).
   email_notifications: <p class="note"><strong>Note</strong><span>:</span> In Tanzu Operations Manager, you can configure email notifications in the <strong>Director Config</strong> pane of the BOSH Director tile. For example, see <a href="https://docs.pivotal.io/platform/2-11/customizing/pcf-aws-manual-om-config.html#pcfaws-om-dirconfig">Configuring BOSH Director on AWS</a> for more information about how to configure email notifications on Amazon Web Services (AWS).</p>
-  enable_c2c_discovery: open the **App Developer Controls** pane in your TAS for VMs tile and select the **Enable Service Discovery for Apps** checkbox
-  enable_syslog_drain: For more information, see [Configuring System Logging in TAS for VMs](../opsguide/logging-config-opsman.html).
-  enable_syslog_forwarding_link: <p class="note"><span class="note__title">Note</span> For this procedure to work, you must configure syslog forwarding. For more information, see <a href="https://docs.pivotal.io/platform/2-11/opsguide/logging-config-opsman.html#syslog-forward">Configure Syslog Forwarding</a> in <em>Configuring Logging in TAS for VMs</em>.</p>
-  example_domain: www.example.com
-  example_domain_edu: www.example.edu
-  example_domain_net: www.example.net
-  example_domain_no_www: .example.com
-  example_domain_org: www.example.org
-  example_ip_1: 192.0.2.1
-  example_ip_2: 198.51.100.1
-  example_ip_3: 203.0.113.1
+  enable_c2c_discovery: open the **App Developer Controls** pane in your TAS for VMs tile and select the **Enable Service Discovery for Apps** check box
   external_ips: external IP addresses
   external_vol_smb_note: <p class="note"><span class="note__title">Note</span> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see the <a href="https://docs.pivotal.io/application-service/windows/smb-volumes-apps.html">TAS for VMs documentation</a>.</p>
   external_vol_win_note: <p class="note"><span class="note__title">Note</span> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see the <a href="https://docs.pivotal.io/application-service/windows/smb-volumes-apps.html">TAS for VMs documentation</a>.<br>NFS is not available on Windows systems.</p>
