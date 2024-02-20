@@ -212,8 +212,6 @@ template_variables:
   nats_tls: Tanzu Operations Manager sends all NATS traffic using Transport Layer Security (TLS) encryption by default.
   net_traffic_rules: <a href="../adminguide/app-sec-groups.html">network traffic rules</a>
   notifications_link: <a href="../../adminguide/notifications.html">Notification Service</a>
-  om_resurrector_header: <h3>BOSH Resurrector</h3>
-  om_resurrector_text: <p>The BOSH Resurrector increases VMware Tanzu Application Service for VMs (TAS for VMs) availability in the following ways:</p><ul><li>Reacts to hardware failure and network disruptions by recreating VMs on active, stable hosts</li><li>Detects operating system failures by continuously monitoring VMs and recreating them as required</li><li>Continuously monitors the BOSH Agent running on each VM and recreates the VMs as required</li></ul><p>The BOSH Resurrector continuously monitors the status of all VMs in a TAS for VMs deployment. The Resurrector also monitors the BOSH Agent on each VM. If either the VM or the BOSH Agent fail, the Resurrector recreates the VM on another active host. To configure the BOSH Resurrector, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-resurrector.html">Configure BOSH Resurrector</a> in <em>Using the BOSH Resurrector</em>.</p>
   or_apps_man2: or <a href="../console/dev-console.html">Apps Manager</a>
   or_apps_man: <span>&nbsp;</span> or <a href="../console/console-roles.html">Apps Manager</a>
   org_members: images/pcf/org-members.png
@@ -231,7 +229,6 @@ template_variables:
   pws_metrics:
   python_cf245only:
   quota_resource: quota space
-  resurrector: To configure the Resurrector, see the following pages for your particular IaaS&#58; [AWS](https://docs.pivotal.io/platform/customizing/pcf-aws-manual-om-config.html#pcfaws-om-dirconfig), [Azure](https://docs.pivotal.io/platform/customizing/azure-om-config.html#director-config), [GCP](https://docs.pivotal.io/platform/customizing/gcp-om-config.html#director-config), [OpenStack](https://docs.pivotal.io/platform/customizing/openstack-om-config.html#director-config), or [vSphere](https://docs.pivotal.io/platform/customizing/resurrector.html).
   roles_table: "../console/pcf_roles_table"
   open_service_broker_api: "../open-service-broker/spec"
   open_service_broker_rn: "../open-service-broker/release-notes"
@@ -268,8 +265,6 @@ template_variables:
   ssl_gorouter_link: <a href="../opsguide/security_config.html#gorouter_term">Terminating SSL/TLS at the Gorouter only</a>
   ssl_lb_gorouter_link: <a href="../opsguide/security_config.html#gorouter_lb">Terminating SSL/TLS at the Load Balancer and the Gorouter</a>
   ssl_lb_link: <a href="../opsguide/security_config.html#unencrypted">Terminating SSL/TLS at the Load Balancer Only</a>
-  ssl_haproxy: <tr><th>Optionally, if you are deploying HAProxy, and</th><th>Then in addition, terminate SSL/TLS at<span>:</span></th><th>Related topic and configuration procedure</th></tr><tr><td><ul><li>You would like to secure traffic to the HAProxy.</li></ul></td><td><strong>HAProxy</strong></td><td><a href="../opsguide/ssl-term-haproxy.html#haproxy">Terminating SSL/TLS at HAProxy</a></td></tr>
-  ssl_haproxy_2: <p class="note"><span class="note__title">Note</span> If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS Termination at HAProxy</a>.</p>
   starting_container_count_maximum: For information about how to configure this setting, see the [TAS for VMs documentation](../upgrading/configuring.html#container-starts).
   autoscaler_bullet: <li><a href="../appsman-services/autoscaler/using-autoscaler.html" class="subnav">Scaling an App Using App Autoscaler</a></li>
   autoscaler_note_dev_guide: <p class="note"><span class="note__title">Note</span> You can configure your app to scale automatically based on rules that you set. For more information, see <a href="../../appsman-services/autoscaler/using-autoscaler.html">Scaling an App Using Autoscaler</a> and <a href="../../appsman-services/autoscaler/using-autoscaler-cli.html">Using the App Autoscaler CLI</a>.</p>
@@ -289,7 +284,6 @@ template_variables:
   ssl_term_vsphere: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/ssl-term.html">Configuring Tanzu Operations Manager SSL termination for vSphere deployments</a></li>
   enable_invitations: <p class="note"><span class="note__title">Note</span> The <strong>Allow invitations to Apps Manager</strong> check box in the <strong>Apps Manager</strong> pane of the TAS for VMs tile must be activated to invite new users.</p>
   user_provided_apps_man: <p class="note"><span class="note__title">Note</span> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also create user-provided service instances in Apps Manager from the Marketplace. To update existing user-provided service instances, navigate to the service instance page and select the <strong>Configuration</strong> tab.</p>
-  aws_lb_cipher_suites: "https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/securing-traffic.html"
   ssl_cert_ert: <p class="note"><span class="note__title">Note</span> Alternately, you can use the TAS for VMs Tanzu Operations Manager interface to generate a certificate for you. Certificates generated in TAS for VMs are signed by the Ops Manager Certificate Authority. They are not technically self-signed, but they are sometimes referred to as "self-signed certificates" in the Ops Manager UI and throughout this documentation. For more information, see <a href="../opsguide/security_config.html#ert_certgen">Generating a RSA Certificate in TAS for VMs</a> in <em>Providing a Certificate for Your TLS Termination Point</em>.</p>
   ssl_single_sans_wildcard: <li>You can use a single certificate with SANs in your deployment for your wildcard domains, and</li>
   ssl_gorouter_sans: <li>You can use a single SAN certificate on the Gorouter, and</li>
