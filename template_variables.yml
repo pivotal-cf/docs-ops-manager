@@ -64,9 +64,6 @@ template_variables:
 
 # Book content variables
   recommended_by: VMware
-  expand_network_azs: <p class="note"><span class="note__title">Note</span> After you deploy Ops Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
-
-  add_volumes_link: For more information, see [Configuring Volume Services](../../opsguide/enable-vol-services.html).
   admin: Tanzu Operations Manager admin
   admin_read_only_role: "<ul><li><strong>Admin Read-Only</strong>: Read-only access to all Cloud Controller API resources. Assigned the <code>cloud_controller.admin_read_only</code> scope in UAA.</li></ul>"
   admin_role: "<ul><li><strong>Admin</strong>: Perform operational actions on all orgs and spaces using the Cloud Controller API. Assigned the <code>cloud_controller.admin</code> scope in UAA.</li></ul>"
@@ -90,8 +87,6 @@ template_variables:
   asg_note: <p class="note"><span class="note__title">Note</span> You can also view ASGs in Apps Manager under the <strong>Settings</strong> tab of a space or an app.</p>
   asg_notifications_prereq: You also must configure [App Security Groups (ASGs)](../opsguide/notifications-asg.html).
   aws_network_elb: You can also select this option if you are installing Tanzu Operations Manager on AWS.
-  az: <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-understand-az.html">availability zones</a>
-  azs: You can configure your deployment so that Diego Cells are created across these AZs in the **Assign AZs and Networks** pane of the TAS for VMs tile.
   azure_deploy: For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/azure-prepare-env-manual.html">Preparing to Deploy Ops Manager on Azure</a>.
   billing_manager_role:
   billing_manager_role_note:
@@ -249,7 +244,6 @@ template_variables:
   roles_table: "../console/pcf_roles_table"
   open_service_broker_api: "../open-service-broker/spec"
   open_service_broker_rn: "../open-service-broker/release-notes"
-  route_services_config: <h2><a id='enabling-route-services'></a>Configuring Route Services in TAS for VMs</h2>You configure route services for your deployment in the **Networking** pane of the TAS for VMs tile. For more information, see the [TAS for VMs documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/toc-tas-install-pas-index.html).
   saml_provider: Retrieve the name of your SAML provider by navigating to the TAS for VMs tile in the Tanzu Operations Manager Installation Dashboard, selecting **Authentication and Enterprise SSO**, and recording the value under **Provider name**. For more information about configuring TAS for VMs for a SAML identity provider, see [Configure TAS for VMs to Use a SAML Identity Provider](../opsguide/auth-sso.html#configure-saml) in _Configuring Authentication and Enterprise SSO for TAS for VMs_.
   scale_table: "/pcf/core//pcf_scale_table"
   scaling_ert: For more information regarding rolling app deployments, see [Scaling instances in TAS for VMs](./../opsguide/scaling-ert-components.html).
@@ -313,9 +307,7 @@ template_variables:
   tls_info_subnav: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/networking-tls-info.html">TLS connections in Tanzu Operations Manager deployments</a></li>
   vsphere_az_subnav: <li><a href="https://docs.pivotal.io/platform/2-11/customizing/understand-az.html">Availability Zones in vSphere</a></li>
   ha_ert: <p class="note"><span class="note__title">Note</span> In PCF v1.11 and later, TAS for VMs defaults to a highly available resource configuration. However, you may need to complete additional procedures described below to make your deployment highly available.</p>
-  enable_invitations: <p class="note"><span class="note__title">Note</span> The <strong>Allow invitations to Apps Manager</strong> checkbox in the <strong>Apps Manager</strong> pane of the TAS for VMs tile must be activated to invite new users.</p>
-  route_services_appsman1: <p class="note"><span class="note__title">Note</span> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-apps.html#manage-route-services">Manage Route Services</a> in <em>Managing Apps and Service Instances Using Apps Manager</em>.</p>
-  route_services_appsman2: <p class="note"><span class="note__title">Note</span> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also manage route services using Apps Manager. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/manage-apps.html#manage-route-services">Manage Route Services</a> in <em>Managing Apps and Service Instances Using Apps Manager</em>.</p>
+  enable_invitations: <p class="note"><span class="note__title">Note</span> The <strong>Allow invitations to Apps Manager</strong> check box in the <strong>Apps Manager</strong> pane of the TAS for VMs tile must be activated to invite new users.</p>
   user_provided_apps_man: <p class="note"><span class="note__title">Note</span> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also create user-provided service instances in Apps Manager from the Marketplace. To update existing user-provided service instances, navigate to the service instance page and select the <strong>Configuration</strong> tab.</p>
   aws_lb_cipher_suites: "https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/securing-traffic.html"
   ssl_cert_ert: <p class="note"><span class="note__title">Note</span> Alternately, you can use the TAS for VMs Tanzu Operations Manager interface to generate a certificate for you. Certificates generated in TAS for VMs are signed by the Ops Manager Certificate Authority. They are not technically self-signed, but they are sometimes referred to as "self-signed certificates" in the Ops Manager UI and throughout this documentation. For more information, see <a href="../opsguide/security_config.html#ert_certgen">Generating a RSA Certificate in TAS for VMs</a> in <em>Providing a Certificate for Your TLS Termination Point</em>.</p>
@@ -330,7 +322,6 @@ template_variables:
   uaa_admin_client_creds: Record the **Admin Client Credentials** from the **UAA** row in the TAS for VMs **Credentials** tab.
   supporting_websockets: By default, TAS for VMs assigns port 443 for TCP/WebSocket communications. If you have configured your load balancer to use a port other than 443 for TCP/WebSocket traffic, you must configure the **Loggregator port** field in the **Networking** pane of the TAS for VMs tile.
   tcp_emitter_oauth_creds: Record the **Tcp Emitter Credentials** from the **UAA** row in the **Credentials** tab of the TAS for VMs tile.
-  expand_network_azs: <p class="note"><span class="note__title">Note</span> After you deploy Tanzu Operations Manager, you add subnets with overlapping AZs to expand your network. For more information about configuring additional subnets, see <a href="../install/add-subnets.html">Expanding Your Network with Additional Subnets</a>.</p>
   haproxy_hsts_support: You can force HTTPS-only connections by configuring HSTS on HAProxy. For more information, see [Secure Apps Domain with HAProxy](../opsguide/securing-endpoints.html#load-balancer) in _Securing System and App Endpoints_.
   external_lb: For more information, see [Using your own Load Balancer](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/custom-load-balancer.html).
   gather_routing_logs: To SSH into the router VM, see [Advanced Troubleshooting with the BOSH CLI](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-trouble-advanced.html#bosh-ssh). To download the router VM logs from Ops Manager, see [Monitoring VMs](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-monitoring.html).
