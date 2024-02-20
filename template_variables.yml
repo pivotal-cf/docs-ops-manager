@@ -253,7 +253,6 @@ template_variables:
   ssh_service_plan: 100mb
   ssl:
   ssl_term_vsphere: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/ssl-term.html">Configuring Tanzu Operations Manager SSL Termination for vSphere Deployments</a></li>
-  ssl_tls_subnav: <li><a href="../opsguide/security_config.html">Providing a Certificate for Your TLS Termination Point</a></li>
   sso_plan_enabled: have the Single Sign-On service broker installed on your Tanzu Operations Manager deployment. You must create a plan, grant any plan admins, and specify any orgs this plan should be the authentication authority for. For help configuring plans, see [Manage Service Plans](../manage-service-plans.html).
   suspended_roles_table: "../console/pcf_suspended_roles_table"
   syslog_forwarding_ref: Syslog forwarding. See <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/services-log-management.html">Streaming App Logs to Log Management Services</a>.
@@ -292,14 +291,8 @@ template_variables:
   config_ssh_link: For more information, see <a href='../../operating/config-ssh.html'>Configuring SSH Access for TAS for VMs</a>.
   inflight_img: <img src="../opsguide/images/max-container-starts.png" alt="">
   asg_first_time: <p class="note"><span class="note__title">Note</span> If you are creating ASGs for the first time, see <a href="../operating/app-sec-groups.html">Restricting App Access to Internal TAS for VMs Components</a>.</p>
-  lb_subnav: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/custom-load-balancer.html">Using your own Load Balancer</a></li><p><li><a href="https://docs.pivotal.io/platform/2-11/customizing/elb-ssh-proxy.html">Creating a Proxy ELB for Diego SSH</a></li>
   ssl_term_haproxy: <li><a href="../operating/ssl-term-haproxy.html">Configuring SSL/TLS Termination at HAProxy</a></li>
   ssl_term_vsphere: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/ssl-term.html">Configuring Tanzu Operations Manager SSL termination for vSphere deployments</a></li>
-  ssl_tls_subnav: <li><a href="../operating/security_config.html">Providing a Certificate for your TLS Termination Point</a></li>
-  tcp_ert_subnav: <br><li><a href="../operating/tcp-routing-ert-config.html">Configuring TCP Routing in TAS for VMs</a></li><br>
-  tls_info_subnav: <li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/networking-tls-info.html">TLS connections in Tanzu Operations Manager deployments</a></li>
-  vsphere_az_subnav: <li><a href="https://docs.pivotal.io/platform/2-11/customizing/understand-az.html">Availability Zones in vSphere</a></li>
-  ha_ert: <p class="note"><span class="note__title">Note</span> In PCF v1.11 and later, TAS for VMs defaults to a highly available resource configuration. However, you may need to complete additional procedures described below to make your deployment highly available.</p>
   enable_invitations: <p class="note"><span class="note__title">Note</span> The <strong>Allow invitations to Apps Manager</strong> check box in the <strong>Apps Manager</strong> pane of the TAS for VMs tile must be activated to invite new users.</p>
   user_provided_apps_man: <p class="note"><span class="note__title">Note</span> The procedures in this topic use the Cloud Foundry Command Line Interface (cf CLI). You can also create user-provided service instances in Apps Manager from the Marketplace. To update existing user-provided service instances, navigate to the service instance page and select the <strong>Configuration</strong> tab.</p>
   aws_lb_cipher_suites: "https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/securing-traffic.html"
