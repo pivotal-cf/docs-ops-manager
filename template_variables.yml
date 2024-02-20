@@ -122,9 +122,6 @@ template_variables:
   cipher_suites: You can override the default cipher suites in the **TLS cipher suites** field and **TLS versions** dropdown in the **Networking** pane of the TAS for VMs tile. For more information about using custom SSL ciphers, see [Gorouter Only](#pass-through) or [Load Balancer and Gorouter](#lb-and-router).
   cli_download: the Tools page of your Apps Manager instance
   cli_v6: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/getting-started.html">Getting Started with cf CLI</a>
-  cli_rec_min_version: <p class="note"><span class="note__title">Note</span> For use with Pivotal Cloud Foundry v1.10, the recommended minimum version is cf CLI v6.23 or later.</p>
-  cloud_controller_dea_agent: <p class="note"><span class="note__title">Note</span> Pivotal Cloud Foundry (PCF) v1.6 and later no longer use Droplet Execution Agents (DEAs). Diego Cells replace their function. This topic is published here to help people who are running older versions of PCF. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/diego-diego-architecture.html">Diego Components and Architecture</a>.</p>
-  cloud_controller_dea_algorithm: <p class="note"><span class="note__title">Note</span> Pivotal Cloud Foundry (PCF) v1.6 and later no longer use the DEA Placement Algorithm. The Diego Auction replaces its function. This section is published here to help people who are running older versions of PCF. For more information about Diego Auction, see <a href="../diego/diego-auction.html">How Diego Balances App Processes</a>.</p>
   cloud_controller_logging:
   compliance_links: <h2><a id='compliance'></a>Compliance</h2>For information about compliance in TAS for VMs, see the following topics:<br><ul><li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/services/nist/index.html">NIST Controls and VMware Tanzu Application Service for VMs</a>&#58; Provides a dedicated site that assesses TAS for VMs against NIST SP 800-53(r4) Controls.</li><li><a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/gdpr.html">General Data Protection Regulation</a>&#58; Provides an overview of the General Data Protection Regulation (GDPR) and where TAS for VMs might store personal data.</li></ul>
   collector_singleton: The singleton compilation components do not affect platform availability.
@@ -160,8 +157,6 @@ template_variables:
   custom_stack:
   custom_stack_nav_link:
   internal_percona_db_migration_ref: For information about migrating internal TAS for VMs system databases from MariaDB to Percona, see [Migrating to Internal Percona MySQL](https://docs.pivotal.io/platform/2-11/opsguide/migrate-percona-mysql.html).
-  dea_diego_table_row: <tr><td>1.5 and below</td><td>1.6 and above</td><td>CF version numbers</td><td></td></tr>
-  dea_diego_version: Diego architecture for v1.6
   dev_console_1: You can use either the CLI or Apps Manager to perform this task. For more information about using Apps Manager, see [Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/toc-using-apps-manager-index.html).
   dev_console_2: CLI or <a href="https://docs.run.pivotal.io/console/index.html">Apps Manager</a>
   dev_console_3: For more information about using Apps Manager, see [Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/toc-using-apps-manager-index.html).
@@ -268,9 +263,6 @@ template_variables:
   scaling_ert_db: For more information about scaling internal database components, see [Scaling instances in TAS for VMs](./../opsguide/scaling-ert-components.html).
   select_org: images/pcf/select-org.png
   self_signed: Before completing the following procedure, you must obtain either the self-signed certificate or the intermediate and CA certificate(s) used to sign the deployment's certificate. The developer can obtain these certificates from the Ops Manager operator.
-  services: <a href="https://docs.pivotal.io/platform/services/">services</a>
-  services_link: <a href="https://docs.pivotal.io/platform/services/overview.html">services</a>
-  sharding: "/pcf/core//pcf_sharding"
   spring_trace: images/pcf/trace.png
   spring_trace_label: <strong>Hide Apps Manager Requests</strong>
   ssh_marketplace_output: p-mysql  100mb MySQL databases on demand
@@ -304,8 +296,6 @@ template_variables:
   ssl_lb_link: <a href="../opsguide/security_config.html#unencrypted">Terminating SSL/TLS at the Load Balancer Only</a>
   ssl_haproxy: <tr><th>Optionally, if you are deploying HAProxy, and</th><th>Then in addition, terminate SSL/TLS at<span>:</span></th><th>Related topic and configuration procedure</th></tr><tr><td><ul><li>You would like to secure traffic to the HAProxy.</li></ul></td><td><strong>HAProxy</strong></td><td><a href="../opsguide/ssl-term-haproxy.html#haproxy">Terminating SSL/TLS at HAProxy</a></td></tr>
   ssl_haproxy_2: <p class="note"><span class="note__title">Note</span> If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS Termination at HAProxy</a>.</p>
-  zipkin_enable: "/pcf/core//zipkin-pcf-config"
-  zipkin_enable_link: <p>When Zipkin tracing is configured in TAS for VMs, the Gorouter examines the HTTP request headers and does the following:</p>
   starting_container_count_maximum: For information about how to configure this setting, see the [TAS for VMs documentation](../upgrading/configuring.html#container-starts).
   garden_runc: <p class="note"><span class="note__title">Note</span> PAS v1.8.8 and later use Garden-runC instead of Garden-Linux.</p>
   autoscaler_bullet: <li><a href="../appsman-services/autoscaler/using-autoscaler.html" class="subnav">Scaling an App Using App Autoscaler</a></li>
@@ -382,7 +372,6 @@ template_variables:
   scaling_nozzles_link: For more information, see [Scaling Nozzles](../../loggregator/log-ops-guide.html#scaling-nozzles) in _Loggregator Guide for TAS for VMs Operators_.
   scaling_loggregator_link: For more information, see [Scaling Loggregator](../../loggregator/log-ops-guide.html#scaling) in _Loggregator Guide for TAS for VMs Operators_.
   using_docker_link: For an explanation of how Docker works in TAS for VMs, see [Using Docker in TAS for VMs](../../adminguide/docker.html).
-  zipkin_tracing_link: For more information about Zipkin tracing, see [Configuring Zipkin Tracing](../adminguide/zipkin_tracing.html).
   app_graceful_shutdown_config: If your apps require a longer period of time to finish in-flight jobs and gracefully shut down, you can increase the graceful shutdown period. For more information, see the [TAS for VMs documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/config-advanced-features.html).
   app_log_limit_config: For more information, see the <a href="https://docs.pivotal.io/platform/3-0/release-notes/runtime-rn.html#app-log-limit">TAS for VMs documentation</a>.
   isolation_segments_smoke_tests: <p class="note"><span class="note__title">Note</span> If you run smoke tests as a post-deploy errand in the Isolation Segment tile, the smoke tests check if your isolation segment is registered in the CCDB. If the isolation segment is not registered, the smoke tests register it in the CCDB. This eliminates the need to manually register an isolation segment with <code>cf create-isolation-segment</code>. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/installing-pcf-is.html#smoke-tests">Smoke Tests</a> in <em>Installing Isolation Segment</em>.</p>
