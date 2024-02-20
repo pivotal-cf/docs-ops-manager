@@ -156,13 +156,6 @@ template_variables:
   custom_services: If you are interested in building services for Tanzu Operations Manager and making them available to end users, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/services-index.html">Services</a>.
   custom_stack:
   custom_stack_nav_link:
-  internal_percona_db_migration_ref: For information about migrating internal TAS for VMs system databases from MariaDB to Percona, see [Migrating to Internal Percona MySQL](https://docs.pivotal.io/platform/2-11/opsguide/migrate-percona-mysql.html).
-  dev_console_1: You can use either the CLI or Apps Manager to perform this task. For more information about using Apps Manager, see [Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/toc-using-apps-manager-index.html).
-  dev_console_2: CLI or <a href="https://docs.run.pivotal.io/console/index.html">Apps Manager</a>
-  dev_console_3: For more information about using Apps Manager, see [Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/toc-using-apps-manager-index.html).
-  dev_console_4: For more information about using Apps Manager, see [Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/toc-using-apps-manager-index.html).
-  dev_console_5: You can also bind a service using Apps Manager. For more information about using Apps Manager, see [Using Apps Manager](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/toc-using-apps-manager-index.html).
-  dev_console_note: For more information about specific Admin commands you can perform with Apps Manager, depending on your user role, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/dev-console.html">Getting Started with the Apps Manager</a>.
   diego_architecture: This topic provides an overview of the structure and components of Diego, the container management system for Pivotal Cloud Foundry v1.6 and later.
   diego_deploy:
   diego_ssh_link: <a href="../../concepts/diego/ssh-conceptual.html">Diego SSH package</a>
