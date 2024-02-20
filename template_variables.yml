@@ -68,11 +68,6 @@ template_variables:
   admin: Tanzu Operations Manager admin
   admin_read_only_role: "<ul><li><strong>Admin Read-Only</strong>: Read-only access to all Cloud Controller API resources. Assigned the <code>cloud_controller.admin_read_only</code> scope in UAA.</li></ul>"
   admin_role: "<ul><li><strong>Admin</strong>: Perform operational actions on all orgs and spaces using the Cloud Controller API. Assigned the <code>cloud_controller.admin</code> scope in UAA.</li></ul>"
-  api_endpoint: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/api-endpoint.html">the URL of the Cloud Controller in your TAS for VMs instance</a>
-  api_endpoint_book: For more information, see [Identifying the API endpoint for Your TAS for VMs Instance](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/api-endpoint.html).
-  api_v1_format: <a href="https://docs.pivotal.io/platform/services/api-v1.html">v1 format</a>
-  api_v2_format: <a href="https://docs.pivotal.io/platform/services/api.html">v2 format</a>
-  api_version: To determine your Cloud Controller API version, see [Identifying the API endpoint for your TAS for VMs Instance](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/api-endpoint.html).
   app_domain: shared-domain.example.com
   app_healthcheck_timeout: In Tanzu Operations Manager, the default timeout is 60 seconds and the maximum configurable timeout is 600 seconds. You can modify the timeout in the **App Containers** pane of the VMware Tanzu Application Service for VMs (TAS for VMs) tile.
   app_logging_footnote: <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/deploy-apps-streaming-logs.html">App Logging in TAS for VMs</a>
@@ -112,7 +107,6 @@ template_variables:
   bosh_cli_link: For more information about using this tool, see [Advanced Troubleshooting with the BOSH CLI](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-trouble-advanced.html).
   bosh_credhub_setup: The BOSH Director and VMware Tanzu Application Service for VMs (TAS for VMs) tiles deploy CredHub instances as part of the installation process. For more information, see [Installing Ops Manager](../installing/).
   blobstore_kb: For more information about the blobstore, see [How to use Elastic Runtime BLOB Storage Data](https://community.pivotal.io/s/article/How-to-use-Elastic-Runtime-BLOB-Storage-Data) in the Knowledge Base.
-  capi_link: For more information, see the [CAPI documentation](https://v3-apidocs.cloudfoundry.org/version/3.4.0/index.html).
   cc_logging_default:
   cfdot_kb: When logged into a VM hosting an app, you can use tools like the Cloud Foundry Diego Operator Toolkit (CFDOT) to run app status diagnostics. For more information, see [How to use Cloud Foundry Diego Operator Toolkit (CFDOT)](https://community.pivotal.io/s/article/how-to-use-cloud-foundry-cf-diego-operator-toolkit-cfdot) in the Knowledge Base.
   cipher_suites: You can override the default cipher suites in the **TLS cipher suites** field and **TLS versions** dropdown in the **Networking** pane of the TAS for VMs tile. For more information about using custom SSL ciphers, see [Gorouter Only](#pass-through) or [Load Balancer and Gorouter](#lb-and-router).
@@ -161,7 +155,6 @@ template_variables:
   docker_auth: To support Docker, TAS for VMs needs the ability to access Docker registries using either a Certificate Authority or an IP address allow list. For information about configuring this access, see [Using Docker Registries](../opsguide/docker-registry.html).
   domain_name: pivotal.io
   domains_shared_domains: For more information about using custom domains shared across all orgs in your TAS for VMs account, see [Domains and Shared Domains](./domains.html).
-  email_notifications: <p class="note"><strong>Note</strong><span>:</span> In Tanzu Operations Manager, you can configure email notifications in the <strong>Director Config</strong> pane of the BOSH Director tile. For example, see <a href="https://docs.pivotal.io/platform/2-11/customizing/pcf-aws-manual-om-config.html#pcfaws-om-dirconfig">Configuring BOSH Director on AWS</a> for more information about how to configure email notifications on Amazon Web Services (AWS).</p>
   enable_c2c_discovery: open the **App Developer Controls** pane in your TAS for VMs tile and select the **Enable Service Discovery for Apps** check box
   external_ips: external IP addresses
   external_vol_smb_note: <p class="note"><span class="note__title">Note</span> If you are using VMware Tanzu Application Service for VMs &#91;Windows&#93;, see the <a href="https://docs.pivotal.io/application-service/windows/smb-volumes-apps.html">TAS for VMs documentation</a>.</p>
@@ -219,7 +212,6 @@ template_variables:
   mysql_proxy_url: https://JOB-INDEX-proxy-p-mysql-ert.SYSTEM-DOMAIN
   nats_tls: Tanzu Operations Manager sends all NATS traffic using Transport Layer Security (TLS) encryption by default.
   net_traffic_rules: <a href="../adminguide/app-sec-groups.html">network traffic rules</a>
-  notifications_api_1:
   notifications_link: <a href="../../adminguide/notifications.html">Notification Service</a>
   om_resurrector_header: <h3>BOSH Resurrector</h3>
   om_resurrector_text: <p>The BOSH Resurrector increases VMware Tanzu Application Service for VMs (TAS for VMs) availability in the following ways:</p><ul><li>Reacts to hardware failure and network disruptions by recreating VMs on active, stable hosts</li><li>Detects operating system failures by continuously monitoring VMs and recreating them as required</li><li>Continuously monitors the BOSH Agent running on each VM and recreates the VMs as required</li></ul><p>The BOSH Resurrector continuously monitors the status of all VMs in a TAS for VMs deployment. The Resurrector also monitors the BOSH Agent on each VM. If either the VM or the BOSH Agent fail, the Resurrector recreates the VM on another active host. To configure the BOSH Resurrector, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-resurrector.html">Configure BOSH Resurrector</a> in <em>Using the BOSH Resurrector</em>.</p>
