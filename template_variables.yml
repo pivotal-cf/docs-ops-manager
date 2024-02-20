@@ -316,7 +316,7 @@ template_variables:
   ssl_haproxy: <tr><th>Optionally, if you are deploying HAProxy, and</th><th>Then in addition, terminate SSL/TLS at<span>:</span></th><th>Related topic and configuration procedure</th></tr><tr><td><ul><li>You would like to secure traffic to the HAProxy.</li></ul></td><td><strong>HAProxy</strong></td><td><a href="../opsguide/ssl-term-haproxy.html#haproxy">Terminating SSL/TLS at HAProxy</a></td></tr>
   ssl_haproxy_2: If you are using HAProxy in a TAS for VMs deployment, you can choose to terminate SSL/TLS at HAProxy in addition to any of the SSL/TLS termination options above. For more information, see <a href="ssl-term-haproxy.html">Configuring SSL/TLS termination at HAProxy</a>.
   zipkin_enable: "/pcf/core/2-10/zipkin-pcf-config"
-  zipkin_enable_link: When Zipkin tracing is enabled in TAS for VMs, the Gorouter examines the HTTP request headers and performs the following:
+  zipkin_enable_link: When Zipkin tracing is enabled in TAS for VMs, the Gorouter examines the HTTP request headers and performs the following:/
   starting_container_count_maximum: For information about how to configure this setting, see the [Set a Maximum Number of Starting Containers](../upgrading/configuring.html#container-starts) section of _Configuring TAS for VMs for Upgrades_.
   garden_runc: PAS v1.8.8 and later use Garden-runC instead of Garden-Linux.
   autoscaler_bullet: <li><a href="../appsman-services/autoscaler/using-autoscaler.html" class="subnav">Scaling an App Using App Autoscaler</a></li>
