@@ -191,9 +191,9 @@ To copy your <%= vars.ops_manager %> image:
     <br>
     When prompted for a passphrase, follow the prompts to provide an empty passphrase.
 
-1. Download the latest release of the <%= vars.ops_manager %> Azure ARM Templates. Download [1.11](https://github.com/pivotal-cf/pcf-azure-arm-templates/releases/tag/1.11%2B) from the <%= vars.platform_code_pivotal %> Azure Resource Manager (ARM) Templates repository on GitHub.
+2. Download the latest release of the <%= vars.ops_manager %> Azure ARM Templates. Download [1.11](https://github.com/pivotal-cf/pcf-azure-arm-templates/releases/tag/1.11%2B) from the Azure Resource Manager (ARM) Templates repository on GitHub.
 
-1. Open the parameters file and enter values for the following parameters:
+3. Open the parameters file and enter values for the following parameters:
     * **OpsManVHDStorageAccount:** The name of the storage account you created in [Step 1: Create Storage Account](#storage).
     * **BlobStorageContainer:** The name of the container to which you copied the <%= vars.ops_manager %> VHD.
     * **BlobStorageEndpoint:** The base URL of the storage endpoint. Leave the default endpoint unless you are using Azure China, Azure Government Cloud, or Azure Germany:
