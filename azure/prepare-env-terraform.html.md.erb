@@ -28,7 +28,7 @@ In addition to fulfilling the prerequisites listed in [Installing <%= vars.ops_m
 
 Before you run the Terraform commands to provision infrastructure resources, you must download the Azure Terraform Templates and create a Terraform template variables file. To download the templates and create the template variables file:
 
-1. On [VMware Tanzu Network](https://network.pivotal.io), go to the <%= vars.app_runtime_first %> release.
+1. On [VMware Tanzu Network](https://network.tanzu.vmware.com), go to the <%= vars.app_runtime_first %> release.
 
 1. Download the Azure Terraform Templates ZIP file. You can use the templates to deploy <%= vars.app_runtime_abbr %> or <%= vars.k8s_runtime_first %>.
 
@@ -101,7 +101,7 @@ Before you run the Terraform commands to provision infrastructure resources, you
     <tr>
       <td><code>YOUR-OPS-MAN-IMAGE-URI</code></td>
       <td>
-        Enter the URL for the <%= vars.ops_manager %> Azure image you want to boot. You can find this code in the PDF included with the <%= vars.ops_manager %> release on <a href="https://network.pivotal.io/">VMware Tanzu Network</a>.
+        Enter the URL for the <%= vars.ops_manager %> Azure image you want to boot. You can find this code in the PDF included with the <%= vars.ops_manager %> release on <a href="https://network.tanzu.vmware.com/">VMware Tanzu Network</a>.
         <br><br>
         To prevent the creation of an <%= vars.ops_manager %> VM, set this value to an empty string (<code>""</code>). When using Platform Automation, you must disallow the creation of the <%= vars.ops_manager %> VM from Terraform. For more information, see <a href="https://network.tanzu.vmware.com/products/platform-automation">Platform Automation</a>.
       </td>
