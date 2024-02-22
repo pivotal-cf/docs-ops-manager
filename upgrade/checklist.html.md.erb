@@ -31,21 +31,21 @@ Review each of the following links to understand the changes in the new release,
 
 * **Release Notes**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Release Notes](../release-notes.html)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/runtime-rn.html)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Release Notes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/runtime-rn.html)
 
 * **Known Issues**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Known Issues](../release-notes.html#known-issues)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Known Issues](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/runtime-rn.html#known-issues)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Known Issues](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/runtime-rn.html#known-issues)
 
 * **Breaking Changes**
 	* [<%= vars.ops_manager %> <%= vars.v_major_version %> Breaking Changes](../release-notes.html#breaking-changes)
-	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/runtime-rn.html#breaking-changes)
+	* [<%= vars.app_runtime_full %> <%= vars.v_major_version %> Breaking Changes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/runtime-rn.html#breaking-changes)
 
 * **KPI Changes**
-	* [KPI Changes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/monitoring-index.html#new)
+	* [KPI Changes](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/monitoring-index.html#new)
 
 * **Diego Network Communications**
-	* [Diego Network Communications](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/networking-diego-network-paths.html)
+	* [Diego Network Communications](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/networking-diego-network-paths.html)
 
 ## <a id='nsx-t'></a> Check VMware NSX-T Data Center version
 
@@ -141,7 +141,7 @@ To deactivate hostname validation:
 
 1. Deactivate the **Require hostname verification** check box. By default, this check box is activated.
 
-For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see the [<%= vars.app_runtime_abbr %> documentation](hhttps://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/config-databases.html#sys-db).
+For more information about database configuration in <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>, see the [<%= vars.app_runtime_abbr %> documentation](hhttps://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/config-databases.html#sys-db).
 
 #### <a id='disable-unused-errands'></a> (Optional) Deactivate unused errands
 
@@ -153,7 +153,7 @@ In some cases, if you have previously deactivated lifecycle errands for any inst
 ### <a id='stemcell-compat'></a> Check OS compatibility of BOSH-managed add-ons and tiles
 
 Before upgrading to <%= vars.ops_manager %> <%= vars.v_major_version %>, operators who have deployed any BOSH-managed add-ons such as **IPsec**, **Anti-Virus**, or **File Integrity Monitoring** and who have deployed or are planning to deploy <%= vars.windows_runtime_abbr %> must modify the add-on manifest to specify a compatible OS stemcell. For more information,
-see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/windows-index.html).
+see the [<%= vars.windows_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/windows-index.html).
 
 For example, **File Integrity Monitor** (FIM) is not supported on Windows. Therefore, the manifest must use an `include` directive to specify the target OS stemcell of `ubuntu-xenial` and `ubuntu-jammy`.
 
@@ -218,26 +218,26 @@ The KPIs that monitor these these resources are are:
 ### <a id='adjust-diego-cell-limits'></a> Adjust Diego Cell limits
 
 If needed, adjust the maximum number of Diego Cells that the platform can upgrade simultaneously, to avoid overloading the other Diego Cells.
-For more information, see [Limit component instance restarts](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configuring.html#limit-restart).
+For more information, see [Limit component instance restarts](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configuring.html#limit-restart).
 
 The maximum number of Diego Cells that can update at once, `max_in_flight`, is 4%. This setting is configured in the BOSH manifest's Diego Cell definition.
-For more information, see [Prevent overload](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configuring.html#limitations-considerations).
+For more information, see [Prevent overload](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configuring.html#limitations-considerations).
 
-For more information about these KPIs, see [Diego Cell metrics](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/monitoring-kpi.html#Cell).
+For more information about these KPIs, see [Diego Cell metrics](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/monitoring-kpi.html#Cell).
 
 ### <a id='storage'></a> Review file storage IOPS and other upgrade limiting factors
 
 During the <%= vars.ops_manager %> upgrade process, a large quantity of data is moved around on disk.
 
 To ensure a successful upgrade of your deployment, verify that your underlying <%= vars.app_runtime_abbr %> file storage is performant enough to handle the upgrade.
-For more information about the configurations to evaluate, see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/configuring.html#file-storage).
+For more information about the configurations to evaluate, see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/configuring.html#file-storage).
 
 In addition to file storage IOPS, consider additional existing deployment factors that can impact overall upgrade duration and performance:
 
 | **Factor** | **Impact** |
 | ---------- | ---------- |
 | **Network latency** | Network latency can contribute to how long it takes to move app instance data to new containers. |
-| **Number of ASGs** | A large number of App Security Groups (ASGs) in your deployment can contribute to an increase in app instance container startup time. For more information, see [App Security Groups](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/asg.html) in the <%= vars.app_runtime_abbr %> documentation. |
+| **Number of ASGs** | A large number of App Security Groups (ASGs) in your deployment can contribute to an increase in app instance container startup time. For more information, see [App Security Groups](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/asg.html) in the <%= vars.app_runtime_abbr %> documentation. |
 | **Number of app instances and app growth** | A large increase in the number of app instances and average droplet size since the initial deployment can increase the upgrade impact on your system. |
 
 
@@ -305,13 +305,13 @@ If you are not using Healthwatch, you can do some or all of the following to col
 
 * Check that <%= vars.ops_manager %> persistent disk usage is less than 50%. If not, follow the procedure in [Confirm Adequate Disk Space](#confirm-om-disk).
 
-* (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/deploy-apps-streaming-logs.html#view).
+* (Optional) Check the logs for errors before proceeding with the upgrade. For more information, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/deploy-apps-streaming-logs.html#view).
 
 ### <a id='validate-mysql-cluster-health'></a> Validate MySQL cluster health
 
 If you are running <%= vars.app_runtime_abbr %> MySQL as a cluster, run the `mysql-diag` tool to validate health of the cluster.
 
-For BOSH CLI v2 instructions, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/4.0/tas-for-vms/mysql-diag.html).
+For BOSH CLI v2 instructions, see the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/mysql-diag.html).
 
 ### <a id='check-health'></a> Review pending and recent changes
 
