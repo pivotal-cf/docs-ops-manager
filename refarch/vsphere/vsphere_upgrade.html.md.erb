@@ -45,7 +45,7 @@ The following sections describe the procedure to upgrade the vSphere management 
 ### <a id='upgrade_vcenter'></a> Step 1: Upgrade vCenter
 
 For more information about how to upgrade vCenter, see [Overview of the vCenter server upgrade
-process](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-C5CBFB63-4E95-4143-BA89-89AA5D292C68.html?hWord=N4IghgNiBcIG4GMCmA7ALkgTgAgM5bi2wFcAHAc0zABMltTMB7ZXXEAXyA) in the
+process](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-C5CBFB63-4E95-4143-BA89-89AA5D292C68.html) in the
 vSphere documentation.
 
 ### <a id='upgrade_esxi'></a> Step 2: Upgrade ESXi hosts
@@ -64,11 +64,11 @@ of a single ESXi host to the two remaining hosts.
 
 1. Use vMotion to move all the VMs on the host you want to upgrade to the other ESXi hosts.
 vMotion places the VMs on the other hosts based on available capacity. For more information,
-see [Migration with vMotion](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-D19EA1CB-5222-49F9-A002-4F8692B92D63.html?hWord=N4IghgNiBcILIEsDmAnMAXBB7AdgAgHcF0ALPANzi01xAF8g) in the vSphere documentation.
+see [Migration with vMotion](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-D19EA1CB-5222-49F9-A002-4F8692B92D63.html) in the vSphere documentation.
 
 1. Upgrade the evacuated ESXi host. For example, you might be upgrading from ESXi v6.0 to ESX
-v6.5. For more information, see [Upgrading ESXi hosts](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-122035F6-8433-463E-A0F7-B4FC71A05B04.html?hWord=N4IghgNiBcIKoAcDmAnMATAlgOyQAgFEBlADUzwAkB7AZwBcaQBfIA) in the vSphere
+v6.5. For more information, see [Upgrading ESXi hosts](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.esxi.upgrade.doc/GUID-122035F6-8433-463E-A0F7-B4FC71A05B04.html) in the vSphere
 documentation.
 
 1. Repeat the previous steps for each remaining host, one at a time. vSphere automatically
-rebalances all VMs back onto the upgraded hosts through DRS after you have upgraded all hosts.
+re-balances all VMs back onto the upgraded hosts through DRS after you have upgraded all hosts.
