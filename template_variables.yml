@@ -279,7 +279,7 @@ template_variables:
   gorouter_metrics_link: https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/monitoring-kpi.html
   internal_domain_config: <p class="note"><span class="note__title">Note</span> The internal domain used for service discovery is <code>apps.internal</code> by default. Operators can modify this value in the <strong>App Developer Controls</strong> pane of the TAS for VMs tile.</p>
   mutual_tls_tcp: <p class="note"><span class="note__title">Note</span> If you have mutual TLS app identity verification configured, app containers accept incoming communication only from the Gorouter. This disallows TCP routing.</p>
-  support_note: <p>This buildpack is currently not supported in Tanzu Operations Manager.</p>
+  support_note: This buildpack is currently not supported in Tanzu Operations Manager.
   router_tls_recommend: <p class="note"><span class="note__title">Note</span> To ensure traffic is sent to the platform securely, VMware recommends as a minimum that you terminate TLS at the Gorouter. You can optionally terminate TLS at the load balancer.</p>
   gorouter_client_cert: "/pcf/core//gorouter_client_cert_pcf"
   ssl_termin_gorouter: "/pcf/core//ssl_termin_gorouter_pcf"

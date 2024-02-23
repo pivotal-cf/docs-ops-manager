@@ -11,8 +11,8 @@ Terraform](prepare-env-terraform.html).
 
 <%= partial "/pcf/warning-terraform" %>
 
-<p> You can also follow the procedures in this topic using the <%= vars.ops_manager %> API.
-For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+You can also follow the procedures in this topic using the <%= vars.ops_manager %> API.
+For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.
 
 ## <a id='prereq'></a> Prerequisites
 
@@ -48,11 +48,11 @@ To follow the procedures in this topic, you must have access to the output from 
     * **Region**: Enter the AWS region where you deployed <%= vars.ops_manager %>.
     * **AWS EBS disk type**: Select the type of EBS volume for BOSH-deployed VMs to use.
 
-      <p> If you change this value, BOSH recreates all VMs when you apply changes.</p>
-    Encrypt Linux EBS Volumes: Select this check box to enable full encryption
+      If you change this value, BOSH recreates all VMs when you apply changes.
+      Encrypt Linux EBS Volumes: Select this check box to enable full encryption
       on persistent disks of all BOSH-deployed VMs, except
       for the <%= vars.ops_manager %> VM and BOSH Director VM. For more information about using Elastic Block Store (EBS) encryption, see [Configuring Amazon EBS Encryption](../install/cloudform-om-ebs-config.html).
-      <p> Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_first %> are not encrypted.</p>
+      Enabling EBS encryption only encrypts Linux VMs. The Windows VMs deployed with <%= vars.windows_runtime_first %> are not encrypted.
       Custom Encryption Key (Optional): After you enable EBS encryption, you might want to specify a custom Key Management Service (KMS) encryption key.
       If you don't enter a value, by default your custom encryption key is usually better than the account key.
       For more information, see [Configuring Amazon EBS Encryption](../install/cloudform-om-ebs-config.html).
@@ -62,7 +62,8 @@ To follow the procedures in this topic, you must have access to the output from 
 ## <a id='director-config'></a> Step 3: Director config page
 
 <%= partial "../common/director-config" %>
-<p> For more information about Amazon S3 Signatures, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating Requests</a>.</p>
+
+For more information about Amazon S3 Signatures, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating Requests</a>.
 
 ## <a id='az'></a> Step 4: Create Availability Zones page
 
@@ -268,8 +269,8 @@ See the following table for the information required to create all three subnets
         <th>Availability zones</th>
         <td>The third value of <code>RUNTIME_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
-    </table>
-    \* If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a `10.0.0.0/24` VPC CIDR, enter `10.0.0.2` in each subnet.
+</table>
+\* If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a `10.0.0.0/24` VPC CIDR, enter `10.0.0.2` in each subnet.
   <br><br>
 
   1. Click **Add Network**.
@@ -361,14 +362,15 @@ See the following table for the information required to create all three subnets
         <th>Availability zones</th>
         <td>The third value of <code>services_subnet_availability_zones</code> from the Terraform output.</td>
       </tr>
-    </table>
-    \* If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a `10.0.0.0/24` VPC CIDR, enter `10.0.0.2` in each subnet.
+</table>
+
+  \* If you set a VPC CIDR other than recommended, enter the second IP in your VPC CIDR. For example, for a `10.0.0.0/24` VPC CIDR, enter `10.0.0.2` in each subnet.
 
 4. Click **Save**.
 
-    <p> If you are deploying <%= vars.k8s_runtime_abbr %> with a <%= vars.k8s_runtime_abbr %> workload load balancer, you must tag each AWS subnet with your <%= vars.k8s_runtime_abbr %> Kubernetes cluster unique
+    If you are deploying <%= vars.k8s_runtime_abbr %> with a <%= vars.k8s_runtime_abbr %> workload load balancer, you must tag each AWS subnet with your <%= vars.k8s_runtime_abbr %> Kubernetes cluster unique
     identifier before you create the load balancer.
-    For more information about tagging subnets with a <%= vars.k8s_runtime_abbr %> cluster unique identifier, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-deploy-workloads.html#aws">AWS Prerequisites</a>.</p>
+    For more information about tagging subnets with a <%= vars.k8s_runtime_abbr %> cluster unique identifier, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Kubernetes-Grid-Integrated-Edition/1.16/tkgi/GUID-deploy-workloads.html#aws">AWS Prerequisites</a>.
 
     <%= vars.expand_network_azs %>
 
@@ -403,10 +405,10 @@ See the following table for the information required to create all three subnets
     ![alt-text="The Resource Config pane. See the following steps for detailed information."](../common/images/cloudform/resource-config.png)
 
 1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** text boxes, click **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** text box reads **None**, the job does not require persistent disk space.
-    <p> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
+    For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.
 
-    <p> If you set a text box to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
-    <p> If you install <%= vars.windows_runtime_abbr %>, provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
+    If you set a text box to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.
+    If you install <%= vars.windows_runtime_abbr %>, provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.
 
 2. (Optional) To configure an Application Load Balancer (ALB) for your BOSH Director, click the icon next to the **BOSH Director** job name to see more text boxes.
 
