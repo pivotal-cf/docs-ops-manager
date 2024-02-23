@@ -47,22 +47,21 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
 1. Click **Create Service Account**:
 
-- **Service account name**: Enter a name. For example, `bosh`.
-- **Role**: Use the drop-down menu, select the following roles:
-        ***Service Accounts > Service Account User**
-        * **Service Accounts > Service Account Token Creator**
-        ***Compute Engine > Compute Instance Admin (v1)**
-        * **Compute Engine > Compute Network Admin**
-        ***Compute Engine > Compute Storage Admin**
-        * **Storage > Storage Admin**
+    * **Service account name**: Enter a name. For example, `bosh`.
+    * **Role**: Use the drop-down menu, select the following roles:
+            * **Service Accounts > Service Account User**
+            * **Service Accounts > Service Account Token Creator**
+            * **Compute Engine > Compute Instance Admin (v1)**
+            * **Compute Engine > Compute Network Admin**
+            * **Compute Engine > Compute Storage Admin**
+            * **Storage > Storage Admin**
 
-        <p> You must scroll down in the pop-up windows to select all required roles.<br><br>
-        The <strong>Service Account User</strong> role is required only if you plan to use <strong>The <%= vars.ops_manager %> VM Service Account</strong> to deploy <%= vars.ops_manager %>. For more information about <strong>The <%= vars.ops_manager %> VM Service Account</strong>, see <a href="config-manual.html#gcp-config">Step 2: Google Cloud Platform Config</a> in <em>Configuring BOSH Director on GCP</em>.</p>
+            You must scroll down in the pop-up windows to select all required roles.
 
-- **Service account ID**: The text box automatically generates a unique ID based on the username.
-- **Furnish a new private key**: Select this checkbox and JSON as the **Key type**.
+            The <strong>Service Account User</strong> role is required only if you plan to use <strong>The <%= vars.ops_manager %> VM Service Account</strong> to deploy <%= vars.ops_manager %>. For more information about <strong>The <%= vars.ops_manager %> VM Service Account</strong>, see <a href="config-manual.html#gcp-config">Step 2: Google Cloud Platform Config</a> in <em>Configuring BOSH Director on GCP</em>.
 
-      ![alt-text=""](../common/images/gcp/iam_account_2.png)
+    * **Service account ID**: The text box automatically generates a unique ID based on the username.
+    * **Furnish a new private key**: Select this checkbox and JSON as the **Key type**.
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
@@ -114,8 +113,6 @@ go to the host project.
 
 1. Click **VPC network** > **CREATE VPC NETWORK**.
 
-    ![alt-text="On the GCP console, the VPC Network page has two sections: VPC Networks and External IP Addresses."](../common/images/gcp/gcp-vpc-networks.png)
-
 1. In the **Name** text box, enter a name of your choice for the VPC network. This name helps you identify resources for this deployment in the GCP console. Network names must be lowercase. For example, `pcf-virt-net`.<br>
 
     1. Under **Subnets**, complete the form as follows to create an infrastructure subnet for <%= vars.ops_manager %> and NAT instances:
@@ -137,11 +134,7 @@ go to the host project.
         </tr>
       </table>
 
-        See the following image for an example:
-
-        ![alt-text="The New subnet dialog box includes these sections: Name, Region, IP address range, Private Google access, and Flow logs."](../common/images/gcp/gcp-vpc-subnet.png)
-
-        <p> For deployments that do not use external IP addresses, enable <strong>Private Google access</strong> to allow your runtime to make API calls to Google services.</p>
+      For deployments that do not use external IP addresses, enable <strong>Private Google access</strong> to allow your runtime to make API calls to Google services.
 
     2. Click **Add subnet** to add a second subnet for the BOSH Director and components specific to your runtime. Complete the form as follows:
 
@@ -166,26 +159,22 @@ go to the host project.
 
     3. Click **Add subnet** to add a third **Subnet** with the following details:
 
-<table class=“table”>
-  <tr>
-    <th style="width:25%">Name</th>
-    <td><code>pcf-services-subnet-GCP-REGION</code><br>
-    Example: <code>pcf-services-subnet-us-west1</code></td>
-  </tr>
-  <tr>
-    <th>Region</th>
-    <td>The same region you selected for the previous subnets</td>
-  </tr>
-  <tr>
-  <th>IP address range</th>
-  <td>A CIDR in <code>/22</code><br>
-      Example: <code>192.168.20.0/22</code></td>
-  </tr>
-</table>
-
-        See the following image for an example:
-
-        ![alt-text="The VPC networks wizard shows three example subnets."](../common/images/gcp/vpc_subnetworks.png)
+        <table class=“table”>
+          <tr>
+            <th style="width:25%">Name</th>
+            <td><code>pcf-services-subnet-GCP-REGION</code><br>
+            Example: <code>pcf-services-subnet-us-west1</code></td>
+          </tr>
+          <tr>
+            <th>Region</th>
+            <td>The same region you selected for the previous subnets</td>
+          </tr>
+          <tr>
+          <th>IP address range</th>
+          <td>A CIDR in <code>/22</code><br>
+              Example: <code>192.168.20.0/22</code></td>
+          </tr>
+        </table>
 
 1. Under **Dynamic routing mode**, leave **Regional** selected.
 
@@ -202,11 +191,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 1. In the GCP console, with your single project or shared-VPC host project selected, go to **Compute Engine** > **VM instances**.
 
-    ![alt-text=""](../common/images/gcp/gcp-vm-instances.png)
-
 1. Click **CREATE INSTANCE**.
-
-    ![alt-text="The GCP Console Compute Engine page shows the Create Instance button."](../common/images/gcp/gcp-vm-create.png)
 
 2. Complete the following text boxes:
 
@@ -218,11 +203,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
     - **Machine type**: Click `n1-standard-4`.
     - **Boot disk**: Click **Change** and click `Ubuntu 14.04 LTS`.
 
-    ![alt-text="The Create Instance dialog box showing the sections: Name, Zone, Machine Type, and Boot disk."](../common/images/gcp/gcp-primary-nat.png)
-
 3. Expand the additional configuration text boxes by clicking **Management, disks, networking, SSH keys**.
-
-    ![alt-text="The Management, disks, networking, SSH keys drop-down menu."](../common/images/gcp/gcp-nat-dropdown.png)
 
     1. In the **Startup script** text box under **Automation**, enter the following text:
 
@@ -234,8 +215,6 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
         ```
 
 4. Click **Networking** to open additional network configuration text boxes:
-
-    ![alt-text="The page includes the tabs: Management, Disks, Networking, and SSH Keys."](../common/images/gcp/gcp-nat-network.png)
 
     1. In the **Network tags** text box, add the following: `nat-traverse` and `pcf-nat-instance`.
     2. Click the **Networking** tab and the pencil icon to edit the **Network interface**.
@@ -310,8 +289,6 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 1. Go to **VPC Networks** > **Routes**.
 
-    ![alt-text="The Networking menu includes these options: VPC network, Network Services, VPN."](../common/images/gcp/gcp-vpc-routes.png)
-
 1. Click **CREATE ROUTE**.
 
 1. Complete the form as follows:
@@ -354,105 +331,105 @@ This step assigns tags and firewall rules to <%= vars.ops_manager %> components 
 
 1. Apply the firewall rules in the following table:
 
-  <table class=“table”>
-  <tr><th colspan="2" style="text-align: center;">Firewall Rules</th></tr>
-  <tr>
-    <th>Rule 1</th>
-    <td>
-      This rule allows SSH from public networks.<br><br>
-      <strong>Name</strong>: <code>pcf-allow-ssh</code><br>
-      <strong>Network</strong>: <code>pcf-virt-net</code><br>
-      <strong>Allowed protocols and ports</strong>: <code>tcp:22</code><br>
-      <strong>Source filter</strong>: IP ranges<br>
-      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-      <strong>Target tags</strong>: <code>allow-ssh</code>
-    </td>
-  </tr>
-  <tr>
-    <th>Rule 2</th>
-    <td>
-      This rule allows HTTP from public networks.<br><br>
-      <strong>Name</strong>: <code>pcf-allow-http</code><br>
-      <strong>Network</strong>: <code>pcf-virt-net</code><br>
-      <strong>Allowed protocols and ports</strong>: <code>tcp:80</code><br>
-      <strong>Source filter</strong>: IP ranges<br>
-      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-      <strong>Target tags</strong>: <code>allow-http</code>, <code>router</code>
-    </td>
-  </tr>
-  <tr>
-    <th>Rule 3</th>
-    <td>
-      This rule allows HTTPS from public networks.<br><br>
-      <strong>Name</strong>: <code>pcf-allow-https</code><br>
-      <strong>Network</strong>: <code>pcf-virt-net</code><br>
-      <strong>Allowed protocols and ports</strong>: <code>tcp:443</code><br>
-      <strong>Source filter</strong>: IP ranges<br>
-      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-      <strong>Target tags</strong>: <code>allow-https</code>, <code>router</code>
-    </td>
-  </tr>
-  <tr>
-    <th>Rule 4</th>
-    <td>
-      This rule allows GoRouter health checks.<br><br>
-      <strong>Name</strong>: <code>pcf-allow-http-8080</code><br>
-      <strong>Network</strong>: <code>pcf-virt-net</code><br>
-      <strong>Allowed protocols and ports</strong>: <code>tcp:8080</code><br>
-      <strong>Source filter</strong>: IP ranges<br>
-      <strong>Source IP Ranges</strong>: <code>0.0.0.0/0</code><br>
-      <strong>Target tags</strong>: <code>router</code>
-    </td>
-  </tr>
-  <tr>
-    <th>Rule 5</th>
-    <td>
-      This rule allows communication between BOSH-deployed jobs.<br><br>
-      <strong>Name</strong>: <code>pcf-allow-pas-all</code><br>
-      <strong>Network</strong>: <code>pcf-virt-net</code><br>
-      <strong>Allowed protocols and ports</strong>: <code>tcp;udp;icmp</code><br>
-      <strong>Source filter</strong>: Source tags<br>
-      <strong>Target tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code><br>
-      <strong>Source tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code>
-    </td>
-  </tr>
-  <tr>
-    <th>Rule 6 (Optional)</th>
-    <td>
-      This rule allows access to the TCP router.<br><br>
-      <strong>Name</strong>: <code>pcf-allow-cf-tcp</code><br>
-      <strong>Network</strong>: <code>pcf-virt-net</code><br>
-      <strong>Source filter</strong>: IP ranges<br>
-      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-      <strong>Allowed protocols and ports</strong>: <code>tcp:1024-65535</code><br>
-      <strong>Target tags</strong>: <code>pcf-cf-tcp</code>
-    </td>
-  </tr>
-  <tr>
-    <th>Rule 7 (Optional)</th>
-    <td>
-      This rule allows access to the SSH proxy.<br><br>
-      <strong>Name</strong>: <code>pcf-allow-ssh-proxy</code><br>
-      <strong>Network</strong>: <code>pcf-virt-net</code><br>
-      <strong>Source filter</strong>: IP ranges<br>
-      <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
-      <strong>Allowed protocols and ports</strong>: <code>tcp:2222</code><br>
-      <strong>Target tags</strong>: <code>pcf-ssh-proxy</code>, <code>diego-brain</code><br>
-    </td>
-  </tr>
-</table>
+    <table class=“table”>
+        <tr><th colspan="2" style="text-align: center;">Firewall Rules</th></tr>
+        <tr>
+            <th>Rule 1</th>
+            <td>
+                This rule allows SSH from public networks.<br><br>
+                <strong>Name</strong>: <code>pcf-allow-ssh</code><br>
+                <strong>Network</strong>: <code>pcf-virt-net</code><br>
+                <strong>Allowed protocols and ports</strong>: <code>tcp:22</code><br>
+                <strong>Source filter</strong>: IP ranges<br>
+                <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+                <strong>Target tags</strong>: <code>allow-ssh</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Rule 2</th>
+            <td>
+                This rule allows HTTP from public networks.<br><br>
+                <strong>Name</strong>: <code>pcf-allow-http</code><br>
+                <strong>Network</strong>: <code>pcf-virt-net</code><br>
+                <strong>Allowed protocols and ports</strong>: <code>tcp:80</code><br>
+                <strong>Source filter</strong>: IP ranges<br>
+                <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+                <strong>Target tags</strong>: <code>allow-http</code>, <code>router</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Rule 3</th>
+            <td>
+                  This rule allows HTTPS from public networks.<br><br>
+                  <strong>Name</strong>: <code>pcf-allow-https</code><br>
+                  <strong>Network</strong>: <code>pcf-virt-net</code><br>
+                  <strong>Allowed protocols and ports</strong>: <code>tcp:443</code><br>
+                  <strong>Source filter</strong>: IP ranges<br>
+                  <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+                  <strong>Target tags</strong>: <code>allow-https</code>, <code>router</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Rule 4</th>
+            <td>
+                  This rule allows GoRouter health checks.<br><br>
+                  <strong>Name</strong>: <code>pcf-allow-http-8080</code><br>
+                  <strong>Network</strong>: <code>pcf-virt-net</code><br>
+                  <strong>Allowed protocols and ports</strong>: <code>tcp:8080</code><br>
+                  <strong>Source filter</strong>: IP ranges<br>
+                  <strong>Source IP Ranges</strong>: <code>0.0.0.0/0</code><br>
+                  <strong>Target tags</strong>: <code>router</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Rule 5</th>
+            <td>
+                  This rule allows communication between BOSH-deployed jobs.<br><br>
+                  <strong>Name</strong>: <code>pcf-allow-pas-all</code><br>
+                  <strong>Network</strong>: <code>pcf-virt-net</code><br>
+                  <strong>Allowed protocols and ports</strong>: <code>tcp;udp;icmp</code><br>
+                  <strong>Source filter</strong>: Source tags<br>
+                  <strong>Target tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code><br>
+                  <strong>Source tags</strong>: <code>pcf</code>, <code>pcf-opsman</code>, <code>nat-traverse</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Rule 6 (Optional)</th>
+            <td>
+              This rule allows access to the TCP router.<br><br>
+              <strong>Name</strong>: <code>pcf-allow-cf-tcp</code><br>
+              <strong>Network</strong>: <code>pcf-virt-net</code><br>
+              <strong>Source filter</strong>: IP ranges<br>
+              <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+              <strong>Allowed protocols and ports</strong>: <code>tcp:1024-65535</code><br>
+              <strong>Target tags</strong>: <code>pcf-cf-tcp</code>
+            </td>
+        </tr>
+        <tr>
+            <th>Rule 7 (Optional)</th>
+            <td>
+              This rule allows access to the SSH proxy.<br><br>
+              <strong>Name</strong>: <code>pcf-allow-ssh-proxy</code><br>
+              <strong>Network</strong>: <code>pcf-virt-net</code><br>
+              <strong>Source filter</strong>: IP ranges<br>
+              <strong>Source IP ranges</strong>: <code>0.0.0.0/0</code><br>
+              <strong>Allowed protocols and ports</strong>: <code>tcp:2222</code><br>
+              <strong>Target tags</strong>: <code>pcf-ssh-proxy</code>, <code>diego-brain</code><br>
+            </td>
+        </tr>
+    </table>
 
-   <p> If you want your firewall rules to only permit traffic within your private network, modify
-   the <strong>Source IP Ranges</strong> from the table accordingly.</p>
+   If you want your firewall rules to only permit traffic within your private network, modify
+   the <strong>Source IP Ranges</strong> from the table accordingly.
 
 1. If you are only using your GCP project to deploy <%= vars.ops_manager %>, then you can delete the following default firewall rules:
 
-    - `default-allow-http`
-    - `default-allow-https`
-    - `default-allow-icmp`
-    - `default-allow-internal`
-    - `default-allow-rdp`
-    - `default-allow-ssh`
+    * `default-allow-http`
+    * `default-allow-https`
+    * `default-allow-icmp`
+    * `default-allow-internal`
+    * `default-allow-rdp`
+    * `default-allow-ssh`
 
 If you are deploying **<%= vars.k8s_runtime_abbr %> only**, continue to [Next steps](#next-steps).
 
@@ -695,8 +672,6 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
     - Select **Create a new certificate**. The **Create a New Certificate** dialog is displayed.
     - In the **Name** text box, enter a name for the certificate.
 
-      ![alt-text=""](../common/images/gcp/lb_frontend_cert.png)
-
     - In the **Public key certificate** text box, copy in the contents of your public certificate, or upload your certificate as a .pem file.
     If the certificate is runtime-generated, copy and paste the generated contents from the runtime's Certificate text box into the BOSH Director **Public key certificate** text box.
     - In the **Certificate chain** text box, enter or upload your certificate chain in the .pem format.
@@ -718,23 +693,17 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 1. Under **TCP Load Balancing**, click **Start configuration**.
 
-    ![alt-text="The Create a load balancer page has three sections: HTTP(S) Load Balancing, TCP Load Balancing, and UDP Load Balancing."](../common/images/gcp/create_new_lb.png)
-
 1. On the **Create a load balancer** configuration UI, make the following selections:
 
     - Under **Internet facing or internal only**, click **From Internet to my VMs**.
     - Under **Multiple regions or single region**, click **Single region only**.
     - Under **Connection termination**, click **No (TCP)**.
 
-      ![alt-text=""](../common/images/gcp/lb_connection_termination.png)
-
 1. Click **Continue**.
 
 2. In the **New TCP load balancer** window, enter `pcf-wss-logs` in the **Name** text box.
 
 3. Click **Backend configuration** to configure the **Backend service**:
-
-    ![alt-text=""](../common/images/gcp/tcp_websockets_backend.png)
 
     - **Region**: Click the region you used to create the network in [Create a GCP Network with Subnets](#create_network).
     - From the **Health check** drop-down menu, create a health check with the following details:
@@ -769,8 +738,6 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 1. Under **Connection termination**, click **No (TCP)**.
 
-    ![alt-text=""](../common/images/gcp/lb_connection_termination.png)
-
 1. Click **Continue**.
 
 2. In the **New TCP load balancer** window, enter `pcf-ssh-proxy` in the **Name** text box.
@@ -781,8 +748,6 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
     - **Backup pool**: `None`
     - **Failover ratio**: `10%`
     - **Health check**: `No health check`
-
-    ![alt-text=""](../common/images/gcp/ssl_lb_backend_config_complete.png)
 
 1. Click **Frontend configuration**, and add the following:
 
@@ -824,8 +789,6 @@ To create a load balancer for TCP routing in GCP:
         - **Unhealthy threshold**: `2`
         - Click **Save and continue**.
 
-          ![alt-text=""](../common/images/gcp/tcp_lb_backend.png)
-
 1. Click **Frontend configuration**, and add the front end IP and port entry as follows:
 
     - **Protocol**: `TCP`
@@ -834,8 +797,6 @@ To create a load balancer for TCP routing in GCP:
         2. Enter a **Name** for the new static IP address and an optional description. For example, `pcf-cf-tcp-lb`.
         3. Click **Reserve**.
     - **Port**: `1024-65535`
-
-      ![alt-text=""](../common/images/gcp/tcp_lb_frontend.png)
 
 1. Click **Review and finalize** to verify your configuration.
 
