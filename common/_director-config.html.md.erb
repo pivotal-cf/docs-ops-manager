@@ -38,7 +38,7 @@ For more information, see [Time sync for Linux VMs in Azure](https://docs.micros
 <% if current_page.data.iaas == "vSphere" %>
 1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** text box. For example, `us.pool.ntp.org`.
 <% end %>
-    1. The NTP server configuration only updates after VM recreation. If you modify the value of this text box, select the Recreate VMs deployed by the BOSH Director check box to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
+    * The NTP server configuration only updates after VM recreation. If you modify the value of this text box, select the Recreate VMs deployed by the BOSH Director check box to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
 1. Leave the **Bosh HM Forwarder IP Address** text box blank. BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> text box blank.
 
@@ -48,21 +48,23 @@ For more information, see [Time sync for Linux VMs in Azure](https://docs.micros
 
 1. Click **Enable Post Deploy Scripts** to run a post deployment script after deployment. This script allows the job to execute additional commands against a deployment.
 
-<p> If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.</p>
+    If you intend to install <%= vars.k8s_runtime_first %>, you must enable post-deploy scripts.
 
-1. To configure your VMs to use short lived NATS credentials during the bootstrap process, activate the **Enable Short Lived NATS Bootstrap Credentials**
+1. To configure your VMs to use short lived NATS credentials during the bootstrap process, select the **Enable Short Lived NATS Bootstrap Credentials**
 check box. This increases the security of your <%= vars.ops_manager %> deployment by rotating the TLS certificate that the BOSH Agents in your VMs use to
 communicate with the BOSH Director through BOSH NATS.
 
-For more information, see [Using Short-Lived NATS Bootstrap
-credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
+    For more information, see [Using Short-Lived NATS Bootstrap
+    credentials](/docs-ops-manager/security/pcf-infrastructure/rotate-bootstrap-nats-certificates.html).
 
-<p> Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
-are created somewhat more slowly.
+    <p class="note important">
+    <span class="note__title">Important</span>
+    Configuring your VMs to use short-lived NATS bootstrap credentials restarts the BOSH Agent in all VMs as they are being created. As a result, VMs
+    are created somewhat more slowly.
 
-This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to
-configure VMs in existing <%= vars.ops_manager %>
-deployments to use short-lived bootstrap credentials, you must recreate them. </p>
+    This configuration affects all new deployments of <%= vars.ops_manager %>. If you want to
+    configure VMs in existing <%= vars.ops_manager %>
+    deployments to use short-lived bootstrap credentials, you must recreate them.</p>
 
 1. Click **Recreate VMs deployed by the BOSH Director** to force BOSH to recreate BOSH-deployed VMs on the next deployment. This process does not recreate the BOSH Director VM or destroy any persistent disk data. This check box is cleared automatically after a successful redeployment.
 

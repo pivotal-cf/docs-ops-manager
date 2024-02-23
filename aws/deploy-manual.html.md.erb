@@ -93,7 +93,7 @@ The default persistent disk value is 8&nbsp;GB. <%= vars.company_name %> recomme
         * If you already have a certificate from AWS Certificate Manager (ACM), click **Choose a certificate from ACM**.
         * If you do not have a certificate from ACM, click **Upload a certificate to ACM**. For more information, see [Importing Certificates into AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html) in the AWS documentation.
 
-        <p> For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate, leaving the **Certificate chain** entry blank.</p>
+        For a production or production-like environment, use a certificate from a Certificate Authority (CA). This can be an internal certificate or a purchased certificate. For a sandbox environment, you can use a self-signed certificate, leaving the **Certificate chain** entry blank.
 
     2. Click **Next: Configure Security Groups**.
 
@@ -285,9 +285,7 @@ A message appears to confirm that AWS has successfully created the load balancer
         * **Availability Zone** and **Subnet ID**: Choose the AZ and subnet for `pcf-rds-subnet-az0` and click **Add**.
 
     2. Repeat the preceding steps to add `pcf-rds-subnet-az1` and `pcf-rds-subnet-az2` to the group.
-    3. Click **Create**.
-
-        <p> On the Subnet Group page, you might need to refresh the page to view the new group.</p>
+    3. Click **Create**. On the Subnet Group page, you might need to refresh the page to view the new group.
 
 
 ## <a id='pcfaws-mysql-rds'></a> Step 7: Create a MySQL database using AWS RDS
@@ -309,7 +307,7 @@ reinstall <%= vars.ops_manager %> on AWS.
     * **Multi-AZ deployment**: Click **Multi-AZ DB instance**.
     * **DB cluster identifier**: Enter `pcf-ops-manager-director`.
     * Enter a secure **Master username** and **Master password**.
-        <p> Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.</p>
+        Record the username and password. You need these credentials later when configuring the <strong>Director Config</strong> page in the BOSH Director tile.
     * **DB instance class**: Click **db.m5.large - 2 vCPUs, 8 GiB RAM**.
     * **Storage type**: Click `Provisioned IOPS SSD (io1)`.
     * **Allocated storage**: Enter **100&nbsp;GiB**.
