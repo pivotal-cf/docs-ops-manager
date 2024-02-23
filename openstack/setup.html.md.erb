@@ -60,7 +60,7 @@ and examples. The screenshots of your OpenStack vendor configuration interface m
 
 1. On the **Access & Security** page, add the ingress access rules for HTTP, HTTPS, and SSH as shown in the following table. The rules with `opsmanager` in the Remote column have restricted access to that particular Security Group.
 
-    <p> Adjust the remote sources as necessary for your own security compliance. <%= vars.company_name %> recommends limiting remote access to <%= vars.ops_manager %> to IP ranges within your organization.</p>
+    Adjust the remote sources as necessary for your own security compliance. <%= vars.company_name %> recommends limiting remote access to <%= vars.ops_manager %> to IP ranges within your organization.
 
   <table class=“table”>
   <thead>
@@ -71,7 +71,7 @@ and examples. The screenshots of your OpenStack vendor configuration interface m
       <th><strong>Port/port range</strong></th>
       <th><strong>Remote</strong></th>
     </tr>
-    </thead>
+  </thead>
     <tr>
       <td>Ingress</td>
       <td>IPv4</td>
@@ -219,8 +219,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, complete the following 
       ![alt-text=""](../common/images/openstack/instance-source.png)
 
 1. Click the **Flavor** tab, and configure the OpenStack VM flavors as follows:
-
-  <p> Do not change the names of the VM flavors.</p>
+   Do not change the names of the VM flavors.
 
   <table class=“table”>
     <thead>
@@ -271,19 +270,19 @@ To create an <%= vars.ops_manager %> image in OpenStack, complete the following 
 
     ![alt-text=""](../common/images/openstack/instance-networks.png)
 
-1. Skip the **Network Ports** tab.
+2. Skip the **Network Ports** tab.
 
-2. Click the **Security Groups** tab, and click the **opsmanager** security group that you created in [Step 2: Configure security](#security). Deselect all other Security Groups.
+3. Click the **Security Groups** tab, and click the **opsmanager** security group that you created in [Step 2: Configure security](#security). Deselect all other Security Groups.
 
     ![alt-text=""](../common/images/openstack/instance-security-groups.png)
 
-1. Click the **Key Pair** tab, and select the key pair that you imported in [Step 2: Configure security](#security).
+4. Click the **Key Pair** tab, and select the key pair that you imported in [Step 2: Configure security](#security).
 
     ![alt-text=""](../common/images/openstack/instance-key-pairs.png)
 
-1. Skip the **Configuration** and **Metadata** tabs.
+5. Skip the **Configuration** and **Metadata** tabs.
 
-2. Click the **Launch Instance** button. This starts your new <%= vars.ops_manager %> instance.
+6. Click the **Launch Instance** button. This starts your new <%= vars.ops_manager %> instance.
 
 
 ## <a id='floating-ip'></a> Step 6: Associate a floating IP address

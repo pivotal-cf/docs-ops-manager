@@ -87,42 +87,42 @@ These options are available for choosing your network topology:
 <table class=“table”>
    <thead>
     <tr>
-  <th>Type of rraffic</th>
-  <th>Options</th>
-     </tr>
-     </thead>
+      <th>Type of rraffic</th>
+      <th>Options</th>
+    </tr>
+  </thead>
      <tr>
-  <td>Internet ingress</td>
-  <td><ul>
-    <li>Allow Internet ingress by associating load balancers with Elastic IPs.</li>
-    <li>Do not allow Internet ingress.</li>
-   </ul></td>
- </tr>
- <tr>
-  <td>Internet egress</td>
-  <td>
-   <ul>
-    <li>Allow <%= vars.app_runtime_abbr %> to access the Internet through a NAT gateway.</li>
-    <li>Do not allow <%= vars.app_runtime_abbr %> to access the Internet. Use only a corporate network.</li>
-   </ul>
-  </td>
- </tr>
- <tr>
-  <td>Peering</td>
-  <td><ul>
-    <li>Isolated. This is normally Internet-only facing.</li>
-    <li>Peered with corporate or other VPCs through Transit Gateway.</li>
-    <li>Peered directly with other VPCs and corporate connections.</li>
-   </ul></td>
- </tr>
- <tr>
-  <td>Corporate peering</td>
-  <td><ul>
-    <li>SNAT for corporate resources. This requires three corporate IPs.</li>
-    <li>Routable IP addresses for VPC using <code>/20</code> or a larger CIDR block necessary.</li>
-   </ul></td>
-     </tr>
-    </table>
+      <td>Internet ingress</td>
+      <td><ul>
+        <li>Allow Internet ingress by associating load balancers with Elastic IPs.</li>
+        <li>Do not allow Internet ingress.</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td>Internet egress</td>
+      <td>
+      <ul>
+        <li>Allow <%= vars.app_runtime_abbr %> to access the Internet through a NAT gateway.</li>
+        <li>Do not allow <%= vars.app_runtime_abbr %> to access the Internet. Use only a corporate network.</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Peering</td>
+      <td><ul>
+        <li>Isolated. This is normally Internet-only facing.</li>
+        <li>Peered with corporate or other VPCs through Transit Gateway.</li>
+        <li>Peered directly with other VPCs and corporate connections.</li>
+      </ul></td>
+    </tr>
+    <tr>
+      <td>Corporate peering</td>
+      <td><ul>
+        <li>SNAT for corporate resources. This requires three corporate IPs.</li>
+        <li>Routable IP addresses for VPC using <code>/20</code> or a larger CIDR block necessary.</li>
+      </ul></td>
+    </tr>
+  </table>
 
 ### <a id='rds'></a> RDS
 
@@ -203,7 +203,7 @@ These options are available for choosing your network topology:
     <th>Type of traffic</th>
     <th>Options</th>
   </tr>
-  </thead>
+</thead>
   <tr>
     <td>Internet ingress</td>
     <td><ul>
