@@ -52,21 +52,17 @@ To set up VPC network peering with the GCP console:
 
 1. From the GCP console, click **Networking** > **VPC network peering**.
 
-    ![alt-text=""](images/vpc-networks.png)
-
 2. Click **Create Connection**.
 
-2. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
+3. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
 
-    ![alt-text=""](images/om-to-vpc.png)
+4. Click **Save**.
 
-2. Click **Save**.
+5. Click **Create Connection**.
 
-3. Click **Create Connection**.
+6. Enter a name for the network connection from the new shared network to the <%= vars.ops_manager %> project, such as `xpn-to-opsmanager`.
 
-4. Enter a name for the network connection from the new shared network to the <%= vars.ops_manager %> project, such as `xpn-to-opsmanager`.
-
-5. Click **Save**.
+7. Click **Save**.
 
 ### <a id='shared-cli'></a> Set up VPC network peering with the gcloud CLI
 
@@ -131,9 +127,7 @@ After you configure a shared VPC, use the following procedure to verify that the
 
 1. Click **Networking** > **VPC networks**.
 
-    ![alt-text=""](images/vpc-networks.png)
+1. Confirm that the shared VPC network name appears in the **Subnets** list.
 
-2. Confirm that the shared VPC network name appears in the **Subnets** list.
-
-2. Confirm that the shared VPC network **IP address ranges** match what you set for
+1. Confirm that the shared VPC network **IP address ranges** match what you set for
 the new VPC project in [Step 2: Create a shared VPC network](#network).
