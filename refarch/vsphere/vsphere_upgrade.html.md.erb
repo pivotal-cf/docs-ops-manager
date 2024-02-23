@@ -58,9 +58,8 @@ To upgrade your ESXi hosts:
 1. Verify that your ESXi hosts have sufficient resources and headroom to evacuate the VM workload
 of a single ESXi host to the two remaining hosts.
 
-<p> If you have enabled vSphere HA on your ESXi host,
-      each ESXi host should have sufficient headroom capacity, since vSphere HA reserves 66%
-      of available memory.</p>
+    If you have enabled vSphere HA on your ESXi host,
+    each ESXi host should have sufficient headroom capacity, since vSphere HA reserves 66% of available memory.
 
 1. Use vMotion to move all the VMs on the host you want to upgrade to the other ESXi hosts.
 vMotion places the VMs on the other hosts based on available capacity. For more information,
