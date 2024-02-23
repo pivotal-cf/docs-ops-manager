@@ -1,11 +1,11 @@
-# Ops Manager Documentation
+# Tanzu Operations Manager Documentation
 
 This repository contains content for the Ops Manager documentation. We publish the Ops Manager documentation at
 https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/index.html.
 
 In this README:
 
-- [Ops Manager Documentation](#ops-manager-documentation)
+- [Tanzu Operations Manager Documentation](#tanzu-operations-manager-documentation)
   - [How To Contribute](#how-to-contribute)
   - [ Versions and Branches](#-versions-and-branches)
   - [Publishing Docs (2.10 and later)](#publishing-docs-210-and-later)
@@ -30,11 +30,13 @@ the source file for a topic, navigate to the topic on the Ops Manager documentat
 
 ## <a name='version-branch'></a> Versions and Branches
 
-| **Book Branch** | **Content Branch** | **Published URL** |
-|-----------------|--------------------|-------------------|
-|            N/A  |              `3.0` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html  |
-|            N/A  |             `2.10` | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/index.html |
-
+| **Branch** | **Status** | **Published URL** |
+|------------|------------|-------------------|
+|      `3.0` | Published  | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/index.html  |
+|     `2.10` | Published  | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.10/vmware-tanzu-ops-manager/index.html |
+|      `2.9` | EOGS       | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.9/vmware-tanzu-operations-manager-2-9.pdf |
+|      `2.8` | EOGS       | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.8/vmware-tanzu-operations-manager-2-8.pdf |
+|      `2.7` | EOGS       | https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/2.7/vmware-tanzu-operations-manager-2-7.pdf |
 
 **3.0**: The `3.0` branch is used to publish the v3.0 site. Create pull requests on `3.0` to contribute or
 correct technical inaccuracies in the Ops Manager v3.0 documentation.
