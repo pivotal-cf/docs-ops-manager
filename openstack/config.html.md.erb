@@ -25,15 +25,13 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
 1. In your OpenStack dashboard, click **Project > Compute > Access & Security**. Click the **API Access** tab.
 
-2. In the **SERVICE** column, find the **Identity** row. Record the **Service Endpoint** in this row. You need this Service Endpoint as the Authentication URL for <%= vars.ops_manager %> in a later step.
-
-    ![alt-text=""](../common/images/openstack/record-endpoint.png)
+1. In the **SERVICE** column, find the **Identity** row. Record the **Service Endpoint** in this row. You need this Service Endpoint as the Authentication URL for <%= vars.ops_manager %> in a later step.
 
 1. In the <%= vars.ops_manager %> Installation Dashboard, click the **BOSH Director** tile.
 
-2. Select **OpenStack Configs**.
+1. Select **OpenStack Configs**.
 
-3. Complete the **OpenStack Management Console Config** page with the following information:
+1. Complete the **OpenStack Config** page with the following information:
     * **Name**: Enter a unique name for the OpenStack config.
     * **Authentication URL**: Enter the Service Endpoint for the Identity service that you recorded in a previous step.
     * **Keystone Version**: Choose a Keystone version, either **v2** or **v3**.
@@ -64,7 +62,7 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
 1. Click **Save**.
 
-2. (Optional) Click **Add OpenStack Config** to configure additional data centers. Click **Save** for each additional OpenStack config to add it successfully. For more information, see [Managing Multiple Data Centers](../install/multiple-datacenters.html).
+1. (Optional) Click **Add OpenStack Config** to configure additional data centers. Click **Save** for each additional OpenStack config to add it successfully. For more information, see [Managing Multiple Data Centers](../install/multiple-datacenters.html).
 
 
 ## <a id='advanced-config'></a> Step 3: Advanced Config page (optional)
@@ -108,8 +106,6 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
 1. Click the name of the network that contains the private subnet where you deployed the <%= vars.ops_manager %> VM. The OpenStack Network Detail page displays your network settings.
 In the **Subnets** table, the row for your subnet contains the **NETWORK ADDRESS** and the **GATEWAY IP**.
-
-    ![alt-text=""](../common/images/openstack/view-network-info.png)
 
 1. In <%= vars.ops_manager %>, click**Create Networks**.
 
@@ -189,11 +185,7 @@ The editable values for each job are:
   * Cannot reach gateway with IP 10.0.16.0 (Ignorable if CMP is deactivated)
   * Cannot reach DNS with IP 10.0.0.2 (Ignorable if CMP is deactivated)
 
-      ![alt-text=""](../common/images/openstack/icmp-error.png)
-
 1. BOSH Director installation begins. When the installation process is complete, a **Changes Applied** message appears.
-
-    ![alt-text=""](../common/images/openstack/om-installed.png)
 
 1. After you complete this procedure, follow the instructions
 in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/prerequisites.html).
