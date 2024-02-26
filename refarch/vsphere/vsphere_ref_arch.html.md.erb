@@ -243,11 +243,6 @@ see [Configure file storage](https://docs.vmware.com/en/VMware-Tanzu-Application
 
 These sections describe the architecture for <%= vars.app_runtime_abbr %> on vSphere without software-defined networking deployments.
 
-<p class="note important">
-<span class="note__title"> Important</span> This architecture was validated for earlier versions of <%= vars.app_runtime_abbr %>.
-However, it has not been validated for <%= vars.app_runtime_abbr %> <%= vars.v_major_version %>.
-</p>
-
 ### <a id='pas-routed-networking'></a> Networking
 
 Without an SDN, IP address allocations all come from routed network space. Discussions and planning within your organization are essential to acquiring the necessary amount of IP address space for a <%= vars.app_runtime_abbr %> deployment with future growth considerations. This is because routed IP address space is a premium resource, and adding more later is difficult, costly, and time-consuming.
