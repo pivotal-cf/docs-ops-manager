@@ -28,37 +28,37 @@ The following are the minimum resource requirements for deploying an <%= vars.op
 
     * **<%= vars.app_runtime_abbr %>:** A new Azure deployment requires the following VMs for <%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>:
 
-    <table class=“table”>
-    <thead>
-      <tr>
-            <th>VM Type</th>
-            <th>VM Count</th>
-          </tr>
-          </thead>
-          <tr>
-            <td>F1s</td>
-            <td>22</td>
-          </tr>
-          <tr>
-            <td>F2s</td>
-            <td>22</td>
-          </tr>
-          <tr>
-            <td>DS1 v2</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>DS11 v2</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>DS12 v2</td>
-            <td>24</td>
-          </tr>
-        </table>
+      <table class=“table”>
+      <thead>
+        <tr>
+              <th>VM Type</th>
+              <th>VM Count</th>
+            </tr>
+            </thead>
+            <tr>
+              <td>F1s</td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td>F2s</td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td>DS1 v2</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>DS11 v2</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>DS12 v2</td>
+              <td>24</td>
+            </tr>
+          </table>
 
-    If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require high availability, then you can scale down the number of VM instances in your deployment.
-    For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.
+      If you are deploying a test or sandbox <%= vars.ops_manager %> that does not require high availability, then you can scale down the number of VM instances in your deployment.
+      For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/scaling-ert-components.html">Scaling <%= vars.app_runtime_abbr %></a>.
 
     * **Small Footprint <%= vars.app_runtime_abbr %>:** A new Azure deployment requires the following VMs for Small Footprint <%= vars.app_runtime_abbr %> and <%= vars.ops_manager %>:
 
