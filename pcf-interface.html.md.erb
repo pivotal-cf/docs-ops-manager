@@ -10,38 +10,37 @@ This topic tells you about the key features of the <%= vars.ops_manager_first %>
 The Installation Dashboard is the central <%= vars.ops_manager %> interface for managing your deployment. It
 displays the BOSH Director configuration for your IaaS and product tiles for your deployment.
 
-The following image shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a red letter. Click the image to see it at full size.
+The following image shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a green number. Click the image to see it at full size.
 
 ![alt-text="The Tanzu Operations Manager Installation Dashboard: For a description of each labeled section, see the following list."](images/interface.png)
 
 The following list describes each section that is labeled for the Installation Dashboard:
 
-* **A**---**Import a Product:** Click this button to add a new product to <%= vars.ops_manager %>. You can download <%= vars.ops_manager %>-compatible product files from [VMware Tanzu Network](https://tanzu.vmware.com/products).
+* **1**---**Import a Product:** Click this button to add a new product to <%= vars.ops_manager %>. You can download <%= vars.ops_manager %>-compatible product files from [VMware Tanzu Network](https://tanzu.vmware.com/products).
   * If you configure a [VMware Tanzu Network API](install/add-delete.html) token in the **Settings** section of <%= vars.ops_manager %>, a list of the latest versions of already imported products appears automatically.
 
-* **B**---**Delete All Unused Products:** Click this link to delete any unused products.
+* **2**---**Delete All Unused Products:** Click this link to delete any unused products.
 
-* **C**---**Installation Dashboard:** Click this link to return to the <%= vars.ops_manager %> Installation Dashboard topic from other <%= vars.ops_manager %> topics.
+* **3**---**Installation Dashboard:** Click this link to return to the <%= vars.ops_manager %> Installation Dashboard topic from other <%= vars.ops_manager %> topics.
 
-* **D**---**Stemcell Library:** Click this link to open the **Stemcell Library**. In the **Stemcell Library** you can import stemcells, stage stemcells, and review your stemcell version numbers. For more information, see [Importing and Managing Stemcells](opsguide/managing-stemcells.html).
+* **4**---**Stemcell Library:** Click this link to open the **Stemcell Library**. In the **Stemcell Library** you can import stemcells, stage stemcells, and review your stemcell version numbers. For more information, see [Importing and Managing Stemcells](opsguide/managing-stemcells.html).
 
-* **E**---**Change Log:** Click this link to view and search a log of your previous installations. For more information, see the [Change Log Page](#changelog) section of this topic for details.
+* **5**---**Change Log:** Click this link to view and search a log of your previous installations. For more information, see the [Change Log Page](#changelog) section of this topic for details.
 
-* **F**---**Certificates:** Click this link to view certificates in your installation. For more information, see the [Certificates Page](#certificates) section of this topic for details.
+* **6**---**Certificates:** Click this link to view certificates in your installation. For more information, see the [Certificates Page](#certificates) section of this topic for details.
 
-* **G**---**User Account Menu:** Click the arrow next to your user name to view the menu. Use this menu to go to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more details about accounts, see [My account](#account_settings) of this topic for details on account information. For more information, see the [Settings page](#settings) section of this topic for details that are available <%= vars.ops_manager %> settings.
+* **7**---**User Account Menu:** Click the arrow next to your user name to view the menu. Use this menu to go to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more details about accounts, see [My account](#account_settings) of this topic for details on account information. For more information, see the [Settings page](#settings) section of this topic for details that are available <%= vars.ops_manager %> settings.
 
-* **H**---**Revert:** Click the revert button to return to the previous successful installation. Any pending changes you have made to the current installation settings are lost.
+* **8**---**Revert:** Click the revert button to return to the previous successful installation. Any pending changes you have made to the current installation settings are lost.
 
-* **I**---**Review Pending Changes:** Click the button to go to the **Review Pending Changes** page, which organizes pending changes by tile. You can activate or deactivate each tile to selectively deploy individual tiles and their dependencies.
+* **9**---**Review Pending Changes:** Click the button to go to the **Review Pending Changes** page, which organizes pending changes by tile. You can activate or deactivate each tile to selectively deploy individual tiles and their dependencies.
 For more information, see [Reviewing pending product changes](install/review-pending-changes.html).
 
-* **J**---**Orange Bar:** Indicates that additional configuration for the product tile is required before deployment. Click the product tile to complete its configuration.
+* **10**---**Orange Bar:** Indicates that additional configuration for the product tile is required before deployment. Click the product tile to complete its configuration.
 
-* **K**---**Missing Stemcell Link:** If an imported product is missing a required stemcell, a **Missing Stemcell** link appears on the tile. Click this link to open the stemcell library. For more information about stemcells,
-see [Importing and managing stemcells](opsguide/managing-stemcells.html).
+    If an imported product is missing a required stemcell, a **Missing Stemcell** link appears on the tile. Click this link to open the stemcell library. For more information about stemcells, see [Importing and managing stemcells](opsguide/managing-stemcells.html).
 
-* **L**---**API Docs:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the UI.
+* **11**---**API Docs:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the UI.
 For more information about the <%= vars.ops_manager %> API, see [Using the <%= vars.ops_manager %> API](install/ops-man-api.html).
 
 
@@ -159,10 +158,6 @@ The following describes the information listed on the **Certificates** page:
 + **Configurable:** whether or not you can configure the certificate. If a certificate is configurable, you can generate your own and paste it into <%= vars.ops_manager %> configuration panes.
 
 + **Valid until:** the date that the certificate expires.
-
-The following image shows the **Excluded certificates** section of the **Certificates** page:
-
-![alt-text="The Excluded certificates section includes the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until."](images/excluded-certificates.png)
 
 The **Excluded certificates** section includes the certificates that the <%= vars.ops_manager %> API does not attempt to rotate, because they either must be rotated using the CredHub Maestro CLI or cannot be rotated safely at all.
 
