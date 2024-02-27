@@ -29,7 +29,7 @@ The following list describes each section that is labeled for the Installation D
 
 * **6**---**Certificates:** Click this link to view certificates in your installation. For more information, see the [Certificates Page](#certificates) section of this topic for details.
 
-* **7**---**User Account Menu:** Click the arrow next to your user name to view the menu. Use this menu to go to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more details about accounts, see [My account](#account_settings) of this topic for details on account information. For more information, see the [Settings page](#settings) section of this topic for details that are available <%= vars.ops_manager %> settings.
+* **7**---**User Account Menu:** Click your user name to view the menu. Use this menu to go to your **Settings** page, view **My Account** to change your email and password, or log out of the <%= vars.ops_manager %> Installation Dashboard. For more details about accounts, see [My account](#account_settings) of this topic for details on account information. For more information, see the [Settings page](#settings) section of this topic for details that are available <%= vars.ops_manager %> settings.
 
 * **8**---**Revert:** Click the revert button to return to the previous successful installation. Any pending changes you have made to the current installation settings are lost.
 
@@ -40,7 +40,7 @@ For more information, see [Reviewing pending product changes](install/review-pen
 
     If an imported product is missing a required stemcell, a **Missing Stemcell** link appears on the tile. Click this link to open the stemcell library. For more information about stemcells, see [Importing and managing stemcells](opsguide/managing-stemcells.html).
 
-* **11**---**API Docs:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the UI.
+* **11**---**API Documentation:** Click this link to go to the <%= vars.ops_manager %> API documentation, which details how you can manage <%= vars.ops_manager %> through the API rather than with the UI.
 For more information about the <%= vars.ops_manager %> API, see [Using the <%= vars.ops_manager %> API](install/ops-man-api.html).
 
 
@@ -139,7 +139,7 @@ Go to the **Certificates** topic by clicking the corresponding link in the dashb
 
 The following image shows the top section of the **Certificates** topic:
 
-![alt-text="The Certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until."](images/certificates.png)
+![alt-text="The Certificates section shows information in the following columns: Certificate name, Tile Name, Location, Type, Configurable, Expiration Date, and Rotation Procedure."](images/certificates.png)
 
 The top section of the **Certificates** topic includes the certificates that the <%= vars.ops_manager %> API attempts to rotate. This section includes both certificates that the <%= vars.ops_manager %> API can rotate and certificates that you must rotate manually.
 
@@ -157,7 +157,7 @@ The following describes the information listed on the **Certificates** page:
 
 + **Configurable:** whether or not you can configure the certificate. If a certificate is configurable, you can generate your own and paste it into <%= vars.ops_manager %> configuration panes.
 
-+ **Valid until:** the date that the certificate expires.
++ **Expiration Date:** the date that the certificate expires.
 
 The **Excluded certificates** section includes the certificates that the <%= vars.ops_manager %> API does not attempt to rotate, because they either must be rotated using the CredHub Maestro CLI or cannot be rotated safely at all.
 
@@ -314,7 +314,7 @@ To change your email and password, go to the **My Account** page by clicking on 
 
 ## <a id='support'></a> Support page
 
-Click **Support** in the footer of any topic in <%= vars.ops_manager %> to access the support topic.
+Click **Support** in the footer of the Installation Dashboard in <%= vars.ops_manager %> to access the support topic.
 
 The **Support** topic allows you to download a ZIP file that includes <%= vars.ops_manager %> logs, deployed manifests and configurations, and BOSH deployment diagnostics.
 
