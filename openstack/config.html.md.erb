@@ -55,7 +55,7 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
     * **SSH Private Key**: In a text editor, open the key pair file that you downloaded in the [Configure Security](setup.html#security) step of _Provisioning the OpenStack Infrastructure_. Copy and paste the contents of the key pair file into the field.
     * (Optional) **API SSL Certificate**: If you configured API SSL termination in your OpenStack Dashboard, enter your **API SSL Certificate**.
-    * **Disable DHCP**: Do not select the check box unless your configuration requires it.
+    * **Deactivate DHCP**: Do not select the check box unless your configuration requires it.
     * **Boot From Volume**: Select the check box to boot VMs from a Cinder volume.
 
       ![alt-text=""](../common/images/openstack/om-config-ssh.png)
@@ -94,7 +94,7 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 
 2. (Optional) Using the **IaaS Configuration** drop-down menu, select an OpenStack config name. The default is set to your first OpenStack config.
 
-3. In **OpenStack Availability Zone**, enter the OpenStack AZ of your OpenStack environment. Many OpenStack environments default to `nova`.
+3. In **Openstack Availability Zone**, enter the OpenStack AZ of your OpenStack environment. Many OpenStack environments default to `nova`.
 
 4. Click **Add** for each additional OpenStack config you created in [Step 2: OpenStack Configs page](#openstack-config). Give each AZ a unique **Name** and an **IaaS Configuration** with a different OpenStack config.
 
