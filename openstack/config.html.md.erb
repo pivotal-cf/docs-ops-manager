@@ -34,14 +34,13 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
 1. Complete the **OpenStack Config** page with the following information:
     * **Name**: Enter a unique name for the OpenStack config.
     * **Authentication URL**: Enter the Service Endpoint for the Identity service that you recorded in a previous step.
-    * **Keystone Version**: Choose a Keystone version, either **v2** or **v3**.
-      * If you choose **v3**, enter the OpenStack Keystone domain to authenticate against in the **Domain** field. For more information about Keystone domains in OpenStack, see [Domains](https://docs.openstack.org/security-guide/identity/domains.html) in the _OpenStack documentation_.
+    * **Domain**: Enter the OpenStack Keystone domain to use for authentication. For more information about Keystone domains in OpenStack, see [Domains](https://docs.openstack.org/security-guide/identity/domains.html) in the OpenStack documentation.
 
       ![alt-text=""](../common/images/openstack/om-config-name.png)
 
     * **Username**: Enter your OpenStack Horizon username. The `PrimaryProject` for the user must be the project you are using to deploy <%= vars.ops_manager %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
     * **Password**: Enter your OpenStack Horizon password.
-    * **Tenant**: Enter your OpenStack tenant name.
+    * **Project Name**: Enter your OpenStack tenant name.
     * **Region**: Enter `RegionOne`, or another region if recommended by your OpenStack administrator.
 
       ![alt-text=""](../common/images/openstack/om-config-username.png)

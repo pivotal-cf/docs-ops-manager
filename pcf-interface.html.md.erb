@@ -149,7 +149,7 @@ The following describes the information listed on the **Certificates** page:
 
 + **Certificate name:** the name of the certificate.
 
-+ **Product GUID:** the product name with its unique identifier.
++ **Tile Name:** the product name with its unique identifier.
 
 + **Location:** whether CredHub or <%= vars.ops_manager %> stores and manages the certificate.
 
@@ -158,6 +158,8 @@ The following describes the information listed on the **Certificates** page:
 + **Configurable:** whether or not you can configure the certificate. If a certificate is configurable, you can generate your own and paste it into <%= vars.ops_manager %> configuration panes.
 
 + **Expiration Date:** the date that the certificate expires.
+
++ **Rotation Procedure:** a link to documentation about how to rotate the certificate.
 
 The **Excluded certificates** section includes the certificates that the <%= vars.ops_manager %> API does not attempt to rotate, because they either must be rotated using the CredHub Maestro CLI or cannot be rotated safely at all.
 
@@ -245,7 +247,7 @@ This pane includes the following text boxes:
 * **Certificate:** Enter a custom certificate.
 * **Private Key:** Enter the private key for the certificate.
 
-If you leave the text boxes blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. To replace a custom certificate with a self-signed certificate, click **Revert to self-signed certificate**.
+If you leave the text boxes blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. If you have previously added a custom certificate and want to replace it with a self-signed certificate, click **Revert to self-signed certificate**.
 
 ![alt-text=""](images/settings-ssl-cert.png)
 
