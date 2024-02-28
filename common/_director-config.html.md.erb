@@ -79,6 +79,8 @@ communicate with the BOSH Director through BOSH NATS.
 
 1. Click **Keep Unreachable Director VMs** to preserve BOSH Director VMs after a failed deployment for troubleshooting purposes.
 
+1. (Optional) Click **Enable automatic rotation of the BOSH DNS CA certificate (experimental)** if you want <%= vars.ops_manager %> to automatically rotate the BOSH DNS CA certificate and associated leaf certificates when you **Apply Changes**. For more information about this feature, see [Automatic rotation of BOSH DNS certificates](../security/pcf-infrastructure/automatic-rotation-bosh-dns.html).
+
 1. (Optional) Modify the **Director Workers** value, which sets the number of workers available to run BOSH Director tasks. By default, this text box defaults to `5`.
 
 1. (Optional) **Max Threads** sets the maximum number of threads that the BOSH Director can run simultaneously. <%= vars.company_name %> recommends that you leave the text box blank to use the default value, unless doing so results in rate limiting or errors on your IaaS.
