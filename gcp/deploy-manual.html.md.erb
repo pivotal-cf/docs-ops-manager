@@ -42,15 +42,11 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
     * **Source**: Choose **Cloud Storage file**.
     * **Cloud Storage file**: Paste in the Google Cloud Storage filepath you copied from the PDF file in the [previous step](#select-tgz).
 
-        ![alt-text=""](../common/images/gcp/create_image.png)
-
 1. Click **Create**. The file might take a few minutes to import.
 
 ## <a id='start-vm'></a> Step 3: Create the <%= vars.ops_manager %> VM instance
 
 1. Select the check box for the image that you previously created.
-
-    ![alt-text=""](../common/images/gcp/create_instance.png)
 
 1. Click **Create Instance**.
 
@@ -76,9 +72,7 @@ After you complete this procedure, follow the instructions in [Configuring BOSH 
             |------------------|-------------------|
             | Boot disk        | 100&nbsp;GB       |
 
-        * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.<br>
-
-            ![alt-text=""](../common/images/gcp/boot_image.png)
+        * Select the <%= vars.ops_manager %> image you created in the previous step if it is not already selected.
 
         * Click **Select** to save.
 

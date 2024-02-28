@@ -48,18 +48,20 @@ in the <%= vars.ops_manager %> Tile Developer Guide.
   <p> By default, <%= vars.ops_manager %> reruns errands
     even if they are not necessary due to settings left from a previous install. Leaving errands
     checked at all times can cause updates and other processes to take longer. To prevent an
-    errand from running, deselect the check box for the errand in the <strong>Errands</strong>
+    errand from running, select the <strong>Off</strong> option from the drop-down menu for the errand in the <strong>Errands</strong>
     pane of the <strong>Settings</strong> tab in the product tile before installing the product.</p>
 
     ![alt-text=""](images/example-errand.png)
 
-    The **Broker Registrar** check box is an example of an errand available for a product. When
-    you enable this check box, this errand registers service brokers with the Cloud Controller
+    The **Broker Registrar** drop-down menu is an example of an errand available for a product. When
+    you select the **On** option, this errand registers service brokers with the Cloud Controller
     and updates any broker URL and credential values that have changed since the previous registration.
+
+1. Click **Save**.
 
 1. Click **Review Pending Changes**.
 
-2. Click **Apply Changes** to start installation and run post-install lifecycle errands for
+1. Click **Apply Changes** to start installation and run post-install lifecycle errands for
 the product.
 
 

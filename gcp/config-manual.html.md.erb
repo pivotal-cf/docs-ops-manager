@@ -25,14 +25,15 @@ To access <%= vars.ops_manager %>:
 
 To configure your GCP tile:
 
-1. Click the **Google Cloud Platform** tile in the <%= vars.ops_manager %> Installation Dashboard.
+1. Click the **BOSH Director** tile in the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Google Config** and complete the following text boxes:
     * **Project ID**: Enter your GCP project ID in lowercase, such as: `your-gcp-project-id`.
     * **Default Deployment Tag**: Enter the prefix that you used when creating the GCP resources for this <%= vars.ops_manager %> installation.
     * Click **AuthJSON**. In the following text box, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
-        <p> As an alternative, you can click the <%= vars.ops_manager %> VM Service Account</strong> option to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
+    <p> As an alternative, you can click <strong>The Tanzu Ops Manager VM Service Account</strong> to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
     * **VM Type Catalog**. Click the VM catalog that you want to use for your BOSH-deployed VMs.
+    * **Google Disk Type**. Click the Google Disk Type that you want to use for your BOSH-deployed VMs.
 
         ![alt-text=""](../common/images/gcp/google_config.png)
 
@@ -252,13 +253,11 @@ To complete your BOSH Director installation:
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
-1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the **Network Config** pane, and ensure you deselect the **Enable ICMP Checks** check box. Click **Review Pending Changes**, then **Apply Changes** again.
+1. Click **Review Pending Changes**, then **Apply Changes**.
 
-    ![alt-text="Please review the following errors: Cannot reach gateway with IP 10.0.16.1... and Cannot reach DNS with IP 10.0.0.2..."](../common/images/cloudform/install-error.png)
+  If you encounter an error message saying "Cannot reach gateway with IP [IP address] (ignorable if ICMP is disabled)", return to the **Network Config** pane and ensure that you have deselected the **Enable ICMP Checks** check box. Click **Review Pending Changes**, then click **Apply Changes** again.
 
-1. BOSH Director installation begins. This might take a few moments. When the installation process is complete, the **Changes Applied** window appears.
-
-    ![alt-text=""](../common/images/cloudform/ops-manager-complete.png)
+1. BOSH Director installation begins. This might take a few moments. When the installation process is complete, the **Changes Applied** dialog box appears.
 
 ## <a id='next'></a> Next steps
 

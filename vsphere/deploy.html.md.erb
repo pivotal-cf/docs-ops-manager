@@ -93,11 +93,7 @@ select an <%= vars.ops_manager %> release.
     * Select the object labeled **Datacenter**.
     * Click **Next**.
 
-    ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-01.png)
-
 1. On the **Select a compute resource** pane, select the compute resource where the <%= vars.ops_manager %> VM runs, and click **Next**. Select the Resource Pool for the management components.
-
-    ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-10.png)
 
     <p> Hardware virtualization must be turned off if your
     vSphere host does not support VT-X/EPT. Refer to <a href="../install/vsphere.html#vsphere-reqs">vSphere Requirements</a> in <em><%= vars.ops_manager %> on vSphere Requirements</em> for more information.</p>
@@ -114,13 +110,9 @@ select an <%= vars.ops_manager %> release.
 
     2. Click **Next**.
 
-        <p> <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.</p>
-
-        ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-04.png)
+        <%= vars.ops_manager %> requires a VM with at least 8&nbsp;GB memory.
 
 1. On the **Select Networks** pane, either select the default **VM Network**, or ideally, create an **Infrastructure** Network, and click **Next**.
-
-    ![alt-text=""](../common/images/vsphere/vsphere_om-deploy-12.png)
 
 1. On the **Customize template** pane, enter the following information, and click **Next**.
    * **IP Address**: The IP address of the <%= vars.ops_manager %> network interface. For example, `10.0.0.2`.
