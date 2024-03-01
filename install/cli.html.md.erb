@@ -79,7 +79,7 @@ To authenticate with the om CLI:
     touch om-cli-env.yml
     ```
 
-1. Add the following content to the file. For more information about configuring the file, see [Generating an Env File](https://docs.vmware.com/en/Concourse-for-VMware-Tanzu/7.0/vmware-tanzu-concourse/GUID-installation-install-platform-automation.html) in the Platform Automation Toolkit documentation.
+2. Add the following content to the file. For more information about configuring the file, see [Generating an Env File](https://docs.vmware.com/en/Platform-Automation-Toolkit-for-VMware-Tanzu/5.1/vmware-automation-toolkit/GUID-docs-how-to-guides-configuring-env.html) in the Platform Automation Toolkit documentation.
 
     ```yaml
     ---
@@ -94,13 +94,13 @@ To authenticate with the om CLI:
     - `OPS-MANAGER-USERNAME` is the username that you use when you log into the <%= vars.ops_manager %> UI.
     - `OPS-MANAGER-PASSWORD` is the password that you use when you log into the <%= vars.ops_manager %> UI.
 
-1. On your machine, set an environment variable to the absolute filepath of your environment file for easy access.
+3. On your machine, set an environment variable to the absolute filepath of your environment file for easy access.
 
     ```bash
     export OM_ENV=PATH-TO-WORKING-DIRECTORY/om-cli-env.yml
     ```
 
-1. Test authentication in your <%= vars.ops_manager %> environment by running the `om products` command.
+4. Test authentication in your <%= vars.ops_manager %> environment by running the `om products` command.
 
     ```bash
     om --env=$OM_ENV products
