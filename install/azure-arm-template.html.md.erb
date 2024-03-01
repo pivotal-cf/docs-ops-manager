@@ -8,11 +8,7 @@ This topic describes how you can deploy BOSH Director for <%= vars.ops_manager_f
 You can also deploy BOSH Director manually by following the procedure in [Deploying <%= vars.ops_manager %> on Azure](../azure/deploy-manual.html). You must manually deploy if you are deploying to any of the following:
 
 * Azure China
-* Azure Germany
 * Azure Government Cloud
-* Azure Stack (Beta)
-
-<p> Azure Stack is in beta for this release. <%= vars.company_name %> does not recommend using Azure Stack for a production deployment.</p>
 
 Before you perform the procedures in this topic, you must complete the procedures in [Preparing to deploy <%= vars.ops_manager %> on Azure](../azure/prepare-env-manual.html). After you complete the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](../azure/config-manual.html).
 
@@ -196,10 +192,9 @@ To copy your <%= vars.ops_manager %> image:
 3. Open the parameters file and enter values for the following parameters:
     * **OpsManVHDStorageAccount:** The name of the storage account you created in [Step 1: Create Storage Account](#storage).
     * **BlobStorageContainer:** The name of the container to which you copied the <%= vars.ops_manager %> VHD.
-    * **BlobStorageEndpoint:** The base URL of the storage endpoint. Leave the default endpoint unless you are using Azure China, Azure Government Cloud, or Azure Germany:
+    * **BlobStorageEndpoint:** The base URL of the storage endpoint. Leave the default endpoint unless you are using Azure China, or Azure Government Cloud:
         * For Azure China, use `blob.core.chinacloudapi.cn`. For more information, see [Azure China developer guide](https://docs.microsoft.com/en-us/azure/china/china-get-started-developer-guide) in the Microsoft Azure documentation.
         * For Azure Government Cloud, use `blob.core.usgovcloudapi.net`. For more information, see [Azure Government storage](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-storage) in the Microsoft Azure documentation.
-        * For Azure Germany, use `blob.core.cloudapi.de`. For more information, see [Azure Germany developer guide](https://docs.microsoft.com/en-us/azure/germany/germany-developer-guide) in the Microsoft Azure documentation.
     * **AdminSSHKey:** The contents of the `opsman.pub` public key file that you created previously.
     * **Location:** The location to install the <%= vars.ops_manager %> VM. For example, `westus`.
     * **Environment:** Tag template-created resources for assisting with resource management.
