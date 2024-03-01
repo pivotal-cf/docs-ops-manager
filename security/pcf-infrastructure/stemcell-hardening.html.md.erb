@@ -3,12 +3,11 @@ title: Linux Stemcell Hardening
 owner: Security CONSULT LEGAL BEFORE MAKING ANY CHANGES TO THIS DOC
 ---
 
-This document applies to stemcell v3263 and later.
+This document applies to currently supported stemcells.
 
-Customers and prospects often ask for details on stemcell hardening. For example, the process by which
- <%= vars.ops_manager %> is secured by reducing its vulnerability surface from outside access.
+This is the process by which we secure <%= vars.ops_manager %> by reducing its vulnerability surface from outside access.
 This document provides responses to some commonly-asked questions regarding the security configuration enhancements
-and hardening tests that Pivotal applies to the Cloud Foundry ("CF") stemcell.
+and hardening tests that are applied to the Cloud Foundry ("CF") stemcell.
 This information will be helpful to customer accreditation teams who are responsible for
 running configuration scans of a Cloud Foundry deployment, and also to auditors who need a
 documentation artifact to feed into the customers’ existing security assessment processes.
@@ -16,8 +15,14 @@ documentation artifact to feed into the customers’ existing security assessmen
 1. **WHAT IS A STEMCELL?** A stemcell is a versioned Operating System ("OS") image wrapped
 with IaaS specific packaging. A typical stemcell contains a bare minimum OS skeleton with a
 few common utilities pre-installed, a BOSH Agent, and a few configuration files to securely
-configure the OS by default. For example: with vSphere, the official stemcell for Ubuntu
-Trusty is an approximately 500MB VMDK file. With AWS, official stemcells are published as MIs that can be used in an AWS account. Stemcells do not contain any specific information about any software that will be installed once that stemcell becomes a specialized machine in the cluster; nor do they contain any sensitive information which would make them unable to be shared with other BOSH users. This clear separation between base OS and later-installed software is what makes stemcells a powerful concept. In addition to being generic, stemcells for one OS (e.g. all Ubuntu Trusty and Xenial stemcells) are exactly the same for all infrastructures. This property of stemcells allows BOSH users to quickly and reliably switch between different infrastructures without worrying about the differences between OS images. The CF BOSH team is responsible for producing and maintaining an official set of stemcells. Cloud Foundry currently supports Ubuntu Trusty and Xenial on vSphere, AWS, OpenStack, Google, and Azure infrastructures.
+configure the OS by default.
+Stemcells do not contain any specific information about any software that will be installed once that stemcell becomes
+a specialized machine in the cluster; nor do they contain any sensitive information which would make them unable to be
+shared with other BOSH users. This clear separation between base OS and later-installed software is what makes stemcells
+a powerful concept. In addition to being generic, a stemcell release contains nearly identical packages for
+the different infrastructures. This property of stemcells allows BOSH users to quickly and reliably
+switch between different infrastructures without worrying about the differences between OS images. The CF Foundation is
+responsible for producing and maintaining an official set of stemcells.
 
 2. **WHAT IS STEMCELL HARDENING?** Stemcell hardening is the process of securing a stemcell
 by reducing its surface of vulnerability, which is larger when a system performs more functions;
@@ -29,34 +34,32 @@ usernames and logins, and the disabling or removal of unnecessary services.
 
 3. **WHAT IS OUR GENERAL APPROACH TO STEMCELL HARDENING?** The CF stemcell is essentially
 a distinct Linux distribution. As such, industry-standard benchmarks are not entirely appropriate
-when assessing the security posture of the stemcell, but Pivotal has considered and incorporated
+when assessing the security posture of the stemcell, but Cloud Foundry has considered and incorporated
 hardening guidance from various sources both commercial and government. Some parts of the
 existing recommended industry-standard hardening configurations will certainly apply, but
 some other parts do not apply. In addition, because each stemcell is a unique Linux distribution,
 existing industry-standard benchmarks are silent on some important aspects of hardening the
 stemcell configurations. The following paragraphs describe the different categories of stemcell
-hardening configurations, and provide a count of the number of tests currently in each category.
-**Note**: The most current description of what has been delivered is always available in the BOSH public Pivotal Trackers.
+hardening configurations.
 
     1. **Baseline Passing:** common hardening tests that pass without any changes to the
-stemcell or to test procedures. **_(130 tests)_**
+stemcell or to test procedures.
 
     2. **Test Amended:** Stemcells are optimized for cloud deployment and some configuration
 settings are not stored in traditionally-expected locations. The industry standard test was
 changed to conform with stemcell design to accurately check the recommended setting. This
 new test reflects the changes to the industry standard test but the stemcell adheres to commonly
-accepted guidance. **_(36 tests)_**
+accepted guidance.
 
     3. **Additional Hardening:** Configuration hardening improvements that have been made
 to the stemcell. As with most software, a stemcell’s security improves over time and every
 stemcell release is tested to ensure that it is suitable for use with its associated CF release.
 Later releases of a stemcell can include additional security features that were not present in
-earlier releases. **_(86 tests)_**
+earlier releases.
 
     4. **New CF-specific Tests:** New tests that have been added to check CF stemcell-specific
 configurations. These tests are not yet part of any industry standard Ubuntu benchmark. This
-category of tests is still under development and additional tests will be added over time. **_(20
-tests)_**
+category of tests is still under development and additional tests will be added over time.
 
 4. **WHAT ARE THE MAJOR FOCUS AREAS FOR OUR STEMCELL HARDENING APPROACH?**
 
@@ -67,17 +70,9 @@ tests)_**
 
     6. **File System Hardening**
 
-        2. The /tmp directory is configured to be on a separate partition.
-
-        3. Users cannot create character or block special devices in the /tmp filesystem.
-
-        4. Users cannot create set userid files in the /tmp filesystem.
-
-        5. Users cannot run executable binaries from the /tmp filesystem.
-
         6. The temporary storage directories such as /tmp and /var/tmp are mounted on a dedicated partition, and configured with appropriately limiting options such as nodev, nosuid, and noexec.
 
-        7. Each of the following directories is in a separate partition, with mount options managed through BOSH agent:
+        7. Each of the following directories is in a separate mount, with mount options managed through BOSH agent:
            + /var
            + /var/log
            + /var/log/audit
@@ -101,8 +96,6 @@ tests)_**
         15. Users cannot delete or rename files in world-writable directories such as /tmp that are owned by other users.
 
         16. Supplementary and exotic Linux file systems that are unused in CF have been deactivated.
-
-        17. Additional supplementary and exotic Linux file systems that are unused in CF have been deactivated.
 
         18. Automount of USB drives or disks is not permitted.
 
@@ -157,7 +150,7 @@ tests)_**
 
         32. The X Window system is not used in CF and is not installed.
 
-        33. NTP time setting is synchronized on the stemcell through the ntpdate utility.
+        33. NTP time setting is synchronized on the stemcell through the chrony utility.
 
         34. The Samba daemon is not used in CF and is deactivated.
 
@@ -260,8 +253,6 @@ tests)_**
             + aes256-ctr
 
         80. Idle SSH sessions are terminated after 15 minutes, and no client "keep alive" messages are sent.
-
-        81. Idle SSH sessions are terminated after 15 minutes. No client "keep alive" messages are sent.
 
         82. The SSH login banner might be configured to display site-specific text before user authentication is permitted (through BOSH Add-on).
 
