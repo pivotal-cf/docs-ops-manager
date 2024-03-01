@@ -20,38 +20,12 @@ following topics:
 * [Preparing to deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html)
 * [Deploying <%= vars.ops_manager %> on Azure](deploy-manual.html)
 
-<p> You can also follow the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+You can also follow the procedures in this topic using the <%= vars.ops_manager %> API. For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.
 
 ### <a id='stack-gov-prereqs'></a> Prerequisites for Azure Government Cloud
 
-If you use Azure Government Cloud, you must set custom VM types for a successful deployment. You can set
+If you use Azure Government Cloud, you must set Azure Generation 2 VM types for a successful deployment. You can set
 custom VM types with the <%= vars.ops_manager %> API. For more information, see [Using the <%= vars.ops_manager %> API](../install/ops-man-api.html).
-
-Example `curl` command to set a VM types:
-
-<pre class="terminal">
-$ curl -k https://YOUR-OPS-MAN-FQDN/api/v0/vm_types -X
-PUT -H "Authorization: bearer UAA-ACCESS-TOKEN"
-"Content-Type: application/json" -d '{"vm_types":[
-{"name": "Standard_D1_v2", "ram": 3584, "cpu": 1, "ephemeral_disk": 51200 },
-{"name": "Standard_D2_v2", "ram": 7168, "cpu": 2, "ephemeral_disk": 102400 },
-{"name": "Standard_D3_v2", "ram": 14336, "cpu": 4, "ephemeral_disk": 204800 },
-{"name": "Standard_D4_v2", "ram": 28672, "cpu": 8, "ephemeral_disk": 409600 },
-{"name": "Standard_D5_v2", "ram": 57344, "cpu": 8, "ephemeral_disk": 819200 },
-{"name": "Standard_D11_v2", "ram": 14336, "cpu": 2, "ephemeral_disk": 102400 },
-{"name": "Standard_D12_v2", "ram": 28672, "cpu": 4, "ephemeral_disk": 204800 },
-{"name": "Standard_D13_v2", "ram": 57344, "cpu": 8, "ephemeral_disk": 409600 },
-{"name": "Standard_D14_v2", "ram": 114688, "cpu": 16, "ephemeral_disk": 819200 },
-{"name": "Standard_F1", "ram": 2048, "cpu": 1, "ephemeral_disk": 16384 },
-{"name": "Standard_F2", "ram": 4096, "cpu": 2, "ephemeral_disk": 32768 },
-{"name": "Standard_F4", "ram": 8192, "cpu": 4, "ephemeral_disk": 65536 },
-{"name": "Standard_F8", "ram": 16384, "cpu": 8,  "ephemeral_disk": 131072}]}'
-</pre>
-
-To verify that you have successfully set your custom VM types, use the `GET /api/v0/vm_types` Ops
-Manager API endpoint.
-
-#### <a id='azure-vm-types'></a> Azure Generation 2 VM types
 
 Azure Government Cloud uses Azure Generation 2 VM types by default. If necessary, you can reconfigure the VMs in your
 deployment to use Azure Generation 1 VM types.
