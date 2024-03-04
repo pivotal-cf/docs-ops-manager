@@ -6,12 +6,10 @@ owner: Ops Manager
 <html class="list-style-none"></html>
 
 You can use these instructions to deploy BOSH and <%= vars.ops_manager_first %> on Azure by using
-individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China, Azure Germany, and Azure Government Cloud.
+individual commands to create resources. <%= vars.company_name %> recommends this manual procedure for deploying to Azure China and Azure Government Cloud.
 
 Before you follow the procedures in this topic, you must do the procedures in [Preparing to Deploy <%= vars.ops_manager %> on Azure](prepare-env-manual.html). After you followed
     the procedures in this topic, follow the instructions in [Configuring BOSH Director on Azure](config-manual.html).
-
-<p> If you deploy BOSH and <%= vars.ops_manager %> on Azure Stack, follow the procedures in <a href="https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-connect-cli">Install and configure CLI for use with Azure Stack</a> in the Microsoft documentation before following the procedures in this topic.</p>
 
 <p> Sometimes Azure portal displays the names of resources with incorrect capitalization. Always use
 the Azure CLI to retrieve the correctly capitalized name of a resource.</p>
@@ -460,8 +458,6 @@ To boot <%= vars.ops_manager %>:
 
     * If you use unmanaged disks, perform the following steps:
 
-        <p> Azure Stack requires unmanaged disks.</p>
-
         1. Download the <%= vars.ops_manager %> image to your local machine. The image size is 10&nbsp;GB.
 
             ```console
@@ -593,11 +589,10 @@ To boot <%= vars.ops_manager %>:
             --os-type Linux
             ```
 
-            If you are using Azure China, Azure Government Cloud, or Azure Germany, replace `blob.core.windows.net` with the following:
+            If you are using Azure China or Azure Government Cloud, replace `blob.core.windows.net` with the following:
 
             * For Azure China, use `blob.core.chinacloudapi.cn`. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/china/china-get-started-developer-guide) for more information.
             * For Azure Government Cloud, use `blob.core.usgovcloudapi.net`. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-storage) for more information.
-            * For Azure Germany, use `blob.core.cloudapi.de`. For more information, see the [Azure documentation](https://docs.microsoft.com/en-us/azure/germany/germany-developer-guide) for more information.
 
         1. Create your <%= vars.ops_manager %> VM, replacing `PATH-TO-PUBLIC-KEY` with the path to your public key `.pub` file.
 
@@ -615,8 +610,6 @@ To boot <%= vars.ops_manager %>:
             ```
 
 1. If you plan to install more than one tile in this <%= vars.ops_manager %> installation, do the following to increase the size of the <%= vars.ops_manager %> VM disk. You can repeat this process and increase the disk again at a later time if necessary.
-
-    <p> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
 
     1. Run the following command to stop the VM and detach the disk:
 

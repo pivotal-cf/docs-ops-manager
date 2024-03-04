@@ -45,7 +45,6 @@ To export environment variables:
 
     * For Azure China, replace `AzureCloud` with `AzureChinaCloud`. If logging in to `AzureChinaCloud` fails with a `CERT_UNTRUSTED` error, use Node v4 or later.
     * For Azure Government Cloud, replace `AzureCloud` with `AzureUSGovernment`.
-    * For Azure Germany, replace `AzureCloud` with `AzureGermanCloud`.
 
 1. Log in:
 
@@ -300,11 +299,10 @@ To create an <%= vars.ops_manager %> VM instance:
 
             Where `OPS-MANAGER-VERSION` is the version of <%= vars.ops_manager %> you are deploying.
             <br>
-            If you are using Azure China, Azure Government Cloud, or Azure Germany, replace `blob.core.windows.net` with the following:
+            If you are using Azure China or Azure Government Cloud, replace `blob.core.windows.net` with the following:
 
             * For Azure China, use `blob.core.chinacloudapi.cn`. For more information, see [Azure China developer guide](https://docs.microsoft.com/en-us/azure/china/china-get-started-developer-guide) in the Microsoft Azure documentation.
             * For Azure Government Cloud, use `blob.core.usgovcloudapi.net`. For more information, see [Azure Government storage](https://docs.microsoft.com/en-us/azure/azure-government/documentation-government-services-storage) in the Microsoft Azure documentation.
-            * For Azure Germany, use `blob.core.cloudapi.de`. For more information, see [Azure Germany developer guide](https://docs.microsoft.com/en-us/azure/germany/germany-developer-guide) in the Microsoft Azure documentation.
 
         1. Create your <%= vars.ops_manager %> VM by running: replacing `PATH-TO-PUBLIC-KEY` with the path to your public key `.pub` file, and replacing `opsman-version` and `opsman-image-version` with the version of <%= vars.ops_manager %> you are deploying, for example `opsman-2.0.1`, `opsman-2.0.1-osdisk`, and `opsman-image-2.0.1`.
 
@@ -329,8 +327,6 @@ To create an <%= vars.ops_manager %> VM instance:
 1. If you deploy more than one tile in this <%= vars.ops_manager %> installation, increase the
 size of the <%= vars.ops_manager %> VM disk. You can repeat this process and increase the disk again at
 a later time if necessary.
-
-    <p> If you use Azure Stack, you must increase the <%= vars.ops_manager %> VM disk size using the Azure Stack UI.</p>
 
     1. Stop the VM and detach the disk by running:
 
