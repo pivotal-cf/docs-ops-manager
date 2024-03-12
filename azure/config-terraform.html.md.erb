@@ -12,8 +12,8 @@ see [Deploying <%= vars.ops_manager %> to Azure](prepare-env-terraform.html).
 
 <%= partial "/pcf/warning-terraform" %>
 
-<p> You can also use the procedures in this topic for the <%= vars.ops_manager %> API.
-For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.</p>
+You can also use the procedures in this topic for the <%= vars.ops_manager %> API.
+For more information, see <a href="../install/ops-man-api.html">Using the <%= vars.ops_manager %> API</a>.
 
 ## <a id='prerequisites'></a> Prerequisite
 
@@ -31,7 +31,7 @@ To complete the procedures in this topic, you must have access to the output gen
 
 1. Click **Azure Config**.
 
-    ![alt-text=""](../common/images/azure/azure-config.png)
+    ![The Azure Config page](../common/images/azure/azure-config.png)
 
 1. Complete the following fields with information you obtained in [Preparing to deploy <%= vars.ops_manager %> on Azure Using Terraform](prepare-azure-terraform.html).
 	* **Subscription ID**: Enter the ID of your Azure subscription.
@@ -45,10 +45,10 @@ To complete the procedures in this topic, you must have access to the output gen
 
 3. For **Cloud Storage Type**, click **Use Managed Disks**. For **Storage Account Type**, click **Premium_LRS** which corresponds to SSD-based storage. For more information, see [Azure Managed Disks Overview](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview) in the Microsoft documentation for more information.
 
-    ![alt-text=""](../common/images/azure/azure-managed-disk.png)
+    ![Select "Use Managed Disks" or "Use Storage Accounts."](../common/images/azure/azure-managed-disk.png)
 
-    <p> You can update your deployment from using storage accounts to using managed disks. However,
-    after you click <strong>Use Managed Disks</strong> and deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.</p>
+      You can update your deployment from using storage accounts to using managed disks. However,
+      after you click <strong>Use Managed Disks</strong> and deploy <%= vars.ops_manager %>, you cannot change your deployment back to use storage accounts.
 
 1. For **Default Security Group**, enter the `bosh_deployed_vms_security_group_name` output from Terraform.
 
@@ -139,7 +139,7 @@ To create the infrastructure network:
       </tr>
     </table>
 
-    ![alt-text="The Create Networks page contains two sections: Verification Settings and Networks."](../common/images/azure/create-networks-management.png)
+    ![The Create Networks page contains two sections: Verification Settings and Networks.](../common/images/azure/create-networks-management.png)
 
 1. Click **Save**.<%= vars.expand_network_azs %>
 
@@ -189,9 +189,9 @@ To create the infrastructure network:
       </tr>
     </table>
 
-    ![alt-text=""](../common/images/azure/create-networks-deployment.png)
+    ![Enter details of TAS Subnets.](../common/images/azure/create-networks-deployment.png)
 
-1. Click **Save**.
+2. Click **Save**.
 
 #### <a id='pas-services-network'></a> <%= vars.app_runtime_abbr %> services network
 
@@ -239,7 +239,7 @@ To create the infrastructure network:
       </tr>
     </table>
 
-    ![alt-text="Create a subnet."](../common/images/azure/create-networks-services.png)
+    ![Enter details of services Subnets.](../common/images/azure/create-networks-services.png)
 
 1. Click **Save**.
 
@@ -445,16 +445,16 @@ To create the infrastructure network:
 
 1. Click **Resource Config**.
 
-    ![alt-text="The BOSH DNS Config page has three text boxes: Excluded Recursors, Recursor Timeout, and Handlers."](../common/images/azure/om-resource-config.png)
+    ![The BOSH DNS Config page has three text boxes: Excluded Recursors, Recursor Timeout, and Handlers.](../common/images/azure/om-resource-config.png)
 
-1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** text boxes, click **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
+2. Under the **Instances**, **VM Type**, and **Persistent Disk Type** text boxes, click **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
 
     <p> For the BOSH Director job, click a VM type with at least 8&nbsp;GB memory.</p>
     <p> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the new recommended allocation.</p>
     <p> If you install <%= vars.windows_runtime_first %>,
     provision your <strong>Main Compilation Job</strong> with at least 100&nbsp;GB of disk space.</p>
 
-2. (Optional) To add a load balancer to the BOSH Director, click the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** check box.
+3. (Optional) To add a load balancer to the BOSH Director, click the icon next to the **BOSH Director** job name to see the **Load Balancers** field and **Internet Connected** check box.
 For **Load Balancers**, enter your Azure application gateway name under the **BOSH Director** job.
 To create an application gateway, follow the procedures in [Create an application gateway with SSL termination using Azure PowerShell](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-ssl-arm) from the Azure documentation. When you create the application gateway, associate the gateway's IP with your system domain.
 
@@ -468,13 +468,11 @@ To create an application gateway, follow the procedures in [Create an applicatio
 
 1. Click the <%= vars.ops_manager %> Installation Dashboard link to return to the Installation Dashboard.
 
-1. Click **Review Pending Changes** > **Apply Changes**. If the following ICMP error messages appear ("Cannot reach gateway with IP x.x.x.x (ignorable if CMP is deactivated) and Cannot reach DNS with IP x.x.x.x (ignorable if CMP is deactivated)), click **Ignore errors and start the install**.
+1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error messages appear ("Cannot reach gateway with IP x.x.x.x (ignorable if CMP is deactivated) and Cannot reach DNS with IP x.x.x.x (ignorable if CMP is deactivated)), click **Ignore errors and start the install**.
 
-    ![alt-text=""](../common/images/cloudform/install-error.png)
+2. BOSH Director begins the installation. This might take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
 
-1. BOSH Director begins the installation. This might take a few moments. When the installation process successfully completes, the **Changes Applied** window appears.
-
-    ![alt-text="BOSH Director installation begins."](../common/images/cloudform/ops-manager-complete.png)
+    ![Changes Applied window includes two buttons: "Close" and "Return to Dashboard"](../common/images/cloudform/ops-manager-complete.png)
 
 
 ## <a id='next'></a> Next steps

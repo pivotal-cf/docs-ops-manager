@@ -30,7 +30,7 @@ To follow the procedures in this topic, you must have access to the output from 
 
 1. Click **AWS Config** to open the **AWS Management Console Config** page.
 
-    ![alt-text="The AWS Management Console Config pane. See the following steps for more information."](../common/images/cloudform/aws-config.png)
+    ![The AWS Management Console Config pane. See the following steps for more information.](../common/images/cloudform/aws-config.png)
 
 2. Click **Use AWS Keys** or **Use AWS Instance Profile**.
     * If you choose to use AWS keys, complete the following text boxes:
@@ -69,7 +69,7 @@ For more information about Amazon S3 Signatures, see <a href="http://docs.aws.am
 
 1. Click **Create Availability Zones**.
 
-    ![alt-text="The Create Availability Zones pane. See the following steps for more information."](../common/images/cloudform/create-az.png)
+    ![The Create Availability Zones pane. See the following steps for more information.](../common/images/cloudform/create-az.png)
 
 2. To create three availability zones for your apps to use:
     1. Click **Add** three times.
@@ -80,7 +80,7 @@ For more information about Amazon S3 Signatures, see <a href="http://docs.aws.am
 
 1. Click **Create Networks**.
 
-    ![alt-text="The Create Networks pane. See the following steps for more information."](../common/images/cloudform/create-networks.png)
+    ![The Create Networks pane. See the following steps for more information.](../common/images/cloudform/create-networks.png)
 
 1. (Optional) Click **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable.
 
@@ -378,7 +378,7 @@ See the following table for the information required to create all three subnets
 
 1. Click **Assign AZs and Networks**.
 
-    ![alt-text="The Assign AZs and Networks pane. See the following steps for information about the details."](../common/images/assign-az.png)
+    ![The Assign AZs and Networks pane. See the following steps for information about the details.](../common/images/assign-az.png)
 
 1. Use the **Singleton Availability Zone** drop-down menu to select an AZ . The BOSH Director installs in this availability zone (AZ).
 
@@ -402,7 +402,7 @@ See the following table for the information required to create all three subnets
 
 1. Click **Resource Config**.
 
-    ![alt-text="The Resource Config pane. See the following steps for detailed information."](../common/images/cloudform/resource-config.png)
+    ![The Resource Config pane. See the following steps for detailed information.](../common/images/cloudform/resource-config.png)
 
 1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** text boxes, click **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** text box reads **None**, the job does not require persistent disk space.
     For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.
@@ -470,11 +470,11 @@ To assign your load balancer VMs to the correct target groups and security group
 
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, click **Ignore errors and start the install**.
 
-    ![alt-text="Error messages read 'Cannot reach gateway with IP 10.0.16.1...' and 'Cannot reach DNS with IP 10.0.0.2...'."](../common/images/cloudform/install-error.png)
+    ![Error messages read 'Cannot reach gateway with IP 10.0.16.1...' and 'Cannot reach DNS with IP 10.0.0.2...'.](../common/images/cloudform/install-error.png)
 
 2. The BOSH Director installation begins. This might take a few moments. When the installation is complete, the **Changes Applied** window appears.
 
-    ![alt-text=""](../common/images/cloudform/ops-manager-complete.png)
+    ![Changes Applied mess and 2 buttons: Close and Return to Dashboard.](../common/images/cloudform/ops-manager-complete.png)
 
 3. After you follow this procedure, continue to the topic for the runtime you are installing:
 

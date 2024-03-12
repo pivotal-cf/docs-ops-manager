@@ -30,11 +30,11 @@
         1. **Access Key** and **Secret Key:** Enter the keys you generated when creating your S3 bucket.
         <% end %>
         1. **Enable signed URLs:** Select this check box to configure BOSH VMs to generate short lived, pre-signed URLs for communication between the BOSH Agent and blobstore. If you enable this feature, BOSH Agents do not use credentials to communicate with the blobstore, and VM disks do not store blobstore credentials.
-            <p> This feature is only available for BOSH VMs that use Xenial stemcell line 621 or later.</p>
+            This feature is only available for BOSH VMs that use Xenial stemcell line 621 or later.
         1. **URL Style:** Click either path-style or domain-style to specify the URL style for the S3-compatible blobstore. By default, the blobstore uses domain-style URLs.
-            <p> AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/index.html">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.</p>
+            AWS ends support for path-style URLs for all S3 buckets created after September 30, 2020. For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/index.html">Support for Virtual-Hosted-Style URLs for AWS S3 Blobstores</a>.
         1. Select **V2 Signature** or **V4 Signature**. If you select **V4 Signature**, enter your **Region**.
-            <p> AWS recommends using Signature Version 4. For more information about AWS S3 Signatures, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating Requests</a> in the AWS documentation.</p>
+            AWS recommends using Signature Version 4. For more information about AWS S3 Signatures, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating Requests</a> in the AWS documentation.
         1. **S3 Backup Strategy:** To configure whether and how to back up the BOSH Director's S3 blobstore, select one of the following options:
             * **No backups**
             * **Use a versioned bucket:** This option uses blobstore bucket versioning to save backups. It requires an S3 blobstore that supports versioning.
@@ -42,7 +42,7 @@
 
     * **GCS Blobstore:** Use this option for an external Google Cloud Storage (GCS) endpoint.
 
-      ![alt-text=""](../common/images/gcp/blobstore-gcp.png)
+      ![On the Blobstore Location page, select "GCS Blobstore."](../common/images/gcp/blobstore-gcp.png)
 
       To create a GCS bucket, follow the procedures in [Creating Storage Buckets](https://cloud.google.com/storage/docs/creating-buckets) in the GCS documentation.
       <% if current_page.data.iaas != "GCP" %>

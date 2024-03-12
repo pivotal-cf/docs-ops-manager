@@ -12,7 +12,7 @@ displays the BOSH Director configuration for your IaaS and product tiles for you
 
 The following image shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a green number. Click the image to see it at full size.
 
-![alt-text="The Tanzu Operations Manager Installation Dashboard: For a description of each labeled section, see the following list."](images/interface.png)
+![The Tanzu Operations Manager Installation Dashboard: For a description of each labeled section, see the following list.](images/interface.png)
 
 The following list describes each section that is labeled for the Installation Dashboard:
 
@@ -139,7 +139,7 @@ Go to the **Certificates** topic by clicking the corresponding link in the dashb
 
 The following image shows the top section of the **Certificates** topic:
 
-![alt-text="The Certificates section shows information in the following columns: Certificate name, Tile Name, Location, Type, Configurable, Expiration Date, and Rotation Procedure."](images/certificates.png)
+![The Certificates section shows information in the following columns: Certificate name, Tile Name, Location, Type, Configurable, Expiration Date, and Rotation Procedure.](images/certificates.png)
 
 The top section of the **Certificates** topic includes the certificates that the <%= vars.ops_manager %> API attempts to rotate. This section includes both certificates that the <%= vars.ops_manager %> API can rotate and certificates that you must rotate manually.
 
@@ -172,21 +172,21 @@ For all other certificates listed in **Excluded certificates**, see the document
 
 Go to the **Settings** topic by clicking on your user name and click **Settings**. On the screen that appears, click **Change Decryption Passprase**.
 
-![alt-text=""](images/user_account_menu.png)
+![admin drop-down menu options: Settings, My Account, Log Out](images/user_account_menu.png)
 
 The following sections describes the configuration topics.
 
-<p> If you modify these settings, it does not require you to return to the Installation Dashboard and click <strong>Apply Changes</strong>. These settings apply to the <%= vars.ops_manager %> VM. The BOSH Director does not apply them to your deployment.</p>
+If you modify these settings, it does not require you to return to the Installation Dashboard and click <strong>Apply Changes</strong>. These settings apply to the <%= vars.ops_manager %> VM. The BOSH Director does not apply them to your deployment.
 
 ### <a id='change-decryption'></a> Change decryption passphrase
 
 To reset your decryption passphrase, enter the details as follows, and click **Change Decryption Passphrase**.
 
-*  **Current Decryption Passphrase**
-*  **New Decryption Passphrase**
-*  **Confirm New Decryption Passphrase**
+* **Current Decryption Passphrase**
+* **New Decryption Passphrase**
+* **Confirm New Decryption Passphrase**
 
-![alt-text=""](images/settings_menu.png)
+![Enter "Current Decryption Passphrase" and "New Decryption Passphrase."](images/settings_menu.png)
 
 ### <a id='internal-auth'></a> Internal authentication settings
 
@@ -247,9 +247,13 @@ This pane includes the following text boxes:
 * **Certificate:** Enter a custom certificate.
 * **Private Key:** Enter the private key for the certificate.
 
-If you leave the text boxes blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. If you have previously added a custom certificate and want to replace it with a self-signed certificate, click **Revert to self-signed certificate**.
+If you leave the text boxes blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. 
 
-![alt-text=""](images/settings-ssl-cert.png)
+Click **Add Certificate**.
+
+![SSL Certificate page with text boxes for "Certificate" and "Private Key." Both are required.](images/settings-ssl-cert.png)
+
+If you have previously added a custom certificate and want to replace it with a self-signed certificate, click **Revert to self-signed certificate**.
 
 ### <a id='vmware-tanzu'></a> VMware Tanzu Network settings
 
@@ -309,10 +313,12 @@ To change your email and password, go to the **My Account** page by clicking on 
 
 * **Profile**: The current email address and obscured password are shown.
 * **Third Party Access**: Any third-party applications authorized for use are listed here.
+
+And buttons:
 * **Change Email**
 * **Change Password**
 
-![alt-text=""](images/account_settings.png)
+![Account Setting page showing Profile and Third Party Access. There are buttons for Change Email and Change Password.](images/account_settings.png)
 
 ## <a id='support'></a> Support page
 

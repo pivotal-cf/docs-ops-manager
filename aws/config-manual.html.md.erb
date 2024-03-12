@@ -21,7 +21,7 @@ Before you begin this procedure, ensure that you have followed all of the steps 
 
 1. Click **AWS Config**. The **AWS Management Console Config** page appears.
 
-    ![alt-text=""](../common/images/cloudform/aws-config.png)
+    ![AWS Management Console Config page](../common/images/cloudform/aws-config.png)
 
 2. Click **Use AWS Keys** or **Use AWS Instance Profile**.
     * **Access Key ID** and **AWS Secret Key**: To retrieve your AWS key information, use the AWS Identity and Access Management (IAM) credentials that you generated in [Step 3: Create an IAM User for <%= vars.ops_manager %>](prepare-env-manual.html#create-iam) in _Preparing to Deploy <%= vars.ops_manager %> on AWS_.
@@ -59,7 +59,7 @@ Before you begin this procedure, ensure that you have followed all of the steps 
 
 1. Click **Create Availability Zones**.
 
-    ![alt-text="The Create Availability Zones page in Tanzu Operations Manager. See the following steps for information about each field."](../common/images/cloudform/create-az.png)
+    ![The Create Availability Zones page in Tanzu Operations Manager. See the following steps for information about each field.](../common/images/cloudform/create-az.png)
 
 1. To add the three AZs you specified in the [Create a VPC](prepare-env-manual.html#pcfaws-vpc) section of _Preparing to Deploy <%= vars.ops_manager %> on AWS_:
     1. Click **Add**.
@@ -73,7 +73,7 @@ Before you begin this procedure, ensure that you have followed all of the steps 
 
 1. Click **Create Networks**.
 
-    ![alt-text="The Create Networks page in Tanzu Operations Manager. For more information, see the following steps for information about each field."](../common/images/cloudform/create-networks.png)
+    ![The Create Networks page in Tanzu Operations Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/create-networks.png)
 
 1. (Optional) Click **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable.
 
@@ -373,7 +373,7 @@ Before you begin this procedure, ensure that you have followed all of the steps 
 
 1. Click **Assign AZs and Networks**.
 
-    ![alt-text="The Assign AZs and Networks page in Tanzu Operations Manager. For more information, see the following steps for information about each field."](../common/images/assign-az.png)
+    ![The Assign AZs and Networks page in Tanzu Operations Manager. For more information, see the following steps for information about each field.](../common/images/assign-az.png)
 
 1. Click a **Singleton Availability Zone** from the drop-down menu. The BOSH Director is deployed into this AZ.
 
@@ -398,7 +398,7 @@ Before you begin this procedure, ensure that you have followed all of the steps 
 
 1. Click **Resource Config**.
 
-    ![alt-text="The Resource Config page in Tannzu Operations Manager. For more information, see the following steps for information about each field."](../common/images/cloudform/resource-config.png)
+    ![The Resource Config page in Tannzu Operations Manager. For more information, see the following steps for information about each field.](../common/images/cloudform/resource-config.png)
 
 2. Adjust any values as necessary for your deployment. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields,
 click **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
