@@ -183,6 +183,7 @@ This release includes new versions of BOSH DNS, System Metrics, which will cause
 - **[Feature]** You can configure an environment identifier under the Syslog page for the BOSH Director and certain tiles
 - **[Feature]** Orphaned Apply Changes records are pruned when the pruning feature is activated
 - **[Feature]** Operators can configure their vCenter CA for TLS verification
+- **[Feature]** Introduces compatibility with products using tile metadata version 3.0.2.
 - **[Bug Fix]** Downloading core consumption data no longer fails with a 500 status code error
 - **[Bug Fix]** Reduce the size of export zip file by dropping legacy encrypted database columns leftover after the Rails 7 upgrade
 
@@ -265,6 +266,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v3.0.17 for compatibility with vSphere v8.0.3 and later
 - **[Bug Fix]** Tiles are unable to use a named manifest in a collection.
+- **[Feature]** Introduces compatibility with products using tile metadata versions 2.10.3 and 3.0.1.
 
 <table border="1" class="table">
   <thead>
