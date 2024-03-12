@@ -246,6 +246,7 @@ This release includes a new version of BOSH DNS, which will cause all VMs to red
 
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v2.10.63 for compatibility with vSphere v8.0.3 and later
 - **[Bug Fix]** Tiles are unable to use a named manifest in a collection
+- **[Feature]** Introduces compatibility with products using tile metadata version 2.10.3.
 
 <table border="1" class="nice">
   <thead>
@@ -1087,6 +1088,7 @@ major functionality changes in this release.
 - **[Feature]** Certificate rotation procedures appear on the **Certificates** page and API endpoint
 - **[Feature]** The **Certificates** page can be filtered by both expiration date and rotation procedure
 - **[Feature]** Added support for Jammy Jellyfish (Ubuntu 22.04) stemcells.
+- **[Feature]** Introduces compatibility with products using tile metadata version 2.10.2.
 
 <table border="1" class="nice">
   <thead>
@@ -1432,6 +1434,7 @@ documentation](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vm
 - **[Known Issue]** This version is incompatible with vSphere v8.0.3 and later. Upgrade to at least <%= vars.ops_manager %> v2.10.63 for compatibility with vSphere v8.0.3 and later
 - **[Feature]** Operators can clear the default trusted certificates store on BOSH-deployed VMs.
 - **[Feature]** Operators can specify trusted certificates for use with S3-compatible blobstores.
+- **[Feature]** Introduces compatibility with products using tile metadata version 2.10.1.
 - **[Bug Fix]** Root disks in AWS respect the AWS EBS disk type setting.
 - **[Known Issue]** If you use Identification Tags, Tanzu Operations Manager reapplies the tags on every deploy. This does not cause the VMs to be restarted, but causes slow deployments.
 
