@@ -59,7 +59,7 @@ how to address them before you upgrade:
 		<th width="45%">Breaking Change</th>
 		<th>Action Before Upgrading</th>
 	</tr>
-	</thead>
+</thead>
 	<tr>
 		<td>Any prior to v2.10.33</td>
 		<td>For <%= vars.ops_manager %> v2.10.9 and later, BOSH DNS leaf certificates are generated to include the subject alternative name (SAN) field. If you do not distribute the BOSH DNS leaf certificates to all VMs, you can experience downtime caused by communication issues between system components.</td>

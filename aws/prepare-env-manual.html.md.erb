@@ -11,19 +11,21 @@ To view the list of AWS objects created by the procedures in this topic, see [Re
 
 To prepare <%= vars.ops_manager %> for deployment with AWS:
 
-1. [File an AWS ticket/request](#file-ticket)
-1. [Create S3 buckets](#create-s3)
-1. [Create a policy](#create-policy)
-1. [Create an IAM role or user](#create-iam)
-1. [Create a VPC](#pcfaws-vpc)
-1. [Create an internet gateway](#pcfaws-om-igw)
-1. [Create a NAT gateway](#pcfaws-nat-gateway)
-
-1. [Configure a security group for Tanzu Operations Manager](#pcfaws-om-secgrp)
-1. [Configure a security group for BOSH-deployed VMs](#pcfaws-om-ersecgrp)
-1. [Configure a security group for the Web ELB](#pcfaws-om-elbsecgrp)
-1. [Configure a security group for the TCP ELB](#pcfaws-om-tcpelbsecgrp)
-1. [Configure a security group for MySQL](#pcfaws-om-mysqlsecgrp)
+- [ File an AWS ticket/request](#-file-an-aws-ticketrequest)
+- [ Create S3 buckets](#-create-s3-buckets)
+- [ Create a policy for \<%= vars.ops\_manager %\>](#-create-a-policy-for--varsops_manager-)
+- [ Create an IAM role or user for \<%= vars.ops\_manager %\>](#-create-an-iam-role-or-user-for--varsops_manager-)
+- [ Create a VPC](#-create-a-vpc)
+- [ Create an internet gateway](#-create-an-internet-gateway)
+- [ Create a NAT gateway](#-create-a-nat-gateway)
+- [ Create route table for public subnets](#-create-route-table-for-public-subnets)
+- [ Create route table for remaining subnets](#-create-route-table-for-remaining-subnets)
+- [ Configure a security group for Ops Manager](#-configure-a-security-group-for-ops-manager)
+- [ Configure a security group for BOSH-deployed VMs](#-configure-a-security-group-for-bosh-deployed-vms)
+- [ Configure a security group for the Web ELB](#-configure-a-security-group-for-the-web-elb)
+- [ Configure a security group for the TCP ELB](#-configure-a-security-group-for-the-tcp-elb)
+- [ Configure a security group for MySQL](#-configure-a-security-group-for-mysql)
+- [ Next step](#-next-step)
 
 After you complete the procedures in this topic, proceed to [Deploying <%= vars.ops_manager %> on AWS](deploy-manual.html) to continue deploying <%= vars.ops_manager %>.
 
@@ -367,7 +369,7 @@ click **Add new subnet** to add the next subnet in the table:
         <th><strong>Port Range</strong></th>
         <th colspan='2'><strong>Source</strong></th>
       </tr>
-      </thead>
+    </thead>
       <tr>
         <td>HTTP</td>
         <td>TCP</td>
@@ -433,7 +435,7 @@ click **Add new subnet** to add the next subnet in the table:
         <th><strong>Port Range</strong></th>
         <th colspan='2'><strong>Source</strong></th>
       </tr>
-      </thead>
+    </thead>
       <tr>
         <td>All traffic</td>
         <td>All</td>
