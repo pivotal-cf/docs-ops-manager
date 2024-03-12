@@ -78,7 +78,8 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
         * **Use NSX-T Policy API Migration Mode**: Activate this checkbox to activate migration mode on the CPI. This allows you to transition infrastructure created with the Management API over to the Policy API.
 
             <p class="note">
-              <strong>Note:</strong> Note: The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. Do not select the NSX-T Policy API option if you are using an earlier <%= vars.ops_manager %> version.
+            <span class="note__title">Note</span>
+            The NSX-T Policy API is no longer experimental as of <%= vars.ops_manager %> v2.10.17. Do not select the NSX-T Policy API option if you are using an earlier <%= vars.ops_manager %> version.
             </p>
 
         * **NSX Address**: The address of the NSX Manager.
@@ -89,7 +90,8 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
                 * For this option, fill in the **NSX Manager Principal Identity Certificate** and **NSX Manager Principal Identity Private Key** fields.
 
                 <p class="note">
-                  <strong>Note:</strong> Certificate Authentication for the NSX-T Policy API was added in <%= vars.ops_manager %> v2.10.40. You must use Local User Authentication if you are using an earlier <%= vars.ops_manager %> version.
+                <span class="note__title">Note</span>
+                Certificate Authentication for the NSX-T Policy API was added in <%= vars.ops_manager %> v2.10.40. You must use Local User Authentication if you are using an earlier <%= vars.ops_manager %> version.
                 </p>
 
         * **NSX CA Cert**: A CA certificate in PEM format that establishes a secure connection to the NSX server before the BOSH Director authenticates to the NSX Manager.
