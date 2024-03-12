@@ -84,11 +84,12 @@ To determine if external blobstore support is included in the version of <%= var
 BBR supports backing up and restoring versioned and unversioned S3 or S3-compatible blobstores by default. For more information about configuring an S3 or S3-compatible blobstore, see [AWS](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/pas-file-storage.html#aws) in _Configuring File Storage for <%= vars.app_runtime_abbr %>_.
 
 <p class="note">
-<span class="note__title">Note</span> Backup artifacts of external, S3-compatible,
+<span class="note__title">Note</span>
+Backup artifacts of external, S3-compatible,
 versioned blobstores do not contain the physical blobs.
-  BBR requires that the original buckets still exist to be restored. To protect yourself from
-  losing a bucket,
-  see <a href="https://docs.cloudfoundry.org/bbr/external-blobstores.html#enable-s3-versioned-replication">Enable Replication on Your Versioned S3-Compatible Blobstore</a>
+BBR requires that the original buckets still exist to be restored. To protect yourself from
+losing a bucket,
+see <a href="https://docs.cloudfoundry.org/bbr/external-blobstores.html#enable-s3-versioned-replication">Enable Replication on Your Versioned S3-Compatible Blobstore</a>
 in <em>Backup and Restore for External Blobstores</em>.</p>
 
 ## <a id='azure'></a> Azure blobstores

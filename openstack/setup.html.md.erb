@@ -8,8 +8,10 @@ install <%= vars.ops_manager_first %>. Use this topic when [Installing <%= vars.
 
 After you complete this procedure, complete all of the steps in [Configuring BOSH Director on OpenStack](config.html)
 and in the [<%= vars.app_runtime_abbr %> documentation](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/prerequisites.html).
+
 <p class="note">
-<span class="note__title">Note</span> This document uses Mirantis OpenStack for images
+<span class="note__title">Note</span>
+This document uses Mirantis OpenStack for images
 and examples. The screenshots of your OpenStack vendor configuration interface might be different.
 </p>
 
@@ -26,11 +28,12 @@ and examples. The screenshots of your OpenStack vendor configuration interface m
 ## <a id='security'></a> Step 2: Configure security
 
 <p class="note important">
-<span class="note__title"> Important</span> If you are using OpenStack Liberty or Mitaka, do not create the key pair with the
-  OpenStack Horizon dashboard. Instead make sure that you generate the SSH key pair manually.
-  For example, use the <code>ssh-keygen</code> command. Then follow this procedure to import
-  that key pair into OpenStack. This is due to
-  an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.
+<span class="note__title"> Important</span>
+If you are using OpenStack Liberty or Mitaka, do not create the key pair with the
+OpenStack Horizon dashboard. Instead make sure that you generate the SSH key pair manually.
+For example, use the <code>ssh-keygen</code> command. Then follow this procedure to import
+that key pair into OpenStack. This is due to
+an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.
 </p>
 
 1. In your OpenStack Horizon dashboard, click **Project > Compute > Access & Security**.
