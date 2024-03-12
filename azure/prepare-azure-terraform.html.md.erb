@@ -32,7 +32,7 @@ deploy <%= vars.ops_manager %> in order to deploy <%= vars.app_runtime_first %> 
     </pre>
 
     <p class="note important">
-    <span class="note__title"> Important</span>
+    <span class="note__title">Important</span>
     For more information about installing <%= vars.ops_manager %> in the China
     Region, see <a href="../install/offline_installation.html#install_china">Install in the China Region</a>
     in <em>Installing <%= vars.ops_manager %> in Air-Gapped Environments</em>.</p>
@@ -119,8 +119,9 @@ deploy <%= vars.ops_manager %> in order to deploy <%= vars.app_runtime_first %> 
     $ az ad app create --display-name "Service Principal for BOSH" \
     --identifier-uris "http<span>:</span>//BOSHAzureCPI"
     </pre>
-    <p> You can provide any string for the <code>identifier-uris</code> flag, but the value
-    of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription.</p>
+
+      You can provide any string for the <code>identifier-uris</code> flag, but the value
+      of <code>identifer-uris</code> must be unique within the organization associated with your Azure subscription.
 
 1. From the output of the `az ad app create` that you ran in the previous step, locate and record the value of `appId`. This is your `APP_ID` for creating a service principal.
 
