@@ -28,10 +28,12 @@ The following table lists the components that are part of a base reference archi
 
 <table class=“table”>
 <thead>
-<th><strong>Component</strong></th>
-<th><strong>Reference architecture notes</strong></th>
- </thead>
-<tr>
+  <tr>
+    <th><strong>Component</strong></th>
+    <th><strong>Reference architecture notes</strong></th>
+  </tr>
+</thead>
+  <tr>
     <td><strong>Domains and DNS</strong></td>
     <td>Domain zones and routes in use by the reference architecture include:<br><br>
       <ul>
@@ -104,11 +106,13 @@ The following table lists the components that are part of a base reference archi
 The following table lists the network objects in this reference architecture:
 <table class=“table”>
 <thead>
-<th><strong>Network Object</strong></th>
-<th><strong>Notes</strong></th>
-<th><strong>Estimated Number</strong></th>
   <tr>
-  </thead>
+    <th><strong>Network Object</strong></th>
+    <th><strong>Notes</strong></th>
+    <th><strong>Estimated Number</strong></th>
+  </tr>
+</thead>
+  <tr>
     <td><strong>Floating IP addresses</strong></td>
     <td>Two per deployment: one assigned to <%= vars.ops_manager %>, the other to your jumpbox.</td>
     <td>2</td>
@@ -149,7 +153,7 @@ The following table lists the network objects in this reference architecture:
     <td><strong>Security Groups</strong></td>
     <td>The reference architecture requires one Security Groups. The following table describes the Security Group ingress rules:
     <table class=“table”>
-      <thead>
+    <thead>
     	<tr>
     		<th>Security Group</th>
     		<th>Port</th>
@@ -157,7 +161,7 @@ The following table lists the network objects in this reference architecture:
     		<th>Protocol</th>
     		<th>Description</th>
     	</tr>
-      </thead>
+    </thead>
     	<tr>
     		<td>OpsMgrSG</td>
     		<td>22</td>
@@ -198,7 +202,7 @@ The following table lists the network objects in this reference architecture:
     			<th>Protocol</th>
     			<th>Description</th>
     		</tr>
-        </thead>
+    </thead>
     		<tr>
     			<td>AppsLB</td>
     			<td>gorouter/80</td>
