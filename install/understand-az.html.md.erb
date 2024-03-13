@@ -20,16 +20,16 @@ the Diego Auction, see [How Diego balances app processes in Cloud Foundry](https
 
 For a visual representation of this scenario, see the following diagram:
 
-![alt-text="A box labeled Your Runtime. Underneath it, three boxes in a row, labeled A1, A2, and A3. A1 contains two App Instances. A2 and A3 each contain one."](./images/az_er_1.png)
+![A box labeled Your Runtime. Underneath it, three boxes in a row, labeled A1, A2, and A3. A1 contains two App Instances. A2 and A3 each contain one.](./images/az_er_1.png)
 
 If A1 experiences a power outage or hardware failure, the two app instances running in A1 stops while the app instances in zones A2 and A3 continue to run.
 
 For a visual representation of this scenario, see the following diagram:
 
-![alt-text="A box labeled Your Runtime, above three boxes A1, A2, and A3. A1 contains 2 inactive App Instances. A2 and A3 each contain 1 available App Instance."](./images/az_er_2.png)
+![A box labeled Your Runtime, above three boxes A1, A2, and A3. A1 contains 2 inactive App Instances. A2 and A3 each contain 1 available App Instance.](./images/az_er_2.png)
 
 If A1 remains unavailable, the tile balances new instances of the app across the remaining AZs.
 
 For a visual representation of this scenario, see the following diagram:
 
-![alt-text="A box labeled Your Runtime, above three boxes A1, A2, and A3. A1 is inactive with no App Instances. A2 and A3 contain one available App Instance each."](./images/az_er_3.png)
+![A box labeled Your Runtime, above three boxes A1, A2, and A3. A1 is inactive with no App Instances. A2 and A3 contain one available App Instance each.](./images/az_er_3.png)
