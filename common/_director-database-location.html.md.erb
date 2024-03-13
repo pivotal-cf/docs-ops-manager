@@ -72,11 +72,11 @@ For more information about creating a RDS MySQL instance, see [Creating a MySQL 
 <% if current_page.data.iaas == "AWS" && current_page.data.install_type == "manual" %>
 1. For **Database Location**, click **External MySQL Database** and complete the following steps:
 
-    <p> Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.</p>
+    Use of an External MySQL Database only applies to the BOSH Director. UAA and CredHub do not use these settings and do continue to use the Postgres database colocated with the BOSH Director.
 
-    <p> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
+    After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.
 
-    ![alt-text="There are two radio buttons: Internal, and External MySQL Database. There are five text boxes, Host, Port, Username, Password, and Database."](../common/images/director_database.png)
+    ![There are two radio buttons: Internal, and External MySQL Database. There are five text boxes, Host, Port, Username, Password, and Database.](../common/images/director_database.png)
 
     * From the AWS Console, navigate to the RDS Dashboard.
     * Click **Databases**, then click the instance to display the **Connectivity &amp; security** information.
@@ -123,7 +123,7 @@ For more information about creating a RDS MySQL instance, see [Creating a MySQL 
 
     <p> After you deploy the BOSH Director, you cannot change the <b>Database Location</b> from an <b>External MySQL Database</b> to an <b>Internal</b> database or from an <b>Internal</b> database to an <b>External MySQL Database</b>.</p>
 
-    ![alt-text="There are two radio buttons: Internal, and External MySQL Database. There are five text fields, Host, Port, Username, Password, and Database."](../common/images/director_database.png)
+    ![There are two radio buttons: Internal, and External MySQL Database. There are five text fields, Host, Port, Username, Password, and Database.](../common/images/director_database.png)
 
     In addition, if you selected the **Enable TLS for Director Database** checkbox, you can complete the following optional fields:
 
