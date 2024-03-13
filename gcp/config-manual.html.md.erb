@@ -31,11 +31,11 @@ To configure your GCP tile:
     * **Project ID**: Enter your GCP project ID in lowercase, such as: `your-gcp-project-id`.
     * **Default Deployment Tag**: Enter the prefix that you used when creating the GCP resources for this <%= vars.ops_manager %> installation.
     * Click **AuthJSON**. In the following text box, enter the contents of the JSON file that you downloaded in [Set Up IAM Service Accounts](prepare-env-manual.html#iam_account) in _Preparing to Deploy <%= vars.ops_manager %> on GCP_.
-    <p> As an alternative, you can click <strong>The Tanzu Ops Manager VM Service Account</strong> to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.</p>
+    As an alternative, you can click <strong>The Tanzu Ops Manager VM Service Account</strong> to use the service account that you set up in <a href="prepare-env-manual.html#iam_account">Set Up IAM Service Accounts</a> in <em>Preparing to Deploy <%= vars.ops_manager %> on GCP</em>. To use this option, the service account must be assigned the <strong>Service Account Actor</strong> role.
     * **VM Type Catalog**. Click the VM catalog that you want to use for your BOSH-deployed VMs.
     * **Google Disk Type**. Click the Google Disk Type that you want to use for your BOSH-deployed VMs.
 
-        ![alt-text=""](../common/images/gcp/google_config.png)
+      ![Google Cloud Platform Config](../common/images/gcp/google_config.png)
 
 2. Click **Save**.
 
@@ -67,7 +67,7 @@ To configure the **Create Availability Zones** pane:
     * Click **Add**.
     * Repeat the preceding step for all the AZs that you associated to instance groups in [Preparing to deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html#create-http-and-instance-group).
 
-      ![alt-text=""](../common/images/gcp/availability_zones_multiple.png)
+      ![Google Cloud Platform Config](../common/images/gcp/availability_zones_multiple.png)
 
     * Click **Save**.
 
@@ -204,7 +204,7 @@ To configure the **Assign AZs and Networks** pane:
 
 1. Click **Assign AZs and Networks**.
 
-    ![alt-text=""](../common/images/assign-az.png)
+    ![Assign AZs and Networks](../common/images/assign-az.png)
 
 2. Use the drop-down menu to select a **Singleton Availability Zone**. The BOSH Director installs in this AZ.
 
@@ -235,7 +235,7 @@ To configure the **Resource Config** pane:
 
 1. Click **Resource Config**.
 
-    ![alt-text=""](../common/images/gcp/om_resource_config.png)
+    ![Resource Config](../common/images/gcp/om_resource_config.png)
 
 1. To add a load balancer to the BOSH Director, click the icon next to the **BOSH Director** job name to see the **Load Balancers** text box and **Internet Connected** check box. Ensure that the **Internet Connected** check box is not selected for any job. The check box gives VMs a public IP address that
 enables outbound internet access. In [Preparing to deploy <%= vars.ops_manager %> on GCP](prepare-env-manual.html), you provisioned a Network Address Translation (NAT) box to provide internet connectivity to your VMs. For more information about using NAT in GCP, see [VPC network overview](https://cloud.google.com/compute/docs/networking) in the GCP documentation.

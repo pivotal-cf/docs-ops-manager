@@ -34,9 +34,9 @@ Use the `ops_manager_dns` value from running `terraform output`.
     * **Project ID**: Enter the value of `project` from your `terraform.tfvars` file.
     * **Default Deployment Tag**: Enter the value of `env_name` from your `terraform.tfvars` file.
     * Click **AuthJSON** and in the following text box enter the contents of the JSON file for you service account key.
-        <p> As an alternative, you can click <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account automatically created by GCP for the <%= vars.ops_manager %> VM.</p>
+      As an alternative, you can click <strong>The <%= vars.ops_manager %> VM Service Account</strong> option to use the service account automatically created by GCP for the <%= vars.ops_manager %> VM.
 
-    ![alt-text=""](../common/images/gcp/google_config.png)
+    ![Google Cloud Platform Config](../common/images/gcp/google_config.png)
 
 1. Click **Save**.
 
@@ -200,7 +200,7 @@ Use the `ops_manager_dns` value from running `terraform output`.
 
 1. Click **Resource Config**.
 
-    ![alt-text="The Resource Config dialog contains the following text boxes: Job, Instances, VM Type, and Persistent Disk Type."](../common/images/gcp/om_resource_config.png)
+    ![The Resource Config dialog contains the following text boxes: Job, Instances, VM Type, and Persistent Disk Type.](../common/images/gcp/om_resource_config.png)
 
 1. To add a load balancer to the BOSH Director, click the icon next to the **BOSH Director** job name to see the **Load Balancers** tExt box and **Internet Connected** check box. Ensure that the **Internet Connected** check box is not selected for any job. The Terraform templates do not provision a Network Address Translation (NAT) box for internet connectivity to your VMs, so instead VMs are provided with ephemeral public IP addresses to allow the jobs to reach the internet.
 
@@ -219,11 +219,11 @@ Use the `ops_manager_dns` value from running `terraform output`.
 1. Click **Review Pending Changes**, then **Apply Changes**. If the following ICMP error message appears, return to the [Network Config](#network) screen, and make sure you deselect the **Enable ICMP Checks** text box.
 Click **Review Pending Changes**, then click **Apply Changes** again.
 
-   ![alt-text="The Ops Manager errors list. There are two buttons: Ignore errors and start the install and Stop and fix errors."](../common/images/cloudform/install-error.png)
+   ![The Ops Manager errors list. There are two buttons: Ignore errors and start the install and Stop and fix errors.](../common/images/cloudform/install-error.png)
 
 1. BOSH Director installation begins. This might take a few moments. When the installation process is complete, the **Changes Applied** window appears.
 
-  ![alt-text="The Changes Applied dialog box has two buttons: Close and Return to Installation Dashboard."](../common/images/cloudform/ops-manager-complete.png)
+  ![The Changes Applied dialog box has two buttons: Close and Return to Installation Dashboard.](../common/images/cloudform/ops-manager-complete.png)
 
 
 ## <a id='next'></a> Next Steps

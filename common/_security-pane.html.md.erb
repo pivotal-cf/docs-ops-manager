@@ -8,10 +8,10 @@ topic (trusted-certificates.html) and IaaS-specific Ops Manager configuration to
 1. Click **Security**.
     <% if current_page.data.title == "Setting Trusted Certificates" %>
     <% else %>
-    ![alt-text=""](/docs-ops-manager/common/images/om-security.png)
+    ![Trusted certificates](/docs-ops-manager/common/images/om-security.png)
     <% end %>
 
-1. In **Trusted Certificates**, enter your custom certificate authority (CA) certificates to insert into your organization's certificate trust chain. This feature enables all BOSH-deployed components in your deployment to trust custom root certificates.
+2. In **Trusted Certificates**, enter your custom certificate authority (CA) certificates to insert into your organization's certificate trust chain. This feature enables all BOSH-deployed components in your deployment to trust custom root certificates.
 
     To enter multiple certificates, paste your certificates one after the other. For example, format your certificates like the following example:
 
@@ -35,7 +35,7 @@ topic (trusted-certificates.html) and IaaS-specific Ops Manager configuration to
 
     <p> If you want to use Docker registries to run <%= vars.app_runtime_abbr %> app instances in Docker containers, enter the certificate for your private Docker registry in this text box. For more information about running app instances in <%= vars.app_runtime_abbr %> using Docker registries, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Service/<%= vars.dot_major_tas_version %>/tas-for-vms/docker-registry.html">Using Docker Registries</a>.</p>
 
-1. To include the <%= vars.ops_manager %> root CA in the **Trusted Certificates** text box, select the **Include Tanzu Ops Manager Root CA in Trusted Certs** check box. BOSH Director includes this CA in the trust store of every VM that it deploys.
+3. To include the <%= vars.ops_manager %> root CA in the **Trusted Certificates** text box, select the **Include Tanzu Ops Manager Root CA in Trusted Certs** check box. BOSH Director includes this CA in the trust store of every VM that it deploys.
   <p> If you are using <%= vars.ops_manager %> to generate certificates for either a load balancer or router, then you must select this check box.</p>
 
 1. To clear the default trusted certificates from all BOSH-deployed Linux VMs, select the **Clear the Default Trusted Certificates Store** check box. You must provide your own trusted certificates when selecting this check box as all TLS communication fails without trusted certificates available.
