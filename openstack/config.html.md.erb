@@ -38,30 +38,30 @@ instructions in [Configuring <%= vars.app_runtime_abbr %>](https://docs.vmware.c
     * **Keystone Version**: Choose a Keystone version, either **v2** or **v3**.
       * If you choose **v3**, enter the OpenStack Keystone domain to authenticate against in the **Domain** field. For more information about Keystone domains in OpenStack, see [Domains](https://docs.openstack.org/security-guide/identity/domains.html) in the _OpenStack documentation_.
 
-      ![alt-text=""](../common/images/openstack/om-config-name.png)
+      ![OpenStack Config pane: Contains fields Name, Authentication URL, and Domain (all are required)](../common/images/openstack/om-config-name.png)
 
     * **Username**: Enter your OpenStack Horizon username. The `PrimaryProject` for the user must be the project you are using to deploy <%= vars.ops_manager %>. For more information, see [Manage projects and users](https://docs.openstack.org/horizon/rocky/admin/manage-projects-and-users.html) in the OpenStack documentation.
     * **Password**: Enter your OpenStack Horizon password.
     * **Tenant**: Enter your OpenStack tenant name.
     * **Region**: Enter `RegionOne`, or another region if recommended by your OpenStack administrator.
 
-      ![alt-text=""](../common/images/openstack/om-config-username.png)
+      ![OpenStack login page](../common/images/openstack/om-config-username.png)
 
     * **Select OpenStack Network Type**: Select either **Nova**, the legacy OpenStack networking model, or **Neutron**, the newer networking model.
     * **Ignore Server Availability Zone**: Ensure that the check box is not selected.
     * **Security Group Name**: Enter `opsmanager`. You created this Security Group in the [Configure Security](setup.html#security) step of _Provisioning the OpenStack Infrastructure_.
     * **Key Pair Name**: Enter the name of the key pair that you created in the [Configure Security](setup.html#security) step of _Provisioning the OpenStack Infrastructure_.
 
-      ![alt-text=""](../common/images/openstack/om-config-network.png)
+      ![OpenStack Network Type, Security Group Name, and Key Pair Name. Do not select Ignore Server Availability Zone check box.](../common/images/openstack/om-config-network.png)
 
     * **SSH Private Key**: In a text editor, open the key pair file that you downloaded in the [Configure Security](setup.html#security) step of _Provisioning the OpenStack Infrastructure_. Copy and paste the contents of the key pair file into the field.
     * (Optional) **API SSL Certificate**: If you configured API SSL termination in your OpenStack Dashboard, enter your **API SSL Certificate**.
     * **Disable DHCP**: Do not select the check box unless your configuration requires it.
     * **Boot From Volume**: Select the check box to boot VMs from a Cinder volume.
 
-      ![alt-text=""](../common/images/openstack/om-config-ssh.png)
+      ![SSH Private Key (required), API SSL Certificate, Deactivate DHCP check box, Boot from Volume checkbox.](../common/images/openstack/om-config-ssh.png)
 
-1. Click **Save**.
+2. Click **Save**.
 
 2. (Optional) Click **Add OpenStack Config** to configure additional data centers. Click **Save** for each additional OpenStack config to add it successfully. For more information, see [Managing Multiple Data Centers](../install/multiple-datacenters.html).
 
@@ -72,7 +72,7 @@ This is an advanced option. Most users leave this field blank.
 
 1. In <%= vars.ops_manager %>, select **Advanced Infrastructure Config**.
 
-    ![alt-text=""](../common/images/openstack/om-advanced-infra.png)
+    ![On Advanced Infrastructure Configuration, Connection Options (optional)](../common/images/openstack/om-advanced-infra.png)
 
 1. If your OpenStack environment requires specific connection options, enter them in the **Connection Options** text box in JSON format. For example: `'connection_options' => { 'read_timeout' => 200 }`
 
@@ -89,7 +89,7 @@ This is an advanced option. Most users leave this field blank.
 
 1. In <%= vars.ops_manager %>, select **Create Availability Zones**.
 
-    ![alt-text=""](../common/images/openstack/create-az.png)
+    ![Create Availability Zones pane](../common/images/openstack/create-az.png)
 
 1. In **Name** text box, enter the name of the availability zone that you selected in the [Launch <%= vars.ops_manager %> VM](setup.html#launch-om-vm) step of _Provisioning the OpenStack Infrastructure_.
 
@@ -112,7 +112,7 @@ In the **Subnets** table, the row for your subnet contains the **NETWORK ADDRESS
 
 1. In <%= vars.ops_manager %>, click**Create Networks**.
 
-    ![alt-text=""](../common/images/openstack/om-create-networks-config.png)
+    ![Create Networks page](../common/images/openstack/om-create-networks-config.png)
 
 1. Click **Enable ICMP checks** to enable ICMP on your networks. <%= vars.ops_manager %> uses ICMP checks to confirm that components within your network are reachable. Review the [Configure Security](setup.html#security) step of _Deploying BOSH and <%= vars.ops_manager %> to OpenStack_ to ensure you have configured ICMP in your Security Group.
 
@@ -132,7 +132,7 @@ In the **Subnets** table, the row for your subnet contains the **NETWORK ADDRESS
 
 1. Click **Assign Availability Zones**.
 
-    ![alt-text=""](../common/images/openstack/assign-az.png)
+    ![Assign AZs and Networks pane](../common/images/openstack/assign-az.png)
 
 1. From the **Singleton Availability Zone** drop-down menu, select the availability zone that you created in a previous step. The BOSH Director installs in this Availability Zone.
 
@@ -157,9 +157,9 @@ In the **Subnets** table, the row for your subnet contains the **NETWORK ADDRESS
 
 1. Click **Resource Config**.
 
-    ![alt-text=""](../common/images/openstack/om-resource-config.png)
+    ![Resource Config page: columns are Job, Instances, VM Type, and Persistent Disk Type](../common/images/openstack/om-resource-config.png)
 
-1. Adjust any values as necessary for your deployment. Foir example, increasing the persistent disk size. Select **Automatic** from the drop-down menu to provision the amount of persistent disk predefined by the job. If the persistent disk field reads **None**, the job does not require persistent disk space.
+2. Adjust any values as necessary for your deployment. Foir example, increasing the persistent disk size. Select **Automatic** from the drop-down menu to provision the amount of persistent disk predefined by the job. If the persistent disk field reads **None**, the job does not require persistent disk space.
 The editable values for each job are:
 
   * **INSTANCES**
