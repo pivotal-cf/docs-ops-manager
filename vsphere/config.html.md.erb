@@ -40,7 +40,7 @@ Before you begin this procedure, you must complete all steps in [Deploying <%= v
 
 1. Click **vCenter Config**. Configure the one or more vCenters that host your <%= vars.ops_manager %> foundation, as described in the following steps.
 
-    ![alt-text=""](../common/images/vcenter-config.png)
+    ![vCenter Config pane](../common/images/vcenter-config.png)
 
 1. Complete the following fields on the **vCenter Config** pane:
     * **Name**: A name that you provide for your vCenter configuration. This field is used to identify the datacenter configuration in <%= vars.ops_manager %> if you are configuring multiple datacenters.
@@ -131,7 +131,7 @@ see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmwa
 
 1. Select **Create Availability Zones**.
 
-    ![alt-text=""](../common/images/create-az.png)
+    ![Create Availability Zones pane](../common/images/create-az.png)
 
 1. Use the following steps to create the first AZ.
     * Click **Add**.
@@ -374,7 +374,7 @@ see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmwa
 
 1. Select **Assign AZs and Networks**.
 
-    ![alt-text=""](../common/images/assign-az.png)
+    ![Assign AZs and Networks pane](../common/images/assign-az.png)
 
 1. Use the **Singleton Availability Zone** drop-down menu to select a singleton AZ. The BOSH Director is installed as a single instance in this Availability Zone.
 
@@ -400,11 +400,11 @@ see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmwa
 
 1. Click **Resource Config**.
 
-    ![alt-text=""](../common/images/vsphere-om-resources.png)
+    ![Resource Config pane](../common/images/vsphere-om-resources.png)
 
-1. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the drop-down menus to allocate the recommended resources for the job.
+2. Under the **Instances**, **VM Type**, and **Persistent Disk Type** fields, choose **Automatic** from the drop-down menus to allocate the recommended resources for the job.
 
-1. If the **Persistent Disk Type** field displays the value **None**, the job does not require persistent disk space.
+3. If the **Persistent Disk Type** field displays the value **None**, the job does not require persistent disk space.
 
     <p> For the BOSH Director job, select a VM type with at least 8&nbsp;GB memory.</p>
     <p> If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, <%= vars.ops_manager %> automatically uses the updated recommended allocation.</p>
@@ -414,7 +414,7 @@ see <a href="https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmwa
   1. Click the menu expansion icon next to the **BOSH Director** job name. The **NSX-T Configuration** and **NSX-V Configuration** fields appear.
   2. Enter your NSX-T or NSX-V configuration values in these fields.
 
-1. Click **Save**.
+5. Click **Save**.
 
 ## <a id='custom-vm-extensions'></a> Step 11: Add custom VM extensions (optional)
 
