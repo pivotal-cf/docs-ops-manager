@@ -25,13 +25,14 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 
 **Release Date:** March 19, 2024
 
-<div class="note warning"><strong>Warning:</strong>
-  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
-</div>
+<p class="note caution">
+<span class="note__title">Caution</span>
+This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+</p>
 
 
 - **[Feature]** Upgrade to Ruby 3.3 and Rails 7.1
-- **[Bug Fix]** The dashboard page notifies of newer Jammy stemcells when integration with Tanzu Network is enabled
+- **[Bug Fix]** The dashboard page provides notice of newer Jammy stemcells when integration with Tanzu Network is enabled
 - **[Bug Fix]** The background worker functions correctly when it starts during an upgrade of <%= vars.ops_manager %>
 - **[Bug Fix]** Correctly configure UAA with proxy configuration
 - **[Bug Fix]** Selecting the "Automatically rotate non-configurable leaf certs" option when TKGI is installed and auto-rotation of BOSH DNS certs is enabled should not cause Apply Changes to fail
