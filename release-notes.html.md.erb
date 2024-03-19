@@ -21,6 +21,37 @@ Provider?](https://www.cloudfoundry.org/certified-platforms-how-to/) on the Clou
 <hr>
 
 ## <a id='releases'></a> Releases
+### <a id="3-0-25"></a> v3.0.25+LTS-T
+
+**Release Date:** March 19, 2024
+
+<div class="note warning"><strong>Warning:</strong>
+  This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+</div>
+
+
+- **[Bug Fix]** Jammy Stemcells not downloaded automatically from Tanzu Network
+- **[Bug Fix]** Ops Manager worker starts successfully, but has the wrong database schema
+- **[Feature]** Upgrade to Ruby 3.3. and Rails 7.1
+- **[Bug Fix]** Correctly configure UAA with proxy configuration
+- **[Bug Fix]** Selecting the "Automatically rotate non-configurable leaf certs" option when TKGI is installed and auto-rotation of BOSH DNS certs is enabled should not cause Apply Changes to fail
+
+<table border="1" class="nice">
+  <thead>
+  <tr>
+    <th>Component</th>
+    <th>Version</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tanzu Ops Manager</td><td>3.0.25-build.1261*</td>
+  </tr>
+  <tr><td>Stemcell (Bosh Director and Ops Manager)</td><td>1.406*</td></tr><tr><td>BBR SDK</td><td>1.19.7*</td></tr><tr><td>BOSH Director</td><td>280.0.20*</td></tr><tr><td>BOSH DNS</td><td>1.36.12</td></tr><tr><td>System Metrics</td><td>3.0.6*</td></tr><tr><td>CredHub</td><td>2.12.66*</td></tr><tr><td>CredHub Maestro</td><td>9.0.17*</td></tr><tr><td>Syslog</td><td>12.2.3*</td></tr><tr><td>Windows Syslog</td><td>1.2.4*</td></tr><tr><td>UAA</td><td>76.31.0</td></tr><tr><td>BPM</td><td>1.2.17*</td></tr><tr><td>OS Conf</td><td>22.2.1</td></tr><tr><td>AWS CPI</td><td>101</td></tr><tr><td>Azure CPI</td><td>48.0.1*</td></tr><tr><td>Google CPI</td><td>49.0.14*</td></tr><tr><td>OpenStack CPI</td><td>54</td></tr><tr><td>vSphere CPI</td><td>97.0.8*</td></tr><tr><td>BOSH CLI</td><td>7.5.5*</td></tr><tr><td>Credhub CLI</td><td>2.9.27*</td></tr><tr><td>BBR CLI</td><td>1.9.61*</td></tr><tr><td>Telemetry</td><td>2.1.5*</td></tr><tr><td>Core Consumption</td><td>0.3.14*</td></tr>
+    <td colspan="2"><em>* Components marked with an asterisk have been updated.</em></td>
+  </tbody>
+</table>
+
 ### <a id="3-0-24"></a> v3.0.24+LTS-T
 
 **Release Date:** February 12, 2024
