@@ -175,7 +175,10 @@ This release includes new versions of BOSH DNS, System Metrics, which will cause
 
 **Release Date:** November 29, 2023
 
+<p class="note caution">
+<span class="note__title">Caution</span>
 This release includes a new version of System Metrics, which will cause all VMs to redeploy.
+</p>
 
 - **[Known Issue]** Background jobs such as the temporary file cleaner and pruning feature are not being run
 - **[Feature]** Replace thin with Puma as the web server used by Ops Manager
@@ -201,7 +204,10 @@ This release includes a new version of System Metrics, which will cause all VMs 
 
 **Release Date:** November 13, 2023
 
+<p class="note caution">
+<span class="note__title">Caution</span>
 This release includes new versions of BOSH DNS, System Metrics, which will cause all VMs to redeploy.
+</p>
 
 
 - **[Feature]** You can configure an environment identifier under the Syslog page for the BOSH Director and certain tiles
@@ -249,11 +255,14 @@ This release includes new versions of BOSH DNS, System Metrics, which will cause
 
 **Release Date:** October 18, 2023
 
+<p class="note caution">
+<span class="note__title">Caution</span>
 This release has been removed from VMware Tanzu Network because it included an issue in the
 BOSH Director that causes the Healthwatch tile to fail to deploy with errors like "undefined method
 present?."
-
+<br>
 This release includes a new version of BOSH DNS, which will cause all VMs to redeploy.
+</p>
 
 - **[Known Issue]** Healthwatch tile will fail to deploy with errors like "undefined method `present?'"
 - **[Bug Fix]** Remove unneeded monit restarts when deploying the BOSH Director
