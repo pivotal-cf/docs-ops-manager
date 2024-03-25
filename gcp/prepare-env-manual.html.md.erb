@@ -49,12 +49,12 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
 
     * **Service account name**: Enter a name. For example, `bosh`.
     * **Role**: Use the drop-down menu, select the following roles:
-            * **Service Accounts > Service Account User**
-            * **Service Accounts > Service Account Token Creator**
-            * **Compute Engine > Compute Instance Admin (v1)**
-            * **Compute Engine > Compute Network Admin**
-            * **Compute Engine > Compute Storage Admin**
-            * **Storage > Storage Admin**
+            * **Service Accounts**, then **Service Account User**
+            * **Service Accounts**, then **Service Account Token Creator**
+            * **Compute Engine**, then **Compute Instance Admin (v1)**
+            * **Compute Engine**, then **Compute Network Admin**
+            * **Compute Engine**, then **Compute Storage Admin**
+            * **Storage**, then **Storage Admin**
 
             You must scroll down in the pop-up windows to select all required roles.
 
@@ -79,7 +79,7 @@ For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Appli
 - For a single-project installation, complete the following steps for the <%= vars.ops_manager %> project.
 - For a shared-VPC installation, complete the following steps for both host and service projects, to enable them to access the Google Cloud API.
 
-1. Click **API Manager > Library**.
+1. Click **API Manager**, then **Library**.
 
 1. Under **Google Cloud APIs**, click **Compute Engine API**.
 
@@ -111,7 +111,7 @@ For more information, see <a href="https://docs.vmware.com/en/VMware-Tanzu-Appli
 1. Go to the GCP project where you want to install <%= vars.ops_manager %>. For a shared VPC installation,
 go to the host project.
 
-1. Click **VPC network** > **CREATE VPC NETWORK**.
+1. Click **VPC network**, then **CREATE VPC NETWORK**.
 
 1. In the **Name** text box, enter a name of your choice for the VPC network. This name helps you identify resources for this deployment in the GCP console. Network names must be lowercase. For example, `pcf-virt-net`.<br>
 
@@ -189,7 +189,7 @@ You might, for example, need this internet access for pulling Docker images or e
 
 For more information, see [Reference Architecture for <%= vars.ops_manager %> on GCP](../refarch/gcp/gcp_ref_arch.html#common_network) and the [GCP documentation](https://cloud.google.com/solutions/connecting-securely#natgateway).
 
-1. In the GCP console, with your single project or shared-VPC host project selected, go to **Compute Engine** > **VM instances**.
+1. In the GCP console, with your single project or shared-VPC host project selected, go to **Compute Engine**, then **VM instances**.
 
 1. Click **CREATE INSTANCE**.
 
@@ -287,7 +287,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 
 ### <a id='nat-routes'></a> Create routes for NAT instances
 
-1. Go to **VPC Networks** > **Routes**.
+1. Go to **VPC Networks**, then **Routes**.
 
 1. Click **CREATE ROUTE**.
 
@@ -327,7 +327,7 @@ For more information, see [Reference Architecture for <%= vars.ops_manager %> on
 GCP lets you assign tags to VM instances and create firewall rules that apply to VMs based on their tags. For more information about tags, see [Labeling Resources](https://cloud.google.com/compute/docs/labeling-resources) in the GCP documentation.
 This step assigns tags and firewall rules to <%= vars.ops_manager %> components and VMs that handle incoming traffic.
 
-1. With your single project or shared-VPC host project selected, go to the **Networking** > **VPC network** pane and select **Firewall rules**.
+1. With your single project or shared-VPC host project selected, go to the **Networking**, then **VPC network** pane and select **Firewall rules**.
 
 1. Apply the firewall rules in the following table:
 
@@ -499,7 +499,7 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
 
 ## <a id='buckets'></a> Step 7: Create storage buckets
 
-1. With your single project or shared-VPC service project selected in the GCP console, click **Storage** > **Browser**.
+1. With your single project or shared-VPC service project selected in the GCP console, click **Storage**, then **Browser**.
 
 1. Using **CREATE BUCKET**, create buckets with the following names. For **Default storage class**, click **Multi-Regional**:
 
@@ -554,7 +554,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='create-instance-group'></a> Create instance group
 
-1. Go to **Compute Engine** > **Instance groups**.
+1. Go to **Compute Engine**, then **Instance groups**.
 
 1. Click **CREATE INSTANCE GROUP**.
 
@@ -591,7 +591,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='create-health-check'></a> Create health check
 
-1. Go to **Compute Engine** > **Health checks**.
+1. Go to **Compute Engine**, then **Health checks**.
 
 1. Click **CREATE HEALTH CHECK**.
 
@@ -609,7 +609,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 #### <a id='config-backend'></a> Configure back end
 
-1. Go to **Network services** > **Load balancing**.
+1. Go to **Network services**, then **Load balancing**.
 
 1. Click **CREATE LOAD BALANCER**.
 
@@ -618,26 +618,26 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 1. For the **Name**, enter `pcf-global-pcf`.
 
 1. Select **Backend configuration**
-1. From the drop-down menu, click **Backend services** > **Create a backend service**.
+1. From the drop-down menu, click **Backend services**, then **Create a backend service**.
 1. Complete the form as follows:
     ***Name**: `pcf-http-lb-backend`.
     - **Protocol**: `HTTP`.
     ***Named port**: `http`.
     - **Timeout**: `10 seconds`.
-    *Under **Backends** > **New backend**, click the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
+    *Under **Backends**, then **New backend**, click the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
     - Click **Add backend**, click the **Instance group** that corresponds to the second zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-b)`. Click **Done**.
     *Click **Add backend**, click the **Instance group** that corresponds to the third zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-c)`. Click **Done**.
     - **Health check**: Click the `pcf-cf-public` health check that you created.
     - **Cloud CDN**: Ensure Cloud CDN is deactivated.
 
-    1. From the drop-down menu, click **Backend services** > **Create a backend service**.
+    1. From the drop-down menu, click **Backend services**, then **Create a backend service**.
     1. Complete the form as follows:
 
         - **Name**: `pcf-http-lb-backend`.
         - **Protocol**: `HTTP`.
         - **Named port**: `http`.
         - **Timeout**: `10 seconds`.
-        - Under **Backends** > **New backend**, click the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
+        - Under **Backends**, then **New backend**, click the **Instance group** that corresponds to the first zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-a)`. Click **Done**.
         - Click **Add backend**, click the **Instance group** that corresponds to the second zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-b)`. Click **Done**.
         - Click **Add backend**, click the **Instance group** that corresponds to the third zone of the multi-zone instance group you created. For example: `pcf-http-lb (us-west1-c)`. Click **Done**.
         - **Health check**: Click the `pcf-cf-public` health check that you created.
@@ -689,7 +689,7 @@ To create a global HTTP load balancer for <%= vars.ops_manager %> on GCP:
 
 The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> on GCP operates on TCP port `443`.
 
-1. From the GCP console, click **Network services > Load balancing > Create load balancer**.
+1. From the GCP console, click **Network services**, then **Load balancing**, followed by **Create load balancer**.
 
 1. Under **TCP Load Balancing**, click **Start configuration**.
 
@@ -730,7 +730,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 ## <a id='ssh_lb'></a> Step 10: Create SSH proxy load balancer
 
-1. From the GCP console, click **Network services > Load balancing > Create load balancer**.
+1. From the GCP console, click **Network services**, then **Load balancing**, followed by **Create load balancer**.
 
 1. Under **TCP Load Balancing**, click **Start configuration**.
 
@@ -768,7 +768,7 @@ The load balancer for tailing logs with WebSockets for <%= vars.ops_manager %> o
 
 To create a load balancer for TCP routing in GCP:
 
-1. From the GCP console, click **Network services > Load balancing > Create load balancer**.
+1. From the GCP console, click **Network services**, then **Load balancing**, followed by **Create load balancer**.
 
 1. Under **TCP Load Balancing**, click **Start configuration**.
 
@@ -813,8 +813,8 @@ In this step, you redirect queries for your domain to the IP addresses of your l
     - A TCP load balancer named `pcf-ssh-proxy`
     - A TCP load balancer named `pcf-cf-tcp-lb`
 
-    <p> You can locate the static IP address of each load balancer by clicking its name
-    under <strong>Network services > Load balancing</strong> in the GCP console.</p>
+    You can locate the static IP address of each load balancer by clicking its name
+    under **Network services**, then **Load balancing** in the GCP console.
 
 1. Log in to the DNS registrar that hosts your domain. Examples of DNS registrars include Network Solutions, GoDaddy, and Register.com.
 
