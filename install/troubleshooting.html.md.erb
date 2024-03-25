@@ -29,7 +29,7 @@ the recommended remediation procedures.
 
 You might want to reinstall BOSH for troubleshooting purposes.
 However, if <%= vars.ops_manager %> does not detect any changes, BOSH does not reinstall.
-To force a reinstall of BOSH, select **BOSH Director > Resource Sizes**
+To force a reinstall of BOSH, select **BOSH Director**, then **Resource Sizes**
 and change a resource value.
 For example, you can increase the amount of RAM by 4&nbsp;MB.
 
@@ -137,7 +137,7 @@ domains in wildcard format:
 
 1. Click the <%= vars.app_runtime_abbr %> tile.
 
-1. Click **HAProxy** > **Generate Self-Signed RSA Certificate**.
+1. Click **HAProxy**, then **Generate Self-Signed RSA Certificate**.
 
 1. Enter your system and app domains in wildcard format, as well as optionally
 any custom domains, and click **Save**.
@@ -153,7 +153,7 @@ If you attempt to install a product tile with a <%= vars.app_runtime_abbr %> dep
 before installing <%= vars.app_runtime_abbr %>, the install fails.
 
 To change the number of Gateway instances, click the product
-tile, then select **Settings > Resource sizes > INSTANCES** and change the
+tile, then select **Settings**, then **Resource sizes**, followed by **INSTANCES** and change the
 value next to the product Gateway job.
 
 To remove the <%= vars.app_runtime_abbr %> dependency, change the value of this field to `0`.
