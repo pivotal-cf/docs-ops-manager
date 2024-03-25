@@ -23,7 +23,7 @@ The specified parameter is not correct, interval
 This failure happens because <%= vars.ops_manager %> expects a default value of five minutes, and
 the call to this method fails when the retrieved value does not match the expected default value.
 
-To resolve this issue, launch vCenter, go to **Administration > vCenter Server Settings > Statistics**,
+To resolve this issue, launch vCenter, go to **Administration**, then **vCenter Server Settings**, followed by **Statistics**,
 and reset the vCenter Statistics Interval Duration setting to five minutes.
 
 ## <a id='bosh_install'></a> BOSH automated installation fails
@@ -66,9 +66,11 @@ incorrect entries.
 1. In vSphere, go to the **Summary** tab for the VM and confirm that the network name is
 correct.
 
-    ![alt-text="The Summary tab has two sections: General and Resources."](images/troubleshooting/network_settings.png)
+    ![The Summary tab has two sections: General and Resources.](images/troubleshooting/network_settings.png)
 
-1. If the network name is incorrect, right click the VM, select **Edit Settings > Network adapter 1**,
+    ![The Summary tab has two sections: General and Resources.](images/troubleshooting/network_settings.png)
+
+1. If the network name is incorrect, right click the VM, select **Edit Settings**, then **Network adapter 1**,
 and select the correct network.
 
 1. Reboot the installation VM.

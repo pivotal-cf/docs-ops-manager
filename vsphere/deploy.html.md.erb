@@ -80,7 +80,7 @@ For information about using host groups in vSphere, see [Host groups in vSphere]
 1. Download the [<%= vars.ops_manager %> for vSphere](https://network.tanzu.vmware.com/products/ops-manager) OVA file from [VMware Tanzu Network](https://network.tanzu.vmware.com/products/). Use the **Releases** drop-down menu to
 select an <%= vars.ops_manager %> release.
 
-1. Right-click the management resource pool that you created and select **Deploy OVF Template**. Alternatively, from the vCenter menu, select **Actions** > **Deploy OVF Template**.
+1. Right-click the management resource pool that you created and select **Deploy OVF Template**. Alternatively, from the vCenter menu, select **Actions**, then **Deploy OVF Template**.
 
 1. On the **Select an OVF template** pane, click **Browse**.
 
@@ -128,8 +128,8 @@ select an <%= vars.ops_manager %> release.
    * **Default Gateway**: The default gateway for <%= vars.ops_manager %> to use. For example, `10.0.0.1`.
    * **DNS**: One or more DNS servers for the <%= vars.ops_manager %> VM to use. For example, `10.20.20.1`.
    * **NTP Servers**: The IP address of one or more NTP servers for <%= vars.ops_manager %>. For example, `10.113.60.176`.
-   * **Public SSH Key**: Enter pre-existing public SSH key value to enable SSH access to the <%= vars.ops_manager %> VM. Enter the full key in the `ssh-rsa AAA...` format.
-      <p> You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and might enter a reboot loop.</p>
+   * **Public SSH Key**: Enter the pre-existing public SSH key value to enable SSH access to the <%= vars.ops_manager %> VM. Enter the full key in the `ssh-rsa AAA...` format.
+      You cannot deploy <%= vars.ops_manager %> successfully without adding a public key. If you do not add a key, <%= vars.ops_manager %> shuts down automatically because it cannot find a key and might enter a reboot loop.
    * **Custom hostname**: The hostname for the <%= vars.ops_manager %> VM. For example, `ops-manager`.
 
 2. On the **Ready to complete** pane, review the configuration settings and click **Finish**.
@@ -137,16 +137,16 @@ select an <%= vars.ops_manager %> release.
     This action begins the OVA import and deployment process.
 
 3. Use the **Recent Tasks** pane at the bottom of the vCenter dashboard to check the progress of the OVA import and deployment.
-   <br/><br/>
+   <br/>
    If the import or deployment is unsuccessful, check the configuration for errors. Fix any errors and restart the deployment process.
 
 ## <a id='deploy'></a> Start <%= vars.ops_manager %>
 
 1. Create a DNS entry for the IP address that you used for <%= vars.ops_manager %>. You must use this fully qualified domain name when you log into <%= vars.ops_manager %>.
 
-    <p> <%= vars.ops_manager %> security features require you to create a fully qualified domain name to access <%= vars.ops_manager %> during the initial configuration. For more information, see <a href="../install/vsphere.html"><%= vars.ops_manager %> on vSphere Requirements</a>.</p>
+    <%= vars.ops_manager %> security features require you to create a fully qualified domain name to access <%= vars.ops_manager %> during the initial configuration. For more information, see <a href="../install/vsphere.html"><%= vars.ops_manager %> on vSphere Requirements</a>.
 
-1. Select the <%= vars.ops_manager %> VM and click **Actions** > **Power** > **Power On**.
+1. Select the <%= vars.ops_manager %> VM and click **Actions**, then **Power**, followed by **Power On**.
 
     Once the VM boots, the <%= vars.ops_manager %> web interface is available at the IP address that you specified.
 

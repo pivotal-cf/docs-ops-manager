@@ -33,32 +33,33 @@ and examples. The screenshots of your OpenStack vendor configuration interface m
   an <a href="https://bugs.launchpad.net/nova/+bug/1483132">OpenStack bug</a>.
 </p>
 
-1. In your OpenStack Horizon dashboard, click **Project > Compute > Access & Security**.
+1. In your OpenStack Horizon dashboard, click **Project**, then **Compute**, followed by **Access & Security**.
 
-1. On the **Access & Security** page, click the **Key Pairs** tab.
-
-1. Click **Import Key Pair**.
-
-1. Enter a **Key Pair Name**.
-2. In the **Public Key** text box, enter the contents of your public key.
-
-    ![Import Key Pair pane](../common/images/openstack/import-key-pair.png)
+2. On the **Access & Security** page, click the **Key Pairs** tab.
 
 3. Click **Import Key Pair**.
 
-4. In the navigation menu, click **Access & Security** to refresh the page. The new key pair appears in the list.
+4. Enter a **Key Pair Name**.
 
-5. Click the **Security Groups** tab, then click **Create Security Group** and create a group with the following properties:
+5. In the **Public Key** text box, enter the contents of your public key.
+
+    ![Import Key Pair pane](../common/images/openstack/import-key-pair.png)
+
+6. Click **Import Key Pair**.
+
+7. In the navigation menu, click **Access & Security** to refresh the page. The new key pair appears in the list.
+
+8. Click the **Security Groups** tab, then click **Create Security Group** and create a group with the following properties:
     * **Name**: `opsmanager`
     * **Description**: `<%= vars.ops_manager %>`
 
     ![Create Security Group pane](../common/images/openstack/create-security.png)
 
-6. The **Security Groups** tab contains a table of the Security Groups. Select the check box for the `opsmanager` Security Group row and click **Manage Rules** in the **Actions** column.
+9.  The **Security Groups** tab contains a table of the Security Groups. Select the check box for the `opsmanager` Security Group row and click **Manage Rules** in the **Actions** column.
 
     ![Table of Security Groups, with columns Name, Description, and Actions. The Actions column contains a Manage Rules drop-down menu for each security group.](../common/images/openstack/manage-security-rules.png)
 
-7. On the **Access & Security** page, add the ingress access rules for HTTP, HTTPS, and SSH as shown in the following table. The rules with `opsmanager` in the Remote column have restricted access to that particular Security Group.
+10. On the **Access & Security** page, add the ingress access rules for HTTP, HTTPS, and SSH as shown in the following table. The rules with `opsmanager` in the Remote column have restricted access to that particular Security Group.
 
     <p> Adjust the remote sources as necessary for your own security compliance. <%= vars.company_name %> recommends limiting remote access to <%= vars.ops_manager %> to IP ranges within your organization.</p>
 
@@ -176,7 +177,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, complete the following 
 
 1. Download the **<%= vars.ops_manager %> for OpenStack** image file from [VMware Tanzu Network](https://network.tanzu.vmware.com).
 
-1. In the navigation menu, of your OpenStack dashboard, click **Project > Compute > Images**.
+1. In the navigation menu, of your OpenStack dashboard, click **Project**, then **Compute**, followed by **Images**.
 
 1. Click **Create Image**.
 
@@ -198,7 +199,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, complete the following 
 
 ## <a id='launch-om-vm'></a> Step 5: Launch <%= vars.ops_manager %> VM
 
-1. In the navigation menu of your OpenStack dashboard, click **Project > Compute > Images**.
+1. In the navigation menu of your OpenStack dashboard, click **Project**, then **Compute**, followed by **Images**.
 
 1. Select the 'Ops Manager' row, and in the **Actions** column, click **Launch**.
 
@@ -286,7 +287,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, complete the following 
 
 ## <a id='floating-ip'></a> Step 6: Associate a floating IP address
 
-1. In the navigation of your OpenStack dashboard, click **Project > Compute > Instances**. The **Instances** table appears. You see a row with **INSTANCE NAME** <%= vars.ops_manager %>.
+1. In the navigation of your OpenStack dashboard, click **Project**, then **Compute**, followed by **Instances**. The **Instances** table appears. You see a row with **INSTANCE NAME** <%= vars.ops_manager %>.
 
 1. Wait until the **Power State** of the <%= vars.ops_manager %> instance shows as _Running_.
 
@@ -316,7 +317,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, complete the following 
 
 ## <a id='blob-storage'></a> Step 7: Add Blob storage
 
-1. In the navigation of your OpenStack dashboard, click **Project > Object Store > Containers**.
+1. In the navigation of your OpenStack dashboard, click **Project**, then **Object Store**, followed by **Containers**.
 
 1. Click **Create Container**. Create a container with the following properties:
     * **Container Name**: Enter `pcf`.
@@ -328,7 +329,7 @@ To create an <%= vars.ops_manager %> image in OpenStack, complete the following 
 
 ## <a id='blobstore-creds'></a> Step 8: Download credentials for S3 Blob storage
 
-1. In the left navigation menu on the OpenStack dashboard, click **Project > Compute > Access & Security**. Click the **API Access** tab.
+1. In the left navigation menu on the OpenStack dashboard, click **Project**, then **Compute**, then **Access & Security**. Click the **API Access** tab.
 
     ![OpenStack Access & Security pane with table of API endpoints.](../common/images/openstack/download-credentials.png)
 
