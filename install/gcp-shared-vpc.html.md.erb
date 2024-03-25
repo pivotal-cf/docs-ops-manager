@@ -52,13 +52,13 @@ To set up VPC network peering with the GCP console:
 
 1. From the GCP console, click **Networking**, then **VPC network peering**.
 
-    ![alt-text=""](images/vpc-networks.png)
+    ![GCP console, VPC network peering screen with Create connection button.](images/vpc-networks.png)
 
 2. Click **Create Connection**.
 
 2. Enter a name for the network connection from the <%= vars.ops_manager %> project to the new shared network, such as `opsmanager-to-xpn`.
 
-    ![alt-text=""](images/om-to-vpc.png)
+    ![GCP console, VPC network peering screen with table of peering connections.](images/om-to-vpc.png)
 
 2. Click **Save**.
 
@@ -131,9 +131,7 @@ After configuring a shared VPC, use the following procedure to verify that the s
 
 1. Click **Networking**, then **VPC networks**.
 
-    ![alt-text=""](images/vpc-networks.png)
-
 2. Confirm that the shared VPC network name appears in the **Subnets** list.
 
-2. Confirm that the shared VPC network **IP address ranges** match what you set for
+3. Confirm that the shared VPC network **IP address ranges** match what you set for
 the new VPC project in [Step 2: Create a shared VPC network](#network).
