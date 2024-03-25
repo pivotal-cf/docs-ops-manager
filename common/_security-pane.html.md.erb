@@ -38,9 +38,9 @@ topic (trusted-certificates.html) and IaaS-specific Ops Manager configuration to
 1. To include the <%= vars.ops_manager %> root CA in the **Trusted Certificates** text box, select the **Include Tanzu Ops Manager Root CA in Trusted Certs** check box. BOSH Director includes this CA in the trust store of every VM that it deploys.
   <p> If you are using <%= vars.ops_manager %> to generate certificates for either a load balancer or router, then you must select this check box.</p>
 
-1. To clear the default trusted certificates from all BOSH-deployed Linux VMs, select the **Clear the Default Trusted Certificates Store** checkbox. You must provide your own trusted certificates when selecting this checkbox as all TLS communication fails without trusted certificates available.
+1. To clear the default trusted certificates from all BOSH-deployed Linux VMs, select the **Clear the Default Trusted Certificates Store** check box. You must provide your own trusted certificates when selecting this check box as all TLS communication fails without trusted certificates available.
 
-    <p> This option is available in Ops Manager v2.10.21 and higher.</p>
+    This option is available in Ops Manager v2.10.21 and higher.
 
 <% if current_page.data.title == "Setting Trusted Certificates" %>
 1. Click **Save**.

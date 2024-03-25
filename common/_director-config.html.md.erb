@@ -38,7 +38,7 @@ For more information, see [Time sync for Linux VMs in Azure](https://docs.micros
 <% if current_page.data.iaas == "vSphere" %>
 1. Enter one or more NTP servers in the **NTP Servers (comma delimited)** text box. For example, `us.pool.ntp.org`.
 <% end %>
-    1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director checkbox to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
+    1. The NTP server configuration only updates after VM recreation. If you modify the value of this field, select the Recreate VMs deployed by the BOSH Director check box to re-create your BOSH Director-deployed VMs and update the NTP server configuration. If you have any service tiles installed, ensure that the Recreate All Service Instances errand runs for each service tile.
 
 1. Leave the **Bosh HM Forwarder IP Address** text box blank. BOSH-reported component metrics are available in Loggregator Firehose by default. If you continue to use the BOSH HM Forwarder to consume these component metrics, you might receive duplicate data. To prevent this, leave the <strong>Bosh HM Forwarder IP Address</strong> text box blank.
 

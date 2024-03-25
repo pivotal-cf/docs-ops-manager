@@ -187,7 +187,7 @@ To add new CAs:
 
     1. Click **Director Config**.
 
-    1. Enable the **Recreate VMs deployed by the BOSH Director** checkbox.
+    1. Enable the **Recreate VMs deployed by the BOSH Director** check box.
     This propagates the new CA to the BOSH Agent on each VM deployed by the BOSH Director,
     which enables the new leaf certificates to trust the new CA.
 
@@ -308,7 +308,7 @@ To rotate non configurable leaf certificates:
 
     1. Click **Director Config**.
 
-    1. Enable the **Recreate VMs deployed by the BOSH Director** checkbox. This propagates the new CAs to all VMs deployed by the BOSH Director to prevent downtime.
+    1. Enable the **Recreate VMs deployed by the BOSH Director** check box. This propagates the new CAs to all VMs deployed by the BOSH Director to prevent downtime.
 
     1. Return to <%= vars.ops_manager %> Installation Dashboard.
 
@@ -395,13 +395,12 @@ To delete the old <%= vars.ops_manager %> root CA and mark the old CredHub CAs a
 
     1. Click **Director Config**.
 
-    1. Enable the **Recreate VMs deployed by the BOSH Director** checkbox.
+    1. Enable the **Recreate VMs deployed by the BOSH Director** check box.
 
     1. Return to <%= vars.ops_manager %> Installation Dashboard.
 
 1. If you have service tiles installed, for each service tile:
-
-    <p. The names of the <strong>Upgrade all service instances</strong> and <strong>Recreate all service instances</strong> errands might be slightly different between services.</p>
+The names of the **Upgrade all service instances** and **Recreate all service instances** errands might be slightly different between services.
 
     1. Click the tile.
     1. Click the **Errands** tab.
