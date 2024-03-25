@@ -12,7 +12,7 @@ displays the BOSH Director configuration for your IaaS and product tiles for you
 
 The following screenshot shows the <%= vars.ops_manager %> Installation Dashboard. Each section is labeled with a red letter. Click the image to see it at full size.
 
-![alt-text="The Tanzu Operations Manager Installation Dashboard: For a description of each labeled section, see the following list."](images/interface.png)
+![The Tanzu Operations Manager Installation Dashboard: For a description of each labeled section, see the following list.](images/interface.png)
 
 The following list describes each labeled section of the Installation Dashboard:
 
@@ -141,7 +141,7 @@ Navigate to the **Certificates** page by clicking the corresponding link in the 
 
 The following image shows the top section of the **Certificates** page:
 
-![alt-text="The Certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until."](images/certificates.png)
+![The Certificates section shows information in the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until.](images/certificates.png)
 
 The top section of the **Certificates** page includes the certificates that the <%= vars.ops_manager %> API attempts to rotate. This section includes both certificates that the <%= vars.ops_manager %> API can rotate and certificates that you must rotate manually.
 
@@ -163,7 +163,7 @@ The following describes the information listed on the **Certificates** page:
 
 The following image shows the **Excluded certificates** section of the **Certificates** page:
 
-![alt-text="The Excluded certificates section includes the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until."](images/excluded-certificates.png)
+![The Excluded certificates section includes the following columns: Certificate name, Product GUID, Location, Type, Configurable, and Valid until.](images/excluded-certificates.png)
 
 The **Excluded certificates** section includes the certificates that the <%= vars.ops_manager %> API does not attempt to rotate, because they either must be rotated using the CredHub Maestro CLI or cannot be rotated safely at all.
 
@@ -176,11 +176,11 @@ For all other certificates listed in **Excluded certificates**, see the document
 
 Go to the **Settings** page by clicking on your user name, located at the upper right corner of the screen, and selecting **Settings**. On the screen that appears, select **Change Decryption Passprase**.
 
-![alt-text=""](images/user_account_menu.png)
+![Menu at upper right corner: Options are Settings, My Account, and Log out.](images/user_account_menu.png)
 
 The following sections describes the configuration panes.
 
-<p> Modifying these settings does not require you to return to the Installation Dashboard and click <strong>Apply Changes</strong>. These settings apply to the <%= vars.ops_manager %> VM. The BOSH Director does not apply them to your deployment.</p>
+Modifying these settings does not require you to return to the Installation Dashboard and click **Apply Changes**. These settings apply to the <%= vars.ops_manager %> VM. The BOSH Director does not apply them to your deployment.
 
 ### <a id='change-decryption'></a> Change Decryption Passphrase
 
@@ -247,7 +247,7 @@ This pane includes the following fields:
 
 If you leave the fields blank, <%= vars.ops_manager %> uses an auto-generated self-signed certificate rather than your own custom certificate and private key. If you want to replace a custom certificate with a self-signed certificate, select **Revert to self-signed certificate**.
 
-![alt-text=""](images/settings-ssl-cert.png)
+![SSL Certificate page](images/settings-ssl-cert.png)
 
 ### <a id='vmware-tanzu'></a> VMware Tanzu Network Settings
 
@@ -295,7 +295,7 @@ To change your email and password, go to the **My Account** page by clicking on 
 * **Change Email**
 * **Change Password**
 
-![alt-text=""](images/account_settings.png)
+![Account Settings page displays Profile user name and password (obscured), and Third-Party Access. It also has 2 buttons, Change Email, Change Password.](images/account_settings.png)
 
 ## <a id='support'></a> Support page
 
