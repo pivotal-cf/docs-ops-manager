@@ -466,7 +466,7 @@ To rotate a CredHub-set leaf certificate:
 1. Re-deploy:
     1. Return to the <%= vars.ops_manager %> Installation Dashboard.
     1. Click **Review Pending Changes**.
-    1. On the **Review Pending Changes** page, select the check box for all products using the rotated certificate. If unsure, select the **Select All Products** checkbox.
+    1. On the **Review Pending Changes** page, select the check box for all products using the rotated certificate. If unsure, select the **Select All Products** check box.
     1. For each service tile you are deploying:
         1. Verify that the **Recreate all service instances** errand is deactivated. You do not need to run this errand because when run by itself, CredHub Maestro does not update BOSH Agent certificates.
         1. Enable the **Upgrade all service instances** errand. Running this errand is necessary to push CredHub certificate updates to each service instance.

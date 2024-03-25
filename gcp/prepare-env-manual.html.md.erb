@@ -61,7 +61,7 @@ When deploying <%= vars.ops_manager %> on GCP, <%= vars.company_name %> recommen
             The <strong>Service Account User</strong> role is required only if you plan to use <strong>The <%= vars.ops_manager %> VM Service Account</strong> to deploy <%= vars.ops_manager %>. For more information about <strong>The <%= vars.ops_manager %> VM Service Account</strong>, see <a href="config-manual.html#gcp-config">Step 2: Google Cloud Platform Config</a> in <em>Configuring BOSH Director on GCP</em>.
 
     * **Service account ID**: The text box automatically generates a unique ID based on the username.
-    * **Furnish a new private key**: Select this checkbox and JSON as the **Key type**.
+    * **Furnish a new private key**: Select this check box and JSON as the **Key type**.
 
 1. Click **Create**. Your browser automatically downloads a JSON file with a private key for this account. Save this file in a secure location.
 
@@ -460,7 +460,7 @@ If you are deploying **<%= vars.app_runtime_abbr %> or other runtimes**, proceed
        - Ensure that **Enable automatic storage increases** is selected. This allows DB storage to grow automatically when space is required.
     - **Enable auto backups and high availability**: Make the following selections:
        - Leave **Automate backups** and **Enable binary logging** selected.
-       - Under **High availability**, select the **Create failover replica** checkbox.
+       - Under **High availability**, select the **Create failover replica** check box.
     - **Authorize Networks**: Click **Add network** and create a network named `all` that allows traffic from `0.0.0.0/0`.
 
         <p> If you assigned static IP addresses to your NAT instances, you can instead limit access to the
