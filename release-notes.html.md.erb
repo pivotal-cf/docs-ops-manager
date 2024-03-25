@@ -2335,6 +2335,25 @@ For information about rotating CAs and certificates using CredHub Maestro, see [
 
 <%= vars.ops_manager %> v2.10 includes the following known issues:
 
+### <a id='aws-ami-deprecated'></a> <%= vars.ops_manager %> AMI does not appear in search or light stemcell fails to deploy on AWS
+
+AWS automatically deprecates public AMIs that are older than 2 years. This includes the AMIs associated with each release of <%= vars.ops_manager %> on AWS, as well as the AMIs associated with AWS light stemcells. For more information, see [Amazon EC2 now reduces visibility of public Amazon Machine Images (AMIs) older than two years](https://aws.amazon.com/about-aws/whats-new/2022/03/amazon-machine-images-public-visibility-two-years/).
+
+Deprecated AMIs no longer appear when searching for the <%= vars.ops_manager %> AMI in AWS. However, it is still possible to launch the <%= vars.ops_manager %> AMI using either the `aws` CLI or Platform Automation.
+
+Users that attempt to deploy a VM using a deprecated light stemcell may receive an error similar to the following:
+```
+Task 10 | 23:24:16 | Update stemcell: Uploading stemcell bosh-aws-xen-hvm-ubuntu-xenial-go_agent/621.125 to the cloud (cpi: 543ec2c1aa4f72578fa3) (00:00:02)
+                   L Error: CPI error 'Bosh::Clouds::CloudError' with message 'Stemcell does not contain an AMI in region us-west-1' in 'create_stemcell' CPI method (CPI request ID: 'cpi-457127')
+```
+
+This error was fixed in AWS CPI v101 and above, but older versions of <%= vars.ops_manager %> may not include that version of the CPI.
+
+We recommend upgrading to the latest patch of <%= vars.ops_manager %> as well as the latest version of each stemcell, rather than continuing to use older versions that are associated with deprecated AMIs.
+
+If you are unable to upgrade, please follow the steps in the [AWS AMIs Stemcells deprecate after 2 years, ERROR Stemcell does not contain an AMI]() knowledge base article.
+
+
 ### <a id='recreate-persistent-disks'></a> BOSH Director disk is re-created unnecessarily
 
 Due to an issue with the BOSH CLI, the BOSH Director disk can be re-created even when

@@ -29,8 +29,8 @@ To launch an Amazon Machine Image (AMI) for <%= vars.ops_manager %>:
 
 1. Paste the AMI ID for your region into the search bar and press enter.
 
-  <p> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region. If you still cannot locate the AMI, log in to the <a href="https://network.tanzu.vmware.com">VMware Tanzu Network</a>
-  and file a Support ticket.</p>
+  <p> There is a different AMI for each region. If you cannot locate the AMI for your region, verify that you have set your AWS Management Console to your desired region.
+  Additionally, AWS automatically deprecates public AMIs 2 years after they are published, including the AMIs for <%= vars.ops_manager %> and stemcells. These <%= vars.ops_manager %> AMIs do not appear in AMI searches, but can still be launched using the <code>aws</code> CLI or Platform Automation. Deploying a deprecated light stemcell using AWS CPI v100 or below will result in an error.</p>
 
 2. (Optional) If you want to encrypt the VM that runs <%= vars.ops_manager %> with AWS Key Management Service (KMS), perform the following additional steps:
 
